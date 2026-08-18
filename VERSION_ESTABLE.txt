@@ -1,0 +1,1 @@
+Versión estable anterior. Compila y funciona correctamente en Android 16.
