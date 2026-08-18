@@ -1,0 +1,1 @@
+<resources><style name="Theme.EVChargeCalculator" parent="android:style/Theme.Material.Light.NoActionBar"><item name="android:fontFamily">sans</item><item name="android:colorAccent">#4F6BED</item><item name="android:statusBarColor">#F7F8FA</item><item name="android:navigationBarColor">#F7F8FA</item><item name="android:windowLightStatusBar">true</item></style></resources>
