@@ -1,25 +1,34 @@
 package com.evchargecalculator;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.text.InputType;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.Locale;
+import android.app.*;import android.os.*;import android.graphics.Color;import android.graphics.Typeface;import android.graphics.drawable.GradientDrawable;import android.view.*;import android.widget.*;import android.text.InputType;import java.util.Locale;
 
 public class MainActivity extends Activity {
- int dp(float v){return (int)(v*getResources().getDisplayMetrics().density+.5f);}
- EditText battery,from,to,power,price; TextView energy,time,cost,summary;
- TextView label(String s){TextView v=new TextView(this);v.setText(s);v.setTextSize(13);v.setTextColor(Color.rgb(90,95,105));v.setPadding(0,dp(8),0,dp(4));return v;}
- EditText input(String s){EditText e=new EditText(this);e.setText(s);e.setTextSize(16);e.setSingleLine();e.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);e.setPadding(dp(14),0,dp(14),0);GradientDrawable g=new GradientDrawable();g.setColor(Color.WHITE);g.setCornerRadius(dp(12));g.setStroke(dp(1),Color.rgb(220,223,228));e.setBackground(g);e.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(52)));return e;}
- TextView card(String title){TextView v=new TextView(this);v.setText(title+"\n—");v.setTextSize(14);v.setTextColor(Color.rgb(55,60,70));v.setGravity(Gravity.CENTER_VERTICAL);v.setPadding(dp(16),dp(10),dp(16),dp(10));GradientDrawable g=new GradientDrawable();g.setColor(Color.WHITE);g.setCornerRadius(dp(16));g.setStroke(dp(1),Color.rgb(232,234,238));v.setBackground(g);LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(0,dp(78),1);p.setMargins(dp(4),0,dp(4),0);v.setLayoutParams(p);return v;}
- double val(EditText e,double d){try{return Double.parseDouble(e.getText().toString().trim().replace(',','.'));}catch(Exception x){return d;}}
- void calc(){double c=val(battery,80),a=val(from,30),b=val(to,80),kw=val(power,3.45),p=val(price,.15);if(c<=0||kw<=0)return;double k=c*Math.max(0,b-a)/100.0,h=k/kw,co=k*p;int ih=(int)h,im=(int)Math.round((h-ih)*60);if(im==60){ih++;im=0;}energy.setText(String.format(Locale.getDefault(),"Energía\n%.1f kWh",k));time.setText(String.format(Locale.getDefault(),"Tiempo\n%d h %02d min",ih,im));cost.setText(String.format(Locale.getDefault(),"Coste\n%.2f €",co));summary.setText(String.format(Locale.getDefault(),"De %.0f%% a %.0f%% necesitas %.1f kWh. A %.2f kW tardarás %d h %02d min y costará %.2f €.",a,b,k,kw,ih,im,co));}
- @Override public void onCreate(Bundle b){super.onCreate(b);LinearLayout r=new LinearLayout(this);r.setOrientation(LinearLayout.VERTICAL);r.setPadding(dp(20),dp(22),dp(20),dp(20));r.setBackgroundColor(Color.rgb(247,248,250));TextView t=new TextView(this);t.setText("EV Charge Calculator");t.setTextSize(28);t.setTypeface(null,1);t.setTextColor(Color.rgb(25,29,35));r.addView(t);TextView s=new TextView(this);s.setText("Calcula automáticamente tiempo, energía y coste de carga");s.setTextSize(14);s.setTextColor(Color.rgb(100,105,115));s.setPadding(0,dp(4),0,dp(14));r.addView(s);LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);
- c.addView(label("Batería del vehículo (kWh)"));battery=input("80");c.addView(battery);c.addView(label("Porcentaje inicial (%)"));from=input("30");c.addView(from);c.addView(label("Porcentaje final (%)"));to=input("80");c.addView(to);c.addView(label("Potencia de carga (kW)"));power=input("3.45");c.addView(power);c.addView(label("Precio electricidad (€/kWh)"));price=input("0.15");c.addView(price);TextView h=new TextView(this);h.setText("Resultado");h.setTextSize(20);h.setTypeface(null,1);h.setTextColor(Color.rgb(25,29,35));h.setPadding(0,dp(22),0,dp(8));c.addView(h);LinearLayout cards=new LinearLayout(this);cards.setOrientation(LinearLayout.HORIZONTAL);energy=card("Energía");time=card("Tiempo");cost=card("Coste");cards.addView(energy);cards.addView(time);cards.addView(cost);c.addView(cards);summary=new TextView(this);summary.setTextSize(14);summary.setTextColor(Color.rgb(75,80,90));summary.setPadding(dp(4),dp(14),dp(4),dp(10));c.addView(summary);r.addView(c,new LinearLayout.LayoutParams(-1,0,1));View.OnFocusChangeListener l=(v,f)->{if(!f)calc();};battery.setOnFocusChangeListener(l);from.setOnFocusChangeListener(l);to.setOnFocusChangeListener(l);power.setOnFocusChangeListener(l);price.setOnFocusChangeListener(l);setContentView(r);calc();}
+ LinearLayout root; SeekBar fromBar,toBar; TextView fromVal,toVal,energy,time,cost,rangeText; EditText battery,power,price;
+ int blue=Color.rgb(36,107,254), dark=Color.rgb(24,29,38), muted=Color.rgb(103,111,124);
+ int dp(int x){return (int)(x*getResources().getDisplayMetrics().density+.5f);}
+ TextView tv(String s,float size,int c,boolean bold){TextView t=new TextView(this);t.setText(s);t.setTextSize(size);t.setTextColor(c);if(bold)t.setTypeface(Typeface.DEFAULT,Typeface.BOLD);return t;}
+ GradientDrawable bg(int color,int radius){GradientDrawable g=new GradientDrawable();g.setColor(color);g.setCornerRadius(dp(radius));return g;}
+ LinearLayout box(){LinearLayout l=new LinearLayout(this);l.setOrientation(LinearLayout.VERTICAL);l.setPadding(dp(16),dp(14),dp(16),dp(14));l.setBackground(bg(Color.WHITE,18));return l;}
+ EditText field(String value){EditText e=new EditText(this);e.setText(value);e.setTextSize(16);e.setTextColor(dark);e.setSingleLine();e.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);e.setPadding(dp(12),0,dp(12),0);e.setBackground(bg(Color.rgb(247,248,250),12));e.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(50)));return e;}
+ TextView unitLabel(String s){TextView t=tv(s,13,muted,false);t.setPadding(0,dp(6),0,dp(6));return t;}
+ void addGap(LinearLayout l,int h){Space s=new Space(this);l.addView(s,new LinearLayout.LayoutParams(1,dp(h)));}
+ @Override public void onCreate(Bundle b){super.onCreate(b); build(); calc();}
+ void build(){
+  ScrollView scroll=new ScrollView(this);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(dp(20),dp(18),dp(20),dp(28));root.setBackgroundColor(Color.rgb(245,247,250));scroll.addView(root);setContentView(scroll);
+  TextView title=tv("EV Charge Calculator",28,dark,true);root.addView(title);TextView sub=tv("Calcula tu carga de un vistazo",15,muted,false);sub.setPadding(0,dp(3),0,dp(18));root.addView(sub);
+  LinearLayout card=box();root.addView(card);card.addView(tv("¿Cuánto quieres cargar?",18,dark,true));
+  LinearLayout row=new LinearLayout(this);row.setGravity(Gravity.CENTER_VERTICAL);fromVal=tv("30%",26,blue,true);toVal=tv("80%",26,blue,true);TextView arrow=tv("  →  ",22,muted,true);row.addView(fromVal,new LinearLayout.LayoutParams(0,dp(50),1));row.addView(arrow);row.addView(toVal,new LinearLayout.LayoutParams(0,dp(50),1));card.addView(row);
+  TextView f=tv("Inicio",12,muted,false);f.setGravity(Gravity.CENTER);f.setLayoutParams(new LinearLayout.LayoutParams(0,dp(18),1));
+  fromBar=new SeekBar(this);fromBar.setMax(100);fromBar.setProgress(30);toBar=new SeekBar(this);toBar.setMax(100);toBar.setProgress(80);card.addView(fromBar);card.addView(toBar);TextView hint=tv("Mueve las barras para ajustar los porcentajes",12,muted,false);hint.setPadding(0,dp(4),0,0);card.addView(hint);
+  addGap(root,14);LinearLayout settings=box();root.addView(settings);settings.addView(tv("Datos de carga",18,dark,true));
+  settings.addView(unitLabel("Capacidad de batería (kWh)"));battery=field("80");settings.addView(battery);settings.addView(unitLabel("Potencia de carga (kW)"));power=field("3.45");settings.addView(power);settings.addView(unitLabel("Precio de electricidad (€/kWh)"));price=field("0.15");settings.addView(price);
+  addGap(root,14);root.addView(tv("Resultado",20,dark,true));addGap(root,8);
+  LinearLayout r1=new LinearLayout(this);r1.setOrientation(LinearLayout.HORIZONTAL);energy=metric("ENERGÍA","0.0 kWh");time=metric("TIEMPO","0 h 00 min");r1.addView(energy,new LinearLayout.LayoutParams(0,dp(105),1));r1.addView(time,new LinearLayout.LayoutParams(0,dp(105),1));root.addView(r1);addGap(root,10);cost=metric("COSTE ESTIMADO","0.00 €");root.addView(cost);addGap(root,10);rangeText=tv("",14,muted,false);rangeText.setGravity(Gravity.CENTER);rangeText.setPadding(dp(10),dp(10),dp(10),dp(10));root.addView(rangeText);
+  View.OnFocusChangeListener l=(v,has)->{if(!has)calc();};battery.setOnFocusChangeListener(l);power.setOnFocusChangeListener(l);price.setOnFocusChangeListener(l);
+  fromBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar s,int p,boolean u){if(p>=toBar.getProgress())toBar.setProgress(Math.min(100,p+1));calc();}public void onStartTrackingTouch(SeekBar s){}public void onStopTrackingTouch(SeekBar s){}});
+  toBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar s,int p,boolean u){if(p<=fromBar.getProgress())fromBar.setProgress(Math.max(0,p-1));calc();}public void onStartTrackingTouch(SeekBar s){}public void onStopTrackingTouch(SeekBar s){}});
+ }
+ TextView metric(String label,String value){LinearLayout l=box();l.setGravity(Gravity.CENTER_VERTICAL);TextView a=tv(label,11,muted,true);TextView v=tv(value,23,dark,true);v.setPadding(0,dp(5),0,0);l.addView(a);l.addView(v);return v;}
+ double num(EditText e,double d){try{return Double.parseDouble(e.getText().toString().replace(',','.'));}catch(Exception x){return d;}}
+ void calc(){if(fromBar==null)return;int a=fromBar.getProgress(),z=toBar.getProgress();fromVal.setText(a+"%");toVal.setText(z+"%");double cap=num(battery,80),kw=num(power,3.45),p=num(price,.15);double kwh=cap*(z-a)/100.0;double hours=kw>0?kwh/kw:0;int h=(int)hours;int m=(int)Math.round((hours-h)*60);if(m==60){h++;m=0;}double c=kwh*p;energy.setText(String.format(Locale.getDefault(),"%.1f kWh",kwh));time.setText(String.format(Locale.getDefault(),"%d h %02d min",h,m));cost.setText(String.format(Locale.getDefault(),"%.2f €",c));rangeText.setText(String.format(Locale.getDefault(),"Del %d%% al %d%%  ·  %.1f kWh  ·  %.2f kW",a,z,kwh,kw));}
 }

@@ -1,2 +1,2 @@
-# EVChargeCalculator
-Android EV charging time and cost calculator.
+# EV Charge Calculator
+Versión 2.0 — interfaz moderna con barras de porcentaje y cálculo automático.
