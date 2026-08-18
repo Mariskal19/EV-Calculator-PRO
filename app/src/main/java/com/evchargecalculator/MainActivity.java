@@ -1,32 +1,849 @@
 package com.evchargecalculator;
 
-import android.app.*;import android.os.*;import android.graphics.*;import android.graphics.drawable.GradientDrawable;import android.text.InputType;import android.view.*;import android.widget.*;import java.text.*;import java.util.*;
+import android.app.Activity;
+import android.os.Bundle;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.text.InputType;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import java.util.Locale;
 
 public class MainActivity extends Activity {
- int blue=Color.rgb(65,86,220), dark=Color.rgb(16,24,40), muted=Color.rgb(103,112,128), bg=Color.rgb(245,247,250); LinearLayout page; SeekBar from,to; TextView fromN,toN,chargePct,energy,time,cost,summary; EditText battery,power,price;
- int d(float x){return (int)(x*getResources().getDisplayMetrics().density+.5f);} 
- GradientDrawable round(int c,int r){GradientDrawable g=new GradientDrawable();g.setColor(c);g.setCornerRadius(d(r));return g;}
- TextView text(String s,float z,int c,boolean b){TextView v=new TextView(this);v.setText(s);v.setTextSize(z);v.setTextColor(c);if(b)v.setTypeface(Typeface.DEFAULT,Typeface.BOLD);return v;}
- LinearLayout box(int color,int r){LinearLayout l=new LinearLayout(this);l.setOrientation(LinearLayout.VERTICAL);l.setPadding(d(18),d(16),d(18),d(16));l.setBackground(round(color,r));return l;}
- EditText field(String val){EditText e=new EditText(this);e.setText(val);e.setTextSize(17);e.setTextColor(dark);e.setSingleLine(true);e.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);e.setPadding(d(14),0,d(14),0);e.setBackground(round(Color.WHITE,14));LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(-1,d(52));p.setMargins(0,d(5),0,d(12));e.setLayoutParams(p);return e;}
- void title(String s){TextView t=text(s,12,muted,true);t.setLetterSpacing(.08f);page.addView(t);}
- @Override public void onCreate(Bundle b){super.onCreate(b); getWindow().setStatusBarColor(dark);
-  ScrollView sc=new ScrollView(this); page=new LinearLayout(this);page.setOrientation(LinearLayout.VERTICAL);page.setPadding(d(20),d(18),d(20),d(28));page.setBackgroundColor(bg);sc.addView(page);setContentView(sc);
-  LinearLayout head=new LinearLayout(this);head.setGravity(Gravity.CENTER_VERTICAL);TextView icon=text("⚡",30,Color.WHITE,true);icon.setGravity(Gravity.CENTER);icon.setBackground(round(blue,16));head.addView(icon,new LinearLayout.LayoutParams(d(54),d(54)));LinearLayout ht=new LinearLayout(this);ht.setPadding(d(14),0,0,0);ht.addView(text("EV Charge",25,dark,true));ht.addView(text("CALCULATOR",12,blue,true));head.addView(ht);page.addView(head);TextView intro=text("Calcula tu carga de forma rápida y automática",14,muted,false);intro.setPadding(d(68),d(3),0,d(18));page.addView(intro);
-  LinearLayout hero=box(dark,24);LinearLayout hr=new LinearLayout(this);hr.setGravity(Gravity.CENTER_VERTICAL);hr.addView(text("CARGA DEL VEHÍCULO",12,Color.rgb(173,184,207),true),new LinearLayout.LayoutParams(0,-2,1));hr.addView(text("● EN CASA",11,Color.rgb(100,220,170),true));hero.addView(hr);
-  LinearLayout vals=new LinearLayout(this);vals.setGravity(Gravity.CENTER_VERTICAL);fromN=text("30%",32,Color.WHITE,true);toN=text("80%",32,Color.WHITE,true);fromN.setGravity(Gravity.CENTER);toN.setGravity(Gravity.CENTER);vals.addView(fromN,new LinearLayout.LayoutParams(0,d(58),1));TextView ar=text("→",25,Color.rgb(150,164,190),true);ar.setGravity(Gravity.CENTER);vals.addView(ar,new LinearLayout.LayoutParams(d(42),d(58)));vals.addView(toN,new LinearLayout.LayoutParams(0,d(58),1));hero.addView(vals);
-  LinearLayout pb=new LinearLayout(this);pb.setPadding(d(4),0,d(4),0);pb.setBackground(round(Color.rgb(44,57,82),50));chargePct=text("50% de batería",12,Color.WHITE,true);chargePct.setGravity(Gravity.CENTER);pb.addView(chargePct,new LinearLayout.LayoutParams(-1,d(30)));hero.addView(pb);page.addView(hero);space(16);
-  title("RANGO DE CARGA");from=text("",1,Color.TRANSPARENT,false);from.setMax(99);from.setProgress(29);page.addView(from,new LinearLayout.LayoutParams(-1,d(42)));to=new SeekBar(this);to.setMax(100);to.setProgress(80);page.addView(to,new LinearLayout.LayoutParams(-1,d(42)));
-  LinearLayout result=box(Color.WHITE,22);TextView rt=text("Resultado",20,dark,true);result.addView(rt);TextView rs=text("Se actualiza al instante",12,muted,false);rs.setPadding(0,d(2),0,d(12));result.addView(rs);
-  LinearLayout cards=new LinearLayout(this);cards.setOrientation(LinearLayout.HORIZONTAL);energy=card("ENERGÍA","— kWh");time=card("TIEMPO","—");cost=card("COSTE","— €");cards.addView(energy);cards.addView(time);cards.addView(cost);result.addView(cards);summary=text("",13,muted,false);summary.setPadding(d(2),d(14),d(2),0);result.addView(summary);page.addView(result);space(16);
-  LinearLayout settings=box(Color.WHITE,22);settings.addView(text("Parámetros",20,dark,true));settings.addView(text("Puedes modificar estos valores cuando quieras",12,muted,false));spaceIn(settings,8);
-  settings.addView(label("CAPACIDAD DE BATERÍA · kWh"));battery=field("80");settings.addView(battery);settings.addView(label("POTENCIA DE CARGA · kW"));power=field("3,45");settings.addView(power);settings.addView(label("PRECIO ELECTRICIDAD · €/kWh"));price=field("0,15");settings.addView(price);page.addView(settings);
-  SeekBar.OnSeekBarChangeListener l=new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar s,int p,boolean f){calculate();}public void onStartTrackingTouch(SeekBar s){}public void onStopTrackingTouch(SeekBar s){}};from.setOnSeekBarChangeListener(l);to.setOnSeekBarChangeListener(l);View.OnFocusChangeListener fl=(v,h)->{if(!h)calculate();};battery.setOnFocusChangeListener(fl);power.setOnFocusChangeListener(fl);price.setOnFocusChangeListener(fl);calculate();
- }
- void space(int n){Space s=new Space(this);page.addView(s,new LinearLayout.LayoutParams(1,d(n)));}void spaceIn(LinearLayout l,int n){Space s=new Space(this);l.addView(s,new LinearLayout.LayoutParams(1,d(n)));}
- TextView label(String s){TextView t=text(s,11,muted,true);t.setPadding(0,d(5),0,0);return t;}
- TextView card(String a,String b){TextView t=text(a+"\n"+b,12,muted,true);t.setGravity(Gravity.CENTER_VERTICAL);t.setPadding(d(10),d(8),d(6),d(8));LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(0,d(74),1);p.setMargins(d(3),0,d(3),0);t.setLayoutParams(p);t.setBackground(round(Color.rgb(247,248,252),16));return t;}
- double num(EditText e,double def){try{return Double.parseDouble(e.getText().toString().trim().replace(',','.'));}catch(Exception x){return def;}}
- String dec(double n,int digits){return String.format(Locale.getDefault(),"%."+digits+"f",n).replace('.',',');}
- void calculate(){int f=from.getProgress()+1;int t=to.getProgress();if(t<=f){t=Math.min(100,f+1);to.setProgress(t);}fromN.setText(f+"%");toN.setText(t+"%");chargePct.setText((t-f)+"% de batería");double cap=num(battery,80),kw=num(power,3.45),eur=num(price,.15),kwh=Math.max(0,cap*(t-f)/100d),hrs=kw>0?kwh/kw:0;int h=(int)hrs,m=(int)Math.round((hrs-h)*60);if(m==60){h++;m=0;}double c=kwh*eur;energy.setText("ENERGÍA\n"+dec(kwh,1)+" kWh");time.setText("TIEMPO\n"+h+" h "+String.format(Locale.getDefault(),"%02d",m)+" min");cost.setText("COSTE\n"+dec(c,2)+" €");summary.setText("De "+f+"% a "+t+"% necesitas "+dec(kwh,1)+" kWh · a "+dec(kw,2)+" kW tardarás "+h+" h "+String.format(Locale.getDefault(),"%02d",m)+" min.");}
+
+    LinearLayout page;
+
+    SeekBar fromBar;
+    SeekBar toBar;
+
+    TextView fromValue;
+    TextView toValue;
+    TextView chargePct;
+
+    TextView energy;
+    TextView time;
+    TextView cost;
+    TextView summary;
+
+    EditText battery;
+    EditText power;
+    EditText price;
+
+    final int blue = Color.rgb(79, 99, 232);
+    final int dark = Color.rgb(27, 35, 52);
+    final int muted = Color.rgb(105, 112, 128);
+    final int light = Color.rgb(247, 248, 252);
+    final int white = Color.WHITE;
+
+    int d(int value) {
+        return (int) (value * getResources().getDisplayMetrics().density + 0.5f);
+    }
+
+    TextView text(String value, float size, int color, boolean bold) {
+        TextView t = new TextView(this);
+        t.setText(value);
+        t.setTextSize(size);
+        t.setTextColor(color);
+
+        if (bold) {
+            t.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        }
+
+        return t;
+    }
+
+    GradientDrawable round(int color, int radius) {
+        GradientDrawable g = new GradientDrawable();
+        g.setColor(color);
+        g.setCornerRadius(d(radius));
+        return g;
+    }
+
+    EditText field(String value) {
+        EditText e = new EditText(this);
+
+        e.setText(value);
+        e.setTextSize(17);
+        e.setTextColor(dark);
+        e.setSingleLine(true);
+
+        e.setInputType(
+                InputType.TYPE_CLASS_NUMBER |
+                InputType.TYPE_NUMBER_FLAG_DECIMAL
+        );
+
+        e.setPadding(d(14), 0, d(14), 0);
+        e.setBackground(round(Color.rgb(248, 249, 252), 14));
+
+        LinearLayout.LayoutParams p =
+                new LinearLayout.LayoutParams(-1, d(52));
+
+        p.setMargins(0, d(5), 0, d(12));
+
+        e.setLayoutParams(p);
+
+        return e;
+    }
+
+    TextView label(String value) {
+        TextView t = text(value, 12, muted, true);
+        t.setPadding(0, d(8), 0, 0);
+        return t;
+    }
+
+    TextView card(String title, String value) {
+
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setGravity(Gravity.CENTER_VERTICAL);
+
+        box.setPadding(d(12), d(10), d(12), d(10));
+        box.setBackground(round(Color.rgb(248, 249, 252), 16));
+
+        TextView titleView =
+                text(title, 10, muted, true);
+
+        TextView valueView =
+                text(value, 16, dark, true);
+
+        box.addView(titleView);
+        box.addView(valueView);
+
+        LinearLayout.LayoutParams p =
+                new LinearLayout.LayoutParams(0, d(82), 1);
+
+        p.setMargins(d(4), 0, d(4), 0);
+
+        box.setLayoutParams(p);
+
+        valueView.setTag("value");
+
+        return boxToTextView(box, title, value);
+    }
+
+    TextView boxToTextView(
+            LinearLayout box,
+            String title,
+            String value) {
+
+        TextView result = text(
+                title + "\n" + value,
+                14,
+                dark,
+                true
+        );
+
+        result.setGravity(Gravity.CENTER_VERTICAL);
+        result.setPadding(
+                d(14),
+                d(8),
+                d(10),
+                d(8)
+        );
+
+        result.setBackground(
+                round(Color.rgb(248, 249, 252), 16)
+        );
+
+        LinearLayout.LayoutParams p =
+                new LinearLayout.LayoutParams(0, d(82), 1);
+
+        p.setMargins(d(4), 0, d(4), 0);
+
+        result.setLayoutParams(p);
+
+        return result;
+    }
+
+    LinearLayout panel(int color, int radius) {
+
+        LinearLayout box = new LinearLayout(this);
+
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(
+                d(18),
+                d(16),
+                d(18),
+                d(16)
+        );
+
+        box.setBackground(round(color, radius));
+
+        return box;
+    }
+
+    void spacer(int height) {
+
+        SpaceView space = new SpaceView(this);
+
+        page.addView(
+                space,
+                new LinearLayout.LayoutParams(
+                        1,
+                        d(height)
+                )
+        );
+    }
+
+    void spacerIn(LinearLayout layout, int height) {
+
+        SpaceView space = new SpaceView(this);
+
+        layout.addView(
+                space,
+                new LinearLayout.LayoutParams(
+                        1,
+                        d(height)
+                )
+        );
+    }
+
+    static class SpaceView extends View {
+        public SpaceView(android.content.Context context) {
+            super(context);
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+
+        ScrollView scroll = new ScrollView(this);
+
+        scroll.setBackgroundColor(light);
+
+        page = new LinearLayout(this);
+
+        page.setOrientation(LinearLayout.VERTICAL);
+
+        page.setPadding(
+                d(20),
+                d(24),
+                d(20),
+                d(30)
+        );
+
+        scroll.addView(page);
+
+        setContentView(scroll);
+
+        createInterface();
+    }
+
+    void createInterface() {
+
+        // CABECERA
+
+        LinearLayout header =
+                new LinearLayout(this);
+
+        header.setGravity(Gravity.CENTER_VERTICAL);
+
+        TextView icon =
+                text("⚡", 30, white, true);
+
+        icon.setGravity(Gravity.CENTER);
+
+        icon.setBackground(
+                round(blue, 16)
+        );
+
+        header.addView(
+                icon,
+                new LinearLayout.LayoutParams(
+                        d(54),
+                        d(54)
+                )
+        );
+
+        LinearLayout headerText =
+                new LinearLayout(this);
+
+        headerText.setOrientation(
+                LinearLayout.VERTICAL
+        );
+
+        headerText.setPadding(
+                d(14),
+                0,
+                0,
+                0
+        );
+
+        headerText.addView(
+                text(
+                        "EV Charge",
+                        25,
+                        dark,
+                        true
+                )
+        );
+
+        headerText.addView(
+                text(
+                        "CALCULATOR",
+                        12,
+                        blue,
+                        true
+                )
+        );
+
+        header.addView(headerText);
+
+        page.addView(header);
+
+        TextView intro =
+                text(
+                        "Calcula tu carga de forma rápida y automática",
+                        14,
+                        muted,
+                        false
+                );
+
+        intro.setPadding(
+                d(68),
+                d(3),
+                0,
+                d(18)
+        );
+
+        page.addView(intro);
+
+        // TARJETA PRINCIPAL
+
+        LinearLayout hero =
+                panel(dark, 24);
+
+        LinearLayout heroHeader =
+                new LinearLayout(this);
+
+        heroHeader.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
+
+        TextView heroTitle =
+                text(
+                        "CARGA DEL VEHÍCULO",
+                        12,
+                        Color.rgb(173, 184, 207),
+                        true
+                );
+
+        heroHeader.addView(
+                heroTitle,
+                new LinearLayout.LayoutParams(
+                        0,
+                        -2,
+                        1
+                )
+        );
+
+        heroHeader.addView(
+                text(
+                        "● EN CASA",
+                        11,
+                        Color.rgb(100, 220, 170),
+                        true
+                )
+        );
+
+        hero.addView(heroHeader);
+
+        LinearLayout values =
+                new LinearLayout(this);
+
+        values.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
+
+        fromValue =
+                text(
+                        "30%",
+                        32,
+                        white,
+                        true
+                );
+
+        toValue =
+                text(
+                        "80%",
+                        32,
+                        white,
+                        true
+                );
+
+        fromValue.setGravity(Gravity.CENTER);
+        toValue.setGravity(Gravity.CENTER);
+
+        values.addView(
+                fromValue,
+                new LinearLayout.LayoutParams(
+                        0,
+                        d(58),
+                        1
+                )
+        );
+
+        TextView arrow =
+                text(
+                        "→",
+                        25,
+                        Color.rgb(150, 164, 190),
+                        true
+                );
+
+        arrow.setGravity(Gravity.CENTER);
+
+        values.addView(
+                arrow,
+                new LinearLayout.LayoutParams(
+                        d(42),
+                        d(58)
+                )
+        );
+
+        values.addView(
+                toValue,
+                new LinearLayout.LayoutParams(
+                        0,
+                        d(58),
+                        1
+                )
+        );
+
+        hero.addView(values);
+
+        LinearLayout batteryBar =
+                new LinearLayout(this);
+
+        batteryBar.setGravity(Gravity.CENTER);
+
+        batteryBar.setPadding(
+                d(4),
+                0,
+                d(4),
+                0
+        );
+
+        batteryBar.setBackground(
+                round(
+                        Color.rgb(44, 57, 82),
+                        50
+                )
+        );
+
+        chargePct =
+                text(
+                        "50% de batería",
+                        12,
+                        white,
+                        true
+                );
+
+        chargePct.setGravity(
+                Gravity.CENTER
+        );
+
+        batteryBar.addView(
+                chargePct,
+                new LinearLayout.LayoutParams(
+                        -1,
+                        d(30)
+                )
+        );
+
+        hero.addView(batteryBar);
+
+        page.addView(hero);
+
+        spacer(16);
+
+        // RANGO
+
+        page.addView(
+                text(
+                        "RANGO DE CARGA",
+                        12,
+                        muted,
+                        true
+                )
+        );
+
+        fromBar =
+                new SeekBar(this);
+
+        fromBar.setMax(99);
+        fromBar.setProgress(29);
+
+        page.addView(
+                fromBar,
+                new LinearLayout.LayoutParams(
+                        -1,
+                        d(42)
+                )
+        );
+
+        toBar =
+                new SeekBar(this);
+
+        toBar.setMax(100);
+        toBar.setProgress(80);
+
+        page.addView(
+                toBar,
+                new LinearLayout.LayoutParams(
+                        -1,
+                        d(42)
+                )
+        );
+
+        spacer(8);
+
+        // RESULTADO
+
+        LinearLayout result =
+                panel(white, 22);
+
+        result.addView(
+                text(
+                        "Resultado",
+                        20,
+                        dark,
+                        true
+                )
+        );
+
+        TextView resultSub =
+                text(
+                        "Se actualiza al instante",
+                        12,
+                        muted,
+                        false
+                );
+
+        resultSub.setPadding(
+                0,
+                d(2),
+                0,
+                d(12)
+        );
+
+        result.addView(resultSub);
+
+        LinearLayout cards =
+                new LinearLayout(this);
+
+        cards.setOrientation(
+                LinearLayout.HORIZONTAL
+        );
+
+        energy =
+                boxToTextView(
+                        new LinearLayout(this),
+                        "ENERGÍA",
+                        "— kWh"
+                );
+
+        time =
+                boxToTextView(
+                        new LinearLayout(this),
+                        "TIEMPO",
+                        "—"
+                );
+
+        cost =
+                boxToTextView(
+                        new LinearLayout(this),
+                        "COSTE",
+                        "— €"
+                );
+
+        cards.addView(energy);
+        cards.addView(time);
+        cards.addView(cost);
+
+        result.addView(cards);
+
+        summary =
+                text(
+                        "",
+                        13,
+                        muted,
+                        false
+                );
+
+        summary.setPadding(
+                d(2),
+                d(14),
+                d(2),
+                0
+        );
+
+        result.addView(summary);
+
+        page.addView(result);
+
+        spacer(16);
+
+        // PARAMETROS
+
+        LinearLayout settings =
+                panel(white, 22);
+
+        settings.addView(
+                text(
+                        "Parámetros",
+                        20,
+                        dark,
+                        true
+                )
+        );
+
+        settings.addView(
+                text(
+                        "Puedes modificar estos valores cuando quieras",
+                        12,
+                        muted,
+                        false
+                )
+        );
+
+        spacerIn(settings, 8);
+
+        settings.addView(
+                label(
+                        "CAPACIDAD DE BATERÍA · kWh"
+                )
+        );
+
+        battery =
+                field("80");
+
+        settings.addView(battery);
+
+        settings.addView(
+                label(
+                        "POTENCIA DE CARGA · kW"
+                )
+        );
+
+        power =
+                field("3,45");
+
+        settings.addView(power);
+
+        settings.addView(
+                label(
+                        "PRECIO ELECTRICIDAD · €/kWh"
+                )
+        );
+
+        price =
+                field("0,15");
+
+        settings.addView(price);
+
+        page.addView(settings);
+
+        // EVENTOS
+
+        SeekBar.OnSeekBarChangeListener listener =
+                new SeekBar.OnSeekBarChangeListener() {
+
+                    @Override
+                    public void onProgressChanged(
+                            SeekBar seekBar,
+                            int progress,
+                            boolean fromUser
+                    ) {
+                        calculate();
+                    }
+
+                    @Override
+                    public void onStartTrackingTouch(
+                            SeekBar seekBar
+                    ) {
+                    }
+
+                    @Override
+                    public void onStopTrackingTouch(
+                            SeekBar seekBar
+                    ) {
+                    }
+                };
+
+        fromBar.setOnSeekBarChangeListener(listener);
+        toBar.setOnSeekBarChangeListener(listener);
+
+        View.OnFocusChangeListener focusListener =
+                (view, hasFocus) -> {
+
+                    if (!hasFocus) {
+                        calculate();
+                    }
+                };
+
+        battery.setOnFocusChangeListener(
+                focusListener
+        );
+
+        power.setOnFocusChangeListener(
+                focusListener
+        );
+
+        price.setOnFocusChangeListener(
+                focusListener
+        );
+
+        calculate();
+    }
+
+    double number(
+            EditText editText,
+            double defaultValue
+    ) {
+
+        try {
+
+            String value =
+                    editText
+                            .getText()
+                            .toString()
+                            .trim()
+                            .replace(",", ".");
+
+            return Double.parseDouble(value);
+
+        } catch (Exception e) {
+
+            return defaultValue;
+        }
+    }
+
+    String decimal(double value, int decimals) {
+
+        return String.format(
+                Locale.GERMANY,
+                "%." + decimals + "f",
+                value
+        );
+    }
+
+    void calculate() {
+
+        int from =
+                fromBar.getProgress() + 1;
+
+        int to =
+                toBar.getProgress();
+
+        if (to <= from) {
+
+            to = Math.min(
+                    100,
+                    from + 1
+            );
+
+            toBar.setProgress(to);
+        }
+
+        fromValue.setText(
+                from + "%"
+        );
+
+        toValue.setText(
+                to + "%"
+        );
+
+        int percentage =
+                to - from;
+
+        chargePct.setText(
+                percentage + "% de batería"
+        );
+
+        double capacity =
+                number(battery, 80);
+
+        double chargingPower =
+                number(power, 3.45);
+
+        double electricityPrice =
+                number(price, 0.15);
+
+        double kwh =
+                Math.max(
+                        0,
+                        capacity *
+                        percentage /
+                        100.0
+                );
+
+        double hours =
+                chargingPower > 0
+                        ? kwh / chargingPower
+                        : 0;
+
+        int hour =
+                (int) hours;
+
+        int minutes =
+                (int) Math.round(
+                        (hours - hour) * 60
+                );
+
+        if (minutes == 60) {
+            hour++;
+            minutes = 0;
+        }
+
+        double totalCost =
+                kwh * electricityPrice;
+
+        energy.setText(
+                "ENERGÍA\n" +
+                decimal(kwh, 1) +
+                " kWh"
+        );
+
+        time.setText(
+                "TIEMPO\n" +
+                hour +
+                " h " +
+                String.format(
+                        Locale.getDefault(),
+                        "%02d",
+                        minutes
+                ) +
+                " min"
+        );
+
+        cost.setText(
+                "COSTE\n" +
+                decimal(totalCost, 2) +
+                " €"
+        );
+
+        summary.setText(
+                "De " +
+                from +
+                "% a " +
+                to +
+                "% necesitas " +
+                decimal(kwh, 1) +
+                " kWh · " +
+                decimal(chargingPower, 2) +
+                " kW · " +
+                decimal(totalCost, 2) +
+                " €"
+        );
+    }
 }
