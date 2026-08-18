@@ -1,7 +1,7 @@
 package com.evchargecalculator;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -19,1092 +18,141 @@ import android.widget.TextView;
 import java.util.Locale;
 
 public class MainActivity extends Activity {
+    private final int BG = Color.rgb(10,18,32);
+    private final int CARD = Color.rgb(20,31,50);
+    private final int CARD2 = Color.rgb(25,38,60);
+    private final int BLUE = Color.rgb(91,111,245);
+    private final int BLUE2 = Color.rgb(124,140,255);
+    private final int GREEN = Color.rgb(100,222,168);
+    private final int WHITE = Color.WHITE;
+    private final int MUTED = Color.rgb(164,177,202);
+    private final int SOFT = Color.rgb(219,226,240);
+    private final Locale ES = new Locale("es", "ES");
 
     private LinearLayout page;
+    private SeekBar fromBar, toBar;
+    private TextView fromValue, toValue, batteryPercent;
+    private TextView energyValue, timeValue, costValue, summary;
+    private EditText batteryInput, powerInput, priceInput;
 
-    private SeekBar fromBar;
-    private SeekBar toBar;
+    private int dp(int n) { return (int)(n * getResources().getDisplayMetrics().density + .5f); }
 
-    private TextView fromValue;
-    private TextView toValue;
-    private TextView batteryPercent;
-
-    private TextView energyValue;
-    private TextView timeValue;
-    private TextView costValue;
-    private TextView summary;
-
-    private EditText batteryInput;
-    private EditText powerInput;
-    private EditText priceInput;
-
-    private final int BACKGROUND = Color.rgb(241, 244, 249);
-    private final int DARK = Color.rgb(25, 34, 51);
-    private final int DARK_2 = Color.rgb(35, 47, 69);
-    private final int BLUE = Color.rgb(72, 94, 235);
-    private final int BLUE_LIGHT = Color.rgb(225, 231, 255);
-    private final int TEXT = Color.rgb(32, 40, 56);
-    private final int MUTED = Color.rgb(105, 114, 132);
-    private final int WHITE = Color.WHITE;
-    private final int GREEN = Color.rgb(88, 207, 151);
-
-    private final Locale SPANISH = new Locale("es", "ES");
-
-    private int dp(int value) {
-        return (int) (
-                value * getResources()
-                        .getDisplayMetrics()
-                        .density + 0.5f
-        );
+    private TextView tv(String s, float size, int color, boolean bold) {
+        TextView t = new TextView(this);
+        t.setText(s); t.setTextSize(size); t.setTextColor(color);
+        if (bold) t.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        return t;
     }
 
-    private TextView tv(
-            String text,
-            float size,
-            int color,
-            boolean bold
-    ) {
-        TextView view = new TextView(this);
-
-        view.setText(text);
-        view.setTextSize(size);
-        view.setTextColor(color);
-
-        if (bold) {
-            view.setTypeface(
-                    Typeface.create(
-                            Typeface.DEFAULT,
-                            Typeface.BOLD
-                    )
-            );
-        }
-
-        return view;
+    private GradientDrawable bg(int color, int radius) {
+        GradientDrawable g = new GradientDrawable();
+        g.setColor(color); g.setCornerRadius(dp(radius));
+        return g;
     }
 
-    private GradientDrawable background(
-            int color,
-            int radius
-    ) {
-        GradientDrawable drawable =
-                new GradientDrawable();
-
-        drawable.setColor(color);
-        drawable.setCornerRadius(dp(radius));
-
-        return drawable;
+    private GradientDrawable gradient(int top, int bottom, int radius) {
+        GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.TL_BR, new int[]{top,bottom});
+        g.setCornerRadius(dp(radius)); return g;
     }
 
-    private LinearLayout panel(
-            int color,
-            int radius
-    ) {
-        LinearLayout layout =
-                new LinearLayout(this);
-
-        layout.setOrientation(
-                LinearLayout.VERTICAL
-        );
-
-        layout.setPadding(
-                dp(18),
-                dp(18),
-                dp(18),
-                dp(18)
-        );
-
-        layout.setBackground(
-                background(color, radius)
-        );
-
-        layout.setElevation(dp(3));
-
-        return layout;
+    private LinearLayout card(int color, int radius) {
+        LinearLayout l = new LinearLayout(this);
+        l.setOrientation(LinearLayout.VERTICAL);
+        l.setPadding(dp(18),dp(18),dp(18),dp(18));
+        l.setBackground(bg(color,radius));
+        l.setElevation(dp(5));
+        return l;
     }
 
-    private void addSpace(
-            LinearLayout layout,
-            int height
-    ) {
-        View space = new View(this);
+    private void space(LinearLayout l, int h) { l.addView(new View(this), new LinearLayout.LayoutParams(1,dp(h))); }
 
-        layout.addView(
-                space,
-                new LinearLayout.LayoutParams(
-                        1,
-                        dp(height)
-                )
-        );
+    private TextView section(String s) {
+        TextView t = tv(s,11,MUTED,true); t.setLetterSpacing(.09f); t.setPadding(dp(2),0,0,dp(7)); return t;
     }
 
-    private TextView sectionTitle(
-            String text
-    ) {
-        TextView view =
-                tv(
-                        text,
-                        11,
-                        MUTED,
-                        true
-                );
-
-        view.setLetterSpacing(0.08f);
-
-        view.setPadding(
-                dp(2),
-                dp(2),
-                dp(2),
-                dp(6)
-        );
-
-        return view;
+    private EditText input(String value) {
+        EditText e = new EditText(this);
+        e.setText(value); e.setTextSize(17); e.setTextColor(WHITE); e.setHintTextColor(MUTED);
+        e.setSingleLine(true); e.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        e.setPadding(dp(14),0,dp(14),0); e.setBackground(bg(CARD2,14));
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(-1,dp(52)); p.setMargins(0,dp(4),0,dp(12)); e.setLayoutParams(p); return e;
     }
 
-    private EditText input(
-            String value
-    ) {
-        EditText editText =
-                new EditText(this);
-
-        editText.setText(value);
-        editText.setTextSize(17);
-        editText.setTextColor(TEXT);
-        editText.setSingleLine(true);
-
-        editText.setInputType(
-                InputType.TYPE_CLASS_NUMBER
-                        | InputType.TYPE_NUMBER_FLAG_DECIMAL
-        );
-
-        editText.setPadding(
-                dp(14),
-                0,
-                dp(14),
-                0
-        );
-
-        editText.setBackground(
-                background(
-                        Color.rgb(247, 249, 252),
-                        14
-                )
-        );
-
-        LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        dp(52)
-                );
-
-        params.setMargins(
-                0,
-                dp(4),
-                0,
-                dp(10)
-        );
-
-        editText.setLayoutParams(params);
-
-        return editText;
+    private TextView result(String title, String value, boolean accent) {
+        TextView t = tv(title + "\n" + value, 13, accent ? WHITE : SOFT, true);
+        t.setGravity(Gravity.CENTER_VERTICAL); t.setPadding(dp(13),dp(10),dp(8),dp(10));
+        t.setBackground(bg(accent ? BLUE : CARD2, 17));
+        LinearLayout.LayoutParams p = new LinearLayout.LayoutParams(0,dp(86),1); p.setMargins(dp(3),0,dp(3),0); t.setLayoutParams(p); return t;
     }
 
-    private TextView resultCard(
-            String title,
-            String initial
-    ) {
-        TextView view =
-                tv(
-                        title + "\n" + initial,
-                        13,
-                        TEXT,
-                        true
-                );
-
-        view.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        view.setPadding(
-                dp(14),
-                dp(10),
-                dp(10),
-                dp(10)
-        );
-
-        view.setBackground(
-                background(
-                        Color.rgb(247, 249, 252),
-                        16
-                )
-        );
-
-        view.setElevation(dp(1));
-
-        LinearLayout.LayoutParams params =
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(84),
-                        1
-                );
-
-        params.setMargins(
-                dp(3),
-                0,
-                dp(3),
-                0
-        );
-
-        view.setLayoutParams(params);
-
-        return view;
+    @Override public void onCreate(Bundle b) {
+        super.onCreate(b);
+        getWindow().setStatusBarColor(BG); getWindow().setNavigationBarColor(BG);
+        build();
     }
 
-    @Override
-    protected void onCreate(
-            Bundle savedInstanceState
-    ) {
-        super.onCreate(savedInstanceState);
+    private void build() {
+        ScrollView scroll = new ScrollView(this); scroll.setFillViewport(true); scroll.setBackgroundColor(BG);
+        page = new LinearLayout(this); page.setOrientation(LinearLayout.VERTICAL); page.setPadding(dp(18),dp(22),dp(18),dp(32)); scroll.addView(page); setContentView(scroll);
 
-        buildInterface();
-    }
-
-    private void buildInterface() {
-
-        ScrollView scroll =
-                new ScrollView(this);
-
-        scroll.setFillViewport(true);
-        scroll.setBackgroundColor(BACKGROUND);
-
-        page =
-                new LinearLayout(this);
-
-        page.setOrientation(
-                LinearLayout.VERTICAL
-        );
-
-        page.setPadding(
-                dp(18),
-                dp(24),
-                dp(18),
-                dp(30)
-        );
-
-        scroll.addView(page);
-
-        setContentView(scroll);
-
-        // --------------------------------
-        // CABECERA
-        // --------------------------------
-
-        LinearLayout header =
-                new LinearLayout(this);
-
-        header.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        TextView icon =
-                tv(
-                        "⚡",
-                        27,
-                        WHITE,
-                        true
-                );
-
-        icon.setGravity(Gravity.CENTER);
-
-        icon.setBackground(
-                background(BLUE, 17)
-        );
-
-        header.addView(
-                icon,
-                new LinearLayout.LayoutParams(
-                        dp(54),
-                        dp(54)
-                )
-        );
-
-        LinearLayout titleContainer =
-                new LinearLayout(this);
-
-        titleContainer.setOrientation(
-                LinearLayout.VERTICAL
-        );
-
-        titleContainer.setPadding(
-                dp(14),
-                0,
-                0,
-                0
-        );
-
-        titleContainer.addView(
-                tv(
-                        "EV Charge",
-                        25,
-                        TEXT,
-                        true
-                )
-        );
-
-        titleContainer.addView(
-                tv(
-                        "CALCULATOR",
-                        12,
-                        BLUE,
-                        true
-                )
-        );
-
-        header.addView(titleContainer);
-
+        LinearLayout header = new LinearLayout(this); header.setGravity(Gravity.CENTER_VERTICAL);
+        TextView icon = tv("⚡",28,WHITE,true); icon.setGravity(Gravity.CENTER); icon.setBackground(gradient(BLUE,Color.rgb(69,82,196),18));
+        header.addView(icon,new LinearLayout.LayoutParams(dp(54),dp(54)));
+        LinearLayout ht = new LinearLayout(this); ht.setOrientation(LinearLayout.VERTICAL); ht.setPadding(dp(14),0,0,0);
+        ht.addView(tv("EV Charge",25,WHITE,true)); ht.addView(tv("CALCULATOR",11,BLUE2,true)); header.addView(ht);
         page.addView(header);
-
-        TextView subtitle =
-                tv(
-                        "Calcula tu carga de forma rápida y automática",
-                        14,
-                        MUTED,
-                        false
-                );
-
-        subtitle.setPadding(
-                dp(68),
-                dp(4),
-                0,
-                dp(20)
-        );
-
-        page.addView(subtitle);
-
-        // --------------------------------
-        // TARJETA PRINCIPAL
-        // --------------------------------
-
-        LinearLayout hero =
-                panel(DARK, 26);
-
-        LinearLayout heroHeader =
-                new LinearLayout(this);
-
-        heroHeader.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        TextView heroTitle =
-                tv(
-                        "CARGA DEL VEHÍCULO",
-                        11,
-                        Color.rgb(177, 187, 207),
-                        true
-                );
-
-        heroTitle.setLetterSpacing(0.08f);
-
-        heroHeader.addView(
-                heroTitle,
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(30),
-                        1
-                )
-        );
-
-        TextView home =
-                tv(
-                        "●  EN CASA",
-                        11,
-                        GREEN,
-                        true
-                );
-
-        heroHeader.addView(home);
-
-        hero.addView(heroHeader);
-
-        TextView charging =
-                tv(
-                        "Carga seleccionada",
-                        13,
-                        Color.rgb(158, 169, 192),
-                        false
-                );
-
-        charging.setPadding(
-                0,
-                dp(2),
-                0,
-                dp(4)
-        );
-
-        hero.addView(charging);
-
-        // PORCENTAJES
-
-        LinearLayout values =
-                new LinearLayout(this);
-
-        values.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        fromValue =
-                tv(
-                        "30%",
-                        36,
-                        WHITE,
-                        true
-                );
-
-        toValue =
-                tv(
-                        "80%",
-                        36,
-                        WHITE,
-                        true
-                );
-
-        fromValue.setGravity(
-                Gravity.CENTER
-        );
-
-        toValue.setGravity(
-                Gravity.CENTER
-        );
-
-        values.addView(
-                fromValue,
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(64),
-                        1
-                )
-        );
-
-        TextView arrow =
-                tv(
-                        "→",
-                        27,
-                        Color.rgb(143, 157, 183),
-                        true
-                );
-
-        arrow.setGravity(Gravity.CENTER);
-
-        values.addView(
-                arrow,
-                new LinearLayout.LayoutParams(
-                        dp(42),
-                        dp(64)
-                )
-        );
-
-        values.addView(
-                toValue,
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(64),
-                        1
-                )
-        );
-
-        hero.addView(values);
-
-        // INDICADOR DE BATERÍA
-
-        LinearLayout batteryContainer =
-                new LinearLayout(this);
-
-        batteryContainer.setOrientation(
-                LinearLayout.VERTICAL
-        );
-
-        batteryContainer.setPadding(
-                dp(4),
-                dp(4),
-                dp(4),
-                dp(4)
-        );
-
-        batteryContainer.setBackground(
-                background(DARK_2, 20)
-        );
-
-        batteryPercent =
-                tv(
-                        "50% de batería",
-                        12,
-                        WHITE,
-                        true
-                );
-
-        batteryPercent.setGravity(
-                Gravity.CENTER
-        );
-
-        batteryContainer.addView(
-                batteryPercent,
-                new LinearLayout.LayoutParams(
-                        -1,
-                        dp(30)
-                )
-        );
-
-        hero.addView(batteryContainer);
-
-        page.addView(hero);
-
-        addSpace(page, 18);
-
-        // --------------------------------
-        // RANGO
-        // --------------------------------
-
-        page.addView(
-                sectionTitle(
-                        "RANGO DE CARGA"
-                )
-        );
-
-        LinearLayout fromRow =
-                new LinearLayout(this);
-
-        fromRow.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        TextView fromLabel =
-                tv(
-                        "Desde",
-                        14,
-                        TEXT,
-                        true
-                );
-
-        fromRow.addView(
-                fromLabel,
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(35),
-                        1
-                )
-        );
-
-        TextView fromInfo =
-                tv(
-                        "30%",
-                        14,
-                        BLUE,
-                        true
-                );
-
-        fromInfo.setGravity(
-                Gravity.CENTER
-        );
-
-        fromRow.addView(
-                fromInfo,
-                new LinearLayout.LayoutParams(
-                        dp(55),
-                        dp(35)
-                )
-        );
-
-        page.addView(fromRow);
-
-        fromBar =
-                new SeekBar(this);
-
-        fromBar.setMax(99);
-        fromBar.setProgress(29);
-
-        page.addView(
-                fromBar,
-                new LinearLayout.LayoutParams(
-                        -1,
-                        dp(38)
-                )
-        );
-
-        LinearLayout toRow =
-                new LinearLayout(this);
-
-        toRow.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        TextView toLabel =
-                tv(
-                        "Hasta",
-                        14,
-                        TEXT,
-                        true
-                );
-
-        toRow.addView(
-                toLabel,
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(35),
-                        1
-                )
-        );
-
-        TextView toInfo =
-                tv(
-                        "80%",
-                        14,
-                        BLUE,
-                        true
-                );
-
-        toInfo.setGravity(
-                Gravity.CENTER
-        );
-
-        toRow.addView(
-                toInfo,
-                new LinearLayout.LayoutParams(
-                        dp(55),
-                        dp(35)
-                )
-        );
-
-        page.addView(toRow);
-
-        toBar =
-                new SeekBar(this);
-
-        toBar.setMax(100);
-        toBar.setProgress(80);
-
-        page.addView(
-                toBar,
-                new LinearLayout.LayoutParams(
-                        -1,
-                        dp(38)
-                )
-        );
-
-        addSpace(page, 12);
-
-        // --------------------------------
-        // RESULTADOS
-        // --------------------------------
-
-        LinearLayout result =
-                panel(WHITE, 24);
-
-        LinearLayout resultHeader =
-                new LinearLayout(this);
-
-        resultHeader.setGravity(
-                Gravity.CENTER_VERTICAL
-        );
-
-        resultHeader.addView(
-                tv(
-                        "Resultado",
-                        21,
-                        TEXT,
-                        true
-                ),
-                new LinearLayout.LayoutParams(
-                        0,
-                        dp(34),
-                        1
-                )
-        );
-
-        resultHeader.addView(
-                tv(
-                        "AUTOMÁTICO",
-                        10,
-                        BLUE,
-                        true
-                )
-        );
-
-        result.addView(resultHeader);
-
-        result.addView(
-                tv(
-                        "Se actualiza al instante",
-                        12,
-                        MUTED,
-                        false
-                )
-        );
-
-        addSpace(result, 12);
-
-        LinearLayout cards =
-                new LinearLayout(this);
-
-        cards.setOrientation(
-                LinearLayout.HORIZONTAL
-        );
-
-        energyValue =
-                resultCard(
-                        "ENERGÍA",
-                        "— kWh"
-                );
-
-        timeValue =
-                resultCard(
-                        "TIEMPO",
-                        "—"
-                );
-
-        costValue =
-                resultCard(
-                        "COSTE",
-                        "— €"
-                );
-
-        cards.addView(energyValue);
-        cards.addView(timeValue);
-        cards.addView(costValue);
-
-        result.addView(cards);
-
-        summary =
-                tv(
-                        "",
-                        13,
-                        MUTED,
-                        false
-                );
-
-        summary.setPadding(
-                dp(4),
-                dp(14),
-                dp(4),
-                0
-        );
-
-        result.addView(summary);
-
-        page.addView(result);
-
-        addSpace(page, 16);
-
-        // --------------------------------
-        // PARÁMETROS
-        // --------------------------------
-
-        LinearLayout settings =
-                panel(WHITE, 24);
-
-        settings.addView(
-                tv(
-                        "Parámetros",
-                        20,
-                        TEXT,
-                        true
-                )
-        );
-
-        settings.addView(
-                tv(
-                        "Personaliza los datos de tu vehículo y tarifa",
-                        12,
-                        MUTED,
-                        false
-                )
-        );
-
-        addSpace(settings, 10);
-
-        settings.addView(
-                sectionTitle(
-                        "CAPACIDAD DE BATERÍA · kWh"
-                )
-        );
-
-        batteryInput =
-                input("80");
-
-        settings.addView(batteryInput);
-
-        settings.addView(
-                sectionTitle(
-                        "POTENCIA DE CARGA · kW"
-                )
-        );
-
-        powerInput =
-                input("3,45");
-
-        settings.addView(powerInput);
-
-        settings.addView(
-                sectionTitle(
-                        "PRECIO ELECTRICIDAD · €/kWh"
-                )
-        );
-
-        priceInput =
-                input("0,15");
-
-        settings.addView(priceInput);
-
-        page.addView(settings);
-
-        // --------------------------------
-        // EVENTOS
-        // --------------------------------
-
-        SeekBar.OnSeekBarChangeListener listener =
-                new SeekBar.OnSeekBarChangeListener() {
-
-                    @Override
-                    public void onProgressChanged(
-                            SeekBar seekBar,
-                            int progress,
-                            boolean fromUser
-                    ) {
-                        calculate();
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(
-                            SeekBar seekBar
-                    ) {
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(
-                            SeekBar seekBar
-                    ) {
-                    }
-                };
-
-        fromBar.setOnSeekBarChangeListener(
-                listener
-        );
-
-        toBar.setOnSeekBarChangeListener(
-                listener
-        );
-
-        View.OnFocusChangeListener focus =
-                new View.OnFocusChangeListener() {
-
-                    @Override
-                    public void onFocusChange(
-                            View view,
-                            boolean hasFocus
-                    ) {
-
-                        if (!hasFocus) {
-                            calculate();
-                        }
-                    }
-                };
-
-        batteryInput.setOnFocusChangeListener(
-                focus
-        );
-
-        powerInput.setOnFocusChangeListener(
-                focus
-        );
-
-        priceInput.setOnFocusChangeListener(
-                focus
-        );
-
+        TextView sub = tv("Tu carga eléctrica, calculada al instante",14,MUTED,false); sub.setPadding(dp(68),dp(4),0,dp(20)); page.addView(sub);
+
+        LinearLayout hero = card(CARD,28);
+        LinearLayout h1 = new LinearLayout(this); h1.setGravity(Gravity.CENTER_VERTICAL);
+        h1.addView(tv("CARGA DEL VEHÍCULO",11,MUTED,true),new LinearLayout.LayoutParams(0,dp(28),1)); h1.addView(tv("●  EN CASA",11,GREEN,true)); hero.addView(h1);
+        TextView hint = tv("Selecciona cuánto quieres cargar",13,MUTED,false); hero.addView(hint);
+        LinearLayout vals = new LinearLayout(this); vals.setGravity(Gravity.CENTER_VERTICAL);
+        fromValue=tv("30%",38,WHITE,true); toValue=tv("80%",38,WHITE,true); fromValue.setGravity(Gravity.CENTER); toValue.setGravity(Gravity.CENTER);
+        vals.addView(fromValue,new LinearLayout.LayoutParams(0,dp(70),1)); TextView arrow=tv("→",28,BLUE2,true); arrow.setGravity(Gravity.CENTER); vals.addView(arrow,new LinearLayout.LayoutParams(dp(44),dp(70))); vals.addView(toValue,new LinearLayout.LayoutParams(0,dp(70),1)); hero.addView(vals);
+
+        LinearLayout battery = new LinearLayout(this); battery.setOrientation(LinearLayout.VERTICAL); battery.setPadding(dp(5),dp(5),dp(5),dp(5)); battery.setBackground(bg(Color.rgb(30,44,70),18));
+        batteryPercent=tv("50% de batería",12,WHITE,true); batteryPercent.setGravity(Gravity.CENTER); battery.addView(batteryPercent,new LinearLayout.LayoutParams(-1,dp(28))); hero.addView(battery);
+        page.addView(hero); space(page,18);
+
+        LinearLayout range = card(CARD,22);
+        range.addView(section("RANGO DE CARGA"));
+        LinearLayout r1=new LinearLayout(this); r1.setGravity(Gravity.CENTER_VERTICAL); r1.addView(tv("Desde",14,SOFT,true),new LinearLayout.LayoutParams(0,dp(28),1)); TextView f=tv("30%",14,BLUE2,true); r1.addView(f); range.addView(r1);
+        fromBar=new SeekBar(this); fromBar.setMax(99); fromBar.setProgress(29); styleSeek(fromBar); range.addView(fromBar,new LinearLayout.LayoutParams(-1,dp(42)));
+        LinearLayout r2=new LinearLayout(this); r2.setGravity(Gravity.CENTER_VERTICAL); r2.addView(tv("Hasta",14,SOFT,true),new LinearLayout.LayoutParams(0,dp(28),1)); TextView t=tv("80%",14,BLUE2,true); r2.addView(t); range.addView(r2);
+        toBar=new SeekBar(this); toBar.setMax(100); toBar.setProgress(80); styleSeek(toBar); range.addView(toBar,new LinearLayout.LayoutParams(-1,dp(42)));
+        page.addView(range); space(page,16);
+
+        LinearLayout result = card(CARD,22); LinearLayout rh=new LinearLayout(this); rh.setGravity(Gravity.CENTER_VERTICAL); rh.addView(tv("Resultado",21,WHITE,true),new LinearLayout.LayoutParams(0,dp(32),1)); rh.addView(tv("● AUTOMÁTICO",10,GREEN,true)); result.addView(rh);
+        result.addView(tv("Se actualiza al instante al mover las barras",12,MUTED,false)); space(result,12);
+        LinearLayout cards=new LinearLayout(this); cards.setOrientation(LinearLayout.HORIZONTAL);
+        energyValue=result("ENERGÍA","— kWh",false); timeValue=result("TIEMPO","—",false); costValue=result("COSTE","— €",true); cards.addView(energyValue); cards.addView(timeValue); cards.addView(costValue); result.addView(cards);
+        summary=tv("",12,MUTED,false); summary.setPadding(dp(4),dp(14),dp(4),0); result.addView(summary); page.addView(result); space(page,16);
+
+        LinearLayout settings=card(CARD,22); settings.addView(tv("Parámetros",20,WHITE,true)); settings.addView(tv("Personaliza los datos de tu vehículo y tarifa",12,MUTED,false)); space(settings,10);
+        settings.addView(section("CAPACIDAD DE BATERÍA · kWh")); batteryInput=input("80"); settings.addView(batteryInput);
+        settings.addView(section("POTENCIA DE CARGA · kW")); powerInput=input("3,45"); settings.addView(powerInput);
+        settings.addView(section("PRECIO ELECTRICIDAD · €/kWh")); priceInput=input("0,15"); settings.addView(priceInput); page.addView(settings);
+
+        SeekBar.OnSeekBarChangeListener l=new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar s,int p,boolean u){calculate();} public void onStartTrackingTouch(SeekBar s){} public void onStopTrackingTouch(SeekBar s){}};
+        fromBar.setOnSeekBarChangeListener(l); toBar.setOnSeekBarChangeListener(l);
+        View.OnFocusChangeListener fl=(v,h)->{if(!h)calculate();}; batteryInput.setOnFocusChangeListener(fl); powerInput.setOnFocusChangeListener(fl); priceInput.setOnFocusChangeListener(fl);
         calculate();
     }
 
-    // --------------------------------
-    // LECTURA DE NÚMEROS
-    // --------------------------------
+    private void styleSeek(SeekBar s) { s.setProgressTintList(ColorStateList.valueOf(BLUE)); s.setThumbTintList(ColorStateList.valueOf(WHITE)); s.setProgressBackgroundTintList(ColorStateList.valueOf(Color.rgb(51,66,94))); }
 
-    private double number(
-            EditText input,
-            double defaultValue
-    ) {
+    private double num(EditText e,double def){try{return Double.parseDouble(e.getText().toString().trim().replace(',','.'));}catch(Exception x){return def;}}
+    private String dec(double n,int d){return String.format(ES,"%."+d+"f",n);}
 
-        try {
-
-            String value =
-                    input.getText()
-                            .toString()
-                            .trim()
-                            .replace(",", ".");
-
-            return Double.parseDouble(value);
-
-        } catch (Exception e) {
-
-            return defaultValue;
-        }
-    }
-
-    // --------------------------------
-    // FORMATO ESPAÑOL
-    // --------------------------------
-
-    private String decimal(
-            double value,
-            int decimals
-    ) {
-
-        return String.format(
-                SPANISH,
-                "%." + decimals + "f",
-                value
-        );
-    }
-
-    // --------------------------------
-    // CÁLCULO
-    // --------------------------------
-
-    private void calculate() {
-
-        if (fromBar == null ||
-                toBar == null) {
-            return;
-        }
-
-        int from =
-                fromBar.getProgress() + 1;
-
-        int to =
-                toBar.getProgress();
-
-        if (to <= from) {
-
-            to = Math.min(
-                    100,
-                    from + 1
-            );
-
-            toBar.setProgress(to);
-        }
-
-        fromValue.setText(
-                from + "%"
-        );
-
-        toValue.setText(
-                to + "%"
-        );
-
-        double battery =
-                number(
-                        batteryInput,
-                        80.0
-                );
-
-        double power =
-                number(
-                        powerInput,
-                        3.45
-                );
-
-        double price =
-                number(
-                        priceInput,
-                        0.15
-                );
-
-        int percentage =
-                to - from;
-
-        double requiredKwh =
-                Math.max(
-                        0,
-                        battery *
-                                percentage /
-                                100.0
-                );
-
-        double hours =
-                power > 0
-                        ? requiredKwh / power
-                        : 0;
-
-        int wholeHours =
-                (int) hours;
-
-        int minutes =
-                (int) Math.round(
-                        (hours - wholeHours)
-                                * 60
-                );
-
-        if (minutes >= 60) {
-            wholeHours++;
-            minutes = 0;
-        }
-
-        double totalCost =
-                requiredKwh * price;
-
-        batteryPercent.setText(
-                percentage +
-                        "% de batería"
-        );
-
-        energyValue.setText(
-                "ENERGÍA\n" +
-                        decimal(
-                                requiredKwh,
-                                1
-                        ) +
-                        " kWh"
-        );
-
-        timeValue.setText(
-                "TIEMPO\n" +
-                        wholeHours +
-                        " h " +
-                        String.format(
-                                SPANISH,
-                                "%02d",
-                                minutes
-                        ) +
-                        " min"
-        );
-
-        costValue.setText(
-                "COSTE\n" +
-                        decimal(
-                                totalCost,
-                                2
-                        ) +
-                        " €"
-        );
-
-        summary.setText(
-                "De " +
-                        from +
-                        "% a " +
-                        to +
-                        "% · " +
-                        decimal(
-                                requiredKwh,
-                                1
-                        ) +
-                        " kWh · " +
-                        decimal(
-                                power,
-                                2
-                        ) +
-                        " kW · " +
-                        decimal(
-                                totalCost,
-                                2
-                        ) +
-                        " €"
-        );
+    private void calculate(){
+        if(fromBar==null)return;
+        int f=fromBar.getProgress()+1; int t=toBar.getProgress(); if(t<=f){t=Math.min(100,f+1);toBar.setProgress(t);}
+        fromValue.setText(f+"%"); toValue.setText(t+"%");
+        double cap=num(batteryInput,80), kw=num(powerInput,3.45), eur=num(priceInput,.15); int pct=t-f;
+        double kwh=Math.max(0,cap*pct/100.0), hrs=kw>0?kwh/kw:0; int h=(int)hrs; int m=(int)Math.round((hrs-h)*60); if(m>=60){h++;m=0;} double c=kwh*eur;
+        batteryPercent.setText(pct+"% de batería");
+        energyValue.setText("ENERGÍA\n"+dec(kwh,1)+" kWh"); timeValue.setText("TIEMPO\n"+h+" h "+String.format(ES,"%02d",m)+" min"); costValue.setText("COSTE\n"+dec(c,2)+" €");
+        summary.setText("De "+f+"% a "+t+"%  ·  "+dec(kwh,1)+" kWh  ·  "+dec(kw,2)+" kW  ·  "+dec(c,2)+" €");
     }
 }
