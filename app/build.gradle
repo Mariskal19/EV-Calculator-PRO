@@ -1,20 +1,9 @@
 plugins { id 'com.android.application' }
 
-android {
-    namespace 'com.evchargecalculator'
-    compileSdk 35
-    defaultConfig {
-        applicationId 'com.evchargecalculator'
-        minSdk 24
-        targetSdk 35
-        versionCode 3
-        versionName '3.0'
-    }
+android { namespace 'com.evchargecalculator'; compileSdk 35
+ defaultConfig { applicationId 'com.evchargecalculator'; minSdk 23; targetSdk 35; versionCode 3; versionName '3.0' }
+ buildTypes { debug { debuggable true }; release { minifyEnabled false } }
 }
 
-tasks.register('prepareNamedApk', Copy) {
-    dependsOn 'assembleDebug'
-    from layout.buildDirectory.file('outputs/apk/debug/app-debug.apk')
-    into layout.buildDirectory.dir('outputs/apk/debug')
-    rename { 'EVChargeCalculator.apk' }
-}
+tasks.register('copyNamedApk', Copy) { dependsOn 'assembleDebug'; from(layout.buildDirectory.dir('outputs/apk/debug')); into(layout.buildDirectory.dir('outputs/apk/debug/named')); include('app-debug.apk'); rename('app-debug.apk','EVChargeCalculator.apk') }
+tasks.named('assembleDebug') { finalizedBy 'copyNamedApk' }
