@@ -1,13 +1,15 @@
 package com.evchargecalculator;
 
 import android.app.Activity;
-import android.os.Bundle;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -18,309 +20,372 @@ import java.util.Locale;
 
 public class MainActivity extends Activity {
 
-    LinearLayout page;
+    private LinearLayout page;
 
-    SeekBar fromBar;
-    SeekBar toBar;
+    private SeekBar fromBar;
+    private SeekBar toBar;
 
-    TextView fromValue;
-    TextView toValue;
-    TextView chargePct;
+    private TextView fromValue;
+    private TextView toValue;
+    private TextView batteryPercent;
 
-    TextView energy;
-    TextView time;
-    TextView cost;
-    TextView summary;
+    private TextView energyValue;
+    private TextView timeValue;
+    private TextView costValue;
+    private TextView summary;
 
-    EditText battery;
-    EditText power;
-    EditText price;
+    private EditText batteryInput;
+    private EditText powerInput;
+    private EditText priceInput;
 
-    final int blue = Color.rgb(79, 99, 232);
-    final int dark = Color.rgb(27, 35, 52);
-    final int muted = Color.rgb(105, 112, 128);
-    final int light = Color.rgb(247, 248, 252);
-    final int white = Color.WHITE;
+    private final int BACKGROUND = Color.rgb(241, 244, 249);
+    private final int DARK = Color.rgb(25, 34, 51);
+    private final int DARK_2 = Color.rgb(35, 47, 69);
+    private final int BLUE = Color.rgb(72, 94, 235);
+    private final int BLUE_LIGHT = Color.rgb(225, 231, 255);
+    private final int TEXT = Color.rgb(32, 40, 56);
+    private final int MUTED = Color.rgb(105, 114, 132);
+    private final int WHITE = Color.WHITE;
+    private final int GREEN = Color.rgb(88, 207, 151);
 
-    int d(int value) {
-        return (int) (value * getResources().getDisplayMetrics().density + 0.5f);
+    private final Locale SPANISH = new Locale("es", "ES");
+
+    private int dp(int value) {
+        return (int) (
+                value * getResources()
+                        .getDisplayMetrics()
+                        .density + 0.5f
+        );
     }
 
-    TextView text(String value, float size, int color, boolean bold) {
-        TextView t = new TextView(this);
-        t.setText(value);
-        t.setTextSize(size);
-        t.setTextColor(color);
+    private TextView tv(
+            String text,
+            float size,
+            int color,
+            boolean bold
+    ) {
+        TextView view = new TextView(this);
+
+        view.setText(text);
+        view.setTextSize(size);
+        view.setTextColor(color);
 
         if (bold) {
-            t.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+            view.setTypeface(
+                    Typeface.create(
+                            Typeface.DEFAULT,
+                            Typeface.BOLD
+                    )
+            );
         }
 
-        return t;
+        return view;
     }
 
-    GradientDrawable round(int color, int radius) {
-        GradientDrawable g = new GradientDrawable();
-        g.setColor(color);
-        g.setCornerRadius(d(radius));
-        return g;
+    private GradientDrawable background(
+            int color,
+            int radius
+    ) {
+        GradientDrawable drawable =
+                new GradientDrawable();
+
+        drawable.setColor(color);
+        drawable.setCornerRadius(dp(radius));
+
+        return drawable;
     }
 
-    EditText field(String value) {
-        EditText e = new EditText(this);
+    private LinearLayout panel(
+            int color,
+            int radius
+    ) {
+        LinearLayout layout =
+                new LinearLayout(this);
 
-        e.setText(value);
-        e.setTextSize(17);
-        e.setTextColor(dark);
-        e.setSingleLine(true);
-
-        e.setInputType(
-                InputType.TYPE_CLASS_NUMBER |
-                InputType.TYPE_NUMBER_FLAG_DECIMAL
+        layout.setOrientation(
+                LinearLayout.VERTICAL
         );
 
-        e.setPadding(d(14), 0, d(14), 0);
-        e.setBackground(round(Color.rgb(248, 249, 252), 14));
-
-        LinearLayout.LayoutParams p =
-                new LinearLayout.LayoutParams(-1, d(52));
-
-        p.setMargins(0, d(5), 0, d(12));
-
-        e.setLayoutParams(p);
-
-        return e;
-    }
-
-    TextView label(String value) {
-        TextView t = text(value, 12, muted, true);
-        t.setPadding(0, d(8), 0, 0);
-        return t;
-    }
-
-    TextView card(String title, String value) {
-
-        LinearLayout box = new LinearLayout(this);
-        box.setOrientation(LinearLayout.VERTICAL);
-        box.setGravity(Gravity.CENTER_VERTICAL);
-
-        box.setPadding(d(12), d(10), d(12), d(10));
-        box.setBackground(round(Color.rgb(248, 249, 252), 16));
-
-        TextView titleView =
-                text(title, 10, muted, true);
-
-        TextView valueView =
-                text(value, 16, dark, true);
-
-        box.addView(titleView);
-        box.addView(valueView);
-
-        LinearLayout.LayoutParams p =
-                new LinearLayout.LayoutParams(0, d(82), 1);
-
-        p.setMargins(d(4), 0, d(4), 0);
-
-        box.setLayoutParams(p);
-
-        valueView.setTag("value");
-
-        return boxToTextView(box, title, value);
-    }
-
-    TextView boxToTextView(
-            LinearLayout box,
-            String title,
-            String value) {
-
-        TextView result = text(
-                title + "\n" + value,
-                14,
-                dark,
-                true
+        layout.setPadding(
+                dp(18),
+                dp(18),
+                dp(18),
+                dp(18)
         );
 
-        result.setGravity(Gravity.CENTER_VERTICAL);
-        result.setPadding(
-                d(14),
-                d(8),
-                d(10),
-                d(8)
+        layout.setBackground(
+                background(color, radius)
         );
 
-        result.setBackground(
-                round(Color.rgb(248, 249, 252), 16)
-        );
+        layout.setElevation(dp(3));
 
-        LinearLayout.LayoutParams p =
-                new LinearLayout.LayoutParams(0, d(82), 1);
-
-        p.setMargins(d(4), 0, d(4), 0);
-
-        result.setLayoutParams(p);
-
-        return result;
+        return layout;
     }
 
-    LinearLayout panel(int color, int radius) {
-
-        LinearLayout box = new LinearLayout(this);
-
-        box.setOrientation(LinearLayout.VERTICAL);
-        box.setPadding(
-                d(18),
-                d(16),
-                d(18),
-                d(16)
-        );
-
-        box.setBackground(round(color, radius));
-
-        return box;
-    }
-
-    void spacer(int height) {
-
-        SpaceView space = new SpaceView(this);
-
-        page.addView(
-                space,
-                new LinearLayout.LayoutParams(
-                        1,
-                        d(height)
-                )
-        );
-    }
-
-    void spacerIn(LinearLayout layout, int height) {
-
-        SpaceView space = new SpaceView(this);
+    private void addSpace(
+            LinearLayout layout,
+            int height
+    ) {
+        View space = new View(this);
 
         layout.addView(
                 space,
                 new LinearLayout.LayoutParams(
                         1,
-                        d(height)
+                        dp(height)
                 )
         );
     }
 
-    static class SpaceView extends View {
-        public SpaceView(android.content.Context context) {
-            super(context);
-        }
+    private TextView sectionTitle(
+            String text
+    ) {
+        TextView view =
+                tv(
+                        text,
+                        11,
+                        MUTED,
+                        true
+                );
+
+        view.setLetterSpacing(0.08f);
+
+        view.setPadding(
+                dp(2),
+                dp(2),
+                dp(2),
+                dp(6)
+        );
+
+        return view;
+    }
+
+    private EditText input(
+            String value
+    ) {
+        EditText editText =
+                new EditText(this);
+
+        editText.setText(value);
+        editText.setTextSize(17);
+        editText.setTextColor(TEXT);
+        editText.setSingleLine(true);
+
+        editText.setInputType(
+                InputType.TYPE_CLASS_NUMBER
+                        | InputType.TYPE_NUMBER_FLAG_DECIMAL
+        );
+
+        editText.setPadding(
+                dp(14),
+                0,
+                dp(14),
+                0
+        );
+
+        editText.setBackground(
+                background(
+                        Color.rgb(247, 249, 252),
+                        14
+                )
+        );
+
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        dp(52)
+                );
+
+        params.setMargins(
+                0,
+                dp(4),
+                0,
+                dp(10)
+        );
+
+        editText.setLayoutParams(params);
+
+        return editText;
+    }
+
+    private TextView resultCard(
+            String title,
+            String initial
+    ) {
+        TextView view =
+                tv(
+                        title + "\n" + initial,
+                        13,
+                        TEXT,
+                        true
+                );
+
+        view.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
+
+        view.setPadding(
+                dp(14),
+                dp(10),
+                dp(10),
+                dp(10)
+        );
+
+        view.setBackground(
+                background(
+                        Color.rgb(247, 249, 252),
+                        16
+                )
+        );
+
+        view.setElevation(dp(1));
+
+        LinearLayout.LayoutParams params =
+                new LinearLayout.LayoutParams(
+                        0,
+                        dp(84),
+                        1
+                );
+
+        params.setMargins(
+                dp(3),
+                0,
+                dp(3),
+                0
+        );
+
+        view.setLayoutParams(params);
+
+        return view;
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(
+            Bundle savedInstanceState
+    ) {
         super.onCreate(savedInstanceState);
 
-        ScrollView scroll = new ScrollView(this);
+        buildInterface();
+    }
 
-        scroll.setBackgroundColor(light);
+    private void buildInterface() {
 
-        page = new LinearLayout(this);
+        ScrollView scroll =
+                new ScrollView(this);
 
-        page.setOrientation(LinearLayout.VERTICAL);
+        scroll.setFillViewport(true);
+        scroll.setBackgroundColor(BACKGROUND);
+
+        page =
+                new LinearLayout(this);
+
+        page.setOrientation(
+                LinearLayout.VERTICAL
+        );
 
         page.setPadding(
-                d(20),
-                d(24),
-                d(20),
-                d(30)
+                dp(18),
+                dp(24),
+                dp(18),
+                dp(30)
         );
 
         scroll.addView(page);
 
         setContentView(scroll);
 
-        createInterface();
-    }
-
-    void createInterface() {
-
+        // --------------------------------
         // CABECERA
+        // --------------------------------
 
         LinearLayout header =
                 new LinearLayout(this);
 
-        header.setGravity(Gravity.CENTER_VERTICAL);
+        header.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
 
         TextView icon =
-                text("⚡", 30, white, true);
+                tv(
+                        "⚡",
+                        27,
+                        WHITE,
+                        true
+                );
 
         icon.setGravity(Gravity.CENTER);
 
         icon.setBackground(
-                round(blue, 16)
+                background(BLUE, 17)
         );
 
         header.addView(
                 icon,
                 new LinearLayout.LayoutParams(
-                        d(54),
-                        d(54)
+                        dp(54),
+                        dp(54)
                 )
         );
 
-        LinearLayout headerText =
+        LinearLayout titleContainer =
                 new LinearLayout(this);
 
-        headerText.setOrientation(
+        titleContainer.setOrientation(
                 LinearLayout.VERTICAL
         );
 
-        headerText.setPadding(
-                d(14),
+        titleContainer.setPadding(
+                dp(14),
                 0,
                 0,
                 0
         );
 
-        headerText.addView(
-                text(
+        titleContainer.addView(
+                tv(
                         "EV Charge",
                         25,
-                        dark,
+                        TEXT,
                         true
                 )
         );
 
-        headerText.addView(
-                text(
+        titleContainer.addView(
+                tv(
                         "CALCULATOR",
                         12,
-                        blue,
+                        BLUE,
                         true
                 )
         );
 
-        header.addView(headerText);
+        header.addView(titleContainer);
 
         page.addView(header);
 
-        TextView intro =
-                text(
+        TextView subtitle =
+                tv(
                         "Calcula tu carga de forma rápida y automática",
                         14,
-                        muted,
+                        MUTED,
                         false
                 );
 
-        intro.setPadding(
-                d(68),
-                d(3),
+        subtitle.setPadding(
+                dp(68),
+                dp(4),
                 0,
-                d(18)
+                dp(20)
         );
 
-        page.addView(intro);
+        page.addView(subtitle);
 
+        // --------------------------------
         // TARJETA PRINCIPAL
+        // --------------------------------
 
         LinearLayout hero =
-                panel(dark, 24);
+                panel(DARK, 26);
 
         LinearLayout heroHeader =
                 new LinearLayout(this);
@@ -330,32 +395,54 @@ public class MainActivity extends Activity {
         );
 
         TextView heroTitle =
-                text(
+                tv(
                         "CARGA DEL VEHÍCULO",
-                        12,
-                        Color.rgb(173, 184, 207),
+                        11,
+                        Color.rgb(177, 187, 207),
                         true
                 );
+
+        heroTitle.setLetterSpacing(0.08f);
 
         heroHeader.addView(
                 heroTitle,
                 new LinearLayout.LayoutParams(
                         0,
-                        -2,
+                        dp(30),
                         1
                 )
         );
 
-        heroHeader.addView(
-                text(
-                        "● EN CASA",
+        TextView home =
+                tv(
+                        "●  EN CASA",
                         11,
-                        Color.rgb(100, 220, 170),
+                        GREEN,
                         true
-                )
-        );
+                );
+
+        heroHeader.addView(home);
 
         hero.addView(heroHeader);
+
+        TextView charging =
+                tv(
+                        "Carga seleccionada",
+                        13,
+                        Color.rgb(158, 169, 192),
+                        false
+                );
+
+        charging.setPadding(
+                0,
+                dp(2),
+                0,
+                dp(4)
+        );
+
+        hero.addView(charging);
+
+        // PORCENTAJES
 
         LinearLayout values =
                 new LinearLayout(this);
@@ -365,38 +452,43 @@ public class MainActivity extends Activity {
         );
 
         fromValue =
-                text(
+                tv(
                         "30%",
-                        32,
-                        white,
+                        36,
+                        WHITE,
                         true
                 );
 
         toValue =
-                text(
+                tv(
                         "80%",
-                        32,
-                        white,
+                        36,
+                        WHITE,
                         true
                 );
 
-        fromValue.setGravity(Gravity.CENTER);
-        toValue.setGravity(Gravity.CENTER);
+        fromValue.setGravity(
+                Gravity.CENTER
+        );
+
+        toValue.setGravity(
+                Gravity.CENTER
+        );
 
         values.addView(
                 fromValue,
                 new LinearLayout.LayoutParams(
                         0,
-                        d(58),
+                        dp(64),
                         1
                 )
         );
 
         TextView arrow =
-                text(
+                tv(
                         "→",
-                        25,
-                        Color.rgb(150, 164, 190),
+                        27,
+                        Color.rgb(143, 157, 183),
                         true
                 );
 
@@ -405,8 +497,8 @@ public class MainActivity extends Activity {
         values.addView(
                 arrow,
                 new LinearLayout.LayoutParams(
-                        d(42),
-                        d(58)
+                        dp(42),
+                        dp(64)
                 )
         );
 
@@ -414,68 +506,114 @@ public class MainActivity extends Activity {
                 toValue,
                 new LinearLayout.LayoutParams(
                         0,
-                        d(58),
+                        dp(64),
                         1
                 )
         );
 
         hero.addView(values);
 
-        LinearLayout batteryBar =
+        // INDICADOR DE BATERÍA
+
+        LinearLayout batteryContainer =
                 new LinearLayout(this);
 
-        batteryBar.setGravity(Gravity.CENTER);
-
-        batteryBar.setPadding(
-                d(4),
-                0,
-                d(4),
-                0
+        batteryContainer.setOrientation(
+                LinearLayout.VERTICAL
         );
 
-        batteryBar.setBackground(
-                round(
-                        Color.rgb(44, 57, 82),
-                        50
-                )
+        batteryContainer.setPadding(
+                dp(4),
+                dp(4),
+                dp(4),
+                dp(4)
         );
 
-        chargePct =
-                text(
+        batteryContainer.setBackground(
+                background(DARK_2, 20)
+        );
+
+        batteryPercent =
+                tv(
                         "50% de batería",
                         12,
-                        white,
+                        WHITE,
                         true
                 );
 
-        chargePct.setGravity(
+        batteryPercent.setGravity(
                 Gravity.CENTER
         );
 
-        batteryBar.addView(
-                chargePct,
+        batteryContainer.addView(
+                batteryPercent,
                 new LinearLayout.LayoutParams(
                         -1,
-                        d(30)
+                        dp(30)
                 )
         );
 
-        hero.addView(batteryBar);
+        hero.addView(batteryContainer);
 
         page.addView(hero);
 
-        spacer(16);
+        addSpace(page, 18);
 
+        // --------------------------------
         // RANGO
+        // --------------------------------
 
         page.addView(
-                text(
-                        "RANGO DE CARGA",
-                        12,
-                        muted,
-                        true
+                sectionTitle(
+                        "RANGO DE CARGA"
                 )
         );
+
+        LinearLayout fromRow =
+                new LinearLayout(this);
+
+        fromRow.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
+
+        TextView fromLabel =
+                tv(
+                        "Desde",
+                        14,
+                        TEXT,
+                        true
+                );
+
+        fromRow.addView(
+                fromLabel,
+                new LinearLayout.LayoutParams(
+                        0,
+                        dp(35),
+                        1
+                )
+        );
+
+        TextView fromInfo =
+                tv(
+                        "30%",
+                        14,
+                        BLUE,
+                        true
+                );
+
+        fromInfo.setGravity(
+                Gravity.CENTER
+        );
+
+        fromRow.addView(
+                fromInfo,
+                new LinearLayout.LayoutParams(
+                        dp(55),
+                        dp(35)
+                )
+        );
+
+        page.addView(fromRow);
 
         fromBar =
                 new SeekBar(this);
@@ -487,9 +625,55 @@ public class MainActivity extends Activity {
                 fromBar,
                 new LinearLayout.LayoutParams(
                         -1,
-                        d(42)
+                        dp(38)
                 )
         );
+
+        LinearLayout toRow =
+                new LinearLayout(this);
+
+        toRow.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
+
+        TextView toLabel =
+                tv(
+                        "Hasta",
+                        14,
+                        TEXT,
+                        true
+                );
+
+        toRow.addView(
+                toLabel,
+                new LinearLayout.LayoutParams(
+                        0,
+                        dp(35),
+                        1
+                )
+        );
+
+        TextView toInfo =
+                tv(
+                        "80%",
+                        14,
+                        BLUE,
+                        true
+                );
+
+        toInfo.setGravity(
+                Gravity.CENTER
+        );
+
+        toRow.addView(
+                toInfo,
+                new LinearLayout.LayoutParams(
+                        dp(55),
+                        dp(35)
+                )
+        );
+
+        page.addView(toRow);
 
         toBar =
                 new SeekBar(this);
@@ -501,42 +685,61 @@ public class MainActivity extends Activity {
                 toBar,
                 new LinearLayout.LayoutParams(
                         -1,
-                        d(42)
+                        dp(38)
                 )
         );
 
-        spacer(8);
+        addSpace(page, 12);
 
-        // RESULTADO
+        // --------------------------------
+        // RESULTADOS
+        // --------------------------------
 
         LinearLayout result =
-                panel(white, 22);
+                panel(WHITE, 24);
 
-        result.addView(
-                text(
+        LinearLayout resultHeader =
+                new LinearLayout(this);
+
+        resultHeader.setGravity(
+                Gravity.CENTER_VERTICAL
+        );
+
+        resultHeader.addView(
+                tv(
                         "Resultado",
-                        20,
-                        dark,
+                        21,
+                        TEXT,
+                        true
+                ),
+                new LinearLayout.LayoutParams(
+                        0,
+                        dp(34),
+                        1
+                )
+        );
+
+        resultHeader.addView(
+                tv(
+                        "AUTOMÁTICO",
+                        10,
+                        BLUE,
                         true
                 )
         );
 
-        TextView resultSub =
-                text(
+        result.addView(resultHeader);
+
+        result.addView(
+                tv(
                         "Se actualiza al instante",
                         12,
-                        muted,
+                        MUTED,
                         false
-                );
-
-        resultSub.setPadding(
-                0,
-                d(2),
-                0,
-                d(12)
+                )
         );
 
-        result.addView(resultSub);
+        addSpace(result, 12);
 
         LinearLayout cards =
                 new LinearLayout(this);
@@ -545,45 +748,42 @@ public class MainActivity extends Activity {
                 LinearLayout.HORIZONTAL
         );
 
-        energy =
-                boxToTextView(
-                        new LinearLayout(this),
+        energyValue =
+                resultCard(
                         "ENERGÍA",
                         "— kWh"
                 );
 
-        time =
-                boxToTextView(
-                        new LinearLayout(this),
+        timeValue =
+                resultCard(
                         "TIEMPO",
                         "—"
                 );
 
-        cost =
-                boxToTextView(
-                        new LinearLayout(this),
+        costValue =
+                resultCard(
                         "COSTE",
                         "— €"
                 );
 
-        cards.addView(energy);
-        cards.addView(time);
-        cards.addView(cost);
+        cards.addView(energyValue);
+        cards.addView(timeValue);
+        cards.addView(costValue);
 
         result.addView(cards);
 
         summary =
-                text(
+                tv(
                         "",
                         13,
-                        muted,
+                        MUTED,
                         false
                 );
 
         summary.setPadding(
-                d(2),
-                d(14),
-                d(2),
+                dp(4),
+                dp(14),
+                dp(4),
                 0
         );
 
@@ -591,69 +791,73 @@ public class MainActivity extends Activity {
 
         page.addView(result);
 
-        spacer(16);
+        addSpace(page, 16);
 
-        // PARAMETROS
+        // --------------------------------
+        // PARÁMETROS
+        // --------------------------------
 
         LinearLayout settings =
-                panel(white, 22);
+                panel(WHITE, 24);
 
         settings.addView(
-                text(
+                tv(
                         "Parámetros",
                         20,
-                        dark,
+                        TEXT,
                         true
                 )
         );
 
         settings.addView(
-                text(
-                        "Puedes modificar estos valores cuando quieras",
+                tv(
+                        "Personaliza los datos de tu vehículo y tarifa",
                         12,
-                        muted,
+                        MUTED,
                         false
                 )
         );
 
-        spacerIn(settings, 8);
+        addSpace(settings, 10);
 
         settings.addView(
-                label(
+                sectionTitle(
                         "CAPACIDAD DE BATERÍA · kWh"
                 )
         );
 
-        battery =
-                field("80");
+        batteryInput =
+                input("80");
 
-        settings.addView(battery);
+        settings.addView(batteryInput);
 
         settings.addView(
-                label(
+                sectionTitle(
                         "POTENCIA DE CARGA · kW"
                 )
         );
 
-        power =
-                field("3,45");
+        powerInput =
+                input("3,45");
 
-        settings.addView(power);
+        settings.addView(powerInput);
 
         settings.addView(
-                label(
+                sectionTitle(
                         "PRECIO ELECTRICIDAD · €/kWh"
                 )
         );
 
-        price =
-                field("0,15");
+        priceInput =
+                input("0,15");
 
-        settings.addView(price);
+        settings.addView(priceInput);
 
         page.addView(settings);
 
+        // --------------------------------
         // EVENTOS
+        // --------------------------------
 
         SeekBar.OnSeekBarChangeListener listener =
                 new SeekBar.OnSeekBarChangeListener() {
@@ -680,42 +884,57 @@ public class MainActivity extends Activity {
                     }
                 };
 
-        fromBar.setOnSeekBarChangeListener(listener);
-        toBar.setOnSeekBarChangeListener(listener);
+        fromBar.setOnSeekBarChangeListener(
+                listener
+        );
 
-        View.OnFocusChangeListener focusListener =
-                (view, hasFocus) -> {
+        toBar.setOnSeekBarChangeListener(
+                listener
+        );
 
-                    if (!hasFocus) {
-                        calculate();
+        View.OnFocusChangeListener focus =
+                new View.OnFocusChangeListener() {
+
+                    @Override
+                    public void onFocusChange(
+                            View view,
+                            boolean hasFocus
+                    ) {
+
+                        if (!hasFocus) {
+                            calculate();
+                        }
                     }
                 };
 
-        battery.setOnFocusChangeListener(
-                focusListener
+        batteryInput.setOnFocusChangeListener(
+                focus
         );
 
-        power.setOnFocusChangeListener(
-                focusListener
+        powerInput.setOnFocusChangeListener(
+                focus
         );
 
-        price.setOnFocusChangeListener(
-                focusListener
+        priceInput.setOnFocusChangeListener(
+                focus
         );
 
         calculate();
     }
 
-    double number(
-            EditText editText,
+    // --------------------------------
+    // LECTURA DE NÚMEROS
+    // --------------------------------
+
+    private double number(
+            EditText input,
             double defaultValue
     ) {
 
         try {
 
             String value =
-                    editText
-                            .getText()
+                    input.getText()
                             .toString()
                             .trim()
                             .replace(",", ".");
@@ -728,16 +947,32 @@ public class MainActivity extends Activity {
         }
     }
 
-    String decimal(double value, int decimals) {
+    // --------------------------------
+    // FORMATO ESPAÑOL
+    // --------------------------------
+
+    private String decimal(
+            double value,
+            int decimals
+    ) {
 
         return String.format(
-                Locale.GERMANY,
+                SPANISH,
                 "%." + decimals + "f",
                 value
         );
     }
 
-    void calculate() {
+    // --------------------------------
+    // CÁLCULO
+    // --------------------------------
+
+    private void calculate() {
+
+        if (fromBar == null ||
+                toBar == null) {
+            return;
+        }
 
         int from =
                 fromBar.getProgress() + 1;
@@ -763,87 +998,113 @@ public class MainActivity extends Activity {
                 to + "%"
         );
 
+        double battery =
+                number(
+                        batteryInput,
+                        80.0
+                );
+
+        double power =
+                number(
+                        powerInput,
+                        3.45
+                );
+
+        double price =
+                number(
+                        priceInput,
+                        0.15
+                );
+
         int percentage =
                 to - from;
 
-        chargePct.setText(
-                percentage + "% de batería"
-        );
-
-        double capacity =
-                number(battery, 80);
-
-        double chargingPower =
-                number(power, 3.45);
-
-        double electricityPrice =
-                number(price, 0.15);
-
-        double kwh =
+        double requiredKwh =
                 Math.max(
                         0,
-                        capacity *
-                        percentage /
-                        100.0
+                        battery *
+                                percentage /
+                                100.0
                 );
 
         double hours =
-                chargingPower > 0
-                        ? kwh / chargingPower
+                power > 0
+                        ? requiredKwh / power
                         : 0;
 
-        int hour =
+        int wholeHours =
                 (int) hours;
 
         int minutes =
                 (int) Math.round(
-                        (hours - hour) * 60
+                        (hours - wholeHours)
+                                * 60
                 );
 
-        if (minutes == 60) {
-            hour++;
+        if (minutes >= 60) {
+            wholeHours++;
             minutes = 0;
         }
 
         double totalCost =
-                kwh * electricityPrice;
+                requiredKwh * price;
 
-        energy.setText(
+        batteryPercent.setText(
+                percentage +
+                        "% de batería"
+        );
+
+        energyValue.setText(
                 "ENERGÍA\n" +
-                decimal(kwh, 1) +
-                " kWh"
+                        decimal(
+                                requiredKwh,
+                                1
+                        ) +
+                        " kWh"
         );
 
-        time.setText(
+        timeValue.setText(
                 "TIEMPO\n" +
-                hour +
-                " h " +
-                String.format(
-                        Locale.getDefault(),
-                        "%02d",
-                        minutes
-                ) +
-                " min"
+                        wholeHours +
+                        " h " +
+                        String.format(
+                                SPANISH,
+                                "%02d",
+                                minutes
+                        ) +
+                        " min"
         );
 
-        cost.setText(
+        costValue.setText(
                 "COSTE\n" +
-                decimal(totalCost, 2) +
-                " €"
+                        decimal(
+                                totalCost,
+                                2
+                        ) +
+                        " €"
         );
 
         summary.setText(
                 "De " +
-                from +
-                "% a " +
-                to +
-                "% necesitas " +
-                decimal(kwh, 1) +
-                " kWh · " +
-                decimal(chargingPower, 2) +
-                " kW · " +
-                decimal(totalCost, 2) +
-                " €"
+                        from +
+                        "% a " +
+                        to +
+                        "% · " +
+                        decimal(
+                                requiredKwh,
+                                1
+                        ) +
+                        " kWh · " +
+                        decimal(
+                                power,
+                                2
+                        ) +
+                        " kW · " +
+                        decimal(
+                                totalCost,
+                                2
+                        ) +
+                        " €"
         );
     }
 }
