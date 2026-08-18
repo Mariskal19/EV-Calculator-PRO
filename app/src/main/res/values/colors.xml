@@ -7,4 +7,5 @@
     <color name="track">#34445A</color>
     <color name="danger">#FF6B7A</color>
     <color name="success">#53E0B9</color>
+    <color name="icon_bg">#0B1220</color>
 </resources>
