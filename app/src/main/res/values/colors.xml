@@ -1,1 +1,10 @@
-<resources><color name="icon_bg">#0A84FF</color></resources>
+<resources>
+    <color name="white">#F5F8FF</color>
+    <color name="text_secondary">#AAB7CC</color>
+    <color name="accent">#36B8FF</color>
+    <color name="accent_2">#4DE1C1</color>
+    <color name="card">#CC111927</color>
+    <color name="track">#34445A</color>
+    <color name="danger">#FF6B7A</color>
+    <color name="success">#53E0B9</color>
+</resources>

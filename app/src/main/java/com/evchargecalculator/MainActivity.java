@@ -1,81 +1,42 @@
 package com.evchargecalculator;
 
-import android.app.Activity;
-import android.app.TimePickerDialog;
-import android.os.Bundle;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Gravity;
-import android.widget.*;
-import android.text.InputType;
-import java.util.Locale;
+import android.app.*;import android.os.*;import android.graphics.Color;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
 
 public class MainActivity extends Activity {
-    final int BLUE=Color.rgb(38,130,255), CYAN=Color.rgb(75,210,255), BG=Color.rgb(8,12,18), CARD=Color.rgb(18,25,35), CARD2=Color.rgb(25,34,47), TEXT=Color.WHITE, MUTED=Color.rgb(153,166,185), GREEN=Color.rgb(76,220,155), RED=Color.rgb(255,100,100);
-    LinearLayout page; SeekBar batteryBar; RangeView chargeRange; TextView batteryValue, currentValue, targetValue, xguardValue, durationValue, startValue, warningValue, summaryValue; EditText departure, xguardPercentField; Switch xguard; double capacity=80, power=3.45, xguardPercent=5.0;
-    int d(float v){return (int)(v*getResources().getDisplayMetrics().density+.5f);}
-    GradientDrawable round(int c,int r){GradientDrawable g=new GradientDrawable();g.setColor(c);g.setCornerRadius(d(r));return g;}
-    TextView tv(String s,float z,int c,boolean bold){TextView t=new TextView(this);t.setText(s);t.setTextSize(z);t.setTextColor(c);if(bold)t.setTypeface(Typeface.DEFAULT,Typeface.BOLD);return t;}
-    LinearLayout card(){LinearLayout l=new LinearLayout(this);l.setOrientation(LinearLayout.VERTICAL);l.setPadding(d(18),d(16),d(18),d(16));l.setBackground(round(CARD,22));return l;}
-    TextView label(String s){TextView t=tv(s,11,MUTED,true);t.setLetterSpacing(.12f);return t;}
-    String dec(double n,int digits){return String.format(Locale.US,"%."+digits+"f",n).replace('.',',');}
-    double xguardRate(){return Math.max(0.0,xguardPercent)/24.0;}
-
-    @Override public void onCreate(Bundle b){super.onCreate(b); getWindow().setStatusBarColor(BG);getWindow().setNavigationBarColor(BG);
-        ScrollView scroll=new ScrollView(this); page=new LinearLayout(this);page.setOrientation(LinearLayout.VERTICAL);page.setPadding(d(20),d(18),d(20),d(30));page.setBackgroundColor(BG);scroll.addView(page);setContentView(scroll);
-        LinearLayout header=new LinearLayout(this);header.setGravity(Gravity.CENTER_VERTICAL); TextView bolt=tv("⚡",28,Color.WHITE,true);bolt.setGravity(Gravity.CENTER);bolt.setBackground(round(BLUE,18));header.addView(bolt,new LinearLayout.LayoutParams(d(52),d(52))); LinearLayout ht=new LinearLayout(this);ht.setPadding(d(14),0,0,0);ht.addView(tv("EV CHARGE",24,TEXT,true));ht.addView(tv("PREMIUM CALCULATOR",10,CYAN,true));header.addView(ht);page.addView(header); TextView intro=tv("Tu carga, calculada de forma inteligente.",14,MUTED,false);intro.setPadding(d(66),d(4),0,d(22));page.addView(intro);
-
-        LinearLayout cap=card();cap.addView(label("CAPACIDAD DE BATERÍA"));batteryValue=tv("80 kWh",30,TEXT,true);batteryValue.setPadding(0,d(5),0,d(5));cap.addView(batteryValue);batteryBar=new SeekBar(this);batteryBar.setMax(100);batteryBar.setProgress(50);cap.addView(batteryBar,new LinearLayout.LayoutParams(-1,d(42)));TextView capHint=tv("Ajusta la capacidad de tu vehículo",12,MUTED,false);cap.addView(capHint);page.addView(cap);space(14);
-
-        LinearLayout charge=card();charge.addView(label("NIVEL DE CARGA"));LinearLayout vals=new LinearLayout(this);vals.setGravity(Gravity.CENTER_VERTICAL);currentValue=tv("30 %",28,TEXT,true);targetValue=tv("80 %",28,TEXT,true);vals.addView(currentValue,new LinearLayout.LayoutParams(0,d(52),1));TextView arrow=tv("→",22,MUTED,true);arrow.setGravity(Gravity.CENTER);vals.addView(arrow,new LinearLayout.LayoutParams(d(42),d(52)));targetValue.setGravity(Gravity.RIGHT);vals.addView(targetValue,new LinearLayout.LayoutParams(0,d(52),1));charge.addView(vals);chargeRange=new RangeView();charge.addView(chargeRange,new LinearLayout.LayoutParams(-1,d(58)));TextView rangeHint=tv("Desliza cualquiera de los dos puntos",12,MUTED,false);charge.addView(rangeHint);page.addView(charge);space(14);
-
-        LinearLayout gx=card();LinearLayout gxHead=new LinearLayout(this);gxHead.setGravity(Gravity.CENTER_VERTICAL);gxHead.addView(label("XGUARD"),new LinearLayout.LayoutParams(0,-2,1));xguard=new Switch(this);xguard.setText("Activado");xguard.setTextColor(TEXT);xguard.setTextSize(13);gxHead.addView(xguard);gx.addView(gxHead);
-        LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);xr.setPadding(0,d(8),0,0);xr.addView(tv("Consumo cada 24 h",13,MUTED,false),new LinearLayout.LayoutParams(0,d(50),1));xguardPercentField=numberField("5,0");xguardPercentField.setHint("%");xguardPercentField.setTextSize(18);LinearLayout.LayoutParams xp=new LinearLayout.LayoutParams(d(105),d(50));xp.setMargins(d(10),0,0,0);xr.addView(xguardPercentField,xp);gx.addView(xr);
-        xguardValue=tv("Desactivado",13,MUTED,false);xguardValue.setPadding(0,d(8),0,0);gx.addView(xguardValue);page.addView(gx);space(14);
-
-        LinearLayout dur=card();dur.addView(label("TIEMPO DE CARGA NECESARIO"));durationValue=tv("—",32,TEXT,true);durationValue.setPadding(0,d(6),0,d(2));dur.addView(durationValue);dur.addView(tv("Calculado automáticamente según batería y potencia.",12,MUTED,false));page.addView(dur);space(14);
-
-        LinearLayout out=card();out.addView(label("HORA DE SALIDA"));departure=new EditText(this);departure.setText("07:00");departure.setTextColor(TEXT);departure.setTextSize(28);departure.setTypeface(Typeface.DEFAULT,Typeface.BOLD);departure.setSingleLine(true);departure.setInputType(InputType.TYPE_CLASS_DATETIME|InputType.TYPE_DATETIME_VARIATION_TIME);departure.setPadding(0,d(4),0,d(4));departure.setBackground(round(CARD2,16));LinearLayout.LayoutParams dp=new LinearLayout.LayoutParams(-1,d(58));dp.setMargins(0,d(8),0,0);out.addView(departure,dp);TextView outHint=tv("Toca para elegir la hora",12,MUTED,false);out.addView(outHint);page.addView(out);space(14);
-
-        LinearLayout powerCard=card();powerCard.addView(label("POTENCIA DE CARGA"));EditText p=numberField("3,45 kW");powerCard.addView(p);page.addView(powerCard);space(16);
-
-        LinearLayout result=card();result.setBackground(round(Color.rgb(13,30,48),24));result.addView(label("RESULTADO"));TextView main=tv("INICIAR CARGA",12,CYAN,true);main.setPadding(0,d(10),0,0);result.addView(main);startValue=tv("—",38,TEXT,true);startValue.setPadding(0,d(2),0,d(4));result.addView(startValue);summaryValue=tv("",13,MUTED,false);result.addView(summaryValue);warningValue=tv("",13,RED,true);warningValue.setPadding(0,d(10),0,0);result.addView(warningValue);page.addView(result);
-
-        batteryBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar s,int p,boolean f){capacity=40+(p/100.0)*80;capacity=Math.round(capacity);batteryValue.setText(dec(capacity,0)+" kWh");calculate();}public void onStartTrackingTouch(SeekBar s){}public void onStopTrackingTouch(SeekBar s){}});
-        chargeRange.invalidate();xguard.setOnCheckedChangeListener((v,c)->calculate()); xguardPercentField.setOnFocusChangeListener((v,h)->{if(!h){xguardPercent=parsePercent(xguardPercentField.getText().toString());calculate();}}); xguardPercentField.setOnEditorActionListener((v,a,e)->{xguardPercent=parsePercent(xguardPercentField.getText().toString());calculate();return false;}); departure.setOnClickListener(v->showTimePicker()); p.setOnFocusChangeListener((v,h)->{if(!h){power=parsePower(p.getText().toString());calculate();}}); p.setOnEditorActionListener((v,a,e)->{power=parsePower(p.getText().toString());calculate();return false;}); calculate();
-    }
-    EditText numberField(String s){EditText e=new EditText(this);e.setText(s);e.setTextColor(TEXT);e.setTextSize(18);e.setSingleLine(true);e.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);e.setPadding(d(14),0,d(14),0);e.setBackground(round(CARD2,16));e.setSelectAllOnFocus(false);e.setLayoutParams(new LinearLayout.LayoutParams(-1,d(52)));return e;}
-    double parsePower(String s){try{return Double.parseDouble(s.replace("kW","").trim().replace(',', '.'));}catch(Exception e){return 3.45;}}
-    double parsePercent(String s){try{return Math.max(0,Math.min(100,Double.parseDouble(s.replace("%","").trim().replace(',', '.'))));}catch(Exception e){return 5.0;}}
-    void showTimePicker(){String[] a=departure.getText().toString().split(":");int h=7,m=0;try{h=Integer.parseInt(a[0]);m=Integer.parseInt(a[1]);}catch(Exception ignored){}new TimePickerDialog(this,(v,hh,mm)->{departure.setText(String.format(Locale.US,"%02d:%02d",hh,mm));calculate();},h,m,true).show();}
-    int[] parseTime(){String[] a=departure.getText().toString().trim().split(":");try{return new int[]{Integer.parseInt(a[0]),Integer.parseInt(a[1])};}catch(Exception e){return new int[]{7,0};}}
-    void calculate(){int cur=chargeRange.current,target=chargeRange.target;if(target<=cur)target=Math.min(100,cur+1);double kw=power>0?power:3.45;double delta=Math.max(0,target-cur);double baseHours=(capacity*delta/100.0)/kw;double xh=0;int[] tm=parseTime();int departureMin=tm[0]*60+tm[1];double totalHours=baseHours; if(xguard.isChecked()){
-            // Minimal-start solution: XGuard acts during the charging window and after it until departure.
-            // We solve the total window iteratively, then start at departure minus that window.
-            double total=baseHours;
-            for(int i=0;i<20;i++){double loss=xguardRate()*total;double required=delta+loss;double charging=(capacity*required/100.0)/kw;total=charging;}
-            totalHours=total;
-            xh=xguardRate()*totalHours;
-        }
-        int totalMin=(int)Math.ceil(totalHours*60);int dh=totalMin/60,dm=totalMin%60;durationValue.setText(dh+" h "+String.format(Locale.US,"%02d",dm)+" min");
-        int startMin=departureMin-totalMin;boolean crosses=false;if(startMin<0){startMin+=1440;crosses=true;}String start=String.format(Locale.US,"%02d:%02d",startMin/60,startMin%60);startValue.setText(start);
-        xguardValue.setText(xguard.isChecked()?"Activado · consumo estimado "+dec(xh,1)+" % de batería":"Desactivado");
-        warningValue.setText("");summaryValue.setText("Para llegar al "+target+" % a las "+String.format(Locale.US,"%02d:%02d",tm[0],tm[1])+" necesitas cargar durante "+dh+" h "+String.format(Locale.US,"%02d",dm)+" min.");
-        // If required time is over 24 h, or current target is impossible within the same day window, make it explicit.
-        if(totalMin>1440){warningValue.setText("⚠ No es posible alcanzar el objetivo en las próximas 24 horas con esta potencia.");}
-        if(xguard.isChecked())summaryValue.setText(summaryValue.getText()+" XGuard: −"+dec(xh,1)+" % hasta la salida.");
-    }
-    void space(int n){Space s=new Space(this);page.addView(s,new LinearLayout.LayoutParams(1,d(n)));}
-
-    class RangeView extends View {
-        Paint p=new Paint(Paint.ANTI_ALIAS_FLAG);int current=30,target=80;boolean dragCurrent=false,dragTarget=false;float left,right,y;
-        RangeView(){super(MainActivity.this);p.setStrokeCap(Paint.Cap.ROUND);setFocusable(true);}
-        protected void onDraw(Canvas c){super.onDraw(c);left=d(10);right=getWidth()-d(10);y=getHeight()/2f;p.setStrokeWidth(d(7));p.setColor(Color.rgb(45,58,76));c.drawLine(left,y,right,y,p);float cx=left+(right-left)*current/100f,tx=left+(right-left)*target/100f;p.setColor(BLUE);c.drawLine(cx,y,tx,y,p);p.setColor(Color.WHITE);c.drawCircle(cx,y,d(11),p);c.drawCircle(tx,y,d(11),p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(d(2));p.setColor(BLUE);c.drawCircle(cx,y,d(11),p);c.drawCircle(tx,y,d(11),p);p.setStyle(Paint.Style.FILL);}
-        public boolean onTouchEvent(MotionEvent e){float x=e.getX();if(e.getAction()==MotionEvent.ACTION_DOWN){float cx=left+(right-left)*current/100f,tx=left+(right-left)*target/100f;dragCurrent=Math.abs(x-cx)<Math.abs(x-tx);dragTarget=!dragCurrent;return true;}if(e.getAction()==MotionEvent.ACTION_MOVE||e.getAction()==MotionEvent.ACTION_UP){int v=Math.max(0,Math.min(100,Math.round((x-left)/(right-left)*100)));if(dragCurrent)current=Math.min(v,target-1);else target=Math.max(v,current+1);invalidate();currentValue.setText(current+" %");targetValue.setText(target+" %");calculate();return true;}return true;}
-    }
+ ScrollView scroll; LinearLayout root; EditText battery,startSoc,targetSoc,power,price,startTime,departure,xguard; SeekBar batS,startS,targetS,powS,priceS; Switch xSwitch; TextView timeR,energyR,costR,statusR; boolean busy;
+ int blue=Color.rgb(54,184,255), white=Color.rgb(245,248,255), secondary=Color.rgb(170,183,204);
+ @Override public void onCreate(Bundle b){super.onCreate(b); getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE); build(); calculate();}
+ TextView tv(String s,int sp,int c){TextView t=new TextView(this);t.setText(s);t.setTextSize(sp);t.setTextColor(c);return t;}
+ GradientDrawable bg(int color,float r,int stroke){GradientDrawable g=new GradientDrawable();g.setColor(color);g.setCornerRadius(r);if(stroke>0)g.setStroke(1,Color.rgb(38,59,85));return g;}
+ EditText edit(String val){EditText e=new EditText(this);e.setText(val);e.setTextColor(white);e.setTextSize(18);e.setSingleLine();e.setGravity(Gravity.CENTER);e.setBackground(bg(Color.rgb(21,34,51),12,1));e.setPadding(10,0,10,0);e.setSelectAllOnFocus(true); e.setOnFocusChangeListener((v,f)->{if(f)new Handler().postDelayed(()->{scroll.smoothScrollTo(0,Math.max(0,v.getBottom()-scroll.getHeight()+80));},180);}); return e;}
+ LinearLayout card(){LinearLayout l=new LinearLayout(this);l.setOrientation(LinearLayout.VERTICAL);l.setPadding(18,16,18,16);l.setBackground(bg(Color.argb(218,17,25,39),22,1));return l;}
+ SeekBar seek(int max,int progress){SeekBar s=new SeekBar(this);s.setMax(max);s.setProgress(progress);s.setProgressTintList(ColorStateList.valueOf(blue));s.setThumbTintList(ColorStateList.valueOf(blue));s.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(52,68,90)));s.setPadding(4,0,4,0);return s;}
+ void row(LinearLayout p,String label,EditText e,String unit){LinearLayout r=new LinearLayout(this);r.setGravity(Gravity.CENTER_VERTICAL);TextView l=tv(label,14,secondary);r.addView(l,new LinearLayout.LayoutParams(0,48,1));r.addView(e,new LinearLayout.LayoutParams(dp(88),48));TextView u=tv(unit,13,secondary);u.setGravity(Gravity.CENTER);r.addView(u,new LinearLayout.LayoutParams(dp(58),48));p.addView(r);}
+ int dp(int n){return (int)(n*getResources().getDisplayMetrics().density+.5f);}
+ void build(){
+  FrameLayout frame=new FrameLayout(this); frame.addView(new PremiumBackgroundView(this),new FrameLayout.LayoutParams(-1,-1));
+  scroll=new ScrollView(this);scroll.setFillViewport(true); root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(dp(18),dp(14),dp(18),dp(36));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
+  LinearLayout head=new LinearLayout(this);head.setGravity(Gravity.CENTER_VERTICAL);TextView icon=tv("⚡",26,white);head.addView(icon,new LinearLayout.LayoutParams(dp(44),dp(50)));TextView title=tv("EV Charge Calculator",22,white);title.setTypeface(null,1);head.addView(title);root.addView(head);
+  LinearLayout c1=card();TextView h1=tv("Batería",18,white);h1.setTypeface(null,1);c1.addView(h1);battery=edit("80,0");row(c1,"Capacidad",battery,"kWh");batS=seek(200,120);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));c1.addView(tv("Estado de carga inicial",14,secondary));LinearLayout sr=new LinearLayout(this);sr.setGravity(Gravity.CENTER_VERTICAL);startS=seek(100,30);sr.addView(startS,new LinearLayout.LayoutParams(0,dp(42),1));startSoc=edit("30");sr.addView(startSoc,new LinearLayout.LayoutParams(dp(70),dp(42)));sr.addView(tv("%",13,secondary),new LinearLayout.LayoutParams(dp(28),dp(42)));c1.addView(sr);c1.addView(tv("Objetivo de carga",14,secondary));LinearLayout tr=new LinearLayout(this);tr.setGravity(Gravity.CENTER_VERTICAL);targetS=seek(100,80);tr.addView(targetS,new LinearLayout.LayoutParams(0,dp(42),1));targetSoc=edit("80");tr.addView(targetSoc,new LinearLayout.LayoutParams(dp(70),dp(42)));tr.addView(tv("%",13,secondary),new LinearLayout.LayoutParams(dp(28),dp(42)));c1.addView(tr);root.addView(c1);space();
+  LinearLayout c2=card();TextView h2=tv("Carga",18,white);h2.setTypeface(null,1);c2.addView(h2);power=edit("3,45");row(c2,"Potencia",power,"kW");powS=seek(400,49);c2.addView(powS,new LinearLayout.LayoutParams(-1,dp(42)));price=edit("0,15");row(c2,"Precio energía",price,"€/kWh");priceS=seek(100,15);c2.addView(priceS,new LinearLayout.LayoutParams(-1,dp(42)));root.addView(c2);space();
+  LinearLayout c3=card();TextView h3=tv("Planificación",18,white);h3.setTypeface(null,1);c3.addView(h3);startTime=edit("21:00");startTime.setInputType(2);row(c3,"Inicio de carga",startTime,"");departure=edit("07:00");departure.setInputType(2);row(c3,"Salida",departure,"");LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);TextView xl=tv("XGuard (consumo / 24 h)",14,secondary);xr.addView(xl,new LinearLayout.LayoutParams(0,48,1));xSwitch=new Switch(this);xSwitch.setChecked(true);xr.addView(xSwitch);xguard=edit("5,0");xr.addView(xguard,new LinearLayout.LayoutParams(dp(70),dp(42)));xr.addView(tv("%",13,secondary),new LinearLayout.LayoutParams(dp(28),dp(42)));c3.addView(xr);root.addView(c3);space();
+  LinearLayout c4=card();TextView h4=tv("Resultado",18,white);h4.setTypeface(null,1);c4.addView(h4);timeR=tv("00 h 00 min",30,white);timeR.setTypeface(null,1);c4.addView(timeR);energyR=tv("0,0 kWh",17,blue);c4.addView(energyR);costR=tv("0,00 €",16,secondary);c4.addView(costR);statusR=tv("",15,Color.WHITE);statusR.setTypeface(null,1);c4.addView(statusR);root.addView(c4);TextView foot=tv("Cálculo automático · admite coma o punto decimal",12,Color.rgb(102,118,141));foot.setGravity(Gravity.CENTER);root.addView(foot); 
+  setup();
+ }
+ void space(){Space s=new Space(this);root.addView(s,new LinearLayout.LayoutParams(1,dp(12)));}
+ void setup(){
+  batS.setOnSeekBarChangeListener(slider((v)->setText(battery,fmt(v/2.0,1))));startS.setOnSeekBarChangeListener(slider((v)->setText(startSoc,""+v)));targetS.setOnSeekBarChangeListener(slider((v)->setText(targetSoc,""+v)));powS.setOnSeekBarChangeListener(slider((v)->setText(power,fmt(v/20.0,2))));priceS.setOnSeekBarChangeListener(slider((v)->setText(price,fmt(v/100.0,2))));
+  battery.addTextChangedListener(watch(()->syncBat()));startSoc.addTextChangedListener(watch(()->syncSoc(startSoc,startS)));targetSoc.addTextChangedListener(watch(()->syncSoc(targetSoc,targetS)));power.addTextChangedListener(watch(()->syncPow()));price.addTextChangedListener(watch(()->syncPrice()));xguard.addTextChangedListener(watch(()->calculate()));startTime.addTextChangedListener(watch(()->calculate()));departure.addTextChangedListener(watch(()->calculate()));xSwitch.setOnCheckedChangeListener((b,c)->{xguard.setEnabled(c);calculate();});
+ }
+ SeekBar.OnSeekBarChangeListener slider(java.util.function.IntConsumer f){return new SeekBar.OnSeekBarChangeListener(){public void onProgressChanged(SeekBar s,int p,boolean from){if(from&&!busy){busy=true;f.accept(p);busy=false;calculate();}}public void onStartTrackingTouch(SeekBar s){}public void onStopTrackingTouch(SeekBar s){}};}
+ TextWatcher watch(Runnable r){return new TextWatcher(){public void beforeTextChanged(CharSequence s,int a,int c,int d){}public void onTextChanged(CharSequence s,int a,int b,int c){if(!busy)r.run();}public void afterTextChanged(Editable e){}};}
+ void setText(EditText e,String s){e.setText(s);e.setSelection(e.length());}
+ void syncBat(){if(busy)return;double v=num(battery);if(v>=20&&v<=120){busy=true;batS.setProgress((int)Math.round(v*2));busy=false;}calculate();}
+ void syncSoc(EditText e,SeekBar s){if(busy)return;int v=(int)Math.round(num(e));if(v>=0&&v<=100){busy=true;s.setProgress(v);busy=false;}calculate();}
+ void syncPow(){if(busy)return;double v=num(power);if(v>=0&&v<=20){busy=true;powS.setProgress((int)Math.round(v*20));busy=false;}calculate();}
+ void syncPrice(){if(busy)return;double v=num(price);if(v>=0&&v<=1){busy=true;priceS.setProgress((int)Math.round(v*100));busy=false;}calculate();}
+ double num(EditText e){try{return Double.parseDouble(e.getText().toString().replace(',','.'));}catch(Exception x){return 0;}}
+ String fmt(double v,int d){DecimalFormat f=new DecimalFormat("0."+"0".repeat(d),DecimalFormatSymbols.getInstance(Locale.US));return f.format(v).replace('.',',');}
+ int minutes(String s){try{String[] a=s.trim().split(":");return Integer.parseInt(a[0])*60+Integer.parseInt(a[1]);}catch(Exception e){return -1;}}
+ void calculate(){if(battery==null)return;double cap=num(battery), st=num(startSoc), tar=num(targetSoc), kw=num(power), eur=num(price), x=num(xguard);if(cap<=0||kw<=0||tar<=st){timeR.setText("00 h 00 min");energyR.setText("0,0 kWh");costR.setText("0,00 €");statusR.setText(tar<=st?"El objetivo debe ser mayor que el nivel inicial.":"");statusR.setTextColor(Color.rgb(255,107,122));return;}int sm=minutes(startTime.getText().toString()), dm=minutes(departure.getText().toString());if(sm<0||dm<0){statusR.setText("Introduce las horas en formato HH:mm.");statusR.setTextColor(Color.rgb(255,107,122));return;}int avail=dm-sm;if(avail<=0)avail+=1440;double base=cap*(tar-st)/100.0;double extra=xSwitch.isChecked()?cap*x/100.0*(avail/1440.0):0;double energy=base+extra;double mins=energy/kw*60.0;timeR.setText(String.format(Locale.US,"%02d h %02d min",(int)(mins/60),(int)Math.round(mins%60)));energyR.setText(fmt(energy,1)+" kWh");costR.setText(fmt(energy*eur,2)+" €");if(mins<=avail+0.5){statusR.setText("✓ Hay tiempo suficiente para la carga.");statusR.setTextColor(Color.rgb(83,224,185));}else{statusR.setText("⚠ No hay tiempo suficiente para alcanzar el objetivo antes de la salida.");statusR.setTextColor(Color.rgb(255,107,122));}}
 }
