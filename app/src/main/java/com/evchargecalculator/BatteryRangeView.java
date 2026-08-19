@@ -29,7 +29,7 @@ public class BatteryRangeView extends View {
         p.setColor(blue); c.drawLine(xFor(0),y,xFor(target),y,p);
         p.setColor(Color.rgb(70,205,180)); c.drawLine(xFor(current),y,xFor(target),y,p);
         p.setShadowLayer(dp(4),0,dp(2),0x55000000); p.setColor(blue); c.drawCircle(xFor(current),y,dp(9),p); p.setColor(Color.rgb(70,205,180)); c.drawCircle(xFor(target),y,dp(9),p); p.clearShadowLayer();
-        p.setTextSize(dp(12)); p.setTypeface(Typeface.DEFAULT_BOLD); p.setTextAlign(Paint.Align.CENTER); p.setColor(blue); c.drawText(current+" %",xFor(current),y-dp(18),p); p.setColor(Color.rgb(70,205,180)); c.drawText(target+" %",xFor(target),y-dp(18),p);
+        p.setTextSize(dp(14)); p.setTypeface(Typeface.DEFAULT_BOLD); p.setTextAlign(Paint.Align.CENTER); p.setColor(blue); c.drawText(current+" %",xFor(current),y-dp(18),p); p.setColor(Color.rgb(70,205,180)); c.drawText(target+" %",xFor(target),y-dp(18),p);
     }
     @Override public boolean onTouchEvent(MotionEvent e){
         float x=e.getX();
