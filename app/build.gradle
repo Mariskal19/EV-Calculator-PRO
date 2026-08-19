@@ -10,14 +10,11 @@ android {
         applicationId 'com.evchargecalculator'
         minSdk 23
         targetSdk 35
-        versionCode 14
-        versionName '1.0.10'
+        versionCode 16
+        versionName '1.0.12'
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
