@@ -15,3 +15,6 @@ Included in v2.0:
 
 Build with:
 `./gradlew assembleDebug`
+
+
+Version 3: corrected adaptive icon resources and added Automatic/Light/Dark appearance selection.
