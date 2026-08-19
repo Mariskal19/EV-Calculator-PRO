@@ -1,26 +1,20 @@
-# EV Charge Calculator v1.0.5
+# EV Charge Calculator v1.0.6
 
 Android EV charging calculator.
 
-### Version 1.0.5 includes
-- Premium EV-style background.
-- Light / dark / automatic theme.
-- Battery capacity with decimal values and editable slider/value.
-- One unified battery bar for initial and target charge.
-- XGuard ON/OFF before the result.
-- Required charging time and selected departure time.
-- Automatically calculated recommended charging start time.
-- Warning when the target cannot be reached in the available time.
-- Spanish decimal comma support (points are also accepted).
-- Adaptive Android launcher icon.
-- Footer: `Powered by EV Charge Calculator · v1.0.5`.
-- GitHub artifact: `EVChargeCalculator-v1.0.5`.
-- APK filename: `EVChargeCalculator-v1.0.5.apk`.
-- GitHub Actions uses `setup-java@v5`.
+## Cambios de esta versión
+- Interfaz con separación más clara entre los bloques.
+- Batería con barra de ajuste y cálculo automático.
+- Soporte de coma decimal en la interfaz; también se aceptan puntos al introducir datos.
+- Campo XGuard/Centinela alineado con Potencia y Precio energía, con el mismo tamaño de campo y unidad `%`.
+- XGuard calcula el consumo configurado como porcentaje de batería durante 24 horas; con 5 % consume el equivalente al 5 % de la batería cada 24 h.
+- Resultado de tiempo, energía y coste actualizado automáticamente.
+- “Inicio recomendado para llegar al objetivo” dentro de “Hora Salida”, justo debajo de la hora de salida.
+- Se mantienen los dos iconos de reloj con la misma alineación.
+- Al editar la hora de salida, la pantalla se desplaza para evitar que el teclado tape el campo y “Hecho” cierra el teclado.
+- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.6`.
 
-
-## Cambios v7
-- Interfaz con mayor separación entre bloques.
-- Carga inicial y objetivo mediante barra de doble control, sin campos editables de porcentaje.
-- El objetivo siempre queda al menos 1 punto porcentual por encima de la carga inicial.
-- Porcentajes visibles directamente en la barra.
+## Archivos de entrega
+- ZIP: `EVChargeCalculator-v1.0.6.zip`
+- APK: `EVChargeCalculator-v1.0.6.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.6`
