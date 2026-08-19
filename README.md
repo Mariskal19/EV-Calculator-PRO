@@ -1,20 +1,3 @@
-# EV Charge Calculator
+# EV Charge Calculator v4
 
-Android app for estimating EV charging energy, time and cost.
-
-Included in v2.0:
-- Battery capacity with decimal values, editable by slider or number.
-- Consistent slider design and color.
-- Numeric editing with keyboard-aware scrolling.
-- Automatic calculations.
-- XGuard toggle with editable default 5% per 24 h and proportional consumption based on the available charging window.
-- Departure-time feasibility warning.
-- Spanish decimal comma display while accepting comma or point input.
-- Premium dark EV charging visual background.
-- App name: EV Charge Calculator.
-
-Build with:
-`./gradlew assembleDebug`
-
-
-Version 3: corrected adaptive icon resources and added Automatic/Light/Dark appearance selection.
+Android EV charging calculator. Version 4 includes the premium light/dark/automatic theme, unified battery range bar, calculated recommended start time, adaptive icon, and versioned APK artifact.
