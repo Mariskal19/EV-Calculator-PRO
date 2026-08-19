@@ -1,4 +1,4 @@
-# EV Charge Calculator v1.0.6
+# EV Charge Calculator v1.0.9
 
 Android EV charging calculator.
 
@@ -12,9 +12,9 @@ Android EV charging calculator.
 - “Inicio recomendado para llegar al objetivo” dentro de “Hora Salida”, justo debajo de la hora de salida.
 - Se mantienen los dos iconos de reloj con la misma alineación.
 - Al editar la hora de salida, la pantalla se desplaza para evitar que el teclado tape el campo y “Hecho” cierra el teclado.
-- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.6`.
+- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.9`.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.6.zip`
-- APK: `EVChargeCalculator-v1.0.6.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.6`
+- ZIP: `EVChargeCalculator-v1.0.9.zip`
+- APK: `EVChargeCalculator-v1.0.9.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.9`
