@@ -40,16 +40,23 @@ jobs:
             exit 1
           fi
           echo "Release APK found: $apk"
-          cp "$apk" release/EVChargeCalculator-v1.0.14.apk
+          cp "$apk" release/EVChargeCalculator-v1.0.15.apk
 
       - name: Create project ZIP
         run: |
-          zip -r release/EVChargeCalculator-v1.0.14.zip . \
+          zip -r release/EVChargeCalculator-v1.0.15.zip . \
             -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
       - name: Upload release artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: EVChargeCalculator-v1.0.14
-          path: release/*
+          name: EVChargeCalculator-v1.0.15
+          path: release/EVChargeCalculator-v1.0.15.apk
+          if-no-files-found: error
+
+      - name: Upload project ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: EVChargeCalculator-v1.0.15-source
+          path: release/EVChargeCalculator-v1.0.15.zip
           if-no-files-found: error
