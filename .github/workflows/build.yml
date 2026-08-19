@@ -31,18 +31,25 @@ jobs:
 
       - name: Rename APK
         run: |
+          set -euo pipefail
           mkdir -p release
-          test -f app/build/outputs/apk/release/app-release.apk
-          cp app/build/outputs/apk/release/app-release.apk release/EVChargeCalculator-v1.0.13.apk
+          apk=$(find app/build/outputs/apk -type f -name "*.apk" ! -name "*debug*" | head -n 1)
+          if [ -z "$apk" ]; then
+            echo "No Release APK found under app/build/outputs/apk"
+            find app/build/outputs/apk -maxdepth 4 -type f -print || true
+            exit 1
+          fi
+          echo "Release APK found: $apk"
+          cp "$apk" release/EVChargeCalculator-v1.0.14.apk
 
       - name: Create project ZIP
         run: |
-          zip -r release/EVChargeCalculator-v1.0.13.zip . \
+          zip -r release/EVChargeCalculator-v1.0.14.zip . \
             -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
       - name: Upload release artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: EVChargeCalculator-v1.0.13
+          name: EVChargeCalculator-v1.0.14
           path: release/*
           if-no-files-found: error
