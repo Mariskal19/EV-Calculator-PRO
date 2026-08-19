@@ -1,35 +1,48 @@
-name: Build APK
+name: Build EV Charge Calculator
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
-      - name: Setup Java 17
-        uses: actions/setup-java@v5
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
 
-      - name: Setup Gradle
+      - name: Set up Gradle 8.9
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '8.10'
+          gradle-version: '8.9'
 
-      - name: Build Debug APK
-        run: gradle assembleDebug --stacktrace
+      - name: Build Release APK
+        run: gradle --no-daemon clean assembleRelease
 
-      - name: Upload APK
+      - name: Rename APK
+        run: |
+          mkdir -p release
+          test -f app/build/outputs/apk/release/app-release.apk
+          cp app/build/outputs/apk/release/app-release.apk release/EVChargeCalculator-v1.0.13.apk
+
+      - name: Create project ZIP
+        run: |
+          zip -r release/EVChargeCalculator-v1.0.13.zip . \
+            -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
+
+      - name: Upload release artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: EVChargeCalculator-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: EVChargeCalculator-v1.0.13
+          path: release/*
+          if-no-files-found: error
