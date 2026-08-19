@@ -1,8 +1,8 @@
-# EV Charge Calculator v7
+# EV Charge Calculator v1.0.5
 
 Android EV charging calculator.
 
-### Version 4 includes
+### Version 1.0.5 includes
 - Premium EV-style background.
 - Light / dark / automatic theme.
 - Battery capacity with decimal values and editable slider/value.
@@ -13,10 +13,10 @@ Android EV charging calculator.
 - Warning when the target cannot be reached in the available time.
 - Spanish decimal comma support (points are also accepted).
 - Adaptive Android launcher icon.
-- Footer: `Powered by EV Charge Calculator · v7`.
-- GitHub artifact: `EVChargeCalculator-v7`.
-- APK filename: `EVChargeCalculator-v7.apk`.
-- GitHub Actions uses `setup-java@v7`.
+- Footer: `Powered by EV Charge Calculator · v1.0.5`.
+- GitHub artifact: `EVChargeCalculator-v1.0.5`.
+- APK filename: `EVChargeCalculator-v1.0.5.apk`.
+- GitHub Actions uses `setup-java@v5`.
 
 
 ## Cambios v7
