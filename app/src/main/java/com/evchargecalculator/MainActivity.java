@@ -1,6 +1,6 @@
 package com.evchargecalculator;
 
-import android.app.*;import android.os.*;import android.graphics.Color;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
+import android.app.*;import android.os.*;import android.graphics.Rect;import android.graphics.Color;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
 
 public class MainActivity extends Activity {
  ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText battery,power,price,departure,xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch; TextView timeR,energyR,costR,statusR,startCalculated,themeButton,rangeSummary,chargeAmount; boolean busy,dark=false;
