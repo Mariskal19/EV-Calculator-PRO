@@ -22,8 +22,22 @@ public class BatteryRangeView extends View {
         p.setStrokeWidth(dp(4)); p.setStrokeCap(Paint.Cap.ROUND); p.setColor(Color.rgb(220,230,240)); c.drawLine(left,y,right,y,p);
         p.setColor(blue); c.drawLine(xFor(0),y,xFor(target),y,p);
         p.setColor(Color.rgb(70,205,180)); c.drawLine(xFor(current),y,xFor(target),y,p);
-        p.setShadowLayer(dp(4),0,dp(2),0x55000000); p.setColor(blue); c.drawCircle(xFor(current),y,dp(9),p); p.setColor(Color.rgb(70,205,180)); c.drawCircle(xFor(target),y,dp(9),p); p.clearShadowLayer();
+        p.setShadowLayer(dp(4),0,dp(2),0x55000000); p.setColor(blue); c.drawCircle(xFor(current),y,dp(9),p); p.setColor(Color.rgb(70,205,180)); c.drawCircle(xFor(target),y,dp(9),p); p.clearShadowLayer(); p.setTextSize(dp(12)); p.setTypeface(Typeface.DEFAULT_BOLD); p.setTextAlign(Paint.Align.CENTER); p.setColor(blue); c.drawText(current+" %",xFor(current),y-dp(18),p); p.setColor(Color.rgb(70,205,180)); c.drawText(target+" %",xFor(target),y-dp(18),p);
     }
-    @Override public boolean onTouchEvent(MotionEvent e){ if(e.getAction()==MotionEvent.ACTION_DOWN||e.getAction()==MotionEvent.ACTION_MOVE||e.getAction()==MotionEvent.ACTION_UP){
-            int v=valueFor(e.getX()); if(Math.abs(v-current)<=Math.abs(v-target)){current=Math.min(v,target);} else {target=Math.max(v,current);} invalidate(); if(listener!=null)listener.onChanged(current,target); return true;} return true; }
+    @Override public boolean onTouchEvent(MotionEvent e){
+        if(e.getAction()==MotionEvent.ACTION_DOWN||e.getAction()==MotionEvent.ACTION_MOVE||e.getAction()==MotionEvent.ACTION_UP){
+            int v=valueFor(e.getX());
+            if(Math.abs(v-current)<=Math.abs(v-target)){
+                current=Math.min(v,target-1);
+                if(current<0) current=0;
+            } else {
+                target=Math.max(v,current+1);
+                if(target>100) target=100;
+            }
+            invalidate();
+            if(listener!=null)listener.onChanged(current,target);
+            return true;
+        }
+        return true;
+    }
 }
