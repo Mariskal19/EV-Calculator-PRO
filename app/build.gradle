@@ -1,5 +1,26 @@
-plugins { id 'com.android.application' }
-android { namespace 'com.evchargecalculator'; compileSdk 35
-    defaultConfig { applicationId 'com.evchargecalculator'; minSdk 23; targetSdk 35; versionCode 4; versionName '4.0' }
-    buildTypes { debug { minifyEnabled false } release { minifyEnabled false; proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro' } }
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.evchargecalculator'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.evchargecalculator'
+        minSdk 23
+        targetSdk 35
+        versionCode 4
+        versionName '4.0'
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
 }

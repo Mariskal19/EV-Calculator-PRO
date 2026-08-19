@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
  TextWatcher watch(Runnable r){return new TextWatcher(){public void beforeTextChanged(CharSequence s,int a,int c,int d){}public void onTextChanged(CharSequence s,int a,int b,int c){if(!busy)r.run();}public void afterTextChanged(Editable e){}};}
  void setText(EditText e,String s){e.setText(s);e.setSelection(e.length());}
  void syncBat(){if(busy)return;double v=num(battery);if(v>=20&&v<=120){busy=true;batS.setProgress((int)Math.round(v*2));busy=false;}calculate();}
- void syncSoc(EditText e){if(busy)return;int v=(int)Math.round(num(e));if(v>=0&&v<=100){busy=true;range.setValues(num(startSoc),num(targetSoc));busy=false;}calculate();}
+ void syncSoc(EditText e){if(busy)return;int v=(int)Math.round(num(e));if(v>=0&&v<=100){busy=true;range.setValues((int)Math.round(num(startSoc)),(int)Math.round(num(targetSoc)));busy=false;}calculate();}
  void syncPow(){if(busy)return;double v=num(power);if(v>=0&&v<=20){busy=true;powS.setProgress((int)Math.round(v*20));busy=false;}calculate();}
  void syncPrice(){if(busy)return;double v=num(price);if(v>=0&&v<=1){busy=true;priceS.setProgress((int)Math.round(v*100));busy=false;}calculate();}
  double num(EditText e){try{return Double.parseDouble(e.getText().toString().replace(',','.'));}catch(Exception x){return 0;}}
