@@ -58,6 +58,11 @@ public class MainActivity extends Activity {
    statusIcon.setText("⚠️");statusIcon.setTextSize(28);statusR.setText("No llegas a tiempo");statusTimeR.setText("Faltan "+(deficit/60)+" h "+(deficit%60)+" min");statusR.setTextSize(15);statusTimeR.setTextSize(18);
    statusR.setGravity(Gravity.CENTER);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);
   }}
+ void detach(View v){
+  if(v==null)return;
+  ViewParent p=v.getParent();
+  if(p instanceof ViewGroup)((ViewGroup)p).removeView(v);
+ }
  void statusBoxLayout(boolean ok){
   if(statusBox==null)return;
   statusBox.setOrientation(LinearLayout.HORIZONTAL);
@@ -65,6 +70,9 @@ public class MainActivity extends Activity {
   statusBox.setPadding(dp(10),dp(10),dp(10),dp(10));
   statusBox.setBackground(bg(ok?Color.rgb(27,91,180):Color.rgb(190,63,73),22,0));
   statusBox.removeAllViews();
+  detach(statusIcon);
+  detach(statusR);
+  detach(statusTimeR);
   if(ok){
    statusIcon.setTextSize(30); statusIcon.setGravity(Gravity.CENTER);
    statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(44),dp(54)));
