@@ -17,13 +17,15 @@ public class BatteryRangeView extends View {
     public void setValues(int c,int t){ current=Math.max(0,Math.min(99,c)); target=Math.max(current+1,Math.min(100,t)); invalidate(); }
     public int getCurrent(){return current;} public int getTarget(){return target;}
     public void setListener(Listener l){listener=l;}
-    private float xFor(int v){return dp(8)+(getWidth()-dp(16))*v/100f;}
+    private float xFor(int v){return dp(12)+(getWidth()-dp(24))*v/100f;}
     private float dp(float v){return v*getResources().getDisplayMetrics().density;}
-    private int valueFor(float x){return Math.max(0,Math.min(100,Math.round((x-dp(8))*100f/(getWidth()-dp(16)))));}
+    private int valueFor(float x){return Math.max(0,Math.min(100,Math.round((x-dp(12))*100f/(getWidth()-dp(24)))));}
     @Override protected void onDraw(Canvas c){
-        super.onDraw(c); float y=getHeight()/2f, left=dp(8), right=getWidth()-dp(8);
-        p.setStrokeWidth(dp(5)); p.setStrokeCap(Paint.Cap.ROUND); p.setColor(Color.rgb(220,230,240)); c.drawLine(left,y,right,y,p);
-        p.setColor(blue); c.drawLine(xFor(0),y,xFor(target),y,p);
+        super.onDraw(c); float y=getHeight()/2f, left=xFor(0), right=xFor(100);
+        p.setStrokeWidth(dp(5)); p.setStrokeCap(Paint.Cap.ROUND);
+        // Base track: the area outside the selected charging range remains neutral.
+        p.setColor(Color.rgb(220,230,240)); c.drawLine(left,y,right,y,p);
+        // Only the interval between the current level and the target is highlighted.
         p.setColor(green); c.drawLine(xFor(current),y,xFor(target),y,p);
         p.setShadowLayer(dp(4),0,dp(2),0x55000000);
         p.setColor(blue); c.drawCircle(xFor(current),y,dp(10),p);

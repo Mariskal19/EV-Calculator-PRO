@@ -10,8 +10,8 @@ android {
         applicationId 'com.evchargecalculator'
         minSdk 23
         targetSdk 35
-        versionCode 31
-        versionName '1.0.6'
+        versionCode 32
+        versionName '1.0.7'
     }
 
     buildTypes {
