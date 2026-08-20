@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
   statusIcon=tv("🕓",28,Color.WHITE);statusIcon.setGravity(Gravity.CENTER);statusIcon.setIncludeFontPadding(false);statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(56)));
   statusR=tv("Hora Inicio Recomendada",15,Color.WHITE);statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusR.setTypeface(null,1);statusR.setIncludeFontPadding(false);statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(56),1));
   statusTimeR=tv("18:00",30,Color.WHITE);statusTimeR.setGravity(Gravity.CENTER);statusTimeR.setTypeface(null,1);statusTimeR.setIncludeFontPadding(false);statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(100),dp(56)));
-  c4.addView(statusBox,new LinearLayout.LayoutParams(-1,dp(96)));root.addView(c4);space(10);String appVersion="1.0.11";try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}TextView foot=tv("Powered by EV Charge Calculator · v"+appVersion,12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot);space(8);setup();
+  spaceIn(c4,18);c4.addView(statusBox,new LinearLayout.LayoutParams(-1,dp(78)));root.addView(c4);space(10);String appVersion="1.0.12";try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}TextView foot=tv("Powered by EV Charge Calculator · v"+appVersion,12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot);space(8);setup();
  }
  void space(int n){Space s=new Space(this);root.addView(s,new LinearLayout.LayoutParams(1,dp(n)));} void spaceIn(LinearLayout p,int n){Space s=new Space(this);p.addView(s,new LinearLayout.LayoutParams(1,dp(n)));}
  void applyTheme(){background.setDark(dark);getWindow().setStatusBarColor(dark?Color.rgb(7,11,18):Color.rgb(242,247,252));getWindow().setNavigationBarColor(dark?Color.rgb(7,11,18):Color.rgb(242,247,252));getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);themeButton.setText(dark?"☀":"☾");themeButton.setTextColor(text());themeButton.setBackground(bg(Color.TRANSPARENT,12,0));}
@@ -59,9 +59,47 @@ public class MainActivity extends Activity {
    statusR.setGravity(Gravity.CENTER);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);
   }}
  void statusBoxLayout(boolean ok){
-  ViewParent p=statusR.getParent();if(!(p instanceof LinearLayout))return;LinearLayout box=(LinearLayout)p;box.setOrientation(ok?LinearLayout.HORIZONTAL:LinearLayout.VERTICAL);box.setGravity(Gravity.CENTER);box.setPadding(dp(14),dp(20),dp(14),dp(20));box.setBackground(bg(ok?Color.rgb(27,91,180):Color.rgb(190,63,73),22,0));
-  if(ok){box.removeAllViews();box.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(56)));box.addView(statusR,new LinearLayout.LayoutParams(0,dp(56),1));box.addView(statusTimeR,new LinearLayout.LayoutParams(dp(100),dp(56)));box.getLayoutParams().height=dp(96);}
-  else{box.removeAllViews();box.addView(statusIcon,new LinearLayout.LayoutParams(-1,dp(40)));box.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28)));box.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(28)));box.getLayoutParams().height=dp(132);}
+  ViewParent parent=statusIcon.getParent();
+  if(!(parent instanceof ViewGroup))return;
+  ViewGroup old=(ViewGroup)parent;
+  ViewParent boxParent=old.getParent();
+  if(!(boxParent instanceof LinearLayout))return;
+  LinearLayout box=(LinearLayout)boxParent;
+  box.setOrientation(LinearLayout.HORIZONTAL);
+  box.setGravity(Gravity.CENTER_VERTICAL);
+  box.setPadding(dp(10),dp(10),dp(10),dp(10));
+  box.setBackground(bg(ok?Color.rgb(27,91,180):Color.rgb(190,63,73),22,0));
+  box.removeAllViews();
+  if(ok){
+   statusIcon.setTextSize(30);
+   statusIcon.setGravity(Gravity.CENTER);
+   LinearLayout.LayoutParams iconLp=new LinearLayout.LayoutParams(dp(44),dp(54));
+   box.addView(statusIcon,iconLp);
+   statusR.setTextSize(14);
+   statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
+   LinearLayout.LayoutParams textLp=new LinearLayout.LayoutParams(0,dp(54),1);
+   textLp.leftMargin=dp(4); textLp.rightMargin=dp(4);
+   box.addView(statusR,textLp);
+   statusTimeR.setTextSize(28);
+   statusTimeR.setGravity(Gravity.CENTER);
+   box.addView(statusTimeR,new LinearLayout.LayoutParams(dp(82),dp(54)));
+   box.getLayoutParams().height=dp(76);
+  }else{
+   statusIcon.setTextSize(30);
+   statusIcon.setGravity(Gravity.CENTER);
+   box.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(60)));
+   LinearLayout textColumn=new LinearLayout(this);
+   textColumn.setOrientation(LinearLayout.VERTICAL);
+   textColumn.setGravity(Gravity.CENTER_VERTICAL);
+   textColumn.setPadding(dp(4),0,0,0);
+   statusR.setTextSize(15);
+   statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+   statusTimeR.setTextSize(16);
+   statusTimeR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+   textColumn.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28)));
+   textColumn.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(28)));
+   box.addView(textColumn,new LinearLayout.LayoutParams(0,dp(60),1));
+   box.getLayoutParams().height=dp(82);
+  }
   box.requestLayout();
- }
-}
+ }}

@@ -1,4 +1,4 @@
-# EV Charge Calculator v1.0.11
+# EV Charge Calculator v1.0.12
 
 Android EV charging calculator.
 
@@ -12,9 +12,9 @@ Android EV charging calculator.
 - Cuando no se llega a tiempo, muestra un bloque rojizo redondeado con ⚠️ grande, “No llegas a tiempo” y “Faltan…” en dos filas centradas.
 - Actualizado el workflow de GitHub Actions para utilizar versiones actuales de las acciones.
 - Soporte de coma decimal en la interfaz; también se aceptan puntos al introducir datos.
-- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.11`.
+- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.12`.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.11.zip`
-- APK: `EVChargeCalculator-v1.0.11.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.11`
+- ZIP: `EVChargeCalculator-v1.0.12.zip`
+- APK: `EVChargeCalculator-v1.0.12.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.12`
