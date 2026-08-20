@@ -10,8 +10,8 @@ public class BatteryRangeView extends View {
     private final Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
     private int current=30, target=80;
     private Listener listener;
-    private final int blue=Color.rgb(168,92,255);
-    private final int green=Color.rgb(255,174,72);
+    private final int blue=Color.rgb(27,139,220);
+    private final int green=Color.rgb(70,205,180);
     private int activeThumb = -1;
     public BatteryRangeView(Context c){super(c); setLayerType(View.LAYER_TYPE_SOFTWARE,null); setClickable(true);}
     public void setValues(int c,int t){ current=Math.max(0,Math.min(99,c)); target=Math.max(current+1,Math.min(100,t)); invalidate(); }
@@ -22,7 +22,7 @@ public class BatteryRangeView extends View {
     private int valueFor(float x){return Math.max(0,Math.min(100,Math.round((x-dp(8))*100f/(getWidth()-dp(16)))));}
     @Override protected void onDraw(Canvas c){
         super.onDraw(c); float y=getHeight()/2f, left=dp(8), right=getWidth()-dp(8);
-        p.setStrokeWidth(dp(5)); p.setStrokeCap(Paint.Cap.ROUND); p.setColor(Color.rgb(68,54,91)); c.drawLine(left,y,right,y,p);
+        p.setStrokeWidth(dp(5)); p.setStrokeCap(Paint.Cap.ROUND); p.setColor(Color.rgb(220,230,240)); c.drawLine(left,y,right,y,p);
         p.setColor(blue); c.drawLine(xFor(0),y,xFor(target),y,p);
         p.setColor(green); c.drawLine(xFor(current),y,xFor(target),y,p);
         p.setShadowLayer(dp(4),0,dp(2),0x55000000);
