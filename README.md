@@ -1,4 +1,4 @@
-# EV Charge Calculator v1.0.13
+# EV Charge Calculator v1.0.14
 
 Android EV charging calculator.
 
@@ -14,9 +14,12 @@ Android EV charging calculator.
 - Actualizado el workflow de GitHub Actions para utilizar versiones actuales de las acciones.
 - Soporte de coma decimal en la interfaz; también se aceptan puntos al introducir datos.
 - Pie de pantalla: se añade margen inferior para respetar la zona de navegación del teléfono.
-- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.13`.
+- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.14`.
+
+- Corrección de la fila de “Hora Salida” para evitar que el texto quede cortado verticalmente.
+- Estado de error > 24 h: utiliza el mismo formato rojo de dos líneas y el ⚠️ grande a la izquierda, sin exclamación pequeña adicional.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.13.zip`
-- APK: `EVChargeCalculator-v1.0.13.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.13`
+- ZIP: `EVChargeCalculator-v1.0.14.zip`
+- APK: `EVChargeCalculator-v1.0.14.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.14`
