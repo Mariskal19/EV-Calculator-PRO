@@ -1,20 +1,7 @@
 package com.evchargecalculator;
 import android.content.Context;import android.graphics.*;import android.view.View;
-public class PremiumBackgroundView extends View {
- private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG); private final Path path=new Path(); private boolean dark=true;
- public PremiumBackgroundView(Context c){super(c);setLayerType(View.LAYER_TYPE_SOFTWARE,null);} public void setDark(boolean d){dark=d;invalidate();}
- @Override protected void onDraw(Canvas c){float w=getWidth(),h=getHeight();
-  int top=dark?Color.rgb(4,10,19):Color.rgb(242,248,253), bottom=dark?Color.rgb(6,20,32):Color.rgb(225,239,249);
-  p.setStyle(Paint.Style.FILL);p.setShader(new LinearGradient(0,0,w,h,top,bottom,Shader.TileMode.CLAMP));c.drawRect(0,0,w,h,p);p.setShader(null);
-  p.setColor(dark?Color.argb(55,0,116,255):Color.argb(28,0,116,255));p.setMaskFilter(new BlurMaskFilter(105,BlurMaskFilter.Blur.NORMAL));c.drawCircle(w*.78f,h*.10f,dark?145:125,p);
-  p.setColor(dark?Color.argb(34,0,196,184):Color.argb(25,0,170,160));c.drawCircle(w*.12f,h*.38f,125,p);p.setMaskFilter(null);
-  // subtle electric grid
-  p.setColor(dark?Color.argb(22,130,170,210):Color.argb(22,75,110,145));p.setStrokeWidth(1);
-  for(float y=h*.73f;y<h;y+=d(34)) c.drawLine(0,y,w,y,p); for(float x=0;x<w;x+=d(42)) c.drawLine(x,h*.73f,x,h,p);
-  // ghost EV silhouette
-  float y=h*.70f,x=w*.56f,cw=w*.44f;p.setColor(dark?Color.argb(36,120,160,200):Color.argb(28,70,105,135));
-  path.reset();path.moveTo(x-cw*.50f,y);path.lineTo(x-cw*.37f,y-cw*.18f);path.quadTo(x-cw*.25f,y-cw*.29f,x-cw*.02f,y-cw*.29f);path.lineTo(x+cw*.19f,y-cw*.27f);path.quadTo(x+cw*.39f,y-cw*.21f,x+cw*.50f,y);path.lineTo(x+cw*.45f,y);path.lineTo(x+cw*.45f,y+cw*.06f);path.lineTo(x-cw*.45f,y+cw*.06f);path.close();c.drawPath(path,p);
-  p.setColor(dark?Color.argb(55,0,116,255):Color.argb(34,0,116,255));c.drawCircle(x-cw*.30f,y+cw*.05f,25,p);c.drawCircle(x+cw*.30f,y+cw*.05f,25,p);
- }
- private float d(float v){return v*getResources().getDisplayMetrics().density;}
-}
+public class PremiumBackgroundView extends View { private final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG); private final Path path=new Path(); private boolean dark=true; public PremiumBackgroundView(Context c){super(c);setLayerType(View.LAYER_TYPE_SOFTWARE,null);} public void setDark(boolean d){dark=d;invalidate();}
+@Override protected void onDraw(Canvas c){float w=getWidth(),h=getHeight(); p.setStyle(Paint.Style.FILL); int a=dark?Color.rgb(5,9,16):Color.rgb(242,247,252),b=dark?Color.rgb(7,22,34):Color.rgb(228,239,248); p.setShader(new LinearGradient(0,0,w,h,a,b,Shader.TileMode.CLAMP));c.drawRect(0,0,w,h,p);p.setShader(null);
+ p.setColor(dark?Color.argb(42,54,184,255):Color.argb(30,27,139,220));p.setMaskFilter(new BlurMaskFilter(90,BlurMaskFilter.Blur.NORMAL));c.drawCircle(w*.72f,h*.12f,150,p);p.setColor(dark?Color.argb(30,77,225,193):Color.argb(22,70,205,180));c.drawCircle(w*.18f,h*.35f,130,p);p.setMaskFilter(null);
+ p.setColor(dark?Color.argb(32,180,205,230):Color.argb(28,80,110,140));c.drawRect(0,h*.72f,w,h*.725f,p);float y=h*.67f,x=w*.55f,cw=w*.42f;p.setColor(dark?Color.argb(40,145,180,215):Color.argb(24,90,125,160));path.reset();path.moveTo(x-cw*.5f,y);path.lineTo(x-cw*.38f,y-cw*.18f);path.quadTo(x-cw*.24f,y-cw*.30f,x-cw*.02f,y-cw*.30f);path.lineTo(x+cw*.20f,y-cw*.28f);path.quadTo(x+cw*.38f,y-cw*.23f,x+cw*.5f,y);path.close();c.drawPath(path,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(3);p.setColor(dark?Color.argb(70,180,215,240):Color.argb(45,90,125,160));c.drawPath(path,p);p.setStyle(Paint.Style.FILL);p.setColor(dark?Color.argb(65,54,184,255):Color.argb(35,27,139,220));c.drawCircle(x-cw*.30f,y+2,27,p);c.drawCircle(x+cw*.30f,y+2,27,p);
+ p.setColor(dark?Color.argb(75,54,184,255):Color.argb(45,27,139,220));c.drawRoundRect(w*.08f,h*.54f,w*.13f,h*.72f,10,10,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(5);p.setColor(dark?Color.argb(55,54,184,255):Color.argb(35,27,139,220));path.reset();path.moveTo(w*.13f,h*.62f);path.cubicTo(w*.22f,h*.52f,w*.31f,h*.60f,w*.34f,h*.67f);c.drawPath(path,p);p.setStyle(Paint.Style.FILL);}}
