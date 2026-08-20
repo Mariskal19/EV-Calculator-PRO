@@ -3,7 +3,7 @@ package com.evchargecalculator;
 import android.app.*;import android.os.*;import android.graphics.Rect;import android.graphics.Color;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.text.method.DigitsKeyListener;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
 
 public class MainActivity extends Activity {
- ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText battery,power,price,departure,xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch; TextView timeR,energyR,costR,statusR,statusTimeR,statusIcon,themeButton,rangeSummary,chargeAmount; boolean busy,dark=false;
+ ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText battery,power,price,departure,xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch; TextView timeR,energyR,costR,statusR,statusTimeR,statusIcon,themeButton,rangeSummary,chargeAmount; LinearLayout statusBox; boolean busy,dark=false;
  int blue=Color.rgb(27,139,220), green=Color.rgb(50,190,155), white=Color.rgb(25,38,58), secondary=Color.rgb(82,104,130), cardLight=Color.argb(235,255,255,255), cardDark=Color.argb(218,17,25,39);
  @Override public void onCreate(Bundle b){super.onCreate(b);getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE); dark=(getResources().getConfiguration().uiMode & 0x30)==0x20; build();applyTheme();calculate();}
  int text(){return dark?Color.rgb(245,248,255):white;} int sub(){return dark?Color.rgb(170,183,204):secondary;}
@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
   LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);xr.addView(tv("Centinela / XGuard (consumo / 24 h)",14,sub()),new LinearLayout.LayoutParams(0,54,1));xSwitch=new Switch(this);xSwitch.setChecked(true);xr.addView(xSwitch);xguard=edit("5,0");xguard.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);xguard.setKeyListener(DigitsKeyListener.getInstance("0123456789,."));xguard.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);xr.addView(xguard,new LinearLayout.LayoutParams(dp(88),54));TextView xp=tv("%",13,sub());xp.setGravity(Gravity.CENTER);xr.addView(xp,new LinearLayout.LayoutParams(dp(58),54));c2.addView(xr);root.addView(c2);space(14);
   LinearLayout c3=card();TextView h3=tv("Resultado",18,text());h3.setTypeface(null,1);c3.addView(h3);spaceIn(c3,14);timeR=tv("00 h 00 min",30,text());timeR.setTypeface(null,1);c3.addView(timeR);energyR=tv("0,0 kWh",17,blue);c3.addView(energyR);costR=tv("0,00 €",16,sub());c3.addView(costR);root.addView(c3);space(14);
   LinearLayout c4=card();TextView h4=tv("Hora Salida",18,text());h4.setTypeface(null,1);c4.addView(h4);spaceIn(c4,14);departure=edit("07:00");departure.setInputType(android.text.InputType.TYPE_CLASS_DATETIME|android.text.InputType.TYPE_DATETIME_VARIATION_TIME);departure.setKeyListener(null);departure.setCursorVisible(false);departure.setShowSoftInputOnFocus(false);departure.setSelectAllOnFocus(false);departure.setFocusable(false);departure.setClickable(true);departure.setOnClickListener(v->{hideKeyboard(v);pickTime(departure);});row(c4,"Hora Salida",departure,"");
-  LinearLayout statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER);statusBox.setPadding(dp(14),dp(20),dp(14),dp(20));statusBox.setBackground(bg(Color.rgb(27,91,180),22,0));
+  statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER);statusBox.setPadding(dp(14),dp(20),dp(14),dp(20));statusBox.setBackground(bg(Color.rgb(27,91,180),22,0));
   statusIcon=tv("🕓",28,Color.WHITE);statusIcon.setGravity(Gravity.CENTER);statusIcon.setIncludeFontPadding(false);statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(56)));
   statusR=tv("Hora Inicio Recomendada",15,Color.WHITE);statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusR.setTypeface(null,1);statusR.setIncludeFontPadding(false);statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(56),1));
   statusTimeR=tv("18:00",30,Color.WHITE);statusTimeR.setGravity(Gravity.CENTER);statusTimeR.setTypeface(null,1);statusTimeR.setIncludeFontPadding(false);statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(100),dp(56)));
@@ -59,47 +59,31 @@ public class MainActivity extends Activity {
    statusR.setGravity(Gravity.CENTER);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);
   }}
  void statusBoxLayout(boolean ok){
-  ViewParent parent=statusIcon.getParent();
-  if(!(parent instanceof ViewGroup))return;
-  ViewGroup old=(ViewGroup)parent;
-  ViewParent boxParent=old.getParent();
-  if(!(boxParent instanceof LinearLayout))return;
-  LinearLayout box=(LinearLayout)boxParent;
-  box.setOrientation(LinearLayout.HORIZONTAL);
-  box.setGravity(Gravity.CENTER_VERTICAL);
-  box.setPadding(dp(10),dp(10),dp(10),dp(10));
-  box.setBackground(bg(ok?Color.rgb(27,91,180):Color.rgb(190,63,73),22,0));
-  box.removeAllViews();
+  if(statusBox==null)return;
+  statusBox.setOrientation(LinearLayout.HORIZONTAL);
+  statusBox.setGravity(Gravity.CENTER_VERTICAL);
+  statusBox.setPadding(dp(10),dp(10),dp(10),dp(10));
+  statusBox.setBackground(bg(ok?Color.rgb(27,91,180):Color.rgb(190,63,73),22,0));
+  statusBox.removeAllViews();
   if(ok){
-   statusIcon.setTextSize(30);
-   statusIcon.setGravity(Gravity.CENTER);
-   LinearLayout.LayoutParams iconLp=new LinearLayout.LayoutParams(dp(44),dp(54));
-   box.addView(statusIcon,iconLp);
-   statusR.setTextSize(14);
-   statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
-   LinearLayout.LayoutParams textLp=new LinearLayout.LayoutParams(0,dp(54),1);
-   textLp.leftMargin=dp(4); textLp.rightMargin=dp(4);
-   box.addView(statusR,textLp);
-   statusTimeR.setTextSize(28);
-   statusTimeR.setGravity(Gravity.CENTER);
-   box.addView(statusTimeR,new LinearLayout.LayoutParams(dp(82),dp(54)));
-   box.getLayoutParams().height=dp(76);
+   statusIcon.setTextSize(30); statusIcon.setGravity(Gravity.CENTER);
+   statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(44),dp(54)));
+   statusR.setTextSize(14); statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
+   LinearLayout.LayoutParams textLp=new LinearLayout.LayoutParams(0,dp(54),1); textLp.leftMargin=dp(4); textLp.rightMargin=dp(4);
+   statusBox.addView(statusR,textLp);
+   statusTimeR.setTextSize(28); statusTimeR.setGravity(Gravity.CENTER);
+   statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(82),dp(54)));
+   statusBox.getLayoutParams().height=dp(76);
   }else{
-   statusIcon.setTextSize(30);
-   statusIcon.setGravity(Gravity.CENTER);
-   box.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(60)));
-   LinearLayout textColumn=new LinearLayout(this);
-   textColumn.setOrientation(LinearLayout.VERTICAL);
-   textColumn.setGravity(Gravity.CENTER_VERTICAL);
-   textColumn.setPadding(dp(4),0,0,0);
-   statusR.setTextSize(15);
-   statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
-   statusTimeR.setTextSize(16);
-   statusTimeR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
-   textColumn.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28)));
-   textColumn.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(28)));
-   box.addView(textColumn,new LinearLayout.LayoutParams(0,dp(60),1));
-   box.getLayoutParams().height=dp(82);
+   statusIcon.setTextSize(30); statusIcon.setGravity(Gravity.CENTER);
+   statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(60)));
+   LinearLayout textColumn=new LinearLayout(this); textColumn.setOrientation(LinearLayout.VERTICAL); textColumn.setGravity(Gravity.CENTER_VERTICAL); textColumn.setPadding(dp(4),0,0,0);
+   statusR.setTextSize(15); statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+   statusTimeR.setTextSize(16); statusTimeR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+   textColumn.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28))); textColumn.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(28)));
+   statusBox.addView(textColumn,new LinearLayout.LayoutParams(0,dp(60),1));
+   statusBox.getLayoutParams().height=dp(82);
   }
-  box.requestLayout();
- }}
+  statusBox.requestLayout();
+ }
+}
