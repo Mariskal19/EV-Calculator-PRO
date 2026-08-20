@@ -1,4 +1,4 @@
-# EV Charge Calculator v1.0.10
+# EV Charge Calculator v1.0.11
 
 Android EV charging calculator.
 
@@ -8,13 +8,13 @@ Android EV charging calculator.
 - Segunda barra de Batería: mantiene el tramo coloreado únicamente entre el porcentaje actual y el objetivo.
 - Hora Salida: usa automáticamente la hora actual del sistema para calcular el tiempo disponible.
 - Hora Salida: resultado visual destacado con fondo cobalto cuando se llega a tiempo y fondo rojizo de alerta cuando no se llega a tiempo.
-- Cuando se llega a tiempo, muestra “🕓 Hora Inicio Recomendada” y la hora en tamaño grande.
-- Cuando no se llega a tiempo, muestra “⚠ No llegas a tiempo” y el tiempo que falta.
+- Cuando se llega a tiempo, muestra un bloque cobalto redondeado con reloj grande, “Hora Inicio Recomendada” y la hora en una sola fila.
+- Cuando no se llega a tiempo, muestra un bloque rojizo redondeado con ⚠️ grande, “No llegas a tiempo” y “Faltan…” en dos filas centradas.
 - Actualizado el workflow de GitHub Actions para utilizar versiones actuales de las acciones.
 - Soporte de coma decimal en la interfaz; también se aceptan puntos al introducir datos.
-- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.10`.
+- Pie de pantalla: `Powered by EV Charge Calculator · v1.0.11`.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.10.zip`
-- APK: `EVChargeCalculator-v1.0.10.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.10`
+- ZIP: `EVChargeCalculator-v1.0.11.zip`
+- APK: `EVChargeCalculator-v1.0.11.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.11`
