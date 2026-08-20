@@ -26,13 +26,13 @@ public class MainActivity extends Activity {
   chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(20);
   LinearLayout c2=card();TextView h2=tv("Carga",18,text());h2.setTypeface(null,1);c2.addView(h2);spaceIn(c2,14);power=edit("3,45");row(c2,"Potencia",power,"kW");spaceIn(c2,10);price=edit("0,15");row(c2,"Precio energía",price,"€/kWh");spaceIn(c2,10);
   LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);xr.addView(tv("Centinela / XGuard (consumo / 24 h)",14,sub()),new LinearLayout.LayoutParams(0,54,1));xSwitch=new Switch(this);xSwitch.setChecked(true);xr.addView(xSwitch);xguard=edit("5,0");xguard.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);xguard.setKeyListener(DigitsKeyListener.getInstance("0123456789,."));xguard.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);xr.addView(xguard,new LinearLayout.LayoutParams(dp(88),54));TextView xp=tv("%",13,sub());xp.setGravity(Gravity.CENTER);xr.addView(xp,new LinearLayout.LayoutParams(dp(58),54));c2.addView(xr);root.addView(c2);space(14);
-  LinearLayout c3=card();TextView h3=tv("Tiempo de Carga",18,text());h3.setTypeface(null,1);timeR=tv("00 h 00 min",30,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);LinearLayout resultRow1=new LinearLayout(this);resultRow1.setGravity(Gravity.CENTER_VERTICAL);resultRow1.addView(h3,new LinearLayout.LayoutParams(0,dp(54),1));resultRow1.addView(timeR,new LinearLayout.LayoutParams(dp(150),dp(54)));c3.addView(resultRow1);spaceIn(c3,8);TextView costLabel=tv("Coste de carga",16,sub());costR=tv("0,00 € (0,0 kWh)",16,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);LinearLayout resultRow2=new LinearLayout(this);resultRow2.setGravity(Gravity.CENTER_VERTICAL);resultRow2.addView(costLabel,new LinearLayout.LayoutParams(0,dp(40),1));resultRow2.addView(costR,new LinearLayout.LayoutParams(dp(190),dp(40)));c3.addView(resultRow2);root.addView(c3);space(14);
+  LinearLayout c3=card();TextView h3=tv("Resultado",18,text());h3.setTypeface(null,1);c3.addView(h3);spaceIn(c3,14);timeR=tv("00 h 00 min",30,text());timeR.setTypeface(null,1);c3.addView(timeR);energyR=tv("0,0 kWh",17,blue);c3.addView(energyR);costR=tv("0,00 €",16,sub());c3.addView(costR);root.addView(c3);space(14);
   LinearLayout c4=card();LinearLayout departureHeader=new LinearLayout(this);departureHeader.setGravity(Gravity.CENTER_VERTICAL);TextView h4=tv("Hora Salida",18,text());h4.setTypeface(null,1);departureHeader.addView(h4,new LinearLayout.LayoutParams(0,54,1));departure=edit("07:00");departure.setTypeface(null,1);departure.setTextSize(17);departure.setInputType(android.text.InputType.TYPE_CLASS_DATETIME|android.text.InputType.TYPE_DATETIME_VARIATION_TIME);departure.setKeyListener(null);departure.setCursorVisible(false);departure.setShowSoftInputOnFocus(false);departure.setSelectAllOnFocus(false);departure.setFocusable(false);departure.setClickable(true);departure.setOnClickListener(v->{hideKeyboard(v);pickTime(departure);});departureHeader.addView(departure,new LinearLayout.LayoutParams(dp(104),54));c4.addView(departureHeader);
-  statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER);statusBox.setPadding(dp(10),dp(10),dp(10),dp(10));statusBox.setBackground(bg(Color.rgb(27,91,180),22,0));
+  statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER);statusBox.setPadding(dp(14),dp(20),dp(14),dp(20));statusBox.setBackground(bg(Color.rgb(27,91,180),22,0));
   statusIcon=tv("🕓",28,Color.WHITE);statusIcon.setGravity(Gravity.CENTER);statusIcon.setIncludeFontPadding(false);statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(56)));
   statusR=tv("Hora Inicio Recomendada",15,Color.WHITE);statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusR.setTypeface(null,1);statusR.setIncludeFontPadding(false);statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(56),1));
   statusTimeR=tv("18:00",30,Color.WHITE);statusTimeR.setGravity(Gravity.CENTER);statusTimeR.setTypeface(null,1);statusTimeR.setIncludeFontPadding(false);statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(100),dp(56)));
-  spaceIn(c4,18);c4.addView(statusBox,new LinearLayout.LayoutParams(-1,dp(78)));root.addView(c4);space(10);String appVersion="1.0.18";try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}TextView foot=tv("Powered by EV Charge Calculator · v"+appVersion,12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot);space(8);setup();
+  spaceIn(c4,18);c4.addView(statusBox,new LinearLayout.LayoutParams(-1,dp(78)));root.addView(c4);space(10);String appVersion="1.0.13";try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}TextView foot=tv("Powered by EV Charge Calculator · v"+appVersion,12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot);space(8);setup();
  }
  void space(int n){Space s=new Space(this);root.addView(s,new LinearLayout.LayoutParams(1,dp(n)));} void spaceIn(LinearLayout p,int n){Space s=new Space(this);p.addView(s,new LinearLayout.LayoutParams(1,dp(n)));}
  void applyTheme(){background.setDark(dark);getWindow().setStatusBarColor(dark?Color.rgb(7,11,18):Color.rgb(242,247,252));getWindow().setNavigationBarColor(dark?Color.rgb(7,11,18):Color.rgb(242,247,252));getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);themeButton.setText(dark?"☀":"☾");themeButton.setTextColor(text());themeButton.setBackground(bg(Color.TRANSPARENT,12,0));}
@@ -49,15 +49,49 @@ public class MainActivity extends Activity {
  double num(EditText e){try{return Double.parseDouble(e.getText().toString().replace(',','.'));}catch(Exception x){return 0;}}
  String fmt(double v,int d){DecimalFormat f=new DecimalFormat("0."+"0".repeat(d),DecimalFormatSymbols.getInstance(Locale.US));return f.format(v).replace('.',',');}
  int minutes(String s){try{String[] a=s.trim().split(":");return Integer.parseInt(a[0])*60+Integer.parseInt(a[1]);}catch(Exception e){return -1;}}
- void calculate(){if(battery==null)return;double cap=num(battery),st=range.getCurrent(),tar=range.getTarget(),kw=num(power),eur=num(price),x=num(xguard);double diff=tar-st;rangeSummary.setText("Cargar la batería desde "+((int)st)+"% al "+((int)tar)+"%");chargeAmount.setText("Se cargará "+((int)diff)+"% - "+fmt(cap*diff/100.0,1)+" kWh");if(cap<=0||kw<=0||tar<=st){timeR.setText("00 h 00 min");energyR.setText("0,0 kWh");costR.setText("0,00 € (0,0 kWh)");statusR.setText("");statusTimeR.setText("");return;}int dm=minutes(departure.getText().toString());if(dm<0){statusR.setText("⚠  Hora de salida no válida");statusTimeR.setText("");statusR.setTextColor(Color.WHITE);return;}double base=cap*diff/100.0;double baseMin=base/kw*60.0;double factor=xSwitch.isChecked()?cap*x/(100.0*24.0*kw):0;double mins=baseMin/(1.0-factor);if(factor>=1.0||mins>1440){timeR.setText("> 24 h");statusR.setText("⚠  No es posible alcanzar el objetivo");statusTimeR.setText("> 24 h");statusR.setTextColor(Color.WHITE);return;}double extra=xSwitch.isChecked()?cap*x/100.0*(mins/1440.0):0;double energy=base+extra;timeR.setText(String.format(Locale.US,"%02d h %02d min",(int)(mins/60),(int)Math.round(mins%60)));energyR.setText(fmt(energy,1)+" kWh");costR.setText(fmt(energy*eur,2)+" € ("+fmt(energy,1)+" kWh)");Calendar now=Calendar.getInstance();int nowMin=now.get(Calendar.HOUR_OF_DAY)*60+now.get(Calendar.MINUTE);int available=dm-nowMin;if(available<=0)available+=1440;int start=(int)Math.round(dm-mins);start=((start%1440)+1440)%1440;int needed=(int)Math.ceil(mins);boolean onTime=needed<=available;int margin=Math.max(0,available-needed);String tm=String.format(Locale.US,"%02d:%02d",start/60,start%60); if(onTime){
-   statusBox.setBackground(bg(Color.rgb(27,91,180),22,0));
+ void calculate(){if(battery==null)return;double cap=num(battery),st=range.getCurrent(),tar=range.getTarget(),kw=num(power),eur=num(price),x=num(xguard);double diff=tar-st;rangeSummary.setText("Cargar la batería desde "+((int)st)+"% al "+((int)tar)+"%");chargeAmount.setText("Se cargará "+((int)diff)+"% - "+fmt(cap*diff/100.0,1)+" kWh");if(cap<=0||kw<=0||tar<=st){timeR.setText("00 h 00 min");energyR.setText("0,0 kWh");costR.setText("0,00 €");statusR.setText("");statusTimeR.setText("");return;}int dm=minutes(departure.getText().toString());if(dm<0){statusR.setText("⚠  Hora de salida no válida");statusTimeR.setText("");statusR.setTextColor(Color.WHITE);return;}double base=cap*diff/100.0;double baseMin=base/kw*60.0;double factor=xSwitch.isChecked()?cap*x/(100.0*24.0*kw):0;double mins=baseMin/(1.0-factor);if(factor>=1.0||mins>1440){timeR.setText("> 24 h");statusR.setText("⚠  No es posible alcanzar el objetivo");statusTimeR.setText("> 24 h");statusR.setTextColor(Color.WHITE);return;}double extra=xSwitch.isChecked()?cap*x/100.0*(mins/1440.0):0;double energy=base+extra;timeR.setText(String.format(Locale.US,"%02d h %02d min",(int)(mins/60),(int)Math.round(mins%60)));energyR.setText(fmt(energy,1)+" kWh");costR.setText(fmt(energy*eur,2)+" €");Calendar now=Calendar.getInstance();int nowMin=now.get(Calendar.HOUR_OF_DAY)*60+now.get(Calendar.MINUTE);int available=dm-nowMin;if(available<=0)available+=1440;int start=(int)Math.round(dm-mins);start=((start%1440)+1440)%1440;int needed=(int)Math.ceil(mins);boolean onTime=needed<=available;int margin=Math.max(0,available-needed);String tm=String.format(Locale.US,"%02d:%02d",start/60,start%60); if(onTime){
+   statusBoxLayout(true);
    statusIcon.setText("🕓");statusIcon.setTextSize(28);statusR.setText("Hora Inicio Recomendada");statusTimeR.setText(tm);statusTimeR.setTextSize(30);
    statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);
   }else{
-   int deficit=needed-available;
-   statusBox.setBackground(bg(Color.rgb(190,63,73),22,0));
-   statusIcon.setText("⚠️");statusIcon.setTextSize(28);statusR.setText("No llegas a tiempo");statusTimeR.setText("> "+(deficit/60));statusR.setTextSize(15);statusTimeR.setTextSize(18);
-   statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);
+   int deficit=needed-available;statusBoxLayout(false);
+   statusIcon.setText("⚠️");statusIcon.setTextSize(28);statusR.setText("No llegas a tiempo");statusTimeR.setText("Faltan "+(deficit/60)+" h "+(deficit%60)+" min");statusR.setTextSize(15);statusTimeR.setTextSize(18);
+   statusR.setGravity(Gravity.CENTER);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);
   }}
-
+ void detach(View v){
+  if(v==null)return;
+  ViewParent p=v.getParent();
+  if(p instanceof ViewGroup)((ViewGroup)p).removeView(v);
+ }
+ void statusBoxLayout(boolean ok){
+  if(statusBox==null)return;
+  statusBox.setOrientation(LinearLayout.HORIZONTAL);
+  statusBox.setGravity(Gravity.CENTER_VERTICAL);
+  statusBox.setPadding(dp(10),dp(10),dp(10),dp(10));
+  statusBox.setBackground(bg(ok?Color.rgb(27,91,180):Color.rgb(190,63,73),22,0));
+  statusBox.removeAllViews();
+  detach(statusIcon);
+  detach(statusR);
+  detach(statusTimeR);
+  if(ok){
+   statusIcon.setTextSize(30); statusIcon.setGravity(Gravity.CENTER);
+   statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(44),dp(54)));
+   statusR.setTextSize(14); statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);
+   LinearLayout.LayoutParams textLp=new LinearLayout.LayoutParams(0,dp(54),1); textLp.leftMargin=dp(4); textLp.rightMargin=dp(4);
+   statusBox.addView(statusR,textLp);
+   statusTimeR.setTextSize(28); statusTimeR.setGravity(Gravity.CENTER);
+   statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(82),dp(54)));
+   statusBox.getLayoutParams().height=dp(76);
+  }else{
+   statusIcon.setTextSize(30); statusIcon.setGravity(Gravity.CENTER);
+   statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(60)));
+   LinearLayout textColumn=new LinearLayout(this); textColumn.setOrientation(LinearLayout.VERTICAL); textColumn.setGravity(Gravity.CENTER_VERTICAL); textColumn.setPadding(dp(4),0,0,0);
+   statusR.setTextSize(15); statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+   statusTimeR.setTextSize(16); statusTimeR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+   textColumn.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28))); textColumn.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(28)));
+   statusBox.addView(textColumn,new LinearLayout.LayoutParams(0,dp(60),1));
+   statusBox.getLayoutParams().height=dp(82);
+  }
+  statusBox.requestLayout();
+ }
 }
