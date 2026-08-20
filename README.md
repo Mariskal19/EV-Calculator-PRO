@@ -1,14 +1,14 @@
-# EV Charge Calculator v1.0.17
+# EV Charge Calculator v1.0.18
 
 Android EV charging calculator.
 
 ## Cambios de esta versión
-- La tarjeta **Resultado** pasa a llamarse **Tiempo de Carga**.
-- El tiempo de carga resultante se muestra centrado y destacado dentro de la tarjeta.
-- El coste de carga queda centrado y alineado visualmente con el resultado principal.
-- Se mantiene todo el funcionamiento y diseño de la V1.0.16 estable, incluidos el guardado automático, la tarjeta Hora de Salida y sus tres estados.
+- La tarjeta **Tiempo de Carga** muestra el título y el tiempo de carga **en una misma fila**.
+- La tarjeta **Tiempo de Carga** mantiene el resultado de tiempo destacado y alineado con su título.
+- **Coste de carga** muestra el título y el importe **en una misma fila**, alineados con la fila superior.
+- Se mantiene todo el funcionamiento y diseño estable de la V1.0.17, incluidos el guardado automático, la tarjeta Hora de Salida y sus tres estados.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.17.zip`
-- APK: `EVChargeCalculator-v1.0.17.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.17`
+- ZIP: `EVChargeCalculator-v1.0.18.zip`
+- APK: `EVChargeCalculator-v1.0.18.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.18`
