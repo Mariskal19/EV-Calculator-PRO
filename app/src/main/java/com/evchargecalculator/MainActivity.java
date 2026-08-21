@@ -41,12 +41,12 @@ public class MainActivity extends Activity {
   timeContainer.addView(lossInfo,infoLp);
   timeR=tv("00 h 00 min",28,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);
   timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(28),Gravity.TOP));
-  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(16);
+  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(20);
   
-  c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(70)));
+  c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(68)));
   spaceIn(c3,0);
   LinearLayout costRow=new LinearLayout(this);costRow.setGravity(Gravity.CENTER_VERTICAL);
-  LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(20));costRowLp.topMargin=dp(6);costRowLp.bottomMargin=dp(1);
+  LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(20));costRowLp.topMargin=dp(4);costRowLp.bottomMargin=dp(2);
   TextView costLabel=tv("Coste de carga",13,sub());costLabel.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);costLabel.setIncludeFontPadding(false);costRow.addView(costLabel,new LinearLayout.LayoutParams(0,dp(20),1));
   costR=tv("0,00 € (0,0 kWh)",15,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);costR.setSingleLine(true);costR.setIncludeFontPadding(false);LinearLayout.LayoutParams costValueLp=new LinearLayout.LayoutParams(0,dp(20),1);costValueLp.setMargins(0,0,dp(8),0);costRow.addView(costR,costValueLp);c3.addView(costRow,costRowLp);
   energyR=tv("",1,sub());energyR.setVisibility(View.GONE);c3.addView(energyR);root.addView(c3);space(14);
