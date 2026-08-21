@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
   timeContainer.addView(lossInfo,infoLp);
   timeR=tv("00 h 00 min",28,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);
   timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(28),Gravity.TOP));
-  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(20);
+  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(34);
   
   c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(68)));
   spaceIn(c3,0);
