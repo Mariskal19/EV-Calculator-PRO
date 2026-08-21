@@ -37,16 +37,16 @@ public class MainActivity extends Activity {
   timeContainer.addView(timeHeader,new FrameLayout.LayoutParams(-1,dp(46)));
   lossInfo=tv("ⓘ",18,sub());lossInfo.setGravity(Gravity.CENTER);lossInfo.setIncludeFontPadding(false);lossInfo.setContentDescription("Información sobre pérdidas de carga");
   lossInfo.setOnClickListener(v->new AlertDialog.Builder(this).setTitle("Pérdidas de carga").setMessage("El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.").setPositiveButton("Aceptar",null).show());
-  FrameLayout.LayoutParams infoLp=new FrameLayout.LayoutParams(dp(30),dp(30),Gravity.TOP|Gravity.END);infoLp.setMargins(0,dp(0),-dp(4),0);
+  FrameLayout.LayoutParams infoLp=new FrameLayout.LayoutParams(dp(30),dp(30),Gravity.TOP|Gravity.END);infoLp.setMargins(0,dp(8),-dp(4),0);
   timeContainer.addView(lossInfo,infoLp);
   timeR=tv("00 h 00 min",30,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);
-  timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP));
-  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(32);
+  timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(46),Gravity.TOP));
+  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(36);
   
-  c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(104)));
+  c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(96)));
   spaceIn(c3,0);
   LinearLayout costRow=new LinearLayout(this);costRow.setGravity(Gravity.CENTER_VERTICAL);
-  LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(28));costRowLp.topMargin=-dp(12);costRowLp.bottomMargin=dp(1);
+  LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(28));costRowLp.topMargin=-dp(10);costRowLp.bottomMargin=dp(1);
   TextView costLabel=tv("Coste de carga",13,sub());costLabel.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costLabel.setIncludeFontPadding(false);costRow.addView(costLabel,new LinearLayout.LayoutParams(0,dp(28),1));
   costR=tv("0,00 € (0,0 kWh)",15,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costR.setSingleLine(true);costR.setIncludeFontPadding(false);LinearLayout.LayoutParams costValueLp=new LinearLayout.LayoutParams(0,dp(28),1);costValueLp.setMargins(-dp(16),0,dp(4),0);costRow.addView(costR,costValueLp);c3.addView(costRow,costRowLp);
   energyR=tv("",1,sub());energyR.setVisibility(View.GONE);c3.addView(energyR);root.addView(c3);space(14);
