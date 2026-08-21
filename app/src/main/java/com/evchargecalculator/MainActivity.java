@@ -41,14 +41,14 @@ public class MainActivity extends Activity {
   timeContainer.addView(lossInfo,infoLp);
   timeR=tv("00 h 00 min",30,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);
   timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP));
-  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(43);
+  ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(32);
   
-  c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(121)));
+  c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(104)));
   spaceIn(c3,0);
   LinearLayout costRow=new LinearLayout(this);costRow.setGravity(Gravity.CENTER_VERTICAL);
-  LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(34));costRowLp.topMargin=-dp(8);
-  TextView costLabel=tv("Coste de carga",13,sub());costLabel.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costLabel.setIncludeFontPadding(false);costRow.addView(costLabel,new LinearLayout.LayoutParams(0,dp(34),1));
-  costR=tv("0,00 € (0,0 kWh)",15,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costR.setSingleLine(true);costR.setIncludeFontPadding(false);LinearLayout.LayoutParams costValueLp=new LinearLayout.LayoutParams(0,dp(34),1);costValueLp.setMargins(-dp(18),0,dp(4),0);costRow.addView(costR,costValueLp);c3.addView(costRow,costRowLp);
+  LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(28));costRowLp.topMargin=-dp(12);costRowLp.bottomMargin=dp(1);
+  TextView costLabel=tv("Coste de carga",13,sub());costLabel.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costLabel.setIncludeFontPadding(false);costRow.addView(costLabel,new LinearLayout.LayoutParams(0,dp(28),1));
+  costR=tv("0,00 € (0,0 kWh)",15,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costR.setSingleLine(true);costR.setIncludeFontPadding(false);LinearLayout.LayoutParams costValueLp=new LinearLayout.LayoutParams(0,dp(28),1);costValueLp.setMargins(-dp(16),0,dp(4),0);costRow.addView(costR,costValueLp);c3.addView(costRow,costRowLp);
   energyR=tv("",1,sub());energyR.setVisibility(View.GONE);c3.addView(energyR);root.addView(c3);space(14);
   LinearLayout c4=card();LinearLayout departureHeader=new LinearLayout(this);departureHeader.setGravity(Gravity.CENTER_VERTICAL);TextView h4=tv("Hora de Salida",18,text());h4.setTypeface(null,1);h4.setIncludeFontPadding(false);h4.setGravity(Gravity.CENTER_VERTICAL);departureHeader.addView(h4,new LinearLayout.LayoutParams(0,dp(62),1));departure=edit("07:00");departure.setTypeface(null,1);departure.setTextSize(17);departure.setInputType(android.text.InputType.TYPE_CLASS_DATETIME|android.text.InputType.TYPE_DATETIME_VARIATION_TIME);departure.setKeyListener(null);departure.setCursorVisible(false);departure.setShowSoftInputOnFocus(false);departure.setSelectAllOnFocus(false);departure.setFocusable(false);departure.setClickable(true);departure.setOnClickListener(v->{hideKeyboard(v);pickTime(departure);});departure.setGravity(Gravity.CENTER);departureHeader.addView(departure,new LinearLayout.LayoutParams(dp(104),dp(62)));c4.addView(departureHeader);
   statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER);statusBox.setPadding(dp(14),dp(20),dp(14),dp(20));statusBox.setBackground(bg(Color.rgb(27,91,180),22,0));
