@@ -1,9 +1,3 @@
-EV Charge Calculator
-Versión estable: 1.0.19
+EVChargeCalculator V1.0.18
 
-Base anterior: V1.0.18
-
-Cambios V1.0.19:
-- 10% de pérdidas de carga incluidas en los cálculos.
-- Icono informativo discreto y redondo para explicar las pérdidas.
-- Centinela / XGuard sin cambios.
+Versión final de referencia estable.
