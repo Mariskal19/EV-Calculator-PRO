@@ -1,0 +1,40 @@
+<svg width="980" height="980" viewBox="0 0 980 980" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="boardbg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f3f6fb"/>
+      <stop offset="100%" stop-color="#e5ecf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="980" height="980" fill="url(#boardbg)"/>
+  <text x="490" y="58" text-anchor="middle" font-family="Arial" font-size="30" font-weight="700" fill="#1d3157">Propuestas de diseño visual</text>
+
+  <g transform="translate(40,110)">
+    <rect width="430" height="920" rx="24" fill="#eaf1fb"/>
+    <image href="concept-1-dark.svg" width="430" height="920" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g transform="translate(510,110)">
+    <rect width="430" height="920" rx="24" fill="#eaf1fb"/>
+    <image href="concept-2-glass.svg" width="430" height="920" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g transform="translate(40,110)">
+    <text x="50" y="0" font-family="Arial" font-size="18" font-weight="700" fill="#1d3157">1. Oscuro premium</text>
+  </g>
+  <g transform="translate(510,110)">
+    <text x="55" y="0" font-family="Arial" font-size="18" font-weight="700" fill="#1d3157">2. Glassmorphism</text>
+  </g>
+
+  <g transform="translate(40,550)">
+    <rect x="0" y="0" width="430" height="920" rx="24" fill="#eaf1fb"/>
+    <image href="concept-3-light.svg" width="430" height="920" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g transform="translate(510,550)">
+    <rect x="0" y="0" width="430" height="920" rx="24" fill="#eaf1fb"/>
+    <image href="concept-4-neon.svg" width="430" height="920" preserveAspectRatio="xMidYMid meet"/>
+  </g>
+  <g transform="translate(40,560)">
+    <text x="50" y="0" font-family="Arial" font-size="18" font-weight="700" fill="#1d3157">3. Claro minimal</text>
+  </g>
+  <g transform="translate(510,560)">
+    <text x="55" y="0" font-family="Arial" font-size="18" font-weight="700" fill="#1d3157">4. Neon tech</text>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg width="430" height="920" viewBox="0 0 430 920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgL1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f4f8ff"/>
+      <stop offset="100%" stop-color="#edf4ff"/>
+    </linearGradient>
+    <linearGradient id="accentL1" x1="0" x2="1">
+      <stop offset="0%" stop-color="#2d7cff"/>
+      <stop offset="100%" stop-color="#4bc7b5"/>
+    </linearGradient>
+  </defs>
+  <rect width="430" height="920" fill="url(#bgL1)"/>
+  <g>
+    <rect x="18" y="22" width="394" height="72" rx="22" fill="#ffffff" stroke="#dfeaf8"/>
+    <text x="215" y="68" text-anchor="middle" font-family="Arial" font-size="22" font-weight="700" fill="#1c3158">EV Charge Calculator</text>
+    <circle cx="366" cy="58" r="16" fill="#edf4ff" stroke="#dbe7ff"/>
+    <text x="366" y="64" text-anchor="middle" font-size="16" fill="#1c3158">☀</text>
+  </g>
+
+  <g>
+    <rect x="18" y="116" width="394" height="170" rx="26" fill="#ffffff" stroke="#dfeaf8"/>
+    <text x="40" y="148" font-size="18" font-weight="700" fill="#1f3356">Batería</text>
+    <text x="40" y="185" font-size="13" fill="#6a7d9d">Capacidad</text>
+    <rect x="234" y="168" width="144" height="42" rx="12" fill="#f5f8ff" stroke="#dfeaf8"/>
+    <text x="306" y="195" text-anchor="middle" font-size="18" font-weight="700" fill="#1f3356">80,0</text>
+    <text x="380" y="195" font-size="13" fill="#6a7d9d">kWh</text>
+    <rect x="40" y="214" width="334" height="12" rx="6" fill="#eaf0f9"/>
+    <rect x="40" y="214" width="244" height="12" rx="6" fill="url(#accentL1)"/>
+    <circle cx="284" cy="220" r="8" fill="#2d7cff" stroke="#ffffff" stroke-width="2"/>
+    <text x="215" y="255" text-anchor="middle" font-size="14" font-weight="700" fill="#1f3356">Cargar la batería desde 30% al 80%</text>
+    <text x="215" y="279" text-anchor="middle" font-size="12" fill="#6a7d9d">Se cargará 50% - 40,0 kWh</text>
+  </g>
+
+  <g>
+    <rect x="18" y="300" width="394" height="214" rx="26" fill="#ffffff" stroke="#dfeaf8"/>
+    <text x="40" y="332" font-size="18" font-weight="700" fill="#1f3356">Carga</text>
+    <text x="40" y="370" font-size="13" fill="#6a7d9d">Potencia</text>
+    <rect x="234" y="350" width="144" height="42" rx="12" fill="#f5f8ff" stroke="#dfeaf8"/>
+    <text x="306" y="378" text-anchor="middle" font-size="18" font-weight="700" fill="#1f3356">3,45</text>
+    <text x="382" y="378" font-size="13" fill="#6a7d9d">kW</text>
+    <text x="40" y="430" font-size="13" fill="#6a7d9d">Precio energía</text>
+    <rect x="234" y="410" width="144" height="42" rx="12" fill="#f5f8ff" stroke="#dfeaf8"/>
+    <text x="306" y="438" text-anchor="middle" font-size="18" font-weight="700" fill="#1f3356">0,15</text>
+    <text x="382" y="438" font-size="13" fill="#6a7d9d">€/kWh</text>
+    <text x="40" y="490" font-size="13" fill="#6a7d9d">Centinela / XGuard</text>
+    <rect x="228" y="470" width="90" height="28" rx="14" fill="#296ef5"/>
+    <circle cx="245" cy="484" r="9" fill="#ffffff"/>
+    <rect x="322" y="467" width="70" height="32" rx="12" fill="#f5f8ff" stroke="#dfeaf8"/>
+    <text x="357" y="489" text-anchor="middle" font-size="16" fill="#1f3356">5,0</text>
+    <text x="396" y="489" font-size="13" fill="#6a7d9d">%</text>
+  </g>
+
+  <g>
+    <rect x="18" y="530" width="394" height="146" rx="26" fill="#ffffff" stroke="#dfeaf8"/>
+    <text x="40" y="560" font-size="18" font-weight="700" fill="#1f3356">Tiempo de Carga</text>
+    <text x="375" y="560" font-size="18" fill="#5f7598">ⓘ</text>
+    <text x="215" y="610" text-anchor="middle" font-size="30" font-weight="700" fill="#1f3356">02 h 42 min</text>
+    <text x="48" y="642" font-size="13" fill="#6a7d9d">Coste de carga</text>
+    <text x="342" y="642" text-anchor="end" font-size="15" fill="#6a7d9d">4,95 € (11,0 kWh)</text>
+  </g>
+
+  <g>
+    <rect x="18" y="690" width="394" height="156" rx="26" fill="#ffffff" stroke="#dfeaf8"/>
+    <text x="40" y="720" font-size="18" font-weight="700" fill="#1f3356">Hora de Salida</text>
+    <rect x="246" y="705" width="128" height="42" rx="12" fill="#f5f8ff" stroke="#dfeaf8"/>
+    <text x="310" y="732" text-anchor="middle" font-size="18" font-weight="700" fill="#1f3356">07:00</text>
+    <rect x="28" y="760" width="374" height="64" rx="18" fill="url(#accentL1)"/>
+    <text x="60" y="801" font-size="20" fill="#ffffff">🕓</text>
+    <text x="185" y="796" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">Hora Inicio Recomendada</text>
+    <text x="332" y="804" text-anchor="middle" font-size="28" font-weight="700" fill="#ffffff">18:00</text>
+  </g>
+</svg>
