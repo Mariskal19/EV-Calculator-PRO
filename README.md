@@ -1,10 +1,10 @@
 - El tiempo de carga ya no se limita a 24 h: muestra las horas reales, por ejemplo «30 h 10 min».
-## V1.0.23
-- Ajustada la tarjeta **Tiempo de Carga** para dejar un ritmo de margen más uniforme y alineado con la tarjeta **Hora de Salida**.
-- Se compacta el bloque de coste y se mantiene la fila de **Coste de carga** ligeramente elevada con un mejor equilibrio visual.
+## V1.0.24
+- Ajustada la tarjeta **Tiempo de Carga** con un equilibrio más preciso entre el valor de la hora, el espacio superior y la fila **Coste de carga**.
+- Se mantiene la compacidad visual con margen, alineación y estructura más limpia en la parte inferior del bloque.
 - Se mantienen los cálculos y el comportamiento funcional sin cambios respecto a la versión anterior.
 
-# EV Charge Calculator v1.0.23
+# EV Charge Calculator v1.0.24
 
 Android EV charging calculator.
 
@@ -19,6 +19,6 @@ Android EV charging calculator.
 - Se mantiene todo el funcionamiento y diseño estable de la V1.0.17, incluidos el guardado automático, la tarjeta Hora de Salida y sus tres estados.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.23.zip`
-- APK: `EVChargeCalculator-v1.0.23.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.23`
+- ZIP: `EVChargeCalculator-v1.0.24.zip`
+- APK: `EVChargeCalculator-v1.0.24.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.24`
