@@ -1,12 +1,12 @@
 - El tiempo de carga ya no se limita a 24 h: muestra las horas reales, por ejemplo «30 h 10 min».
-## V1.0.21
+## V1.0.22
 - Ajustada la posición de la fila «Coste de carga»: ligeramente más arriba y el importe desplazado hacia la izquierda.
 
 - Eliminado de la tarjeta **Tiempo de Carga** el texto sobre el 10% de pérdidas de carga.
 - Eliminada del cuadro de información de **Pérdidas de carga** la referencia a Centinela / XGuard.
 - El cálculo del 10% de pérdidas y el funcionamiento del Centinela / XGuard no se modifican.
 
-# EV Charge Calculator v1.0.21
+# EV Charge Calculator v1.0.22
 
 Android EV charging calculator.
 
@@ -21,6 +21,6 @@ Android EV charging calculator.
 - Se mantiene todo el funcionamiento y diseño estable de la V1.0.17, incluidos el guardado automático, la tarjeta Hora de Salida y sus tres estados.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.0.21.zip`
-- APK: `EVChargeCalculator-v1.0.21.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.21`
+- ZIP: `EVChargeCalculator-v1.0.22.zip`
+- APK: `EVChargeCalculator-v1.0.22.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.0.22`
