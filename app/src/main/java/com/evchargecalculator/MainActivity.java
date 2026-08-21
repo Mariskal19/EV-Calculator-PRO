@@ -36,15 +36,13 @@ public class MainActivity extends Activity {
   timeHeader.addView(h3,new LinearLayout.LayoutParams(-1,dp(46)));
   timeContainer.addView(timeHeader,new FrameLayout.LayoutParams(-1,dp(46)));
   lossInfo=tv("ⓘ",18,sub());lossInfo.setGravity(Gravity.CENTER);lossInfo.setIncludeFontPadding(false);lossInfo.setContentDescription("Información sobre pérdidas de carga");
-  lossInfo.setOnClickListener(v->new AlertDialog.Builder(this).setTitle("Pérdidas de carga").setMessage("El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.\n\nEl Centinela / XGuard se calcula por separado y mantiene su funcionamiento habitual.").setPositiveButton("Aceptar",null).show());
+  lossInfo.setOnClickListener(v->new AlertDialog.Builder(this).setTitle("Pérdidas de carga").setMessage("El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.").setPositiveButton("Aceptar",null).show());
   FrameLayout.LayoutParams infoLp=new FrameLayout.LayoutParams(dp(30),dp(30),Gravity.TOP|Gravity.END);infoLp.setMargins(0,dp(0),-dp(4),0);
   timeContainer.addView(lossInfo,infoLp);
   timeR=tv("00 h 00 min",30,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);
   timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP));
   ((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(43);
-  TextView lossLabel=tv("Incluye 10% de pérdidas de carga",14,sub());lossLabel.setGravity(Gravity.CENTER);lossLabel.setIncludeFontPadding(false);
-  timeContainer.addView(lossLabel,new FrameLayout.LayoutParams(-1,dp(30),Gravity.TOP));
-  ((FrameLayout.LayoutParams)lossLabel.getLayoutParams()).topMargin=dp(91);
+  
   c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(121)));
   spaceIn(c3,6);
   LinearLayout costRow=new LinearLayout(this);costRow.setGravity(Gravity.CENTER_VERTICAL);

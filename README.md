@@ -1,3 +1,9 @@
+## V1.0.20
+
+- Eliminado de la tarjeta **Tiempo de Carga** el texto sobre el 10% de pérdidas de carga.
+- Eliminada del cuadro de información de **Pérdidas de carga** la referencia a Centinela / XGuard.
+- El cálculo del 10% de pérdidas y el funcionamiento del Centinela / XGuard no se modifican.
+
 # EV Charge Calculator v1.0.19
 
 Android EV charging calculator.
