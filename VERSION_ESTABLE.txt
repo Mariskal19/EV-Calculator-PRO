@@ -1,0 +1,3 @@
+EVChargeCalculator V1.0.18
+
+Versión final de referencia estable.

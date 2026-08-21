@@ -1,0 +1,24 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.evchargecalculator'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.evchargecalculator'
+        minSdk 23
+        targetSdk 35
+        versionCode 41
+        versionName '1.0.21'
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
