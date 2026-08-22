@@ -1,1 +1,21 @@
-<resources><color name="icon_bg">#0B1220</color><color name="white">#F5F8FF</color><color name="text_secondary">#AAB7CC</color><color name="accent">#36B8FF</color><color name="accent_2">#4DE1C1</color><color name="card">#CC111927</color><color name="track">#34445A</color><color name="danger">#FF6B7A</color><color name="success">#53E0B9</color></resources>
+<resources>
+    <color name="icon_bg">#0B1220</color>
+    <color name="theme_bg_light">#F4F8FF</color>
+    <color name="theme_bg_dark">#07131C</color>
+    <color name="theme_surface_light">#FFFFFF</color>
+    <color name="theme_surface_dark">#101C2A</color>
+    <color name="theme_card_light">#F9FBFF</color>
+    <color name="theme_card_dark">#152332</color>
+    <color name="theme_border_light">#D9E4F1</color>
+    <color name="theme_border_dark">#2D3E52</color>
+    <color name="theme_text_light">#162A3F</color>
+    <color name="theme_text_dark">#EDF6FF</color>
+    <color name="theme_text_secondary_light">#5A6F89</color>
+    <color name="theme_text_secondary_dark">#A8B9CF</color>
+    <color name="theme_accent">#2E6BFF</color>
+    <color name="theme_accent_2">#28C6A4</color>
+    <color name="theme_ok">#1D8E79</color>
+    <color name="theme_warning">#E35D5D</color>
+    <color name="theme_head_light">#F7FAFF</color>
+    <color name="theme_head_dark">#111D2B</color>
+</resources>

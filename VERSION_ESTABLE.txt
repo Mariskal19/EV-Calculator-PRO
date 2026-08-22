@@ -1,3 +1,3 @@
-EVChargeCalculator V1.0.2
+EVChargeCalculator V1.1.0
 
-Versión final estable visual premium claro.
+Nueva versión base para continuar desarrollando mejoras sobre la versión estable anterior.
