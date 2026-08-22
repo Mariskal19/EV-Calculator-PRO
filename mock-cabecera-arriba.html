@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mock cabecera superior</title>
+  <style>
+    :root {
+      --bg: #edf4ff;
+      --card: rgba(255,255,255,0.78);
+      --primary: #2e6bff;
+      --primary-soft: rgba(46,107,255,0.10);
+      --text: #152841;
+      --muted: #6a7d9c;
+      --line: rgba(129, 149, 184, 0.18);
+      --shadow: 0 20px 40px rgba(21, 39, 65, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, #eef5ff 0%, #f9fbff 100%);
+      font-family: Inter, "Segoe UI", sans-serif;
+      color: var(--text);
+    }
+
+    .phone {
+      width: 390px;
+      height: 844px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, #f8fbff 0%, #edf4ff 100%);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(131, 147, 181, 0.18);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(18px);
+      opacity: 0.8;
+    }
+
+    .orb.one { width: 260px; height: 260px; background: rgba(46,107,255,0.12); left: -60px; top: 80px; }
+    .orb.two { width: 320px; height: 320px; background: rgba(74, 205, 176, 0.10); right: -80px; top: 200px; }
+    .orb.three { width: 280px; height: 280px; background: rgba(153, 174, 255, 0.08); left: 80px; bottom: -90px; }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 20px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .topbar {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .brand {
+      flex: 1;
+      text-align: center;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .theme {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(46,107,255,0.08);
+      color: var(--primary);
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: 0 16px 28px rgba(20, 34, 59, 0.04);
+      padding: 18px 18px 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .bolt {
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    .hero h2 {
+      margin: 10px 0 4px;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.72);
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      padding: 18px 18px 16px;
+      box-shadow: 0 12px 26px rgba(21, 39, 65, 0.04);
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .label {
+      flex: 1;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .input {
+      width: 92px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(246, 250, 255, 0.95);
+      border: 1px solid rgba(140, 161, 196, 0.20);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .unit {
+      width: 52px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .meter {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(128, 146, 179, 0.12);
+      position: relative;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .meter > span {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 55%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #2d67ff 0%, #66a8ff 55%, #47d5ba 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <div class="content">
+      <div class="topbar">
+        <div style="width:40px"></div>
+        <div class="brand">EV Charge Calculator</div>
+        <div class="theme">☾</div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-row">
+          <div class="badge">ready</div>
+          <div class="bolt">⚡</div>
+        </div>
+        <h2>Plan de carga</h2>
+        <p>Optimiza el inicio de carga y el coste total</p>
+      </div>
+
+      <div class="card">
+        <div class="section-title">Batería</div>
+
+        <div class="field">
+          <div class="label">Capacidad</div>
+          <div class="input">80,0</div>
+          <div class="unit">kWh</div>
+        </div>
+
+        <div class="meter"><span></span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
