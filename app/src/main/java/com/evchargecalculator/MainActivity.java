@@ -1,6 +1,6 @@
 package com.evchargecalculator;
 
-import android.app.*;import android.os.*;import android.graphics.Rect;import android.graphics.Color;import android.graphics.Typeface;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.text.method.DigitsKeyListener;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
+import android.app.*;import android.os.*;import android.graphics.Rect;import android.graphics.Color;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.text.method.DigitsKeyListener;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
 
 public class MainActivity extends Activity {
  ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText battery,power,price,departure,xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch; TextView timeR,energyR,costR,statusR,statusTimeR,statusIcon,themeButton,rangeSummary,chargeAmount,lossInfo; LinearLayout statusBox; boolean busy,dark=false; SharedPreferences prefs;
@@ -31,21 +31,7 @@ public class MainActivity extends Activity {
   sceneHeader.setAdjustViewBounds(true);
   root.addView(sceneHeader, new LinearLayout.LayoutParams(-1, dp(260)));
 
-  LinearLayout batteryHeader = new LinearLayout(this);
-  batteryHeader.setOrientation(LinearLayout.HORIZONTAL);
-  batteryHeader.setGravity(Gravity.CENTER_VERTICAL);
-  batteryHeader.setBackground(bg(Color.argb(245, 245, 248, 255), 18, 1));
-  batteryHeader.setPadding(dp(18), dp(18), dp(18), dp(18));
-  LinearLayout.LayoutParams batteryHeaderLp = new LinearLayout.LayoutParams(-1, dp(92));
-  batteryHeaderLp.leftMargin = dp(10);
-  batteryHeaderLp.rightMargin = dp(10);
-  batteryHeaderLp.bottomMargin = dp(8);
-  TextView batteryTitle = tv("Batería", 34, text());
-  batteryTitle.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
-  batteryHeader.addView(batteryTitle, new LinearLayout.LayoutParams(0, -2, 1));
-  root.addView(batteryHeader, batteryHeaderLp);
-
-  LinearLayout c1=card();spaceIn(c1,8);battery=edit("80,0");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));
+  LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null,1);c1.addView(h1);spaceIn(c1,12);battery=edit("80,0");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));
   rangeSummary=tv("Cargar la batería desde 30% al 80%",15,text());rangeSummary.setGravity(Gravity.CENTER);rangeSummary.setTypeface(null,1);c1.addView(rangeSummary);range=new BatteryRangeView(this);c1.addView(range,new LinearLayout.LayoutParams(-1,dp(62)));
   chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(20);
   LinearLayout c2=card();TextView h2=tv("Carga",18,text());h2.setTypeface(null,1);c2.addView(h2);spaceIn(c2,12);power=edit("3,45");row(c2,"Potencia",power,"kW");spaceIn(c2,8);price=edit("0,15");row(c2,"Precio energía",price,"€/kWh");spaceIn(c2,8);
