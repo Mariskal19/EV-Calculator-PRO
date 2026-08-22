@@ -21,19 +21,29 @@ public class MainActivity extends Activity {
  void build(){
   FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));
   scroll=new ScrollView(this);scroll.setFillViewport(true);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(dp(18),dp(36),dp(18),dp(68));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
-  FrameLayout head=new FrameLayout(this);head.setMinimumHeight(dp(68));head.setBackground(bg(dark?headerDark:headerLight,22,1));
-  TextView title=tv("EV Charge Calculator",22,text());title.setTypeface(null,1);title.setGravity(Gravity.CENTER);FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(68));tp.gravity=Gravity.CENTER;tp.leftMargin=dp(44);tp.rightMargin=dp(44);head.addView(title,tp);
-  themeButton=tv(dark?"☀":"☾",20,text());themeButton.setGravity(Gravity.CENTER);themeButton.setContentDescription("Cambiar tema");themeButton.setBackground(bg(dark?Color.argb(18,255,255,255):Color.argb(20,41,110,245),12,1));themeButton.setOnClickListener(v->toggleTheme());FrameLayout.LayoutParams ip=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.END|Gravity.CENTER_VERTICAL);ip.rightMargin=dp(12);head.addView(themeButton,ip);root.addView(head);space(10);
+  FrameLayout hero = new FrameLayout(this);
+  hero.setBackgroundResource(com.evchargecalculator.R.drawable.cabecera_tema_claro);
+  hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(250)));
+  hero.setPadding(0, 0, 0, 0);
+  hero.setClipToPadding(false);
 
-  ImageView sceneHeader = new ImageView(this);
-  sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_tema_claro);
-  sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);
-  sceneHeader.setAdjustViewBounds(true);
-  root.addView(sceneHeader, new LinearLayout.LayoutParams(-1, dp(260)));
+  TextView title=tv("EV Charge Calculator",22,Color.WHITE);
+title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setShadowLayer(8f, 0f, 2f, Color.argb(100, 0, 0, 0));
+  FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(64));tp.gravity=Gravity.TOP;tp.topMargin=dp(6);tp.leftMargin=dp(48);tp.rightMargin=dp(48);hero.addView(title,tp);
+
+  themeButton=tv(dark?"☀":"☾",20,Color.WHITE);themeButton.setGravity(Gravity.CENTER);themeButton.setContentDescription("Cambiar tema");themeButton.setBackground(bg(dark?Color.argb(18,255,255,255):Color.argb(20,41,110,245),12,1));themeButton.setOnClickListener(v->toggleTheme());FrameLayout.LayoutParams ip=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);ip.topMargin=dp(12);ip.rightMargin=dp(12);hero.addView(themeButton,ip);
 
   LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null,1);c1.addView(h1);spaceIn(c1,12);battery=edit("80,0");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));
   rangeSummary=tv("Cargar la batería desde 30% al 80%",15,text());rangeSummary.setGravity(Gravity.CENTER);rangeSummary.setTypeface(null,1);c1.addView(rangeSummary);range=new BatteryRangeView(this);c1.addView(range,new LinearLayout.LayoutParams(-1,dp(62)));
-  chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(20);
+  chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);
+  FrameLayout.LayoutParams c1Lp = new FrameLayout.LayoutParams(-1, -2);
+  c1Lp.gravity = Gravity.BOTTOM;
+  c1Lp.leftMargin = dp(12);
+  c1Lp.rightMargin = dp(12);
+  c1Lp.bottomMargin = dp(55);
+  hero.addView(c1, c1Lp);
+  root.addView(hero);
+  space(20);
   LinearLayout c2=card();TextView h2=tv("Carga",18,text());h2.setTypeface(null,1);c2.addView(h2);spaceIn(c2,12);power=edit("3,45");row(c2,"Potencia",power,"kW");spaceIn(c2,8);price=edit("0,15");row(c2,"Precio energía",price,"€/kWh");spaceIn(c2,8);
   LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);xr.addView(tv("Centinela / XGuard (consumo / 24 h)",14,sub()),new LinearLayout.LayoutParams(0,54,1));xSwitch=new Switch(this);xSwitch.setChecked(true);xr.addView(xSwitch);xguard=edit("5,0");xguard.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);xguard.setKeyListener(DigitsKeyListener.getInstance("0123456789,."));xguard.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);xr.addView(xguard,new LinearLayout.LayoutParams(dp(88),54));TextView xp=tv("%",13,sub());xp.setGravity(Gravity.CENTER);xr.addView(xp,new LinearLayout.LayoutParams(dp(58),54));c2.addView(xr);root.addView(c2);space(14);
   LinearLayout c3=card();
