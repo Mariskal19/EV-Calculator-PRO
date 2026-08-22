@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EV Charge Header Mock</title>
+  <style>
+    :root {
+      --bg:#eef5fb;
+      --card:#f5f9ff;
+      --text:#1c2e42;
+      --muted:#5a6b83;
+      --line:#dfeaf5;
+      --soft:#eef4fb;
+      --blue:#2e6bff;
+      --blue2:#24b5ff;
+      --green:#2bc7a9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 18px;
+    }
+    .phone {
+      width: 430px;
+      background: #f4f8ff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 18px 36px rgba(18,36,55,0.18);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .topbar {
+      height: 64px;
+      background: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #1d2d40;
+      letter-spacing: 0.2px;
+    }
+    .hero {
+      height: 250px;
+      background-image: url("app/src/main/res/drawable/cabecera_tema_claro.jpg");
+      background-size: cover;
+      background-position: center center;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    .title-card {
+      margin: 0 12px 12px 12px;
+      background: rgba(255,255,255,0.75);
+      border-radius: 16px;
+      padding: 18px 18px 14px 18px;
+      border: 1px solid rgba(102,120,145,0.12);
+      box-shadow: 0 8px 24px rgba(92,108,132,0.08);
+    }
+    .title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 16px 0;
+      color: var(--text);
+    }
+    .field {
+      display: grid;
+      grid-template-columns: 1fr 110px 46px;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .label {
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .input {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .unit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 12px;
+    }
+    .range {
+      margin-top: 10px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      position: relative;
+      overflow: hidden;
+    }
+    .range::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.35);
+      border-radius: inherit;
+    }
+    .range::after {
+      content: "";
+      position: absolute;
+      left: 30%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+      border: 2px solid var(--blue);
+    }
+    .mini {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      font-weight: 600;
+    }
+    .blocks {
+      padding: 0 12px 18px;
+    }
+    .card {
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(102,120,145,0.12);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 8px 18px rgba(92,108,132,0.06);
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px;
+      align-items: center;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <div class="topbar">EV Charge Calculator</div>
+    <div class="hero"></div>
+    <div class="title-card">
+      <div class="title">Batería</div>
+      <div class="field">
+        <div class="label">Capacidad</div>
+        <div class="input">80,0</div>
+        <div class="unit">kWh</div>
+      </div>
+      <div class="range"></div>
+      <div class="mini">Cargar la batería desde 30% al 80%</div>
+    </div>
+    <div class="blocks">
+      <div class="card">
+        <div class="card-title">Carga</div>
+        <div class="row"><span>Potencia</span><strong>3,45 kW</strong></div>
+        <div class="row"><span>Precio energía</span><strong>0,15 €/kWh</strong></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Hora de salida</div>
+        <div class="row"><span>Inicio recomendado</span><strong>18:00</strong></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
