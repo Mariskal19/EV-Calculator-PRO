@@ -1,10 +1,25 @@
 package com.evchargecalculator;
 
-import android.app.*;import android.os.*;import android.graphics.Rect;import android.graphics.Color;import android.content.*;import android.content.res.ColorStateList;import android.text.*;import android.text.method.*;import android.text.method.DigitsKeyListener;import android.view.*;import android.view.inputmethod.InputMethodManager;import android.widget.*;import android.graphics.drawable.GradientDrawable;import java.text.DecimalFormat;import java.text.DecimalFormatSymbols;import java.util.*;
+import android.app.*;
+import android.content.*;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.GradientDrawable;
+import android.os.*;
+import android.text.*;
+import android.text.method.*;
+import android.view.*;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
+
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.*;
 
 public class MainActivity extends Activity {
  ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText battery,power,price,departure,xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch; TextView timeR,energyR,costR,statusR,statusTimeR,statusIcon,themeButton,rangeSummary,chargeAmount,lossInfo; LinearLayout statusBox; boolean busy,dark=false; SharedPreferences prefs;
- int blue=Color.rgb(46,107,255), green=Color.rgb(40,198,164), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), surfaceLight=Color.rgb(244,248,255), borderLight=Color.rgb(217,228,241), headerLight=Color.argb(248,250,255,255), headerDark=Color.argb(190,17,29,42), darkBg=Color.rgb(7,19,28), darkText=Color.rgb(237,246,255), darkSecondary=Color.rgb(168,185,207), darkCard=Color.rgb(21,35,50), darkBorder=Color.rgb(45,62,82), statusOk=Color.rgb(29,142,121), statusWarn=Color.rgb(227,93,93);
+ int blue=Color.rgb(46,107,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), borderLight=Color.rgb(217,228,241), headerLight=Color.argb(248,250,255,255), headerDark=Color.argb(190,17,29,42), darkBg=Color.rgb(7,19,28), darkCard=Color.rgb(21,35,50);
  @Override public void onCreate(Bundle b){super.onCreate(b);getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE); dark=(getResources().getConfiguration().uiMode & 0x30)==0x20; prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); build(); loadPreferences(); applyTheme(); calculate();}
  @Override protected void onPause(){super.onPause();savePreferences();}
  void savePreferences(){if(battery==null||range==null)return; prefs.edit().putString("battery",battery.getText().toString()).putString("power",power.getText().toString()).putString("price",price.getText().toString()).putString("departure",departure.getText().toString()).putString("xguard",xguard.getText().toString()).putInt("current",range.getCurrent()).putInt("target",range.getTarget()).putBoolean("xguard_enabled",xSwitch.isChecked()).apply();}
