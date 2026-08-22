@@ -57,21 +57,22 @@ jobs:
             find app/build/outputs/apk -maxdepth 4 -type f -print || true
             exit 1
           fi
+          artifact_version="v${VERSION#v}"
           echo "Release APK found: $apk"
-          cp "$apk" "release/EVChargeCalculator-v${VERSION}.apk"
-          zip -r "release/EVChargeCalculator-v${VERSION}.zip" . \
+          cp "$apk" "release/EVChargeCalculator-${artifact_version}.apk"
+          zip -r "release/EVChargeCalculator-${artifact_version}.zip" . \
             -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
       - name: Upload release APK
         uses: actions/upload-artifact@v6
         with:
-          name: EVChargeCalculator-v${{ steps.version.outputs.version }}
-          path: release/EVChargeCalculator-v${{ steps.version.outputs.version }}.apk
+          name: EVChargeCalculator-${{ steps.version.outputs.version }}
+          path: release/EVChargeCalculator-${{ steps.version.outputs.version }}.apk
           if-no-files-found: error
 
       - name: Upload project ZIP
         uses: actions/upload-artifact@v6
         with:
-          name: EVChargeCalculator-v${{ steps.version.outputs.version }}-source
-          path: release/EVChargeCalculator-v${{ steps.version.outputs.version }}.zip
+          name: EVChargeCalculator-${{ steps.version.outputs.version }}-source
+          path: release/EVChargeCalculator-${{ steps.version.outputs.version }}.zip
           if-no-files-found: error
