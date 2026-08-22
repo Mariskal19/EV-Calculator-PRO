@@ -45,13 +45,13 @@ public class MainActivity extends Activity {
   sceneHeader.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
   sceneHeader.setTranslationY(-dp(10));
   hero.addView(sceneHeader,new FrameLayout.LayoutParams(-1,-1));
-  View topFade=new View(this);topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(180,0,0,0), Color.argb(60,0,0,0), Color.argb(0,0,0,0)}));hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(140),Gravity.TOP));
+  View topFade=new View(this);topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(200,0,0,0), Color.argb(80,0,0,0), Color.argb(20,0,0,0), Color.argb(0,0,0,0)}));hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
   TextView title=tv("EV Charge Calculator",22,Color.WHITE);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(48));tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;tp.leftMargin=dp(40);tp.rightMargin=dp(40);tp.topMargin=dp(12);hero.addView(title,tp);
   themeButton=tv(dark?"☀":"☾",20,Color.WHITE);themeButton.setGravity(Gravity.CENTER);themeButton.setTextColor(Color.WHITE);themeButton.setContentDescription("Cambiar tema");themeButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));themeButton.setBackground(bg(Color.argb(140,12,22,33),12,1));themeButton.setPadding(dp(6),dp(4),dp(6),dp(4));themeButton.setOnClickListener(v->toggleTheme());FrameLayout.LayoutParams ip=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);ip.rightMargin=dp(14);ip.topMargin=dp(12);hero.addView(themeButton,ip);
   root.addView(hero);
 
   LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null,1);c1.addView(h1);spaceIn(c1,12);battery=edit("80");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));
-  LinearLayout.LayoutParams c1Lp=(LinearLayout.LayoutParams)c1.getLayoutParams();c1Lp.topMargin=-dp(18);c1.setLayoutParams(c1Lp);
+  LinearLayout.LayoutParams c1Lp=(LinearLayout.LayoutParams)c1.getLayoutParams();c1Lp.topMargin=-dp(26);c1.setLayoutParams(c1Lp);
   rangeSummary=tv("Cargar la batería desde 30% al 80%",15,text());rangeSummary.setGravity(Gravity.CENTER);rangeSummary.setTypeface(null,1);c1.addView(rangeSummary);range=new BatteryRangeView(this);c1.addView(range,new LinearLayout.LayoutParams(-1,dp(62)));
   chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(20);
   LinearLayout c2=card();TextView h2=tv("Carga",18,text());h2.setTypeface(null,1);c2.addView(h2);spaceIn(c2,12);power=edit("3,45");row(c2,"Potencia",power,"kW");spaceIn(c2,8);price=edit("0,15");row(c2,"Precio energía",price,"€/kWh");spaceIn(c2,8);
