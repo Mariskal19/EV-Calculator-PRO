@@ -22,14 +22,15 @@ public class MainActivity extends Activity {
   FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));
   scroll=new ScrollView(this);scroll.setFillViewport(true);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(dp(18),dp(36),dp(18),dp(68));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
   FrameLayout hero=new FrameLayout(this);
-  hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(260)));
+  hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(280)));
   ImageView sceneHeader = new ImageView(this);
   sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_tema_claro);
   sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);
   sceneHeader.setAdjustViewBounds(true);
+  sceneHeader.setTranslationY(-dp(24));
   hero.addView(sceneHeader,new FrameLayout.LayoutParams(-1,-1));
-  TextView title=tv("EV Charge Calculator",22,Color.WHITE);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(68));tp.gravity=Gravity.CENTER;tp.leftMargin=dp(44);tp.rightMargin=dp(44);tp.topMargin=dp(8);hero.addView(title,tp);
-  themeButton=tv(dark?"☀":"☾",20,Color.WHITE);themeButton.setGravity(Gravity.CENTER);themeButton.setContentDescription("Cambiar tema");themeButton.setBackground(bg(dark?Color.argb(18,255,255,255):Color.argb(20,41,110,245),12,1));themeButton.setOnClickListener(v->toggleTheme());FrameLayout.LayoutParams ip=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.END|Gravity.CENTER_VERTICAL);ip.rightMargin=dp(12);ip.topMargin=dp(8);hero.addView(themeButton,ip);
+  TextView title=tv("EV Charge Calculator",22,Color.WHITE);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(68));tp.gravity=Gravity.CENTER;tp.leftMargin=dp(44);tp.rightMargin=dp(44);tp.topMargin=dp(4);hero.addView(title,tp);
+  themeButton=tv(dark?"☀":"☾",20,Color.WHITE);themeButton.setGravity(Gravity.CENTER);themeButton.setContentDescription("Cambiar tema");themeButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));themeButton.setBackground(bg(dark?Color.argb(52,255,255,255):Color.argb(60,20,45,80),12,1));themeButton.setOnClickListener(v->toggleTheme());FrameLayout.LayoutParams ip=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.END|Gravity.CENTER_VERTICAL);ip.rightMargin=dp(12);ip.topMargin=dp(4);hero.addView(themeButton,ip);
   root.addView(hero);
 
   LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null,1);c1.addView(h1);spaceIn(c1,12);battery=edit("80");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));
