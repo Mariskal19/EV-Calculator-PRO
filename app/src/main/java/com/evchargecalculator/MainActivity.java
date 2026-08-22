@@ -41,8 +41,9 @@ public class MainActivity extends Activity {
   ImageView sceneHeader = new ImageView(this);
   sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_tema_claro);
   sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);
-  sceneHeader.setAdjustViewBounds(true);
-  sceneHeader.setTranslationY(-dp(20));
+  sceneHeader.setAdjustViewBounds(false);
+  sceneHeader.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT));
+  sceneHeader.setTranslationY(-dp(10));
   hero.addView(sceneHeader,new FrameLayout.LayoutParams(-1,-1));
   View topFade=new View(this);topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(180,0,0,0), Color.argb(60,0,0,0), Color.argb(0,0,0,0)}));hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(140),Gravity.TOP));
   TextView title=tv("EV Charge Calculator",22,Color.WHITE);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(48));tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;tp.leftMargin=dp(40);tp.rightMargin=dp(40);tp.topMargin=dp(12);hero.addView(title,tp);
