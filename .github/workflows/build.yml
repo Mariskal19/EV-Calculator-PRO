@@ -26,6 +26,17 @@ jobs:
         with:
           gradle-version: '8.9'
 
+      - name: Configure release signing
+        if: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 != '' }}
+        shell: bash
+        env:
+          KEYSTORE_BASE64: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 }}
+        run: |
+          set -euo pipefail
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/evcalculator-upload.jks"
+          test -s "$RUNNER_TEMP/evcalculator-upload.jks"
+          echo "Release upload keystore configured."
+
       - name: Read app version
         id: version
         shell: bash
@@ -39,10 +50,24 @@ jobs:
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "App version: $version"
 
-          echo "Dynamic artifact naming verified from versionName=$version"
-
       - name: Build Release APK and AAB
+        env:
+          EV_CALCULATOR_KEYSTORE_PATH: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 != '' && format('{0}/evcalculator-upload.jks', runner.temp) || '' }}
+          EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
+          EV_CALCULATOR_KEY_ALIAS: ${{ secrets.EV_CALCULATOR_KEY_ALIAS }}
+          EV_CALCULATOR_KEY_PASSWORD: ${{ secrets.EV_CALCULATOR_KEY_PASSWORD }}
         run: gradle --no-daemon clean assembleRelease bundleRelease
+
+      - name: Verify release signing mode
+        shell: bash
+        env:
+          KEYSTORE_CONFIGURED: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 != '' && 'yes' || 'no' }}
+        run: |
+          if [ "$KEYSTORE_CONFIGURED" = "yes" ]; then
+            echo "Release build configured with the Google Play upload key."
+          else
+            echo "WARNING: Google Play upload key is not configured yet; release artifacts use the temporary debug signing fallback."
+          fi
 
       - name: Prepare release files
         shell: bash
