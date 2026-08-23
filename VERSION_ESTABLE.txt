@@ -1,3 +1,3 @@
-EVChargeCalculator v1.1.3
+EVChargeCalculator v1.1.4
 
-Nueva versión base para continuar desarrollando mejoras sobre la versión estable anterior.
+Versión final estabilizada con la cabecera premium y la batería superpuesta sobre la imagen.
