@@ -41,8 +41,8 @@ jobs:
 
           echo "Dynamic artifact naming verified from versionName=$version"
 
-      - name: Build Release APK
-        run: gradle --no-daemon clean assembleRelease
+      - name: Build Release APK and AAB
+        run: gradle --no-daemon clean assembleRelease bundleRelease
 
       - name: Prepare release files
         shell: bash
@@ -51,15 +51,27 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p release
+          artifact_version="v${VERSION#v}"
+
           apk=$(find app/build/outputs/apk -type f -name "*.apk" ! -name "*debug*" | head -n 1)
           if [ -z "$apk" ]; then
             echo "No Release APK found under app/build/outputs/apk"
             find app/build/outputs/apk -maxdepth 4 -type f -print || true
             exit 1
           fi
-          artifact_version="v${VERSION#v}"
+
+          aab=$(find app/build/outputs/bundle -type f -name "*.aab" | head -n 1)
+          if [ -z "$aab" ]; then
+            echo "No Release AAB found under app/build/outputs/bundle"
+            find app/build/outputs/bundle -maxdepth 4 -type f -print || true
+            exit 1
+          fi
+
           echo "Release APK found: $apk"
+          echo "Release AAB found: $aab"
           cp "$apk" "release/EV Calculator-${artifact_version}.apk"
+          cp "$aab" "release/EV Calculator-${artifact_version}.aab"
+
           zip -r "release/EV Calculator-${artifact_version}.zip" . \
             -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
@@ -68,6 +80,13 @@ jobs:
         with:
           name: EV Calculator-v${{ steps.version.outputs.version }}
           path: release/EV Calculator-v${{ steps.version.outputs.version }}.apk
+          if-no-files-found: error
+
+      - name: Upload release AAB
+        uses: actions/upload-artifact@v6
+        with:
+          name: EV Calculator-v${{ steps.version.outputs.version }}-aab
+          path: release/EV Calculator-v${{ steps.version.outputs.version }}.aab
           if-no-files-found: error
 
       - name: Upload project ZIP
