@@ -1,13 +1,13 @@
-# EV Charge Calculator v1.1.3
+# EV Charge Calculator v1.1.5
 
 Android EV charging calculator.
 
-## V1.1.3
-- Nueva base de desarrollo a partir de la versión estable v1.0.2.
-- Se prepara la siguiente iteración de mejoras para la app.
-- Se mantiene la lógica de cálculo actual y la estética premium clara como punto de partida.
+## V1.1.5
+- Actualización de la cabecera principal con la nueva imagen de portada.
+- Se mantiene la estética premium y la composición visual final aprobada.
+- Se prepara una nueva release con la imagen renovada como cambio visible principal.
 
 ## Archivos de entrega
-- ZIP: `EVChargeCalculator-v1.1.3.zip`
-- APK: `EVChargeCalculator-v1.1.3.apk`
-- Artefacto de GitHub Actions: `EVChargeCalculator-v1.1.3`
+- ZIP: `EVChargeCalculator-v1.1.5.zip`
+- APK: `EVChargeCalculator-v1.1.5.apk`
+- Artefacto de GitHub Actions: `EVChargeCalculator-v1.1.5`
