@@ -14,9 +14,29 @@ android {
         versionName '1.0.1'
     }
 
+    signingConfigs {
+        release {
+            def keystorePath = System.getenv('EV_CALCULATOR_KEYSTORE_PATH')
+            def keystorePassword = System.getenv('EV_CALCULATOR_KEYSTORE_PASSWORD')
+            def keyAliasValue = System.getenv('EV_CALCULATOR_KEY_ALIAS')
+            def keyPasswordValue = System.getenv('EV_CALCULATOR_KEY_PASSWORD')
+
+            if (keystorePath && keystorePassword && keyAliasValue && keyPasswordValue) {
+                storeFile file(keystorePath)
+                storePassword keystorePassword
+                keyAlias keyAliasValue
+                keyPassword keyPasswordValue
+            }
+        }
+    }
+
     buildTypes {
         release {
-            signingConfig signingConfigs.debug
+            def hasReleaseSigning = System.getenv('EV_CALCULATOR_KEYSTORE_PATH') &&
+                    System.getenv('EV_CALCULATOR_KEYSTORE_PASSWORD') &&
+                    System.getenv('EV_CALCULATOR_KEY_ALIAS') &&
+                    System.getenv('EV_CALCULATOR_KEY_PASSWORD')
+            signingConfig hasReleaseSigning ? signingConfigs.release : signingConfigs.debug
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
