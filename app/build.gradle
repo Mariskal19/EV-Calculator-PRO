@@ -7,7 +7,7 @@ android {
     compileSdk 35
 
     defaultConfig {
-        applicationId 'com.evchargecalculator'
+        applicationId 'com.evcalculator'
         minSdk 23
         targetSdk 35
         versionCode 49
