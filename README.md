@@ -1,4 +1,4 @@
-# EV-Calculator v1.0.1
+# EV Calculator v1.0.1
 
 Android EV charging calculator.
 
@@ -9,6 +9,6 @@ Android EV charging calculator.
 
 ## Archivos de entrega
 
-- ZIP: `EV-Calculator-v1.0.1.zip`
-- APK: `EV-Calculator-v1.0.1.apk`
-- Artefacto de GitHub Actions: `EV-Calculator-v1.0.1`
+- ZIP: `EV Calculator-v1.0.1.zip`
+- APK: `EV Calculator-v1.0.1.apk`
+- Artefacto de GitHub Actions: `EV Calculator-v1.0.1`
