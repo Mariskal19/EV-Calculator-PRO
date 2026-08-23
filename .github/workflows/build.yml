@@ -1,4 +1,4 @@
-name: Build EV Charge Calculator
+name: Build EV-Calculator
 
 on:
   workflow_dispatch:
@@ -59,20 +59,20 @@ jobs:
           fi
           artifact_version="v${VERSION#v}"
           echo "Release APK found: $apk"
-          cp "$apk" "release/EVChargeCalculator-${artifact_version}.apk"
-          zip -r "release/EVChargeCalculator-${artifact_version}.zip" . \
+          cp "$apk" "release/EV-Calculator-${artifact_version}.apk"
+          zip -r "release/EV-Calculator-${artifact_version}.zip" . \
             -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
       - name: Upload release APK
         uses: actions/upload-artifact@v6
         with:
-          name: EVChargeCalculator-${{ steps.version.outputs.version }}
-          path: release/EVChargeCalculator-${{ steps.version.outputs.version }}.apk
+          name: EV-Calculator-${{ steps.version.outputs.version }}
+          path: release/EV-Calculator-${{ steps.version.outputs.version }}.apk
           if-no-files-found: error
 
       - name: Upload project ZIP
         uses: actions/upload-artifact@v6
         with:
-          name: EVChargeCalculator-${{ steps.version.outputs.version }}-source
-          path: release/EVChargeCalculator-${{ steps.version.outputs.version }}.zip
+          name: EV-Calculator-${{ steps.version.outputs.version }}-source
+          path: release/EV-Calculator-${{ steps.version.outputs.version }}.zip
           if-no-files-found: error

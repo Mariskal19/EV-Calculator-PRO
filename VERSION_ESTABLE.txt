@@ -1,3 +1,3 @@
-EVChargeCalculator v1.1.4
+EV-Calculator v1.1.4
 
 Versión final estabilizada con la cabecera premium y la batería superpuesta sobre la imagen.
