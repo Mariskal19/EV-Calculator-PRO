@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
-    <!-- Cyan charging ring -->
-    <path android:fillColor="#00000000" android:strokeColor="#16D7E8" android:strokeWidth="5.5" android:strokeLineCap="round" android:pathData="M83,81 C91,73 95,62 95,54 C95,31 77,13 54,13 C31,13 13,31 13,54 C13,77 31,95 54,95 C66,95 76,91 83,84"/>
-    <!-- Blue ring section behind the plug -->
-    <path android:fillColor="#00000000" android:strokeColor="#1478F5" android:strokeWidth="5.5" android:strokeLineCap="round" android:pathData="M83,81 C91,73 95,63 95,54"/>
-
-    <!-- White EV car -->
+    <path android:fillColor="#00000000" android:strokeColor="#16D7E8" android:strokeWidth="5.5" android:strokeLineCap="round" android:pathData="M82,79 C90,72 95,63 95,54 C95,31 77,13 54,13 C31,13 13,31 13,54 C13,77 31,95 54,95 C65,95 75,91 82,84"/>
+    <path android:fillColor="#00000000" android:strokeColor="#1478F5" android:strokeWidth="5.5" android:strokeLineCap="round" android:pathData="M82,79 C90,72 95,63 95,54"/>
     <path android:fillColor="#FFFFFFFF" android:pathData="M30,53 L34,43 C36,38 40,35 45,35 L63,35 C68,35 72,38 74,43 L78,53 L82,55 L82,69 C82,71 80,73 78,73 L75,73 L75,67 L33,67 L33,73 L30,73 C28,73 26,71 26,69 L26,55 Z M38,45 L70,45 L67,39 L41,39 Z"/>
     <path android:fillColor="#061B3A" android:pathData="M32,55 C32,52 34,50 37,50 L42,50 C44,50 45,52 45,54 C45,56 43,57 41,57 L35,57 C33,57 32,56 32,55 Z M63,54 C63,52 65,50 67,50 L72,50 C75,50 77,52 77,55 C77,56 76,57 74,57 L67,57 C65,57 63,56 63,54 Z"/>
-
-    <!-- Electric plug -->
-    <path android:fillColor="#16C8F2" android:pathData="M78,72 L84,66 L93,75 L87,81 Z M90,72 L94,68 L101,75 L97,79 Z M86,79 L96,89 C98,91 98,94 96,96 C94,98 91,98 89,96 L79,86 Z"/>
+    <path android:fillColor="#00000000" android:strokeColor="#16C8F2" android:strokeWidth="4.5" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M80,78 C84,82 87,86 91,89"/>
+    <path android:fillColor="#16C8F2" android:pathData="M87,78 L94,71 L100,77 L93,84 Z M95,75 L99,71 L104,76 L100,80 Z M91,82 L99,90 C101,92 101,95 99,97 C97,99 94,99 92,97 L84,89 Z"/>
 </vector>
