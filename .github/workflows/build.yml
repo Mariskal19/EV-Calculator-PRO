@@ -3,10 +3,10 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -31,32 +31,6 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Normalize departure warning card height
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('app/src/main/java/com/evchargecalculator/MainActivity.java')
-          s = p.read_text()
-          old = 'statusBox.addView(textCol,new LinearLayout.LayoutParams(0,dp(64),1)); statusBox.getLayoutParams().height=dp(84);'
-          new = 'statusBox.addView(textCol,new LinearLayout.LayoutParams(0,dp(56),1)); statusBox.getLayoutParams().height=dp(78);'
-          if old in s:
-              p.write_text(s.replace(old, new, 1))
-              print('Warning departure card normalized to 78dp.')
-          else:
-              print('Warning departure card already normalized; no source change needed.')
-          PY
-          if git diff --quiet -- app/src/main/java/com/evchargecalculator/MainActivity.java; then
-            echo "No source change to commit."
-          else
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add app/src/main/java/com/evchargecalculator/MainActivity.java
-            git commit -m 'fix: keep warning departure card height consistent'
-            git push
-          fi
-
       - name: Configure release signing
         shell: bash
         run: |
@@ -66,7 +40,7 @@ jobs:
             test -s "$RUNNER_TEMP/evcalculator-upload.jks"
             echo "Release upload keystore configured."
           else
-            echo "No upload keystore configured yet; release build will use the temporary debug fallback."
+            echo "No upload keystore configured; release build will use the temporary debug fallback for testing only."
           fi
 
       - name: Read app version
@@ -93,7 +67,7 @@ jobs:
           if [ -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}" ]; then
             echo "Release build configured with the Google Play upload key."
           else
-            echo "WARNING: Google Play upload key is not configured yet; release artifacts use the temporary debug signing fallback."
+            echo "WARNING: upload key is not configured; artifacts are for testing only."
           fi
 
       - name: Prepare release files
@@ -119,8 +93,6 @@ jobs:
             exit 1
           fi
 
-          echo "Release APK found: $apk"
-          echo "Release AAB found: $aab"
           cp "$apk" "release/EV-Calculator-PRO-${artifact_version}.apk"
           cp "$aab" "release/EV-Calculator-PRO-${artifact_version}.aab"
 
