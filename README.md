@@ -20,7 +20,7 @@ Esta es la versión actual del proyecto en GitHub y la base de referencia para l
 - GitHub Actions genera APK Release y Android App Bundle (AAB) Release.
 - GitHub Actions utiliza Java 17, Gradle 8.9, `actions/checkout@v5`, `actions/setup-java@v5` y `actions/upload-artifact@v6`.
 - El workflow ya no modifica ni hace commits automáticos sobre el código fuente.
-- La firma Release puede utilizar la upload key mediante GitHub Secrets; mientras no esté configurada se mantiene una firma debug únicamente para pruebas.
+- La firma Release requiere la upload key configurada mediante GitHub Secrets.
 
 ## Limpieza y optimización realizada
 
@@ -30,10 +30,12 @@ Esta es la versión actual del proyecto en GitHub y la base de referencia para l
 - Eliminado del workflow el paso que modificaba `MainActivity.java` automáticamente y hacía `git push`.
 - Reducidos los permisos de GitHub Actions a `contents: read`.
 - El workflow queda limitado a la rama `main`.
+- La compilación Release no permite fallback a una firma debug.
+- Configurada una upload key específica para la publicación de EV Calculator PRO mediante GitHub Secrets.
 
 ## Google Play
 
-La base técnica queda preparada para la fase final de publicación. Antes de subir el primer AAB habrá que completar la firma con la upload key, verificar el AAB Release resultante y completar en Play Console la ficha de la aplicación, capturas de pantalla, política de privacidad, Data Safety, clasificación de contenido y demás formularios requeridos.
+La base técnica queda preparada para la fase final de publicación. Antes de subir el primer AAB habrá que completar en Play Console la ficha de la aplicación, capturas de pantalla, política de privacidad, Data Safety, clasificación de contenido y demás formularios requeridos.
 
 ## Archivos de entrega
 
