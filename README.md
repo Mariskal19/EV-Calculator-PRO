@@ -6,26 +6,37 @@ Aplicación Android para calcular la carga de un vehículo eléctrico: tiempo ne
 
 Esta es la versión actual del proyecto en GitHub y la base de referencia para la preparación de su publicación en Google Play.
 
-### Cambios y preparación actual
+### Estado técnico
 
 - Nombre de la aplicación: **EV Calculator PRO**.
-- Identificador interno de aplicación: `com.evcalculatorpro`.
-- La pantalla actual se mantiene como **EV Charge Calculator**. En una futura versión se añadirá una pantalla principal de **EV Calculator PRO** con acceso a esta pantalla.
+- Identificador interno: `com.evcalculatorpro`.
+- La pantalla actual se mantiene como **EV Charge Calculator**.
 - `compileSdk`: 36.
 - `targetSdk`: 36.
-- Se mantiene la lógica y el diseño actuales de la aplicación.
-- El proyecto genera **APK Release** y **Android App Bundle (AAB) Release** mediante GitHub Actions.
-- GitHub Actions utiliza Java 17 y Gradle 8.9.
-- La firma definitiva para Google Play queda pendiente de configurar mediante una upload key y GitHub Secrets.
+- `minSdk`: 23.
+- Release optimizada con **R8** y reducción de recursos (`minifyEnabled` + `shrinkResources`).
+- Sin permisos especiales declarados en el `AndroidManifest.xml`.
+- Icono launcher configurado mediante adaptive icon.
+- GitHub Actions genera APK Release y Android App Bundle (AAB) Release.
+- GitHub Actions utiliza Java 17, Gradle 8.9, `actions/checkout@v5`, `actions/setup-java@v5` y `actions/upload-artifact@v6`.
+- El workflow ya no modifica ni hace commits automáticos sobre el código fuente.
+- La firma Release puede utilizar la upload key mediante GitHub Secrets; mientras no esté configurada se mantiene una firma debug únicamente para pruebas.
+
+## Limpieza y optimización realizada
+
+- Activada la optimización R8 en Release.
+- Activada la reducción de recursos no utilizados.
+- Centralizado el nombre de la aplicación en `strings.xml` y utilizado desde el manifest.
+- Eliminado del workflow el paso que modificaba `MainActivity.java` automáticamente y hacía `git push`.
+- Reducidos los permisos de GitHub Actions a `contents: read`.
+- El workflow queda limitado a la rama `main`.
 
 ## Google Play
 
-El proyecto está preparado técnicamente para continuar con la publicación en Google Play. Quedan pendientes principalmente la configuración de la firma de publicación, la creación de la ficha de Play Store, capturas de pantalla, política de privacidad y los formularios de contenido y seguridad de datos.
+La base técnica queda preparada para la fase final de publicación. Antes de subir el primer AAB habrá que completar la firma con la upload key, verificar el AAB Release resultante y completar en Play Console la ficha de la aplicación, capturas de pantalla, política de privacidad, Data Safety, clasificación de contenido y demás formularios requeridos.
 
 ## Archivos de entrega
 
 - ZIP: `EV-Calculator-PRO-v1.0.1.zip`
 - APK Release: `EV-Calculator-PRO-v1.0.1.apk`
 - AAB Release: `EV-Calculator-PRO-v1.0.1.aab`
-- Artefacto APK de GitHub Actions: `EV-Calculator-PRO-v1.0.1`
-- Artefacto AAB de GitHub Actions: `EV-Calculator-PRO-v1.0.1-aab`
