@@ -1,4 +1,4 @@
-# EV Calculator v1.0.1
+# EV Calculator PRO v1.0.1
 
 Aplicación Android para calcular la carga de un vehículo eléctrico: tiempo necesario, coste de carga y hora de inicio recomendada.
 
@@ -8,9 +8,9 @@ Esta es la versión actual del proyecto en GitHub y la base de referencia para l
 
 ### Cambios y preparación actual
 
-- Nombre de la aplicación: **EV Calculator**.
-- Identificador interno de aplicación: `com.evcalculator`.
-- La pantalla actual se mantiene como **EVChargeCalculator**.
+- Nombre de la aplicación: **EV Calculator PRO**.
+- Identificador interno de aplicación: `com.evcalculatorpro`.
+- La pantalla actual se mantiene como **EV Charge Calculator**. En una futura versión se añadirá una pantalla principal de **EV Calculator PRO** con acceso a esta pantalla.
 - `compileSdk`: 36.
 - `targetSdk`: 36.
 - Se mantiene la lógica y el diseño actuales de la aplicación.
@@ -24,8 +24,8 @@ El proyecto está preparado técnicamente para continuar con la publicación en 
 
 ## Archivos de entrega
 
-- ZIP: `EV Calculator-v1.0.1.zip`
-- APK Release: `EV Calculator-v1.0.1.apk`
-- AAB Release: `EV Calculator-v1.0.1.aab`
-- Artefacto APK de GitHub Actions: `EV Calculator-v1.0.1`
-- Artefacto AAB de GitHub Actions: `EV Calculator-v1.0.1-aab`
+- ZIP: `EV-Calculator-PRO-v1.0.1.zip`
+- APK Release: `EV-Calculator-PRO-v1.0.1.apk`
+- AAB Release: `EV-Calculator-PRO-v1.0.1.aab`
+- Artefacto APK de GitHub Actions: `EV-Calculator-PRO-v1.0.1`
+- Artefacto AAB de GitHub Actions: `EV-Calculator-PRO-v1.0.1-aab`
