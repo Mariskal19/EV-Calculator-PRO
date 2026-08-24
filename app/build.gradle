@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.evcalculatorpro'
+    namespace 'com.evchargecalculator'
     compileSdk 36
 
     defaultConfig {
