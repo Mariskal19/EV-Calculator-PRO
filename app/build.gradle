@@ -37,7 +37,8 @@ android {
                     System.getenv('EV_CALCULATOR_KEY_ALIAS') &&
                     System.getenv('EV_CALCULATOR_KEY_PASSWORD')
             signingConfig hasReleaseSigning ? signingConfigs.release : signingConfigs.debug
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
