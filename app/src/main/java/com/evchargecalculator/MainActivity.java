@@ -139,7 +139,7 @@ public class MainActivity extends Activity {
     LinearLayout textCol=new LinearLayout(this); textCol.setOrientation(LinearLayout.VERTICAL); textCol.setGravity(Gravity.CENTER);
     statusR.setSingleLine(true); statusR.setGravity(Gravity.CENTER); textCol.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28)));
     statusTimeR.setGravity(Gravity.CENTER); textCol.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(34)));
-    statusBox.addView(textCol,new LinearLayout.LayoutParams(0,dp(64),1)); statusBox.getLayoutParams().height=dp(84);
+    statusBox.addView(textCol,new LinearLayout.LayoutParams(0,dp(56),1)); statusBox.getLayoutParams().height=dp(78);
   }
   statusBox.requestLayout();
  }
