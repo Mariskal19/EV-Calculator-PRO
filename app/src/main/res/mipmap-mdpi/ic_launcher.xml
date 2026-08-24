@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="48dp" android:height="48dp" android:viewportWidth="48" android:viewportHeight="48">
-    <path android:fillColor="#1478F5" android:pathData="M0,0h48v48h-48z"/>
-    <path android:fillColor="#FFFFFFFF" android:pathData="M33,7 L33,11 L37,11 L37,14 L33,14 L33,18 L30,18 L30,14 L26,14 L26,11 L30,11 L30,7 Z"/>
-    <path android:fillColor="#00000000" android:strokeColor="#FFFFFFFF" android:strokeWidth="2.5" android:strokeLineCap="round" android:pathData="M30,13 C20,7 8,13 8,24 C8,34 16,40 26,40 C29,40 32,39 35,37"/>
-    <path android:fillColor="#FFFFFFFF" android:pathData="M16,19 L23,19 L23,22 L19,22 L19,24 L23,24 L23,27 L19,27 L19,29 L23,29 L23,32 L16,32 Z"/>
-    <path android:fillColor="#FFFFFFFF" android:pathData="M25,19 L28,19 L30,27 L32,19 L35,19 L31,32 L28,32 Z"/>
+    <path android:fillColor="#061B3A" android:pathData="M0,0h48v48h-48z"/>
+    <path android:fillColor="#00000000" android:strokeColor="#16D7E8" android:strokeWidth="2.5" android:strokeLineCap="round" android:pathData="M36,36 C40,32 42,27 42,24 C42,14 34,6 24,6 C14,6 6,14 6,24 C6,34 14,42 24,42 C29,42 34,40 36,37"/>
+    <path android:fillColor="#00000000" android:strokeColor="#1478F5" android:strokeWidth="2.5" android:strokeLineCap="round" android:pathData="M36,36 C40,32 42,27 42,24"/>
+    <path android:fillColor="#FFFFFFFF" android:pathData="M13,24 L15,19 C16,17 18,16 20,16 L28,16 C30,16 32,17 33,19 L35,24 L37,25 L37,31 C37,32 36,33 35,33 L33,33 L33,30 L15,30 L15,33 L13,33 C12,33 11,32 11,31 L11,25 Z M17,20 L31,20 L30,18 L18,18 Z"/>
+    <path android:fillColor="#061B3A" android:pathData="M14,25 C14,24 15,23 16,23 L18,23 C19,23 20,24 20,25 C20,26 19,26 18,26 L15,26 C14,26 14,26 14,25 Z M28,25 C28,24 29,23 30,23 L32,23 C33,23 34,24 34,25 C34,26 33,26 32,26 L30,26 C29,26 28,26 28,25 Z"/>
+    <path android:fillColor="#16C8F2" android:pathData="M34,33 L38,29 L42,33 L38,37 Z M40,32 L42,30 L45,33 L43,35 Z M38,36 L43,41 C44,42 44,43 43,44 C42,45 41,45 40,44 L35,39 Z"/>
 </vector>
