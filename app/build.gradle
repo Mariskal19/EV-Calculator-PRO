@@ -36,7 +36,10 @@ android {
                     System.getenv('EV_CALCULATOR_KEYSTORE_PASSWORD') &&
                     System.getenv('EV_CALCULATOR_KEY_ALIAS') &&
                     System.getenv('EV_CALCULATOR_KEY_PASSWORD')
-            signingConfig hasReleaseSigning ? signingConfigs.release : signingConfigs.debug
+            if (!hasReleaseSigning) {
+                throw new GradleException('Release signing is not configured. Configure the EV_CALCULATOR_KEYSTORE_* environment variables before building a release.')
+            }
+            signingConfig signingConfigs.release
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
