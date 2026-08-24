@@ -12,7 +12,7 @@ public class PrivacyMainActivity extends MainActivity {
     private static final String PRIVACY_URL = "https://mariskal19.github.io/EV-Calculator-PRO-Privacy/";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         attachPrivacyLink(findViewById(android.R.id.content));
     }
