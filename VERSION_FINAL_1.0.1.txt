@@ -1,3 +1,5 @@
-EV Calculator v1.0.1
+EV Calculator PRO v1.0.1
 
 Versión final 1.0.1, estabilizada con la cabecera premium y la batería superpuesta sobre la imagen.
+
+La pantalla actual se mantiene como EV Charge Calculator. La futura pantalla principal de EV Calculator PRO tendrá un acceso a esta pantalla.
