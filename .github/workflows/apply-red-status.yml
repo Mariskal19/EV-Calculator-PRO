@@ -1,0 +1,29 @@
+name: Apply red gradient to warning card
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply red gradient to warning card
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/MainActivity.java')
+          s=p.read_text()
+          old='} else { statusBox.setBackground(bg(statusWarn,22,0)); }'
+          new='} else { GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{Color.rgb(190,38,52),Color.rgb(255,92,92)}); g.setCornerRadius(dp(22)); statusBox.setBackground(g); }'
+          if old not in s:
+              print('Pattern not found; no changes made.')
+              raise SystemExit(1)
+          p.write_text(s.replace(old,new,1))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/MainActivity.java
+          git commit -m 'style: use red gradient for warning departure card'
+          git push
