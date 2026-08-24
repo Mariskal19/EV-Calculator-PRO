@@ -2,8 +2,8 @@
     <application
         android:theme="@style/Theme.EVChargeCalculator"
         android:label="EV Calculator PRO"
-        android:icon="@mipmap/ic_launcher_javi"
-        android:roundIcon="@mipmap/ic_launcher_javi"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity
