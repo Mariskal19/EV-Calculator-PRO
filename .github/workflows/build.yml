@@ -31,17 +31,17 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Configure release signing
+      - name: Verify release signing configuration
         shell: bash
         run: |
           set -euo pipefail
-          if [ -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}" ]; then
-            echo "$EV_CALCULATOR_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/evcalculator-upload.jks"
-            test -s "$RUNNER_TEMP/evcalculator-upload.jks"
-            echo "Release upload keystore configured."
-          else
-            echo "No upload keystore configured; release build will use the temporary debug fallback for testing only."
-          fi
+          test -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}" || { echo "ERROR: EV_CALCULATOR_KEYSTORE_BASE64 is not configured."; exit 1; }
+          test -n "${EV_CALCULATOR_KEYSTORE_PASSWORD:-}" || { echo "ERROR: EV_CALCULATOR_KEYSTORE_PASSWORD is not configured."; exit 1; }
+          test -n "${EV_CALCULATOR_KEY_ALIAS:-}" || { echo "ERROR: EV_CALCULATOR_KEY_ALIAS is not configured."; exit 1; }
+          test -n "${EV_CALCULATOR_KEY_PASSWORD:-}" || { echo "ERROR: EV_CALCULATOR_KEY_PASSWORD is not configured."; exit 1; }
+          echo "$EV_CALCULATOR_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/evcalculator-upload.jks"
+          test -s "$RUNNER_TEMP/evcalculator-upload.jks"
+          echo "Release upload keystore configured."
 
       - name: Read app version
         id: version
@@ -61,14 +61,16 @@ jobs:
           EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/evcalculator-upload.jks
         run: gradle --no-daemon clean assembleRelease bundleRelease
 
-      - name: Verify release signing mode
+      - name: Verify release outputs
         shell: bash
         run: |
-          if [ -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}" ]; then
-            echo "Release build configured with the Google Play upload key."
-          else
-            echo "WARNING: upload key is not configured; artifacts are for testing only."
-          fi
+          set -euo pipefail
+          apk=$(find app/build/outputs/apk -type f -name "*.apk" ! -name "*debug*" | head -n 1)
+          aab=$(find app/build/outputs/bundle -type f -name "*.aab" | head -n 1)
+          test -n "$apk" || { echo "No Release APK found."; exit 1; }
+          test -n "$aab" || { echo "No Release AAB found."; exit 1; }
+          echo "Release APK: $apk"
+          echo "Release AAB: $aab"
 
       - name: Prepare release files
         shell: bash
@@ -78,24 +80,10 @@ jobs:
           set -euo pipefail
           mkdir -p release
           artifact_version="v${VERSION#v}"
-
           apk=$(find app/build/outputs/apk -type f -name "*.apk" ! -name "*debug*" | head -n 1)
-          if [ -z "$apk" ]; then
-            echo "No Release APK found under app/build/outputs/apk"
-            find app/build/outputs/apk -maxdepth 4 -type f -print || true
-            exit 1
-          fi
-
           aab=$(find app/build/outputs/bundle -type f -name "*.aab" | head -n 1)
-          if [ -z "$aab" ]; then
-            echo "No Release AAB found under app/build/outputs/bundle"
-            find app/build/outputs/bundle -maxdepth 4 -type f -print || true
-            exit 1
-          fi
-
           cp "$apk" "release/EV-Calculator-PRO-${artifact_version}.apk"
           cp "$aab" "release/EV-Calculator-PRO-${artifact_version}.aab"
-
           zip -r "release/EV-Calculator-PRO-${artifact_version}.zip" . \
             -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
