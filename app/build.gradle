@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.evchargecalculator'
+    namespace 'com.evcalculatorpro'
     compileSdk 36
 
     defaultConfig {
-        applicationId 'com.evcalculator'
+        applicationId 'com.evcalculatorpro'
         minSdk 23
         targetSdk 36
         versionCode 49
