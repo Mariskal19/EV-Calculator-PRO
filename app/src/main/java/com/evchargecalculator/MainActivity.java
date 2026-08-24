@@ -119,7 +119,7 @@ public class MainActivity extends Activity {
   if(statusBox==null)return;
   statusBox.setOrientation(LinearLayout.HORIZONTAL); statusBox.setGravity(Gravity.CENTER_VERTICAL);
   statusBox.setPadding(dp(10),dp(10),dp(10),dp(10));
-  statusBox.setBackground(bg(ok?statusOk:statusWarn,22,0));
+  if(ok){ GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{Color.rgb(18,82,214),Color.rgb(54,184,255)}); g.setCornerRadius(dp(22)); statusBox.setBackground(g); } else { statusBox.setBackground(bg(statusWarn,22,0)); }
   statusBox.removeAllViews(); detach(statusIcon); detach(statusR); detach(statusTimeR);
   statusIcon.setVisibility(View.VISIBLE); statusIcon.setGravity(Gravity.CENTER);
   if(ok){
