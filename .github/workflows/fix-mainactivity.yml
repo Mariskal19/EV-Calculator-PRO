@@ -16,23 +16,24 @@ jobs:
           p = Path('app/src/main/java/com/evchargecalculator/MainActivity.java')
           s = p.read_text()
           bad = 'themeButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,dp(2),Color.argb(90,0,0,0));'
-          good = 'themeButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));'
-          if bad not in s:
-              raise SystemExit('Malformed themeButton line not found')
-          s = s.replace(bad, good, 1)
+          good = 'themeButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,dp(2),Color.argb(90,0,0,0));'
+          # The workflow is intentionally self-contained: only the malformed expression is repaired.
+          if bad in s:
+              s = s.replace(bad, good, 1)
+          else:
+              raise SystemExit('Malformed themeButton expression not found')
           old_back = 'backButton.setBackground(bg(Color.argb(140,12,22,33),12,1));'
           new_back = 'backButton.setBackgroundColor(Color.TRANSPARENT);'
-          if old_back not in s:
+          if old_back in s:
+              s = s.replace(old_back, new_back, 1)
+          else:
               raise SystemExit('Back button background not found')
-          s = s.replace(old_back, new_back, 1)
           p.write_text(s)
           PY
           git diff --check
-          git diff -- app/src/main/java/com/evchargecalculator/MainActivity.java
-      - name: Commit fix and remove temporary workflow
-        run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/src/main/java/com/evchargecalculator/MainActivity.java .github/workflows/fix-mainactivity.yml
+          git add app/src/main/java/com/evchargecalculator/MainActivity.java
+          git rm .github/workflows/fix-mainactivity.yml
           git commit -m 'Fix MainActivity theme button and simplify back arrow'
           git push
