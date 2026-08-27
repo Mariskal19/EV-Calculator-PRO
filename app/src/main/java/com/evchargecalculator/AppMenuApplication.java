@@ -62,7 +62,7 @@ public class AppMenuApplication extends Application {
         for (int i = 0; i < parent.getChildCount(); i++) {
             View child = parent.getChildAt(i);
             CharSequence description = child.getContentDescription();
-            if (description != null && "Cambiar tema".contentEquals(description)) {
+            if (description != null && ("Cambiar tema".contentEquals(description) || "Tema claro".contentEquals(description) || "Tema oscuro".contentEquals(description))) {
                 child.setVisibility(View.GONE);
             } else if (child instanceof ViewGroup) {
                 hideOldThemeButtons((ViewGroup) child);
