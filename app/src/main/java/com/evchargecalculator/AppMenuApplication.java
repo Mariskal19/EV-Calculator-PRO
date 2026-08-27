@@ -54,8 +54,6 @@ public class AppMenuApplication extends Application {
         menu.setBackground(bg);
         menu.setOnClickListener(v -> showMenu(activity, menu));
 
-        // The app headers start below the 36dp top content inset; place the
-        // common menu on the same vertical line as the header title/back arrow.
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
                 dp(activity, 40), dp(activity, 40), Gravity.TOP | Gravity.END);
         lp.rightMargin = dp(activity, 14);
@@ -87,7 +85,11 @@ public class AppMenuApplication extends Application {
             }
             @Override public void setDark(boolean value) {
                 prefs.edit().putBoolean(KEY_DARK_THEME, value).apply();
-                activity.recreate();
+                if (activity instanceof MainActivity) {
+                    ((MainActivity) activity).applyMenuTheme(value);
+                } else {
+                    activity.recreate();
+                }
             }
         });
     }
