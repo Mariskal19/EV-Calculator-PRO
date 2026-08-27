@@ -7,7 +7,7 @@
         android:allowBackup="true"
         android:supportsRtl="true">
         <activity
-            android:name=".PrivacyMainActivity"
+            android:name=".PrincipalActivity"
             android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
@@ -15,5 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacyMainActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
     </application>
 </manifest>
