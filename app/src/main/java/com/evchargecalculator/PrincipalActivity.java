@@ -41,6 +41,19 @@ public class PrincipalActivity extends Activity {
         build();
     }
 
+    @Override protected void onResume() {
+        super.onResume();
+        // Always re-read the app-wide theme when returning from another screen.
+        SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+        if (prefs.contains(KEY_DARK_THEME)) {
+            boolean savedDark = prefs.getBoolean(KEY_DARK_THEME, false);
+            if (savedDark != dark) {
+                dark = savedDark;
+                build();
+            }
+        }
+    }
+
     private void build() {
         FrameLayout frame = new FrameLayout(this);
         PremiumBackgroundView background = new PremiumBackgroundView(this);
