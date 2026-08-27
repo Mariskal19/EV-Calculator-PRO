@@ -37,6 +37,7 @@ public class PrincipalActivity extends Activity {
         FrameLayout frame = new FrameLayout(this);
         PremiumBackgroundView background = new PremiumBackgroundView(this);
         background.setDark(dark);
+        background.setShowVehicle(false);
         frame.addView(background, new FrameLayout.LayoutParams(-1, -1));
         ScrollView scroll = new ScrollView(this);
         scroll.setFillViewport(true);
@@ -58,13 +59,11 @@ public class PrincipalActivity extends Activity {
         fade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
                 new int[]{Color.argb(200, 0, 0, 0), Color.argb(80, 0, 0, 0), Color.argb(20, 0, 0, 0), Color.argb(0, 0, 0, 0)}));
         hero.addView(fade, new FrameLayout.LayoutParams(-1, dp(170), Gravity.TOP));
-
         TextView title = tv("EV Calculator PRO", 22, Color.WHITE);
         title.setTypeface(null, 1); title.setGravity(Gravity.CENTER);
         title.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
         FrameLayout.LayoutParams tp = new FrameLayout.LayoutParams(-1, dp(48));
-        tp.leftMargin = dp(40); tp.rightMargin = dp(40); tp.topMargin = dp(12);
-        hero.addView(title, tp);
+        tp.leftMargin = dp(40); tp.rightMargin = dp(40); tp.topMargin = dp(12); hero.addView(title, tp);
         themeButton = tv(dark ? "☀" : "☾", 20, Color.WHITE);
         themeButton.setGravity(Gravity.CENTER); themeButton.setContentDescription("Cambiar tema");
         themeButton.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
