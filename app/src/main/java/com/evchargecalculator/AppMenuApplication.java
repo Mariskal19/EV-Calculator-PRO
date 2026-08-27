@@ -36,8 +36,8 @@ public class AppMenuApplication extends Application {
     private void installMenu(Activity activity) {
         ViewGroup content = activity.findViewById(android.R.id.content);
         if (content == null) return;
-        hideOldThemeButtons(content);
         if (content.findViewById(MENU_ID) != null) return;
+        removeLegacyThemeButton(content);
         TextView menu = new TextView(activity);
         menu.setId(MENU_ID);
         menu.setText("⋮");
@@ -58,23 +58,22 @@ public class AppMenuApplication extends Application {
         content.addView(menu, lp);
     }
 
-    private void hideOldThemeButtons(ViewGroup parent) {
-        for (int i = 0; i < parent.getChildCount(); i++) {
+    private void removeLegacyThemeButton(ViewGroup parent) {
+        for (int i = parent.getChildCount() - 1; i >= 0; i--) {
             View child = parent.getChildAt(i);
-            CharSequence description = child.getContentDescription();
-            if (description != null && ("Cambiar tema".contentEquals(description) || "Tema claro".contentEquals(description) || "Tema oscuro".contentEquals(description))) {
-                child.setVisibility(View.GONE);
+            CharSequence d = child.getContentDescription();
+            if (d != null && ("Cambiar tema".contentEquals(d) || "Tema claro".contentEquals(d) || "Tema oscuro".contentEquals(d))) {
+                parent.removeViewAt(i);
             } else if (child instanceof ViewGroup) {
-                hideOldThemeButtons((ViewGroup) child);
+                removeLegacyThemeButton((ViewGroup) child);
             }
         }
     }
 
     private void showMenu(Activity activity, View anchor) {
         SharedPreferences prefs = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-        boolean dark = prefs.getBoolean(KEY_DARK_THEME, false);
         AppMenuHelper.show(activity, anchor, new AppMenuHelper.Listener() {
-            @Override public boolean isDark() { return dark; }
+            @Override public boolean isDark() { return prefs.getBoolean(KEY_DARK_THEME, false); }
             @Override public void setDark(boolean value) {
                 prefs.edit().putBoolean(KEY_DARK_THEME, value).apply();
                 activity.recreate();
