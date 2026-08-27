@@ -1,6 +1,5 @@
 package com.evchargecalculator;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -14,7 +13,7 @@ public class PersistentMainActivity extends MainActivity {
     private static final String KEY_DARK_THEME = "dark_theme";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         if (prefs.contains(KEY_DARK_THEME)) {
             boolean dark = prefs.getBoolean(KEY_DARK_THEME, false);
