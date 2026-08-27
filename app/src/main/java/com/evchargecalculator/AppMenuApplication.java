@@ -12,8 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 public class AppMenuApplication extends Application {
     private static final String PREFS = "ev_charge_calculator";
@@ -80,23 +78,9 @@ public class AppMenuApplication extends Application {
             @Override public boolean isDark() { return prefs.getBoolean(KEY_DARK_THEME, false); }
             @Override public void setDark(boolean value) {
                 prefs.edit().putBoolean(KEY_DARK_THEME, value).apply();
-                if (activity instanceof MainActivity) applyThemeDirectly((MainActivity) activity, value);
-                else activity.recreate();
+                activity.recreate();
             }
         });
-    }
-
-    private void applyThemeDirectly(MainActivity activity, boolean dark) {
-        try {
-            Field field = MainActivity.class.getDeclaredField("dark");
-            field.setAccessible(true);
-            field.setBoolean(activity, dark);
-            Method method = MainActivity.class.getDeclaredMethod("rebuildTheme");
-            method.setAccessible(true);
-            method.invoke(activity);
-        } catch (Exception ignored) {
-            activity.recreate();
-        }
     }
 
     private static int dp(Activity a, int n) { return (int)(n * a.getResources().getDisplayMetrics().density + .5f); }
