@@ -56,8 +56,7 @@ public class AppMenuApplication extends Application {
         menu.setBackground(bg);
         menu.setOnClickListener(v -> showMenu(activity, menu));
 
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-                dp(activity, 40), dp(activity, 40), Gravity.TOP | Gravity.END);
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(dp(activity, 40), dp(activity, 40), Gravity.TOP | Gravity.END);
         lp.rightMargin = dp(activity, 14);
         lp.topMargin = dp(activity, 48);
         content.addView(menu, lp);
@@ -67,11 +66,7 @@ public class AppMenuApplication extends Application {
         for (int i = parent.getChildCount() - 1; i >= 0; i--) {
             View child = parent.getChildAt(i);
             CharSequence d = child.getContentDescription();
-            if (d != null && (
-                    "Cambiar tema".contentEquals(d) ||
-                    "Tema claro".contentEquals(d) ||
-                    "Tema oscuro".contentEquals(d) ||
-                    "Más opciones".contentEquals(d))) {
+            if (d != null && ("Cambiar tema".contentEquals(d) || "Tema claro".contentEquals(d) || "Tema oscuro".contentEquals(d) || "Más opciones".contentEquals(d))) {
                 parent.removeViewAt(i);
             } else if (child instanceof ViewGroup) {
                 removeLegacyMenus((ViewGroup) child);
@@ -82,24 +77,15 @@ public class AppMenuApplication extends Application {
     private void showMenu(Activity activity, View anchor) {
         SharedPreferences prefs = activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         AppMenuHelper.show(activity, anchor, new AppMenuHelper.Listener() {
-            @Override public boolean isDark() {
-                return prefs.getBoolean(KEY_DARK_THEME, false);
-            }
+            @Override public boolean isDark() { return prefs.getBoolean(KEY_DARK_THEME, false); }
             @Override public void setDark(boolean value) {
                 prefs.edit().putBoolean(KEY_DARK_THEME, value).apply();
-                if (activity instanceof MainActivity) {
-                    applyThemeDirectly((MainActivity) activity, value);
-                } else {
-                    activity.recreate();
-                }
+                if (activity instanceof MainActivity) applyThemeDirectly((MainActivity) activity, value);
+                else activity.recreate();
             }
         });
     }
 
-    // Charge is MainActivity/PersistentMainActivity. Calling its existing
-    // rebuildTheme() directly keeps the current screen and its input values,
-    // instead of relying on Activity.recreate(), which did not refresh the
-    // dynamically drawn Charge UI on some devices.
     private void applyThemeDirectly(MainActivity activity, boolean dark) {
         try {
             Field field = MainActivity.class.getDeclaredField("dark");
@@ -113,7 +99,5 @@ public class AppMenuApplication extends Application {
         }
     }
 
-    private static int dp(Activity a, int n) {
-        return (int)(n * a.getResources().getDisplayMetrics().density + .5f);
-    }
+    private static int dp(Activity a, int n) { return (int)(n * a.getResources().getDisplayMetrics().density + .5f); }
 }
