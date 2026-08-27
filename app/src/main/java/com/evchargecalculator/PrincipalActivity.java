@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class PrincipalActivity extends Activity {
     private final int lightBg = Color.rgb(244, 248, 255);
     private final int darkBg = Color.rgb(7, 19, 28);
     private static final String PRIVACY_URL = "https://mariskal19.github.io/EV-Calculator-PRO-Privacy/";
+    private static final String PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.evcalculatorpro";
     private static final String PREFS = "ev_charge_calculator";
     private static final String KEY_DARK_THEME = "dark_theme";
 
@@ -43,7 +45,6 @@ public class PrincipalActivity extends Activity {
 
     @Override protected void onResume() {
         super.onResume();
-        // Always re-read the app-wide theme when returning from another screen.
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         if (prefs.contains(KEY_DARK_THEME)) {
             boolean savedDark = prefs.getBoolean(KEY_DARK_THEME, false);
@@ -85,13 +86,23 @@ public class PrincipalActivity extends Activity {
         title.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
         FrameLayout.LayoutParams tp = new FrameLayout.LayoutParams(-1, dp(48));
         tp.leftMargin = dp(40); tp.rightMargin = dp(40); tp.topMargin = dp(12); hero.addView(title, tp);
+
         themeButton = tv(dark ? "☀" : "☾", 20, Color.WHITE);
         themeButton.setGravity(Gravity.CENTER); themeButton.setContentDescription("Cambiar tema");
         themeButton.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
         themeButton.setBackground(bg(Color.argb(140, 12, 22, 33), 12));
         themeButton.setOnClickListener(v -> toggleTheme());
         FrameLayout.LayoutParams ip = new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.END);
-        ip.rightMargin = dp(14); ip.topMargin = dp(12); hero.addView(themeButton, ip);
+        ip.rightMargin = dp(62); ip.topMargin = dp(12); hero.addView(themeButton, ip);
+
+        TextView menuButton = tv("⋮", 25, Color.WHITE);
+        menuButton.setGravity(Gravity.CENTER);
+        menuButton.setContentDescription("Más opciones");
+        menuButton.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
+        menuButton.setBackground(bg(Color.argb(140, 12, 22, 33), 12));
+        menuButton.setOnClickListener(this::showAppMenu);
+        FrameLayout.LayoutParams mp = new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.END);
+        mp.rightMargin = dp(14); mp.topMargin = dp(12); hero.addView(menuButton, mp);
         root.addView(hero);
 
         LinearLayout card = new LinearLayout(this);
@@ -120,6 +131,35 @@ public class PrincipalActivity extends Activity {
         getWindow().setNavigationBarColor(dark ? darkBg : lightBg);
         getWindow().getDecorView().setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
+
+    private void showAppMenu(View anchor) {
+        PopupMenu popup = new PopupMenu(this, anchor);
+        popup.getMenu().add("Compartir app");
+        popup.getMenu().add("Calificar app");
+        popup.setOnMenuItemClickListener(item -> {
+            String option = item.getTitle().toString();
+            if ("Compartir app".equals(option)) {
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_SUBJECT, "EV Calculator PRO");
+                share.putExtra(Intent.EXTRA_TEXT, "Descubre EV Calculator PRO: " + PLAY_STORE_URL);
+                startActivity(Intent.createChooser(share, "Compartir app"));
+                return true;
+            }
+            if ("Calificar app".equals(option)) {
+                Intent rate = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.evcalculatorpro"));
+                try {
+                    startActivity(rate);
+                } catch (Exception ignored) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PLAY_STORE_URL)));
+                }
+                return true;
+            }
+            return false;
+        });
+        popup.show();
+    }
+
     private void toggleTheme() {
         dark = !dark;
         getSharedPreferences(PREFS, MODE_PRIVATE).edit().putBoolean(KEY_DARK_THEME, dark).apply();
