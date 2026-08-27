@@ -2,6 +2,7 @@ package com.evchargecalculator;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -26,10 +27,17 @@ public class PrincipalActivity extends Activity {
     private final int lightBg = Color.rgb(244, 248, 255);
     private final int darkBg = Color.rgb(7, 19, 28);
     private static final String PRIVACY_URL = "https://mariskal19.github.io/EV-Calculator-PRO-Privacy/";
+    private static final String PREFS = "ev_charge_calculator";
+    private static final String KEY_DARK_THEME = "dark_theme";
 
     @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dark = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+        SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+        if (prefs.contains(KEY_DARK_THEME)) {
+            dark = prefs.getBoolean(KEY_DARK_THEME, false);
+        } else {
+            dark = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+        }
         build();
     }
 
@@ -83,7 +91,7 @@ public class PrincipalActivity extends Activity {
         description.setPadding(0, dp(10), 0, dp(14)); card.addView(description);
         TextView calculator = tv("⚡  EV Charge Calculator", 17, Color.WHITE);
         calculator.setGravity(Gravity.CENTER_VERTICAL); calculator.setTypeface(null, 1); calculator.setPadding(dp(18), 0, dp(18), 0);
-        calculator.setBackground(bg(blue, 18)); calculator.setOnClickListener(v -> startActivity(new Intent(this, MainActivity.class)));
+        calculator.setBackground(bg(blue, 18)); calculator.setOnClickListener(v -> startActivity(new Intent(this, PersistentMainActivity.class)));
         card.addView(calculator, new LinearLayout.LayoutParams(-1, dp(62))); root.addView(card);
 
         TextView privacy = tv("Política de privacidad", 13, dark ? Color.rgb(105,175,255) : blue);
@@ -99,7 +107,11 @@ public class PrincipalActivity extends Activity {
         getWindow().setNavigationBarColor(dark ? darkBg : lightBg);
         getWindow().getDecorView().setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
-    private void toggleTheme() { dark = !dark; build(); }
+    private void toggleTheme() {
+        dark = !dark;
+        getSharedPreferences(PREFS, MODE_PRIVATE).edit().putBoolean(KEY_DARK_THEME, dark).apply();
+        build();
+    }
     private TextView tv(String s, int sp, int color) { TextView t = new TextView(this); t.setText(s); t.setTextSize(sp); t.setTextColor(color); return t; }
     private int textColor() { return dark ? Color.rgb(245, 248, 255) : white; }
     private int subColor() { return dark ? Color.rgb(170, 183, 204) : secondary; }
