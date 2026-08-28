@@ -6,63 +6,36 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import java.util.Locale;
 
-/** Handles the app language. Default is the device language; unsupported languages fall back to English. */
+/** App language handling. First launch follows the device language; unsupported languages use English. */
 public final class LanguageManager {
-    private static final String PREFS = "ev_charge_calculator";
-    private static final String KEY_LANGUAGE = "app_language";
-    private static final String SYSTEM = "system";
+    private static final String PREFS="ev_charge_calculator", KEY_LANGUAGE="app_language", SYSTEM="system";
     private LanguageManager() {}
-
-    public static String getSelectedLanguage(Context context) {
-        return context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(KEY_LANGUAGE, SYSTEM);
+    public static String getSelectedLanguage(Context c){return c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(KEY_LANGUAGE,SYSTEM);}
+    public static String getEffectiveLanguage(Context c){String s=getSelectedLanguage(c);if(!SYSTEM.equals(s))return isSupported(s)?s:"en";String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
+    public static void setLanguage(Context c,String l){c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,l).apply();apply(c,l);}
+    public static void apply(Context c,String l){String e=SYSTEM.equals(l)?getEffectiveLanguage(c):(isSupported(l)?l:"en");Locale locale=Locale.forLanguageTag(e);Locale.setDefault(locale);Configuration cfg=new Configuration(c.getResources().getConfiguration());cfg.setLocale(locale);c.getResources().updateConfiguration(cfg,c.getResources().getDisplayMetrics());}
+    public static void applyStored(Context c){apply(c,getSelectedLanguage(c));}
+    public static boolean isSupported(String l){return "en".equals(l)||"es".equals(l)||"fr".equals(l)||"de".equals(l)||"it".equals(l)||"pt".equals(l);}
+    public static String displayName(String l){if("en".equals(l))return "🇬🇧  English";if("es".equals(l))return "🇪🇸  Español";if("fr".equals(l))return "🇫🇷  Français";if("de".equals(l))return "🇩🇪  Deutsch";if("it".equals(l))return "🇮🇹  Italiano";if("pt".equals(l))return "🇵🇹  Português";return l;}
+    public static void showSelector(Activity a){final String[] codes={"en","es","fr","de","it","pt"};String cur=getSelectedLanguage(a);int checked=-1;if(isSupported(cur))for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma")).setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();}
+    public static String t(Context c,String key){String l=getEffectiveLanguage(c);return t(key,l);}
+    public static String t(String key,String l){
+        if("es".equals(l))return key;
+        String[][] rows={
+            {"EV Calculator PRO","EV Calculator PRO"},{"EV Charge Calculator","EV Charge Calculator"},{"Herramientas","Tools"},{"Calcula y planifica la carga de tu vehículo eléctrico.","Calculate and plan your electric vehicle charging."},{"Batería","Battery"},{"Capacidad","Capacity"},{"Cargar la batería desde","Charge the battery from"},{"al","to"},{"Se cargará","Will charge"},{"Carga","Charging"},{"Potencia","Power"},{"Precio energía","Energy price"},{"Centinela / XGuard (consumo / 24 h)","Sentinel / XGuard (consumption / 24 h)"},{"Tiempo de Carga","Charging Time"},{"Coste de carga","Charging cost"},{"Hora de Salida","Departure Time"},{"Hora Inicio Recomendada","Recommended Start Time"},{"Hora de inicio","Start time"},{"Recomendada","Recommended"},{"No llegas a tiempo","You won't make it in time"},{"Faltan","Missing"},{"Hora de salida no válida","Invalid departure time"},{"No disponible","Unavailable"},{"No es posible alcanzar el objetivo","The target cannot be reached"},{"Pérdidas de carga","Charging losses"},{"Información sobre pérdidas de carga","Charging loss information"},{"El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.","The calculation includes approximately 10% charging losses, mainly due to energy conversion, heat and other charging-related consumption."},{"Aceptar","OK"},{"Política de privacidad","Privacy policy"},{"Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home"},{"Menú de la aplicación","App menu"},{"Más opciones","More options"},{"Compartir app","Share app"},{"Calificar app","Rate app"},{"Cambiar a tema claro","Switch to light theme"},{"Cambiar a tema oscuro","Switch to dark theme"},{"Idioma","Language"},{"Descarga EV Calculator PRO en Google Play: ","Download EV Calculator PRO on Google Play: "},{"Powered by EV Calculator · v","Powered by EV Calculator · v"},{"EV Charge Calculator","EV Charge Calculator"},{"Hora","Time"}
+        };
+        for(String[] r:rows)if(r[0].equals(key)){
+            if("fr".equals(l)){String[] x=fr(key);if(x!=null)return x[1];}
+            if("de".equals(l)){String[] x=de(key);if(x!=null)return x[1];}
+            if("it".equals(l)){String[] x=it(key);if(x!=null)return x[1];}
+            if("pt".equals(l)){String[] x=pt(key);if(x!=null)return x[1];}
+            return r[1];
+        }
+        return key;
     }
-
-    public static String getEffectiveLanguage(Context context) {
-        String selected = getSelectedLanguage(context);
-        if (!SYSTEM.equals(selected)) return isSupported(selected) ? selected : "en";
-        String device = Locale.getDefault().getLanguage();
-        return isSupported(device) ? device : "en";
-    }
-
-    public static void setLanguage(Context context, String language) {
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE, language).apply();
-        apply(context, language);
-    }
-
-    public static void apply(Context context, String language) {
-        String effective = SYSTEM.equals(language) ? getEffectiveLanguage(context) : (isSupported(language) ? language : "en");
-        Locale locale = Locale.forLanguageTag(effective);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration(context.getResources().getConfiguration());
-        config.setLocale(locale);
-        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
-    }
-
-    public static void applyStored(Context context) { apply(context, getSelectedLanguage(context)); }
-
-    public static boolean isSupported(String language) {
-        return "en".equals(language) || "es".equals(language) || "fr".equals(language) || "de".equals(language) || "it".equals(language) || "pt".equals(language);
-    }
-
-    public static String displayName(String language) {
-        if ("en".equals(language)) return "🇬🇧  English";
-        if ("es".equals(language)) return "🇪🇸  Español";
-        if ("fr".equals(language)) return "🇫🇷  Français";
-        if ("de".equals(language)) return "🇩🇪  Deutsch";
-        if ("it".equals(language)) return "🇮🇹  Italiano";
-        if ("pt".equals(language)) return "🇵🇹  Português";
-        return language;
-    }
-
-    public static void showSelector(Activity activity) {
-        final String[] codes = {"en", "es", "fr", "de", "it", "pt"};
-        String current = getSelectedLanguage(activity);
-        int checked = -1;
-        if (isSupported(current)) for (int i = 0; i < codes.length; i++) if (codes[i].equals(current)) checked = i;
-        new android.app.AlertDialog.Builder(activity)
-                .setTitle("Idioma")
-                .setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")}, checked,
-                        (dialog, which) -> { setLanguage(activity, codes[which]); dialog.dismiss(); activity.recreate(); })
-                .show();
-    }
+    private static String[] fr(String k){String[][]x={{"Batería","Batterie"},{"Capacidad","Capacité"},{"Carga","Recharge"},{"Potencia","Puissance"},{"Precio energía","Prix de l'énergie"},{"Tiempo de Carga","Temps de charge"},{"Coste de carga","Coût de recharge"},{"Hora de Salida","Heure de départ"},{"Idioma","Langue"},{"Compartir app","Partager l'application"},{"Calificar app","Noter l'application"},{"Política de privacidad","Politique de confidentialité"},{"Aceptar","OK"},{"Herramientas","Outils"},{"Más opciones","Plus d'options"},{"Cambiar a tema claro","Passer au thème clair"},{"Cambiar a tema oscuro","Passer au thème sombre"},{"No llegas a tiempo","Vous n'arrivez pas à temps"},{"Hora de inicio","Heure de début"},{"Recomendada","Recommandée"}};return find(x,k);}
+    private static String[] de(String k){String[][]x={{"Batería","Batterie"},{"Capacidad","Kapazität"},{"Carga","Laden"},{"Potencia","Leistung"},{"Precio energía","Energiepreis"},{"Tiempo de Carga","Ladezeit"},{"Coste de carga","Ladekosten"},{"Hora de Salida","Abfahrtszeit"},{"Idioma","Sprache"},{"Compartir app","App teilen"},{"Calificar app","App bewerten"},{"Política de privacidad","Datenschutzerklärung"},{"Aceptar","OK"},{"Herramientas","Werkzeuge"},{"Más opciones","Weitere Optionen"},{"Cambiar a tema claro","Helles Design"},{"Cambiar a tema oscuro","Dunkles Design"},{"No llegas a tiempo","Du schaffst es nicht rechtzeitig"},{"Hora de inicio","Startzeit"},{"Recomendada","Empfohlen"}};return find(x,k);}
+    private static String[] it(String k){String[][]x={{"Batería","Batteria"},{"Capacidad","Capacità"},{"Carga","Ricarica"},{"Potencia","Potenza"},{"Precio energía","Prezzo energia"},{"Tiempo de Carga","Tempo di ricarica"},{"Coste de carga","Costo di ricarica"},{"Hora de Salida","Ora di partenza"},{"Idioma","Lingua"},{"Compartir app","Condividi app"},{"Calificar app","Valuta app"},{"Política de privacidad","Informativa sulla privacy"},{"Aceptar","OK"},{"Herramientas","Strumenti"},{"Más opciones","Altre opzioni"},{"Cambiar a tema claro","Tema chiaro"},{"Cambiar a tema oscuro","Tema scuro"},{"No llegas a tiempo","Non arrivi in tempo"},{"Hora de inicio","Ora di inizio"},{"Recomendada","Consigliata"}};return find(x,k);}
+    private static String[] pt(String k){String[][]x={{"Batería","Bateria"},{"Capacidad","Capacidade"},{"Carga","Carregamento"},{"Potencia","Potência"},{"Precio energía","Preço da energia"},{"Tiempo de Carga","Tempo de carregamento"},{"Coste de carga","Custo de carregamento"},{"Hora de Salida","Hora de saída"},{"Idioma","Idioma"},{"Compartir app","Partilhar app"},{"Calificar app","Avaliar app"},{"Política de privacidad","Política de privacidade"},{"Aceptar","OK"},{"Herramientas","Ferramentas"},{"Más opciones","Mais opções"},{"Cambiar a tema claro","Tema claro"},{"Cambiar a tema oscuro","Tema escuro"},{"No llegas a tiempo","Não chega a tempo"},{"Hora de inicio","Hora de início"},{"Recomendada","Recomendada"}};return find(x,k);}
+    private static String[] find(String[][]a,String k){for(String[]r:a)if(r[0].equals(k))return r;return null;}
 }
