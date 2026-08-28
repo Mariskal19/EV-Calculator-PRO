@@ -15,11 +15,14 @@ public final class AppMenuHelper {
 
     public static void show(Activity activity, View anchor, Listener listener) {
         PopupMenu popup = new PopupMenu(activity, anchor);
+        // Keep the existing menu structure and behavior; language is intentionally first.
+        popup.getMenu().add(0, 10, 1, "🌐  Idioma");
         String themeLabel = listener.isDark() ? "☀  Cambiar a tema claro" : "☾  Cambiar a tema oscuro";
-        popup.getMenu().add(0, 1, 1, themeLabel);
-        popup.getMenu().add(0, 2, 2, "↗  Compartir app");
-        popup.getMenu().add(0, 3, 3, "★  Calificar app");
+        popup.getMenu().add(0, 1, 2, themeLabel);
+        popup.getMenu().add(0, 2, 3, "↗  Compartir app");
+        popup.getMenu().add(0, 3, 4, "★  Calificar app");
         popup.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == 10) { LanguageManager.showSelector(activity); return true; }
             if (item.getItemId() == 1) { listener.setDark(!listener.isDark()); return true; }
             if (item.getItemId() == 2) {
                 Intent share = new Intent(Intent.ACTION_SEND); share.setType("text/plain");
