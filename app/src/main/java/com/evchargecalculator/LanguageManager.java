@@ -17,7 +17,6 @@ public final class LanguageManager {
     private static final int WATCH_TAG=0x4C414E47;
     private static final String[] LANGS={"en","es","fr","de","it","pt"};
     private LanguageManager(){}
-
     public static String getSelectedLanguage(Context c){return c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(KEY_LANGUAGE,SYSTEM);}
     public static String getEffectiveLanguage(Context c){String s=getSelectedLanguage(c);if(!SYSTEM.equals(s))return isSupported(s)?s:"en";String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
     public static void setLanguage(Context c,String l){c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,isSupported(l)?l:"en").apply();apply(c,l);}
@@ -26,14 +25,7 @@ public final class LanguageManager {
     private static String getSystemLanguage(){String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
     public static boolean isSupported(String l){if(l==null)return false;for(String x:LANGS)if(x.equals(l))return true;return false;}
     public static String displayName(String l){if("en".equals(l))return "🇬🇧  English";if("es".equals(l))return "🇪🇸  Español";if("fr".equals(l))return "🇫🇷  Français";if("de".equals(l))return "🇩🇪  Deutsch";if("it".equals(l))return "🇮🇹  Italiano";if("pt".equals(l))return "🇵🇹  Português";return l;}
-
-    public static void showSelector(Activity a){
-        final String[] codes=LANGS;String cur=getSelectedLanguage(a);int checked=-1;
-        for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;
-        new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma"))
-            .setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();
-    }
-
+    public static void showSelector(Activity a){final String[] codes=LANGS;String cur=getSelectedLanguage(a);int checked=-1;for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma")).setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();}
     private static final Map<String,String[]> TR=new HashMap<>();
     static{
         add("Herramientas","Tools","Outils","Werkzeuge","Strumenti","Ferramentas");
@@ -76,29 +68,13 @@ public final class LanguageManager {
         add("Carga Inicial","Initial Charge","Charge initiale","Anfangsladung","Carica iniziale","Carga inicial");
         add("Objetivo de carga","Charging target","Objectif de recharge","Ladeziel","Obiettivo di ricarica","Objetivo de carregamento");
         add("Descarga EV Calculator PRO en Google Play: ","Download EV Calculator PRO on Google Play: ","Téléchargez EV Calculator PRO sur Google Play : ","Lade EV Calculator PRO bei Google Play herunter: ","Scarica EV Calculator PRO su Google Play: ","Transfira o EV Calculator PRO no Google Play: ");
+        add("kWh","kWh","kWh","kWh","kWh","kWh");
     }
     private static void add(String es,String en,String fr,String de,String it,String pt){TR.put(es,new String[]{es,en,fr,de,it,pt});}
     public static String t(Context c,String key){return t(key,getEffectiveLanguage(c));}
-    public static String t(String key,String lang){if(key==null)return null;if("es".equals(lang))return key;String[] a=TR.get(key);if(a==null)return key;for(int i=0;i<LANGS.length;i++)if(LANGS[i].equals(lang))return a[i];return a[1];}
-
-    public static String translateDynamic(Context c,String s){
-        if(s==null)return null;String lang=getEffectiveLanguage(c);if("es".equals(lang))return s;
-        String r=s;
-        for(Map.Entry<String,String[]> e:TR.entrySet()){
-            String[] a=e.getValue();String to=t(e.getKey(),lang);if(!e.getKey().equals(to))r=r.replace(e.getKey(),to);
-        }
-        return r;
-    }
-
+    public static String t(String key,String lang){if(key==null)return null;String[] a=TR.get(key);if(a==null)return key;for(int i=0;i<LANGS.length;i++)if(LANGS[i].equals(lang))return a[i];return a[1];}
+    public static String translateDynamic(Context c,String s){if(s==null)return null;String lang=getEffectiveLanguage(c);if("es".equals(lang))return s;String r=s;for(Map.Entry<String,String[]> e:TR.entrySet()){String[] a=e.getValue();String to=t(e.getKey(),lang);if(!e.getKey().equals(to))r=r.replace(e.getKey(),to);}return r;}
     public static void translateViews(Activity a){translateView(a,a.findViewById(android.R.id.content));}
-    private static void translateView(Context context,View v){
-        if(v instanceof TextView){
-            TextView tv=(TextView)v;String original=tv.getText()==null?"":tv.getText().toString();
-            String translated=t(context,original);if(translated.equals(original))translated=translateDynamic(context,original);
-            if(!translated.equals(original))setInternal(tv,translated);
-            if(tv.getTag(WATCH_TAG)==null){tv.setTag(WATCH_TAG,Boolean.TRUE);tv.addTextChangedListener(new TextWatcher(){boolean internal;public void beforeTextChanged(CharSequence s,int st,int count,int after){}public void onTextChanged(CharSequence s,int st,int before,int count){}public void afterTextChanged(Editable e){if(internal)return;String old=e.toString();String neu=translateDynamic(context,old);if(!old.equals(neu)){internal=true;setInternal(tv,neu);internal=false;}}});}
-        }
-        if(v instanceof ViewGroup){ViewGroup g=(ViewGroup)v;for(int i=0;i<g.getChildCount();i++)translateView(context,g.getChildAt(i));}
-    }
+    private static void translateView(Context context,View v){if(v instanceof TextView){TextView tv=(TextView)v;String original=tv.getText()==null?"":tv.getText().toString();String translated=t(context,original);if(translated.equals(original))translated=translateDynamic(context,original);if(!translated.equals(original))setInternal(tv,translated);if(tv.getTag(WATCH_TAG)==null){tv.setTag(WATCH_TAG,Boolean.TRUE);tv.addTextChangedListener(new TextWatcher(){boolean internal;public void beforeTextChanged(CharSequence s,int st,int count,int after){}public void onTextChanged(CharSequence s,int st,int before,int count){}public void afterTextChanged(Editable e){if(internal)return;String old=e.toString(),neu=translateDynamic(context,old);if(!old.equals(neu)){internal=true;setInternal(tv,neu);internal=false;}}});}}if(v instanceof ViewGroup){ViewGroup g=(ViewGroup)v;for(int i=0;i<g.getChildCount();i++)translateView(context,g.getChildAt(i));}}
     private static void setInternal(TextView tv,String s){tv.setText(s);}
 }
