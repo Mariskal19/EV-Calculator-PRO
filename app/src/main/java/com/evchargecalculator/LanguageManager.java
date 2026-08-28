@@ -18,8 +18,8 @@ public final class LanguageManager {
     private static final String[] LANGS={"en","es","fr","de","it","pt"};
     private LanguageManager(){}
     public static String getSelectedLanguage(Context c){return c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(KEY_LANGUAGE,SYSTEM);}
-    public static String getEffectiveLanguage(Context c){String s=getSelectedLanguage(c);if(!SYSTEM.equals(s))return isSupported(s)?s:"en";String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
-    public static void setLanguage(Context c,String l){c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,isSupported(l)?l:"en").apply();apply(c,l);}
+    public static String getEffectiveLanguage(Context c){String s=getSelectedLanguage(c);if(!SYSTEM.equals(s))return isSupported(s)?s:"en";return getSystemLanguage();}
+    public static void setLanguage(Context c,String l){String selected=isSupported(l)?l:"en";c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,selected).apply();apply(c,selected);}
     public static void applyStored(Context c){apply(c,getSelectedLanguage(c));}
     public static void apply(Context c,String l){String e=SYSTEM.equals(l)?getSystemLanguage():isSupported(l)?l:"en";Locale locale=Locale.forLanguageTag(e);Locale.setDefault(locale);Configuration cfg=new Configuration(c.getResources().getConfiguration());cfg.setLocale(locale);c.getResources().updateConfiguration(cfg,c.getResources().getDisplayMetrics());}
     private static String getSystemLanguage(){String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
@@ -72,30 +72,9 @@ public final class LanguageManager {
     }
     private static void add(String es,String en,String fr,String de,String it,String pt){TR.put(es,new String[]{es,en,fr,de,it,pt});}
     public static String t(Context c,String key){return t(key,getEffectiveLanguage(c));}
-    public static String t(String key,String lang){if(key==null)return null;String[] a=TR.get(key);if(a==null)return key;for(int i=0;i<LANGS.length;i++)if(LANGS[i].equals(lang))return a[i];return a[0];}
-    /** Translates text from any supported language to the selected language without chaining one translation into another. */
-    public static String translateDynamic(Context c,String s){
-        if(s==null)return null;
-        String lang=getEffectiveLanguage(c);
-        String original=s;
-        String result=original;
-        Map<String,String> replacements=new HashMap<>();
-        int n=0;
-        for(Map.Entry<String,String[]> e:TR.entrySet()){
-            String[] a=e.getValue();
-            String target=t(e.getKey(),lang);
-            for(String source:a){
-                if(source!=null&&!source.isEmpty()&&!source.equals(target)&&original.contains(source)){
-                    String token="\u0001"+(n++)+"\u0002";
-                    result=result.replace(source,token);
-                    replacements.put(token,target);
-                    break;
-                }
-            }
-        }
-        for(Map.Entry<String,String> e:replacements.entrySet())result=result.replace(e.getKey(),e.getValue());
-        return result;
-    }
+    // Translation arrays are stored ES, EN, FR, DE, IT, PT. Keep this mapping explicit.
+    public static String t(String key,String lang){if(key==null)return null;String[] a=TR.get(key);if(a==null)return key;if("es".equals(lang))return a[0];if("en".equals(lang))return a[1];if("fr".equals(lang))return a[2];if("de".equals(lang))return a[3];if("it".equals(lang))return a[4];if("pt".equals(lang))return a[5];return a[1];}
+    public static String translateDynamic(Context c,String s){if(s==null)return null;String lang=getEffectiveLanguage(c);String original=s,result=s;Map<String,String> replacements=new HashMap<>();int n=0;for(Map.Entry<String,String[]> e:TR.entrySet()){String[] a=e.getValue();String target=t(e.getKey(),lang);for(String source:a){if(source!=null&&!source.isEmpty()&&!source.equals(target)&&original.contains(source)){String token="\u0001"+(n++)+"\u0002";result=result.replace(source,token);replacements.put(token,target);break;}}}for(Map.Entry<String,String> e:replacements.entrySet())result=result.replace(e.getKey(),e.getValue());return result;}
     public static void translateViews(Activity a){translateView(a,a.findViewById(android.R.id.content));}
     private static void translateView(Context context,View v){if(v instanceof TextView){TextView tv=(TextView)v;String original=tv.getText()==null?"":tv.getText().toString();String translated=translateDynamic(context,original);if(!translated.equals(original))setInternal(tv,translated);if(tv.getTag(WATCH_TAG)==null){tv.setTag(WATCH_TAG,Boolean.TRUE);tv.addTextChangedListener(new TextWatcher(){boolean internal;public void beforeTextChanged(CharSequence s,int st,int count,int after){}public void onTextChanged(CharSequence s,int st,int before,int count){}public void afterTextChanged(Editable e){if(internal)return;String old=e.toString(),neu=translateDynamic(context,old);if(!old.equals(neu)){internal=true;setInternal(tv,neu);internal=false;}}});}}if(v instanceof ViewGroup){ViewGroup g=(ViewGroup)v;for(int i=0;i<g.getChildCount();i++)translateView(context,g.getChildAt(i));}}
     private static void setInternal(TextView tv,String s){tv.setText(s);}
