@@ -13,68 +13,65 @@ import java.util.Locale;
 import java.util.Map;
 
 public final class LanguageManager {
-    private static final String PREFS="ev_charge_calculator", KEY_LANGUAGE="app_language", SYSTEM="system";
+    private static final String PREFS="ev_charge_calculator", KEY_LANGUAGE="app_language";
     private static final int WATCH_TAG=0x4C414E47;
     private static final String[] LANGS={"en","es","fr","de","it","pt"};
     private LanguageManager(){}
-    public static String getSelectedLanguage(Context c){return c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(KEY_LANGUAGE,SYSTEM);}
-    public static String getEffectiveLanguage(Context c){String s=getSelectedLanguage(c);if(!SYSTEM.equals(s))return isSupported(s)?s:"en";return getSystemLanguage();}
-    public static void setLanguage(Context c,String l){String selected=isSupported(l)?l:"en";c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,selected).apply();apply(c,selected);}
+    public static String getSelectedLanguage(Context c){
+        String saved=c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(KEY_LANGUAGE,null);
+        if(saved==null){
+            String system=getSystemLanguage();
+            c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,system).apply();
+            return system;
+        }
+        return isSupported(saved)?saved:"en";
+    }
+    public static String getEffectiveLanguage(Context c){return getSelectedLanguage(c);}
+    public static void setLanguage(Context c,String l){
+        String selected=isSupported(l)?l:"en";
+        c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,selected).apply();
+        apply(c,selected);
+    }
     public static void applyStored(Context c){apply(c,getSelectedLanguage(c));}
-    public static void apply(Context c,String l){String e=SYSTEM.equals(l)?getSystemLanguage():isSupported(l)?l:"en";Locale locale=Locale.forLanguageTag(e);Locale.setDefault(locale);Configuration cfg=new Configuration(c.getResources().getConfiguration());cfg.setLocale(locale);c.getResources().updateConfiguration(cfg,c.getResources().getDisplayMetrics());}
+    public static void apply(Context c,String l){
+        String e=isSupported(l)?l:"en";
+        Locale locale=Locale.forLanguageTag(e);
+        Locale.setDefault(locale);
+        Configuration cfg=new Configuration(c.getResources().getConfiguration());
+        cfg.setLocale(locale);
+        c.getResources().updateConfiguration(cfg,c.getResources().getDisplayMetrics());
+    }
     private static String getSystemLanguage(){String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
     public static boolean isSupported(String l){if(l==null)return false;for(String x:LANGS)if(x.equals(l))return true;return false;}
     public static String displayName(String l){if("en".equals(l))return "🇬🇧  English";if("es".equals(l))return "🇪🇸  Español";if("fr".equals(l))return "🇫🇷  Français";if("de".equals(l))return "🇩🇪  Deutsch";if("it".equals(l))return "🇮🇹  Italiano";if("pt".equals(l))return "🇵🇹  Português";return l;}
-    public static void showSelector(Activity a){final String[] codes=LANGS;String cur=getSelectedLanguage(a);int checked=-1;for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma")).setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();}
+    public static void showSelector(Activity a){
+        final String[] codes=LANGS;
+        String cur=getSelectedLanguage(a);
+        int checked=-1;
+        for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;
+        new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma"))
+            .setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();
+    }
     private static final Map<String,String[]> TR=new HashMap<>();
     static{
         add("Herramientas","Tools","Outils","Werkzeuge","Strumenti","Ferramentas");
         add("Calcula y planifica la carga de tu vehículo eléctrico.","Calculate and plan your electric vehicle charging.","Calculez et planifiez la recharge de votre véhicule électrique.","Berechne und plane das Laden deines Elektrofahrzeugs.","Calcola e pianifica la ricarica del tuo veicolo elettrico.","Calcule e planeie o carregamento do seu veículo elétrico.");
-        add("Batería","Battery","Batterie","Batterie","Batteria","Bateria");
-        add("Capacidad","Capacity","Capacité","Kapazität","Capacità","Capacidade");
-        add("Cargar la batería desde","Charge the battery from","Charger la batterie de","Batterie laden von","Carica la batteria dal","Carregar a bateria de");
-        add("Se cargará","Will charge","Charge prévue","Wird geladen","Verrà caricata","Será carregada");
-        add("Carga","Charging","Recharge","Laden","Ricarica","Carregamento");
-        add("Potencia","Power","Puissance","Leistung","Potenza","Potência");
-        add("Precio energía","Energy price","Prix de l'énergie","Energiepreis","Prezzo energia","Preço da energia");
+        add("Batería","Battery","Batterie","Batterie","Batteria","Bateria"); add("Capacidad","Capacity","Capacité","Kapazität","Capacità","Capacidade");
+        add("Cargar la batería desde","Charge the battery from","Charger la batterie de","Batterie laden von","Carica la batteria dal","Carregar a bateria de"); add("Se cargará","Will charge","Charge prévue","Wird geladen","Verrà caricata","Será carregada");
+        add("Carga","Charging","Recharge","Laden","Ricarica","Carregamento"); add("Potencia","Power","Puissance","Leistung","Potenza","Potência"); add("Precio energía","Energy price","Prix de l'énergie","Energiepreis","Prezzo energia","Preço da energia");
         add("Centinela / XGuard (consumo / 24 h)","Sentinel / XGuard (consumption / 24 h)","Sentinelle / XGuard (consommation / 24 h)","Sentinel / XGuard (Verbrauch / 24 h)","Sentinella / XGuard (consumo / 24 h)","Sentinela / XGuard (consumo / 24 h)");
-        add("Tiempo de Carga","Charging Time","Temps de charge","Ladezeit","Tempo di ricarica","Tempo de carregamento");
-        add("Coste de carga","Charging cost","Coût de recharge","Ladekosten","Costo di ricarica","Custo de carregamento");
-        add("Hora de Salida","Departure Time","Heure de départ","Abfahrtszeit","Ora di partenza","Hora de saída");
-        add("Hora Inicio Recomendada","Recommended Start Time","Heure de début recommandée","Empfohlene Startzeit","Ora di inizio consigliata","Hora de início recomendada");
-        add("Hora de inicio","Start time","Heure de début","Startzeit","Ora di inizio","Hora de início");
-        add("Recomendada","Recommended","Recommandée","Empfohlen","Consigliata","Recomendada");
-        add("No llegas a tiempo","You won't make it in time","Vous n'arrivez pas à temps","Du schaffst es nicht rechtzeitig","Non arrivi in tempo","Não chega a tempo");
-        add("Faltan","Missing","Manquent","Fehlen","Mancano","Faltam");
-        add("Hora de salida no válida","Invalid departure time","Heure de départ invalide","Ungültige Abfahrtszeit","Ora di partenza non valida","Hora de saída inválida");
-        add("No disponible","Unavailable","Indisponible","Nicht verfügbar","Non disponibile","Indisponível");
-        add("No es posible alcanzar el objetivo","The target cannot be reached","Impossible d'atteindre l'objectif","Ziel kann nicht erreicht werden","Impossibile raggiungere l'obiettivo","Não é possível atingir o objetivo");
-        add("Pérdidas de carga","Charging losses","Pertes de recharge","Ladeverluste","Perdite di ricarica","Perdas de carregamento");
-        add("Información sobre pérdidas de carga","Charging loss information","Informations sur les pertes de recharge","Informationen zu Ladeverlusten","Informazioni sulle perdite di ricarica","Informações sobre perdas de carregamento");
-        add("El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.","The calculation includes approximately 10% charging losses, mainly due to energy conversion, heat and other charging-related consumption.","Le calcul inclut environ 10 % de pertes pendant la recharge, principalement dues à la conversion d'énergie, à la chaleur et aux autres consommations du processus.","Die Berechnung berücksichtigt etwa 10 % Ladeverluste, hauptsächlich durch Energieumwandlung, Wärme und weitere Eigenverbräuche des Ladevorgangs.","Il calcolo include circa il 10% di perdite durante la ricarica, dovute principalmente alla conversione dell'energia, al calore e ad altri consumi del processo.","O cálculo inclui aproximadamente 10% de perdas durante o carregamento, principalmente devido à conversão de energia, calor e outros consumos do processo.");
-        add("Aceptar","OK","OK","OK","OK","OK");
-        add("Política de privacidad","Privacy policy","Politique de confidentialité","Datenschutzerklärung","Informativa sulla privacy","Política de privacidade");
-        add("Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home","Retour à l'accueil EV Calculator PRO","Zur EV Calculator PRO Startseite","Torna alla schermata principale di EV Calculator PRO","Voltar à página inicial do EV Calculator PRO");
-        add("Menú de la aplicación","App menu","Menu de l'application","App-Menü","Menu dell'app","Menu da aplicação");
-        add("Más opciones","More options","Plus d'options","Weitere Optionen","Altre opzioni","Mais opções");
-        add("Compartir app","Share app","Partager l'application","App teilen","Condividi app","Partilhar app");
-        add("Calificar app","Rate app","Noter l'application","App bewerten","Valuta app","Avaliar app");
-        add("Cambiar a tema claro","Switch to light theme","Passer au thème clair","Helles Design","Tema chiaro","Tema claro");
-        add("Cambiar a tema oscuro","Switch to dark theme","Passer au thème sombre","Dunkles Design","Tema scuro","Tema escuro");
-        add("Idioma","Language","Langue","Sprache","Lingua","Idioma");
-        add("Hora","Time","Heure","Uhrzeit","Ora","Hora");
-        add("EV Charge Calculator","EV Charge Calculator","EV Charge Calculator","EV Charge Calculator","EV Charge Calculator","EV Charge Calculator");
-        add("Objetivo","Target","Objectif","Ziel","Obiettivo","Objetivo");
-        add("Carga Inicial","Initial Charge","Charge initiale","Anfangsladung","Carica iniziale","Carga inicial");
-        add("Objetivo de carga","Charging target","Objectif de recharge","Ladeziel","Obiettivo di ricarica","Objetivo de carregamento");
-        add("Descarga EV Calculator PRO en Google Play: ","Download EV Calculator PRO on Google Play: ","Téléchargez EV Calculator PRO sur Google Play : ","Lade EV Calculator PRO bei Google Play herunter: ","Scarica EV Calculator PRO su Google Play: ","Transfira o EV Calculator PRO no Google Play: ");
-        add("kWh","kWh","kWh","kWh","kWh","kWh");
+        add("Tiempo de Carga","Charging Time","Temps de charge","Ladezeit","Tempo di ricarica","Tempo de carregamento"); add("Coste de carga","Charging cost","Coût de recharge","Ladekosten","Costo di ricarica","Custo de carregamento");
+        add("Hora de Salida","Departure Time","Heure de départ","Abfahrtszeit","Ora di partenza","Hora de saída"); add("Hora Inicio Recomendada","Recommended Start Time","Heure de début recommandée","Empfohlene Startzeit","Ora di inizio consigliata","Hora de início recomendada"); add("Hora de inicio","Start time","Heure de début","Startzeit","Ora di inizio","Hora de início"); add("Recomendada","Recommended","Recommandée","Empfohlen","Consigliata","Recomendada");
+        add("No llegas a tiempo","You won't make it in time","Vous n'arrivez pas à temps","Du schaffst es nicht rechtzeitig","Non arrivi in tempo","Não chega a tempo"); add("Faltan","Missing","Manquent","Fehlen","Mancano","Faltam"); add("Hora de salida no válida","Invalid departure time","Heure de départ invalide","Ungültige Abfahrtszeit","Ora di partenza non valida","Hora de saída inválida"); add("No disponible","Unavailable","Indisponible","Nicht verfügbar","Non disponibile","Indisponível"); add("No es posible alcanzar el objetivo","The target cannot be reached","Impossible d'atteindre l'objectif","Ziel kann nicht erreicht werden","Impossibile raggiungere l'obiettivo","Não é possível atingir o objetivo");
+        add("Pérdidas de carga","Charging losses","Pertes de recharge","Ladeverluste","Perdite di ricarica","Perdas de carregamento"); add("Información sobre pérdidas de carga","Charging loss information","Informations sur les pertes de recharge","Informationen zu Ladeverlusten","Informazioni sulle perdite di ricarica","Informações sobre perdas de carregamento");
+        add("Aceptar","OK","OK","OK","OK","OK"); add("Política de privacidad","Privacy policy","Politique de confidentialité","Datenschutzerklärung","Informativa sulla privacy","Política de privacidade"); add("Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home","Retour à l'accueil EV Calculator PRO","Zur EV Calculator PRO Startseite","Torna alla schermata principale di EV Calculator PRO","Voltar à página inicial do EV Calculator PRO");
+        add("Compartir app","Share app","Partager l'application","App teilen","Condividi app","Partilhar app"); add("Calificar app","Rate app","Noter l'application","App bewerten","Valuta app","Avaliar app"); add("Cambiar a tema claro","Switch to light theme","Passer au thème clair","Helles Design","Tema chiaro","Tema claro"); add("Cambiar a tema oscuro","Switch to dark theme","Passer au thème sombre","Dunkles Design","Tema scuro","Tema escuro"); add("Idioma","Language","Langue","Sprache","Lingua","Idioma"); add("Hora","Time","Heure","Uhrzeit","Ora","Hora");
+        add("Objetivo","Target","Objectif","Ziel","Obiettivo","Objetivo"); add("Carga Inicial","Initial Charge","Charge initiale","Anfangsladung","Carica iniziale","Carga inicial"); add("Objetivo de carga","Charging target","Objectif de recharge","Ladeziel","Obiettivo di ricarica","Objetivo de carregamento");
     }
     private static void add(String es,String en,String fr,String de,String it,String pt){TR.put(es,new String[]{es,en,fr,de,it,pt});}
     public static String t(Context c,String key){return t(key,getEffectiveLanguage(c));}
-    // Translation arrays are stored ES, EN, FR, DE, IT, PT. Keep this mapping explicit.
     public static String t(String key,String lang){if(key==null)return null;String[] a=TR.get(key);if(a==null)return key;if("es".equals(lang))return a[0];if("en".equals(lang))return a[1];if("fr".equals(lang))return a[2];if("de".equals(lang))return a[3];if("it".equals(lang))return a[4];if("pt".equals(lang))return a[5];return a[1];}
-    public static String translateDynamic(Context c,String s){if(s==null)return null;String lang=getEffectiveLanguage(c);String original=s,result=s;Map<String,String> replacements=new HashMap<>();int n=0;for(Map.Entry<String,String[]> e:TR.entrySet()){String[] a=e.getValue();String target=t(e.getKey(),lang);for(String source:a){if(source!=null&&!source.isEmpty()&&!source.equals(target)&&original.contains(source)){String token="\u0001"+(n++)+"\u0002";result=result.replace(source,token);replacements.put(token,target);break;}}}for(Map.Entry<String,String> e:replacements.entrySet())result=result.replace(e.getKey(),e.getValue());return result;}
+    public static String translateDynamic(Context c,String s){if(s==null)return null;String lang=getEffectiveLanguage(c);if("es".equals(lang))return s;for(Map.Entry<String,String[]> e:TR.entrySet()){String[] a=e.getValue();for(String source:a)if(source!=null&&source.equals(s))return t(e.getKey(),lang);}return s;}
     public static void translateViews(Activity a){translateView(a,a.findViewById(android.R.id.content));}
     private static void translateView(Context context,View v){if(v instanceof TextView){TextView tv=(TextView)v;String original=tv.getText()==null?"":tv.getText().toString();String translated=translateDynamic(context,original);if(!translated.equals(original))setInternal(tv,translated);if(tv.getTag(WATCH_TAG)==null){tv.setTag(WATCH_TAG,Boolean.TRUE);tv.addTextChangedListener(new TextWatcher(){boolean internal;public void beforeTextChanged(CharSequence s,int st,int count,int after){}public void onTextChanged(CharSequence s,int st,int before,int count){}public void afterTextChanged(Editable e){if(internal)return;String old=e.toString(),neu=translateDynamic(context,old);if(!old.equals(neu)){internal=true;setInternal(tv,neu);internal=false;}}});}}if(v instanceof ViewGroup){ViewGroup g=(ViewGroup)v;for(int i=0;i<g.getChildCount();i++)translateView(context,g.getChildAt(i));}}
     private static void setInternal(TextView tv,String s){tv.setText(s);}
