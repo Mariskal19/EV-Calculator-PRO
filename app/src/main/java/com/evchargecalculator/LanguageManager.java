@@ -72,20 +72,29 @@ public final class LanguageManager {
     }
     private static void add(String es,String en,String fr,String de,String it,String pt){TR.put(es,new String[]{es,en,fr,de,it,pt});}
     public static String t(Context c,String key){return t(key,getEffectiveLanguage(c));}
-    public static String t(String key,String lang){if(key==null)return null;String[] a=TR.get(key);if(a==null)return key;for(int i=0;i<LANGS.length;i++)if(LANGS[i].equals(lang))return a[i];return a[1];}
-    /** Converts text from any supported language to the currently selected language. This makes language selection global across activities. */
+    public static String t(String key,String lang){if(key==null)return null;String[] a=TR.get(key);if(a==null)return key;for(int i=0;i<LANGS.length;i++)if(LANGS[i].equals(lang))return a[i];return a[0];}
+    /** Translates text from any supported language to the selected language without chaining one translation into another. */
     public static String translateDynamic(Context c,String s){
         if(s==null)return null;
         String lang=getEffectiveLanguage(c);
-        String r=s;
+        String original=s;
+        String result=original;
+        Map<String,String> replacements=new HashMap<>();
+        int n=0;
         for(Map.Entry<String,String[]> e:TR.entrySet()){
             String[] a=e.getValue();
-            String replacement=t(e.getKey(),lang);
+            String target=t(e.getKey(),lang);
             for(String source:a){
-                if(source!=null&&!source.isEmpty()&&!source.equals(replacement)) r=r.replace(source,replacement);
+                if(source!=null&&!source.isEmpty()&&!source.equals(target)&&original.contains(source)){
+                    String token="\u0001"+(n++)+"\u0002";
+                    result=result.replace(source,token);
+                    replacements.put(token,target);
+                    break;
+                }
             }
         }
-        return r;
+        for(Map.Entry<String,String> e:replacements.entrySet())result=result.replace(e.getKey(),e.getValue());
+        return result;
     }
     public static void translateViews(Activity a){translateView(a,a.findViewById(android.R.id.content));}
     private static void translateView(Context context,View v){if(v instanceof TextView){TextView tv=(TextView)v;String original=tv.getText()==null?"":tv.getText().toString();String translated=translateDynamic(context,original);if(!translated.equals(original))setInternal(tv,translated);if(tv.getTag(WATCH_TAG)==null){tv.setTag(WATCH_TAG,Boolean.TRUE);tv.addTextChangedListener(new TextWatcher(){boolean internal;public void beforeTextChanged(CharSequence s,int st,int count,int after){}public void onTextChanged(CharSequence s,int st,int before,int count){}public void afterTextChanged(Editable e){if(internal)return;String old=e.toString(),neu=translateDynamic(context,old);if(!old.equals(neu)){internal=true;setInternal(tv,neu);internal=false;}}});}}if(v instanceof ViewGroup){ViewGroup g=(ViewGroup)v;for(int i=0;i<g.getChildCount();i++)translateView(context,g.getChildAt(i));}}
