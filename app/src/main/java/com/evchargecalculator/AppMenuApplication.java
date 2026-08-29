@@ -38,7 +38,7 @@ public class AppMenuApplication extends Application {
         View global=content.findViewById(MENU_ID);
         if(button==null)return;
         if(global!=null)global.setVisibility(View.GONE);
-        button.setText("⋮");button.setTextSize(30);button.setContentDescription(LanguageManager.t(activity,"Menú de la aplicación"));button.setTranslationY(dp(activity,2));button.setOnClickListener(v->showMenu(activity,button));
+        button.setText("⋮");button.setTextSize(30);button.setContentDescription(LanguageManager.t(activity,"Menú de la aplicación"));button.setOnClickListener(v->showMenu(activity,button));
     }
     private TextView findTextViewByContentDescription(ViewGroup parent,String description){
         for(int i=0;i<parent.getChildCount();i++){
