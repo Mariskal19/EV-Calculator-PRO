@@ -16,7 +16,7 @@ public class AppMenuApplication extends Application {
     private static final String PREFS="ev_charge_calculator", KEY_DARK_THEME="dark_theme";
     private static final int MENU_ID=0x7ECAFE;
     @Override public void onCreate(){super.onCreate();LanguageManager.applyStored(this);registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks(){
-        @Override public void onActivityCreated(Activity activity,Bundle state){activity.getWindow().getDecorView().post(()->{LanguageManager.applyStored(activity);installMenu(activity);if(activity instanceof MainActivity)bindChargeMenu(activity);LanguageManager.translateViews(activity);});}
+        @Override public void onActivityCreated(Activity activity,Bundle state){activity.getWindow().getDecorView().post(()->{LanguageManager.applyStored(activity);if(activity instanceof MainActivity){installMenu(activity);bindChargeMenu(activity);}LanguageManager.translateViews(activity);});}
         @Override public void onActivityStarted(Activity activity){}
         @Override public void onActivityResumed(Activity activity){activity.getWindow().getDecorView().post(()->LanguageManager.translateViews(activity));}
         @Override public void onActivityPaused(Activity activity){}
@@ -42,12 +42,10 @@ public class AppMenuApplication extends Application {
     }
     private TextView findTextViewByContentDescription(ViewGroup parent,String description){
         for(int i=0;i<parent.getChildCount();i++){
-            View child=parent.getChildAt(i);
-            CharSequence d=child.getContentDescription();
+            View child=parent.getChildAt(i);CharSequence d=child.getContentDescription();
             if(child instanceof TextView && d != null && description.contentEquals(d))return (TextView)child;
             if(child instanceof ViewGroup){TextView found=findTextViewByContentDescription((ViewGroup)child,description);if(found!=null)return found;}
-        }
-        return null;
+        }return null;
     }
     private void removeLegacyMenus(ViewGroup parent){for(int i=parent.getChildCount()-1;i>=0;i--){View child=parent.getChildAt(i);CharSequence d=child.getContentDescription();if(d!=null&&(LanguageManager.t((Context)parent.getContext(),"Menú de la aplicación").contentEquals(d)||"Cambiar tema".contentEquals(d)||"Tema claro".contentEquals(d)||"Tema oscuro".contentEquals(d)||"Más opciones".contentEquals(d))){parent.removeViewAt(i);}else if(child instanceof ViewGroup)removeLegacyMenus((ViewGroup)child);}}
     private void showMenu(Activity activity,View anchor){SharedPreferences prefs=activity.getSharedPreferences(PREFS,Context.MODE_PRIVATE);AppMenuHelper.show(activity,anchor,new AppMenuHelper.Listener(){@Override public boolean isDark(){return prefs.getBoolean(KEY_DARK_THEME,false);}@Override public void setDark(boolean value){prefs.edit().putBoolean(KEY_DARK_THEME,value).apply();activity.recreate();}});}
