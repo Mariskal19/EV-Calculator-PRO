@@ -45,7 +45,7 @@ public class AppMenuApplication extends Application {
         for(int i=0;i<parent.getChildCount();i++){
             View child=parent.getChildAt(i);
             CharSequence d=child.getContentDescription();
-            if(child instanceof TextView && description.contentEquals(d))return (TextView)child;
+            if(child instanceof TextView && d != null && description.contentEquals(d))return (TextView)child;
             if(child instanceof ViewGroup){TextView found=findTextViewByContentDescription((ViewGroup)child,description);if(found!=null)return found;}
         }
         return null;
