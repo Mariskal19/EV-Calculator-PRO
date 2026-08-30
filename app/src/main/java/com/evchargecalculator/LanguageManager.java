@@ -19,39 +19,17 @@ public final class LanguageManager {
     private LanguageManager(){}
     public static String getSelectedLanguage(Context c){
         String saved=c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).getString(KEY_LANGUAGE,null);
-        if(saved==null){
-            String system=getSystemLanguage();
-            c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,system).apply();
-            return system;
-        }
+        if(saved==null){String system=getSystemLanguage();c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,system).apply();return system;}
         return isSupported(saved)?saved:"en";
     }
     public static String getEffectiveLanguage(Context c){return getSelectedLanguage(c);}
-    public static void setLanguage(Context c,String l){
-        String selected=isSupported(l)?l:"en";
-        c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,selected).apply();
-        apply(c,selected);
-    }
+    public static void setLanguage(Context c,String l){String selected=isSupported(l)?l:"en";c.getSharedPreferences(PREFS,Context.MODE_PRIVATE).edit().putString(KEY_LANGUAGE,selected).apply();apply(c,selected);}
     public static void applyStored(Context c){apply(c,getSelectedLanguage(c));}
-    public static void apply(Context c,String l){
-        String e=isSupported(l)?l:"en";
-        Locale locale=Locale.forLanguageTag(e);
-        Locale.setDefault(locale);
-        Configuration cfg=new Configuration(c.getResources().getConfiguration());
-        cfg.setLocale(locale);
-        c.getResources().updateConfiguration(cfg,c.getResources().getDisplayMetrics());
-    }
+    public static void apply(Context c,String l){String e=isSupported(l)?l:"en";Locale locale=Locale.forLanguageTag(e);Locale.setDefault(locale);Configuration cfg=new Configuration(c.getResources().getConfiguration());cfg.setLocale(locale);c.getResources().updateConfiguration(cfg,c.getResources().getDisplayMetrics());}
     private static String getSystemLanguage(){String d=Locale.getDefault().getLanguage();return isSupported(d)?d:"en";}
     public static boolean isSupported(String l){if(l==null)return false;for(String x:LANGS)if(x.equals(l))return true;return false;}
     public static String displayName(String l){if("en".equals(l))return "🇬🇧  English";if("es".equals(l))return "🇪🇸  Español";if("fr".equals(l))return "🇫🇷  Français";if("de".equals(l))return "🇩🇪  Deutsch";if("it".equals(l))return "🇮🇹  Italiano";if("pt".equals(l))return "🇵🇹  Português";return l;}
-    public static void showSelector(Activity a){
-        final String[] codes=LANGS;
-        String cur=getSelectedLanguage(a);
-        int checked=-1;
-        for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;
-        new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma"))
-            .setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();
-    }
+    public static void showSelector(Activity a){final String[] codes=LANGS;String cur=getSelectedLanguage(a);int checked=-1;for(int i=0;i<codes.length;i++)if(codes[i].equals(cur))checked=i;new android.app.AlertDialog.Builder(a).setTitle(t(a,"Idioma")).setSingleChoiceItems(new String[]{displayName("en"),displayName("es"),displayName("fr"),displayName("de"),displayName("it"),displayName("pt")},checked,(d,w)->{setLanguage(a,codes[w]);d.dismiss();a.recreate();}).show();}
     private static final Map<String,String[]> TR=new HashMap<>();
     static{
         add("Herramientas","Tools","Outils","Werkzeuge","Strumenti","Ferramentas");
@@ -64,9 +42,13 @@ public final class LanguageManager {
         add("Hora de Salida","Departure Time","Heure de départ","Abfahrtszeit","Ora di partenza","Hora de saída"); add("Hora Inicio Recomendada","Recommended Start Time","Heure de début recommandée","Empfohlene Startzeit","Ora di inizio consigliata","Hora de início recomendada"); add("Hora de inicio","Start time","Heure de début","Startzeit","Ora di inizio","Hora de início"); add("Recomendada","Recommended","Recommandée","Empfohlen","Consigliata","Recomendada");
         add("No llegas a tiempo","You won't make it in time","Vous n'arrivez pas à temps","Du schaffst es nicht rechtzeitig","Non arrivi in tempo","Não chega a tempo"); add("Faltan","Missing","Manquent","Fehlen","Mancano","Faltam"); add("Hora de salida no válida","Invalid departure time","Heure de départ invalide","Ungültige Abfahrtszeit","Ora di partenza non valida","Hora de saída inválida"); add("No disponible","Unavailable","Indisponible","Nicht verfügbar","Non disponibile","Indisponível"); add("No es posible alcanzar el objetivo","The target cannot be reached","Impossible d'atteindre l'objectif","Ziel kann nicht erreicht werden","Impossibile raggiungere l'obiettivo","Não é possível atingir o objetivo");
         add("Pérdidas de carga","Charging losses","Pertes de recharge","Ladeverluste","Perdite di ricarica","Perdas de carregamento"); add("Información sobre pérdidas de carga","Charging loss information","Informations sur les pertes de recharge","Informationen zu Ladeverlusten","Informazioni sulle perdite di ricarica","Informações sobre perdas de carregamento");
-        add("Aceptar","OK","OK","OK","OK","OK"); add("Política de privacidad","Privacy policy","Politique de confidentialité","Datenschutzerklärung","Informativa sulla privacy","Política de privacidade"); add("Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home","Retour à l'accueil EV Calculator PRO","Zur EV Calculator PRO Startseite","Torna alla schermata principale di EV Calculator PRO","Voltar à página inicial do EV Calculator PRO");
+        add("El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.","The calculation includes approximately 10% charging losses, mainly due to energy conversion, heat, and other energy consumed during the process.","Le calcul inclut environ 10 % de pertes pendant la recharge, principalement dues à la conversion d'énergie, à la chaleur et aux autres consommations du processus.","Die Berechnung berücksichtigt etwa 10 % Ladeverluste, hauptsächlich durch Energieumwandlung, Wärme und weitere Energieverbräuche während des Vorgangs.","Il calcolo include circa il 10% di perdite durante la ricarica, dovute principalmente alla conversione dell'energia, al calore e ad altri consumi del processo.","O cálculo inclui aproximadamente 10% de perdas durante o carregamento, principalmente devido à conversão de energia, ao calor e a outros consumos do processo.");
+        add("Aceptar","OK","OK","OK","OK","OK"); add("Política de privacidad","Privacy policy","Politique de confidentialité","Datenschutzerklärung","Informativa sulla privacy","Política de privacidade"); add("Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home","Retour à l'accueil EV Calculator PRO","Zur EV Calculator PRO Startseite","Torna alla schermata principale di EV Calculator PRO","Voltar à página inicial do EV Calculator PRO"); add("Botón de volver","Back button","Bouton retour","Zurück-Taste","Pulsante indietro","Botão voltar");
         add("Compartir app","Share app","Partager l'application","App teilen","Condividi app","Partilhar app"); add("Calificar app","Rate app","Noter l'application","App bewerten","Valuta app","Avaliar app"); add("Cambiar a tema claro","Switch to light theme","Passer au thème clair","Helles Design","Tema chiaro","Tema claro"); add("Cambiar a tema oscuro","Switch to dark theme","Passer au thème sombre","Dunkles Design","Tema scuro","Tema escuro"); add("Idioma","Language","Langue","Sprache","Lingua","Idioma"); add("Hora","Time","Heure","Uhrzeit","Ora","Hora");
         add("Objetivo","Target","Objectif","Ziel","Obiettivo","Objetivo"); add("Carga Inicial","Initial Charge","Charge initiale","Anfangsladung","Carica iniziale","Carga inicial"); add("Objetivo de carga","Charging target","Objectif de recharge","Ladeziel","Obiettivo di ricarica","Objetivo de carregamento");
+        add("Menú de la aplicación","App menu","Menu de l'application","App-Menü","Menu dell'app","Menu da aplicação");
+        add("Descarga EV Calculator PRO en Google Play","Download EV Calculator PRO on Google Play","Télécharger EV Calculator PRO sur Google Play","EV Calculator PRO bei Google Play herunterladen","Scarica EV Calculator PRO su Google Play","Descarregar EV Calculator PRO no Google Play");
+        add("EV Charge Calculator","EV Charge Calculator","Calculateur de recharge EV","EV-Laderechner","Calcolatore di ricarica EV","Calculadora de carregamento EV");
     }
     private static void add(String es,String en,String fr,String de,String it,String pt){TR.put(es,new String[]{es,en,fr,de,it,pt});}
     public static String t(Context c,String key){return t(key,getEffectiveLanguage(c));}
