@@ -39,13 +39,23 @@ public class AppMenuApplication extends Application {
             if(scroll.getTag()==null){
                 int left=scroll.getPaddingLeft(),top=scroll.getPaddingTop(),right=scroll.getPaddingRight(),bottom=scroll.getPaddingBottom();
                 scroll.setTag(new int[]{left,top,right,bottom});
+                scroll.setClipToPadding(true);
                 scroll.setOnApplyWindowInsetsListener((v,insets)->{
                     android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars());
                     int[] base=(int[])v.getTag();
-                    // Keep the original top spacing (36dp) so the header stays at
-                    // the same visual height as the stable version. Only protect
-                    // the bottom edge from the navigation bar.
-                    v.setPadding(base[0],base[1],base[2],Math.max(base[3],bars.bottom));
+                    int topInset=bars.top;
+                    int bottomInset=bars.bottom;
+                    v.setPadding(base[0],topInset,base[2],Math.max(base[3],bottomInset));
+                    if(v instanceof ScrollView && ((ScrollView)v).getChildCount()>0){
+                        View child=((ScrollView)v).getChildAt(0);
+                        if(child instanceof ViewGroup){
+                            ViewGroup root=(ViewGroup)child;
+                            Object tag=root.getTag();
+                            int rootTop=tag instanceof Integer?(Integer)tag:36;
+                            if(!(tag instanceof Integer))root.setTag(rootTop);
+                            root.setPadding(root.getPaddingLeft(),Math.max(0,rootTop-topInset),root.getPaddingRight(),root.getPaddingBottom());
+                        }
+                    }
                     return WindowInsets.CONSUMED;
                 });
                 scroll.requestApplyInsets();
@@ -88,7 +98,7 @@ public class AppMenuApplication extends Application {
             if(child instanceof ViewGroup){
                 TextView found=findRightBackButton((ViewGroup)child);
                 if(found!=null){
-                    int[] loc= new int[2];found.getLocationOnScreen(loc);
+                    int[] loc=new int[2];found.getLocationOnScreen(loc);
                     if(loc[0]>bestX){bestX=loc[0];result=found;}
                 }
             }
