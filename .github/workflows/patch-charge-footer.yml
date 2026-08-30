@@ -1,0 +1,36 @@
+name: Patch Charge footer
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-charge-footer.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move Charge footer to bottom
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/MainActivity.java')
+          s = p.read_text()
+          old = 'root.addView(c4);space(10);\n  String appVersion='
+          new = 'root.addView(c4);\n  Space bottomSpace=new Space(this);root.addView(bottomSpace,new LinearLayout.LayoutParams(1,0,1));\n  String appVersion='
+          if old not in s:
+              raise SystemExit('Expected Charge footer anchor not found; no changes made')
+          if 'Space bottomSpace=new Space(this);root.addView(bottomSpace' in s:
+              raise SystemExit('Charge footer already patched')
+          p.write_text(s.replace(old, new, 1))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/MainActivity.java
+          git rm .github/workflows/patch-charge-footer.yml
+          git commit -m 'Charge: fijar política y versión al fondo'
+          git push
