@@ -5,25 +5,55 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class AppMenuApplication extends Application {
     private static final String PREFS="ev_charge_calculator", KEY_DARK_THEME="dark_theme";
     private static final int MENU_ID=0x7ECAFE;
     @Override public void onCreate(){super.onCreate();LanguageManager.applyStored(this);registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks(){
-        @Override public void onActivityCreated(Activity activity,Bundle state){activity.getWindow().getDecorView().post(()->{LanguageManager.applyStored(activity);if(activity instanceof MainActivity){installMenu(activity);bindChargeMenu(activity);}LanguageManager.translateViews(activity);});}
+        @Override public void onActivityCreated(Activity activity,Bundle state){activity.getWindow().getDecorView().post(()->{LanguageManager.applyStored(activity);protectSystemBars(activity);if(activity instanceof MainActivity){installMenu(activity);bindChargeMenu(activity);}LanguageManager.translateViews(activity);});}
         @Override public void onActivityStarted(Activity activity){}
-        @Override public void onActivityResumed(Activity activity){activity.getWindow().getDecorView().post(()->LanguageManager.translateViews(activity));}
+        @Override public void onActivityResumed(Activity activity){activity.getWindow().getDecorView().post(()->{protectSystemBars(activity);LanguageManager.translateViews(activity);});}
         @Override public void onActivityPaused(Activity activity){}
         @Override public void onActivityStopped(Activity activity){}
         @Override public void onActivitySaveInstanceState(Activity activity,Bundle outState){}
         @Override public void onActivityDestroyed(Activity activity){}
     });}
+    private void protectSystemBars(Activity activity){
+        if(Build.VERSION.SDK_INT<35)return;
+        ViewGroup content=activity.findViewById(android.R.id.content);
+        if(content==null)return;
+        protectScrollViews(content);
+    }
+    private void protectScrollViews(View view){
+        if(view instanceof ScrollView){
+            ScrollView scroll=(ScrollView)view;
+            if(scroll.getTag()==null){
+                int left=scroll.getPaddingLeft(),top=scroll.getPaddingTop(),right=scroll.getPaddingRight(),bottom=scroll.getPaddingBottom();
+                scroll.setTag(new int[]{left,top,right,bottom});
+                scroll.setOnApplyWindowInsetsListener((v,insets)->{
+                    WindowInsets.Type.InsetsTypeMask ignored=WindowInsets.Type.systemBars();
+                    android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars());
+                    int[] base=(int[])v.getTag();
+                    v.setPadding(base[0],base[1]+bars.top,base[2],base[3]+bars.bottom);
+                    return insets;
+                });
+                scroll.requestApplyInsets();
+            }
+        }
+        if(view instanceof ViewGroup){
+            ViewGroup group=(ViewGroup)view;
+            for(int i=0;i<group.getChildCount();i++)protectScrollViews(group.getChildAt(i));
+        }
+    }
     private void installMenu(Activity activity){
         ViewGroup content=activity.findViewById(android.R.id.content);if(content==null)return;
         if(content.findViewById(MENU_ID)!=null)return;
