@@ -43,7 +43,7 @@ public class AppMenuApplication extends Application {
                     android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars());
                     int[] base=(int[])v.getTag();
                     v.setPadding(base[0],Math.max(base[1],bars.top),base[2],Math.max(base[3],bars.bottom));
-                    return insets;
+                    return WindowInsets.CONSUMED;
                 });
                 scroll.requestApplyInsets();
             }
