@@ -34,18 +34,40 @@ public class AppMenuApplication extends Application {
     }
     private void bindChargeMenu(Activity activity){
         ViewGroup content=activity.findViewById(android.R.id.content);if(content==null)return;
-        TextView button=findTextViewByContentDescription(content,"Botón de volver");
+        TextView button=findRightBackButton(content);
         View global=content.findViewById(MENU_ID);
         if(button==null)return;
         if(global!=null)global.setVisibility(View.GONE);
         button.setText("⋮");button.setTextSize(30);button.setContentDescription(LanguageManager.t(activity,"Menú de la aplicación"));button.setOnClickListener(v->showMenu(activity,button));
     }
-    private TextView findTextViewByContentDescription(ViewGroup parent,String description){
+    /**
+     * Charge has two arrow buttons in its header. The right-hand arrow is the
+     * menu anchor. We deliberately identify it by its position rather than by
+     * contentDescription, because contentDescription is translated and can
+     * therefore change after the language selector recreates the Activity.
+     */
+    private TextView findRightBackButton(ViewGroup parent){
+        TextView result=null;
+        int bestX=Integer.MIN_VALUE;
         for(int i=0;i<parent.getChildCount();i++){
-            View child=parent.getChildAt(i);CharSequence d=child.getContentDescription();
-            if(child instanceof TextView && d != null && description.contentEquals(d))return (TextView)child;
-            if(child instanceof ViewGroup){TextView found=findTextViewByContentDescription((ViewGroup)child,description);if(found!=null)return found;}
-        }return null;
+            View child=parent.getChildAt(i);
+            if(child instanceof TextView){
+                TextView t=(TextView)child;
+                CharSequence text=t.getText();
+                if("←".contentEquals(text)){
+                    int[] loc=new int[2];t.getLocationOnScreen(loc);
+                    if(loc[0]>bestX){bestX=loc[0];result=t;}
+                }
+            }
+            if(child instanceof ViewGroup){
+                TextView found=findRightBackButton((ViewGroup)child);
+                if(found!=null){
+                    int[] loc=new int[2];found.getLocationOnScreen(loc);
+                    if(loc[0]>bestX){bestX=loc[0];result=found;}
+                }
+            }
+        }
+        return result;
     }
     private void removeLegacyMenus(ViewGroup parent){for(int i=parent.getChildCount()-1;i>=0;i--){View child=parent.getChildAt(i);CharSequence d=child.getContentDescription();if(d!=null&&(LanguageManager.t((Context)parent.getContext(),"Menú de la aplicación").contentEquals(d)||"Cambiar tema".contentEquals(d)||"Tema claro".contentEquals(d)||"Tema oscuro".contentEquals(d)||"Más opciones".contentEquals(d))){parent.removeViewAt(i);}else if(child instanceof ViewGroup)removeLegacyMenus((ViewGroup)child);}}
     private void showMenu(Activity activity,View anchor){SharedPreferences prefs=activity.getSharedPreferences(PREFS,Context.MODE_PRIVATE);AppMenuHelper.show(activity,anchor,new AppMenuHelper.Listener(){@Override public boolean isDark(){return prefs.getBoolean(KEY_DARK_THEME,false);}@Override public void setDark(boolean value){prefs.edit().putBoolean(KEY_DARK_THEME,value).apply();activity.recreate();}});}
