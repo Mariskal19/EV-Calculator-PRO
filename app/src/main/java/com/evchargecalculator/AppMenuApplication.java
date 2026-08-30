@@ -42,7 +42,10 @@ public class AppMenuApplication extends Application {
                 scroll.setOnApplyWindowInsetsListener((v,insets)->{
                     android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars());
                     int[] base=(int[])v.getTag();
-                    v.setPadding(base[0],Math.max(base[1],bars.top),base[2],Math.max(base[3],bars.bottom));
+                    // Keep the original top spacing (36dp) so the header stays at
+                    // the same visual height as the stable version. Only protect
+                    // the bottom edge from the navigation bar.
+                    v.setPadding(base[0],base[1],base[2],Math.max(base[3],bars.bottom));
                     return WindowInsets.CONSUMED;
                 });
                 scroll.requestApplyInsets();
@@ -85,7 +88,7 @@ public class AppMenuApplication extends Application {
             if(child instanceof ViewGroup){
                 TextView found=findRightBackButton((ViewGroup)child);
                 if(found!=null){
-                    int[] loc=new int[2];found.getLocationOnScreen(loc);
+                    int[] loc= new int[2];found.getLocationOnScreen(loc);
                     if(loc[0]>bestX){bestX=loc[0];result=found;}
                 }
             }
