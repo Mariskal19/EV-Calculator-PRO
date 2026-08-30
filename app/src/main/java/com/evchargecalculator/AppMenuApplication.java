@@ -40,7 +40,6 @@ public class AppMenuApplication extends Application {
                 int left=scroll.getPaddingLeft(),top=scroll.getPaddingTop(),right=scroll.getPaddingRight(),bottom=scroll.getPaddingBottom();
                 scroll.setTag(new int[]{left,top,right,bottom});
                 scroll.setOnApplyWindowInsetsListener((v,insets)->{
-                    WindowInsets.Type.InsetsTypeMask ignored=WindowInsets.Type.systemBars();
                     android.graphics.Insets bars=insets.getInsets(WindowInsets.Type.systemBars());
                     int[] base=(int[])v.getTag();
                     v.setPadding(base[0],base[1]+bars.top,base[2],base[3]+bars.bottom);
@@ -70,12 +69,6 @@ public class AppMenuApplication extends Application {
         if(global!=null)global.setVisibility(View.GONE);
         button.setText("⋮");button.setTextSize(30);button.setContentDescription(LanguageManager.t(activity,"Menú de la aplicación"));button.setOnClickListener(v->showMenu(activity,button));
     }
-    /**
-     * Charge has two arrow buttons in its header. The right-hand arrow is the
-     * menu anchor. We deliberately identify it by its position rather than by
-     * contentDescription, because contentDescription is translated and can
-     * therefore change after the language selector recreates the Activity.
-     */
     private TextView findRightBackButton(ViewGroup parent){
         TextView result=null;
         int bestX=Integer.MIN_VALUE;
