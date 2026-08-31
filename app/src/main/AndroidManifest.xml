@@ -21,6 +21,10 @@
             android:screenOrientation="portrait"
             android:exported="false" />
         <activity
+            android:name=".ElectricVsCombustionActivity"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
             android:name=".PrivacyMainActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
