@@ -10,7 +10,8 @@ Esta es la versión actual del proyecto en GitHub y la versión preparada para s
 
 - Nombre de la aplicación: **EV Calculator PRO**.
 - Identificador interno: `com.evcalculatorpro`.
-- Versión: **1.0.3** (`versionCode 51`).
+- Versión visible: **1.0.3**.
+- `versionCode`: **52**.
 - La pantalla de carga se mantiene como **EV Charge Calculator**.
 - `compileSdk`: 36.
 - `targetSdk`: 36.
@@ -34,22 +35,28 @@ Esta es la versión actual del proyecto en GitHub y la versión preparada para s
 
 ## Estado de estabilidad
 
-**Versión estable:** 1.0.3
+**Versión estable funcional:** 1.0.3
 
-**Commit estable:** `0f9d29b92213d17545b08de2d9f0c518a85d3612`
+**Commit estable funcional:** `0f9d29b92213d17545b08de2d9f0c518a85d3612`
 
-**Fecha de estabilización:** 1 de septiembre de 2026, 18:57.
+**Fecha de estabilización funcional:** 1 de septiembre de 2026, 18:57.
 
 Esta versión fue probada manualmente y se verificó el cambio de idioma entre las pantallas Charge, Electric y Principal sin el efecto de tembleque observado anteriormente.
 
+### Preparación para Google Play
+
+La compilación destinada a esta subida mantiene el nombre de versión **1.0.3** y utiliza el nuevo `versionCode 52`, ya que el `versionCode 51` fue utilizado anteriormente en una prueba cerrada de Google Play.
+
+**Build de Google Play:** `1.0.3 (52)`.
+
 ### Puntos de rollback
 
-- **01/09/2026 · 18:57 — estable actual:** `0f9d29b92213d17545b08de2d9f0c518a85d3612`
+- **01/09/2026 · 18:57 — estable funcional:** `0f9d29b92213d17545b08de2d9f0c518a85d3612`
 - **01/09/2026 · 18:46 — estable anterior:** `85684e2d4bf6390f90ced9d7b0f4b59f18dc6fc3`
 
 ## Google Play
 
-El proyecto queda preparado para generar el **Android App Bundle (AAB) Release de la versión 1.0.3** para Google Play Console. Antes de publicar hay que completar o revisar en Play Console la ficha de la aplicación, capturas de pantalla, política de privacidad, Data Safety, clasificación de contenido y los formularios requeridos.
+El proyecto queda preparado para generar el **Android App Bundle (AAB) Release 1.0.3 (versionCode 52)** para Google Play Console. Antes de publicar hay que completar o revisar en Play Console la ficha de la aplicación, capturas de pantalla, política de privacidad, Data Safety, clasificación de contenido y los formularios requeridos.
 
 ## Archivos de entrega
 
