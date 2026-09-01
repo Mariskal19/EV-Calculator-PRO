@@ -22,4 +22,20 @@ public class PersistentMainActivity extends MainActivity {
         }
         super.onCreate(savedInstanceState);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        if (prefs.contains(KEY_DARK_THEME)) {
+            boolean selectedDark = prefs.getBoolean(KEY_DARK_THEME, false);
+            if (selectedDark != dark) {
+                dark = selectedDark;
+                build();
+                loadPreferences();
+                applyTheme();
+                calculate();
+            }
+        }
+    }
 }
