@@ -38,7 +38,7 @@ public class ConfigurationActivity extends Activity {
     private void build(){
         FrameLayout frame=new FrameLayout(this);
         PremiumBackgroundView background=new PremiumBackgroundView(this);background.setDark(dark);background.setShowVehicle(false);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));
-        ScrollView scroll=new ScrollView(this);LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,dp(36),0,dp(20));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
+        ScrollView scroll=new ScrollView(this);LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,dp(36),0,dp(16));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
 
         FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(220)));
         View glow=new View(this);GradientDrawable gd=new GradientDrawable(GradientDrawable.Orientation.TL_BR,new int[]{dark?Color.rgb(8,34,58):Color.rgb(231,244,255),dark?Color.rgb(15,69,110):Color.rgb(195,229,255),dark?Color.rgb(5,25,42):Color.rgb(242,250,255)});glow.setBackground(gd);hero.addView(glow,new FrameLayout.LayoutParams(-1,-1));
@@ -47,7 +47,7 @@ public class ConfigurationActivity extends Activity {
         TextView title=tv("⚙  "+tr("Configuración","Settings","Configuration","Einstellungen","Impostazioni","Definições"),22,headerColor);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);title.setShadowLayer(dp(4),0,dp(2),dark?Color.argb(90,0,0,0):Color.argb(55,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP|Gravity.CENTER_HORIZONTAL);tp.leftMargin=dp(48);tp.rightMargin=dp(48);tp.topMargin=dp(12);hero.addView(title,tp);
         root.addView(hero);
 
-        LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(18),dp(18),dp(18),dp(18));card.setBackground(bg(dark?Color.argb(220,21,31,42):Color.argb(245,255,255,255),22,1));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(dp(12),-dp(20),dp(12),dp(14));card.setLayoutParams(cp);
+        LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(18),dp(18),dp(18),dp(18));card.setBackground(bg(dark?Color.argb(220,21,31,42):Color.argb(245,255,255,255),22,1));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(dp(12),-dp(4),dp(12),dp(14));card.setLayoutParams(cp);
         TextView section=tv(tr("Preferencias de la aplicación","Application preferences","Préférences de l'application","App-Einstellungen","Preferenze dell'applicazione","Preferências da aplicação"),18,text());section.setTypeface(null,1);card.addView(section);space(card,12);
         languageValue=addRow(card,"🌐",tr("Idioma","Language","Langue","Sprache","Lingua","Idioma"),LanguageManager.displayName(lang()),v->chooseLanguage());
         currencyValue=addRow(card,"💰",tr("Moneda","Currency","Devise","Währung","Valuta","Moeda"),currencyName(prefs.getString(KEY_CURRENCY,"EUR")),v->chooseCurrency());
