@@ -19,7 +19,7 @@ public class AppMenuApplication extends Application {
     private static final String PREFS="ev_charge_calculator", KEY_DARK_THEME="dark_theme";
     private static final int MENU_ID=0x7ECAFE;
     @Override public void onCreate(){super.onCreate();LanguageManager.applyStored(this);registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks(){
-        @Override public void onActivityCreated(Activity activity,Bundle state){activity.getWindow().getDecorView().post(()->{LanguageManager.applyStored(activity);protectSystemBars(activity);if(activity instanceof MainActivity){installMenu(activity);bindChargeMenu(activity);}LanguageManager.translateViews(activity);});}
+        @Override public void onActivityCreated(Activity activity,Bundle state){activity.getWindow().getDecorView().post(()->{LanguageManager.applyStored(activity);protectSystemBars(activity);LanguageManager.translateViews(activity);});}
         @Override public void onActivityStarted(Activity activity){}
         @Override public void onActivityResumed(Activity activity){activity.getWindow().getDecorView().post(()->{protectSystemBars(activity);});}
         @Override public void onActivityPaused(Activity activity){}
