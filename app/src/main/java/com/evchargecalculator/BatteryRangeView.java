@@ -21,6 +21,7 @@ public class BatteryRangeView extends View {
     public void setValues(int c,int t){ current=Math.max(0,Math.min(99,c)); target=Math.max(current+1,Math.min(100,t)); invalidate(); }
     public int getCurrent(){return current;} public int getTarget(){return target;}
     public void setListener(Listener l){listener=l;}
+    public void setListener(Runnable r){listener=(current,target)->r.run();}
     private float xFor(int v){return dp(12)+(getWidth()-dp(24))*v/100f;}
     private float dp(float v){return v*getResources().getDisplayMetrics().density;}
     private int valueFor(float x){return Math.max(0,Math.min(100,Math.round((x-dp(12))*100f/(getWidth()-dp(24)))));}
