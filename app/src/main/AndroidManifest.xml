@@ -16,17 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".PersistentMainActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".ElectricVsCombustionActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
-        <activity
-            android:name=".PrivacyMainActivity"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+        <activity android:name=".PersistentMainActivity" android:screenOrientation="portrait" android:exported="false" />
+        <activity android:name=".ElectricVsCombustionActivity" android:screenOrientation="portrait" android:exported="false" />
+        <activity android:name=".PrivacyMainActivity" android:screenOrientation="portrait" android:exported="false" />
+        <activity android:name=".ConfigurationActivity" android:screenOrientation="portrait" android:exported="false" />
     </application>
 </manifest>
