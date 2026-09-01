@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.*;
 
-public class MainActivity {
+public class MainActivity extends Activity {
  ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText battery,power,price,departure,xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch; TextView timeR,energyR,costR,statusR,statusTimeR,statusIcon,themeButton,rangeSummary,chargeAmount,lossInfo; LinearLayout statusBox; boolean busy,dark=false; SharedPreferences prefs;
  int blue=Color.rgb(46,107,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), borderLight=Color.rgb(217,228,241), darkBg=Color.rgb(7,19,28), statusOk=Color.rgb(29,142,121), statusWarn=Color.rgb(227,93,93);
  private static final String PRIVACY_URL = "https://mariskal19.github.io/EV-Calculator-PRO-Privacy/";
