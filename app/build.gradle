@@ -10,8 +10,8 @@ android {
         applicationId 'com.evcalculatorpro'
         minSdk 23
         targetSdk 36
-        versionCode 52
-        versionName '1.0.3'
+        versionCode 53
+        versionName '1.0.3.1'
     }
 
     signingConfigs {
