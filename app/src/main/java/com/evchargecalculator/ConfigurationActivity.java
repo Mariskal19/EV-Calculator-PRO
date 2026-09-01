@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -18,6 +19,7 @@ public class ConfigurationActivity extends Activity {
     private static final String KEY_DARK_THEME="dark_theme";
     private static final String KEY_THEME_MODE="theme_mode";
     private static final String KEY_CURRENCY="app_currency";
+    private static final String PRIVACY_URL="https://mariskal19.github.io/EV-Calculator-PRO-Privacy/";
     private SharedPreferences prefs;
     private boolean dark;
     private TextView languageValue, currencyValue, themeValue;
@@ -39,9 +41,9 @@ public class ConfigurationActivity extends Activity {
 
         FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(220)));
         View glow=new View(this);GradientDrawable gd=new GradientDrawable(GradientDrawable.Orientation.TL_BR,new int[]{dark?Color.rgb(8,34,58):Color.rgb(231,244,255),dark?Color.rgb(15,69,110):Color.rgb(195,229,255),dark?Color.rgb(5,25,42):Color.rgb(242,250,255)});glow.setBackground(gd);hero.addView(glow,new FrameLayout.LayoutParams(-1,-1));
-        TextView back=tv("←",30,Color.WHITE);back.setGravity(Gravity.CENTER);back.setIncludeFontPadding(false);back.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));back.setContentDescription(tr("Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home","Retour à l'accueil EV Calculator PRO","Zur EV Calculator PRO Startseite","Torna alla schermata principale di EV Calculator PRO","Voltar à página inicial do EV Calculator PRO"));back.setOnClickListener(v->finish());FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START);bp.leftMargin=dp(14);bp.topMargin=dp(12);hero.addView(back,bp);
-        TextView title=tv("⚙  "+tr("Configuración","Settings","Configuration","Einstellungen","Impostazioni","Definições"),22,Color.WHITE);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP|Gravity.CENTER_HORIZONTAL);tp.leftMargin=dp(48);tp.rightMargin=dp(48);tp.topMargin=dp(8);hero.addView(title,tp);
-        TextView menu=tv("⋮",30,Color.WHITE);menu.setGravity(Gravity.CENTER);menu.setIncludeFontPadding(false);menu.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));menu.setContentDescription(tr("Menú de la aplicación","App menu","Menu de l'application","App-Menü","Menu dell'applicazione","Menu da aplicação"));menu.setOnClickListener(v->AppMenuHelper.show(this,v,new AppMenuHelper.Listener(){public boolean isDark(){return dark;}public void setDark(boolean d){setTheme(d?"dark":"light");}}));FrameLayout.LayoutParams mp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);mp.rightMargin=dp(14);mp.topMargin=dp(12);hero.addView(menu,mp);
+        int headerColor=dark?Color.WHITE:Color.rgb(22,42,63);
+        TextView back=tv("←",30,headerColor);back.setGravity(Gravity.CENTER);back.setIncludeFontPadding(false);back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);back.setShadowLayer(dp(4),0,dp(2),dark?Color.argb(90,0,0,0):Color.argb(55,0,0,0));back.setContentDescription(tr("Volver a EV Calculator PRO Principal","Back to EV Calculator PRO Home","Retour à l'accueil EV Calculator PRO","Zur EV Calculator PRO Startseite","Torna alla schermata principale di EV Calculator PRO","Voltar à página inicial do EV Calculator PRO"));back.setOnClickListener(v->finish());FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START);bp.leftMargin=dp(14);bp.topMargin=dp(12);hero.addView(back,bp);
+        TextView title=tv("⚙  "+tr("Configuración","Settings","Configuration","Einstellungen","Impostazioni","Definições"),22,headerColor);title.setTypeface(null,1);title.setGravity(Gravity.CENTER);title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);title.setShadowLayer(dp(4),0,dp(2),dark?Color.argb(90,0,0,0):Color.argb(55,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP|Gravity.CENTER_HORIZONTAL);tp.leftMargin=dp(48);tp.rightMargin=dp(48);tp.topMargin=dp(8);hero.addView(title,tp);
         root.addView(hero);
 
         LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(18),dp(18),dp(18),dp(18));card.setBackground(bg(dark?Color.argb(220,21,31,42):Color.argb(245,255,255,255),22,1));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(dp(12),-dp(20),dp(12),dp(14));card.setLayoutParams(cp);
@@ -51,7 +53,8 @@ public class ConfigurationActivity extends Activity {
         themeValue=addRow(card,"🎨",tr("Tema","Theme","Thème","Design","Tema","Tema"),themeName(),v->chooseTheme());
         root.addView(card);
         Space bottom=new Space(this);root.addView(bottom,new LinearLayout.LayoutParams(1,0,1));
-        TextView foot=tv("EV Calculator PRO · "+version(),12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot,new LinearLayout.LayoutParams(-1,dp(28)));
+        TextView privacyLink=tv(tr("Política de privacidad","Privacy Policy","Politique de confidentialité","Datenschutzerklärung","Informativa sulla privacy","Política de privacidade"),13,dark?Color.rgb(105,175,255):Color.rgb(46,107,255));privacyLink.setGravity(Gravity.CENTER);privacyLink.setTypeface(null,1);privacyLink.setPadding(0,dp(4),0,dp(4));privacyLink.setClickable(true);privacyLink.setFocusable(true);privacyLink.setContentDescription(LanguageManager.t(this,"Política de privacidad"));privacyLink.setOnClickListener(v->{Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse(PRIVACY_URL));startActivity(intent);});root.addView(privacyLink,new LinearLayout.LayoutParams(-1,dp(34)));
+        TextView foot=tv("Powered by EV Calculator · v"+version(),12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot,new LinearLayout.LayoutParams(-1,dp(28)));
         getWindow().setStatusBarColor(dark?Color.rgb(7,19,28):Color.rgb(244,248,255));getWindow().setNavigationBarColor(dark?Color.rgb(7,19,28):Color.rgb(244,248,255));getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
     private void space(LinearLayout p,int h){Space s=new Space(this);p.addView(s,new LinearLayout.LayoutParams(1,dp(h)));}
