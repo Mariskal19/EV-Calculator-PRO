@@ -1,5 +1,11 @@
-EV Calculator PRO v1.0.1
+EV Calculator PRO v1.0.3
 
-Versión final 1.0.1, estabilizada con la cabecera premium y la batería superpuesta sobre la imagen.
+Versión estable 1.0.3, estabilizada el 1 de septiembre de 2026 a las 18:57.
 
-La pantalla actual se mantiene como EV Charge Calculator. La futura pantalla principal de EV Calculator PRO tendrá un acceso a esta pantalla.
+Commit estable: 0f9d29b92213d17545b08de2d9f0c518a85d3612
+
+La versión incluye la corrección de actualización del idioma al volver a la pantalla principal desde EV Charge Calculator o Electric Vs Combustion Calculator, manteniendo el diseño y evitando la reconstrucción de la interfaz al cambiar de idioma.
+
+Idiomas disponibles: español, inglés, francés, alemán, italiano y portugués.
+
+Punto de rollback anterior: 85684e2d4bf6390f90ced9d7b0f4b59f18dc6fc3 (01/09/2026 · 18:46).
