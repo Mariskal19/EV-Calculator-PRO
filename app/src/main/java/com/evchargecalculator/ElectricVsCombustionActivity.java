@@ -30,7 +30,7 @@ public class ElectricVsCombustionActivity extends Activity {
     private final int blue=Color.rgb(46,107,255),white=Color.rgb(22,42,63),secondary=Color.rgb(90,111,137),cardLight=Color.argb(245,255,255,255),cardDark=Color.argb(220,21,31,42),borderLight=Color.rgb(217,228,241),darkBg=Color.rgb(7,19,28);
     private static final String PREFS="ev_charge_calculator",KEY_DARK_THEME="dark_theme";
     @Override public void onCreate(Bundle b){super.onCreate(b);prefs=getSharedPreferences(PREFS,MODE_PRIVATE);dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&Configuration.UI_MODE_NIGHT_MASK)==Configuration.UI_MODE_NIGHT_YES;getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);build();load();calculate();}
-    @Override protected void onResume(){super.onResume();if(distance!=null)calculate();}
+    @Override protected void onResume(){super.onResume();if(prefs==null)prefs=getSharedPreferences(PREFS,MODE_PRIVATE);if(prefs.contains(KEY_DARK_THEME)){boolean selectedDark=prefs.getBoolean(KEY_DARK_THEME,false);if(selectedDark!=dark){dark=selectedDark;build();load();calculate();return;}}if(distance!=null)calculate();}
     @Override protected void onPause(){super.onPause();save();}
     private int text(){return dark?Color.rgb(245,248,255):white;} private int sub(){return dark?Color.rgb(170,183,204):secondary;} private int dp(int n){return(int)(n*getResources().getDisplayMetrics().density+.5f);}
     private TextView tv(String s,int sp,int c){TextView t=new TextView(this);t.setText(LanguageManager.t(this,s));t.setTextSize(sp);t.setTextColor(c);return t;}
