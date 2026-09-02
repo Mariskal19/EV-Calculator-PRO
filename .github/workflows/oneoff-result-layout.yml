@@ -1,0 +1,28 @@
+name: One-off result layout
+on:
+  push:
+    branches: [main]
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch result card layout
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java')
+          s=p.read_text()
+          old='LinearLayout values=new LinearLayout(this);values.setGravity(Gravity.CENTER);values.setWeightSum(2);LinearLayout evCol=new LinearLayout(this);evCol.setOrientation(LinearLayout.VERTICAL);evCol.setGravity(Gravity.CENTER);TextView evLabel=tv("⚡  Eléctrico",14,sub());evLabel.setGravity(Gravity.CENTER);evCol.addView(evLabel);evCost=resultValue("0,00 "+currencySymbol());evCol.addView(evCost,new LinearLayout.LayoutParams(-1,dp(40)));LinearLayout fuCol=new LinearLayout(this);fuCol.setOrientation(LinearLayout.VERTICAL);fuCol.setGravity(Gravity.CENTER);TextView fuLabel=tv("⛽  Combustión",14,sub());fuLabel.setGravity(Gravity.CENTER);fuCol.addView(fuLabel);fuelCost=resultValue("0,00 "+currencySymbol());fuCol.addView(fuelCost,new LinearLayout.LayoutParams(-1,dp(40)));values.addView(evCol,new LinearLayout.LayoutParams(0,-2,1));values.addView(fuCol,new LinearLayout.LayoutParams(0,-2,1));results.addView(values);'
+          new='LinearLayout labels=new LinearLayout(this);labels.setGravity(Gravity.CENTER);labels.setWeightSum(2);TextView evLabel=tv("⚡  Eléctrico",14,sub());evLabel.setGravity(Gravity.CENTER);TextView fuLabel=tv("⛽  Combustión",14,sub());fuLabel.setGravity(Gravity.CENTER);labels.addView(evLabel,new LinearLayout.LayoutParams(0,dp(28),1));labels.addView(fuLabel,new LinearLayout.LayoutParams(0,dp(28),1));results.addView(labels);LinearLayout values=new LinearLayout(this);values.setGravity(Gravity.CENTER);values.setWeightSum(2);evCost=resultValue("0,00 "+currencySymbol());fuelCost=resultValue("0,00 "+currencySymbol());values.addView(evCost,new LinearLayout.LayoutParams(0,dp(40),1));values.addView(fuelCost,new LinearLayout.LayoutParams(0,dp(40),1));results.addView(values);'
+          if old not in s:
+              raise SystemExit('Expected result layout not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java
+          git commit -m 'fix: put travel result values below column titles'
+          git push
