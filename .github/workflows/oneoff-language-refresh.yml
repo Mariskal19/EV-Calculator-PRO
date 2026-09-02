@@ -58,13 +58,13 @@ jobs:
               raise SystemExit('Electric onResume pattern not found')
           s = s.replace(old, new, 1)
           electric.write_text(s, encoding='utf-8')
-      
-      - name: Commit patch and remove one-off workflow
+
+      - name: Commit patch and remove one-off files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          rm -f .github/workflows/oneoff-language-refresh.yml
-          git add app/src/main/java/com/evchargecalculator/MainActivity.java app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java .github/workflows/oneoff-language-refresh.yml
+          rm -f .github/workflows/oneoff-language-refresh.yml .github/oneoff-language-refresh.trigger
+          git add app/src/main/java/com/evchargecalculator/MainActivity.java app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java .github/workflows/oneoff-language-refresh.yml .github/oneoff-language-refresh.trigger
           git diff --cached --quiet && exit 0
           git commit -m "fix: refresh language when returning to calculator screens"
           git push
