@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
+import android.text.Editable;
+import android.text.TextWatcher;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
@@ -33,18 +35,8 @@ public class CompararCochesActivity extends Activity {
     private final List<Vehicle> vehicles=new ArrayList<>();
     private final List<String> selectedIds=new ArrayList<>();
 
-    @Override protected void onCreate(Bundle b){
-        super.onCreate(b);
-        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
-        dark=p.contains("dark_theme")?p.getBoolean("dark_theme",false):(getResources().getConfiguration().uiMode&0x30)==0x20;
-        displayedLanguage=LanguageManager.getSelectedLanguage(this);
-        loadVehicles(); loadSelection(); build();
-    }
-    @Override protected void onResume(){super.onResume();
-        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
-        if(p.contains("dark_theme")){boolean d=p.getBoolean("dark_theme",false);if(d!=dark){dark=d;recreate();return;}}
-        String l=LanguageManager.getSelectedLanguage(this);if(!l.equals(displayedLanguage)){displayedLanguage=l;recreate();}
-    }
+    @Override protected void onCreate(Bundle b){super.onCreate(b);SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);dark=p.contains("dark_theme")?p.getBoolean("dark_theme",false):(getResources().getConfiguration().uiMode&0x30)==0x20;displayedLanguage=LanguageManager.getSelectedLanguage(this);loadVehicles();loadSelection();build();}
+    @Override protected void onResume(){super.onResume();SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);if(p.contains("dark_theme")){boolean d=p.getBoolean("dark_theme",false);if(d!=dark){dark=d;recreate();return;}}String l=LanguageManager.getSelectedLanguage(this);if(!l.equals(displayedLanguage)){displayedLanguage=l;recreate();}}
     private int dp(int n){return(int)(n*getResources().getDisplayMetrics().density+.5f);}
     private int text(){return dark?Color.rgb(245,248,255):white;}
     private int sub(){return dark?Color.rgb(170,183,204):secondary;}
@@ -54,109 +46,45 @@ public class CompararCochesActivity extends Activity {
     private String tr(String es,String en,String fr,String de,String it,String pt){String l=LanguageManager.getSelectedLanguage(this);if("es".equals(l))return es;if("fr".equals(l))return fr;if("de".equals(l))return de;if("it".equals(l))return it;if("pt".equals(l))return pt;return en;}
 
     private void build(){
-        FrameLayout frame=new FrameLayout(this);
-        PremiumBackgroundView background=new PremiumBackgroundView(this);background.setDark(dark);background.setShowVehicle(false);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));
+        FrameLayout frame=new FrameLayout(this);PremiumBackgroundView background=new PremiumBackgroundView(this);background.setDark(dark);background.setShowVehicle(false);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));
         ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,dp(36),0,dp(18));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
-
-        FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(220)));
-        GradientDrawable heroBg=new GradientDrawable(GradientDrawable.Orientation.TL_BR,new int[]{dark?Color.rgb(8,34,58):Color.rgb(231,244,255),dark?Color.rgb(15,69,110):Color.rgb(195,229,255),dark?Color.rgb(5,25,42):Color.rgb(242,250,255)});hero.setBackground(heroBg);
+        FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(220)));GradientDrawable heroBg=new GradientDrawable(GradientDrawable.Orientation.TL_BR,new int[]{dark?Color.rgb(8,34,58):Color.rgb(231,244,255),dark?Color.rgb(15,69,110):Color.rgb(195,229,255),dark?Color.rgb(5,25,42):Color.rgb(242,250,255)});hero.setBackground(heroBg);
         TextView back=tv("←",30,dark?Color.WHITE:white);back.setGravity(Gravity.CENTER);back.setIncludeFontPadding(false);back.setOnClickListener(v->finish());FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START);bp.leftMargin=dp(14);bp.topMargin=dp(12);hero.addView(back,bp);
         TextView title=tv("⚖  "+tr("Comparar coches","Compare cars","Comparer les voitures","Autos vergleichen","Confronta auto","Comparar carros"),22,dark?Color.WHITE:white);title.setTypeface(null,Typeface.BOLD);title.setGravity(Gravity.CENTER);title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(48),Gravity.TOP|Gravity.CENTER_HORIZONTAL);tp.leftMargin=dp(48);tp.rightMargin=dp(48);tp.topMargin=dp(12);hero.addView(title,tp);
-        TextView menu=tv("⋮",30,dark?Color.WHITE:white);menu.setGravity(Gravity.CENTER);menu.setIncludeFontPadding(false);menu.setOnClickListener(v->AppMenuHelper.show(this,v,new AppMenuHelper.Listener(){public boolean isDark(){return dark;}public void setDark(boolean d){dark=d;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",d).apply();recreate();}}));FrameLayout.LayoutParams mp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);mp.rightMargin=dp(14);mp.topMargin=dp(12);hero.addView(menu,mp);
-        root.addView(hero);
-
+        TextView menu=tv("⋮",30,dark?Color.WHITE:white);menu.setGravity(Gravity.CENTER);menu.setIncludeFontPadding(false);menu.setOnClickListener(v->AppMenuHelper.show(this,v,new AppMenuHelper.Listener(){public boolean isDark(){return dark;}public void setDark(boolean d){dark=d;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",d).apply();recreate();}}));FrameLayout.LayoutParams mp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);mp.rightMargin=dp(14);mp.topMargin=dp(12);hero.addView(menu,mp);root.addView(hero);
         LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(14),dp(14),dp(14),dp(14));card.setBackground(strokeBg(dark?Color.argb(230,21,31,42):Color.argb(250,255,255,255),22));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.setMargins(dp(12),-dp(26),dp(12),dp(14));root.addView(card,cp);
         TextView hint=tv(tr("Elige 2 o 3 coches para compararlos","Choose 2 or 3 cars to compare","Choisissez 2 ou 3 voitures à comparer","Wählen Sie 2 oder 3 Autos","Scegli 2 o 3 auto da confrontare","Escolha 2 ou 3 carros para comparar"),14,sub());hint.setGravity(Gravity.CENTER);card.addView(hint,new LinearLayout.LayoutParams(-1,dp(28)));
         carsRow=new LinearLayout(this);carsRow.setOrientation(LinearLayout.HORIZONTAL);carsRow.setGravity(Gravity.CENTER);card.addView(carsRow,new LinearLayout.LayoutParams(-1,-2));
-        Button add=button("＋  "+tr("Añadir coche","Add car","Ajouter une voiture","Auto hinzufügen","Aggiungi auto","Adicionar carro"));add.setOnClickListener(v->showSearch());card.addView(add,new LinearLayout.LayoutParams(-1,dp(52)));
-        root.addView(card);
-
+        Button add=button("＋  "+tr("Añadir coche","Add car","Ajouter une voiture","Auto hinzufügen","Aggiungi auto","Adicionar carro"));add.setOnClickListener(v->showSearch());card.addView(add,new LinearLayout.LayoutParams(-1,dp(52)));root.addView(card);
         TextView section=tv(tr("Comparativa","Comparison","Comparaison","Vergleich","Confronto","Comparação"),18,text());section.setTypeface(null,Typeface.BOLD);section.setPadding(dp(16),dp(2),dp(16),dp(8));root.addView(section);
-        table=new LinearLayout(this);table.setOrientation(LinearLayout.VERTICAL);LinearLayout.LayoutParams tlp=new LinearLayout.LayoutParams(-1,-2);tlp.setMargins(dp(12),0,dp(12),0);root.addView(table,tlp);
-        rebuild();
-        Space bottom=new Space(this);root.addView(bottom,new LinearLayout.LayoutParams(1,dp(12)));
-        TextView foot=tv("Powered by EV Calculator · v"+version(),12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot,new LinearLayout.LayoutParams(-1,dp(28)));
+        table=new LinearLayout(this);table.setOrientation(LinearLayout.VERTICAL);LinearLayout.LayoutParams tlp=new LinearLayout.LayoutParams(-1,-2);tlp.setMargins(dp(12),0,dp(12),0);root.addView(table,tlp);rebuild();
+        Space bottom=new Space(this);root.addView(bottom,new LinearLayout.LayoutParams(1,dp(12)));TextView foot=tv("Powered by EV Calculator · v"+version(),12,sub());foot.setGravity(Gravity.CENTER);root.addView(foot,new LinearLayout.LayoutParams(-1,dp(28)));
         getWindow().setStatusBarColor(dark?Color.rgb(7,19,28):Color.rgb(244,248,255));getWindow().setNavigationBarColor(dark?Color.rgb(7,19,28):Color.rgb(244,248,255));getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
     }
-
     private Button button(String s){Button b=new Button(this);b.setText(s);b.setTextSize(15);b.setTextColor(Color.WHITE);b.setAllCaps(false);b.setTypeface(null,Typeface.BOLD);b.setGravity(Gravity.CENTER);b.setBackground(bg(blue,16));return b;}
-
-    private void rebuild(){
-        carsRow.removeAllViews();
-        if(selectedIds.isEmpty()){
-            TextView empty=tv("＋",32,blue);empty.setGravity(Gravity.CENTER);carsRow.addView(empty,new LinearLayout.LayoutParams(-1,dp(118))); 
-        } else for(String id:selectedIds){Vehicle v=find(id);if(v!=null)addCarCard(v);}
-        table.removeAllViews();
-        List<Vehicle> sel=new ArrayList<>();for(String id:selectedIds){Vehicle v=find(id);if(v!=null)sel.add(v);}
-        String[] labels={tr("Batería","Battery","Batterie","Batterie","Batteria","Bateria"),tr("Tipo batería","Battery type","Type de batterie","Batterietyp","Tipo batteria","Tipo de bateria"),tr("Autonomía WLTP","WLTP range","Autonomie WLTP","WLTP-Reichweite","Autonomia WLTP","Autonomia WLTP"),tr("Consumo","Consumption","Consommation","Verbrauch","Consumo","Consumo"),tr("Potencia","Power","Puissance","Leistung","Potenza","Potência"),tr("Tracción","Drivetrain","Transmission","Antrieb","Trazione","Tração"),tr("Carga AC","AC charging","Charge AC","AC-Laden","Ricarica AC","Carga AC"),tr("Carga DC","DC charging","Charge DC","DC-Laden","Ricarica DC","Carga DC"),tr("10–80 %","10–80 %","10–80 %","10–80 %","10–80 %","10–80 %"),tr("0–100 km/h","0–100 km/h","0–100 km/h","0–100 km/h","0–100 km/h","0–100 km/h"),tr("Maletero","Trunk","Coffre","Kofferraum","Bagagliaio","Bagageira"),tr("Peso","Weight","Poids","Gewicht","Peso","Peso"),tr("Precio","Price","Prix","Preis","Prezzo","Preço")};
-        String[] keys={"battery","type","range","consumption","power","drive","ac","dc","charge","acc","trunk","weight","price"};
-        addHeader(sel);for(int i=0;i<labels.length;i++)addDataRow(labels[i],keys[i],sel);
-    }
-
-    private void addHeader(List<Vehicle> sel){
-        LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(8),dp(8),dp(8),dp(8));row.setBackground(bg(dark?Color.rgb(25,43,65):Color.rgb(234,242,252),14));
-        TextView first=tv("",14,text());row.addView(first,new LinearLayout.LayoutParams(dp(116),dp(64)));
-        for(Vehicle v:sel){TextView t=tv(v.make+"\n"+v.model,13,text());t.setTypeface(null,Typeface.BOLD);t.setGravity(Gravity.CENTER);t.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);row.addView(t,new LinearLayout.LayoutParams(0,dp(64),1));}
-        table.addView(row,new LinearLayout.LayoutParams(-1,dp(72)));
-    }
-    private void addDataRow(String label,String key,List<Vehicle> sel){
-        LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(8),0,dp(8),0);row.setBackground(strokeBg(dark?Color.argb(190,21,34,51):Color.WHITE,10));
-        TextView l=tv(label,13,text());l.setTypeface(null,Typeface.BOLD);row.addView(l,new LinearLayout.LayoutParams(dp(116),dp(54)));
-        for(Vehicle v:sel){TextView val=tv(value(v,key),13,text());val.setGravity(Gravity.CENTER);val.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);row.addView(val,new LinearLayout.LayoutParams(0,dp(54),1));}
-        LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(55));lp.setMargins(0,0,0,dp(4));table.addView(row,lp);
-    }
-    private String value(Vehicle v,String k){
-        if("battery".equals(k))return num(v.batteryKwh)+" kWh";
-        if("type".equals(k))return str(v.batteryType);
-        if("range".equals(k))return v.wltpKm>0?v.wltpKm+" km":"—";
-        if("consumption".equals(k))return v.consumption>0?fmt(v.consumption)+" kWh/100":"—";
-        if("power".equals(k))return v.powerKw>0?v.powerKw+" kW":"—";
-        if("drive".equals(k))return str(v.drivetrain);
-        if("ac".equals(k))return v.acKw>0?v.acKw+" kW":"—";
-        if("dc".equals(k))return v.dcKw>0?v.dcKw+" kW":"—";
-        if("charge".equals(k))return v.chargeMin>0?v.chargeMin+" min":"—";
-        if("acc".equals(k))return v.acc>0?fmt(v.acc)+" s":"—";
-        if("trunk".equals(k))return v.trunk>0?v.trunk+" L":"—";
-        if("weight".equals(k))return v.weight>0?v.weight+" kg":"—";
-        if("price".equals(k))return v.price>0?fmt(v.price)+" €":"—";
-        return "—";
-    }
-    private String str(String s){return s==null||s.trim().isEmpty()?"—":s;}
-    private String num(double n){return n>0?fmt(n):"—";}
-    private String fmt(double n){return String.format(Locale.getDefault(),"%.1f",n).replace('.',',').replace(",0","");}
-
-    private void addCarCard(Vehicle v){
-        LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setGravity(Gravity.CENTER_HORIZONTAL);card.setPadding(dp(8),dp(8),dp(8),dp(6));card.setBackground(strokeBg(dark?Color.rgb(21,34,51):Color.rgb(248,251,255),16));
-        TextView icon=tv("🚘",30,text());icon.setGravity(Gravity.CENTER);card.addView(icon,new LinearLayout.LayoutParams(-1,dp(48)));
-        TextView name=tv(v.make+"\n"+v.model,14,text());name.setTypeface(null,Typeface.BOLD);name.setGravity(Gravity.CENTER);name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);card.addView(name,new LinearLayout.LayoutParams(-1,dp(44)));
-        TextView version=tv(v.version,11,sub());version.setGravity(Gravity.CENTER);version.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);card.addView(version,new LinearLayout.LayoutParams(-1,dp(28)));
-        TextView remove=tv("✕  "+tr("Quitar","Remove","Supprimer","Entfernen","Rimuovi","Remover"),12,blue);remove.setGravity(Gravity.CENTER);remove.setTypeface(null,Typeface.BOLD);remove.setOnClickListener(x->{selectedIds.remove(v.id);saveSelection();rebuild();});card.addView(remove,new LinearLayout.LayoutParams(-1,dp(30)));
-        LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,dp(158),1);lp.setMargins(dp(3),dp(8),dp(3),dp(12));carsRow.addView(card,lp);
-    }
+    private void rebuild(){carsRow.removeAllViews();if(selectedIds.isEmpty()){TextView empty=tv("＋",32,blue);empty.setGravity(Gravity.CENTER);carsRow.addView(empty,new LinearLayout.LayoutParams(-1,dp(118)));}else for(String id:selectedIds){Vehicle v=find(id);if(v!=null)addCarCard(v);}table.removeAllViews();List<Vehicle> sel=new ArrayList<>();for(String id:selectedIds){Vehicle v=find(id);if(v!=null)sel.add(v);}String[] labels={tr("Batería","Battery","Batterie","Batterie","Batteria","Bateria"),tr("Tipo batería","Battery type","Type de batterie","Batterietyp","Tipo batteria","Tipo de bateria"),tr("Autonomía WLTP","WLTP range","Autonomie WLTP","WLTP-Reichweite","Autonomia WLTP","Autonomia WLTP"),tr("Consumo","Consumption","Consommation","Verbrauch","Consumo","Consumo"),tr("Potencia","Power","Puissance","Leistung","Potenza","Potência"),tr("Tracción","Drivetrain","Transmission","Antrieb","Trazione","Tração"),tr("Carga AC","AC charging","Charge AC","AC-Laden","Ricarica AC","Carga AC"),tr("Carga DC","DC charging","Charge DC","DC-Laden","Ricarica DC","Carga DC"),tr("10–80 %","10–80 %","10–80 %","10–80 %","10–80 %","10–80 %"),tr("0–100 km/h","0–100 km/h","0–100 km/h","0–100 km/h","0–100 km/h","0–100 km/h"),tr("Maletero","Trunk","Coffre","Kofferraum","Bagagliaio","Bagageira"),tr("Peso","Weight","Poids","Gewicht","Peso","Peso"),tr("Precio","Price","Prix","Preis","Prezzo","Preço")};String[] keys={"battery","type","range","consumption","power","drive","ac","dc","charge","acc","trunk","weight","price"};addHeader(sel);for(int i=0;i<labels.length;i++)addDataRow(labels[i],keys[i],sel);}
+    private void addHeader(List<Vehicle> sel){LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(8),dp(8),dp(8),dp(8));row.setBackground(bg(dark?Color.rgb(25,43,65):Color.rgb(234,242,252),14));row.addView(tv("",14,text()),new LinearLayout.LayoutParams(dp(116),dp(64)));for(Vehicle v:sel){TextView t=tv(v.make+"\n"+v.model,13,text());t.setTypeface(null,Typeface.BOLD);t.setGravity(Gravity.CENTER);t.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);row.addView(t,new LinearLayout.LayoutParams(0,dp(64),1));}table.addView(row,new LinearLayout.LayoutParams(-1,dp(72)));}
+    private void addDataRow(String label,String key,List<Vehicle> sel){LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(8),0,dp(8),0);row.setBackground(strokeBg(dark?Color.argb(190,21,34,51):Color.WHITE,10));TextView l=tv(label,13,text());l.setTypeface(null,Typeface.BOLD);row.addView(l,new LinearLayout.LayoutParams(dp(116),dp(54)));for(Vehicle v:sel){TextView val=tv(value(v,key),13,text());val.setGravity(Gravity.CENTER);val.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);row.addView(val,new LinearLayout.LayoutParams(0,dp(54),1));}LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(55));lp.setMargins(0,0,0,dp(4));table.addView(row,lp);}
+    private String value(Vehicle v,String k){if("battery".equals(k))return num(v.batteryKwh)+" kWh";if("type".equals(k))return str(v.batteryType);if("range".equals(k))return v.wltpKm>0?v.wltpKm+" km":"—";if("consumption".equals(k))return v.consumption>0?fmt(v.consumption)+" kWh/100":"—";if("power".equals(k))return v.powerKw>0?v.powerKw+" kW":"—";if("drive".equals(k))return str(v.drivetrain);if("ac".equals(k))return v.acKw>0?v.acKw+" kW":"—";if("dc".equals(k))return v.dcKw>0?v.dcKw+" kW":"—";if("charge".equals(k))return v.chargeMin>0?v.chargeMin+" min":"—";if("acc".equals(k))return v.acc>0?fmt(v.acc)+" s":"—";if("trunk".equals(k))return v.trunk>0?v.trunk+" L":"—";if("weight".equals(k))return v.weight>0?v.weight+" kg":"—";if("price".equals(k))return v.price>0?fmt(v.price)+" €":"—";return "—";}
+    private String str(String s){return s==null||s.trim().isEmpty()?"—":s;}private String num(double n){return n>0?fmt(n):"—";}private String fmt(double n){return String.format(Locale.getDefault(),"%.1f",n).replace('.',',').replace(",0","");}
+    private void addCarCard(Vehicle v){LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setGravity(Gravity.CENTER_HORIZONTAL);card.setPadding(dp(8),dp(8),dp(8),dp(6));card.setBackground(strokeBg(dark?Color.rgb(21,34,51):Color.rgb(248,251,255),16));TextView icon=tv("🚘",30,text());icon.setGravity(Gravity.CENTER);card.addView(icon,new LinearLayout.LayoutParams(-1,dp(48)));TextView name=tv(v.make+"\n"+v.model,14,text());name.setTypeface(null,Typeface.BOLD);name.setGravity(Gravity.CENTER);name.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);card.addView(name,new LinearLayout.LayoutParams(-1,dp(44)));TextView version=tv(v.version,11,sub());version.setGravity(Gravity.CENTER);version.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);card.addView(version,new LinearLayout.LayoutParams(-1,dp(28)));TextView remove=tv("✕  "+tr("Quitar","Remove","Supprimer","Entfernen","Rimuovi","Remover"),12,blue);remove.setGravity(Gravity.CENTER);remove.setTypeface(null,Typeface.BOLD);remove.setOnClickListener(x->{selectedIds.remove(v.id);saveSelection();rebuild();});card.addView(remove,new LinearLayout.LayoutParams(-1,dp(30)));LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,dp(158),1);lp.setMargins(dp(3),dp(8),dp(3),dp(12));carsRow.addView(card,lp);}
 
     private void showSearch(){
         if(selectedIds.size()>=3){Toast.makeText(this,tr("Puedes comparar un máximo de 3 coches","You can compare a maximum of 3 cars","Vous pouvez comparer au maximum 3 voitures","Sie können maximal 3 Autos vergleichen","Puoi confrontare al massimo 3 auto","Pode comparar no máximo 3 carros"),Toast.LENGTH_SHORT).show();return;}
         final EditText input=new EditText(this);input.setHint(tr("Marca o modelo","Make or model","Marque ou modèle","Marke oder Modell","Marca o modello","Marca ou modelo"));input.setSingleLine(true);input.setPadding(dp(12),0,dp(12),0);
-        LinearLayout box=new LinearLayout(this);box.setPadding(dp(18),0,dp(18),0);box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));
-        final List<Vehicle> results=new ArrayList<>();for(Vehicle v:vehicles)if(!selectedIds.contains(v.id))results.add(v);sortPopular(results);
-        String[] names=names(results);
-        AlertDialog dialog=new AlertDialog.Builder(this).setTitle(tr("Añadir coche","Add car","Ajouter une voiture","Auto hinzufügen","Aggiungi auto","Adicionar carro")).setView(box).setItems(names,(d,w)->chooseVariant(results.get(w))).create();
-        input.addTextChangedListener(new android.text.TextWatcher(){public void beforeTextChanged(CharSequence s,int a,int c,int f){}public void onTextChanged(CharSequence s,int a,int b,int c){String q=s.toString().trim().toLowerCase(Locale.ROOT);results.clear();for(Vehicle v:vehicles){if(selectedIds.contains(v.id))continue;if(q.isEmpty()||v.make.toLowerCase(Locale.ROOT).contains(q)||v.model.toLowerCase(Locale.ROOT).contains(q)||v.version.toLowerCase(Locale.ROOT).contains(q))results.add(v);}sortPopular(results);dialog.setListItems(names(results));}public void afterTextChanged(android.text.Editable e){}});
-        dialog.setOnShowListener(x->{input.requestFocus();dialog.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);});dialog.show();
+        LinearLayout content=new LinearLayout(this);content.setOrientation(LinearLayout.VERTICAL);content.setPadding(dp(18),0,dp(18),dp(8));content.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));
+        final LinearLayout list=new LinearLayout(this);list.setOrientation(LinearLayout.VERTICAL);ScrollView listScroll=new ScrollView(this);listScroll.setFillViewport(false);listScroll.addView(list);content.addView(listScroll,new LinearLayout.LayoutParams(-1,dp(330)));
+        AlertDialog dialog=new AlertDialog.Builder(this).setTitle(tr("Añadir coche","Add car","Ajouter une voiture","Auto hinzufügen","Aggiungi auto","Adicionar carro")).setView(content).create();
+        Runnable refresh=()->{list.removeAllViews();List<Vehicle> results=new ArrayList<>();String q=input.getText().toString().trim().toLowerCase(Locale.ROOT);for(Vehicle v:vehicles){if(selectedIds.contains(v.id))continue;if(q.isEmpty()||v.make.toLowerCase(Locale.ROOT).contains(q)||v.model.toLowerCase(Locale.ROOT).contains(q)||v.version.toLowerCase(Locale.ROOT).contains(q))results.add(v);}sortPopular(results);for(Vehicle v:results){TextView item=tv(v.make+" "+v.model+"\n"+v.version,14,text());item.setGravity(Gravity.CENTER_VERTICAL);item.setPadding(dp(12),dp(8),dp(12),dp(8));item.setBackground(strokeBg(dark?Color.rgb(21,34,51):Color.WHITE,12));item.setOnClickListener(x->{dialog.dismiss();chooseVariant(v);});LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(58));lp.setMargins(0,0,0,dp(6));list.addView(item,lp);}};
+        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){refresh.run();}public void afterTextChanged(Editable e){}});
+        dialog.setOnShowListener(x->{refresh.run();input.requestFocus();dialog.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);});dialog.show();
     }
     private void chooseVariant(Vehicle v){selectedIds.add(v.id);saveSelection();rebuild();}
     private void sortPopular(List<Vehicle> list){Collections.sort(list,Comparator.comparing((Vehicle v)->v.make+" "+v.model+" "+v.version));}
-    private String[] names(List<Vehicle> list){String[] a=new String[list.size()];for(int i=0;i<a.length;i++)a[i]=list.get(i).make+" "+list.get(i).model+" — "+list.get(i).version;return a;}
-
     private void loadSelection(){Set<String> set=getSharedPreferences(PREFS,MODE_PRIVATE).getStringSet(KEY_SELECTED,new HashSet<>());selectedIds.clear();for(String id:set)if(find(id)!=null)selectedIds.add(id);}
     private void saveSelection(){getSharedPreferences(PREFS,MODE_PRIVATE).edit().putStringSet(KEY_SELECTED,new HashSet<>(selectedIds)).apply();}
     private Vehicle find(String id){for(Vehicle v:vehicles)if(v.id.equals(id))return v;return null;}
-
-    private void loadVehicles(){try{InputStream in=getAssets().open("vehicles.json");BufferedReader r=new BufferedReader(new InputStreamReader(in));StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);r.close();JSONArray arr=new JSONObject(sb.toString()).getJSONArray("vehicles");for(int i=0;i<arr.length();i++){JSONObject o=arr.getJSONObject(i);vehicles.add(new Vehicle(o));}}catch(Exception e){Toast.makeText(this,"Error loading vehicle database",Toast.LENGTH_LONG).show();}}
+    private void loadVehicles(){try{InputStream in=getAssets().open("vehicles.json");BufferedReader r=new BufferedReader(new InputStreamReader(in));StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);r.close();JSONArray arr=new JSONObject(sb.toString()).getJSONArray("vehicles");for(int i=0;i<arr.length();i++)vehicles.add(new Vehicle(arr.getJSONObject(i)));}catch(Exception e){Toast.makeText(this,"Error loading vehicle database",Toast.LENGTH_LONG).show();}}
     private String version(){try{return getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception e){return "1.0.4";}}
-
-    private static class Vehicle{
-        String id,make,model,version,batteryType,drivetrain;double batteryKwh,consumption,powerKw,acKw,dcKw,acc,price;int year,wltpKm,chargeMin,trunk,weight;
-        Vehicle(JSONObject o)throws Exception{id=o.optString("id");make=o.optString("make");model=o.optString("model");version=o.optString("version");year=o.optInt("year");price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",0);batteryType=o.optString("batteryType","");wltpKm=o.optInt("wltpKm",0);consumption=o.optDouble("consumptionKwh100",0);powerKw=o.optDouble("powerKw",0);drivetrain=o.optString("drivetrain","");acKw=o.optDouble("acKw",0);dcKw=o.optDouble("dcKw",0);chargeMin=o.optInt("charge10to80Min",0);acc=o.optDouble("acceleration0to100Sec",0);trunk=o.optInt("trunkLiters",0);weight=o.optInt("weightKg",0);}
-    }
+    private static class Vehicle{String id,make,model,version,batteryType,drivetrain;double batteryKwh,consumption,powerKw,acKw,dcKw,acc,price;int year,wltpKm,chargeMin,trunk,weight;Vehicle(JSONObject o)throws Exception{id=o.optString("id");make=o.optString("make");model=o.optString("model");version=o.optString("version");year=o.optInt("year");price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",0);batteryType=o.optString("batteryType","");wltpKm=o.optInt("wltpKm",0);consumption=o.optDouble("consumptionKwh100",0);powerKw=o.optDouble("powerKw",0);drivetrain=o.optString("drivetrain","");acKw=o.optDouble("acKw",0);dcKw=o.optDouble("dcKw",0);chargeMin=o.optInt("charge10to80Min",0);acc=o.optDouble("acceleration0to100Sec",0);trunk=o.optInt("trunkLiters",0);weight=o.optInt("weightKg",0);}}
 }
