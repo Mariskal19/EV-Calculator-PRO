@@ -21,7 +21,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class CompararCochesActivity extends Activity {
-    private static final String PREFS="ev_charge_calculator", KEY_SELECTED="compare_vehicle_ids", KEY_SELECTED_ORDERED="compare_vehicle_ids_ordered";
+    private static final String PREFS="ev_charge_calculator", KEY_SELECTED="compare_vehicle_ids", KEY_SELECTED_ORDERED="compare_vehicle_ids_ordered", KEY_CURRENCY="app_currency";
     private final int blue=Color.rgb(46,107,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137);
     private boolean dark; private LinearLayout carsRow,table; private Button addButton;
     private final List<Vehicle> vehicles=new ArrayList<>(); private final List<String> selectedIds=new ArrayList<>();
@@ -29,9 +29,11 @@ public class CompararCochesActivity extends Activity {
     @Override protected void onCreate(Bundle b){super.onCreate(b);try{
         SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
         dark=p.contains("dark_theme")?p.getBoolean("dark_theme",false):(getResources().getConfiguration().uiMode&0x30)==0x20;
+        CurrencyRateManager.refreshIfNeeded(this);
         build(); try{loadVehicles();loadSelection();rebuild();}catch(Throwable t){showDataError(t);}
     }catch(Throwable t){TextView e=tv("Error al abrir Comparar coches\n\n"+t.getClass().getSimpleName(),16,Color.WHITE);e.setGravity(Gravity.CENTER);e.setPadding(dp(24),dp(24),dp(24),dp(24));e.setBackgroundColor(Color.rgb(8,34,58));setContentView(e);}}
 
+    @Override protected void onResume(){super.onResume();CurrencyRateManager.refreshIfNeeded(this);if(table!=null)rebuild();}
     private int dp(int n){return(int)(n*getResources().getDisplayMetrics().density+.5f);}
     private int text(){return dark?Color.rgb(245,248,255):white;}
     private int sub(){return dark?Color.rgb(170,183,204):secondary;}
@@ -92,11 +94,11 @@ public class CompararCochesActivity extends Activity {
             addRow("Carga AC", "ac", true); addRow("Carga DC", "dc", true); addRow("10–80 %", "charge", true);
             addSection("Practicidad");
             addRow("Maletero", "trunk", true); addRow("Peso", "weight", true);
-            addSection("Precio");
-            addRow("Precio", "price", true);
+            addSection("Precio", true);
         }else{TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t,new LinearLayout.LayoutParams(tableWidth(),-2));}}
 
     private void addSection(String title){TextView s=tv(title,14,blue);s.setTypeface(null,Typeface.BOLD);s.setGravity(Gravity.CENTER_VERTICAL);s.setPadding(dp(4),dp(12),dp(4),dp(6));table.addView(s,new LinearLayout.LayoutParams(tableWidth(),dp(40)));}
+    private void addSection(String title, boolean ignored){addSection(title);addRow("Precio", "price", true);}
 
     private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(8),dp(8),dp(8),dp(8));c.setBackground(strokeBg(dark?Color.rgb(21,31,42):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));
         TextView photo=tv("🚘",34,blue);photo.setGravity(Gravity.CENTER);photo.setBackground(bg(dark?Color.rgb(13,28,41):Color.rgb(239,245,252),12));c.addView(photo,new LinearLayout.LayoutParams(-1,dp(62)));
@@ -121,7 +123,9 @@ public class CompararCochesActivity extends Activity {
     private double bestNumeric(String key){double best=-1;boolean lower=key.equals("cons")||key.equals("charge")||key.equals("acc")||key.equals("weight")||key.equals("price");for(String id:selectedIds){double n=numeric(find(id),key);if(n<0)continue;if(best<0|| (lower?n<best:n>best))best=n;}return best;}
     private boolean isBest(Vehicle v,String key,double best){double n=numeric(v,key);return n>=0&&best>=0&&Math.abs(n-best)<0.001;}
 
-    private String value(Vehicle v,String k){if(v==null)return"—";if(k.equals("battery")){if(v.batteryKwh<=0)return"—";String gross=num(v.batteryKwh)+" kWh";if(v.usableBatteryKwh>0)gross+="\n("+num(v.usableBatteryKwh)+" útil)";return gross;}if(k.equals("type"))return empty(v.batteryType);if(k.equals("range"))return v.wltpKm>0?v.wltpKm+" km":"—";if(k.equals("cons"))return v.consumption>0?num(v.consumption)+" kWh/100":"—";if(k.equals("power"))return v.powerKw>0?num(v.powerKw)+" kW":"—";if(k.equals("drive"))return empty(v.drivetrain);if(k.equals("ac"))return v.acKw>0?num(v.acKw)+" kW":"—";if(k.equals("dc"))return v.dcKw>0?num(v.dcKw)+" kW":"—";if(k.equals("charge"))return v.chargeMin>0?v.chargeMin+" min":"—";if(k.equals("acc"))return v.acc>0?num(v.acc)+" s":"—";if(k.equals("trunk"))return v.trunk>0?v.trunk+" L":"—";if(k.equals("weight"))return v.weight>0?v.weight+" kg":"—";if(k.equals("price"))return v.price>0?num(v.price)+" €":"—";return"—";}
+    private String value(Vehicle v,String k){if(v==null)return"—";if(k.equals("battery")){if(v.batteryKwh<=0)return"—";String gross=num(v.batteryKwh)+" kWh";if(v.usableBatteryKwh>0)gross+="\n("+num(v.usableBatteryKwh)+" útil)";return gross;}if(k.equals("type"))return empty(v.batteryType);if(k.equals("range"))return v.wltpKm>0?v.wltpKm+" km":"—";if(k.equals("cons"))return v.consumption>0?num(v.consumption)+" kWh/100":"—";if(k.equals("power"))return v.powerKw>0?num(v.powerKw)+" kW":"—";if(k.equals("drive"))return empty(v.drivetrain);if(k.equals("ac"))return v.acKw>0?num(v.acKw)+" kW":"—";if(k.equals("dc"))return v.dcKw>0?num(v.dcKw)+" kW":"—";if(k.equals("charge"))return v.chargeMin>0?v.chargeMin+" min":"—";if(k.equals("acc"))return v.acc>0?num(v.acc)+" s":"—";if(k.equals("trunk"))return v.trunk>0?v.trunk+" L":"—";if(k.equals("weight"))return v.weight>0?v.weight+" kg":"—";if(k.equals("price"))return price(v);return"—";}
+    private String price(Vehicle v){if(v==null||v.price<=0)return"—";SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);String currency=p.getString(KEY_CURRENCY,"EUR");double converted=CurrencyRateManager.convertFromEur(this,v.price,currency);return CurrencyNumberFormatter.format(converted,0,currency)+" "+currencySymbol(currency);}
+    private String currencySymbol(String currency){if("USD".equals(currency))return"$";if("GBP".equals(currency))return"£";if("CHF".equals(currency))return"CHF";if("CAD".equals(currency))return"CA$";if("AUD".equals(currency))return"A$";return"€";}
     private String empty(String s){return s==null||s.trim().isEmpty()?"—":s;}
     private String num(double n){if(n==0)return"—";return String.format(Locale.US,"%.1f",n).replace('.',',');}
 
