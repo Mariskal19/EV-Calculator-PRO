@@ -76,8 +76,8 @@ public class CompararCochesActivity extends Activity {
         root.addView(header);
         TextView hint=tv("Elige 2 o 3 coches para compararlos",14,sub());hint.setGravity(Gravity.CENTER);root.addView(hint,new LinearLayout.LayoutParams(-1,dp(30)));
         carsRow=new LinearLayout(this);carsRow.setOrientation(LinearLayout.HORIZONTAL);carsRow.setGravity(Gravity.TOP);root.addView(carsRow,new LinearLayout.LayoutParams(-1,-2));
-        Button add=new Button(this);add.setText("＋ Añadir coche");add.setOnClickListener(v->showSearch());root.addView(add,new LinearLayout.LayoutParams(-1,dp(52)));
-        TextView section=tv("Comparativa",18,text());section.setTypeface(null,Typeface.BOLD);section.setPadding(0,dp(12),0,dp(8));root.addView(section);
+        Button add= new Button(this);add.setText("＋ Añadir coche");add.setOnClickListener(v->showSearch());root.addView(add,new LinearLayout.LayoutParams(-1,dp(52)));
+        TextView section=tv("Comparativa",18,text());section.setTypeface(null,Typeface.BOLD);section.setPadding(0,dp(14),0,dp(8));root.addView(section,new LinearLayout.LayoutParams(-1,dp(46)));
         table=new LinearLayout(this);table.setOrientation(LinearLayout.VERTICAL);root.addView(table,new LinearLayout.LayoutParams(-1,-2));
         setContentView(root); rebuild();
     }
@@ -87,12 +87,21 @@ public class CompararCochesActivity extends Activity {
         for(String id:selectedIds){Vehicle v=find(id);if(v!=null)carsRow.addView(carCard(v),new LinearLayout.LayoutParams(0,-2,1));}
         if(selectedIds.size()<3){
             LinearLayout empty=new LinearLayout(this); empty.setOrientation(LinearLayout.VERTICAL); empty.setGravity(Gravity.CENTER); empty.setPadding(dp(8),dp(10),dp(8),dp(10));
+            empty.setBackground(strokeBg(dark?Color.rgb(14,28,40):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));
             TextView plus=tv("＋",28,blue);plus.setGravity(Gravity.CENTER); empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));
             TextView note=tv("Añadir coche",12,sub());note.setGravity(Gravity.CENTER);empty.addView(note,new LinearLayout.LayoutParams(-1,dp(24)));
             empty.setOnClickListener(v->showSearch()); carsRow.addView(empty,new LinearLayout.LayoutParams(0,dp(150),1));
         }
-        if(selectedIds.size()>=2){String[][] rows={{"Batería","battery"},{"Tipo batería","type"},{"Autonomía WLTP","range"},{"Consumo","cons"},{"Potencia","power"},{"Tracción","drive"},{"Carga AC","ac"},{"Carga DC","dc"},{"10–80 %","charge"},{"0–100 km/h","acc"},{"Maletero","trunk"},{"Peso","weight"},{"Precio","price"}};for(String[] row:rows)addRow(row[0],row[1]);}
-        else {TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t);}
+        if(selectedIds.size()>=2){
+            LinearLayout head=new LinearLayout(this);head.setOrientation(LinearLayout.HORIZONTAL);head.setGravity(Gravity.CENTER_VERTICAL);head.setPadding(dp(8),dp(8),dp(8),dp(8));
+            head.setBackground(bg(blue,10));
+            TextView hl=tv("Característica",12,Color.WHITE);hl.setTypeface(null,Typeface.BOLD);head.addView(hl,new LinearLayout.LayoutParams(dp(105),-2));
+            for(String id:selectedIds){Vehicle v=find(id);TextView hv=tv(v==null?"Coche":v.model,12,Color.WHITE);hv.setTypeface(null,Typeface.BOLD);hv.setGravity(Gravity.CENTER);hv.setMaxLines(2);head.addView(hv,new LinearLayout.LayoutParams(0,-2,1));}
+            table.addView(head,new LinearLayout.LayoutParams(-1,-2));
+            Space hs=new Space(this);table.addView(hs,new LinearLayout.LayoutParams(1,dp(5)));
+            String[][] rows={{"Batería","battery"},{"Tipo batería","type"},{"Autonomía WLTP","range"},{"Consumo","cons"},{"Potencia","power"},{"Tracción","drive"},{"Carga AC","ac"},{"Carga DC","dc"},{"10–80 %","charge"},{"0–100 km/h","acc"},{"Maletero","trunk"},{"Peso","weight"},{"Precio","price"}};
+            for(String[] row:rows)addRow(row[0],row[1]);
+        } else {TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t);}
     }
 
     private void showDataError(Throwable t){
@@ -123,9 +132,10 @@ public class CompararCochesActivity extends Activity {
     private void saveSelection(){getSharedPreferences(PREFS,MODE_PRIVATE).edit().putStringSet(KEY_SELECTED,new HashSet<>(selectedIds)).apply();}
 
     private void addRow(String label,String key){
-        LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setPadding(dp(8),dp(7),dp(8),dp(7));row.setBackground(bg(dark?Color.rgb(18,29,41):Color.WHITE,10));
-        TextView l=tv(label,13,text());l.setTypeface(null,Typeface.BOLD);row.addView(l,new LinearLayout.LayoutParams(dp(105),-2));
-        for(String id:selectedIds){Vehicle v=find(id);TextView val=tv(value(v,key),13,text());val.setGravity(Gravity.CENTER);row.addView(val,new LinearLayout.LayoutParams(0,-2,1));}
+        LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(8),dp(9),dp(8),dp(9));
+        int fill=dark?Color.rgb(18,29,41):Color.WHITE; row.setBackground(bg(fill,10));
+        TextView l=tv(label,12,text());l.setTypeface(null,Typeface.BOLD);row.addView(l,new LinearLayout.LayoutParams(dp(105),-2));
+        for(String id:selectedIds){Vehicle v=find(id);TextView val=tv(value(v,key),13,text());val.setGravity(Gravity.CENTER);val.setTypeface(null,Typeface.BOLD);val.setMaxLines(2);row.addView(val,new LinearLayout.LayoutParams(0,-2,1));}
         table.addView(row,new LinearLayout.LayoutParams(-1,-2)); Space s=new Space(this);table.addView(s,new LinearLayout.LayoutParams(1,dp(3)));
     }
     private String value(Vehicle v,String k){if(v==null)return "—";if("battery".equals(k))return num(v.batteryKwh)+" kWh";if("type".equals(k))return empty(v.batteryType);if("range".equals(k))return v.wltpKm>0?v.wltpKm+" km":"—";if("cons".equals(k))return num(v.consumption)+" kWh/100";if("power".equals(k))return num(v.powerKw)+" kW";if("drive".equals(k))return empty(v.drivetrain);if("ac".equals(k))return num(v.acKw)+" kW";if("dc".equals(k))return num(v.dcKw)+" kW";if("charge".equals(k))return v.chargeMin>0?v.chargeMin+" min":"—";if("acc".equals(k))return num(v.acc)+" s";if("trunk".equals(k))return v.trunk>0?v.trunk+" L":"—";if("weight".equals(k))return v.weight>0?v.weight+" kg":"—";if("price".equals(k))return v.price>0?num(v.price)+" €":"—";return "—";}
