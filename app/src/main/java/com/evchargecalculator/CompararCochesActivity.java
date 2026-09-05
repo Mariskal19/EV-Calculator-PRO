@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,18 +31,11 @@ public class CompararCochesActivity extends Activity {
             SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
             dark=p.contains("dark_theme")?p.getBoolean("dark_theme",false):(getResources().getConfiguration().uiMode&0x30)==0x20;
             build();
-            try {
-                loadVehicles();
-                loadSelection();
-                rebuild();
-            } catch(Throwable t) {
-                android.util.Log.e("CompararCoches","Error cargando datos",t);
-                showDataError(t);
-            }
+            try { loadVehicles(); loadSelection(); rebuild(); }
+            catch(Throwable t){ android.util.Log.e("CompararCoches","Error cargando datos",t); showDataError(t); }
         } catch(Throwable t) {
             android.util.Log.e("CompararCoches","Crash in screen creation",t);
-            TextView error=new TextView(this);
-            error.setPadding(dp(24),dp(24),dp(24),dp(24));
+            TextView error=new TextView(this); error.setPadding(dp(24),dp(24),dp(24),dp(24));
             error.setText("Error al abrir Comparar coches\n\n"+t.getClass().getSimpleName()+"\n"+String.valueOf(t.getMessage()));
             error.setTextSize(16); error.setTextColor(Color.WHITE); error.setGravity(Gravity.CENTER);
             error.setBackgroundColor(Color.rgb(8,34,58)); setContentView(error);
@@ -52,6 +46,7 @@ public class CompararCochesActivity extends Activity {
     private int text(){return dark?Color.rgb(245,248,255):white;}
     private int sub(){return dark?Color.rgb(170,183,204):secondary;}
     private GradientDrawable bg(int color,float r){GradientDrawable g=new GradientDrawable();g.setColor(color);g.setCornerRadius(dp((int)r));return g;}
+    private GradientDrawable strokeBg(int fill,int stroke,float r){GradientDrawable g=bg(fill,r);g.setStroke(dp(1),stroke);return g;}
     private TextView tv(String s,float size,int color){TextView t=new TextView(this);t.setText(s);t.setTextSize(size);t.setTextColor(color);return t;}
 
     private void loadVehicles(){
@@ -66,9 +61,7 @@ public class CompararCochesActivity extends Activity {
     }
 
     private void loadSelection(){
-        selectedIds.clear();
-        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
-        Set<String> set=p.getStringSet(KEY_SELECTED,null);
+        selectedIds.clear(); SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE); Set<String> set=p.getStringSet(KEY_SELECTED,null);
         if(set!=null)for(String id:set)if(id!=null&&find(id)!=null&&selectedIds.size()<3)selectedIds.add(id);
     }
     private Vehicle find(String id){for(Vehicle v:vehicles)if(v.id.equals(id))return v;return null;}
@@ -82,7 +75,7 @@ public class CompararCochesActivity extends Activity {
         TextView title=tv("⚖  Comparar coches",22,text());title.setTypeface(null,Typeface.BOLD);title.setGravity(Gravity.CENTER);header.addView(title,new FrameLayout.LayoutParams(-1,dp(50),Gravity.CENTER));
         root.addView(header);
         TextView hint=tv("Elige 2 o 3 coches para compararlos",14,sub());hint.setGravity(Gravity.CENTER);root.addView(hint,new LinearLayout.LayoutParams(-1,dp(30)));
-        carsRow=new LinearLayout(this);carsRow.setOrientation(LinearLayout.HORIZONTAL);carsRow.setGravity(Gravity.CENTER);root.addView(carsRow,new LinearLayout.LayoutParams(-1,-2));
+        carsRow=new LinearLayout(this);carsRow.setOrientation(LinearLayout.HORIZONTAL);carsRow.setGravity(Gravity.TOP);root.addView(carsRow,new LinearLayout.LayoutParams(-1,-2));
         Button add=new Button(this);add.setText("＋ Añadir coche");add.setOnClickListener(v->showSearch());root.addView(add,new LinearLayout.LayoutParams(-1,dp(52)));
         TextView section=tv("Comparativa",18,text());section.setTypeface(null,Typeface.BOLD);section.setPadding(0,dp(12),0,dp(8));root.addView(section);
         table=new LinearLayout(this);table.setOrientation(LinearLayout.VERTICAL);root.addView(table,new LinearLayout.LayoutParams(-1,-2));
@@ -92,19 +85,40 @@ public class CompararCochesActivity extends Activity {
     private void rebuild(){
         carsRow.removeAllViews(); table.removeAllViews();
         for(String id:selectedIds){Vehicle v=find(id);if(v!=null)carsRow.addView(carCard(v),new LinearLayout.LayoutParams(0,-2,1));}
-        if(selectedIds.size()<3){TextView note=tv("Pulsa «Añadir coche» para incorporar otro modelo.",13,sub());note.setGravity(Gravity.CENTER);carsRow.addView(note,new LinearLayout.LayoutParams(0,dp(70),1));}
+        if(selectedIds.size()<3){
+            LinearLayout empty=new LinearLayout(this); empty.setOrientation(LinearLayout.VERTICAL); empty.setGravity(Gravity.CENTER); empty.setPadding(dp(8),dp(10),dp(8),dp(10));
+            TextView plus=tv("＋",28,blue);plus.setGravity(Gravity.CENTER); empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));
+            TextView note=tv("Añadir coche",12,sub());note.setGravity(Gravity.CENTER);empty.addView(note,new LinearLayout.LayoutParams(-1,dp(24)));
+            empty.setOnClickListener(v->showSearch()); carsRow.addView(empty,new LinearLayout.LayoutParams(0,dp(150),1));
+        }
         if(selectedIds.size()>=2){String[][] rows={{"Batería","battery"},{"Tipo batería","type"},{"Autonomía WLTP","range"},{"Consumo","cons"},{"Potencia","power"},{"Tracción","drive"},{"Carga AC","ac"},{"Carga DC","dc"},{"10–80 %","charge"},{"0–100 km/h","acc"},{"Maletero","trunk"},{"Peso","weight"},{"Precio","price"}};for(String[] row:rows)addRow(row[0],row[1]);}
         else {TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t);}
     }
 
     private void showDataError(Throwable t){
-        if(table==null)return;
-        carsRow.removeAllViews();
+        if(table==null)return; carsRow.removeAllViews();
         TextView msg=tv("No se han podido cargar los datos de los coches.\n\n"+t.getClass().getSimpleName(),14,sub());
         msg.setGravity(Gravity.CENTER); msg.setPadding(dp(10),dp(18),dp(10),dp(18)); table.removeAllViews(); table.addView(msg);
     }
 
-    private TextView carCard(Vehicle v){TextView t=tv("🚘\n"+v.make+" "+v.model+"\n"+v.version+" · "+v.year+"\n✕ Quitar",14,text());t.setGravity(Gravity.CENTER);t.setPadding(dp(4),dp(8),dp(4),dp(8));t.setBackground(bg(dark?Color.rgb(21,31,42):Color.WHITE,16));t.setOnClickListener(x->remove(v.id));return t;}
+    private View carCard(Vehicle v){
+        LinearLayout card=new LinearLayout(this); card.setOrientation(LinearLayout.VERTICAL); card.setGravity(Gravity.CENTER_HORIZONTAL);
+        card.setPadding(dp(8),dp(8),dp(8),dp(8)); card.setBackground(strokeBg(dark?Color.rgb(21,31,42):Color.WHITE, dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));
+
+        TextView photo=tv("🚘",34,blue); photo.setGravity(Gravity.CENTER); photo.setBackground(bg(dark?Color.rgb(13,28,41):Color.rgb(239,245,252),12));
+        card.addView(photo,new LinearLayout.LayoutParams(-1,dp(62)));
+
+        TextView make=tv(v.make,12,blue); make.setTypeface(null,Typeface.BOLD); make.setGravity(Gravity.CENTER); make.setPadding(0,dp(8),0,0);
+        card.addView(make,new LinearLayout.LayoutParams(-1,dp(28)));
+        TextView model=tv(v.model,16,text()); model.setTypeface(null,Typeface.BOLD); model.setGravity(Gravity.CENTER); card.addView(model,new LinearLayout.LayoutParams(-1,dp(25)));
+        TextView version=tv(v.version,11,sub()); version.setGravity(Gravity.CENTER); version.setMaxLines(2); card.addView(version,new LinearLayout.LayoutParams(-1,dp(34)));
+        TextView year=tv(v.year+"",11,sub()); year.setGravity(Gravity.CENTER); card.addView(year,new LinearLayout.LayoutParams(-1,dp(22)));
+
+        TextView remove=tv("✕  Quitar",12,Color.rgb(210,70,70)); remove.setGravity(Gravity.CENTER); remove.setTypeface(null,Typeface.BOLD); remove.setPadding(0,dp(6),0,0);
+        remove.setOnClickListener(x->remove(v.id)); card.addView(remove,new LinearLayout.LayoutParams(-1,dp(34)));
+        return card;
+    }
+
     private void remove(String id){selectedIds.remove(id);saveSelection();rebuild();}
     private void saveSelection(){getSharedPreferences(PREFS,MODE_PRIVATE).edit().putStringSet(KEY_SELECTED,new HashSet<>(selectedIds)).apply();}
 
@@ -112,8 +126,7 @@ public class CompararCochesActivity extends Activity {
         LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setPadding(dp(8),dp(7),dp(8),dp(7));row.setBackground(bg(dark?Color.rgb(18,29,41):Color.WHITE,10));
         TextView l=tv(label,13,text());l.setTypeface(null,Typeface.BOLD);row.addView(l,new LinearLayout.LayoutParams(dp(105),-2));
         for(String id:selectedIds){Vehicle v=find(id);TextView val=tv(value(v,key),13,text());val.setGravity(Gravity.CENTER);row.addView(val,new LinearLayout.LayoutParams(0,-2,1));}
-        table.addView(row,new LinearLayout.LayoutParams(-1,-2));
-        Space s=new Space(this);table.addView(s,new LinearLayout.LayoutParams(1,dp(3)));
+        table.addView(row,new LinearLayout.LayoutParams(-1,-2)); Space s=new Space(this);table.addView(s,new LinearLayout.LayoutParams(1,dp(3)));
     }
     private String value(Vehicle v,String k){if(v==null)return "—";if("battery".equals(k))return num(v.batteryKwh)+" kWh";if("type".equals(k))return empty(v.batteryType);if("range".equals(k))return v.wltpKm>0?v.wltpKm+" km":"—";if("cons".equals(k))return num(v.consumption)+" kWh/100";if("power".equals(k))return num(v.powerKw)+" kW";if("drive".equals(k))return empty(v.drivetrain);if("ac".equals(k))return num(v.acKw)+" kW";if("dc".equals(k))return num(v.dcKw)+" kW";if("charge".equals(k))return v.chargeMin>0?v.chargeMin+" min":"—";if("acc".equals(k))return num(v.acc)+" s";if("trunk".equals(k))return v.trunk>0?v.trunk+" L":"—";if("weight".equals(k))return v.weight>0?v.weight+" kg":"—";if("price".equals(k))return v.price>0?num(v.price)+" €":"—";return "—";}
     private String empty(String s){return s==null||s.trim().isEmpty()?"—":s;}
