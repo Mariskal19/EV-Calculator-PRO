@@ -94,11 +94,11 @@ public class CompararCochesActivity extends Activity {
             addRow("Carga AC", "ac", true); addRow("Carga DC", "dc", true); addRow("10–80 %", "charge", true);
             addSection("Practicidad");
             addRow("Maletero", "trunk", true); addRow("Peso", "weight", true);
-            addSection("Precio", true);
+            addSection("Precio");
+            addRow("Precio", "price", true);
         }else{TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t,new LinearLayout.LayoutParams(tableWidth(),-2));}}
 
     private void addSection(String title){TextView s=tv(title,14,blue);s.setTypeface(null,Typeface.BOLD);s.setGravity(Gravity.CENTER_VERTICAL);s.setPadding(dp(4),dp(12),dp(4),dp(6));table.addView(s,new LinearLayout.LayoutParams(tableWidth(),dp(40)));}
-    private void addSection(String title, boolean ignored){addSection(title);addRow("Precio", "price", true);}
 
     private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(8),dp(8),dp(8),dp(8));c.setBackground(strokeBg(dark?Color.rgb(21,31,42):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));
         TextView photo=tv("🚘",34,blue);photo.setGravity(Gravity.CENTER);photo.setBackground(bg(dark?Color.rgb(13,28,41):Color.rgb(239,245,252),12));c.addView(photo,new LinearLayout.LayoutParams(-1,dp(62)));
