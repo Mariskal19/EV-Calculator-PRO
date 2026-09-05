@@ -1,0 +1,50 @@
+name: Apply verified vehicle data corrections
+
+on:
+  push:
+    branches: [ feature/automatizacion-coches ]
+    paths:
+      - '.github/workflows/apply-vehicle-corrections.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message != 'data: apply verified vehicle data corrections'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/automatizacion-coches
+          fetch-depth: 1
+      - name: Apply corrections
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          p = Path('app/src/main/assets/vehicles.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          for v in data['vehicles']:
+              if v['id'] == 'audi-q4-e-tron-40':
+                  v.update({'batteryKwh': 63.0, 'usableBatteryKwh': 59.0, 'wltpKm': 410, 'dcKw': 165, 'charge10to80Min': 24, 'acceleration0to100Sec': 8.1, 'source': 'Audi España + Audi MediaCenter + EV Database', 'lastUpdated': '2026-09-05'})
+              elif v['id'] == 'xpeng-g6-long-range':
+                  v.update({'wltpKm': 525, 'consumptionKwh100': 17.9, 'acceleration0to100Sec': 6.7, 'trunkLiters': 571, 'weightKg': 2115, 'source': 'XPeng + EV Database', 'lastUpdated': '2026-09-05'})
+              elif v['id'] == 'byd-atto-3':
+                  v.update({'usableBatteryKwh': None, 'source': 'BYD España + EV Database', 'lastUpdated': '2026-09-05'})
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+      - name: Commit corrections
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicles.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'data: apply verified vehicle data corrections'
+          git push origin feature/automatizacion-coches
+      - name: Remove temporary workflow
+        if: success()
+        run: |
+          git rm .github/workflows/apply-vehicle-corrections.yml
+          git commit -m 'chore: remove temporary vehicle correction workflow'
+          git push origin feature/automatizacion-coches
