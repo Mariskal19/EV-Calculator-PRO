@@ -20,12 +20,14 @@ public class PersistentMainActivity extends MainActivity {
                     | (dark ? Configuration.UI_MODE_NIGHT_YES : Configuration.UI_MODE_NIGHT_NO);
             getResources().updateConfiguration(config, getResources().getDisplayMetrics());
         }
+        CurrencyRateManager.refreshIfNeeded(this);
         super.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        CurrencyRateManager.refreshIfNeeded(this);
         SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
         if (prefs.contains(KEY_DARK_THEME)) {
             boolean selectedDark = prefs.getBoolean(KEY_DARK_THEME, false);
