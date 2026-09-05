@@ -2,7 +2,8 @@ name: Apply verified vehicle data corrections
 
 on:
   push:
-    branches: [ feature/automatizacion-coches ]
+    branches:
+      - feature/automatizacion-coches
     paths:
       - '.github/workflows/apply-vehicle-corrections.yml'
   workflow_dispatch:
@@ -12,7 +13,6 @@ permissions:
 
 jobs:
   apply:
-    if: github.event_name == 'workflow_dispatch' || github.event.head_commit.message != 'data: apply verified vehicle data corrections'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,8 +20,8 @@ jobs:
           ref: feature/automatizacion-coches
           fetch-depth: 1
       - name: Apply corrections
-        shell: python
         run: |
+          python3 - <<'PY'
           import json
           from pathlib import Path
           p = Path('app/src/main/assets/vehicles.json')
@@ -34,6 +34,7 @@ jobs:
               elif v['id'] == 'byd-atto-3':
                   v.update({'usableBatteryKwh': None, 'source': 'BYD España + EV Database', 'lastUpdated': '2026-09-05'})
           p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
       - name: Commit corrections
         run: |
           git config user.name 'github-actions[bot]'
@@ -43,7 +44,6 @@ jobs:
           git commit -m 'data: apply verified vehicle data corrections'
           git push origin feature/automatizacion-coches
       - name: Remove temporary workflow
-        if: success()
         run: |
           git rm .github/workflows/apply-vehicle-corrections.yml
           git commit -m 'chore: remove temporary vehicle correction workflow'
