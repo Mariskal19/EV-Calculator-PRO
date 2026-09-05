@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,7 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 
-/** Comparador de coches. Reintroducción progresiva tras aislar el cierre de la Activity. */
+/** Comparador de coches. Carga los datos despues de construir la pantalla para evitar cierres durante el arranque. */
 public class CompararCochesActivity extends Activity {
     private static final String PREFS="ev_charge_calculator";
     private static final String KEY_SELECTED="compare_vehicle_ids";
@@ -30,11 +29,17 @@ public class CompararCochesActivity extends Activity {
         try {
             SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
             dark=p.contains("dark_theme")?p.getBoolean("dark_theme",false):(getResources().getConfiguration().uiMode&0x30)==0x20;
-            loadVehicles();
-            loadSelection();
             build();
+            try {
+                loadVehicles();
+                loadSelection();
+                rebuild();
+            } catch(Throwable t) {
+                android.util.Log.e("CompararCoches","Error cargando datos",t);
+                showDataError(t);
+            }
         } catch(Throwable t) {
-            android.util.Log.e("CompararCoches","Crash in onCreate",t);
+            android.util.Log.e("CompararCoches","Crash in screen creation",t);
             TextView error=new TextView(this);
             error.setPadding(dp(24),dp(24),dp(24),dp(24));
             error.setText("Error al abrir Comparar coches\n\n"+t.getClass().getSimpleName()+"\n"+String.valueOf(t.getMessage()));
@@ -56,6 +61,7 @@ public class CompararCochesActivity extends Activity {
             JSONObject root=new JSONObject(sb.toString()); JSONArray arr=root.optJSONArray("vehicles");
             if(arr==null)throw new IllegalStateException("vehicles array missing");
             for(int i=0;i<arr.length();i++){JSONObject o=arr.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o));}
+            if(vehicles.isEmpty())throw new IllegalStateException("vehicles array empty");
         }catch(Exception e){throw new IllegalStateException("No se ha podido cargar vehicles.json",e);}
     }
 
@@ -89,6 +95,13 @@ public class CompararCochesActivity extends Activity {
         if(selectedIds.size()<3){TextView note=tv("Pulsa «Añadir coche» para incorporar otro modelo.",13,sub());note.setGravity(Gravity.CENTER);carsRow.addView(note,new LinearLayout.LayoutParams(0,dp(70),1));}
         if(selectedIds.size()>=2){String[][] rows={{"Batería","battery"},{"Tipo batería","type"},{"Autonomía WLTP","range"},{"Consumo","cons"},{"Potencia","power"},{"Tracción","drive"},{"Carga AC","ac"},{"Carga DC","dc"},{"10–80 %","charge"},{"0–100 km/h","acc"},{"Maletero","trunk"},{"Peso","weight"},{"Precio","price"}};for(String[] row:rows)addRow(row[0],row[1]);}
         else {TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t);}
+    }
+
+    private void showDataError(Throwable t){
+        if(table==null)return;
+        carsRow.removeAllViews();
+        TextView msg=tv("No se han podido cargar los datos de los coches.\n\n"+t.getClass().getSimpleName(),14,sub());
+        msg.setGravity(Gravity.CENTER); msg.setPadding(dp(10),dp(18),dp(10),dp(18)); table.removeAllViews(); table.addView(msg);
     }
 
     private TextView carCard(Vehicle v){TextView t=tv("🚘\n"+v.make+" "+v.model+"\n"+v.version+" · "+v.year+"\n✕ Quitar",14,text());t.setGravity(Gravity.CENTER);t.setPadding(dp(4),dp(8),dp(4),dp(8));t.setBackground(bg(dark?Color.rgb(21,31,42):Color.WHITE,16));t.setOnClickListener(x->remove(v.id));return t;}
