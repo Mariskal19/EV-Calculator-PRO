@@ -23,7 +23,7 @@ import java.util.*;
 public class CompararCochesActivity extends Activity {
     private static final String PREFS="ev_charge_calculator", KEY_SELECTED="compare_vehicle_ids", KEY_SELECTED_ORDERED="compare_vehicle_ids_ordered", KEY_CURRENCY="app_currency";
     private final int blue=Color.rgb(46,107,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137);
-    private boolean dark; private LinearLayout carsRow,table; private Button addButton;
+    private boolean dark; private LinearLayout carsRow,table;
     private final List<Vehicle> vehicles=new ArrayList<>(); private final List<String> selectedIds=new ArrayList<>();
 
     @Override protected void onCreate(Bundle b){super.onCreate(b);try{
@@ -70,7 +70,6 @@ public class CompararCochesActivity extends Activity {
         LinearLayout content=new LinearLayout(this);content.setOrientation(LinearLayout.VERTICAL);content.setPadding(0,0,0,dp(24));
         TextView hint=tv("Elige 2 o 3 coches para compararlos",14,sub());hint.setGravity(Gravity.CENTER);content.addView(hint,new LinearLayout.LayoutParams(-1,dp(30)));
         HorizontalScrollView carsScroll=new HorizontalScrollView(this);carsScroll.setHorizontalScrollBarEnabled(false);carsRow=new LinearLayout(this);carsRow.setOrientation(LinearLayout.HORIZONTAL);carsRow.setGravity(Gravity.TOP);carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
-        addButton=styledAddButton();addButton.setOnClickListener(v->showSearch());content.addView(addButton,new LinearLayout.LayoutParams(-1,dp(52)));
         TextView section=tv("Comparativa",18,text());section.setTypeface(null,Typeface.BOLD);section.setPadding(0,dp(14),0,dp(2));content.addView(section);
         TextView legend=tv("✦ Mejor valor",12,blue);legend.setGravity(Gravity.CENTER_VERTICAL);legend.setPadding(dp(2),0,0,dp(6));content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
         table=new LinearLayout(this);table.setOrientation(LinearLayout.VERTICAL);
@@ -78,13 +77,10 @@ public class CompararCochesActivity extends Activity {
         scroll.addView(content,new ScrollView.LayoutParams(-1,-2));root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));setContentView(root);rebuild();
     }
 
-    private Button styledAddButton(){Button b=new Button(this);b.setText("＋  Añadir coche");b.setTextSize(14);b.setTextColor(dark?Color.WHITE:white);b.setAllCaps(false);b.setGravity(Gravity.CENTER);b.setBackground(strokeBg(dark?Color.rgb(13,36,58):Color.WHITE,blue,14));return b;}
-
     private int tableWidth(){return dp(112+145*Math.max(2,selectedIds.size()));}
     private void rebuild(){carsRow.removeAllViews();table.removeAllViews();
         for(String id:selectedIds){Vehicle v=find(id);if(v!=null){LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),-2);lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(carCard(v),lp);}}
         if(selectedIds.size()<3){LinearLayout empty=new LinearLayout(this);empty.setOrientation(LinearLayout.VERTICAL);empty.setGravity(Gravity.CENTER);empty.setPadding(dp(8),dp(10),dp(8),dp(10));empty.setBackground(strokeBg(dark?Color.rgb(14,26,38):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));TextView plus=tv("＋",28,blue);plus.setGravity(Gravity.CENTER);empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));TextView n=tv("Añadir coche",12,sub());n.setGravity(Gravity.CENTER);empty.addView(n,new LinearLayout.LayoutParams(-1,dp(24)));empty.setOnClickListener(v->showSearch());LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),dp(150));lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(empty,lp);}
-        addButton.setVisibility(selectedIds.size()>=3?View.GONE:View.VISIBLE);
         if(selectedIds.size()>=2){
             addSection("Batería y autonomía");
             addRow("Batería", "battery", false); addRow("Tipo batería", "type", false); addRow("Autonomía WLTP", "range", true); addRow("Consumo", "cons", true);
