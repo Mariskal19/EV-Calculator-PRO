@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main, feature/comparar-coches-1.0.4 ]
+    branches: [ main, feature/comparar-coches-1.0.4, feature/automatizacion-coches ]
 
 permissions:
   contents: read
