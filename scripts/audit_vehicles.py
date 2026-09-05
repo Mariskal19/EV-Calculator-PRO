@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Vehicle audit checkpoint: verified data corrections applied 2026-09-05.
 import json
 import sys
 from datetime import date, datetime, timedelta, timezone
