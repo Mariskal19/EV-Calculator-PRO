@@ -2,26 +2,34 @@ package com.evchargecalculator;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
+import org.json.JSONObject;
 
-/**
- * Exchange-rate cache. EUR is the base currency and rates are obtained from
- * the ECB daily XML/JSON-compatible data service. Network failures never
- * invalidate the last known rates.
- */
+/** Daily ECB reference-rate cache. EUR is the base currency. */
 public final class CurrencyRateManager {
     private static final String PREFS = "ev_charge_calculator";
     private static final String KEY_RATES = "currency_rates_eur";
     private static final String KEY_DATE = "currency_rates_date";
-    private static final String API = "https://data-api.ecb.europa.eu/service/data/EXR/D.%s.EUR.SP00.A?format=jsondata";
+    private static final String KEY_REFRESH = "currency_rates_last_attempt";
+    private static final String API = "https://data-api.ecb.europa.eu/service/data/EXR/D.%s.EUR.SP00.A?format=csvdata";
     private static final String[] CURRENCIES = {"USD", "GBP", "CHF", "CAD", "AUD"};
 
     private CurrencyRateManager() {}
+
+    public static void refreshIfNeeded(Context context) {
+        SharedPreferences p = context.getApplicationContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        String today = today();
+        if (today.equals(p.getString(KEY_REFRESH, ""))) return;
+        p.edit().putString(KEY_REFRESH, today).apply();
+        refreshAsync(context);
+    }
 
     public static void refreshAsync(Context context) {
         final Context app = context.getApplicationContext();
@@ -33,11 +41,13 @@ public final class CurrencyRateManager {
                     if (rate != null && rate > 0) rates.put(currency, rate);
                 }
                 if (rates.length() > 0) {
-                    SharedPreferences p = app.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-                    p.edit().putString(KEY_RATES, rates.toString()).putString(KEY_DATE, today()).apply();
+                    app.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
+                            .putString(KEY_RATES, rates.toString())
+                            .putString(KEY_DATE, today())
+                            .apply();
                 }
             } catch (Exception ignored) {
-                // Keep the previous cache when the network/source is unavailable.
+                // Offline or source failure: keep the last valid cache.
             }
         }, "currency-rate-refresh").start();
     }
@@ -49,9 +59,13 @@ public final class CurrencyRateManager {
                     .getSharedPreferences(PREFS, Context.MODE_PRIVATE)
                     .getString(KEY_RATES, "{}"));
             return rates.optDouble(currency, 1.0);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
             return 1.0;
         }
+    }
+
+    public static double convertFromEur(Context context, double eurAmount, String currency) {
+        return eurAmount * rate(context, currency);
     }
 
     public static String lastUpdate(Context context) {
@@ -68,16 +82,16 @@ public final class CurrencyRateManager {
             connection.setReadTimeout(8000);
             connection.setRequestMethod("GET");
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) return null;
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder body = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
             String line;
-            while ((line = reader.readLine()) != null) body.append(line);
+            String lastValue = null;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().isEmpty() || line.startsWith("KEY,")) continue;
+                String[] fields = line.split(",", -1);
+                if (fields.length >= 8) lastValue = fields[fields.length - 1].trim();
+            }
             reader.close();
-            JSONObject json = new JSONObject(body.toString());
-            JSONObject dataSets = json.optJSONArray("data") != null ? json : json;
-            // ECB's JSONData response exposes observations in the dataSets/series structure.
-            JSONObject data = json.optJSONArray("data") != null ? json : json;
-            return extractObservation(json);
+            return lastValue == null ? null : Double.parseDouble(lastValue);
         } catch (Exception ignored) {
             return null;
         } finally {
@@ -85,24 +99,7 @@ public final class CurrencyRateManager {
         }
     }
 
-    private static Double extractObservation(JSONObject json) {
-        try {
-            org.json.JSONArray data = json.optJSONArray("data");
-            if (data != null && data.length() > 0) {
-                JSONObject first = data.getJSONObject(data.length() - 1);
-                org.json.JSONArray values = first.optJSONArray("observations");
-                if (values != null && values.length() > 0) return values.getDouble(values.length() - 1);
-            }
-            JSONObject dataObj = json.optJSONObject("data");
-            if (dataObj != null) {
-                org.json.JSONArray values = dataObj.optJSONArray("observations");
-                if (values != null && values.length() > 0) return values.getDouble(values.length() - 1);
-            }
-        } catch (Exception ignored) {}
-        return null;
-    }
-
     private static String today() {
-        return new java.text.SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new java.util.Date());
+        return new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
     }
 }
