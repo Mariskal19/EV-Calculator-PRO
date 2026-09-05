@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '0 6 * * 1'
   push:
-    branches: [ feature/automatizacion-coches ]
+    branches: [ main, feature/automatizacion-coches ]
     paths:
       - 'app/src/main/assets/vehicles.json'
       - 'scripts/audit_vehicles.py'
