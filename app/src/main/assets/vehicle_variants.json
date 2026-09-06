@@ -1960,7 +1960,7 @@
       "year": 2026,
       "market": "ES",
       "price": null,
-      "currency": "NMC",
+      "currency": "EUR",
       "wltpKm": 583,
       "consumptionKwh100": null,
       "powerKw": 239,
@@ -1973,7 +1973,9 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "batteryKwh": 84,
+      "batteryType": "NMC"
     },
     {
       "id": "hyundai-ioniq9-awd",
