@@ -4,6 +4,7 @@ on:
     branches: [feature/automatizacion-coches]
     paths:
       - 'app/src/main/assets/vehicle_market_additions.json'
+      - '.github/workflows/one-shot-load-market-catalog.yml'
 jobs:
   patch:
     runs-on: ubuntu-latest
