@@ -1,0 +1,44 @@
+name: Fix compare cars layout
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fix-compare-layout.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/automatizacion-coches
+      - name: Restore menu and improve summary
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text()
+          s=s.replace('import android.content.SharedPreferences;','import android.content.SharedPreferences;\nimport android.content.Intent;')
+          old='''    hero.addView(back,bp);\n    TextView title=tv("Comparar coches",25,Color.WHITE);'''
+          new='''    hero.addView(back,bp);\n    TextView menuButton=tv("⋮",30,Color.WHITE);\n    menuButton.setGravity(Gravity.CENTER);\n    menuButton.setIncludeFontPadding(false);\n    menuButton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);\n    menuButton.setShadowLayer(8,0,2,Color.BLACK);\n    menuButton.setBackgroundColor(Color.TRANSPARENT);\n    menuButton.setContentDescription(LanguageManager.t(this,"Menú"));\n    menuButton.setOnClickListener(v->AppMenuHelper.show(this,menuButton,new AppMenuHelper.Listener(){\n        public boolean isDark(){return dark;}\n        public void setDark(boolean value){if(dark!=value){dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();rebuildTheme();}}\n    }));\n    FrameLayout.LayoutParams mbp=new FrameLayout.LayoutParams(dp(44),dp(52),Gravity.END|Gravity.TOP);\n    mbp.setMargins(0,dp(10),dp(8),0);\n    hero.addView(menuButton,mbp);\n    TextView title=tv("Comparar coches",25,Color.WHITE);'''
+          if old not in s: raise SystemExit('header insertion pattern not found')
+          s=s.replace(old,new,1)
+          old2='''    private void buildSummary(){TextView h=tv("Resumen",18,text());h.setTypeface(null,Typeface.BOLD);summary.addView(h,new LinearLayout.LayoutParams(-1,dp(30)));for(String id:selectedIds){Vehicle v=find(id);if(v==null)continue;TextView s=tv(v.make+" "+v.model+" · "+v.version+"\\n"+marketLabel(v.market)+" · MY "+v.year,14,text());s.setPadding(dp(12),dp(10),dp(12),dp(10));s.setBackground(strokeBg(dark?Color.rgb(14,26,38):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),12));summary.addView(s,new LinearLayout.LayoutParams(-1,-2));}}'''
+          new2='''    private void buildSummary(){\n        LinearLayout card=new LinearLayout(this);\n        card.setOrientation(LinearLayout.VERTICAL);\n        card.setPadding(dp(16),dp(14),dp(16),dp(14));\n        card.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));\n        TextView h=tv("Resumen de la comparativa",18,text());\n        h.setTypeface(null,Typeface.BOLD);\n        card.addView(h,new LinearLayout.LayoutParams(-1,dp(30)));\n        TextView intro=tv("Resultado rápido de los vehículos seleccionados",13,sub());\n        card.addView(intro,new LinearLayout.LayoutParams(-1,dp(28)));\n        addSummaryWinner(card,"Autonomía", "range", true);\n        addSummaryWinner(card,"Consumo", "cons", false);\n        addSummaryWinner(card,"Potencia", "power", true);\n        addSummaryWinner(card,"Carga DC", "dc", true);\n        addSummaryWinner(card,"Precio", "price", false);\n        TextView selected=tv("\\nVehículos comparados",14,blue);\n        selected.setTypeface(null,Typeface.BOLD);\n        card.addView(selected,new LinearLayout.LayoutParams(-1,dp(28)));\n        for(String id:selectedIds){Vehicle v=find(id);if(v==null)continue;TextView s=tv("•  "+v.make+" "+v.model+" · "+v.version+"  ·  "+marketLabel(v.market),13,text());s.setPadding(0,dp(3),0,dp(3));card.addView(s,new LinearLayout.LayoutParams(-1,-2));}\n        summary.addView(card,new LinearLayout.LayoutParams(-1,-2));\n    }\n    private void addSummaryWinner(LinearLayout parent,String label,String key,boolean higherBetter){\n        List<Vehicle> chosen=new ArrayList<>();\n        for(String id:selectedIds){Vehicle v=find(id);if(v!=null)chosen.add(v);}\n        Vehicle bestV=null;double best=Double.NaN;\n        for(Vehicle v:chosen){double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higherBetter?n>best:n<best)){best=n;bestV=v;}}\n        if(bestV==null)return;\n        String val=value(bestV,key);\n        TextView row=tv(label+"  ·  "+bestV.make+" "+bestV.model+"  →  "+val,13,text());\n        row.setPadding(0,dp(4),0,dp(4));\n        parent.addView(row,new LinearLayout.LayoutParams(-1,dp(30)));\n    }'''
+          if old2 not in s: raise SystemExit('summary pattern not found')
+          s=s.replace(old2,new2,1)
+          p.write_text(s)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'fix: restore compare cars menu and summary' || exit 0
+          git push origin HEAD:feature/automatizacion-coches
+      - name: Remove temporary workflow
+        run: |
+          git rm .github/workflows/fix-compare-layout.yml
+          git commit -m 'chore: remove temporary compare layout workflow'
+          git push origin HEAD:feature/automatizacion-coches
