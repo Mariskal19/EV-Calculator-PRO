@@ -1,5 +1,6 @@
 name: Build EV Calculator PRO
 
+# Clean build verification trigger
 on:
   workflow_dispatch:
   push:
