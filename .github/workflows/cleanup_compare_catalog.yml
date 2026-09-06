@@ -1,0 +1,60 @@
+name: One-time catalog cleanup
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'CATALOG_CLEANUP_TRIGGER.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fix catalog deduplication and search year
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text(encoding='utf-8')
+
+          old = 'private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+v.version).trim().toLowerCase(Locale.ROOT);}'
+          new = '''private String logicalKey(Vehicle v){String ver=v.version==null?"":v.version.trim().toLowerCase(Locale.ROOT);ver=ver.replaceAll("^\\\\d+(?:\\\\.\\\\d+)?\\\\s*kwh\\\\s*","");ver=ver.replaceAll("\\\\s+"," ").trim();return(v.make+"|"+v.model+"|"+v.market+"|"+ver).trim().toLowerCase(Locale.ROOT);}'''
+          if old not in s:
+              raise SystemExit('logicalKey pattern not found')
+          s = s.replace(old, new, 1)
+
+          s = s.replace('input.setHint("Marca, modelo, año o versión")', 'input.setHint("Marca, modelo o versión")', 1)
+          old_hay = 'String hay=(v.make+" "+v.model+" "+v.year+" "+v.version).toLowerCase(Locale.ROOT);'
+          new_hay = 'String hay=(v.make+" "+v.model+" "+v.version).toLowerCase(Locale.ROOT);'
+          if old_hay not in s:
+              raise SystemExit('search hay pattern not found')
+          s = s.replace(old_hay, new_hay, 1)
+          old_item = 'TextView item=tv(v.make+" "+v.model+" · "+(v.year>0?v.year+" · ":"")+v.version,15,text());'
+          new_item = 'TextView item=tv(v.make+" "+v.model+" · "+v.version,15,text());'
+          if old_item not in s:
+              raise SystemExit('search item pattern not found')
+          s = s.replace(old_item, new_item, 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Remove one-time workflow and trigger file
+        run: |
+          rm -f .github/workflows/cleanup_compare_catalog.yml CATALOG_CLEANUP_TRIGGER.txt
+
+      - name: Commit cleanup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java .github/workflows/cleanup_compare_catalog.yml CATALOG_CLEANUP_TRIGGER.txt
+          git diff --cached --quiet || git commit -m 'Fix duplicate vehicles and hide year in search'
+          git push origin main
