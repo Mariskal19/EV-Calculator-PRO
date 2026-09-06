@@ -42,14 +42,132 @@ public class CompararCochesActivity extends Activity {
     private String marketName(String c){if(c==null||c.trim().isEmpty())return"";String code=c.equalsIgnoreCase("UK")?"GB":c.toUpperCase(Locale.ROOT);if(code.matches("[A-Z]{2}")){Locale displayLocale=Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this));String name=new Locale("",code).getDisplayCountry(displayLocale);if(name!=null&&!name.trim().isEmpty()&&!name.equalsIgnoreCase(code))return name;}return code;}
     private String marketFlag(String c){if("ES".equalsIgnoreCase(c))return"🇪🇸";if("FR".equalsIgnoreCase(c))return"🇫🇷";if("DE".equalsIgnoreCase(c))return"🇩🇪";if("IT".equalsIgnoreCase(c))return"🇮🇹";if("PT".equalsIgnoreCase(c))return"🇵🇹";if("GB".equalsIgnoreCase(c)||"UK".equalsIgnoreCase(c))return"🇬🇧";if(c!=null&&c.matches("[A-Za-z]{2}")){int a=Character.toUpperCase(c.charAt(0))- 'A'+127462;int b=Character.toUpperCase(c.charAt(1))- 'A'+127462;return new String(Character.toChars(a))+new String(Character.toChars(b));}return"🌐";}
     private String marketLabel(String c){return marketFlag(c)+"  "+marketName(c);}
-    private void build(){LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(dp(12),dp(20),dp(12),0);root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(244,248,255));FrameLayout header=new FrameLayout(this);header.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(58)));TextView back=tv("←",30,dark?Color.WHITE:white);back.setGravity(Gravity.CENTER);back.setOnClickListener(v->finish());header.addView(back,new FrameLayout.LayoutParams(dp(44),dp(50),Gravity.START));TextView title=tv("⚖  Comparar coches",22,text());title.setTypeface(null,Typeface.BOLD);title.setGravity(Gravity.CENTER);header.addView(title,new FrameLayout.LayoutParams(-1,dp(50),Gravity.CENTER));root.addView(header);ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setClipToPadding(false);LinearLayout content=new LinearLayout(this);content.setOrientation(LinearLayout.VERTICAL);content.setPadding(0,0,0,dp(24));
-        TextView hint=tv("Elige 2 o 3 coches para compararlos",14,sub());hint.setGravity(Gravity.CENTER);content.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));HorizontalScrollView carsScroll=new HorizontalScrollView(this);carsScroll.setHorizontalScrollBarEnabled(false);carsRow=new LinearLayout(this);carsRow.setOrientation(LinearLayout.HORIZONTAL);carsRow.setGravity(Gravity.TOP);carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));TextView section=tv("Comparativa",18,text());section.setTypeface(null,Typeface.BOLD);section.setPadding(0,dp(14),0,dp(2));content.addView(section);TextView legend=tv("✦ Mejor valor",12,blue);legend.setGravity(Gravity.CENTER_VERTICAL);legend.setPadding(dp(2),0,0,dp(6));content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));table=new LinearLayout(this);table.setOrientation(LinearLayout.VERTICAL);HorizontalScrollView tableScroll=new HorizontalScrollView(this);tableScroll.setHorizontalScrollBarEnabled(false);tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));summary=new LinearLayout(this);summary.setOrientation(LinearLayout.VERTICAL);summary.setPadding(0,dp(18),0,dp(8));content.addView(summary,new LinearLayout.LayoutParams(-1,-2));scroll.addView(content,new ScrollView.LayoutParams(-1,-2));root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));setContentView(root);}
+    private void build(){
+    LinearLayout root=new LinearLayout(this);
+    root.setOrientation(LinearLayout.VERTICAL);
+    root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
+    FrameLayout hero=new FrameLayout(this);
+    hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(156)));
+    ImageView heroImage=new ImageView(this);
+    heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    heroImage.setImageResource(R.drawable.cabecera_tema_claro);
+    hero.addView(heroImage,new FrameLayout.LayoutParams(-1,-1));
+    View shade=new View(this);
+    shade.setBackgroundColor(Color.argb(dark?145:90,0,18,32));
+    hero.addView(shade,new FrameLayout.LayoutParams(-1,-1));
+    TextView back=tv("‹",40,Color.WHITE);
+    back.setGravity(Gravity.CENTER);
+    back.setTypeface(null,Typeface.BOLD);
+    back.setShadowLayer(8,0,2,Color.BLACK);
+    back.setOnClickListener(v->finish());
+    FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(52),dp(58),Gravity.START|Gravity.TOP);
+    bp.setMargins(dp(8),dp(10),0,0);
+    hero.addView(back,bp);
+    TextView title=tv("Comparar coches",25,Color.WHITE);
+    title.setTypeface(null,Typeface.BOLD);
+    title.setGravity(Gravity.CENTER);
+    title.setShadowLayer(8,0,2,Color.BLACK);
+    FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(58),Gravity.CENTER);
+    tp.setMargins(dp(50),dp(48),dp(50),0);
+    hero.addView(title,tp);
+    TextView subtitle=tv("Compara hasta 3 vehículos",14,Color.WHITE);
+    subtitle.setGravity(Gravity.CENTER);
+    subtitle.setShadowLayer(6,0,2,Color.BLACK);
+    FrameLayout.LayoutParams sp=new FrameLayout.LayoutParams(-1,dp(34),Gravity.CENTER_HORIZONTAL|Gravity.BOTTOM);
+    sp.setMargins(dp(24),0,dp(24),dp(12));
+    hero.addView(subtitle,sp);
+    root.addView(hero);
+    ScrollView scroll=new ScrollView(this);
+    scroll.setFillViewport(true);
+    scroll.setClipToPadding(false);
+    LinearLayout content=new LinearLayout(this);
+    content.setOrientation(LinearLayout.VERTICAL);
+    content.setPadding(dp(14),dp(14),dp(14),dp(28));
+    LinearLayout intro=new LinearLayout(this);
+    intro.setOrientation(LinearLayout.VERTICAL);
+    intro.setPadding(dp(16),dp(14),dp(16),dp(14));
+    intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));
+    TextView introTitle=tv("Elige tus vehículos",17,text());
+    introTitle.setTypeface(null,Typeface.BOLD);
+    intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26)));
+    TextView hint=tv("Añade 2 o 3 coches para ver sus diferencias de un vistazo.",13,sub());
+    hint.setPadding(0,dp(2),0,0);
+    intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
+    content.addView(intro,new LinearLayout.LayoutParams(-1,-2));
+    HorizontalScrollView carsScroll=new HorizontalScrollView(this);
+    carsScroll.setHorizontalScrollBarEnabled(false);
+    carsScroll.setClipToPadding(false);
+    carsScroll.setPadding(0,dp(12),0,dp(4));
+    carsRow=new LinearLayout(this);
+    carsRow.setOrientation(LinearLayout.HORIZONTAL);
+    carsRow.setGravity(Gravity.TOP);
+    carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
+    content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
+    TextView section=tv("Comparativa",19,text());
+    section.setTypeface(null,Typeface.BOLD);
+    section.setPadding(dp(2),dp(12),0,dp(2));
+    content.addView(section,new LinearLayout.LayoutParams(-1,dp(42)));
+    TextView legend=tv("✦  Mejor valor",12,blue);
+    legend.setGravity(Gravity.CENTER_VERTICAL);
+    legend.setPadding(dp(4),0,0,dp(4));
+    content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
+    table=new LinearLayout(this);
+    table.setOrientation(LinearLayout.VERTICAL);
+    table.setPadding(0,dp(2),0,0);
+    HorizontalScrollView tableScroll=new HorizontalScrollView(this);
+    tableScroll.setHorizontalScrollBarEnabled(false);
+    tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
+    content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
+    summary=new LinearLayout(this);
+    summary.setOrientation(LinearLayout.VERTICAL);
+    summary.setPadding(0,dp(18),0,dp(8));
+    content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
+    scroll.addView(content,new ScrollView.LayoutParams(-1,-2));
+    root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
+    setContentView(root);
+}
     private List<Vehicle> marketVehicles(){List<Vehicle>o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;} private int tableWidth(){return dp(112+145*Math.max(2,selectedIds.size()));}
     private void loadSelection(){selectedIds.clear();SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);String ordered=p.getString(KEY_SELECTED_ORDERED,"");if(!ordered.trim().isEmpty())for(String id:ordered.split(",")){id=id.trim();Vehicle v=find(id);if(!id.isEmpty()&&v!=null&&!selectedIds.contains(id)&&selectedIds.size()<3)selectedIds.add(id);}if(selectedIds.isEmpty()){Set<String>s=p.getStringSet(KEY_SELECTED,null);if(s!=null)for(String id:s){Vehicle v=find(id);if(v!=null&&!selectedIds.contains(id)&&selectedIds.size()<3)selectedIds.add(id);}}}
     private Vehicle find(String id){for(Vehicle v:vehicles)if(v.id.equals(id))return v;return null;} private void saveSelection(){SharedPreferences.Editor e=getSharedPreferences(PREFS,MODE_PRIVATE).edit();e.putString(KEY_SELECTED_ORDERED,joinSelection());e.putStringSet(KEY_SELECTED,new LinkedHashSet<>(selectedIds));e.apply();} private String joinSelection(){StringBuilder s=new StringBuilder();for(String id:selectedIds){if(s.length()>0)s.append(',');s.append(id);}return s.toString();}
     private void rebuild(){if(carsRow==null||table==null||summary==null)return;carsRow.removeAllViews();table.removeAllViews();summary.removeAllViews();for(String id:selectedIds){Vehicle v=find(id);if(v!=null){LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),-2);lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(carCard(v),lp);}}if(selectedIds.size()<3){LinearLayout empty=new LinearLayout(this);empty.setOrientation(LinearLayout.VERTICAL);empty.setGravity(Gravity.CENTER);empty.setPadding(dp(8),dp(10),dp(8),dp(10));empty.setBackground(strokeBg(dark?Color.rgb(14,26,38):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));TextView plus=tv("＋",28,blue);plus.setGravity(Gravity.CENTER);empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));TextView n=tv("Añadir coche",12,sub());n.setGravity(Gravity.CENTER);empty.addView(n,new LinearLayout.LayoutParams(-1,dp(24)));empty.setOnClickListener(v->showSearch());LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),dp(150));lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(empty,lp);}if(selectedIds.size()>=2){addSection("Batería y autonomía");addRow("Batería","battery",false);addRow("Tipo batería","type",false);addRow("Autonomía WLTP","range",true);addRow("Consumo","cons",true);addSection("Prestaciones");addRow("Potencia","power",true);addRow("Tracción","drive",false);addRow("0–100 km/h","acc",true);addSection("Carga");addRow("Carga AC","ac",true);addRow("Carga DC","dc",true);addRow("10–80 %","charge",true);addSection("Practicidad");addRow("Maletero","trunk",true);addRow("Peso","weight",true);addSection("Precio");addRow("Precio","price",true);buildSummary();}else{TextView t=tv("Selecciona al menos 2 coches para mostrar la comparativa.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t,new LinearLayout.LayoutParams(tableWidth(),-2));}}
     private void addSection(String title){TextView s=tv(title,14,blue);s.setTypeface(null,Typeface.BOLD);s.setGravity(Gravity.CENTER_VERTICAL);s.setPadding(dp(4),dp(12),dp(4),dp(6));table.addView(s,new LinearLayout.LayoutParams(tableWidth(),dp(40)));}
-    private android.view.View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(8),dp(8),dp(8),dp(8));c.setBackground(strokeBg(dark?Color.rgb(21,31,42):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));TextView photo=tv("🚘",34,blue);photo.setGravity(Gravity.CENTER);photo.setBackground(bg(dark?Color.rgb(13,28,41):Color.rgb(239,245,252),12));c.addView(photo,new LinearLayout.LayoutParams(-1,dp(62)));TextView make=tv(v.make,12,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.CENTER);make.setPadding(0,dp(8),0,0);c.addView(make,new LinearLayout.LayoutParams(-1,dp(28)));TextView model=tv(v.model,16,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.CENTER);c.addView(model,new LinearLayout.LayoutParams(-1,dp(25)));TextView ver=tv(v.version,11,sub());ver.setGravity(Gravity.CENTER);ver.setMaxLines(2);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(34)));TextView year=tv(v.year>0?String.valueOf(v.year):"",11,sub());year.setGravity(Gravity.CENTER);c.addView(year,new LinearLayout.LayoutParams(-1,dp(22)));TextView rem=tv("✕  Quitar",12,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setPadding(0,dp(6),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(34)));return c;}
+    private android.view.View carCard(Vehicle v){
+    LinearLayout c=new LinearLayout(this);
+    c.setOrientation(LinearLayout.VERTICAL);
+    c.setGravity(Gravity.CENTER_HORIZONTAL);
+    c.setPadding(dp(9),dp(9),dp(9),dp(8));
+    c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));
+    TextView photo=tv("🚘",34,blue);
+    photo.setGravity(Gravity.CENTER);
+    photo.setBackground(bg(dark?Color.rgb(12,29,43):Color.rgb(239,245,252),14));
+    c.addView(photo,new LinearLayout.LayoutParams(-1,dp(68)));
+    TextView make=tv(v.make,12,blue);
+    make.setTypeface(null,Typeface.BOLD);
+    make.setGravity(Gravity.CENTER);
+    make.setPadding(0,dp(8),0,0);
+    c.addView(make,new LinearLayout.LayoutParams(-1,dp(28)));
+    TextView model=tv(v.model,17,text());
+    model.setTypeface(null,Typeface.BOLD);
+    model.setGravity(Gravity.CENTER);
+    c.addView(model,new LinearLayout.LayoutParams(-1,dp(27)));
+    TextView market=tv(marketLabel(v.market),11,sub());
+    market.setGravity(Gravity.CENTER);
+    c.addView(market,new LinearLayout.LayoutParams(-1,dp(25)));
+    TextView ver=tv(v.version,11,sub());
+    ver.setGravity(Gravity.CENTER);
+    ver.setMaxLines(2);
+    c.addView(ver,new LinearLayout.LayoutParams(-1,dp(34)));
+    TextView year=tv(v.year>0?String.valueOf(v.year):"",11,sub());
+    year.setGravity(Gravity.CENTER);
+    c.addView(year,new LinearLayout.LayoutParams(-1,dp(21)));
+    TextView rem=tv("✕  Quitar",12,Color.rgb(210,70,70));
+    rem.setGravity(Gravity.CENTER);
+    rem.setTypeface(null,Typeface.BOLD);
+    rem.setPadding(0,dp(5),0,0);
+    rem.setOnClickListener(x->remove(v.id));
+    c.addView(rem,new LinearLayout.LayoutParams(-1,dp(31)));
+    return c;
+}
     private void remove(String id){selectedIds.remove(id);saveSelection();rebuild();}
     private void showSearch(){
         final EditText input=new EditText(this);input.setSingleLine(true);input.setHint("Marca, modelo, año o versión");
