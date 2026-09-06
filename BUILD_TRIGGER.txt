@@ -1,1 +1,1 @@
-Build after final market-in-search verification.
+Build after final compare footer fix.
