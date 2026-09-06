@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EV Calculator PRO</string>
+    <string name="market_spain">Испания</string>
+    <string name="market_germany">Германия</string>
+    <string name="market_france">Франция</string>
+    <string name="market_italy">Италия</string>
+    <string name="market_portugal">Португалия</string>
+    <string name="market_united_kingdom">Великобритания</string>
+</resources>
