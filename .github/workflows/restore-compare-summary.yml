@@ -1,0 +1,65 @@
+name: Restore compare summary
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore summary and comment
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text(encoding='utf-8')
+          new_build='''    private void buildSummary(){
+        LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(16),dp(14),dp(16),dp(14));card.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));
+        TextView h=tv("Resumen de la comparativa",18,text());h.setTypeface(null,Typeface.BOLD);card.addView(h,new LinearLayout.LayoutParams(-1,dp(30)));
+        TextView intro=tv("Resultado rápido de los vehículos seleccionados",13,sub());card.addView(intro,new LinearLayout.LayoutParams(-1,dp(28)));
+        addSummaryWinner(card,"Autonomía","range",true);addSummaryWinner(card,"Consumo","cons",false);addSummaryWinner(card,"Potencia","power",true);addSummaryWinner(card,"Carga DC","dc",true);addSummaryWinner(card,"Precio","price",false);
+        TextView selected=tv("Vehículos comparados",14,blue);selected.setTypeface(null,Typeface.BOLD);card.addView(selected,new LinearLayout.LayoutParams(-1,dp(28)));
+        for(String id:selectedIds){Vehicle v=find(id);if(v==null)continue;TextView item=tv("•  "+v.make+" "+v.model+" · "+v.version+"  ·  "+marketLabel(v.market),13,text());item.setPadding(0,dp(3),0,dp(3));card.addView(item,new LinearLayout.LayoutParams(-1,-2));}
+        TextView commentTitle=tv("Comentario",14,blue);commentTitle.setTypeface(null,Typeface.BOLD);commentTitle.setPadding(0,dp(14),0,dp(4));card.addView(commentTitle,new LinearLayout.LayoutParams(-1,dp(30)));
+        TextView comment=tv(summaryComment(),13,sub());comment.setLineSpacing(0,1.15f);comment.setPadding(0,dp(2),0,dp(2));card.addView(comment,new LinearLayout.LayoutParams(-1,-2));
+        summary.addView(card,new LinearLayout.LayoutParams(-1,-2));
+    }
+'''
+          pattern=r'    private void buildSummary\(\)\{.*?\n    private void addSummaryWinner'
+          s,n=re.subn(pattern,new_build+'    private void addSummaryWinner',s,count=1,flags=re.S)
+          if n!=1: raise SystemExit('buildSummary block not found')
+          marker='    private String empty(String s){'
+          helpers='''    private String summaryComment(){
+        List<Vehicle> chosen=new ArrayList<>();
+        for(String id:selectedIds){Vehicle v=find(id);if(v!=null)chosen.add(v);}
+        if(chosen.size()<2)return"";
+        Vehicle bestRange=bestVehicle("range",true),bestCons=bestVehicle("cons",false),bestPrice=bestVehicle("price",false);
+        StringBuilder out=new StringBuilder();out.append("En conjunto, ");
+        if(bestRange!=null)out.append(bestRange.make).append(" ").append(bestRange.model).append(" destaca por autonomía");
+        if(bestCons!=null&&bestCons!=bestRange)out.append(", mientras que ").append(bestCons.make).append(" ").append(bestCons.model).append(" ofrece el menor consumo");
+        if(bestPrice!=null&&bestPrice!=bestRange&&bestPrice!=bestCons)out.append(" y ").append(bestPrice.make).append(" ").append(bestPrice.model).append(" es la opción más económica");
+        out.append(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.");
+        return out.toString();
+    }
+    private Vehicle bestVehicle(String key,boolean higherBetter){
+        Vehicle bestV=null;double best=Double.NaN;
+        for(String id:selectedIds){Vehicle v=find(id);if(v==null)continue;double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higherBetter?n>best:n<best)){best=n;bestV=v;}}
+        return bestV;
+    }
+'''
+          if marker not in s: raise SystemExit('empty marker not found')
+          s=s.replace(marker,helpers+marker,1)
+          p.write_text(s,encoding='utf-8')
+          print('restored compare summary/comment')
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git diff --cached --quiet && exit 0
+          git commit -m 'restore compare summary and comment'
+          git push
