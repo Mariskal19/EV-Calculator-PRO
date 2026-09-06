@@ -33,34 +33,51 @@ jobs:
           extra_paths = [Path('app/src/main/assets/vehicle_catalog_additions.json'), Path('app/src/main/assets/vehicle_catalog_additions_v2.json')]
           base = json.loads(base_path.read_text(encoding='utf-8'))
           vehicles = [v for v in base.get('vehicles', []) if '/' not in str(v.get('version', ''))]
-          existing = {}
+          index = {}
           deduped = []
           for v in vehicles:
               key = (str(v.get('make','')).strip().casefold(), str(v.get('model','')).strip().casefold(), str(v.get('version','')).strip().casefold())
-              if key not in existing:
-                  existing[key] = v
+              if key not in index:
+                  index[key] = len(deduped)
                   deduped.append(v)
           vehicles = deduped
           added = 0
+          updated = 0
           for extra_path in extra_paths:
               if not extra_path.exists():
                   continue
               extra = json.loads(extra_path.read_text(encoding='utf-8'))
-              for v in extra.get('vehicles', []):
-                  key = (str(v.get('make','')).strip().casefold(), str(v.get('model','')).strip().casefold(), str(v.get('version','')).strip().casefold())
-                  if key not in existing:
-                      vehicles.append(v)
-                      existing[key] = v
+              for incoming in extra.get('vehicles', []):
+                  key = (str(incoming.get('make','')).strip().casefold(), str(incoming.get('model','')).strip().casefold(), str(incoming.get('version','')).strip().casefold())
+                  if key not in index:
+                      vehicles.append(incoming)
+                      index[key] = len(vehicles) - 1
                       added += 1
+                  else:
+                      current = vehicles[index[key]]
+                      changed = False
+                      for field, value in incoming.items():
+                          if field in ('id', 'lastUpdated'):
+                              continue
+                          if value is not None and current.get(field) != value:
+                              current[field] = value
+                              changed = True
+                      if changed:
+                          current['lastUpdated'] = incoming.get('lastUpdated', current.get('lastUpdated'))
+                          updated += 1
           bad = [v for v in vehicles if '/' in str(v.get('version','')) or not v.get('make') or not v.get('model') or not v.get('version')]
           if bad:
               raise SystemExit(f'Invalid catalog records: {len(bad)}')
-          base['datasetVersion'] = '1.5.0'
+          keys = [(str(v.get('make','')).strip().casefold(), str(v.get('model','')).strip().casefold(), str(v.get('version','')).strip().casefold()) for v in vehicles]
+          if len(keys) != len(set(keys)):
+              raise SystemExit('Duplicate make/model/version keys remain')
+          base['datasetVersion'] = '1.6.0'
           base['vehicles'] = vehicles
           base_path.write_text(json.dumps(base, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
           print(f'Added {added} unique configurations')
+          print(f'Updated {updated} existing configurations')
           print(f'Canonical variants catalog: {len(vehicles)} records')
-          print(f'Unique make/model/version keys: {len(existing)}')
+          print(f'Unique make/model/version keys: {len(set(keys))}')
 
       - name: Commit merged catalog
         shell: bash
