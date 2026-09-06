@@ -4,3 +4,4 @@ Canonical dataset 1.8.0: final audited current-market EV catalog.
 Cross-market compare catalog 1.9.1 verified.
 FINAL TEST BUILD 2026-09-06.
 COMPARE CARS DESIGN BUILD 2026-09-06.
+COMPARE CARS MENU AND SUMMARY FIX 2026-09-06.
