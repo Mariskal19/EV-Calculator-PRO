@@ -94,3 +94,5 @@ jobs:
           name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-source
           path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.zip
           if-no-files-found: error
+
+# Trigger clean verification on corrected main
