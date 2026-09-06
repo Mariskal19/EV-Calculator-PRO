@@ -6,114 +6,46 @@ on:
 
 jobs:
   audit:
-    if: contains(github.event.head_commit.message, 'catalog-audit-bootstrap')
+    if: contains(github.event.head_commit.message, 'trigger catalog audit bootstrap')
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-
       - name: Audit and normalize current Spain catalog
         shell: python
         run: |
           import json
-          import re
           from pathlib import Path
-
-          root = Path('.')
-          assets = root / 'app/src/main/assets'
-
-          def load(name):
-              p = assets / name
-              return json.loads(p.read_text(encoding='utf-8'))
-
-          def save(name, data):
-              p = assets / name
-              p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-
-          # Current product criterion: the active comparison catalog is Spain-first.
-          # Keep the ES market in the normal datasets and remove market-only additions
-          # for countries other than Spain from the active additions file.
-          vehicles = load('vehicles.json')
-          variants = load('vehicle_variants.json')
-          additions = load('vehicle_market_additions.json')
-
-          # Remove known superseded/duplicate Tesla and XPeng entries from the old base.
-          remove_ids = {
-              'tesla-model-3-long-range-awd',
-              'tesla-model-y-long-range-rwd',
-              'xpeng-g6-long-range',
-          }
-          vehicles['vehicles'] = [v for v in vehicles.get('vehicles', []) if v.get('id') not in remove_ids]
-
-          # The official Tesla Spain support table currently lists five Model 3
-          # configurations. Keep the existing RWD and Performance rows and add the
-          # three current Premium configurations missing from the catalog.
-          existing = {v.get('id') for v in variants.get('vehicles', [])}
-          tesla_rows = [
-              {
-                  'id':'tesla-model-3-premium-rwd','make':'Tesla','model':'Model 3',
-                  'version':'Premium RWD','year':2026,'market':'ES','price':None,'currency':'EUR',
-                  'batteryKwh':None,'usableBatteryKwh':None,'batteryType':None,'wltpKm':None,
-                  'consumptionKwh100':13.8,'powerKw':None,'drivetrain':'RWD','acKw':11,'dcKw':250,
-                  'charge10to80Min':None,'acceleration0to100Sec':None,'trunkLiters':None,'weightKg':1836,
-                  'photo':None,'source':'Tesla España','lastUpdated':'2026-09-06'
-              },
-              {
-                  'id':'tesla-model-3-premium-long-range-rwd','make':'Tesla','model':'Model 3',
-                  'version':'Premium Long Range RWD','year':2026,'market':'ES','price':None,'currency':'EUR',
-                  'batteryKwh':None,'usableBatteryKwh':None,'batteryType':None,'wltpKm':None,
-                  'consumptionKwh100':13.6,'powerKw':235,'drivetrain':'RWD','acKw':11,'dcKw':250,
-                  'charge10to80Min':None,'acceleration0to100Sec':None,'trunkLiters':None,'weightKg':1822,
-                  'photo':None,'source':'Tesla España','lastUpdated':'2026-09-06'
-              },
-              {
-                  'id':'tesla-model-3-premium-long-range-awd','make':'Tesla','model':'Model 3',
-                  'version':'Premium Long Range AWD','year':2026,'market':'ES','price':None,'currency':'EUR',
-                  'batteryKwh':None,'usableBatteryKwh':None,'batteryType':None,'wltpKm':None,
-                  'consumptionKwh100':14.3,'powerKw':None,'drivetrain':'AWD','acKw':11,'dcKw':250,
-                  'charge10to80Min':None,'acceleration0to100Sec':None,'trunkLiters':None,'weightKg':1899,
-                  'photo':None,'source':'Tesla España','lastUpdated':'2026-09-06'
-              },
-          ]
-          for row in tesla_rows:
-              if row['id'] not in existing:
-                  variants.setdefault('vehicles', []).append(row)
-
-          # Keep only ES rows in the market-additions asset: the comparison feature is
-          # being audited around the Spain market, and non-ES rows were causing the
-          # catalog to contain technically valid but irrelevant duplicates.
-          additions['vehicles'] = [v for v in additions.get('vehicles', []) if str(v.get('market','')).upper() == 'ES']
-
-          vehicles['datasetVersion'] = '1.1.1'
-          variants['datasetVersion'] = '1.9.1'
-          additions['datasetVersion'] = '1.9.2'
-          save('vehicles.json', vehicles)
-          save('vehicle_variants.json', variants)
-          save('vehicle_market_additions.json', additions)
-
-          # Update Compare Cars search presentation: make/model on line 1 and
-          # MYxx + version on line 2; battery remains searchable but hidden visually.
-          java = root / 'app/src/main/java/com/evchargecalculator/CompararCochesActivity.java'
-          text = java.read_text(encoding='utf-8')
-          old = 'private String searchLabel(Vehicle v){StringBuilder s=new StringBuilder(v.make+" "+v.model);if(v.year>0)s.append(" · ").append(v.year);if(v.batteryKwh>0)s.append(" · ").append(fmt(v.batteryKwh)).append(" kWh");if(v.batteryType!=null&&!v.batteryType.trim().isEmpty())s.append(" · ").append(v.batteryType);if(v.version!=null&&!v.version.trim().isEmpty())s.append(" · ").append(v.version);return s.toString();}'
-          new = 'private String searchLabel(Vehicle v){String first=v.make+" "+v.model;String second=v.year>0?"MY"+String.valueOf(v.year).substring(Math.max(0,String.valueOf(v.year).length()-2))+". ":"";if(v.version!=null&&!v.version.trim().isEmpty()){String ver=v.version.trim();ver=ver.replaceFirst("(?i)^\\\\d+(?:\\\\.\\\\d+)?\\\\s*kwh\\\\s*","");second+=ver;}return first+"\\n"+second;}'
-          if old not in text:
-              raise SystemExit('searchLabel target not found')
-          text = text.replace(old, new, 1)
-          old_sort = 'c=Integer.compare(b.year,a.year);if(c!=0)return c;c=Integer.compare(trimRank(a),trimRank(b));'
-          new_sort = 'c=Integer.compare(a.year,b.year);if(c!=0)return c;c=Integer.compare(trimRank(a),trimRank(b));'
-          if old_sort not in text:
-              raise SystemExit('search sort target not found')
-          text = text.replace(old_sort, new_sort, 1)
-          old_item = 'TextView item=tv(searchLabel(v),15,text());item.setPadding(dp(18),dp(12),dp(18),dp(12));'
-          new_item = 'TextView item=tv(searchLabel(v),15,text());item.setLineSpacing(0,1.05f);item.setPadding(dp(18),dp(10),dp(18),dp(10));'
-          if old_item not in text:
-              raise SystemExit('search item target not found')
-          text = text.replace(old_item, new_item, 1)
-          java.write_text(text, encoding='utf-8')
-
-      - name: Commit audited catalog
+          root=Path('.')
+          assets=root/'app/src/main/assets'
+          def load(n): return json.loads((assets/n).read_text(encoding='utf-8'))
+          def save(n,d): (assets/n).write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          vehicles=load('vehicles.json'); variants=load('vehicle_variants.json'); additions=load('vehicle_market_additions.json')
+          remove_ids={'tesla-model-3-long-range-awd','tesla-model-y-long-range-rwd','xpeng-g6-long-range'}
+          vehicles['vehicles']=[v for v in vehicles.get('vehicles',[]) if v.get('id') not in remove_ids]
+          existing={v.get('id') for v in variants.get('vehicles',[])}
+          rows=[
+            {'id':'tesla-model-3-premium-rwd','make':'Tesla','model':'Model 3','version':'Premium RWD','year':2026,'market':'ES','price':None,'currency':'EUR','batteryKwh':None,'usableBatteryKwh':None,'batteryType':None,'wltpKm':None,'consumptionKwh100':13.8,'powerKw':None,'drivetrain':'RWD','acKw':11,'dcKw':250,'charge10to80Min':None,'acceleration0to100Sec':None,'trunkLiters':None,'weightKg':1836,'photo':None,'source':'Tesla España','lastUpdated':'2026-09-06'},
+            {'id':'tesla-model-3-premium-long-range-rwd','make':'Tesla','model':'Model 3','version':'Premium Long Range RWD','year':2026,'market':'ES','price':None,'currency':'EUR','batteryKwh':None,'usableBatteryKwh':None,'batteryType':None,'wltpKm':None,'consumptionKwh100':13.6,'powerKw':235,'drivetrain':'RWD','acKw':11,'dcKw':250,'charge10to80Min':None,'acceleration0to100Sec':None,'trunkLiters':None,'weightKg':1822,'photo':None,'source':'Tesla España','lastUpdated':'2026-09-06'},
+            {'id':'tesla-model-3-premium-long-range-awd','make':'Tesla','model':'Model 3','version':'Premium Long Range AWD','year':2026,'market':'ES','price':None,'currency':'EUR','batteryKwh':None,'usableBatteryKwh':None,'batteryType':None,'wltpKm':None,'consumptionKwh100':14.3,'powerKw':None,'drivetrain':'AWD','acKw':11,'dcKw':250,'charge10to80Min':None,'acceleration0to100Sec':None,'trunkLiters':None,'weightKg':1899,'photo':None,'source':'Tesla España','lastUpdated':'2026-09-06'}]
+          for r in rows:
+            if r['id'] not in existing: variants.setdefault('vehicles',[]).append(r)
+          additions['vehicles']=[v for v in additions.get('vehicles',[]) if str(v.get('market','')).upper()=='ES']
+          vehicles['datasetVersion']='1.1.1'; variants['datasetVersion']='1.9.1'; additions['datasetVersion']='1.9.2'
+          save('vehicles.json',vehicles); save('vehicle_variants.json',variants); save('vehicle_market_additions.json',additions)
+          java=root/'app/src/main/java/com/evchargecalculator/CompararCochesActivity.java'; text=java.read_text(encoding='utf-8')
+          old='private String searchLabel(Vehicle v){StringBuilder s=new StringBuilder(v.make+" "+v.model);if(v.year>0)s.append(" · ").append(v.year);if(v.batteryKwh>0)s.append(" · ").append(fmt(v.batteryKwh)).append(" kWh");if(v.batteryType!=null&&!v.batteryType.trim().isEmpty())s.append(" · ").append(v.batteryType);if(v.version!=null&&!v.version.trim().isEmpty())s.append(" · ").append(v.version);return s.toString();}'
+          new='private String searchLabel(Vehicle v){String first=v.make+" "+v.model;String second=v.year>0?"MY"+String.valueOf(v.year).substring(Math.max(0,String.valueOf(v.year).length()-2))+". ":"";if(v.version!=null&&!v.version.trim().isEmpty()){String ver=v.version.trim();ver=ver.replaceFirst("(?i)^\\d+(?:\\.\\d+)?\\s*kwh\\s*","");second+=ver;}return first+"\\n"+second;}'
+          if old not in text: raise SystemExit('searchLabel target not found')
+          text=text.replace(old,new,1)
+          old='c=Integer.compare(b.year,a.year);if(c!=0)return c;c=Integer.compare(trimRank(a),trimRank(b));'; new='c=Integer.compare(a.year,b.year);if(c!=0)return c;c=Integer.compare(trimRank(a),trimRank(b));'
+          if old not in text: raise SystemExit('search sort target not found')
+          text=text.replace(old,new,1)
+          old='TextView item=tv(searchLabel(v),15,text());item.setPadding(dp(18),dp(12),dp(18),dp(12));'; new='TextView item=tv(searchLabel(v),15,text());item.setLineSpacing(0,1.05f);item.setPadding(dp(18),dp(10),dp(18),dp(10));'
+          if old not in text: raise SystemExit('search item target not found')
+          text=text.replace(old,new,1); java.write_text(text,encoding='utf-8')
+      - name: Commit audited catalog and remove temporary workflow
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
