@@ -1,0 +1,35 @@
+name: Fix compare comment layout
+on:
+  push:
+    branches: [ main ]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move comment below summary
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text(encoding='utf-8')
+          old='TextView commentTitle=tv("Comentario",14,blue);commentTitle.setTypeface(null,Typeface.BOLD);commentTitle.setPadding(0,dp(14),0,dp(4));card.addView(commentTitle,new LinearLayout.LayoutParams(-1,dp(30)));TextView comment=tv(summaryComment(),13,sub());comment.setLineSpacing(0,1.15f);comment.setPadding(0,dp(2),0,dp(2));card.addView(comment,new LinearLayout.LayoutParams(-1,-2));summary.addView(card,new LinearLayout.LayoutParams(-1,-2));}'
+          new='summary.addView(card,new LinearLayout.LayoutParams(-1,-2));LinearLayout commentCard=new LinearLayout(this);commentCard.setOrientation(LinearLayout.VERTICAL);commentCard.setPadding(dp(16),dp(14),dp(16),dp(14));commentCard.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));TextView commentTitle=tv("Comentario",16,blue);commentTitle.setTypeface(null,Typeface.BOLD);commentTitle.setPadding(0,0,0,dp(6));commentCard.addView(commentTitle,new LinearLayout.LayoutParams(-1,dp(30)));TextView comment=tv(summaryComment(),13,sub());comment.setLineSpacing(0,1.2f);commentCard.addView(comment,new LinearLayout.LayoutParams(-1,-2));LinearLayout.LayoutParams commentLp=new LinearLayout.LayoutParams(-1,-2);commentLp.setMargins(0,dp(10),0,0);summary.addView(commentCard,commentLp);}'
+          if old not in s:
+              raise SystemExit('expected summary block not found')
+          s=s.replace(old,new,1)
+          p.write_text(s,encoding='utf-8')
+      - name: Commit and remove workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'place compare comment below summary'
+          git push
+          rm .github/workflows/fix-comment-layout-once.yml
+          git add .github/workflows/fix-comment-layout-once.yml
+          git commit -m 'remove temporary compare layout workflow'
+          git push
