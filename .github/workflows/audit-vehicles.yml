@@ -8,6 +8,7 @@ on:
     branches: [ main, feature/automatizacion-coches ]
     paths:
       - 'app/src/main/assets/vehicles.json'
+      - 'app/src/main/assets/vehicle_variants.json'
       - 'scripts/audit_vehicles.py'
 
 permissions:
