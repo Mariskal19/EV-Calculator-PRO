@@ -7,6 +7,7 @@ on:
     paths:
       - 'app/src/main/assets/vehicle_variants.json'
       - 'app/src/main/assets/vehicle_catalog_additions.json'
+      - 'CATALOG_TRIGGER.txt'
       - '.github/workflows/merge-vehicle-catalog.yml'
   workflow_dispatch:
 
@@ -36,17 +37,13 @@ jobs:
 
           vehicles = base.get('vehicles', [])
           existing = {
-              (str(v.get('make','')).strip().casefold(),
-               str(v.get('model','')).strip().casefold(),
-               str(v.get('version','')).strip().casefold()): v
+              (str(v.get('make','')).strip().casefold(), str(v.get('model','')).strip().casefold(), str(v.get('version','')).strip().casefold()): v
               for v in vehicles
           }
 
           added = 0
           for v in extra.get('vehicles', []):
-              key = (str(v.get('make','')).strip().casefold(),
-                     str(v.get('model','')).strip().casefold(),
-                     str(v.get('version','')).strip().casefold())
+              key = (str(v.get('make','')).strip().casefold(), str(v.get('model','')).strip().casefold(), str(v.get('version','')).strip().casefold())
               if key not in existing:
                   vehicles.append(v)
                   existing[key] = v
