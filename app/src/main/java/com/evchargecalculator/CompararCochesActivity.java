@@ -44,11 +44,20 @@ public class CompararCochesActivity extends Activity {
     private GradientDrawable strokeBg(int fill,int stroke,float r){GradientDrawable g=bg(fill,r);g.setStroke(dp(1),stroke);return g;}
     private TextView tv(String s,float size,int color){TextView t=new TextView(this);t.setText(s);t.setTextSize(size);t.setTextColor(color);return t;}
 
-    private void loadVehicles(){vehicles.clear();try(InputStream in=getAssets().open("vehicles.json");BufferedReader r=new BufferedReader(new InputStreamReader(in))){
-        StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);
-        JSONArray a=new JSONObject(sb.toString()).optJSONArray("vehicles");if(a==null||a.length()==0)throw new IllegalStateException("vehicles array missing");
-        for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o));}
-    }catch(Exception e){throw new IllegalStateException("No se ha podido cargar vehicles.json",e);}}
+    private void loadVehicles(){
+        vehicles.clear();
+        loadAssetVehicles("vehicles.json", true);
+        loadAssetVehicles("vehicle_variants.json", false);
+        if(vehicles.isEmpty())throw new IllegalStateException("vehicles array missing");
+    }
+    private void loadAssetVehicles(String asset, boolean required){
+        try(InputStream in=getAssets().open(asset);BufferedReader r=new BufferedReader(new InputStreamReader(in))){
+            StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);
+            JSONArray a=new JSONObject(sb.toString()).optJSONArray("vehicles");
+            if(a==null)throw new IllegalStateException(asset+": vehicles array missing");
+            for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o));}
+        }catch(Exception e){if(required)throw new IllegalStateException("No se ha podido cargar "+asset,e);}
+    }
     private void loadSelection(){selectedIds.clear();SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
         String ordered=p.getString(KEY_SELECTED_ORDERED,"");
         if(!ordered.trim().isEmpty()){
