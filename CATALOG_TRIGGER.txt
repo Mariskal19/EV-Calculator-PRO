@@ -1,2 +1,2 @@
 Vehicle catalog merge trigger.
-Updated 2026-09-06 after complete current-range review.
+Final validation trigger updated 2026-09-06.
