@@ -73,7 +73,7 @@ public class CompararCochesActivity extends Activity {
     menuButton.setContentDescription(LanguageManager.t(this,"Menú"));
     menuButton.setOnClickListener(v->AppMenuHelper.show(this,menuButton,new AppMenuHelper.Listener(){
         public boolean isDark(){return dark;}
-        public void setDark(boolean value){if(dark!=value){dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();rebuildTheme();}}
+        public void setDark(boolean value){if(dark!=value){dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();build();loadSelection();rebuild();}}
     }));
     FrameLayout.LayoutParams mbp=new FrameLayout.LayoutParams(dp(44),dp(52),Gravity.END|Gravity.TOP);
     mbp.setMargins(0,dp(10),dp(8),0);
