@@ -1,1 +1,2 @@
 Vehicle catalog merge trigger.
+Updated 2026-09-06 after complete current-range review.
