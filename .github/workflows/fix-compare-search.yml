@@ -6,7 +6,7 @@ on:
 
 jobs:
   fix:
-    if: contains(github.event.head_commit.message, 'fix compare search newline')
+    if: contains(github.event.head_commit.message, 'make compare search newline patch robust')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -16,13 +16,15 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
+          import re
           p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s=p.read_text(encoding='utf-8')
-          bad='return first+"\n"+second;'
-          good='return first+"\\n"+second;'
-          if bad not in s:
-              raise SystemExit('malformed searchLabel return not found')
-          s=s.replace(bad,good,1)
+          pattern=r'return first\+"[^"\\]*"\+second;'
+          matches=list(re.finditer(pattern,s))
+          if not matches:
+              raise SystemExit('searchLabel return target not found')
+          start,end=matches[0].span()
+          s=s[:start]+'return first+"\\n"+second;'+s[end:]
           p.write_text(s,encoding='utf-8')
       - name: Commit and remove workflow
         shell: bash
@@ -30,7 +32,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
-          git commit -m "fix: compare search label newline"
+          git commit -m "fix: repair compare search label newline"
           git push
           rm -f .github/workflows/fix-compare-search.yml
           git add .github/workflows/fix-compare-search.yml
