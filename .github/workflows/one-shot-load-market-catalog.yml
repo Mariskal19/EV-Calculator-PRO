@@ -5,6 +5,8 @@ on:
     paths:
       - 'PATCH_MARKET_CATALOG_TRIGGER.txt'
       - '.github/workflows/one-shot-load-market-catalog.yml'
+permissions:
+  contents: write
 jobs:
   patch:
     runs-on: ubuntu-latest
