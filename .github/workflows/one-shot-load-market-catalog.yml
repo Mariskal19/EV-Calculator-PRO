@@ -3,9 +3,8 @@ on:
   push:
     branches: [feature/automatizacion-coches]
     paths:
-      - 'app/src/main/assets/vehicle_market_additions.json'
-      - '.github/workflows/one-shot-load-market-catalog.yml'
       - 'PATCH_MARKET_CATALOG_TRIGGER.txt'
+      - '.github/workflows/one-shot-load-market-catalog.yml'
 jobs:
   patch:
     runs-on: ubuntu-latest
@@ -13,19 +12,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Patch loader
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
-          s=p.read_text()
-          marker='loadAssetVehicles("vehicle_market_additions.json",false);'
-          if marker not in s:
-              target='normalizeVehicleList();'
-              pos=s.find(target)
-              if pos < 0:
-                  raise SystemExit('normalizeVehicleList marker not found')
-              s=s[:pos]+marker+s[pos:]
-              p.write_text(s)
-          PY
+          if ! grep -q 'vehicle_market_additions.json' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java; then
+            perl -0pi -e 's/normalizeVehicleList\(\);/loadAssetVehicles("vehicle_market_additions.json",false);normalizeVehicleList();/' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          fi
+          grep -q 'vehicle_market_additions.json' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
           rm -f .github/workflows/one-shot-load-market-catalog.yml PATCH_MARKET_CATALOG_TRIGGER.txt
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
