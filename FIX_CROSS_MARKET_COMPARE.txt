@@ -1,1 +1,1 @@
-Apply cross-market Compare Cars patch.
+Cross-market compare patch applied; build verification trigger.
