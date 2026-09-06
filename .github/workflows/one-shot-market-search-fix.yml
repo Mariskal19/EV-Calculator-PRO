@@ -21,8 +21,9 @@ jobs:
           fetch-depth: 0
 
       - name: Apply market selector inside car search
-        shell: python
+        shell: bash
         run: |
+          python3 <<'PY'
           from pathlib import Path
           import re
 
@@ -148,6 +149,7 @@ jobs:
 
           path.write_text(s, encoding='utf-8')
           print('Parche aplicado correctamente')
+          PY
 
       - name: Commit source change and remove one-shot workflow
         run: |
