@@ -56,30 +56,32 @@ public class CompararCochesActivity extends Activity {
     private Vehicle find(String id){for(Vehicle v:vehicles)if(v.id.equals(id))return v;return null;} private void saveSelection(){SharedPreferences.Editor e=getSharedPreferences(PREFS,MODE_PRIVATE).edit();e.putString(KEY_SELECTED_ORDERED,joinSelection());e.putStringSet(KEY_SELECTED,new LinkedHashSet<>(selectedIds));e.apply();} private String joinSelection(){StringBuilder s=new StringBuilder();for(String id:selectedIds){if(s.length()>0)s.append(',');s.append(id);}return s.toString();}
     private void rebuild(){if(carsRow==null||table==null||summary==null)return;carsRow.removeAllViews();table.removeAllViews();summary.removeAllViews();for(String id:selectedIds){Vehicle v=find(id);if(v!=null){LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),-2);lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(carCard(v),lp);}}if(selectedIds.size()<3){LinearLayout empty=new LinearLayout(this);empty.setOrientation(LinearLayout.VERTICAL);empty.setGravity(Gravity.CENTER);empty.setPadding(dp(8),dp(10),dp(8),dp(10));empty.setBackground(strokeBg(dark?Color.rgb(14,26,38):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));TextView plus=tv("＋",28,blue);plus.setGravity(Gravity.CENTER);empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));TextView n=tv("Añadir coche",12,sub());n.setGravity(Gravity.CENTER);empty.addView(n,new LinearLayout.LayoutParams(-1,dp(24)));empty.setOnClickListener(v->showSearch());LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),dp(150));lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(empty,lp);}if(selectedIds.size()>=1){addSection("Batería y autonomía");addRow("Batería","battery",false);addRow("Tipo batería","type",false);addRow("Autonomía WLTP","range",true);addRow("Consumo","cons",true);addSection("Prestaciones");addRow("Potencia","power",true);addRow("Tracción","drive",false);addRow("0–100 km/h","acc",false);addSection("Carga");addRow("Carga AC","ac",true);addRow("Carga DC","dc",true);addRow("10–80 %","charge",false);addSection("Practicidad");addRow("Maletero","trunk",true);addRow("Peso","weight",false);addSection("Precio");addRow("Precio","price",false);if(selectedIds.size()>=2)buildSummary();}else{TextView t=tv("Selecciona un coche para mostrar sus características.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t,new LinearLayout.LayoutParams(tableWidth(),-2));}}
     private void addSection(String title){TextView s=tv(title,14,blue);s.setTypeface(null,Typeface.BOLD);s.setGravity(Gravity.CENTER_VERTICAL);s.setPadding(dp(4),dp(12),dp(4),dp(6));table.addView(s,new LinearLayout.LayoutParams(tableWidth(),dp(40)));}
-    private ImageView carImage(Vehicle v){ImageView image=new ImageView(this);image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);image.setPadding(dp(4),dp(6),dp(4),dp(3));image.setBackground(bg(dark?Color.rgb(12,29,43):Color.rgb(239,245,252),14));String key=(v.make+" "+v.model).toLowerCase(Locale.ROOT);int res=modelImageResource(key);image.setImageResource(res);return image;}
-    private int modelImageResource(String key){
-        // La imagen se decide por modelo concreto antes de usar la carrocería como respaldo.
-        if(key.contains("model 3"))return R.drawable.ev_illustration_sedan;
-        if(key.contains("model y"))return R.drawable.ev_illustration_crossover;
-        if(key.contains("dolphin surf"))return R.drawable.ev_illustration_hatch;
-        if(key.contains("kia ev3"))return R.drawable.ev_illustration_crossover;
-        if(key.contains("toyota c-hr"))return R.drawable.ev_illustration_crossover;
-        if(key.contains("atto 2"))return R.drawable.ev_illustration_suv;
-        if(key.contains("renault 5"))return R.drawable.ev_illustration_hatch;
-        if(key.contains("elroq"))return R.drawable.ev_illustration_suv;
-        if(key.contains("leapmotor b10"))return R.drawable.ev_illustration_suv;
-        if(key.contains("mercedes cla"))return R.drawable.ev_illustration_coupe;
-        if(key.contains("byd seal"))return R.drawable.ev_illustration_sedan;
-        if(key.contains("mercedes eqa"))return R.drawable.ev_illustration_suv;
-        if(key.contains("xpeng g6"))return R.drawable.ev_illustration_crossover;
-        if(key.contains("atto 3"))return R.drawable.ev_illustration_suv;
-        if(key.contains("id.4")||key.contains("id 4"))return R.drawable.ev_illustration_suv;
-        if(key.contains("audi q4"))return R.drawable.ev_illustration_suv;
-        if(key.contains("ioniq 5"))return R.drawable.ev_illustration_crossover;
-        if(key.contains("id.3")||key.contains("id 3")||key.contains("cupra born")||key.contains("megane"))return R.drawable.ev_illustration_compact;
-        if(key.contains("sedan")||key.contains("berlina")||key.contains("et5")||key.contains("i4"))return R.drawable.ev_illustration_sedan;
+    private ImageView carImage(Vehicle v){ImageView image=new ImageView(this);image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);image.setPadding(dp(4),dp(6),dp(4),dp(3));image.setBackground(bg(dark?Color.rgb(12,29,43):Color.rgb(239,245,252),14));image.setImageResource(modelImageResource(v));return image;}
+    private int modelImageResource(Vehicle v){
+        String key=(v.make+" "+v.model).toLowerCase(Locale.ROOT).replace("+","plus").replace("-"," ");
+        if(key.contains("model 3"))return R.drawable.car_model3;
+        if(key.contains("model y"))return R.drawable.car_modely;
+        if(key.contains("dolphin surf"))return R.drawable.car_dolphin_surf;
+        if(key.contains("kia ev3"))return R.drawable.car_kia_ev3;
+        if(key.contains("toyota c hr")||key.contains("c-hr"))return R.drawable.car_toyota_chr_plus;
+        if(key.contains("atto 2"))return R.drawable.car_byd_atto2;
+        if(key.contains("renault 5"))return R.drawable.car_renault5;
+        if(key.contains("elroq"))return R.drawable.car_skoda_elroq;
+        if(key.contains("leapmotor b10"))return R.drawable.car_leapmotor_b10;
+        if(key.contains("mercedes benz cla")||key.contains("mercedes cla"))return R.drawable.car_mercedes_cla;
+        if(key.contains("byd seal"))return R.drawable.car_byd_seal;
+        if(key.contains("mercedes benz eqa")||key.contains("mercedes eqa"))return R.drawable.car_mercedes_eqa;
+        if(key.contains("xpeng g6"))return R.drawable.car_xpeng_g6;
+        if(key.contains("atto 3"))return R.drawable.car_byd_atto3;
+        if(key.contains("id.4")||key.contains("id 4"))return R.drawable.car_vw_id4;
+        if(key.contains("audi q4"))return R.drawable.car_audi_q4;
+        if(key.contains("ioniq 5"))return R.drawable.car_ioniq5;
+        if(key.contains("id.3")||key.contains("id 3"))return R.drawable.car_vw_id3;
+        if(key.contains("cupra born"))return R.drawable.car_cupra_born;
+        if(key.contains("megane"))return R.drawable.car_renault_megane;
+        if(key.contains("sedan")||key.contains("berlina")||key.contains("et5")||key.contains(" i4"))return R.drawable.ev_illustration_sedan;
         if(key.contains("coupe")||key.contains("coupé"))return R.drawable.ev_illustration_coupe;
-        if(key.contains("hatch")||key.contains("5 e-tech"))return R.drawable.ev_illustration_hatch;
+        if(key.contains("hatch")||key.contains("5 e tech"))return R.drawable.ev_illustration_hatch;
         if(key.contains("crossover"))return R.drawable.ev_illustration_crossover;
         return R.drawable.ev_illustration_suv;
     }
