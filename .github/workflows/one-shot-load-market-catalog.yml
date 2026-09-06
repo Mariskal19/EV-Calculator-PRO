@@ -1,0 +1,29 @@
+name: One-shot load market catalog
+on:
+  push:
+    branches: [feature/automatizacion-coches]
+    paths:
+      - 'app/src/main/assets/vehicle_market_additions.json'
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch loader
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text()
+          old='loadAssetVehicles("vehicle_variants.json",false);normalizeVehicleList();'
+          new='loadAssetVehicles("vehicle_variants.json",false);loadAssetVehicles("vehicle_market_additions.json",false);normalizeVehicleList();'
+          if old not in s:
+              raise SystemExit('Expected loader pattern not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+          rm -f .github/workflows/one-shot-load-market-catalog.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java app/src/main/assets/vehicle_market_additions.json .github/workflows/one-shot-load-market-catalog.yml
+          git commit -m 'Load cross-market vehicles in compare cars'
+          git push
