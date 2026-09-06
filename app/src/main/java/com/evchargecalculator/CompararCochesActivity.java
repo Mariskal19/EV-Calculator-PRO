@@ -77,8 +77,7 @@ public class CompararCochesActivity extends Activity {
     private void renderSearchResults(EditText input,LinearLayout list){list.removeAllViews();String q=input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle> ordered=orderedSearchVehicles(q);int shownAll=0;Set<String> popularIds=new HashSet<>();if(q.isEmpty()){List<Vehicle> popular=popularVehicles(ordered);if(!popular.isEmpty()){TextView h=tv("⭐  Más buscados",13,blue);h.setTypeface(null,Typeface.BOLD);h.setPadding(dp(18),dp(12),dp(18),dp(8));list.addView(h,new LinearLayout.LayoutParams(-1,-2));Set<String> shownModels=new HashSet<>();for(Vehicle v:popular){String mk=popularKey(v).toLowerCase(Locale.ROOT);if(shownModels.contains(mk))continue;addSearchItem(v,input,list);shownModels.add(mk);popularIds.add(v.id);if(shownModels.size()>=10)break;}TextView allH=tv("Todos los coches",13,blue);allH.setTypeface(null,Typeface.BOLD);allH.setPadding(dp(18),dp(16),dp(18),dp(8));list.addView(allH,new LinearLayout.LayoutParams(-1,-2));}}for(Vehicle v:ordered){if(popularIds.contains(v.id))continue;addSearchItem(v,input,list);if(++shownAll>=80)break;}if(shownAll==0&&popularIds.isEmpty()){TextView empty=tv("No hay coincidencias en "+marketLabel(selectedMarket)+".",14,sub());empty.setPadding(dp(18),dp(20),dp(18),dp(20));list.addView(empty);}}
     private void addSearchItem(Vehicle v,EditText input,LinearLayout list){
         SpannableString label=new SpannableString(searchLabel(v));
-        int nl=label.toString().indexOf("
-");
+        int nl=label.toString().indexOf("\n");
         if(nl>=0){
             label.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             label.setSpan(new RelativeSizeSpan(0.87f),nl+1,label.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
