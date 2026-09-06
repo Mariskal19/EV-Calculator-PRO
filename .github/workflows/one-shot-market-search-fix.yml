@@ -1,0 +1,159 @@
+name: One-shot market search fix
+
+on:
+  push:
+    branches:
+      - feature/automatizacion-coches
+    paths:
+      - PATCH_MARKET_SEARCH.txt
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: feature/automatizacion-coches
+          fetch-depth: 0
+
+      - name: Apply market selector inside car search
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          path = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = path.read_text(encoding='utf-8')
+
+          old_build = re.compile(r'\n        LinearLayout marketBox=new LinearLayout\(this\);.*?content\.addView\(marketBox,new LinearLayout\.LayoutParams\(-1,-2\);', re.S)
+          s, n = old_build.subn('', s, count=1)
+          if n != 1:
+              raise SystemExit('No se encontro el bloque del selector de mercado original')
+
+          new_search = '''    private void showSearch(){
+        final EditText input=new EditText(this);
+        input.setSingleLine(true);
+        input.setHint("Marca, modelo, año o versión");
+
+        final LinearLayout list=new LinearLayout(this);
+        list.setOrientation(LinearLayout.VERTICAL);
+
+        LinearLayout marketRow=new LinearLayout(this);
+        marketRow.setOrientation(LinearLayout.HORIZONTAL);
+        marketRow.setGravity(Gravity.CENTER_VERTICAL);
+        marketRow.setPadding(dp(18),dp(8),dp(18),dp(2));
+        TextView marketTitle=tv("Mercado",14,text());
+        marketTitle.setTypeface(null,Typeface.BOLD);
+        marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(48),1));
+
+        final Spinner searchMarketSpinner=new Spinner(this);
+        List<String> ms=markets();
+        List<String> labels=new ArrayList<>();
+        for(String m:ms)labels.add(marketLabel(m));
+        ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){
+            @Override public View getView(int p,View c,android.view.ViewGroup parent){
+                TextView v=(TextView)super.getView(p,c,parent);
+                v.setTextColor(text());
+                v.setTextSize(14);
+                v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);
+                return v;
+            }
+            @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){
+                TextView v=(TextView)super.getDropDownView(p,c,parent);
+                v.setTextColor(text());
+                v.setTextSize(15);
+                v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+                v.setPadding(dp(14),dp(10),dp(14),dp(10));
+                v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);
+                return v;
+            }
+        };
+        searchMarketSpinner.setAdapter(marketAdapter);
+        int marketIndex=0;
+        for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;}
+        searchMarketSpinner.setSelection(marketIndex,false);
+        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){
+            public void onNothingSelected(android.widget.AdapterView<?> p){}
+            public void onItemSelected(android.widget.AdapterView<?> p,android.view.View v,int pos,long id){
+                if(pos>=ms.size()||ms.get(pos).equalsIgnoreCase(selectedMarket))return;
+                selectedMarket=ms.get(pos);
+                getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();
+                selectedIds.clear();
+                saveSelection();
+                rebuild();
+                renderSearchResults(input,list);
+            }
+        });
+        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(190),dp(48)));
+
+        LinearLayout box=new LinearLayout(this);
+        box.setPadding(dp(18),dp(4),dp(18),dp(2));
+        box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));
+
+        ScrollView scroll=new ScrollView(this);
+        scroll.addView(list);
+        LinearLayout wrap=new LinearLayout(this);
+        wrap.setOrientation(LinearLayout.VERTICAL);
+        wrap.addView(marketRow);
+        wrap.addView(box);
+        wrap.addView(scroll,new LinearLayout.LayoutParams(-1,dp(430)));
+
+        AlertDialog d=new AlertDialog.Builder(this).setTitle("Añadir coche").setView(wrap).create();
+        input.addTextChangedListener(new TextWatcher(){
+            public void beforeTextChanged(CharSequence s,int st,int c,int a){}
+            public void onTextChanged(CharSequence s,int st,int b,int c){renderSearchResults(input,list);}
+            public void afterTextChanged(Editable e){}
+        });
+        d.setOnShowListener(x->{renderSearchResults(input,list);input.requestFocus();d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);});
+        d.show();
+    }
+
+    private void renderSearchResults(EditText input,LinearLayout list){
+        list.removeAllViews();
+        String q=input.getText().toString().trim().toLowerCase(Locale.ROOT);
+        int count=0;
+        for(Vehicle v:marketVehicles()){
+            if(selectedIds.contains(v.id))continue;
+            String hay=(v.make+" "+v.model+" "+v.year+" "+v.version).toLowerCase(Locale.ROOT);
+            if(!q.isEmpty()&&!hay.contains(q))continue;
+            TextView item=tv(v.make+" "+v.model+" · "+(v.year>0?v.year+" · ":"")+v.version,15,text());
+            item.setPadding(dp(18),dp(14),dp(18),dp(14));
+            item.setOnClickListener(x->{
+                if(selectedIds.size()<3){
+                    selectedIds.add(v.id);
+                    saveSelection();
+                    rebuild();
+                    renderSearchResults(input,list);
+                }
+            });
+            list.addView(item,new LinearLayout.LayoutParams(-1,-2));
+            if(++count>=80)break;
+        }
+        if(count==0){
+            TextView empty=tv("No hay coincidencias en "+marketLabel(selectedMarket)+".",14,sub());
+            empty.setPadding(dp(18),dp(20),dp(18),dp(20));
+            list.addView(empty);
+        }
+    }
+'''
+
+          old_search = re.compile(r'    private void showSearch\(\)\{.*?\n    private String value\(', re.S)
+          s, n = old_search.subn(new_search + '    private String value(', s, count=1)
+          if n != 1:
+              raise SystemExit('No se encontro showSearch original')
+
+          path.write_text(s, encoding='utf-8')
+          print('Parche aplicado correctamente')
+
+      - name: Commit source change and remove one-shot workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f PATCH_MARKET_SEARCH.txt .github/workflows/one-shot-market-search-fix.yml
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java PATCH_MARKET_SEARCH.txt .github/workflows/one-shot-market-search-fix.yml
+          git commit -m "Fix compare cars market selection in search"
+          git push origin feature/automatizacion-coches
