@@ -48,6 +48,7 @@ public class CompararCochesActivity extends Activity {
         vehicles.clear();
         loadAssetVehicles("vehicles.json", true);
         loadAssetVehicles("vehicle_variants.json", false);
+        normalizeVehicleList();
         if(vehicles.isEmpty())throw new IllegalStateException("vehicles array missing");
     }
     private void loadAssetVehicles(String asset, boolean required){
@@ -55,7 +56,7 @@ public class CompararCochesActivity extends Activity {
             StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);
             JSONArray a=new JSONObject(sb.toString()).optJSONArray("vehicles");
             if(a==null)throw new IllegalStateException(asset+": vehicles array missing");
-            for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o));}
+            for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)addOrMergeVehicle(new Vehicle(o));}
         }catch(Exception e){if(required)throw new IllegalStateException("No se ha podido cargar "+asset,e);}
     }
     private void loadSelection(){selectedIds.clear();SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
@@ -68,6 +69,44 @@ public class CompararCochesActivity extends Activity {
         }
     }
     private Vehicle find(String id){for(Vehicle v:vehicles)if(v.id.equals(id))return v;return null;}
+    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.version).trim().toLowerCase(Locale.ROOT);}
+    private void addOrMergeVehicle(Vehicle incoming){
+        String key=logicalKey(incoming);
+        for(Vehicle existing:vehicles){
+            if(!logicalKey(existing).equals(key))continue;
+            if(existing.price<=0)existing.price=incoming.price;
+            if(existing.batteryKwh<=0)existing.batteryKwh=incoming.batteryKwh;
+            if(existing.usableBatteryKwh<=0)existing.usableBatteryKwh=incoming.usableBatteryKwh;
+            if(existing.batteryType==null||existing.batteryType.trim().isEmpty())existing.batteryType=incoming.batteryType;
+            if(existing.wltpKm<=0)existing.wltpKm=incoming.wltpKm;
+            if(existing.consumption<=0)existing.consumption=incoming.consumption;
+            if(existing.powerKw<=0)existing.powerKw=incoming.powerKw;
+            if(existing.drivetrain==null||existing.drivetrain.trim().isEmpty())existing.drivetrain=incoming.drivetrain;
+            if(existing.acKw<=0)existing.acKw=incoming.acKw;
+            if(existing.dcKw<=0)existing.dcKw=incoming.dcKw;
+            if(existing.chargeMin<=0)existing.chargeMin=incoming.chargeMin;
+            if(existing.acc<=0)existing.acc=incoming.acc;
+            if(existing.trunk<=0)existing.trunk=incoming.trunk;
+            if(existing.weight<=0)existing.weight=incoming.weight;
+            if(existing.year<=0&&incoming.year>0)existing.year=incoming.year;
+            return;
+        }
+        vehicles.add(incoming);
+    }
+    private void normalizeVehicleList(){
+        Iterator<Vehicle> it=vehicles.iterator();
+        while(it.hasNext()){
+            Vehicle v=it.next();
+            if(v.version==null||!v.version.contains("/"))continue;
+            String[] parts=v.version.split("/"); boolean allPresent=true;
+            for(String part:parts){String wanted=part.trim();boolean found=false;
+                for(Vehicle other:vehicles){if(other==v)continue;if(other.make.equalsIgnoreCase(v.make)&&other.model.equalsIgnoreCase(v.model)&&other.version.trim().equalsIgnoreCase(wanted)){found=true;break;}}
+                if(!found){allPresent=false;break;}
+            }
+            if(allPresent)it.remove();
+        }
+        Collections.sort(vehicles,(a,b)->{int c=a.make.compareToIgnoreCase(b.make);if(c!=0)return c;c=a.model.compareToIgnoreCase(b.model);if(c!=0)return c;return a.version.compareToIgnoreCase(b.version);});
+    }
 
     private void build(){
         LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(dp(12),dp(20),dp(12),0);root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(244,248,255));
@@ -171,7 +210,7 @@ public class CompararCochesActivity extends Activity {
 
     private void showDataError(Throwable t){if(table==null)return;carsRow.removeAllViews();TextView m=tv("No se han podido cargar los datos de los coches.\n\n"+t.getClass().getSimpleName(),14,sub());m.setGravity(Gravity.CENTER);m.setPadding(dp(10),dp(18),dp(10),dp(18));table.removeAllViews();summary.removeAllViews();table.addView(m,new LinearLayout.LayoutParams(tableWidth(),-2));}
 
-    private void showSearch(){if(selectedIds.size()>=3)return;final EditText input=new EditText(this);input.setHint("Buscar por marca, modelo o versión");input.setSingleLine(true);input.setTextColor(text());input.setHintTextColor(sub());final LinearLayout list=new LinearLayout(this);list.setOrientation(LinearLayout.VERTICAL);ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.addView(list,new ScrollView.LayoutParams(-1,-2));LinearLayout box=new LinearLayout(this);box.setOrientation(LinearLayout.VERTICAL);box.setPadding(dp(16),dp(8),dp(16),dp(8));box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));box.addView(scroll,new LinearLayout.LayoutParams(-1,dp(330)));AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Añadir coche").setView(box).setNegativeButton("Cancelar",null).create();Runnable refresh=()->{list.removeAllViews();String q=input.getText().toString().trim().toLowerCase(Locale.ROOT);int count=0;for(Vehicle v:vehicles){if(selectedIds.contains(v.id))continue;String hay=(v.make+" "+v.model+" "+v.version).toLowerCase(Locale.ROOT);if(q.isEmpty()||hay.contains(q)){LinearLayout item=new LinearLayout(this);item.setOrientation(LinearLayout.VERTICAL);item.setGravity(Gravity.CENTER_VERTICAL);item.setPadding(dp(10),dp(8),dp(10),dp(8));item.setBackground(bg(dark?Color.rgb(21,31,42):Color.WHITE,10));TextView ti=tv(v.make+" "+v.model,15,text());ti.setTypeface(null,Typeface.BOLD);item.addView(ti);TextView de=tv(v.version+"  ·  "+v.year,12,sub());item.addView(de);item.setOnClickListener(x->{if(selectedIds.size()<3){selectedIds.add(v.id);saveSelection();dialog.dismiss();rebuild();}});list.addView(item,new LinearLayout.LayoutParams(-1,dp(58)));Space gap=new Space(this);list.addView(gap,new LinearLayout.LayoutParams(1,dp(4)));if(++count>=15)break;}}if(count==0){TextView none=tv(q.isEmpty()?"No hay coches disponibles":"No se encontraron coches",14,sub());none.setGravity(Gravity.CENTER);list.addView(none,new LinearLayout.LayoutParams(-1,dp(60)));}};input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){refresh.run();}public void afterTextChanged(Editable e){}});dialog.setOnShowListener(x->{refresh.run();input.requestFocus();dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);});dialog.show();}
+    private void showSearch(){if(selectedIds.size()>=3)return;final EditText input=new EditText(this);input.setHint("Buscar por marca, modelo o versión");input.setSingleLine(true);input.setTextColor(text());input.setHintTextColor(sub());final LinearLayout list=new LinearLayout(this);list.setOrientation(LinearLayout.VERTICAL);ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.addView(list,new ScrollView.LayoutParams(-1,-2));LinearLayout box=new LinearLayout(this);box.setOrientation(LinearLayout.VERTICAL);box.setPadding(dp(16),dp(8),dp(16),dp(8));box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));box.addView(scroll,new LinearLayout.LayoutParams(-1,dp(330)));AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Añadir coche · "+vehicles.size()+" versiones").setView(box).setNegativeButton("Cancelar",null).create();Runnable refresh=()->{list.removeAllViews();String q=input.getText().toString().trim().toLowerCase(Locale.ROOT);int count=0;for(Vehicle v:vehicles){if(selectedIds.contains(v.id))continue;String hay=(v.make+" "+v.model+" "+v.version).toLowerCase(Locale.ROOT);if(q.isEmpty()||hay.contains(q)){LinearLayout item=new LinearLayout(this);item.setOrientation(LinearLayout.VERTICAL);item.setGravity(Gravity.CENTER_VERTICAL);item.setPadding(dp(10),dp(8),dp(10),dp(8));item.setBackground(bg(dark?Color.rgb(21,31,42):Color.WHITE,10));TextView ti=tv(v.make+" "+v.model,15,text());ti.setTypeface(null,Typeface.BOLD);item.addView(ti);TextView de=tv(v.version+"  ·  "+v.year,12,sub());item.addView(de);item.setOnClickListener(x->{if(selectedIds.size()<3){selectedIds.add(v.id);saveSelection();dialog.dismiss();rebuild();}});list.addView(item,new LinearLayout.LayoutParams(-1,dp(58)));Space gap=new Space(this);list.addView(gap,new LinearLayout.LayoutParams(1,dp(4)));count++;}}if(count==0){TextView none=tv(q.isEmpty()?"No hay coches disponibles":"No se encontraron coches",14,sub());none.setGravity(Gravity.CENTER);list.addView(none,new LinearLayout.LayoutParams(-1,dp(60)));}};input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){refresh.run();}public void afterTextChanged(Editable e){}});dialog.setOnShowListener(x->{refresh.run();input.requestFocus();dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);});dialog.show();}
 
     private static class Vehicle{String id,make,model,version,batteryType,drivetrain;int year,wltpKm,chargeMin,trunk,weight;double price,batteryKwh,usableBatteryKwh,consumption,powerKw,acKw,dcKw,acc;Vehicle(JSONObject o){id=o.optString("id");make=o.optString("make");model=o.optString("model");version=o.optString("version");year=o.optInt("year");price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",0);usableBatteryKwh=o.optDouble("usableBatteryKwh",0);batteryType=o.optString("batteryType","");wltpKm=o.optInt("wltpKm",0);consumption=o.optDouble("consumptionKwh100",0);powerKw=o.optDouble("powerKw",0);drivetrain=o.optString("drivetrain","");acKw=o.optDouble("acKw",0);dcKw=o.optDouble("dcKw",0);chargeMin=o.optInt("charge10to80Min",0);acc=o.optDouble("acceleration0to100Sec",0);trunk=o.optInt("trunkLiters",0);weight=o.optInt("weightKg",0);}}
 }
