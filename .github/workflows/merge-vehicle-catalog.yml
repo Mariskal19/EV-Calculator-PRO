@@ -1,0 +1,74 @@
+name: Merge vehicle catalog
+
+on:
+  push:
+    branches:
+      - feature/automatizacion-coches
+    paths:
+      - 'app/src/main/assets/vehicle_variants.json'
+      - 'app/src/main/assets/vehicle_catalog_additions.json'
+      - '.github/workflows/merge-vehicle-catalog.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: feature/automatizacion-coches
+
+      - name: Merge additions into canonical variants catalog
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          base_path = Path('app/src/main/assets/vehicle_variants.json')
+          extra_path = Path('app/src/main/assets/vehicle_catalog_additions.json')
+
+          base = json.loads(base_path.read_text(encoding='utf-8'))
+          extra = json.loads(extra_path.read_text(encoding='utf-8'))
+
+          vehicles = base.get('vehicles', [])
+          existing = {
+              (str(v.get('make','')).strip().casefold(),
+               str(v.get('model','')).strip().casefold(),
+               str(v.get('version','')).strip().casefold()): v
+              for v in vehicles
+          }
+
+          added = 0
+          for v in extra.get('vehicles', []):
+              key = (str(v.get('make','')).strip().casefold(),
+                     str(v.get('model','')).strip().casefold(),
+                     str(v.get('version','')).strip().casefold())
+              if key not in existing:
+                  vehicles.append(v)
+                  existing[key] = v
+                  added += 1
+
+          base['datasetVersion'] = '1.4.0'
+          base['vehicles'] = vehicles
+          base_path.write_text(json.dumps(base, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          print(f'Added {added} unique configurations')
+          print(f'Canonical variants catalog: {len(vehicles)} records')
+          print(f'Unique make/model/version keys: {len(existing)}')
+
+      - name: Commit merged catalog
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicle_variants.json
+          if git diff --cached --quiet; then
+            echo 'Catalog already up to date.'
+          else
+            git commit -m 'Merge verified vehicle catalog additions'
+            git push origin feature/automatizacion-coches
+          fi
