@@ -46,6 +46,10 @@ public class CompararCochesActivity extends Activity {
     private void build(){
     LinearLayout root=new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
+    int statusBarHeight=0;
+    int statusBarId=getResources().getIdentifier("status_bar_height","dimen","android");
+    if(statusBarId>0)statusBarHeight=getResources().getDimensionPixelSize(statusBarId);
+    root.setPadding(0,statusBarHeight,0,0);
     root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
     FrameLayout hero=new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(156)));
