@@ -16,21 +16,17 @@ jobs:
         with:
           ref: feature/automatizacion-coches
           fetch-depth: 0
-
       - name: Redesign Comparar coches UI
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import re
-
-          path = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
-          s = path.read_text(encoding='utf-8')
-
-          new_build = r'''private void build(){
+          path=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=path.read_text(encoding='utf-8')
+          new_build='''private void build(){
               LinearLayout root=new LinearLayout(this);
               root.setOrientation(LinearLayout.VERTICAL);
               root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
-
               FrameLayout hero=new FrameLayout(this);
               hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(156)));
               ImageView heroImage=new ImageView(this);
@@ -62,14 +58,12 @@ jobs:
               sp.setMargins(dp(24),0,dp(24),dp(12));
               hero.addView(subtitle,sp);
               root.addView(hero);
-
               ScrollView scroll=new ScrollView(this);
               scroll.setFillViewport(true);
               scroll.setClipToPadding(false);
               LinearLayout content=new LinearLayout(this);
               content.setOrientation(LinearLayout.VERTICAL);
               content.setPadding(dp(14),dp(14),dp(14),dp(28));
-
               LinearLayout intro=new LinearLayout(this);
               intro.setOrientation(LinearLayout.VERTICAL);
               intro.setPadding(dp(16),dp(14),dp(16),dp(14));
@@ -81,7 +75,6 @@ jobs:
               hint.setPadding(0,dp(2),0,0);
               intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
               content.addView(intro,new LinearLayout.LayoutParams(-1,-2));
-
               HorizontalScrollView carsScroll=new HorizontalScrollView(this);
               carsScroll.setHorizontalScrollBarEnabled(false);
               carsScroll.setClipToPadding(false);
@@ -91,7 +84,6 @@ jobs:
               carsRow.setGravity(Gravity.TOP);
               carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
               content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
-
               TextView section=tv("Comparativa",19,text());
               section.setTypeface(null,Typeface.BOLD);
               section.setPadding(dp(2),dp(12),0,dp(2));
@@ -100,7 +92,6 @@ jobs:
               legend.setGravity(Gravity.CENTER_VERTICAL);
               legend.setPadding(dp(4),0,0,dp(4));
               content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
-
               table=new LinearLayout(this);
               table.setOrientation(LinearLayout.VERTICAL);
               table.setPadding(0,dp(2),0,0);
@@ -108,54 +99,43 @@ jobs:
               tableScroll.setHorizontalScrollBarEnabled(false);
               tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
               content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
-
               summary=new LinearLayout(this);
               summary.setOrientation(LinearLayout.VERTICAL);
               summary.setPadding(0,dp(18),0,dp(8));
               content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
-
               scroll.addView(content,new ScrollView.LayoutParams(-1,-2));
               root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
               setContentView(root);
-          }
-          '''.strip()
-
-          new_card = r'''private android.view.View carCard(Vehicle v){
+          }'''
+          new_card='''private android.view.View carCard(Vehicle v){
               LinearLayout c=new LinearLayout(this);
               c.setOrientation(LinearLayout.VERTICAL);
               c.setGravity(Gravity.CENTER_HORIZONTAL);
               c.setPadding(dp(9),dp(9),dp(9),dp(8));
               c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));
-
               TextView photo=tv("🚘",34,blue);
               photo.setGravity(Gravity.CENTER);
               photo.setBackground(bg(dark?Color.rgb(12,29,43):Color.rgb(239,245,252),14));
               c.addView(photo,new LinearLayout.LayoutParams(-1,dp(68)));
-
               TextView make=tv(v.make,12,blue);
               make.setTypeface(null,Typeface.BOLD);
               make.setGravity(Gravity.CENTER);
               make.setPadding(0,dp(8),0,0);
               c.addView(make,new LinearLayout.LayoutParams(-1,dp(28)));
-
               TextView model=tv(v.model,17,text());
               model.setTypeface(null,Typeface.BOLD);
               model.setGravity(Gravity.CENTER);
               c.addView(model,new LinearLayout.LayoutParams(-1,dp(27)));
-
               TextView market=tv(marketLabel(v.market),11,sub());
               market.setGravity(Gravity.CENTER);
               c.addView(market,new LinearLayout.LayoutParams(-1,dp(25)));
-
               TextView ver=tv(v.version,11,sub());
               ver.setGravity(Gravity.CENTER);
               ver.setMaxLines(2);
               c.addView(ver,new LinearLayout.LayoutParams(-1,dp(34)));
-
               TextView year=tv(v.year>0?String.valueOf(v.year):"",11,sub());
               year.setGravity(Gravity.CENTER);
               c.addView(year,new LinearLayout.LayoutParams(-1,dp(21)));
-
               TextView rem=tv("✕  Quitar",12,Color.rgb(210,70,70));
               rem.setGravity(Gravity.CENTER);
               rem.setTypeface(null,Typeface.BOLD);
@@ -163,28 +143,20 @@ jobs:
               rem.setOnClickListener(x->remove(v.id));
               c.addView(rem,new LinearLayout.LayoutParams(-1,dp(31)));
               return c;
-          }
-          '''.strip()
-
-          s2,n1=re.subn(r'private void build\(\)\{.*?\n    \}\n    private List<Vehicle> marketVehicles\(\)', new_build+'\n    private List<Vehicle> marketVehicles()', s, count=1, flags=re.S)
-          if n1!=1:
-              raise SystemExit('No se encontró build()')
-          s=s2
-          s2,n2=re.subn(r'private android\.view\.View carCard\(Vehicle v\)\{.*?\n    \}\n    private void remove\(', new_card+'\n    private void remove(', s, count=1, flags=re.S)
-          if n2!=1:
-              raise SystemExit('No se encontró carCard()')
-          path.write_text(s2,encoding='utf-8')
-          print('Rediseño aplicado:', n1, n2)
+          }'''
+          s,n1=re.subn(r'private void build\(\)\{.*?\}\s*private List<Vehicle> marketVehicles\(\)',new_build+'\n    private List<Vehicle> marketVehicles()',s,count=1,flags=re.S)
+          if n1!=1: raise SystemExit('No se encontró build()')
+          s,n2=re.subn(r'private android\.view\.View carCard\(Vehicle v\)\{.*?\}\s*private void remove\(',new_card+'\n    private void remove(',s,count=1,flags=re.S)
+          if n2!=1: raise SystemExit('No se encontró carCard()')
+          path.write_text(s,encoding='utf-8')
+          print('Rediseño aplicado',n1,n2)
           PY
-
-      - name: Remove temporary workflow and trigger
-        run: |
-          rm -f .github/workflows/redesign-compare.yml COMPARE_DESIGN_TRIGGER.txt
-
+      - name: Remove temporary files
+        run: rm -f .github/workflows/redesign-compare.yml COMPARE_DESIGN_TRIGGER.txt
       - name: Commit and push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java .github/workflows/redesign-compare.yml COMPARE_DESIGN_TRIGGER.txt
-          git commit -m "feat: redesign compare cars screen" || exit 0
+          git commit -m "feat: redesign compare cars screen"
           git push origin HEAD:feature/automatizacion-coches
