@@ -1,6 +1,9 @@
 name: Fix compare cars build
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fix-compare-build.yml'
 permissions:
   contents: write
   actions: write
@@ -37,5 +40,5 @@ jobs:
       - name: Remove temporary workflow
         run: |
           git rm .github/workflows/fix-compare-build.yml
-          git commit -m 'chore: remove temporary build fix workflow'
+          git commit -m 'chore: remove temporary compare build workflow'
           git push origin HEAD:feature/automatizacion-coches
