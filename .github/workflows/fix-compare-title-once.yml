@@ -1,0 +1,32 @@
+name: Fix compare vehicles title once
+on:
+  push:
+    branches: [main]
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix clipped vehicles title
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text()
+          old='TextView selected=tv("\\nVehículos comparados",14,blue);selected.setTypeface(null,Typeface.BOLD);card.addView(selected,new LinearLayout.LayoutParams(-1,dp(28)));'
+          new='TextView selected=tv("Vehículos comparados",14,blue);selected.setTypeface(null,Typeface.BOLD);selected.setIncludeFontPadding(true);selected.setPadding(0,dp(4),0,dp(4));card.addView(selected,new LinearLayout.LayoutParams(-1,dp(36)));'
+          if old not in s:
+              raise SystemExit('target title code not found')
+          p.write_text(s.replace(old,new,1))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'fix compare vehicles title clipping'
+          git push
+      - name: Remove temporary workflow
+        if: success()
+        run: |
+          git rm .github/workflows/fix-compare-title-once.yml
+          git commit -m 'remove temporary compare title workflow'
+          git push
