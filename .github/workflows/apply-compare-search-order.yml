@@ -1,0 +1,129 @@
+name: Apply Compare Search Order
+
+on:
+  workflow_dispatch:
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Patch compare search
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text()
+
+          start = s.index('    private void showSearch(){')
+          end = s.index('    private ', start + 10)
+
+          replacement = r'''    private int searchVersionScore(Vehicle v){
+        String x=(v.version==null?"":v.version).toLowerCase(Locale.ROOT);
+        int score=50;
+        if(x.matches(".*\\b(standard|base|pure|evolution|active)\\b.*")) score=10;
+        if(x.matches(".*\\b(rwd|comfort|air|pro)\\b.*")) score=Math.min(score,20);
+        if(x.matches(".*\\b(long range|earth|techno|design|advance)\\b.*")) score=Math.max(score,30);
+        if(x.matches(".*\\b(premium|esprit alpine|iconic|spirit)\\b.*")) score=Math.max(score,40);
+        if(x.matches(".*\\b(gt-line|gtx|gt|se|performance|excellence|awd|quattro|rs|sq|sport)\\b.*")) score=Math.max(score,60);
+        java.util.regex.Matcher m=java.util.regex.Pattern.compile("(\\d+(?:\\.\\d+)?)\\s*kwh").matcher(x);
+        if(m.find()) try{score += Math.min(25, Integer.parseInt(m.group(1).split("\\.")[0])/10);}catch(Exception ignored){}
+        return score;
+    }
+    private String vehicleSearchLabel(Vehicle v){return v.make+" "+v.model+" · "+v.version;}
+    private List<Vehicle> orderedSearchVehicles(String query){
+        String q=query==null?"":query.trim().toLowerCase(Locale.ROOT);
+        List<Vehicle> all=new ArrayList<>();
+        for(Vehicle v:marketVehicles()){
+            if(q.isEmpty() || (v.make+" "+v.model+" "+v.version).toLowerCase(Locale.ROOT).contains(q)) all.add(v);
+        }
+        final String[] popular={
+            "tesla|model 3","tesla|model y","xpeng|g6","byd|seal","kia|ev3",
+            "hyundai|ioniq 5","volkswagen|id.4","byd|atto 3","kia|ev6","renault|5 e-tech"
+        };
+        final Map<String,Integer> popularRank=new HashMap<>();
+        for(int i=0;i<popular.length;i++) popularRank.put(popular[i],i);
+        Collections.sort(all,(a,b)->{
+            int c=0;
+            if(q.isEmpty()){
+                Integer ra=popularRank.get((a.make+"|"+a.model).toLowerCase(Locale.ROOT));
+                Integer rb=popularRank.get((b.make+"|"+b.model).toLowerCase(Locale.ROOT));
+                if(ra!=null || rb!=null){
+                    if(ra==null) return 1;
+                    if(rb==null) return -1;
+                    c=Integer.compare(ra,rb); if(c!=0)return c;
+                }
+            }
+            c=a.make.compareToIgnoreCase(b.make); if(c!=0)return c;
+            c=a.model.compareToIgnoreCase(b.model); if(c!=0)return c;
+            c=Integer.compare(searchVersionScore(a),searchVersionScore(b)); if(c!=0)return c;
+            return a.version.compareToIgnoreCase(b.version);
+        });
+        return all;
+    }
+    private void showSearch(){
+        final EditText input=new EditText(this);input.setSingleLine(true);input.setHint("Marca, modelo o versión");input.setTextColor(text());input.setHintTextColor(sub());
+        final LinearLayout list=new LinearLayout(this);list.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout marketRow=new LinearLayout(this);marketRow.setOrientation(LinearLayout.HORIZONTAL);marketRow.setGravity(Gravity.CENTER_VERTICAL);marketRow.setPadding(dp(18),dp(8),dp(18),dp(2));
+        TextView marketTitle=tv("Mercado",14,text());marketTitle.setTypeface(null,Typeface.BOLD);marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(48),1));
+        final Spinner searchMarketSpinner=new Spinner(this);List<String> ms=markets();List<String> labels=new ArrayList<>();for(String m:ms)labels.add(marketLabel(m));
+        ArrayAdapter<String> ma=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,labels);searchMarketSpinner.setAdapter(ma);for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){searchMarketSpinner.setSelection(i);break;}
+        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(155),dp(48)));list.addView(marketRow,new LinearLayout.LayoutParams(-1,-2));
+        list.addView(input,new LinearLayout.LayoutParams(-1,dp(58)));
+        final LinearLayout results=new LinearLayout(this);results.setOrientation(LinearLayout.VERTICAL);results.setPadding(dp(12),dp(4),dp(12),dp(8));ScrollView resultScroll=new ScrollView(this);resultScroll.setFillViewport(true);resultScroll.addView(results,new ScrollView.LayoutParams(-1,-2));list.addView(resultScroll,new LinearLayout.LayoutParams(-1,0,1));
+        final AlertDialog dialog=new AlertDialog.Builder(this).setTitle("Añadir coche").setView(list).setNegativeButton("Cancelar",null).create();
+        Runnable refresh=()->{
+            results.removeAllViews();
+            String q=input.getText().toString();
+            List<Vehicle> ordered=orderedSearchVehicles(q);
+            String lastGroup=""; boolean showingPopular=q.trim().isEmpty(); boolean popularSection=true;
+            for(Vehicle v:ordered){
+                String group=v.make+" "+v.model;
+                boolean isPopular=false;
+                String key=(v.make+"|"+v.model).toLowerCase(Locale.ROOT);
+                String[] pop={"tesla|model 3","tesla|model y","xpeng|g6","byd|seal","kia|ev3","hyundai|ioniq 5","volkswagen|id.4","byd|atto 3","kia|ev6","renault|5 e-tech"};
+                for(String x:pop)if(x.equals(key)){isPopular=true;break;}
+                if(showingPopular && !isPopular && popularSection){
+                    if(!lastGroup.isEmpty()){}
+                    TextView allTitle=tv("Todos los coches",14,blue);allTitle.setTypeface(null,Typeface.BOLD);allTitle.setPadding(dp(4),dp(16),dp(4),dp(8));results.addView(allTitle);
+                    popularSection=false;
+                }
+                if(showingPopular && isPopular && lastGroup.equals("")){
+                    TextView popTitle=tv("Más buscados",14,blue);popTitle.setTypeface(null,Typeface.BOLD);popTitle.setPadding(dp(4),dp(8),dp(4),dp(8));results.addView(popTitle);
+                }
+                if(!showingPopular || !isPopular){
+                    if(!group.equals(lastGroup)){TextView g=tv(group,15,text());g.setTypeface(null,Typeface.BOLD);g.setPadding(dp(4),dp(10),dp(4),dp(4));results.addView(g);lastGroup=group;}
+                }
+                TextView item=tv(vehicleSearchLabel(v),15,text());item.setGravity(Gravity.CENTER_VERTICAL);item.setPadding(dp(12),0,dp(8),0);item.setBackgroundColor((results.getChildCount()%2==0)?rowAlt():Color.TRANSPARENT);
+                item.setOnClickListener(x->{if(selectedIds.size()>=3){Toast.makeText(this,"Máximo 3 coches",Toast.LENGTH_SHORT).show();return;}if(!selectedIds.contains(v.id)){selectedIds.add(v.id);saveSelection();rebuild();dialog.dismiss();}});
+                results.addView(item,new LinearLayout.LayoutParams(-1,dp(48)));
+            }
+            if(ordered.isEmpty()){TextView empty=tv("No se han encontrado coches.",14,sub());empty.setGravity(Gravity.CENTER);empty.setPadding(dp(8),dp(24),dp(8),dp(24));results.addView(empty,new LinearLayout.LayoutParams(-1,dp(80)));}
+        };
+        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onItemSelected(android.widget.AdapterView<?> p,View v,int pos,long id){if(pos>=0&&pos<ms.size()){selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();refresh.run();}}public void onNothingSelected(android.widget.AdapterView<?> p){}});
+        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){refresh.run();}public void afterTextChanged(Editable e){}});
+        dialog.setOnShowListener(x->{dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);refresh.run();});
+        dialog.show();
+    }
+'''
+          s = s[:start] + replacement + s[end:]
+          p.write_text(s)
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "Improve compare car search ordering"
+          git push origin main
