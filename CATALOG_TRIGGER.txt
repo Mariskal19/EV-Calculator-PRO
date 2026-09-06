@@ -1,2 +1,2 @@
 Vehicle catalog merge trigger.
-Final validation trigger updated 2026-09-06.
+Final canonical catalog build trigger 2026-09-06.
