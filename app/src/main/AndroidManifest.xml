@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".AppMenuApplication"
         android:theme="@style/Theme.EVChargeCalculator"
@@ -18,6 +19,7 @@
         </activity>
         <activity android:name=".PersistentMainActivity" android:screenOrientation="portrait" android:exported="false" />
         <activity android:name=".ElectricVsCombustionActivity" android:screenOrientation="portrait" android:exported="false" />
+        <activity android:name=".CompararCochesActivity" android:screenOrientation="portrait" android:exported="false" />
         <activity android:name=".PrivacyMainActivity" android:screenOrientation="portrait" android:exported="false" />
         <activity android:name=".ConfigurationActivity" android:screenOrientation="portrait" android:exported="false" />
     </application>
