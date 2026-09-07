@@ -9,13 +9,12 @@ permissions:
 
 jobs:
   fix:
-    if: ${{ !contains(github.event.head_commit.message, 'fix: normalize comparison consumption field') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Apply compatibility fix and remove temporary workflow
+      - name: Apply fix and remove temporary workflow
         shell: bash
         run: |
           set -euo pipefail
@@ -25,13 +24,15 @@ jobs:
           s = p.read_text(encoding='utf-8')
           old = '            consumption = o.optDouble("consumption", 0);'
           new = '''            consumption = o.optDouble("consumption", 0);\n            if (consumption <= 0) {\n                consumption = o.optDouble("consumptionKwh100", 0);\n            }'''
-          if old not in s:
-              raise SystemExit('Expected consumption parser line not found')
-          p.write_text(s.replace(old, new, 1), encoding='utf-8')
+          if old in s:
+              p.write_text(s.replace(old, new, 1), encoding='utf-8')
           PY
           rm -f .github/workflows/fix-consumption.yml
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java .github/workflows/fix-consumption.yml
-          git commit -m 'fix: normalize comparison consumption field'
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m 'fix: read consumptionKwh100 in comparison'
           git push
