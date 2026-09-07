@@ -331,7 +331,7 @@ public class CompararCochesActivity extends Activity {
         if (statusBarId > 0) {
             statusBarHeight = getResources().getDimensionPixelSize(statusBarId);
         }
-        root.setPadding(0, statusBarHeight, 0, 0);
+        root.setPadding(0, 0, 0, 0);
         root.setBackgroundColor(dark ? Color.rgb(7, 19, 28) : Color.rgb(241, 246, 251));
 
         FrameLayout hero = new FrameLayout(this);
