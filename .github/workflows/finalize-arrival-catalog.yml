@@ -5,6 +5,7 @@ on:
     branches: [catalogo-espana-2024-2026]
     paths:
       - 'app/src/main/assets/vehicle_arrival_overrides_ES_2024_2026.json'
+      - '.github/workflows/finalize-arrival-catalog.yml'
   workflow_dispatch:
 
 permissions:
