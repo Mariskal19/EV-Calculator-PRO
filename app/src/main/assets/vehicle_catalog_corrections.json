@@ -1,8 +1,0 @@
-{
-  "schemaVersion": 1,
-  "datasetVersion": "1.6.0",
-  "marketDefault": "ES",
-  "vehicles": [
-    {"id":"hyundai-ioniq6-long-range-awd","make":"Hyundai","model":"IONIQ 6","version":"84 kWh Long Range AWD","year":2026,"market":"ES","price":null,"currency":"EUR","batteryKwh":84,"usableBatteryKwh":null,"batteryType":"NMC","wltpKm":583,"consumptionKwh100":null,"powerKw":239,"drivetrain":"AWD","acKw":11,"dcKw":350,"charge10to80Min":18,"acceleration0to100Sec":5.1,"trunkLiters":401,"weightKg":null,"photo":null,"source":"Hyundai España","lastUpdated":"2026-09-06"}
-  ]
-}
