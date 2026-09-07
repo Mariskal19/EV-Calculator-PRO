@@ -1,0 +1,70 @@
+{
+  "researchVersion": "2.0.0",
+  "market": "ES",
+  "method": {
+    "table1": "Original source records from vehicle_variants.json; no internet research used to determine arrival year.",
+    "table2": "Independent Spanish-market research. arrivalYear means first real commercialization/market launch in Spain, not the year field supplied by the source JSON.",
+    "table3": "Only records whose first Spanish commercialization is 2024, 2025 or 2026.",
+    "table4": "Technical characteristics researched for the exact Spanish-market configuration and historical commercialization period; current/newer configurations are not substituted."
+  },
+  "table1_sourceRecords": [
+    {"id":"xpeng-g6-rwd-standard-range","make":"XPeng","model":"G6","version":"RWD Standard Range","sourceMarket":"ES","sourceYear":2024},
+    {"id":"xpeng-g6-rwd-long-range","make":"XPeng","model":"G6","version":"RWD Long Range","sourceMarket":"ES","sourceYear":2024},
+    {"id":"xpeng-g6-performance-awd","make":"XPeng","model":"G6","version":"Performance AWD","sourceMarket":"ES","sourceYear":2024},
+    {"id":"xpeng-g6-long-range-us","make":"XPeng","model":"G6","version":"Long Range","sourceMarket":"US","sourceYear":2026},
+    {"id":"xpeng-g6-long-range-de","make":"XPeng","model":"G6","version":"Long Range","sourceMarket":"DE","sourceYear":2026},
+    {"id":"xpeng-g6-long-range-fr","make":"XPeng","model":"G6","version":"Long Range","sourceMarket":"FR","sourceYear":2026},
+    {"id":"xpeng-g6-long-range-it","make":"XPeng","model":"G6","version":"Long Range","sourceMarket":"IT","sourceYear":2026},
+    {"id":"xpeng-g6-long-range-gb","make":"XPeng","model":"G6","version":"Long Range","sourceMarket":"GB","sourceYear":2026},
+    {"id":"xpeng-g9-rwd-standard-range","make":"XPeng","model":"G9","version":"RWD Standard Range","sourceMarket":"ES","sourceYear":2024},
+    {"id":"xpeng-g9-rwd-long-range","make":"XPeng","model":"G9","version":"RWD Long Range","sourceMarket":"ES","sourceYear":2024},
+    {"id":"xpeng-g9-performance-awd","make":"XPeng","model":"G9","version":"AWD Performance","sourceMarket":"ES","sourceYear":2024},
+    {"id":"xpeng-p7plus-rwd-standard-range","make":"XPeng","model":"P7+","version":"RWD Standard Range","sourceMarket":"ES","sourceYear":2026},
+    {"id":"xpeng-p7plus-rwd-long-range","make":"XPeng","model":"P7+","version":"RWD Long Range","sourceMarket":"ES","sourceYear":2026},
+    {"id":"xpeng-p7plus-awd-performance","make":"XPeng","model":"P7+","version":"AWD Performance","sourceMarket":"ES","sourceYear":2026}
+  ],
+  "table2_spainArrivalResearch": [
+    {"key":"XPeng|G6|RWD Standard Range","firstArrivalSpain":2024,"commercialPeriodSpain":"09/2024-09/2025","result":"ACTIVE_TABLE3","evidence":["https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf","https://www.km77.com/coches/xpeng/g6/2023/estandar"]},
+    {"key":"XPeng|G6|RWD Long Range","firstArrivalSpain":2024,"commercialPeriodSpain":"09/2024-09/2025","result":"ACTIVE_TABLE3","evidence":["https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf","https://www.km77.com/coches/xpeng/g6/2023/estandar/estandar/g6-rwd-long-range/datos"]},
+    {"key":"XPeng|G6|Performance AWD","firstArrivalSpain":2024,"commercialPeriodSpain":"09/2024-09/2025","result":"ACTIVE_TABLE3","evidence":["https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf","https://www.km77.com/coches/xpeng/g6/2023/estandar"]},
+    {"key":"XPeng|G9|RWD Standard Range","firstArrivalSpain":2024,"commercialPeriodSpain":"09/2024-09/2025","result":"ACTIVE_TABLE3","evidence":["https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf","https://www.km77.com/coches/xpeng/g9/2022/estandar/listado-completo"]},
+    {"key":"XPeng|G9|RWD Long Range","firstArrivalSpain":2024,"commercialPeriodSpain":"09/2024-09/2025","result":"ACTIVE_TABLE3","evidence":["https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf","https://www.km77.com/coches/xpeng/g9/2022/estandar/listado-completo"]},
+    {"key":"XPeng|G9|AWD Performance","firstArrivalSpain":2024,"commercialPeriodSpain":"09/2024-09/2025","result":"ACTIVE_TABLE3","evidence":["https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf","https://www.km77.com/coches/xpeng/g9/2022/estandar/listado-completo"]},
+    {"key":"XPeng|P7+|RWD Standard Range","firstArrivalSpain":2026,"commercialPeriodSpain":"05/2026-","result":"ACTIVE_TABLE3","evidence":["https://www.km77.com/coches/xpeng/p7plus/2026/estandar/informacion","https://www.km77.com/coches/xpeng/p7plus/2026/datos"]},
+    {"key":"XPeng|P7+|RWD Long Range","firstArrivalSpain":2026,"commercialPeriodSpain":"05/2026-","result":"ACTIVE_TABLE3","evidence":["https://www.km77.com/coches/xpeng/p7plus/2026/estandar/informacion","https://www.km77.com/coches/xpeng/p7plus/2026/estandar/estandar/p7-plus-rwd-long-range/datos"]},
+    {"key":"XPeng|P7+|AWD Performance","firstArrivalSpain":2026,"commercialPeriodSpain":"05/2026-","result":"ACTIVE_TABLE3","evidence":["https://www.km77.com/coches/xpeng/p7plus/2026/estandar/informacion","https://www.km77.com/coches/xpeng/p7plus/2026/estandar/datos"]}
+  ],
+  "table2Interpretation": {
+    "important": "The G6 and G9 source JSON year=2024 is consistent with the independently researched Spanish arrival year, but it was NOT used as evidence. The G6 Long Range records in US/DE/FR/IT/GB have sourceYear=2026 but represent the same model/version family; for the Spanish market, the independently established first arrival remains 2024.",
+    "historicalSeparation": "The G6/G9 configurations sold from 09/2024 to 09/2025 must not be populated with the newer 2025/2026 configurations. KM77 explicitly separates the periods."
+  },
+  "table3_activeSpainRecords": [
+    {"make":"XPeng","model":"G6","version":"RWD Standard Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025"},
+    {"make":"XPeng","model":"G6","version":"RWD Long Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025"},
+    {"make":"XPeng","model":"G6","version":"AWD Performance","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025"},
+    {"make":"XPeng","model":"G9","version":"RWD Standard Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025"},
+    {"make":"XPeng","model":"G9","version":"RWD Long Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025"},
+    {"make":"XPeng","model":"G9","version":"AWD Performance","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025"},
+    {"make":"XPeng","model":"P7+","version":"RWD Standard Range","arrivalYear":2026,"configurationPeriod":"05/2026-"},
+    {"make":"XPeng","model":"P7+","version":"RWD Long Range","arrivalYear":2026,"configurationPeriod":"05/2026-"},
+    {"make":"XPeng","model":"P7+","version":"AWD Performance","arrivalYear":2026,"configurationPeriod":"05/2026-"}
+  ],
+  "table4_historicalTechnicalResearch": [
+    {"make":"XPeng","model":"G6","version":"RWD Standard Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025","batteryKwhGross":66.0,"usableBatteryKwh":null,"batteryType":"LFP","wltpKm":435,"consumptionKwh100":17.5,"powerKw":190,"powerCv":258,"drivetrain":"RWD","acKw":11,"dcKw":215,"charge10to80Min":20,"acceleration0to100Sec":6.6,"trunkLiters":571,"source":"KM77 historical Spanish-market technical sheet","evidence":["https://www.km77.com/coches/xpeng/g6/2023/estandar/estandar/g6-rwd-standard-range/datos"]},
+    {"make":"XPeng","model":"G6","version":"RWD Long Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025","batteryKwhGross":87.5,"usableBatteryKwh":87.5,"batteryType":"NMC","wltpKm":570,"consumptionKwh100":17.5,"powerKw":210,"powerCv":286,"drivetrain":"RWD","acKw":11,"dcKw":280,"charge10to80Min":20,"acceleration0to100Sec":6.2,"trunkLiters":571,"source":"KM77 historical Spanish-market technical sheet; XPENG technical data for chemistry","evidence":["https://www.km77.com/coches/xpeng/g6/2023/estandar/estandar/g6-rwd-long-range/datos","https://www.xpeng.com/news/0192330737c992323ad58a02821f01bf"]},
+    {"make":"XPeng","model":"G6","version":"AWD Performance","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025","batteryKwhGross":87.5,"usableBatteryKwh":87.5,"batteryType":"NMC","wltpKm":550,"consumptionKwh100":17.9,"powerKw":350,"powerCv":476,"drivetrain":"AWD","acKw":11,"dcKw":280,"charge10to80Min":20,"acceleration0to100Sec":4.1,"trunkLiters":571,"source":"KM77 historical Spanish-market technical sheet","evidence":["https://www.km77.com/coches/xpeng/g6/2023/estandar"]},
+    {"make":"XPeng","model":"G9","version":"RWD Standard Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025","batteryKwhGross":78.2,"usableBatteryKwh":75.8,"batteryType":"LFP","wltpKm":460,"consumptionKwh100":19.4,"powerKw":230,"powerCv":313,"drivetrain":"RWD","acKw":11,"dcKw":260,"charge10to80Min":20,"acceleration0to100Sec":6.4,"trunkLiters":731,"source":"KM77 historical Spanish-market technical sheet; official XPENG MY2024 data cross-check","evidence":["https://www.km77.com/coches/xpeng/g9/2022/estandar/listado-completo"]},
+    {"make":"XPeng","model":"G9","version":"RWD Long Range","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025","batteryKwhGross":98.0,"usableBatteryKwh":93.1,"batteryType":"NMC","wltpKm":570,"consumptionKwh100":19.4,"powerKw":230,"powerCv":313,"drivetrain":"RWD","acKw":11,"dcKw":300,"charge10to80Min":20,"acceleration0to100Sec":6.4,"trunkLiters":731,"source":"KM77 historical Spanish-market technical sheet","evidence":["https://www.km77.com/coches/xpeng/g9/2022/estandar/estandar/g9-rwd-long-range2/datos"]},
+    {"make":"XPeng","model":"G9","version":"AWD Performance","arrivalYear":2024,"configurationPeriod":"09/2024-09/2025","batteryKwhGross":98.0,"usableBatteryKwh":93.1,"batteryType":"NMC","wltpKm":520,"consumptionKwh100":21.3,"powerKw":405,"powerCv":551,"drivetrain":"AWD","acKw":11,"dcKw":300,"charge10to80Min":20,"acceleration0to100Sec":4.4,"trunkLiters":731,"source":"KM77 historical Spanish-market technical sheet","evidence":["https://www.km77.com/coches/xpeng/g9/2022/estandar/listado-completo"]},
+    {"make":"XPeng","model":"P7+","version":"RWD Standard Range","arrivalYear":2026,"configurationPeriod":"05/2026-","batteryKwhGross":61.7,"usableBatteryKwh":null,"batteryType":"LFP","wltpKm":455,"consumptionKwh100":15.2,"powerKw":180,"powerCv":245,"drivetrain":"RWD","acKw":11,"dcKw":350,"charge10to80Min":20,"acceleration0to100Sec":6.9,"trunkLiters":573,"source":"KM77 Spanish-market 2026 technical sheet","evidence":["https://www.km77.com/coches/xpeng/p7plus/2026/estandar/estandar/p7-plus-rwd-standard-range/datos"]},
+    {"make":"XPeng","model":"P7+","version":"RWD Long Range","arrivalYear":2026,"configurationPeriod":"05/2026-","batteryKwhGross":74.9,"usableBatteryKwh":null,"batteryType":"LFP","wltpKm":530,"consumptionKwh100":16.4,"powerKw":230,"powerCv":313,"drivetrain":"RWD","acKw":11,"dcKw":446,"charge10to80Min":12,"acceleration0to100Sec":6.2,"trunkLiters":573,"source":"KM77 Spanish-market 2026 technical sheet","evidence":["https://www.km77.com/coches/xpeng/p7plus/2026/estandar/estandar/p7-plus-rwd-long-range/datos"]},
+    {"make":"XPeng","model":"P7+","version":"AWD Performance","arrivalYear":2026,"configurationPeriod":"05/2026-","batteryKwhGross":74.9,"usableBatteryKwh":null,"batteryType":"LFP","wltpKm":500,"consumptionKwh100":17.4,"powerKw":370,"powerCv":503,"drivetrain":"AWD","acKw":11,"dcKw":446,"charge10to80Min":12,"acceleration0to100Sec":4.3,"trunkLiters":573,"source":"KM77 Spanish-market 2026 technical sheet","evidence":["https://www.km77.com/coches/xpeng/p7plus/2026/estandar/datos"]}
+  ],
+  "knownDoNotMix": [
+    "Do not use the newer 2025/2026 G6 configuration to populate the 2024 G6 records.",
+    "Do not use the newer 2025/2026 G9 configuration to populate the 2024 G9 records.",
+    "The P7+ is a distinct model from the P7 and arrived in Spain in May 2026; it must not inherit P7 technical data.",
+    "The source JSON values are provenance inputs, not evidence for Spanish arrival year."
+  ],
+  "validationStatus": "XPENG pilot rebuilt with independent Spanish arrival research; app catalog JSON files not modified by this research commit."
+}
