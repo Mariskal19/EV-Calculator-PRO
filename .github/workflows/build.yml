@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -20,73 +20,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-
-      - name: Apply verified Spanish market arrival years
-        shell: python
-        run: |
-          import json, re, unicodedata
-          from pathlib import Path
-
-          inv = json.loads(Path('app/src/main/assets/vehicle_inventory.json').read_text(encoding='utf-8'))
-          path = Path('app/src/main/assets/vehicle_variants.json')
-          raw = path.read_text(encoding='utf-8').lstrip('\ufeff \t\r\n')
-          data, end = json.JSONDecoder().raw_decode(raw)
-          trailing = raw[end:].strip()
-          if trailing:
-              print(f'Ignoring {len(trailing)} trailing characters after the first JSON document; repairing catalog.')
-
-          def norm(v):
-              v = '' if v is None else str(v)
-              v = unicodedata.normalize('NFKD', v)
-              v = ''.join(c for c in v if not unicodedata.combining(c))
-              v = v.lower().replace('–','-').replace('—','-')
-              return re.sub(r'\s+', ' ', v).strip()
-
-          lookup = {}
-          for brand in inv.get('inventory', []):
-              make = norm(brand.get('make'))
-              for model in brand.get('models', []):
-                  arrival = model.get('arrivalYear')
-                  for version in model.get('versions', []):
-                      lookup[(make, norm(model.get('model')), norm(version))] = arrival
-
-          unmatched = []
-          matched = 0
-          for v in data.get('vehicles', []):
-              market = norm(v.get('market', v.get('mercado', 'ES'))).upper()
-              if market != 'ES':
-                  continue
-              key = (norm(v.get('make', v.get('brand', ''))), norm(v.get('model', '')), norm(v.get('version', v.get('trim', ''))))
-              arrival = lookup.get(key)
-              if arrival is None:
-                  # No verified arrival year: never expose the old model/technical year as arrival year.
-                  v['year'] = 0
-                  v['arrivalYear'] = None
-                  unmatched.append(key)
-              else:
-                  v['year'] = int(arrival)
-                  v['arrivalYear'] = int(arrival)
-                  matched += 1
-
-          print(f'Matched Spanish variants: {matched}')
-          print(f'Spanish variants without a verified arrival year: {len(unmatched)}')
-          for item in unmatched:
-              print('NO VERIFIED YEAR:', item)
-
-          data['datasetVersion'] = '2.1.0'
-          data['arrivalYearSource'] = 'vehicle_inventory.json'
-          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-
-      - name: Commit arrival-year migration
-        shell: bash
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/src/main/assets/vehicle_variants.json
-          if ! git diff --cached --quiet; then
-            git commit -m 'feat: use verified Spanish market arrival years'
-            git push
-          fi
 
       - name: Set up Java 17
         uses: actions/setup-java@v5
