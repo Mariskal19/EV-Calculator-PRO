@@ -1,0 +1,101 @@
+name: finalize-arrival-catalog
+
+on:
+  push:
+    branches: [catalogo-espana-2024-2026]
+    paths:
+      - 'app/src/main/assets/vehicle_arrival_overrides_ES_2024_2026.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Apply verified Spain arrival years
+        shell: python
+        run: |
+          import json, re, unicodedata
+          from pathlib import Path
+
+          assets = Path('app/src/main/assets')
+          variants_path = assets / 'vehicle_variants.json'
+          rules_path = assets / 'vehicle_arrival_overrides_ES_2024_2026.json'
+
+          rules = json.loads(rules_path.read_text(encoding='utf-8'))
+          allowed = set(rules['allowedArrivalYears'])
+          raw = rules['models']
+
+          def norm(s):
+              s = '' if s is None else str(s)
+              s = unicodedata.normalize('NFKD', s)
+              s = ''.join(c for c in s if not unicodedata.combining(c))
+              s = s.lower().replace('–','-').replace('—','-')
+              return re.sub(r'\s+', ' ', s).strip()
+
+          lookup = {(norm(k.split('|',1)[0]), norm(k.split('|',1)[1])): v for k,v in raw.items()}
+          data = json.loads(variants_path.read_text(encoding='utf-8'))
+          original = data.get('vehicles', [])
+          kept = []
+          dropped = []
+          unmatched_es = []
+
+          for v in original:
+              market = str(v.get('market') or 'ES').upper()
+              if market != 'ES':
+                  kept.append(v)
+                  continue
+
+              key = (norm(v.get('make')), norm(v.get('model')))
+              arrival = lookup.get(key, '__UNMATCHED__')
+              if arrival == '__UNMATCHED__':
+                  unmatched_es.append((v.get('make'), v.get('model'), v.get('version')))
+                  continue
+              if arrival not in allowed:
+                  dropped.append((v.get('make'), v.get('model'), v.get('version'), arrival))
+                  continue
+
+              v['year'] = int(arrival)
+              v['arrivalYear'] = int(arrival)
+              kept.append(v)
+
+          if unmatched_es:
+              print('UNMATCHED ES records:')
+              for item in unmatched_es:
+                  print(item)
+              raise SystemExit('Refusing to publish: every Spanish active record must have a verified arrival-year rule.')
+
+          data['datasetVersion'] = '2.2.0'
+          data['arrivalYearSource'] = 'vehicle_arrival_overrides_ES_2024_2026.json'
+          data['vehicles'] = kept
+          variants_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          print(f'Kept records: {len(kept)}')
+          print(f'Dropped pre-2024/unverified records: {len(dropped)}')
+
+      - name: Validate JSON
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          p = Path('app/src/main/assets/vehicle_variants.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          years = sorted({v.get('year') for v in d['vehicles'] if str(v.get('market') or 'ES').upper() == 'ES'})
+          bad = [v for v in d['vehicles'] if str(v.get('market') or 'ES').upper() == 'ES' and v.get('year') not in (2024,2025,2026)]
+          if bad or not set(years).issubset({2024,2025,2026}):
+              raise SystemExit(f'Invalid active ES years: {years}; bad={len(bad)}')
+          print(f'Validated {len(d["vehicles"])} total records; ES years={years}')
+
+      - name: Commit finalized catalog
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicle_variants.json
+          git diff --cached --quiet || git commit -m 'feat: finalize verified Spain arrival-year catalog'
+          git push
