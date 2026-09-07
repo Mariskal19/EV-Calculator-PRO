@@ -87,3 +87,7 @@ Ese commit corresponde a la versión 1.0.4 antes de los trabajos posteriores de 
 - ZIP: `EV-Calculator-PRO-v1.0.4-source.zip`
 - APK Release: `EV-Calculator-PRO-v1.0.4.apk`
 - AAB Release: `EV-Calculator-PRO-v1.0.4.aab`
+
+## Catálogo de mercado
+
+El catálogo maestro de España usa el año de **llegada del modelo al mercado español**, separado de los datos técnicos de año/modelo. Si el año de llegada no está verificado con suficiente seguridad, se deja sin dato.
