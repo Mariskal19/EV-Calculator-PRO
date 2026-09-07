@@ -1,0 +1,47 @@
+name: Fix comparison consumption
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+permissions:
+  contents: write
+jobs:
+  fix:
+    if: github.event.head_commit.message != 'data: fix comparison consumption catalog'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Complete missing comparison consumption
+        run: |
+          python3 - <<'PY'
+          import json
+          p='app/src/main/assets/vehicle_variants.json'
+          with open(p,encoding='utf-8') as f: d=json.load(f)
+          known={
+          'audi-q6-sportback-e-tron-performance':15.5,'audi-q6-suv-e-tron-quattro':17.2,'audi-s6-avant-e-tron':15.8,'audi-s6-sportback-e-tron':15.4,'audi-sq6-sportback-e-tron':17.5,'audi-sq6-suv-e-tron':17.9,
+          'byd-atto-2-active':16.0,'byd-atto-2-boost':16.0,'byd-atto3-evo-design':15.9,'byd-atto3-evo-excellence':16.8,'byd-dolphin-comfort':14.1,'byd-dolphin-design':14.1,'byd-seal-comfort':14.8,'byd-seal-design':16.6,'byd-seal-u-comfort':19.9,'byd-seal-u-design':20.5,'byd-sealion-7-comfort':19.9,'byd-tang':23.6,
+          'hyundai-ioniq5-standard-range-rwd':16.7,'hyundai-ioniq5-long-range-rwd':16.7,'hyundai-ioniq5-long-range-awd':17.0,'hyundai-ioniq5-long-range-rwd-us':16.7,'hyundai-ioniq5-n':21.2,'hyundai-ioniq6-standard-range-rwd':13.9,'hyundai-ioniq6-long-range-awd':14.9,'hyundai-ioniq9-awd':20.6,'hyundai-ioniq9-awd-performance':21.2,'hyundai-kona-electric-48':14.7,'hyundai-kona-electric-65-4':15.7,
+          'kia-ev2-air':15.0,'kia-ev2-earth':15.1,'kia-ev4-fastback-58':14.3,'kia-ev4-fastback-81':14.4,'kia-ev4-hatchback-58':14.7,'kia-ev4-hatchback-81':14.6,'kia-ev6-long-range-rwd-de':16.0,'kia-ev6-long-range-rwd-us':16.0,'kia-ev6-gt':20.6,'kia-ev9-air-76':19.1,'kia-ev9-earth-99-awd':20.0,'kia-ev9-earth-99-rwd':18.7,'kia-ev9-gt-line-99-awd':20.1,
+          'mercedes-g-class-electric':28.9,'mercedes-eqe-350-plus':16.0,'mercedes-eqe-suv-350-plus':18.1,'mercedes-eqs-450-plus':16.8,'mercedes-eqs-suv-450-plus':18.0,'mercedes-gla-electric':15.5,'mercedes-glb-electric':16.0,'mercedes-glc-electric':16.8,
+          'renault-4-e-tech-evolution-40':14.7,'renault-4-e-tech-evolution-52':14.8,'renault-4-e-tech-iconic-52':14.8,'renault-4-e-tech-techno-52':14.8,'renault-5-e-tech-40':14.5,'skoda-enyaq-60':15.0,'skoda-enyaq-85x':16.5,'toyota-c-hr-plus-343-spirit-awd':17.0,
+          'volkswagen-idbuzz-pro':20.7,'volkswagen-id3-gtx':16.0,'volkswagen-id4-pure':16.0,'volkswagen-id4-gtx':17.2,'volkswagen-id4-pro-us':14.8,'volkswagen-id5-pro':15.5,'volkswagen-id5-gtx':17.0,'volkswagen-id7-pro':14.2,'volkswagen-id7-gtx':16.0,'volkswagen-id7-pro-s':13.7,'volkswagen-id7-tourer-pro':14.8,'volkswagen-id7-tourer-gtx':16.3,'volkswagen-id7-tourer-pro-s':14.0,
+          'xpeng-g6-rwd-standard-range':16.1,'xpeng-g6-long-range-us':17.5,'xpeng-g6-long-range-de':17.5,'xpeng-g6-long-range-fr':17.5,'xpeng-g6-long-range-it':17.5,'xpeng-g6-long-range-gb':17.5,'xpeng-g6-performance-awd':20.0,'xpeng-g6-rwd-long-range':17.5,'xpeng-p7plus-rwd-standard-range':15.0,'xpeng-p7plus-awd-performance':16.8,'xpeng-p7plus-rwd-long-range':15.5,
+          'tesla-model-3-performance-awd':16.7,'tesla-model-3-rwd':13.2,'tesla-model-3-rwd-us':13.2,'tesla-model-y-performance-awd':18.0,'tesla-model-y-premium-long-range-awd':15.4,'tesla-model-y-premium-long-range-rwd':14.2,'tesla-model-y-rwd':15.0,'tesla-model-y-rwd-us':15.0,'tesla-model-y-rwd-de':15.0,'tesla-model-y-rwd-fr':15.0,'tesla-model-y-rwd-it':15.0,'tesla-model-y-rwd-gb':15.0}
+          changed=0
+          for v in d.get('vehicles',[]):
+            if v.get('consumptionKwh100') is None:
+              val=known.get(v.get('id'))
+              if val is None and v.get('batteryKwh') and v.get('wltpKm'):
+                val=round(v['batteryKwh']/v['wltpKm']*100,1)
+              if val is not None:
+                v['consumptionKwh100']=val; v['lastUpdated']='2026-09-07'; changed+=1
+          with open(p,'w',encoding='utf-8') as f: json.dump(d,f,ensure_ascii=False,indent=2); f.write('\n')
+          print('Updated',changed)
+          PY
+      - name: Commit catalog
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicle_variants.json
+          git diff --cached --quiet || git commit -m 'data: fix comparison consumption catalog'
+          git push
