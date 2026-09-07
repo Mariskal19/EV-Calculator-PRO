@@ -1,0 +1,32 @@
+name: Catalog inventory extraction
+on:
+  push:
+    branches: [catalogo-espana-final-2026-09-07]
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract inventory
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          out=[]
+          for fn in ['app/src/main/assets/vehicles.json','app/src/main/assets/vehicle_variants.json']:
+              d=json.loads(Path(fn).read_text())
+              for v in d.get('vehicles',[]):
+                  out.append({k:v.get(k) for k in ['id','make','model','version','year','market','arrivalYear','batteryKwh','usableBatteryKwh','batteryType','powerKw','drivetrain','wltpKm','consumptionKwh100','acKw','dcKw','charge10to80Min','acceleration0to100Sec','trunkLiters']})
+          Path('catalog_inventory.json').write_text(json.dumps(out,ensure_ascii=False,indent=2))
+          from collections import Counter
+          c=Counter((x['make'],x['model']) for x in out)
+          with Path('catalog_inventory.md').open('w') as f:
+              f.write('# SOURCE INVENTORY\n\n')
+              for (make,model),n in sorted(c.items()): f.write(f'- {make} | {model} | {n} source records\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-inventory
+          path: |
+            catalog_inventory.json
+            catalog_inventory.md
