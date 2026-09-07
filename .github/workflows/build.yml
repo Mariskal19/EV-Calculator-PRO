@@ -29,7 +29,11 @@ jobs:
 
           inv = json.loads(Path('app/src/main/assets/vehicle_inventory.json').read_text(encoding='utf-8'))
           path = Path('app/src/main/assets/vehicle_variants.json')
-          data = json.loads(path.read_text(encoding='utf-8'))
+          raw = path.read_text(encoding='utf-8').lstrip('\ufeff \t\r\n')
+          data, end = json.JSONDecoder().raw_decode(raw)
+          trailing = raw[end:].strip()
+          if trailing:
+              print(f'Ignoring {len(trailing)} trailing characters after the first JSON document; repairing catalog.')
 
           def norm(v):
               v = '' if v is None else str(v)
