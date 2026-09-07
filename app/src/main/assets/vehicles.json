@@ -68,7 +68,7 @@
       "usableBatteryKwh": null,
       "batteryType": null,
       "wltpKm": 607,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.7,
       "powerKw": 165,
       "drivetrain": null,
       "acKw": 22,
@@ -79,7 +79,7 @@
       "weightKg": null,
       "photo": null,
       "source": null,
-      "lastUpdated": null
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "byd-atto-2-comfort",
@@ -94,7 +94,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 430,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.1,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -105,7 +105,7 @@
       "weightKg": 1720,
       "photo": null,
       "source": "BYD España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "renault-5-e-tech-52",
@@ -120,7 +120,7 @@
       "usableBatteryKwh": 52.0,
       "batteryType": null,
       "wltpKm": 410,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.7,
       "powerKw": 110,
       "drivetrain": "FWD",
       "acKw": null,
@@ -131,7 +131,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "skoda-elroq-85",
@@ -302,7 +302,7 @@
       "usableBatteryKwh": 77.0,
       "batteryType": "NMC",
       "wltpKm": 550,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.0,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -313,7 +313,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "audi-q4-e-tron-40",
@@ -328,7 +328,7 @@
       "usableBatteryKwh": 59.0,
       "batteryType": "NMC",
       "wltpKm": 410,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.4,
       "powerKw": 150,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -339,7 +339,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España + Audi MediaCenter + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "bmw-ix1-edrive20",
@@ -406,7 +406,7 @@
       "usableBatteryKwh": 87.0,
       "batteryType": null,
       "wltpKm": 606,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.4,
       "powerKw": 160,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -418,7 +418,7 @@
       "weightKg": 1853,
       "photo": null,
       "source": "Renault España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "hyundai-ioniq-5-long-range-rwd",
@@ -433,7 +433,7 @@
       "usableBatteryKwh": null,
       "batteryType": null,
       "wltpKm": 570,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.7,
       "powerKw": 168,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -444,7 +444,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "byd-sealion-7-comfort",
@@ -511,7 +511,7 @@
       "usableBatteryKwh": 49.0,
       "batteryType": null,
       "wltpKm": 370,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.2,
       "powerKw": 71,
       "drivetrain": "FWD",
       "acKw": null,
@@ -522,7 +522,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "bmw-ix2-edrive20",
@@ -537,7 +537,7 @@
       "usableBatteryKwh": 65.2,
       "batteryType": "NMC811",
       "wltpKm": 516,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.9,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -548,7 +548,7 @@
       "weightKg": 1960,
       "photo": null,
       "source": "BMW España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "toyota-bz4x-250-4x2-advance",
@@ -589,7 +589,7 @@
       "usableBatteryKwh": 53.5,
       "batteryType": "LFP",
       "wltpKm": 409,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.2,
       "powerKw": 83,
       "drivetrain": "FWD",
       "acKw": null,
@@ -600,7 +600,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Opel España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "mini-aceman-se",
@@ -615,7 +615,7 @@
       "usableBatteryKwh": 49.0,
       "batteryType": null,
       "wltpKm": 406,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.1,
       "powerKw": 160,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -626,7 +626,7 @@
       "weightKg": null,
       "photo": null,
       "source": "MINI España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "jeep-avenger-electric",
@@ -641,7 +641,7 @@
       "usableBatteryKwh": 51.0,
       "batteryType": "NMC",
       "wltpKm": 400,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.5,
       "powerKw": 115,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -652,7 +652,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Jeep España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "volkswagen-id3-pro-s",
@@ -667,7 +667,7 @@
       "usableBatteryKwh": 77.0,
       "batteryType": "NMC",
       "wltpKm": 550,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.0,
       "powerKw": 170,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -678,7 +678,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "kia-ev6-long-range-rwd",
@@ -719,7 +719,7 @@
       "usableBatteryKwh": 65.4,
       "batteryType": "Li-ion",
       "wltpKm": 514,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.7,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 10.5,
@@ -730,7 +730,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "kia-ev4-hatchback-81",
@@ -745,7 +745,7 @@
       "usableBatteryKwh": 78.0,
       "batteryType": "NMC",
       "wltpKm": 625,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.0,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -756,7 +756,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "skoda-enyaq-85",
@@ -797,7 +797,7 @@
       "usableBatteryKwh": 88.0,
       "batteryType": "Li-ion",
       "wltpKm": 600,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 16.4,
       "powerKw": 216,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -808,7 +808,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Ford España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "volkswagen-id7-tourer-pro-s",
@@ -823,7 +823,7 @@
       "usableBatteryKwh": 86.0,
       "batteryType": "NMC",
       "wltpKm": 690,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.2,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -834,7 +834,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España + EV Database",
-      "lastUpdated": "2026-09-05"
+      "lastUpdated": "2026-09-07"
     }
   ]
 }
