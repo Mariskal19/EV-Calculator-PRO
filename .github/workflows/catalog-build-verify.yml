@@ -1,0 +1,21 @@
+name: catalog-build-verify
+on:
+  push:
+    branches: [catalogo-espana-2024-2026]
+    paths:
+      - 'app/src/main/assets/vehicle_variants.json'
+      - '.github/workflows/catalog-build-verify.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Build debug APK
+        run: ./gradlew assembleDebug --stacktrace
