@@ -17,7 +17,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+      - uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '8.9'
       - name: Build debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: gradle --no-daemon assembleDebug
 
-# retrigger after finalized catalog
+# retrigger with Gradle 8.9
