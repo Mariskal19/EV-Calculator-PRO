@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": "2.0.0",
+  "datasetVersion": "2.1.0",
   "marketDefault": "ES",
   "vehicles": [
     {
@@ -8,7 +8,7 @@
       "make": "Audi",
       "model": "A6 Avant e-tron",
       "version": "Performance",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -27,14 +27,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "audi-a6-sportback-e-tron-performance",
       "make": "Audi",
       "model": "A6 Sportback e-tron",
       "version": "Performance",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -53,14 +54,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "audi-e-tron-gt-quattro",
       "make": "Audi",
       "model": "e-tron GT",
       "version": "quattro",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -79,14 +81,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "audi-rs-e-tron-gt",
       "make": "Audi",
       "model": "e-tron GT",
       "version": "RS e-tron GT",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -105,14 +108,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "audi-s-e-tron-gt",
       "make": "Audi",
       "model": "e-tron GT",
       "version": "S e-tron GT",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -131,14 +135,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "audi-q6-sportback-e-tron-performance",
       "make": "Audi",
       "model": "Q6 Sportback e-tron",
       "version": "Performance",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -157,14 +162,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "audi-q6-suv-e-tron-performance",
       "make": "Audi",
       "model": "Q6 SUV e-tron",
       "version": "Performance",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -183,14 +189,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "audi-q6-suv-e-tron-quattro",
       "make": "Audi",
       "model": "Q6 SUV e-tron",
       "version": "quattro",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -209,14 +216,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "audi-s6-avant-e-tron",
       "make": "Audi",
       "model": "S6 Avant e-tron",
       "version": "quattro",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -235,14 +243,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "audi-s6-sportback-e-tron",
       "make": "Audi",
       "model": "S6 Sportback e-tron",
       "version": "quattro",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -261,14 +270,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "audi-sq6-sportback-e-tron",
       "make": "Audi",
       "model": "SQ6 Sportback e-tron",
       "version": "quattro",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -287,14 +297,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "audi-sq6-suv-e-tron",
       "make": "Audi",
       "model": "SQ6 SUV e-tron",
       "version": "quattro",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -313,14 +324,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-atto-2-active",
       "make": "BYD",
       "model": "Atto 2",
       "version": "Active",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -339,14 +351,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "byd-atto-2-boost",
       "make": "BYD",
       "model": "Atto 2",
       "version": "Boost",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -365,14 +378,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "byd-atto3-comfort",
       "make": "BYD",
       "model": "Atto 3",
       "version": "Comfort",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": 38990,
       "currency": "EUR",
@@ -391,14 +405,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "byd-atto3-design",
       "make": "BYD",
       "model": "Atto 3",
       "version": "Design",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": 40990,
       "currency": "EUR",
@@ -417,7 +432,8 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "byd-atto3-evo-design",
@@ -443,7 +459,8 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2026
     },
     {
       "id": "byd-atto3-evo-excellence",
@@ -469,14 +486,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2026
     },
     {
       "id": "byd-dolphin-comfort",
       "make": "BYD",
       "model": "Dolphin",
       "version": "Comfort",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -495,14 +513,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "byd-dolphin-design",
       "make": "BYD",
       "model": "Dolphin",
       "version": "Design",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -521,14 +540,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "byd-dolphin-surf-active",
       "make": "BYD",
       "model": "Dolphin Surf",
       "version": "Active",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -547,14 +567,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "byd-dolphin-surf-boost",
       "make": "BYD",
       "model": "Dolphin Surf",
       "version": "Boost",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -573,14 +594,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "byd-dolphin-surf-comfort",
       "make": "BYD",
       "model": "Dolphin Surf",
       "version": "Comfort",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -599,14 +621,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "byd-seal-comfort",
       "make": "BYD",
       "model": "Seal",
       "version": "Comfort",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": 41990,
       "currency": "EUR",
@@ -625,14 +648,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-seal-design",
       "make": "BYD",
       "model": "Seal",
       "version": "Design",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": 49490,
       "currency": "EUR",
@@ -651,14 +675,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-seal-excellence",
       "make": "BYD",
       "model": "Seal",
       "version": "Excellence AWD",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": 52490,
       "currency": "EUR",
@@ -677,14 +702,15 @@
       "weightKg": 2260,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-seal-u-comfort",
       "make": "BYD",
       "model": "Seal U",
       "version": "Comfort",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -703,14 +729,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-seal-u-design",
       "make": "BYD",
       "model": "Seal U",
       "version": "Design",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -729,14 +756,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-sealion-7-comfort",
       "make": "BYD",
       "model": "Sealion 7",
       "version": "Comfort",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -755,14 +783,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-sealion-7-design",
       "make": "BYD",
       "model": "Sealion 7",
       "version": "Design",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": 51500,
       "currency": "EUR",
@@ -781,14 +810,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-sealion-7-excellence",
       "make": "BYD",
       "model": "Sealion 7",
       "version": "Excellence AWD",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": 54390,
       "currency": "EUR",
@@ -807,14 +837,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "byd-tang",
       "make": "BYD",
       "model": "Tang",
       "version": "EV AWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -833,14 +864,15 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "hyundai-inster-42-kwh",
       "make": "Hyundai",
       "model": "INSTER",
       "version": "42 kWh",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -859,14 +891,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "hyundai-inster-49-kwh",
       "make": "Hyundai",
       "model": "INSTER",
       "version": "49 kWh",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -885,14 +918,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "hyundai-ioniq5-standard-range-rwd",
       "make": "Hyundai",
       "model": "IONIQ 5",
       "version": "Standard Range RWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -911,14 +945,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "hyundai-ioniq5-long-range-rwd",
       "make": "Hyundai",
       "model": "IONIQ 5",
       "version": "84 kWh Long Range RWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -937,14 +972,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "hyundai-ioniq5-long-range-awd",
       "make": "Hyundai",
       "model": "IONIQ 5",
       "version": "Long Range AWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -963,7 +999,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "hyundai-ioniq5-long-range-rwd-us",
@@ -996,7 +1033,7 @@
       "make": "Hyundai",
       "model": "IONIQ 5 N",
       "version": "84 kWh AWD",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1015,14 +1052,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "hyundai-ioniq6-long-range-awd",
       "make": "Hyundai",
       "model": "IONIQ 6",
       "version": "84 kWh Long Range AWD",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "NMC",
@@ -1038,14 +1076,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "hyundai-ioniq6-standard-range-rwd",
       "make": "Hyundai",
       "model": "IONIQ 6",
       "version": "63 kWh Standard Range RWD",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1064,14 +1103,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "hyundai-ioniq6-long-range-awd",
       "make": "Hyundai",
       "model": "IONIQ 6",
       "version": "84 kWh Long Range AWD",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1089,14 +1129,15 @@
       "source": "Hyundai España",
       "lastUpdated": "2026-09-06",
       "batteryKwh": 84,
-      "batteryType": "NMC"
+      "batteryType": "NMC",
+      "arrivalYear": 2022
     },
     {
       "id": "hyundai-ioniq6-long-range-rwd",
       "make": "Hyundai",
       "model": "IONIQ 6",
       "version": "84 kWh Long Range RWD",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1114,14 +1155,15 @@
       "source": "Hyundai España",
       "lastUpdated": "2026-09-06",
       "batteryKwh": 84,
-      "batteryType": "NMC"
+      "batteryType": "NMC",
+      "arrivalYear": 2022
     },
     {
       "id": "hyundai-ioniq6-n-84-awd",
       "make": "Hyundai",
       "model": "IONIQ 6 N",
       "version": "84 kWh AWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1140,14 +1182,15 @@
       "weightKg": 2201,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "hyundai-ioniq9-awd",
       "make": "Hyundai",
       "model": "IONIQ 9",
       "version": "110.3 kWh AWD",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1166,14 +1209,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "hyundai-ioniq9-awd-performance",
       "make": "Hyundai",
       "model": "IONIQ 9",
       "version": "110.3 kWh AWD Performance",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1192,14 +1236,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "hyundai-ioniq9-rwd",
       "make": "Hyundai",
       "model": "IONIQ 9",
       "version": "110.3 kWh RWD",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1218,14 +1263,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "hyundai-kona-electric-48",
       "make": "Hyundai",
       "model": "KONA Electric",
       "version": "48.4 kWh",
-      "year": 2026,
+      "year": 2018,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1244,14 +1290,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2018
     },
     {
       "id": "hyundai-kona-electric-65-4",
       "make": "Hyundai",
       "model": "KONA Electric",
       "version": "65.4 kWh FWD",
-      "year": 2026,
+      "year": 2018,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1270,7 +1317,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2018
     },
     {
       "id": "kia-ev2-air",
@@ -1296,7 +1344,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2026
     },
     {
       "id": "kia-ev2-earth",
@@ -1322,14 +1371,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2026
     },
     {
       "id": "kia-ev2-earth",
       "make": "Kia",
       "model": "EV2",
       "version": "Earth 42.2 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1348,14 +1398,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev3-standard-range",
       "make": "Kia",
       "model": "EV3",
       "version": "Standard Range 58.3 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1374,14 +1425,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev3-air",
       "make": "Kia",
       "model": "EV3",
       "version": "Air 81.4 kWh Long Range",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1400,14 +1452,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev3-earth",
       "make": "Kia",
       "model": "EV3",
       "version": "Earth Long Range",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1426,14 +1479,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "kia-ev3-gt-line",
       "make": "Kia",
       "model": "EV3",
       "version": "GT-Line Long Range",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1452,14 +1506,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "kia-ev4-fastback-58",
       "make": "Kia",
       "model": "EV4 Fastback",
       "version": "58.3 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1478,14 +1533,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev4-fastback-81",
       "make": "Kia",
       "model": "EV4 Fastback",
       "version": "81.4 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1504,14 +1560,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev4-hatchback-58",
       "make": "Kia",
       "model": "EV4 Hatchback",
       "version": "58.3 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1530,14 +1587,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev4-hatchback-81",
       "make": "Kia",
       "model": "EV4 Hatchback",
       "version": "81.4 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1556,14 +1614,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev5-air",
       "make": "Kia",
       "model": "EV5",
       "version": "Air 81.4 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1582,14 +1641,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev5-earth",
       "make": "Kia",
       "model": "EV5",
       "version": "Earth 81.4 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1608,14 +1668,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev5-gt-line",
       "make": "Kia",
       "model": "EV5",
       "version": "GT-Line 81.4 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1634,14 +1695,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev6-air-rwd",
       "make": "Kia",
       "model": "EV6",
       "version": "Air Long Range RWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1660,7 +1722,8 @@
       "weightKg": 1975,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "kia-ev6-long-range-rwd-de",
@@ -1693,7 +1756,7 @@
       "make": "Kia",
       "model": "EV6",
       "version": "GT",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1712,14 +1775,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "kia-ev6-gt-line-rwd",
       "make": "Kia",
       "model": "EV6",
       "version": "GT-Line Long Range RWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1738,7 +1802,8 @@
       "weightKg": 1975,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "kia-ev6-long-range-rwd-us",
@@ -1771,7 +1836,7 @@
       "make": "Kia",
       "model": "EV9",
       "version": "Air 76.1 kWh RWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1790,14 +1855,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev9-earth-99-awd",
       "make": "Kia",
       "model": "EV9",
       "version": "Earth 99.8 kWh AWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1816,14 +1882,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev9-earth-99-rwd",
       "make": "Kia",
       "model": "EV9",
       "version": "Earth 99.8 kWh RWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1842,14 +1909,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "kia-ev9-gt-line-99-awd",
       "make": "Kia",
       "model": "EV9",
       "version": "GT-Line 99.8 kWh AWD",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1868,14 +1936,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "mercedes-cla-250-plus-electric",
       "make": "Mercedes-Benz",
       "model": "CLA",
       "version": "250+ eléctrico",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1894,14 +1963,15 @@
       "weightKg": 2070,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "mercedes-g-class-electric",
       "make": "Mercedes-Benz",
       "model": "Clase G",
       "version": "Eléctrico",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1920,14 +1990,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "mercedes-eqe-350-plus",
       "make": "Mercedes-Benz",
       "model": "EQE Berlina",
       "version": "350+",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1946,14 +2017,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "mercedes-eqe-suv-350-plus",
       "make": "Mercedes-Benz",
       "model": "EQE SUV",
       "version": "350+",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1972,14 +2044,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "mercedes-eqs-450-plus",
       "make": "Mercedes-Benz",
       "model": "EQS Berlina",
       "version": "450+",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -1998,14 +2071,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "mercedes-eqs-suv-450-plus",
       "make": "Mercedes-Benz",
       "model": "EQS SUV",
       "version": "450+",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2024,14 +2098,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "mercedes-gla-electric",
       "make": "Mercedes-Benz",
       "model": "GLA",
       "version": "Eléctrico",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2050,14 +2125,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "mercedes-glb-electric",
       "make": "Mercedes-Benz",
       "model": "GLB",
       "version": "Eléctrico",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2076,14 +2152,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "mercedes-glc-electric",
       "make": "Mercedes-Benz",
       "model": "GLC",
       "version": "Eléctrico",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2102,14 +2179,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-4-e-tech-evolution-40",
       "make": "Renault",
       "model": "4 E-Tech",
       "version": "evolution 40 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2128,14 +2206,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-4-e-tech-evolution-52",
       "make": "Renault",
       "model": "4 E-Tech",
       "version": "evolution 52 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2154,14 +2233,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-4-e-tech-iconic-52",
       "make": "Renault",
       "model": "4 E-Tech",
       "version": "iconic 52 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2180,14 +2260,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-4-e-tech-techno-52",
       "make": "Renault",
       "model": "4 E-Tech",
       "version": "techno 52 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2206,14 +2287,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-5-e-tech-40",
       "make": "Renault",
       "model": "5 E-Tech",
       "version": "40 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2232,14 +2314,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-megane-e-tech-esprit-alpine",
       "make": "Renault",
       "model": "Megane E-Tech",
       "version": "esprit Alpine 60 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2258,14 +2341,15 @@
       "weightKg": 1708,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-megane-e-tech-techno",
       "make": "Renault",
       "model": "Megane E-Tech",
       "version": "techno 60 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2284,14 +2368,15 @@
       "weightKg": 1708,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-scenic-e-tech-esprit-alpine",
       "make": "Renault",
       "model": "Scenic E-Tech",
       "version": "esprit Alpine 87 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2310,14 +2395,15 @@
       "weightKg": 1853,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-scenic-e-tech-iconic",
       "make": "Renault",
       "model": "Scenic E-Tech",
       "version": "iconic 87 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2336,14 +2422,15 @@
       "weightKg": 1853,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-scenic-e-tech-techno",
       "make": "Renault",
       "model": "Scenic E-Tech",
       "version": "techno 87 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2362,14 +2449,15 @@
       "weightKg": 1853,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-twingo-e-tech-evolution",
       "make": "Renault",
       "model": "Twingo E-Tech",
       "version": "evolution 27.5 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2388,14 +2476,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "renault-twingo-e-tech-techno",
       "make": "Renault",
       "model": "Twingo E-Tech",
       "version": "techno 27.5 kWh",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2414,14 +2503,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "skoda-enyaq-60",
       "make": "Skoda",
       "model": "Enyaq",
       "version": "60",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2440,14 +2530,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Škoda España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "skoda-enyaq-85x",
       "make": "Skoda",
       "model": "Enyaq",
       "version": "85x AWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2466,14 +2557,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Škoda España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "tesla-model-3-performance-awd",
       "make": "Tesla",
       "model": "Model 3",
       "version": "Performance AWD",
-      "year": 2026,
+      "year": 2019,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2492,14 +2584,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2019
     },
     {
       "id": "tesla-model-3-premium-long-range-awd",
       "make": "Tesla",
       "model": "Model 3",
       "version": "Premium Long Range AWD",
-      "year": 2026,
+      "year": 2019,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2518,14 +2611,15 @@
       "weightKg": 1899,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2019
     },
     {
       "id": "tesla-model-3-premium-long-range-rwd",
       "make": "Tesla",
       "model": "Model 3",
       "version": "Premium Long Range RWD",
-      "year": 2026,
+      "year": 2019,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2544,14 +2638,15 @@
       "weightKg": 1822,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2019
     },
     {
       "id": "tesla-model-3-premium-rwd",
       "make": "Tesla",
       "model": "Model 3",
       "version": "Premium RWD",
-      "year": 2026,
+      "year": 2019,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2570,14 +2665,15 @@
       "weightKg": 1836,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2019
     },
     {
       "id": "tesla-model-3-rwd",
       "make": "Tesla",
       "model": "Model 3",
       "version": "RWD",
-      "year": 2026,
+      "year": 2019,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2596,7 +2692,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2019
     },
     {
       "id": "tesla-model-3-rwd-us",
@@ -2629,7 +2726,7 @@
       "make": "Tesla",
       "model": "Model Y",
       "version": "Performance AWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2648,14 +2745,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "tesla-model-y-premium-long-range-awd",
       "make": "Tesla",
       "model": "Model Y",
       "version": "Premium Long Range AWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2674,14 +2772,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "tesla-model-y-premium-long-range-rwd",
       "make": "Tesla",
       "model": "Model Y",
       "version": "Premium Long Range RWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2700,14 +2799,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "tesla-model-y-rwd",
       "make": "Tesla",
       "model": "Model Y",
       "version": "RWD",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2726,7 +2826,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Tesla España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "tesla-model-y-rwd-us",
@@ -2863,7 +2964,7 @@
       "make": "Toyota",
       "model": "bZ4X",
       "version": "250 Advance",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2882,14 +2983,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "toyota-bz4x-250e-advance",
       "make": "Toyota",
       "model": "bZ4X",
       "version": "250E Advance 73 kWh",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2908,14 +3010,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "toyota-bz4x-343-spirit-awdi",
       "make": "Toyota",
       "model": "bZ4X",
       "version": "343 Spirit AWD-i",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2934,14 +3037,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "toyota-c-hr-plus-250-advance",
       "make": "Toyota",
       "model": "C-HR+",
       "version": "250 Advance",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2960,14 +3064,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "toyota-c-hr-plus-343-spirit-awd",
       "make": "Toyota",
       "model": "C-HR+",
       "version": "343 Spirit AWD",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -2986,14 +3091,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "toyota-c-hr-plus-343-spirit-awdi",
       "make": "Toyota",
       "model": "C-HR+",
       "version": "343 Spirit AWD-i",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3012,14 +3118,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "volkswagen-idbuzz-pro",
       "make": "Volkswagen",
       "model": "ID. Buzz",
       "version": "Pro",
-      "year": 2026,
+      "year": 0,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3038,14 +3145,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": null
     },
     {
       "id": "volkswagen-id3-gtx",
       "make": "Volkswagen",
       "model": "ID.3",
       "version": "GTX",
-      "year": 2026,
+      "year": 2020,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3064,14 +3172,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2020
     },
     {
       "id": "volkswagen-id3-pro",
       "make": "Volkswagen",
       "model": "ID.3",
       "version": "Pro",
-      "year": 2026,
+      "year": 2020,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3090,14 +3199,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2020
     },
     {
       "id": "volkswagen-id4-pure",
       "make": "Volkswagen",
       "model": "ID.4",
       "version": "Pure",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3116,14 +3226,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "volkswagen-id4-gtx",
       "make": "Volkswagen",
       "model": "ID.4",
       "version": "GTX",
-      "year": 2026,
+      "year": 2021,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3142,7 +3253,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2021
     },
     {
       "id": "volkswagen-id4-pro-us",
@@ -3175,7 +3287,7 @@
       "make": "Volkswagen",
       "model": "ID.5",
       "version": "Pro",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3194,14 +3306,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "volkswagen-id5-gtx",
       "make": "Volkswagen",
       "model": "ID.5",
       "version": "GTX",
-      "year": 2026,
+      "year": 2022,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3220,14 +3333,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2022
     },
     {
       "id": "volkswagen-id7-pro",
       "make": "Volkswagen",
       "model": "ID.7",
       "version": "Pro",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3246,14 +3360,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "volkswagen-id7-gtx",
       "make": "Volkswagen",
       "model": "ID.7",
       "version": "GTX",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3272,14 +3387,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "volkswagen-id7-pro-s",
       "make": "Volkswagen",
       "model": "ID.7",
       "version": "Pro S",
-      "year": 2026,
+      "year": 2023,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3298,14 +3414,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2023
     },
     {
       "id": "volkswagen-id7-tourer-pro",
       "make": "Volkswagen",
       "model": "ID.7 Tourer",
       "version": "Pro",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3324,14 +3441,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "volkswagen-id7-tourer-gtx",
       "make": "Volkswagen",
       "model": "ID.7 Tourer",
       "version": "GTX",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3350,14 +3468,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "volkswagen-id7-tourer-pro-s",
       "make": "Volkswagen",
       "model": "ID.7 Tourer",
       "version": "Pro S",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3376,14 +3495,15 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-g6-rwd-standard-range",
       "make": "XPeng",
       "model": "G6",
       "version": "RWD Standard Range",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3402,7 +3522,8 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-g6-long-range-us",
@@ -3539,7 +3660,7 @@
       "make": "XPeng",
       "model": "G6",
       "version": "Performance AWD",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3558,14 +3679,15 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-g6-rwd-long-range",
       "make": "XPeng",
       "model": "G6",
       "version": "RWD Long Range",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3584,14 +3706,15 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-g9-rwd-standard-range",
       "make": "XPeng",
       "model": "G9",
       "version": "RWD Standard Range",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": 56590.3,
       "currency": "EUR",
@@ -3610,14 +3733,15 @@
       "weightKg": 2235,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-g9-performance-awd",
       "make": "XPeng",
       "model": "G9",
       "version": "AWD Performance",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3636,14 +3760,15 @@
       "weightKg": 2420,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-g9-rwd-long-range",
       "make": "XPeng",
       "model": "G9",
       "version": "RWD Long Range",
-      "year": 2026,
+      "year": 2024,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3662,14 +3787,15 @@
       "weightKg": 2315,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2024
     },
     {
       "id": "xpeng-p7plus-rwd-standard-range",
       "make": "XPeng",
       "model": "P7+",
       "version": "RWD Standard Range",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3688,14 +3814,15 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "xpeng-p7plus-awd-performance",
       "make": "XPeng",
       "model": "P7+",
       "version": "AWD Performance",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3714,14 +3841,15 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     },
     {
       "id": "xpeng-p7plus-rwd-long-range",
       "make": "XPeng",
       "model": "P7+",
       "version": "RWD Long Range",
-      "year": 2026,
+      "year": 2025,
       "market": "ES",
       "price": null,
       "currency": "EUR",
@@ -3740,7 +3868,9 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-06",
+      "arrivalYear": 2025
     }
-  ]
-}\n
+  ],
+  "arrivalYearSource": "vehicle_inventory.json"
+}
