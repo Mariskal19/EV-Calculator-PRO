@@ -497,6 +497,8 @@ public class CompararCochesActivity extends Activity {
         footer.addView(foot, new LinearLayout.LayoutParams(-1, dp(24)));
 
         // El footer sigue formando parte del contenido desplazable.
+        Space footerSpacer = new Space(this);
+        content.addView(footerSpacer, new LinearLayout.LayoutParams(-1, 0, 1));
         content.addView(footer, new LinearLayout.LayoutParams(-1, dp(62)));
         scroll.addView(content, new ScrollView.LayoutParams(-1, -1));
         root.addView(scroll, new LinearLayout.LayoutParams(-1, 0, 1));
