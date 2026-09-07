@@ -1278,6 +1278,9 @@ public class CompararCochesActivity extends Activity {
             usableBatteryKwh = o.optDouble("usableBatteryKwh", 0);
             wltpKm = o.optDouble("wltpKm", o.optDouble("rangeKm", 0));
             consumption = o.optDouble("consumption", 0);
+            if (consumption <= 0) {
+                consumption = o.optDouble("consumptionKwh100", 0);
+            }
             powerKw = o.optDouble("powerKw", 0);
             acKw = o.optDouble("acKw", 0);
             dcKw = o.optDouble("dcKw", 0);
