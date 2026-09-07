@@ -1,0 +1,70 @@
+name: finalize-arrival-catalog
+on:
+  push:
+    branches: [catalogo-espana-2024-2026]
+    paths:
+      - 'app/src/main/assets/vehicle_arrival_overrides_ES_2024_2026.json'
+      - '.github/workflows/finalize-arrival-catalog.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Apply verified Spain arrival years
+        shell: python
+        run: |
+          import json, re, unicodedata
+          from pathlib import Path
+          assets=Path('app/src/main/assets')
+          p=assets/'vehicle_variants.json'
+          rules=json.loads((assets/'vehicle_arrival_overrides_ES_2024_2026.json').read_text(encoding='utf-8'))
+          allowed=set(rules['allowedArrivalYears'])
+          def norm(s):
+              s='' if s is None else str(s)
+              s=unicodedata.normalize('NFKD',s)
+              s=''.join(c for c in s if not unicodedata.combining(c))
+              s=s.lower().replace('–','-').replace('—','-')
+              return re.sub(r'\s+',' ',s).strip()
+          lookup={(norm(k.split('|',1)[0]),norm(k.split('|',1)[1])):v for k,v in rules['models'].items()}
+          aliases={
+            ('kia','ev4 fastback'):2026,('kia','ev4 hatchback'):2026,
+            ('mercedes-benz','gla'):2026,('mercedes-benz','glb'):2026,('mercedes-benz','glc'):2026,
+            ('mercedes-benz','clase g'):2024,
+            ('audi','q6 sportback e-tron'):None,('audi','sq6 sportback e-tron'):None
+          }
+          data=json.loads(p.read_text(encoding='utf-8'))
+          out=[]; dropped=0; kept_es=0
+          for v in data.get('vehicles',[]):
+              market=str(v.get('market') or 'ES').upper()
+              if market!='ES': out.append(v); continue
+              key=(norm(v.get('make')),norm(v.get('model')))
+              arrival=lookup.get(key, aliases.get(key, None))
+              if arrival in allowed:
+                  v['year']=arrival; v['arrivalYear']=arrival; out.append(v); kept_es+=1
+              else:
+                  dropped+=1
+          data['datasetVersion']='2.2.0'
+          data['arrivalYearSource']='vehicle_arrival_overrides_ES_2024_2026.json'
+          data['vehicles']=out
+          p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print(f'ES active records kept: {kept_es}; dropped pre-2024/unverified: {dropped}')
+      - name: Validate
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          d=json.loads(Path('app/src/main/assets/vehicle_variants.json').read_text(encoding='utf-8'))
+          bad=[v for v in d['vehicles'] if str(v.get('market') or 'ES').upper()=='ES' and v.get('year') not in (2024,2025,2026)]
+          if bad: raise SystemExit(f'Invalid ES active records: {len(bad)}')
+          print('JSON validation OK')
+      - name: Commit
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicle_variants.json
+          git diff --cached --quiet || git commit -m 'feat: finalize verified Spain arrival-year catalog'
+          git push
