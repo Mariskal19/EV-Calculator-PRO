@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "scope": ["ES", "DE", "FR", "IT", "GB", "US"],
+  "rule": "arrivalYear is the first real commercial arrival in that market; it is not the model year, facelift year, production year or current catalogue year",
+  "allowedArrivalYears": [2024, 2025, 2026],
+  "marketResults": {
+    "ES": {
+      "verifiedArrival2024": ["XPENG G6", "XPENG G9", "XPENG P7", "BYD Seal", "BYD Seal U", "BYD Seal U DM-i", "BYD Sealion 7", "Kia EV3", "Renault Scenic E-Tech", "Renault 5 E-Tech", "Hyundai INSTER", "Hyundai IONIQ 5 N", "Volvo EX30", "BMW iX2", "Audi Q6 e-tron", "Audi A6 e-tron", "Audi S6 e-tron", "Audi SQ6 e-tron", "Volkswagen ID.7", "Volkswagen ID.7 Tourer", "Opel Frontera Electric", "Opel Grandland Electric", "MINI Aceman", "Ford Explorer", "Ford Capri", "Citroën ë-C3", "Peugeot E-3008", "Peugeot E-5008", "Alfa Romeo Junior Elettrica", "Lancia Ypsilon Electric"],
+      "verifiedArrival2025": ["BYD Atto 2", "Kia EV5", "Renault 4 E-Tech", "Skoda Elroq", "Leapmotor B10", "Mercedes-Benz CLA eléctrico", "Hyundai IONIQ 9", "Ford Puma Gen-E", "MG MGS5 EV", "Fiat Grande Panda Electric", "Lancia Ypsilon HF"],
+      "verifiedArrival2026": ["XPENG P7+", "Kia EV2", "Kia EV4", "Renault Twingo E-Tech", "Hyundai IONIQ 6 N", "Mercedes-Benz GLA eléctrico", "Mercedes-Benz GLB eléctrico", "Mercedes-Benz GLC eléctrico", "Toyota C-HR+", "BYD Atto 3 EVO", "CUPRA Raval"],
+      "pending": ["BYD Dolphin G"]
+    },
+    "DE": {
+      "verifiedArrival2024": ["XPENG G6"],
+      "verifiedArrival2025": [],
+      "verifiedArrival2026": [],
+      "excludedBefore2024": ["Tesla Model Y"],
+      "pending": []
+    },
+    "FR": {
+      "verifiedArrival2024": ["XPENG G6"],
+      "verifiedArrival2025": [],
+      "verifiedArrival2026": [],
+      "excludedBefore2024": ["Tesla Model Y"],
+      "pending": []
+    },
+    "IT": {
+      "verifiedArrival2024": [],
+      "verifiedArrival2025": ["XPENG G6"],
+      "verifiedArrival2026": [],
+      "excludedBefore2024": ["Tesla Model Y"],
+      "pending": []
+    },
+    "GB": {
+      "verifiedArrival2024": [],
+      "verifiedArrival2025": ["XPENG G6"],
+      "verifiedArrival2026": [],
+      "excludedBefore2024": ["Tesla Model Y"],
+      "pending": []
+    },
+    "US": {
+      "verifiedArrival2024": [],
+      "verifiedArrival2025": [],
+      "verifiedArrival2026": [],
+      "excludedBefore2024": ["Tesla Model 3", "Tesla Model Y", "Hyundai IONIQ 5", "Kia EV6", "Volkswagen ID.4"],
+      "invalidMarketEntry": ["XPENG G6 — no verified commercial US market launch; do not treat the current placeholder record as a valid US catalogue vehicle"],
+      "pending": []
+    }
+  },
+  "notes": [
+    "The redesigned Tesla Model Y does not reset the model's arrival year because it remains the same Model Y name/model line; the original commercial arrival predates 2024.",
+    "XPENG G6: Germany commercial availability confirmed September 2024; France market arrival confirmed May 2024; Italy sales are 2025; UK deliveries started March 2025.",
+    "Toyota C-HR+ Spain is 2026 because Toyota Spain states first customer deliveries occurred in March 2026.",
+    "Kia EV5 Spain is retained as 2025 based on Kia Spain documentation stating 'A partir de 2025'.",
+    "Mercedes-Benz GLA/GLB/GLC electric are 2026 for Spain based on current Spanish commercial/configurator evidence and 2026 market launch material."
+  ]
+}
