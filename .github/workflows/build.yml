@@ -7,7 +7,7 @@ on:
     branches: [ main, feature/comparar-coches-1.0.4, feature/automatizacion-coches ]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -20,92 +20,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
-      - name: Consolidate vehicle catalog
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 <<'PY'
-          import json, glob, re
-          from pathlib import Path
-
-          assets = Path('app/src/main/assets')
-          master = assets / 'vehicle_variants.json'
-          source_files = [master]
-          source_files += sorted(assets.glob('vehicle_catalog_additions*.json'))
-          corrections = assets / 'vehicle_catalog_corrections.json'
-          if corrections.exists(): source_files.append(corrections)
-          market = assets / 'vehicle_market_additions.json'
-          if market.exists(): source_files.append(market)
-
-          def norm(s):
-              return re.sub(r'\\s+', ' ', str(s or '').strip().lower())
-
-          def battery(v):
-              try:
-                  b = float(v.get('batteryKwh') or 0)
-                  if b > 0: return f'{b:.1f}'
-              except Exception: pass
-              m = re.match(r'^([0-9]+(?:\\.[0-9]+)?)\\s*kwh\\b', str(v.get('version') or ''), re.I)
-              return m.group(1) if m else '0'
-
-          def version(v):
-              s = norm(v.get('version'))
-              s = re.sub(r'^[0-9]+(?:\\.[0-9]+)?\\s*kwh\\s*', '', s, flags=re.I)
-              return s
-
-          def key(v):
-              return (norm(v.get('make')), norm(v.get('model')), norm(v.get('market') or 'ES'),
-                      int(v.get('year') or 0), battery(v), version(v))
-
-          merged = {}
-          for path in source_files:
-              with path.open(encoding='utf-8') as f:
-                  data = json.load(f)
-              for v in data.get('vehicles', []):
-                  k = key(v)
-                  if k not in merged:
-                      merged[k] = v
-                  else:
-                      # Keep the first canonical identity but fill missing technical data
-                      # from later, newer catalog layers/corrections.
-                      old = merged[k]
-                      for field, value in v.items():
-                          if field == 'id':
-                              continue
-                          if old.get(field) in (None, '', 0) and value not in (None, '', 0):
-                              old[field] = value
-                      if v.get('lastUpdated') and (not old.get('lastUpdated') or str(v['lastUpdated']) > str(old['lastUpdated'])):
-                          old['lastUpdated'] = v['lastUpdated']
-                      if v.get('source'):
-                          old['source'] = v['source']
-
-          vehicles = list(merged.values())
-          vehicles.sort(key=lambda v: (norm(v.get('make')), norm(v.get('model')), -int(v.get('year') or 0),
-                                       battery(v), version(v)))
-          out = {'schemaVersion': 1, 'datasetVersion': '2.0.0', 'marketDefault': 'ES', 'vehicles': vehicles}
-          master.write_text(json.dumps(out, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
-
-          # The staged addition files have now been absorbed into the master catalog.
-          for path in sorted(assets.glob('vehicle_catalog_additions*.json')):
-              path.unlink()
-          if corrections.exists(): corrections.unlink()
-          if market.exists(): market.unlink()
-
-          print(f'Consolidated {len(vehicles)} unique vehicle identities from {len(source_files)} catalog layers.')
-          PY
-          if git diff --quiet -- app/src/main/assets/vehicle_variants.json app/src/main/assets/vehicle_catalog_additions.json app/src/main/assets/vehicle_catalog_additions_v2.json app/src/main/assets/vehicle_catalog_additions_v3.json app/src/main/assets/vehicle_catalog_additions_v4.json app/src/main/assets/vehicle_catalog_corrections.json app/src/main/assets/vehicle_market_additions.json; then
-            echo 'Catalog already consolidated.'
-          else
-            git config user.name 'github-actions[bot]'
-            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-            git add app/src/main/assets/vehicle_variants.json app/src/main/assets/vehicle_catalog_additions*.json app/src/main/assets/vehicle_catalog_corrections.json app/src/main/assets/vehicle_market_additions.json
-            git commit -m 'Consolidate vehicle catalog layers'
-            git push
-          fi
       - name: Set up Java 17
         uses: actions/setup-java@v5
         with:
