@@ -1,32 +1,86 @@
-name: Catalog inventory extraction
+name: Build Spain catalog
 on:
   push:
     branches: [catalogo-espana-final-2026-09-07]
+permissions:
+  contents: write
 jobs:
-  extract:
+  build-catalog:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Extract inventory
+      - name: Generate catalog and research
+        run: |
+          python - <<'PY'
+          import csv,json,re
+          from pathlib import Path
+          root=Path('app/src/main/assets')
+          rows=list(csv.DictReader((root/'catalog_es_final_2024_2026.csv').open(encoding='utf-8')))
+          nums={'year','arrivalYear','batteryKwh','usableBatteryKwh','wltpKm','consumptionKwh100','powerKw','acKw','dcKw','charge10to80Min','acceleration0to100Sec','trunkLiters'}
+          def val(k,v):
+              if v=='': return None
+              if k in nums:
+                  try: return float(v) if any(c in v for c in '.eE') else int(v)
+                  except: return None
+              return v
+          vehicles=[]
+          for r in rows:
+              d={k:val(k,v) for k,v in r.items()}
+              slug=re.sub(r'[^a-z0-9]+','-',f"{d['make']}-{d['model']}-{d['version']}-{d['year']}-{d['batteryKwh']}-{d['batteryType']}-{d['powerKw']}-{d['drivetrain']}".lower()).strip('-')
+              d.update({'id':slug,'market':'ES','price':None,'currency':'EUR','weightKg':None,'photo':None,
+                        'source':'Spain historical catalog research: manufacturer + KM77 + period-specific sources','lastUpdated':'2026-09-07'})
+              vehicles.append(d)
+          out={'schemaVersion':1,'datasetVersion':'3.0.0','marketDefault':'ES','vehicles':vehicles}
+          (root/'vehicle_variants.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          out2={'schemaVersion':1,'datasetVersion':'2.0.0','marketDefault':'ES','vehicles':vehicles}
+          (root/'vehicles.json').write_text(json.dumps(out2,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          # Full source inventory union from both original files before rebuild
+          source=[]
+          for fn in ['app/src/main/assets/vehicles.json','app/src/main/assets/vehicle_variants.json']:
+              try: d=json.loads(Path(fn).read_text())
+              except: continue
+              for v in d.get('vehicles',[]):
+                  source.append({k:v.get(k) for k in ['make','model','version','year','market','arrivalYear']})
+          # source files are overwritten above, so recover inventory from git HEAD versions
+          import subprocess
+          for fn in ['app/src/main/assets/vehicles.json','app/src/main/assets/vehicle_variants.json']:
+              raw=subprocess.check_output(['git','show','HEAD:'+fn],text=True)
+              d=json.loads(raw)
+              for v in d.get('vehicles',[]): source.append({k:v.get(k) for k in ['make','model','version','year','market','arrivalYear']})
+          seen=set(); table1=[]
+          for v in source:
+              key=tuple(v.get(k) for k in ['make','model','version','year','market','arrivalYear'])
+              if key not in seen: seen.add(key); table1.append(v)
+          research={'schemaVersion':2,'researchStatus':'ES_CATALOG_REBUILT_2026-09-07','market':'ES','dateChecked':'2026-09-07',
+                    'sourceRecordCount':len(table1),'finalConfigurationCount':len(vehicles),
+                    'rules':{'distinctTechnicalConfigurationIsDistinctVehicle':True,'batteryCapacityDifferenceCreatesDistinctVehicle':True,'batteryChemistryDifferenceCreatesDistinctVehicle':True,'mncNormalizedToNMC':True,'historicalSpecsMustMatchPeriod':True},
+                    'tables':{'table1_source_inventory_union':table1,'table3_4_final_technical_configurations':vehicles}}
+          (root/'research_es_catalog_2024_2026.json').write_text(json.dumps(research,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Validate catalog
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
-          out=[]
-          for fn in ['app/src/main/assets/vehicles.json','app/src/main/assets/vehicle_variants.json']:
-              d=json.loads(Path(fn).read_text())
-              for v in d.get('vehicles',[]):
-                  out.append({k:v.get(k) for k in ['id','make','model','version','year','market','arrivalYear','batteryKwh','usableBatteryKwh','batteryType','powerKw','drivetrain','wltpKm','consumptionKwh100','acKw','dcKw','charge10to80Min','acceleration0to100Sec','trunkLiters']})
-          Path('catalog_inventory.json').write_text(json.dumps(out,ensure_ascii=False,indent=2))
-          from collections import Counter
-          c=Counter((x['make'],x['model']) for x in out)
-          with Path('catalog_inventory.md').open('w') as f:
-              f.write('# SOURCE INVENTORY\n\n')
-              for (make,model),n in sorted(c.items()): f.write(f'- {make} | {model} | {n} source records\n')
+          for fn in ['vehicle_variants.json','vehicles.json','research_es_catalog_2024_2026.json']:
+              json.loads((Path('app/src/main/assets')/fn).read_text())
+          v=json.loads((Path('app/src/main/assets')/'vehicles.json').read_text())['vehicles']
+          assert len(v)==145, len(v)
+          assert all(x['market']=='ES' for x in v)
+          assert all(x['batteryKwh'] is not None and x['batteryType'] is not None and x['powerKw'] is not None and x['drivetrain'] is not None for x in v)
+          print('VALID',len(v))
           PY
+      - name: Commit generated catalog
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicles.json app/src/main/assets/vehicle_variants.json app/src/main/assets/research_es_catalog_2024_2026.json
+          git commit -m 'catalog: apply Spain 2024-2026 technical configurations' || exit 0
+          git push
       - uses: actions/upload-artifact@v4
         with:
-          name: catalog-inventory
+          name: catalog-es-2024-2026
           path: |
-            catalog_inventory.json
-            catalog_inventory.md
+            app/src/main/assets/vehicles.json
+            app/src/main/assets/vehicle_variants.json
+            app/src/main/assets/research_es_catalog_2024_2026.json
