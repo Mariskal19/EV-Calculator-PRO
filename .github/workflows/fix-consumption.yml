@@ -1,0 +1,36 @@
+name: Fix consumption catalog
+on: push
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fix missing consumption values
+        run: |
+          python3 - <<'PY'
+          import json
+          p='app/src/main/assets/vehicle_variants.json'
+          d=json.load(open(p,encoding='utf-8'))
+          fixed=0
+          special={'hyundai-ioniq5-long-range-rwd-us':16.7}
+          for v in d['vehicles']:
+            if v.get('consumptionKwh100') is None:
+              val=special.get(v['id'])
+              if val is None and v.get('batteryKwh') and v.get('wltpKm'):
+                val=round(v['batteryKwh']/v['wltpKm']*100,1)
+              if val is not None:
+                v['consumptionKwh100']=val
+                v['lastUpdated']='2026-09-07'
+                fixed+=1
+          json.dump(d,open(p,'w',encoding='utf-8'),ensure_ascii=False,indent=2)
+          print('Fixed',fixed,'entries; remaining',sum(v.get('consumptionKwh100') is None for v in d['vehicles']))
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/vehicle_variants.json
+          git diff --cached --quiet || git commit -m 'data: fix missing comparison consumption values'
+          git push
