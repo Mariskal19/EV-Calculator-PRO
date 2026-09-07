@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ main, catalogo-espana-2024-2026 ]
 
 permissions:
   contents: read
