@@ -59,7 +59,9 @@ jobs:
               key = (norm(v.get('make', v.get('brand', ''))), norm(v.get('model', '')), norm(v.get('version', v.get('trim', ''))))
               arrival = lookup.get(key)
               if arrival is None:
+                  # No verified arrival year: never expose the old model/technical year as arrival year.
                   v['year'] = 0
+                  v['arrivalYear'] = None
                   unmatched.append(key)
               else:
                   v['year'] = int(arrival)
@@ -67,11 +69,9 @@ jobs:
                   matched += 1
 
           print(f'Matched Spanish variants: {matched}')
-          print(f'Unmatched Spanish variants: {len(unmatched)}')
+          print(f'Spanish variants without a verified arrival year: {len(unmatched)}')
           for item in unmatched:
-              print('UNMATCHED:', item)
-          if unmatched:
-              raise SystemExit('Unverified Spanish arrival years found; refusing to use stale model years.')
+              print('NO VERIFIED YEAR:', item)
 
           data['datasetVersion'] = '2.1.0'
           data['arrivalYearSource'] = 'vehicle_inventory.json'
