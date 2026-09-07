@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "definition": "arrivalYear = first real commercial arrival in Spain",
+  "activeArrivalYears": [2024, 2025, 2026],
+  "verified": {
+    "2024": ["XPENG G6", "XPENG G9", "XPENG P7", "BYD Seal", "BYD Seal U", "BYD Seal U DM-i", "BYD Sealion 7", "Kia EV3", "Renault Scenic E-Tech", "Renault 5 E-Tech", "Hyundai INSTER", "Hyundai IONIQ 5 N", "Volvo EX30", "BMW iX2", "Audi Q6 e-tron", "Audi A6 e-tron", "Audi S6 e-tron", "Audi SQ6 e-tron", "Volkswagen ID.7", "Volkswagen ID.7 Tourer", "Opel Frontera Electric", "Opel Grandland Electric", "MINI Aceman", "Ford Explorer", "Ford Capri", "Citroën ë-C3", "Peugeot E-3008", "Peugeot E-5008", "Alfa Romeo Junior Elettrica", "Lancia Ypsilon Electric"],
+    "2025": ["BYD Atto 2", "Kia EV5", "Renault 4 E-Tech", "Skoda Elroq", "Leapmotor B10", "Mercedes-Benz CLA eléctrico", "Hyundai IONIQ 9", "Ford Puma Gen-E", "MG MGS5 EV", "Fiat Grande Panda Electric", "Lancia Ypsilon HF"],
+    "2026": ["XPENG P7+", "Kia EV2", "Kia EV4", "Renault Twingo E-Tech", "Hyundai IONIQ 6 N", "Mercedes-Benz GLA eléctrico", "Mercedes-Benz GLB eléctrico", "Mercedes-Benz GLC eléctrico", "Toyota C-HR+", "BYD Atto 3 EVO", "CUPRA Raval"]
+  },
+  "pending": ["BYD Dolphin G"],
+  "excludedBefore2024": ["BYD Atto 3", "BYD Dolphin", "BYD Tang", "BMW iX1", "Hyundai IONIQ 5", "Hyundai IONIQ 6", "Hyundai KONA Electric", "Kia EV6", "Kia EV9", "Renault Megane E-Tech", "Toyota bZ4X", "Volkswagen ID.3", "Volkswagen ID.4", "Volkswagen ID.5", "Volkswagen ID. Buzz", "Audi e-tron GT", "Mercedes-Benz EQA", "Mercedes-Benz EQE Berlina", "Mercedes-Benz EQS Berlina", "Mercedes-Benz EQE SUV", "Mercedes-Benz EQS SUV", "Jeep Avenger Electric", "Tesla Model 3", "Tesla Model Y"]
+}
