@@ -151,7 +151,7 @@
       "usableBatteryKwh": 94.9,
       "batteryType": "Li-ion",
       "wltpKm": 676,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.8,
       "powerKw": 240,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -162,7 +162,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -205,7 +205,7 @@
       "usableBatteryKwh": 94.9,
       "batteryType": "Li-ion",
       "wltpKm": 616,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 16.2,
       "powerKw": 315,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -216,7 +216,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -232,7 +232,7 @@
       "usableBatteryKwh": 94.9,
       "batteryType": "Li-ion",
       "wltpKm": 647,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.5,
       "powerKw": 370,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -243,7 +243,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -259,7 +259,7 @@
       "usableBatteryKwh": 94.9,
       "batteryType": "Li-ion",
       "wltpKm": 675,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.8,
       "powerKw": 370,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -270,7 +270,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -286,7 +286,7 @@
       "usableBatteryKwh": 94.9,
       "batteryType": "Li-ion",
       "wltpKm": 647,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.5,
       "powerKw": 380,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -297,7 +297,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -313,7 +313,7 @@
       "usableBatteryKwh": 94.9,
       "batteryType": "Li-ion",
       "wltpKm": 598,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 16.7,
       "powerKw": 380,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -324,7 +324,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Audi España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -340,7 +340,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 312,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.5,
       "powerKw": 130,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -351,7 +351,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     },
     {
@@ -367,7 +367,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 312,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.5,
       "powerKw": 130,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -378,7 +378,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     },
     {
@@ -448,7 +448,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 510,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.7,
       "powerKw": 230,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -459,7 +459,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2026
     },
     {
@@ -475,7 +475,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 470,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.9,
       "powerKw": 330,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -486,7 +486,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2026
     },
     {
@@ -502,7 +502,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 427,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.1,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -513,7 +513,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2023
     },
     {
@@ -529,7 +529,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 427,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.1,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -540,7 +540,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2023
     },
     {
@@ -637,7 +637,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 460,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.4,
       "powerKw": 170,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -648,7 +648,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -664,7 +664,7 @@
       "usableBatteryKwh": 82.5,
       "batteryType": "LFP Blade",
       "wltpKm": 570,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.5,
       "powerKw": 230,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -675,7 +675,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -718,7 +718,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 420,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 17.1,
       "powerKw": 160,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -729,7 +729,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -745,7 +745,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 500,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 17.4,
       "powerKw": 160,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -756,7 +756,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -772,7 +772,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 502,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 18.2,
       "powerKw": 230,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -783,7 +783,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -853,7 +853,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP Blade",
       "wltpKm": 530,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 20.5,
       "powerKw": 380,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -864,7 +864,7 @@
       "weightKg": null,
       "photo": null,
       "source": "BYD España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -934,7 +934,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 440,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.3,
       "powerKw": 125,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -945,7 +945,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -961,7 +961,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 540,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.6,
       "powerKw": 168,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -972,7 +972,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -988,7 +988,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 546,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.4,
       "powerKw": 239,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -999,7 +999,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -1015,7 +1015,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": null,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 16.7,
       "powerKw": 168,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -1026,7 +1026,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai USA",
-      "lastUpdated": "2026-09-06"
+      "lastUpdated": "2026-09-07"
     },
     {
       "id": "hyundai-ioniq5-n",
@@ -1041,7 +1041,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 448,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 18.8,
       "powerKw": 448,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1052,7 +1052,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -1092,7 +1092,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 429,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.7,
       "powerKw": 125,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -1103,7 +1103,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2022
     },
     {
@@ -1116,7 +1116,7 @@
       "price": null,
       "currency": "EUR",
       "wltpKm": 583,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.4,
       "powerKw": 239,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1127,7 +1127,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "batteryKwh": 84,
       "batteryType": "NMC",
       "arrivalYear": 2022
@@ -1198,7 +1198,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 606,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 18.2,
       "powerKw": 230,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1209,7 +1209,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     },
     {
@@ -1225,7 +1225,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 600,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 18.4,
       "powerKw": 320,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1236,7 +1236,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1279,7 +1279,7 @@
       "usableBatteryKwh": null,
       "batteryType": "Li-ion",
       "wltpKm": 377,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.8,
       "powerKw": 115,
       "drivetrain": "FWD",
       "acKw": 10.5,
@@ -1290,7 +1290,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2018
     },
     {
@@ -1306,7 +1306,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 510,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.8,
       "powerKw": 160,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1317,7 +1317,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2018
     },
     {
@@ -1333,7 +1333,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 317,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.3,
       "powerKw": 108,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1344,7 +1344,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2026
     },
     {
@@ -1360,7 +1360,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 317,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.3,
       "powerKw": 108,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1371,7 +1371,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2026
     },
     {
@@ -1387,7 +1387,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 317,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.3,
       "powerKw": 108,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1398,7 +1398,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1522,7 +1522,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 450,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.0,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1533,7 +1533,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1549,7 +1549,7 @@
       "usableBatteryKwh": 78,
       "batteryType": "NMC",
       "wltpKm": 633,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.9,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1560,7 +1560,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1576,7 +1576,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 440,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.2,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1587,7 +1587,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1603,7 +1603,7 @@
       "usableBatteryKwh": 78,
       "batteryType": "NMC",
       "wltpKm": 625,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.0,
       "powerKw": 150,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1614,7 +1614,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1764,7 +1764,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 450,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 18.7,
       "powerKw": 478,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1775,7 +1775,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -1844,7 +1844,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 443,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 17.2,
       "powerKw": 160,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -1855,7 +1855,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1871,7 +1871,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 512,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 19.5,
       "powerKw": 283,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1882,7 +1882,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1898,7 +1898,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 563,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 17.7,
       "powerKw": 149.5,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -1909,7 +1909,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1925,7 +1925,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 505,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 19.8,
       "powerKw": 283,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1936,7 +1936,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Kia Iberia",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -1979,7 +1979,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 473,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 24.5,
       "powerKw": 432,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -1990,7 +1990,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2006,7 +2006,7 @@
       "usableBatteryKwh": 90.6,
       "batteryType": "NMC",
       "wltpKm": 690,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.9,
       "powerKw": 215,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -2017,7 +2017,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2022
     },
     {
@@ -2033,7 +2033,7 @@
       "usableBatteryKwh": 90.6,
       "batteryType": "NMC",
       "wltpKm": 600,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 16.0,
       "powerKw": 215,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -2044,7 +2044,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2023
     },
     {
@@ -2060,7 +2060,7 @@
       "usableBatteryKwh": 111,
       "batteryType": "NMC",
       "wltpKm": 800,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.8,
       "powerKw": 265,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -2071,7 +2071,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -2087,7 +2087,7 @@
       "usableBatteryKwh": 111,
       "batteryType": "NMC",
       "wltpKm": 660,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 17.9,
       "powerKw": 265,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -2098,7 +2098,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2022
     },
     {
@@ -2114,7 +2114,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 600,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.2,
       "powerKw": 180,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -2125,7 +2125,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2141,7 +2141,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 600,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.2,
       "powerKw": 180,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -2152,7 +2152,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2168,7 +2168,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 700,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.4,
       "powerKw": 360,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -2179,7 +2179,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Mercedes-Benz España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2195,7 +2195,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 308,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.0,
       "powerKw": 90,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -2206,7 +2206,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2222,7 +2222,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 409,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.7,
       "powerKw": 110,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -2233,7 +2233,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2249,7 +2249,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 409,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.7,
       "powerKw": 110,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -2260,7 +2260,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2276,7 +2276,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 409,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.7,
       "powerKw": 110,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -2287,7 +2287,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2303,7 +2303,7 @@
       "usableBatteryKwh": 40,
       "batteryType": "NMC",
       "wltpKm": 312,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.8,
       "powerKw": 70,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -2314,7 +2314,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Renault España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -2519,7 +2519,7 @@
       "usableBatteryKwh": 59,
       "batteryType": "NMC",
       "wltpKm": 430,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.7,
       "powerKw": 150,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -2530,7 +2530,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Škoda España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -2546,7 +2546,7 @@
       "usableBatteryKwh": 77,
       "batteryType": "NMC",
       "wltpKm": 550,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.9,
       "powerKw": 210,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -2557,7 +2557,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Škoda España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -3080,7 +3080,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 609,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.6,
       "powerKw": 252,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3091,7 +3091,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Toyota España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     },
     {
@@ -3134,7 +3134,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 457,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 18.8,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3145,7 +3145,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": null
     },
     {
@@ -3161,7 +3161,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 521,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.2,
       "powerKw": 240,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3172,7 +3172,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2020
     },
     {
@@ -3215,7 +3215,7 @@
       "usableBatteryKwh": 52,
       "batteryType": "NMC",
       "wltpKm": 360,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.4,
       "powerKw": 125,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3226,7 +3226,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -3242,7 +3242,7 @@
       "usableBatteryKwh": 77,
       "batteryType": "NMC",
       "wltpKm": 520,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.8,
       "powerKw": 250,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3253,7 +3253,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2021
     },
     {
@@ -3295,7 +3295,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 558,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.8,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3306,7 +3306,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2022
     },
     {
@@ -3322,7 +3322,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 532,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.8,
       "powerKw": 250,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3333,7 +3333,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2022
     },
     {
@@ -3349,7 +3349,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 615,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.5,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3360,7 +3360,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2023
     },
     {
@@ -3376,7 +3376,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 595,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.5,
       "powerKw": 250,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3387,7 +3387,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2023
     },
     {
@@ -3403,7 +3403,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 707,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.2,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3414,7 +3414,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2023
     },
     {
@@ -3430,7 +3430,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 590,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 13.1,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3441,7 +3441,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -3457,7 +3457,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 584,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.7,
       "powerKw": 250,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3468,7 +3468,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -3484,7 +3484,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 689,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.5,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3495,7 +3495,7 @@
       "weightKg": null,
       "photo": null,
       "source": "Volkswagen España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -3511,7 +3511,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 535,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 12.8,
       "powerKw": 185,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3522,7 +3522,7 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -3695,7 +3695,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 535,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 15.1,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3706,7 +3706,7 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2024
     },
     {
@@ -3803,7 +3803,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 530,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 11.6,
       "powerKw": 180,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3814,7 +3814,7 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     },
     {
@@ -3830,7 +3830,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 530,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.1,
       "powerKw": 370,
       "drivetrain": "AWD",
       "acKw": 11,
@@ -3841,7 +3841,7 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     },
     {
@@ -3857,7 +3857,7 @@
       "usableBatteryKwh": null,
       "batteryType": "LFP",
       "wltpKm": 530,
-      "consumptionKwh100": null,
+      "consumptionKwh100": 14.1,
       "powerKw": 230,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -3868,7 +3868,7 @@
       "weightKg": null,
       "photo": null,
       "source": "XPeng España",
-      "lastUpdated": "2026-09-06",
+      "lastUpdated": "2026-09-07",
       "arrivalYear": 2025
     }
   ],
