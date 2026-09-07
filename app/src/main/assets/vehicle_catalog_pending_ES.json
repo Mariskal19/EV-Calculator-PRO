@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "rule": "Vehicles not yet verified with enough confidence are preserved here and must not enter the active catalog until arrivalYear is confirmed",
+  "pending": [
+    {"make":"BYD","model":"Dolphin G","reason":"Current 2026 Spanish range entry needs separate verification of whether this is a new model/derivative or continuation of the pre-2024 Dolphin"},
+    {"make":"BYD","model":"Sealion 7","reason":"Commercial arrival is treated as 2024 but exact first Spanish customer-delivery date should be locked from primary source before final catalog commit"},
+    {"make":"Kia","model":"EV5","reason":"2026 Spanish configurator is current; exact first Spanish customer-delivery date needs primary-source confirmation before final commit"},
+    {"make":"Mercedes-Benz","model":"GLA eléctrico","reason":"2026 Spanish catalogue presence confirmed; exact first customer-delivery date needs primary-source confirmation"},
+    {"make":"Mercedes-Benz","model":"GLB eléctrico","reason":"2026 Spanish catalogue presence confirmed; exact first customer-delivery date needs primary-source confirmation"},
+    {"make":"Mercedes-Benz","model":"GLC eléctrico","reason":"2026 Spanish catalogue presence confirmed; exact first customer-delivery date needs primary-source confirmation"},
+    {"make":"Toyota","model":"C-HR+","reason":"Orders opened in 2025 but first Spanish deliveries are 2026; final catalog should use 2026 after locking delivery evidence"},
+    {"make":"XPENG","model":"P7+","reason":"European/Spanish 2026 launch evidence exists; final catalog should use exact Spanish commercial-start date"},
+    {"make":"BYD","model":"Sealion 7","reason":"2024 arrival is probable and supported, but exact Spanish first-delivery date remains to be pinned down"}
+  ]
+}
