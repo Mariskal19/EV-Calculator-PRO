@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - '.github/workflows/migrate-arrival-year.yml'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,7 @@ jobs:
               value = unicodedata.normalize('NFKD', value)
               value = ''.join(c for c in value if not unicodedata.combining(c))
               value = value.lower().replace('–', '-').replace('—', '-')
-              value = re.sub(r'\\s+', ' ', value).strip()
+              value = re.sub(r'\s+', ' ', value).strip()
               return value
 
           lookup = {}
@@ -58,7 +58,6 @@ jobs:
               key = (norm(v.get('make', v.get('brand', ''))), norm(v.get('model', '')), norm(v.get('version', v.get('trim', ''))))
               arrival = lookup.get(key)
               if arrival is None:
-                  # Do not expose the old technical/model year as an arrival year.
                   v['year'] = 0
                   unmatched.append(key)
               else:
@@ -68,13 +67,12 @@ jobs:
 
           variants['datasetVersion'] = '2.1.0'
           variants['arrivalYearSource'] = 'vehicle_inventory.json'
-          variants_path.write_text(json.dumps(variants, ensure_ascii=False, indent=2) + '\\n', encoding='utf-8')
+          variants_path.write_text(json.dumps(variants, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
           print(f'Matched Spanish variants: {matched}')
           print(f'Unmatched Spanish variants: {len(unmatched)}')
           for item in unmatched:
               print('UNMATCHED:', item)
-
           if unmatched:
               raise SystemExit('Spanish catalog contains variants without a verified arrival year; refusing to publish stale model years.')
 
