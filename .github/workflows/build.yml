@@ -32,6 +32,9 @@ jobs:
         with:
           gradle-version: '8.9'
 
+      - name: Generate ordered Spanish car catalog
+        run: python3 tools/generate_catalog.py
+
       - name: Verify release signing configuration
         shell: bash
         run: |
