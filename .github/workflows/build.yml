@@ -34,6 +34,9 @@ jobs:
         with:
           gradle-version: '8.9'
 
+      - name: Regenerate ordered catalog in workspace
+        run: python3 tools/generate_catalog.py
+
       - name: Verify catalog
         shell: bash
         run: |
