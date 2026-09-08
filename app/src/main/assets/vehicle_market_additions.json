@@ -2,21 +2,5 @@
   "schemaVersion": 1,
   "datasetVersion": "1.0.0",
   "market": "ES",
-  "vehicles": [
-    {
-      "id": "xpeng-g6-performance-awd",
-      "make": "XPeng",
-      "model": "G6",
-      "version": "Performance AWD",
-      "year": 2024,
-      "market": "ES",
-      "batteryKwh": 80.8,
-      "wltpKm": 550,
-      "consumptionKwh100": 17.9,
-      "powerKw": 350,
-      "drivetrain": "AWD",
-      "source": "XPeng G6 ES 2024 technical data / research_xpeng_ES_2024_2026.json",
-      "lastUpdated": "2026-09-07"
-    }
-  ]
+  "vehicles": []
 }
