@@ -142,12 +142,28 @@ public class CompararCochesActivity extends Activity {
 
     private void loadVehicles() {
         vehicles.clear();
-        loadAssetVehicles("vehicles.json", true);
-        loadAssetVehicles("vehicle_variants.json", false);
-        loadAssetVehicles("vehicle_market_additions.json", false);
-        normalizeVehicleList();
+        try (InputStream in = getAssets().open("catalog_es_2024_2026.json");
+             BufferedReader r = new BufferedReader(new InputStreamReader(in))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = r.readLine()) != null) {
+                sb.append(line);
+            }
+            JSONArray a = new JSONObject(sb.toString()).optJSONArray("vehicles");
+            if (a == null) {
+                throw new IllegalStateException("catalog_es_2024_2026.json: vehicles array missing");
+            }
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject o = a.optJSONObject(i);
+                if (o != null) {
+                    vehicles.add(new Vehicle(o));
+                }
+            }
+        } catch (Exception e) {
+            throw new IllegalStateException("No se ha podido cargar el catálogo español", e);
+        }
         if (vehicles.isEmpty()) {
-            throw new IllegalStateException("vehicles array missing");
+            throw new IllegalStateException("El catálogo español está vacío");
         }
     }
 
