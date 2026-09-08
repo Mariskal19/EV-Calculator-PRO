@@ -900,14 +900,26 @@ public class CompararCochesActivity extends Activity {
 
     private String searchLabel(Vehicle v) {
         String first = v.make + " " + v.model;
-        String second = v.year > 0
-                ? "MY" + String.valueOf(v.year).substring(Math.max(0, String.valueOf(v.year).length() - 2)) + ". "
-                : "";
+        StringBuilder second = new StringBuilder();
+
+        if (v.year > 0) {
+            String ys = String.valueOf(v.year);
+            second.append("MY")
+                    .append(ys.substring(Math.max(0, ys.length() - 2)));
+        }
+
         if (v.version != null && !v.version.trim().isEmpty()) {
             String ver = v.version.trim();
             ver = ver.replaceFirst("(?i)^\\d+(?:\\.\\d+)?\\s*kwh\\s*", "");
-            second += ver;
+            if (second.length() > 0) second.append(" · ");
+            second.append(ver);
         }
+
+        if (v.batteryKwh > 0) {
+            if (second.length() > 0) second.append(" · ");
+            second.append(fmt(v.batteryKwh)).append(" kWh");
+        }
+
         return first + "\n" + second;
     }
 
