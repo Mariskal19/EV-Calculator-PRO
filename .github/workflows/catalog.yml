@@ -1,0 +1,58 @@
+name: Generate Spanish car catalog
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'app/src/main/assets/vehicles.json'
+      - 'app/src/main/assets/vehicle_variants.json'
+      - 'app/src/main/assets/vehicle_market_additions.json'
+      - 'tools/generate_catalog.py'
+
+permissions:
+  contents: write
+
+jobs:
+  catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Generate and order catalog
+        run: python3 tools/generate_catalog.py
+
+      - name: Validate catalog
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('app/src/main/assets/catalog_es_2024_2026.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          vehicles = data.get('vehicles')
+          if not isinstance(vehicles, list) or not vehicles:
+              raise SystemExit('Catalog is missing or empty')
+          bad_years = [v for v in vehicles if v.get('year') not in (2024, 2025, 2026)]
+          if bad_years:
+              raise SystemExit(f'Catalog contains {len(bad_years)} invalid years')
+          keys = []
+          for v in vehicles:
+              keys.append((str(v.get('market') or '').upper(), str(v.get('make') or '').lower(), str(v.get('model') or '').lower(), int(v.get('year') or 0)))
+          if keys != sorted(keys):
+              raise SystemExit('Catalog is not ordered by market/make/model/year')
+          print(f'Catalog validated: {len(vehicles)} vehicles')
+          PY
+
+      - name: Commit catalog if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/assets/catalog_es_2024_2026.json
+          if git diff --cached --quiet; then
+            echo "Catalog already up to date."
+            exit 0
+          fi
+          git commit -m "chore: regenerate ordered Spanish car catalog"
+          git push
