@@ -155,6 +155,24 @@
       "consumptionKwh100": 14.4
     },
     {
+      "make": "Jeep",
+      "model": "Compass",
+      "version": "4xe Full-Electric",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "batteryKwh": 96.1,
+      "usableBatteryKwh": 96.0,
+      "batteryType": "NMC",
+      "wltpKm": 600,
+      "powerKw": 280,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 160,
+      "source": "Jeep España; Nuevo Compass 4xe Full-Electric",
+      "lastUpdated": "2026-09-09",
+      "consumptionKwh100": 16.0
+    },
+    {
       "make": "Mercedes-Benz",
       "model": "CLA Shooting Brake Eléctrico",
       "version": "CLA 200 eléctrico",
