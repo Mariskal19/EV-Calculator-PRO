@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"Subaru","model":"Solterra","version":"Field 73 kWh AWD","year":2026,"arrivalYear":2026,"batteryKwh":73.1,"batteryType":"Li-ion","wltpKm":509,"powerKw":252,"drivetrain":"AWD","acKw":22,"dcKw":150,"source":"Subaru España; Solterra 2026; ficha técnica España","lastUpdated":"2026-09-10"},
+    {"make":"Subaru","model":"E-Outback","version":"Field 75 kWh AWD","year":2026,"arrivalYear":2026,"batteryKwh":74.7,"batteryType":"Li-ion","wltpKm":523,"powerKw":280,"drivetrain":"AWD","acKw":22,"dcKw":150,"source":"Subaru España; E-Outback 2026; mercado español","lastUpdated":"2026-09-10"},
+    {"make":"Mitsubishi","model":"Eclipse Cross","version":"87 kWh Kaiteki","year":2025,"arrivalYear":2025,"batteryKwh":87.0,"batteryType":"NMC","wltpKm":626,"powerKw":160,"drivetrain":"FWD","acKw":22,"dcKw":150,"source":"Mitsubishi Motors España; catálogo Eclipse Cross; mercado español","lastUpdated":"2026-09-10"},
+    {"make":"Mitsubishi","model":"Eclipse Cross","version":"87 kWh Kaiteki+","year":2025,"arrivalYear":2025,"batteryKwh":87.0,"batteryType":"NMC","wltpKm":615,"powerKw":160,"drivetrain":"FWD","acKw":22,"dcKw":150,"source":"Mitsubishi Motors España; catálogo Eclipse Cross; mercado español","lastUpdated":"2026-09-10"},
+    {"make":"DS","model":"N°7","version":"E-TENSE FWD 230 CV","year":2026,"arrivalYear":2026,"batteryKwh":73.7,"batteryType":"NMC","wltpKm":543,"powerKw":169,"drivetrain":"FWD","acKw":11,"dcKw":160,"source":"DS Automobiles España; N°7 E-TENSE; mercado español","lastUpdated":"2026-09-10"},
+    {"make":"DS","model":"N°7","version":"E-TENSE FWD Long Range 245 CV","year":2026,"arrivalYear":2026,"batteryKwh":97.2,"batteryType":"NMC","wltpKm":740,"powerKw":180,"drivetrain":"FWD","acKw":11,"dcKw":160,"source":"DS Automobiles España; N°7 E-TENSE; mercado español","lastUpdated":"2026-09-10"},
+    {"make":"DS","model":"N°7","version":"E-TENSE AWD Long Range 350 CV","year":2026,"arrivalYear":2026,"batteryKwh":97.2,"batteryType":"NMC","wltpKm":679,"powerKw":257,"drivetrain":"AWD","acKw":11,"dcKw":160,"source":"DS Automobiles España; N°7 E-TENSE; mercado español","lastUpdated":"2026-09-10"}
+  ]
+}
