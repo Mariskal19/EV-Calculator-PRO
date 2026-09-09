@@ -43,18 +43,39 @@ jobs:
           if bad_years:
               raise SystemExit(f'Catalog contains {len(bad_years)} invalid years')
 
-          keys = [(
-              str(v.get('market') or '').upper(),
-              str(v.get('make') or '').lower(),
-              str(v.get('model') or '').lower(),
-              int(v.get('year') or 0),
-              str(v.get('version') or '').lower(),
-              float(v.get('batteryKwh') or 0),
-              float(v.get('powerKw') or 0),
-              int(v.get('wltpKm') or 0),
-          ) for v in vehicles]
-          if keys != sorted(keys, key=lambda k: (k[0], k[1], k[2], k[3], k[4], k[5], k[6], k[7])):
-              raise SystemExit('Catalog is not deterministically ordered')
+          def number(value):
+              return value if isinstance(value, (int, float)) else 0
+
+          def trim_rank(vehicle):
+              value = str(vehicle.get('version') or '').lower().replace('-', ' ').replace('_', ' ')
+              rank = 300
+              if any(x in value for x in ['standard', 'base', 'pure', 'core', 'essential', 'life', 'active', 'entry']):
+                  rank = 100
+              if any(x in value for x in ['comfort', 'advance', 'advanced', 'evolution', 'plus', 'boost']):
+                  rank = max(rank, 200)
+              if any(x in value for x in ['long range', 'extended', 'max', 'pro', 'premium', 'design', 'techno', 'earth']):
+                  rank = max(rank, 300)
+              if any(x in value for x in ['awd', '4wd', 'dual motor', 'all wheel']):
+                  rank = max(rank, 400)
+              if any(x in value for x in ['performance', 'gt', 'gts', 'rs ', 'sport', 'm performance', 'amg']) or value == 'rs':
+                  rank = 500
+              return rank
+
+          def order_key(v):
+              return (
+                  str(v.get('market') or '').upper(),
+                  str(v.get('make') or '').lower(),
+                  str(v.get('model') or '').lower(),
+                  int(v.get('year') or 0),
+                  trim_rank(v),
+                  number(v.get('batteryKwh')),
+                  number(v.get('powerKw')),
+                  int(v.get('wltpKm') or 0),
+                  str(v.get('version') or '').lower(),
+              )
+
+          if vehicles != sorted(vehicles, key=order_key):
+              raise SystemExit('Catalog is not ordered by market/make/model/year/trim/technical')
 
           missing_consumption = [
               v for v in vehicles
