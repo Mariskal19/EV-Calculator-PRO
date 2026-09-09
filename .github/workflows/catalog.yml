@@ -33,6 +33,7 @@ on:
       - 'app/src/main/assets/vehicle_market_additions_pass24.json'
       - 'app/src/main/assets/vehicle_market_additions_pass25.json'
       - 'app/src/main/assets/vehicle_market_additions_pass26.json'
+      - 'app/src/main/assets/vehicle_market_additions_pass27.json'
       - 'app/src/main/assets/research_mini_ES_2024_2026.json'
       - 'tools/generate_catalog.py'
 
