@@ -11,6 +11,8 @@ on:
       - 'app/src/main/assets/vehicle_market_additions_pass4.json'
       - 'app/src/main/assets/vehicle_market_additions_toyota_volkswagen.json'
       - 'app/src/main/assets/vehicle_market_additions_tesla.json'
+      - 'app/src/main/assets/vehicle_market_additions_pass5.json'
+      - 'app/src/main/assets/vehicle_market_additions_pass6.json'
       - 'app/src/main/assets/research_mini_ES_2024_2026.json'
       - 'tools/generate_catalog.py'
 
