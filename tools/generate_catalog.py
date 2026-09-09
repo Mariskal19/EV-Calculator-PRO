@@ -18,7 +18,8 @@ SOURCES = [
     'vehicle_market_additions_pass20.json', 'vehicle_market_additions_pass21.json',
     'vehicle_market_additions_pass22.json', 'vehicle_market_additions_pass23.json',
     'vehicle_market_additions_pass24.json', 'vehicle_market_additions_pass25.json',
-    'vehicle_market_additions_pass26.json', 'research_mini_ES_2024_2026.json',
+    'vehicle_market_additions_pass26.json', 'vehicle_market_additions_pass27.json',
+    'research_mini_ES_2024_2026.json',
 ]
 OUTPUT = ROOT / 'catalog_es_2024_2026.json'
 
