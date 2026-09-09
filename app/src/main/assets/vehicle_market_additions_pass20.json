@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"CUPRA","model":"Born","version":"Born Plus 58 kWh","year":2026,"arrivalYear":2021,"batteryKwh":58.0,"batteryType":"LFP","wltpKm":484,"powerKw":140,"drivetrain":"RWD","acKw":11,"dcKw":105,"source":"CUPRA España; Born 2026; gama española y especificaciones 2026","lastUpdated":"2026-09-10"},
+    {"make":"CUPRA","model":"Born","version":"Endurance 79 kWh","year":2026,"arrivalYear":2021,"batteryKwh":79.0,"batteryType":"NMC","wltpKm":627,"powerKw":170,"drivetrain":"RWD","acKw":11,"dcKw":183,"source":"CUPRA España; Born 2026; gama española y especificaciones 2026","lastUpdated":"2026-09-10"},
+    {"make":"CUPRA","model":"Born","version":"VZ 79 kWh","year":2026,"arrivalYear":2021,"batteryKwh":79.0,"batteryType":"NMC","wltpKm":631,"powerKw":240,"drivetrain":"RWD","acKw":11,"dcKw":183,"source":"CUPRA España; Born 2026; gama española y especificaciones 2026","lastUpdated":"2026-09-10"}
+  ]
+}
