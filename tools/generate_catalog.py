@@ -13,6 +13,7 @@ SOURCES = [
     'vehicle_market_additions_tesla.json',
     'vehicle_market_additions_pass5.json',
     'vehicle_market_additions_pass6.json',
+    'vehicle_market_additions_pass7.json',
     'research_mini_ES_2024_2026.json',
 ]
 OUTPUT = ROOT / 'catalog_es_2024_2026.json'
