@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"Geely","model":"E5","version":"60.2 kWh Pro","year":2026,"arrivalYear":2026,"batteryKwh":60.2,"batteryType":"LFP","wltpKm":430,"powerKw":160,"drivetrain":"FWD","source":"Geely España; E5; mercado español","lastUpdated":"2026-09-10"},
+    {"make":"Nissan","model":"Ariya","version":"63 kWh","year":2026,"arrivalYear":2022,"batteryKwh":63.0,"usableBatteryKwh":63.0,"batteryType":"Li-ion","wltpKm":360,"powerKw":160,"drivetrain":"FWD","acKw":7.4,"dcKw":130,"source":"Nissan España; Ariya; versiones y especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Nissan","model":"Ariya","version":"87 kWh","year":2026,"arrivalYear":2022,"batteryKwh":87.0,"usableBatteryKwh":87.0,"batteryType":"Li-ion","wltpKm":536,"powerKw":178,"drivetrain":"FWD","acKw":7.4,"dcKw":130,"source":"Nissan España; Ariya; versiones y especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Nissan","model":"Ariya","version":"87 kWh e-4ORCE","year":2026,"arrivalYear":2022,"batteryKwh":87.0,"usableBatteryKwh":87.0,"batteryType":"Li-ion","wltpKm":498,"powerKw":225,"drivetrain":"AWD","acKw":22,"dcKw":130,"source":"Nissan España; Ariya e-4ORCE; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Nissan","model":"Ariya","version":"NISMO 87 kWh e-4ORCE","year":2026,"arrivalYear":2024,"batteryKwh":87.0,"usableBatteryKwh":87.0,"batteryType":"Li-ion","wltpKm":419,"powerKw":320,"drivetrain":"AWD","acKw":22,"dcKw":130,"source":"Nissan España; Ariya NISMO; mercado español","lastUpdated":"2026-09-10"}
+  ]
+}
