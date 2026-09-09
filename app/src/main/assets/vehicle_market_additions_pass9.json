@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"Opel","model":"Frontera Electric","version":"Standard 44 kWh","year":2026,"arrivalYear":2025,"batteryKwh":44.0,"batteryType":"LFP","wltpKm":307,"powerKw":83,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Opel España; Frontera Electric 44 kWh","lastUpdated":"2026-09-09"},
+    {"make":"Opel","model":"Frontera Electric","version":"Extended Range 54 kWh","year":2026,"arrivalYear":2025,"batteryKwh":54.0,"batteryType":"NMC","wltpKm":401,"powerKw":83,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Opel España; Frontera Electric 54 kWh","lastUpdated":"2026-09-09"},
+    {"make":"Opel","model":"Mokka Electric","version":"156 CV 54 kWh","year":2026,"arrivalYear":2024,"batteryKwh":54.0,"batteryType":"NMC","wltpKm":402,"powerKw":115,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Opel España; Mokka MY26","lastUpdated":"2026-09-09"},
+    {"make":"Opel","model":"Mokka GSE","version":"281 CV 54 kWh","year":2026,"arrivalYear":2025,"batteryKwh":54.0,"batteryType":"NMC","wltpKm":336,"powerKw":207,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Opel España; nuevo Mokka GSE","lastUpdated":"2026-09-09"},
+    {"make":"Opel","model":"Astra Electric","version":"156 CV 58 kWh","year":2026,"arrivalYear":2024,"batteryKwh":58.0,"batteryType":"NMC","wltpKm":454,"powerKw":115,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Opel España; Astra Electric MY26","lastUpdated":"2026-09-09"},
+    {"make":"Opel","model":"Astra Sports Tourer Electric","version":"156 CV 58 kWh","year":2026,"arrivalYear":2024,"batteryKwh":58.0,"batteryType":"NMC","wltpKm":445,"powerKw":115,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Opel España; Astra Sports Tourer Electric MY26","lastUpdated":"2026-09-09"},
+    {"make":"Mercedes-Benz","model":"CLA Shooting Brake Eléctrico","version":"CLA 200 eléctrico","year":2026,"arrivalYear":2026,"batteryKwh":58.0,"usableBatteryKwh":58.0,"batteryType":"NMC","wltpKm":524,"powerKw":165,"drivetrain":"RWD","acKw":11,"dcKw":200,"source":"Mercedes-Benz España; CLA Shooting Brake Eléctrico","lastUpdated":"2026-09-09"},
+    {"make":"Mercedes-Benz","model":"CLA Shooting Brake Eléctrico","version":"CLA 250+ eléctrico","year":2026,"arrivalYear":2026,"batteryKwh":85.0,"usableBatteryKwh":85.0,"batteryType":"NMC","wltpKm":767,"powerKw":200,"drivetrain":"RWD","acKw":11,"dcKw":320,"source":"Mercedes-Benz España; CLA Shooting Brake Eléctrico","lastUpdated":"2026-09-09"},
+    {"make":"Mercedes-Benz","model":"CLA Shooting Brake Eléctrico","version":"CLA 350 4MATIC eléctrico","year":2026,"arrivalYear":2026,"batteryKwh":85.0,"usableBatteryKwh":85.0,"batteryType":"NMC","wltpKm":742,"powerKw":260,"drivetrain":"AWD","acKw":11,"dcKw":320,"source":"Mercedes-Benz España; CLA Shooting Brake Eléctrico","lastUpdated":"2026-09-09"},
+    {"make":"Volkswagen","model":"ID.7","version":"Pro S 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":210,"drivetrain":"RWD","wltpKm":702,"source":"Volkswagen España; configurador ID.7 2026","lastUpdated":"2026-09-09"},
+    {"make":"Volkswagen","model":"ID.7","version":"GTX 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":250,"drivetrain":"AWD","wltpKm":600,"source":"Volkswagen España; configurador ID.7 2026","lastUpdated":"2026-09-09"},
+    {"make":"Volkswagen","model":"ID.7 Tourer","version":"Pro S 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":210,"drivetrain":"RWD","wltpKm":683,"source":"Volkswagen España; gama ID.7 Tourer 2026","lastUpdated":"2026-09-09"},
+    {"make":"Volkswagen","model":"ID.7 Tourer","version":"GTX 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":250,"drivetrain":"AWD","wltpKm":585,"source":"Volkswagen España; gama ID.7 Tourer 2026","lastUpdated":"2026-09-09"}
+  ]
+}
