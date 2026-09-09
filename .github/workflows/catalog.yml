@@ -32,6 +32,7 @@ on:
       - 'app/src/main/assets/vehicle_market_additions_pass23.json'
       - 'app/src/main/assets/vehicle_market_additions_pass24.json'
       - 'app/src/main/assets/vehicle_market_additions_pass25.json'
+      - 'app/src/main/assets/vehicle_market_additions_pass26.json'
       - 'app/src/main/assets/research_mini_ES_2024_2026.json'
       - 'tools/generate_catalog.py'
 
@@ -77,7 +78,7 @@ jobs:
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot].gits@gmail.com"
           git add app/src/main/assets/catalog_es_2024_2026.json
           if git diff --cached --quiet; then echo "Catalog already up to date."; exit 0; fi
           git commit -m "chore: regenerate optimized Spanish car catalog"
