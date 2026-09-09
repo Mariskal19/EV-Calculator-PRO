@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"Škoda","model":"Enyaq","version":"60","year":2026,"arrivalYear":2021,"batteryKwh":61.0,"usableBatteryKwh":58.0,"batteryType":"LFP","wltpKm":456,"powerKw":140,"drivetrain":"RWD","acKw":11,"dcKw":165,"source":"Škoda España/KM77; Enyaq 60 MY26","lastUpdated":"2026-09-10"},
+    {"make":"Škoda","model":"Enyaq","version":"85","year":2026,"arrivalYear":2021,"batteryKwh":82.0,"usableBatteryKwh":77.0,"batteryType":"NMC","wltpKm":583,"powerKw":210,"drivetrain":"RWD","acKw":11,"dcKw":165,"source":"Škoda España/KM77; Enyaq 85 MY26","lastUpdated":"2026-09-10"},
+    {"make":"Škoda","model":"Enyaq","version":"85x","year":2026,"arrivalYear":2021,"batteryKwh":82.0,"usableBatteryKwh":77.0,"batteryType":"NMC","wltpKm":583,"powerKw":210,"drivetrain":"AWD","acKw":11,"dcKw":165,"source":"Škoda España/KM77; Enyaq 85x MY26","lastUpdated":"2026-09-10"},
+    {"make":"Škoda","model":"Enyaq","version":"RS","year":2026,"arrivalYear":2021,"batteryKwh":82.0,"usableBatteryKwh":77.0,"batteryType":"NMC","wltpKm":568,"powerKw":250,"drivetrain":"AWD","acKw":11,"dcKw":185,"source":"Škoda España/KM77; Enyaq RS MY26","lastUpdated":"2026-09-10"},
+    {"make":"Škoda","model":"Elroq","version":"60","year":2026,"arrivalYear":2025,"batteryKwh":61.0,"usableBatteryKwh":58.0,"batteryType":"LFP","wltpKm":574,"powerKw":140,"drivetrain":"RWD","acKw":11,"dcKw":105,"source":"Škoda España/KM77; Elroq 60 MY26","lastUpdated":"2026-09-10"},
+    {"make":"Škoda","model":"Elroq","version":"RS","year":2026,"arrivalYear":2025,"batteryKwh":82.0,"usableBatteryKwh":77.0,"batteryType":"NMC","wltpKm":557,"powerKw":250,"drivetrain":"AWD","acKw":11,"dcKw":165,"source":"Škoda España/KM77; Elroq RS MY26","lastUpdated":"2026-09-10"},
+    {"make":"Jeep","model":"Compass","version":"Full-Electric Standard Range","year":2026,"arrivalYear":2025,"batteryKwh":74.0,"batteryType":"NMC","wltpKm":500,"powerKw":157,"drivetrain":"FWD","acKw":11,"dcKw":100,"source":"Jeep España; Nuevo Compass Full-Electric Standard Range","lastUpdated":"2026-09-10"},
+    {"make":"Jeep","model":"Compass","version":"Full-Electric Long Range","year":2026,"arrivalYear":2025,"batteryKwh":96.0,"batteryType":"NMC","wltpKm":650,"powerKw":170,"drivetrain":"FWD","acKw":11,"dcKw":160,"source":"Jeep España; Nuevo Compass Full-Electric Long Range","lastUpdated":"2026-09-10"},
+    {"make":"Subaru","model":"Uncharted","version":"57.7 kWh FWD","year":2026,"arrivalYear":2026,"batteryKwh":57.7,"batteryType":"Li-ion","wltpKm":445,"powerKw":123,"drivetrain":"FWD","source":"Subaru España; Uncharted lanzamiento 2026","lastUpdated":"2026-09-10"},
+    {"make":"Subaru","model":"Uncharted","version":"77 kWh FWD","year":2026,"arrivalYear":2026,"batteryKwh":77.0,"batteryType":"Li-ion","wltpKm":585,"powerKw":167,"drivetrain":"FWD","source":"Subaru España; Uncharted lanzamiento 2026","lastUpdated":"2026-09-10"},
+    {"make":"Subaru","model":"Uncharted","version":"77 kWh AWD","year":2026,"arrivalYear":2026,"batteryKwh":77.0,"batteryType":"Li-ion","wltpKm":470,"powerKw":252,"drivetrain":"AWD","source":"Subaru España; Uncharted lanzamiento 2026","lastUpdated":"2026-09-10"}
+  ]
+}
