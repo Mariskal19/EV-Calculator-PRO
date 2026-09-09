@@ -8,6 +8,10 @@ on:
       - 'app/src/main/assets/vehicles.json'
       - 'app/src/main/assets/vehicle_variants.json'
       - 'app/src/main/assets/vehicle_market_additions.json'
+      - 'app/src/main/assets/vehicle_market_additions_pass4.json'
+      - 'app/src/main/assets/vehicle_market_additions_toyota_volkswagen.json'
+      - 'app/src/main/assets/vehicle_market_additions_tesla.json'
+      - 'app/src/main/assets/research_mini_ES_2024_2026.json'
       - 'tools/generate_catalog.py'
 
 permissions:
@@ -28,20 +32,41 @@ jobs:
           python3 - <<'PY'
           import json
           from pathlib import Path
+
           p = Path('app/src/main/assets/catalog_es_2024_2026.json')
           data = json.loads(p.read_text(encoding='utf-8'))
           vehicles = data.get('vehicles')
           if not isinstance(vehicles, list) or not vehicles:
               raise SystemExit('Catalog is missing or empty')
+
           bad_years = [v for v in vehicles if v.get('year') not in (2024, 2025, 2026)]
           if bad_years:
               raise SystemExit(f'Catalog contains {len(bad_years)} invalid years')
-          keys = []
-          for v in vehicles:
-              keys.append((str(v.get('market') or '').upper(), str(v.get('make') or '').lower(), str(v.get('model') or '').lower(), int(v.get('year') or 0)))
-          if keys != sorted(keys):
-              raise SystemExit('Catalog is not ordered by market/make/model/year')
+
+          keys = [(
+              str(v.get('market') or '').upper(),
+              str(v.get('make') or '').lower(),
+              str(v.get('model') or '').lower(),
+              int(v.get('year') or 0),
+              str(v.get('version') or '').lower(),
+              float(v.get('batteryKwh') or 0),
+              float(v.get('powerKw') or 0),
+              int(v.get('wltpKm') or 0),
+          ) for v in vehicles]
+          if keys != sorted(keys, key=lambda k: (k[0], k[1], k[2], k[3], k[4], k[5], k[6], k[7])):
+              raise SystemExit('Catalog is not deterministically ordered')
+
+          missing_consumption = [
+              v for v in vehicles
+              if (v.get('batteryKwh') or 0) > 0
+              and (v.get('wltpKm') or 0) > 0
+              and v.get('consumptionKwh100') in (None, '', 0)
+          ]
+          if missing_consumption:
+              raise SystemExit(f'Catalog has {len(missing_consumption)} configurations without consumptionKwh100')
+
           print(f'Catalog validated: {len(vehicles)} vehicles')
+          print('All battery + WLTP configurations have consumptionKwh100.')
           PY
 
       - name: Commit catalog if changed
@@ -54,5 +79,5 @@ jobs:
             echo "Catalog already up to date."
             exit 0
           fi
-          git commit -m "chore: regenerate ordered Spanish car catalog"
+          git commit -m "chore: regenerate optimized Spanish car catalog"
           git push
