@@ -16,6 +16,9 @@ SOURCES = [
     'vehicle_market_additions_pass7.json',
     'vehicle_market_additions_pass8.json',
     'vehicle_market_additions_pass9.json',
+    'vehicle_market_additions_pass10.json',
+    'vehicle_market_additions_pass11.json',
+    'vehicle_market_additions_pass12.json',
     'research_mini_ES_2024_2026.json',
 ]
 OUTPUT = ROOT / 'catalog_es_2024_2026.json'
@@ -58,37 +61,68 @@ def derive_consumption(vehicle):
     if battery > 0 and wltp > 0: vehicle['consumptionKwh100'] = round((battery / wltp) * 100, 1)
 
 merged = {}
-for source in SOURCES:
-    path = ROOT / source
-    if not path.exists(): continue
+for source_name in SOURCES:
+    path = ROOT / source_name
+    if not path.exists():
+        continue
     data = json.loads(path.read_text(encoding='utf-8'))
-    for vehicle in data.get('vehicles', []):
-        if vehicle.get('year') not in (2024, 2025, 2026): continue
+    vehicles = data.get('vehicles', []) if isinstance(data, dict) else []
+    for vehicle in vehicles:
+        if not isinstance(vehicle, dict):
+            continue
+        if vehicle.get('year') not in (2024, 2025, 2026):
+            continue
+        vehicle = dict(vehicle)
+        vehicle.setdefault('market', data.get('market', 'ES'))
+        derive_consumption(vehicle)
         key = logical_key(vehicle)
         if key not in merged:
-            merged[key] = dict(vehicle); continue
-        existing = merged[key]
-        for field in ['price','batteryKwh','usableBatteryKwh','batteryType','wltpKm','consumptionKwh100','consumption','powerKw','drivetrain','acKw','dcKw','charge10to80Min','acceleration0to100Sec','trunkLiters','weightKg','photo','source','lastUpdated','arrivalYear']:
-            if existing.get(field) in (None, '', 0) and vehicle.get(field) not in (None, '', 0): existing[field] = vehicle[field]
+            merged[key] = vehicle
+        else:
+            current = merged[key]
+            for field, value in vehicle.items():
+                if current.get(field) in (None, '', 0) and value not in (None, '', 0):
+                    current[field] = value
+            derive_consumption(current)
 
+# Remove slash-combined versions when their individual variants are already represented.
 vehicles = list(merged.values())
-remove_ids = set()
-for vehicle in vehicles:
-    version = str(vehicle.get('version') or '')
-    if '/' not in version: continue
-    parts = [part.strip().lower() for part in version.split('/') if part.strip()]
-    complete = bool(parts)
-    for part in parts:
-        if not any(other is not vehicle and str(other.get('make','')).lower() == str(vehicle.get('make','')).lower() and str(other.get('model','')).lower() == str(vehicle.get('model','')).lower() and str(other.get('market','')).lower() == str(vehicle.get('market','')).lower() and other.get('year') == vehicle.get('year') and str(other.get('version','')).strip().lower() == part for other in vehicles):
-            complete = False; break
-    if complete: remove_ids.add(id(vehicle))
-vehicles = [vehicle for vehicle in vehicles if id(vehicle) not in remove_ids]
-for vehicle in vehicles: derive_consumption(vehicle)
+individual_keys = set()
+for v in vehicles:
+    version = str(v.get('version') or '')
+    if '/' not in version:
+        individual_keys.add((str(v.get('make') or '').lower(), str(v.get('model') or '').lower(), int(v.get('year') or 0), normalized_version(v)))
+filtered = []
+for v in vehicles:
+    version = str(v.get('version') or '')
+    if '/' in version:
+        parts = [p.strip() for p in version.split('/') if p.strip()]
+        if len(parts) > 1 and all((str(v.get('make') or '').lower(), str(v.get('model') or '').lower(), int(v.get('year') or 0), re.sub(r'\s+', ' ', p.lower())) in individual_keys for p in parts):
+            continue
+    filtered.append(v)
+vehicles = filtered
 
-def order_key(vehicle):
-    return (str(vehicle.get('market') or '').upper(), str(vehicle.get('make') or '').lower(), str(vehicle.get('model') or '').lower(), int(vehicle.get('year') or 0), trim_rank(vehicle), number(vehicle.get('batteryKwh')), number(vehicle.get('powerKw')), int(vehicle.get('wltpKm') or 0), str(vehicle.get('version') or '').lower())
+vehicles.sort(key=lambda v: (
+    str(v.get('market') or '').upper(),
+    str(v.get('make') or '').lower(),
+    str(v.get('model') or '').lower(),
+    int(v.get('year') or 0),
+    trim_rank(v),
+    number(v.get('batteryKwh')),
+    number(v.get('powerKw')),
+    int(v.get('wltpKm') or 0),
+    str(v.get('version') or '').lower(),
+))
 
-vehicles.sort(key=order_key)
-result = {'schemaVersion': 1, 'datasetVersion': 'catalog-es-2024-2026-1.0', 'marketDefault': 'ES', 'catalogOrder': 'market>make>model>year>trim>technical', 'vehicles': vehicles}
-OUTPUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-print(f'Catalog generated: {len(vehicles)} vehicles')
+for v in vehicles:
+    derive_consumption(v)
+
+output = {
+    'schemaVersion': 1,
+    'datasetVersion': 'catalog-es-2024-2026-1.0',
+    'marketDefault': 'ES',
+    'catalogOrder': 'market>make>model>year>trim>technical',
+    'vehicles': vehicles,
+}
+OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+print(f'Generated {OUTPUT}: {len(vehicles)} vehicles')
