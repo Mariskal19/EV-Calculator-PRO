@@ -4,7 +4,7 @@ from pathlib import Path
 
 # Canonical Spanish catalog generator: MERCADO > MARCA > MODELO > AÑO > VERSIÓN > TÉCNICA.
 ROOT = Path('app/src/main/assets')
-SOURCES = ['vehicles.json', 'vehicle_variants.json', 'vehicle_market_additions.json']
+SOURCES = ['vehicles.json', 'vehicle_variants.json', 'vehicle_market_additions.json', 'research_mini_ES_2024_2026.json']
 OUTPUT = ROOT / 'catalog_es_2024_2026.json'
 
 def number(value):
