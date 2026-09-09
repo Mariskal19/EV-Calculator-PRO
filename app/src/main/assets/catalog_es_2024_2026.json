@@ -8935,6 +8935,21 @@
     {
       "make": "Volkswagen",
       "model": "ID.7",
+      "market": "ES",
+      "year": 2026,
+      "version": "Pro S",
+      "batteryKwh": 86.0,
+      "batteryChemistry": "NMC",
+      "powerKw": 210,
+      "drive": "RWD",
+      "wltpKm": 702,
+      "acKw": 11,
+      "dcKw": 200,
+      "consumptionKwh100": 12.3
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID.7",
       "version": "Pro S 86 kWh",
       "year": 2026,
       "arrivalYear": 2024,
@@ -8946,6 +8961,21 @@
       "lastUpdated": "2026-09-09",
       "market": "ES",
       "consumptionKwh100": 12.3
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID.7",
+      "market": "ES",
+      "year": 2026,
+      "version": "GTX",
+      "batteryKwh": 86.0,
+      "batteryChemistry": "NMC",
+      "powerKw": 250,
+      "drive": "AWD",
+      "wltpKm": 595,
+      "acKw": 11,
+      "dcKw": 200,
+      "consumptionKwh100": 14.5
     },
     {
       "make": "Volkswagen",
@@ -9094,6 +9124,21 @@
     {
       "make": "Volkswagen",
       "model": "ID.7 Tourer",
+      "market": "ES",
+      "year": 2026,
+      "version": "Pro S",
+      "batteryKwh": 86.0,
+      "batteryChemistry": "NMC",
+      "powerKw": 210,
+      "drive": "RWD",
+      "wltpKm": 683,
+      "acKw": 11,
+      "dcKw": 200,
+      "consumptionKwh100": 12.6
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID.7 Tourer",
       "version": "Pro S 86 kWh",
       "year": 2026,
       "arrivalYear": 2024,
@@ -9105,6 +9150,21 @@
       "lastUpdated": "2026-09-09",
       "market": "ES",
       "consumptionKwh100": 12.6
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID.7 Tourer",
+      "market": "ES",
+      "year": 2026,
+      "version": "GTX",
+      "batteryKwh": 86.0,
+      "batteryChemistry": "NMC",
+      "powerKw": 250,
+      "drive": "AWD",
+      "wltpKm": 585,
+      "acKw": 11,
+      "dcKw": 200,
+      "consumptionKwh100": 14.7
     },
     {
       "make": "Volkswagen",
