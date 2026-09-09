@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"Volvo","model":"EX90","version":"Single Motor","year":2026,"arrivalYear":2024,"batteryKwh":92.0,"batteryType":"Li-ion","wltpKm":564,"powerKw":245,"drivetrain":"RWD","acKw":11,"dcKw":350,"source":"Volvo Cars España; EX90 MY26; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Volvo","model":"EX90","version":"Twin Motor","year":2026,"arrivalYear":2024,"batteryKwh":106.0,"batteryType":"Li-ion","wltpKm":617,"powerKw":335,"drivetrain":"AWD","acKw":11,"dcKw":350,"source":"Volvo Cars España; EX90 MY26; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Volvo","model":"EX90","version":"Twin Motor Performance","year":2026,"arrivalYear":2024,"batteryKwh":106.0,"batteryType":"Li-ion","wltpKm":617,"powerKw":500,"drivetrain":"AWD","acKw":11,"dcKw":350,"source":"Volvo Cars España; EX90 MY26; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Volvo","model":"ES90","version":"Single Motor Extended Range","year":2026,"arrivalYear":2025,"batteryKwh":92.0,"batteryType":"Li-ion","wltpKm":664,"powerKw":245,"drivetrain":"RWD","acKw":11,"dcKw":350,"source":"Volvo Cars España; ES90 MY26; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Volvo","model":"ES90","version":"Twin Motor","year":2026,"arrivalYear":2025,"batteryKwh":106.0,"batteryType":"Li-ion","wltpKm":702,"powerKw":335,"drivetrain":"AWD","acKw":11,"dcKw":350,"source":"Volvo Cars España; ES90 MY26; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Volvo","model":"ES90","version":"Twin Motor Performance","year":2026,"arrivalYear":2025,"batteryKwh":106.0,"batteryType":"Li-ion","wltpKm":702,"powerKw":500,"drivetrain":"AWD","acKw":11,"dcKw":350,"source":"Volvo Cars España; ES90 MY26; especificaciones españolas","lastUpdated":"2026-09-10"},
+    {"make":"Mazda","model":"CX-6e","version":"Takumi","year":2026,"arrivalYear":2026,"batteryKwh":78.0,"batteryType":"LFP","wltpKm":484,"powerKw":190,"drivetrain":"RWD","acKw":11,"dcKw":200,"source":"Mazda Automóviles España; preventa y especificaciones CX-6e 2026","lastUpdated":"2026-09-10"},
+    {"make":"Mazda","model":"CX-6e","version":"Takumi Plus","year":2026,"arrivalYear":2026,"batteryKwh":78.0,"batteryType":"LFP","wltpKm":484,"powerKw":190,"drivetrain":"RWD","acKw":11,"dcKw":200,"source":"Mazda Automóviles España; preventa y especificaciones CX-6e 2026","lastUpdated":"2026-09-10"},
+    {"make":"CUPRA","model":"Tavascan","version":"58 kWh","year":2026,"arrivalYear":2024,"batteryKwh":58.0,"batteryType":"LFP","wltpKm":441,"powerKw":140,"drivetrain":"RWD","acKw":11,"dcKw":135,"source":"CUPRA España; gama Tavascan 2026","lastUpdated":"2026-09-10"},
+    {"make":"CUPRA","model":"Tavascan","version":"Endurance 77 kWh","year":2026,"arrivalYear":2024,"batteryKwh":77.0,"batteryType":"NMC","wltpKm":557,"powerKw":210,"drivetrain":"RWD","acKw":11,"dcKw":135,"source":"CUPRA España; gama Tavascan 2026","lastUpdated":"2026-09-10"},
+    {"make":"CUPRA","model":"Tavascan","version":"VZ 77 kWh","year":2026,"arrivalYear":2024,"batteryKwh":77.0,"batteryType":"NMC","wltpKm":533,"powerKw":250,"drivetrain":"AWD","acKw":11,"dcKw":135,"source":"CUPRA España; gama Tavascan 2026","lastUpdated":"2026-09-10"}
+  ]
+}
