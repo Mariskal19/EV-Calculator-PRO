@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "market": "ES",
+  "vehicles": [
+    {"make":"Škoda","model":"Peaq","version":"60","year":2026,"arrivalYear":2026,"batteryKwh":63.0,"usableBatteryKwh":59.0,"batteryType":"NMC","wltpKm":440,"powerKw":150,"drivetrain":"RWD","acKw":11,"dcKw":165,"source":"Škoda España/Škoda Auto; Peaq 60","lastUpdated":"2026-09-09"},
+    {"make":"Škoda","model":"Peaq","version":"90","year":2026,"arrivalYear":2026,"batteryKwh":91.0,"usableBatteryKwh":86.0,"batteryType":"NMC","wltpKm":638,"powerKw":210,"drivetrain":"RWD","acKw":11,"dcKw":200,"source":"Škoda España/Škoda Auto; Peaq 90","lastUpdated":"2026-09-09"},
+    {"make":"Škoda","model":"Peaq","version":"90x","year":2026,"arrivalYear":2026,"batteryKwh":91.0,"usableBatteryKwh":86.0,"batteryType":"NMC","wltpKm":605,"powerKw":220,"drivetrain":"AWD","acKw":11,"dcKw":200,"source":"Škoda Auto; Peaq 90x","lastUpdated":"2026-09-09"}
+  ]
+}
