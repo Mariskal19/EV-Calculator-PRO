@@ -14,6 +14,7 @@
     {"make":"Volkswagen","model":"ID.7","version":"Pro S 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":210,"drivetrain":"RWD","wltpKm":702,"source":"Volkswagen España; configurador ID.7 2026","lastUpdated":"2026-09-09"},
     {"make":"Volkswagen","model":"ID.7","version":"GTX 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":250,"drivetrain":"AWD","wltpKm":600,"source":"Volkswagen España; configurador ID.7 2026","lastUpdated":"2026-09-09"},
     {"make":"Volkswagen","model":"ID.7 Tourer","version":"Pro S 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":210,"drivetrain":"RWD","wltpKm":683,"source":"Volkswagen España; gama ID.7 Tourer 2026","lastUpdated":"2026-09-09"},
-    {"make":"Volkswagen","model":"ID.7 Tourer","version":"GTX 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":250,"drivetrain":"AWD","wltpKm":585,"source":"Volkswagen España; gama ID.7 Tourer 2026","lastUpdated":"2026-09-09"}
+    {"make":"Volkswagen","model":"ID.7 Tourer","version":"GTX 86 kWh","year":2026,"arrivalYear":2024,"batteryKwh":86.0,"powerKw":250,"drivetrain":"AWD","wltpKm":585,"source":"Volkswagen España; gama ID.7 Tourer 2026","lastUpdated":"2026-09-09"},
+    {"make":"Jeep","model":"Compass","version":"4xe Full-Electric","year":2026,"arrivalYear":2026,"batteryKwh":96.1,"usableBatteryKwh":96.0,"batteryType":"NMC","wltpKm":600,"powerKw":280,"drivetrain":"AWD","acKw":11,"dcKw":160,"source":"Jeep España; Nuevo Compass 4xe Full-Electric","lastUpdated":"2026-09-09"}
   ]
 }
