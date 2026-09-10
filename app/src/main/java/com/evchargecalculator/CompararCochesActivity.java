@@ -223,7 +223,15 @@ public class CompararCochesActivity extends Activity {
     private int trimRank(Vehicle v){String s=(v.version==null?"":v.version).toLowerCase(Locale.ROOT).replace("-"," ").replace("_"," ");int r=300;if(s.contains("standard")||s.contains("base")||s.contains("pure")||s.contains("core")||s.contains("essential")||s.contains("life")||s.contains("active")||s.contains("entry"))r=100;if(s.contains("comfort")||s.contains("advance")||s.contains("advanced")||s.contains("evolution")||s.contains("plus")||s.contains("boost"))r=200;if(s.contains("long range")||s.contains("extended")||s.contains("max")||s.contains("pro")||s.contains("premium")||s.contains("design")||s.contains("techno")||s.contains("earth"))r=Math.max(r,300);if(s.contains("awd")||s.contains("4wd")||s.contains("dual motor")||s.contains("all wheel"))r=Math.max(r,400);if(s.contains("performance")||s.contains("gt")||s.contains("gts")||s.contains("rs ")||s.equals("rs")||s.contains("sport")||s.contains("m performance")||s.contains("amg"))r=500;return r;}
 
     private String searchLabel(Vehicle v){
-        String first=v.make+" "+v.model; StringBuilder second=new StringBuilder();
+        String first=v.make;
+        String model=v.model == null ? "" : v.model.trim();
+        String brand=v.make == null ? "" : v.make.trim();
+        if(!brand.isEmpty() && model.regionMatches(true,0,brand,0,brand.length())){
+            String remainder=model.substring(brand.length()).trim();
+            if(!remainder.isEmpty()) model=remainder;
+        }
+        first=first+" "+model;
+        StringBuilder second=new StringBuilder();
         if(v.year>0){String ys=String.valueOf(v.year);second.append("MY").append(ys.substring(Math.max(0,ys.length()-2)));}
         if(v.version!=null&&!v.version.trim().isEmpty()){
             String ver=v.version.trim()
