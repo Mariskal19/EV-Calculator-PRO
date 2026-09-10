@@ -1,0 +1,27 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Hyundai",
+      "model": "INSTER",
+      "year": 2024,
+      "market": "ES",
+      "version": "97 CV FWD 42 kWh",
+      "batteryKwh": 42,
+      "powerKw": 71.1,
+      "drive": "FWD",
+      "wltpKm": 327
+    },
+    {
+      "make": "Hyundai",
+      "model": "INSTER",
+      "year": 2024,
+      "market": "ES",
+      "version": "115 CV FWD 49 kWh",
+      "batteryKwh": 49,
+      "powerKw": 84.5,
+      "drive": "FWD",
+      "wltpKm": 370
+    }
+  ]
+}
