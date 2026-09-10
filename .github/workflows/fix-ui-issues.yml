@@ -1,0 +1,57 @@
+name: Fix UI issues
+
+on:
+  push:
+    paths:
+      - 'UI_FIX_TRIGGER.txt'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply fixes
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text(encoding='utf-8')
+          old = '''        TextView title = tv("Comparar coches", 25, Color.WHITE);\n        title.setTypeface(null, Typeface.BOLD);\n        title.setGravity(Gravity.CENTER);\n        title.setShadowLayer(8, 0, 2, Color.BLACK);\n        FrameLayout.LayoutParams tp = new FrameLayout.LayoutParams(-1, dp(58), Gravity.CENTER);\n        tp.setMargins(dp(50), dp(48), dp(50), 0);\n        hero.addView(title, tp);\n        TextView subtitle = tv("Compara hasta 3 vehículos", 14, Color.WHITE);\n        subtitle.setGravity(Gravity.CENTER);\n        subtitle.setShadowLayer(6, 0, 2, Color.BLACK);\n        FrameLayout.LayoutParams sp = new FrameLayout.LayoutParams(-1, dp(34), Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);\n        sp.setMargins(dp(24), 0, dp(24), dp(12));\n        hero.addView(subtitle, sp);'''
+          new = '''        TextView title = tv("Comparar coches", 25, Color.WHITE);\n        title.setTypeface(null, Typeface.BOLD);\n        title.setGravity(Gravity.CENTER);\n        title.setIncludeFontPadding(false);\n        title.setShadowLayer(8, 0, 2, Color.BLACK);\n        // El único título queda centrado verticalmente con los botones de volver y menú.\n        FrameLayout.LayoutParams tp = new FrameLayout.LayoutParams(-1, dp(52), Gravity.CENTER);\n        tp.setMargins(dp(52), dp(10), dp(52), 0);\n        hero.addView(title, tp);'''
+          if old not in s:
+              raise SystemExit('Header block not found; aborting')
+          s = s.replace(old, new, 1)
+          old2 = '''        TextView l = tv(label, 13, sub()); l.setPadding(dp(6), 0, dp(6), 0); r.addView(l, new LinearLayout.LayoutParams(dp(112), dp(52)));'''
+          new2 = '''        TextView l = tv(label, 13, sub());\n        l.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);\n        l.setIncludeFontPadding(false);\n        l.setPadding(dp(6), 0, dp(6), 0);\n        r.addView(l, new LinearLayout.LayoutParams(dp(112), dp(52)));'''
+          if old2 not in s:
+              raise SystemExit('Row label block not found; aborting')
+          s = s.replace(old2, new2, 1)
+          old3 = '''        for (Vehicle v : chosen) { String value = value(v, key); TextView cell = tv(value, 13, text()); cell.setGravity(Gravity.CENTER); cell.setBackgroundColor(rowAlt()); double n = numeric(v, key); if (selectedIds.size() >= 2 && !Double.isNaN(best) && !Double.isNaN(n) && Math.abs(n - best) < 0.0001) cell.setTextColor(blue); r.addView(cell, new LinearLayout.LayoutParams(dp(145), dp(52))); }'''
+          new3 = '''        for (Vehicle v : chosen) { String value = value(v, key); TextView cell = tv(value, 13, text()); cell.setGravity(Gravity.CENTER); cell.setIncludeFontPadding(false); cell.setBackgroundColor(rowAlt()); double n = numeric(v, key); if (selectedIds.size() >= 2 && !Double.isNaN(best) && !Double.isNaN(n) && Math.abs(n - best) < 0.0001) cell.setTextColor(blue); r.addView(cell, new LinearLayout.LayoutParams(dp(145), dp(52))); }'''
+          if old3 not in s:
+              raise SystemExit('Row value block not found; aborting')
+          s = s.replace(old3, new3, 1)
+          p.write_text(s, encoding='utf-8')
+
+          # Make first launch explicitly follow the system language. A stored language remains the user's choice.
+          p = Path('app/src/main/java/com/evchargecalculator/LanguageManager.java')
+          s = p.read_text(encoding='utf-8')
+          old = '''  private static String getSystemLanguage() {\n    String s = Locale.getDefault().getLanguage();\n    return isSupported(s) ? s : "en";\n  }'''
+          new = '''  private static String getSystemLanguage() {\n    // On first launch, use the device's current system language. If that language\n    // is not one of the app's supported translations, fall back to English.\n    Locale systemLocale = Locale.getDefault();\n    String s = systemLocale == null ? null : systemLocale.getLanguage();\n    return isSupported(s) ? s : "en";\n  }'''
+          if old not in s:
+              raise SystemExit('Language block not found; aborting')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+
+          Path('UI_FIX_TRIGGER.txt').unlink()
+          Path('.github/workflows/fix-ui-issues.yml').unlink()
+      - name: Commit fixes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java app/src/main/java/com/evchargecalculator/LanguageManager.java .github/workflows/fix-ui-issues.yml UI_FIX_TRIGGER.txt
+          git commit -m 'fix: language startup and compare cars header alignment'
+          git push
