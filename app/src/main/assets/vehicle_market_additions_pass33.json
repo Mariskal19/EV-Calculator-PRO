@@ -1,0 +1,19 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {"make":"BMW","model":"iX1","year":2024,"market":"ES","version":"eDrive20 150 kW FWD 65 kWh","batteryKwh":65.0,"batteryChemistry":"Li-ion","powerKw":150,"drive":"FWD","wltpKm":475},
+    {"make":"BMW","model":"iX1","year":2024,"market":"ES","version":"xDrive30 230 kW AWD 64.8 kWh","batteryKwh":64.8,"batteryChemistry":"Li-ion","powerKw":230,"drive":"AWD","wltpKm":440},
+    {"make":"BMW","model":"iX2","year":2024,"market":"ES","version":"eDrive20 150 kW FWD 65 kWh","batteryKwh":65.0,"batteryChemistry":"Li-ion","powerKw":150,"drive":"FWD","wltpKm":478},
+    {"make":"BMW","model":"iX2","year":2024,"market":"ES","version":"xDrive30 230 kW AWD 65 kWh","batteryKwh":65.0,"batteryChemistry":"Li-ion","powerKw":230,"drive":"AWD","wltpKm":449},
+    {"make":"BMW","model":"i4","year":2024,"market":"ES","version":"eDrive35 210 kW RWD 67.1 kWh","batteryKwh":67.1,"batteryChemistry":"Li-ion","powerKw":210,"drive":"RWD","wltpKm":483},
+    {"make":"BMW","model":"i4","year":2024,"market":"ES","version":"eDrive40 250 kW RWD 81.3 kWh","batteryKwh":81.3,"batteryChemistry":"Li-ion","powerKw":250,"drive":"RWD","wltpKm":613},
+    {"make":"BMW","model":"i4","year":2024,"market":"ES","version":"M60 xDrive 400 kW AWD 81.1 kWh","batteryKwh":81.1,"batteryChemistry":"Li-ion","powerKw":400,"drive":"AWD","wltpKm":520},
+    {"make":"BMW","model":"i5","year":2024,"market":"ES","version":"eDrive40 250 kW RWD 81.2 kWh","batteryKwh":81.2,"batteryChemistry":"Li-ion","powerKw":250,"drive":"RWD","wltpKm":627},
+    {"make":"BMW","model":"i5","year":2024,"market":"ES","version":"M60 xDrive 442 kW AWD 81.2 kWh","batteryKwh":81.2,"batteryChemistry":"Li-ion","powerKw":442,"drive":"AWD","wltpKm":540},
+    {"make":"BMW","model":"i7","year":2024,"market":"ES","version":"xDrive60 400 kW AWD 101.7 kWh","batteryKwh":101.7,"batteryChemistry":"Li-ion","powerKw":400,"drive":"AWD","wltpKm":625},
+    {"make":"BMW","model":"i7","year":2024,"market":"ES","version":"M70 xDrive 485 kW AWD 101.7 kWh","batteryKwh":101.7,"batteryChemistry":"Li-ion","powerKw":485,"drive":"AWD","wltpKm":560},
+    {"make":"BMW","model":"iX","year":2024,"market":"ES","version":"xDrive45 300 kW AWD 94.8 kWh","batteryKwh":94.8,"batteryChemistry":"Li-ion","powerKw":300,"drive":"AWD","wltpKm":603},
+    {"make":"BMW","model":"iX","year":2024,"market":"ES","version":"xDrive60 400 kW AWD 109.4 kWh","batteryKwh":109.4,"batteryChemistry":"Li-ion","powerKw":400,"drive":"AWD","wltpKm":701},
+    {"make":"BMW","model":"iX","year":2024,"market":"ES","version":"M70 xDrive 485 kW AWD 108.8 kWh","batteryKwh":108.8,"batteryChemistry":"Li-ion","powerKw":485,"drive":"AWD","wltpKm":600}
+  ]
+}
