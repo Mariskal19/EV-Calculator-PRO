@@ -1,0 +1,93 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "MINI",
+      "model": "Cooper Electric",
+      "year": 2024,
+      "market": "ES",
+      "version": "Cooper E 135 kW FWD 36.6 kWh",
+      "batteryKwh": 36.6,
+      "powerKw": 135,
+      "drive": "FWD",
+      "wltpKm": 305
+    },
+    {
+      "make": "MINI",
+      "model": "Cooper Electric",
+      "year": 2024,
+      "market": "ES",
+      "version": "Cooper SE 160 kW FWD 49.2 kWh",
+      "batteryKwh": 49.2,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 402
+    },
+    {
+      "make": "MINI",
+      "model": "Cooper Electric",
+      "year": 2024,
+      "market": "ES",
+      "version": "John Cooper Works Electric 190 kW FWD 49.2 kWh",
+      "batteryKwh": 49.2,
+      "powerKw": 190,
+      "drive": "FWD",
+      "wltpKm": 371
+    },
+    {
+      "make": "MINI",
+      "model": "Aceman",
+      "year": 2024,
+      "market": "ES",
+      "version": "Aceman E 135 kW FWD 38.5 kWh",
+      "batteryKwh": 38.5,
+      "powerKw": 135,
+      "drive": "FWD",
+      "wltpKm": 302
+    },
+    {
+      "make": "MINI",
+      "model": "Aceman",
+      "year": 2024,
+      "market": "ES",
+      "version": "Aceman SE 160 kW FWD 49.2 kWh",
+      "batteryKwh": 49.2,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 406
+    },
+    {
+      "make": "MINI",
+      "model": "Aceman",
+      "year": 2024,
+      "market": "ES",
+      "version": "John Cooper Works Aceman 190 kW FWD 49.2 kWh",
+      "batteryKwh": 49.2,
+      "powerKw": 190,
+      "drive": "FWD",
+      "wltpKm": 355
+    },
+    {
+      "make": "MINI",
+      "model": "Countryman",
+      "year": 2024,
+      "market": "ES",
+      "version": "Countryman E 150 kW FWD 64.6 kWh",
+      "batteryKwh": 64.6,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 462
+    },
+    {
+      "make": "MINI",
+      "model": "Countryman",
+      "year": 2024,
+      "market": "ES",
+      "version": "Countryman SE ALL4 230 kW AWD 64.6 kWh",
+      "batteryKwh": 64.6,
+      "powerKw": 230,
+      "drive": "AWD",
+      "wltpKm": 433
+    }
+  ]
+}
