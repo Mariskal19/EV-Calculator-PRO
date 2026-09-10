@@ -1,0 +1,38 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Skoda",
+      "model": "Elroq",
+      "year": 2025,
+      "market": "ES",
+      "version": "50 125 kW RWD 55 kWh",
+      "batteryKwh": 55,
+      "powerKw": 125,
+      "drive": "RWD",
+      "wltpKm": 376
+    },
+    {
+      "make": "Skoda",
+      "model": "Elroq",
+      "year": 2025,
+      "market": "ES",
+      "version": "60 150 kW RWD 63 kWh",
+      "batteryKwh": 63,
+      "powerKw": 150,
+      "drive": "RWD",
+      "wltpKm": 428
+    },
+    {
+      "make": "Skoda",
+      "model": "Elroq",
+      "year": 2025,
+      "market": "ES",
+      "version": "85 210 kW RWD 82 kWh",
+      "batteryKwh": 82,
+      "powerKw": 210,
+      "drive": "RWD",
+      "wltpKm": 578
+    }
+  ]
+}
