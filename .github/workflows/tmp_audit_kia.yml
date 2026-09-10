@@ -1,4 +1,4 @@
-name: TMP Audit Kia catalog
+name: TMP Correct Kia catalog
 
 on:
   push:
@@ -8,32 +8,66 @@ permissions:
   contents: write
 
 jobs:
-  audit:
+  correct:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Extract Kia entries
+      - name: Correct Kia catalog entries
         run: |
           python3 - <<'PY'
-          import json, re
-          from collections import defaultdict
+          import json, copy
           p='app/src/main/assets/catalog_es_2024_2026.json'
-          data=json.load(open(p,encoding='utf-8'))
-          kia=[v for v in data['vehicles'] if v.get('make','').lower()=='kia']
-          groups=defaultdict(list)
-          for i,v in enumerate(kia):
-              groups[v.get('model','')].append((i,v))
-          lines=[f'KIA TOTAL: {len(kia)} entries']
-          for model,items in groups.items():
-              lines.append(f'\n## {model} ({len(items)})')
-              for i,v in items:
-                  lines.append(f"{i}|MY{str(v.get('year',''))[-2:]}|{v.get('version','')}|{v.get('batteryKwh')} kWh|{v.get('powerKw')} kW|{v.get('drive') or v.get('drivetrain')}|{v.get('wltpKm')} km|{v.get('consumptionKwh100')} kWh/100")
-          open('kia_audit_summary.txt','w',encoding='utf-8').write('\n'.join(lines)+'\n')
+          with open(p,encoding='utf-8') as f: data=json.load(f)
+          vehicles=data['vehicles']
+          kia=[v for v in vehicles if v.get('make','').lower()=='kia']
+          other=[v for v in vehicles if v.get('make','').lower()!='kia']
+
+          def find(model, version):
+              for v in kia:
+                  if v.get('model')==model and v.get('version')==version:
+                      return copy.deepcopy(v)
+              raise RuntimeError(f'missing Kia entry: {model} / {version}')
+
+          new=[]
+          # EV2: keep the five real trim/battery combinations; remove generic duplicates.
+          new += [find('EV2','Air Standard Range'), find('EV2','Earth Standard Range'),
+                  find('EV2','Air Long Range'), find('EV2','Earth Long Range')]
+          gt=find('EV2','GT-Line 108 kW FWD 42.2 kWh'); gt['version']='GT-Line Standard Range'; new.append(gt)
+
+          # EV3 MY24: Air/Earth Standard Range + Air/Earth/GT-Line Long Range.
+          sr1=find('EV3','58.3 kWh Standard Range'); sr1['version']='Air Standard Range'; new.append(sr1)
+          sr2=find('EV3','Standard Range 150 kW FWD 58.3 kWh'); sr2['version']='Earth Standard Range'; new.append(sr2)
+          new += [find('EV3','Air 81.4 kWh Long Range'), find('EV3','Earth Long Range'), find('EV3','GT-Line Long Range')]
+
+          # EV4 arrived in 2025. Keep the two body styles and the two battery sizes.
+          h1=find('EV4 Hatchback','58.3 kWh'); h1['version']='Standard Range 58.3 kWh'; h1['year']=2025; h1['arrivalYear']=2025; new.append(h1)
+          h2=find('EV4 Hatchback','81.4 kWh'); h2['version']='Long Range 81.4 kWh'; h2['year']=2025; h2['arrivalYear']=2025; new.append(h2)
+          f1=find('EV4 Fastback','Fastback 150 kW FWD 58.3 kWh'); f1['version']='Standard Range 58.3 kWh'; f1['year']=2025; f1['arrivalYear']=2025; f1['wltpKm']=456; f1['consumptionKwh100']=14.3; new.append(f1)
+          f2=find('EV4 Fastback','81.4 kWh'); f2['version']='Long Range 81.4 kWh'; f2['year']=2025; f2['arrivalYear']=2025; f2['wltpKm']=633; f2['consumptionKwh100']=14.4; new.append(f2)
+
+          # EV5: three FWD 81.4 kWh trims, with their distinct WLTP figures.
+          new += [find('EV5','Earth 160 kW FWD 81.4 kWh'), find('EV5','Air 160 kW FWD 81.4 kWh'), find('EV5','GT-Line 160 kW FWD 81.4 kWh')]
+
+          # EV9: one MY24 AWD 99.8 kWh configuration in this catalog.
+          new.append(find('EV9','99.8 kWh AWD'))
+
+          # PV5 Cargo / Passenger: keep Essential and Plus combinations; these are genuine trim variants.
+          new += [v for v in kia if v.get('model')=='PV5 Cargo' and v.get('version') in {
+              'Essential 89.4 kW FWD 51.5 kWh','Essential 120 kW FWD 71.2 kWh','Plus 120 kW FWD 71.2 kWh'}]
+          new += [v for v in kia if v.get('model')=='PV5 Passenger' and v.get('version') in {
+              'Essential 89.4 kW FWD 51.5 kWh','Essential 120 kW FWD 71.2 kWh','Plus 120 kW FWD 71.2 kWh'}]
+
+          data['vehicles']=other+new
+          with open(p,'w',encoding='utf-8') as f: json.dump(data,f,ensure_ascii=False,indent=2); f.write('\n')
+          print('Kia entries before:',len(kia),'after:',len(new))
           PY
-      - name: Commit audit report
+      - name: Validate catalog JSON
+        run: python3 -m json.tool app/src/main/assets/catalog_es_2024_2026.json >/dev/null
+      - name: Commit correction
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add kia_audit_summary.txt
-          git diff --cached --quiet || git commit -m 'chore: update temporary Kia audit summary'
+          rm -f kia_audit.json kia_audit_summary.txt
+          git add app/src/main/assets/catalog_es_2024_2026.json kia_audit.json kia_audit_summary.txt
+          git diff --cached --quiet || git commit -m 'fix: remove duplicate Kia catalog entries'
           git push
