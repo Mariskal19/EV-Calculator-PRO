@@ -1,0 +1,49 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Porsche",
+      "model": "Macan",
+      "year": 2024,
+      "market": "ES",
+      "version": "Macan 4 Electric 300 kW AWD 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 300,
+      "drive": "AWD",
+      "wltpKm": 613
+    },
+    {
+      "make": "Porsche",
+      "model": "Macan",
+      "year": 2024,
+      "market": "ES",
+      "version": "Macan Turbo Electric 470 kW AWD 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 470,
+      "drive": "AWD",
+      "wltpKm": 591
+    },
+    {
+      "make": "Porsche",
+      "model": "Macan",
+      "year": 2024,
+      "market": "ES",
+      "version": "Macan Electric 250 kW RWD 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 250,
+      "drive": "RWD",
+      "wltpKm": 641
+    },
+    {
+      "make": "Porsche",
+      "model": "Macan",
+      "year": 2024,
+      "market": "ES",
+      "version": "Macan 4S Electric 330 kW AWD 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 330,
+      "drive": "AWD",
+      "wltpKm": 606
+    }
+  ]
+}
