@@ -1,3 +1,4 @@
+# Tesla catalog integration workflow
 name: TMP Add Tesla catalog
 
 on:
@@ -16,81 +17,67 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Add Tesla configurations
-        shell: bash
         run: |
           python3 - <<'PY'
           import json
           from pathlib import Path
-          p = Path('app/src/main/assets/catalog_es_2024_2026.json')
-          data = json.loads(p.read_text(encoding='utf-8'))
-          vehicles = data['vehicles']
-          vehicles = [v for v in vehicles if v.get('make') != 'Tesla']
-
-          tesla = [
-            # Model 3 — 2024 generation sold in Spain
-            {'make':'Tesla','model':'Model 3','year':2024,'arrivalYear':2024,'market':'ES','version':'Tracción trasera 208 kW RWD 60 kWh','batteryKwh':60,'batteryChemistry':'LFP','powerKw':208,'drive':'RWD','wltpKm':513,'consumptionKwh100':13.2},
-            {'make':'Tesla','model':'Model 3','year':2024,'arrivalYear':2024,'market':'ES','version':'Gran autonomía 208 kW AWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':208,'drive':'AWD','wltpKm':629,'consumptionKwh100':14.0},
-            {'make':'Tesla','model':'Model 3','year':2024,'arrivalYear':2024,'market':'ES','version':'Gran autonomía 224 kW RWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':224,'drive':'RWD','wltpKm':702,'consumptionKwh100':13.6},
-            {'make':'Tesla','model':'Model 3','year':2024,'arrivalYear':2024,'market':'ES','version':'Performance 461 kW AWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':461,'drive':'AWD','wltpKm':528,'consumptionKwh100':16.7},
-            # Model 3 — 2025 refreshed range
-            {'make':'Tesla','model':'Model 3','year':2025,'arrivalYear':2025,'market':'ES','version':'Tracción trasera 208 kW RWD 60 kWh','batteryKwh':60,'batteryChemistry':'LFP','powerKw':208,'drive':'RWD','wltpKm':554,'consumptionKwh100':13.0},
-            {'make':'Tesla','model':'Model 3','year':2025,'arrivalYear':2025,'market':'ES','version':'Premium Gran autonomía 235 kW RWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':235,'drive':'RWD','wltpKm':750,'consumptionKwh100':13.6},
-            {'make':'Tesla','model':'Model 3','year':2025,'arrivalYear':2025,'market':'ES','version':'Premium Gran autonomía 366 kW AWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':366,'drive':'AWD','wltpKm':660,'consumptionKwh100':14.3},
-            {'make':'Tesla','model':'Model 3','year':2025,'arrivalYear':2025,'market':'ES','version':'Performance 461 kW AWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':461,'drive':'AWD','wltpKm':571,'consumptionKwh100':16.5},
-            # Model 3 — current 2026 range
-            {'make':'Tesla','model':'Model 3','year':2026,'arrivalYear':2026,'market':'ES','version':'Tracción trasera 208 kW RWD 60 kWh','batteryKwh':60,'batteryChemistry':'LFP','powerKw':208,'drive':'RWD','wltpKm':534,'consumptionKwh100':13.0},
-            {'make':'Tesla','model':'Model 3','year':2026,'arrivalYear':2026,'market':'ES','version':'Premium Gran autonomía 235 kW RWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':235,'drive':'RWD','wltpKm':750,'consumptionKwh100':13.6},
-            {'make':'Tesla','model':'Model 3','year':2026,'arrivalYear':2026,'market':'ES','version':'Premium Gran autonomía 366 kW AWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':366,'drive':'AWD','wltpKm':660,'consumptionKwh100':14.3},
-            {'make':'Tesla','model':'Model 3','year':2026,'arrivalYear':2026,'market':'ES','version':'Performance 461 kW AWD 79 kWh','batteryKwh':79,'batteryChemistry':'NMC','powerKw':461,'drive':'AWD','wltpKm':571,'consumptionKwh100':16.5},
-            # Model Y — 2024 pre-refresh range
-            {'make':'Tesla','model':'Model Y','year':2024,'arrivalYear':2024,'market':'ES','version':'Tracción trasera 220 kW RWD 60 kWh','batteryKwh':60,'batteryChemistry':'LFP','powerKw':220,'drive':'RWD','wltpKm':455,'consumptionKwh100':15.7},
-            {'make':'Tesla','model':'Model Y','year':2024,'arrivalYear':2024,'market':'ES','version':'Gran autonomía 255 kW RWD 75 kWh','batteryKwh':75,'powerKw':255,'drive':'RWD','wltpKm':600,'consumptionKwh100':15.5},
-            {'make':'Tesla','model':'Model Y','year':2024,'arrivalYear':2024,'market':'ES','version':'Gran autonomía 378 kW AWD 75 kWh','batteryKwh':75,'powerKw':378,'drive':'AWD','wltpKm':533,'consumptionKwh100':16.9},
-            {'make':'Tesla','model':'Model Y','year':2024,'arrivalYear':2024,'market':'ES','version':'Performance 393 kW AWD 75 kWh','batteryKwh':75,'powerKw':393,'drive':'AWD','wltpKm':514,'consumptionKwh100':17.3},
-            # Model Y — 2025 Juniper and versions introduced during 2025
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Launch Series Gran autonomía 378 kW AWD 75 kWh','batteryKwh':75,'powerKw':378,'drive':'AWD','wltpKm':568,'consumptionKwh100':15.3},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Tracción trasera 220 kW RWD 60 kWh','batteryKwh':60,'batteryChemistry':'LFP','powerKw':220,'drive':'RWD','wltpKm':500,'consumptionKwh100':13.9},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Gran autonomía 255 kW RWD 75 kWh','batteryKwh':75,'powerKw':255,'drive':'RWD','wltpKm':622,'consumptionKwh100':14.2},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Gran autonomía 378 kW AWD 75 kWh','batteryKwh':75,'powerKw':378,'drive':'AWD','wltpKm':586,'consumptionKwh100':15.3},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Performance 461 kW AWD 75 kWh','batteryKwh':75,'powerKw':461,'drive':'AWD','wltpKm':580,'consumptionKwh100':16.2},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Standard 220 kW RWD 61 kWh','batteryKwh':61,'powerKw':220,'drive':'RWD','wltpKm':534,'consumptionKwh100':13.1},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Premium Gran autonomía 220 kW RWD 75 kWh','batteryKwh':75,'powerKw':220,'drive':'RWD','wltpKm':603,'consumptionKwh100':14.0},
-            {'make':'Tesla','model':'Model Y','year':2025,'arrivalYear':2025,'market':'ES','version':'Premium Gran autonomía 378 kW AWD 75 kWh','batteryKwh':75,'powerKw':378,'drive':'AWD','wltpKm':600,'consumptionKwh100':15.9},
-            # Model Y — 2026 current range
-            {'make':'Tesla','model':'Model Y','year':2026,'arrivalYear':2026,'market':'ES','version':'Tracción trasera 227 kW RWD 61 kWh','batteryKwh':61,'powerKw':227,'drive':'RWD','wltpKm':534,'consumptionKwh100':13.1},
-            {'make':'Tesla','model':'Model Y','year':2026,'arrivalYear':2026,'market':'ES','version':'Standard Gran autonomía 220 kW RWD 75 kWh','batteryKwh':75,'powerKw':220,'drive':'RWD','wltpKm':657,'consumptionKwh100':12.7},
-            {'make':'Tesla','model':'Model Y','year':2026,'arrivalYear':2026,'market':'ES','version':'Premium Gran autonomía 255 kW RWD 75 kWh','batteryKwh':75,'powerKw':255,'drive':'RWD','wltpKm':603,'consumptionKwh100':14.0},
-            {'make':'Tesla','model':'Model Y','year':2026,'arrivalYear':2026,'market':'ES','version':'Premium Gran autonomía 378 kW AWD 75 kWh','batteryKwh':75,'powerKw':378,'drive':'AWD','wltpKm':600,'consumptionKwh100':15.9},
-            {'make':'Tesla','model':'Model Y','year':2026,'arrivalYear':2026,'market':'ES','version':'Premium Gran autonomía 7 plazas 378 kW AWD 75 kWh','batteryKwh':75,'powerKw':378,'drive':'AWD','wltpKm':600,'consumptionKwh100':15.9},
-            {'make':'Tesla','model':'Model Y','year':2026,'arrivalYear':2026,'market':'ES','version':'Performance 461 kW AWD 75 kWh','batteryKwh':75,'powerKw':461,'drive':'AWD','wltpKm':580,'consumptionKwh100':16.2},
-          ]
-          vehicles.extend(tesla)
-          # Stable deterministic ordering by the agreed catalog hierarchy.
-          vehicles.sort(key=lambda v: (v.get('market',''), v.get('make',''), v.get('model',''), v.get('year',0), v.get('version','')))
-          data['vehicles'] = vehicles
-          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-          print('Tesla entries added:', len(tesla))
-          print('Catalog total:', len(vehicles))
+          p=Path('app/src/main/assets/catalog_es_2024_2026.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          v=[x for x in d['vehicles'] if x.get('make')!='Tesla']
+          T=[
+          ('Model 3',2024,'Tracción trasera 208 kW RWD 60 kWh',60,208,'RWD',513,13.2,'LFP'),
+          ('Model 3',2024,'Gran autonomía 208 kW AWD 79 kWh',79,208,'AWD',629,14.0,'NMC'),
+          ('Model 3',2024,'Gran autonomía 224 kW RWD 79 kWh',79,224,'RWD',702,13.6,'NMC'),
+          ('Model 3',2024,'Performance 461 kW AWD 79 kWh',79,461,'AWD',528,16.7,'NMC'),
+          ('Model 3',2025,'Tracción trasera 208 kW RWD 60 kWh',60,208,'RWD',554,13.0,'LFP'),
+          ('Model 3',2025,'Premium Gran autonomía 235 kW RWD 79 kWh',79,235,'RWD',750,13.6,'NMC'),
+          ('Model 3',2025,'Premium Gran autonomía 366 kW AWD 79 kWh',79,366,'AWD',660,14.3,'NMC'),
+          ('Model 3',2025,'Performance 461 kW AWD 79 kWh',79,461,'AWD',571,16.5,'NMC'),
+          ('Model 3',2026,'Tracción trasera 208 kW RWD 60 kWh',60,208,'RWD',534,13.0,'LFP'),
+          ('Model 3',2026,'Premium Gran autonomía 235 kW RWD 79 kWh',79,235,'RWD',750,13.6,'NMC'),
+          ('Model 3',2026,'Premium Gran autonomía 366 kW AWD 79 kWh',79,366,'AWD',660,14.3,'NMC'),
+          ('Model 3',2026,'Performance 461 kW AWD 79 kWh',79,461,'AWD',571,16.5,'NMC'),
+          ('Model Y',2024,'Tracción trasera 220 kW RWD 60 kWh',60,220,'RWD',455,15.7,'LFP'),
+          ('Model Y',2024,'Gran autonomía 255 kW RWD 75 kWh',75,255,'RWD',600,15.5,'NMC'),
+          ('Model Y',2024,'Gran autonomía 378 kW AWD 75 kWh',75,378,'AWD',533,16.9,'NMC'),
+          ('Model Y',2024,'Performance 393 kW AWD 75 kWh',75,393,'AWD',514,17.3,'NMC'),
+          ('Model Y',2025,'Launch Series Gran autonomía 378 kW AWD 75 kWh',75,378,'AWD',568,15.3,'NMC'),
+          ('Model Y',2025,'Tracción trasera 220 kW RWD 60 kWh',60,220,'RWD',500,13.9,'LFP'),
+          ('Model Y',2025,'Gran autonomía 255 kW RWD 75 kWh',75,255,'RWD',622,14.2,'NMC'),
+          ('Model Y',2025,'Gran autonomía 378 kW AWD 75 kWh',75,378,'AWD',586,15.3,'NMC'),
+          ('Model Y',2025,'Performance 461 kW AWD 75 kWh',75,461,'AWD',580,16.2,'NMC'),
+          ('Model Y',2025,'Standard 220 kW RWD 61 kWh',61,220,'RWD',534,13.1,'Li-ion'),
+          ('Model Y',2025,'Premium Gran autonomía 220 kW RWD 75 kWh',75,220,'RWD',603,14.0,'NMC'),
+          ('Model Y',2025,'Premium Gran autonomía 378 kW AWD 75 kWh',75,378,'AWD',600,15.9,'NMC'),
+          ('Model Y',2026,'Tracción trasera 227 kW RWD 61 kWh',61,227,'RWD',534,13.1,'Li-ion'),
+          ('Model Y',2026,'Standard Gran autonomía 220 kW RWD 75 kWh',75,220,'RWD',657,12.7,'NMC'),
+          ('Model Y',2026,'Premium Gran autonomía 255 kW RWD 75 kWh',75,255,'RWD',603,14.0,'NMC'),
+          ('Model Y',2026,'Premium Gran autonomía 378 kW AWD 75 kWh',75,378,'AWD',600,15.9,'NMC'),
+          ('Model Y',2026,'Premium Gran autonomía 7 plazas 378 kW AWD 75 kWh',75,378,'AWD',600,15.9,'NMC'),
+          ('Model Y',2026,'Performance 461 kW AWD 75 kWh',75,461,'AWD',580,16.2,'NMC')]
+          for m,y,ver,b,pow,drive,wltp,c,chem in T:
+              x={'make':'Tesla','model':m,'year':y,'arrivalYear':y,'market':'ES','version':ver,'batteryKwh':b,'batteryChemistry':chem,'powerKw':pow,'drive':drive,'wltpKm':wltp,'consumptionKwh100':c}
+              v.append(x)
+          v.sort(key=lambda x:(x.get('market',''),x.get('make',''),x.get('model',''),x.get('year',0),x.get('version','')))
+          d['vehicles']=v
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+          print('Tesla:',len(T),'Catalog:',len(v))
           PY
-      - name: Validate catalog
+      - name: Validate
         run: |
           python3 - <<'PY'
           import json
-          from pathlib import Path
-          data=json.loads(Path('app/src/main/assets/catalog_es_2024_2026.json').read_text(encoding='utf-8'))
-          v=data['vehicles']
-          tesla=[x for x in v if x.get('make')=='Tesla']
-          assert len(tesla)==30, len(tesla)
+          d=json.load(open('app/src/main/assets/catalog_es_2024_2026.json'))
+          v=d['vehicles']; t=[x for x in v if x.get('make')=='Tesla']
+          assert len(t)==30, len(t)
           assert all(x.get('year') in (2024,2025,2026) for x in v)
           assert not any((x.get('batteryKwh') or 0)>0 and (x.get('wltpKm') or 0)>0 and x.get('consumptionKwh100') in (None,'',0) for x in v)
-          print('Tesla validated:', len(tesla))
-          print('Catalog validated:', len(v))
+          print('VALID Tesla=30 total=',len(v))
           PY
-      - name: Commit catalog
-        shell: bash
+      - name: Commit
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add app/src/main/assets/catalog_es_2024_2026.json
-          git commit -m 'feat: add complete Tesla Spanish catalog entries'
+          git commit -m 'feat: add Tesla Spanish catalog entries'
           git push
