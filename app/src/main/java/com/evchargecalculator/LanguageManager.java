@@ -230,9 +230,22 @@ public final class LanguageManager {
   }
 
   public static String t(Context c, String spanish) {
-    String[] v = TR.get(spanish);
-    if (v == null) return spanish;
+    if (spanish == null || spanish.isEmpty()) return spanish;
     String lang = getSelectedLanguage(c);
+    String[] v = TR.get(spanish);
+    if (v != null) return translatedValue(v, lang);
+    String result = spanish;
+    java.util.List<String> keys = new java.util.ArrayList<>(TR.keySet());
+    java.util.Collections.sort(keys, (a, b) -> Integer.compare(b.length(), a.length()));
+    for (String key : keys) {
+      if (key == null || key.isEmpty() || !result.contains(key)) continue;
+      String[] entry = TR.get(key);
+      if (entry != null) result = result.replace(key, translatedValue(entry, lang));
+    }
+    return result;
+  }
+
+  private static String translatedValue(String[] v, String lang) {
     int i;
     if ("es".equals(lang)) i = 0;
     else if ("en".equals(lang)) i = 1;
@@ -240,8 +253,8 @@ public final class LanguageManager {
     else if ("de".equals(lang)) i = 3;
     else if ("it".equals(lang)) i = 4;
     else if ("pt".equals(lang)) i = 5;
-    else i = 0;
-    return i < v.length ? v[i] : v[0];
+    else i = 1;
+    return (i < v.length && v[i] != null) ? v[i] : v[0];
   }
 
   public static void translateViews(Activity a) {

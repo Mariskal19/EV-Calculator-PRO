@@ -607,7 +607,7 @@ public class CompararCochesActivity extends Activity {
     private void remove(String id) { selectedIds.remove(id); saveSelection(); rebuild(); }
 
     private void showSearch() {
-        final EditText input = new EditText(this); input.setSingleLine(true); input.setHint("Marca, modelo, año, batería o versión"); input.setTextColor(text()); input.setHintTextColor(sub());
+        final EditText input = new EditText(this); input.setSingleLine(true); input.setHint(LanguageManager.t(this, "Marca, modelo, año, batería o versión")); input.setTextColor(text()); input.setHintTextColor(sub());
         final LinearLayout list = new LinearLayout(this); list.setOrientation(LinearLayout.VERTICAL);
         LinearLayout marketRow = new LinearLayout(this); marketRow.setOrientation(LinearLayout.HORIZONTAL); marketRow.setGravity(Gravity.CENTER_VERTICAL); marketRow.setPadding(dp(18), dp(8), dp(18), dp(2));
         TextView marketTitle = tv("Mercado", 14, text()); marketTitle.setTypeface(null, Typeface.BOLD); marketRow.addView(marketTitle, new LinearLayout.LayoutParams(0, dp(48), 1));
@@ -631,7 +631,7 @@ public class CompararCochesActivity extends Activity {
         LinearLayout box = new LinearLayout(this); box.setPadding(dp(18), dp(4), dp(18), dp(2)); box.addView(input, new LinearLayout.LayoutParams(-1, dp(52)));
         ScrollView scroll = new ScrollView(this); scroll.addView(list);
         LinearLayout wrap = new LinearLayout(this); wrap.setOrientation(LinearLayout.VERTICAL); wrap.addView(marketRow); wrap.addView(box); wrap.addView(scroll, new LinearLayout.LayoutParams(-1, dp(430)));
-        AlertDialog d = new AlertDialog.Builder(this).setTitle("Añadir coche").setView(wrap).create();
+        AlertDialog d = new AlertDialog.Builder(this).setTitle(LanguageManager.t(this, "Añadir coche")).setView(wrap).create();
         input.addTextChangedListener(new TextWatcher() { public void beforeTextChanged(CharSequence s, int st, int c, int a) {} public void onTextChanged(CharSequence s, int st, int b, int c) { renderSearchResults(input, list); } public void afterTextChanged(Editable e) {} });
         d.setOnShowListener(x -> { d.getWindow().setBackgroundDrawable(bg(dark ? Color.rgb(15, 27, 39) : Color.WHITE, 20)); TextView titleView = d.findViewById(getResources().getIdentifier("alertTitle", "id", "android")); if (titleView != null) titleView.setTextColor(text()); renderSearchResults(input, list); input.requestFocus(); d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE); });
         d.show(); input.setTag(d);
