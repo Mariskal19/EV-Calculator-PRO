@@ -1,0 +1,125 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Volkswagen",
+      "model": "ID. Cross",
+      "year": 2026,
+      "market": "ES",
+      "version": "Life 155 kW FWD 56 kWh",
+      "batteryKwh": 56,
+      "powerKw": 155,
+      "drive": "FWD",
+      "wltpKm": 426
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID. Cross",
+      "year": 2026,
+      "market": "ES",
+      "version": "Style 155 kW FWD 56 kWh",
+      "batteryKwh": 56,
+      "powerKw": 155,
+      "drive": "FWD",
+      "wltpKm": 426
+    },
+    {
+      "make": "BMW",
+      "model": "i3",
+      "year": 2026,
+      "market": "ES",
+      "version": "50 xDrive First Edition 345 kW AWD 108.7 kWh",
+      "batteryKwh": 108.7,
+      "powerKw": 345,
+      "drive": "AWD",
+      "wltpKm": 906
+    },
+    {
+      "make": "DS",
+      "model": "N°7",
+      "year": 2026,
+      "market": "ES",
+      "version": "E-TENSE 230 169 kW FWD 73.7 kWh",
+      "batteryKwh": 73.7,
+      "powerKw": 169,
+      "drive": "FWD",
+      "wltpKm": 543
+    },
+    {
+      "make": "DS",
+      "model": "N°7",
+      "year": 2026,
+      "market": "ES",
+      "version": "E-TENSE FWD Long Range 245 180 kW FWD 97.2 kWh",
+      "batteryKwh": 97.2,
+      "powerKw": 180,
+      "drive": "FWD",
+      "wltpKm": 740
+    },
+    {
+      "make": "DS",
+      "model": "N°7",
+      "year": 2026,
+      "market": "ES",
+      "version": "E-TENSE AWD Long Range 350 257 kW AWD 97.2 kWh",
+      "batteryKwh": 97.2,
+      "powerKw": 257,
+      "drive": "AWD",
+      "wltpKm": 679
+    },
+    {
+      "make": "Jeep",
+      "model": "Compass",
+      "year": 2026,
+      "market": "ES",
+      "version": "Full Electric 213 kW FWD 74 kWh",
+      "batteryKwh": 74,
+      "powerKw": 157,
+      "drive": "FWD",
+      "wltpKm": 500
+    },
+    {
+      "make": "Jeep",
+      "model": "Compass",
+      "year": 2026,
+      "market": "ES",
+      "version": "Full Electric Long Range 231 CV FWD",
+      "powerKw": 170,
+      "drive": "FWD",
+      "wltpKm": 674
+    },
+    {
+      "make": "Jeep",
+      "model": "Compass",
+      "year": 2026,
+      "market": "ES",
+      "version": "4xe Full Electric 375 CV AWD 96.1 kWh",
+      "batteryKwh": 96.1,
+      "powerKw": 276,
+      "drive": "AWD",
+      "wltpKm": 600
+    },
+    {
+      "make": "Citroën",
+      "model": "ë-C5 Aircross",
+      "year": 2025,
+      "market": "ES",
+      "version": "210 157 kW FWD 73 kWh",
+      "batteryKwh": 73,
+      "powerKw": 157,
+      "drive": "FWD",
+      "wltpKm": 520
+    },
+    {
+      "make": "Citroën",
+      "model": "ë-C5 Aircross",
+      "year": 2025,
+      "market": "ES",
+      "version": "230 Long Range 170 kW FWD 97 kWh",
+      "batteryKwh": 97,
+      "powerKw": 170,
+      "drive": "FWD",
+      "wltpKm": 680
+    }
+  ]
+}
