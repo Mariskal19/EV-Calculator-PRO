@@ -4,7 +4,6 @@ on:
     branches: [ main ]
 jobs:
   patch:
-    if: github.event.head_commit.message != 'fix: complete compare screen translations'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -12,7 +11,6 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-
           lm = Path('app/src/main/java/com/evchargecalculator/LanguageManager.java')
           s = lm.read_text()
           marker = '  private static void add(String... v) {'
@@ -37,21 +35,13 @@ jobs:
     add(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.", ". The final choice depends on whether you prioritize range, efficiency, performance, charging speed or price.", ". Le choix final dépendra de votre priorité : autonomie, efficacité, performances, vitesse de recharge ou prix.", ". Die endgültige Wahl hängt davon ab, ob du Reichweite, Effizienz, Leistung, Ladegeschwindigkeit oder Preis priorisierst.", ". La scelta finale dipenderà dalla tua priorità: autonomia, efficienza, prestazioni, velocità di ricarica o prezzo.", ". A escolha final dependerá de priorizar autonomia, eficiência, desempenho, velocidade de carregamento ou preço.");
           '''
           if 'add("Añadir coche",' not in s:
-              if marker not in s:
-                  raise SystemExit('LanguageManager marker not found')
-              s = s.replace(marker, entries + marker, 1)
-              lm.write_text(s)
-
+              if marker not in s: raise SystemExit('LanguageManager marker not found')
+              lm.write_text(s.replace(marker, entries + marker, 1))
           q = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           c = q.read_text()
-          replacements = {
-              'privacyLink.setContentDescription("Política de privacidad")': 'privacyLink.setContentDescription(LanguageManager.t(this, "Política de privacidad"))',
-              'input.setHint("Marca, modelo, año, batería o versión")': 'input.setHint(LanguageManager.t(this, "Marca, modelo, año, batería o versión"))',
-              'new AlertDialog.Builder(this).setTitle("Añadir coche")': 'new AlertDialog.Builder(this).setTitle(LanguageManager.t(this, "Añadir coche"))',
-          }
-          for old, new in replacements.items():
-              c = c.replace(old, new)
-
+          c = c.replace('privacyLink.setContentDescription("Política de privacidad")', 'privacyLink.setContentDescription(LanguageManager.t(this, "Política de privacidad"))')
+          c = c.replace('input.setHint("Marca, modelo, año, batería o versión")', 'input.setHint(LanguageManager.t(this, "Marca, modelo, año, batería o versión"))')
+          c = c.replace('new AlertDialog.Builder(this).setTitle("Añadir coche")', 'new AlertDialog.Builder(this).setTitle(LanguageManager.t(this, "Añadir coche"))')
           old = '''        Vehicle bestRange = bestVehicle("range", true), bestCons = bestVehicle("cons", false), bestPrice = bestVehicle("price", false); StringBuilder out = new StringBuilder(); out.append("En conjunto, ");
         if (bestRange != null) out.append(bestRange.make).append(" ").append(bestRange.model).append(" destaca por autonomía");
         if (bestCons != null && bestCons != bestRange) out.append(", mientras que ").append(bestCons.make).append(" ").append(bestCons.model).append(" ofrece el menor consumo");
@@ -62,12 +52,10 @@ jobs:
         if (bestCons != null && bestCons != bestRange) out.append(LanguageManager.t(this, ", mientras que ")).append(bestCons.make).append(" ").append(bestCons.model).append(LanguageManager.t(this, " ofrece el menor consumo"));
         if (bestPrice != null && bestPrice != bestRange && bestPrice != bestCons) out.append(LanguageManager.t(this, " y ")).append(bestPrice.make).append(" ").append(bestPrice.model).append(LanguageManager.t(this, " es la opción más económica"));
         out.append(LanguageManager.t(this, ". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.")); return out.toString();'''
-          if old not in c:
-              raise SystemExit('summaryComment block not found')
-          c = c.replace(old, new, 1)
-          q.write_text(c)
+          if old not in c: raise SystemExit('summaryComment block not found')
+          q.write_text(c.replace(old, new, 1))
           PY
-      - name: Verify and commit
+      - name: Verify and commit patch
         run: |
           grep -q 'add("Añadir coche"' app/src/main/java/com/evchargecalculator/LanguageManager.java
           grep -q 'LanguageManager.t(this, "Marca, modelo, año, batería o versión")' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
@@ -75,6 +63,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add app/src/main/java/com/evchargecalculator/LanguageManager.java app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
-          git diff --cached --exit-code && { echo 'No changes to commit'; exit 1; } || true
+          if git diff --cached --quiet; then exit 0; fi
           git commit -m "fix: complete compare screen translations"
           git push
