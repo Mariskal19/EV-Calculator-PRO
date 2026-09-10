@@ -204,6 +204,25 @@ public final class LanguageManager {
     add("Autonomía", "Range", "Autonomie", "Reichweite", "Autonomia", "Autonomia");
     add("Carga DC", "DC charging", "Recharge DC", "DC-Laden", "Ricarica DC", "Carregamento DC");
     add("Error al abrir Comparar coches", "Error opening Compare cars", "Erreur lors de l'ouverture de Comparer les voitures", "Fehler beim Öffnen von Autos vergleichen", "Errore nell'apertura di Confronta auto", "Erro ao abrir Comparar carros");
+    add("Añadir coche", "Add car", "Ajouter une voiture", "Auto hinzufügen", "Aggiungi auto", "Adicionar carro");
+    add("Batería y autonomía", "Battery & range", "Batterie et autonomie", "Batterie & Reichweite", "Batteria e autonomia", "Bateria e autonomia");
+    add("Prestaciones", "Performance", "Performances", "Leistung", "Prestazioni", "Desempenho");
+    add("Tracción", "Drivetrain", "Transmission", "Antrieb", "Trazione", "Tração");
+    add("Carga AC", "AC charging", "Recharge AC", "AC-Laden", "Ricarica AC", "Carregamento AC");
+    add("Practicidad", "Practicality", "Praticité", "Praktikabilität", "Praticità", "Praticidade");
+    add("Maletero", "Boot space", "Coffre", "Kofferraum", "Bagagliaio", "Bagageira");
+    add("Peso", "Weight", "Poids", "Gewicht", "Peso", "Peso");
+    add("Selecciona un coche para mostrar sus características.", "Select a car to show its features.", "Sélectionnez une voiture pour afficher ses caractéristiques.", "Wähle ein Fahrzeug aus, um seine Eigenschaften anzuzeigen.", "Seleziona un'auto per visualizzarne le caratteristiche.", "Selecione um carro para ver as suas características.");
+    add("Marca, modelo, año, batería o versión", "Make, model, year, battery or version", "Marque, modèle, année, batterie ou version", "Marke, Modell, Jahr, Batterie oder Version", "Marca, modello, anno, batteria o versione", "Marca, modelo, ano, bateria ou versão");
+    add("Mercado", "Market", "Marché", "Markt", "Mercato", "Mercado");
+    add("✕  Quitar", "✕  Remove", "✕  Supprimer", "✕  Entfernen", "✕  Rimuovi", "✕  Remover");
+    add("Menú", "Menu", "Menu", "Menü", "Menu", "Menu");
+    add("En conjunto, ", "Overall, ", "Dans l'ensemble, ", "Insgesamt, ", "Nel complesso, ", "No geral, ");
+    add(" destaca por autonomía", " stands out for range", " se distingue par son autonomie", " überzeugt durch seine Reichweite", " si distingue per l'autonomia", " destaca pela autonomia");
+    add(", mientras que ", ", while ", ", tandis que ", ", während ", ", mentre ", ", enquanto ");
+    add(" ofrece el menor consumo", " offers the lowest consumption", " offre la consommation la plus faible", " bietet den niedrigsten Verbrauch", " offre il consumo più basso", " oferece o menor consumo");
+    add(" es la opción más económica", " is the most affordable option", " est l'option la plus économique", " ist die günstigste Option", " è l'opzione più economica", " é a opção mais económica");
+    add(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.", ". The final choice depends on whether you prioritize range, efficiency, performance, charging speed or price.", ". Le choix final dépendra de votre priorité : autonomie, efficacité, performances, vitesse de recharge ou prix.", ". Die endgültige Wahl hängt davon ab, ob du Reichweite, Effizienz, Leistung, Ladegeschwindigkeit oder Preis priorisierst.", ". La scelta finale dipenderà dalla tua priorità: autonomia, efficienza, prestazioni, velocità di ricarica o prezzo.", ". A escolha final dependerá de priorizar autonomia, eficiência, desempenho, velocidade de carregamento ou preço.");
   }
 
   private static void add(String... v) {
@@ -214,9 +233,6 @@ public final class LanguageManager {
     String[] v = TR.get(spanish);
     if (v == null) return spanish;
     String lang = getSelectedLanguage(c);
-    // Translation arrays are stored as: Spanish, English, French, German, Italian, Portuguese.
-    // LANGS is intentionally kept in the selector order (English first), so the array index
-    // must be mapped explicitly rather than using LANGS position.
     int i;
     if ("es".equals(lang)) i = 0;
     else if ("en".equals(lang)) i = 1;
