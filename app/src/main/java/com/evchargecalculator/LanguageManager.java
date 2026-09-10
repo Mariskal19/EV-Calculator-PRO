@@ -21,9 +21,6 @@ public final class LanguageManager {
 
   public static String getSelectedLanguage(Context c) {
     android.content.SharedPreferences prefs = c.getSharedPreferences(PREFS, 0);
-    // Until the user explicitly chooses a language, always follow the device system
-    // language. This also repairs installations where an old app_language preference
-    // was restored by Android backup or inherited from a previous build.
     if (!prefs.getBoolean(KEY_LANGUAGE_USER_SET, false)) {
       String system = getSystemLanguage(c);
       prefs.edit().putString(KEY_LANGUAGE, system).apply();
@@ -61,9 +58,6 @@ public final class LanguageManager {
   }
 
   private static String getSystemLanguage(Context c) {
-    // Resources.getSystem() is the device/system configuration, independent of the
-    // application's own resource configuration. Do not use Locale.getDefault() here,
-    // because apply() intentionally changes the process default locale.
     Locale systemLocale;
     Configuration systemConfig = android.content.res.Resources.getSystem().getConfiguration();
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -140,250 +134,53 @@ public final class LanguageManager {
 
   static {
     add("Herramientas", "Tools", "Outils", "Werkzeuge", "Strumenti", "Ferramentas");
-    add(
-        "Calcula y planifica la carga de tu vehículo eléctrico.",
-        "Calculate and plan your electric vehicle charging.",
-        "Calculez et planifiez la recharge de votre véhicule électrique.",
-        "Berechne und plane das Laden deines Elektrofahrzeugs.",
-        "Calcola e pianifica la ricarica del tuo veicolo elettrico.",
-        "Calcule e planeie o carregamento do seu veículo elétrico.");
-    add(
-        "Electric Vs\nCombustion Calculator",
-        "Electric vs\nCombustion",
-        "Eléctrico vs\nCombustión",
-        "Électrique vs\nCombustion",
-        "Elektro vs\nVerbrenner",
-        "Elettrico vs\nCombustione",
-        "Elétrico vs\nCombustão");
-    add(
-        "Datos del viaje",
-        "Trip details",
-        "Données du trajet",
-        "Reisedaten",
-        "Dati del viaggio",
-        "Dados da viagem");
+    add("Calcula y planifica la carga de tu vehículo eléctrico.", "Calculate and plan your electric vehicle charging.", "Calculez et planifiez la recharge de votre véhicule électrique.", "Berechne und plane das Laden deines Elektrofahrzeugs.", "Calcola e pianifica la ricarica del tuo veicolo elettrico.", "Calcule e planeie o carregamento do seu veículo elétrico.");
+    add("Electric Vs\nCombustion Calculator", "Electric vs\nCombustion", "Eléctrico vs\nCombustión", "Électrique vs\nCombustion", "Elektro vs\nVerbrenner", "Elettrico vs\nCombustione", "Elétrico vs\nCombustão");
+    add("Datos del viaje", "Trip details", "Données du trajet", "Reisedaten", "Dati del viaggio", "Dados da viagem");
     add("Distancia", "Distance", "Distance", "Entfernung", "Distanza", "Distância");
-    add(
-        "Vehículo eléctrico",
-        "Electric vehicle",
-        "Véhicule électrique",
-        "Elektrofahrzeug",
-        "Veicolo elettrico",
-        "Veículo elétrico");
+    add("Vehículo eléctrico", "Electric vehicle", "Véhicule électrique", "Elektrofahrzeug", "Veicolo elettrico", "Veículo elétrico");
     add("Consumo", "Consumption", "Consommation", "Verbrauch", "Consumo", "Consumo");
-    add(
-        "Precio electricidad",
-        "Electricity price",
-        "Prix de l'électricité",
-        "Strompreis",
-        "Prezzo dell'elettricità",
-        "Preço da eletricidade");
-    add(
-        "Vehículo de combustión",
-        "Combustion vehicle",
-        "Véhicule à combustion",
-        "Verbrennungsfahrzeug",
-        "Veicolo a combustione",
-        "Veículo a combustão");
-    add(
-        "Precio combustible",
-        "Fuel price",
-        "Prix du carburant",
-        "Kraftstoffpreis",
-        "Prezzo del carburante",
-        "Preço do combustível");
-    add(
-        "Resultado del viaje",
-        "Trip result",
-        "Résultat du trajet",
-        "Reiseergebnis",
-        "Risultato del viaggio",
-        "Resultado da viagem");
+    add("Precio electricidad", "Electricity price", "Prix de l'électricité", "Strompreis", "Prezzo dell'elettricità", "Preço da eletricidade");
+    add("Vehículo de combustión", "Combustion vehicle", "Véhicule à combustion", "Verbrennungsfahrzeug", "Veicolo a combustione", "Veículo a combustão");
+    add("Precio combustible", "Fuel price", "Prix du carburant", "Kraftstoffpreis", "Prezzo del carburante", "Preço do combustível");
+    add("Resultado del viaje", "Trip result", "Résultat du trajet", "Reiseergebnis", "Risultato del viaggio", "Resultado da viagem");
     add("Eléctrico", "Electric", "Électrique", "Elektrisch", "Elettrico", "Elétrico");
     add("Combustión", "Combustion", "Combustion", "Verbrennung", "Combustione", "Combustão");
-    add(
-        "Ahorro con el eléctrico:",
-        "Savings with the EV:",
-        "Économie avec l'électrique :",
-        "Ersparnis mit dem Elektrofahrzeug:",
-        "Risparmio con l'elettrico:",
-        "Poupança com o elétrico:");
+    add("Ahorro con el eléctrico:", "Savings with the EV:", "Économie avec l'électrique :", "Ersparnis mit dem Elektrofahrzeug:", "Risparmio con l'elettrico:", "Poupança com o elétrico:");
     add("de ahorro", "savings", "d'économies", "Ersparnis", "di risparmio", "de poupança");
     add("Diferencia:", "Difference:", "Différence :", "Differenz:", "Differenza:", "Diferença:");
-    add(
-        "El eléctrico cuesta",
-        "The EV costs",
-        "L'électrique coûte",
-        "Das Elektrofahrzeug kostet",
-        "L'elettrico costa",
-        "O elétrico custa");
+    add("El eléctrico cuesta", "The EV costs", "L'électrique coûte", "Das Elektrofahrzeug kostet", "L'elettrico costa", "O elétrico custa");
     add("más", "more", "de plus", "mehr", "in più", "mais");
-    add(
-        "Política de privacidad",
-        "Privacy policy",
-        "Politique de confidentialité",
-        "Datenschutzerklärung",
-        "Informativa sulla privacy",
-        "Política de privacidade");
-    add(
-        "Volver a EV Calculator PRO Principal",
-        "Back to EV Calculator PRO Home",
-        "Retour à l'accueil EV Calculator PRO",
-        "Zur EV Calculator PRO Startseite",
-        "Torna alla schermata principale di EV Calculator PRO",
-        "Voltar à página inicial do EV Calculator PRO");
-    add(
-        "Menú de la aplicación",
-        "App menu",
-        "Menu de l'application",
-        "App-Menü",
-        "Menu dell'app",
-        "Menu da aplicação");
+    add("Política de privacidad", "Privacy policy", "Politique de confidentialité", "Datenschutzerklärung", "Informativa sulla privacy", "Política de privacidade");
+    add("Volver a EV Calculator PRO Principal", "Back to EV Calculator PRO Home", "Retour à l'accueil EV Calculator PRO", "Zur EV Calculator PRO Startseite", "Torna alla schermata principale di EV Calculator PRO", "Voltar à página inicial do EV Calculator PRO");
+    add("Menú de la aplicación", "App menu", "Menu de l'application", "App-Menü", "Menu dell'app", "Menu da aplicação");
     add("Idioma", "Language", "Langue", "Sprache", "Lingua", "Idioma");
-    add(
-        "Compartir app",
-        "Share app",
-        "Partager l'application",
-        "App teilen",
-        "Condividi app",
-        "Partilhar app");
-    add(
-        "Calificar app",
-        "Rate app",
-        "Noter l'application",
-        "App bewerten",
-        "Valuta app",
-        "Avaliar app");
-    add(
-        "Cambiar a tema claro",
-        "Switch to light theme",
-        "Passer au thème clair",
-        "Helles Design",
-        "Tema chiaro",
-        "Tema claro");
-    add(
-        "Cambiar a tema oscuro",
-        "Switch to dark theme",
-        "Passer au thème sombre",
-        "Dunkles Design",
-        "Tema scuro",
-        "Tema escuro");
+    add("Compartir app", "Share app", "Partager l'application", "App teilen", "Condividi app", "Partilhar app");
+    add("Calificar app", "Rate app", "Noter l'application", "App bewerten", "Valuta app", "Avaliar app");
+    add("Cambiar a tema claro", "Switch to light theme", "Passer au thème clair", "Helles Design", "Tema chiaro", "Tema claro");
+    add("Cambiar a tema oscuro", "Switch to dark theme", "Passer au thème sombre", "Dunkles Design", "Tema scuro", "Tema escuro");
     add("Hora", "Time", "Heure", "Uhrzeit", "Ora", "Hora");
-    add(
-        "Hora de Salida",
-        "Departure Time",
-        "Heure de départ",
-        "Abfahrtszeit",
-        "Ora di partenza",
-        "Hora de saída");
-    add(
-        "EV Charge Calculator",
-        "EV Charge Calculator",
-        "Calculateur de recharge EV",
-        "EV-Laderechner",
-        "Calcolatore di ricarica EV",
-        "Calculadora de carga EV");
-    add(
-        "Descarga EV Calculator PRO en Google Play",
-        "Download EV Calculator PRO on Google Play",
-        "Télécharger EV Calculator PRO sur Google Play",
-        "EV Calculator PRO bei Google Play herunterladen",
-        "Scarica EV Calculator PRO su Google Play",
-        "Descarregar EV Calculator PRO no Google Play");
+    add("Hora de Salida", "Departure Time", "Heure de départ", "Abfahrtszeit", "Ora di partenza", "Hora de saída");
+    add("EV Charge Calculator", "EV Charge Calculator", "Calculateur de recharge EV", "EV-Laderechner", "Calcolatore di ricarica EV", "Calculadora de carga EV");
+    add("Descarga EV Calculator PRO en Google Play", "Download EV Calculator PRO on Google Play", "Télécharger EV Calculator PRO sur Google Play", "EV Calculator PRO bei Google Play herunterladen", "Scarica EV Calculator PRO su Google Play", "Descarregar EV Calculator PRO no Google Play");
     add("Batería", "Battery", "Batterie", "Batterie", "Batteria", "Bateria");
     add("Capacidad", "Capacity", "Capacité", "Kapazität", "Capacità", "Capacidade");
-    add(
-        "Cargar la batería desde",
-        "Charge the battery from",
-        "Charger la batterie de",
-        "Batterie laden von",
-        "Carica la batteria dal",
-        "Carregar a bateria de");
+    add("Cargar la batería desde", "Charge the battery from", "Charger la batterie de", "Batterie laden von", "Carica la batteria dal", "Carregar a bateria de");
     add("al", "to", "à", "bis", "al", "a");
-    add(
-        "Se cargará",
-        "Will charge",
-        "Charge prévue",
-        "Wird geladen",
-        "Verrà caricata",
-        "Será carregada");
+    add("Se cargará", "Will charge", "Charge prévue", "Wird geladen", "Verrà caricata", "Será carregada");
     add("Carga", "Charging", "Recharge", "Laden", "Ricarica", "Carregamento");
     add("Charge", "Charge", "Recharge", "Laden", "Ricarica", "Carregamento");
     add("Potencia", "Power", "Puissance", "Leistung", "Potenza", "Potência");
-    add(
-        "Precio energía",
-        "Energy price",
-        "Prix de l'énergie",
-        "Energiepreis",
-        "Prezzo energia",
-        "Preço da energia");
-    add(
-        "Tiempo de Carga",
-        "Charging Time",
-        "Temps de charge",
-        "Ladezeit",
-        "Tempo di carregamento",
-        "Tempo de carregamento");
-    add(
-        "Coste de carga",
-        "Charging cost",
-        "Coût de recharge",
-        "Ladekosten",
-        "Costo di ricarica",
-        "Custo de carregamento");
-    add(
-        "Hora Inicio Recomendada",
-        "Recommended Start Time",
-        "Heure de début recommandée",
-        "Empfohlene Startzeit",
-        "Ora di inizio consigliata",
-        "Hora de início recomendada");
-    add(
-        "Pérdidas de carga",
-        "Charging losses",
-        "Pertes de recharge",
-        "Ladeverluste",
-        "Perdite di ricarica",
-        "Perdas de carregamento");
-    add(
-        "Información sobre pérdidas de carga",
-        "Charging loss information",
-        "Informations sur les pertes de recharge",
-        "Informationen zu den Ladeverlusten",
-        "Informazioni sulle perdite di ricarica",
-        "Informações sobre perdas de carregamento");
+    add("Precio energía", "Energy price", "Prix de l'énergie", "Energiepreis", "Prezzo energia", "Preço da energia");
+    add("Tiempo de Carga", "Charging Time", "Temps de charge", "Ladezeit", "Tempo di carregamento", "Tempo de carregamento");
+    add("Coste de carga", "Charging cost", "Coût de recharge", "Ladekosten", "Costo di ricarica", "Custo de carregamento");
+    add("Hora Inicio Recomendada", "Recommended Start Time", "Heure de début recommandée", "Empfohlene Startzeit", "Ora di inizio consigliata", "Hora de início recomendada");
+    add("Pérdidas de carga", "Charging losses", "Pertes de recharge", "Ladeverluste", "Perdite di ricarica", "Perdas de carregamento");
+    add("Información sobre pérdidas de carga", "Charging loss information", "Informations sur les pertes de recharge", "Informationen zu den Ladeverlusten", "Informazioni sulle perdite di ricarica", "Informações sobre perdas de carregamento");
     add("Aceptar", "OK", "OK", "OK", "OK", "OK");
-    add(
-        "El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas"
-            + " principalmente a la conversión de energía, calor y otros consumos propios del"
-            + " proceso.",
-        "The calculation includes approximately 10% charging losses, mainly due to energy"
-            + " conversion, heat, and other charging-process consumption.",
-        "Le calcul inclut environ 10 % de pertes pendant la recharge, principalement dues à la"
-            + " conversion d'énergie, à la chaleur et aux autres consommations du processus de"
-            + " recharge.",
-        "Die Berechnung berücksichtigt etwa 10 % Ladeverluste, hauptsächlich durch"
-            + " Energieumwandlung, Wärme und weitere Verbräuche während des Ladevorgangs.",
-        "Il calcolo include circa il 10% di perdite durante la ricarica, dovute principalmente alla"
-            + " conversione dell'energia, al calore e ad altri consumi del processo di ricarica.",
-        "O cálculo inclui aproximadamente 10% de perdas durante o carregamento, principalmente"
-            + " devido à conversão de energia, calor e outros consumos do processo de"
-            + " carregamento.");
-    add(
-        "No llegas a tiempo",
-        "You won't make it in time",
-        "Vous n'arriverez pas à temps",
-        "Du schaffst es nicht rechtzeitig",
-        "Non arriverai in tempo",
-        "Não chegará a tempo");
+    add("No llegas a tiempo", "You won't make it in time", "Vous n'arriverez pas à temps", "Du schaffst es nicht rechtzeitig", "Non arriverai in tempo", "Não chegará a tempo");
     add("Faltan", "Remaining", "Restantes", "Verbleibend", "Mancano", "Faltam");
-    add(
-        "Hora de salida no válida",
-        "Invalid departure time",
-        "Heure de départ non valide",
-        "Ungültige Abfahrtszeit",
-        "Ora di partenza non valida",
-        "Hora de saída inválida");
+    add("Hora de salida no válida", "Invalid departure time", "Heure de départ non valide", "Ungültige Abfahrtszeit", "Ora di partenza non valida", "Hora de saída inválida");
     add("Comparar coches", "Compare cars", "Comparer les voitures", "Autos vergleichen", "Confronta auto", "Comparar carros");
     add("Atrás", "Back", "Retour", "Zurück", "Indietro", "Voltar");
     add("Selecciona vehículo", "Select vehicle", "Sélectionnez un véhicule", "Fahrzeug auswählen", "Seleziona veicolo", "Selecionar veículo");
@@ -404,8 +201,17 @@ public final class LanguageManager {
     String[] v = TR.get(spanish);
     if (v == null) return spanish;
     String lang = getSelectedLanguage(c);
-    int i = 0;
-    for (int n = 0; n < LANGS.length; n++) if (LANGS[n].equals(lang)) i = n;
+    // Translation arrays are stored as: Spanish, English, French, German, Italian, Portuguese.
+    // LANGS is intentionally kept in the selector order (English first), so the array index
+    // must be mapped explicitly rather than using LANGS position.
+    int i;
+    if ("es".equals(lang)) i = 0;
+    else if ("en".equals(lang)) i = 1;
+    else if ("fr".equals(lang)) i = 2;
+    else if ("de".equals(lang)) i = 3;
+    else if ("it".equals(lang)) i = 4;
+    else if ("pt".equals(lang)) i = 5;
+    else i = 0;
     return i < v.length ? v[i] : v[0];
   }
 
