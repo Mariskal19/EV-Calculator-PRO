@@ -19,33 +19,19 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
           p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s=p.read_text(encoding='utf-8')
-          original=s
-          replacement='Math.round(v.powerKw * 1.35962) + " CV (" + fmt(v.powerKw) + " kW)"'
-          patterns=[
-              (r'fmt\\(v\\.powerKw\\)\\s*\\+\\s*" kW"', replacement),
-              (r'String\\.format\\(Locale\\.US,\\s*"%\\.0f kW",\\s*v\\.powerKw\\)', replacement),
-              (r'String\\.format\\(Locale\\.US,\\s*"%\\.1f kW",\\s*v\\.powerKw\\)', replacement),
-          ]
-          changed=False
-          for pat,repl in patterns:
-              ns,n=re.subn(pat,repl,s,count=1)
-              if n:
-                  s=ns; changed=True; break
-          if not changed:
-              # Find the actual power rendering expression and fail loudly rather than guessing.
-              hits=[m.group(0) for m in re.finditer(r'.{0,180}powerKw.{0,180}',s)]
-              print('powerKw occurrences:', len(hits))
-              for h in hits[:10]: print(h)
-              raise SystemExit('Could not identify the power display expression')
+          old='if("power".equals(key))return v.powerKw>0?String.format(Locale.US,"%.0f kW",v.powerKw):"—";'
+          new='if("power".equals(key))return v.powerKw>0?Math.round(v.powerKw*1.35962)+" CV ("+String.format(Locale.US,"%.0f kW",v.powerKw)+")":"—";'
+          if old not in s:
+              raise SystemExit('Target power display expression not found')
+          s=s.replace(old,new,1)
           p.write_text(s,encoding='utf-8')
           print('Power display changed: CV primary, kW secondary')
           PY
       - name: Validate source
         run: |
-          grep -o '.\{0,80\}Math.round(v.powerKw \* 1.35962).\{0,100\}' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java | head -5
+          grep -o '.\{0,100\}if("power".equals(key)).\{0,180\}' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java | head -3
       - name: Commit fix
         run: |
           git config user.name 'github-actions[bot]'
