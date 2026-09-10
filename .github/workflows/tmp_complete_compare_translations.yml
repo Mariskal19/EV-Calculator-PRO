@@ -1,25 +1,26 @@
 name: Complete compare translations
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
 jobs:
   patch:
+    if: github.event.head_commit.message != 'fix: complete compare screen translations'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Patch translations
+      - name: Patch translations safely
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          p = Path('app/src/main/java/com/evchargecalculator/LanguageManager.java')
-          s = p.read_text()
-          marker = '  private static void add('
+
+          lm = Path('app/src/main/java/com/evchargecalculator/LanguageManager.java')
+          s = lm.read_text()
+          marker = '  private static void add(String... v) {'
           entries = '''    add("Añadir coche", "Add car", "Ajouter une voiture", "Auto hinzufügen", "Aggiungi auto", "Adicionar carro");
     add("Batería y autonomía", "Battery & range", "Batterie et autonomie", "Batterie & Reichweite", "Batteria e autonomia", "Bateria e autonomia");
     add("Prestaciones", "Performance", "Performances", "Leistung", "Prestazioni", "Desempenho");
     add("Tracción", "Drivetrain", "Transmission", "Antrieb", "Trazione", "Tração");
-    add("0–100 km/h", "0–100 km/h", "0–100 km/h", "0–100 km/h", "0–100 km/h", "0–100 km/h");
     add("Carga AC", "AC charging", "Recharge AC", "AC-Laden", "Ricarica AC", "Carregamento AC");
-    add("10–80 %", "10–80 %", "10–80 %", "10–80 %", "10–80 %", "10–80 %");
     add("Practicidad", "Practicality", "Praticité", "Praktikabilität", "Praticità", "Praticidade");
     add("Maletero", "Boot space", "Coffre", "Kofferraum", "Bagagliaio", "Bagageira");
     add("Peso", "Weight", "Poids", "Gewicht", "Peso", "Peso");
@@ -28,27 +29,52 @@ jobs:
     add("Mercado", "Market", "Marché", "Markt", "Mercato", "Mercado");
     add("✕  Quitar", "✕  Remove", "✕  Supprimer", "✕  Entfernen", "✕  Rimuovi", "✕  Remover");
     add("Menú", "Menu", "Menu", "Menü", "Menu", "Menu");
-    add("Powered by EV Calculator", "Powered by EV Calculator", "Propulsé par EV Calculator", "Powered by EV Calculator", "Powered by EV Calculator", "Powered by EV Calculator");
-'''
+    add("En conjunto, ", "Overall, ", "Dans l'ensemble, ", "Insgesamt, ", "Nel complesso, ", "No geral, ");
+    add(" destaca por autonomía", " stands out for range", " se distingue par son autonomie", " überzeugt durch seine Reichweite", " si distingue per l'autonomia", " destaca pela autonomia");
+    add(", mientras que ", ", while ", ", tandis que ", ", während ", ", mentre ", ", enquanto ");
+    add(" ofrece el menor consumo", " offers the lowest consumption", " offre la consommation la plus faible", " bietet den niedrigsten Verbrauch", " offre il consumo più basso", " oferece o menor consumo");
+    add(" es la opción más económica", " is the most affordable option", " est l'option la plus économique", " ist die günstigste Option", " è l'opzione più economica", " é a opção mais económica");
+    add(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.", ". The final choice depends on whether you prioritize range, efficiency, performance, charging speed or price.", ". Le choix final dépendra de votre priorité : autonomie, efficacité, performances, vitesse de recharge ou prix.", ". Die endgültige Wahl hängt davon ab, ob du Reichweite, Effizienz, Leistung, Ladegeschwindigkeit oder Preis priorisierst.", ". La scelta finale dipenderà dalla tua priorità: autonomia, efficienza, prestazioni, velocità di ricarica o prezzo.", ". A escolha final dependerá de priorizar autonomia, eficiência, desempenho, velocidade de carregamento ou preço.");
+          '''
           if 'add("Añadir coche",' not in s:
+              if marker not in s:
+                  raise SystemExit('LanguageManager marker not found')
               s = s.replace(marker, entries + marker, 1)
-              p.write_text(s)
+              lm.write_text(s)
 
           q = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           c = q.read_text()
-          c = c.replace('input.setHint("Marca, modelo, año, batería o versión")', 'input.setHint(LanguageManager.t(this, "Marca, modelo, año, batería o versión"))')
-          c = c.replace('new AlertDialog.Builder(this).setTitle("Añadir coche")', 'new AlertDialog.Builder(this).setTitle(LanguageManager.t(this, "Añadir coche"))')
-          c = c.replace('privacyLink.setContentDescription("Política de privacidad")', 'privacyLink.setContentDescription(LanguageManager.t(this, "Política de privacidad"))')
+          replacements = {
+              'privacyLink.setContentDescription("Política de privacidad")': 'privacyLink.setContentDescription(LanguageManager.t(this, "Política de privacidad"))',
+              'input.setHint("Marca, modelo, año, batería o versión")': 'input.setHint(LanguageManager.t(this, "Marca, modelo, año, batería o versión"))',
+              'new AlertDialog.Builder(this).setTitle("Añadir coche")': 'new AlertDialog.Builder(this).setTitle(LanguageManager.t(this, "Añadir coche"))',
+          }
+          for old, new in replacements.items():
+              c = c.replace(old, new)
+
+          old = '''        Vehicle bestRange = bestVehicle("range", true), bestCons = bestVehicle("cons", false), bestPrice = bestVehicle("price", false); StringBuilder out = new StringBuilder(); out.append("En conjunto, ");
+        if (bestRange != null) out.append(bestRange.make).append(" ").append(bestRange.model).append(" destaca por autonomía");
+        if (bestCons != null && bestCons != bestRange) out.append(", mientras que ").append(bestCons.make).append(" ").append(bestCons.model).append(" ofrece el menor consumo");
+        if (bestPrice != null && bestPrice != bestRange && bestPrice != bestCons) out.append(" y ").append(bestPrice.make).append(" ").append(bestPrice.model).append(" es la opción más económica");
+        out.append(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio."); return out.toString();'''
+          new = '''        Vehicle bestRange = bestVehicle("range", true), bestCons = bestVehicle("cons", false), bestPrice = bestVehicle("price", false); StringBuilder out = new StringBuilder(); out.append(LanguageManager.t(this, "En conjunto, "));
+        if (bestRange != null) out.append(bestRange.make).append(" ").append(bestRange.model).append(LanguageManager.t(this, " destaca por autonomía"));
+        if (bestCons != null && bestCons != bestRange) out.append(LanguageManager.t(this, ", mientras que ")).append(bestCons.make).append(" ").append(bestCons.model).append(LanguageManager.t(this, " ofrece el menor consumo"));
+        if (bestPrice != null && bestPrice != bestRange && bestPrice != bestCons) out.append(LanguageManager.t(this, " y ")).append(bestPrice.make).append(" ").append(bestPrice.model).append(LanguageManager.t(this, " es la opción más económica"));
+        out.append(LanguageManager.t(this, ". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.")); return out.toString();'''
+          if old not in c:
+              raise SystemExit('summaryComment block not found')
+          c = c.replace(old, new, 1)
           q.write_text(c)
           PY
-      - name: Commit and remove workflow
+      - name: Verify and commit
         run: |
+          grep -q 'add("Añadir coche"' app/src/main/java/com/evchargecalculator/LanguageManager.java
+          grep -q 'LanguageManager.t(this, "Marca, modelo, año, batería o versión")' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          grep -q 'LanguageManager.t(this, "En conjunto, ")' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add app/src/main/java/com/evchargecalculator/LanguageManager.java app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git diff --cached --exit-code && { echo 'No changes to commit'; exit 1; } || true
           git commit -m "fix: complete compare screen translations"
-          git push
-          rm -f .github/workflows/tmp_complete_compare_translations.yml
-          git add .github/workflows/tmp_complete_compare_translations.yml
-          git commit -m "chore: remove temporary compare translation workflow"
           git push
