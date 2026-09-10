@@ -1,0 +1,129 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Dongfeng",
+      "model": "BOX",
+      "year": 2024,
+      "market": "ES",
+      "version": "Base 70 kW FWD 31.45 kWh LFP",
+      "batteryKwh": 31.45,
+      "batteryChemistry": "LFP",
+      "powerKw": 70,
+      "drive": "FWD",
+      "wltpKm": 230
+    },
+    {
+      "make": "Dongfeng",
+      "model": "BOX",
+      "year": 2024,
+      "market": "ES",
+      "version": "Pro 70 kW FWD 42.3 kWh LFP",
+      "batteryKwh": 42.3,
+      "batteryChemistry": "LFP",
+      "powerKw": 70,
+      "drive": "FWD",
+      "wltpKm": 340
+    },
+    {
+      "make": "Dongfeng",
+      "model": "BOX",
+      "year": 2024,
+      "market": "ES",
+      "version": "Plus 70 kW FWD 42.3 kWh LFP",
+      "batteryKwh": 42.3,
+      "batteryChemistry": "LFP",
+      "powerKw": 70,
+      "drive": "FWD",
+      "wltpKm": 340
+    },
+    {
+      "make": "Skywell",
+      "model": "BE11",
+      "year": 2024,
+      "market": "ES",
+      "version": "Comfort 150 kW FWD 72 kWh",
+      "batteryKwh": 72,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 400
+    },
+    {
+      "make": "Skywell",
+      "model": "BE11",
+      "year": 2024,
+      "market": "ES",
+      "version": "Luxury 150 kW FWD 72 kWh",
+      "batteryKwh": 72,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 400
+    },
+    {
+      "make": "Skywell",
+      "model": "BE11",
+      "year": 2024,
+      "market": "ES",
+      "version": "Long Range Comfort 150 kW FWD 86 kWh",
+      "batteryKwh": 86,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 477
+    },
+    {
+      "make": "Skywell",
+      "model": "BE11",
+      "year": 2024,
+      "market": "ES",
+      "version": "Long Range Luxury 150 kW FWD 86 kWh",
+      "batteryKwh": 86,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 477
+    },
+    {
+      "make": "DS",
+      "model": "N°4",
+      "year": 2025,
+      "market": "ES",
+      "version": "E-TENSE 213 CV 158 kW FWD 58.3 kWh",
+      "batteryKwh": 58.3,
+      "powerKw": 158,
+      "drive": "FWD",
+      "wltpKm": 450
+    },
+    {
+      "make": "Lotus",
+      "model": "Eletre",
+      "year": 2024,
+      "market": "ES",
+      "version": "Eletre 450 kW AWD 112 kWh",
+      "batteryKwh": 112,
+      "powerKw": 450,
+      "drive": "AWD",
+      "wltpKm": 600
+    },
+    {
+      "make": "Lotus",
+      "model": "Eletre",
+      "year": 2024,
+      "market": "ES",
+      "version": "Eletre R 675 kW AWD 112 kWh",
+      "batteryKwh": 112,
+      "powerKw": 675,
+      "drive": "AWD",
+      "wltpKm": 490
+    },
+    {
+      "make": "Maserati",
+      "model": "Grecale Folgore",
+      "year": 2024,
+      "market": "ES",
+      "version": "Folgore 410 kW AWD 105 kWh",
+      "batteryKwh": 105,
+      "powerKw": 410,
+      "drive": "AWD",
+      "wltpKm": 487
+    }
+  ]
+}
