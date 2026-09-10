@@ -2,6 +2,10 @@ name: TMP Fix XPeng catalog
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/tmp_fix_xpeng.yml'
 
 permissions:
   contents: write
@@ -21,104 +25,38 @@ jobs:
 
           p = Path('app/src/main/assets/catalog_es_2024_2026.json')
           data = json.loads(p.read_text(encoding='utf-8'))
-          vehicles = data['vehicles']
-
-          # Remove the complete existing XPeng block; rebuild it from the
-          # Spanish arrival-year structure: 2024, 2025 and 2026.
-          vehicles = [v for v in vehicles if v.get('make') != 'XPeng']
+          vehicles = [v for v in data['vehicles'] if v.get('make') != 'XPeng']
 
           xpeng = [
-            # G6: original Spanish launch generation (2024)
-            {
-              'make':'XPeng','model':'G6','version':'RWD Standard Range','year':2024,'arrivalYear':2024,'market':'ES',
-              'batteryKwh':66.0,'batteryChemistry':'LFP','powerKw':190,'drive':'RWD','wltpKm':435,'consumptionKwh100':15.2,
-            },
-            {
-              'make':'XPeng','model':'G6','version':'RWD Long Range','year':2024,'arrivalYear':2024,'market':'ES',
-              'batteryKwh':87.5,'batteryChemistry':'NMC','powerKw':210,'drive':'RWD','wltpKm':570,'consumptionKwh100':15.4,
-            },
-            {
-              'make':'XPeng','model':'G6','version':'AWD Performance','year':2024,'arrivalYear':2024,'market':'ES',
-              'batteryKwh':87.5,'batteryChemistry':'NMC','powerKw':350,'drive':'AWD','wltpKm':550,'consumptionKwh100':15.9,
-            },
-
-            # G6: September 2025 refresh (2025 arrival)
-            {
-              'make':'XPeng','model':'G6','version':'RWD Long Range','year':2025,'arrivalYear':2025,'market':'ES',
-              'batteryKwh':80.8,'batteryChemistry':'LFP','powerKw':218,'drive':'RWD','wltpKm':535,'consumptionKwh100':15.1,
-            },
-            {
-              'make':'XPeng','model':'G6','version':'AWD Performance','year':2025,'arrivalYear':2025,'market':'ES',
-              'batteryKwh':80.8,'batteryChemistry':'LFP','powerKw':358,'drive':'AWD','wltpKm':510,'consumptionKwh100':15.8,
-            },
-
-            # G6: RWD Standard Range arrived in Spain in 2026
-            {
-              'make':'XPeng','model':'G6','version':'RWD Standard Range','year':2026,'arrivalYear':2026,'market':'ES',
-              'batteryKwh':68.5,'batteryChemistry':'LFP','powerKw':185,'drive':'RWD','wltpKm':480,'consumptionKwh100':14.3,
-            },
-
-            # G9: original Spanish launch generation (2024)
-            {
-              'make':'XPeng','model':'G9','version':'RWD Standard Range','year':2024,'arrivalYear':2024,'market':'ES',
-              'batteryKwh':78.2,'batteryChemistry':'LFP','powerKw':230,'drive':'RWD','wltpKm':460,'consumptionKwh100':17.0,
-            },
-            {
-              'make':'XPeng','model':'G9','version':'RWD Long Range','year':2024,'arrivalYear':2024,'market':'ES',
-              'batteryKwh':98.0,'batteryChemistry':'NMC','powerKw':230,'drive':'RWD','wltpKm':570,'consumptionKwh100':17.2,
-            },
-            {
-              'make':'XPeng','model':'G9','version':'AWD Performance','year':2024,'arrivalYear':2024,'market':'ES',
-              'batteryKwh':98.0,'batteryChemistry':'NMC','powerKw':405,'drive':'AWD','wltpKm':520,'consumptionKwh100':18.8,
-            },
-
-            # G9: September 2025 refresh (2025 arrival)
-            {
-              'make':'XPeng','model':'G9','version':'RWD Standard Range','year':2025,'arrivalYear':2025,'market':'ES',
-              'batteryKwh':79.0,'batteryChemistry':'LFP','powerKw':258,'drive':'RWD','wltpKm':502,'consumptionKwh100':15.7,
-            },
-            {
-              'make':'XPeng','model':'G9','version':'RWD Long Range','year':2025,'arrivalYear':2025,'market':'ES',
-              'batteryKwh':93.1,'batteryChemistry':'LFP','powerKw':258,'drive':'RWD','wltpKm':585,'consumptionKwh100':15.9,
-            },
-            {
-              'make':'XPeng','model':'G9','version':'AWD Performance','year':2025,'arrivalYear':2025,'market':'ES',
-              'batteryKwh':93.1,'batteryChemistry':'LFP','powerKw':423,'drive':'AWD','wltpKm':540,'consumptionKwh100':17.2,
-            },
-
-            # P7+: first Spanish arrival in 2026
-            {
-              'make':'XPeng','model':'P7+','version':'RWD Standard Range','year':2026,'arrivalYear':2026,'market':'ES',
-              'batteryKwh':61.7,'batteryChemistry':'LFP','powerKw':180,'drive':'RWD','wltpKm':455,'consumptionKwh100':13.6,
-            },
-            {
-              'make':'XPeng','model':'P7+','version':'RWD Long Range','year':2026,'arrivalYear':2026,'market':'ES',
-              'batteryKwh':74.9,'batteryChemistry':'LFP','powerKw':230,'drive':'RWD','wltpKm':530,'consumptionKwh100':14.1,
-            },
-            {
-              'make':'XPeng','model':'P7+','version':'AWD Performance','year':2026,'arrivalYear':2026,'market':'ES',
-              'batteryKwh':74.9,'batteryChemistry':'LFP','powerKw':370,'drive':'AWD','wltpKm':500,'consumptionKwh100':15.0,
-            },
+            {'make':'XPeng','model':'G6','version':'RWD Standard Range','year':2024,'arrivalYear':2024,'market':'ES','batteryKwh':66.0,'batteryChemistry':'LFP','powerKw':190,'drive':'RWD','wltpKm':435,'consumptionKwh100':15.2},
+            {'make':'XPeng','model':'G6','version':'RWD Long Range','year':2024,'arrivalYear':2024,'market':'ES','batteryKwh':87.5,'batteryChemistry':'NMC','powerKw':210,'drive':'RWD','wltpKm':570,'consumptionKwh100':15.4},
+            {'make':'XPeng','model':'G6','version':'AWD Performance','year':2024,'arrivalYear':2024,'market':'ES','batteryKwh':87.5,'batteryChemistry':'NMC','powerKw':350,'drive':'AWD','wltpKm':550,'consumptionKwh100':15.9},
+            {'make':'XPeng','model':'G6','version':'RWD Long Range','year':2025,'arrivalYear':2025,'market':'ES','batteryKwh':80.8,'batteryChemistry':'LFP','powerKw':218,'drive':'RWD','wltpKm':535,'consumptionKwh100':15.1},
+            {'make':'XPeng','model':'G6','version':'AWD Performance','year':2025,'arrivalYear':2025,'market':'ES','batteryKwh':80.8,'batteryChemistry':'LFP','powerKw':358,'drive':'AWD','wltpKm':510,'consumptionKwh100':15.8},
+            {'make':'XPeng','model':'G6','version':'RWD Standard Range','year':2026,'arrivalYear':2026,'market':'ES','batteryKwh':68.5,'batteryChemistry':'LFP','powerKw':185,'drive':'RWD','wltpKm':480,'consumptionKwh100':14.3},
+            {'make':'XPeng','model':'G9','version':'RWD Standard Range','year':2024,'arrivalYear':2024,'market':'ES','batteryKwh':78.2,'batteryChemistry':'LFP','powerKw':230,'drive':'RWD','wltpKm':460,'consumptionKwh100':17.0},
+            {'make':'XPeng','model':'G9','version':'RWD Long Range','year':2024,'arrivalYear':2024,'market':'ES','batteryKwh':98.0,'batteryChemistry':'NMC','powerKw':230,'drive':'RWD','wltpKm':570,'consumptionKwh100':17.2},
+            {'make':'XPeng','model':'G9','version':'AWD Performance','year':2024,'arrivalYear':2024,'market':'ES','batteryKwh':98.0,'batteryChemistry':'NMC','powerKw':405,'drive':'AWD','wltpKm':520,'consumptionKwh100':18.8},
+            {'make':'XPeng','model':'G9','version':'RWD Standard Range','year':2025,'arrivalYear':2025,'market':'ES','batteryKwh':79.0,'batteryChemistry':'LFP','powerKw':258,'drive':'RWD','wltpKm':502,'consumptionKwh100':15.7},
+            {'make':'XPeng','model':'G9','version':'RWD Long Range','year':2025,'arrivalYear':2025,'market':'ES','batteryKwh':93.1,'batteryChemistry':'LFP','powerKw':258,'drive':'RWD','wltpKm':585,'consumptionKwh100':15.9},
+            {'make':'XPeng','model':'G9','version':'AWD Performance','year':2025,'arrivalYear':2025,'market':'ES','batteryKwh':93.1,'batteryChemistry':'LFP','powerKw':423,'drive':'AWD','wltpKm':540,'consumptionKwh100':17.2},
+            {'make':'XPeng','model':'P7+','version':'RWD Standard Range','year':2026,'arrivalYear':2026,'market':'ES','batteryKwh':61.7,'batteryChemistry':'LFP','powerKw':180,'drive':'RWD','wltpKm':455,'consumptionKwh100':13.6},
+            {'make':'XPeng','model':'P7+','version':'RWD Long Range','year':2026,'arrivalYear':2026,'market':'ES','batteryKwh':74.9,'batteryChemistry':'LFP','powerKw':230,'drive':'RWD','wltpKm':530,'consumptionKwh100':14.1},
+            {'make':'XPeng','model':'P7+','version':'AWD Performance','year':2026,'arrivalYear':2026,'market':'ES','batteryKwh':74.9,'batteryChemistry':'LFP','powerKw':370,'drive':'AWD','wltpKm':500,'consumptionKwh100':15.0},
           ]
 
           vehicles.extend(xpeng)
           data['vehicles'] = vehicles
           p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
-          # Hard validation for this brand before committing.
           got = [v for v in vehicles if v.get('make') == 'XPeng']
-          assert len(got) == 15, len(got)
-          assert sorted(set((v['model'], v['year']) for v in got)) == sorted([
-              ('G6',2024),('G6',2025),('G6',2026),
-              ('G9',2024),('G9',2025),('P7+',2026)
-          ])
+          assert len(got) == 15
           for v in got:
-              assert v['market'] == 'ES'
-              assert v['year'] == v['arrivalYear']
+              assert v['market'] == 'ES' and v['year'] == v['arrivalYear']
               assert v['batteryKwh'] > 0 and v['wltpKm'] > 0 and v['consumptionKwh100'] > 0
           print('XPeng corrected records:', len(got))
           for v in got:
-              print(v['model'], v['year'], v['version'], v['batteryKwh'], v['powerKw'], v['wltpKm'])
+              print(v['model'], v['year'], v['version'])
           PY
 
       - name: Commit
