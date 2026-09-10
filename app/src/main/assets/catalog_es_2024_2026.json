@@ -4341,6 +4341,30 @@
     {
       "make": "Kia",
       "model": "EV2",
+      "year": 2026,
+      "market": "ES",
+      "version": "Air 108 kW FWD 42.2 kWh",
+      "batteryKwh": 42.2,
+      "powerKw": 108,
+      "drive": "FWD",
+      "wltpKm": 317,
+      "consumptionKwh100": 13.3
+    },
+    {
+      "make": "Kia",
+      "model": "EV2",
+      "year": 2026,
+      "market": "ES",
+      "version": "Earth 108 kW FWD 42.2 kWh",
+      "batteryKwh": 42.2,
+      "powerKw": 108,
+      "drive": "FWD",
+      "wltpKm": 317,
+      "consumptionKwh100": 13.3
+    },
+    {
+      "make": "Kia",
+      "model": "EV2",
       "version": "Earth Standard Range",
       "year": 2026,
       "arrivalYear": 2026,
@@ -4409,6 +4433,30 @@
       "source": "Kia España; EV2 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES"
+    },
+    {
+      "make": "Kia",
+      "model": "EV2",
+      "year": 2026,
+      "market": "ES",
+      "version": "Long Range 108 kW FWD 61 kWh",
+      "batteryKwh": 61.0,
+      "powerKw": 108,
+      "drive": "FWD",
+      "wltpKm": 453,
+      "consumptionKwh100": 13.5
+    },
+    {
+      "make": "Kia",
+      "model": "EV2",
+      "year": 2026,
+      "market": "ES",
+      "version": "GT-Line 108 kW FWD 42.2 kWh",
+      "batteryKwh": 42.2,
+      "powerKw": 108,
+      "drive": "FWD",
+      "wltpKm": 317,
+      "consumptionKwh100": 13.3
     },
     {
       "make": "Kia",
