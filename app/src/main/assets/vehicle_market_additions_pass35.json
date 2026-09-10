@@ -1,0 +1,18 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {"make":"Volvo","model":"EX30","year":2024,"market":"ES","version":"Single Motor 200 kW RWD 51 kWh","batteryKwh":51,"batteryChemistry":"LFP","powerKw":200,"drive":"RWD","wltpKm":337},
+    {"make":"Volvo","model":"EX30","year":2024,"market":"ES","version":"Single Motor Extended Range 200 kW RWD 69 kWh","batteryKwh":69,"batteryChemistry":"NMC","powerKw":200,"drive":"RWD","wltpKm":475},
+    {"make":"Volvo","model":"EX30","year":2024,"market":"ES","version":"Twin Motor Performance 315 kW AWD 69 kWh","batteryKwh":69,"batteryChemistry":"NMC","powerKw":315,"drive":"AWD","wltpKm":450},
+    {"make":"Volvo","model":"EX40","year":2024,"market":"ES","version":"Single Motor 175 kW RWD 70 kWh","batteryKwh":70,"batteryChemistry":"NMC","powerKw":175,"drive":"RWD","wltpKm":477},
+    {"make":"Volvo","model":"EX40","year":2024,"market":"ES","version":"Single Motor Extended Range 185 kW RWD 82 kWh","batteryKwh":82,"batteryChemistry":"NMC","powerKw":185,"drive":"RWD","wltpKm":575},
+    {"make":"Volvo","model":"EX40","year":2024,"market":"ES","version":"Twin Motor 300 kW AWD 82 kWh","batteryKwh":82,"batteryChemistry":"NMC","powerKw":300,"drive":"AWD","wltpKm":538},
+    {"make":"Volvo","model":"EC40","year":2024,"market":"ES","version":"Single Motor 175 kW RWD 70 kWh","batteryKwh":70,"batteryChemistry":"NMC","powerKw":175,"drive":"RWD","wltpKm":486},
+    {"make":"Volvo","model":"EC40","year":2024,"market":"ES","version":"Single Motor Extended Range 185 kW RWD 82 kWh","batteryKwh":82,"batteryChemistry":"NMC","powerKw":185,"drive":"RWD","wltpKm":585},
+    {"make":"Volvo","model":"EC40","year":2024,"market":"ES","version":"Twin Motor 300 kW AWD 82 kWh","batteryKwh":82,"batteryChemistry":"NMC","powerKw":300,"drive":"AWD","wltpKm":551},
+    {"make":"Volvo","model":"EX90","year":2024,"market":"ES","version":"Twin Motor 380 kW AWD 111 kWh","batteryKwh":111,"batteryChemistry":"NMC","powerKw":380,"drive":"AWD","wltpKm":600},
+    {"make":"Volvo","model":"ES90","year":2025,"market":"ES","version":"Single Motor Extended Range 205 kW RWD 92 kWh","batteryKwh":92,"batteryChemistry":"NMC","powerKw":205,"drive":"RWD","wltpKm":664},
+    {"make":"Volvo","model":"ES90","year":2025,"market":"ES","version":"Twin Motor 335 kW AWD 106 kWh","batteryKwh":106,"batteryChemistry":"NMC","powerKw":335,"drive":"AWD","wltpKm":702},
+    {"make":"Volvo","model":"ES90","year":2025,"market":"ES","version":"Twin Motor Performance 500 kW AWD 106 kWh","batteryKwh":106,"batteryChemistry":"NMC","powerKw":500,"drive":"AWD","wltpKm":702}
+  ]
+}
