@@ -1,0 +1,49 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Renault",
+      "model": "Scenic E-Tech eléctrico",
+      "year": 2024,
+      "market": "ES",
+      "version": "Evolution 125 kW FWD 60 kWh",
+      "batteryKwh": 60,
+      "powerKw": 125,
+      "drive": "FWD",
+      "wltpKm": 430
+    },
+    {
+      "make": "Renault",
+      "model": "Scenic E-Tech eléctrico",
+      "year": 2024,
+      "market": "ES",
+      "version": "Gran Autonomía 160 kW FWD 87 kWh",
+      "batteryKwh": 87,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 625
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID.7 Tourer",
+      "year": 2024,
+      "market": "ES",
+      "version": "Pro S 210 kW RWD 86 kWh",
+      "batteryKwh": 86,
+      "powerKw": 210,
+      "drive": "RWD",
+      "wltpKm": 690
+    },
+    {
+      "make": "Mercedes-Benz",
+      "model": "GLC eléctrico",
+      "year": 2026,
+      "market": "ES",
+      "version": "400 4MATIC eléctrico 360 kW AWD 94 kWh",
+      "batteryKwh": 94,
+      "powerKw": 360,
+      "drive": "AWD",
+      "wltpKm": 666
+    }
+  ]
+}
