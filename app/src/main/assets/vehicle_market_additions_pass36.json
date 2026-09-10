@@ -1,9 +1,0 @@
-{
-  "market": "ES",
-  "vehicles": [
-    {"make":"Kia","model":"EV3","year":2024,"market":"ES","version":"Standard Range 150 kW FWD 58.3 kWh","batteryKwh":58.3,"batteryChemistry":"NMC","powerKw":150,"drive":"FWD","wltpKm":436},
-    {"make":"Kia","model":"EV3","year":2024,"market":"ES","version":"Long Range 150 kW FWD 81.4 kWh 17in","batteryKwh":81.4,"batteryChemistry":"NMC","powerKw":150,"drive":"FWD","wltpKm":605},
-    {"make":"Kia","model":"EV3","year":2024,"market":"ES","version":"Long Range 150 kW FWD 81.4 kWh 19in","batteryKwh":81.4,"batteryChemistry":"NMC","powerKw":150,"drive":"FWD","wltpKm":563},
-    {"make":"Kia","model":"EV9","year":2024,"market":"ES","version":"AWD 283 kW 99.8 kWh","batteryKwh":99.8,"batteryChemistry":"Li-ion","powerKw":283,"drive":"AWD","wltpKm":497}
-  ]
-}
