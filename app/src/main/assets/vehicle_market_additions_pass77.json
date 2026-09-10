@@ -4,7 +4,7 @@
     {
       "make": "Zeekr",
       "model": "001",
-      "year": 2024,
+      "year": 2026,
       "market": "ES",
       "version": "Long Range RWD 200 kW 100 kWh NMC",
       "batteryKwh": 100,
@@ -16,7 +16,7 @@
     {
       "make": "Zeekr",
       "model": "001",
-      "year": 2024,
+      "year": 2026,
       "market": "ES",
       "version": "Performance AWD 400 kW 100 kWh NMC",
       "batteryKwh": 100,
@@ -28,7 +28,7 @@
     {
       "make": "Zeekr",
       "model": "001",
-      "year": 2024,
+      "year": 2026,
       "market": "ES",
       "version": "Privilege AWD 400 kW 100 kWh NMC",
       "batteryKwh": 100,
