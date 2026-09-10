@@ -1,0 +1,54 @@
+name: Complete compare translations
+on:
+  workflow_dispatch:
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Patch translations
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/LanguageManager.java')
+          s = p.read_text()
+          marker = '  private static void add('
+          entries = '''    add("Añadir coche", "Add car", "Ajouter une voiture", "Auto hinzufügen", "Aggiungi auto", "Adicionar carro");
+    add("Batería y autonomía", "Battery & range", "Batterie et autonomie", "Batterie & Reichweite", "Batteria e autonomia", "Bateria e autonomia");
+    add("Prestaciones", "Performance", "Performances", "Leistung", "Prestazioni", "Desempenho");
+    add("Tracción", "Drivetrain", "Transmission", "Antrieb", "Trazione", "Tração");
+    add("0–100 km/h", "0–100 km/h", "0–100 km/h", "0–100 km/h", "0–100 km/h", "0–100 km/h");
+    add("Carga AC", "AC charging", "Recharge AC", "AC-Laden", "Ricarica AC", "Carregamento AC");
+    add("10–80 %", "10–80 %", "10–80 %", "10–80 %", "10–80 %", "10–80 %");
+    add("Practicidad", "Practicality", "Praticité", "Praktikabilität", "Praticità", "Praticidade");
+    add("Maletero", "Boot space", "Coffre", "Kofferraum", "Bagagliaio", "Bagageira");
+    add("Peso", "Weight", "Poids", "Gewicht", "Peso", "Peso");
+    add("Selecciona un coche para mostrar sus características.", "Select a car to show its features.", "Sélectionnez une voiture pour afficher ses caractéristiques.", "Wähle ein Fahrzeug aus, um seine Eigenschaften anzuzeigen.", "Seleziona un'auto per visualizzarne le caratteristiche.", "Selecione um carro para ver as suas características.");
+    add("Marca, modelo, año, batería o versión", "Make, model, year, battery or version", "Marque, modèle, année, batterie ou version", "Marke, Modell, Jahr, Batterie oder Version", "Marca, modello, anno, batteria o versione", "Marca, modelo, ano, bateria ou versão");
+    add("Mercado", "Market", "Marché", "Markt", "Mercato", "Mercado");
+    add("✕  Quitar", "✕  Remove", "✕  Supprimer", "✕  Entfernen", "✕  Rimuovi", "✕  Remover");
+    add("Menú", "Menu", "Menu", "Menü", "Menu", "Menu");
+    add("Powered by EV Calculator", "Powered by EV Calculator", "Propulsé par EV Calculator", "Powered by EV Calculator", "Powered by EV Calculator", "Powered by EV Calculator");
+'''
+          if 'add("Añadir coche",' not in s:
+              s = s.replace(marker, entries + marker, 1)
+              p.write_text(s)
+
+          q = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          c = q.read_text()
+          c = c.replace('input.setHint("Marca, modelo, año, batería o versión")', 'input.setHint(LanguageManager.t(this, "Marca, modelo, año, batería o versión"))')
+          c = c.replace('new AlertDialog.Builder(this).setTitle("Añadir coche")', 'new AlertDialog.Builder(this).setTitle(LanguageManager.t(this, "Añadir coche"))')
+          c = c.replace('privacyLink.setContentDescription("Política de privacidad")', 'privacyLink.setContentDescription(LanguageManager.t(this, "Política de privacidad"))')
+          q.write_text(c)
+          PY
+      - name: Commit and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/java/com/evchargecalculator/LanguageManager.java app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m "fix: complete compare screen translations"
+          git push
+          rm -f .github/workflows/tmp_complete_compare_translations.yml
+          git add .github/workflows/tmp_complete_compare_translations.yml
+          git commit -m "chore: remove temporary compare translation workflow"
+          git push
