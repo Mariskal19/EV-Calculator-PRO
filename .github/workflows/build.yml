@@ -34,10 +34,7 @@ jobs:
         with:
           gradle-version: '8.9'
 
-      - name: Regenerate ordered catalog in workspace
-        run: python3 tools/generate_catalog.py
-
-      - name: Verify catalog
+      - name: Verify final Spanish catalog
         shell: bash
         run: |
           set -euo pipefail
@@ -53,7 +50,10 @@ jobs:
           invalid = [v for v in vehicles if v.get('year') not in (2024, 2025, 2026)]
           if invalid:
               raise SystemExit(f'Catalog contains {len(invalid)} vehicles outside 2024-2026')
-          print(f'Catalog OK: {len(vehicles)} vehicles')
+          missing = [v for v in vehicles if (v.get('batteryKwh') or 0) > 0 and (v.get('wltpKm') or 0) > 0 and v.get('consumptionKwh100') in (None, '', 0)]
+          if missing:
+              raise SystemExit(f'Catalog contains {len(missing)} vehicles without consumptionKwh100')
+          print(f'Final Spanish catalog OK: {len(vehicles)} vehicles')
           PY
 
       - name: Verify release signing configuration
