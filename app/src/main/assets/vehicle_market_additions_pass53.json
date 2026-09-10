@@ -1,0 +1,77 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "smart",
+      "model": "#5",
+      "year": 2025,
+      "market": "ES",
+      "version": "Pro 250 kW RWD 76 kWh LFP",
+      "batteryKwh": 76,
+      "batteryChemistry": "LFP",
+      "powerKw": 250,
+      "drive": "RWD",
+      "wltpKm": 465
+    },
+    {
+      "make": "smart",
+      "model": "#5",
+      "year": 2025,
+      "market": "ES",
+      "version": "Pro+ 267 kW RWD 100 kWh NCM",
+      "batteryKwh": 100,
+      "batteryChemistry": "NCM",
+      "powerKw": 267,
+      "drive": "RWD",
+      "wltpKm": 590
+    },
+    {
+      "make": "smart",
+      "model": "#5",
+      "year": 2025,
+      "market": "ES",
+      "version": "Premium 267 kW RWD 100 kWh NCM",
+      "batteryKwh": 100,
+      "batteryChemistry": "NCM",
+      "powerKw": 267,
+      "drive": "RWD",
+      "wltpKm": 590
+    },
+    {
+      "make": "smart",
+      "model": "#5",
+      "year": 2025,
+      "market": "ES",
+      "version": "Pulse 432 kW AWD 100 kWh NCM",
+      "batteryKwh": 100,
+      "batteryChemistry": "NCM",
+      "powerKw": 432,
+      "drive": "AWD",
+      "wltpKm": 540
+    },
+    {
+      "make": "smart",
+      "model": "#5",
+      "year": 2025,
+      "market": "ES",
+      "version": "Summit Edition 432 kW AWD 100 kWh NCM",
+      "batteryKwh": 100,
+      "batteryChemistry": "NCM",
+      "powerKw": 432,
+      "drive": "AWD",
+      "wltpKm": 540
+    },
+    {
+      "make": "smart",
+      "model": "#5",
+      "year": 2025,
+      "market": "ES",
+      "version": "BRABUS 475 kW AWD 100 kWh NCM",
+      "batteryKwh": 100,
+      "batteryChemistry": "NCM",
+      "powerKw": 475,
+      "drive": "AWD",
+      "wltpKm": 540
+    }
+  ]
+}
