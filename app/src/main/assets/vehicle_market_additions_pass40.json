@@ -1,0 +1,60 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Polestar",
+      "model": "Polestar 3",
+      "year": 2024,
+      "market": "ES",
+      "version": "Rear motor 245 kW RWD 92 kWh",
+      "batteryKwh": 92,
+      "powerKw": 245,
+      "drive": "RWD",
+      "wltpKm": 603
+    },
+    {
+      "make": "Polestar",
+      "model": "Polestar 3",
+      "year": 2024,
+      "market": "ES",
+      "version": "Dual motor 400 kW AWD 106 kWh",
+      "batteryKwh": 106,
+      "powerKw": 400,
+      "drive": "AWD",
+      "wltpKm": 647
+    },
+    {
+      "make": "Polestar",
+      "model": "Polestar 3",
+      "year": 2024,
+      "market": "ES",
+      "version": "Performance 500 kW AWD 106 kWh",
+      "batteryKwh": 106,
+      "powerKw": 500,
+      "drive": "AWD",
+      "wltpKm": 601
+    },
+    {
+      "make": "Polestar",
+      "model": "Polestar 4",
+      "year": 2024,
+      "market": "ES",
+      "version": "Rear motor 200 kW RWD 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 200,
+      "drive": "RWD",
+      "wltpKm": 630
+    },
+    {
+      "make": "Polestar",
+      "model": "Polestar 4",
+      "year": 2024,
+      "market": "ES",
+      "version": "Dual motor 400 kW AWD 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 400,
+      "drive": "AWD",
+      "wltpKm": 600
+    }
+  ]
+}
