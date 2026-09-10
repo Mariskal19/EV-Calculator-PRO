@@ -1,0 +1,93 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Alfa Romeo",
+      "model": "Junior",
+      "year": 2024,
+      "market": "ES",
+      "version": "Elettrica 115 kW FWD 54 kWh",
+      "batteryKwh": 54,
+      "powerKw": 115,
+      "drive": "FWD",
+      "wltpKm": 410
+    },
+    {
+      "make": "Alfa Romeo",
+      "model": "Junior",
+      "year": 2024,
+      "market": "ES",
+      "version": "Elettrica Veloce 207 kW FWD 54 kWh",
+      "batteryKwh": 54,
+      "powerKw": 207,
+      "drive": "FWD",
+      "wltpKm": 334
+    },
+    {
+      "make": "Abarth",
+      "model": "600e",
+      "year": 2024,
+      "market": "ES",
+      "version": "Turismo 175 kW FWD 54 kWh",
+      "batteryKwh": 54,
+      "powerKw": 175,
+      "drive": "FWD",
+      "wltpKm": 334
+    },
+    {
+      "make": "Abarth",
+      "model": "600e",
+      "year": 2024,
+      "market": "ES",
+      "version": "Scorpionissima 207 kW FWD 54 kWh",
+      "batteryKwh": 54,
+      "powerKw": 207,
+      "drive": "FWD",
+      "wltpKm": 334
+    },
+    {
+      "make": "Leapmotor",
+      "model": "B10",
+      "year": 2025,
+      "market": "ES",
+      "version": "LIFE 160 kW RWD 56.2 kWh",
+      "batteryKwh": 56.2,
+      "powerKw": 160,
+      "drive": "RWD",
+      "wltpKm": 361
+    },
+    {
+      "make": "Leapmotor",
+      "model": "B10",
+      "year": 2025,
+      "market": "ES",
+      "version": "DESIGN 160 kW RWD 67.1 kWh",
+      "batteryKwh": 67.1,
+      "powerKw": 160,
+      "drive": "RWD",
+      "wltpKm": 434
+    },
+    {
+      "make": "DS Automobiles",
+      "model": "Nº4",
+      "year": 2025,
+      "market": "ES",
+      "version": "E-TENSE 213 kW FWD 58.3 kWh",
+      "batteryKwh": 58.3,
+      "powerKw": 156.7,
+      "drive": "FWD",
+      "wltpKm": 450
+    },
+    {
+      "make": "Maserati",
+      "model": "GranCabrio Folgore",
+      "year": 2024,
+      "market": "ES",
+      "version": "Folgore 560 kW AWD 92.5 kWh",
+      "batteryKwh": 92.5,
+      "powerKw": 560,
+      "drive": "AWD",
+      "wltpKm": 447
+    }
+  ]
+}
