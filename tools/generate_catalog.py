@@ -10,9 +10,39 @@ SOURCES = [
     'vehicle_market_additions_tesla.json',
     'research_mini_ES_2024_2026.json',
 ]
-# Include every catalog review pass without having to maintain a hard-coded list.
 SOURCES.extend(sorted(p.name for p in ROOT.glob('vehicle_market_additions_pass*.json')))
 OUTPUT = ROOT / 'catalog_es_2024_2026.json'
+
+# Final audit corrections for models whose technical/model-year records had
+# been mixed with their actual first Spanish BEV arrival year.
+ARRIVAL_YEAR_OVERRIDES = {
+    ('zeekr', '001'): 2026, ('zeekr', 'x'): 2026, ('zeekr', '7x'): 2026,
+    ('kia', 'ev4'): 2026, ('kia', 'ev4 fastback'): 2026, ('kia', 'ev5'): 2026,
+    ('toyota', 'c-hr+'): 2026,
+    ('mercedes-benz', 'glb'): 2026, ('mercedes-benz', 'glc'): 2026,
+    ('peugeot', 'e-408'): 2024,
+    ('polestar', '4'): 2024,
+    ('lynk & co', '02'): 2024,
+    ('volvo', 'ex90'): 2024,
+    ('ford', 'explorer'): 2024, ('ford', 'explorer eléctrico'): 2024,
+    ('ford', 'capri'): 2024,
+    ('renault', 'renault 5 e-tech'): 2024, ('renault', 'renault 5 e-tech eléctrico'): 2024,
+    ('renault', '5 e-tech'): 2024,
+    ('renault', 'scenic e-tech'): 2024, ('renault', 'scenic e-tech eléctrico'): 2024,
+}
+# Models demonstrably introduced in Spain before 2024 are outside this catalog,
+# even when later technical/model-year records are dated 2024-2026.
+EXCLUDED_MODELS = {
+    ('renault', 'megane e-tech eléctrico'), ('renault', 'megane e-tech'),
+    ('peugeot', 'e-2008'), ('peugeot', 'e-208'), ('peugeot', 'e-308'),
+    ('opel', 'corsa electric'), ('opel', 'mokka electric'), ('opel', 'astra electric'),
+    ('opel', 'astra sports tourer electric'),
+    ('jeep', 'avenger'),
+    ('lexus', 'rz'), ('lexus', 'ux 300e'),
+    ('nissan', 'ariya'),
+    ('volkswagen', 'id.3'), ('volkswagen', 'id.4'), ('volkswagen', 'id.5'),
+    ('volkswagen', 'id.7'), ('volkswagen', 'id. buzz'),
+}
 
 def number(value): return value if isinstance(value, (int, float)) else 0
 
@@ -46,13 +76,14 @@ def derive_consumption(vehicle):
     if battery > 0 and wltp > 0: vehicle['consumptionKwh100'] = round((battery / wltp) * 100, 1)
 
 def normalize_arrival_year(vehicle):
-    """Apply the catalog rule: year means Spanish market arrival year.
-
-    Existing research records may also carry arrivalYear. If it is present,
-    it is authoritative. Models whose Spanish arrival predates 2024 are
-    excluded; newer technical/model-year updates remain grouped under their
-    original Spanish arrival year.
-    """
+    make = str(vehicle.get('make') or '').strip().lower()
+    model = str(vehicle.get('model') or '').strip().lower()
+    if (make, model) in EXCLUDED_MODELS: return False
+    override = ARRIVAL_YEAR_OVERRIDES.get((make, model))
+    if override is not None:
+        vehicle['year'] = override
+        vehicle['arrivalYear'] = override
+        return True
     arrival = vehicle.get('arrivalYear')
     if isinstance(arrival, int):
         if arrival not in (2024, 2025, 2026): return False
