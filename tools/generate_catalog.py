@@ -6,21 +6,12 @@ from pathlib import Path
 ROOT = Path('app/src/main/assets')
 SOURCES = [
     'vehicles.json', 'vehicle_variants.json', 'vehicle_market_additions.json',
-    'vehicle_market_additions_pass4.json', 'vehicle_market_additions_toyota_volkswagen.json',
-    'vehicle_market_additions_tesla.json', 'vehicle_market_additions_pass5.json',
-    'vehicle_market_additions_pass6.json', 'vehicle_market_additions_pass7.json',
-    'vehicle_market_additions_pass8.json', 'vehicle_market_additions_pass9.json',
-    'vehicle_market_additions_pass10.json', 'vehicle_market_additions_pass11.json',
-    'vehicle_market_additions_pass12.json', 'vehicle_market_additions_pass13.json',
-    'vehicle_market_additions_pass14.json', 'vehicle_market_additions_pass15.json',
-    'vehicle_market_additions_pass16.json', 'vehicle_market_additions_pass17.json',
-    'vehicle_market_additions_pass18.json', 'vehicle_market_additions_pass19.json',
-    'vehicle_market_additions_pass20.json', 'vehicle_market_additions_pass21.json',
-    'vehicle_market_additions_pass22.json', 'vehicle_market_additions_pass23.json',
-    'vehicle_market_additions_pass24.json', 'vehicle_market_additions_pass25.json',
-    'vehicle_market_additions_pass26.json', 'vehicle_market_additions_pass27.json',
+    'vehicle_market_additions_toyota_volkswagen.json',
+    'vehicle_market_additions_tesla.json',
     'research_mini_ES_2024_2026.json',
 ]
+# Include every catalog review pass without having to maintain a hard-coded list.
+SOURCES.extend(sorted(p.name for p in ROOT.glob('vehicle_market_additions_pass*.json')))
 OUTPUT = ROOT / 'catalog_es_2024_2026.json'
 
 def number(value): return value if isinstance(value, (int, float)) else 0
