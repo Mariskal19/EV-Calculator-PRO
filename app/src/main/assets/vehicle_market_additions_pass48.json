@@ -1,0 +1,29 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Citroën",
+      "model": "ë-C3",
+      "year": 2024,
+      "market": "ES",
+      "version": "83 kW FWD 44 kWh LFP",
+      "batteryKwh": 44,
+      "batteryChemistry": "LFP",
+      "powerKw": 83,
+      "drive": "FWD",
+      "wltpKm": 320
+    },
+    {
+      "make": "Citroën",
+      "model": "ë-C3 Aircross",
+      "year": 2024,
+      "market": "ES",
+      "version": "83 kW FWD 44 kWh LFP",
+      "batteryKwh": 44,
+      "batteryChemistry": "LFP",
+      "powerKw": 83,
+      "drive": "FWD",
+      "wltpKm": 300
+    }
+  ]
+}
