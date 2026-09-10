@@ -1,0 +1,86 @@
+name: Exhaustive XPENG catalog correction
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild complete XPENG Spain catalog
+        shell: python
+        run: |
+          import json, os, subprocess
+          p='app/src/main/assets/catalog_es_2024_2026.json'
+          with open(p, encoding='utf-8') as f: data=json.load(f)
+          v=data['vehicles']
+          v=[x for x in v if str(x.get('make','')).strip().lower() not in ('xpeng','xpeng motors')]
+          def row(model, year, version, battery, usable, chem, power, drive, wltp, cons, ac, dc, charge, accel, trunk, weight, top, torque, length, width, height, wheelbase):
+              return {
+                'make':'XPENG','model':model,'version':version,'year':year,'arrivalYear':year,'market':'ES',
+                'batteryKwh':battery,'usableBatteryKwh':usable,'batteryType':chem,'powerKw':power,'drivetrain':drive,
+                'wltpKm':wltp,'consumptionKwh100':cons,'acKw':ac,'dcKw':dc,'charge10to80Min':charge,
+                'acceleration0to100Sec':accel,'trunkLiters':trunk,'weightKg':weight,'topSpeedKmh':top,
+                'torqueNm':torque,'lengthMm':length,'widthMm':width,'heightMm':height,'wheelbaseMm':wheelbase,
+                'price':None,'currency':'EUR','photo':None,'source':'XPENG Spain / XPENG official / KM77; audited 2026-09-11','lastUpdated':'2026-09-11'
+              }
+          xp=[]
+          # G6 original Spain 2024
+          xp += [
+            row('G6',2024,'RWD Standard Range 190 kW FWD? 66 kWh',66,61.0,'LFP',190,'RWD',435,17.5,11,215,20,6.6,571,2025,200,440,4753,1920,1650,2890),
+            row('G6',2024,'RWD Long Range 210 kW RWD 87.5 kWh',87.5,82.7,'NMC',210,'RWD',570,17.5,11,280,20,6.2,571,2125,200,440,4753,1920,1650,2890),
+            row('G6',2024,'AWD Performance 350 kW AWD 87.5 kWh',87.5,82.7,'NMC',350,'AWD',550,17.9,11,280,20,4.1,571,2140,200,660,4753,1920,1650,2890)
+          ]
+          # Correct the first label typo without altering technical fields.
+          xp[0]['version']='RWD Standard Range 190 kW RWD 66 kWh'
+          # G6 renewed range: 2025 Long Range + Performance, 2026 Standard Range
+          xp += [
+            row('G6',2025,'RWD Long Range 218 kW RWD 80.8 kWh',80.8,80.0,'LFP',218,'RWD',525,17.5,11,451,12,6.7,571,2115,202,440,4758,1920,1650,2890),
+            row('G6',2025,'AWD Performance 358 kW AWD 80.8 kWh',80.8,80.0,'LFP',358,'AWD',510,18.4,11,451,12,4.1,571,2220,202,660,4758,1920,1650,2890),
+            row('G6',2026,'RWD Standard Range 185 kW RWD 68.5 kWh',68.5,67.5,'LFP',185,'RWD',455,17.3,11,382,12,6.9,571,2065,202,440,4758,1920,1650,2890)
+          ]
+          # G9 original Spain 2024
+          xp += [
+            row('G9',2024,'RWD Standard Range 230 kW RWD 78.2 kWh',78.2,75.8,'LFP',230,'RWD',460,19.4,11,260,20,6.4,660,2210,200,430,4891,1937,1670,2998),
+            row('G9',2024,'RWD Long Range 230 kW RWD 98 kWh',98.0,92.0,'NMC',230,'RWD',570,17.2,11,300,20,6.4,660,2210,200,430,4891,1937,1670,2998),
+            row('G9',2024,'AWD Performance 405 kW AWD 98 kWh',98.0,92.0,'NMC',405,'AWD',520,21.3,11,300,20,3.9,660,2340,200,717,4891,1937,1670,2998)
+          ]
+          # G9 renewed 2025
+          xp += [
+            row('G9',2025,'RWD Standard Range 258 kW RWD 79 kWh',79.0,78.2,'LFP',258,'RWD',502,18.4,11,445,12,6.6,660,2210,200,465,4891,1937,1670,2998),
+            row('G9',2025,'RWD Long Range 258 kW RWD 93.1 kWh',93.1,92.0,'LFP',258,'RWD',585,18.6,11,525,12,6.4,660,2210,200,465,4891,1937,1670,2998),
+            row('G9',2025,'AWD Performance 423 kW AWD 93.1 kWh',93.1,92.0,'LFP',423,'AWD',540,20.1,11,525,12,4.2,660,2360,200,717,4891,1937,1670,2998)
+          ]
+          # Original P7, launched in Spain in 2024; include all Spanish-market variants.
+          xp += [
+            row('P7',2024,'RWD Long Range 203 kW RWD 86.2 kWh',86.2,82.7,'NMC',203,'RWD',576,16.8,11,175,29,6.7,440,2020,200,440,4888,1896,1450,2998),
+            row('P7',2024,'AWD Performance 348 kW AWD 86.2 kWh',86.2,82.7,'NMC',348,'AWD',505,19.2,11,175,29,4.1,440,2140,200,757,4888,1896,1450,2998),
+            row('P7',2024,'AWD Wing Edition 348 kW AWD 86.2 kWh',86.2,82.7,'NMC',348,'AWD',505,19.2,11,175,29,4.1,440,2140,200,757,4888,1896,1450,2998)
+          ]
+          # P7+ 2026 Spain
+          xp += [
+            row('P7+',2026,'RWD Standard Range 180 kW RWD 61.7 kWh',61.7,60.0,'LFP',180,'RWD',455,15.2,11,350,12,7.9,573,1955,180,450,5071,1937,1512,3000),
+            row('P7+',2026,'RWD Long Range 230 kW RWD 74.9 kWh',74.9,73.5,'LFP',230,'RWD',530,16.4,11,350,12,5.6,573,2050,180,450,5071,1937,1512,3000),
+            row('P7+',2026,'AWD Performance 370 kW AWD 74.9 kWh',74.9,73.5,'LFP',370,'AWD',500,17.4,11,350,12,4.8,573,2160,180,660,5071,1937,1512,3000)
+          ]
+          # Keep order market > make > model > year > version.
+          v.extend(xp)
+          v.sort(key=lambda x:(x.get('market',''),x.get('make',''),x.get('model',''),int(x.get('year',0)),x.get('version','')))
+          data['vehicles']=v
+          with open(p,'w',encoding='utf-8') as f: json.dump(data,f,ensure_ascii=False,indent=2); f.write('\n')
+          # Assertions: exactly 18 XPENG configurations, years restricted to 2024-2026, no missing core technical fields.
+          got=[x for x in v if x.get('make')=='XPENG']
+          assert len(got)==18, len(got)
+          assert all(x['year'] in (2024,2025,2026) and x['market']=='ES' for x in got)
+          core=['batteryKwh','powerKw','wltpKm','consumptionKwh100','usableBatteryKwh','batteryType','drivetrain','acKw','dcKw','charge10to80Min','acceleration0to100Sec','trunkLiters','weightKg']
+          missing=[(x['model'],x['year'],x['version'],k) for x in got for k in core if x.get(k) in (None,'')]
+          assert not missing, missing
+          subprocess.run(['git','config','user.name','github-actions[bot]'],check=True)
+          subprocess.run(['git','config','user.email','41898282+github-actions[bot]@users.noreply.github.com'],check=True)
+          subprocess.run(['git','add',p],check=True)
+          subprocess.run(['git','commit','-m','fix: complete XPENG Spanish catalog technical data'],check=True)
+          subprocess.run(['git','push'],check=True)
