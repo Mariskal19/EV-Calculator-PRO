@@ -13,17 +13,23 @@ import java.util.Map;
 
 public final class LanguageManager {
   private static final String PREFS = "ev_charge_calculator", KEY_LANGUAGE = "app_language";
+  private static final String KEY_LANGUAGE_USER_SET = "app_language_user_set";
   private static final String[] LANGS = {"en", "es", "fr", "de", "it", "pt"};
   private static final Map<String, String[]> TR = new HashMap<>();
 
   private LanguageManager() {}
 
   public static String getSelectedLanguage(Context c) {
-    String s = c.getSharedPreferences(PREFS, 0).getString(KEY_LANGUAGE, null);
-    if (s == null) {
-      s = getSystemLanguage(c);
-      c.getSharedPreferences(PREFS, 0).edit().putString(KEY_LANGUAGE, s).apply();
+    android.content.SharedPreferences prefs = c.getSharedPreferences(PREFS, 0);
+    // Until the user explicitly chooses a language, always follow the device system
+    // language. This also repairs installations where an old app_language preference
+    // was restored by Android backup or inherited from a previous build.
+    if (!prefs.getBoolean(KEY_LANGUAGE_USER_SET, false)) {
+      String system = getSystemLanguage(c);
+      prefs.edit().putString(KEY_LANGUAGE, system).apply();
+      return system;
     }
+    String s = prefs.getString(KEY_LANGUAGE, null);
     return isSupported(s) ? s : "en";
   }
 
@@ -33,7 +39,11 @@ public final class LanguageManager {
 
   public static void setLanguage(Context c, String l) {
     String s = isSupported(l) ? l : "en";
-    c.getSharedPreferences(PREFS, 0).edit().putString(KEY_LANGUAGE, s).apply();
+    c.getSharedPreferences(PREFS, 0)
+        .edit()
+        .putString(KEY_LANGUAGE, s)
+        .putBoolean(KEY_LANGUAGE_USER_SET, true)
+        .apply();
     apply(c, s);
   }
 
@@ -51,16 +61,15 @@ public final class LanguageManager {
   }
 
   private static String getSystemLanguage(Context c) {
-    // Read the device/system locale directly, before LanguageManager changes the
-    // application's Resource configuration. This prevents a previously applied
-    // app locale (for example English) from being mistaken for the system language.
+    // Resources.getSystem() is the device/system configuration, independent of the
+    // application's own resource configuration. Do not use Locale.getDefault() here,
+    // because apply() intentionally changes the process default locale.
     Locale systemLocale;
+    Configuration systemConfig = android.content.res.Resources.getSystem().getConfiguration();
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-      systemLocale = android.os.LocaleList.getDefault().isEmpty()
-          ? null
-          : android.os.LocaleList.getDefault().get(0);
+      systemLocale = systemConfig.getLocales().isEmpty() ? null : systemConfig.getLocales().get(0);
     } else {
-      systemLocale = Locale.getDefault();
+      systemLocale = systemConfig.locale;
     }
     String s = systemLocale == null ? null : systemLocale.getLanguage();
     return isSupported(s) ? s : "en";
@@ -375,163 +384,54 @@ public final class LanguageManager {
         "Ungültige Abfahrtszeit",
         "Ora di partenza non valida",
         "Hora de saída inválida");
-    add(
-        "No disponible",
-        "Not available",
-        "Indisponible",
-        "Nicht verfügbar",
-        "Non disponibile",
-        "Indisponível");
-    add(
-        "No es posible alcanzar el objetivo",
-        "It is not possible to reach the target",
-        "Impossible d'atteindre l'objectif",
-        "Das Ziel kann nicht erreicht werden",
-        "Non è possibile raggiungere l'obiettivo",
-        "Não é possível atingir o objetivo");
-    add(
-        "Hora de inicio",
-        "Start time",
-        "Heure de début",
-        "Startzeit",
-        "Ora di inizio",
-        "Hora de início");
-    add("Recomendada", "Recommended", "Recommandée", "Empfohlen", "Consigliata", "Recomendada");
-    add(
-        "Electric Vs\nCombustion Calculator",
-        "Eléctrico vs\nCombustión",
-        "Electric vs\nCombustion",
-        "Électrique vs\nCombustion",
-        "Elektro vs\nVerbrenner",
-        "Elettrico vs\nCombustione",
-        "Elétrico vs\nCombustão");
-    add(
-        "EV Charge Calculator",
-        "Calculadora de carga EV",
-        "EV Charge Calculator",
-        "Calculateur de recharge EV",
-        "EV-Laderechner",
-        "Calcolatore di ricarica EV",
-        "Calculadora de carga EV");
+    add("Comparar coches", "Compare cars", "Comparer les voitures", "Autos vergleichen", "Confronta auto", "Comparar carros");
+    add("Atrás", "Back", "Retour", "Zurück", "Indietro", "Voltar");
+    add("Selecciona vehículo", "Select vehicle", "Sélectionnez un véhicule", "Fahrzeug auswählen", "Seleziona veicolo", "Selecionar veículo");
+    add("Versión", "Version", "Version", "Version", "Versione", "Versão");
+    add("Año", "Year", "Année", "Jahr", "Anno", "Ano");
+    add("Tipo batería", "Battery type", "Type de batterie", "Batterietyp", "Tipo di batteria", "Tipo de bateria");
+    add("Potencia máxima", "Max power", "Puissance maximale", "Maximale Leistung", "Potenza massima", "Potência máxima");
+    add("Autonomía WLTP", "WLTP range", "Autonomie WLTP", "WLTP-Reichweite", "Autonomia WLTP", "Autonomia WLTP");
+    add("Precio", "Price", "Prix", "Preis", "Prezzo", "Preço");
+    add("No disponible", "Not available", "Non disponible", "Nicht verfügbar", "Non disponibile", "Não disponível");
   }
 
-  private static void add(String es, String en, String fr, String de, String it, String pt) {
-    TR.put(es, new String[] {es, en, fr, de, it, pt});
+  private static void add(String... v) {
+    if (v.length >= 2) TR.put(v[0], v);
   }
 
-  private static void add(
-      String key, String es, String en, String fr, String de, String it, String pt) {
-    TR.put(key, new String[] {es, en, fr, de, it, pt});
-  }
-
-  public static String t(Context c, String key) {
-    return t(key, getEffectiveLanguage(c));
-  }
-
-  public static String t(String key, String lang) {
-    if (key == null) return null;
-    String[] a = TR.get(key);
-    if (a == null) return key;
-    if ("es".equals(lang)) return a[0];
-    if ("fr".equals(lang)) return a[2];
-    if ("de".equals(lang)) return a[3];
-    if ("it".equals(lang)) return a[4];
-    if ("pt".equals(lang)) return a[5];
-    return a[1];
-  }
-
-  public static String translateDynamic(Context c, String s) {
-    if (s == null) return null;
-    String lang = getEffectiveLanguage(c);
-    String[] lines = s.split("\\n", -1);
-    if (lines.length > 1) {
-      StringBuilder out = new StringBuilder();
-      for (int i = 0; i < lines.length; i++) {
-        if (i > 0) out.append('\n');
-        out.append(translateDynamic(c, lines[i]));
-      }
-      return out.toString();
-    }
-    for (Map.Entry<String, String[]> e : TR.entrySet()) {
-      String[] a = e.getValue();
-      for (String x : a) if (x != null && x.equals(s)) return t(e.getKey(), lang);
-    }
-    return s;
+  public static String t(Context c, String spanish) {
+    String[] v = TR.get(spanish);
+    if (v == null) return spanish;
+    String lang = getSelectedLanguage(c);
+    int i = 0;
+    for (int n = 0; n < LANGS.length; n++) if (LANGS[n].equals(lang)) i = n;
+    return i < v.length ? v[i] : v[0];
   }
 
   public static void translateViews(Activity a) {
-    translateView(a, a.findViewById(android.R.id.content));
+    translateViewTree(a, a.getWindow().getDecorView());
   }
 
-  private static void translateView(Context c, View v) {
+  private static void translateViewTree(Context c, View v) {
     if (v instanceof TextView) {
-      TextView tv = (TextView) v;
-      CharSequence cs = tv.getText();
-      if (cs != null) {
-        String s = cs.toString(), n = translateDynamic(c, s);
-        if (!s.equals(n)) tv.setText(n);
-        if (isHeaderTitle(s) || isHeaderTitle(n)) {
-          tv.setGravity(Gravity.CENTER);
-          tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-          tv.setMaxLines(2);
-          tv.setIncludeFontPadding(false);
-          ViewGroup.LayoutParams lp = tv.getLayoutParams();
-          if (lp != null) {
-            int minH = (int) (64 * c.getResources().getDisplayMetrics().density + 0.5f);
-            if (lp.height < minH) lp.height = minH;
-            if (lp instanceof android.widget.FrameLayout.LayoutParams) {
-              android.widget.FrameLayout.LayoutParams flp =
-                  (android.widget.FrameLayout.LayoutParams) lp;
-              flp.topMargin =
-                  (int) (4 * c.getResources().getDisplayMetrics().density + 0.5f);
-            }
-            tv.setLayoutParams(lp);
-          }
-          ViewGroup parent =
-              (v.getParent() instanceof ViewGroup) ? (ViewGroup) v.getParent() : null;
-          if (parent != null) {
-            for (int i = 0; i < parent.getChildCount(); i++) {
-              View sibling = parent.getChildAt(i);
-              if (sibling instanceof TextView && sibling != tv) {
-                String st =
-                    ((TextView) sibling).getText() == null
-                        ? ""
-                        : ((TextView) sibling).getText().toString();
-                if ("←".equals(st) || "⋮".equals(st)) {
-                  ViewGroup.LayoutParams slp = sibling.getLayoutParams();
-                  if (slp instanceof android.widget.FrameLayout.LayoutParams) {
-                    android.widget.FrameLayout.LayoutParams flp =
-                        (android.widget.FrameLayout.LayoutParams) slp;
-                    flp.topMargin =
-                        (int) (16 * c.getResources().getDisplayMetrics().density + 0.5f);
-                    sibling.setLayoutParams(slp);
-                  }
-                }
-              }
-            }
-          }
-        }
+      TextView t = (TextView) v;
+      CharSequence text = t.getText();
+      if (text != null) {
+        String raw = text.toString();
+        String translated = t(c, raw);
+        if (!raw.equals(translated)) t.setText(translated);
+      }
+      CharSequence cd = t.getContentDescription();
+      if (cd != null) {
+        String rawCd = cd.toString();
+        String translatedCd = t(c, rawCd);
+        if (!rawCd.equals(translatedCd)) t.setContentDescription(translatedCd);
       }
     }
     if (v instanceof ViewGroup) {
       ViewGroup g = (ViewGroup) v;
-      for (int i = 0; i < g.getChildCount(); i++) translateView(c, g.getChildAt(i));
+      for (int i = 0; i < g.getChildCount(); i++) translateViewTree(c, g.getChildAt(i));
     }
-  }
-
-  private static boolean isHeaderTitle(String s) {
-    if (s == null) return false;
-    return s.equals("EV Charge Calculator")
-        || s.equals("Calculadora de carga EV")
-        || s.equals("Calculateur de recharge EV")
-        || s.equals("EV-Laderechner")
-        || s.equals("Calcolatore di ricarica EV")
-        || s.equals("Electric Vs\nCombustion Calculator")
-        || s.equals("Electric vs\nCombustion")
-        || s.equals("Eléctrico vs\nCombustión")
-        || s.equals("Électrique vs\nCombustion")
-        || s.equals("Elektro vs\nVerbrenner")
-        || s.equals("Elettrico vs\nCombustione")
-        || s.equals("Elétrico vs\nCombustão");
   }
 }
