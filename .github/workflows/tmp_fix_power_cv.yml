@@ -1,0 +1,55 @@
+name: TMP Fix power display CV
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '.github/workflows/tmp_fix_power_cv.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Change power display to CV primary
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text(encoding='utf-8')
+          original=s
+          replacement='Math.round(v.powerKw * 1.35962) + " CV (" + fmt(v.powerKw) + " kW)"'
+          patterns=[
+              (r'fmt\\(v\\.powerKw\\)\\s*\\+\\s*" kW"', replacement),
+              (r'String\\.format\\(Locale\\.US,\\s*"%\\.0f kW",\\s*v\\.powerKw\\)', replacement),
+              (r'String\\.format\\(Locale\\.US,\\s*"%\\.1f kW",\\s*v\\.powerKw\\)', replacement),
+          ]
+          changed=False
+          for pat,repl in patterns:
+              ns,n=re.subn(pat,repl,s,count=1)
+              if n:
+                  s=ns; changed=True; break
+          if not changed:
+              # Find the actual power rendering expression and fail loudly rather than guessing.
+              hits=[m.group(0) for m in re.finditer(r'.{0,180}powerKw.{0,180}',s)]
+              print('powerKw occurrences:', len(hits))
+              for h in hits[:10]: print(h)
+              raise SystemExit('Could not identify the power display expression')
+          p.write_text(s,encoding='utf-8')
+          print('Power display changed: CV primary, kW secondary')
+          PY
+      - name: Validate source
+        run: |
+          grep -o '.\{0,80\}Math.round(v.powerKw \* 1.35962).\{0,100\}' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java | head -5
+      - name: Commit fix
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'fix: show power in CV as primary unit'
+          git push
