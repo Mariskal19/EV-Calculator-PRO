@@ -1,0 +1,29 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "GAC",
+      "model": "AION V",
+      "year": 2026,
+      "market": "ES",
+      "version": "150 kW FWD 75.26 kWh LFP",
+      "batteryKwh": 75.26,
+      "batteryChemistry": "LFP",
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 510
+    },
+    {
+      "make": "GAC",
+      "model": "AION UT",
+      "year": 2026,
+      "market": "ES",
+      "version": "150 kW FWD 60 kWh LFP",
+      "batteryKwh": 60,
+      "batteryChemistry": "LFP",
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 430
+    }
+  ]
+}
