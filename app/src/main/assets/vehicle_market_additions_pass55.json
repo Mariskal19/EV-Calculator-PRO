@@ -1,0 +1,29 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Omoda",
+      "model": "5 EV",
+      "year": 2024,
+      "market": "ES",
+      "version": "Pure 150 kW FWD 61 kWh LFP",
+      "batteryKwh": 61,
+      "batteryChemistry": "LFP",
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 430
+    },
+    {
+      "make": "Omoda",
+      "model": "5 EV",
+      "year": 2024,
+      "market": "ES",
+      "version": "Premium 150 kW FWD 61 kWh LFP",
+      "batteryKwh": 61,
+      "batteryChemistry": "LFP",
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 430
+    }
+  ]
+}
