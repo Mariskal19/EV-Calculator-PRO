@@ -15,25 +15,25 @@ jobs:
       - name: Extract Kia entries
         run: |
           python3 - <<'PY'
-          import json
-          from collections import Counter
+          import json, re
+          from collections import defaultdict
           p='app/src/main/assets/catalog_es_2024_2026.json'
           data=json.load(open(p,encoding='utf-8'))
           kia=[v for v in data['vehicles'] if v.get('make','').lower()=='kia']
-          out=[]
+          groups=defaultdict(list)
           for i,v in enumerate(kia):
-              out.append({'index':i, **v})
-          sig=Counter((v.get('model'),v.get('year'),v.get('batteryKwh'),v.get('powerKw'),v.get('drive') or v.get('drivetrain'),v.get('wltpKm'),v.get('consumptionKwh100')) for v in kia)
-          report={'count':len(kia),'duplicates_by_technical_signature':[], 'vehicles':out}
-          for k,n in sig.items():
-              if n>1:
-                  report['duplicates_by_technical_signature'].append({'count':n,'signature':k})
-          json.dump(report,open('kia_audit.json','w',encoding='utf-8'),ensure_ascii=False,indent=2)
+              groups[v.get('model','')].append((i,v))
+          lines=[f'KIA TOTAL: {len(kia)} entries']
+          for model,items in groups.items():
+              lines.append(f'\n## {model} ({len(items)})')
+              for i,v in items:
+                  lines.append(f"{i}|MY{str(v.get('year',''))[-2:]}|{v.get('version','')}|{v.get('batteryKwh')} kWh|{v.get('powerKw')} kW|{v.get('drive') or v.get('drivetrain')}|{v.get('wltpKm')} km|{v.get('consumptionKwh100')} kWh/100")
+          open('kia_audit_summary.txt','w',encoding='utf-8').write('\n'.join(lines)+'\n')
           PY
       - name: Commit audit report
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add kia_audit.json
-          git diff --cached --quiet || git commit -m 'chore: temporary Kia catalog audit report'
+          git add kia_audit_summary.txt
+          git diff --cached --quiet || git commit -m 'chore: update temporary Kia audit summary'
           git push
