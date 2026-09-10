@@ -51,7 +51,10 @@ public final class LanguageManager {
   }
 
   private static String getSystemLanguage() {
-    String s = Locale.getDefault().getLanguage();
+    // On first launch, use the device's current system language. If that language
+    // is not one of the app's supported translations, fall back to English.
+    Locale systemLocale = Locale.getDefault();
+    String s = systemLocale == null ? null : systemLocale.getLanguage();
     return isSupported(s) ? s : "en";
   }
 

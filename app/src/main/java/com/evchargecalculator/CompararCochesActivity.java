@@ -388,16 +388,12 @@ public class CompararCochesActivity extends Activity {
         TextView title = tv("Comparar coches", 25, Color.WHITE);
         title.setTypeface(null, Typeface.BOLD);
         title.setGravity(Gravity.CENTER);
+        title.setIncludeFontPadding(false);
         title.setShadowLayer(8, 0, 2, Color.BLACK);
-        FrameLayout.LayoutParams tp = new FrameLayout.LayoutParams(-1, dp(58), Gravity.CENTER);
-        tp.setMargins(dp(50), dp(48), dp(50), 0);
+        // El único título queda centrado verticalmente con los botones de volver y menú.
+        FrameLayout.LayoutParams tp = new FrameLayout.LayoutParams(-1, dp(52), Gravity.CENTER);
+        tp.setMargins(dp(52), dp(10), dp(52), 0);
         hero.addView(title, tp);
-        TextView subtitle = tv("Compara hasta 3 vehículos", 14, Color.WHITE);
-        subtitle.setGravity(Gravity.CENTER);
-        subtitle.setShadowLayer(6, 0, 2, Color.BLACK);
-        FrameLayout.LayoutParams sp = new FrameLayout.LayoutParams(-1, dp(34), Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
-        sp.setMargins(dp(24), 0, dp(24), dp(12));
-        hero.addView(subtitle, sp);
         root.addView(hero);
 
         ScrollView scroll = new ScrollView(this);
@@ -716,10 +712,14 @@ public class CompararCochesActivity extends Activity {
 
     private void addRow(String label, String key, boolean numeric) {
         LinearLayout r = new LinearLayout(this); r.setOrientation(LinearLayout.HORIZONTAL); r.setGravity(Gravity.CENTER_VERTICAL); r.setBackgroundColor(table.getChildCount() % 2 == 0 ? (dark ? Color.rgb(12, 24, 35) : Color.WHITE) : rowAlt());
-        TextView l = tv(label, 13, sub()); l.setPadding(dp(6), 0, dp(6), 0); r.addView(l, new LinearLayout.LayoutParams(dp(112), dp(52)));
+        TextView l = tv(label, 13, sub());
+        l.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
+        l.setIncludeFontPadding(false);
+        l.setPadding(dp(6), 0, dp(6), 0);
+        r.addView(l, new LinearLayout.LayoutParams(dp(112), dp(52)));
         List<Vehicle> chosen = new ArrayList<>(); for (String id : selectedIds) { Vehicle v = find(id); if (v != null) chosen.add(v); }
         double best = Double.NaN; if (numeric && chosen.size() >= 2) { boolean higher = !key.equals("cons") && !key.equals("charge") && !key.equals("price") && !key.equals("weight"); for (Vehicle v : chosen) { double n = numeric(v, key); if (Double.isNaN(n)) continue; if (Double.isNaN(best) || (higher ? n > best : n < best)) best = n; } }
-        for (Vehicle v : chosen) { String value = value(v, key); TextView cell = tv(value, 13, text()); cell.setGravity(Gravity.CENTER); cell.setBackgroundColor(rowAlt()); double n = numeric(v, key); if (selectedIds.size() >= 2 && !Double.isNaN(best) && !Double.isNaN(n) && Math.abs(n - best) < 0.0001) cell.setTextColor(blue); r.addView(cell, new LinearLayout.LayoutParams(dp(145), dp(52))); }
+        for (Vehicle v : chosen) { String value = value(v, key); TextView cell = tv(value, 13, text()); cell.setGravity(Gravity.CENTER); cell.setIncludeFontPadding(false); cell.setBackgroundColor(rowAlt()); double n = numeric(v, key); if (selectedIds.size() >= 2 && !Double.isNaN(best) && !Double.isNaN(n) && Math.abs(n - best) < 0.0001) cell.setTextColor(blue); r.addView(cell, new LinearLayout.LayoutParams(dp(145), dp(52))); }
         table.addView(r, new LinearLayout.LayoutParams(tableWidth(), dp(52)));
     }
 
