@@ -1,0 +1,27 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Ford",
+      "model": "Puma Gen-E",
+      "year": 2025,
+      "market": "ES",
+      "version": "Gen-E 168 kW FWD 46.8 kWh",
+      "batteryKwh": 46.8,
+      "powerKw": 168,
+      "drive": "FWD",
+      "wltpKm": 376
+    },
+    {
+      "make": "Ford",
+      "model": "Puma Gen-E",
+      "year": 2025,
+      "market": "ES",
+      "version": "Premium 168 kW FWD 46.8 kWh",
+      "batteryKwh": 46.8,
+      "powerKw": 168,
+      "drive": "FWD",
+      "wltpKm": 364
+    }
+  ]
+}
