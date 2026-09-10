@@ -1,0 +1,41 @@
+name: Temporary Compare i18n Fix 2
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Patch language manager
+        run: |
+          python3 -c 'from pathlib import Path; p=Path("app/src/main/java/com/evchargecalculator/LanguageManager.java"); s=p.read_text(); old="""  public static String t(Context c, String spanish) {\n    String[] v = TR.get(spanish);\n    if (v == null) return spanish;\n    String lang = getSelectedLanguage(c);\n    int i;\n    if (\"es\".equals(lang)) i = 0;\n    else if (\"en\".equals(lang)) i = 1;\n    else if (\"fr\".equals(lang)) i = 2;\n    else if (\"de\".equals(lang)) i = 3;\n    else if (\"it\".equals(lang)) i = 4;\n    else if (\"pt\".equals(lang)) i = 5;\n    else i = 0;\n    return i < v.length ? v[i] : v[0];\n  }"""; new="""  public static String t(Context c, String spanish) {\n    if (spanish == null || spanish.isEmpty()) return spanish;\n    String lang = getSelectedLanguage(c);\n    String[] v = TR.get(spanish);\n    if (v != null) return translatedValue(v, lang);\n    String result = spanish;\n    java.util.List<String> keys = new java.util.ArrayList<>(TR.keySet());\n    java.util.Collections.sort(keys, (a, b) -> Integer.compare(b.length(), a.length()));\n    for (String key : keys) {\n      if (key == null || key.isEmpty() || !result.contains(key)) continue;\n      String[] entry = TR.get(key);\n      if (entry != null) result = result.replace(key, translatedValue(entry, lang));\n    }\n    return result;\n  }\n\n  private static String translatedValue(String[] v, String lang) {\n    int i;\n    if (\"es\".equals(lang)) i = 0;\n    else if (\"en\".equals(lang)) i = 1;\n    else if (\"fr\".equals(lang)) i = 2;\n    else if (\"de\".equals(lang)) i = 3;\n    else if (\"it\".equals(lang)) i = 4;\n    else if (\"pt\".equals(lang)) i = 5;\n    else i = 1;\n    return (i < v.length && v[i] != null) ? v[i] : v[0];\n  }"""; assert old in s; p.write_text(s.replace(old,new))'
+
+      - name: Patch compare direct strings
+        run: |
+          python3 -c 'from pathlib import Path; p=Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java"); s=p.read_text(); s=s.replace("input.setHint(\"Marca, modelo, año, batería o versión\")", "input.setHint(LanguageManager.t(this, \"Marca, modelo, año, batería o versión\"))"); s=s.replace(".setTitle(\"Añadir coche\")", ".setTitle(LanguageManager.t(this, \"Añadir coche\"))"); p.write_text(s)'
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/java/com/evchargecalculator/LanguageManager.java app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m "fix: translate compare dynamic text" || true
+          git push
+
+      - name: Remove temporary workflow
+        if: always()
+        run: |
+          git rm -f .github/workflows/tmp_fix_compare_i18n2.yml || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: remove temporary compare i18n workflow" || true
+          git push
