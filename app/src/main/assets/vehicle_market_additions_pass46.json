@@ -1,0 +1,29 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Mazda",
+      "model": "Mazda6e",
+      "year": 2025,
+      "market": "ES",
+      "version": "190 kW RWD 68.8 kWh LFP",
+      "batteryKwh": 68.8,
+      "batteryChemistry": "LFP",
+      "powerKw": 190,
+      "drive": "RWD",
+      "wltpKm": 479
+    },
+    {
+      "make": "Mazda",
+      "model": "Mazda6e",
+      "year": 2025,
+      "market": "ES",
+      "version": "Long Range 180 kW RWD 80 kWh LFP",
+      "batteryKwh": 80,
+      "batteryChemistry": "LFP",
+      "powerKw": 180,
+      "drive": "RWD",
+      "wltpKm": 552
+    }
+  ]
+}
