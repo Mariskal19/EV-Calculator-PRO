@@ -191,6 +191,19 @@ public final class LanguageManager {
     add("Autonomía WLTP", "WLTP range", "Autonomie WLTP", "WLTP-Reichweite", "Autonomia WLTP", "Autonomia WLTP");
     add("Precio", "Price", "Prix", "Preis", "Prezzo", "Preço");
     add("No disponible", "Not available", "Non disponible", "Nicht verfügbar", "Non disponibile", "Não disponível");
+    add("Elige tus vehículos", "Choose your vehicles", "Choisissez vos véhicules", "Wähle deine Fahrzeuge", "Scegli i tuoi veicoli", "Escolha os seus veículos");
+    add("Añade hasta 3 coches para ver sus características y compararlos.", "Add up to 3 cars to see their features and compare them.", "Ajoutez jusqu'à 3 voitures pour voir leurs caractéristiques et les comparer.", "Füge bis zu 3 Fahrzeuge hinzu, um ihre Eigenschaften zu sehen und sie zu vergleichen.", "Aggiungi fino a 3 auto per vederne le caratteristiche e confrontarle.", "Adicione até 3 carros para ver as suas características e compará-los.");
+    add("Características", "Features", "Caractéristiques", "Eigenschaften", "Caratteristiche", "Características");
+    add("Mejor valor", "Best value", "Meilleure valeur", "Bester Wert", "Miglior valore", "Melhor valor");
+    add("Todos los vehículos", "All vehicles", "Tous les véhicules", "Alle Fahrzeuge", "Tutti i veicoli", "Todos os veículos");
+    add("No se encontraron vehículos", "No vehicles found", "Aucun véhicule trouvé", "Keine Fahrzeuge gefunden", "Nessun veicolo trovato", "Nenhum veículo encontrado");
+    add("Resumen de la comparativa", "Comparison summary", "Résumé de la comparaison", "Vergleichszusammenfassung", "Riepilogo del confronto", "Resumo da comparação");
+    add("Resultado rápido de los vehículos seleccionados", "Quick result for the selected vehicles", "Résultat rapide des véhicules sélectionnés", "Schneller Überblick über die ausgewählten Fahrzeuge", "Risultato rapido dei veicoli selezionati", "Resultado rápido dos veículos selecionados");
+    add("Vehículos comparados", "Compared vehicles", "Véhicules comparés", "Verglichene Fahrzeuge", "Veicoli confrontati", "Veículos comparados");
+    add("Comentario", "Comment", "Commentaire", "Kommentar", "Commento", "Comentário");
+    add("Autonomía", "Range", "Autonomie", "Reichweite", "Autonomia", "Autonomia");
+    add("Carga DC", "DC charging", "Recharge DC", "DC-Laden", "Ricarica DC", "Carregamento DC");
+    add("Error al abrir Comparar coches", "Error opening Compare cars", "Erreur lors de l'ouverture de Comparer les voitures", "Fehler beim Öffnen von Autos vergleichen", "Errore nell'apertura di Confronta auto", "Erro ao abrir Comparar carros");
   }
 
   private static void add(String... v) {
