@@ -1,3 +1,4 @@
+# Tesla integration validated on main
 name: Validate Spanish car catalog
 
 on:
