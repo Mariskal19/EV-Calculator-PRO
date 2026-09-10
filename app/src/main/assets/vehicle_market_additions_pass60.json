@@ -1,0 +1,38 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "MG",
+      "model": "MGS5 EV",
+      "year": 2025,
+      "market": "ES",
+      "version": "Comfort Standard Range 125 kW RWD 49 kWh",
+      "batteryKwh": 49,
+      "powerKw": 125,
+      "drive": "RWD",
+      "wltpKm": 340
+    },
+    {
+      "make": "MG",
+      "model": "MGS5 EV",
+      "year": 2025,
+      "market": "ES",
+      "version": "Comfort Long Range 170 kW RWD 64 kWh",
+      "batteryKwh": 64,
+      "powerKw": 170,
+      "drive": "RWD",
+      "wltpKm": 480
+    },
+    {
+      "make": "MG",
+      "model": "MGS5 EV",
+      "year": 2025,
+      "market": "ES",
+      "version": "Luxury Long Range 170 kW RWD 64 kWh",
+      "batteryKwh": 64,
+      "powerKw": 170,
+      "drive": "RWD",
+      "wltpKm": 465
+    }
+  ]
+}
