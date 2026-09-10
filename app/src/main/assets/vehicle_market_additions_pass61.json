@@ -1,0 +1,49 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Kia",
+      "model": "EV4",
+      "year": 2026,
+      "market": "ES",
+      "version": "Hatchback 150 kW FWD 58.3 kWh",
+      "batteryKwh": 58.3,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 410
+    },
+    {
+      "make": "Kia",
+      "model": "EV4",
+      "year": 2026,
+      "market": "ES",
+      "version": "Hatchback 150 kW FWD 81.4 kWh",
+      "batteryKwh": 81.4,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 625
+    },
+    {
+      "make": "Kia",
+      "model": "EV4 Fastback",
+      "year": 2026,
+      "market": "ES",
+      "version": "Fastback 150 kW FWD 58.3 kWh",
+      "batteryKwh": 58.3,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 430
+    },
+    {
+      "make": "Kia",
+      "model": "EV4 Fastback",
+      "year": 2026,
+      "market": "ES",
+      "version": "Fastback 150 kW FWD 81.4 kWh",
+      "batteryKwh": 81.4,
+      "powerKw": 150,
+      "drive": "FWD",
+      "wltpKm": 633
+    }
+  ]
+}
