@@ -134,7 +134,8 @@ public class CompararCochesActivity extends Activity {
 
     private TextView tv(String s, float size, int color) {
         TextView t = new TextView(this);
-        t.setText(s);
+        // Translate every static label created by this Activity using the central language manager.
+        t.setText(LanguageManager.t(this, s));
         t.setTextSize(size);
         t.setTextColor(color);
         return t;
