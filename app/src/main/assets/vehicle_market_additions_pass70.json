@@ -1,0 +1,109 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Volkswagen",
+      "model": "ID. Polo",
+      "year": 2026,
+      "market": "ES",
+      "version": "85 kW FWD 38 kWh LFP",
+      "batteryKwh": 38,
+      "batteryChemistry": "LFP",
+      "powerKw": 85,
+      "drive": "FWD",
+      "wltpKm": 329
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID. Polo",
+      "year": 2026,
+      "market": "ES",
+      "version": "99 kW FWD 38 kWh LFP",
+      "batteryKwh": 38,
+      "batteryChemistry": "LFP",
+      "powerKw": 99,
+      "drive": "FWD",
+      "wltpKm": 329
+    },
+    {
+      "make": "Volkswagen",
+      "model": "ID. Polo",
+      "year": 2026,
+      "market": "ES",
+      "version": "155 kW RWD 56 kWh NMC",
+      "batteryKwh": 56,
+      "batteryChemistry": "NMC",
+      "powerKw": 155,
+      "drive": "RWD",
+      "wltpKm": 449
+    },
+    {
+      "make": "Leapmotor",
+      "model": "B05",
+      "year": 2026,
+      "market": "ES",
+      "version": "LIFE 160 kW RWD 56.2 kWh",
+      "batteryKwh": 56.2,
+      "powerKw": 160,
+      "drive": "RWD",
+      "wltpKm": 401
+    },
+    {
+      "make": "Leapmotor",
+      "model": "B05",
+      "year": 2026,
+      "market": "ES",
+      "version": "DESIGN 160 kW RWD 67.1 kWh",
+      "batteryKwh": 67.1,
+      "powerKw": 160,
+      "drive": "RWD",
+      "wltpKm": 482
+    },
+    {
+      "make": "Leapmotor",
+      "model": "B03X",
+      "year": 2026,
+      "market": "ES",
+      "version": "LIFE 130 kW FWD 39.8 kWh LFP",
+      "batteryKwh": 39.8,
+      "batteryChemistry": "LFP",
+      "powerKw": 130,
+      "drive": "FWD",
+      "wltpKm": 292
+    },
+    {
+      "make": "Leapmotor",
+      "model": "B03X",
+      "year": 2026,
+      "market": "ES",
+      "version": "DESIGN 145 kW FWD 53 kWh LFP",
+      "batteryKwh": 53,
+      "batteryChemistry": "LFP",
+      "powerKw": 145,
+      "drive": "FWD",
+      "wltpKm": 382
+    },
+    {
+      "make": "Škoda",
+      "model": "Epiq",
+      "year": 2026,
+      "market": "ES",
+      "version": "Urban 155 kW FWD 55 kWh",
+      "batteryKwh": 55,
+      "powerKw": 155,
+      "drive": "FWD",
+      "wltpKm": 437
+    },
+    {
+      "make": "Renault",
+      "model": "Twingo E-Tech eléctrico",
+      "year": 2026,
+      "market": "ES",
+      "version": "Evolution 60 kW FWD 27.5 kWh",
+      "batteryKwh": 27.5,
+      "powerKw": 60,
+      "drive": "FWD",
+      "wltpKm": 264
+    }
+  ]
+}
