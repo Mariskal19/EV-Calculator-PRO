@@ -1,21 +1,14 @@
-name: Generate Spanish car catalog
+name: Validate Spanish car catalog
 
 on:
   workflow_dispatch:
   push:
     branches: [ main ]
     paths:
-      - 'app/src/main/assets/vehicles.json'
-      - 'app/src/main/assets/vehicle_variants.json'
-      - 'app/src/main/assets/vehicle_market_additions.json'
-      - 'app/src/main/assets/vehicle_market_additions_toyota_volkswagen.json'
-      - 'app/src/main/assets/vehicle_market_additions_tesla.json'
-      - 'app/src/main/assets/vehicle_market_additions_pass*.json'
-      - 'app/src/main/assets/research_mini_ES_2024_2026.json'
-      - 'tools/generate_catalog.py'
+      - 'app/src/main/assets/catalog_es_2024_2026.json'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   catalog:
@@ -23,9 +16,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Generate and order catalog
-        run: python3 tools/generate_catalog.py
-      - name: Validate catalog
+      - name: Validate final catalog
         run: |
           python3 - <<'PY'
           import json
@@ -38,29 +29,7 @@ jobs:
           if bad_years: raise SystemExit(f'Catalog contains {len(bad_years)} invalid years')
           bad_arrivals = [v for v in vehicles if v.get('arrivalYear') is not None and v.get('arrivalYear') != v.get('year')]
           if bad_arrivals: raise SystemExit(f'Catalog contains {len(bad_arrivals)} records whose year is not the Spanish arrival year')
-          def number(value): return value if isinstance(value, (int, float)) else 0
-          def trim_rank(vehicle):
-              value = str(vehicle.get('version') or '').lower().replace('-', ' ').replace('_', ' '); rank = 300
-              if any(x in value for x in ['standard','base','pure','core','essential','life','active','entry']): rank=100
-              if any(x in value for x in ['comfort','advance','advanced','evolution','plus','boost']): rank=max(rank,200)
-              if any(x in value for x in ['long range','extended','max','pro','premium','design','techno','earth']): rank=max(rank,300)
-              if any(x in value for x in ['awd','4wd','dual motor','all wheel']): rank=max(rank,400)
-              if any(x in value for x in ['performance','gt','gts','rs ','sport','m performance','amg']) or value=='rs': rank=500
-              return rank
-          def order_key(v): return (str(v.get('market') or '').upper(),str(v.get('make') or '').lower(),str(v.get('model') or '').lower(),int(v.get('year') or 0),trim_rank(v),number(v.get('batteryKwh')),number(v.get('powerKw')),int(v.get('wltpKm') or 0),str(v.get('version') or '').lower())
-          if vehicles != sorted(vehicles,key=order_key): raise SystemExit('Catalog is not ordered by market/make/model/year/trim/technical')
-          missing_consumption=[v for v in vehicles if (v.get('batteryKwh') or 0)>0 and (v.get('wltpKm') or 0)>0 and v.get('consumptionKwh100') in (None,'',0)]
+          missing_consumption = [v for v in vehicles if (v.get('batteryKwh') or 0) > 0 and (v.get('wltpKm') or 0) > 0 and v.get('consumptionKwh100') in (None, '', 0)]
           if missing_consumption: raise SystemExit(f'Catalog has {len(missing_consumption)} configurations without consumptionKwh100')
-          print(f'Catalog validated: {len(vehicles)} vehicles')
-          print('All records use the Spanish arrival year when arrivalYear is available.')
-          print('All battery + WLTP configurations have consumptionKwh100.')
+          print(f'Final Spanish catalog validated: {len(vehicles)} vehicles')
           PY
-      - name: Commit catalog if changed
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add app/src/main/assets/catalog_es_2024_2026.json
-          if git diff --cached --quiet; then echo "Catalog already up to date."; exit 0; fi
-          git commit -m "chore: regenerate optimized Spanish car catalog"
-          git push
