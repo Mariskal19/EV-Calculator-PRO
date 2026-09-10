@@ -52,6 +52,8 @@ public class CompararCochesActivity extends Activity {
     @Override
     protected void onCreate(Bundle b) {
         super.onCreate(b);
+        // Apply the persisted language before creating any comparison views.
+        LanguageManager.applyStored(this);
         try {
             SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
             dark = p.contains("dark_theme")
@@ -83,6 +85,8 @@ public class CompararCochesActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        // Re-apply the selected language when returning from Configuration.
+        LanguageManager.applyStored(this);
         SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
         boolean newDark = p.contains("dark_theme")
                 ? p.getBoolean("dark_theme", false)
