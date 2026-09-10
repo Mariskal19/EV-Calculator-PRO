@@ -1,0 +1,28 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {"make":"Peugeot","model":"E-208","year":2024,"market":"ES","version":"136 CV 100 kW 50 kWh FWD","batteryKwh":50,"batteryChemistry":"Li-ion NMC","powerKw":100,"drive":"FWD","wltpKm":363},
+    {"make":"Peugeot","model":"E-208","year":2024,"market":"ES","version":"156 CV 115 kW 51 kWh FWD","batteryKwh":51,"batteryChemistry":"Li-ion NMC","powerKw":115,"drive":"FWD","wltpKm":410},
+    {"make":"Peugeot","model":"E-2008","year":2024,"market":"ES","version":"136 CV 100 kW 50 kWh FWD","batteryKwh":50,"batteryChemistry":"Li-ion NMC","powerKw":100,"drive":"FWD","wltpKm":343},
+    {"make":"Peugeot","model":"E-2008","year":2024,"market":"ES","version":"156 CV 115 kW 54 kWh FWD","batteryKwh":54,"batteryChemistry":"Li-ion NMC","powerKw":115,"drive":"FWD","wltpKm":406},
+    {"make":"Peugeot","model":"E-308","year":2024,"market":"ES","version":"156 CV 115 kW 54 kWh FWD","batteryKwh":54,"batteryChemistry":"Li-ion NMC","powerKw":115,"drive":"FWD","wltpKm":400},
+    {"make":"Peugeot","model":"E-3008","year":2024,"market":"ES","version":"210 CV 157 kW 73 kWh FWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":157,"drive":"FWD","wltpKm":526},
+    {"make":"Peugeot","model":"E-3008","year":2024,"market":"ES","version":"325 CV 240 kW 73 kWh AWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":240,"drive":"AWD","wltpKm":497},
+    {"make":"Peugeot","model":"E-5008","year":2024,"market":"ES","version":"210 CV 157 kW 73 kWh FWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":157,"drive":"FWD","wltpKm":504},
+    {"make":"Peugeot","model":"E-408","year":2025,"market":"ES","version":"210 CV 157 kW 58 kWh FWD","batteryKwh":58.2,"batteryChemistry":"Li-ion NMC 811","powerKw":157,"drive":"FWD","wltpKm":453},
+    {"make":"Peugeot","model":"E-208","year":2025,"market":"ES","version":"136 CV 100 kW 50 kWh FWD","batteryKwh":50,"batteryChemistry":"Li-ion NMC","powerKw":100,"drive":"FWD","wltpKm":363},
+    {"make":"Peugeot","model":"E-208","year":2025,"market":"ES","version":"156 CV 115 kW 51 kWh FWD","batteryKwh":51,"batteryChemistry":"Li-ion NMC","powerKw":115,"drive":"FWD","wltpKm":410},
+    {"make":"Peugeot","model":"E-2008","year":2025,"market":"ES","version":"136 CV 100 kW 50 kWh FWD","batteryKwh":50,"batteryChemistry":"Li-ion NMC","powerKw":100,"drive":"FWD","wltpKm":343},
+    {"make":"Peugeot","model":"E-2008","year":2025,"market":"ES","version":"156 CV 115 kW 54 kWh FWD","batteryKwh":54,"batteryChemistry":"Li-ion NMC","powerKw":115,"drive":"FWD","wltpKm":406},
+    {"make":"Peugeot","model":"E-308","year":2025,"market":"ES","version":"156 CV 115 kW 54 kWh FWD","batteryKwh":54,"batteryChemistry":"Li-ion NMC","powerKw":115,"drive":"FWD","wltpKm":416},
+    {"make":"Peugeot","model":"E-3008","year":2025,"market":"ES","version":"210 CV 157 kW 73 kWh FWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":157,"drive":"FWD","wltpKm":526},
+    {"make":"Peugeot","model":"E-3008","year":2025,"market":"ES","version":"325 CV 240 kW 73 kWh AWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":240,"drive":"AWD","wltpKm":497},
+    {"make":"Peugeot","model":"E-5008","year":2025,"market":"ES","version":"210 CV 157 kW 73 kWh FWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":157,"drive":"FWD","wltpKm":504},
+    {"make":"Peugeot","model":"E-5008","year":2025,"market":"ES","version":"230 CV 170 kW 98 kWh FWD","batteryKwh":98,"batteryChemistry":"Li-ion NMC","powerKw":170,"drive":"FWD","wltpKm":668},
+    {"make":"Peugeot","model":"E-408","year":2026,"market":"ES","version":"210 CV 157 kW 58 kWh FWD","batteryKwh":58.2,"batteryChemistry":"Li-ion NMC 811","powerKw":157,"drive":"FWD","wltpKm":453},
+    {"make":"Peugeot","model":"E-3008","year":2026,"market":"ES","version":"210 CV 157 kW 73 kWh FWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":157,"drive":"FWD","wltpKm":526},
+    {"make":"Peugeot","model":"E-3008","year":2026,"market":"ES","version":"325 CV 240 kW 73 kWh AWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":240,"drive":"AWD","wltpKm":497},
+    {"make":"Peugeot","model":"E-5008","year":2026,"market":"ES","version":"210 CV 157 kW 73 kWh FWD","batteryKwh":73,"batteryChemistry":"Li-ion NMC","powerKw":157,"drive":"FWD","wltpKm":504},
+    {"make":"Peugeot","model":"E-5008","year":2026,"market":"ES","version":"230 CV 170 kW 98 kWh FWD","batteryKwh":98,"batteryChemistry":"Li-ion NMC","powerKw":170,"drive":"FWD","wltpKm":668}
+  ]
+}
