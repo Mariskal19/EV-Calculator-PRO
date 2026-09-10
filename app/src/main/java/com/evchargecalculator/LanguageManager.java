@@ -21,7 +21,7 @@ public final class LanguageManager {
   public static String getSelectedLanguage(Context c) {
     String s = c.getSharedPreferences(PREFS, 0).getString(KEY_LANGUAGE, null);
     if (s == null) {
-      s = getSystemLanguage();
+      s = getSystemLanguage(c);
       c.getSharedPreferences(PREFS, 0).edit().putString(KEY_LANGUAGE, s).apply();
     }
     return isSupported(s) ? s : "en";
@@ -50,10 +50,18 @@ public final class LanguageManager {
     c.getResources().updateConfiguration(cfg, c.getResources().getDisplayMetrics());
   }
 
-  private static String getSystemLanguage() {
-    // On first launch, use the device's current system language. If that language
-    // is not one of the app's supported translations, fall back to English.
-    Locale systemLocale = Locale.getDefault();
+  private static String getSystemLanguage(Context c) {
+    // Read the device/system locale directly, before LanguageManager changes the
+    // application's Resource configuration. This prevents a previously applied
+    // app locale (for example English) from being mistaken for the system language.
+    Locale systemLocale;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+      systemLocale = android.os.LocaleList.getDefault().isEmpty()
+          ? null
+          : android.os.LocaleList.getDefault().get(0);
+    } else {
+      systemLocale = Locale.getDefault();
+    }
     String s = systemLocale == null ? null : systemLocale.getLanguage();
     return isSupported(s) ? s : "en";
   }
@@ -474,7 +482,8 @@ public final class LanguageManager {
             if (lp instanceof android.widget.FrameLayout.LayoutParams) {
               android.widget.FrameLayout.LayoutParams flp =
                   (android.widget.FrameLayout.LayoutParams) lp;
-              flp.topMargin = (int) (4 * c.getResources().getDisplayMetrics().density + 0.5f);
+              flp.topMargin =
+                  (int) (4 * c.getResources().getDisplayMetrics().density + 0.5f);
             }
             tv.setLayoutParams(lp);
           }
