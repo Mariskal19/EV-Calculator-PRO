@@ -1,0 +1,29 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Jaecoo",
+      "model": "5 EV",
+      "year": 2025,
+      "market": "ES",
+      "version": "Pure 155 kW FWD 60.9 kWh LFP",
+      "batteryKwh": 60.9,
+      "batteryChemistry": "LFP",
+      "powerKw": 155,
+      "drive": "FWD",
+      "wltpKm": 402
+    },
+    {
+      "make": "Jaecoo",
+      "model": "5 EV",
+      "year": 2025,
+      "market": "ES",
+      "version": "Exclusive 155 kW FWD 60.9 kWh LFP",
+      "batteryKwh": 60.9,
+      "batteryChemistry": "LFP",
+      "powerKw": 155,
+      "drive": "FWD",
+      "wltpKm": 402
+    }
+  ]
+}
