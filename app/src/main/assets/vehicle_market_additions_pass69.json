@@ -1,0 +1,115 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Zeekr",
+      "model": "X",
+      "year": 2026,
+      "market": "ES",
+      "version": "Long Range RWD 250 kW 61 kWh",
+      "batteryKwh": 61,
+      "powerKw": 250,
+      "drive": "RWD",
+      "wltpKm": 405
+    },
+    {
+      "make": "Zeekr",
+      "model": "X",
+      "year": 2026,
+      "market": "ES",
+      "version": "Privilege AWD 365 kW 69 kWh",
+      "batteryKwh": 69,
+      "powerKw": 365,
+      "drive": "AWD",
+      "wltpKm": 415
+    },
+    {
+      "make": "Zeekr",
+      "model": "7X",
+      "year": 2026,
+      "market": "ES",
+      "version": "Core RWD 310 kW 75 kWh",
+      "batteryKwh": 75,
+      "powerKw": 310,
+      "drive": "RWD",
+      "wltpKm": 480
+    },
+    {
+      "make": "Zeekr",
+      "model": "7X",
+      "year": 2026,
+      "market": "ES",
+      "version": "Long Range RWD 310 kW 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 310,
+      "drive": "RWD",
+      "wltpKm": 615
+    },
+    {
+      "make": "Zeekr",
+      "model": "7X",
+      "year": 2026,
+      "market": "ES",
+      "version": "Privilege AWD 475 kW 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 475,
+      "drive": "AWD",
+      "wltpKm": 543
+    },
+    {
+      "make": "Zeekr",
+      "model": "7GT",
+      "year": 2026,
+      "market": "ES",
+      "version": "Long Range RWD 310 kW 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 310,
+      "drive": "RWD",
+      "wltpKm": 655
+    },
+    {
+      "make": "Zeekr",
+      "model": "7GT",
+      "year": 2026,
+      "market": "ES",
+      "version": "Privilege AWD 475 kW 100 kWh",
+      "batteryKwh": 100,
+      "powerKw": 475,
+      "drive": "AWD",
+      "wltpKm": 558
+    },
+    {
+      "make": "Hyundai",
+      "model": "INSTER Cross",
+      "year": 2025,
+      "market": "ES",
+      "version": "115 CV 84.5 kW FWD 49 kWh",
+      "batteryKwh": 49,
+      "powerKw": 84.5,
+      "drive": "FWD",
+      "wltpKm": 360
+    },
+    {
+      "make": "Nissan",
+      "model": "LEAF",
+      "year": 2026,
+      "market": "ES",
+      "version": "52 kWh 130 kW FWD",
+      "batteryKwh": 52,
+      "powerKw": 130,
+      "drive": "FWD",
+      "wltpKm": 445
+    },
+    {
+      "make": "Nissan",
+      "model": "LEAF",
+      "year": 2026,
+      "market": "ES",
+      "version": "75 kWh 160 kW FWD",
+      "batteryKwh": 75,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 622
+    }
+  ]
+}
