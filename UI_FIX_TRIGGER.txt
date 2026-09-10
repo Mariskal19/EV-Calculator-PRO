@@ -1,0 +1,1 @@
+Apply the three UI fixes requested on 2026-09-10.
