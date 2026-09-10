@@ -1,0 +1,9 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {"make":"Mercedes-Benz","model":"Clase G","year":2024,"market":"ES","version":"G 580 con tecnología EQ 432 kW AWD 116 kWh","batteryKwh":116,"powerKw":432,"drive":"AWD","wltpKm":468},
+    {"make":"Mercedes-Benz","model":"CLA eléctrico","year":2025,"market":"ES","version":"CLA 200 eléctrico 165 kW RWD 58 kWh","batteryKwh":58,"powerKw":165,"drive":"RWD","wltpKm":541},
+    {"make":"Mercedes-Benz","model":"CLA eléctrico","year":2025,"market":"ES","version":"CLA 250+ eléctrico 200 kW RWD 85 kWh","batteryKwh":85,"powerKw":200,"drive":"RWD","wltpKm":789},
+    {"make":"Mercedes-Benz","model":"CLA eléctrico","year":2025,"market":"ES","version":"CLA 350 4MATIC eléctrico 260 kW AWD 85 kWh","batteryKwh":85,"powerKw":260,"drive":"AWD","wltpKm":768}
+  ]
+}
