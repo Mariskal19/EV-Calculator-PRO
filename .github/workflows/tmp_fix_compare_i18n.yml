@@ -1,0 +1,41 @@
+name: Temporary fix Compare i18n
+on:
+  push:
+    branches: [main]
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Patch Compare screen text creation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text(encoding='utf-8')
+          old = '''    private TextView tv(String s, float size, int color) {\n        TextView t = new TextView(this);\n        t.setText(s);'''
+          new = '''    private TextView tv(String s, float size, int color) {\n        TextView t = new TextView(this);\n        // Translate every static label created by this Activity using the central language manager.\n        t.setText(LanguageManager.t(this, s));'''
+          if old not in s:
+              raise SystemExit('Expected tv() block not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'fix: internationalize Compare cars screen' || true
+          git push origin HEAD:main
+      - name: Remove temporary workflow
+        run: |
+          git rm .github/workflows/tmp_fix_compare_i18n.yml
+          git commit -m 'chore: remove temporary i18n workflow'
+          git push origin HEAD:main
