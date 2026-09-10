@@ -38,6 +38,8 @@ public class ConfigurationActivity extends Activity {
           .putString(KEY_THEME_MODE, dark ? "dark" : "light")
           .apply();
     }
+    // Always apply the persisted language before rebuilding this screen.
+    LanguageManager.applyStored(this);
     CurrencyRateManager.refreshIfNeeded(this);
     build();
   }
@@ -287,6 +289,7 @@ public class ConfigurationActivity extends Activity {
             checked,
             (d, w) -> {
               LanguageManager.setLanguage(this, codes[w]);
+              LanguageManager.applyStored(this);
               d.dismiss();
               recreate();
             })
