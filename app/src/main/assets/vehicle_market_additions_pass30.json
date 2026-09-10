@@ -1,0 +1,23 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {"make":"Škoda","model":"Enyaq","year":2024,"market":"ES","version":"85 82 kWh 210 kW RWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"RWD","wltpKm":565},
+    {"make":"Škoda","model":"Enyaq","year":2024,"market":"ES","version":"85x 82 kWh 210 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"AWD","wltpKm":537},
+    {"make":"Škoda","model":"Enyaq","year":2024,"market":"ES","version":"RS 82 kWh 220 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":220,"drive":"AWD","wltpKm":541},
+    {"make":"Škoda","model":"Enyaq Coupé","year":2024,"market":"ES","version":"85 82 kWh 210 kW RWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"RWD","wltpKm":573},
+    {"make":"Škoda","model":"Enyaq Coupé","year":2024,"market":"ES","version":"85x 82 kWh 210 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"AWD","wltpKm":545},
+    {"make":"Škoda","model":"Enyaq Coupé","year":2024,"market":"ES","version":"RS 82 kWh 220 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":220,"drive":"AWD","wltpKm":547},
+    {"make":"Škoda","model":"Enyaq","year":2025,"market":"ES","version":"60 63 kWh 150 kW RWD","batteryKwh":63,"batteryChemistry":"Li-ion","powerKw":150,"drive":"RWD","wltpKm":443},
+    {"make":"Škoda","model":"Enyaq","year":2025,"market":"ES","version":"85 82 kWh 210 kW RWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"RWD","wltpKm":591},
+    {"make":"Škoda","model":"Enyaq","year":2025,"market":"ES","version":"85x 82 kWh 210 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"AWD","wltpKm":552},
+    {"make":"Škoda","model":"Enyaq","year":2025,"market":"ES","version":"RS 84 kWh 250 kW AWD","batteryKwh":84,"batteryChemistry":"Li-ion","powerKw":250,"drive":"AWD","wltpKm":560},
+    {"make":"Škoda","model":"Enyaq Coupé","year":2025,"market":"ES","version":"85 82 kWh 210 kW RWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"RWD","wltpKm":590},
+    {"make":"Škoda","model":"Enyaq Coupé","year":2025,"market":"ES","version":"85x 82 kWh 210 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"AWD","wltpKm":547},
+    {"make":"Škoda","model":"Enyaq Coupé","year":2025,"market":"ES","version":"RS 84 kWh 250 kW AWD","batteryKwh":84,"batteryChemistry":"Li-ion","powerKw":250,"drive":"AWD","wltpKm":570},
+    {"make":"Škoda","model":"Elroq","year":2025,"market":"ES","version":"50 55 kWh 125 kW RWD","batteryKwh":55,"batteryChemistry":"Li-ion","powerKw":125,"drive":"RWD","wltpKm":376},
+    {"make":"Škoda","model":"Elroq","year":2025,"market":"ES","version":"60 63 kWh 150 kW RWD","batteryKwh":63,"batteryChemistry":"Li-ion","powerKw":150,"drive":"RWD","wltpKm":428},
+    {"make":"Škoda","model":"Elroq","year":2025,"market":"ES","version":"85 82 kWh 210 kW RWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":210,"drive":"RWD","wltpKm":578},
+    {"make":"Škoda","model":"Elroq","year":2025,"market":"ES","version":"85x 82 kWh 220 kW AWD","batteryKwh":82,"batteryChemistry":"Li-ion","powerKw":220,"drive":"AWD","wltpKm":562},
+    {"make":"Škoda","model":"Elroq","year":2025,"market":"ES","version":"RS 84 kWh 250 kW AWD","batteryKwh":84,"batteryChemistry":"Li-ion","powerKw":250,"drive":"AWD","wltpKm":549}
+  ]
+}
