@@ -1,0 +1,49 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Opel",
+      "model": "Frontera",
+      "year": 2024,
+      "market": "ES",
+      "version": "Electric 83 kW FWD 44 kWh",
+      "batteryKwh": 44,
+      "powerKw": 83,
+      "drive": "FWD",
+      "wltpKm": 305
+    },
+    {
+      "make": "Opel",
+      "model": "Grandland",
+      "year": 2024,
+      "market": "ES",
+      "version": "Electric 213 CV FWD 73 kWh",
+      "batteryKwh": 73,
+      "powerKw": 157,
+      "drive": "FWD",
+      "wltpKm": 523
+    },
+    {
+      "make": "Opel",
+      "model": "Grandland",
+      "year": 2024,
+      "market": "ES",
+      "version": "Electric 213 CV FWD 82 kWh",
+      "batteryKwh": 82,
+      "powerKw": 157,
+      "drive": "FWD",
+      "wltpKm": 582
+    },
+    {
+      "make": "Opel",
+      "model": "Grandland",
+      "year": 2025,
+      "market": "ES",
+      "version": "Electric AWD 325 CV AWD 73 kWh",
+      "batteryKwh": 73,
+      "powerKw": 239,
+      "drive": "AWD",
+      "wltpKm": 501
+    }
+  ]
+}
