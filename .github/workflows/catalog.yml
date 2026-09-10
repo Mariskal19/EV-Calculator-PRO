@@ -36,6 +36,8 @@ jobs:
           if not isinstance(vehicles, list) or not vehicles: raise SystemExit('Catalog is missing or empty')
           bad_years = [v for v in vehicles if v.get('year') not in (2024, 2025, 2026)]
           if bad_years: raise SystemExit(f'Catalog contains {len(bad_years)} invalid years')
+          bad_arrivals = [v for v in vehicles if v.get('arrivalYear') is not None and v.get('arrivalYear') != v.get('year')]
+          if bad_arrivals: raise SystemExit(f'Catalog contains {len(bad_arrivals)} records whose year is not the Spanish arrival year')
           def number(value): return value if isinstance(value, (int, float)) else 0
           def trim_rank(vehicle):
               value = str(vehicle.get('version') or '').lower().replace('-', ' ').replace('_', ' '); rank = 300
@@ -50,6 +52,7 @@ jobs:
           missing_consumption=[v for v in vehicles if (v.get('batteryKwh') or 0)>0 and (v.get('wltpKm') or 0)>0 and v.get('consumptionKwh100') in (None,'',0)]
           if missing_consumption: raise SystemExit(f'Catalog has {len(missing_consumption)} configurations without consumptionKwh100')
           print(f'Catalog validated: {len(vehicles)} vehicles')
+          print('All records use the Spanish arrival year when arrivalYear is available.')
           print('All battery + WLTP configurations have consumptionKwh100.')
           PY
       - name: Commit catalog if changed
