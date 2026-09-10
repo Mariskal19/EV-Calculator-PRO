@@ -1,0 +1,39 @@
+name: Temporary fix configuration language
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Patch configuration language refresh
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/ConfigurationActivity.java')
+          s = p.read_text(encoding='utf-8')
+          old = '    CurrencyRateManager.refreshIfNeeded(this);\n    build();'
+          new = '    // Always apply the persisted language before rebuilding this screen.\n    LanguageManager.applyStored(this);\n    CurrencyRateManager.refreshIfNeeded(this);\n    build();'
+          if old not in s:
+              raise SystemExit('onCreate target not found')
+          s = s.replace(old, new, 1)
+          old = '              LanguageManager.setLanguage(this, codes[w]);\n              d.dismiss();\n              recreate();'
+          new = '              LanguageManager.setLanguage(this, codes[w]);\n              LanguageManager.applyStored(this);\n              d.dismiss();\n              recreate();'
+          if old not in s:
+              raise SystemExit('chooseLanguage target not found')
+          s = s.replace(old, new, 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/java/com/evchargecalculator/ConfigurationActivity.java
+          git commit -m "fix: refresh configuration language immediately"
+          git push
+      - name: Remove temporary workflow
+        if: always()
+        run: |
+          git rm .github/workflows/tmp_fix_config_language.yml
+          git commit -m "chore: remove temporary language fix workflow"
+          git push
