@@ -2,7 +2,7 @@ import json
 import re
 from pathlib import Path
 
-# Canonical Spanish catalog generator: MERCADO > MARCA > MODELO > AÑO > VERSIÓN > TÉCNICA.
+# Canonical Spanish catalog generator: MERCADO > MARCA > MODELO > AÑO DE LLEGADA > VERSIÓN > TÉCNICA.
 ROOT = Path('app/src/main/assets')
 SOURCES = [
     'vehicles.json', 'vehicle_variants.json', 'vehicle_market_additions.json',
@@ -45,6 +45,20 @@ def derive_consumption(vehicle):
     battery = number(vehicle.get('batteryKwh')); wltp = number(vehicle.get('wltpKm'))
     if battery > 0 and wltp > 0: vehicle['consumptionKwh100'] = round((battery / wltp) * 100, 1)
 
+def normalize_arrival_year(vehicle):
+    """Apply the catalog rule: year means Spanish market arrival year.
+
+    Existing research records may also carry arrivalYear. If it is present,
+    it is authoritative. Models whose Spanish arrival predates 2024 are
+    excluded; newer technical/model-year updates remain grouped under their
+    original Spanish arrival year.
+    """
+    arrival = vehicle.get('arrivalYear')
+    if isinstance(arrival, int):
+        if arrival not in (2024, 2025, 2026): return False
+        vehicle['year'] = arrival
+    return vehicle.get('year') in (2024, 2025, 2026)
+
 merged = {}
 for source_name in SOURCES:
     path = ROOT / source_name
@@ -52,8 +66,10 @@ for source_name in SOURCES:
     data = json.loads(path.read_text(encoding='utf-8'))
     vehicles = data.get('vehicles', []) if isinstance(data, dict) else []
     for vehicle in vehicles:
-        if not isinstance(vehicle, dict) or vehicle.get('year') not in (2024, 2025, 2026): continue
-        vehicle = dict(vehicle); vehicle.setdefault('market', data.get('market', 'ES')); derive_consumption(vehicle)
+        if not isinstance(vehicle, dict): continue
+        vehicle = dict(vehicle); vehicle.setdefault('market', data.get('market', 'ES'))
+        if not normalize_arrival_year(vehicle): continue
+        derive_consumption(vehicle)
         key = logical_key(vehicle)
         if key not in merged: merged[key] = vehicle
         else:
