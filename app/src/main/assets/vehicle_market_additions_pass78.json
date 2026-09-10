@@ -1,0 +1,152 @@
+{
+  "market": "ES",
+  "vehicles": [
+    {
+      "make": "Geely",
+      "model": "E5",
+      "year": 2026,
+      "market": "ES",
+      "version": "Pro 160 kW FWD 60.2 kWh",
+      "batteryKwh": 60.2,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 430
+    },
+    {
+      "make": "Geely",
+      "model": "E5",
+      "year": 2026,
+      "market": "ES",
+      "version": "Pro+ 160 kW FWD 68.4 kWh",
+      "batteryKwh": 68.4,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 475
+    },
+    {
+      "make": "Geely",
+      "model": "E5",
+      "year": 2026,
+      "market": "ES",
+      "version": "Max+ 160 kW FWD 68.4 kWh",
+      "batteryKwh": 68.4,
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 450
+    },
+    {
+      "make": "Changan Deepal",
+      "model": "S05",
+      "year": 2026,
+      "market": "ES",
+      "version": "RWD Pro 200 kW RWD 68.8 kWh LFP",
+      "batteryKwh": 68.8,
+      "batteryChemistry": "LFP",
+      "powerKw": 200,
+      "drive": "RWD",
+      "wltpKm": 485
+    },
+    {
+      "make": "Changan Deepal",
+      "model": "S05",
+      "year": 2026,
+      "market": "ES",
+      "version": "RWD Max 200 kW RWD 68.8 kWh LFP",
+      "batteryKwh": 68.8,
+      "batteryChemistry": "LFP",
+      "powerKw": 200,
+      "drive": "RWD",
+      "wltpKm": 485
+    },
+    {
+      "make": "Changan Deepal",
+      "model": "S05",
+      "year": 2026,
+      "market": "ES",
+      "version": "4WD Max 320 kW AWD 68.8 kWh LFP",
+      "batteryKwh": 68.8,
+      "batteryChemistry": "LFP",
+      "powerKw": 320,
+      "drive": "AWD",
+      "wltpKm": 445
+    },
+    {
+      "make": "Changan Deepal",
+      "model": "S07",
+      "year": 2026,
+      "market": "ES",
+      "version": "160 kW FWD 79.97 kWh NMC",
+      "batteryKwh": 79.97,
+      "batteryChemistry": "NMC",
+      "powerKw": 160,
+      "drive": "FWD",
+      "wltpKm": 475
+    },
+    {
+      "make": "Kia",
+      "model": "PV5 Passenger",
+      "year": 2025,
+      "market": "ES",
+      "version": "Essential 89.4 kW FWD 51.5 kWh",
+      "batteryKwh": 51.5,
+      "powerKw": 89.4,
+      "drive": "FWD",
+      "wltpKm": 295
+    },
+    {
+      "make": "Kia",
+      "model": "PV5 Passenger",
+      "year": 2025,
+      "market": "ES",
+      "version": "Essential 120 kW FWD 71.2 kWh",
+      "batteryKwh": 71.2,
+      "powerKw": 120,
+      "drive": "FWD",
+      "wltpKm": 412
+    },
+    {
+      "make": "Kia",
+      "model": "PV5 Passenger",
+      "year": 2025,
+      "market": "ES",
+      "version": "Plus 120 kW FWD 71.2 kWh",
+      "batteryKwh": 71.2,
+      "powerKw": 120,
+      "drive": "FWD",
+      "wltpKm": 412
+    },
+    {
+      "make": "Kia",
+      "model": "PV5 Cargo",
+      "year": 2025,
+      "market": "ES",
+      "version": "Essential 89.4 kW FWD 51.5 kWh",
+      "batteryKwh": 51.5,
+      "powerKw": 89.4,
+      "drive": "FWD",
+      "wltpKm": 296
+    },
+    {
+      "make": "Kia",
+      "model": "PV5 Cargo",
+      "year": 2025,
+      "market": "ES",
+      "version": "Essential 120 kW FWD 71.2 kWh",
+      "batteryKwh": 71.2,
+      "powerKw": 120,
+      "drive": "FWD",
+      "wltpKm": 416
+    },
+    {
+      "make": "Kia",
+      "model": "PV5 Cargo",
+      "year": 2025,
+      "market": "ES",
+      "version": "Plus 120 kW FWD 71.2 kWh",
+      "batteryKwh": 71.2,
+      "powerKw": 120,
+      "drive": "FWD",
+      "wltpKm": 416
+    }
+  ]
+}
