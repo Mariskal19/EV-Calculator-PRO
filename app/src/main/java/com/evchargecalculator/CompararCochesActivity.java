@@ -18,6 +18,7 @@ import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
 import org.json.JSONArray;
@@ -215,7 +216,66 @@ public class CompararCochesActivity extends Activity {
     private void remove(String id){selectedIds.remove(id);saveSelection();rebuild();}
 
     private void showSearch(){
-        final EditText input=new EditText(this);input.setSingleLine(true);input.setHint(LanguageManager.t(this,"Marca, modelo, año, batería o versión"));input.setTextColor(text());input.setHintTextColor(sub());final LinearLayout list=new LinearLayout(this);list.setOrientation(LinearLayout.VERTICAL);LinearLayout marketRow=new LinearLayout(this);marketRow.setOrientation(LinearLayout.HORIZONTAL);marketRow.setGravity(Gravity.CENTER_VERTICAL);marketRow.setPadding(dp(18),dp(8),dp(18),dp(2));TextView marketTitle=tv("Mercado",14,text());marketTitle.setTypeface(null,Typeface.BOLD);marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(48),1));final Spinner searchMarketSpinner=new Spinner(this);List<String> ms=markets();List<String> labels=new ArrayList<>();for(String m:ms)labels.add(marketLabel(m));ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){@Override public View getView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;}@Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;}};searchMarketSpinner.setAdapter(marketAdapter);int marketIndex=0;for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;}searchMarketSpinner.setSelection(marketIndex,false);searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onNothingSelected(android.widget.AdapterView<?>p){}public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=ms.size()||ms.get(pos).equalsIgnoreCase(selectedMarket))return;selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();saveSelection();rebuild();renderSearchResults(input,list);}});marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(190),dp(48)));LinearLayout box=new LinearLayout(this);box.setPadding(dp(18),dp(4),dp(18),dp(2));box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));ScrollView scroll=new ScrollView(this);scroll.addView(list);LinearLayout wrap=new LinearLayout(this);wrap.setOrientation(LinearLayout.VERTICAL);wrap.addView(marketRow);wrap.addView(box);wrap.addView(scroll,new LinearLayout.LayoutParams(-1,dp(430)));AlertDialog d=new AlertDialog.Builder(this).setTitle(LanguageManager.t(this,"Añadir coche")).setView(wrap).create();input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){renderSearchResults(input,list);}public void afterTextChanged(Editable e){}});d.setOnShowListener(x->{d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(15,27,39):Color.WHITE,20));TextView titleView=d.findViewById(getResources().getIdentifier("alertTitle","id","android"));if(titleView!=null)titleView.setTextColor(text());renderSearchResults(input,list);input.requestFocus();d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);});d.show();input.setTag(d);
+        final EditText input=new EditText(this);
+        input.setSingleLine(true);
+        input.setHint(LanguageManager.t(this,"Marca, modelo, año, batería o versión"));
+        input.setTextColor(text());
+        input.setHintTextColor(sub());
+        final LinearLayout list=new LinearLayout(this);
+        list.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout marketRow=new LinearLayout(this);
+        marketRow.setOrientation(LinearLayout.HORIZONTAL);
+        marketRow.setGravity(Gravity.CENTER_VERTICAL);
+        marketRow.setPadding(dp(18),dp(8),dp(18),dp(2));
+        TextView marketTitle=tv("Mercado",14,text());
+        marketTitle.setTypeface(null,Typeface.BOLD);
+        marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(48),1));
+        final Spinner searchMarketSpinner=new Spinner(this);
+        List<String> ms=markets();
+        List<String> labels=new ArrayList<>();
+        for(String m:ms)labels.add(marketLabel(m));
+        ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){
+            @Override public View getView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;}
+            @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;}
+        };
+        searchMarketSpinner.setAdapter(marketAdapter);
+        int marketIndex=0;
+        for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;}
+        searchMarketSpinner.setSelection(marketIndex,false);
+        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){
+            public void onNothingSelected(android.widget.AdapterView<?>p){}
+            public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=ms.size()||ms.get(pos).equalsIgnoreCase(selectedMarket))return;selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();saveSelection();rebuild();renderSearchResults(input,list);}
+        });
+        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(190),dp(48)));
+        LinearLayout box=new LinearLayout(this);
+        box.setPadding(dp(18),dp(4),dp(18),dp(2));
+        box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));
+        ScrollView scroll=new ScrollView(this);
+        scroll.addView(list);
+        LinearLayout wrap=new LinearLayout(this);
+        wrap.setOrientation(LinearLayout.VERTICAL);
+        wrap.addView(marketRow);
+        wrap.addView(box);
+        wrap.addView(scroll,new LinearLayout.LayoutParams(-1,dp(430)));
+        AlertDialog d=new AlertDialog.Builder(this).setTitle(LanguageManager.t(this,"Añadir coche")).setView(wrap).create();
+        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){renderSearchResults(input,list);}public void afterTextChanged(Editable e){}});
+        d.setOnShowListener(x->{
+            if(d.getWindow()!=null){
+                d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(15,27,39):Color.WHITE,20));
+                d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+            }
+            TextView titleView=d.findViewById(getResources().getIdentifier("alertTitle","id","android"));
+            if(titleView!=null)titleView.setTextColor(text());
+            input.requestFocus();
+            input.post(()->{
+                InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);
+            });
+            input.postDelayed(()->renderSearchResults(input,list),120);
+        });
+        d.show();
+        if(d.getWindow()!=null)d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(15,27,39):Color.WHITE,20));
+        input.setTag(d);
     }
 
     private String popularKey(Vehicle v){return v.make+" "+v.model;}
@@ -246,7 +306,7 @@ public class CompararCochesActivity extends Activity {
     }
 
     private List<Vehicle> orderedSearchVehicles(String q){List<Vehicle>all=new ArrayList<>();for(Vehicle v:marketVehicles()){if(selectedIds.contains(v.id))continue;String hay=(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version).toLowerCase(Locale.ROOT);if(!q.isEmpty()&&!hay.contains(q))continue;all.add(v);}Collections.sort(all,(a,b)->{int c=a.market.compareToIgnoreCase(b.market);if(c!=0)return c;c=a.make.compareToIgnoreCase(b.make);if(c!=0)return c;c=a.model.compareToIgnoreCase(b.model);if(c!=0)return c;c=Integer.compare(a.year,b.year);if(c!=0)return c;c=Integer.compare(trimRank(a),trimRank(b));if(c!=0)return c;c=Double.compare(a.batteryKwh,b.batteryKwh);if(c!=0)return c;c=Double.compare(a.powerKw,b.powerKw);if(c!=0)return c;c=Double.compare(a.wltpKm,b.wltpKm);if(c!=0)return c;c=Double.compare(a.price>0?a.price:Double.MAX_VALUE,b.price>0?b.price:Double.MAX_VALUE);if(c!=0)return c;return a.version.compareToIgnoreCase(b.version);});return all;}
-    private List<Vehicle> popularVehicles(List<Vehicle>all){List<Vehicle>p=new ArrayList<>();SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);for(Vehicle v:all)if(curatedPopularRank(v)<1000||prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)>0)p.add(v);Collections.sort(p,(a,b)->{int ca=prefs.getInt(KEY_SEARCH_COUNT_PREFIX+a.id,0),cb=prefs.getInt(KEY_SEARCH_COUNT_PREFIX+b.id,0);if(ca!=cb)return Integer.compare(cb,ca);int ra=curatedPopularRank(a),rb=curatedPopularRank(b);if(ra!=rb)return Integer.compare(ra,rb);return orderedSearchVehicles("").indexOf(a)-orderedSearchVehicles("").indexOf(b);});return p;}
+    private List<Vehicle> popularVehicles(List<Vehicle>all){List<Vehicle>p=new ArrayList<>();SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);for(Vehicle v:all)if(curatedPopularRank(v)<1000||prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)>0)p.add(v);List<Vehicle>baseOrder=orderedSearchVehicles("");Map<String,Integer>position=new HashMap<>();for(int i=0;i<baseOrder.size();i++)position.put(baseOrder.get(i).id,i);Collections.sort(p,(a,b)->{int ca=prefs.getInt(KEY_SEARCH_COUNT_PREFIX+a.id,0),cb=prefs.getInt(KEY_SEARCH_COUNT_PREFIX+b.id,0);if(ca!=cb)return Integer.compare(cb,ca);int ra=curatedPopularRank(a),rb=curatedPopularRank(b);if(ra!=rb)return Integer.compare(ra,rb);return Integer.compare(position.getOrDefault(a.id,Integer.MAX_VALUE),position.getOrDefault(b.id,Integer.MAX_VALUE));});return p;}
     private void renderSearchResults(EditText input,LinearLayout list){list.removeAllViews();String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle>all=orderedSearchVehicles(q);if(q.isEmpty()){List<Vehicle>popular=popularVehicles(all);if(!popular.isEmpty())for(Vehicle v:popular)addSearchItem(v,list,input);TextView header=tv("Todos los vehículos",13,blue);header.setTypeface(null,Typeface.BOLD);header.setPadding(dp(18),dp(12),dp(18),dp(6));list.addView(header,new LinearLayout.LayoutParams(-1,dp(32)));for(Vehicle v:all)if(!popular.contains(v))addSearchItem(v,list,input);}else{for(Vehicle v:all)addSearchItem(v,list,input);if(all.isEmpty()){TextView none=tv("No se encontraron vehículos",14,sub());none.setGravity(Gravity.CENTER);none.setPadding(dp(12),dp(20),dp(12),dp(20));list.addView(none,new LinearLayout.LayoutParams(-1,dp(60)));}}}
     private void addSearchItem(Vehicle v,LinearLayout list,EditText input){TextView item=tv(searchLabel(v),14,text());item.setGravity(Gravity.CENTER_VERTICAL);item.setPadding(dp(18),dp(7),dp(18),dp(7));item.setBackgroundColor(list.getChildCount()%2==0?(dark?Color.rgb(18,30,42):Color.WHITE):rowAlt());item.setOnClickListener(x->{selectedIds.add(v.id);SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX+v.id,prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)+1).apply();saveSelection();rebuild();Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();});list.addView(item,new LinearLayout.LayoutParams(-1,dp(54)));}
 
