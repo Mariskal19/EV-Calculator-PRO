@@ -37,6 +37,9 @@ jobs:
           gradle-version: '8.9'
           cache-disabled: true
 
+      - name: Apply search virtualization patch
+        run: python3 .github/scripts/patch_search_virtualization.py
+
       - name: Verify final Spanish catalog
         shell: bash
         run: |
@@ -100,6 +103,20 @@ jobs:
           echo "Release APK: $apk"
           echo "Release AAB: $aab"
 
+      - name: Persist optimized search source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- app/src/main/java/com/evchargecalculator/CompararCochesActivity.java; then
+            echo "Search source already matches optimized version."
+          else
+            git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+            git commit -m "Virtualize compare car search results"
+            git push origin main
+          fi
+
       - name: Prepare release files
         shell: bash
         env:
@@ -125,10 +142,8 @@ jobs:
           aab="release/EV-Calculator-PRO-v${VERSION#v}.aab"
           title="EV Calculator PRO v${VERSION#v} build ${GITHUB_RUN_NUMBER}"
           notes="Automated release build from main. Commit: ${GITHUB_SHA}"
-
           echo "Publishing GitHub Release: $tag"
           echo "Token permissions: contents=write"
-
           if gh release view "$tag" >/dev/null 2>&1; then
             echo "Release $tag already exists; uploading assets."
             gh release upload "$tag" "$apk" "$aab" --clobber
@@ -138,5 +153,4 @@ jobs:
               --notes "$notes" \
               --target "$GITHUB_SHA"
           fi
-
           echo "Release publication completed."
