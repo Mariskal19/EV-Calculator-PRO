@@ -1,0 +1,52 @@
+name: Fix search selection once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fix search dialog selection
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text()
+          old = 'd.setOnDismissListener(x->{});\n        d.show();'
+          if old not in s:
+              old = 'd.show();'
+              if old not in s:
+                  raise SystemExit('Search dialog show code not found')
+              s = s.replace(old, 'input.setTag(d);\n        d.show();', 1)
+          else:
+              s = s.replace(old, 'input.setTag(d);\n        d.show();', 1)
+          p.write_text(s)
+          PY
+
+      - name: Commit fix and trigger build
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'Fix selecting a car from search'
+          git push
+
+      - name: Remove one-time workflow
+        shell: bash
+        run: |
+          git rm .github/workflows/fix-search-selection-once.yml
+          git commit -m 'Remove one-time search selection fix workflow'
+          git push
