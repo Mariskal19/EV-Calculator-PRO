@@ -1,0 +1,85 @@
+name: One-time search opening optimization
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/optimize-search-open-once.yml'
+
+permissions:
+  contents: write
+
+automatic_cancel: false
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Patch search opening
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = path.read_text(encoding='utf-8')
+          original = s
+
+          # Returning from the search dialog must not rebuild the complete comparison screen.
+          old = '''        if (!vehicles.isEmpty()) {\n            build();\n            loadSelection();\n            rebuild();\n        }'''
+          new = '''        if (!vehicles.isEmpty()) {\n            loadSelection();\n            rebuild();\n        }'''
+          if old not in s:
+              raise SystemExit('Expected onResume rebuild block not found')
+          s = s.replace(old, new, 1)
+
+          # The search dialog must be displayed before the potentially expensive first result render.
+          # Move only the initial render behind the first UI turn; TextWatcher renders remain unchanged.
+          marker = 'private void showSearch()'
+          start = s.find(marker)
+          if start < 0:
+              raise SystemExit('showSearch() not found')
+          end = s.find('\n    private ', start + len(marker))
+          if end < 0:
+              raise SystemExit('showSearch() end not found')
+          block = s[start:end]
+
+          matches = list(re.finditer(r'(?m)^(\\s*)renderSearchResults\\(input,list\\);\\s*$', block))
+          if not matches:
+              raise SystemExit('Initial renderSearchResults(input,list) call not found inside showSearch()')
+
+          # Patch the first call only: the dialog shell and keyboard can appear before list creation.
+          m = matches[0]
+          indent = m.group(1)
+          replacement = indent + 'input.post(() -> renderSearchResults(input,list));'
+          block = block[:m.start()] + replacement + block[m.end():]
+          s = s[:start] + block + s[end:]
+
+          # Avoid asking for the keyboard twice. The dialog already requests focus/state when shown.
+          s = s.replace('input.postDelayed(() -> renderSearchResults(input,list), 120);', 'input.post(() -> renderSearchResults(input,list));', 1)
+
+          if s == original:
+              raise SystemExit('No changes made')
+
+          path.write_text(s, encoding='utf-8')
+          print('Patched search opening and onResume')
+          PY
+
+      - name: Commit source patch and remove this workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'Open search dialog before rendering results'
+          git rm .github/workflows/optimize-search-open-once.yml
+          git commit -m 'Remove one-time search optimization workflow'
+          git push origin main
