@@ -19,7 +19,7 @@ jobs:
           from pathlib import Path
           p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s = p.read_text()
-          bad = r'\\n                    .replaceAll'
+          bad = r'\n                    .replaceAll'
           good = '\n                    .replaceAll'
           if bad not in s:
               raise SystemExit('Malformed literal newline sequence not found')
