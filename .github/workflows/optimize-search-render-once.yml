@@ -1,0 +1,47 @@
+name: Optimize search rendering once
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Optimize search rendering
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text()
+          old='''    private void renderSearchResults(EditText input,LinearLayout list){\n        list.removeAllViews();\n        String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);\n        List<Vehicle>all=orderedSearchVehicles(q);\n        if(q.isEmpty()){\n            TextView header=tv("Todos los vehículos",13,blue);\n            header.setTypeface(null,Typeface.BOLD);\n            header.setPadding(dp(4),dp(10),dp(4),dp(8));\n            list.addView(header,new LinearLayout.LayoutParams(-1,dp(34)));\n        }\n        for(Vehicle v:all)addSearchItem(v,list,input);\n        if(!q.isEmpty()&&all.isEmpty()){\n            TextView empty=tv("No se encontraron vehículos",14,sub());\n            empty.setGravity(Gravity.CENTER);\n            empty.setPadding(0,dp(22),0,dp(22));\n            list.addView(empty,new LinearLayout.LayoutParams(-1,dp(68)));\n        }\n    }'''
+          new='''    private void renderSearchResults(EditText input,LinearLayout list){\n        list.removeAllViews();\n        String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);\n        List<Vehicle> all=orderedSearchVehicles(q);\n        if(q.isEmpty()){\n            TextView header=tv("Todos los vehículos",13,blue);\n            header.setTypeface(null,Typeface.BOLD);\n            header.setPadding(dp(4),dp(10),dp(4),dp(8));\n            list.addView(header,new LinearLayout.LayoutParams(-1,dp(34)));\n        }\n        if(!q.isEmpty()&&all.isEmpty()){\n            TextView empty=tv("No se encontraron vehículos",14,sub());\n            empty.setGravity(Gravity.CENTER);\n            empty.setPadding(0,dp(22),0,dp(22));\n            list.addView(empty,new LinearLayout.LayoutParams(-1,dp(68)));\n            return;\n        }\n        final int batch=24;\n        renderSearchBatch(input,list,all,0,batch);\n    }\n\n    private void renderSearchBatch(EditText input,LinearLayout list,List<Vehicle> all,int start,int batch){\n        int end=Math.min(start+batch,all.size());\n        for(int i=start;i<end;i++) addSearchItem(all.get(i),list,input);\n        if(end<all.size()){\n            final int next=end;\n            list.postDelayed(()->renderSearchBatch(input,list,all,next,batch),16);\n        }\n    }'''
+          if old not in s:
+              raise SystemExit('renderSearchResults block not found; aborting')
+          s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+
+      - name: Commit and remove one-time workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m "Render search results in UI batches"
+          rm .github/workflows/optimize-search-render-once.yml
+          git add .github/workflows/optimize-search-render-once.yml
+          git commit -m "Remove one-time search optimization workflow"
+          git push origin main
