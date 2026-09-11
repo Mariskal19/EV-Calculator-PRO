@@ -1,0 +1,43 @@
+name: One-time search dialog fix
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Patch and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text(encoding='utf-8')
+          old = 'd.setOnDismissListener(x->{});d.show();d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();'
+          new = 'input.setTag(d);d.setOnDismissListener(x->{});d.show();d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();'
+          if old in s:
+              s = s.replace(old, new, 1)
+              p.write_text(s, encoding='utf-8')
+          elif 'input.setTag(d);d.setOnDismissListener' in s:
+              print('Patch already present')
+          else:
+              raise SystemExit('Expected search-dialog code was not found')
+          PY
+          rm -f .github/workflows/fix-search-dismiss-once.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java .github/workflows/fix-search-dismiss-once.yml
+          git diff --cached --quiet && { echo 'No changes needed'; exit 0; }
+          git commit -m 'Close compare search after selecting a vehicle'
+          git push
