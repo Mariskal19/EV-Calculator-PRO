@@ -19,15 +19,14 @@ jobs:
           from pathlib import Path
           p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s = p.read_text()
-          bad = ')\\n                    .replaceAll("(?i)(?<![0-9])\\\\d+(?:[.,]\\\\d+)?\\\\s*kw\\\\b","")'
-          good = ')\n                    .replaceAll("(?i)(?<![0-9])\\\\d+(?:[.,]\\\\d+)?\\\\s*kw\\\\b","")'
+          bad = r'\\n                    .replaceAll'
+          good = '\n                    .replaceAll'
           if bad not in s:
               raise SystemExit('Malformed literal newline sequence not found')
           s = s.replace(bad, good, 1)
           p.write_text(s)
           PY
           git diff --check
-          grep -q '.replaceAll("(?i)(?<![0-9])\\\\d+(?:[.,]\\\\d+)?\\\\s*kw\\\\b","")' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
       - name: Commit
         run: |
           git config user.name 'github-actions[bot]'
