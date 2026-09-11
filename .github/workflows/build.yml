@@ -119,9 +119,22 @@ jobs:
         run: |
           set -euo pipefail
           tag="build-v${VERSION#v}-${GITHUB_RUN_NUMBER}"
-          gh release create "$tag" \
-            "release/EV-Calculator-PRO-v${VERSION#v}.apk" \
-            "release/EV-Calculator-PRO-v${VERSION#v}.aab" \
+          apk="release/EV-Calculator-PRO-v${VERSION#v}.apk"
+          aab="release/EV-Calculator-PRO-v${VERSION#v}.aab"
+
+          if ! gh release create "$tag" \
+            "$apk" \
+            "$aab" \
             --title "EV Calculator PRO v${VERSION#v} build ${GITHUB_RUN_NUMBER}" \
             --notes "Automated release build from main. Commit: ${GITHUB_SHA}" \
-            --target "$GITHUB_SHA"
+            --target "$GITHUB_SHA"; then
+            echo "Release command returned an error; checking whether the release and both assets were actually created."
+            if gh release view "$tag" >/dev/null 2>&1 && \
+               gh release view "$tag" --json assets --jq '.assets | map(.name) | index("EV-Calculator-PRO-v'"${VERSION#v}"'.apk")' | grep -q '^[0-9]\+$' && \
+               gh release view "$tag" --json assets --jq '.assets | map(.name) | index("EV-Calculator-PRO-v'"${VERSION#v}"'.aab")' | grep -q '^[0-9]\+$'; then
+              echo "Release $tag exists with APK and AAB. Treating the publish step as successful."
+            else
+              echo "Release publication did not complete successfully."
+              exit 1
+            fi
+          fi
