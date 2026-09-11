@@ -221,15 +221,20 @@ public class CompararCochesActivity extends Activity {
         input.setHint(LanguageManager.t(this,"Marca, modelo, año, batería o versión"));
         input.setTextColor(text());
         input.setHintTextColor(sub());
+        input.setTextSize(15);
+        input.setSingleLine(true);
+        input.setPadding(dp(14),0,dp(14),0);
+        input.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
         final LinearLayout list=new LinearLayout(this);
         list.setOrientation(LinearLayout.VERTICAL);
         LinearLayout marketRow=new LinearLayout(this);
         marketRow.setOrientation(LinearLayout.HORIZONTAL);
         marketRow.setGravity(Gravity.CENTER_VERTICAL);
-        marketRow.setPadding(dp(18),dp(8),dp(18),dp(2));
-        TextView marketTitle=tv("Mercado",14,text());
+        marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
+        TextView marketTitle=tv("Mercado",12,sub());
         marketTitle.setTypeface(null,Typeface.BOLD);
-        marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(48),1));
+        marketTitle.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
         final Spinner searchMarketSpinner=new Spinner(this);
         List<String> ms=markets();
         List<String> labels=new ArrayList<>();
@@ -239,6 +244,8 @@ public class CompararCochesActivity extends Activity {
             @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;}
         };
         searchMarketSpinner.setAdapter(marketAdapter);
+        searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14));
+        searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
         int marketIndex=0;
         for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;}
         searchMarketSpinner.setSelection(marketIndex,false);
@@ -246,10 +253,22 @@ public class CompararCochesActivity extends Activity {
             public void onNothingSelected(android.widget.AdapterView<?>p){}
             public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=ms.size()||ms.get(pos).equalsIgnoreCase(selectedMarket))return;selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();saveSelection();rebuild();renderSearchResults(input,list);}
         });
-        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(190),dp(48)));
+        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(190),dp(38)));
         LinearLayout box=new LinearLayout(this);
-        box.setPadding(dp(18),dp(4),dp(18),dp(2));
-        box.addView(input,new LinearLayout.LayoutParams(-1,dp(52)));
+        box.setOrientation(LinearLayout.HORIZONTAL);
+        box.setPadding(dp(18),dp(4),dp(18),dp(10));
+        TextView searchIcon=tv("⌕",23,blue);
+        searchIcon.setGravity(Gravity.CENTER);
+        searchIcon.setTypeface(null,Typeface.BOLD);
+        LinearLayout searchWrap=new LinearLayout(this);
+        searchWrap.setGravity(Gravity.CENTER_VERTICAL);
+        searchWrap.setPadding(dp(10),0,dp(10),0);
+        searchWrap.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
+        searchWrap.addView(searchIcon,new LinearLayout.LayoutParams(dp(30),dp(52)));
+        input.setBackgroundColor(Color.TRANSPARENT);
+        input.setPadding(0,0,dp(10),0);
+        searchWrap.addView(input,new LinearLayout.LayoutParams(0,dp(52),1));
+        box.addView(searchWrap,new LinearLayout.LayoutParams(0,dp(52),1));
         ScrollView scroll=new ScrollView(this);
         scroll.addView(list);
         LinearLayout wrap=new LinearLayout(this);
@@ -265,7 +284,7 @@ public class CompararCochesActivity extends Activity {
                 d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
             }
             TextView titleView=d.findViewById(getResources().getIdentifier("alertTitle","id","android"));
-            if(titleView!=null)titleView.setTextColor(text());
+            if(titleView!=null){titleView.setTextColor(text());titleView.setTextSize(20);titleView.setTypeface(null,Typeface.BOLD);}
             input.requestFocus();
             input.post(()->{
                 InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
@@ -307,8 +326,25 @@ public class CompararCochesActivity extends Activity {
 
     private List<Vehicle> orderedSearchVehicles(String q){List<Vehicle>all=new ArrayList<>();for(Vehicle v:marketVehicles()){if(selectedIds.contains(v.id))continue;String hay=(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version).toLowerCase(Locale.ROOT);if(!q.isEmpty()&&!hay.contains(q))continue;all.add(v);}Collections.sort(all,(a,b)->{int c=a.market.compareToIgnoreCase(b.market);if(c!=0)return c;c=a.make.compareToIgnoreCase(b.make);if(c!=0)return c;c=a.model.compareToIgnoreCase(b.model);if(c!=0)return c;c=Integer.compare(a.year,b.year);if(c!=0)return c;c=Integer.compare(trimRank(a),trimRank(b));if(c!=0)return c;c=Double.compare(a.batteryKwh,b.batteryKwh);if(c!=0)return c;c=Double.compare(a.powerKw,b.powerKw);if(c!=0)return c;c=Double.compare(a.wltpKm,b.wltpKm);if(c!=0)return c;c=Double.compare(a.price>0?a.price:Double.MAX_VALUE,b.price>0?b.price:Double.MAX_VALUE);if(c!=0)return c;return a.version.compareToIgnoreCase(b.version);});return all;}
     private List<Vehicle> popularVehicles(List<Vehicle>all){List<Vehicle>p=new ArrayList<>();SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);for(Vehicle v:all)if(curatedPopularRank(v)<1000||prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)>0)p.add(v);List<Vehicle>baseOrder=orderedSearchVehicles("");Map<String,Integer>position=new HashMap<>();for(int i=0;i<baseOrder.size();i++)position.put(baseOrder.get(i).id,i);Collections.sort(p,(a,b)->{int ca=prefs.getInt(KEY_SEARCH_COUNT_PREFIX+a.id,0),cb=prefs.getInt(KEY_SEARCH_COUNT_PREFIX+b.id,0);if(ca!=cb)return Integer.compare(cb,ca);int ra=curatedPopularRank(a),rb=curatedPopularRank(b);if(ra!=rb)return Integer.compare(ra,rb);return Integer.compare(position.getOrDefault(a.id,Integer.MAX_VALUE),position.getOrDefault(b.id,Integer.MAX_VALUE));});return p;}
-    private void renderSearchResults(EditText input,LinearLayout list){list.removeAllViews();String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle>all=orderedSearchVehicles(q);if(q.isEmpty()){List<Vehicle>popular=popularVehicles(all);if(!popular.isEmpty())for(Vehicle v:popular)addSearchItem(v,list,input);TextView header=tv("Todos los vehículos",13,blue);header.setTypeface(null,Typeface.BOLD);header.setPadding(dp(18),dp(12),dp(18),dp(6));list.addView(header,new LinearLayout.LayoutParams(-1,dp(32)));for(Vehicle v:all)if(!popular.contains(v))addSearchItem(v,list,input);}else{for(Vehicle v:all)addSearchItem(v,list,input);if(all.isEmpty()){TextView none=tv("No se encontraron vehículos",14,sub());none.setGravity(Gravity.CENTER);none.setPadding(dp(12),dp(20),dp(12),dp(20));list.addView(none,new LinearLayout.LayoutParams(-1,dp(60)));}}}
-    private void addSearchItem(Vehicle v,LinearLayout list,EditText input){TextView item=tv(searchLabel(v),14,text());item.setGravity(Gravity.CENTER_VERTICAL);item.setPadding(dp(18),dp(7),dp(18),dp(7));item.setBackgroundColor(list.getChildCount()%2==0?(dark?Color.rgb(18,30,42):Color.WHITE):rowAlt());item.setOnClickListener(x->{selectedIds.add(v.id);SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX+v.id,prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)+1).apply();saveSelection();rebuild();Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();});list.addView(item,new LinearLayout.LayoutParams(-1,dp(54)));}
+    private void renderSearchResults(EditText input,LinearLayout list){list.removeAllViews();String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle>all=orderedSearchVehicles(q);if(q.isEmpty()){List<Vehicle>popular=popularVehicles(all);if(!popular.isEmpty())for(Vehicle v:popular)addSearchItem(v,list,input);TextView header=tv("Todos los vehículos",13,blue);header.setTypeface(null,Typeface.BOLD);header.setPadding(dp(18),dp(16),dp(18),dp(7));list.addView(header,new LinearLayout.LayoutParams(-1,dp(38)));for(Vehicle v:all)if(!popular.contains(v))addSearchItem(v,list,input);}else{for(Vehicle v:all)addSearchItem(v,list,input);if(all.isEmpty()){TextView none=tv("No se encontraron vehículos",14,sub());none.setGravity(Gravity.CENTER);none.setPadding(dp(12),dp(20),dp(12),dp(20));list.addView(none,new LinearLayout.LayoutParams(-1,dp(60)));}}}
+    private void addSearchItem(Vehicle v,LinearLayout list,EditText input){
+        TextView item=tv(searchLabel(v),14,text());
+        item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        item.setPadding(dp(16),dp(6),dp(42),dp(6));
+        item.setLineSpacing(0,1.05f);
+        SpannableString styled=new SpannableString(item.getText());
+        int nl=styled.toString().indexOf('\n');
+        if(nl>0){
+            styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        item.setText(styled);
+        item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));
+        item.setOnClickListener(x->{selectedIds.add(v.id);SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX+v.id,prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)+1).apply();saveSelection();rebuild();Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();});
+        LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(60));
+        lp.setMargins(dp(14),dp(3),dp(14),dp(3));
+        list.addView(item,lp);
+    }
 
     private void addRow(String label,String key,boolean numeric){LinearLayout r=new LinearLayout(this);r.setOrientation(LinearLayout.HORIZONTAL);r.setGravity(Gravity.CENTER_VERTICAL);r.setBackgroundColor(table.getChildCount()%2==0?(dark?Color.rgb(12,24,35):Color.WHITE):rowAlt());TextView l=tv(label,13,sub());l.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);l.setIncludeFontPadding(false);l.setPadding(dp(6),0,dp(6),0);r.addView(l,new LinearLayout.LayoutParams(dp(112),dp(52)));List<Vehicle>chosen=new ArrayList<>();for(String id:selectedIds){Vehicle v=find(id);if(v!=null)chosen.add(v);}double best=Double.NaN;if(numeric&&chosen.size()>=2){boolean higher=!key.equals("cons")&&!key.equals("charge")&&!key.equals("price")&&!key.equals("weight");for(Vehicle v:chosen){double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higher?n>best:n<best))best=n;}}for(Vehicle v:chosen){String value=value(v,key);TextView cell=tv(value,13,text());cell.setGravity(Gravity.CENTER);cell.setIncludeFontPadding(false);cell.setBackgroundColor(rowAlt());double n=numeric(v,key);if(selectedIds.size()>=2&&!Double.isNaN(best)&&!Double.isNaN(n)&&Math.abs(n-best)<0.0001)cell.setTextColor(blue);r.addView(cell,new LinearLayout.LayoutParams(dp(145),dp(52)));}table.addView(r,new LinearLayout.LayoutParams(tableWidth(),dp(52)));}
     private String value(Vehicle v,String key){if("battery".equals(key))return v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";if("type".equals(key))return empty(v.batteryType);if("range".equals(key))return v.wltpKm>0?String.format(Locale.US,"%.0f km",v.wltpKm):"—";if("cons".equals(key))return v.consumption>0?fmt(v.consumption)+" kWh/100 km":"—";if("power".equals(key))return v.powerKw>0?Math.round(v.powerKw*1.35962)+" CV ("+String.format(Locale.US,"%.0f kW",v.powerKw)+")":"—";if("drive".equals(key))return empty(v.drivetrain);if("acc".equals(key))return v.acc>0?fmt(v.acc)+" s":"—";if("ac".equals(key))return v.acKw>0?fmt(v.acKw)+" kW":"—";if("dc".equals(key))return v.dcKw>0?fmt(v.dcKw)+" kW":"—";if("charge".equals(key))return v.chargeMin>0?String.format(Locale.US,"%.0f min",v.chargeMin):"—";if("trunk".equals(key))return v.trunk>0?String.format(Locale.US,"%.0f L",v.trunk):"—";if("weight".equals(key))return v.weight>0?String.format(Locale.US,"%.0f kg",v.weight):"—";if("price".equals(key))return formatPrice(v.price);return "—";}
