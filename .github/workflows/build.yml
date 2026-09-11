@@ -117,6 +117,7 @@ jobs:
           name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-apk
           path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.apk
           if-no-files-found: error
+          retention-days: 14
 
       - name: Upload release AAB
         uses: actions/upload-artifact@v6
@@ -124,6 +125,7 @@ jobs:
           name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-aab
           path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.aab
           if-no-files-found: error
+          retention-days: 14
 
       - name: Upload project ZIP
         uses: actions/upload-artifact@v6
@@ -131,3 +133,4 @@ jobs:
           name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-source
           path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.zip
           if-no-files-found: error
+          retention-days: 14
