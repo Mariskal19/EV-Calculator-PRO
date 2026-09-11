@@ -240,47 +240,19 @@ public class CompararCochesActivity extends Activity {
         model.setMaxLines(2);
         c.addView(model,new LinearLayout.LayoutParams(-1,dp(43)));
 
-        LinearLayout meta=new LinearLayout(this);
-        meta.setOrientation(LinearLayout.HORIZONTAL);
-        meta.setGravity(Gravity.CENTER_VERTICAL);
-        TextView year=chip(v.year>0?String.valueOf(v.year):"—");
-        TextView market=chip(marketLabel(v.market));
-        LinearLayout.LayoutParams ylp=new LinearLayout.LayoutParams(0,dp(27),1);
-        ylp.setMargins(0,0,dp(3),0);
-        meta.addView(year,ylp);
-        LinearLayout.LayoutParams mlp=new LinearLayout.LayoutParams(0,dp(27),1.45f);
-        mlp.setMargins(dp(3),0,0,0);
-        meta.addView(market,mlp);
-        c.addView(meta,new LinearLayout.LayoutParams(-1,dp(27)));
-
         TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());
         ver.setGravity(Gravity.START|Gravity.TOP);
         ver.setIncludeFontPadding(false);
-        ver.setMaxLines(2);
+        ver.setMaxLines(3);
         ver.setEllipsize(android.text.TextUtils.TruncateAt.END);
-        ver.setPadding(dp(2),dp(9),dp(2),0);
-        c.addView(ver,new LinearLayout.LayoutParams(-1,dp(43)));
-
-        LinearLayout specs=new LinearLayout(this);
-        specs.setOrientation(LinearLayout.HORIZONTAL);
-        specs.setGravity(Gravity.CENTER_VERTICAL);
-        String battery=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";
-        String range=v.wltpKm>0?String.format(Locale.US,"%.0f km",v.wltpKm):"—";
-        TextView b=chip(battery);
-        TextView r=chip(range);
-        LinearLayout.LayoutParams blp=new LinearLayout.LayoutParams(0,dp(27),1);
-        blp.setMargins(0,dp(4),dp(3),0);
-        specs.addView(b,blp);
-        LinearLayout.LayoutParams rlp=new LinearLayout.LayoutParams(0,dp(27),1);
-        rlp.setMargins(dp(3),dp(4),0,0);
-        specs.addView(r,rlp);
-        c.addView(specs,new LinearLayout.LayoutParams(-1,dp(31)));
+        ver.setPadding(dp(2),dp(7),dp(2),0);
+        c.addView(ver,new LinearLayout.LayoutParams(-1,dp(58)));
 
         TextView rem=tv("Quitar",11,Color.rgb(210,70,70));
         rem.setGravity(Gravity.CENTER);
         rem.setTypeface(null,Typeface.BOLD);
         rem.setIncludeFontPadding(false);
-        rem.setPadding(0,dp(6),0,0);
+        rem.setPadding(0,dp(5),0,0);
         rem.setOnClickListener(x->remove(v.id));
         c.addView(rem,new LinearLayout.LayoutParams(-1,dp(27)));
         return c;
