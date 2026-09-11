@@ -210,9 +210,81 @@ public class CompararCochesActivity extends Activity {
 
     private void rebuild(){if(carsRow==null||table==null||summary==null)return;carsRow.removeAllViews();table.removeAllViews();summary.removeAllViews();for(String id:selectedIds){Vehicle v=find(id);if(v!=null){LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),-2);lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(carCard(v),lp);}}if(selectedIds.size()<3){LinearLayout empty=new LinearLayout(this);empty.setOrientation(LinearLayout.VERTICAL);empty.setGravity(Gravity.CENTER);empty.setPadding(dp(8),dp(10),dp(8),dp(10));empty.setBackground(strokeBg(dark?Color.rgb(14,26,38):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));TextView plus=tv("＋",28,blue);plus.setGravity(Gravity.CENTER);empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));TextView n=tv("Añadir coche",12,sub());n.setGravity(Gravity.CENTER);empty.addView(n,new LinearLayout.LayoutParams(-1,dp(24)));empty.setOnClickListener(v->showSearch());LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),dp(150));lp.setMargins(dp(3),0,dp(3),0);carsRow.addView(empty,lp);}if(selectedIds.size()>=1){addSection("Batería y autonomía");addRow("Batería","battery",false);addRow("Tipo batería","type",false);addRow("Autonomía WLTP","range",true);addRow("Consumo","cons",true);addSection("Prestaciones");addRow("Potencia","power",true);addRow("Tracción","drive",false);addRow("0–100 km/h","acc",false);addSection("Carga");addRow("Carga AC","ac",true);addRow("Carga DC","dc",true);addRow("10–80 %","charge",false);addSection("Practicidad");addRow("Maletero","trunk",true);addRow("Peso","weight",false);addSection("Precio");addRow("Precio","price",false);if(selectedIds.size()>=2)buildSummary();}else{TextView t=tv("Selecciona un coche para mostrar sus características.",14,sub());t.setGravity(Gravity.CENTER);t.setPadding(dp(10),dp(18),dp(10),dp(18));table.addView(t,new LinearLayout.LayoutParams(tableWidth(),-2));}}
     private void addSection(String title){TextView s=tv(title,14,blue);s.setTypeface(null,Typeface.BOLD);s.setGravity(Gravity.CENTER_VERTICAL);s.setPadding(dp(4),dp(12),dp(4),dp(6));table.addView(s,new LinearLayout.LayoutParams(tableWidth(),dp(40)));}
-    private ImageView carImage(Vehicle v){ImageView image=new ImageView(this);image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);image.setPadding(dp(4),dp(6),dp(4),dp(3));image.setBackground(bg(dark?Color.rgb(12,29,43):Color.rgb(239,245,252),14));image.setImageResource(modelImageResource(v));return image;}
-    private int modelImageResource(Vehicle v){String key=(v.make+" "+v.model).toLowerCase(Locale.ROOT).replace("+","plus").replace("-"," ");if(key.contains("model 3"))return R.drawable.car_model3;if(key.contains("model y"))return R.drawable.car_modely;if(key.contains("dolphin surf"))return R.drawable.car_dolphin_surf;if(key.contains("kia ev3"))return R.drawable.car_kia_ev3;if(key.contains("toyota c hr")||key.contains("c-hr"))return R.drawable.car_toyota_chr_plus;if(key.contains("atto 2"))return R.drawable.car_byd_atto2;if(key.contains("renault 5"))return R.drawable.car_renault5;if(key.contains("elroq"))return R.drawable.car_skoda_elroq;if(key.contains("leapmotor b10"))return R.drawable.car_leapmotor_b10;if(key.contains("mercedes benz cla")||key.contains("mercedes cla"))return R.drawable.car_mercedes_cla;if(key.contains("byd seal"))return R.drawable.car_byd_seal;if(key.contains("mercedes benz eqa")||key.contains("mercedes eqa"))return R.drawable.car_mercedes_eqa;if(key.contains("xpeng g6"))return R.drawable.car_xpeng_g6;if(key.contains("atto 3"))return R.drawable.car_byd_atto3;if(key.contains("id.4")||key.contains("id 4"))return R.drawable.car_vw_id4;if(key.contains("audi q4"))return R.drawable.car_audi_q4;if(key.contains("ioniq 5"))return R.drawable.car_ioniq5;if(key.contains("id.3")||key.contains("id 3"))return R.drawable.car_vw_id3;if(key.contains("cupra born"))return R.drawable.car_cupra_born;if(key.contains("megane"))return R.drawable.car_renault_megane;if(key.contains("sedan")||key.contains("berlina")||key.contains("et5")||key.contains(" i4"))return R.drawable.ev_illustration_sedan;if(key.contains("coupe")||key.contains("coupé"))return R.drawable.ev_illustration_coupe;if(key.contains("hatch")||key.contains("5 e tech"))return R.drawable.ev_illustration_hatch;if(key.contains("crossover"))return R.drawable.ev_illustration_crossover;return R.drawable.ev_illustration_suv;}
-    private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(9),dp(9),dp(9),dp(8));c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));ImageView photo=carImage(v);c.addView(photo,new LinearLayout.LayoutParams(-1,dp(68)));TextView make=tv(v.make,12,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.CENTER);make.setPadding(0,dp(8),0,0);c.addView(make,new LinearLayout.LayoutParams(-1,dp(28)));TextView model=tv(v.model,17,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.CENTER);c.addView(model,new LinearLayout.LayoutParams(-1,dp(27)));TextView market=tv(marketLabel(v.market),11,sub());market.setGravity(Gravity.CENTER);c.addView(market,new LinearLayout.LayoutParams(-1,dp(25)));TextView ver=tv(v.version,11,sub());ver.setGravity(Gravity.CENTER);ver.setMaxLines(2);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(34)));TextView year=tv(v.year>0?String.valueOf(v.year):"",11,sub());year.setGravity(Gravity.CENTER);c.addView(year,new LinearLayout.LayoutParams(-1,dp(21)));TextView rem=tv("✕  Quitar",12,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setPadding(0,dp(5),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(31)));return c;}
+
+    private TextView chip(String label){
+        TextView t=tv(label,10.5f,sub());
+        t.setGravity(Gravity.CENTER);
+        t.setIncludeFontPadding(false);
+        t.setPadding(dp(6),dp(4),dp(6),dp(4));
+        t.setBackground(strokeBg(dark?Color.rgb(13,28,41):Color.rgb(244,248,253),dark?Color.rgb(43,65,84):Color.rgb(222,231,240),10));
+        return t;
+    }
+
+    private View carCard(Vehicle v){
+        LinearLayout c=new LinearLayout(this);
+        c.setOrientation(LinearLayout.VERTICAL);
+        c.setGravity(Gravity.CENTER_HORIZONTAL);
+        c.setPadding(dp(10),dp(11),dp(10),dp(9));
+        c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));
+
+        TextView make=tv(v.make.toUpperCase(Locale.ROOT),11,blue);
+        make.setTypeface(null,Typeface.BOLD);
+        make.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);
+        make.setIncludeFontPadding(false);
+        c.addView(make,new LinearLayout.LayoutParams(-1,dp(20)));
+
+        TextView model=tv(v.model,17,text());
+        model.setTypeface(null,Typeface.BOLD);
+        model.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);
+        model.setIncludeFontPadding(false);
+        model.setMaxLines(2);
+        c.addView(model,new LinearLayout.LayoutParams(-1,dp(43)));
+
+        LinearLayout meta=new LinearLayout(this);
+        meta.setOrientation(LinearLayout.HORIZONTAL);
+        meta.setGravity(Gravity.CENTER_VERTICAL);
+        TextView year=chip(v.year>0?String.valueOf(v.year):"—");
+        TextView market=chip(marketLabel(v.market));
+        LinearLayout.LayoutParams ylp=new LinearLayout.LayoutParams(0,dp(27),1);
+        ylp.setMargins(0,0,dp(3),0);
+        meta.addView(year,ylp);
+        LinearLayout.LayoutParams mlp=new LinearLayout.LayoutParams(0,dp(27),1.45f);
+        mlp.setMargins(dp(3),0,0,0);
+        meta.addView(market,mlp);
+        c.addView(meta,new LinearLayout.LayoutParams(-1,dp(27)));
+
+        TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());
+        ver.setGravity(Gravity.START|Gravity.TOP);
+        ver.setIncludeFontPadding(false);
+        ver.setMaxLines(2);
+        ver.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        ver.setPadding(dp(2),dp(9),dp(2),0);
+        c.addView(ver,new LinearLayout.LayoutParams(-1,dp(43)));
+
+        LinearLayout specs=new LinearLayout(this);
+        specs.setOrientation(LinearLayout.HORIZONTAL);
+        specs.setGravity(Gravity.CENTER_VERTICAL);
+        String battery=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";
+        String range=v.wltpKm>0?String.format(Locale.US,"%.0f km",v.wltpKm):"—";
+        TextView b=chip(battery);
+        TextView r=chip(range);
+        LinearLayout.LayoutParams blp=new LinearLayout.LayoutParams(0,dp(27),1);
+        blp.setMargins(0,dp(4),dp(3),0);
+        specs.addView(b,blp);
+        LinearLayout.LayoutParams rlp=new LinearLayout.LayoutParams(0,dp(27),1);
+        rlp.setMargins(dp(3),dp(4),0,0);
+        specs.addView(r,rlp);
+        c.addView(specs,new LinearLayout.LayoutParams(-1,dp(31)));
+
+        TextView rem=tv("Quitar",11,Color.rgb(210,70,70));
+        rem.setGravity(Gravity.CENTER);
+        rem.setTypeface(null,Typeface.BOLD);
+        rem.setIncludeFontPadding(false);
+        rem.setPadding(0,dp(6),0,0);
+        rem.setOnClickListener(x->remove(v.id));
+        c.addView(rem,new LinearLayout.LayoutParams(-1,dp(27)));
+        return c;
+    }
     private void remove(String id){selectedIds.remove(id);saveSelection();rebuild();}
 
     private void showSearch(){
