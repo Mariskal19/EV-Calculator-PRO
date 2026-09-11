@@ -235,7 +235,8 @@ public class CompararCochesActivity extends Activity {
         if(v.year>0){String ys=String.valueOf(v.year);second.append("MY").append(ys.substring(Math.max(0,ys.length()-2)));}
         if(v.version!=null&&!v.version.trim().isEmpty()){
             String ver=v.version.trim()
-                    .replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kwh\\b","")\n                    .replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kw\\b","")
+                    .replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kwh\\b","")
+                    .replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kw\\b","")
                     .replaceAll("\\s+"," ")
                     .trim();
             if(!ver.isEmpty()){if(second.length()>0)second.append(" · ");second.append(ver);}
