@@ -13,6 +13,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       EV_CALCULATOR_KEYSTORE_BASE64: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 }}
       EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
@@ -121,20 +123,20 @@ jobs:
           tag="build-v${VERSION#v}-${GITHUB_RUN_NUMBER}"
           apk="release/EV-Calculator-PRO-v${VERSION#v}.apk"
           aab="release/EV-Calculator-PRO-v${VERSION#v}.aab"
+          title="EV Calculator PRO v${VERSION#v} build ${GITHUB_RUN_NUMBER}"
+          notes="Automated release build from main. Commit: ${GITHUB_SHA}"
 
-          if ! gh release create "$tag" \
-            "$apk" \
-            "$aab" \
-            --title "EV Calculator PRO v${VERSION#v} build ${GITHUB_RUN_NUMBER}" \
-            --notes "Automated release build from main. Commit: ${GITHUB_SHA}" \
-            --target "$GITHUB_SHA"; then
-            echo "Release command returned an error; checking whether the release and both assets were actually created."
-            if gh release view "$tag" >/dev/null 2>&1 && \
-               gh release view "$tag" --json assets --jq '.assets | map(.name) | index("EV-Calculator-PRO-v'"${VERSION#v}"'.apk")' | grep -q '^[0-9]\+$' && \
-               gh release view "$tag" --json assets --jq '.assets | map(.name) | index("EV-Calculator-PRO-v'"${VERSION#v}"'.aab")' | grep -q '^[0-9]\+$'; then
-              echo "Release $tag exists with APK and AAB. Treating the publish step as successful."
-            else
-              echo "Release publication did not complete successfully."
-              exit 1
-            fi
+          echo "Publishing GitHub Release: $tag"
+          echo "Token permissions: contents=write"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists; uploading assets."
+            gh release upload "$tag" "$apk" "$aab" --clobber
+          else
+            gh release create "$tag" "$apk" "$aab" \
+              --title "$title" \
+              --notes "$notes" \
+              --target "$GITHUB_SHA"
           fi
+
+          echo "Release publication completed."
