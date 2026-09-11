@@ -33,6 +33,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v6
         with:
           gradle-version: '8.9'
+          cache-disabled: true
 
       - name: Verify final Spanish catalog
         shell: bash
