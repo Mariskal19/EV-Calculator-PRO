@@ -19,7 +19,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Patch search opening
+      - name: Patch search opening safely
         shell: bash
         run: |
           set -euo pipefail
@@ -31,37 +31,41 @@ jobs:
           s = path.read_text(encoding='utf-8')
           original = s
 
-          old = '''        if (!vehicles.isEmpty()) {\n            build();\n            loadSelection();\n            rebuild();\n        }'''
-          new = '''        if (!vehicles.isEmpty()) {\n            loadSelection();\n            rebuild();\n        }'''
-          if old not in s:
-              raise SystemExit('Expected onResume rebuild block not found')
-          s = s.replace(old, new, 1)
+          # Do not rebuild the entire comparison screen when returning from search.
+          s, n = re.subn(
+              r'if \(!vehicles\.isEmpty\(\)\) \{\s*build\(\);\s*loadSelection\(\);\s*rebuild\(\);\s*\}',
+              'if (!vehicles.isEmpty()) {\n            loadSelection();\n            rebuild();\n        }',
+              s,
+              count=1
+          )
+          if n != 1:
+              raise SystemExit(f'onResume block patch expected 1 match, got {n}')
 
-          marker = 'private void showSearch()'
-          start = s.find(marker)
+          # Ensure the first search result render is posted after the dialog can draw.
+          start = s.find('private void showSearch(')
           if start < 0:
               raise SystemExit('showSearch() not found')
-          end = s.find('\n    private ', start + len(marker))
+          end = s.find('\n    private ', start + 10)
           if end < 0:
-              raise SystemExit('showSearch() end not found')
+              end = len(s)
           block = s[start:end]
 
-          matches = list(re.finditer(r'(?m)^(\\s*)renderSearchResults\\(input,list\\);\\s*$', block))
-          if not matches:
-              raise SystemExit('Initial renderSearchResults(input,list) call not found inside showSearch()')
-          m = matches[0]
-          indent = m.group(1)
-          replacement = indent + 'input.post(() -> renderSearchResults(input,list));'
-          block = block[:m.start()] + replacement + block[m.end():]
-          s = s[:start] + block + s[end:]
+          call = re.search(r'(?<![\w.])renderSearchResults\(\s*input\s*,\s*list\s*\)\s*;', block)
+          if not call:
+              raise SystemExit('No initial renderSearchResults call found inside showSearch()')
+          before = block[max(0, call.start()-80):call.start()]
+          if 'input.post' not in before:
+              replacement = 'input.post(() -> renderSearchResults(input,list));'
+              block = block[:call.start()] + replacement + block[call.end():]
+              s = s[:start] + block + s[end:]
 
           if s == original:
-              raise SystemExit('No changes made')
+              raise SystemExit('No source changes were necessary')
           path.write_text(s, encoding='utf-8')
-          print('Patched search opening and onResume')
+          print('Search opening optimization applied successfully')
           PY
 
-      - name: Commit source patch and remove this workflow
+      - name: Commit source and remove temporary workflows
         shell: bash
         run: |
           set -euo pipefail
@@ -69,6 +73,6 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
           git commit -m 'Open search dialog before rendering results'
-          git rm .github/workflows/optimize-search-open-once.yml
-          git commit -m 'Remove one-time search optimization workflow'
+          git rm .github/workflows/optimize-search-open-once.yml .github/workflows/optimize-search-render-once.yml
+          git commit -m 'Remove temporary search optimization workflows'
           git push origin main
