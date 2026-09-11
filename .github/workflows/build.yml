@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: write
 
 jobs:
   build:
@@ -34,6 +35,18 @@ jobs:
         with:
           gradle-version: '8.9'
           cache-disabled: true
+
+      - name: Clean existing Actions artifacts
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          echo "Removing old workflow artifacts to free Actions storage..."
+          gh api --paginate "repos/${GITHUB_REPOSITORY}/actions/artifacts?per_page=100" --jq '.artifacts[].id' | while read -r artifact_id; do
+            gh api --method DELETE "repos/${GITHUB_REPOSITORY}/actions/artifacts/${artifact_id}"
+          done
+          echo "Existing Actions artifacts cleaned."
 
       - name: Verify final Spanish catalog
         shell: bash
@@ -110,7 +123,6 @@ jobs:
           aab=$(find app/build/outputs/bundle -type f -name "*.aab" | head -n 1)
           cp "$apk" "release/EV-Calculator-PRO-${artifact_version}.apk"
           cp "$aab" "release/EV-Calculator-PRO-${artifact_version}.aab"
-          zip -r "release/EV-Calculator-PRO-${artifact_version}.zip" . -x '.git/*' '.gradle/*' 'app/build/*' 'release/*'
 
       - name: Upload release APK
         uses: actions/upload-artifact@v6
@@ -118,7 +130,7 @@ jobs:
           name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-apk
           path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.apk
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 3
 
       - name: Upload release AAB
         uses: actions/upload-artifact@v6
@@ -126,12 +138,4 @@ jobs:
           name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-aab
           path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.aab
           if-no-files-found: error
-          retention-days: 14
-
-      - name: Upload project ZIP
-        uses: actions/upload-artifact@v6
-        with:
-          name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-source
-          path: release/EV-Calculator-PRO-v${{ steps.version.outputs.version }}.zip
-          if-no-files-found: error
-          retention-days: 14
+          retention-days: 3
