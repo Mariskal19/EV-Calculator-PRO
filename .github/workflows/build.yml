@@ -37,78 +37,6 @@ jobs:
           gradle-version: '8.9'
           cache-disabled: true
 
-      - name: Apply search virtualization patch
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
-          s=p.read_text(encoding='utf-8')
-          start=s.find('    private void showSearch(){')
-          end=s.find('    private int trimRank(Vehicle v)',start)
-          if start<0 or end<0:
-              raise SystemExit('Could not locate showSearch boundaries')
-          new_method=r'''    private void showSearch(){
-        final EditText input=new EditText(this);
-        input.setSingleLine(true);
-        input.setHint(LanguageManager.t(this,"Marca, modelo, año, batería o versión"));
-        input.setTextColor(text()); input.setHintTextColor(sub()); input.setTextSize(15);
-        input.setPadding(dp(14),0,dp(14),0);
-        input.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
-
-        final ListView list=new ListView(this);
-        list.setDivider(null); list.setVerticalScrollBarEnabled(true); list.setPadding(0,dp(2),0,0); list.setClipToPadding(false);
-        final TextView header=tv("Todos los vehículos",13,blue);
-        header.setTypeface(null,Typeface.BOLD); header.setPadding(dp(18),dp(16),dp(18),dp(7)); header.setBackgroundColor(Color.TRANSPARENT);
-        list.addHeaderView(header,null,false);
-
-        final List<Vehicle> results=new ArrayList<>();
-        final BaseAdapter adapter=new BaseAdapter(){
-            @Override public int getCount(){return results.size();}
-            @Override public Object getItem(int position){return results.get(position);}
-            @Override public long getItemId(int position){return position;}
-            @Override public View getView(int position,View convertView,android.view.ViewGroup parent){
-                TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(CompararCochesActivity.this);
-                item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); item.setPadding(dp(16),dp(6),dp(42),dp(6)); item.setLineSpacing(0,1.05f);
-                Vehicle v=results.get(position);
-                SpannableString styled=new SpannableString(searchLabel(v)); int nl=styled.toString().indexOf('\\n');
-                if(nl>0){styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);}
-                item.setText(styled); item.setTextSize(14); item.setTextColor(text());
-                item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));
-                item.setOnClickListener(x->{Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();selectedIds.add(v.id);SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX+v.id,prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)+1).apply();saveSelection();rebuild();});
-                return item;
-            }
-        };
-        list.setAdapter(adapter);
-
-        LinearLayout marketRow=new LinearLayout(this); marketRow.setOrientation(LinearLayout.HORIZONTAL); marketRow.setGravity(Gravity.CENTER_VERTICAL); marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
-        TextView marketTitle=tv("Mercado",12,sub()); marketTitle.setTypeface(null,Typeface.BOLD); marketTitle.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
-        final Spinner searchMarketSpinner=new Spinner(this); List<String> ms=markets(); List<String> labels=new ArrayList<>(); for(String m:ms)labels.add(marketLabel(m));
-        ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){
-            @Override public View getView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;}
-            @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;}
-        };
-        searchMarketSpinner.setAdapter(marketAdapter); searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14)); searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
-        int marketIndex=0; for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;} searchMarketSpinner.setSelection(marketIndex);
-
-        Runnable refreshResults=()->{String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle> filtered=orderedSearchVehicles(q);results.clear();results.addAll(filtered);header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);adapter.notifyDataSetChanged();};
-        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=0&&pos<ms.size()){selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();input.post(refreshResults);}}public void onNothingSelected(android.widget.AdapterView<?>p){}});
-        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(180),dp(38)));
-
-        LinearLayout body=new LinearLayout(this); body.setOrientation(LinearLayout.VERTICAL); body.setPadding(dp(12),dp(12),dp(12),dp(8)); body.addView(input,new LinearLayout.LayoutParams(-1,dp(50))); body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56))); body.addView(list,new LinearLayout.LayoutParams(-1,0,1));
-        AlertDialog d=new AlertDialog.Builder(this).setView(body).create(); input.setTag(d);
-        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){input.post(refreshResults);}public void afterTextChanged(Editable e){}});
-        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);input.post(refreshResults);});});
-        d.show(); d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20)); input.requestFocus();
-    }
-
-'''
-          s=s[:start]+new_method+s[end:]
-          p.write_text(s,encoding='utf-8')
-          print('Search virtualization patch applied in build workspace.')
-          PY
-
       - name: Verify final Spanish catalog
         shell: bash
         run: |
@@ -149,7 +77,10 @@ jobs:
         run: |
           set -euo pipefail
           version=$(sed -nE "s/^[[:space:]]*versionName[[:space:]]+['\"]([^'\"]+)['\"].*$/\1/p" app/build.gradle | head -n 1)
-          if [ -z "$version" ]; then echo "Could not determine versionName from app/build.gradle"; exit 1; fi
+          if [ -z "$version" ]; then
+            echo "Could not determine versionName from app/build.gradle"
+            exit 1
+          fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "App version: $version"
 
@@ -168,20 +99,6 @@ jobs:
           test -n "$aab" || { echo "No Release AAB found."; exit 1; }
           echo "Release APK: $apk"
           echo "Release AAB: $aab"
-
-      - name: Persist optimized search source
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- app/src/main/java/com/evchargecalculator/CompararCochesActivity.java; then
-            echo "Search source already matches optimized version."
-          else
-            git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
-            git commit -m "Virtualize compare car search results"
-            git push origin main
-          fi
 
       - name: Prepare release files
         shell: bash
@@ -208,12 +125,18 @@ jobs:
           aab="release/EV-Calculator-PRO-v${VERSION#v}.aab"
           title="EV Calculator PRO v${VERSION#v} build ${GITHUB_RUN_NUMBER}"
           notes="Automated release build from main. Commit: ${GITHUB_SHA}"
+
           echo "Publishing GitHub Release: $tag"
           echo "Token permissions: contents=write"
+
           if gh release view "$tag" >/dev/null 2>&1; then
             echo "Release $tag already exists; uploading assets."
             gh release upload "$tag" "$apk" "$aab" --clobber
           else
-            gh release create "$tag" "$apk" "$aab" --title "$title" --notes "$notes" --target "$GITHUB_SHA"
+            gh release create "$tag" "$apk" "$aab" \
+              --title "$title" \
+              --notes "$notes" \
+              --target "$GITHUB_SHA"
           fi
+
           echo "Release publication completed."
