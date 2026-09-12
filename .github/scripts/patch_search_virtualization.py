@@ -59,13 +59,18 @@ new_method = '''    private void showSearch(){
 '''
 s = s[:start] + new_method + s[end:]
 
-# Keep the compare screen header consistent with the selected theme.
-old = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);'
-new = 'heroImage.setImageResource(dark ? R.drawable.cabecera_tema_oscuro : R.drawable.cabecera_tema_claro);'
-if old in s:
-    s = s.replace(old, new, 1)
+# Keep the compare screen header consistent with the selected theme using an existing drawable.
+old_bad = 'heroImage.setImageResource(R.drawable.cabecera_tema_oscuro);'
+new_good = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
+if old_bad in s:
+    s = s.replace(old_bad, new_good, 1)
 else:
-    raise SystemExit("Could not locate compare header theme line")
+    old_light = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);'
+    new_light = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
+    if old_light in s and 'heroImage.setColorFilter' not in s:
+        s = s.replace(old_light, new_light, 1)
+    elif 'heroImage.setColorFilter' not in s:
+        raise SystemExit("Could not locate compare header theme line")
 
 p.write_text(s, encoding="utf-8")
 print("Search virtualization and compare theme patches applied.")
