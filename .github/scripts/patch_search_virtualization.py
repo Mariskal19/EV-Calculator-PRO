@@ -58,5 +58,14 @@ new_method = '''    private void showSearch(){
 
 '''
 s = s[:start] + new_method + s[end:]
+
+# Keep the compare screen header consistent with the selected theme.
+old = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);'
+new = 'heroImage.setImageResource(dark ? R.drawable.cabecera_tema_oscuro : R.drawable.cabecera_tema_claro);'
+if old in s:
+    s = s.replace(old, new, 1)
+else:
+    raise SystemExit("Could not locate compare header theme line")
+
 p.write_text(s, encoding="utf-8")
-print("Search virtualization patch applied.")
+print("Search virtualization and compare theme patches applied.")
