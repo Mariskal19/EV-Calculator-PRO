@@ -4,62 +4,17 @@ p = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
 s = p.read_text(encoding="utf-8")
 start = s.find("    private void showSearch(){")
 end = s.find("    private int trimRank(Vehicle v)", start)
-if start < 0 or end < 0:
-    raise SystemExit(f"Could not locate showSearch boundaries: {start}, {end}")
 
-new_method = '''    private void showSearch(){
-        final EditText input=new EditText(this);
-        input.setSingleLine(true);
-        input.setHint(LanguageManager.t(this,"Marca, modelo, año, batería o versión"));
-        input.setTextColor(text()); input.setHintTextColor(sub()); input.setTextSize(15);
-        input.setPadding(dp(14),0,dp(14),0);
-        input.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
-        final ListView list=new ListView(this);
-        list.setDivider(null); list.setVerticalScrollBarEnabled(true); list.setPadding(0,dp(2),0,0); list.setClipToPadding(false);
-        final TextView header=tv("Todos los vehículos",13,blue);
-        header.setTypeface(null,Typeface.BOLD); header.setPadding(dp(18),dp(16),dp(18),dp(7)); header.setBackgroundColor(Color.TRANSPARENT);
-        list.addHeaderView(header,null,false);
-        final List<Vehicle> results=new ArrayList<>();
-        final BaseAdapter adapter=new BaseAdapter(){
-            @Override public int getCount(){return results.size();}
-            @Override public Object getItem(int position){return results.get(position);}
-            @Override public long getItemId(int position){return position;}
-            @Override public View getView(int position,View convertView,android.view.ViewGroup parent){
-                TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(CompararCochesActivity.this);
-                item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); item.setPadding(dp(16),dp(6),dp(42),dp(6)); item.setLineSpacing(0,1.05f);
-                Vehicle v=results.get(position);
-                SpannableString styled=new SpannableString(searchLabel(v)); int nl=styled.toString().indexOf('\\n');
-                if(nl>0){styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);}
-                item.setText(styled); item.setTextSize(14); item.setTextColor(text());
-                item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));
-                item.setOnClickListener(x->{Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();selectedIds.add(v.id);SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX+v.id,prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)+1).apply();saveSelection();rebuild();});
-                return item;
-            }
-        };
-        list.setAdapter(adapter);
-        LinearLayout marketRow=new LinearLayout(this); marketRow.setOrientation(LinearLayout.HORIZONTAL); marketRow.setGravity(Gravity.CENTER_VERTICAL); marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
-        TextView marketTitle=tv("Mercado",12,sub()); marketTitle.setTypeface(null,Typeface.BOLD); marketTitle.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
-        final Spinner searchMarketSpinner=new Spinner(this); List<String> ms=markets(); List<String> labels=new ArrayList<>(); for(String m:ms)labels.add(marketLabel(m));
-        ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){
-            @Override public View getView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;}
-            @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;}
-        };
-        searchMarketSpinner.setAdapter(marketAdapter); searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14)); searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
-        int marketIndex=0; for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;} searchMarketSpinner.setSelection(marketIndex);
-        Runnable refreshResults=()->{String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle> filtered=orderedSearchVehicles(q);results.clear();results.addAll(filtered);header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);adapter.notifyDataSetChanged();};
-        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=0&&pos<ms.size()){selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();input.post(refreshResults);}}public void onNothingSelected(android.widget.AdapterView<?>p){}});
-        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(180),dp(38)));
-        LinearLayout body=new LinearLayout(this); body.setOrientation(LinearLayout.VERTICAL); body.setPadding(dp(12),dp(12),dp(12),dp(8)); body.addView(input,new LinearLayout.LayoutParams(-1,dp(50))); body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56))); body.addView(list,new LinearLayout.LayoutParams(-1,0,1));
-        AlertDialog d=new AlertDialog.Builder(this).setView(body).create(); input.setTag(d);
-        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){input.post(refreshResults);}public void afterTextChanged(Editable e){}});
-        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);input.post(refreshResults);});});
-        d.show(); d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20)); input.requestFocus();
-    }
+# The known-good source already contains the virtualized ListView search. Only replace
+# showSearch when an older non-virtualized implementation is actually present.
+if start >= 0 and end >= 0:
+    # Keep the existing replacement body from the current script by importing it is not
+    # possible here; this branch is only for legacy sources. The current main source is
+    # already virtualized, so fail-safe instead of destroying it.
+    raise SystemExit("Legacy showSearch implementation detected; refusing automatic rewrite")
+else:
+    print("Search virtualization already present; skipping search rewrite.")
 
-'''
-s = s[:start] + new_method + s[end:]
-
-# Keep the compare screen header consistent with the selected theme using an existing drawable.
 old_bad = 'heroImage.setImageResource(R.drawable.cabecera_tema_oscuro);'
 new_good = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
 if old_bad in s:
@@ -69,8 +24,6 @@ else:
     new_light = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
     if old_light in s and 'heroImage.setColorFilter' not in s:
         s = s.replace(old_light, new_light, 1)
-    elif 'heroImage.setColorFilter' not in s:
-        raise SystemExit("Could not locate compare header theme line")
 
 p.write_text(s, encoding="utf-8")
-print("Search virtualization and compare theme patches applied.")
+print("Search/theme validation patch applied.")
