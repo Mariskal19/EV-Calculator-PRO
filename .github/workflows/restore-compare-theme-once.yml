@@ -27,12 +27,21 @@ jobs:
           p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s = p.read_text(encoding='utf-8')
           bad = 'heroImage.setImageResource(R.drawable.cabecera_tema_oscuro);'
-          good = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
-          if bad not in s:
-              raise SystemExit('Expected broken dark header reference was not found')
-          s = s.replace(bad, good, 1)
+          replacement = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);\n        heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
+          if bad in s:
+              s = s.replace(bad, replacement, 1)
+          else:
+              light = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);'
+              if 'heroImage.setColorFilter' not in s and light in s:
+                  s = s.replace(light, replacement, 1)
+              elif 'heroImage.setColorFilter' not in s:
+                  raise SystemExit('Could not locate compare header image line')
           p.write_text(s, encoding='utf-8')
           PY
+          test -s app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          grep -q 'class CompararCochesActivity' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          ! grep -q 'cabecera_tema_oscuro' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          grep -q 'heroImage.setColorFilter' app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
 
       - name: Commit repair and remove one-time workflow
         shell: bash
