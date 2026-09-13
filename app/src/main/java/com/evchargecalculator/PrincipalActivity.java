@@ -80,7 +80,7 @@ public class PrincipalActivity extends Activity {
     FrameLayout hero = new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
     ImageView header = new ImageView(this);
-    header.setImageResource(R.drawable.cabecera_tema_claro);
+    header.setImageResource(R.drawable.cabecera_ev_calculator);
     header.setScaleType(ImageView.ScaleType.CENTER_CROP);
     header.setTranslationY(-dp(10));
     hero.addView(header, new FrameLayout.LayoutParams(-1, -1));
