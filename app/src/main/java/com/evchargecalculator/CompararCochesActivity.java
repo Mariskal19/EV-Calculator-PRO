@@ -200,7 +200,7 @@ public class CompararCochesActivity extends Activity {
     private String marketLabel(String c) { return marketFlag(c) + "  " + marketName(c); }
 
     private void build() {
-        LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
+        LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); int statusBarHeight = getResources().getIdentifier("status_bar_height", "dimen", "android") > 0 ? getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android")) : 0; root.setPadding(0,statusBarHeight,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
         FrameLayout hero = new FrameLayout(this); hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
         ImageView heroImage = new ImageView(this); heroImage.setImageResource(R.drawable.cabecera_ev_calculator); heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP); heroImage.setAdjustViewBounds(false); heroImage.setTranslationY(-dp(10)); hero.addView(heroImage, new FrameLayout.LayoutParams(-1,-1));
         View topFade = new View(this); topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)})); hero.addView(topFade, new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
