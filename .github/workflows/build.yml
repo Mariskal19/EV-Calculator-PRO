@@ -130,27 +130,10 @@ jobs:
           cp "$apk" "release/EV-Calculator-PRO-${artifact_version}.apk"
           cp "$aab" "release/EV-Calculator-PRO-${artifact_version}.aab"
 
-      - name: Publish APK and AAB as GitHub release assets
-        env:
-          GH_TOKEN: ${{ github.token }}
-          VERSION: ${{ steps.version.outputs.version }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          tag="build-v${VERSION#v}-${GITHUB_RUN_NUMBER}"
-          apk="release/EV-Calculator-PRO-v${VERSION#v}.apk"
-          aab="release/EV-Calculator-PRO-v${VERSION#v}.aab"
-          title="EV Calculator PRO v${VERSION#v} build ${GITHUB_RUN_NUMBER}"
-          notes="Automated release build from main. Commit: ${GITHUB_SHA}"
-          echo "Publishing GitHub Release: $tag"
-          echo "Token permissions: contents=write"
-          if gh release view "$tag" >/dev/null 2>&1; then
-            echo "Release $tag already exists; uploading assets."
-            gh release upload "$tag" "$apk" "$aab" --clobber
-          else
-            gh release create "$tag" "$apk" "$aab" \
-              --title "$title" \
-              --notes "$notes" \
-              --target "$GITHUB_SHA"
-          fi
-          echo "Release publication completed."
+      - name: Upload APK and AAB as workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: EV-Calculator-PRO-v${{ steps.version.outputs.version }}-build-${{ github.run_number }}
+          path: release/*
+          if-no-files-found: error
+          retention-days: 30
