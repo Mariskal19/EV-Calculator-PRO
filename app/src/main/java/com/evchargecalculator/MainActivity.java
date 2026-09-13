@@ -159,7 +159,7 @@ public class MainActivity extends Activity {
     FrameLayout hero = new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
     ImageView sceneHeader = new ImageView(this);
-    sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_ev_calculator);
+    sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_tema_claro);
     sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);
     sceneHeader.setAdjustViewBounds(false);
     sceneHeader.setTranslationY(-dp(10));
