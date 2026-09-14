@@ -61,5 +61,12 @@ new_callback = 'dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBo
 if old_callback in s:
     s = s.replace(old_callback, new_callback, 1)
 
+# Keep the Comparar coches back button identical to the standard back button
+# used by the other app screens: arrow, size, padding and vertical alignment.
+old_back = 'TextView back = tv("‹",40,Color.WHITE); back.setGravity(Gravity.CENTER); back.setTypeface(null,Typeface.BOLD); back.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
+new_back = 'TextView back = tv("←",30,Color.WHITE); back.setGravity(Gravity.CENTER); back.setIncludeFontPadding(false); back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); back.setBackgroundColor(Color.TRANSPARENT); back.setPadding(0,0,0,0); back.setTranslationY(-dp(4)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
+if old_back in s:
+    s = s.replace(old_back, new_back, 1)
+
 p.write_text(s, encoding="utf-8")
-print("Compare theme refresh patch applied.")
+print("Compare theme refresh and back-button alignment patches applied.")
