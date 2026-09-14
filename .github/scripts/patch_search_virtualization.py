@@ -23,9 +23,11 @@ old_resume = '''    @Override
         LanguageManager.applyStored(this);
         SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
         boolean newDark = p.contains("dark_theme") ? p.getBoolean("dark_theme", false) : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+        boolean themeChanged = dark != newDark;
         dark = newDark;
         if (!vehicles.isEmpty()) {
             loadSelection();
+            if (themeChanged) build();
             rebuild();
         }
     }
@@ -58,6 +60,16 @@ old_back = 'TextView back = tv("‹",40,Color.WHITE); back.setGravity(Gravity.CE
 new_back = 'TextView back = tv("←",30,Color.WHITE); back.setGravity(Gravity.CENTER); back.setIncludeFontPadding(false); back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); back.setBackgroundColor(Color.TRANSPARENT); back.setPadding(0,0,0,0); back.setTranslationY(-dp(4)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
 if old_back in s:
     s = s.replace(old_back, new_back, 1)
+
+# The Compare header must use the same top origin as the other screens.
+# Do not add the status-bar height as content padding: the other screens draw
+# their header from the top edge, with the status-bar area overlaying the image.
+old_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); int statusBarHeight = getResources().getIdentifier("status_bar_height", "dimen", "android") > 0 ? getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android")) : 0; root.setPadding(0,statusBarHeight,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));'
+new_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));'
+if old_root in s:
+    s = s.replace(old_root, new_root, 1)
+else:
+    s = re.sub(r'LinearLayout root = new LinearLayout\(this\); root\.setOrientation\(LinearLayout\.VERTICAL\); int statusBarHeight = .*?; root\.setBackgroundColor\(', 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(', s, count=1)
 
 # IMPORTANT: the entire hero must be inside the same ScrollView as the page.
 # Never leave hero attached to root. A View cannot have two parents.
