@@ -54,12 +54,13 @@ if 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.
         s, count = re.subn(pattern, new_end, s, count=1)
         print("Compare scroll container end matches:", count)
 
-# The card is now known to be fully visible. Move it upward by 14dp toward the hero,
-# while keeping the immediate content container unclipped so the card text remains visible.
-pattern = r'LinearLayout\.LayoutParams introLp = new LinearLayout\.LayoutParams\(-1, -2\); introLp\.topMargin = 0; intro\.setLayoutParams\(introLp\); content\.addView\(intro\);'
-replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(14); intro.setLayoutParams(introLp); content.addView(intro);'
+# Keep the card in the normal content flow and overlap it visually into the hero.
+# Translation avoids negative layout margins, so the card keeps its measured height
+# and cannot cut the first lines of its own content.
+pattern = r'LinearLayout\.LayoutParams introLp = new LinearLayout\.LayoutParams\(-1, -2\); introLp\.topMargin = -dp\(14\); intro\.setLayoutParams\(introLp\); content\.addView\(intro\);'
+replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = 0; intro.setLayoutParams(introLp); intro.setTranslationY(-dp(26)); content.addView(intro);'
 s, count = re.subn(pattern, replacement, s, count=1)
-print("Compare intro card vertical position matches:", count)
+print("Compare intro card overlap matches:", count)
 
 p.write_text(s, encoding="utf-8")
 print("Compare theme refresh, back-button alignment and scrolling header patches applied.")
