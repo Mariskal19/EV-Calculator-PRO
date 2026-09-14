@@ -7,9 +7,10 @@ on:
     branches: [ main ]
     paths:
       - 'app/src/main/assets/catalog_es_2024_2026.json'
+      - 'scripts/enrich_tesla_catalog.py'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   catalog:
@@ -17,6 +18,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
+      - name: Enrich missing Tesla technical data
+        run: python3 scripts/enrich_tesla_catalog.py
+
+      - name: Persist catalog enrichment
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- app/src/main/assets/catalog_es_2024_2026.json; then
+            echo "Catalog already enriched."
+          else
+            git add app/src/main/assets/catalog_es_2024_2026.json
+            git commit -m "catalog: complete Tesla technical data"
+            git push origin HEAD:main
+          fi
+
       - name: Validate final catalog
         run: |
           python3 - <<'PY'
