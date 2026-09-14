@@ -13,24 +13,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - name: Align compare intro card over header image
+      - name: Fix compare card overlap without clipping
         run: |
           python3 - <<'PY'
           from pathlib import Path
           p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s = p.read_text()
-          old_scroll = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));'
-          new_scroll = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); scroll.setTranslationY(-dp(26)); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));'
-          old_intro = 'LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(26); content.addView(intro,introLp);'
-          new_intro = 'LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(14); content.addView(intro,introLp);'
-          old_cars = 'carsScroll.setPadding(0,dp(12),0,dp(4)); carsRow=new LinearLayout(this);'
-          new_cars = 'carsScroll.setPadding(0,dp(12),0,dp(4)); LinearLayout.LayoutParams carsScrollLp=new LinearLayout.LayoutParams(-1,-2); carsScrollLp.topMargin=dp(26); carsRow=new LinearLayout(this);'
-          old_add = 'content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));'
-          new_add = 'content.addView(carsScroll,carsScrollLp);'
-          for old, new in ((old_scroll,new_scroll),(old_intro,new_intro),(old_cars,new_cars),(old_add,new_add)):
-              if old not in s:
-                  raise SystemExit('Expected source pattern not found')
+          old = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); scroll.setTranslationY(-dp(26)); LinearLayout content=new LinearLayout(this);'
+          new = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,-1); scrollLp.topMargin=-dp(26); LinearLayout content=new LinearLayout(this);'
+          if old in s:
               s = s.replace(old,new,1)
+          elif 'LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,-1); scrollLp.topMargin=-dp(26);' not in s:
+              raise SystemExit('Expected ScrollView pattern not found')
+          old_add = 'root.addView(scroll);'
+          new_add = 'root.addView(scroll,scrollLp);'
+          if old_add in s:
+              s = s.replace(old_add,new_add,1)
+          elif new_add not in s:
+              raise SystemExit('Expected root.addView(scroll) pattern not found')
           p.write_text(s)
           PY
       - name: Commit patch
