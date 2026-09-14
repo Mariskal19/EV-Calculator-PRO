@@ -50,6 +50,71 @@ jobs:
           print('Corrected verified ATTO 3 EVO records:', ', '.join(found))
           PY
 
+      - name: Correct verified Ford Explorer 2024 duplicate records
+        run: |
+          python - <<'PY'
+          import json
+          import re
+          from pathlib import Path
+          p=Path('app/src/main/assets/catalog_es_2024_2026.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          vehicles=data['vehicles']
+
+          def norm(s):
+              s=str(s or '').lower().strip()
+              s=s.replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u')
+              s=re.sub(r'[^a-z0-9]+',' ',s)
+              return re.sub(r'\s+',' ',s).strip()
+
+          groups={}
+          for v in vehicles:
+              key=(norm(v.get('make')),norm(v.get('model')),int(v.get('year') or 0),norm(v.get('version')))
+              groups.setdefault(key,[]).append(v)
+
+          corrected=0
+          removed=0
+          for key, records in list(groups.items()):
+              make,model,year,version=key
+              if make != 'ford' or model != 'explorer' or year != 2024 or len(records) <= 1:
+                  continue
+              if 'rango extendido awd' in version:
+                  desired_battery=77.0
+                  desired_drive='AWD'
+              elif 'rango extendido rwd' in version:
+                  desired_battery=79.0
+                  desired_drive='RWD'
+              else:
+                  raise RuntimeError(f'Unexpected Ford Explorer duplicate: {key}')
+
+              candidates=[v for v in records if float(v.get('batteryKwh') or -1) == desired_battery]
+              if len(candidates) != 1:
+                  raise RuntimeError(f'Ford Explorer duplicate does not have exactly one verified record: {key} specs={[v.get("batteryKwh") for v in records]}')
+              keep=candidates[0]
+              keep['batteryKwh']=desired_battery
+              keep['usableBatteryKwh']=desired_battery
+              keep['drive']=desired_drive
+              keep['drivetrain']=desired_drive
+              keep['batteryType']=keep.get('batteryType') or 'Li-ion'
+              keep['source']='Ford España — Explorer eléctrico 2024'
+              keep['lastUpdated']='2026-09-14'
+
+              for other in records:
+                  if other is keep:
+                      continue
+                  for k,v in other.items():
+                      if keep.get(k) in (None,'') and v not in (None,''):
+                          keep[k]=v
+                  vehicles.remove(other)
+                  removed += 1
+              corrected += 1
+              print('Corrected Ford Explorer:', version, '->', desired_battery, 'kWh', desired_drive, 'removed duplicates:', len(records)-1)
+
+          if corrected != 2 or removed != 2:
+              raise RuntimeError(f'Expected 2 Ford Explorer duplicate groups and 2 removals; got groups={corrected}, removals={removed}')
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print('Ford Explorer correction complete:', corrected, 'groups corrected,', removed, 'duplicate records removed')
+          PY
+
       - name: Audit catalog for duplicate commercial records
         run: |
           python - <<'PY'
@@ -68,12 +133,14 @@ jobs:
           print('AUDIT exact commercial duplicates:',len(duplicates))
           for k,vs in duplicates.items():
               print('DUPLICATE:',k,'count=',len(vs),'specs=',[(x.get('batteryKwh'),x.get('powerKw'),x.get('drive') or x.get('drivetrain'),x.get('wltpKm'),x.get('consumptionKwh100')) for x in vs])
+          assert not duplicates, f'Exact commercial duplicates remain: {list(duplicates)}'
           ids=defaultdict(list)
           for v in vehicles:
               if v.get('id'): ids[v['id']].append(v)
           duplicate_ids={k:vs for k,vs in ids.items() if len(vs)>1}
           print('AUDIT duplicate IDs:',len(duplicate_ids))
           for k,vs in duplicate_ids.items(): print('DUPLICATE_ID:',k,len(vs))
+          assert not duplicate_ids, f'Duplicate IDs remain: {list(duplicate_ids)}'
           PY
 
       - name: Validate catalog
@@ -85,10 +152,23 @@ jobs:
           data=json.loads(p.read_text(encoding='utf-8'))
           vehicles=data.get('vehicles')
           assert isinstance(vehicles,list), 'vehicles array missing'
-          assert len(vehicles)==625, f'unexpected vehicle count: {len(vehicles)}'
+          assert len(vehicles)==611, f'unexpected vehicle count after verified duplicate cleanup: {len(vehicles)}'
           for i,v in enumerate(vehicles):
               assert v.get('make') and v.get('model') and v.get('version'), f'invalid vehicle at index {i}'
-          print('Catalog validation OK:',len(vehicles),'vehicles')
+
+          sealion=[v for v in vehicles if str(v.get('make','')).strip().lower()=='byd' and str(v.get('model','')).strip().upper()=='SEALION 7' and int(v.get('year') or 0)==2024]
+          assert len(sealion)==3, f'Expected exactly 3 SEALION 7 Spain records, got {len(sealion)}'
+          sealion_specs={(str(v.get('version')).strip(),float(v.get('batteryKwh') or 0)) for v in sealion}
+          expected={('Comfort',82.5),('Design AWD',82.5),('Excellence AWD',91.3)}
+          assert sealion_specs==expected, f'Unexpected SEALION 7 records: {sealion_specs}'
+
+          atto=[v for v in vehicles if str(v.get('make','')).strip().lower()=='byd' and str(v.get('model','')).strip().upper()=='ATTO 3 EVO' and int(v.get('year') or 0)==2026]
+          assert len(atto)==2, f'Expected exactly 2 ATTO 3 EVO Spain records, got {len(atto)}'
+          byver={str(v.get('version')).strip():v for v in atto}
+          assert set(byver)=={'Design','Excellence'}, f'Unexpected ATTO 3 EVO versions: {set(byver)}'
+          assert (byver['Design'].get('batteryKwh'),byver['Design'].get('wltpKm'),byver['Design'].get('consumptionKwh100'),byver['Design'].get('drive'),byver['Design'].get('powerKw'))==(74.8,510,16.4,'RWD',230)
+          assert (byver['Excellence'].get('batteryKwh'),byver['Excellence'].get('wltpKm'),byver['Excellence'].get('consumptionKwh100'),byver['Excellence'].get('drive'),byver['Excellence'].get('powerKw'))==(74.8,470,17.8,'AWD',330)
+          print('Catalog validation OK:',len(vehicles),'vehicles; duplicates=0; duplicate IDs=0; SEALION 7=3; ATTO 3 EVO=2')
           PY
 
       - name: Commit catalog if changed
@@ -99,6 +179,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No catalog changes to commit.'
           else
-            git commit -m 'catalog: correct verified ATTO 3 EVO specifications'
+            git commit -m 'catalog: correct verified ATTO 3 EVO and Ford Explorer specifications'
             git push origin main
           fi
