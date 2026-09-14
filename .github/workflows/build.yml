@@ -40,9 +40,6 @@ jobs:
       - name: Apply search virtualization patch
         run: python3 .github/scripts/patch_search_virtualization.py
 
-      - name: Apply compare catalog mapping fix
-        run: python3 .github/scripts/fix_compare_mapping.py
-
       - name: Verify final Spanish catalog
         shell: bash
         run: |
@@ -121,10 +118,6 @@ jobs:
           git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
           git commit -m "Virtualize compare car search results"
 
-          # main may have moved while the build was running. Rebase the small
-          # generated-source commit onto the current remote main before pushing.
-          # If another change lands during the retry, leave the build successful
-          # and let the next main build persist the generated source.
           for attempt in 1 2 3; do
             git fetch origin main
             if git rebase origin/main; then
