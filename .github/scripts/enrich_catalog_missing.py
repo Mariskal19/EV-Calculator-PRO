@@ -1,19 +1,12 @@
 #!/usr/bin/env python3
-import json, re, subprocess, sys
+import json, re, sys
 from datetime import date
 from pathlib import Path
 from urllib.request import urlopen, Request
 
 CATALOG = Path('app/src/main/assets/catalog_es_2024_2026.json')
-SOURCE_URL = 'https://github.com/open-ev-data/open-ev-data-dataset/releases/latest/download/open-ev-data.json'
+LATEST_API = 'https://api.github.com/repos/open-ev-data/open-ev-data-dataset/releases/latest'
 TODAY = date.today().isoformat()
-
-ALIASES = {
-    'citroen': 'citroen', 'ds': 'ds automobiles', 'cupra': 'cupra',
-    'mercedes-benz': 'mercedes-benz', 'mercedes benz': 'mercedes-benz',
-    'vw': 'volkswagen', 'volkswagen': 'volkswagen',
-    'opel': 'opel', 'smart': 'smart', 'tesla': 'tesla',
-}
 
 def norm(s):
     s = str(s or '').lower().strip()
@@ -22,176 +15,107 @@ def norm(s):
     return re.sub(r'\s+', ' ', s).strip()
 
 def num(v):
-    try:
-        return float(v)
-    except Exception:
-        return None
+    try: return float(v)
+    except Exception: return None
 
 def first(d, *keys):
     for k in keys:
-        if isinstance(d, dict) and d.get(k) not in (None, ''):
-            return d[k]
+        if isinstance(d, dict) and d.get(k) not in (None, ''): return d[k]
     return None
 
 def flatten_sources(v):
     out = []
     for s in v.get('sources', []) if isinstance(v, dict) else []:
-        if not isinstance(s, dict):
-            continue
+        if not isinstance(s, dict): continue
         name = first(s, 'name', 'source_name', 'title')
         url = first(s, 'url', 'source_url')
-        if name or url:
-            out.append((name or 'OpenEV Data', url))
+        if name or url: out.append((name or 'OpenEV Data', url))
     return out
 
 def candidate_fields(v):
-    b = v.get('battery') or {}
-    p = v.get('powertrain') or {}
-    c = v.get('charging') or {}
-    ac = c.get('ac') or {}
-    dc = c.get('dc') or {}
-    perf = v.get('performance') or {}
-    cap = v.get('capacity') or {}
-    w = v.get('weights') or {}
-    # Support older OpenEV shape too.
+    b = v.get('battery') or {}; p = v.get('powertrain') or {}; c = v.get('charging') or {}
+    ac = c.get('ac') or {}; dc = c.get('dc') or {}; perf = v.get('performance') or {}
+    cap = v.get('capacity') or {}; w = v.get('weights') or {}
     battery = first(b, 'pack_capacity_kwh_net', 'capacity_kwh')
     power = first(p, 'system_power_kw', 'power_kw')
-    drive = first(p, 'drivetrain')
-    if drive is None:
-        drive = v.get('drive_type')
-    accel = first(perf, 'acceleration_0_100_kmh_s', 'acceleration_0_100_kmh')
-    if accel is None:
-        accel = v.get('acceleration_0_100_kmh')
-    ac_kw = first(ac, 'max_power_kw')
-    dc_kw = first(dc, 'max_power_kw')
-    if dc_kw is None:
-        dc_kw = v.get('charging_speed_kw')
+    drive = first(p, 'drivetrain') or v.get('drive_type')
+    accel = first(perf, 'acceleration_0_100_kmh_s', 'acceleration_0_100_kmh') or v.get('acceleration_0_100_kmh')
+    ac_kw = first(ac, 'max_power_kw'); dc_kw = first(dc, 'max_power_kw') or v.get('charging_speed_kw')
     charge_time = None
-    for row in (c.get('charging_time', {}).get('dc', []) if isinstance(c.get('charging_time'), dict) else []):
-        if not isinstance(row, dict):
-            continue
-        if num(row.get('from_soc_percent')) == 10 and num(row.get('to_soc_percent')) == 80:
-            charge_time = row.get('time_min')
-            break
-    return {
-        'battery': num(battery),
-        'chemistry': first(b, 'chemistry'),
-        'power': num(power),
-        'drive': str(drive or '').upper(),
-        'ac': num(ac_kw), 'dc': num(dc_kw),
-        'charge_time': num(charge_time), 'accel': num(accel),
-        'trunk': num(first(cap, 'cargo_l')), 'weight': num(first(w, 'curb_weight_kg')),
-        'sources': flatten_sources(v),
-    }
+    ct = c.get('charging_time')
+    if isinstance(ct, dict):
+        for row in ct.get('dc', []):
+            if isinstance(row, dict) and num(row.get('from_soc_percent')) == 10 and num(row.get('to_soc_percent')) == 80:
+                charge_time = row.get('time_min'); break
+    return {'battery':num(battery),'chemistry':first(b,'chemistry'),'power':num(power),'drive':str(drive or '').upper(),
+            'ac':num(ac_kw),'dc':num(dc_kw),'charge_time':num(charge_time),'accel':num(accel),
+            'trunk':num(first(cap,'cargo_l')),'weight':num(first(w,'curb_weight_kg')),'sources':flatten_sources(v)}
 
 def load_source():
-    req = Request(SOURCE_URL, headers={'User-Agent': 'EV-Calculator-PRO catalog enrichment'})
-    with urlopen(req, timeout=60) as r:
-        data = json.load(r)
-    vehicles = data.get('vehicles') if isinstance(data, dict) else data
-    if not isinstance(vehicles, list):
-        raise RuntimeError('OpenEV Data JSON has no vehicles array')
-    return data, vehicles
+    req = Request(LATEST_API, headers={'User-Agent':'EV-Calculator-PRO catalog enrichment','Accept':'application/vnd.github+json'})
+    with urlopen(req, timeout=60) as r: release = json.load(r)
+    tag = release.get('tag_name')
+    if not tag: raise RuntimeError('Could not determine OpenEV latest release tag')
+    assets = release.get('assets') or []
+    asset = next((a for a in assets if a.get('name') == f'open-ev-data-{tag}.json'), None)
+    if asset is None:
+        asset = next((a for a in assets if a.get('name','').endswith('.json') and 'open-ev-data' in a.get('name','')), None)
+    if asset is None: raise RuntimeError(f'No OpenEV JSON asset found for {tag}')
+    req = Request(asset['browser_download_url'], headers={'User-Agent':'EV-Calculator-PRO catalog enrichment'})
+    with urlopen(req, timeout=120) as r: data = json.load(r)
+    vehicles = data.get('vehicles') if isinstance(data,dict) else data
+    if not isinstance(vehicles,list): raise RuntimeError('OpenEV Data JSON has no vehicles array')
+    print(f'Using OpenEV Data {tag}')
+    return vehicles
+
+def source_name(src):
+    make = src.get('brand') or (src.get('make') or {}).get('name') if isinstance(src.get('make'),dict) else src.get('brand') or src.get('make')
+    return make
 
 def score(target, src):
-    s = 0
-    tmake, smake = norm(target.get('make')), norm(src.get('brand') or src.get('make', {}).get('name') if isinstance(src.get('make'), dict) else src.get('make'))
-    if tmake != smake:
-        return -999
-    if norm(target.get('model')) != norm(src.get('model', {}).get('name') if isinstance(src.get('model'), dict) else src.get('model')):
-        return -999
-    if int(target.get('year', 0)) != int(src.get('year', 0) or 0):
-        return -999
-    s += 10
-    t = candidate_fields(target); c = candidate_fields(src)
-    tv = num(target.get('powerKw'))
-    if tv is not None and c['power'] is not None:
-        s += 7 if abs(tv-c['power']) <= 2 else -4
-    tv = num(target.get('batteryKwh'))
-    if tv is not None and c['battery'] is not None:
-        s += 5 if abs(tv-c['battery']) <= 2.5 else -2
-    td = str(target.get('drive') or target.get('drivetrain') or '').upper()
-    if td and c['drive']:
-        s += 4 if td == c['drive'] else -3
-    version = norm(target.get('version'))
-    variant = norm(src.get('variant') or src.get('trim') or src.get('version'))
+    smake = source_name(src)
+    if norm(target.get('make')) != norm(smake): return -999
+    smodel = src.get('model',{}).get('name') if isinstance(src.get('model'),dict) else src.get('model')
+    if norm(target.get('model')) != norm(smodel): return -999
+    if int(target.get('year',0)) != int(src.get('year',0) or 0): return -999
+    s=10; c=candidate_fields(src)
+    tv=num(target.get('powerKw'))
+    if tv is not None and c['power'] is not None: s += 7 if abs(tv-c['power'])<=2 else -4
+    tv=num(target.get('batteryKwh'))
+    if tv is not None and c['battery'] is not None: s += 5 if abs(tv-c['battery'])<=2.5 else -2
+    td=str(target.get('drive') or target.get('drivetrain') or '').upper()
+    if td and c['drive']: s += 4 if td==c['drive'] else -3
+    version=norm(target.get('version')); variant=norm(src.get('variant') or src.get('trim') or src.get('version'))
     if version and variant:
-        vtoks = set(re.findall(r'[a-z0-9]+', variant))
-        ttoks = set(re.findall(r'[a-z0-9]+', version))
-        s += min(5, len(vtoks & ttoks))
+        s += min(5,len(set(re.findall(r'[a-z0-9]+',version)) & set(re.findall(r'[a-z0-9]+',variant))))
     return s
 
-def set_missing(v, key, value):
-    if value in (None, '', 0):
-        return False
-    if v.get(key) not in (None, '', 0):
-        return False
-    v[key] = value
-    return True
+def set_missing(v,key,value):
+    if value in (None,'',0) or v.get(key) not in (None,'',0): return False
+    v[key]=value; return True
 
 def main():
-    data, source_vehicles = load_source()
-    catalog = json.loads(CATALOG.read_text(encoding='utf-8'))
-    vehicles = catalog.get('vehicles')
-    if not isinstance(vehicles, list):
-        raise RuntimeError('Catalog vehicles array missing')
-    original_count = len(vehicles)
-    changes = 0
-    matched = 0
-    ambiguous = 0
-    by_brand = {}
-
+    source_vehicles=load_source()
+    catalog=json.loads(CATALOG.read_text(encoding='utf-8')); vehicles=catalog.get('vehicles')
+    if not isinstance(vehicles,list): raise RuntimeError('Catalog vehicles array missing')
+    original_count=len(vehicles); changes=matched=ambiguous=0; by_brand={}
     for v in vehicles:
-        brand = v.get('make', 'Unknown')
-        candidates = [x for x in source_vehicles if score(v, x) >= 10]
-        scored = sorted(((score(v, x), x) for x in candidates), key=lambda z: z[0], reverse=True)
-        if not scored:
-            continue
-        best_score, best = scored[0]
-        if len(scored) > 1 and scored[0][0] == scored[1][0]:
-            ambiguous += 1
-            continue
-        matched += 1
-        c = candidate_fields(best)
-        added = 0
-        mappings = {
-            'usableBatteryKwh': c['battery'],
-            'batteryChemistry': c['chemistry'],
-            'drivetrain': c['drive'],
-            'acKw': c['ac'],
-            'dcKw': c['dc'],
-            'charge10to80Min': c['charge_time'],
-            'acceleration0to100Sec': c['accel'],
-            'trunkLiters': c['trunk'],
-            'weightKg': c['weight'],
-        }
-        for key, value in mappings.items():
-            if set_missing(v, key, value):
-                changes += 1; added += 1
+        scored=sorted(((score(v,x),x) for x in source_vehicles if score(v,x)>=10),key=lambda z:z[0],reverse=True)
+        if not scored: continue
+        if len(scored)>1 and scored[0][0]==scored[1][0]: ambiguous+=1; continue
+        matched+=1; c=candidate_fields(scored[0][1]); added=0
+        for key,value in {'usableBatteryKwh':c['battery'],'batteryChemistry':c['chemistry'],'drivetrain':c['drive'],'acKw':c['ac'],'dcKw':c['dc'],'charge10to80Min':c['charge_time'],'acceleration0to100Sec':c['accel'],'trunkLiters':c['trunk'],'weightKg':c['weight']}.items():
+            if set_missing(v,key,value): changes+=1; added+=1
         if added:
-            if not v.get('source'):
-                srcs = c['sources']
-                if srcs:
-                    name, url = srcs[0]
-                    v['source'] = f'OpenEV Data; {name}' + (f' ({url})' if url else '')
-            if not v.get('lastUpdated'):
-                v['lastUpdated'] = TODAY
-            by_brand[brand] = by_brand.get(brand, 0) + added
+            if not v.get('source') and c['sources']:
+                name,url=c['sources'][0]; v['source']=f'OpenEV Data; {name}'+(f' ({url})' if url else '')
+            if not v.get('lastUpdated'): v['lastUpdated']=TODAY
+            by_brand[v.get('make','Unknown')]=by_brand.get(v.get('make','Unknown'),0)+added
+    if len(vehicles)!=original_count: raise RuntimeError('Vehicle count changed unexpectedly')
+    CATALOG.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(f'Catalog vehicles: {original_count}; matched: {matched}; ambiguous: {ambiguous}; missing fields filled: {changes}')
+    for brand,count in sorted(by_brand.items()): print(f'  {brand}: +{count}')
 
-    if len(vehicles) != original_count:
-        raise RuntimeError('Vehicle count changed unexpectedly')
-    catalog['vehicles'] = vehicles
-    CATALOG.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-    print(f'OpenEV source vehicles: {len(source_vehicles)}')
-    print(f'Catalog vehicles: {original_count}')
-    print(f'Matched unambiguously: {matched}; ambiguous: {ambiguous}')
-    print(f'Missing fields filled: {changes}')
-    for brand, count in sorted(by_brand.items()):
-        print(f'  {brand}: +{count}')
-
-if __name__ == '__main__':
-    try:
-        main()
-    except Exception as exc:
-        print(f'ERROR: {exc}', file=sys.stderr)
-        sys.exit(1)
+if __name__=='__main__':
+    try: main()
+    except Exception as exc: print(f'ERROR: {exc}',file=sys.stderr); sys.exit(1)
