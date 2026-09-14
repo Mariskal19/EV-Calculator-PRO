@@ -613,7 +613,15 @@
       "powerKw": 285,
       "drive": "AWD",
       "wltpKm": 625,
-      "consumptionKwh100": 16.0
+      "consumptionKwh100": 16.0,
+      "usableBatteryKwh": 94.9,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 270.0,
+      "acceleration0to100Sec": 5.9,
+      "weightKg": 2350.0,
+      "source": "OpenEV Data; Audi Q6 e-tron quattro 2024 Official Specifications (https://www.audi.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Audi",
@@ -797,7 +805,15 @@
       "powerKw": 400,
       "drive": "AWD",
       "wltpKm": 520,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "usableBatteryKwh": 81.3,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 207.0,
+      "acceleration0to100Sec": 3.7,
+      "weightKg": 2215.0,
+      "source": "OpenEV Data; BMW i4 M50 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -810,7 +826,15 @@
       "powerKw": 210,
       "drive": "RWD",
       "wltpKm": 483,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 67.1,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 180.0,
+      "acceleration0to100Sec": 5.8,
+      "weightKg": 1955.0,
+      "source": "OpenEV Data; BMW i4 eDrive35 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -836,7 +860,15 @@
       "powerKw": 442,
       "drive": "AWD",
       "wltpKm": 540,
-      "consumptionKwh100": 15.0
+      "consumptionKwh100": 15.0,
+      "usableBatteryKwh": 81.2,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 205.0,
+      "acceleration0to100Sec": 3.7,
+      "weightKg": 2260.0,
+      "source": "OpenEV Data; BMW i5 M60 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -849,7 +881,15 @@
       "powerKw": 250,
       "drive": "RWD",
       "wltpKm": 627,
-      "consumptionKwh100": 13.0
+      "consumptionKwh100": 13.0,
+      "usableBatteryKwh": 81.2,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 205.0,
+      "acceleration0to100Sec": 5.7,
+      "weightKg": 2150.0,
+      "source": "OpenEV Data; BMW i5 eDrive40 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -869,11 +909,12 @@
       "charge10to80Min": 30,
       "acceleration0to100Sec": 5.4,
       "trunkLiters": 490,
-      "weightKg": null,
+      "weightKg": 2260.0,
       "photo": null,
       "source": "BMW España / KM77 periodo 2024; BMW i5 xDrive40",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "nmc"
     },
     {
       "make": "BMW",
@@ -940,7 +981,15 @@
       "powerKw": 485,
       "drive": "AWD",
       "wltpKm": 560,
-      "consumptionKwh100": 18.2
+      "consumptionKwh100": 18.2,
+      "usableBatteryKwh": 101.7,
+      "drivetrain": "AWD",
+      "acKw": 22.0,
+      "dcKw": 195.0,
+      "acceleration0to100Sec": 3.5,
+      "weightKg": 2805.0,
+      "source": "OpenEV Data; BMW i7 M70 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -953,7 +1002,15 @@
       "powerKw": 400,
       "drive": "AWD",
       "wltpKm": 625,
-      "consumptionKwh100": 16.3
+      "consumptionKwh100": 16.3,
+      "usableBatteryKwh": 101.7,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 195.0,
+      "acceleration0to100Sec": 4.5,
+      "weightKg": 2715.0,
+      "source": "OpenEV Data; BMW i7 xDrive60 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -1096,7 +1153,15 @@
       "powerKw": 230,
       "drive": "AWD",
       "wltpKm": 440,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 64.7,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 130.0,
+      "acceleration0to100Sec": 5.6,
+      "weightKg": 2085.0,
+      "source": "OpenEV Data; BMW iX1 xDrive30 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -1149,7 +1214,15 @@
       "powerKw": 230,
       "drive": "AWD",
       "wltpKm": 449,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 64.7,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 130.0,
+      "acceleration0to100Sec": 5.6,
+      "weightKg": 2050.0,
+      "source": "OpenEV Data; BMW iX2 xDrive30 2024 (https://www.bmw.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BMW",
@@ -1822,7 +1895,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 108.8,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 108.8,
       "batteryType": "LFP",
       "wltpKm": 530,
       "consumptionKwh100": 24.0,
@@ -1837,10 +1910,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2589.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "lfp"
     },
     {
       "make": "CUPRA",
@@ -1860,11 +1934,12 @@
       "charge10to80Min": 26,
       "acceleration0to100Sec": 5.6,
       "trunkLiters": 385,
-      "weightKg": null,
+      "weightKg": 1950.0,
       "photo": null,
       "source": "CUPRA España / Born VZ 2024",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "CUPRA",
@@ -1965,11 +2040,12 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.8,
       "trunkLiters": 540,
-      "weightKg": null,
+      "weightKg": 2130.0,
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; Tavascan Endurance",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "CUPRA",
@@ -1982,7 +2058,15 @@
       "powerKw": 210,
       "drive": "RWD",
       "wltpKm": 568,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "usableBatteryKwh": 77.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 175.0,
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 2130.0,
+      "source": "OpenEV Data; Cupra Tavascan 2024 Official Specifications (https://www.cupraofficial.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "CUPRA",
@@ -2000,7 +2084,11 @@
       "source": "CUPRA España; gama Tavascan 2026",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.8
+      "consumptionKwh100": 13.8,
+      "usableBatteryKwh": 77.0,
+      "batteryChemistry": "li-ion",
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 2130.0
     },
     {
       "make": "CUPRA",
@@ -2020,11 +2108,12 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 5.5,
       "trunkLiters": 540,
-      "weightKg": null,
+      "weightKg": 2250.0,
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; Tavascan VZ",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "CUPRA",
@@ -2037,7 +2126,15 @@
       "powerKw": 250,
       "drive": "AWD",
       "wltpKm": 522,
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "usableBatteryKwh": 77.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 185.0,
+      "acceleration0to100Sec": 5.6,
+      "weightKg": 2250.0,
+      "source": "OpenEV Data; Cupra Tavascan VZ 2024 Official Specifications (https://www.cupraofficial.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "CUPRA",
@@ -2055,7 +2152,11 @@
       "source": "CUPRA España; gama Tavascan 2026",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "usableBatteryKwh": 77.0,
+      "batteryChemistry": "li-ion",
+      "acceleration0to100Sec": 5.6,
+      "weightKg": 2250.0
     },
     {
       "make": "Changan",
@@ -2216,7 +2317,16 @@
       "powerKw": 83,
       "drive": "FWD",
       "wltpKm": 320,
-      "consumptionKwh100": 13.8
+      "consumptionKwh100": 13.8,
+      "usableBatteryKwh": 42.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 100.0,
+      "acceleration0to100Sec": 11.0,
+      "trunkLiters": 310.0,
+      "weightKg": 1400.0,
+      "source": "OpenEV Data; Citroën ë-C3 Official Specifications (https://www.citroen.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Citroën",
@@ -2508,7 +2618,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 26.8,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 26.8,
       "batteryType": "Li-ion",
       "wltpKm": 225,
       "consumptionKwh100": 13.5,
@@ -2523,7 +2633,8 @@
       "photo": null,
       "source": "Dacia España; Nuevo Spring 2024",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Dacia",
@@ -3070,7 +3181,16 @@
       "powerKw": 258,
       "drive": "AWD",
       "wltpKm": 550,
-      "consumptionKwh100": 16.5
+      "consumptionKwh100": 16.5,
+      "usableBatteryKwh": 91.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 5.2,
+      "trunkLiters": 402.0,
+      "weightKg": 2108.0,
+      "source": "OpenEV Data; Ford Mustang Mach-E Extended Range 2024 (https://www.ford.com/suvs/mach-e/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3083,7 +3203,16 @@
       "powerKw": 358,
       "drive": "AWD",
       "wltpKm": 490,
-      "consumptionKwh100": 18.6
+      "consumptionKwh100": 18.6,
+      "usableBatteryKwh": 82.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 3.7,
+      "trunkLiters": 402.0,
+      "weightKg": 2108.0,
+      "source": "OpenEV Data; Ford Mustang Mach-E GT 2024 (https://www.ford.com/suvs/mach-e/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3122,7 +3251,16 @@
       "powerKw": 258,
       "drive": "AWD",
       "wltpKm": 550,
-      "consumptionKwh100": 16.5
+      "consumptionKwh100": 16.5,
+      "usableBatteryKwh": 91.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 5.2,
+      "trunkLiters": 402.0,
+      "weightKg": 2108.0,
+      "source": "OpenEV Data; Ford Mustang Mach-E Extended Range 2025 (https://www.ford.com/suvs/mach-e/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3135,7 +3273,16 @@
       "powerKw": 358,
       "drive": "AWD",
       "wltpKm": 490,
-      "consumptionKwh100": 18.6
+      "consumptionKwh100": 18.6,
+      "usableBatteryKwh": 82.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 3.7,
+      "trunkLiters": 402.0,
+      "weightKg": 2108.0,
+      "source": "OpenEV Data; Ford Mustang Mach-E GT 2025 (https://www.ford.com/suvs/mach-e/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3497,7 +3644,11 @@
       "source": "Hyundai Motor España; IONIQ 5 2025; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 16.8
+      "consumptionKwh100": 16.8,
+      "usableBatteryKwh": 72.6,
+      "batteryChemistry": "li-ion",
+      "acceleration0to100Sec": 5.2,
+      "weightKg": 2110.0
     },
     {
       "make": "Hyundai",
@@ -3506,7 +3657,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 84,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 72.6,
       "batteryType": "NMC",
       "wltpKm": 570,
       "consumptionKwh100": 16.0,
@@ -3521,10 +3672,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1950.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Hyundai",
@@ -3542,7 +3694,11 @@
       "source": "Hyundai Motor España; IONIQ 5 2025; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 72.6,
+      "batteryChemistry": "li-ion",
+      "acceleration0to100Sec": 7.4,
+      "weightKg": 1950.0
     },
     {
       "make": "Hyundai",
@@ -3716,7 +3872,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 110.3,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 99.5,
       "batteryType": "Li-ion polymer",
       "wltpKm": 606,
       "consumptionKwh100": 20.4,
@@ -3726,12 +3882,13 @@
       "dcKw": 350,
       "charge10to80Min": 24,
       "acceleration0to100Sec": 6.7,
-      "trunkLiters": null,
-      "weightKg": null,
+      "trunkLiters": 620.0,
+      "weightKg": 2650.0,
       "photo": null,
       "source": "Hyundai IONIQ 9 technical data / Hyundai España",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Hyundai",
@@ -3744,7 +3901,16 @@
       "powerKw": 226.1,
       "drive": "AWD",
       "wltpKm": 606,
-      "consumptionKwh100": 18.2
+      "consumptionKwh100": 18.2,
+      "usableBatteryKwh": 99.5,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 350.0,
+      "acceleration0to100Sec": 5.0,
+      "trunkLiters": 620.0,
+      "weightKg": 2650.0,
+      "source": "OpenEV Data; Hyundai IONIQ 9 Official Specifications (https://www.hyundai.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Hyundai",
@@ -3753,7 +3919,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 110.3,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 99.5,
       "batteryType": "Li-ion polymer",
       "wltpKm": 600,
       "consumptionKwh100": 20.6,
@@ -3763,12 +3929,13 @@
       "dcKw": 350,
       "charge10to80Min": 24,
       "acceleration0to100Sec": 5.2,
-      "trunkLiters": null,
-      "weightKg": null,
+      "trunkLiters": 620.0,
+      "weightKg": 2650.0,
       "photo": null,
       "source": "Hyundai IONIQ 9 technical data / Hyundai España",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Hyundai",
@@ -3845,7 +4012,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 48.4,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 36.0,
       "batteryType": "Li-ion",
       "wltpKm": 380,
       "consumptionKwh100": 14.6,
@@ -3860,10 +4027,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1685.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Hyundai",
@@ -3872,7 +4040,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 65.4,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 58.0,
       "batteryType": "NMC",
       "wltpKm": 510,
       "consumptionKwh100": 16.8,
@@ -3887,10 +4055,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1820.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Hyundai",
@@ -4674,7 +4843,16 @@
       "powerKw": 160,
       "drive": "RWD",
       "wltpKm": 434,
-      "consumptionKwh100": 15.5
+      "consumptionKwh100": 15.5,
+      "usableBatteryKwh": 62.0,
+      "batteryChemistry": "lfp",
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 120.0,
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 1756.0,
+      "source": "OpenEV Data; Leapmotor B10 160 kW Variant Specifications (https://www.leapmotor.com/b10)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Leapmotor",
@@ -4683,7 +4861,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 67.1,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 62.0,
       "batteryType": "LFP",
       "wltpKm": 434,
       "consumptionKwh100": 17.3,
@@ -4692,16 +4870,17 @@
       "acKw": 11,
       "dcKw": 168,
       "charge10to80Min": null,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 6.5,
       "trunkLiters": null,
       "id": "leapmotor-b10-design-promax-2025-67-1-lfp-160-rwd",
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1756.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "lfp"
     },
     {
       "make": "Leapmotor",
@@ -4714,7 +4893,15 @@
       "powerKw": 160,
       "drive": "RWD",
       "wltpKm": 434,
-      "consumptionKwh100": 15.5
+      "consumptionKwh100": 15.5,
+      "usableBatteryKwh": 62.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 120.0,
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 1756.0,
+      "source": "OpenEV Data; Leapmotor B10 160 kW Variant Specifications (https://www.leapmotor.com/b10)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Leapmotor",
@@ -4726,7 +4913,16 @@
       "powerKw": 160,
       "drive": "RWD",
       "wltpKm": 361,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "usableBatteryKwh": 62.0,
+      "batteryChemistry": "lfp",
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 120.0,
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 1756.0,
+      "source": "OpenEV Data; Leapmotor B10 160 kW Variant Specifications (https://www.leapmotor.com/b10)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Leapmotor",
@@ -4739,7 +4935,15 @@
       "powerKw": 160,
       "drive": "RWD",
       "wltpKm": 361,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "usableBatteryKwh": 62.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 120.0,
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 1756.0,
+      "source": "OpenEV Data; Leapmotor B10 160 kW Variant Specifications (https://www.leapmotor.com/b10)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Leapmotor",
@@ -4752,7 +4956,15 @@
       "powerKw": 160,
       "drive": "RWD",
       "wltpKm": 434,
-      "consumptionKwh100": 15.5
+      "consumptionKwh100": 15.5,
+      "usableBatteryKwh": 62.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 120.0,
+      "acceleration0to100Sec": 6.5,
+      "weightKg": 1756.0,
+      "source": "OpenEV Data; Leapmotor B10 160 kW Variant Specifications (https://www.leapmotor.com/b10)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Leapmotor",
@@ -4824,7 +5036,17 @@
       "powerKw": 675,
       "drive": "AWD",
       "wltpKm": 490,
-      "consumptionKwh100": 22.9
+      "consumptionKwh100": 22.9,
+      "usableBatteryKwh": 100.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 22.0,
+      "dcKw": 350.0,
+      "acceleration0to100Sec": 2.95,
+      "trunkLiters": 688.0,
+      "weightKg": 2590.0,
+      "source": "OpenEV Data; Lotus Eletre R+ Official Specifications 2024 (https://www.lotuscars.com/eletre)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Lotus",
@@ -4836,7 +5058,17 @@
       "powerKw": 450,
       "drive": "AWD",
       "wltpKm": 540,
-      "consumptionKwh100": 18.9
+      "consumptionKwh100": 18.9,
+      "usableBatteryKwh": 102.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 22.0,
+      "dcKw": 402.0,
+      "acceleration0to100Sec": 2.8,
+      "trunkLiters": 470.0,
+      "weightKg": 2560.0,
+      "source": "OpenEV Data; Lotus Emeya Official Specifications 2025 (https://www.lotuscars.com/emeya)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Lotus",
@@ -4848,7 +5080,17 @@
       "powerKw": 675,
       "drive": "AWD",
       "wltpKm": 485,
-      "consumptionKwh100": 21.1
+      "consumptionKwh100": 21.1,
+      "usableBatteryKwh": 102.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 22.0,
+      "dcKw": 402.0,
+      "acceleration0to100Sec": 2.8,
+      "trunkLiters": 470.0,
+      "weightKg": 2560.0,
+      "source": "OpenEV Data; Lotus Emeya Official Specifications 2025 (https://www.lotuscars.com/emeya)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Lynk & Co",
@@ -5573,7 +5815,17 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 462,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 64.7,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 130.0,
+      "acceleration0to100Sec": 8.6,
+      "trunkLiters": 450.0,
+      "weightKg": 1950.0,
+      "source": "OpenEV Data; MINI Countryman E Electric Official Specifications (https://www.mini.com/en_GB/home/range/mini-countryman-electric.html)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "MINI",
@@ -5585,7 +5837,17 @@
       "powerKw": 230,
       "drive": "AWD",
       "wltpKm": 433,
-      "consumptionKwh100": 14.9
+      "consumptionKwh100": 14.9,
+      "usableBatteryKwh": 64.7,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 130.0,
+      "acceleration0to100Sec": 5.6,
+      "trunkLiters": 450.0,
+      "weightKg": 2050.0,
+      "source": "OpenEV Data; MINI Countryman SE ALL4 Electric Official Specifications (https://www.mini.com/en_GB/home/range/mini-countryman-electric.html)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "MINI",
@@ -6016,11 +6278,12 @@
       "charge10to80Min": 32,
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 340,
-      "weightKg": null,
+      "weightKg": 2040.0,
       "photo": null,
       "source": "Mercedes-Benz España; EQA 250+ periodo 2024",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Mercedes-Benz",
@@ -6493,7 +6756,14 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 526,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.7,
+      "source": "OpenEV Data; Peugeot e-3008 2024 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6519,7 +6789,14 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 527,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.7,
+      "source": "OpenEV Data; Peugeot e-3008 2024 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6532,7 +6809,14 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 700,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 96.9,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.7,
+      "source": "OpenEV Data; Peugeot e-3008 Long Range 2024 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6558,7 +6842,14 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 526,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.7,
+      "source": "OpenEV Data; Peugeot e-3008 2025 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6571,7 +6862,14 @@
       "powerKw": 240,
       "drive": "AWD",
       "wltpKm": 497,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 6.5,
+      "source": "OpenEV Data; Peugeot e-3008 Dual Motor 2025 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6610,7 +6908,15 @@
       "drive": "FWD",
       "wltpKm": 453,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "usableBatteryKwh": 70.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.5,
+      "source": "OpenEV Data; Peugeot e-408 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6624,7 +6930,14 @@
       "drive": "FWD",
       "wltpKm": 453,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.5,
+      "source": "OpenEV Data; Peugeot e-408 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6638,7 +6951,14 @@
       "drive": "FWD",
       "wltpKm": 453,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 8.5,
+      "source": "OpenEV Data; Peugeot e-408 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6650,7 +6970,15 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 502,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 70.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 9.0,
+      "source": "OpenEV Data; Peugeot e-5008 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6663,7 +6991,14 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 504,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 9.0,
+      "source": "OpenEV Data; Peugeot e-5008 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6676,7 +7011,14 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 502,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 9.0,
+      "source": "OpenEV Data; Peugeot e-5008 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6689,7 +7031,14 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 668,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 96.9,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 9.0,
+      "source": "OpenEV Data; Peugeot e-5008 Long Range 2024 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6715,7 +7064,14 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 504,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 70.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 9.0,
+      "source": "OpenEV Data; Peugeot e-5008 2025 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6728,7 +7084,14 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 668,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 96.9,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 160.0,
+      "acceleration0to100Sec": 9.0,
+      "source": "OpenEV Data; Peugeot e-5008 Long Range 2025 Official Specifications (https://www.peugeot.com)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6970,7 +7333,17 @@
       "powerKw": 500,
       "drive": "AWD",
       "wltpKm": 601,
-      "consumptionKwh100": 17.6
+      "consumptionKwh100": 17.6,
+      "usableBatteryKwh": 107.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 250.0,
+      "acceleration0to100Sec": 4.7,
+      "trunkLiters": 484.0,
+      "weightKg": 2403.0,
+      "source": "OpenEV Data; Polestar 3 Performance Pack Specifications (https://www.polestar.com/polestar-3)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Polestar",
@@ -7006,7 +7379,17 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 630,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "usableBatteryKwh": 100.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "RWD",
+      "acKw": 22.0,
+      "dcKw": 200.0,
+      "acceleration0to100Sec": 6.9,
+      "trunkLiters": 526.0,
+      "weightKg": 2130.0,
+      "source": "OpenEV Data; Polestar 4 Long Range Single Motor Specifications (https://www.polestar.com/polestar-4)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Porsche",
@@ -7018,7 +7401,16 @@
       "powerKw": 300,
       "drive": "AWD",
       "wltpKm": 613,
-      "consumptionKwh100": 16.3
+      "consumptionKwh100": 16.3,
+      "usableBatteryKwh": 95.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 270.0,
+      "acceleration0to100Sec": 5.2,
+      "weightKg": 2235.0,
+      "source": "OpenEV Data; Porsche Macan Electric 2024 Official Specifications (https://www.porsche.com/international/models/macan/macan-models/macan/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Porsche",
@@ -7054,7 +7446,16 @@
       "powerKw": 470,
       "drive": "AWD",
       "wltpKm": 591,
-      "consumptionKwh100": 16.9
+      "consumptionKwh100": 16.9,
+      "usableBatteryKwh": 95.0,
+      "batteryChemistry": "li-ion",
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 270.0,
+      "acceleration0to100Sec": 3.3,
+      "weightKg": 2310.0,
+      "source": "OpenEV Data; Porsche Macan Turbo 2024 Official Specifications (https://www.porsche.com/international/models/macan/macan-models/macan-turbo/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Renault",
@@ -7063,7 +7464,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 40,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 50.0,
       "batteryType": "NMC",
       "wltpKm": 308,
       "consumptionKwh100": 13.0,
@@ -7078,10 +7479,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1550.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7090,7 +7492,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 52,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 50.0,
       "batteryType": "NMC",
       "wltpKm": 409,
       "consumptionKwh100": 12.7,
@@ -7105,10 +7507,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1550.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7117,7 +7520,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 52,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 50.0,
       "batteryType": "NMC",
       "wltpKm": 409,
       "consumptionKwh100": 12.7,
@@ -7132,10 +7535,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1550.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7144,7 +7548,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 52,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 50.0,
       "batteryType": "NMC",
       "wltpKm": 409,
       "consumptionKwh100": 12.7,
@@ -7159,10 +7563,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1550.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7186,10 +7591,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1450.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7207,16 +7613,17 @@
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": null,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 7.0,
       "trunkLiters": 326,
       "id": "renault-5-e-tech-52-kwh-2025-52-0-nmc-110-fwd",
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1500.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7463,7 +7870,12 @@
       "source": "Renault España; configurador Scenic E-Tech 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 84.0,
+      "batteryChemistry": "li-ion",
+      "acceleration0to100Sec": 8.4,
+      "trunkLiters": 545.0,
+      "weightKg": 1920.0
     },
     {
       "make": "Renault",
@@ -7487,10 +7899,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1920.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7499,7 +7912,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 87,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 84.0,
       "batteryType": "NMC",
       "wltpKm": 623,
       "consumptionKwh100": 16.8,
@@ -7514,10 +7927,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1920.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7526,7 +7940,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 87,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 84.0,
       "batteryType": "NMC",
       "wltpKm": 623,
       "consumptionKwh100": 16.8,
@@ -7541,10 +7955,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1920.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -7553,7 +7968,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 87,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 84.0,
       "batteryType": "NMC",
       "wltpKm": 623,
       "consumptionKwh100": 16.8,
@@ -7568,10 +7983,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1920.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "li-ion"
     },
     {
       "make": "Renault",
@@ -9373,7 +9789,11 @@
       "source": "Volvo Cars España; EC40 Single Motor",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "usableBatteryKwh": 69.0,
+      "batteryChemistry": "nmc",
+      "acceleration0to100Sec": 7.4,
+      "weightKg": 2100.0
     },
     {
       "make": "Volvo",
@@ -9386,7 +9806,15 @@
       "powerKw": 175,
       "drive": "RWD",
       "wltpKm": 486,
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "usableBatteryKwh": 69.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 7.4,
+      "weightKg": 2100.0,
+      "source": "OpenEV Data; Volvo EC40 Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ec40)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9435,7 +9863,11 @@
       "source": "Volvo Cars España; EC40 Twin Motor",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.9
+      "consumptionKwh100": 14.9,
+      "usableBatteryKwh": 69.0,
+      "batteryChemistry": "nmc",
+      "acceleration0to100Sec": 4.7,
+      "weightKg": 2180.0
     },
     {
       "make": "Volvo",
@@ -9448,7 +9880,15 @@
       "powerKw": 300,
       "drive": "AWD",
       "wltpKm": 551,
-      "consumptionKwh100": 14.9
+      "consumptionKwh100": 14.9,
+      "usableBatteryKwh": 69.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 4.7,
+      "weightKg": 2180.0,
+      "source": "OpenEV Data; Volvo EC40 Twin Motor Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ec40)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9625,7 +10065,11 @@
       "source": "Volvo Cars España; EX30 P5",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "usableBatteryKwh": 49.0,
+      "batteryChemistry": "lfp",
+      "acceleration0to100Sec": 5.7,
+      "weightKg": 1830.0
     },
     {
       "make": "Volvo",
@@ -9674,7 +10118,15 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 337,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "usableBatteryKwh": 49.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 153.0,
+      "acceleration0to100Sec": 5.7,
+      "weightKg": 1830.0,
+      "source": "OpenEV Data; Volvo EX30 Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex30)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9687,7 +10139,15 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 337,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "usableBatteryKwh": 49.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 153.0,
+      "acceleration0to100Sec": 5.7,
+      "weightKg": 1830.0,
+      "source": "OpenEV Data; Volvo EX30 Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex30)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9700,7 +10160,15 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 475,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 66.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 153.0,
+      "acceleration0to100Sec": 5.7,
+      "weightKg": 1900.0,
+      "source": "OpenEV Data; Volvo EX30 69 kWh Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex30)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9713,7 +10181,15 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 476,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 66.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 153.0,
+      "acceleration0to100Sec": 5.7,
+      "weightKg": 1900.0,
+      "source": "OpenEV Data; Volvo EX30 69 kWh Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex30)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9757,7 +10233,11 @@
       "source": "Volvo Cars España; EX40 Single Motor",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 69.0,
+      "batteryChemistry": "nmc",
+      "acceleration0to100Sec": 7.4,
+      "weightKg": 2118.0
     },
     {
       "make": "Volvo",
@@ -9770,7 +10250,15 @@
       "powerKw": 175,
       "drive": "RWD",
       "wltpKm": 477,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 69.0,
+      "drivetrain": "FWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 7.4,
+      "weightKg": 2118.0,
+      "source": "OpenEV Data; Volvo EX40 Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex40)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9819,7 +10307,11 @@
       "source": "Volvo Cars España; EX40 Twin Motor",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.2
+      "consumptionKwh100": 15.2,
+      "usableBatteryKwh": 69.0,
+      "batteryChemistry": "nmc",
+      "acceleration0to100Sec": 4.9,
+      "weightKg": 2200.0
     },
     {
       "make": "Volvo",
@@ -9832,7 +10324,15 @@
       "powerKw": 300,
       "drive": "AWD",
       "wltpKm": 538,
-      "consumptionKwh100": 15.2
+      "consumptionKwh100": 15.2,
+      "usableBatteryKwh": 69.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 4.9,
+      "weightKg": 2200.0,
+      "source": "OpenEV Data; Volvo EX40 Twin Motor Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex40)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9901,7 +10401,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 106.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 107.0,
       "batteryType": "Li-ion",
       "wltpKm": 617,
       "consumptionKwh100": 19.4,
@@ -9916,7 +10416,8 @@
       "photo": null,
       "source": "Volvo Cars España EX90 specifications",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "nmc"
     },
     {
       "make": "Volvo",
@@ -9930,7 +10431,15 @@
       "drive": "AWD",
       "wltpKm": 600,
       "arrivalYear": 2024,
-      "consumptionKwh100": 18.5
+      "consumptionKwh100": 18.5,
+      "usableBatteryKwh": 107.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 250.0,
+      "acceleration0to100Sec": 4.9,
+      "weightKg": 2818.0,
+      "source": "OpenEV Data; Volvo EX90 Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex90)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9944,7 +10453,15 @@
       "drive": "AWD",
       "wltpKm": 600,
       "arrivalYear": 2024,
-      "consumptionKwh100": 18.5
+      "consumptionKwh100": 18.5,
+      "usableBatteryKwh": 107.0,
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 250.0,
+      "acceleration0to100Sec": 4.9,
+      "weightKg": 2818.0,
+      "source": "OpenEV Data; Volvo EX90 Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex90)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -9953,7 +10470,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 106.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 107.0,
       "batteryType": "Li-ion",
       "wltpKm": 617,
       "consumptionKwh100": 19.4,
@@ -9968,7 +10485,8 @@
       "photo": null,
       "source": "Volvo Cars España EX90 specifications",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "nmc"
     },
     {
       "make": "Voyah",
@@ -9980,7 +10498,16 @@
       "powerKw": 360,
       "drive": "AWD",
       "wltpKm": 500,
-      "consumptionKwh100": 21.2
+      "consumptionKwh100": 21.2,
+      "usableBatteryKwh": 100.0,
+      "batteryChemistry": "nmc",
+      "drivetrain": "AWD",
+      "acKw": 11.0,
+      "dcKw": 150.0,
+      "acceleration0to100Sec": 4.4,
+      "weightKg": 2350.0,
+      "source": "OpenEV Data; Dongfeng, Voyah e M-Hero: Há três novas marcas chinesas em Portugal (https://www.agaragem.pt/2024/11/24/dongfeng-voyah-e-m-hero-ha-tres-novas-marcas-chinesas-em-portugal/)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "XPeng",
@@ -10945,7 +11472,13 @@
       "powerKw": 150,
       "drive": "RWD",
       "wltpKm": 428,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 77.0,
+      "drivetrain": "RWD",
+      "acKw": 11.0,
+      "dcKw": 185.0,
+      "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Škoda",
