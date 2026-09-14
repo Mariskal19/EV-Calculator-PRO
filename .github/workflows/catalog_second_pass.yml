@@ -152,7 +152,7 @@ jobs:
           data=json.loads(p.read_text(encoding='utf-8'))
           vehicles=data.get('vehicles')
           assert isinstance(vehicles,list), 'vehicles array missing'
-          assert len(vehicles)==611, f'unexpected vehicle count after verified duplicate cleanup: {len(vehicles)}'
+          assert len(vehicles)==609, f'unexpected vehicle count after verified duplicate cleanup: {len(vehicles)}'
           for i,v in enumerate(vehicles):
               assert v.get('make') and v.get('model') and v.get('version'), f'invalid vehicle at index {i}'
 
