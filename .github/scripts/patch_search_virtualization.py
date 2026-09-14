@@ -60,6 +60,10 @@ if old_back in s:
     s = s.replace(old_back, new_back, 1)
 
 # IMPORTANT: the entire hero must be inside the same ScrollView as the page.
+# Remove the original root attachment before re-parenting hero into scrollContent.
+# Leaving it attached to root causes IllegalStateException: the view already has a parent.
+s = s.replace('root.addView(hero); ScrollView scroll=', 'ScrollView scroll=', 1)
+
 # Do this independently from the end replacement so a partial previous patch
 # can never leave an undefined scrollContent variable.
 if 'LinearLayout scrollContent=new LinearLayout(this);' not in s:
