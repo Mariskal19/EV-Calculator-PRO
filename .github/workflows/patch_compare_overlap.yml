@@ -1,4 +1,4 @@
-name: Temporary compare overlap adjustment
+name: Temporary compare overlap adjustment v2
 
 on:
   push:
