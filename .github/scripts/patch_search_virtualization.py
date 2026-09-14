@@ -70,3 +70,13 @@ if old_back in s:
 
 p.write_text(s, encoding="utf-8")
 print("Compare theme refresh and back-button alignment patches applied.")
+
+# The product title on the main screen is a brand name and must never be translated.
+p2 = Path("app/src/main/java/com/evchargecalculator/PrincipalActivity.java")
+s2 = p2.read_text(encoding="utf-8")
+old_title = 'TextView title = tv("EV Calculator PRO", 22, Color.WHITE);'
+new_title = 'TextView title = new TextView(this); title.setText("EV Calculator PRO"); title.setTextSize(22); title.setTextColor(Color.WHITE);'
+if old_title in s2:
+    s2 = s2.replace(old_title, new_title, 1)
+p2.write_text(s2, encoding="utf-8")
+print("Main title kept as EV Calculator PRO in every language.")
