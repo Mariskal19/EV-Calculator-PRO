@@ -56,10 +56,11 @@ public class PrincipalActivity extends Activity {
         return;
       }
     }
+    LanguageManager.applyStored(this);
     String currentLanguage = LanguageManager.getSelectedLanguage(this);
     if (!currentLanguage.equals(displayedLanguage)) {
       displayedLanguage = currentLanguage;
-      LanguageManager.translateViews(this);
+      build();
     }
   }
 
