@@ -46,6 +46,8 @@ public class CompararCochesActivity extends Activity {
     private final int secondary = Color.rgb(90, 111, 137);
 
     private boolean dark;
+    private String lastLanguage = "";
+    private String lastCurrency = "";
     private LinearLayout carsRow, table, summary;
     private Spinner marketSpinner;
 
@@ -59,6 +61,8 @@ public class CompararCochesActivity extends Activity {
         LanguageManager.applyStored(this);
         try {
             SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
+            lastLanguage = LanguageManager.getSelectedLanguage(this);
+            lastCurrency = p.getString(KEY_CURRENCY, "EUR");
             dark = p.contains("dark_theme")
                     ? p.getBoolean("dark_theme", false)
                     : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
@@ -82,12 +86,18 @@ public class CompararCochesActivity extends Activity {
         super.onResume();
         LanguageManager.applyStored(this);
         SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
+        String newLanguage = LanguageManager.getSelectedLanguage(this);
+        String newCurrency = p.getString(KEY_CURRENCY, "EUR");
+        boolean languageChanged = !newLanguage.equals(lastLanguage);
+        boolean currencyChanged = !newCurrency.equals(lastCurrency);
         boolean newDark = p.contains("dark_theme") ? p.getBoolean("dark_theme", false) : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
         boolean themeChanged = dark != newDark;
         dark = newDark;
+        lastLanguage = newLanguage;
+        lastCurrency = newCurrency;
         if (!vehicles.isEmpty()) {
             loadSelection();
-            if (themeChanged) build();
+            if (themeChanged || languageChanged || currencyChanged) build();
             rebuild();
         }
     }
