@@ -44,3 +44,6 @@ jobs:
           git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
           git commit -m 'fix: read current catalog fields in compare screen'
           git push origin HEAD:main
+
+      # Keep this workflow focused on the mapping; the normal Build workflow
+      # creates the release APK/AAB from the resulting main commit.
