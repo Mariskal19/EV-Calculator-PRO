@@ -69,17 +69,31 @@ new_back = 'TextView back = tv("←",30,Color.WHITE); back.setGravity(Gravity.CE
 if old_back in s:
     s = s.replace(old_back, new_back, 1)
 
+# The whole Compare header must scroll together with the page. The previous
+# fix only moved the first card upward; the hero was still a sibling above the
+# ScrollView, so the image/title/buttons stayed fixed and the blank strip could
+# remain visible. Put hero and content inside the same scrolling container.
+old_scroll_start = 'root.addView(hero); ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));'
+new_scroll_start = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260))); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));'
+if old_scroll_start in s and 'scrollContent.addView(hero' not in s:
+    s = s.replace(old_scroll_start, new_scroll_start, 1)
+
+old_scroll_end = 'scroll.addView(content,new ScrollView.LayoutParams(-1,-1)); root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));'
+new_scroll_end = 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2)); root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));'
+if old_scroll_end in s:
+    s = s.replace(old_scroll_end, new_scroll_end, 1)
+
 # Match the other app screens: the first Compare card overlaps the bottom of
-# the hero by 26dp. This removes the visible blank strip that otherwise belongs
-# to the header area while leaving the header image itself unchanged.
-if 'introLp.topMargin = -dp(26)' not in s:
-    pattern = r'content\.addView\(intro(?:\s*,[^;]*)?\);'
+# the hero by 26dp. This removes the visible blank strip while the entire hero
+# now scrolls away together with the content.
+if 'compare header gap' not in s:
+    pattern = r'content\\.addView\\(intro(?:\\s*,[^;]*)?\\);'
     replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(26); intro.setLayoutParams(introLp); content.addView(intro);'
     s, count = re.subn(pattern, replacement, s, count=1)
     print("Compare header overlap patch matches:", count)
 
 p.write_text(s, encoding="utf-8")
-print("Compare theme refresh, back-button alignment and header-gap patches applied.")
+print("Compare theme refresh, back-button alignment and scrolling header patches applied.")
 
 # The product title on the main screen is a brand name and must never be translated.
 p2 = Path("app/src/main/java/com/evchargecalculator/PrincipalActivity.java")
