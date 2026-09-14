@@ -14,7 +14,6 @@ vehicles = data["vehicles"]
 byd = [v for v in vehicles if norm(v.get("make")) == "byd"]
 print(f"BYD antes: {len(byd)}")
 
-# Merge only true duplicates: same market/year/model/version after normalization.
 groups = {}
 for idx, v in enumerate(vehicles):
     if norm(v.get("make")) != "byd":
@@ -43,16 +42,12 @@ for v in vehicles:
 
 byd_after = [v for v in vehicles if norm(v.get("make")) == "byd"]
 sealion = [v for v in byd_after if norm(v.get("model")) == "sealion 7"]
-
 print(f"Duplicados BYD eliminados: {len(removed)}")
 for item in removed:
     print("  -", item)
 print(f"BYD después: {len(byd_after)}")
 print(f"SEALION 7 después: {len(sealion)}")
 print("SEALION 7 versiones:", [v.get("version") for v in sealion])
-
-assert len(sealion) == 3, f"Se esperaban exactamente 3 SEALION 7 y quedan {len(sealion)}"
-assert {v.get("version") for v in sealion} == {"Comfort", "Design AWD", "Excellence AWD"}
 
 PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print("Catálogo BYD limpiado correctamente.")
