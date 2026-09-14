@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 PATH = Path("app/src/main/assets/catalog_es_2024_2026.json")
@@ -8,6 +9,12 @@ def norm(value):
 
 def completeness(v):
     return sum(1 for value in v.values() if value not in (None, "", []))
+
+def trim_key(version):
+    """Collapse a short trim (e.g. Comfort) and its technical duplicate (Comfort 230 kW...)."""
+    s = norm(version)
+    s = re.sub(r"\s+\d+(?:\.\d+)?\s*kw\b.*$", "", s)
+    return s
 
 data = json.loads(PATH.read_text(encoding="utf-8"))
 vehicles = data["vehicles"]
@@ -19,7 +26,12 @@ for idx, v in enumerate(vehicles):
     if norm(v.get("make")) != "byd":
         continue
     year = int(v["year"]) if str(v.get("year", "")).isdigit() else v.get("year")
-    key = (norm(v.get("market")), norm(v.get("model")), year, norm(v.get("version")))
+    key = (
+        norm(v.get("market")),
+        norm(v.get("model")),
+        year,
+        trim_key(v.get("version")),
+    )
     groups.setdefault(key, []).append((idx, v))
 
 removed = []
@@ -31,11 +43,10 @@ for key, entries in groups.items():
     for idx, v in entries:
         if idx != winner_idx:
             keep_indexes.discard(idx)
-            removed.append((v.get("model"), v.get("year"), v.get("version")))
+            removed.append((v.get("model"), v.get("year"), v.get("version"), winner.get("version")))
 
 vehicles[:] = [v for i, v in enumerate(vehicles) if i in keep_indexes]
 
-# Canonical spelling for SEALION 7.
 for v in vehicles:
     if norm(v.get("make")) == "byd" and norm(v.get("model")) == "sealion 7":
         v["model"] = "SEALION 7"
@@ -48,6 +59,9 @@ for item in removed:
 print(f"BYD después: {len(byd_after)}")
 print(f"SEALION 7 después: {len(sealion)}")
 print("SEALION 7 versiones:", [v.get("version") for v in sealion])
+
+assert len(sealion) == 3, f"Se esperaban exactamente 3 SEALION 7 y quedan {len(sealion)}"
+assert {v.get("version") for v in sealion} == {"Comfort", "Design AWD", "Excellence AWD"}
 
 PATH.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print("Catálogo BYD limpiado correctamente.")
