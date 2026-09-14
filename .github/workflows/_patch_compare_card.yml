@@ -1,0 +1,34 @@
+name: _patch_compare_card
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch card position
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text()
+          old='intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));'
+          new=old+' LinearLayout.LayoutParams introLp=(LinearLayout.LayoutParams)intro.getLayoutParams(); introLp.topMargin=-dp(26); intro.setLayoutParams(introLp);'
+          if old not in s:
+              raise SystemExit('Target not found')
+          if 'introLp.topMargin=-dp(26)' in s:
+              raise SystemExit('Patch already applied')
+          p.write_text(s.replace(old,new,1))
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'Raise compare vehicle selection card'
+          git push
+      - name: Remove temporary workflow
+        run: |
+          git rm .github/workflows/_patch_compare_card.yml
+          git commit -m 'Remove temporary compare card patch workflow'
+          git push
