@@ -1,0 +1,55 @@
+name: Patch settings refresh
+on:
+  push:
+    paths:
+      - '.github/workflows/_patch_settings_refresh.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Patch calculator screens
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          p=Path('app/src/main/java/com/evchargecalculator/MainActivity.java')
+          s=p.read_text()
+          old='''  String lastLanguage;\n  int blue ='''
+          new='''  String lastLanguage;\n  String lastCurrency;\n  int blue ='''
+          assert old in s
+          s=s.replace(old,new,1)
+          old='''    calculate();\n    lastLanguage = LanguageManager.getSelectedLanguage(this);\n  }\n\n  @Override\n  protected void onResume() {\n    super.onResume();\n    if (battery != null && !busy) {\n      String currentLanguage = LanguageManager.getSelectedLanguage(this);\n      if (lastLanguage == null || !currentLanguage.equals(lastLanguage)) {\n        lastLanguage = currentLanguage;\n        LanguageManager.translateViews(this);\n        if (headerTitle != null)\n          headerTitle.setText(LanguageManager.t(this, "EV Charge Calculator"));\n      }\n      applyCurrency();\n      calculate();\n    }\n  }'''
+          new='''    calculate();\n    lastLanguage = LanguageManager.getSelectedLanguage(this);\n    lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");\n  }\n\n  @Override\n  protected void onResume() {\n    super.onResume();\n    if (battery != null && !busy) {\n      LanguageManager.applyStored(this);\n      String currentLanguage = LanguageManager.getSelectedLanguage(this);\n      String currentCurrency = prefs.getString(KEY_CURRENCY, "EUR");\n      boolean languageChanged = lastLanguage == null || !currentLanguage.equals(lastLanguage);\n      boolean currencyChanged = lastCurrency == null || !currentCurrency.equals(lastCurrency);\n      boolean selectedDark = prefs.contains(KEY_DARK_THEME)\n          ? prefs.getBoolean(KEY_DARK_THEME, false)\n          : (getResources().getConfiguration().uiMode & 0x30) == 0x20;\n      boolean themeChanged = selectedDark != dark;\n      lastLanguage = currentLanguage;\n      lastCurrency = currentCurrency;\n      if (languageChanged || currencyChanged || themeChanged) {\n        dark = selectedDark;\n        build();\n        loadPreferences();\n        applyTheme();\n        applyCurrency();\n        calculate();\n        return;\n      }\n      applyCurrency();\n      calculate();\n    }\n  }'''
+          assert old in s
+          s=s.replace(old,new,1)
+          p.write_text(s)
+
+          p=Path('app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java')
+          s=p.read_text()
+          old='''  private String lastLanguage;\n  private EditText distance,'''
+          new='''  private String lastLanguage;\n  private String lastCurrency;\n  private EditText distance,'''
+          assert old in s
+          s=s.replace(old,new,1)
+          old='''    calculate();\n    lastLanguage = LanguageManager.getSelectedLanguage(this);\n  }\n\n  @Override\n  protected void onResume() {\n    super.onResume();\n    if (prefs == null) prefs = getSharedPreferences(PREFS, MODE_PRIVATE);\n    if (prefs.contains(KEY_DARK_THEME)) {\n      boolean selectedDark = prefs.getBoolean(KEY_DARK_THEME, false);\n      if (selectedDark != dark) {\n        dark = selectedDark;\n        build();\n        load();\n        applyCurrency();\n        calculate();\n        return;\n      }\n    }\n    if (distance != null) {\n      String currentLanguage = LanguageManager.getSelectedLanguage(this);\n      if (lastLanguage == null || !currentLanguage.equals(lastLanguage)) {\n        lastLanguage = currentLanguage;\n        LanguageManager.translateViews(this);\n        if (headerTitle != null)\n          headerTitle.setText(LanguageManager.t(this, "Electric Vs\\nCombustion Calculator"));\n      }\n      applyCurrency();\n      calculate();\n    }\n  }'''
+          new='''    calculate();\n    lastLanguage = LanguageManager.getSelectedLanguage(this);\n    lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");\n  }\n\n  @Override\n  protected void onResume() {\n    super.onResume();\n    if (prefs == null) prefs = getSharedPreferences(PREFS, MODE_PRIVATE);\n    if (distance != null) {\n      LanguageManager.applyStored(this);\n      String currentLanguage = LanguageManager.getSelectedLanguage(this);\n      String currentCurrency = prefs.getString(KEY_CURRENCY, "EUR");\n      boolean languageChanged = lastLanguage == null || !currentLanguage.equals(lastLanguage);\n      boolean currencyChanged = lastCurrency == null || !currentCurrency.equals(lastCurrency);\n      boolean selectedDark = prefs.contains(KEY_DARK_THEME) ? prefs.getBoolean(KEY_DARK_THEME, false) : (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;\n      boolean themeChanged = selectedDark != dark;\n      lastLanguage = currentLanguage;\n      lastCurrency = currentCurrency;\n      if (languageChanged || currencyChanged || themeChanged) {\n        dark = selectedDark;\n        build();\n        load();\n        applyCurrency();\n        calculate();\n        return;\n      }\n      applyCurrency();\n      calculate();\n    }\n  }'''
+          assert old in s
+          s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/MainActivity.java app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java
+          git commit -m 'Refresh calculator screens after settings changes'
+          git push
+      - name: Remove temporary patch workflow
+        if: always()
+        shell: bash
+        run: |
+          git rm .github/workflows/_patch_settings_refresh.yml || true
+          git commit -m 'Remove temporary settings refresh patch workflow' || true
+          git push || true
