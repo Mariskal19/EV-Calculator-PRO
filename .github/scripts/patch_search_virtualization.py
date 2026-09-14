@@ -61,5 +61,22 @@ new_callback = 'dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBo
 if old_callback in s:
     s = s.replace(old_callback, new_callback, 1)
 
+# Put the "Elige tus vehículos" card outside the ScrollView so it can overlap
+# the bottom of the header like the cards on the other screens. The ScrollView
+# starts 12dp below the card, which preserves the existing vehicle-selector
+# position exactly while the card itself starts 26dp above the header bottom.
+old_layout = '''        root.addView(hero);
+        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=-dp(26); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
+        LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(14); content.addView(intro,introLp);
+        HorizontalScrollView carsScroll='''
+new_layout = '''        root.addView(hero);
+        LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(26); root.addView(intro,introLp);
+        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=dp(12); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
+        HorizontalScrollView carsScroll='''
+if old_layout in s:
+    s = s.replace(old_layout, new_layout, 1)
+elif 'introLp.topMargin=-dp(26); root.addView(intro,introLp);' not in s:
+    raise SystemExit('Expected compare header layout block not found')
+
 p.write_text(s, encoding="utf-8")
-print("Compare theme refresh patch applied.")
+print("Compare theme and header layout patches applied.")
