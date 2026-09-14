@@ -69,7 +69,7 @@ new_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(Line
 if old_root in s:
     s = s.replace(old_root, new_root, 1)
 else:
-    s = re.sub(r'LinearLayout root = new LinearLayout\(this\); root\.setOrientation\(LinearLayout\.VERTICAL\); int statusBarHeight = .*?; root\.setBackgroundColor\(', 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(', s, count=1)
+    s = re.sub(r'LinearLayout root = new LinearLayout\\(this\\); root\\.setOrientation\\(LinearLayout\\.VERTICAL\\); int statusBarHeight = .*?; root\\.setBackgroundColor\\(', 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(', s, count=1)
 
 # IMPORTANT: the entire hero must be inside the same ScrollView as the page.
 # Never leave hero attached to root. A View cannot have two parents.
@@ -78,7 +78,7 @@ s = s.replace('root.addView(hero);', '', 1)
 # Do this independently from the end replacement so a partial previous patch
 # can never leave an undefined scrollContent variable.
 if 'LinearLayout scrollContent=new LinearLayout(this);' not in s:
-    pattern = r'ScrollView scroll=new ScrollView\(this\); scroll\.setFillViewport\(true\); scroll\.setClipToPadding\(false\); LinearLayout content=new LinearLayout\(this\);'
+    pattern = r'ScrollView scroll=new ScrollView\\(this\\); scroll\\.setFillViewport\\(true\\); scroll\\.setClipToPadding\\(false\\); LinearLayout content=new LinearLayout\\(this\\);'
     replacement = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); LinearLayout content=new LinearLayout(this);'
     s, count = re.subn(pattern, replacement, s, count=1)
     print("Compare scroll container declaration matches:", count)
@@ -97,14 +97,21 @@ if 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.
     if old_end in s:
         s = s.replace(old_end, new_end, 1)
     else:
-        pattern = r'scroll\.addView\(content,new ScrollView\.LayoutParams\(-1,-1\)\); root\.addView\(scroll,new LinearLayout\.LayoutParams\(-1,0,1\)\);'
+        pattern = r'scroll\\.addView\\(content,new ScrollView\\.LayoutParams\\(-1,-1\\)\\); root\\.addView\\(scroll,new LinearLayout\\.LayoutParams\\(-1,0,1\\)\\);'
         s, count = re.subn(pattern, new_end, s, count=1)
         print("Compare scroll container end matches:", count)
 
 # First Compare card overlaps the bottom of the hero by 26dp, as on the other
-# screens, eliminating the visible strip under the image.
+# screens. The content container must not clip that negative-margin child;
+# otherwise the top of the card is cut off at the content's own top edge.
+if 'content.setClipChildren(false);' not in s:
+    old_content = 'LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));'
+    new_content = 'LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setClipChildren(false); content.setPadding(dp(14),dp(14),dp(14),dp(12));'
+    if old_content in s:
+        s = s.replace(old_content, new_content, 1)
+
 if 'introLp.topMargin = -dp(26);' not in s:
-    pattern = r'content\.addView\(intro\);'
+    pattern = r'content\\.addView\\(intro\\);'
     replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(26); intro.setLayoutParams(introLp); content.addView(intro);'
     s, count = re.subn(pattern, replacement, s, count=1)
     print("Compare header overlap patch matches:", count)
