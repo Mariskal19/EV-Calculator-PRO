@@ -8122,7 +8122,18 @@
       "powerKw": 208,
       "drive": "AWD",
       "wltpKm": 629,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.4,
+      "trunkLiters": 425,
+      "weightKg": 1899,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8136,7 +8147,18 @@
       "powerKw": 224,
       "drive": "RWD",
       "wltpKm": 702,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 35,
+      "acceleration0to100Sec": 5.2,
+      "trunkLiters": 425,
+      "weightKg": 1810,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8150,7 +8172,18 @@
       "powerKw": 461,
       "drive": "AWD",
       "wltpKm": 528,
-      "consumptionKwh100": 16.7
+      "consumptionKwh100": 16.7,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 3.1,
+      "trunkLiters": 425,
+      "weightKg": 1851,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8164,7 +8197,18 @@
       "powerKw": 208,
       "drive": "RWD",
       "wltpKm": 513,
-      "consumptionKwh100": 13.2
+      "consumptionKwh100": 13.2,
+      "usableBatteryKwh": 57,
+      "batteryType": "LFP",
+      "acKw": 11,
+      "dcKw": 170,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 6.1,
+      "trunkLiters": 425,
+      "weightKg": 1836,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8178,7 +8222,18 @@
       "powerKw": 461,
       "drive": "AWD",
       "wltpKm": 571,
-      "consumptionKwh100": 16.5
+      "consumptionKwh100": 16.5,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 3.1,
+      "trunkLiters": 425,
+      "weightKg": 1929,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8192,7 +8247,18 @@
       "powerKw": 235,
       "drive": "RWD",
       "wltpKm": 750,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 35,
+      "acceleration0to100Sec": 5.2,
+      "trunkLiters": 425,
+      "weightKg": 1822,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8206,7 +8272,18 @@
       "powerKw": 366,
       "drive": "AWD",
       "wltpKm": 660,
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.4,
+      "trunkLiters": 425,
+      "weightKg": 1899,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8220,7 +8297,18 @@
       "powerKw": 208,
       "drive": "RWD",
       "wltpKm": 554,
-      "consumptionKwh100": 13.0
+      "consumptionKwh100": 13.0,
+      "usableBatteryKwh": 57,
+      "batteryType": "LFP",
+      "acKw": 11,
+      "dcKw": 170,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 6.1,
+      "trunkLiters": 425,
+      "weightKg": 1836,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8234,7 +8322,18 @@
       "powerKw": 461,
       "drive": "AWD",
       "wltpKm": 571,
-      "consumptionKwh100": 16.5
+      "consumptionKwh100": 16.5,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 3.1,
+      "trunkLiters": 425,
+      "weightKg": 1929,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8248,7 +8347,18 @@
       "powerKw": 235,
       "drive": "RWD",
       "wltpKm": 750,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 35,
+      "acceleration0to100Sec": 5.2,
+      "trunkLiters": 425,
+      "weightKg": 1822,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8262,7 +8372,18 @@
       "powerKw": 366,
       "drive": "AWD",
       "wltpKm": 660,
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.4,
+      "trunkLiters": 425,
+      "weightKg": 1899,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8276,7 +8397,18 @@
       "powerKw": 208,
       "drive": "RWD",
       "wltpKm": 534,
-      "consumptionKwh100": 13.0
+      "consumptionKwh100": 13.0,
+      "usableBatteryKwh": 57,
+      "batteryType": "LFP",
+      "acKw": 11,
+      "dcKw": 170,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 6.1,
+      "trunkLiters": 425,
+      "weightKg": 1836,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8290,7 +8422,18 @@
       "powerKw": 255,
       "drive": "RWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.5
+      "consumptionKwh100": 15.5,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.9,
+      "trunkLiters": 753,
+      "weightKg": 2034,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8304,7 +8447,18 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 533,
-      "consumptionKwh100": 16.9
+      "consumptionKwh100": 16.9,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.0,
+      "trunkLiters": 753,
+      "weightKg": null,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8318,7 +8472,18 @@
       "powerKw": 393,
       "drive": "AWD",
       "wltpKm": 514,
-      "consumptionKwh100": 17.3
+      "consumptionKwh100": 17.3,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 3.7,
+      "trunkLiters": 753,
+      "weightKg": 2072,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8332,7 +8497,18 @@
       "powerKw": 220,
       "drive": "RWD",
       "wltpKm": 455,
-      "consumptionKwh100": 15.7
+      "consumptionKwh100": 15.7,
+      "usableBatteryKwh": 60,
+      "batteryType": "LFP",
+      "acKw": 11,
+      "dcKw": 170,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 6.9,
+      "trunkLiters": 753,
+      "weightKg": null,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8346,7 +8522,18 @@
       "powerKw": 255,
       "drive": "RWD",
       "wltpKm": 622,
-      "consumptionKwh100": 14.2
+      "consumptionKwh100": 14.2,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.9,
+      "trunkLiters": 753,
+      "weightKg": 2034,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8360,7 +8547,18 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 586,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.0,
+      "trunkLiters": 753,
+      "weightKg": null,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8374,7 +8572,18 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 568,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.8,
+      "trunkLiters": 709,
+      "weightKg": 2072,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8388,7 +8597,18 @@
       "powerKw": 461,
       "drive": "AWD",
       "wltpKm": 580,
-      "consumptionKwh100": 16.2
+      "consumptionKwh100": 16.2,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 3.5,
+      "trunkLiters": 709,
+      "weightKg": 2108,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8402,7 +8622,18 @@
       "powerKw": 220,
       "drive": "RWD",
       "wltpKm": 603,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.6,
+      "trunkLiters": 709,
+      "weightKg": 1976,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8416,7 +8647,18 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.8,
+      "trunkLiters": 709,
+      "weightKg": 2072,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8430,7 +8672,18 @@
       "powerKw": 220,
       "drive": "RWD",
       "wltpKm": 534,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "usableBatteryKwh": 60,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 175,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 7.2,
+      "trunkLiters": 709,
+      "weightKg": null,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8444,7 +8697,18 @@
       "powerKw": 220,
       "drive": "RWD",
       "wltpKm": 500,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 60,
+      "batteryType": "LFP",
+      "acKw": 11,
+      "dcKw": 170,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 6.9,
+      "trunkLiters": 753,
+      "weightKg": null,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8458,7 +8722,18 @@
       "powerKw": 461,
       "drive": "AWD",
       "wltpKm": 580,
-      "consumptionKwh100": 16.2
+      "consumptionKwh100": 16.2,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 3.5,
+      "trunkLiters": 709,
+      "weightKg": 2108,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8472,7 +8747,18 @@
       "powerKw": 255,
       "drive": "RWD",
       "wltpKm": 603,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.9,
+      "trunkLiters": 753,
+      "weightKg": 2034,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8486,7 +8772,18 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.8,
+      "trunkLiters": 709,
+      "weightKg": 2072,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8500,7 +8797,18 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 250,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 4.8,
+      "trunkLiters": 709,
+      "weightKg": null,
+      "drivetrain": "AWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8514,7 +8822,18 @@
       "powerKw": 220,
       "drive": "RWD",
       "wltpKm": 657,
-      "consumptionKwh100": 12.7
+      "consumptionKwh100": 12.7,
+      "usableBatteryKwh": 75,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 260,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 5.6,
+      "trunkLiters": 709,
+      "weightKg": null,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Tesla",
@@ -8528,7 +8847,18 @@
       "powerKw": 227,
       "drive": "RWD",
       "wltpKm": 534,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "usableBatteryKwh": 60,
+      "batteryType": "Li-ion",
+      "acKw": 11,
+      "dcKw": 175,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 7.2,
+      "trunkLiters": 709,
+      "weightKg": null,
+      "drivetrain": "RWD",
+      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Toyota",
