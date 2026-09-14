@@ -72,8 +72,8 @@ if old_back in s:
 # Match the other app screens: the first Compare card overlaps the bottom of
 # the hero by 26dp. This removes the visible blank strip that otherwise belongs
 # to the header area while leaving the header image itself unchanged.
-if 'compare header gap' not in s:
-    pattern = r'content\\.addView\\(intro(?:\\s*,[^;]*)?\\);'
+if 'introLp.topMargin = -dp(26)' not in s:
+    pattern = r'content\.addView\(intro(?:\s*,[^;]*)?\);'
     replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(26); intro.setLayoutParams(introLp); content.addView(intro);'
     s, count = re.subn(pattern, replacement, s, count=1)
     print("Compare header overlap patch matches:", count)
