@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
 
+# Maps the current catalog schema into the fields consumed by Compare.
 path = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
 s = path.read_text(encoding="utf-8")
 
