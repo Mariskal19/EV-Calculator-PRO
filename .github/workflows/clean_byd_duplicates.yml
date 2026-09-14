@@ -24,14 +24,14 @@ jobs:
       - name: Clean and validate BYD catalog
         run: python3 .github/scripts/clean_byd_duplicates.py
 
-      - name: Commit catalog cleanup
+      - name: Commit catalog cleanup and diagnostic report
         run: |
-          if git diff --quiet -- app/src/main/assets/catalog_es_2024_2026.json; then
-            echo 'No catalog changes required.'
+          if git diff --quiet -- app/src/main/assets/catalog_es_2024_2026.json byd_cleanup_report.txt; then
+            echo 'No changes required.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/src/main/assets/catalog_es_2024_2026.json
+          git add app/src/main/assets/catalog_es_2024_2026.json byd_cleanup_report.txt
           git commit -m 'Clean BYD duplicate catalog records'
           git push
