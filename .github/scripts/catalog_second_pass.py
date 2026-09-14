@@ -135,22 +135,37 @@ def main():
             v['lastUpdated']=TODAY
 
     # BYD Spain: SEALION 7 Excellence AWD is the 91.3 kWh version.
-    # A second 91.5 kWh record is the same commercial version and is erroneous.
+    # Some intermediate catalog state may contain the same commercial version
+    # as 91.5 kWh. Normalize that erroneous value to the verified 91.3 kWh
+    # record instead of allowing the enrichment pass to abort before auditing.
     sealion_excellence = [v for v in vehicles if norm(v.get('make')) == 'byd' and norm(v.get('model')) == 'sealion 7' and norm(v.get('version')) == 'excellence awd']
     valid = [v for v in sealion_excellence if num(v.get('batteryKwh')) == 91.3]
     erroneous = [v for v in sealion_excellence if num(v.get('batteryKwh')) == 91.5]
     if erroneous:
-        if len(valid) != 1:
-            raise RuntimeError(f'Unexpected SEALION 7 Excellence records: {[(v.get("batteryKwh"), v.get("version")) for v in sealion_excellence]}')
-        target = valid[0]
-        for duplicate in erroneous:
-            for key, value in duplicate.items():
-                if target.get(key) in (None, '') and value not in (None, ''):
-                    target[key] = value
-            vehicles.remove(duplicate)
-        print('Removed erroneous SEALION 7 Excellence AWD 91.5 kWh record(s):', len(erroneous))
+        if len(valid) > 1:
+            raise RuntimeError(f'Unexpected duplicate valid SEALION 7 Excellence records: {[(v.get("batteryKwh"), v.get("version")) for v in sealion_excellence]}')
+        if len(valid) == 1:
+            target = valid[0]
+            for duplicate in erroneous:
+                for key, value in duplicate.items():
+                    if target.get(key) in (None, '') and value not in (None, ''):
+                        target[key] = value
+                vehicles.remove(duplicate)
+            print('Removed erroneous SEALION 7 Excellence AWD 91.5 kWh record(s):', len(erroneous))
+        else:
+            # If only the erroneous 91.5-kWh record remains, it is the same
+            # commercial version. Correct it in place to the verified 91.3 kWh.
+            if len(erroneous) == 1 and len(sealion_excellence) == 1:
+                erroneous[0]['batteryKwh'] = 91.3
+                erroneous[0]['batteryChemistry'] = erroneous[0].get('batteryChemistry') or 'LFP'
+                erroneous[0]['batteryType'] = erroneous[0].get('batteryType') or 'LFP'
+                erroneous[0]['source'] = 'BYD España / BYD Europe — SEALION 7 Excellence AWD'
+                erroneous[0]['lastUpdated'] = TODAY
+                print('Corrected sole SEALION 7 Excellence AWD 91.5 kWh record to verified 91.3 kWh')
+            else:
+                raise RuntimeError(f'Unexpected SEALION 7 Excellence records: {[(v.get("batteryKwh"), v.get("version")) for v in sealion_excellence]}')
 
-    if len(vehicles) != original - len(erroneous):
+    if len(vehicles) != original - (len(erroneous) if len(valid) == 1 else 0):
         raise RuntimeError('Unexpected vehicle count after SEALION cleanup')
     CATALOG.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print('Catalog vehicles:', len(vehicles))
