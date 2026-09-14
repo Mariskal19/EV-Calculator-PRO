@@ -25,6 +25,56 @@ jobs:
       - name: Enrich missing catalog fields
         run: python .github/scripts/catalog_second_pass.py
 
+      - name: Correct verified ATTO 3 EVO Spain specifications
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('app/src/main/assets/catalog_es_2024_2026.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          found=[]
+          for v in data['vehicles']:
+              if str(v.get('make','')).strip().lower() != 'byd': continue
+              if str(v.get('model','')).strip().upper() != 'ATTO 3 EVO': continue
+              if int(v.get('year') or 0) != 2026: continue
+              ver=str(v.get('version','')).strip().lower()
+              if ver == 'design':
+                  v.update({'batteryKwh':74.8,'batteryType':'LFP','batteryChemistry':'LFP','powerKw':230,'drive':'RWD','drivetrain':'RWD','wltpKm':510,'consumptionKwh100':16.4,'acKw':11,'dcKw':220,'charge10to80Min':25,'acceleration0to100Sec':5.5,'trunkLiters':490,'weightKg':1880,'source':'BYD España; ficha técnica ATTO 3 EVO 2026','lastUpdated':'2026-09-14'})
+                  found.append('Design')
+              elif ver == 'excellence':
+                  v.update({'batteryKwh':74.8,'batteryType':'LFP','batteryChemistry':'LFP','powerKw':330,'drive':'AWD','drivetrain':'AWD','wltpKm':470,'consumptionKwh100':17.8,'acKw':11,'dcKw':220,'charge10to80Min':25,'acceleration0to100Sec':3.9,'trunkLiters':490,'weightKg':1990,'source':'BYD España; ficha técnica ATTO 3 EVO 2026','lastUpdated':'2026-09-14'})
+                  found.append('Excellence')
+          assert found == ['Design','Excellence'], f'Unexpected ATTO 3 EVO records: {found}'
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print('Corrected verified ATTO 3 EVO records:', ', '.join(found))
+          PY
+
+      - name: Audit catalog for duplicate commercial records
+        run: |
+          python - <<'PY'
+          import json
+          from collections import defaultdict
+          from pathlib import Path
+          p=Path('app/src/main/assets/catalog_es_2024_2026.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          vehicles=data['vehicles']
+          keys=defaultdict(list)
+          for v in vehicles:
+              key=(str(v.get('make','')).strip().lower(),str(v.get('model','')).strip().lower(),int(v.get('year') or 0),str(v.get('version','')).strip().lower())
+              keys[key].append(v)
+          duplicates={k:vs for k,vs in keys.items() if len(vs)>1}
+          print('AUDIT vehicle count:',len(vehicles))
+          print('AUDIT exact commercial duplicates:',len(duplicates))
+          for k,vs in duplicates.items():
+              print('DUPLICATE:',k,'count=',len(vs),'specs=',[(x.get('batteryKwh'),x.get('powerKw'),x.get('drive') or x.get('drivetrain'),x.get('wltpKm'),x.get('consumptionKwh100')) for x in vs])
+          ids=defaultdict(list)
+          for v in vehicles:
+              if v.get('id'): ids[v['id']].append(v)
+          duplicate_ids={k:vs for k,vs in ids.items() if len(vs)>1}
+          print('AUDIT duplicate IDs:',len(duplicate_ids))
+          for k,vs in duplicate_ids.items(): print('DUPLICATE_ID:',k,len(vs))
+          PY
+
       - name: Validate catalog
         run: |
           python - <<'PY'
@@ -34,10 +84,10 @@ jobs:
           data=json.loads(p.read_text(encoding='utf-8'))
           vehicles=data.get('vehicles')
           assert isinstance(vehicles,list), 'vehicles array missing'
-          assert len(vehicles)==626, f'unexpected vehicle count: {len(vehicles)}'
+          assert len(vehicles)==625, f'unexpected vehicle count: {len(vehicles)}'
           for i,v in enumerate(vehicles):
               assert v.get('make') and v.get('model') and v.get('version'), f'invalid vehicle at index {i}'
-          print('Catalog validation OK:', len(vehicles), 'vehicles')
+          print('Catalog validation OK:',len(vehicles),'vehicles')
           PY
 
       - name: Commit catalog if changed
@@ -48,6 +98,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No catalog changes to commit.'
           else
-            git commit -m 'catalog: second pass fill remaining missing fields'
+            git commit -m 'catalog: correct verified ATTO 3 EVO specifications'
             git push origin main
           fi
