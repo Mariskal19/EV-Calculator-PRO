@@ -1,6 +1,7 @@
 name: _patch_compare_card
 on:
-  workflow_dispatch:
+  push:
+    branches: [main]
 permissions:
   contents: write
 jobs:
