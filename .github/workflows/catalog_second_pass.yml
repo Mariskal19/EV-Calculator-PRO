@@ -1,5 +1,6 @@
 name: Catalog second pass
 
+# Force audit rerun after verified catalog cleanup.
 on:
   push:
     paths:
