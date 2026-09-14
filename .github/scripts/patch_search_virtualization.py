@@ -92,10 +92,9 @@ new_build = r'''    private void build() {
         intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
 
         // The card is deliberately laid over the bottom of the hero image.
-        // The stack is tall enough to contain the whole card, so neither the
-        // card nor its text can be clipped by the parent.
-        int cardTop = dp(226);
-        int stackHeight = dp(326);
+        // Keep a little more room below it so moving it down does not clip it.
+        int cardTop = dp(236);
+        int stackHeight = dp(336);
         FrameLayout heroStack = new FrameLayout(this);
         heroStack.setClipChildren(false);
         heroStack.setClipToPadding(false);
@@ -201,4 +200,4 @@ if old_title in s2:
     principal.write_text(s2, encoding="utf-8")
 
 compare.write_text(s, encoding="utf-8")
-print("Compare hero/card rebuilt as a real overlay stack.")
+print("Compare hero/card rebuilt as a real overlay stack, with the card lowered 10dp.")
