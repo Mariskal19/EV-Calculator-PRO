@@ -1,83 +1,204 @@
 from pathlib import Path
 import re
 
-p = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
-s = p.read_text(encoding="utf-8")
+compare = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
+s = compare.read_text(encoding="utf-8")
 
-print("Search virtualization already integrated; no search rewrite needed.")
+# Rebuild the Compare screen layout as a real overlay stack.  The vehicle
+# selector card belongs visually over the bottom of the hero image; using a
+# FrameLayout for the hero+card avoids negative margins/translation and avoids
+# clipping the card itself.
+new_build = r'''    private void build() {
+        LinearLayout root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(0,0,0,0);
+        root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
 
-old_bad = 'heroImage.setImageResource(R.drawable.cabecera_tema_oscuro);'
-old_light = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);'
-new_header = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
-if old_bad in s:
-    s = s.replace(old_bad, new_header, 1)
-elif old_light in s and 'heroImage.setColorFilter' not in s:
-    s = s.replace(old_light, new_header, 1)
+        FrameLayout hero = new FrameLayout(this);
+        hero.setClipChildren(false);
+        hero.setBackgroundColor(Color.TRANSPARENT);
 
-old_callback = 'dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();build();loadSelection();rebuild();'
-new_callback = 'dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();loadSelection();build();rebuild();'
-if old_callback in s:
-    s = s.replace(old_callback, new_callback, 1)
+        ImageView heroImage = new ImageView(this);
+        heroImage.setImageResource(R.drawable.cabecera_ev_calculator);
+        heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        heroImage.setAdjustViewBounds(false);
+        heroImage.setTranslationY(-dp(10));
+        heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);
+        hero.addView(heroImage, new FrameLayout.LayoutParams(-1, dp(260)));
 
-old_back = 'TextView back = tv("‹",40,Color.WHITE); back.setGravity(Gravity.CENTER); back.setTypeface(null,Typeface.BOLD); back.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
-new_back = 'TextView back = tv("←",30,Color.WHITE); back.setGravity(Gravity.CENTER); back.setIncludeFontPadding(false); back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); back.setBackgroundColor(Color.TRANSPARENT); back.setPadding(0,0,0,0); back.setTranslationY(-dp(4)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
-if old_back in s:
-    s = s.replace(old_back, new_back, 1)
+        View topFade = new View(this);
+        topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));
+        hero.addView(topFade, new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
 
-old_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); int statusBarHeight = getResources().getIdentifier("status_bar_height", "dimen", "android") > 0 ? getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android")) : 0; root.setPadding(0,statusBarHeight,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));'
-new_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));'
-if old_root in s:
-    s = s.replace(old_root, new_root, 1)
-else:
-    s = re.sub(r'LinearLayout root = new LinearLayout\(this\); root\.setOrientation\(LinearLayout\.VERTICAL\); int statusBarHeight = .*?; root\.setBackgroundColor\(', 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(', s, count=1)
+        TextView back = tv("←",30,Color.WHITE);
+        back.setGravity(Gravity.CENTER);
+        back.setIncludeFontPadding(false);
+        back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        back.setBackgroundColor(Color.TRANSPARENT);
+        back.setPadding(0,0,0,0);
+        back.setTranslationY(-dp(4));
+        back.setOnClickListener(v->finish());
+        FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START);
+        bp.leftMargin=dp(14);
+        bp.topMargin=dp(12);
+        hero.addView(back,bp);
 
-s = s.replace('root.addView(hero);', '', 1)
+        TextView title = tv("Comparar coches",22,Color.WHITE);
+        title.setTypeface(null,Typeface.BOLD);
+        title.setGravity(Gravity.CENTER);
+        title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
+        FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56));
+        tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;
+        tp.leftMargin=dp(40);
+        tp.rightMargin=dp(40);
+        tp.topMargin=dp(4);
+        hero.addView(title,tp);
 
-if 'LinearLayout scrollContent=new LinearLayout(this);' not in s:
-    pattern = r'ScrollView scroll=new ScrollView\(this\); scroll\.setFillViewport\(true\); scroll\.setClipToPadding\(false\); LinearLayout content=new LinearLayout\(this\);'
-    replacement = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); LinearLayout content=new LinearLayout(this);'
-    s, count = re.subn(pattern, replacement, s, count=1)
-    print("Compare scroll container declaration matches:", count)
+        TextView menuButton = tv("⋮",30,Color.WHITE);
+        menuButton.setGravity(Gravity.CENTER);
+        menuButton.setIncludeFontPadding(false);
+        menuButton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        menuButton.setPadding(0,0,0,0);
+        menuButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
+        menuButton.setBackgroundColor(Color.TRANSPARENT);
+        menuButton.setContentDescription(LanguageManager.t(this,"Menú"));
+        menuButton.setOnClickListener(v->AppMenuHelper.show(this,menuButton,new AppMenuHelper.Listener(){
+            public boolean isDark(){return dark;}
+            public void setDark(boolean value){
+                if(dark!=value){
+                    dark=value;
+                    getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();
+                    loadSelection();
+                    build();
+                    rebuild();
+                }
+            }
+        }));
+        FrameLayout.LayoutParams mbp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);
+        mbp.rightMargin=dp(14);
+        mbp.topMargin=dp(12);
+        hero.addView(menuButton,mbp);
 
-hero_add = 'scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260)));'
-hero_add_safe = 'android.view.ViewParent heroParent=hero.getParent(); if(heroParent instanceof android.view.ViewGroup)((android.view.ViewGroup)heroParent).removeView(hero); scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260)));'
-if hero_add_safe not in s:
-    s = s.replace(hero_add, hero_add_safe, 1)
+        LinearLayout intro=new LinearLayout(this);
+        intro.setOrientation(LinearLayout.VERTICAL);
+        intro.setPadding(dp(16),dp(14),dp(16),dp(14));
+        intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));
+        TextView introTitle=tv("Elige tus vehículos",17,text());
+        introTitle.setTypeface(null,Typeface.BOLD);
+        intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26)));
+        TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub());
+        hint.setPadding(0,dp(2),0,0);
+        intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
 
-if 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.addView(scrollContent' not in s:
-    old_end = 'scroll.addView(content,new ScrollView.LayoutParams(-1,-1)); root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));'
-    new_end = 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2)); root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));'
-    if old_end in s:
-        s = s.replace(old_end, new_end, 1)
-    else:
-        pattern = r'scroll\.addView\(content,new ScrollView\.LayoutParams\(-1,-1\)\); root\.addView\(scroll,new LinearLayout\.LayoutParams\(-1,0,1\)\);'
-        s, count = re.subn(pattern, new_end, s, count=1)
-        print("Compare scroll container end matches:", count)
+        // The card is deliberately laid over the bottom of the hero image.
+        // The stack is tall enough to contain the whole card, so neither the
+        // card nor its text can be clipped by the parent.
+        int cardTop = dp(226);
+        int stackHeight = dp(326);
+        FrameLayout heroStack = new FrameLayout(this);
+        heroStack.setClipChildren(false);
+        heroStack.setClipToPadding(false);
+        heroStack.setLayoutParams(new LinearLayout.LayoutParams(-1,stackHeight));
+        heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
+        FrameLayout.LayoutParams introFp = new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+        introFp.leftMargin=dp(14);
+        introFp.rightMargin=dp(14);
+        introFp.topMargin=cardTop;
+        heroStack.addView(intro,introFp);
 
-# Keep the card in the normal content flow and overlap it visually into the hero.
-# Translation avoids negative layout margins, so the card keeps its measured height
-# and cannot cut the first lines of its own content.
-pattern = r'LinearLayout\.LayoutParams introLp = new LinearLayout\.LayoutParams\(-1, -2\); introLp\.topMargin = -dp\(14\); intro\.setLayoutParams\(introLp\); content\.addView\(intro\);'
-replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = 0; intro.setLayoutParams(introLp); intro.setTranslationY(-dp(26)); content.addView(intro);'
-s, count = re.subn(pattern, replacement, s, count=1)
-print("Compare intro card overlap matches:", count)
+        ScrollView scroll=new ScrollView(this);
+        scroll.setFillViewport(true);
+        scroll.setClipToPadding(false);
+        scroll.setClipChildren(false);
+        LinearLayout scrollContent=new LinearLayout(this);
+        scrollContent.setOrientation(LinearLayout.VERTICAL);
+        scrollContent.setClipChildren(false);
+        scrollContent.setClipToPadding(false);
+        scrollContent.addView(heroStack,new LinearLayout.LayoutParams(-1,stackHeight));
 
-p.write_text(s, encoding="utf-8")
-print("Compare theme refresh, back-button alignment and scrolling header patches applied.")
+        LinearLayout content=new LinearLayout(this);
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.setPadding(dp(14),dp(0),dp(14),dp(12));
+        content.setClipChildren(false);
 
-p2 = Path("app/src/main/java/com/evchargecalculator/PrincipalActivity.java")
-s2 = p2.read_text(encoding="utf-8")
+        HorizontalScrollView carsScroll=new HorizontalScrollView(this);
+        carsScroll.setHorizontalScrollBarEnabled(false);
+        carsScroll.setClipToPadding(false);
+        carsScroll.setPadding(0,dp(12),0,dp(4));
+        carsRow=new LinearLayout(this);
+        carsRow.setOrientation(LinearLayout.HORIZONTAL);
+        carsRow.setGravity(Gravity.TOP);
+        carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
+        content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
+
+        TextView section=tv("Características",19,text());
+        section.setTypeface(null,Typeface.BOLD);
+        section.setPadding(dp(2),dp(12),0,dp(2));
+        content.addView(section,new LinearLayout.LayoutParams(-1,dp(42)));
+        TextView legend=tv("✦  Mejor valor",12,blue);
+        legend.setGravity(Gravity.CENTER_VERTICAL);
+        legend.setPadding(dp(4),0,0,dp(4));
+        if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
+
+        table=new LinearLayout(this);
+        table.setOrientation(LinearLayout.VERTICAL);
+        table.setPadding(0,dp(2),0,0);
+        HorizontalScrollView tableScroll=new HorizontalScrollView(this);
+        tableScroll.setHorizontalScrollBarEnabled(false);
+        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
+        content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
+
+        summary=new LinearLayout(this);
+        summary.setOrientation(LinearLayout.VERTICAL);
+        summary.setPadding(0,dp(18),0,dp(8));
+        content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
+
+        LinearLayout footer=new LinearLayout(this);
+        footer.setOrientation(LinearLayout.VERTICAL);
+        footer.setGravity(Gravity.CENTER);
+        footer.setPadding(dp(14),0,dp(14),dp(4));
+        String appVersion="1.0.4";
+        try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}
+        if(appVersion.startsWith("v")||appVersion.startsWith("V"))appVersion=appVersion.substring(1);
+        TextView privacyLink=tv("Política de privacidad",13,dark?Color.rgb(105,175,255):blue);
+        privacyLink.setGravity(Gravity.CENTER);
+        privacyLink.setTypeface(null,Typeface.BOLD);
+        privacyLink.setClickable(true);
+        privacyLink.setFocusable(true);
+        privacyLink.setContentDescription("Política de privacidad");
+        privacyLink.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://mariskal19.github.io/EV-Calculator-PRO-Privacy/"))));
+        footer.addView(privacyLink,new LinearLayout.LayoutParams(-1,dp(30)));
+        TextView foot=tv("Powered by EV Calculator · v"+appVersion,12,sub());
+        foot.setGravity(Gravity.CENTER);
+        footer.addView(foot,new LinearLayout.LayoutParams(-1,dp(24)));
+        Space footerSpacer=new Space(this);
+        content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1));
+        content.addView(footer,new LinearLayout.LayoutParams(-1,dp(62)));
+
+        scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2));
+        scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
+        root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
+        setContentView(root);
+        getWindow().setStatusBarColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
+        getWindow().setNavigationBarColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
+        getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
+'''
+
+pattern = r'    private void build\(\) \{.*?\n    \}\n\n    private List<Vehicle> marketVehicles\(\)'
+s, count = re.subn(pattern, new_build + '\n    private List<Vehicle> marketVehicles()', s, count=1, flags=re.S)
+if count != 1:
+    raise SystemExit(f"Could not replace Compare build() method (matches={count})")
+
+# Keep the main screen title literal, as already established by the project.
+principal = Path("app/src/main/java/com/evchargecalculator/PrincipalActivity.java")
+s2 = principal.read_text(encoding="utf-8")
 old_title = 'TextView title = tv("EV Calculator PRO", 22, Color.WHITE);'
 new_title = 'TextView title = new TextView(this); title.setText("EV Calculator PRO"); title.setTextSize(22); title.setTextColor(Color.WHITE);'
 if old_title in s2:
     s2 = s2.replace(old_title, new_title, 1)
-p2.write_text(s2, encoding="utf-8")
-print("Main title kept as EV Calculator PRO in every language.")
+    principal.write_text(s2, encoding="utf-8")
 
-p3 = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
-s3 = p3.read_text(encoding="utf-8")
-marker = 'content.setPadding(dp(14),dp(14),dp(14),dp(12));'
-if 'content.setClipChildren(false);' not in s3 and marker in s3:
-    s3 = s3.replace(marker, marker + ' content.setClipChildren(false);', 1)
-    p3.write_text(s3, encoding="utf-8")
-    print("Compare intro card clipping fixed.")
+compare.write_text(s, encoding="utf-8")
+print("Compare hero/card rebuilt as a real overlay stack.")
