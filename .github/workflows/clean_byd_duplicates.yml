@@ -1,0 +1,36 @@
+name: Clean BYD duplicate catalog records
+
+on:
+  push:
+    paths:
+      - '.github/scripts/clean_byd_duplicates.py'
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Clean and validate BYD catalog
+        run: python3 .github/scripts/clean_byd_duplicates.py
+
+      - name: Commit catalog cleanup
+        run: |
+          if git diff --quiet -- app/src/main/assets/catalog_es_2024_2026.json; then
+            echo 'No catalog changes required.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/catalog_es_2024_2026.json
+          git commit -m 'Clean BYD duplicate catalog records'
+          git push
