@@ -134,9 +134,26 @@ def main():
             if not v.get('source'): v['source']='OpenEV Data — second enrichment pass'
             v['lastUpdated']=TODAY
 
-    if len(vehicles)!=original: raise RuntimeError('Vehicle count changed')
+    # BYD Spain: SEALION 7 Excellence AWD is the 91.3 kWh version.
+    # A second 91.5 kWh record is the same commercial version and is erroneous.
+    sealion_excellence = [v for v in vehicles if norm(v.get('make')) == 'byd' and norm(v.get('model')) == 'sealion 7' and norm(v.get('version')) == 'excellence awd']
+    valid = [v for v in sealion_excellence if num(v.get('batteryKwh')) == 91.3]
+    erroneous = [v for v in sealion_excellence if num(v.get('batteryKwh')) == 91.5]
+    if erroneous:
+        if len(valid) != 1:
+            raise RuntimeError(f'Unexpected SEALION 7 Excellence records: {[(v.get("batteryKwh"), v.get("version")) for v in sealion_excellence]}')
+        target = valid[0]
+        for duplicate in erroneous:
+            for key, value in duplicate.items():
+                if target.get(key) in (None, '') and value not in (None, ''):
+                    target[key] = value
+            vehicles.remove(duplicate)
+        print('Removed erroneous SEALION 7 Excellence AWD 91.5 kWh record(s):', len(erroneous))
+
+    if len(vehicles) != original - len(erroneous):
+        raise RuntimeError('Unexpected vehicle count after SEALION cleanup')
     CATALOG.write_text(json.dumps(catalog,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print('Catalog vehicles:', original)
+    print('Catalog vehicles:', len(vehicles))
     print('Filled from unambiguous catalog peers:', changes_peer)
     print('Filled from latest OpenEV:', changes_source)
     print('Total second-pass fields:', changes_peer+changes_source)
