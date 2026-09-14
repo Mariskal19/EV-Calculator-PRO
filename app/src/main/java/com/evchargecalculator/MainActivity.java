@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
   boolean busy, dark = false;
   SharedPreferences prefs;
   String lastLanguage;
+  String lastCurrency;
   int blue = Color.rgb(46, 107, 255),
       white = Color.rgb(22, 42, 63),
       secondary = Color.rgb(90, 111, 137),
@@ -67,18 +68,32 @@ public class MainActivity extends Activity {
     applyTheme();
     calculate();
     lastLanguage = LanguageManager.getSelectedLanguage(this);
+    lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
   }
 
   @Override
   protected void onResume() {
     super.onResume();
     if (battery != null && !busy) {
+      LanguageManager.applyStored(this);
       String currentLanguage = LanguageManager.getSelectedLanguage(this);
-      if (lastLanguage == null || !currentLanguage.equals(lastLanguage)) {
-        lastLanguage = currentLanguage;
-        LanguageManager.translateViews(this);
-        if (headerTitle != null)
-          headerTitle.setText(LanguageManager.t(this, "EV Charge Calculator"));
+      String currentCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+      boolean languageChanged = lastLanguage == null || !currentLanguage.equals(lastLanguage);
+      boolean currencyChanged = lastCurrency == null || !currentCurrency.equals(lastCurrency);
+      boolean selectedDark = prefs.contains(KEY_DARK_THEME)
+          ? prefs.getBoolean(KEY_DARK_THEME, false)
+          : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+      boolean themeChanged = selectedDark != dark;
+      lastLanguage = currentLanguage;
+      lastCurrency = currentCurrency;
+      if (languageChanged || currencyChanged || themeChanged) {
+        dark = selectedDark;
+        build();
+        loadPreferences();
+        applyTheme();
+        applyCurrency();
+        calculate();
+        return;
       }
       applyCurrency();
       calculate();

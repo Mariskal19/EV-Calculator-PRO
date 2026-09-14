@@ -27,6 +27,7 @@ public class ElectricVsCombustionActivity extends Activity {
   private SharedPreferences prefs;
   private ScrollView scroll;
   private String lastLanguage;
+  private String lastCurrency;
   private EditText distance, evConsumption, electricityPrice, fuelConsumption, fuelPrice;
   private TextView evCost,
       fuelCost,
@@ -63,30 +64,30 @@ public class ElectricVsCombustionActivity extends Activity {
     applyCurrency();
     calculate();
     lastLanguage = LanguageManager.getSelectedLanguage(this);
+    lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
   }
 
   @Override
   protected void onResume() {
     super.onResume();
     if (prefs == null) prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-    if (prefs.contains(KEY_DARK_THEME)) {
-      boolean selectedDark = prefs.getBoolean(KEY_DARK_THEME, false);
-      if (selectedDark != dark) {
+    if (distance != null) {
+      LanguageManager.applyStored(this);
+      String currentLanguage = LanguageManager.getSelectedLanguage(this);
+      String currentCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+      boolean languageChanged = lastLanguage == null || !currentLanguage.equals(lastLanguage);
+      boolean currencyChanged = lastCurrency == null || !currentCurrency.equals(lastCurrency);
+      boolean selectedDark = prefs.contains(KEY_DARK_THEME) ? prefs.getBoolean(KEY_DARK_THEME, false) : (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+      boolean themeChanged = selectedDark != dark;
+      lastLanguage = currentLanguage;
+      lastCurrency = currentCurrency;
+      if (languageChanged || currencyChanged || themeChanged) {
         dark = selectedDark;
         build();
         load();
         applyCurrency();
         calculate();
         return;
-      }
-    }
-    if (distance != null) {
-      String currentLanguage = LanguageManager.getSelectedLanguage(this);
-      if (lastLanguage == null || !currentLanguage.equals(lastLanguage)) {
-        lastLanguage = currentLanguage;
-        LanguageManager.translateViews(this);
-        if (headerTitle != null)
-          headerTitle.setText(LanguageManager.t(this, "Electric Vs\nCombustion Calculator"));
       }
       applyCurrency();
       calculate();
