@@ -71,7 +71,9 @@ def signature(v):
 def source_score(v,s):
     if brand(v.get('make')) != brand(s.get('make') or s.get('brand')): return -999
     if int(v.get('year') or 0) != int(s.get('year') or 0): return -999
-    vm=set(norm(v.get('model')).split()); sm=set(norm((s.get('model') if not isinstance(s.get('model'),dict) else s['model'].get('name')).split())
+    source_model = s.get('model') if not isinstance(s.get('model'),dict) else s['model'].get('name')
+    vm=set(norm(v.get('model')).split())
+    sm=set(norm(source_model).split())
     if not vm or not sm or not (vm.issubset(sm) or sm.issubset(vm) or vm==sm): return -999
     score=20
     sf=source_fields(s)
@@ -93,8 +95,7 @@ def unique_peer_values(vehicles, target, key):
     for other in vehicles:
         if other is target or signature(other)!=sig: continue
         value=other.get(key)
-        if value not in (None,'',0):
-            vals.append(value)
+        if value not in (None,'',0): vals.append(value)
     unique=[]
     for value in vals:
         if value not in unique: unique.append(value)
@@ -109,9 +110,6 @@ def main():
     changes_peer=changes_source=0
     by_field={k:0 for k in FIELDS}
 
-    # Pass A: use unambiguous data already present in the same catalog. This is
-    # deliberately conservative: only identical technical signatures and one
-    # unique peer value are propagated.
     for v in vehicles:
         for key in FIELDS:
             if v.get(key) in (None,'',0):
@@ -119,7 +117,6 @@ def main():
                 if value not in (None,'',0):
                     v[key]=value; changes_peer+=1; by_field[key]+=1
 
-    # Pass B: re-query the latest OpenEV release with relaxed model matching.
     for v in vehicles:
         candidates=[]
         for s in openev:
@@ -147,5 +144,4 @@ def main():
     remaining={k:sum(1 for v in vehicles if v.get(k) in (None,'',0)) for k in FIELDS}
     print('Remaining blanks:', remaining)
 
-if __name__=='__main__':
-    main()
+if __name__=='__main__': main()
