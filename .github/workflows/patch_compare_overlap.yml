@@ -19,17 +19,18 @@ jobs:
           from pathlib import Path
           p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s = p.read_text()
-          old = '''        root.addView(hero);
-        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=-dp(26); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
-        LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(14); content.addView(intro,introLp);
-        HorizontalScrollView carsScroll='''
-          new = '''        root.addView(hero);
-        LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(26); root.addView(intro,introLp);
-        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=dp(12); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
-        HorizontalScrollView carsScroll='''
-          if old not in s:
-              raise SystemExit('Expected compare layout block not found')
-          s = s.replace(old,new,1)
+          old_scroll = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); scroll.setTranslationY(-dp(26)); LinearLayout content=new LinearLayout(this);'
+          new_scroll = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=-dp(26); LinearLayout content=new LinearLayout(this);'
+          if old_scroll in s:
+              s = s.replace(old_scroll,new_scroll,1)
+          elif 'LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=-dp(26);' not in s:
+              raise SystemExit('Expected ScrollView pattern not found')
+          old_add = 'root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));'
+          new_add = 'root.addView(scroll,scrollLp);'
+          if old_add in s:
+              s = s.replace(old_add,new_add,1)
+          elif new_add not in s:
+              raise SystemExit('Expected root.addView(scroll,...) pattern not found')
           p.write_text(s)
           PY
       - name: Commit patch
