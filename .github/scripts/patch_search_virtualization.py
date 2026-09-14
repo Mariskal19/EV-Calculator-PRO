@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 p = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
 s = p.read_text(encoding="utf-8")
@@ -68,8 +69,17 @@ new_back = 'TextView back = tv("←",30,Color.WHITE); back.setGravity(Gravity.CE
 if old_back in s:
     s = s.replace(old_back, new_back, 1)
 
+# Match the other app screens: the first Compare card overlaps the bottom of
+# the hero by 26dp. This removes the visible blank strip that otherwise belongs
+# to the header area while leaving the header image itself unchanged.
+if 'compare header gap' not in s:
+    pattern = r'content\\.addView\\(intro(?:\\s*,[^;]*)?\\);'
+    replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(26); intro.setLayoutParams(introLp); content.addView(intro);'
+    s, count = re.subn(pattern, replacement, s, count=1)
+    print("Compare header overlap patch matches:", count)
+
 p.write_text(s, encoding="utf-8")
-print("Compare theme refresh and back-button alignment patches applied.")
+print("Compare theme refresh, back-button alignment and header-gap patches applied.")
 
 # The product title on the main screen is a brand name and must never be translated.
 p2 = Path("app/src/main/java/com/evchargecalculator/PrincipalActivity.java")
