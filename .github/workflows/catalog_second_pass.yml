@@ -1,0 +1,53 @@
+name: Catalog second pass
+
+on:
+  push:
+    paths:
+      - '.github/scripts/catalog_second_pass.py'
+      - '.github/workflows/catalog_second_pass.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  second-pass:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Enrich missing catalog fields
+        run: python .github/scripts/catalog_second_pass.py
+
+      - name: Validate catalog
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('app/src/main/assets/catalog_es_2024_2026.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          vehicles=data.get('vehicles')
+          assert isinstance(vehicles,list), 'vehicles array missing'
+          assert len(vehicles)==626, f'unexpected vehicle count: {len(vehicles)}'
+          for i,v in enumerate(vehicles):
+              assert v.get('make') and v.get('model') and v.get('version'), f'invalid vehicle at index {i}'
+          print('Catalog validation OK:', len(vehicles), 'vehicles')
+          PY
+
+      - name: Commit catalog if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/assets/catalog_es_2024_2026.json
+          if git diff --cached --quiet; then
+            echo 'No catalog changes to commit.'
+          else
+            git commit -m 'catalog: second pass fill remaining missing fields'
+            git push origin main
+          fi
