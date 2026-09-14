@@ -681,7 +681,10 @@
       "source": "Audi España; S6 Avant e-tron",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.7
+      "consumptionKwh100": 15.7,
+      "charge10to80Min": 21,
+      "acceleration0to100Sec": 3.9,
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -727,7 +730,10 @@
       "source": "Audi España; S6 Sportback e-tron",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "charge10to80Min": 21,
+      "acceleration0to100Sec": 3.9,
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -1323,7 +1329,8 @@
       "photo": null,
       "source": "BYD España: lanzamiento ATTO 2 febrero 2025",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1339,7 +1346,12 @@
       "consumptionKwh100": 14.5,
       "usableBatteryKwh": 45.1,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 65,
+      "charge10to80Min": 37,
+      "weightKg": 1570
     },
     {
       "make": "BYD",
@@ -1355,7 +1367,12 @@
       "consumptionKwh100": 14.5,
       "usableBatteryKwh": 45.1,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 65,
+      "charge10to80Min": 37,
+      "weightKg": 1570
     },
     {
       "make": "BYD",
@@ -1368,7 +1385,13 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 430,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 155,
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 7.9,
+      "trunkLiters": 450
     },
     {
       "make": "BYD",
@@ -1386,7 +1409,11 @@
       "source": "BYD España; ATTO 3 EVO lanzamiento España 2026",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "batteryChemistry": "LFP",
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 5.5,
+      "trunkLiters": 490
     },
     {
       "make": "BYD",
@@ -1399,7 +1426,13 @@
       "powerKw": 230,
       "drive": "RWD",
       "wltpKm": 510,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 220,
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 5.5,
+      "trunkLiters": 490
     },
     {
       "make": "BYD",
@@ -1417,7 +1450,11 @@
       "source": "BYD España; ATTO 3 EVO lanzamiento España 2026",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "batteryChemistry": "LFP",
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 3.9,
+      "trunkLiters": 490
     },
     {
       "make": "BYD",
@@ -1430,7 +1467,13 @@
       "powerKw": 330,
       "drive": "AWD",
       "wltpKm": 470,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 220,
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 3.9,
+      "trunkLiters": 490
     },
     {
       "make": "BYD",
@@ -1454,10 +1497,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1570,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1481,10 +1525,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1570,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1511,7 +1556,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1538,7 +1584,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1565,7 +1612,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1581,7 +1629,14 @@
       "consumptionKwh100": 13.6,
       "usableBatteryKwh": 30.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 65,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 11.1,
+      "trunkLiters": 308,
+      "weightKg": 1294
     },
     {
       "make": "BYD",
@@ -1594,7 +1649,14 @@
       "powerKw": 65,
       "drive": "FWD",
       "wltpKm": 322,
-      "consumptionKwh100": 13.4
+      "consumptionKwh100": 13.4,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 85,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 12.1,
+      "trunkLiters": 308,
+      "weightKg": 1370
     },
     {
       "make": "BYD",
@@ -1607,7 +1669,14 @@
       "powerKw": 115,
       "drive": "FWD",
       "wltpKm": 310,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 85,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 9.1,
+      "trunkLiters": 308,
+      "weightKg": 1390
     },
     {
       "make": "BYD",
@@ -1634,7 +1703,8 @@
       "weightKg": 1294,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1661,7 +1731,8 @@
       "weightKg": 1370,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1688,7 +1759,8 @@
       "weightKg": 1390,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1704,7 +1776,13 @@
       "consumptionKwh100": 17.1,
       "usableBatteryKwh": 71.8,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 140,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 9.3,
+      "trunkLiters": 552
     },
     {
       "make": "BYD",
@@ -1720,7 +1798,13 @@
       "consumptionKwh100": 17.4,
       "usableBatteryKwh": 87.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 140,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 9.6,
+      "trunkLiters": 552
     },
     {
       "make": "BYD",
@@ -1738,7 +1822,8 @@
       "source": "BYD España/BYD Europe; SEALION 7 Comfort",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 17.1
+      "consumptionKwh100": 17.1,
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1751,7 +1836,10 @@
       "powerKw": 230,
       "drive": "RWD",
       "wltpKm": 482,
-      "consumptionKwh100": 17.1
+      "consumptionKwh100": 17.1,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 150
     },
     {
       "make": "BYD",
@@ -1769,7 +1857,8 @@
       "source": "BYD España/BYD Europe; SEALION 7 Design AWD",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 18.1
+      "consumptionKwh100": 18.1,
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1782,7 +1871,10 @@
       "powerKw": 390,
       "drive": "AWD",
       "wltpKm": 456,
-      "consumptionKwh100": 18.1
+      "consumptionKwh100": 18.1,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 150
     },
     {
       "make": "BYD",
@@ -1801,7 +1893,8 @@
       "lastUpdated": "2026-09-09",
       "market": "ES",
       "consumptionKwh100": 18.2,
-      "usableBatteryKwh": 91.3
+      "usableBatteryKwh": 91.3,
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1817,7 +1910,10 @@
       "consumptionKwh100": 18.2,
       "usableBatteryKwh": 91.3,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 230
     },
     {
       "make": "BYD",
@@ -1844,7 +1940,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -1871,7 +1968,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "BYD",
@@ -2136,7 +2234,9 @@
       "acceleration0to100Sec": 6.5,
       "weightKg": 2130.0,
       "source": "OpenEV Data; Cupra Tavascan 2024 Official Specifications (https://www.cupraofficial.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 28,
+      "trunkLiters": 540
     },
     {
       "make": "CUPRA",
@@ -2158,7 +2258,9 @@
       "usableBatteryKwh": 77.0,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 6.5,
-      "weightKg": 2130.0
+      "weightKg": 2130.0,
+      "charge10to80Min": 28,
+      "trunkLiters": 540
     },
     {
       "make": "CUPRA",
@@ -2204,7 +2306,9 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2250.0,
       "source": "OpenEV Data; Cupra Tavascan VZ 2024 Official Specifications (https://www.cupraofficial.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 28,
+      "trunkLiters": 540
     },
     {
       "make": "CUPRA",
@@ -2226,7 +2330,9 @@
       "usableBatteryKwh": 77.0,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.6,
-      "weightKg": 2250.0
+      "weightKg": 2250.0,
+      "charge10to80Min": 28,
+      "trunkLiters": 540
     },
     {
       "make": "Changan",
@@ -2430,7 +2536,10 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 520,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 160
     },
     {
       "make": "Citroën",
@@ -2505,7 +2614,10 @@
       "powerKw": 169,
       "drive": "FWD",
       "wltpKm": 543,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 160
     },
     {
       "make": "DS",
@@ -2517,7 +2629,10 @@
       "powerKw": 257,
       "drive": "AWD",
       "wltpKm": 679,
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 160
     },
     {
       "make": "DS",
@@ -2565,7 +2680,10 @@
       "powerKw": 180,
       "drive": "FWD",
       "wltpKm": 740,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 160
     },
     {
       "make": "DS",
@@ -2838,7 +2956,14 @@
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 52.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 145,
+      "charge10to80Min": 26,
+      "acceleration0to100Sec": 8.7,
+      "trunkLiters": 572,
+      "weightKg": 1914
     },
     {
       "make": "Ford",
@@ -2855,7 +2980,13 @@
       "consumptionKwh100": 12.3,
       "usableBatteryKwh": 77.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 135,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.4,
+      "trunkLiters": 572
     },
     {
       "make": "Ford",
@@ -2872,7 +3003,13 @@
       "consumptionKwh100": 13.3,
       "usableBatteryKwh": 79.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 185,
+      "charge10to80Min": 26,
+      "acceleration0to100Sec": 5.3,
+      "trunkLiters": 572
     },
     {
       "make": "Ford",
@@ -2889,7 +3026,14 @@
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 52.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 145,
+      "charge10to80Min": 26,
+      "acceleration0to100Sec": 8.7,
+      "trunkLiters": 572,
+      "weightKg": 1914
     },
     {
       "make": "Ford",
@@ -2906,7 +3050,13 @@
       "consumptionKwh100": 12.3,
       "usableBatteryKwh": 77.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 135,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.4,
+      "trunkLiters": 572
     },
     {
       "make": "Ford",
@@ -2923,7 +3073,13 @@
       "consumptionKwh100": 13.3,
       "usableBatteryKwh": 79.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 185,
+      "charge10to80Min": 26,
+      "acceleration0to100Sec": 5.3,
+      "trunkLiters": 572
     },
     {
       "make": "Ford",
@@ -3012,7 +3168,14 @@
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 52.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 115,
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 8.7,
+      "trunkLiters": 470,
+      "weightKg": 1908
     },
     {
       "make": "Ford",
@@ -3029,7 +3192,13 @@
       "consumptionKwh100": 12.8,
       "usableBatteryKwh": 77.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 135,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.4,
+      "trunkLiters": 470
     },
     {
       "make": "Ford",
@@ -3046,7 +3215,13 @@
       "consumptionKwh100": 14.0,
       "usableBatteryKwh": 79.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 185,
+      "charge10to80Min": 26,
+      "acceleration0to100Sec": 5.3,
+      "trunkLiters": 470
     },
     {
       "make": "Ford",
@@ -3070,7 +3245,8 @@
       "photo": null,
       "source": "Ford Explorer España / periodo 2024; 79 kWh 340 CV",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Ford",
@@ -3094,7 +3270,8 @@
       "photo": null,
       "source": "Ford Explorer España / periodo 2024; 77 kWh 286 CV",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Ford",
@@ -3118,7 +3295,8 @@
       "photo": null,
       "source": "Ford Explorer España / periodo 2024; 52 kWh 170 CV",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Ford",
@@ -3673,7 +3851,8 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 430,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "drivetrain": "FWD"
     },
     {
       "make": "Geely",
@@ -3899,7 +4078,9 @@
       "usableBatteryKwh": 72.6,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.4,
-      "weightKg": 1950.0
+      "weightKg": 1950.0,
+      "charge10to80Min": 18,
+      "trunkLiters": 520
     },
     {
       "make": "Hyundai",
@@ -3939,7 +4120,10 @@
       "powerKw": 478,
       "drive": "AWD",
       "wltpKm": 487,
-      "consumptionKwh100": 17.2
+      "consumptionKwh100": 17.2,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 350
     },
     {
       "make": "Hyundai",
@@ -4067,7 +4251,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Hyundai",
@@ -4158,12 +4343,13 @@
       "dcKw": 350,
       "charge10to80Min": 24,
       "acceleration0to100Sec": 9.4,
-      "trunkLiters": null,
+      "trunkLiters": 338,
       "weightKg": null,
       "photo": null,
       "source": "Hyundai IONIQ 9 technical data / Hyundai España",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Hyundai",
@@ -4176,7 +4362,12 @@
       "powerKw": 160,
       "drive": "RWD",
       "wltpKm": 620,
-      "consumptionKwh100": 17.8
+      "consumptionKwh100": 17.8,
+      "drivetrain": "RWD",
+      "dcKw": 350,
+      "charge10to80Min": 24,
+      "acceleration0to100Sec": 9.4,
+      "trunkLiters": 338
     },
     {
       "make": "Hyundai",
@@ -4464,7 +4655,12 @@
       "consumptionKwh100": 14.8,
       "usableBatteryKwh": 74.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 160,
+      "charge10to80Min": 35,
+      "trunkLiters": 550
     },
     {
       "make": "Jeep",
@@ -4662,7 +4858,12 @@
       "powerKw": 108,
       "drive": "FWD",
       "wltpKm": 317,
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "charge10to80Min": 29,
+      "acceleration0to100Sec": 8.7,
+      "trunkLiters": 362
     },
     {
       "make": "Kia",
@@ -4708,7 +4909,8 @@
       "lastUpdated": "2026-09-10",
       "market": "ES",
       "consumptionKwh100": 13.4,
-      "usableBatteryKwh": 55.0
+      "usableBatteryKwh": 55.0,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -4751,7 +4953,10 @@
       "consumptionKwh100": 13.4,
       "usableBatteryKwh": 55.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "FWD",
+      "acKw": 10.5,
+      "dcKw": 102
     },
     {
       "make": "Kia",
@@ -5363,7 +5568,13 @@
       "consumptionKwh100": 15.2,
       "usableBatteryKwh": 65.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 5.5,
+      "trunkLiters": 440
     },
     {
       "make": "Lynk & Co",
@@ -5403,7 +5614,13 @@
       "consumptionKwh100": 14.8,
       "usableBatteryKwh": 65.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 5.5,
+      "trunkLiters": 440
     },
     {
       "make": "M-HERO",
@@ -5694,7 +5911,13 @@
       "consumptionKwh100": 13.3,
       "usableBatteryKwh": 62.1,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 139,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.3,
+      "trunkLiters": 453
     },
     {
       "make": "MG",
@@ -5709,7 +5932,13 @@
       "consumptionKwh100": 14.4,
       "usableBatteryKwh": 47.1,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 7,
+      "dcKw": 120,
+      "charge10to80Min": 24,
+      "acceleration0to100Sec": 8.0,
+      "trunkLiters": 453
     },
     {
       "make": "MG",
@@ -5748,7 +5977,13 @@
       "consumptionKwh100": 13.8,
       "usableBatteryKwh": 62.1,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 139,
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.3,
+      "trunkLiters": 453
     },
     {
       "make": "MG",
@@ -5772,7 +6007,8 @@
       "photo": null,
       "source": "MG España; MGS6 EV lanzamiento 2026",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -5785,7 +6021,12 @@
       "powerKw": 266,
       "drive": "AWD",
       "wltpKm": 485,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 38,
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "MG",
@@ -5809,7 +6050,8 @@
       "photo": null,
       "source": "MG España; MGS6 EV lanzamiento 2026",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -5822,7 +6064,12 @@
       "powerKw": 180,
       "drive": "RWD",
       "wltpKm": 530,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 38,
+      "acceleration0to100Sec": 7.3
     },
     {
       "make": "MINI",
@@ -6250,7 +6497,13 @@
       "powerKw": 190,
       "drive": "RWD",
       "wltpKm": 479,
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 165,
+      "charge10to80Min": 27,
+      "acceleration0to100Sec": 7.6,
+      "trunkLiters": 330
     },
     {
       "make": "Mazda",
@@ -6274,7 +6527,8 @@
       "photo": null,
       "source": "Mazda6e España/Europa; especificación 2025",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Mazda",
@@ -6298,7 +6552,8 @@
       "photo": null,
       "source": "Mazda6e España/Europa; especificación 2025",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Mazda",
@@ -6311,7 +6566,13 @@
       "powerKw": 180,
       "drive": "RWD",
       "wltpKm": 552,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 90,
+      "charge10to80Min": 47,
+      "acceleration0to100Sec": 7.8,
+      "trunkLiters": 330
     },
     {
       "make": "Mercedes-Benz",
@@ -6524,7 +6785,13 @@
       "powerKw": 432,
       "drive": "AWD",
       "wltpKm": 468,
-      "consumptionKwh100": 24.8
+      "consumptionKwh100": 24.8,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 200,
+      "charge10to80Min": 32,
+      "acceleration0to100Sec": 4.7,
+      "trunkLiters": 340
     },
     {
       "make": "Mercedes-Benz",
@@ -6640,7 +6907,13 @@
       "drive": "RWD",
       "wltpKm": 630,
       "arrivalYear": 2026,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 320,
+      "charge10to80Min": 22,
+      "acceleration0to100Sec": 7.0,
+      "trunkLiters": 565
     },
     {
       "make": "Mercedes-Benz",
@@ -6680,7 +6953,13 @@
       "drive": "AWD",
       "wltpKm": 614,
       "arrivalYear": 2026,
-      "consumptionKwh100": 13.8
+      "consumptionKwh100": 13.8,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 320,
+      "charge10to80Min": 22,
+      "acceleration0to100Sec": 7.0,
+      "trunkLiters": 565
     },
     {
       "make": "Mercedes-Benz",
@@ -6900,7 +7179,9 @@
       "source": "Opel España; Frontera Electric 54 kWh",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "usableBatteryKwh": 53.5,
+      "acceleration0to100Sec": 14.2
     },
     {
       "make": "Opel",
@@ -7943,7 +8224,8 @@
       "trunkLiters": 420.0,
       "weightKg": 1550.0,
       "source": "OpenEV Data; Renault 4 E-Tech 2025 Official Specifications (https://www.renault.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 30
     },
     {
       "make": "Renault",
@@ -8013,7 +8295,8 @@
       "trunkLiters": 420.0,
       "weightKg": 1550.0,
       "source": "OpenEV Data; Renault 4 E-Tech 2025 Official Specifications (https://www.renault.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 30
     },
     {
       "make": "Renault",
@@ -8106,7 +8389,8 @@
       "trunkLiters": 326.0,
       "weightKg": 1500.0,
       "source": "OpenEV Data; Renault 5 E-Tech 110 kW Performance Variant 2024 (https://www.renault.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 30
     },
     {
       "make": "Renault",
@@ -8177,7 +8461,8 @@
       "trunkLiters": 326.0,
       "weightKg": 1500.0,
       "source": "OpenEV Data; Renault 5 E-Tech 2024 Official Specifications (https://www.renault.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 30
     },
     {
       "make": "Renault",
@@ -8270,7 +8555,8 @@
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 8.4,
       "trunkLiters": 545.0,
-      "weightKg": 1920.0
+      "weightKg": 1920.0,
+      "charge10to80Min": 37
     },
     {
       "make": "Renault",
@@ -8287,7 +8573,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 37,
       "acceleration0to100Sec": 8.0,
       "trunkLiters": 545,
       "id": "renault-scenic-e-tech-220-gran-autonom-a-2026-87-0-nmc-160-fwd",
@@ -8584,7 +8870,10 @@
       "acKw": 11.0,
       "dcKw": 185.0,
       "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 9.0,
+      "trunkLiters": 470
     },
     {
       "make": "Skoda",
@@ -8628,7 +8917,10 @@
       "acKw": 11.0,
       "dcKw": 185.0,
       "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 8.5,
+      "trunkLiters": 470
     },
     {
       "make": "Skoda",
@@ -8675,7 +8967,10 @@
       "acKw": 11.0,
       "dcKw": 185.0,
       "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.6,
+      "trunkLiters": 470
     },
     {
       "make": "Skoda",
@@ -8723,7 +9018,8 @@
       "photo": null,
       "source": "Škoda España; Enyaq 85 2024",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Skoda",
@@ -8747,7 +9043,8 @@
       "photo": null,
       "source": "Škoda España; Enyaq 85x 2024",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Skoda",
@@ -8771,7 +9068,8 @@
       "photo": null,
       "source": "Škoda España; Enyaq RS 2025",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Skoda",
@@ -8809,7 +9107,8 @@
       "dcKw": 135,
       "source": "Škoda technical data 2025; Enyaq Coupé",
       "market": "ES",
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Skoda",
@@ -8827,7 +9126,8 @@
       "dcKw": 175,
       "source": "Škoda technical data 2025; Enyaq Coupé",
       "market": "ES",
-      "consumptionKwh100": 14.9
+      "consumptionKwh100": 14.9,
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Skoda",
@@ -8845,7 +9145,8 @@
       "dcKw": 185,
       "source": "Škoda technical data 2025; Enyaq Coupé",
       "market": "ES",
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Skywell",
@@ -9680,7 +9981,7 @@
       "charge10to80Min": 27,
       "acceleration0to100Sec": 4.8,
       "trunkLiters": 709,
-      "weightKg": null,
+      "weightKg": 2072,
       "drivetrain": "AWD",
       "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
       "lastUpdated": "2026-09-14"
@@ -9775,8 +10076,8 @@
       "acKw": 22,
       "dcKw": 150,
       "charge10to80Min": 28,
-      "acceleration0to100Sec": null,
-      "trunkLiters": null,
+      "acceleration0to100Sec": 7.4,
+      "trunkLiters": 416,
       "id": "toyota-c-hr-250-advance-2025-77-nmc-165-fwd",
       "market": "ES",
       "price": null,
@@ -9828,7 +10129,7 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 30,
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 416,
       "id": "toyota-c-hr-343-spirit-awd-i-2025-77-nmc-252-awd",
@@ -9875,7 +10176,11 @@
       "drive": "FWD",
       "wltpKm": 607,
       "arrivalYear": 2026,
-      "consumptionKwh100": 12.7
+      "consumptionKwh100": 12.7,
+      "drivetrain": "FWD",
+      "dcKw": 150,
+      "acceleration0to100Sec": 7.4,
+      "trunkLiters": 416
     },
     {
       "make": "Toyota",
@@ -9888,7 +10193,11 @@
       "drive": "AWD",
       "wltpKm": 500,
       "arrivalYear": 2026,
-      "consumptionKwh100": 15.4
+      "consumptionKwh100": 15.4,
+      "drivetrain": "AWD",
+      "dcKw": 150,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 5.2
     },
     {
       "make": "Toyota",
@@ -10068,7 +10377,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 86,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 86.0,
       "batteryType": "NMC",
       "wltpKm": 584,
       "consumptionKwh100": 14.7,
@@ -10187,7 +10496,9 @@
       "acceleration0to100Sec": 6.5,
       "weightKg": 2120.0,
       "source": "OpenEV Data; Volkswagen ID.7 PRO 2024 Official Specifications (https://www.volkswagen.de)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 26,
+      "trunkLiters": 605
     },
     {
       "make": "Volkswagen",
@@ -10303,7 +10614,8 @@
       "source": "Volvo Cars España; EC40 Single Motor Extended Range",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10316,7 +10628,10 @@
       "powerKw": 185,
       "drive": "RWD",
       "wltpKm": 585,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 200
     },
     {
       "make": "Volvo",
@@ -10378,7 +10693,8 @@
       "lastUpdated": "2026-09-10",
       "market": "ES",
       "consumptionKwh100": 13.9,
-      "usableBatteryKwh": 88.0
+      "usableBatteryKwh": 88.0,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10410,7 +10726,10 @@
       "consumptionKwh100": 13.9,
       "usableBatteryKwh": 88.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 350
     },
     {
       "make": "Volvo",
@@ -10428,7 +10747,8 @@
       "source": "Volvo Cars España; ES90 MY26; especificaciones españolas",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10441,7 +10761,10 @@
       "powerKw": 335,
       "drive": "AWD",
       "wltpKm": 702,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 350
     },
     {
       "make": "Volvo",
@@ -10454,7 +10777,10 @@
       "powerKw": 335,
       "drive": "AWD",
       "wltpKm": 702,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 350
     },
     {
       "make": "Volvo",
@@ -10472,7 +10798,8 @@
       "source": "Volvo Cars España; ES90 MY26; especificaciones españolas",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10485,7 +10812,10 @@
       "powerKw": 500,
       "drive": "AWD",
       "wltpKm": 702,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 350
     },
     {
       "make": "Volvo",
@@ -10498,7 +10828,10 @@
       "powerKw": 500,
       "drive": "AWD",
       "wltpKm": 702,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 350
     },
     {
       "make": "Volvo",
@@ -10522,10 +10855,11 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1900.0,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10565,7 +10899,11 @@
       "source": "Volvo Cars España; EX30 P5 Long Range",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "batteryChemistry": "NMC",
+      "charge10to80Min": 27,
+      "trunkLiters": 400,
+      "weightKg": 1900.0
     },
     {
       "make": "Volvo",
@@ -10583,7 +10921,8 @@
       "source": "Volvo Cars España; EX30 P8 AWD",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10646,7 +10985,9 @@
       "acceleration0to100Sec": 5.7,
       "weightKg": 1900.0,
       "source": "OpenEV Data; Volvo EX30 69 kWh Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex30)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 27,
+      "trunkLiters": 400
     },
     {
       "make": "Volvo",
@@ -10667,7 +11008,9 @@
       "acceleration0to100Sec": 5.7,
       "weightKg": 1900.0,
       "source": "OpenEV Data; Volvo EX30 69 kWh Official Specifications 2024 (https://www.volvocars.com/intl/v/cars/ex30)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 27,
+      "trunkLiters": 400
     },
     {
       "make": "Volvo",
@@ -10680,7 +11023,10 @@
       "powerKw": 315,
       "drive": "AWD",
       "wltpKm": 450,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 175
     },
     {
       "make": "Volvo",
@@ -10693,7 +11039,10 @@
       "powerKw": 315,
       "drive": "AWD",
       "wltpKm": 450,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 175
     },
     {
       "make": "Volvo",
@@ -10754,7 +11103,8 @@
       "source": "Volvo Cars España; EX40 Single Motor Extended Range",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -10767,7 +11117,10 @@
       "powerKw": 185,
       "drive": "RWD",
       "wltpKm": 575,
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 200
     },
     {
       "make": "Volvo",
@@ -11513,7 +11866,8 @@
       "photo": null,
       "source": "Zeekr Europe; 001",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Zeekr",
@@ -11526,7 +11880,14 @@
       "drive": "RWD",
       "wltpKm": 620,
       "arrivalYear": 2026,
-      "consumptionKwh100": 16.1
+      "consumptionKwh100": 16.1,
+      "batteryChemistry": "NMC",
+      "drivetrain": "RWD",
+      "acKw": 22,
+      "dcKw": 200,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 7.2,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11540,7 +11901,13 @@
       "drive": "RWD",
       "wltpKm": 620,
       "arrivalYear": 2026,
-      "consumptionKwh100": 16.1
+      "consumptionKwh100": 16.1,
+      "drivetrain": "RWD",
+      "acKw": 22,
+      "dcKw": 200,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 7.2,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11564,7 +11931,8 @@
       "photo": null,
       "source": "Zeekr Europe; 001",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Zeekr",
@@ -11577,7 +11945,14 @@
       "drive": "AWD",
       "wltpKm": 594,
       "arrivalYear": 2026,
-      "consumptionKwh100": 16.8
+      "consumptionKwh100": 16.8,
+      "batteryChemistry": "NMC",
+      "drivetrain": "AWD",
+      "acKw": 22,
+      "dcKw": 200,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 3.8,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11591,7 +11966,13 @@
       "drive": "AWD",
       "wltpKm": 580,
       "arrivalYear": 2026,
-      "consumptionKwh100": 17.2
+      "consumptionKwh100": 17.2,
+      "drivetrain": "AWD",
+      "acKw": 22,
+      "dcKw": 200,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 3.8,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11604,7 +11985,14 @@
       "drive": "AWD",
       "wltpKm": 585,
       "arrivalYear": 2026,
-      "consumptionKwh100": 17.1
+      "consumptionKwh100": 17.1,
+      "batteryChemistry": "NMC",
+      "drivetrain": "AWD",
+      "acKw": 22,
+      "dcKw": 200,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 3.8,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11618,7 +12006,13 @@
       "drive": "AWD",
       "wltpKm": 580,
       "arrivalYear": 2026,
-      "consumptionKwh100": 17.2
+      "consumptionKwh100": 17.2,
+      "drivetrain": "AWD",
+      "acKw": 22,
+      "dcKw": 200,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 3.8,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11682,7 +12076,13 @@
       "consumptionKwh100": 15.6,
       "usableBatteryKwh": 71.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 360,
+      "charge10to80Min": 13,
+      "acceleration0to100Sec": 6.0,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11722,7 +12122,13 @@
       "consumptionKwh100": 16.3,
       "usableBatteryKwh": 94.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 360,
+      "charge10to80Min": 16,
+      "acceleration0to100Sec": 6.0,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11759,7 +12165,13 @@
       "drive": "AWD",
       "wltpKm": 543,
       "arrivalYear": 2026,
-      "consumptionKwh100": 18.4
+      "consumptionKwh100": 18.4,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 360,
+      "charge10to80Min": 16,
+      "acceleration0to100Sec": 3.8,
+      "trunkLiters": 539
     },
     {
       "make": "Zeekr",
@@ -11936,7 +12348,10 @@
       "acKw": 11.0,
       "dcKw": 185.0,
       "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 9.0,
+      "trunkLiters": 470
     },
     {
       "make": "Škoda",
@@ -11975,7 +12390,10 @@
       "acKw": 11.0,
       "dcKw": 185.0,
       "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 25,
+      "acceleration0to100Sec": 8.5,
+      "trunkLiters": 470
     },
     {
       "make": "Škoda",
@@ -11994,7 +12412,10 @@
       "acKw": 11.0,
       "dcKw": 185.0,
       "source": "OpenEV Data; Škoda Elroq Official Specifications (https://www.skoda.pt/news/skoda-elroq)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 28,
+      "acceleration0to100Sec": 6.6,
+      "trunkLiters": 470
     },
     {
       "make": "Škoda",
@@ -12058,7 +12479,14 @@
       "powerKw": 210,
       "drive": "RWD",
       "wltpKm": 565,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 77.0,
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 135,
+      "charge10to80Min": 29,
+      "acceleration0to100Sec": 6.7,
+      "trunkLiters": 585
     },
     {
       "make": "Škoda",
@@ -12071,7 +12499,14 @@
       "powerKw": 210,
       "drive": "AWD",
       "wltpKm": 537,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "usableBatteryKwh": 77.0,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 135,
+      "charge10to80Min": 29,
+      "acceleration0to100Sec": 6.6,
+      "trunkLiters": 585
     },
     {
       "make": "Škoda",
@@ -12136,7 +12571,14 @@
       "powerKw": 250,
       "drive": "AWD",
       "wltpKm": 560,
-      "consumptionKwh100": 15.0
+      "consumptionKwh100": 15.0,
+      "usableBatteryKwh": 79.0,
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 185,
+      "charge10to80Min": 26,
+      "acceleration0to100Sec": 5.4,
+      "trunkLiters": 585
     },
     {
       "make": "Škoda",
@@ -12191,7 +12633,10 @@
       "consumptionKwh100": 13.9,
       "usableBatteryKwh": 79.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "RWD",
+      "acKw": 11,
+      "dcKw": 135
     },
     {
       "make": "Škoda",
@@ -12207,7 +12652,10 @@
       "consumptionKwh100": 15.0,
       "usableBatteryKwh": 79.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 175
     },
     {
       "make": "Škoda",
@@ -12223,7 +12671,10 @@
       "consumptionKwh100": 14.7,
       "usableBatteryKwh": 79.0,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "drivetrain": "AWD",
+      "acKw": 11,
+      "dcKw": 185
     },
     {
       "make": "Škoda",
