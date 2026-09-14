@@ -6,8 +6,6 @@ s = p.read_text(encoding="utf-8")
 
 print("Search virtualization already integrated; no search rewrite needed.")
 
-# Keep the existing header image and apply a dark overlay instead of referencing
-# a nonexistent dark drawable.
 old_bad = 'heroImage.setImageResource(R.drawable.cabecera_tema_oscuro);'
 old_light = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro);'
 new_header = 'heroImage.setImageResource(R.drawable.cabecera_tema_claro); heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);'
@@ -16,38 +14,16 @@ if old_bad in s:
 elif old_light in s and 'heroImage.setColorFilter' not in s:
     s = s.replace(old_light, new_header, 1)
 
-# Rebuild the complete Compare screen after a theme change.
-old_resume = '''    @Override
-    protected void onResume() {
-        super.onResume();
-        LanguageManager.applyStored(this);
-        SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
-        boolean newDark = p.contains("dark_theme") ? p.getBoolean("dark_theme", false) : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
-        boolean themeChanged = dark != newDark;
-        dark = newDark;
-        if (!vehicles.isEmpty()) {
-            loadSelection();
-            if (themeChanged) build();
-            rebuild();
-        }
-    }
-'''
-new_resume = old_resume
-if old_resume in s:
-    s = s.replace(old_resume, new_resume, 1)
-
 old_callback = 'dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();build();loadSelection();rebuild();'
 new_callback = 'dark=value;getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();loadSelection();build();rebuild();'
 if old_callback in s:
     s = s.replace(old_callback, new_callback, 1)
 
-# Match the standard back button used by the other screens.
 old_back = 'TextView back = tv("‹",40,Color.WHITE); back.setGravity(Gravity.CENTER); back.setTypeface(null,Typeface.BOLD); back.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
 new_back = 'TextView back = tv("←",30,Color.WHITE); back.setGravity(Gravity.CENTER); back.setIncludeFontPadding(false); back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); back.setBackgroundColor(Color.TRANSPARENT); back.setPadding(0,0,0,0); back.setTranslationY(-dp(4)); back.setOnClickListener(v->finish()); FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START); bp.leftMargin=dp(14); bp.topMargin=dp(12); hero.addView(back,bp);'
 if old_back in s:
     s = s.replace(old_back, new_back, 1)
 
-# The Compare header must use the same top origin as the other screens.
 old_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); int statusBarHeight = getResources().getIdentifier("status_bar_height", "dimen", "android") > 0 ? getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android")) : 0; root.setPadding(0,statusBarHeight,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));'
 new_root = 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));'
 if old_root in s:
@@ -55,7 +31,6 @@ if old_root in s:
 else:
     s = re.sub(r'LinearLayout root = new LinearLayout\(this\); root\.setOrientation\(LinearLayout\.VERTICAL\); int statusBarHeight = .*?; root\.setBackgroundColor\(', 'LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,0); root.setBackgroundColor(', s, count=1)
 
-# IMPORTANT: the entire hero must be inside the same ScrollView as the page.
 s = s.replace('root.addView(hero);', '', 1)
 
 if 'LinearLayout scrollContent=new LinearLayout(this);' not in s:
@@ -79,12 +54,12 @@ if 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.
         s, count = re.subn(pattern, new_end, s, count=1)
         print("Compare scroll container end matches:", count)
 
-# Do not overlap the card yet. First make the entire card and its text fully visible.
-# The vertical position can be adjusted separately after confirming there is no clipping.
-pattern = r'LinearLayout\.LayoutParams introLp = new LinearLayout\.LayoutParams\(-1, -2\); introLp\.topMargin = -dp\(26\); intro\.setLayoutParams\(introLp\); content\.addView\(intro\);'
-replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = 0; intro.setLayoutParams(introLp); content.addView(intro);'
+# The card is now known to be fully visible. Move it upward by 14dp toward the hero,
+# while keeping the immediate content container unclipped so the card text remains visible.
+pattern = r'LinearLayout\.LayoutParams introLp = new LinearLayout\.LayoutParams\(-1, -2\); introLp\.topMargin = 0; intro\.setLayoutParams\(introLp\); content\.addView\(intro\);'
+replacement = 'LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(14); intro.setLayoutParams(introLp); content.addView(intro);'
 s, count = re.subn(pattern, replacement, s, count=1)
-print("Compare intro card clipping/overlap reset matches:", count)
+print("Compare intro card vertical position matches:", count)
 
 p.write_text(s, encoding="utf-8")
 print("Compare theme refresh, back-button alignment and scrolling header patches applied.")
@@ -98,7 +73,6 @@ if old_title in s2:
 p2.write_text(s2, encoding="utf-8")
 print("Main title kept as EV Calculator PRO in every language.")
 
-# The immediate content container must not clip child drawing.
 p3 = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
 s3 = p3.read_text(encoding="utf-8")
 marker = 'content.setPadding(dp(14),dp(14),dp(14),dp(12));'
