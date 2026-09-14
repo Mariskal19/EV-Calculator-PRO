@@ -11,7 +11,6 @@ def completeness(v):
     return sum(1 for value in v.values() if value not in (None, "", []))
 
 def trim_key(version):
-    """Collapse a short trim (e.g. Comfort) and its technical duplicate (Comfort 230 kW...)."""
     s = norm(version)
     s = re.sub(r"\s+\d+(?:\.\d+)?\s*kw\b.*$", "", s)
     return s
@@ -26,12 +25,8 @@ for idx, v in enumerate(vehicles):
     if norm(v.get("make")) != "byd":
         continue
     year = int(v["year"]) if str(v.get("year", "")).isdigit() else v.get("year")
-    key = (
-        norm(v.get("market")),
-        norm(v.get("model")),
-        year,
-        trim_key(v.get("version")),
-    )
+    # The catalog is Spain-only; blank/ES market markers are the same record for BYD.
+    key = (norm(v.get("model")), year, trim_key(v.get("version")))
     groups.setdefault(key, []).append((idx, v))
 
 removed = []
