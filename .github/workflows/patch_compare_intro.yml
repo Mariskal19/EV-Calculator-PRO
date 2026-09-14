@@ -1,0 +1,34 @@
+name: Temporary compare card patch
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: "!startsWith(github.event.head_commit.message, 'Move compare intro card up')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Patch compare intro card position
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s = p.read_text()
+          old = 'content.addView(intro,new LinearLayout.LayoutParams(-1,-2));'
+          new = 'LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(26); content.addView(intro,introLp);'
+          if old not in s:
+              raise SystemExit('Expected intro layout line not found')
+          p.write_text(s.replace(old, new, 1))
+          PY
+      - name: Commit patch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m 'Move compare intro card up'
+          git push
