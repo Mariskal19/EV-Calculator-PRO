@@ -171,6 +171,15 @@ new_build = r'''    private void build() {
         TextView foot=tv("Powered by EV Calculator · v"+appVersion,12,sub());
         foot.setGravity(Gravity.CENTER);
         footer.addView(foot,new LinearLayout.LayoutParams(-1,dp(24)));
+
+        // When no car is selected the page content is short, so the privacy
+        // link would otherwise sit too close to the vehicle selector. Add a
+        // fixed breathing space only in that empty state; selected-car views
+        // keep their existing footer position.
+        if(selectedIds.isEmpty()){
+            Space emptyStateSpacer=new Space(this);
+            content.addView(emptyStateSpacer,new LinearLayout.LayoutParams(-1,dp(120)));
+        }
         Space footerSpacer=new Space(this);
         content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1));
         content.addView(footer,new LinearLayout.LayoutParams(-1,dp(62)));
@@ -200,4 +209,4 @@ if old_title in s2:
     principal.write_text(s2, encoding="utf-8")
 
 compare.write_text(s, encoding="utf-8")
-print("Compare hero/card rebuilt as a real overlay stack, with the card lowered 10dp.")
+print("Compare hero/card rebuilt as a real overlay stack, with the card lowered 10dp and extra empty-state footer spacing.")
