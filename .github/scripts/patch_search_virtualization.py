@@ -60,17 +60,23 @@ if old_back in s:
     s = s.replace(old_back, new_back, 1)
 
 # IMPORTANT: the entire hero must be inside the same ScrollView as the page.
-# Remove the original root attachment before re-parenting hero into scrollContent.
-# Leaving it attached to root causes IllegalStateException: the view already has a parent.
-s = s.replace('root.addView(hero); ScrollView scroll=', 'ScrollView scroll=', 1)
+# Never leave hero attached to root. A View cannot have two parents.
+s = s.replace('root.addView(hero);', '', 1)
 
 # Do this independently from the end replacement so a partial previous patch
 # can never leave an undefined scrollContent variable.
 if 'LinearLayout scrollContent=new LinearLayout(this);' not in s:
     pattern = r'ScrollView scroll=new ScrollView\(this\); scroll\.setFillViewport\(true\); scroll\.setClipToPadding\(false\); LinearLayout content=new LinearLayout\(this\);'
-    replacement = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260))); LinearLayout content=new LinearLayout(this);'
+    replacement = 'ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); LinearLayout content=new LinearLayout(this);'
     s, count = re.subn(pattern, replacement, s, count=1)
     print("Compare scroll container declaration matches:", count)
+
+# Put the hero into the scroll container. Remove any existing parent first as a
+# defensive guard so this can never throw IllegalStateException at runtime.
+hero_add = 'scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260)));'
+hero_add_safe = 'android.view.ViewParent heroParent=hero.getParent(); if(heroParent instanceof android.view.ViewGroup)((android.view.ViewGroup)heroParent).removeView(hero); scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260)));'
+if hero_add_safe not in s:
+    s = s.replace(hero_add, hero_add_safe, 1)
 
 # Put content inside scrollContent, then scrollContent inside the ScrollView.
 if 'scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.addView(scrollContent' not in s:
