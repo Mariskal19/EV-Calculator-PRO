@@ -28,7 +28,7 @@ jobs:
         ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=dp(12); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
         HorizontalScrollView carsScroll='''
           if old not in s:
-              raise SystemExit('Expected current compare layout block not found')
+              raise SystemExit('Expected current negative-margin compare layout block not found')
           s = s.replace(old,new,1)
           p.write_text(s)
           PY
