@@ -1113,7 +1113,8 @@
       "source": "BMW España; iX xDrive45 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.7
+      "consumptionKwh100": 15.7,
+      "usableBatteryKwh": 94.8
     },
     {
       "make": "BMW",
@@ -1307,7 +1308,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 45.1,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 45.1,
       "batteryType": "LFP",
       "wltpKm": 312,
       "consumptionKwh100": 14.5,
@@ -1335,7 +1336,10 @@
       "powerKw": 130,
       "drive": "FWD",
       "wltpKm": 312,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 45.1,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BYD",
@@ -1348,7 +1352,10 @@
       "powerKw": 130,
       "drive": "FWD",
       "wltpKm": 312,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "usableBatteryKwh": 45.1,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BYD",
@@ -1432,7 +1439,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 45.1,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 45.1,
       "batteryType": "LFP",
       "wltpKm": 312,
       "consumptionKwh100": 14.5,
@@ -1459,7 +1466,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 45.1,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 45.1,
       "batteryType": "LFP",
       "wltpKm": 312,
       "consumptionKwh100": 14.5,
@@ -1571,7 +1578,10 @@
       "powerKw": 65,
       "drive": "FWD",
       "wltpKm": 220,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "usableBatteryKwh": 30.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BYD",
@@ -1606,7 +1616,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 30,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 30.0,
       "batteryType": "LFP",
       "wltpKm": 220,
       "consumptionKwh100": 15.5,
@@ -1691,7 +1701,10 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 420,
-      "consumptionKwh100": 17.1
+      "consumptionKwh100": 17.1,
+      "usableBatteryKwh": 71.8,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BYD",
@@ -1704,7 +1717,10 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 500,
-      "consumptionKwh100": 17.4
+      "consumptionKwh100": 17.4,
+      "usableBatteryKwh": 87.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BYD",
@@ -1784,7 +1800,8 @@
       "source": "BYD España/BYD Europe; SEALION 7 Excellence AWD",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 18.2
+      "consumptionKwh100": 18.2,
+      "usableBatteryKwh": 91.3
     },
     {
       "make": "BYD",
@@ -1797,7 +1814,10 @@
       "powerKw": 390,
       "drive": "AWD",
       "wltpKm": 502,
-      "consumptionKwh100": 18.2
+      "consumptionKwh100": 18.2,
+      "usableBatteryKwh": 91.3,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "BYD",
@@ -1806,7 +1826,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 71.8,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 71.8,
       "batteryType": "LFP",
       "wltpKm": 420,
       "consumptionKwh100": 17.1,
@@ -1833,7 +1853,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 87.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 87.0,
       "batteryType": "LFP",
       "wltpKm": 500,
       "consumptionKwh100": 17.4,
@@ -2470,7 +2490,10 @@
       "powerKw": 158,
       "drive": "FWD",
       "wltpKm": 450,
-      "consumptionKwh100": 13.0
+      "consumptionKwh100": 13.0,
+      "usableBatteryKwh": 58.3,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "DS",
@@ -2596,7 +2619,10 @@
       "powerKw": 169,
       "drive": "FWD",
       "wltpKm": 550,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "usableBatteryKwh": 73.7,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "DS",
@@ -2608,7 +2634,10 @@
       "powerKw": 169,
       "drive": "FWD",
       "wltpKm": 550,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "usableBatteryKwh": 73.7,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "DS",
@@ -2743,7 +2772,10 @@
       "powerKw": 70,
       "drive": "FWD",
       "wltpKm": 340,
-      "consumptionKwh100": 12.4
+      "consumptionKwh100": 12.4,
+      "usableBatteryKwh": 40.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Dongfeng",
@@ -2756,7 +2788,10 @@
       "powerKw": 70,
       "drive": "FWD",
       "wltpKm": 340,
-      "consumptionKwh100": 12.4
+      "consumptionKwh100": 12.4,
+      "usableBatteryKwh": 40.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Fiat",
@@ -2768,7 +2803,10 @@
       "powerKw": 115,
       "drive": "FWD",
       "wltpKm": 409,
-      "consumptionKwh100": 13.2
+      "consumptionKwh100": 13.2,
+      "usableBatteryKwh": 50.8,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Fiat",
@@ -2780,7 +2818,10 @@
       "powerKw": 83,
       "drive": "FWD",
       "wltpKm": 320,
-      "consumptionKwh100": 13.8
+      "consumptionKwh100": 13.8,
+      "usableBatteryKwh": 43.8,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2794,7 +2835,10 @@
       "drive": "RWD",
       "wltpKm": 384,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "usableBatteryKwh": 52.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2808,7 +2852,10 @@
       "drive": "RWD",
       "wltpKm": 627,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.3
+      "consumptionKwh100": 12.3,
+      "usableBatteryKwh": 77.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2822,7 +2869,10 @@
       "drive": "AWD",
       "wltpKm": 592,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2836,7 +2886,10 @@
       "drive": "RWD",
       "wltpKm": 384,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "usableBatteryKwh": 52.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2850,7 +2903,10 @@
       "drive": "RWD",
       "wltpKm": 627,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.3
+      "consumptionKwh100": 12.3,
+      "usableBatteryKwh": 77.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2864,7 +2920,10 @@
       "drive": "AWD",
       "wltpKm": 592,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2950,7 +3009,10 @@
       "drive": "RWD",
       "wltpKm": 384,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "usableBatteryKwh": 52.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2964,7 +3026,10 @@
       "drive": "RWD",
       "wltpKm": 602,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "usableBatteryKwh": 77.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -2978,7 +3043,10 @@
       "drive": "AWD",
       "wltpKm": 566,
       "arrivalYear": 2024,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3068,7 +3136,8 @@
       "source": "Ford España; Explorer EV rango estándar",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "usableBatteryKwh": 52.0
     },
     {
       "make": "Ford",
@@ -3086,7 +3155,8 @@
       "source": "Ford España; Explorer EV rango extendido AWD",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 77.0
     },
     {
       "make": "Ford",
@@ -3104,7 +3174,8 @@
       "source": "Ford España; Explorer EV rango extendido RWD",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "usableBatteryKwh": 79.0
     },
     {
       "make": "Ford",
@@ -3284,7 +3355,10 @@
       "powerKw": 198,
       "drive": "RWD",
       "wltpKm": 470,
-      "consumptionKwh100": 15.4
+      "consumptionKwh100": 15.4,
+      "usableBatteryKwh": 72.6,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3424,7 +3498,10 @@
       "powerKw": 358,
       "drive": "AWD",
       "wltpKm": 510,
-      "consumptionKwh100": 17.8
+      "consumptionKwh100": 17.8,
+      "usableBatteryKwh": 91.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Ford",
@@ -3527,7 +3604,10 @@
       "powerKw": 123,
       "drive": "FWD",
       "wltpKm": 417,
-      "consumptionKwh100": 10.3
+      "consumptionKwh100": 10.3,
+      "usableBatteryKwh": 43.6,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "GAC",
@@ -3617,7 +3697,10 @@
       "powerKw": 84.5,
       "drive": "FWD",
       "wltpKm": 370,
-      "consumptionKwh100": 13.2
+      "consumptionKwh100": 13.2,
+      "usableBatteryKwh": 46.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Hyundai",
@@ -3626,7 +3709,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 42,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 39.0,
       "batteryType": "NMC",
       "wltpKm": 327,
       "consumptionKwh100": 14.3,
@@ -3653,7 +3736,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 49,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 46.0,
       "batteryType": "NMC",
       "wltpKm": 370,
       "consumptionKwh100": 15.1,
@@ -3683,7 +3766,10 @@
       "powerKw": 71.1,
       "drive": "FWD",
       "wltpKm": 327,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "usableBatteryKwh": 39.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Hyundai",
@@ -4331,7 +4417,8 @@
       "source": "Jeep España; Nuevo Compass Full-Electric Standard Range",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "usableBatteryKwh": 74.0
     },
     {
       "make": "Jeep",
@@ -4374,7 +4461,10 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 500,
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "usableBatteryKwh": 74.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Jeep",
@@ -4417,7 +4507,7 @@
       "year": 2026,
       "arrivalYear": 2026,
       "batteryKwh": 74.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 74.0,
       "batteryType": "Li-ion",
       "wltpKm": 500,
       "consumptionKwh100": 17.5,
@@ -4445,7 +4535,10 @@
       "powerKw": 152,
       "drive": "FWD",
       "wltpKm": 462,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "usableBatteryKwh": 72.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "KGM",
@@ -4458,7 +4551,10 @@
       "powerKw": 152,
       "drive": "FWD",
       "wltpKm": 462,
-      "consumptionKwh100": 15.9
+      "consumptionKwh100": 15.9,
+      "usableBatteryKwh": 72.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Kia",
@@ -4611,7 +4707,8 @@
       "source": "Kia España; catálogo EV3 MY25; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.4
+      "consumptionKwh100": 13.4,
+      "usableBatteryKwh": 55.0
     },
     {
       "make": "Kia",
@@ -4651,7 +4748,10 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 436,
-      "consumptionKwh100": 13.4
+      "consumptionKwh100": 13.4,
+      "usableBatteryKwh": 55.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Kia",
@@ -4754,7 +4854,7 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 58.3,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 55.0,
       "batteryType": "NMC",
       "wltpKm": 440,
       "consumptionKwh100": 13.2,
@@ -5105,7 +5205,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 69.9,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 69.9,
       "batteryType": "LFP",
       "wltpKm": 420,
       "consumptionKwh100": 17.2,
@@ -5232,7 +5332,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 66.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 65.0,
       "batteryType": "NMC",
       "wltpKm": 445,
       "consumptionKwh100": 14.8,
@@ -5260,7 +5360,10 @@
       "drive": "RWD",
       "wltpKm": 435,
       "arrivalYear": 2024,
-      "consumptionKwh100": 15.2
+      "consumptionKwh100": 15.2,
+      "usableBatteryKwh": 65.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Lynk & Co",
@@ -5269,7 +5372,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 66.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 65.0,
       "batteryType": "NMC",
       "wltpKm": 445,
       "consumptionKwh100": 14.8,
@@ -5297,7 +5400,10 @@
       "drive": "RWD",
       "wltpKm": 445,
       "arrivalYear": 2024,
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "usableBatteryKwh": 65.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "M-HERO",
@@ -5390,7 +5496,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 77.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 74.4,
       "batteryType": "NMC",
       "wltpKm": 530,
       "consumptionKwh100": 14.5,
@@ -5438,7 +5544,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 49.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 50.8,
       "batteryType": "LFP",
       "wltpKm": 350,
       "consumptionKwh100": 14.0,
@@ -5585,7 +5691,10 @@
       "powerKw": 170,
       "drive": "RWD",
       "wltpKm": 480,
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "usableBatteryKwh": 62.1,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "MG",
@@ -5597,7 +5706,10 @@
       "powerKw": 125,
       "drive": "RWD",
       "wltpKm": 340,
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "usableBatteryKwh": 47.1,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "MG",
@@ -5633,7 +5745,10 @@
       "powerKw": 170,
       "drive": "RWD",
       "wltpKm": 465,
-      "consumptionKwh100": 13.8
+      "consumptionKwh100": 13.8,
+      "usableBatteryKwh": 62.1,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "MG",
@@ -5745,7 +5860,10 @@
       "powerKw": 135,
       "drive": "FWD",
       "wltpKm": 302,
-      "consumptionKwh100": 12.7
+      "consumptionKwh100": 12.7,
+      "usableBatteryKwh": 38.5,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "MINI",
@@ -6044,7 +6162,10 @@
       "powerKw": 560,
       "drive": "AWD",
       "wltpKm": 447,
-      "consumptionKwh100": 20.7
+      "consumptionKwh100": 20.7,
+      "usableBatteryKwh": 83.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Maserati",
@@ -6056,7 +6177,10 @@
       "powerKw": 560,
       "drive": "AWD",
       "wltpKm": 450,
-      "consumptionKwh100": 20.6
+      "consumptionKwh100": 20.6,
+      "usableBatteryKwh": 83.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Maserati",
@@ -6728,7 +6852,10 @@
       "powerKw": 83,
       "drive": "FWD",
       "wltpKm": 305,
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "usableBatteryKwh": 43.8,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Opel",
@@ -6803,7 +6930,10 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 523,
-      "consumptionKwh100": 14.0
+      "consumptionKwh100": 14.0,
+      "usableBatteryKwh": 73.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Opel",
@@ -6815,7 +6945,10 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 582,
-      "consumptionKwh100": 14.1
+      "consumptionKwh100": 14.1,
+      "usableBatteryKwh": 82.2,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Opel",
@@ -6827,7 +6960,10 @@
       "powerKw": 239,
       "drive": "AWD",
       "wltpKm": 501,
-      "consumptionKwh100": 14.6
+      "consumptionKwh100": 14.6,
+      "usableBatteryKwh": 73.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Opel",
@@ -6926,7 +7062,10 @@
       "powerKw": 240,
       "drive": "AWD",
       "wltpKm": 497,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 73.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -6979,7 +7118,10 @@
       "powerKw": 240,
       "drive": "AWD",
       "wltpKm": 525,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 73.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -7201,7 +7343,10 @@
       "powerKw": 240,
       "drive": "AWD",
       "wltpKm": 500,
-      "consumptionKwh100": 14.6
+      "consumptionKwh100": 14.6,
+      "usableBatteryKwh": 73.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Peugeot",
@@ -7267,7 +7412,10 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 668,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 96.9,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Polestar",
@@ -9749,7 +9897,7 @@
       "year": 2026,
       "arrivalYear": 2026,
       "batteryKwh": 49.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 47.8,
       "batteryType": "LFP",
       "wltpKm": 344,
       "consumptionKwh100": 14.2,
@@ -10229,7 +10377,8 @@
       "source": "Volvo Cars España; ES90 MY26; especificaciones españolas",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 88.0
     },
     {
       "make": "Volvo",
@@ -10242,7 +10391,10 @@
       "powerKw": 205,
       "drive": "RWD",
       "wltpKm": 664,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 88.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -10255,7 +10407,10 @@
       "powerKw": 245,
       "drive": "RWD",
       "wltpKm": 664,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 88.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Volvo",
@@ -10700,7 +10855,7 @@
       "year": 2024,
       "arrivalYear": 2024,
       "batteryKwh": 92.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 100.0,
       "batteryType": "Li-ion",
       "wltpKm": 564,
       "consumptionKwh100": 18.6,
@@ -11288,7 +11443,7 @@
       "market": "ES",
       "version": "RWD Long Range 230 kW RWD 74.9 kWh",
       "batteryKwh": 74.9,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 82.7,
       "batteryType": "LFP",
       "batteryChemistry": "LFP",
       "powerKw": 230,
@@ -11496,7 +11651,7 @@
       "year": 2026,
       "arrivalYear": 2026,
       "batteryKwh": 75.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 71.0,
       "batteryType": "LFP",
       "wltpKm": 480,
       "consumptionKwh100": 17.8,
@@ -11524,7 +11679,10 @@
       "drive": "RWD",
       "wltpKm": 480,
       "arrivalYear": 2026,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "usableBatteryKwh": 71.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Zeekr",
@@ -11533,7 +11691,7 @@
       "year": 2026,
       "arrivalYear": 2026,
       "batteryKwh": 100.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 94.0,
       "batteryType": "NMC",
       "wltpKm": 615,
       "consumptionKwh100": 17.7,
@@ -11561,7 +11719,10 @@
       "drive": "RWD",
       "wltpKm": 615,
       "arrivalYear": 2026,
-      "consumptionKwh100": 16.3
+      "consumptionKwh100": 16.3,
+      "usableBatteryKwh": 94.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Zeekr",
@@ -11607,7 +11768,7 @@
       "year": 2026,
       "arrivalYear": 2026,
       "batteryKwh": 69.0,
-      "usableBatteryKwh": null,
+      "usableBatteryKwh": 65.0,
       "batteryType": "NMC",
       "wltpKm": 446,
       "consumptionKwh100": 16.4,
@@ -11635,7 +11796,10 @@
       "drive": "RWD",
       "wltpKm": 405,
       "arrivalYear": 2026,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "usableBatteryKwh": 65.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Zeekr",
@@ -11711,7 +11875,10 @@
       "powerKw": 250,
       "drive": "RWD",
       "wltpKm": 465,
-      "consumptionKwh100": 16.3
+      "consumptionKwh100": 16.3,
+      "usableBatteryKwh": 74.4,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "smart",
@@ -11840,7 +12007,10 @@
       "powerKw": 220,
       "drive": "AWD",
       "wltpKm": 562,
-      "consumptionKwh100": 14.6
+      "consumptionKwh100": 14.6,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Škoda",
@@ -11872,7 +12042,10 @@
       "powerKw": 250,
       "drive": "AWD",
       "wltpKm": 549,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 15.3,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Škoda",
@@ -12015,7 +12188,10 @@
       "powerKw": 210,
       "drive": "RWD",
       "wltpKm": 590,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Škoda",
@@ -12028,7 +12204,10 @@
       "powerKw": 210,
       "drive": "AWD",
       "wltpKm": 547,
-      "consumptionKwh100": 15.0
+      "consumptionKwh100": 15.0,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Škoda",
@@ -12041,7 +12220,10 @@
       "powerKw": 250,
       "drive": "AWD",
       "wltpKm": 570,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "usableBatteryKwh": 79.0,
+      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
+      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Škoda",
