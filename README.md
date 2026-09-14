@@ -34,6 +34,8 @@ Criterio: **MERCADO → MARCA → MODELO → AÑO DE LLEGADA → VERSIONES**.
 
 La pantalla permite seleccionar 2 o 3 vehículos, buscar por marca/modelo/versión, conservar la selección y comparar batería/autonomía, prestaciones, carga, practicidad y precio. Los precios se muestran en la moneda seleccionada.
 
+- Al volver desde Configuración, la pantalla refresca automáticamente idioma, moneda y tema si han cambiado.
+
 ## Configuración
 
 - Idioma, moneda y tema se guardan de forma persistente.
