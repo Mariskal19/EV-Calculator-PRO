@@ -1,0 +1,47 @@
+name: Patch Compare refresh
+on:
+  push:
+    paths:
+      - '.github/workflows/_patch_compare_refresh.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Patch CompararCochesActivity
+        shell: bash
+        run: |
+          set -euo pipefail
+          f=app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
+          s=p.read_text()
+          old='''    private boolean dark;\n    private LinearLayout carsRow, table, summary;'''
+          new='''    private boolean dark;\n    private String lastLanguage = "";\n    private String lastCurrency = "";\n    private LinearLayout carsRow, table, summary;'''
+          assert old in s
+          s=s.replace(old,new,1)
+          old='''        LanguageManager.applyStored(this);\n        try {\n            SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);\n            dark = p.contains("dark_theme")'''
+          new='''        LanguageManager.applyStored(this);\n        try {\n            SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);\n            lastLanguage = LanguageManager.getSelectedLanguage(this);\n            lastCurrency = p.getString(KEY_CURRENCY, "EUR");\n            dark = p.contains("dark_theme")'''
+          assert old in s
+          s=s.replace(old,new,1)
+          old='''        LanguageManager.applyStored(this);\n        SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);\n        boolean newDark = p.contains("dark_theme") ? p.getBoolean("dark_theme", false) : (getResources().getConfiguration().uiMode & 0x30) == 0x20;\n        boolean themeChanged = dark != newDark;\n        dark = newDark;\n        if (!vehicles.isEmpty()) {\n            loadSelection();\n            if (themeChanged) build();\n            rebuild();\n        }'''
+          new='''        LanguageManager.applyStored(this);\n        SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);\n        String newLanguage = LanguageManager.getSelectedLanguage(this);\n        String newCurrency = p.getString(KEY_CURRENCY, "EUR");\n        boolean languageChanged = !newLanguage.equals(lastLanguage);\n        boolean currencyChanged = !newCurrency.equals(lastCurrency);\n        boolean newDark = p.contains("dark_theme") ? p.getBoolean("dark_theme", false) : (getResources().getConfiguration().uiMode & 0x30) == 0x20;\n        boolean themeChanged = dark != newDark;\n        dark = newDark;\n        lastLanguage = newLanguage;\n        lastCurrency = newCurrency;\n        if (!vehicles.isEmpty()) {\n            loadSelection();\n            if (themeChanged || languageChanged || currencyChanged) build();\n            rebuild();\n        }'''
+          assert old in s
+          s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$f"
+          git commit -m 'Refresh Compare after language or currency changes'
+          git push
+      - name: Remove temporary patch workflow
+        if: always()
+        shell: bash
+        run: |
+          git rm .github/workflows/_patch_compare_refresh.yml || true
+          git commit -m 'Remove temporary compare refresh patch workflow' || true
+          git push || true
