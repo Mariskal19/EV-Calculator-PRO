@@ -105,17 +105,37 @@ jobs:
 
       - name: Persist optimized search source
         shell: bash
+        continue-on-error: true
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet -- app/src/main/java/com/evchargecalculator/CompararCochesActivity.java; then
             echo "Search source already matches optimized version."
-          else
-            git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
-            git commit -m "Virtualize compare car search results"
-            git push origin main
+            exit 0
           fi
+
+          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
+          git commit -m "Virtualize compare car search results"
+
+          # main may have moved while the build was running. Rebase the small
+          # generated-source commit onto the current remote main before pushing.
+          # If another change lands during the retry, leave the build successful
+          # and let the next main build persist the generated source.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            if git rebase origin/main; then
+              if git push origin HEAD:main; then
+                echo "Optimized search source persisted successfully."
+                exit 0
+              fi
+            else
+              git rebase --abort || true
+            fi
+            echo "Persistence attempt $attempt could not update main; retrying..."
+            sleep 2
+          done
+          echo "WARNING: optimized search source could not be persisted this run; APK/AAB build will continue."
 
       - name: Prepare release files
         shell: bash
