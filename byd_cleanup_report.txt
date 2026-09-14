@@ -1,0 +1,5 @@
+BYD antes: 18
+REMOVED: 0
+BYD después: 18
+SEALION 7 después: 3
+SEALION versions: ['Comfort', 'Design AWD', 'Excellence AWD']
