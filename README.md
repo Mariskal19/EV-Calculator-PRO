@@ -64,3 +64,5 @@ GitHub Actions genera y comprueba:
 - ZIP completo del proyecto
 
 Los nombres de entrega se generan a partir de `versionName`.
+
+> Última verificación de build: refresco de configuración aplicado también a Charge Calculator y Electric Vs Combustion.
