@@ -50,6 +50,39 @@ jobs:
           print('Corrected verified ATTO 3 EVO records:', ', '.join(found))
           PY
 
+      - name: Correct verified BYD SEALION 7 Spain specifications
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('app/src/main/assets/catalog_es_2024_2026.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          found=[]
+          for v in data['vehicles']:
+              if str(v.get('make','')).strip().lower() != 'byd': continue
+              if str(v.get('model','')).strip().upper() != 'SEALION 7': continue
+              if int(v.get('year') or 0) != 2024: continue
+              ver=str(v.get('version','')).strip().lower()
+              if ver.startswith('comfort'):
+                  specs={'batteryKwh':82.5,'usableBatteryKwh':82.5,'batteryType':'LFP','batteryChemistry':'LFP','powerKw':230,'drive':'RWD','drivetrain':'RWD','wltpKm':482,'consumptionKwh100':17.1,'acKw':11,'dcKw':150,'charge10to80Min':32,'acceleration0to100Sec':6.7,'trunkLiters':520}
+                  label='Comfort'
+              elif ver.startswith('design awd'):
+                  specs={'batteryKwh':82.5,'usableBatteryKwh':82.5,'batteryType':'LFP','batteryChemistry':'LFP','powerKw':390,'drive':'AWD','drivetrain':'AWD','wltpKm':456,'consumptionKwh100':18.1,'acKw':11,'dcKw':150,'charge10to80Min':32,'acceleration0to100Sec':4.5,'trunkLiters':520}
+                  label='Design AWD'
+              elif ver.startswith('excellence awd'):
+                  specs={'batteryKwh':91.3,'usableBatteryKwh':91.3,'batteryType':'LFP','batteryChemistry':'LFP','powerKw':390,'drive':'AWD','drivetrain':'AWD','wltpKm':502,'consumptionKwh100':18.2,'acKw':11,'dcKw':230,'charge10to80Min':24,'acceleration0to100Sec':4.5,'trunkLiters':520}
+                  label='Excellence AWD'
+              else:
+                  continue
+              v.update(specs)
+              v['source']='BYD España / BYD Europe — SEALION 7 2024'
+              v['lastUpdated']='2026-09-14'
+              found.append(label)
+          assert sorted(found)==['Comfort','Design AWD','Excellence AWD'], f'Unexpected SEALION 7 records: {found}'
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          print('Corrected verified SEALION 7 records:', ', '.join(found))
+          PY
+
       - name: Correct verified Ford Explorer 2024 duplicate records
         run: |
           python - <<'PY'
@@ -158,9 +191,16 @@ jobs:
 
           sealion=[v for v in vehicles if str(v.get('make','')).strip().lower()=='byd' and str(v.get('model','')).strip().upper()=='SEALION 7' and int(v.get('year') or 0)==2024]
           assert len(sealion)==3, f'Expected exactly 3 SEALION 7 Spain records, got {len(sealion)}'
-          sealion_specs={(str(v.get('version')).strip(),float(v.get('batteryKwh') or 0)) for v in sealion}
-          expected={('Comfort',82.5),('Design AWD',82.5),('Excellence AWD',91.3)}
-          assert sealion_specs==expected, f'Unexpected SEALION 7 records: {sealion_specs}'
+          for v in sealion:
+              ver=str(v.get('version')).strip().lower()
+              if ver.startswith('comfort'):
+                  assert (v.get('batteryKwh'),v.get('wltpKm'),v.get('drive'),v.get('powerKw'))==(82.5,482,'RWD',230)
+              elif ver.startswith('design awd'):
+                  assert (v.get('batteryKwh'),v.get('wltpKm'),v.get('drive'),v.get('powerKw'))==(82.5,456,'AWD',390)
+              elif ver.startswith('excellence awd'):
+                  assert (v.get('batteryKwh'),v.get('wltpKm'),v.get('drive'),v.get('powerKw'))==(91.3,502,'AWD',390)
+              else:
+                  raise AssertionError(f'Unexpected SEALION 7 version: {v.get("version")}')
 
           atto=[v for v in vehicles if str(v.get('make','')).strip().lower()=='byd' and str(v.get('model','')).strip().upper()=='ATTO 3 EVO' and int(v.get('year') or 0)==2026]
           assert len(atto)==2, f'Expected exactly 2 ATTO 3 EVO Spain records, got {len(atto)}'
@@ -179,6 +219,6 @@ jobs:
           if git diff --cached --quiet; then
             echo 'No catalog changes to commit.'
           else
-            git commit -m 'catalog: correct verified ATTO 3 EVO and Ford Explorer specifications'
+            git commit -m 'catalog: correct verified BYD and Ford specifications'
             git push origin main
           fi
