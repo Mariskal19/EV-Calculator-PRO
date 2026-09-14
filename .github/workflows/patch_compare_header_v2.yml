@@ -1,4 +1,4 @@
-name: Temporary compare header overlap v2 trigger
+name: Temporary compare header overlap v2 trigger 2
 
 on:
   push:
@@ -19,23 +19,9 @@ jobs:
           from pathlib import Path
           p = Path('app/src/main/java/com/evchargecalculator/CompararCochesActivity.java')
           s = p.read_text()
-          old = '''        root.addView(hero);
-        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=-dp(26); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
-        LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(14); content.addView(intro,introLp);
-        HorizontalScrollView carsScroll='''
-          new = '''        root.addView(hero);
-        LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp=new LinearLayout.LayoutParams(-1,-2); introLp.topMargin=-dp(26); root.addView(intro,introLp);
-        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout.LayoutParams scrollLp=new LinearLayout.LayoutParams(-1,0,1); scrollLp.topMargin=dp(12); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
-        HorizontalScrollView carsScroll='''
-          if old not in s:
-              raise SystemExit('Expected current negative-margin compare layout block not found')
-          s = s.replace(old,new,1)
-          p.write_text(s)
+          old = 'NOOP_TRIGGER'
+          if old in s:
+              raise SystemExit('Unexpected trigger marker')
           PY
-      - name: Commit patch
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
-          git commit -m 'Apply compare header overlap'
-          git push
+      - name: Stop after trigger
+        run: echo trigger
