@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/scripts/clean_byd_duplicates.py'
+      - '.github/workflows/clean_byd_duplicates.yml'
 
 permissions:
   contents: write
