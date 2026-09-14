@@ -37,3 +37,5 @@ jobs:
             git commit -m 'catalog: finalize verified vehicle cleanup'
             git push origin main
           fi
+
+      # Force a fresh runner after the previous Actions job failed before starting steps.
