@@ -11,17 +11,30 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: catalog-final-audit
+  cancel-in-progress: false
+
 jobs:
   finalize:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Verify runner
+        run: |
+          python --version
+          git --version
+          echo "Commit: $GITHUB_SHA"
 
       - name: Finalize and audit catalog
         run: python .github/scripts/catalog_finalize.py
@@ -37,5 +50,3 @@ jobs:
             git commit -m 'catalog: finalize verified vehicle cleanup'
             git push origin main
           fi
-
-      # Force a fresh runner after the previous Actions job failed before starting steps.
