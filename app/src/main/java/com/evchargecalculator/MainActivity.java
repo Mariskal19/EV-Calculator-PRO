@@ -452,8 +452,6 @@ public class MainActivity extends Activity {
   void applyTheme() {
     background.setDark(dark);
     if (range != null) range.setDark(dark);
-    getWindow()
-        .getDecorView()
   }
 
   void rebuildTheme() {
