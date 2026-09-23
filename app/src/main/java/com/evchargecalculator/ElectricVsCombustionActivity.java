@@ -256,18 +256,6 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
               Color.argb(20, 0, 0, 0),
               Color.argb(0, 0, 0, 0)
             }));
-    hero.addView(fade, new FrameLayout.LayoutParams(-1, dp(170), Gravity.TOP));
-    TextView back = tv("←", 30, Color.WHITE);
-    back.setGravity(Gravity.CENTER);
-    back.setIncludeFontPadding(false);
-    back.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
-    back.setContentDescription(LanguageManager.t(this, "Volver a EV Calculator PRO Principal"));
-    back.setOnClickListener(v -> finish());
-    FrameLayout.LayoutParams bp =
-        new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.START);
-    bp.leftMargin = dp(14);
-    bp.topMargin = dp(12);
-    hero.addView(back, bp);
     headerTitle = tv("Electric Vs\nCombustion Calculator", 20, Color.WHITE);
     headerTitle.setTypeface(null, 1);
     headerTitle.setGravity(Gravity.CENTER);
