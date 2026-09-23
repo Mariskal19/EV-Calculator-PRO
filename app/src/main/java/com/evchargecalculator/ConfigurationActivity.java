@@ -13,7 +13,12 @@ import android.view.View;
 import android.widget.*;
 
 /** Application preferences: language, currency and theme. */
-public class ConfigurationActivity extends Activity {
+public class ConfigurationActivity extends BaseNavigationActivity {
+  @Override
+  protected int getBottomNavigationIndex() {
+    return 3;
+  }
+
   private static final String PREFS = "ev_charge_calculator";
   private static final String KEY_DARK_THEME = "dark_theme";
   private static final String KEY_THEME_MODE = "theme_mode";
@@ -97,7 +102,7 @@ public class ConfigurationActivity extends Activity {
     scroll.setFillViewport(true);
     LinearLayout root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
-    root.setPadding(0, 0, 0, dp(16));
+    root.setPadding(0, 0, 0, dp(84));
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
     setContentView(frame);
