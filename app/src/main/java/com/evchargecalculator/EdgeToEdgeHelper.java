@@ -2,6 +2,7 @@ package com.evchargecalculator;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 
 import androidx.core.graphics.Insets;
@@ -36,7 +37,10 @@ public final class EdgeToEdgeHelper {
     // Apply insets to the actual activity root, not the decor content
     // container. Padding the decor container creates a visible strip between
     // the status bar and the screen header, exposing the window background.
-    View root = content.getChildCount() > 0 ? content.getChildAt(0) : content;
+    View root = content;
+    if (content instanceof ViewGroup && ((ViewGroup) content).getChildCount() > 0) {
+      root = ((ViewGroup) content).getChildAt(0);
+    }
 
     final int left = root.getPaddingLeft();
     final int right = root.getPaddingRight();
