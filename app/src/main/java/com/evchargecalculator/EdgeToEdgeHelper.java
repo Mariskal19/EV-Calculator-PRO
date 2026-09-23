@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.Window;
 
+import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -14,8 +15,8 @@ import androidx.core.view.WindowInsetsControllerCompat;
  *
  * The app targets SDK 36, so Android 15+ enforces edge-to-edge. This helper
  * also enables the same behavior on older supported Android versions and
- * applies system-bar insets to the activity content so existing screens are
- * not obscured by system bars.
+ * applies system-bar insets to the activity content so existing screens
+ * are not obscured by system bars.
  */
 public final class EdgeToEdgeHelper {
   private EdgeToEdgeHelper() {}
@@ -40,7 +41,7 @@ public final class EdgeToEdgeHelper {
     ViewCompat.setOnApplyWindowInsetsListener(
         content,
         (view, insets) -> {
-          android.graphics.Insets bars =
+          Insets bars =
               insets.getInsets(WindowInsetsCompat.Type.systemBars()
                   | WindowInsetsCompat.Type.displayCutout());
           view.setPadding(
