@@ -31,7 +31,12 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.*;
 
-public class CompararCochesActivity extends Activity {
+public class CompararCochesActivity extends BaseNavigationActivity {
+  @Override
+  protected int getBottomNavigationIndex() {
+    return 2;
+  }
+
 
     private static final String PREFS = "ev_charge_calculator";
     private static final String KEY_SELECTED = "compare_vehicle_ids";
@@ -226,11 +231,6 @@ public class CompararCochesActivity extends Activity {
         table=new LinearLayout(this); table.setOrientation(LinearLayout.VERTICAL); table.setPadding(0,dp(2),0,0); HorizontalScrollView tableScroll=new HorizontalScrollView(this); tableScroll.setHorizontalScrollBarEnabled(false); tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2)); content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2)); summary=new LinearLayout(this); summary.setOrientation(LinearLayout.VERTICAL); summary.setPadding(0,dp(18),0,dp(8)); content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
         LinearLayout footer=new LinearLayout(this); footer.setOrientation(LinearLayout.VERTICAL); footer.setGravity(Gravity.CENTER); footer.setPadding(dp(14),0,dp(14),dp(4)); String appVersion="1.0.4"; try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){} if(appVersion.startsWith("v")||appVersion.startsWith("V"))appVersion=appVersion.substring(1); TextView privacyLink=tv("Política de privacidad",13,dark?Color.rgb(105,175,255):blue); privacyLink.setGravity(Gravity.CENTER); privacyLink.setTypeface(null,Typeface.BOLD); privacyLink.setClickable(true); privacyLink.setFocusable(true); privacyLink.setContentDescription("Política de privacidad"); privacyLink.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://mariskal19.github.io/EV-Calculator-PRO-Privacy/")))); footer.addView(privacyLink,new LinearLayout.LayoutParams(-1,dp(30))); TextView foot=tv("Powered by EV Calculator · v"+appVersion,12,sub()); foot.setGravity(Gravity.CENTER); footer.addView(foot,new LinearLayout.LayoutParams(-1,dp(24))); Space footerSpacer=new Space(this); content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1)); content.addView(footer,new LinearLayout.LayoutParams(-1,dp(62))); scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2)); scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2)); root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1)); FrameLayout frame = new FrameLayout(this);
         frame.addView(root, new FrameLayout.LayoutParams(-1, -1));
-        View bottomNavigation = BottomNavigationHelper.create(this, dark, 2);
-        FrameLayout.LayoutParams bottomNavParams =
-            new FrameLayout.LayoutParams(-1, dp(64), Gravity.BOTTOM);
-        bottomNavParams.setMargins(dp(10), 0, dp(10), dp(10));
-        frame.addView(bottomNavigation, bottomNavParams);
         setContentView(frame);
     }
 
