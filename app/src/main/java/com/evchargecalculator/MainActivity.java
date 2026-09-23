@@ -174,7 +174,7 @@ public class MainActivity extends Activity {
     View bottomNavigation = BottomNavigationHelper.create(this, dark, 0);
     FrameLayout.LayoutParams bottomNavParams =
         new FrameLayout.LayoutParams(-1, dp(64), Gravity.BOTTOM);
-    bottomNavParams.setMargins(dp(14), 0, dp(14), dp(10));
+    bottomNavParams.setMargins(dp(10), 0, dp(10), dp(10));
     frame.addView(bottomNavigation, bottomNavParams);
     setContentView(frame);
     FrameLayout hero = new FrameLayout(this);
