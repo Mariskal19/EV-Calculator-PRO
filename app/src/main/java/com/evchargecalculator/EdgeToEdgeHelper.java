@@ -1,7 +1,6 @@
 package com.evchargecalculator;
 
 import android.app.Activity;
-import android.graphics.Insets;
 import android.view.View;
 import android.view.Window;
 
@@ -23,7 +22,7 @@ public final class EdgeToEdgeHelper {
 
   public static void apply(Activity activity, boolean dark) {
     Window window = activity.getWindow();
-    WindowCompat.enableEdgeToEdge(window);
+    WindowCompat.setDecorFitsSystemWindows(window, false);
 
     WindowInsetsControllerCompat controller =
         WindowCompat.getInsetsController(window, window.getDecorView());
