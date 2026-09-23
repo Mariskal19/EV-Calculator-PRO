@@ -42,6 +42,7 @@ public class PrincipalActivity extends Activity {
                 == Configuration.UI_MODE_NIGHT_YES;
     displayedLanguage = LanguageManager.getSelectedLanguage(this);
     build();
+    EdgeToEdgeHelper.apply(this, dark);
   }
 
   @Override
@@ -202,8 +203,6 @@ public class PrincipalActivity extends Activity {
     TextView foot = tv("Powered by EV Calculator · v" + ver, 12, subColor());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-    getWindow().setStatusBarColor(dark ? darkBg : lightBg);
-    getWindow().setNavigationBarColor(dark ? darkBg : lightBg);
     getWindow()
         .getDecorView()
         .setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
