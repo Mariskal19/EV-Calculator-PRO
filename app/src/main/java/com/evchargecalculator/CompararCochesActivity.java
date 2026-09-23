@@ -16,6 +16,7 @@ import android.text.TextWatcher;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -59,6 +60,19 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private final List<Vehicle> vehicles = new ArrayList<>();
     private final List<String> selectedIds = new ArrayList<>();
     private String selectedMarket = "ES";
+
+    /** Comparar coches no utiliza el menú superior de la aplicación. */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        return false;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        menu.clear();
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle b) {
