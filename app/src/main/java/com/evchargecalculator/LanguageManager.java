@@ -134,6 +134,10 @@ public final class LanguageManager {
 
   static {
     add("Herramientas", "Tools", "Outils", "Werkzeuge", "Strumenti", "Ferramentas");
+    add("Cargar", "Charge", "Recharger", "Laden", "Ricarica", "Carregar");
+    add("Coste", "Cost", "Coût", "Kosten", "Costo", "Custo");
+    add("Coches", "Cars", "Voitures", "Autos", "Auto", "Carros");
+    add("Más", "More", "Plus", "Mehr", "Altro", "Mais");
     add("Calcula y planifica la carga de tu vehículo eléctrico.", "Calculate and plan your electric vehicle charging.", "Calculez et planifiez la recharge de votre véhicule électrique.", "Berechne und plane das Laden deines Elektrofahrzeugs.", "Calcola e pianifica la ricarica del tuo veicolo elettrico.", "Calcule e planeie o carregamento do seu veículo elétrico.");
     add("Electric Vs\nCombustion Calculator", "Electric vs\nCombustion", "Eléctrico vs\nCombustión", "Électrique vs\nCombustion", "Elektro vs\nVerbrenner", "Elettrico vs\nCombustione", "Elétrico vs\nCombustão");
     add("Datos del viaje", "Trip details", "Données du trajet", "Reisedaten", "Dati del viaggio", "Dados da viagem");
