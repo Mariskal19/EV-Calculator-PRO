@@ -196,18 +196,6 @@ public class MainActivity extends BaseNavigationActivity {
               Color.argb(0, 0, 0, 0)
             }));
     hero.addView(topFade, new FrameLayout.LayoutParams(-1, dp(170), Gravity.TOP));
-    TextView backButton = createBackButton();
-    backButton.setContentDescription(
-        LanguageManager.t(this, "Volver a EV Calculator PRO Principal"));
-    backButton.setOnClickListener(
-        v -> {
-          finish();
-        });
-    FrameLayout.LayoutParams bp =
-        new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.START);
-    bp.leftMargin = dp(14);
-    bp.topMargin = dp(12);
-    hero.addView(backButton, bp);
     headerTitle = tv("EV Charge Calculator", 22, Color.WHITE);
     headerTitle.setTypeface(null, 1);
     headerTitle.setGravity(Gravity.CENTER);
