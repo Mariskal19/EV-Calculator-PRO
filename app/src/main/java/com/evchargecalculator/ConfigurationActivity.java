@@ -54,7 +54,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
     return (int) (n * getResources().getDisplayMetrics().density + .5f);
   }
 
-  private int text() {
+  private int headerColor() {\n    return dark ? Color.WHITE : Color.rgb(22, 42, 63);\n  }\n\n  private int text() {
     return dark ? Color.rgb(245, 248, 255) : Color.rgb(22, 42, 63);
   }
 
@@ -130,7 +130,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
                     "Impostazioni",
                     "Definições"),
             22,
-            headerColor);
+            headerColor());
     title.setTypeface(null, 1);
     title.setGravity(Gravity.CENTER);
     title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
