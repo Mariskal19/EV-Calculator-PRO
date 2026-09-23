@@ -6,12 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 /** Common bottom navigation for all primary and future app screens. */
 public final class BottomNavigationHelper {
@@ -20,25 +16,15 @@ public final class BottomNavigationHelper {
   public static View create(Activity activity, boolean dark, int selected) {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
-    bar.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-    bar.setPadding(dp(activity, 4), dp(activity, 4), dp(activity, 4), dp(activity, 4));
+    bar.setGravity(Gravity.CENTER);
+    bar.setPadding(dp(activity, 6), dp(activity, 6), dp(activity, 6), dp(activity, 6));
+
     GradientDrawable bg = new GradientDrawable();
-    bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.rgb(255, 255, 255));
+    bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.WHITE);
+    bg.setCornerRadius(dp(activity, 28));
     bg.setStroke(dp(activity, 1), dark ? Color.rgb(48, 64, 84) : Color.rgb(225, 231, 238));
     bar.setBackground(bg);
-    bar.setElevation(dp(activity, 8));
-
-    ViewCompat.setOnApplyWindowInsetsListener(bar, (view, insets) -> {
-      Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-      int bottom = bars.bottom;
-      ViewGroup.LayoutParams params = view.getLayoutParams();
-      if (params != null) {
-        params.height = dp(activity, 72) + bottom;
-        view.setLayoutParams(params);
-      }
-      view.setPadding(dp(activity, 4), dp(activity, 4), dp(activity, 4), bottom + dp(activity, 4));
-      return insets;
-    });
+    bar.setElevation(dp(activity, 10));
 
     addItem(activity, bar, "⚡", "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
@@ -114,9 +100,9 @@ public final class BottomNavigationHelper {
     iconView.setTextColor(index == selected ? active : inactive);
     labelView.setTextColor(index == selected ? active : inactive);
 
-    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 28)));
+    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 30)));
     item.addView(labelView, new LinearLayout.LayoutParams(-1, dp(activity, 20)));
-    bar.addView(item, new LinearLayout.LayoutParams(0, dp(activity, 64), 1));
+    bar.addView(item, new LinearLayout.LayoutParams(0, 54, 1));
   }
 
   private static int dp(Activity activity, int value) {
