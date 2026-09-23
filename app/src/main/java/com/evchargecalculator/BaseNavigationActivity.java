@@ -1,6 +1,7 @@
 package com.evchargecalculator;
 
 import android.app.Activity;
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -16,6 +17,13 @@ public abstract class BaseNavigationActivity extends Activity {
 
   /** 0 = Cargar, 1 = Coste, 2 = Coches, 3 = Más. */
   protected abstract int getBottomNavigationIndex();
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ActionBar actionBar = getActionBar();
+    if (actionBar != null) actionBar.hide();
+  }
 
   @Override
   public void setContentView(View view) {
