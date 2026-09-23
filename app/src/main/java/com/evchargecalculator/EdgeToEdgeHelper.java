@@ -33,24 +33,30 @@ public final class EdgeToEdgeHelper {
     View content = activity.findViewById(android.R.id.content);
     if (content == null) return;
 
-    final int left = content.getPaddingLeft();
-    final int top = content.getPaddingTop();
-    final int right = content.getPaddingRight();
-    final int bottom = content.getPaddingBottom();
+    // Apply insets to the actual activity root, not the decor content
+    // container. Padding the decor container creates a visible strip between
+    // the status bar and the screen header, exposing the window background.
+    View root = content.getChildCount() > 0 ? content.getChildAt(0) : content;
+
+    final int left = root.getPaddingLeft();
+    final int right = root.getPaddingRight();
+    final int bottom = root.getPaddingBottom();
 
     ViewCompat.setOnApplyWindowInsetsListener(
-        content,
+        root,
         (view, insets) -> {
           Insets bars =
               insets.getInsets(WindowInsetsCompat.Type.systemBars()
                   | WindowInsetsCompat.Type.displayCutout());
+          // Keep the top edge-to-edge so the header/background reaches the
+          // status bar. Protect the sides and bottom from system UI instead.
           view.setPadding(
               left + bars.left,
-              top + bars.top,
+              0,
               right + bars.right,
               bottom + bars.bottom);
           return insets;
         });
-    ViewCompat.requestApplyInsets(content);
+    ViewCompat.requestApplyInsets(root);
   }
 }
