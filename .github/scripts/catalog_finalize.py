@@ -10,7 +10,8 @@ TODAY = '2026-09-23'
 def norm(value):
     s = str(value or '').strip().lower()
     s = s.replace('á','a').replace('é','e').replace('í','i').replace('ó','o').replace('ú','u')
-    s = re.sub(r'[^a-z0-9]+', ' ', s)
+    # Keep '+' because it is commercially meaningful in trims such as Kaiteki+.
+    s = re.sub(r'[^a-z0-9+]+', ' ', s)
     return re.sub(r'\s+', ' ', s).strip()
 
 def main():
@@ -18,7 +19,6 @@ def main():
     vehicles = data['vehicles']
     start = len(vehicles)
 
-    # ATTO 3 EVO Spain 2026: exactly Design and Excellence.
     atto = [v for v in vehicles if norm(v.get('make')) == 'byd' and norm(v.get('model')) == 'atto 3 evo' and int(v.get('year') or 0) == 2026]
     groups = {'Design': [], 'Excellence': []}
     for v in atto:
@@ -43,7 +43,6 @@ def main():
         v['lastUpdated'] = TODAY
     print('ATTO 3 EVO: verified exactly 2 records')
 
-    # BYD SEALION 7 Spain 2024: exactly Comfort, Design AWD, Excellence AWD.
     sealion = [v for v in vehicles if norm(v.get('make')) == 'byd' and norm(v.get('model')) == 'sealion 7' and int(v.get('year') or 0) == 2024]
     if len(sealion) != 3:
         raise RuntimeError(f'Expected 3 SEALION 7 records, found {len(sealion)}')
@@ -61,7 +60,6 @@ def main():
         v['lastUpdated'] = TODAY
     print('SEALION 7: verified exactly 3 records; Excellence = 91.3 kWh')
 
-    # Ford Explorer 2024: keep exactly the two current Spain variants.
     explorer = [v for v in vehicles if norm(v.get('make')) == 'ford' and norm(v.get('model')) == 'explorer' and int(v.get('year') or 0) == 2024]
     expected = {'Rango extendido AWD': (77.0, 'AWD'), 'Rango extendido RWD': (79.0, 'RWD')}
     if len(explorer) != 2 or {str(v.get('version')).strip() for v in explorer} != set(expected):
@@ -72,7 +70,6 @@ def main():
         v.update({'batteryKwh':battery,'usableBatteryKwh':battery,'drive':drive,'drivetrain':drive,'batteryType':v.get('batteryType') or 'Li-ion','source':'Ford España — Explorer eléctrico','lastUpdated':TODAY})
     print('Ford Explorer: verified exactly 2 records; AWD=77 kWh, RWD=79 kWh')
 
-    # Final audit: no exact commercial duplicates, no duplicate IDs, final count 601.
     commercial = defaultdict(list)
     for v in vehicles:
         commercial[(norm(v.get('make')), norm(v.get('model')), int(v.get('year') or 0), norm(v.get('version')))].append(v)
