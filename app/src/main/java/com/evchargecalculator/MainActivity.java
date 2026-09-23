@@ -835,14 +835,3 @@ public class MainActivity extends BaseNavigationActivity {
     if (v.getParent() instanceof ViewGroup) ((ViewGroup) v.getParent()).removeView(v);
   }
 
-  TextView createBackButton() {
-    TextView b = tv("←", 30, Color.WHITE);
-    b.setGravity(Gravity.CENTER);
-    b.setIncludeFontPadding(false);
-    b.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-    b.setBackgroundColor(Color.TRANSPARENT);
-    b.setPadding(0, 0, 0, 0);
-    b.setTranslationY(-dp(4));
-    return b;
-  }
-}
