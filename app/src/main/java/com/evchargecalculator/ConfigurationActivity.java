@@ -42,6 +42,7 @@ public class ConfigurationActivity extends Activity {
     LanguageManager.applyStored(this);
     CurrencyRateManager.refreshIfNeeded(this);
     build();
+    EdgeToEdgeHelper.apply(this, dark);
   }
 
   private int dp(int n) {
@@ -228,8 +229,6 @@ public class ConfigurationActivity extends Activity {
     TextView foot = tv("Powered by EV Calculator · v" + version(), 12, sub());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-    getWindow().setStatusBarColor(dark ? Color.rgb(7, 19, 28) : Color.rgb(244, 248, 255));
-    getWindow().setNavigationBarColor(dark ? Color.rgb(7, 19, 28) : Color.rgb(244, 248, 255));
     getWindow()
         .getDecorView()
         .setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
