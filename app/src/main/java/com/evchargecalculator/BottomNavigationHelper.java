@@ -17,7 +17,7 @@ public final class BottomNavigationHelper {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
-    bar.setPadding(dp(activity, 6), dp(activity, 6), dp(activity, 6), dp(activity, 6));
+    bar.setPadding(dp(activity, 5), dp(activity, 5), dp(activity, 5), dp(activity, 5));
 
     GradientDrawable bg = new GradientDrawable();
     bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.WHITE);
@@ -100,9 +100,9 @@ public final class BottomNavigationHelper {
     iconView.setTextColor(index == selected ? active : inactive);
     labelView.setTextColor(index == selected ? active : inactive);
 
-    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 30)));
-    item.addView(labelView, new LinearLayout.LayoutParams(-1, dp(activity, 20)));
-    bar.addView(item, new LinearLayout.LayoutParams(0, 54, 1));
+    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 27)));
+    item.addView(labelView, new LinearLayout.LayoutParams(-1, dp(activity, 18)));
+    bar.addView(item, new LinearLayout.LayoutParams(0, dp(activity, 48), 1));
   }
 
   private static int dp(Activity activity, int value) {
