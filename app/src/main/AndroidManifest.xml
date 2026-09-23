@@ -10,17 +10,17 @@
         android:supportsRtl="true">
         <activity
             android:name=".PrincipalActivity"
-            android:screenOrientation="portrait"
+           
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PersistentMainActivity" android:screenOrientation="portrait" android:exported="false" />
-        <activity android:name=".ElectricVsCombustionActivity" android:screenOrientation="portrait" android:exported="false" />
-        <activity android:name=".CompararCochesActivity" android:screenOrientation="portrait" android:exported="false" />
-        <activity android:name=".PrivacyMainActivity" android:screenOrientation="portrait" android:exported="false" />
-        <activity android:name=".ConfigurationActivity" android:screenOrientation="portrait" android:exported="false" />
+        <activity android:name=".PersistentMainActivity" android:exported="false" />
+        <activity android:name=".ElectricVsCombustionActivity" android:exported="false" />
+        <activity android:name=".CompararCochesActivity" android:exported="false" />
+        <activity android:name=".PrivacyMainActivity" android:exported="false" />
+        <activity android:name=".ConfigurationActivity" android:exported="false" />
     </application>
 </manifest>
