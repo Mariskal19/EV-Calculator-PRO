@@ -119,26 +119,6 @@ public class ConfigurationActivity extends BaseNavigationActivity {
             });
     glow.setBackground(gd);
     hero.addView(glow, new FrameLayout.LayoutParams(-1, -1));
-    int headerColor = dark ? Color.WHITE : Color.rgb(22, 42, 63);
-    TextView back = tv("←", 30, headerColor);
-    back.setGravity(Gravity.CENTER);
-    back.setIncludeFontPadding(false);
-    back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-    back.setShadowLayer(dp(4), 0, dp(2), dark ? Color.argb(90, 0, 0, 0) : Color.argb(55, 0, 0, 0));
-    back.setContentDescription(
-        tr(
-            "Volver a EV Calculator PRO Principal",
-            "Back to EV Calculator PRO Home",
-            "Retour à l'accueil EV Calculator PRO",
-            "Zur EV Calculator PRO Startseite",
-            "Torna alla schermata principale di EV Calculator PRO",
-            "Voltar à página inicial do EV Calculator PRO"));
-    back.setOnClickListener(v -> finish());
-    FrameLayout.LayoutParams bp =
-        new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.START);
-    bp.leftMargin = dp(14);
-    bp.topMargin = dp(12);
-    hero.addView(back, bp);
     TextView title =
         tv(
             "⚙  "
