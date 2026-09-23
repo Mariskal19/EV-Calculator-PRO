@@ -454,7 +454,6 @@ public class MainActivity extends Activity {
     if (range != null) range.setDark(dark);
     getWindow()
         .getDecorView()
-        .setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
   }
 
   void rebuildTheme() {
