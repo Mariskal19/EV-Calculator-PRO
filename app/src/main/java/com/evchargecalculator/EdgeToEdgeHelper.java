@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.graphics.Color;
 
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,6 +26,15 @@ public final class EdgeToEdgeHelper {
   public static void apply(Activity activity, boolean dark) {
     Window window = activity.getWindow();
     WindowCompat.setDecorFitsSystemWindows(window, false);
+
+    // The bottom navigation is drawn edge-to-edge. Remove the system navigation
+    // contrast scrim so the app bar background continues underneath the
+    // Android navigation area instead of showing the theme/window color.
+    window.setNavigationBarColor(Color.TRANSPARENT);
+    if (android.os.Build.VERSION.SDK_INT >= 29) {
+      window.setNavigationBarContrastEnforced(false);
+    }
+    window.setNavigationBarDividerColor(Color.TRANSPARENT);
 
     WindowInsetsControllerCompat controller =
         WindowCompat.getInsetsController(window, window.getDecorView());
