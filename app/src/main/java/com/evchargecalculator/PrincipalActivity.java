@@ -203,8 +203,6 @@ public class PrincipalActivity extends Activity {
     TextView foot = tv("Powered by EV Calculator · v" + ver, 12, subColor());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-    getWindow()
-        .getDecorView()
   }
 
   private TextView tv(String s, int sp, int c) {
