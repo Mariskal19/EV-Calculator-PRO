@@ -15,7 +15,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import java.util.*;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseNavigationActivity {
+  @Override
+  protected int getBottomNavigationIndex() {
+    return 0;
+  }
+
   ScrollView scroll;
   LinearLayout root;
   PremiumBackgroundView background;
@@ -171,11 +176,6 @@ public class MainActivity extends Activity {
     root.setPadding(0, 0, 0, dp(84));
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
-    View bottomNavigation = BottomNavigationHelper.create(this, dark, 0);
-    FrameLayout.LayoutParams bottomNavParams =
-        new FrameLayout.LayoutParams(-1, dp(64), Gravity.BOTTOM);
-    bottomNavParams.setMargins(dp(10), 0, dp(10), dp(10));
-    frame.addView(bottomNavigation, bottomNavParams);
     setContentView(frame);
     FrameLayout hero = new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
