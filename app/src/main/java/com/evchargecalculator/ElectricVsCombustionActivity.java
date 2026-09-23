@@ -418,8 +418,6 @@ public class ElectricVsCombustionActivity extends Activity {
     TextView foot = tv("Powered by EV Calculator · v" + version(), 12, sub());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-    getWindow()
-        .getDecorView()
   }
 
   public void refreshLanguage() {
