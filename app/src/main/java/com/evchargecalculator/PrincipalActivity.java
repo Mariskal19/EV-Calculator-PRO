@@ -113,38 +113,6 @@ public class PrincipalActivity extends BaseNavigationActivity {
     tp.rightMargin = dp(40);
     tp.topMargin = dp(12);
     hero.addView(title, tp);
-    TextView menuButton = tv("⋮", 30, Color.WHITE);
-    menuButton.setGravity(Gravity.CENTER);
-    menuButton.setIncludeFontPadding(false);
-    menuButton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-    menuButton.setPadding(0, 0, 0, 0);
-    menuButton.setContentDescription(LanguageManager.t(this, "Menú de la aplicación"));
-    menuButton.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
-    menuButton.setBackgroundColor(Color.TRANSPARENT);
-    menuButton.setOnClickListener(
-        v ->
-            AppMenuHelper.show(
-                this,
-                v,
-                new AppMenuHelper.Listener() {
-                  public boolean isDark() {
-                    return dark;
-                  }
-
-                  public void setDark(boolean d) {
-                    dark = d;
-                    getSharedPreferences(PREFS, MODE_PRIVATE)
-                        .edit()
-                        .putBoolean(KEY_DARK_THEME, d)
-                        .apply();
-                    recreate();
-                  }
-                }));
-    FrameLayout.LayoutParams mp =
-        new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.END);
-    mp.rightMargin = dp(14);
-    mp.topMargin = dp(16);
-    hero.addView(menuButton, mp);
     root.addView(hero);
     LinearLayout card = new LinearLayout(this);
     card.setOrientation(LinearLayout.VERTICAL);
