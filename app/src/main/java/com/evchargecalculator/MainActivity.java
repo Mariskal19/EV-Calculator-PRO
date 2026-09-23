@@ -834,4 +834,4 @@ public class MainActivity extends BaseNavigationActivity {
   void detach(View v) {
     if (v.getParent() instanceof ViewGroup) ((ViewGroup) v.getParent()).removeView(v);
   }
-
+}
