@@ -207,37 +207,6 @@ public class MainActivity extends BaseNavigationActivity {
     tp.rightMargin = dp(40);
     tp.topMargin = dp(4);
     hero.addView(headerTitle, tp);
-    TextView menuButton = tv("⋮", 30, Color.WHITE);
-    menuButton.setGravity(Gravity.CENTER);
-    menuButton.setIncludeFontPadding(false);
-    menuButton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-    menuButton.setPadding(0, 0, 0, 0);
-    menuButton.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
-    menuButton.setBackgroundColor(Color.TRANSPARENT);
-    menuButton.setContentDescription(LanguageManager.t(this, "Menú"));
-    menuButton.setOnClickListener(
-        v ->
-            AppMenuHelper.show(
-                this,
-                menuButton,
-                new AppMenuHelper.Listener() {
-                  public boolean isDark() {
-                    return dark;
-                  }
-
-                  public void setDark(boolean value) {
-                    if (dark != value) {
-                      dark = value;
-                      prefs.edit().putBoolean(KEY_DARK_THEME, dark).apply();
-                      rebuildTheme();
-                    }
-                  }
-                }));
-    FrameLayout.LayoutParams mbp =
-        new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.END);
-    mbp.rightMargin = dp(14);
-    mbp.topMargin = dp(12);
-    hero.addView(menuButton, mbp);
     root.addView(hero);
     LinearLayout c1 = card();
     TextView h1 = tv("Batería", 18, text());
