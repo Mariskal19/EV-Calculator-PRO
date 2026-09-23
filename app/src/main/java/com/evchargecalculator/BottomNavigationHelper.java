@@ -8,6 +8,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 /** Common bottom navigation for all primary and future app screens. */
 public final class BottomNavigationHelper {
@@ -16,13 +19,25 @@ public final class BottomNavigationHelper {
   public static View create(Activity activity, boolean dark, int selected) {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
-    bar.setGravity(Gravity.CENTER);
+    bar.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL);
     bar.setPadding(dp(activity, 4), dp(activity, 4), dp(activity, 4), dp(activity, 4));
     GradientDrawable bg = new GradientDrawable();
     bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.rgb(255, 255, 255));
     bg.setStroke(dp(activity, 1), dark ? Color.rgb(48, 64, 84) : Color.rgb(225, 231, 238));
     bar.setBackground(bg);
     bar.setElevation(dp(activity, 8));
+
+    ViewCompat.setOnApplyWindowInsetsListener(bar, (view, insets) -> {
+      Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+      int bottom = bars.bottom;
+      ViewGroup.LayoutParams params = view.getLayoutParams();
+      if (params != null) {
+        params.height = dp(activity, 72) + bottom;
+        view.setLayoutParams(params);
+      }
+      view.setPadding(dp(activity, 4), dp(activity, 4), dp(activity, 4), bottom + dp(activity, 4));
+      return insets;
+    });
 
     addItem(activity, bar, "⚡", "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
