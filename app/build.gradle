@@ -45,4 +45,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dependencies {
+        implementation 'androidx.core:core:1.19.0'
+    }
 }
