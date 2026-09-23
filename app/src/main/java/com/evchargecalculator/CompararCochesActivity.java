@@ -18,8 +18,6 @@ import android.text.style.StyleSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
@@ -65,8 +63,6 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     @Override
     protected void onCreate(Bundle b) {
         super.onCreate(b);
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).hide(WindowInsetsCompat.Type.statusBars());
         LanguageManager.applyStored(this);
         try {
             SharedPreferences p = getSharedPreferences(PREFS, MODE_PRIVATE);
@@ -220,7 +216,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private String marketLabel(String c) { return marketFlag(c) + "  " + marketName(c); }
 
     private void build() {
-        LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); root.setPadding(0,0,0,dp(84)); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
+        LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); int statusBarHeight = getResources().getIdentifier("status_bar_height", "dimen", "android") > 0 ? getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android")) : 0; root.setPadding(0,statusBarHeight,0,dp(84)); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
         FrameLayout hero = new FrameLayout(this); hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
         ImageView heroImage = new ImageView(this); heroImage.setImageResource(R.drawable.cabecera_ev_calculator); heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP); heroImage.setAdjustViewBounds(false); heroImage.setTranslationY(-dp(10)); hero.addView(heroImage, new FrameLayout.LayoutParams(-1,-1));
         TextView title = tv("Comparar coches",22,Color.WHITE); title.setTypeface(null,Typeface.BOLD); title.setGravity(Gravity.CENTER); title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0)); FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56)); tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL; tp.leftMargin=dp(40); tp.rightMargin=dp(40); tp.topMargin=dp(4); hero.addView(title,tp);
