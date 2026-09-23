@@ -269,32 +269,6 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     tp.rightMargin = dp(44);
     tp.topMargin = dp(4);
     hero.addView(headerTitle, tp);
-    TextView menu = tv("⋮", 30, Color.WHITE);
-    menu.setGravity(Gravity.CENTER);
-    menu.setIncludeFontPadding(false);
-    menu.setShadowLayer(dp(4), 0, dp(2), Color.argb(90, 0, 0, 0));
-    menu.setContentDescription(LanguageManager.t(this, "Menú de la aplicación"));
-    menu.setOnClickListener(
-        v ->
-            AppMenuHelper.show(
-                this,
-                v,
-                new AppMenuHelper.Listener() {
-                  public boolean isDark() {
-                    return dark;
-                  }
-
-                  public void setDark(boolean d) {
-                    dark = d;
-                    prefs.edit().putBoolean(KEY_DARK_THEME, d).apply();
-                    recreate();
-                  }
-                }));
-    FrameLayout.LayoutParams mp =
-        new FrameLayout.LayoutParams(dp(40), dp(40), Gravity.TOP | Gravity.END);
-    mp.rightMargin = dp(14);
-    mp.topMargin = dp(12);
-    hero.addView(menu, mp);
     root.addView(hero);
     LinearLayout trip = card();
     LinearLayout.LayoutParams tripLp = (LinearLayout.LayoutParams) trip.getLayoutParams();
