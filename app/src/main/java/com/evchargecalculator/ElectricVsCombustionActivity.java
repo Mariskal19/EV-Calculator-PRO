@@ -60,6 +60,7 @@ public class ElectricVsCombustionActivity extends Activity {
                 == Configuration.UI_MODE_NIGHT_YES;
     getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     build();
+    EdgeToEdgeHelper.apply(this, dark);
     load();
     applyCurrency();
     calculate();
@@ -417,8 +418,6 @@ public class ElectricVsCombustionActivity extends Activity {
     TextView foot = tv("Powered by EV Calculator · v" + version(), 12, sub());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-    getWindow().setStatusBarColor(dark ? darkBg : Color.rgb(244, 248, 255));
-    getWindow().setNavigationBarColor(dark ? darkBg : Color.rgb(244, 248, 255));
     getWindow()
         .getDecorView()
         .setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
