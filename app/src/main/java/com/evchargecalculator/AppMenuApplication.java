@@ -137,50 +137,6 @@ public class AppMenuApplication extends Application {
     content.addView(menu, lp);
   }
 
-  private void bindChargeMenu(Activity activity) {
-    ViewGroup content = activity.findViewById(android.R.id.content);
-    if (content == null) return;
-    TextView button = findRightBackButton(content);
-    View global = content.findViewById(MENU_ID);
-    if (button == null) return;
-    if (global != null) global.setVisibility(View.GONE);
-    button.setText("⋮");
-    button.setTextSize(30);
-    button.setContentDescription(LanguageManager.t(activity, "Menú de la aplicación"));
-    button.setOnClickListener(v -> showMenu(activity, button));
-  }
-
-  private TextView findRightBackButton(ViewGroup parent) {
-    TextView result = null;
-    int bestX = Integer.MIN_VALUE;
-    for (int i = 0; i < parent.getChildCount(); i++) {
-      View child = parent.getChildAt(i);
-      if (child instanceof TextView) {
-        TextView t = (TextView) child;
-        if ("←".contentEquals(t.getText())) {
-          int[] loc = new int[2];
-          t.getLocationOnScreen(loc);
-          if (loc[0] > bestX) {
-            bestX = loc[0];
-            result = t;
-          }
-        }
-      }
-      if (child instanceof ViewGroup) {
-        TextView found = findRightBackButton((ViewGroup) child);
-        if (found != null) {
-          int[] loc = new int[2];
-          found.getLocationOnScreen(loc);
-          if (loc[0] > bestX) {
-            bestX = loc[0];
-            result = found;
-          }
-        }
-      }
-    }
-    return result;
-  }
-
   private void removeLegacyMenus(ViewGroup parent) {
     for (int i = parent.getChildCount() - 1; i >= 0; i--) {
       View child = parent.getChildAt(i);
