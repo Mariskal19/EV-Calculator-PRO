@@ -64,6 +64,7 @@ public class MainActivity extends Activity {
             ? prefs.getBoolean(KEY_DARK_THEME, false)
             : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
     build();
+    EdgeToEdgeHelper.apply(this, dark);
     loadPreferences();
     applyTheme();
     calculate();
@@ -451,8 +452,6 @@ public class MainActivity extends Activity {
   void applyTheme() {
     background.setDark(dark);
     if (range != null) range.setDark(dark);
-    getWindow().setStatusBarColor(dark ? darkBg : Color.rgb(244, 248, 255));
-    getWindow().setNavigationBarColor(dark ? darkBg : Color.rgb(244, 248, 255));
     getWindow()
         .getDecorView()
         .setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
