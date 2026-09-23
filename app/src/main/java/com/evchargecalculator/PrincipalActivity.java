@@ -17,7 +17,12 @@ import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
 
-public class PrincipalActivity extends Activity {
+public class PrincipalActivity extends BaseNavigationActivity {
+  @Override
+  protected int getBottomNavigationIndex() {
+    return 0;
+  }
+
   private boolean dark;
   private String displayedLanguage;
   private final int blue = Color.rgb(46, 107, 255),
@@ -75,7 +80,7 @@ public class PrincipalActivity extends Activity {
     scroll.setFillViewport(true);
     LinearLayout root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
-    root.setPadding(0, dp(0), 0, dp(0));
+    root.setPadding(0, dp(0), 0, dp(84));
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
     setContentView(frame);
