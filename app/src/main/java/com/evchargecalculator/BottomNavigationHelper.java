@@ -17,11 +17,11 @@ public final class BottomNavigationHelper {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
-    bar.setPadding(dp(activity, 5), dp(activity, 5), dp(activity, 5), dp(activity, 5));
+    bar.setPadding(dp(activity, 5), dp(activity, 3), dp(activity, 5), dp(activity, 3));
 
     GradientDrawable bg = new GradientDrawable();
     bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.WHITE);
-    bg.setCornerRadius(dp(activity, 28));
+    bg.setCornerRadius(dp(activity, 20));
     bg.setStroke(dp(activity, 1), dark ? Color.rgb(48, 64, 84) : Color.rgb(225, 231, 238));
     bar.setBackground(bg);
     bar.setElevation(dp(activity, 10));
