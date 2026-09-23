@@ -38,7 +38,7 @@ public abstract class BaseNavigationActivity extends Activity {
         .getBoolean("dark_theme", false);
   }
 
-  protected int dp(int value) {
+  private int dp(int value) {
     return (int) (value * getResources().getDisplayMetrics().density + 0.5f);
   }
 }
