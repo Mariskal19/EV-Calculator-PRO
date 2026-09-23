@@ -231,7 +231,6 @@ public class ConfigurationActivity extends Activity {
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
     getWindow()
         .getDecorView()
-        .setSystemUiVisibility(dark ? 0 : View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
   }
 
   private void space(LinearLayout p, int h) {
