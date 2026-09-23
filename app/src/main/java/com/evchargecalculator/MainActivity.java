@@ -168,9 +168,13 @@ public class MainActivity extends Activity {
     scroll.setFillViewport(true);
     root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
-    root.setPadding(0, 0, 0, dp(16));
+    root.setPadding(0, 0, 0, dp(92));
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
+    View bottomNavigation = BottomNavigationHelper.create(this, dark, 0);
+    FrameLayout.LayoutParams bottomNavParams =
+        new FrameLayout.LayoutParams(-1, dp(72), Gravity.BOTTOM);
+    frame.addView(bottomNavigation, bottomNavParams);
     setContentView(frame);
     FrameLayout hero = new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
