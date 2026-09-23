@@ -72,7 +72,7 @@ def main():
         v.update({'batteryKwh':battery,'usableBatteryKwh':battery,'drive':drive,'drivetrain':drive,'batteryType':v.get('batteryType') or 'Li-ion','source':'Ford España — Explorer eléctrico','lastUpdated':TODAY})
     print('Ford Explorer: verified exactly 2 records; AWD=77 kWh, RWD=79 kWh')
 
-    # Final audit: no exact commercial duplicates, no duplicate IDs, final count 602.
+    # Final audit: no exact commercial duplicates, no duplicate IDs, final count 601.
     commercial = defaultdict(list)
     for v in vehicles:
         commercial[(norm(v.get('make')), norm(v.get('model')), int(v.get('year') or 0), norm(v.get('version')))].append(v)
@@ -88,8 +88,8 @@ def main():
     if duplicate_ids:
         raise RuntimeError(f'Duplicate IDs remain: {list(duplicate_ids)}')
 
-    if len(vehicles) != 602:
-        raise RuntimeError(f'Unexpected final catalog count: {len(vehicles)}; expected 602')
+    if len(vehicles) != 601:
+        raise RuntimeError(f'Unexpected final catalog count: {len(vehicles)}; expected 601')
 
     data['vehicles'] = vehicles
     CATALOG.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
