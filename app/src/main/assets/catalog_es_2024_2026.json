@@ -11672,7 +11672,7 @@
       "powerKw": 310,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 360,
+      "dcKw": 480,
       "charge10to80Min": 13,
       "acceleration0to100Sec": 6,
       "trunkLiters": 539,
@@ -11682,7 +11682,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:30:00+02:00"
     },
     {
       "make": "Zeekr",
@@ -11697,8 +11697,8 @@
       "consumptionKwh100": 17.7,
       "powerKw": 310,
       "drivetrain": "RWD",
-      "acKw": 11,
-      "dcKw": 360,
+      "acKw": 22,
+      "dcKw": 480,
       "charge10to80Min": 16,
       "acceleration0to100Sec": 6,
       "trunkLiters": 539,
@@ -11708,7 +11708,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:30:00+02:00"
     },
     {
       "make": "Zeekr",
@@ -11723,8 +11723,8 @@
       "consumptionKwh100": 19.9,
       "powerKw": 475,
       "drivetrain": "AWD",
-      "acKw": 11,
-      "dcKw": 360,
+      "acKw": 22,
+      "dcKw": 480,
       "charge10to80Min": 16,
       "acceleration0to100Sec": 3.8,
       "trunkLiters": 539,
@@ -11734,7 +11734,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:30:00+02:00"
     },
     {
       "make": "Zeekr",
@@ -11751,7 +11751,7 @@
       "drivetrain": "RWD",
       "acKw": 22,
       "dcKw": 150,
-      "charge10to80Min": 30,
+      "charge10to80Min": 29,
       "acceleration0to100Sec": 5.6,
       "trunkLiters": 362,
       "weightKg": null,
@@ -11760,7 +11760,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:30:00+02:00"
     },
     {
       "make": "Zeekr",
