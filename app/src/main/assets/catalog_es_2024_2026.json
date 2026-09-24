@@ -2017,19 +2017,6 @@
       "price": 62500
     },
     {
-      "make": "DS Automobiles",
-      "model": "Nº4",
-      "year": 2025,
-      "market": "ES",
-      "version": "E-TENSE 213 kW FWD 58.3 kWh",
-      "batteryKwh": 58.3,
-      "powerKw": 156.7,
-      "drive": "FWD",
-      "wltpKm": 450,
-      "consumptionKwh100": 13,
-      "price": 45400
-    },
-    {
       "make": "Dacia",
       "model": "Spring",
       "version": "Expression Electric 45",
