@@ -147,9 +147,52 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             while ((line = r.readLine()) != null) sb.append(line);
             JSONArray a = new JSONObject(sb.toString()).optJSONArray("vehicles");
             if (a == null) throw new IllegalStateException("catalog_es_2024_2026.json: vehicles array missing");
-            for (int i = 0; i < a.length(); i++) { JSONObject o = a.optJSONObject(i); if (o != null) vehicles.add(new Vehicle(o)); }
-        } catch (Exception e) { throw new IllegalStateException("No se ha podido cargar el catálogo español", e); }
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject o = a.optJSONObject(i);
+                if (o != null) vehicles.add(new Vehicle(o));
+            }
+        } catch (Exception e) {
+            throw new IllegalStateException("No se ha podido cargar el catálogo español", e);
+        }
         if (vehicles.isEmpty()) throw new IllegalStateException("El catálogo español está vacío");
+
+        // El catálogo empaquetado es la base protegida. El remoto solo puede añadir
+        // configuraciones cuya clave lógica todavía no exista.
+        applyRemoteAdditions(RemoteCatalogManager.loadCached(this));
+        RemoteCatalogManager.refresh(this, additions -> {
+            if (additions == null || additions.length() == 0 || isFinishing() || isDestroyed()) return;
+            int before = vehicles.size();
+            applyRemoteAdditions(additions);
+            if (vehicles.size() != before) {
+                normalizeVehicleList();
+                rebuild();
+            }
+        });
+    }
+
+    private void applyRemoteAdditions(JSONArray additions) {
+        if (additions == null) return;
+        Set<String> existingKeys = new HashSet<>();
+        for (Vehicle v : vehicles) existingKeys.add(logicalKey(v));
+
+        for (int i = 0; i < additions.length(); i++) {
+            JSONObject o = additions.optJSONObject(i);
+            if (o == null) continue;
+            try {
+                Vehicle incoming = new Vehicle(o);
+                if (incoming.year < 2024 || incoming.year > 2026) continue;
+                if (incoming.make.trim().isEmpty() || incoming.model.trim().isEmpty() || incoming.version.trim().isEmpty()) continue;
+                if (incoming.batteryKwh <= 0 || incoming.wltpKm <= 0 || incoming.powerKw <= 0 || incoming.consumption <= 0) continue;
+                if (incoming.consumption < 8 || incoming.consumption > 35 || incoming.wltpKm > 1000) continue;
+                if (incoming.usableBatteryKwh > incoming.batteryKwh + 0.5) continue;
+                if (incoming.acKw > 0 && incoming.dcKw > 0 && incoming.dcKw < incoming.acKw) continue;
+
+                String key = logicalKey(incoming);
+                if (existingKeys.add(key)) vehicles.add(incoming);
+            } catch (Exception ignored) {
+                // A malformed remote entry is ignored; the protected base remains untouched.
+            }
+        }
     }
 
     private String effectiveBatteryKey(Vehicle v) {
