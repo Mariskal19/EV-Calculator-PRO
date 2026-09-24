@@ -66,7 +66,6 @@ def tech_duplicate(a, b):
     battery_close = close_num("batteryKwh", 2.0)
     power_close = close_num("powerKw", 8.0)
     range_close = close_num("wltpKm", 12)
-    consumption_close = close_num("consumptionKwh100", 1.2)
 
     da, db = norm(a.get("drive") or a.get("drivetrain")), norm(b.get("drive") or b.get("drivetrain"))
     drive_compatible = not da or not db or da == db
@@ -74,7 +73,7 @@ def tech_duplicate(a, b):
     # Conservative technical equivalence: never merge clearly different batteries,
     # motors, drivetrains or WLTP figures. A source with only a trim-name variation
     # is treated as the same configuration when the core specs also agree.
-    return battery_close and power_close and range_close and consumption_close and drive_compatible
+    return battery_close and power_close and range_close and drive_compatible
 
 def flatten_gaia(item):
     """Convert Gaia EVDB summary or full records into our catalog shape."""
