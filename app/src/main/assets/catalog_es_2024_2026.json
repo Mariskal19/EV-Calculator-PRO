@@ -2377,8 +2377,8 @@
       "arrivalYear": 2024,
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 52,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 145,
@@ -2386,7 +2386,8 @@
       "acceleration0to100Sec": 8.7,
       "trunkLiters": 572,
       "weightKg": 1914,
-      "price_eur": 47200
+      "price_eur": 47200,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2402,15 +2403,16 @@
       "arrivalYear": 2024,
       "consumptionKwh100": 12.3,
       "usableBatteryKwh": 77,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.4,
       "trunkLiters": 572,
-      "price_eur": 54265
+      "price_eur": 54265,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2426,15 +2428,16 @@
       "arrivalYear": 2024,
       "consumptionKwh100": 13.3,
       "usableBatteryKwh": 79,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 185,
       "charge10to80Min": 26,
       "acceleration0to100Sec": 5.3,
       "trunkLiters": 572,
-      "price_eur": 61255
+      "price_eur": 61255,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2448,7 +2451,10 @@
       "drive": "RWD",
       "wltpKm": 384,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2462,7 +2468,10 @@
       "drive": "RWD",
       "wltpKm": 444,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2477,7 +2486,11 @@
       "wltpKm": 602,
       "arrivalYear": 2024,
       "consumptionKwh100": 12.8,
-      "price_eur": 51765
+      "price_eur": 51765,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales",
+      "dcKw": 135
     },
     {
       "make": "Ford",
@@ -2492,7 +2505,10 @@
       "wltpKm": 553,
       "arrivalYear": 2024,
       "consumptionKwh100": 13.9,
-      "price_eur": 58755
+      "price_eur": 58755,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2507,7 +2523,10 @@
       "wltpKm": 602,
       "arrivalYear": 2024,
       "consumptionKwh100": 13.1,
-      "price_eur": 51765
+      "price_eur": 51765,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2522,7 +2541,10 @@
       "wltpKm": 566,
       "arrivalYear": 2024,
       "consumptionKwh100": 14,
-      "price_eur": 58755
+      "price_eur": 58755,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2536,7 +2558,10 @@
       "drive": "RWD",
       "wltpKm": 470,
       "consumptionKwh100": 15.4,
-      "price_eur": 49205
+      "price_eur": 49205,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2550,7 +2575,10 @@
       "drive": "AWD",
       "wltpKm": 428,
       "consumptionKwh100": 17,
-      "price_eur": 52835
+      "price_eur": 52835,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2564,7 +2592,10 @@
       "drive": "RWD",
       "wltpKm": 600,
       "consumptionKwh100": 15.2,
-      "price_eur": 67824
+      "price_eur": 67824,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2585,9 +2616,10 @@
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 402,
       "weightKg": 2108,
-      "source": "OpenEV Data; Ford Mustang Mach-E Extended Range 2024 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 72233
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 72233,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2608,9 +2640,10 @@
       "acceleration0to100Sec": 3.7,
       "trunkLiters": 402,
       "weightKg": 2108,
-      "source": "OpenEV Data; Ford Mustang Mach-E GT 2024 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 81428
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 81428,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2625,9 +2658,10 @@
       "wltpKm": 470,
       "consumptionKwh100": 15.4,
       "usableBatteryKwh": 72.6,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": null
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": null,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2641,7 +2675,10 @@
       "drive": "RWD",
       "wltpKm": 600,
       "consumptionKwh100": 15.2,
-      "price_eur": null
+      "price_eur": null,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2662,9 +2699,10 @@
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 402,
       "weightKg": 2108,
-      "source": "OpenEV Data; Ford Mustang Mach-E Extended Range 2025 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": null
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": null,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2685,9 +2723,10 @@
       "acceleration0to100Sec": 3.7,
       "trunkLiters": 402,
       "weightKg": 2108,
-      "source": "OpenEV Data; Ford Mustang Mach-E GT 2025 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": null
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": null,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2699,9 +2738,12 @@
       "batteryChemistry": "Li-ion",
       "powerKw": 216,
       "drive": "RWD",
-      "wltpKm": 615,
-      "consumptionKwh100": 14.8,
-      "price_eur": null
+      "wltpKm": 600,
+      "consumptionKwh100": 15.2,
+      "price_eur": null,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2715,7 +2757,10 @@
       "drive": "AWD",
       "wltpKm": 490,
       "consumptionKwh100": 18.6,
-      "price_eur": null
+      "price_eur": null,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Ford España; especificaciones oficiales"
     },
     {
       "make": "Ford",
@@ -2736,9 +2781,10 @@
       "acceleration0to100Sec": 3.7,
       "trunkLiters": 402,
       "weightKg": 2108,
-      "source": "OpenEV Data; Ford Mustang Mach-E GT 2024 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 81428
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 81428,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2759,9 +2805,10 @@
       "acceleration0to100Sec": 3.7,
       "trunkLiters": 402,
       "weightKg": 2108,
-      "source": "OpenEV Data; Ford Mustang Mach-E GT 2025 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": null
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": null,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2776,9 +2823,10 @@
       "wltpKm": 510,
       "consumptionKwh100": 17.8,
       "usableBatteryKwh": 91,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": null
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": null,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2799,8 +2847,9 @@
       "acceleration0to100Sec": 8,
       "trunkLiters": 523,
       "weightKg": 1650,
-      "source": "OpenEV Data; Ford Puma Gen-E 2025 (https://www.ford.co.uk/cars/puma)",
-      "lastUpdated": "2026-09-14"
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2821,8 +2870,9 @@
       "acceleration0to100Sec": 8,
       "trunkLiters": 523,
       "weightKg": 1650,
-      "source": "OpenEV Data; Ford Puma Gen-E 2025 (https://www.ford.co.uk/cars/puma)",
-      "lastUpdated": "2026-09-14"
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2843,8 +2893,9 @@
       "acceleration0to100Sec": 8,
       "trunkLiters": 523,
       "weightKg": 1650,
-      "source": "OpenEV Data; Ford Puma Gen-E 2025 (https://www.ford.co.uk/cars/puma)",
-      "lastUpdated": "2026-09-14"
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2861,14 +2912,15 @@
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 23,
-      "source": "Ford España; lanzamiento Puma Gen-E 2025",
+      "source": "Ford España; especificaciones oficiales",
       "market": "ES",
       "consumptionKwh100": 14.4,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 8,
       "trunkLiters": 523,
       "weightKg": 1650,
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Ford",
@@ -2876,15 +2928,19 @@
       "year": 2026,
       "market": "ES",
       "version": "43 kWh 123 kW FWD",
-      "batteryKwh": 43,
+      "batteryKwh": 43.6,
       "batteryChemistry": "Li-ion",
       "powerKw": 123,
       "drive": "FWD",
       "wltpKm": 417,
       "consumptionKwh100": 10.3,
       "usableBatteryKwh": 43.6,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Ford España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 23
     },
     {
       "make": "GAC",
@@ -2898,7 +2954,12 @@
       "drive": "FWD",
       "wltpKm": 430,
       "consumptionKwh100": 14,
-      "price_eur": 30995
+      "price_eur": 30995,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "GAC Europe; especificaciones oficiales",
+      "acKw": 11,
+      "dcKw": 180
     },
     {
       "make": "GAC",
@@ -2912,7 +2973,12 @@
       "drive": "FWD",
       "wltpKm": 510,
       "consumptionKwh100": 14.8,
-      "price_eur": 37995
+      "price_eur": 37995,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "GAC Europe; especificaciones oficiales",
+      "acKw": 11,
+      "dcKw": 180
     },
     {
       "make": "Geely",
@@ -2925,11 +2991,16 @@
       "wltpKm": 430,
       "powerKw": 160,
       "drivetrain": "FWD",
-      "source": "Geely España; E5; mercado español",
-      "lastUpdated": "2026-09-10",
+      "source": "Geely España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14,
-      "price_eur": 37490
+      "price_eur": 37490,
+      "auditDate": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 30
     },
     {
       "make": "Geely",
@@ -2940,9 +3011,16 @@
       "batteryKwh": 68.4,
       "powerKw": 160,
       "drive": "FWD",
-      "wltpKm": 450,
-      "consumptionKwh100": 15.2,
-      "price_eur": 41990
+      "wltpKm": 430,
+      "consumptionKwh100": 15.9,
+      "price_eur": 41990,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Geely España; especificaciones oficiales",
+      "batteryChemistry": "LFP",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 30
     },
     {
       "make": "Geely",
@@ -2955,7 +3033,14 @@
       "drive": "FWD",
       "wltpKm": 475,
       "consumptionKwh100": 14.4,
-      "price_eur": 39990
+      "price_eur": 39990,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Geely España; especificaciones oficiales",
+      "batteryChemistry": "LFP",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 30
     },
     {
       "make": "Hyundai",
@@ -2981,8 +3066,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3008,8 +3094,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3021,7 +3108,10 @@
       "powerKw": 84.5,
       "drive": "FWD",
       "wltpKm": 360,
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Hyundai Motor España; especificaciones oficiales"
     },
     {
       "make": "Hyundai",
@@ -3033,7 +3123,10 @@
       "powerKw": 107.8,
       "drive": "FWD",
       "wltpKm": 496,
-      "consumptionKwh100": 12.3
+      "consumptionKwh100": 12.3,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Hyundai Motor España; especificaciones oficiales"
     },
     {
       "make": "Hyundai",
@@ -3045,7 +3138,10 @@
       "powerKw": 107.8,
       "drive": "FWD",
       "wltpKm": 344,
-      "consumptionKwh100": 12.3
+      "consumptionKwh100": 12.3,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Hyundai Motor España; especificaciones oficiales"
     },
     {
       "make": "Hyundai",
@@ -3060,14 +3156,15 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 350,
-      "source": "Hyundai Motor España; IONIQ 5 2025; mercado español",
-      "lastUpdated": "2026-09-10",
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14.3,
       "usableBatteryKwh": 72.6,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.4,
-      "weightKg": 1950
+      "weightKg": 1950,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3082,14 +3179,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 350,
-      "source": "Hyundai Motor España; IONIQ 5 2025; mercado español",
-      "lastUpdated": "2026-09-10",
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 16.8,
       "usableBatteryKwh": 72.6,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.2,
-      "weightKg": 2110
+      "weightKg": 2110,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3115,9 +3213,10 @@
       "currency": "EUR",
       "weightKg": 1950,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "li-ion",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3143,9 +3242,10 @@
       "currency": "EUR",
       "weightKg": 2235,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "li-ion",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3171,8 +3271,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3193,9 +3294,11 @@
       "acceleration0to100Sec": 5,
       "trunkLiters": 620,
       "weightKg": 2650,
-      "source": "OpenEV Data; Hyundai IONIQ 9 Official Specifications (https://www.hyundai.com)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 81600
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 81600,
+      "auditDate": "2026-09-24",
+      "charge10to80Min": 24
     },
     {
       "make": "Hyundai",
@@ -3214,7 +3317,10 @@
       "charge10to80Min": 24,
       "acceleration0to100Sec": 9.4,
       "trunkLiters": 338,
-      "price_eur": 69900
+      "price_eur": 69900,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Hyundai Motor España; especificaciones oficiales"
     },
     {
       "make": "Hyundai",
@@ -3235,9 +3341,11 @@
       "acceleration0to100Sec": 5,
       "trunkLiters": 620,
       "weightKg": 2650,
-      "source": "OpenEV Data; Hyundai IONIQ 9 Official Specifications (https://www.hyundai.com)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 87100
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 87100,
+      "auditDate": "2026-09-24",
+      "charge10to80Min": 24
     },
     {
       "make": "Hyundai",
@@ -3263,9 +3371,10 @@
       "currency": "EUR",
       "weightKg": 1685,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "li-ion",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3291,9 +3400,10 @@
       "currency": "EUR",
       "weightKg": 1820,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "li-ion",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3306,7 +3416,10 @@
       "powerKw": 99,
       "drive": "FWD",
       "wltpKm": 380,
-      "consumptionKwh100": 12.7
+      "consumptionKwh100": 12.7,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Hyundai Motor España; especificaciones oficiales"
     },
     {
       "make": "Hyundai",
@@ -3319,7 +3432,10 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 510,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Hyundai Motor España; especificaciones oficiales"
     },
     {
       "make": "Hyundai",
@@ -3337,7 +3453,8 @@
       "dcKw": 74,
       "charge10to80Min": 41,
       "lastUpdated": "2026-09-24",
-      "source": "Hyundai Motor España; KONA Eléctrico 2026"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -3355,7 +3472,8 @@
       "dcKw": 101,
       "charge10to80Min": 41,
       "lastUpdated": "2026-09-24",
-      "source": "Hyundai Motor España; KONA Eléctrico 2026"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Jaecoo",
@@ -3374,8 +3492,9 @@
       "dcKw": 130,
       "acceleration0to100Sec": 7.7,
       "trunkLiters": 480,
-      "source": "OMODA & JAECOO España; ficha técnica JAECOO 5 EV",
-      "lastUpdated": "2026-09-24"
+      "source": "OMODA & JAECOO España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Jaecoo",
@@ -3394,8 +3513,9 @@
       "dcKw": 130,
       "acceleration0to100Sec": 7.7,
       "trunkLiters": 480,
-      "source": "OMODA & JAECOO España; ficha técnica JAECOO 5 EV",
-      "lastUpdated": "2026-09-24"
+      "source": "OMODA & JAECOO España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Jeep",
@@ -10391,8 +10511,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Hyundai Motor España / Hyundai Europe; IONIQ 6 MY2026",
-      "lastUpdated": "2026-09-24"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -10416,8 +10537,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Hyundai Motor España / Hyundai Europe; IONIQ 6 MY2026",
-      "lastUpdated": "2026-09-24"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -10441,8 +10563,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Hyundai Motor España / Hyundai Europe; IONIQ 6 MY2026",
-      "lastUpdated": "2026-09-24"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -10466,8 +10589,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Hyundai Motor España / Hyundai Europe; IONIQ 6 MY2026",
-      "lastUpdated": "2026-09-24"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -10491,8 +10615,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Hyundai Motor España / Hyundai Europe; IONIQ 6 MY2026",
-      "lastUpdated": "2026-09-24"
+      "source": "Hyundai Motor España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lotus",
