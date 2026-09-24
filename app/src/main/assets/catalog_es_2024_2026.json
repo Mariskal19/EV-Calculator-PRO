@@ -2776,7 +2776,8 @@
       "charge10to80Min": 26,
       "acceleration0to100Sec": 8.7,
       "trunkLiters": 572,
-      "weightKg": 1914
+      "weightKg": 1914,
+      "price_eur": 47200
     },
     {
       "make": "Ford",
@@ -2799,7 +2800,8 @@
       "dcKw": 135,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.4,
-      "trunkLiters": 572
+      "trunkLiters": 572,
+      "price_eur": 54265
     },
     {
       "make": "Ford",
@@ -2822,7 +2824,8 @@
       "dcKw": 185,
       "charge10to80Min": 26,
       "acceleration0to100Sec": 5.3,
-      "trunkLiters": 572
+      "trunkLiters": 572,
+      "price_eur": 61255
     },
     {
       "make": "Ford",
@@ -2846,7 +2849,8 @@
       "charge10to80Min": 26,
       "acceleration0to100Sec": 8.7,
       "trunkLiters": 572,
-      "weightKg": 1914
+      "weightKg": 1914,
+      "price_eur": 47200
     },
     {
       "make": "Ford",
@@ -2869,7 +2873,8 @@
       "dcKw": 135,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.4,
-      "trunkLiters": 572
+      "trunkLiters": 572,
+      "price_eur": 54265
     },
     {
       "make": "Ford",
@@ -2892,7 +2897,8 @@
       "dcKw": 185,
       "charge10to80Min": 26,
       "acceleration0to100Sec": 5.3,
-      "trunkLiters": 572
+      "trunkLiters": 572,
+      "price_eur": 61255
     },
     {
       "make": "Ford",
@@ -2916,7 +2922,8 @@
       "photo": null,
       "source": "Ford Capri España / periodo 2024; 79 kWh 340 CV",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price_eur": 61255
     },
     {
       "make": "Ford",
@@ -2940,7 +2947,8 @@
       "photo": null,
       "source": "Ford Capri España / periodo 2024; 77 kWh 286 CV",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price_eur": 54265
     },
     {
       "make": "Ford",
@@ -2964,7 +2972,8 @@
       "photo": null,
       "source": "Ford Capri España / periodo 2024; 52 kWh 170 CV",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price_eur": 47200
     },
     {
       "make": "Ford",
@@ -2984,7 +2993,8 @@
       "market": "ES",
       "consumptionKwh100": 13.9,
       "usableBatteryKwh": 77,
-      "drive": "AWD"
+      "drive": "AWD",
+      "price_eur": 58755
     },
     {
       "make": "Ford",
@@ -3004,7 +3014,8 @@
       "market": "ES",
       "consumptionKwh100": 13.1,
       "usableBatteryKwh": 79,
-      "drive": "RWD"
+      "drive": "RWD",
+      "price_eur": 51765
     },
     {
       "make": "Ford",
@@ -3046,7 +3057,8 @@
       "drive": "RWD",
       "wltpKm": 602,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "price_eur": 51765
     },
     {
       "make": "Ford",
@@ -3060,7 +3072,8 @@
       "drive": "AWD",
       "wltpKm": 553,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "price_eur": 58755
     },
     {
       "make": "Ford",
@@ -3074,7 +3087,8 @@
       "drive": "RWD",
       "wltpKm": 602,
       "arrivalYear": 2024,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "price_eur": 51765
     },
     {
       "make": "Ford",
@@ -3088,7 +3102,8 @@
       "drive": "AWD",
       "wltpKm": 566,
       "arrivalYear": 2024,
-      "consumptionKwh100": 14
+      "consumptionKwh100": 14,
+      "price_eur": 58755
     },
     {
       "make": "Ford",
@@ -3101,7 +3116,8 @@
       "powerKw": 198,
       "drive": "RWD",
       "wltpKm": 470,
-      "consumptionKwh100": 15.4
+      "consumptionKwh100": 15.4,
+      "price_eur": 49205
     },
     {
       "make": "Ford",
@@ -3114,7 +3130,8 @@
       "powerKw": 232,
       "drive": "AWD",
       "wltpKm": 428,
-      "consumptionKwh100": 17
+      "consumptionKwh100": 17,
+      "price_eur": 52835
     },
     {
       "make": "Ford",
@@ -3127,7 +3144,8 @@
       "powerKw": 216,
       "drive": "RWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.2
+      "consumptionKwh100": 15.2,
+      "price_eur": 67824
     },
     {
       "make": "Ford",
@@ -3149,7 +3167,8 @@
       "trunkLiters": 402,
       "weightKg": 2108,
       "source": "OpenEV Data; Ford Mustang Mach-E Extended Range 2024 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 72233
     },
     {
       "make": "Ford",
@@ -3171,7 +3190,8 @@
       "trunkLiters": 402,
       "weightKg": 2108,
       "source": "OpenEV Data; Ford Mustang Mach-E GT 2024 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 81428
     },
     {
       "make": "Ford",
@@ -3187,7 +3207,8 @@
       "consumptionKwh100": 15.4,
       "usableBatteryKwh": 72.6,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 49205
     },
     {
       "make": "Ford",
@@ -3200,7 +3221,8 @@
       "powerKw": 216,
       "drive": "RWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.2
+      "consumptionKwh100": 15.2,
+      "price_eur": 67824
     },
     {
       "make": "Ford",
@@ -3222,7 +3244,8 @@
       "trunkLiters": 402,
       "weightKg": 2108,
       "source": "OpenEV Data; Ford Mustang Mach-E Extended Range 2025 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 72233
     },
     {
       "make": "Ford",
@@ -3244,7 +3267,8 @@
       "trunkLiters": 402,
       "weightKg": 2108,
       "source": "OpenEV Data; Ford Mustang Mach-E GT 2025 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 81428
     },
     {
       "make": "Ford",
@@ -3257,7 +3281,8 @@
       "powerKw": 216,
       "drive": "RWD",
       "wltpKm": 615,
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "price_eur": 67824
     },
     {
       "make": "Ford",
@@ -3270,7 +3295,8 @@
       "powerKw": 358,
       "drive": "AWD",
       "wltpKm": 490,
-      "consumptionKwh100": 18.6
+      "consumptionKwh100": 18.6,
+      "price_eur": 81428
     },
     {
       "make": "Ford",
@@ -3292,7 +3318,8 @@
       "trunkLiters": 402,
       "weightKg": 2108,
       "source": "OpenEV Data; Ford Mustang Mach-E GT 2024 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 81428
     },
     {
       "make": "Ford",
@@ -3314,7 +3341,8 @@
       "trunkLiters": 402,
       "weightKg": 2108,
       "source": "OpenEV Data; Ford Mustang Mach-E GT 2025 (https://www.ford.com/suvs/mach-e/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 81428
     },
     {
       "make": "Ford",
@@ -3330,7 +3358,8 @@
       "consumptionKwh100": 17.8,
       "usableBatteryKwh": 91,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 81428
     },
     {
       "make": "Ford",
