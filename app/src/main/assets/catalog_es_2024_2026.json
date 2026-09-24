@@ -5556,7 +5556,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5585,7 +5585,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5614,7 +5614,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5637,7 +5637,7 @@
       "auditDate": "2026-09-24",
       "acceleration0to100Sec": 7.6,
       "charge10to80Min": 20,
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5659,7 +5659,7 @@
       "consumptionKwh100": 12.8,
       "auditDate": "2026-09-24",
       "acceleration0to100Sec": 6.8,
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5681,7 +5681,7 @@
       "consumptionKwh100": 13.3,
       "auditDate": "2026-09-24",
       "acceleration0to100Sec": 5,
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5710,7 +5710,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5737,7 +5737,7 @@
       "market": "ES",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5763,7 +5763,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5792,7 +5792,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5821,7 +5821,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5850,7 +5850,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5879,7 +5879,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -5908,7 +5908,7 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "MG",
@@ -8313,7 +8313,7 @@
       "acceleration0to100Sec": 9,
       "trunkLiters": 470,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8337,7 +8337,7 @@
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 470,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8361,7 +8361,7 @@
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 470,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8381,7 +8381,7 @@
       "auditDate": "2026-09-24",
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8402,7 +8402,7 @@
       "market": "ES",
       "consumptionKwh100": 15,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "AWD"
     },
     {
@@ -8423,7 +8423,7 @@
       "auditDate": "2026-09-24",
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8449,7 +8449,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "RWD"
     },
     {
@@ -8477,7 +8477,7 @@
       "market": "ES",
       "batteryChemistry": "Li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "RWD"
     },
     {
@@ -8502,7 +8502,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8526,7 +8526,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8553,7 +8553,7 @@
       "market": "ES",
       "batteryChemistry": "Li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "AWD"
     },
     {
@@ -8574,7 +8574,7 @@
       "usableBatteryKwh": 79,
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8594,7 +8594,7 @@
       "usableBatteryKwh": 59,
       "dcKw": 165,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8614,7 +8614,7 @@
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8634,7 +8634,7 @@
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8661,7 +8661,7 @@
       "market": "ES",
       "batteryChemistry": "Li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "AWD"
     },
     {
@@ -8686,7 +8686,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8706,7 +8706,7 @@
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8726,7 +8726,7 @@
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8746,7 +8746,7 @@
       "usableBatteryKwh": 79,
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8768,7 +8768,7 @@
       "batteryChemistry": "li-ion",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "RWD"
     },
     {
@@ -8790,7 +8790,7 @@
       "acKw": 11,
       "dcKw": 185,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8806,7 +8806,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00"
     },
     {
       "make": "Škoda",
@@ -8827,7 +8827,7 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "RWD"
     },
     {
@@ -8849,7 +8849,7 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "RWD"
     },
     {
@@ -8871,7 +8871,7 @@
       "market": "ES",
       "consumptionKwh100": 15,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
       "drive": "AWD"
     },
     {
