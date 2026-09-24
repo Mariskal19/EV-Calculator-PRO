@@ -2606,7 +2606,8 @@
       "photo": null,
       "source": "Dacia España; Nuevo Spring 2024",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 17890
     },
     {
       "make": "Dacia",
@@ -2631,7 +2632,8 @@
       "source": "Dacia España; Nuevo Spring 2024",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price": 18890
     },
     {
       "make": "Dacia",
@@ -2655,7 +2657,8 @@
       "photo": null,
       "source": "Dacia España; Nuevo Spring 2026",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 16245
     },
     {
       "make": "Dongfeng",
