@@ -42,6 +42,48 @@ def key(v):
         str(v.get("year") or 0), battery_key(v), norm(v.get("version"))
     ])
 
+def flatten_gaia(item):
+    """Convert Gaia EVDB summary records into our catalog candidate shape."""
+    if not isinstance(item, dict):
+        return None
+    battery = item.get("battery") or {}
+    charging = item.get("charging") or {}
+    performance = item.get("performance") or {}
+    efficiency = item.get("efficiency") or {}
+    rng = item.get("range") or {}
+    weight = item.get("weight") or {}
+    cargo = item.get("cargo") or {}
+    markets = item.get("markets") or []
+    es = next((m for m in markets if str(m.get("market_code", "")).upper() == "ES"), None)
+    if markets and es is None:
+        return None
+    return {
+        "make": item.get("brand") or item.get("make"),
+        "model": item.get("model_name") or item.get("model"),
+        "version": item.get("variant_name") or item.get("name"),
+        "year": item.get("model_year") or item.get("year"),
+        "market": "ES",
+        "currency": (es or {}).get("currency") or "EUR",
+        "price": (es or {}).get("price_base"),
+        "batteryKwh": battery.get("total_kwh") or item.get("battery_total_kwh"),
+        "usableBatteryKwh": battery.get("usable_kwh") or item.get("battery_usable_kwh"),
+        "batteryType": battery.get("chemistry"),
+        "batteryChemistry": battery.get("chemistry"),
+        "wltpKm": rng.get("wltp_km") or item.get("range_wltp_km"),
+        "consumptionKwh100": efficiency.get("wltp_kwh_per_100km") or item.get("wltp_kwh_per_100km"),
+        "powerKw": performance.get("total_power_kw") or item.get("power_kw"),
+        "drive": performance.get("drive_type"),
+        "drivetrain": performance.get("drive_type"),
+        "acKw": charging.get("ac_max_kw"),
+        "dcKw": charging.get("dc_max_kw"),
+        "charge10to80Min": charging.get("time_10_to_80_min"),
+        "acceleration0to100Sec": performance.get("acceleration_0_100_sec"),
+        "trunkLiters": cargo.get("trunk_capacity_liters"),
+        "weightKg": weight.get("curb_weight_kg"),
+        "source": "Gaia Charge EVDB",
+        "arrivalYear": item.get("model_year") or item.get("year")
+    }
+
 def valid(v):
     if not isinstance(v, dict): return False
     if v.get("year") not in (2024, 2025, 2026): return False
@@ -75,8 +117,11 @@ for url in SOURCES:
     if not url:
         continue
     data = load_json(url)
-    for raw in data.get("vehicles", []) if isinstance(data, dict) else []:
-        v = dict(raw)
+    raw_items = data.get("results", data.get("vehicles", [])) if isinstance(data, dict) else []
+    for raw in raw_items:
+        v = flatten_gaia(raw) if "results" in data else dict(raw)
+        if not v:
+            continue
         v.setdefault("market", data.get("market", "ES") if isinstance(data, dict) else "ES")
         if not valid(v):
             continue
