@@ -20,7 +20,7 @@ new_build = r'''    private void build() {
         hero.setBackgroundColor(Color.TRANSPARENT);
 
         ImageView heroImage = new ImageView(this);
-        heroImage.setImageResource(R.drawable.cabecera_tema_claro);
+        heroImage.setImageResource(R.drawable.cabecera_ev_calculator);
         heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
         heroImage.setAdjustViewBounds(false);
         heroImage.setTranslationY(-dp(10));
