@@ -5750,7 +5750,8 @@
       "charge10to80Min": 30,
       "trunkLiters": 437,
       "lastUpdated": "2026-09-24",
-      "source": "Nissan España; Nuevo LEAF 2026"
+      "source": "Nissan España; especificaciones oficiales 2026",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
@@ -5768,7 +5769,8 @@
       "charge10to80Min": 30,
       "trunkLiters": 437,
       "lastUpdated": "2026-09-24",
-      "source": "Nissan España; Nuevo LEAF 2026"
+      "source": "Nissan España; especificaciones oficiales 2026",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Omoda",
@@ -5781,7 +5783,10 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 430,
-      "consumptionKwh100": 14.2
+      "consumptionKwh100": 14.2,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "OMODA España; especificaciones oficiales"
     },
     {
       "make": "Omoda",
@@ -5794,7 +5799,10 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 430,
-      "consumptionKwh100": 14.2
+      "consumptionKwh100": 14.2,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "OMODA España; especificaciones oficiales"
     },
     {
       "make": "Opel",
@@ -5808,8 +5816,9 @@
       "wltpKm": 305,
       "consumptionKwh100": 14.4,
       "usableBatteryKwh": 43.8,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5835,8 +5844,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5851,12 +5861,13 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "source": "Opel España; Frontera Electric 54 kWh",
-      "lastUpdated": "2026-09-09",
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 53.5,
-      "acceleration0to100Sec": 14.2
+      "acceleration0to100Sec": 14.2,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5871,10 +5882,11 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "source": "Opel España; Frontera Electric 44 kWh",
-      "lastUpdated": "2026-09-09",
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5888,8 +5900,9 @@
       "wltpKm": 523,
       "consumptionKwh100": 14,
       "usableBatteryKwh": 73,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5903,8 +5916,9 @@
       "wltpKm": 582,
       "consumptionKwh100": 14.1,
       "usableBatteryKwh": 82.2,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5918,8 +5932,9 @@
       "wltpKm": 501,
       "consumptionKwh100": 14.6,
       "usableBatteryKwh": 73,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5941,9 +5956,10 @@
       "trunkLiters": 550,
       "weightKg": null,
       "photo": null,
-      "source": "Opel/Stellantis España; Grandland Electric lanzamiento España",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5965,9 +5981,10 @@
       "trunkLiters": 550,
       "weightKg": null,
       "photo": null,
-      "source": "Opel/Stellantis España; Grandland Electric lanzamiento España",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -5982,10 +5999,11 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "source": "Opel España; nuevo Mokka GSE",
-      "lastUpdated": "2026-09-09",
+      "source": "Opel España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 15.7
+      "consumptionKwh100": 15.7,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6004,8 +6022,9 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
-      "source": "OpenEV Data; Peugeot e-3008 2024 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6020,8 +6039,9 @@
       "wltpKm": 497,
       "consumptionKwh100": 14.7,
       "usableBatteryKwh": 73,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6040,9 +6060,10 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
-      "source": "OpenEV Data; Peugeot e-3008 Long Range 2024 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 49660
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 49660,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6061,8 +6082,9 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
-      "source": "OpenEV Data; Peugeot e-3008 2025 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6081,8 +6103,9 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 6.5,
-      "source": "OpenEV Data; Peugeot e-3008 Dual Motor 2025 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6095,7 +6118,10 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 526,
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Peugeot España; especificaciones oficiales"
     },
     {
       "make": "Peugeot",
@@ -6113,7 +6139,8 @@
       "dcKw": 160,
       "charge10to80Min": 30,
       "lastUpdated": "2026-09-24",
-      "source": "Peugeot España; E-3008 eléctrico"
+      "source": "Peugeot España; especificaciones oficiales",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6133,8 +6160,9 @@
       "acKw": 11,
       "dcKw": 120,
       "acceleration0to100Sec": 8.5,
-      "source": "Peugeot España; E-408 eléctrico",
-      "lastUpdated": "2026-09-24"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6153,9 +6181,10 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 9,
-      "source": "OpenEV Data; Peugeot e-5008 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 49160
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 49160,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6174,9 +6203,10 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 9,
-      "source": "OpenEV Data; Peugeot e-5008 Long Range 2024 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 51660
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 51660,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6191,8 +6221,9 @@
       "wltpKm": 500,
       "consumptionKwh100": 14.6,
       "usableBatteryKwh": 73,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6211,8 +6242,9 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 9,
-      "source": "OpenEV Data; Peugeot e-5008 2025 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6231,8 +6263,9 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 9,
-      "source": "OpenEV Data; Peugeot e-5008 Long Range 2025 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -6245,7 +6278,10 @@
       "powerKw": 157,
       "drive": "FWD",
       "wltpKm": 504,
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Peugeot España; especificaciones oficiales"
     },
     {
       "make": "Peugeot",
@@ -6260,11 +6296,12 @@
       "wltpKm": 668,
       "consumptionKwh100": 18.4,
       "usableBatteryKwh": 96.9,
-      "source": "Peugeot España; E-5008 eléctrico",
+      "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "acKw": 11,
       "dcKw": 160,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -6286,7 +6323,7 @@
       "trunkLiters": 405,
       "weightKg": null,
       "photo": null,
-      "source": "Polestar España; Polestar 2",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
@@ -6311,7 +6348,7 @@
       "trunkLiters": 405,
       "weightKg": null,
       "photo": null,
-      "source": "Polestar España; Polestar 2",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
@@ -6336,7 +6373,7 @@
       "trunkLiters": 405,
       "weightKg": null,
       "photo": null,
-      "source": "Polestar España; Polestar 2",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
@@ -6361,7 +6398,7 @@
       "trunkLiters": 405,
       "weightKg": null,
       "photo": null,
-      "source": "Polestar España; Polestar 2",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
@@ -6386,8 +6423,8 @@
       "trunkLiters": 484,
       "weightKg": null,
       "photo": null,
-      "source": "Polestar España; Polestar 3",
-      "lastUpdated": "2026-09-09",
+      "source": "Polestar España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
     },
@@ -6411,8 +6448,8 @@
       "trunkLiters": 484,
       "weightKg": null,
       "photo": null,
-      "source": "Polestar España; Polestar 3",
-      "lastUpdated": "2026-09-09",
+      "source": "Polestar España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
     },
@@ -6436,7 +6473,7 @@
       "trunkLiters": 526,
       "weightKg": 2355,
       "photo": null,
-      "source": "Polestar España; Polestar 4",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
@@ -6461,7 +6498,7 @@
       "trunkLiters": 526,
       "weightKg": 2230,
       "photo": null,
-      "source": "Polestar España; Polestar 4",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24"
@@ -6481,7 +6518,7 @@
       "dcKw": 350,
       "acceleration0to100Sec": 4.7,
       "lastUpdated": "2026-09-24",
-      "source": "Polestar España; Polestar 3"
+      "source": "Polestar España; especificaciones oficiales"
     },
     {
       "make": "Polestar",
@@ -6502,7 +6539,7 @@
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 484,
       "weightKg": 2403,
-      "source": "Polestar España; Polestar 3",
+      "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24"
     },
@@ -6521,7 +6558,7 @@
       "dcKw": 310,
       "acceleration0to100Sec": 6.5,
       "lastUpdated": "2026-09-24",
-      "source": "Polestar España; Polestar 3"
+      "source": "Polestar España; especificaciones oficiales"
     },
     {
       "make": "Porsche",
@@ -10332,9 +10369,10 @@
       "acKw": 11,
       "dcKw": 80,
       "trunkLiters": 326,
-      "source": "Nissan España; Nuevo MICRA 2026",
+      "source": "Nissan España; especificaciones oficiales 2026",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
@@ -10351,9 +10389,10 @@
       "acKw": 11,
       "dcKw": 100,
       "trunkLiters": 326,
-      "source": "Nissan España; Nuevo MICRA 2026",
+      "source": "Nissan España; especificaciones oficiales 2026",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
@@ -10371,10 +10410,11 @@
       "dcKw": 130,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 466,
-      "source": "Nissan España; ARIYA catálogo 2026",
+      "source": "Nissan España; especificaciones oficiales 2026",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "charge10to80Min": 40
+      "charge10to80Min": 40,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
@@ -10392,10 +10432,11 @@
       "dcKw": 130,
       "acceleration0to100Sec": 7.6,
       "trunkLiters": 466,
-      "source": "Nissan España; ARIYA catálogo 2026",
+      "source": "Nissan España; especificaciones oficiales 2026",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "charge10to80Min": 40
+      "charge10to80Min": 40,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
@@ -10413,10 +10454,11 @@
       "dcKw": 130,
       "acceleration0to100Sec": 5.7,
       "trunkLiters": 466,
-      "source": "Nissan España; ARIYA catálogo 2026",
+      "source": "Nissan España; especificaciones oficiales 2026",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "charge10to80Min": 40
+      "charge10to80Min": 40,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Omoda",
@@ -10432,9 +10474,10 @@
       "wltpKm": 145,
       "consumptionKwh100": 19.5,
       "acceleration0to100Sec": 4.9,
-      "source": "OMODA España; catálogo oficial OMODA 9 SHS",
+      "source": "OMODA España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -10449,9 +10492,10 @@
       "dcKw": 100,
       "wltpKm": 355,
       "consumptionKwh100": 16,
-      "source": "Opel España; ficha técnica Corsa MY26",
+      "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -10466,9 +10510,10 @@
       "dcKw": 100,
       "wltpKm": 428,
       "consumptionKwh100": 14.35,
-      "source": "Opel España; ficha técnica Corsa MY26",
+      "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -10483,9 +10528,10 @@
       "dcKw": 100,
       "wltpKm": 403,
       "consumptionKwh100": 15.55,
-      "source": "Opel España; ficha técnica Mokka MY26",
+      "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -10499,9 +10545,10 @@
       "acKw": 11,
       "dcKw": 100,
       "consumptionKwh100": 15.6,
-      "source": "Opel España; ficha técnica Astra MY26",
+      "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Opel",
@@ -10516,9 +10563,10 @@
       "dcKw": 160,
       "wltpKm": 694,
       "consumptionKwh100": 17.3,
-      "source": "Opel España; ficha técnica Grandland MY26",
+      "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "KGM",
@@ -10910,8 +10958,9 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 30,
-      "source": "Peugeot España; E-3008 Long Range",
-      "lastUpdated": "2026-09-24"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -10931,8 +10980,9 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 30,
-      "source": "Peugeot España; E-5008 eléctrico",
-      "lastUpdated": "2026-09-24"
+      "source": "Peugeot España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "XPeng",
