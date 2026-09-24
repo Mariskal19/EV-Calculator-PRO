@@ -159,7 +159,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         // El catálogo empaquetado es la base protegida. El remoto solo puede añadir
         // configuraciones cuya clave lógica todavía no exista.
         applyRemoteAdditions(RemoteCatalogManager.loadCached(this));
-        RemoteCatalogManager.refresh(this, additions -> {
+        RemoteCatalogManager.refreshIfDue(this, additions -> {
             if (additions == null || additions.length() == 0 || isFinishing() || isDestroyed()) return;
             int before = vehicles.size();
             applyRemoteAdditions(additions);
