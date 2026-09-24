@@ -1,4 +1,5 @@
 # Build trigger
+# Build trigger for restored Compare header
 from pathlib import Path
 import re
 
