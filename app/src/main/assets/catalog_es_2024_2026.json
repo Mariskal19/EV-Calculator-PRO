@@ -9933,7 +9933,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "dcKw": 90,
+      "charge10to80Min": 23,
+      "acKw": 11
     },
     {
       "make": "Volkswagen",
@@ -9950,7 +9953,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "dcKw": 90,
+      "charge10to80Min": 23,
+      "acKw": 11
     },
     {
       "make": "Volkswagen",
