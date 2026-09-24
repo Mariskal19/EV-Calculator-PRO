@@ -2705,7 +2705,8 @@
       "price_eur": null,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Ford España; especificaciones oficiales"
+      "source": "Ford España; especificaciones oficiales",
+      "usableBatteryKwh": 91
     },
     {
       "make": "Ford",
@@ -6066,7 +6067,8 @@
       "consumptionKwh100": 13.9,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Peugeot España; especificaciones oficiales"
+      "source": "Peugeot España; especificaciones oficiales",
+      "dcKw": 160
     },
     {
       "make": "Peugeot",
@@ -6226,7 +6228,8 @@
       "consumptionKwh100": 14.5,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Peugeot España; especificaciones oficiales"
+      "source": "Peugeot España; especificaciones oficiales",
+      "dcKw": 160
     },
     {
       "make": "Peugeot",
@@ -8263,7 +8266,8 @@
       "consumptionKwh100": 14.7,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Volkswagen España; gama eléctrica ID"
+      "source": "Volkswagen España; gama eléctrica ID",
+      "usableBatteryKwh": 86
     },
     {
       "make": "Volkswagen",
