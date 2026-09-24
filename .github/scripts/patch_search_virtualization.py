@@ -19,7 +19,7 @@ new_build = r'''    private void build() {
         hero.setBackgroundColor(Color.TRANSPARENT);
 
         ImageView heroImage = new ImageView(this);
-        heroImage.setImageResource(R.drawable.cabecera_ev_calculator);
+        heroImage.setImageResource(R.drawable.cabecera_tema_claro);
         heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
         heroImage.setAdjustViewBounds(false);
         heroImage.setTranslationY(-dp(10));
@@ -29,19 +29,6 @@ new_build = r'''    private void build() {
         View topFade = new View(this);
         topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));
         hero.addView(topFade, new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
-
-        TextView back = tv("←",30,Color.WHITE);
-        back.setGravity(Gravity.CENTER);
-        back.setIncludeFontPadding(false);
-        back.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        back.setBackgroundColor(Color.TRANSPARENT);
-        back.setPadding(0,0,0,0);
-        back.setTranslationY(-dp(4));
-        back.setOnClickListener(v->finish());
-        FrameLayout.LayoutParams bp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.START);
-        bp.leftMargin=dp(14);
-        bp.topMargin=dp(12);
-        hero.addView(back,bp);
 
         TextView title = tv("Comparar coches",22,Color.WHITE);
         title.setTypeface(null,Typeface.BOLD);
@@ -54,31 +41,6 @@ new_build = r'''    private void build() {
         tp.rightMargin=dp(40);
         tp.topMargin=dp(4);
         hero.addView(title,tp);
-
-        TextView menuButton = tv("⋮",30,Color.WHITE);
-        menuButton.setGravity(Gravity.CENTER);
-        menuButton.setIncludeFontPadding(false);
-        menuButton.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        menuButton.setPadding(0,0,0,0);
-        menuButton.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
-        menuButton.setBackgroundColor(Color.TRANSPARENT);
-        menuButton.setContentDescription(LanguageManager.t(this,"Menú"));
-        menuButton.setOnClickListener(v->AppMenuHelper.show(this,menuButton,new AppMenuHelper.Listener(){
-            public boolean isDark(){return dark;}
-            public void setDark(boolean value){
-                if(dark!=value){
-                    dark=value;
-                    getSharedPreferences(PREFS,MODE_PRIVATE).edit().putBoolean("dark_theme",dark).apply();
-                    loadSelection();
-                    build();
-                    rebuild();
-                }
-            }
-        }));
-        FrameLayout.LayoutParams mbp=new FrameLayout.LayoutParams(dp(40),dp(40),Gravity.TOP|Gravity.END);
-        mbp.rightMargin=dp(14);
-        mbp.topMargin=dp(12);
-        hero.addView(menuButton,mbp);
 
         LinearLayout intro=new LinearLayout(this);
         intro.setOrientation(LinearLayout.VERTICAL);
