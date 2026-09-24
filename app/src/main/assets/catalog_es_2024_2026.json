@@ -2685,7 +2685,8 @@
       "powerKw": 70,
       "drive": "FWD",
       "wltpKm": 240,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "price_eur": 24294
     },
     {
       "make": "Dongfeng",
@@ -2701,7 +2702,8 @@
       "consumptionKwh100": 12.4,
       "usableBatteryKwh": 40,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 28294
     },
     {
       "make": "Dongfeng",
@@ -2717,7 +2719,8 @@
       "consumptionKwh100": 12.4,
       "usableBatteryKwh": 40,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 26394
     },
     {
       "make": "Fiat",
