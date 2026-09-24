@@ -11609,14 +11609,14 @@
       "wltpKm": 519,
       "consumptionKwh100": 14.5,
       "acKw": 22,
-      "dcKw": 450,
+      "dcKw": 480,
       "charge10to80Min": 13,
       "acceleration0to100Sec": 5.3,
       "trunkLiters": null,
       "source": "Zeekr España/Europa; 7GT",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:15:00+02:00"
     },
     {
       "make": "Zeekr",
@@ -11632,9 +11632,11 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Zeekr Europe; gama europea",
-      "dcKw": 420,
+      "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:15:00+02:00",
+      "batteryChemistry": "NMC",
+      "acKw": 22
     },
     {
       "make": "Zeekr",
@@ -11650,9 +11652,11 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Zeekr Europe; gama europea",
-      "dcKw": 420,
+      "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:15:00+02:00",
+      "batteryChemistry": "NMC",
+      "acKw": 22
     },
     {
       "make": "Zeekr",
