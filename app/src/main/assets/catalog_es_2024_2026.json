@@ -1848,7 +1848,9 @@
       "source": "CUPRA España / Born VZ 2024",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price": 48240,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -1860,7 +1862,9 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 446,
-      "consumptionKwh100": 11.7
+      "consumptionKwh100": 11.7,
+      "price": 35010,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -1882,7 +1886,7 @@
       "trunkLiters": null,
       "id": "cupra-raval-endurance-55-kwh-2026-55-2-nmc-155-fwd",
       "market": "ES",
-      "price": null,
+      "price": 35010,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -1899,7 +1903,9 @@
       "powerKw": 99,
       "drive": "FWD",
       "wltpKm": 328,
-      "consumptionKwh100": 11.3
+      "consumptionKwh100": 11.3,
+      "price": 29530,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -1911,7 +1917,9 @@
       "powerKw": 166,
       "drive": "FWD",
       "wltpKm": 440,
-      "consumptionKwh100": 11.8
+      "consumptionKwh100": 11.8,
+      "price": 39070,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -1933,7 +1941,9 @@
       "usableBatteryKwh": 77,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 6.5,
-      "weightKg": 2130
+      "weightKg": 2130,
+      "price": 42530,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -1958,7 +1968,9 @@
       "source": "CUPRA España / SEAT-CUPRA Media Center; Tavascan Endurance",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price": 54810,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -1981,7 +1993,9 @@
       "source": "OpenEV Data; Cupra Tavascan 2024 Official Specifications (https://www.cupraofficial.com)",
       "lastUpdated": "2026-09-14",
       "charge10to80Min": 28,
-      "trunkLiters": 540
+      "trunkLiters": 540,
+      "price": 54810,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -2005,7 +2019,9 @@
       "acceleration0to100Sec": 6.5,
       "weightKg": 2130,
       "charge10to80Min": 28,
-      "trunkLiters": 540
+      "trunkLiters": 540,
+      "price": 54810,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -2030,7 +2046,9 @@
       "source": "CUPRA España / SEAT-CUPRA Media Center; Tavascan VZ",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price": 65060,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -2053,7 +2071,9 @@
       "source": "OpenEV Data; Cupra Tavascan VZ 2024 Official Specifications (https://www.cupraofficial.com)",
       "lastUpdated": "2026-09-14",
       "charge10to80Min": 28,
-      "trunkLiters": 540
+      "trunkLiters": 540,
+      "price": 65060,
+      "currency": "EUR"
     },
     {
       "make": "CUPRA",
@@ -2077,7 +2097,9 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2250,
       "charge10to80Min": 28,
-      "trunkLiters": 540
+      "trunkLiters": 540,
+      "price": 65060,
+      "currency": "EUR"
     },
     {
       "make": "Changan",
