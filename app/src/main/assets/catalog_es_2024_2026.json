@@ -2748,7 +2748,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Ford oficial; Explorer Standard Range RWD",
-      "auditDateTime": "2026-09-24T20:00:00+02:00",
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
       "usableBatteryKwh": 58,
       "acKw": 11,
       "dcKw": 135,
@@ -2761,23 +2761,25 @@
       "market": "ES",
       "version": "77 kWh 210 kW RWD",
       "batteryKwh": 77,
-      "batteryChemistry": "Li-ion",
+      "batteryChemistry": "NMC",
       "powerKw": 210,
       "drive": "RWD",
       "wltpKm": 602,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8,
+      "consumptionKwh100": 13.9,
       "price_eur": 51765,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Ford España; especificaciones oficiales",
       "dcKw": 135,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
+      "acKw": 11,
+      "charge10to80Min": 28
     },
     {
       "make": "Ford",
       "model": "Explorer Eléctrico",
-      "year": 2024,
+      "year": 2026,
       "market": "ES",
       "version": "79 kWh 210 kW RWD",
       "batteryKwh": 79,
@@ -2785,13 +2787,13 @@
       "powerKw": 210,
       "drive": "RWD",
       "wltpKm": 602,
-      "arrivalYear": 2024,
-      "consumptionKwh100": 13.1,
+      "arrivalYear": 2026,
+      "consumptionKwh100": 13.9,
       "price_eur": 51765,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Ford oficial; Explorer Extended Range RWD",
-      "auditDateTime": "2026-09-24T20:00:00+02:00",
+      "source": "Ford oficial; especificaciones Explorer MY2026",
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
       "usableBatteryKwh": 77,
       "acKw": 11,
       "dcKw": 135,
@@ -2814,7 +2816,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Ford oficial; Explorer Extended Range AWD",
-      "auditDateTime": "2026-09-24T20:00:00+02:00",
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
       "usableBatteryKwh": 79,
       "acKw": 11,
       "dcKw": 185,
@@ -2836,7 +2838,9 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
+      "acKw": 10.5,
+      "dcKw": 150
     },
     {
       "make": "Ford",
@@ -2854,7 +2858,9 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
+      "acKw": 10.5,
+      "dcKw": 150
     },
     {
       "make": "Ford",
@@ -2872,7 +2878,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "Ford",
@@ -2897,7 +2903,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 72233,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "Ford",
@@ -2922,7 +2928,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 81428,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "Ford",
@@ -2941,7 +2947,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": null,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "Ford",
@@ -2966,7 +2972,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": null,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "Ford",
@@ -2985,7 +2991,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Ford España; especificaciones oficiales",
       "usableBatteryKwh": 91,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "Ford",
@@ -3078,7 +3084,7 @@
       "source": "Ford oficial; Puma Gen-E 2025",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:00:00+02:00",
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
       "charge10to80Min": 23
     },
     {
@@ -3103,7 +3109,7 @@
       "source": "Ford oficial; Puma Gen-E Premium 2025",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:00:00+02:00",
+      "auditDateTime": "2026-09-24T19:30:00+02:00",
       "charge10to80Min": 23
     },
     {
@@ -3117,15 +3123,15 @@
       "powerKw": 123,
       "drive": "FWD",
       "wltpKm": 417,
-      "consumptionKwh100": 10.3,
+      "consumptionKwh100": 13,
       "usableBatteryKwh": 46.8,
-      "source": "Ford España; Puma Gen-E actualizado 2026",
+      "source": "Ford España / Ford oficial; Puma Gen-E MY2026",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 23,
-      "auditDateTime": "2026-09-24T20:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:30:00+02:00"
     },
     {
       "make": "GAC",
