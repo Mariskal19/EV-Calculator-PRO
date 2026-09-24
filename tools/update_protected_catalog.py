@@ -43,7 +43,7 @@ def key(v):
     ])
 
 def flatten_gaia(item):
-    """Convert Gaia EVDB summary records into our catalog candidate shape."""
+    """Convert Gaia EVDB summary or full records into our catalog shape."""
     if not isinstance(item, dict):
         return None
     battery = item.get("battery") or {}
@@ -58,6 +58,7 @@ def flatten_gaia(item):
     if markets and es is None:
         return None
     return {
+        "gaiaId": item.get("id"),
         "make": item.get("brand") or item.get("make"),
         "model": item.get("model_name") or item.get("model"),
         "version": item.get("variant_name") or item.get("name"),
@@ -65,21 +66,21 @@ def flatten_gaia(item):
         "market": "ES",
         "currency": (es or {}).get("currency") or "EUR",
         "price": (es or {}).get("price_base"),
-        "batteryKwh": battery.get("total_kwh") or item.get("battery_total_kwh"),
+        "batteryKwh": battery.get("total_kwh") or item.get("battery_capacity_kwh") or item.get("battery_total_kwh"),
         "usableBatteryKwh": battery.get("usable_kwh") or item.get("battery_usable_kwh"),
-        "batteryType": battery.get("chemistry"),
-        "batteryChemistry": battery.get("chemistry"),
+        "batteryType": battery.get("chemistry") or item.get("battery_chemistry"),
+        "batteryChemistry": battery.get("chemistry") or item.get("battery_chemistry"),
         "wltpKm": rng.get("wltp_km") or item.get("range_wltp_km"),
-        "consumptionKwh100": efficiency.get("wltp_kwh_per_100km") or item.get("wltp_kwh_per_100km"),
-        "powerKw": performance.get("total_power_kw") or item.get("power_kw"),
-        "drive": performance.get("drive_type"),
-        "drivetrain": performance.get("drive_type"),
-        "acKw": charging.get("ac_max_kw"),
-        "dcKw": charging.get("dc_max_kw"),
-        "charge10to80Min": charging.get("time_10_to_80_min"),
-        "acceleration0to100Sec": performance.get("acceleration_0_100_sec"),
-        "trunkLiters": cargo.get("trunk_capacity_liters"),
-        "weightKg": weight.get("curb_weight_kg"),
+        "consumptionKwh100": efficiency.get("wltp_kwh_per_100km") or item.get("consumption_wltp_kwh_100km"),
+        "powerKw": performance.get("total_power_kw") or item.get("total_power_kw") or item.get("power_kw"),
+        "drive": performance.get("drive_type") or item.get("drive_type"),
+        "drivetrain": performance.get("drive_type") or item.get("drive_type"),
+        "acKw": charging.get("ac_max_kw") or item.get("ac_charge_power_kw") or item.get("ac_onboard_charger_kw"),
+        "dcKw": charging.get("dc_max_kw") or item.get("dc_charge_power_kw"),
+        "charge10to80Min": charging.get("time_10_to_80_min") or item.get("dc_charge_time_10_80_min"),
+        "acceleration0to100Sec": performance.get("acceleration_0_100_sec") or item.get("acceleration_0_100_sec"),
+        "trunkLiters": cargo.get("trunk_capacity_liters") or item.get("trunk_capacity_liters"),
+        "weightKg": weight.get("curb_weight_kg") or item.get("weight_curb_kg"),
         "source": "Gaia Charge EVDB",
         "arrivalYear": item.get("model_year") or item.get("year")
     }
@@ -118,8 +119,39 @@ for url in SOURCES:
         continue
     data = load_json(url)
     raw_items = data.get("results", data.get("vehicles", [])) if isinstance(data, dict) else []
+    is_gaia = "gaia-charge.github.io/evdb/" in url
+    known_identities = {
+        "|".join([norm(x.get("make")), norm(x.get("model")),
+                  str(x.get("year")), norm(x.get("version")),
+                  str(x.get("usableBatteryKwh") or "")])
+        for x in list(existing) + list(remote_existing)
+    }
     for raw in raw_items:
-        v = flatten_gaia(raw) if "results" in data else dict(raw)
+        # Gaia's vehicles.json is a summary endpoint. Its full vehicle endpoint
+        # contains the remaining fields needed for safe automatic insertion.
+        if is_gaia and isinstance(raw, dict):
+            summary = flatten_gaia(raw)
+            if not summary or summary.get("year") not in (2024, 2025, 2026):
+                continue
+            if not summary.get("make") or not summary.get("model") or not summary.get("version"):
+                continue
+            summary_identity = "|".join([
+                norm(summary.get("make")), norm(summary.get("model")),
+                str(summary.get("year")), norm(summary.get("version")),
+                str(summary.get("usableBatteryKwh") or "")
+            ])
+            if summary_identity in known_identities:
+                continue
+            gaia_id = raw.get("id")
+            if not gaia_id:
+                continue
+            try:
+                detail_url = "https://gaia-charge.github.io/evdb/v1/vehicles/" + str(gaia_id) + ".json"
+                v = flatten_gaia(load_json(detail_url))
+            except Exception:
+                continue
+        else:
+            v = flatten_gaia(raw) if "results" in data else dict(raw)
         if not v:
             continue
         v.setdefault("market", data.get("market", "ES") if isinstance(data, dict) else "ES")
