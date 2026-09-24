@@ -2285,7 +2285,9 @@
       "trunkLiters": 310,
       "weightKg": 1400,
       "source": "OpenEV Data; Citroën ë-C3 Official Specifications (https://www.citroen.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 23800,
+      "currency": "EUR"
     },
     {
       "make": "Citroën",
@@ -2307,7 +2309,9 @@
       "trunkLiters": 310,
       "weightKg": 1400,
       "source": "OpenEV Data; Citroën ë-C3 Official Specifications (https://www.citroen.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 26490,
+      "currency": "EUR"
     },
     {
       "make": "Citroën",
@@ -2322,7 +2326,9 @@
       "consumptionKwh100": 14,
       "drivetrain": "FWD",
       "acKw": 11,
-      "dcKw": 160
+      "dcKw": 160,
+      "price": 39490,
+      "currency": "EUR"
     },
     {
       "make": "Citroën",
@@ -2352,7 +2358,9 @@
       "source": "Citroën España / Stellantis Media; ë-C5 Aircross; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14
+      "consumptionKwh100": 14,
+      "price": 39490,
+      "currency": "EUR"
     },
     {
       "make": "Citroën",
