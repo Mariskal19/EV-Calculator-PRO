@@ -4735,9 +4735,11 @@
       "wltpKm": 447,
       "consumptionKwh100": 20.7,
       "usableBatteryKwh": 83,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 209600
+      "source": "Maserati España; GranCabrio Folgore ficha oficial",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 209600,
+      "acKw": 22,
+      "acceleration0to100Sec": 2.8
     },
     {
       "make": "Maserati",
@@ -4751,8 +4753,10 @@
       "wltpKm": 450,
       "consumptionKwh100": 20.6,
       "usableBatteryKwh": 83,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Maserati; GranTurismo Folgore ficha oficial",
+      "lastUpdated": "2026-09-24",
+      "acKw": 22,
+      "acceleration0to100Sec": 2.7
     },
     {
       "make": "Maserati",
@@ -4763,17 +4767,18 @@
       "batteryKwh": 105,
       "powerKw": 410,
       "drive": "AWD",
-      "wltpKm": 487,
-      "consumptionKwh100": 21.6,
+      "wltpKm": 500,
+      "consumptionKwh100": 24,
       "usableBatteryKwh": 96,
       "batteryChemistry": "li-ion",
       "drivetrain": "AWD",
-      "acKw": 11,
+      "acKw": 22,
       "dcKw": 150,
-      "acceleration0to100Sec": 3.8,
+      "acceleration0to100Sec": 4.1,
       "weightKg": 2200,
-      "source": "OpenEV Data; Maserati Grecale Folgore Official Specifications (https://www.maserati.com/international/en/models/grecale-folgore)",
-      "lastUpdated": "2026-09-14"
+      "source": "Maserati España; Grecale Folgore ficha oficial",
+      "lastUpdated": "2026-09-24",
+      "charge10to80Min": 29
     },
     {
       "make": "Mazda",
