@@ -78,6 +78,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
     @Override
     protected void onCreate(Bundle b) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(b);
         if (getActionBar() != null) getActionBar().hide();
         LanguageManager.applyStored(this);
