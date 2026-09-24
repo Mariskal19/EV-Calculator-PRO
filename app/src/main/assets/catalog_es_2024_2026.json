@@ -115,7 +115,7 @@
       "trunkLiters": 502,
       "id": "audi-a6-avant-e-tron-performance-2024-100-li-ion-280-rwd",
       "market": "ES",
-      "price": null,
+      "price": 83380,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -139,7 +139,8 @@
       "source": "Audi España; A6 Avant e-tron",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "price": 70480
     },
     {
       "make": "Audi",
@@ -158,7 +159,8 @@
       "source": "Audi España; A6 Avant e-tron performance",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.9
+      "consumptionKwh100": 13.9,
+      "price": 83380
     },
     {
       "make": "Audi",
@@ -177,7 +179,8 @@
       "source": "Audi España; A6 Avant e-tron quattro",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.6
+      "consumptionKwh100": 14.6,
+      "price": 89820
     },
     {
       "make": "Audi",
@@ -199,7 +202,7 @@
       "trunkLiters": 502,
       "id": "audi-a6-sportback-e-tron-performance-2024-100-li-ion-280-rwd",
       "market": "ES",
-      "price": null,
+      "price": 78290,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -223,7 +226,8 @@
       "source": "Audi España; A6 Sportback e-tron",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "price": 67980
     },
     {
       "make": "Audi",
@@ -242,7 +246,8 @@
       "source": "Audi España; A6 Sportback e-tron performance",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "price": 80880
     },
     {
       "make": "Audi",
@@ -261,7 +266,8 @@
       "source": "Audi España; A6 Sportback e-tron quattro",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14
+      "consumptionKwh100": 14,
+      "price": 87320
     },
     {
       "make": "Audi",
@@ -282,7 +288,8 @@
       "acceleration0to100Sec": 4.5,
       "weightKg": 2220,
       "source": "OpenEV Data; Audi A6 e-tron Avant 2024 Official Specifications (https://www.audi.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 83380
     },
     {
       "make": "Audi",
@@ -303,7 +310,8 @@
       "acceleration0to100Sec": 4.5,
       "weightKg": 2200,
       "source": "OpenEV Data; Audi A6 e-tron Sportback 2024 Official Specifications (https://www.audi.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 80880
     },
     {
       "make": "Audi",
@@ -316,7 +324,8 @@
       "powerKw": 370,
       "drive": "AWD",
       "wltpKm": 647,
-      "consumptionKwh100": 15.5
+      "consumptionKwh100": 15.5,
+      "price": 106810
     },
     {
       "make": "Audi",
@@ -329,7 +338,8 @@
       "powerKw": 370,
       "drive": "AWD",
       "wltpKm": 675,
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "price": 104310
     },
     {
       "make": "Audi",
@@ -353,7 +363,8 @@
       "photo": null,
       "source": "Audi España 2025 / KM77 Q4 Sportback e-tron 40",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 52070
     },
     {
       "make": "Audi",
@@ -375,7 +386,7 @@
       "trunkLiters": 520,
       "id": "audi-q4-e-tron-40-advanced-2025-63-0-nmc-150-rwd",
       "market": "ES",
-      "price": null,
+      "price": 49970,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -402,7 +413,7 @@
       "trunkLiters": 526,
       "id": "audi-q6-suv-e-tron-performance-2024-100-li-ion-240-rwd",
       "market": "ES",
-      "price": null,
+      "price": 70080,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -429,7 +440,7 @@
       "trunkLiters": 526,
       "id": "audi-q6-suv-e-tron-quattro-2024-100-li-ion-315-awd",
       "market": "ES",
-      "price": null,
+      "price": 71650,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -456,7 +467,8 @@
       "consumptionKwh100": 17.1,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 4.3,
-      "weightKg": 2420
+      "weightKg": 2420,
+      "price": 94520
     },
     {
       "make": "Audi",
@@ -475,7 +487,8 @@
       "source": "Audi España/Audi; Q6 e-tron 83 kWh",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "price": 66370
     },
     {
       "make": "Audi",
@@ -494,7 +507,8 @@
       "source": "Audi; Q6 e-tron performance",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "price": 70080
     },
     {
       "make": "Audi",
@@ -516,7 +530,8 @@
       "consumptionKwh100": 16,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.9,
-      "weightKg": 2350
+      "weightKg": 2350,
+      "price": 71650
     },
     {
       "make": "Audi",
@@ -538,7 +553,7 @@
       "trunkLiters": 511,
       "id": "audi-q6-sportback-e-tron-performance-2024-100-li-ion-240-rwd",
       "market": "ES",
-      "price": null,
+      "price": 72520,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -562,7 +577,8 @@
       "market": "ES",
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 4.3,
-      "weightKg": 2420
+      "weightKg": 2420,
+      "price": 96960
     },
     {
       "make": "Audi",
@@ -581,7 +597,8 @@
       "source": "Audi España; Q6 Sportback e-tron",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 12.3
+      "consumptionKwh100": 12.3,
+      "price": 74150
     },
     {
       "make": "Audi",
@@ -600,7 +617,8 @@
       "source": "Audi España; Q6 Sportback e-tron performance; WLTP 675 km",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "price": 72520
     },
     {
       "make": "Audi",
@@ -622,7 +640,8 @@
       "consumptionKwh100": 15.2,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.9,
-      "weightKg": 2350
+      "weightKg": 2350,
+      "price": 74090
     },
     {
       "make": "Audi",
@@ -635,7 +654,8 @@
       "powerKw": 240,
       "drive": "RWD",
       "wltpKm": 641,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "price": 70080
     },
     {
       "make": "Audi",
@@ -656,7 +676,8 @@
       "acceleration0to100Sec": 5.9,
       "weightKg": 2350,
       "source": "OpenEV Data; Audi Q6 e-tron quattro 2024 Official Specifications (https://www.audi.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 71650
     },
     {
       "make": "Audi",
@@ -669,7 +690,8 @@
       "powerKw": 380,
       "drive": "AWD",
       "wltpKm": 598,
-      "consumptionKwh100": 16.7
+      "consumptionKwh100": 16.7,
+      "price": 94520
     },
     {
       "make": "Audi",
@@ -691,7 +713,8 @@
       "consumptionKwh100": 15.7,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 3.9,
-      "trunkLiters": 502
+      "trunkLiters": 502,
+      "price": 106880
     },
     {
       "make": "Audi",
@@ -713,7 +736,7 @@
       "trunkLiters": 502,
       "id": "audi-s6-avant-e-tron-quattro-2024-100-li-ion-370-awd",
       "market": "ES",
-      "price": null,
+      "price": 106880,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -740,7 +763,8 @@
       "consumptionKwh100": 15.1,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 3.9,
-      "trunkLiters": 502
+      "trunkLiters": 502,
+      "price": 104380
     },
     {
       "make": "Audi",
@@ -762,7 +786,7 @@
       "trunkLiters": 502,
       "id": "audi-s6-sportback-e-tron-quattro-2024-100-li-ion-370-awd",
       "market": "ES",
-      "price": null,
+      "price": 104380,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -789,7 +813,7 @@
       "trunkLiters": 526,
       "id": "audi-sq6-suv-e-tron-quattro-2024-100-li-ion-380-awd",
       "market": "ES",
-      "price": null,
+      "price": 94520,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
@@ -816,7 +840,7 @@
       "trunkLiters": 511,
       "id": "audi-sq6-sportback-e-tron-quattro-2024-100-li-ion-380-awd",
       "market": "ES",
-      "price": null,
+      "price": 96960,
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
