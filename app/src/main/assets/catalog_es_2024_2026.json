@@ -5263,7 +5263,13 @@
       "powerKw": 130,
       "drive": "FWD",
       "wltpKm": 445,
-      "consumptionKwh100": 13.7
+      "consumptionKwh100": 13.7,
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30,
+      "trunkLiters": 437,
+      "lastUpdated": "2026-09-24",
+      "source": "Nissan España; Nuevo LEAF 2026"
     },
     {
       "make": "Nissan",
@@ -5275,7 +5281,13 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 623,
-      "consumptionKwh100": 13.8
+      "consumptionKwh100": 13.8,
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30,
+      "trunkLiters": 437,
+      "lastUpdated": "2026-09-24",
+      "source": "Nissan España; Nuevo LEAF 2026"
     },
     {
       "make": "Omoda",
@@ -5615,7 +5627,12 @@
       "powerKw": 240,
       "drive": "AWD",
       "wltpKm": 497,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 17.6,
+      "acKw": 11,
+      "dcKw": 160,
+      "charge10to80Min": 30,
+      "lastUpdated": "2026-09-24",
+      "source": "Peugeot España; E-3008 eléctrico"
     },
     {
       "make": "Peugeot",
@@ -5629,14 +5646,14 @@
       "drive": "FWD",
       "wltpKm": 453,
       "arrivalYear": 2024,
-      "consumptionKwh100": 12.8,
-      "usableBatteryKwh": 70,
+      "consumptionKwh100": 15.1,
+      "usableBatteryKwh": 55,
       "drivetrain": "FWD",
       "acKw": 11,
-      "dcKw": 160,
+      "dcKw": 120,
       "acceleration0to100Sec": 8.5,
-      "source": "OpenEV Data; Peugeot e-408 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; E-408 eléctrico",
+      "lastUpdated": "2026-09-24"
     },
     {
       "make": "Peugeot",
@@ -5760,10 +5777,13 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 668,
-      "consumptionKwh100": 14.7,
+      "consumptionKwh100": 18.4,
       "usableBatteryKwh": 96.9,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "source": "Peugeot España; E-5008 eléctrico",
+      "lastUpdated": "2026-09-24",
+      "acKw": 11,
+      "dcKw": 160,
+      "charge10to80Min": 30
     },
     {
       "make": "Polestar",
@@ -9507,13 +9527,14 @@
       "wltpKm": 403,
       "consumptionKwh100": 17.6,
       "drivetrain": "FWD",
-      "acKw": 7,
+      "acKw": 11,
       "dcKw": 130,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 466,
       "source": "Nissan España; ARIYA catálogo 2026",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "charge10to80Min": 40
     },
     {
       "make": "Nissan",
@@ -9527,13 +9548,14 @@
       "wltpKm": 525,
       "consumptionKwh100": 18.1,
       "drivetrain": "FWD",
-      "acKw": 22,
+      "acKw": 11,
       "dcKw": 130,
       "acceleration0to100Sec": 7.6,
       "trunkLiters": 466,
       "source": "Nissan España; ARIYA catálogo 2026",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "charge10to80Min": 40
     },
     {
       "make": "Nissan",
@@ -9547,13 +9569,14 @@
       "wltpKm": 460,
       "consumptionKwh100": 19.3,
       "drivetrain": "AWD",
-      "acKw": 22,
+      "acKw": 11,
       "dcKw": 130,
       "acceleration0to100Sec": 5.7,
       "trunkLiters": 466,
       "source": "Nissan España; ARIYA catálogo 2026",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "charge10to80Min": 40
     },
     {
       "make": "Omoda",
@@ -10012,6 +10035,48 @@
       "acceleration0to100Sec": 2.8,
       "trunkLiters": 509,
       "source": "Lotus Cars; Emeya MY26 900",
+      "lastUpdated": "2026-09-24"
+    },
+    {
+      "make": "Peugeot",
+      "model": "E-3008",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "market": "ES",
+      "version": "230 Long Range 170 kW FWD 98 kWh",
+      "batteryKwh": 98,
+      "batteryChemistry": "NMC",
+      "powerKw": 170,
+      "drive": "FWD",
+      "drivetrain": "FWD",
+      "wltpKm": 700,
+      "consumptionKwh100": 16.7,
+      "usableBatteryKwh": 96.9,
+      "acKw": 11,
+      "dcKw": 160,
+      "charge10to80Min": 30,
+      "source": "Peugeot España; E-3008 Long Range",
+      "lastUpdated": "2026-09-24"
+    },
+    {
+      "make": "Peugeot",
+      "model": "E-5008",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "market": "ES",
+      "version": "325 CV 240 kW 73 kWh AWD",
+      "batteryKwh": 73,
+      "batteryChemistry": "NMC",
+      "powerKw": 240,
+      "drive": "AWD",
+      "drivetrain": "AWD",
+      "wltpKm": 477,
+      "consumptionKwh100": 18.6,
+      "usableBatteryKwh": 73,
+      "acKw": 11,
+      "dcKw": 160,
+      "charge10to80Min": 30,
+      "source": "Peugeot España; E-5008 eléctrico",
       "lastUpdated": "2026-09-24"
     }
   ]
