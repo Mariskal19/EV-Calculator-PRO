@@ -3309,7 +3309,8 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Hyundai",
@@ -3338,7 +3339,8 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Hyundai",
@@ -3410,7 +3412,8 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 1950,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Hyundai",
@@ -3434,7 +3437,8 @@
       "acceleration0to100Sec": 5.2,
       "weightKg": 2110,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Hyundai",
@@ -3464,7 +3468,8 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Hyundai",
@@ -3494,7 +3499,8 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Hyundai",
@@ -3658,7 +3664,8 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Hyundai",
@@ -3763,7 +3770,8 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Hyundai",
@@ -3793,7 +3801,8 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Hyundai",
@@ -4227,7 +4236,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4253,7 +4263,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4279,7 +4290,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4305,7 +4317,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4357,7 +4370,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 41705,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4380,7 +4394,8 @@
       "batteryChemistry": "NMC",
       "price_eur": 36930,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4410,7 +4425,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 43205,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4462,7 +4478,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 48705,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4491,7 +4508,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4538,7 +4556,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4567,7 +4586,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Kia",
@@ -4671,7 +4691,8 @@
       "price_eur": 85100,
       "auditDate": "2026-09-24",
       "charge10to80Min": 24,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Kia",
@@ -5947,7 +5968,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "MG",
@@ -5973,7 +5995,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -5999,7 +6022,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6025,7 +6049,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6051,7 +6076,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6077,7 +6103,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6103,7 +6130,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "MG",
@@ -6129,7 +6157,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "MG",
@@ -6155,7 +6184,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "MG",
@@ -6181,7 +6211,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6207,7 +6238,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6233,7 +6265,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6260,7 +6293,8 @@
       "market": "ES",
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "MG",
@@ -6287,7 +6321,8 @@
       "market": "ES",
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "MG",
@@ -6314,7 +6349,8 @@
       "price": null,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "MINI",
@@ -8380,7 +8416,8 @@
       "market": "ES",
       "consumptionKwh100": 15,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Škoda",
@@ -8426,7 +8463,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Škoda",
@@ -8453,7 +8491,8 @@
       "market": "ES",
       "batteryChemistry": "Li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Škoda",
@@ -8528,7 +8567,8 @@
       "market": "ES",
       "batteryChemistry": "Li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Škoda",
@@ -8635,7 +8675,8 @@
       "market": "ES",
       "batteryChemistry": "Li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Škoda",
@@ -8741,7 +8782,8 @@
       "batteryChemistry": "li-ion",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Škoda",
@@ -8799,7 +8841,8 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Škoda",
@@ -8820,7 +8863,8 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Škoda",
@@ -8841,7 +8885,8 @@
       "market": "ES",
       "consumptionKwh100": 15,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Skywell",
@@ -10465,7 +10510,8 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 2100,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10486,7 +10532,8 @@
       "consumptionKwh100": 16.2,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10510,7 +10557,8 @@
       "acceleration0to100Sec": 4.7,
       "weightKg": 2180,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Volvo",
@@ -10532,7 +10580,8 @@
       "usableBatteryKwh": 88,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10574,7 +10623,8 @@
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
       "usableBatteryKwh": 100,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Volvo",
@@ -10596,7 +10646,8 @@
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
       "usableBatteryKwh": 100,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Volvo",
@@ -10620,7 +10671,8 @@
       "acceleration0to100Sec": 5.7,
       "weightKg": 1830,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10644,7 +10696,8 @@
       "trunkLiters": 400,
       "weightKg": 1900,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10665,7 +10718,8 @@
       "consumptionKwh100": 17.5,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Volvo",
@@ -10689,7 +10743,8 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 2118,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10710,7 +10765,8 @@
       "consumptionKwh100": 16.6,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10734,7 +10790,8 @@
       "acceleration0to100Sec": 4.9,
       "weightKg": 2200,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Volvo",
@@ -10808,7 +10865,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "RWD"
     },
     {
       "make": "Volvo",
@@ -10835,7 +10893,8 @@
       "market": "ES",
       "batteryChemistry": "nmc",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Volvo",
@@ -10886,7 +10945,8 @@
       "market": "ES",
       "batteryChemistry": "nmc",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drive": "AWD"
     },
     {
       "make": "Voyah",
