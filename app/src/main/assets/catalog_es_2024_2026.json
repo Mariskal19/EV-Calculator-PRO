@@ -11494,6 +11494,22 @@
       "source": "Dacia España; Spring 2026",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24"
+    },
+    {
+      "make": "Maserati",
+      "model": "Grecale",
+      "year": 2026,
+      "market": "ES",
+      "version": "Folgore 410 kW AWD 105 kWh",
+      "batteryKwh": 105,
+      "powerKw": 410,
+      "drive": "AWD",
+      "wltpKm": 580,
+      "consumptionKwh100": 20.9,
+      "dcKw": 150,
+      "source": "Maserati España; Grecale Folgore MY26",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24"
     }
   ]
 }
