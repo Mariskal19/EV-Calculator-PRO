@@ -2769,21 +2769,6 @@
     {
       "make": "Hyundai",
       "model": "INSTER",
-      "year": 2024,
-      "market": "ES",
-      "version": "115 CV FWD 49 kWh",
-      "batteryKwh": 49,
-      "powerKw": 84.5,
-      "drive": "FWD",
-      "wltpKm": 370,
-      "consumptionKwh100": 13.2,
-      "usableBatteryKwh": 46,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
-    },
-    {
-      "make": "Hyundai",
-      "model": "INSTER",
       "version": "42 kWh",
       "year": 2024,
       "arrivalYear": 2024,
@@ -2834,21 +2819,6 @@
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07"
-    },
-    {
-      "make": "Hyundai",
-      "model": "INSTER",
-      "year": 2024,
-      "market": "ES",
-      "version": "97 CV FWD 42 kWh",
-      "batteryKwh": 42,
-      "powerKw": 71.1,
-      "drive": "FWD",
-      "wltpKm": 327,
-      "consumptionKwh100": 12.8,
-      "usableBatteryKwh": 39,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
     },
     {
       "make": "Hyundai",
@@ -2985,21 +2955,6 @@
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07",
       "batteryChemistry": "li-ion"
-    },
-    {
-      "make": "Hyundai",
-      "model": "IONIQ 6 N",
-      "year": 2026,
-      "market": "ES",
-      "version": "650 CV AWD 84 kWh",
-      "batteryKwh": 84,
-      "powerKw": 478,
-      "drive": "AWD",
-      "wltpKm": 487,
-      "consumptionKwh100": 17.2,
-      "drivetrain": "AWD",
-      "acKw": 11,
-      "dcKw": 350
     },
     {
       "make": "Hyundai",
@@ -3148,32 +3103,6 @@
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07",
       "batteryChemistry": "li-ion"
-    },
-    {
-      "make": "Hyundai",
-      "model": "KONA Eléctrico",
-      "year": 2024,
-      "market": "ES",
-      "version": "48.4 kWh 99 kW FWD",
-      "batteryKwh": 48.4,
-      "batteryChemistry": "Li-ion",
-      "powerKw": 99,
-      "drive": "FWD",
-      "wltpKm": 380,
-      "consumptionKwh100": 12.7
-    },
-    {
-      "make": "Hyundai",
-      "model": "KONA Eléctrico",
-      "year": 2024,
-      "market": "ES",
-      "version": "65.4 kWh 150 kW FWD",
-      "batteryKwh": 65.4,
-      "batteryChemistry": "Li-ion",
-      "powerKw": 150,
-      "drive": "FWD",
-      "wltpKm": 510,
-      "consumptionKwh100": 12.8
     },
     {
       "make": "Hyundai",
