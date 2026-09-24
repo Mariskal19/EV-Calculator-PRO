@@ -3449,7 +3449,8 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 430,
-      "consumptionKwh100": 14
+      "consumptionKwh100": 14,
+      "price_eur": 30995
     },
     {
       "make": "GAC",
@@ -3478,7 +3479,8 @@
       "source": "Geely España; E5; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14
+      "consumptionKwh100": 14,
+      "price_eur": 37490
     },
     {
       "make": "Geely",
@@ -3490,7 +3492,8 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 450,
-      "consumptionKwh100": 15.2
+      "consumptionKwh100": 15.2,
+      "price_eur": 41990
     },
     {
       "make": "Geely",
@@ -3503,7 +3506,8 @@
       "drive": "FWD",
       "wltpKm": 430,
       "consumptionKwh100": 14,
-      "drivetrain": "FWD"
+      "drivetrain": "FWD",
+      "price_eur": 37490
     },
     {
       "make": "Geely",
@@ -3515,7 +3519,8 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 475,
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "price_eur": 39990
     },
     {
       "make": "Hyundai",
