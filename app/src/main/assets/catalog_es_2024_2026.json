@@ -6560,7 +6560,7 @@
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 545,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Mitsubishi",
@@ -6584,7 +6584,7 @@
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 545,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6607,7 +6607,7 @@
       "market": "ES",
       "charge10to80Min": 40,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6618,7 +6618,7 @@
       "batteryKwh": 87,
       "powerKw": 178,
       "drive": "FWD",
-      "wltpKm": 525,
+      "wltpKm": 536,
       "consumptionKwh100": 18.1,
       "drivetrain": "FWD",
       "acKw": 7,
@@ -6630,7 +6630,7 @@
       "market": "ES",
       "charge10to80Min": 40,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6641,7 +6641,7 @@
       "batteryKwh": 87,
       "powerKw": 225,
       "drive": "AWD",
-      "wltpKm": 493,
+      "wltpKm": 498,
       "consumptionKwh100": 19.3,
       "drivetrain": "AWD",
       "acKw": 7,
@@ -6653,7 +6653,7 @@
       "market": "ES",
       "charge10to80Min": 40,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6673,7 +6673,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Nissan España; especificaciones oficiales 2026",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6693,7 +6693,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Nissan España; especificaciones oficiales 2026",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6714,7 +6714,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Nissan",
@@ -6735,7 +6735,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Omoda",
@@ -6752,7 +6752,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Omoda",
@@ -6769,7 +6769,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Omoda",
@@ -6789,7 +6789,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:45:00+02:00"
     },
     {
       "make": "Opel",
