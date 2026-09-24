@@ -5536,14 +5536,14 @@
       "year": 2025,
       "arrivalYear": 2025,
       "batteryKwh": 58,
-      "usableBatteryKwh": 55,
-      "batteryType": "NMC",
+      "usableBatteryKwh": 58,
+      "batteryType": "LFP",
       "wltpKm": 541,
       "consumptionKwh100": 12.3,
       "powerKw": 165,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 320,
+      "dcKw": 200,
       "charge10to80Min": 22,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 455,
@@ -5556,7 +5556,8 @@
       "source": "Mercedes-Benz España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-24T23:50:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Mercedes-Benz",
