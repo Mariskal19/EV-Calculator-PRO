@@ -4535,7 +4535,7 @@
       "powerKw": 282.6,
       "drivetrain": "AWD",
       "acKw": 11,
-      "dcKw": 210,
+      "dcKw": 240,
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
@@ -4543,7 +4543,7 @@
       "price_eur": 85100,
       "auditDate": "2026-09-24",
       "charge10to80Min": 24,
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T21:00:00+02:00",
       "drive": "AWD"
     },
     {
