@@ -9424,6 +9424,31 @@
       "currency": "EUR",
       "source": "Toyota España; C-HR+ Spirit 350 AWD-i 77 kWh",
       "lastUpdated": "2026-09-24"
+    },
+    {
+      "make": "MG",
+      "model": "MGS9 PHEV",
+      "version": "Comfort",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "batteryKwh": 24.7,
+      "usableBatteryKwh": 23.2,
+      "batteryType": "Li-ion",
+      "batteryChemistry": "LFP",
+      "wltpKm": 100,
+      "consumptionKwh100": 19.76,
+      "powerKw": 220,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": null,
+      "charge10to80Min": null,
+      "acceleration0to100Sec": 9.6,
+      "trunkLiters": 332,
+      "source": "MG Motor España; MGS9 PHEV catálogo oficial 2026",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "price": null,
+      "currency": "EUR"
     }
   ]
 }
