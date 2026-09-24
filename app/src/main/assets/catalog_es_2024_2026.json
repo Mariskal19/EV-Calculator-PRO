@@ -97,7 +97,10 @@
       "drive": "FWD",
       "wltpKm": 380,
       "consumptionKwh100": 13.7,
-      "price": 38700
+      "price": 38700,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Alpine España; especificaciones oficiales"
     },
     {
       "make": "Alpine",
@@ -110,7 +113,10 @@
       "drive": "FWD",
       "wltpKm": 380,
       "consumptionKwh100": 13.7,
-      "price": 44700
+      "price": 44700,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Alpine España; especificaciones oficiales"
     },
     {
       "make": "Alpine",
@@ -119,11 +125,18 @@
       "market": "ES",
       "version": "GT 300 kW AWD 89 kWh",
       "batteryKwh": 89,
-      "powerKw": 300,
+      "powerKw": 295,
       "drive": "AWD",
-      "wltpKm": 555,
-      "consumptionKwh100": 16,
-      "price": 67500
+      "wltpKm": 557,
+      "consumptionKwh100": 18.7,
+      "price": 67500,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Alpine España; especificaciones oficiales",
+      "batteryChemistry": "NMC",
+      "acKw": 11,
+      "dcKw": 150,
+      "acceleration0to100Sec": 4.8
     },
     {
       "make": "Audi",
@@ -149,8 +162,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -166,11 +180,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España; A6 Avant e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.9,
-      "price": 70480
+      "price": 70480,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -186,11 +201,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; A6 Avant e-tron performance",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.9,
-      "price": 83380
+      "price": 83380,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -206,11 +222,12 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; A6 Avant e-tron quattro",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14.6,
-      "price": 89820
+      "price": 89820,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -236,8 +253,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -253,11 +271,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España; A6 Sportback e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.3,
-      "price": 67980
+      "price": 67980,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -273,11 +292,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; A6 Sportback e-tron performance",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.3,
-      "price": 80880
+      "price": 80880,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -293,11 +313,12 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; A6 Sportback e-tron quattro",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14,
-      "price": 87320
+      "price": 87320,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -319,10 +340,11 @@
       "trunkLiters": 535,
       "weightKg": null,
       "photo": null,
-      "source": "Audi España 2025 / KM77 Q4 Sportback e-tron 40",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "price": 52070
+      "price": 52070,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -348,8 +370,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -375,8 +398,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -402,8 +426,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -419,14 +444,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; SQ6 SUV e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 17.1,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 4.3,
       "weightKg": 2420,
-      "price": 94520
+      "price": 94520,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -442,11 +468,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España/Audi; Q6 e-tron 83 kWh",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.3,
-      "price": 66370
+      "price": 66370,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -462,11 +489,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi; Q6 e-tron performance",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.6,
-      "price": 70080
+      "price": 70080,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -482,14 +510,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi; Q6 e-tron quattro",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 16,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.9,
       "weightKg": 2350,
-      "price": 71650
+      "price": 71650,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -515,8 +544,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -530,13 +560,14 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; SQ6 Sportback e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 4.3,
       "weightKg": 2420,
-      "price": 96960
+      "price": 96960,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -552,11 +583,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España; Q6 Sportback e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 12.3,
-      "price": 74150
+      "price": 74150,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -572,11 +604,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 260,
-      "source": "Audi España; Q6 Sportback e-tron performance; WLTP 675 km",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14.8,
-      "price": 72520
+      "price": 72520,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -592,14 +625,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi Q6 Sportback e-tron quattro MY26; WLTP 657 km",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.2,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.9,
       "weightKg": 2350,
-      "price": 74090
+      "price": 74090,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -615,14 +649,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; S6 Avant e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.7,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 502,
-      "price": 106880
+      "price": 106880,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -638,14 +673,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; S6 Sportback e-tron",
-      "lastUpdated": "2026-09-09",
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.1,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 502,
-      "price": 104380
+      "price": 104380,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -671,8 +707,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Audi",
@@ -698,8 +735,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Audi España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -10783,6 +10821,98 @@
       "market": "ES",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24"
+    },
+    {
+      "make": "Audi",
+      "model": "A2 e-tron",
+      "version": "125 kW 52 kWh",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "batteryKwh": 52,
+      "batteryType": "Li-ion",
+      "batteryChemistry": "LFP",
+      "wltpKm": 423,
+      "consumptionKwh100": 13.7,
+      "powerKw": 125,
+      "drivetrain": "RWD",
+      "drive": "RWD",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 8.8,
+      "market": "ES",
+      "source": "Audi España / Audi oficial; A2 e-tron",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
+    },
+    {
+      "make": "Audi",
+      "model": "A2 e-tron",
+      "version": "140 kW 61 kWh",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "batteryKwh": 61,
+      "batteryType": "Li-ion",
+      "batteryChemistry": "LFP",
+      "wltpKm": 515,
+      "consumptionKwh100": 12.8,
+      "powerKw": 140,
+      "drivetrain": "RWD",
+      "drive": "RWD",
+      "acKw": 11,
+      "dcKw": 105,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 7.9,
+      "market": "ES",
+      "source": "Audi España / Audi oficial; A2 e-tron",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
+    },
+    {
+      "make": "Audi",
+      "model": "A2 e-tron",
+      "version": "170 kW 84 kWh",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "batteryKwh": 84,
+      "batteryType": "Li-ion",
+      "batteryChemistry": "NMC",
+      "wltpKm": 641,
+      "consumptionKwh100": 13.9,
+      "powerKw": 170,
+      "drivetrain": "RWD",
+      "drive": "RWD",
+      "acKw": 11,
+      "dcKw": 183,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 7,
+      "market": "ES",
+      "source": "Audi España / Audi oficial; A2 e-tron",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
+    },
+    {
+      "make": "Audi",
+      "model": "A2 e-tron",
+      "version": "240 kW 84 kWh",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "batteryKwh": 84,
+      "batteryType": "Li-ion",
+      "batteryChemistry": "NMC",
+      "wltpKm": 630,
+      "consumptionKwh100": 14.2,
+      "powerKw": 240,
+      "drivetrain": "RWD",
+      "drive": "RWD",
+      "acKw": 11,
+      "dcKw": 183,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 5.7,
+      "market": "ES",
+      "source": "Audi España / Audi oficial; A2 e-tron",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     }
   ]
 }
