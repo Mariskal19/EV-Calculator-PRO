@@ -3167,8 +3167,14 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 402,
-      "consumptionKwh100": 15.1,
-      "price_eur": 38500
+      "consumptionKwh100": 16.5,
+      "price_eur": 38500,
+      "acKw": 11,
+      "dcKw": 130,
+      "acceleration0to100Sec": 7.7,
+      "trunkLiters": 480,
+      "source": "OMODA & JAECOO España; ficha técnica JAECOO 5 EV",
+      "lastUpdated": "2026-09-24"
     },
     {
       "make": "Jaecoo",
@@ -3181,8 +3187,14 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 402,
-      "consumptionKwh100": 15.1,
-      "price_eur": 35500
+      "consumptionKwh100": 16.5,
+      "price_eur": 35500,
+      "acKw": 11,
+      "dcKw": 130,
+      "acceleration0to100Sec": 7.7,
+      "trunkLiters": 480,
+      "source": "OMODA & JAECOO España; ficha técnica JAECOO 5 EV",
+      "lastUpdated": "2026-09-24"
     },
     {
       "make": "Jeep",
@@ -3341,10 +3353,10 @@
       "powerKw": 152,
       "drive": "FWD",
       "wltpKm": 462,
-      "consumptionKwh100": 15.9,
-      "usableBatteryKwh": 72,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
+      "consumptionKwh100": 18.6,
+      "usableBatteryKwh": null,
+      "source": "KGM España; Torres EVX ficha técnica histórica 73,4 kWh",
+      "lastUpdated": "2026-09-24",
       "price_eur": 37500
     },
     {
@@ -3358,10 +3370,10 @@
       "powerKw": 152,
       "drive": "FWD",
       "wltpKm": 462,
-      "consumptionKwh100": 15.9,
-      "usableBatteryKwh": 72,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
+      "consumptionKwh100": 18.6,
+      "usableBatteryKwh": null,
+      "source": "KGM España; Torres EVX ficha técnica histórica 73,4 kWh",
+      "lastUpdated": "2026-09-24",
       "price_eur": 34500
     },
     {
@@ -9649,6 +9661,50 @@
       "source": "Opel España; ficha técnica Grandland MY26",
       "lastUpdated": "2026-09-24",
       "market": "ES"
+    },
+    {
+      "make": "KGM",
+      "model": "Torres EVX",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "market": "ES",
+      "version": "Trend 152 kW FWD 80.6 kWh LFP",
+      "batteryKwh": 80.6,
+      "batteryChemistry": "LFP",
+      "powerKw": 152,
+      "drive": "FWD",
+      "wltpKm": 503,
+      "consumptionKwh100": 19.3,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 120,
+      "acceleration0to100Sec": 8.2,
+      "trunkLiters": 839,
+      "price_eur": 35000,
+      "source": "KGM España; Torres EVX ficha técnica 2026",
+      "lastUpdated": "2026-09-24"
+    },
+    {
+      "make": "KGM",
+      "model": "Torres EVX",
+      "year": 2026,
+      "arrivalYear": 2026,
+      "market": "ES",
+      "version": "Life 152 kW FWD 80.6 kWh LFP",
+      "batteryKwh": 80.6,
+      "batteryChemistry": "LFP",
+      "powerKw": 152,
+      "drive": "FWD",
+      "wltpKm": 503,
+      "consumptionKwh100": 19.3,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 120,
+      "acceleration0to100Sec": 8.2,
+      "trunkLiters": 839,
+      "price_eur": 37500,
+      "source": "KGM España; Torres EVX ficha técnica 2026",
+      "lastUpdated": "2026-09-24"
     }
   ]
 }
