@@ -9,7 +9,7 @@ SOURCES = [
     os.environ.get("CATALOG_SOURCE_1_URL", "").strip(),
     os.environ.get("CATALOG_SOURCE_2_URL", "").strip(),
 ]
-OUT = ROOT / "catalog_es_2024_2026.json"
+OUT = ROOT / "catalog_remote_additions.json"
 
 FIELDS = [
     "price","batteryKwh","usableBatteryKwh","batteryType","batteryChemistry",
@@ -59,7 +59,16 @@ if not CATALOG.exists():
 
 catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
 existing = catalog.get("vehicles", [])
+
+# The packaged catalog is the immutable audited base.
+# Remote additions are tracked separately so this workflow can never rewrite or delete it.
+if OUT.exists():
+    remote_root = json.loads(OUT.read_text(encoding="utf-8"))
+else:
+    remote_root = {"version": 1, "updatedAt": None, "vehicles": []}
+remote_existing = remote_root.get("vehicles", [])
 existing_keys = {key(v) for v in existing}
+existing_keys.update(key(v) for v in remote_existing)
 candidates = {}
 
 for url in SOURCES:
@@ -90,13 +99,17 @@ for k, v in candidates.items():
     v["auditDate"] = v.get("auditDate") or "AUTO"
     v["lastUpdated"] = v.get("lastUpdated") or "AUTO"
     v["source"] = v.get("source") or "Automatic source JSON"
-    existing.append(v)
+    remote_existing.append(v)
     existing_keys.add(k)
     added.append(v)
 
 if added:
-    catalog["vehicles"] = existing
-    OUT.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    from datetime import datetime, timezone
+    remote_root["version"] = int(remote_root.get("version") or 1)
+    remote_root["updatedAt"] = datetime.now(timezone.utc).isoformat()
+    remote_root["vehicles"] = remote_existing
+    OUT.write_text(json.dumps(remote_root, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-print(f"Protected catalog: {len(existing)-len(added)} existing records untouched")
-print(f"Automatically added: {len(added)} new validated configurations")
+print(f"Protected base catalog: {len(existing)} records untouched")
+print(f"Existing remote additions: {len(remote_existing)-len(added)}")
+print(f"Automatically added remotely: {len(added)} new validated configurations")
