@@ -4977,8 +4977,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5004,8 +5005,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5030,8 +5032,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data; model presented October 2024 and commercial period assigned to 2025",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5056,8 +5059,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5082,8 +5086,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5108,8 +5113,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data; model presented October 2024 and commercial period assigned to 2025",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5134,8 +5140,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -5160,8 +5167,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "MINI España official technical data",
-      "lastUpdated": "2026-09-09"
+      "source": "MINI España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Maserati",
@@ -5172,14 +5180,17 @@
       "batteryKwh": 92.5,
       "powerKw": 560,
       "drive": "AWD",
-      "wltpKm": 447,
-      "consumptionKwh100": 20.7,
+      "wltpKm": 441,
+      "consumptionKwh100": 23,
       "usableBatteryKwh": 83,
-      "source": "Maserati España; GranCabrio Folgore ficha oficial",
+      "source": "Maserati España/Europa; fichas oficiales Folgore",
       "lastUpdated": "2026-09-24",
       "price_eur": 209600,
       "acKw": 22,
-      "acceleration0to100Sec": 2.8
+      "acceleration0to100Sec": 2.8,
+      "auditDate": "2026-09-24",
+      "dcKw": 270,
+      "charge10to80Min": 18
     },
     {
       "make": "Maserati",
@@ -5193,10 +5204,13 @@
       "wltpKm": 450,
       "consumptionKwh100": 20.6,
       "usableBatteryKwh": 83,
-      "source": "Maserati; GranTurismo Folgore ficha oficial",
+      "source": "Maserati España/Europa; fichas oficiales Folgore",
       "lastUpdated": "2026-09-24",
       "acKw": 22,
-      "acceleration0to100Sec": 2.7
+      "acceleration0to100Sec": 2.7,
+      "auditDate": "2026-09-24",
+      "dcKw": 270,
+      "charge10to80Min": 18
     },
     {
       "make": "Maserati",
@@ -5216,9 +5230,10 @@
       "dcKw": 150,
       "acceleration0to100Sec": 4.1,
       "weightKg": 2200,
-      "source": "Maserati España; Grecale Folgore ficha oficial",
+      "source": "Maserati España/Europa; fichas oficiales Folgore",
       "lastUpdated": "2026-09-24",
-      "charge10to80Min": 29
+      "charge10to80Min": 29,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mazda",
@@ -5233,10 +5248,11 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 195,
-      "source": "Mazda Automóviles España; preventa y especificaciones CX-6e 2026",
-      "lastUpdated": "2026-09-10",
+      "source": "Mazda Automóviles España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 16.12
+      "consumptionKwh100": 16.12,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mazda",
@@ -5251,10 +5267,11 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 195,
-      "source": "Mazda Automóviles España; preventa y especificaciones CX-6e 2026",
-      "lastUpdated": "2026-09-10",
+      "source": "Mazda Automóviles España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 16.81
+      "consumptionKwh100": 16.81,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mazda",
@@ -5273,7 +5290,10 @@
       "dcKw": 165,
       "charge10to80Min": 27,
       "acceleration0to100Sec": 7.6,
-      "trunkLiters": 330
+      "trunkLiters": 330,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Mazda Automóviles España; especificaciones oficiales"
     },
     {
       "make": "Mazda",
@@ -5295,10 +5315,11 @@
       "trunkLiters": 330,
       "weightKg": null,
       "photo": null,
-      "source": "Mazda6e España/Europa; especificación 2025",
-      "lastUpdated": "2026-09-09",
+      "source": "Mazda Automóviles España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5324,8 +5345,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Mercedes-Benz España; CLA eléctrico",
-      "lastUpdated": "2026-09-24"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5351,8 +5373,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Mercedes-Benz España; CLA eléctrico",
-      "lastUpdated": "2026-09-24"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5378,8 +5401,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Mercedes-Benz España; CLA eléctrico",
-      "lastUpdated": "2026-09-24"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5395,10 +5419,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "source": "Mercedes-Benz España; CLA Shooting Brake Eléctrico",
-      "lastUpdated": "2026-09-09",
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 11.1
+      "consumptionKwh100": 12.8,
+      "auditDate": "2026-09-24",
+      "acceleration0to100Sec": 7.6,
+      "charge10to80Min": 20
     },
     {
       "make": "Mercedes-Benz",
@@ -5414,10 +5441,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 320,
-      "source": "Mercedes-Benz España; CLA Shooting Brake Eléctrico",
-      "lastUpdated": "2026-09-09",
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 11.1
+      "consumptionKwh100": 12.8,
+      "auditDate": "2026-09-24",
+      "acceleration0to100Sec": 6.8
     },
     {
       "make": "Mercedes-Benz",
@@ -5433,10 +5462,12 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 320,
-      "source": "Mercedes-Benz España; CLA Shooting Brake Eléctrico",
-      "lastUpdated": "2026-09-09",
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 11.5
+      "consumptionKwh100": 13.3,
+      "auditDate": "2026-09-24",
+      "acceleration0to100Sec": 5
     },
     {
       "make": "Mercedes-Benz",
@@ -5462,8 +5493,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5485,10 +5517,11 @@
       "trunkLiters": 340,
       "weightKg": 2040,
       "photo": null,
-      "source": "Mercedes-Benz España; EQA 250+ periodo 2024",
-      "lastUpdated": "2026-09-09",
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5510,9 +5543,10 @@
       "trunkLiters": 495,
       "weightKg": null,
       "photo": null,
-      "source": "Mercedes-Benz España; EQB 250+ periodo 2024",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5523,14 +5557,14 @@
       "batteryKwh": 85,
       "usableBatteryKwh": null,
       "batteryType": "NMC",
-      "wltpKm": 600,
-      "consumptionKwh100": 14.2,
-      "powerKw": 180,
-      "drivetrain": "FWD",
+      "wltpKm": 654,
+      "consumptionKwh100": 15.2,
+      "powerKw": 200,
+      "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 320,
       "charge10to80Min": 22,
-      "acceleration0to100Sec": 7,
+      "acceleration0to100Sec": 7.3,
       "trunkLiters": 435,
       "id": "mercedes-benz-gla-el-ctrico-2026-85-nmc-180-fwd",
       "market": "ES",
@@ -5538,8 +5572,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5565,8 +5600,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5592,8 +5628,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5619,8 +5656,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mercedes-Benz",
@@ -5646,8 +5684,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mitsubishi",
@@ -5662,14 +5701,15 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Mitsubishi Motors España; catálogo Eclipse Cross EV 2026",
+      "source": "Mitsubishi Motors España; catálogo oficial Eclipse Cross EV 2026",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 16.5,
       "usableBatteryKwh": 87,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.9,
-      "trunkLiters": 545
+      "trunkLiters": 545,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Mitsubishi",
@@ -5684,14 +5724,15 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Mitsubishi Motors España; catálogo Eclipse Cross EV 2026",
+      "source": "Mitsubishi Motors España; catálogo oficial Eclipse Cross EV 2026",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 16.9,
       "usableBatteryKwh": 87,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.9,
-      "trunkLiters": 545
+      "trunkLiters": 545,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
