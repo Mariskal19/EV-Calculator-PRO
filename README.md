@@ -27,8 +27,10 @@ Criterio: **MERCADO → MARCA → MODELO → AÑO DE LLEGADA → VERSIONES**.
 - Catálogo cerrado el **10/09/2026**
 - 611 configuraciones en el catálogo cerrado
 - `consumptionKwh100` debe estar informado cuando existen batería y WLTP
-- No se regeneran datos automáticamente
-- GitHub Actions valida el catálogo existente; no añade ni modifica vehículos
+- El catálogo empaquetado es la base auditada y protegida: las actualizaciones remotas nunca modifican ni eliminan sus registros.
+- Un catálogo incremental remoto puede añadir únicamente configuraciones nuevas que superen la validación automática.
+- La app descarga ese incremento cuando tiene conexión y conserva una copia local para seguir funcionando sin conexión.
+- Las nuevas configuraciones remotas no requieren publicar una nueva versión en Google Play.
 
 ## Comparar coches
 
