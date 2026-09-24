@@ -42,6 +42,40 @@ def key(v):
         str(v.get("year") or 0), battery_key(v), norm(v.get("version"))
     ])
 
+def tech_duplicate(a, b):
+    """Return True when a source record is very likely the same configuration already known."""
+    if norm(a.get("make")) != norm(b.get("make")):
+        return False
+    if norm(a.get("model")) != norm(b.get("model")):
+        return False
+    if str(a.get("year") or 0) != str(b.get("year") or 0):
+        return False
+    if norm(a.get("market") or "ES") != norm(b.get("market") or "ES"):
+        return False
+
+    va, vb = norm(a.get("version")), norm(b.get("version"))
+    if va and vb:
+        # Same trim name, or one name is a commercial expansion of the other.
+        if va == vb or va.startswith(vb + " ") or vb.startswith(va + " "):
+            return True
+
+    def close_num(field, tolerance):
+        x, y = num(a.get(field)), num(b.get(field))
+        return x > 0 and y > 0 and abs(x - y) <= tolerance
+
+    battery_close = close_num("batteryKwh", 2.0)
+    power_close = close_num("powerKw", 8.0)
+    range_close = close_num("wltpKm", 12)
+    consumption_close = close_num("consumptionKwh100", 1.2)
+
+    da, db = norm(a.get("drive") or a.get("drivetrain")), norm(b.get("drive") or b.get("drivetrain"))
+    drive_compatible = not da or not db or da == db
+
+    # Conservative technical equivalence: never merge clearly different batteries,
+    # motors, drivetrains or WLTP figures. A source with only a trim-name variation
+    # is treated as the same configuration when the core specs also agree.
+    return battery_close and power_close and range_close and consumption_close and drive_compatible
+
 def flatten_gaia(item):
     """Convert Gaia EVDB summary or full records into our catalog shape."""
     if not isinstance(item, dict):
@@ -114,6 +148,9 @@ existing_keys = {key(v) for v in existing}
 existing_keys.update(key(v) for v in remote_existing)
 candidates = {}
 
+def known_equivalent(v):
+    return any(tech_duplicate(v, x) for x in list(existing) + list(remote_existing))
+
 for url in SOURCES:
     if not url:
         continue
@@ -158,7 +195,7 @@ for url in SOURCES:
         if not valid(v):
             continue
         k = key(v)
-        if k in existing_keys:
+        if k in existing_keys or known_equivalent(v):
             continue
         if k not in candidates:
             candidates[k] = v
