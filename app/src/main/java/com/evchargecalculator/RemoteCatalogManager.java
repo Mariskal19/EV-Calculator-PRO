@@ -2,6 +2,7 @@ package com.evchargecalculator;
 
 import android.content.Context;
 import android.os.Handler;
+import android.content.SharedPreferences;
 import android.os.Looper;
 
 import org.json.JSONArray;
@@ -21,6 +22,9 @@ final class RemoteCatalogManager {
     private static final String REMOTE_URL =
             "https://raw.githubusercontent.com/Mariskal19/EV-Calculator-PRO/main/app/src/main/assets/catalog_remote_additions.json";
     private static final String CACHE_FILE = "catalog_remote_additions.json";
+    private static final String PREFS = "remote_catalog";
+    private static final String KEY_LAST_CHECK = "last_check_ms";
+    private static final long CHECK_INTERVAL_MS = 24L * 60L * 60L * 1000L;
 
     private RemoteCatalogManager() {}
 
@@ -36,6 +40,17 @@ final class RemoteCatalogManager {
         } catch (Exception ignored) {
             return new JSONArray();
         }
+    }
+
+    static void refreshIfDue(Context context, Callback callback) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+        long last = prefs.getLong(KEY_LAST_CHECK, 0L);
+        if (System.currentTimeMillis() - last < CHECK_INTERVAL_MS) {
+            callback.onComplete(null);
+            return;
+        }
+        prefs.edit().putLong(KEY_LAST_CHECK, System.currentTimeMillis()).apply();
+        refresh(context, callback);
     }
 
     static void refresh(Context context, Callback callback) {
