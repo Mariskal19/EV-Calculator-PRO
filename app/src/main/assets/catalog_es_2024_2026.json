@@ -2393,7 +2393,8 @@
       "consumptionKwh100": 13,
       "usableBatteryKwh": 58.3,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 45400
     },
     {
       "make": "DS",
@@ -2408,7 +2409,8 @@
       "consumptionKwh100": 13.6,
       "drivetrain": "FWD",
       "acKw": 11,
-      "dcKw": 160
+      "dcKw": 160,
+      "price": 49400
     },
     {
       "make": "DS",
@@ -2423,7 +2425,8 @@
       "consumptionKwh100": 14.3,
       "drivetrain": "AWD",
       "acKw": 11,
-      "dcKw": 160
+      "dcKw": 160,
+      "price": 68700
     },
     {
       "make": "DS",
@@ -2441,7 +2444,8 @@
       "source": "DS Automobiles España; N°7 E-TENSE; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "price": 68700
     },
     {
       "make": "DS",
@@ -2459,7 +2463,8 @@
       "source": "DS Automobiles España; N°7 E-TENSE; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "price": 49400
     },
     {
       "make": "DS",
@@ -2474,7 +2479,8 @@
       "consumptionKwh100": 13.1,
       "drivetrain": "FWD",
       "acKw": 11,
-      "dcKw": 160
+      "dcKw": 160,
+      "price": 55100
     },
     {
       "make": "DS",
@@ -2492,7 +2498,8 @@
       "source": "DS Automobiles España; N°7 E-TENSE; mercado español",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "price": 55100
     },
     {
       "make": "DS",
@@ -2504,7 +2511,8 @@
       "powerKw": 257,
       "drive": "AWD",
       "wltpKm": 688,
-      "consumptionKwh100": 14.1
+      "consumptionKwh100": 14.1,
+      "price": 74200
     },
     {
       "make": "DS",
@@ -2516,7 +2524,8 @@
       "powerKw": 257,
       "drive": "AWD",
       "wltpKm": 688,
-      "consumptionKwh100": 14.1
+      "consumptionKwh100": 14.1,
+      "price": 74200
     },
     {
       "make": "DS",
@@ -2531,7 +2540,8 @@
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 73.7,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 57000
     },
     {
       "make": "DS",
@@ -2546,7 +2556,8 @@
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 73.7,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 57000
     },
     {
       "make": "DS",
@@ -2558,7 +2569,8 @@
       "powerKw": 180,
       "drive": "FWD",
       "wltpKm": 750,
-      "consumptionKwh100": 13
+      "consumptionKwh100": 13,
+      "price": 62500
     },
     {
       "make": "DS",
@@ -2570,7 +2582,8 @@
       "powerKw": 180,
       "drive": "FWD",
       "wltpKm": 750,
-      "consumptionKwh100": 13
+      "consumptionKwh100": 13,
+      "price": 62500
     },
     {
       "make": "DS Automobiles",
@@ -2582,7 +2595,8 @@
       "powerKw": 156.7,
       "drive": "FWD",
       "wltpKm": 450,
-      "consumptionKwh100": 13
+      "consumptionKwh100": 13,
+      "price": 45400
     },
     {
       "make": "Dacia",
