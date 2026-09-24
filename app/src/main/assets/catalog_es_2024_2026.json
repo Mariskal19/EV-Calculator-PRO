@@ -3870,7 +3870,8 @@
       "charge10to80Min": 30,
       "source": "Jeep España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3890,7 +3891,8 @@
       "market": "ES",
       "consumptionKwh100": 18.6,
       "auditDate": "2026-09-24",
-      "charge10to80Min": 32
+      "charge10to80Min": 32,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3911,7 +3913,8 @@
       "consumptionKwh100": 17.5,
       "usableBatteryKwh": 74,
       "auditDate": "2026-09-24",
-      "charge10to80Min": 35
+      "charge10to80Min": 35,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3932,7 +3935,8 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 31,
-      "acceleration0to100Sec": 5.4
+      "acceleration0to100Sec": 5.4,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3954,7 +3958,8 @@
       "consumptionKwh100": 19.5,
       "auditDate": "2026-09-24",
       "charge10to80Min": 31,
-      "acceleration0to100Sec": 5.4
+      "acceleration0to100Sec": 5.4,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3975,7 +3980,8 @@
       "dcKw": 160,
       "charge10to80Min": 35,
       "trunkLiters": 550,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3994,7 +4000,8 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "charge10to80Min": 32
+      "charge10to80Min": 32,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4019,7 +4026,8 @@
       "source": "Jeep España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4044,7 +4052,8 @@
       "source": "Jeep España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "KGM",
@@ -4062,7 +4071,8 @@
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": 37500,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "KGM",
@@ -4080,7 +4090,8 @@
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": 34500,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "KGM",
@@ -4103,7 +4114,8 @@
       "price_eur": 37500,
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "KGM",
@@ -4126,7 +4138,8 @@
       "price_eur": 35000,
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4151,7 +4164,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4176,7 +4190,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4201,7 +4216,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4226,7 +4242,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4247,7 +4264,8 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "dcKw": 105
+      "dcKw": 105,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4276,7 +4294,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": 41705,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4298,7 +4317,8 @@
       "usableBatteryKwh": 55,
       "batteryChemistry": "NMC",
       "price_eur": 36930,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4327,7 +4347,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": 43205,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4348,7 +4369,8 @@
       "acKw": 10.5,
       "dcKw": 102,
       "price_eur": 38430,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4377,7 +4399,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": 48705,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4405,7 +4428,8 @@
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4422,7 +4446,8 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "acKw": 11
+      "acKw": 11,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4450,7 +4475,8 @@
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4478,7 +4504,8 @@
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4497,7 +4524,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4516,7 +4544,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4535,7 +4564,8 @@
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4556,7 +4586,8 @@
       "charge10to80Min": 18,
       "source": "Kia Iberia; EV6 especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4577,7 +4608,8 @@
       "consumptionKwh100": 17.7,
       "price_eur": 85100,
       "auditDate": "2026-09-24",
-      "charge10to80Min": 24
+      "charge10to80Min": 24,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4592,7 +4624,8 @@
       "consumptionKwh100": 17.1,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Kia Iberia; especificaciones oficiales"
+      "source": "Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4608,7 +4641,8 @@
       "price_eur": 39900,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Kia Iberia; especificaciones oficiales"
+      "source": "Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4624,7 +4658,8 @@
       "price_eur": 45775,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Kia Iberia; especificaciones oficiales"
+      "source": "Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4640,7 +4675,8 @@
       "price_eur": 42755,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Kia Iberia; especificaciones oficiales"
+      "source": "Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4656,7 +4692,8 @@
       "price_eur": 38755,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Kia Iberia; especificaciones oficiales"
+      "source": "Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -4672,7 +4709,8 @@
       "price_eur": 45155,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Kia Iberia; especificaciones oficiales"
+      "source": "Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Lancia",
@@ -4695,7 +4733,8 @@
       "trunkLiters": 309,
       "source": "Lancia España; Ypsilon HF 280 CV",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Lancia",
@@ -4715,7 +4754,8 @@
       "dcKw": 100,
       "charge10to80Min": 24,
       "acceleration0to100Sec": 8.2,
-      "trunkLiters": 309
+      "trunkLiters": 309,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4735,7 +4775,8 @@
       "dcKw": 133,
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 510,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4755,7 +4796,8 @@
       "dcKw": 100,
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 510,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4775,7 +4817,8 @@
       "acceleration0to100Sec": 6.7,
       "trunkLiters": 345,
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4795,7 +4838,8 @@
       "acceleration0to100Sec": 6.7,
       "trunkLiters": 345,
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4818,7 +4862,8 @@
       "source": "Leapmotor/Stellantis España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4841,7 +4886,8 @@
       "source": "Leapmotor/Stellantis España; especificaciones oficiales; capacidad útil contrastada con EVKX",
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4868,7 +4914,8 @@
       "market": "ES",
       "price_eur": 34900,
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4895,7 +4942,8 @@
       "market": "ES",
       "batteryChemistry": "LFP",
       "price_eur": 18900,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Lexus",
