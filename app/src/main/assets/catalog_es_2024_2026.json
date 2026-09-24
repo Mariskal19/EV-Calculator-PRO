@@ -2735,7 +2735,8 @@
       "consumptionKwh100": 13.2,
       "usableBatteryKwh": 50.8,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 36000
     },
     {
       "make": "Fiat",
@@ -2750,7 +2751,8 @@
       "consumptionKwh100": 13.8,
       "usableBatteryKwh": 43.8,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 25450
     },
     {
       "make": "Ford",
