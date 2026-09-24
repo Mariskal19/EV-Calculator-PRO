@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
