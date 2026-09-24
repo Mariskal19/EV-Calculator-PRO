@@ -2047,7 +2047,7 @@
       "price": 23800,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2073,7 +2073,7 @@
       "price": 26490,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2091,7 +2091,7 @@
       "source": "Citroën España; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 160,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2113,7 +2113,7 @@
       "price": 39490,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2133,7 +2133,7 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -7131,7 +7131,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7149,7 +7149,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7172,7 +7172,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 49660,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7194,7 +7194,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7216,7 +7216,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7234,7 +7234,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7257,7 +7257,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7277,7 +7277,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Peugeot España; especificaciones oficiales",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7300,7 +7300,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7323,7 +7323,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 49160,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7346,7 +7346,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 51660,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7364,7 +7364,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7386,7 +7386,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7408,7 +7408,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7426,7 +7426,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7447,7 +7447,7 @@
       "dcKw": 160,
       "charge10to80Min": 30,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -7470,7 +7470,7 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:15:00+02:00"
     },
     {
       "make": "Polestar",
