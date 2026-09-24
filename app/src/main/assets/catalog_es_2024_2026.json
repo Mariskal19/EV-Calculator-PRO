@@ -2632,7 +2632,7 @@
       "auditDate": "2026-09-24",
       "acKw": 11,
       "dcKw": 100,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Fiat",
@@ -2653,7 +2653,7 @@
       "acKw": 11,
       "dcKw": 100,
       "charge20to80Min": 27,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Ford",
@@ -5012,7 +5012,7 @@
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Lexus",
@@ -5038,7 +5038,7 @@
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Lexus",
@@ -5064,7 +5064,7 @@
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Lexus",
@@ -5090,7 +5090,7 @@
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Lotus",
@@ -10103,7 +10103,7 @@
       "market": "ES",
       "consumptionKwh100": 13.9,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Toyota",
@@ -10123,7 +10123,7 @@
       "market": "ES",
       "consumptionKwh100": 15.9,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Toyota",
@@ -10153,7 +10153,7 @@
       "source": "Toyota España; gama eléctrica 2026",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Toyota",
@@ -10183,7 +10183,7 @@
       "source": "Toyota España; gama eléctrica 2026",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Toyota",
@@ -10209,7 +10209,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Toyota",
@@ -10235,7 +10235,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Toyota",
@@ -10261,7 +10261,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10277,7 +10277,11 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "batteryChemistry": "NMC",
+      "acKw": 11,
+      "dcKw": 105,
+      "charge10to80Min": 24
     },
     {
       "make": "Volkswagen",
@@ -10293,7 +10297,11 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "batteryChemistry": "NMC",
+      "acKw": 11,
+      "dcKw": 105,
+      "charge10to80Min": 24
     },
     {
       "make": "Volkswagen",
@@ -10310,7 +10318,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10322,12 +10330,12 @@
       "batteryChemistry": "LFP",
       "powerKw": 85,
       "drive": "FWD",
-      "wltpKm": 329,
+      "wltpKm": 315,
       "consumptionKwh100": 11.6,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10339,12 +10347,12 @@
       "batteryChemistry": "LFP",
       "powerKw": 99,
       "drive": "FWD",
-      "wltpKm": 329,
+      "wltpKm": 315,
       "consumptionKwh100": 11.6,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10373,7 +10381,7 @@
       "source": "Volkswagen España; gama eléctrica ID",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10403,7 +10411,7 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10428,7 +10436,7 @@
       "charge10to80Min": 26,
       "trunkLiters": 605,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10448,7 +10456,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
       "usableBatteryKwh": 86,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -10467,7 +10475,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00"
     },
     {
       "make": "Volvo",
