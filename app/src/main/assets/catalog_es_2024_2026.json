@@ -750,8 +750,11 @@
       "drive": "AWD",
       "wltpKm": 906,
       "consumptionKwh100": 12,
-      "price": 63650,
-      "currency": "EUR"
+      "price": 66511.48,
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "BMW España; nuevo BMW i3 50 xDrive First Edition"
     },
     {
       "make": "BMW",
@@ -771,10 +774,11 @@
       "dcKw": 207,
       "acceleration0to100Sec": 3.7,
       "weightKg": 2215,
-      "source": "OpenEV Data; BMW i4 M50 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 81350,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -794,10 +798,11 @@
       "dcKw": 180,
       "acceleration0to100Sec": 5.8,
       "weightKg": 1955,
-      "source": "OpenEV Data; BMW i4 eDrive35 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 55950,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -810,9 +815,12 @@
       "powerKw": 250,
       "drive": "RWD",
       "wltpKm": 613,
-      "consumptionKwh100": 13.3,
+      "consumptionKwh100": 14.9,
       "price": 59250,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "BMW España; especificaciones oficiales"
     },
     {
       "make": "BMW",
@@ -832,10 +840,11 @@
       "dcKw": 205,
       "acceleration0to100Sec": 3.7,
       "weightKg": 2260,
-      "source": "OpenEV Data; BMW i5 M60 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 117009.6,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -855,10 +864,11 @@
       "dcKw": 205,
       "acceleration0to100Sec": 5.7,
       "weightKg": 2150,
-      "source": "OpenEV Data; BMW i5 eDrive40 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 77850,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -880,12 +890,13 @@
       "trunkLiters": 490,
       "weightKg": 2260,
       "photo": null,
-      "source": "BMW España / KM77 periodo 2024; BMW i5 xDrive40",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "nmc",
       "price": 83850,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -900,12 +911,13 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 205,
-      "source": "BMW España; i5 M60 xDrive Touring 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.6,
       "price": 119609.6,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -920,12 +932,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 205,
-      "source": "BMW España; i5 eDrive40 Touring 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.6,
       "price": 80450,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -940,12 +953,13 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 205,
-      "source": "BMW España; i5 xDrive40 Touring 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14.5,
       "price": 85050,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -965,10 +979,11 @@
       "dcKw": 195,
       "acceleration0to100Sec": 3.5,
       "weightKg": 2805,
-      "source": "OpenEV Data; BMW i7 M70 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 190600,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -988,10 +1003,11 @@
       "dcKw": 195,
       "acceleration0to100Sec": 4.5,
       "weightKg": 2715,
-      "source": "OpenEV Data; BMW i7 xDrive60 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 121400,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1006,7 +1022,10 @@
       "wltpKm": 600,
       "consumptionKwh100": 18.1,
       "price": 135000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "BMW España; especificaciones oficiales"
     },
     {
       "make": "BMW",
@@ -1021,7 +1040,10 @@
       "wltpKm": 603,
       "consumptionKwh100": 15.7,
       "price": 89600,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "BMW España; especificaciones oficiales"
     },
     {
       "make": "BMW",
@@ -1036,7 +1058,10 @@
       "wltpKm": 701,
       "consumptionKwh100": 15.6,
       "price": 89600,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "BMW España; especificaciones oficiales"
     },
     {
       "make": "BMW",
@@ -1051,12 +1076,13 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 195,
-      "source": "BMW España; iX M70 xDrive 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 18.2,
       "price": 135000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1071,13 +1097,14 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 175,
-      "source": "BMW España; iX xDrive45 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.7,
       "usableBatteryKwh": 94.8,
       "price": 89600,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1092,12 +1119,13 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 195,
-      "source": "BMW España; iX xDrive60 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.6,
       "price": 89600,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1119,12 +1147,13 @@
       "trunkLiters": 490,
       "weightKg": 1940,
       "photo": null,
-      "source": "BMW Group España / periodo 2024; iX1 eDrive20",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "nmc",
       "price": 50300,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1144,10 +1173,11 @@
       "dcKw": 130,
       "acceleration0to100Sec": 5.6,
       "weightKg": 2085,
-      "source": "OpenEV Data; BMW iX1 xDrive30 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 50300,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1173,9 +1203,10 @@
       "currency": "EUR",
       "weightKg": 2050,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "nmc"
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "nmc",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1195,10 +1226,11 @@
       "dcKw": 130,
       "acceleration0to100Sec": 5.6,
       "weightKg": 2050,
-      "source": "OpenEV Data; BMW iX2 xDrive30 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 51800,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BMW",
@@ -1213,12 +1245,13 @@
       "drivetrain": "RWD",
       "acKw": 22,
       "dcKw": 400,
-      "source": "BMW España; nuevo iX3 50 xDrive 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "BMW España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.5,
       "price": 63650,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1240,11 +1273,12 @@
       "trunkLiters": 400,
       "weightKg": 1570,
       "photo": null,
-      "source": "BYD España: lanzamiento ATTO 2 febrero 2025",
-      "lastUpdated": "2026-09-09",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "LFP",
-      "price": 29990
+      "price": 29990,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1259,14 +1293,15 @@
       "wltpKm": 312,
       "consumptionKwh100": 14.5,
       "usableBatteryKwh": 45.1,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 65,
       "charge10to80Min": 37,
       "weightKg": 1570,
-      "price": 31990
+      "price": 31990,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1281,8 +1316,8 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 220,
-      "source": "BYD España; ficha técnica ATTO 3 EVO 2026",
-      "lastUpdated": "2026-09-23",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 16.4,
       "batteryChemistry": "LFP",
@@ -1291,7 +1326,8 @@
       "trunkLiters": 490,
       "drive": "RWD",
       "weightKg": 1880,
-      "price": 42990
+      "price": 42990,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1306,8 +1342,8 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 220,
-      "source": "BYD España; ficha técnica ATTO 3 EVO 2026",
-      "lastUpdated": "2026-09-23",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 17.8,
       "batteryChemistry": "LFP",
@@ -1316,7 +1352,8 @@
       "trunkLiters": 490,
       "drive": "AWD",
       "weightKg": 1990,
-      "price": 45990
+      "price": 45990,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1342,9 +1379,10 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "LFP"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1370,9 +1408,10 @@
       "currency": "EUR",
       "weightKg": 1294,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "LFP"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1398,9 +1437,10 @@
       "currency": "EUR",
       "weightKg": 1370,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "LFP"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1426,9 +1466,10 @@
       "currency": "EUR",
       "weightKg": 1390,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "LFP"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1454,9 +1495,10 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "LFP"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1482,9 +1524,10 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "LFP"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1510,10 +1553,11 @@
       "currency": "EUR",
       "weightKg": 2225,
       "photo": null,
-      "source": "BYD España / BYD Europe — SEALION 7 2024",
-      "lastUpdated": "2026-09-23",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drive": "RWD",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1539,10 +1583,11 @@
       "currency": "EUR",
       "weightKg": 2340,
       "photo": null,
-      "source": "BYD España / BYD Europe — SEALION 7 2024",
-      "lastUpdated": "2026-09-23",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drive": "AWD",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1568,10 +1613,11 @@
       "currency": "EUR",
       "weightKg": 2435,
       "photo": null,
-      "source": "BYD España / BYD Europe — SEALION 7 2024",
-      "lastUpdated": "2026-09-23",
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "drive": "AWD",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "BYD",
@@ -1597,9 +1643,10 @@
       "currency": "EUR",
       "weightKg": 2589,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "lfp"
+      "source": "BYD España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "lfp",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "CUPRA",
@@ -1621,12 +1668,13 @@
       "trunkLiters": 385,
       "weightKg": 1950,
       "photo": null,
-      "source": "CUPRA España / Born VZ 2024",
-      "lastUpdated": "2026-09-09",
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 48240,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "CUPRA",
@@ -1652,8 +1700,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "CUPRA",
@@ -1667,7 +1716,14 @@
       "wltpKm": 328,
       "consumptionKwh100": 11.3,
       "price": 29530,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "batteryType": "LFP",
+      "batteryChemistry": "LFP",
+      "dcKw": 88,
+      "charge10to80Min": 23
     },
     {
       "make": "CUPRA",
@@ -1681,7 +1737,10 @@
       "wltpKm": 440,
       "consumptionKwh100": 11.8,
       "price": 39070,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales"
     },
     {
       "make": "CUPRA",
@@ -1695,17 +1754,20 @@
       "powerKw": 140,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 135,
-      "source": "CUPRA España; gama Tavascan 2026",
-      "lastUpdated": "2026-09-10",
+      "dcKw": 105,
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 13.2,
-      "usableBatteryKwh": 77,
-      "batteryChemistry": "li-ion",
-      "acceleration0to100Sec": 6.5,
+      "consumptionKwh100": 15.5,
+      "usableBatteryKwh": 58,
+      "batteryChemistry": "LFP",
+      "acceleration0to100Sec": 8.7,
       "weightKg": 2130,
       "price": 42530,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "drive": "RWD",
+      "charge10to80Min": 30
     },
     {
       "make": "CUPRA",
@@ -1727,12 +1789,13 @@
       "trunkLiters": 540,
       "weightKg": 2130,
       "photo": null,
-      "source": "CUPRA España / SEAT-CUPRA Media Center; Tavascan Endurance",
-      "lastUpdated": "2026-09-09",
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 54810,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "CUPRA",
@@ -1754,12 +1817,13 @@
       "trunkLiters": 540,
       "weightKg": 2250,
       "photo": null,
-      "source": "CUPRA España / SEAT-CUPRA Media Center; Tavascan VZ",
-      "lastUpdated": "2026-09-09",
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 65060,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Changan",
@@ -1781,11 +1845,12 @@
       "trunkLiters": 492,
       "weightKg": 2040,
       "photo": null,
-      "source": "Changan Europe Spain; Deepal S05",
-      "lastUpdated": "2026-09-09",
+      "source": "Changan Europe / Deepal; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 39990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Changan",
@@ -1807,11 +1872,12 @@
       "trunkLiters": 492,
       "weightKg": 1940,
       "photo": null,
-      "source": "Changan Europe Spain; Deepal S05",
-      "lastUpdated": "2026-09-09",
+      "source": "Changan Europe / Deepal; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 34990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Changan",
@@ -1833,11 +1899,12 @@
       "trunkLiters": 492,
       "weightKg": 1940,
       "photo": null,
-      "source": "Changan Europe Spain; Deepal S05",
-      "lastUpdated": "2026-09-09",
+      "source": "Changan Europe / Deepal; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 32990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Changan",
@@ -1845,28 +1912,31 @@
       "version": "RWD",
       "year": 2026,
       "arrivalYear": 2026,
-      "batteryKwh": 80,
+      "batteryKwh": 79.97,
       "usableBatteryKwh": null,
-      "batteryType": "NMC",
+      "batteryType": "Li-ion",
       "wltpKm": 475,
-      "consumptionKwh100": 18.4,
+      "consumptionKwh100": 18.6,
       "powerKw": 160,
       "drivetrain": "RWD",
-      "acKw": null,
+      "acKw": 11,
       "dcKw": 93,
-      "charge10to80Min": 48,
+      "charge10to80Min": 35,
       "acceleration0to100Sec": 7.9,
       "trunkLiters": null,
       "weightKg": null,
       "photo": null,
-      "source": "Changan Europe Spain; Deepal S07",
-      "lastUpdated": "2026-09-09",
+      "source": "Changan Europe / Deepal; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 39990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "drive": "RWD",
+      "batteryChemistry": "NMC"
     },
     {
-      "make": "Changan Deepal",
+      "make": "Changan",
       "model": "S07",
       "year": 2026,
       "market": "ES",
@@ -1878,7 +1948,10 @@
       "wltpKm": 475,
       "consumptionKwh100": 16.8,
       "price": 39990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Changan Europe / Deepal; especificaciones oficiales"
     },
     {
       "make": "Citroën",
