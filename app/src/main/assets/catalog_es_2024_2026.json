@@ -4776,10 +4776,10 @@
       "source": "Lancia España; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": 24,
+      "charge10to80Min": null,
       "acceleration0to100Sec": 8.2,
       "trunkLiters": 309,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Lancia",
@@ -4797,13 +4797,13 @@
       "consumptionKwh100": 16.2,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": 27,
+      "charge10to80Min": null,
       "acceleration0to100Sec": 5.6,
       "trunkLiters": 309,
       "source": "Lancia España; Ypsilon HF 280 CV",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4824,7 +4824,7 @@
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 510,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4845,7 +4845,7 @@
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 510,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4866,7 +4866,7 @@
       "trunkLiters": 345,
       "batteryChemistry": "LFP",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4887,7 +4887,7 @@
       "trunkLiters": 345,
       "batteryChemistry": "LFP",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4911,7 +4911,7 @@
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4935,7 +4935,7 @@
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4963,7 +4963,7 @@
       "price_eur": 34900,
       "batteryChemistry": "LFP",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Leapmotor",
@@ -4991,7 +4991,7 @@
       "batteryChemistry": "LFP",
       "price_eur": 18900,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:47:00+02:00"
     },
     {
       "make": "Lexus",
