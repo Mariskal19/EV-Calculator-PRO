@@ -915,7 +915,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "BMW España; nuevo BMW i3 50 xDrive First Edition"
+      "source": "BMW España; nuevo BMW i3 50 xDrive First Edition",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -939,7 +940,8 @@
       "lastUpdated": "2026-09-24",
       "price": 55950,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -957,7 +959,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "BMW España; especificaciones oficiales"
+      "source": "BMW España; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -981,7 +984,8 @@
       "lastUpdated": "2026-09-24",
       "price": 81350,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1002,7 +1006,8 @@
       "consumptionKwh100": 13.6,
       "price": 80450,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1023,7 +1028,8 @@
       "consumptionKwh100": 15.6,
       "price": 119609.6,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1044,7 +1050,8 @@
       "consumptionKwh100": 14.5,
       "price": 85050,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1068,7 +1075,8 @@
       "lastUpdated": "2026-09-24",
       "price": 77850,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1092,7 +1100,8 @@
       "lastUpdated": "2026-09-24",
       "price": 117009.6,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1120,7 +1129,8 @@
       "batteryChemistry": "nmc",
       "price": 83850,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1144,7 +1154,8 @@
       "lastUpdated": "2026-09-24",
       "price": 190600,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1168,7 +1179,8 @@
       "lastUpdated": "2026-09-24",
       "price": 121400,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1186,7 +1198,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "BMW España; especificaciones oficiales"
+      "source": "BMW España; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1204,7 +1217,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "BMW España; especificaciones oficiales"
+      "source": "BMW España; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1222,7 +1236,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "BMW España; especificaciones oficiales"
+      "source": "BMW España; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1243,7 +1258,8 @@
       "consumptionKwh100": 18.2,
       "price": 135000,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1265,7 +1281,8 @@
       "usableBatteryKwh": 94.8,
       "price": 89600,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1286,7 +1303,8 @@
       "consumptionKwh100": 15.6,
       "price": 89600,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1314,7 +1332,8 @@
       "batteryChemistry": "nmc",
       "price": 50300,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1338,7 +1357,8 @@
       "lastUpdated": "2026-09-24",
       "price": 50300,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1368,7 +1388,8 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "nmc",
       "auditDate": "2026-09-24",
-      "drive": "FWD"
+      "drive": "FWD",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1392,7 +1413,8 @@
       "lastUpdated": "2026-09-24",
       "price": 51800,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1418,7 +1440,8 @@
       "acceleration0to100Sec": 4.9,
       "trunkLiters": 520,
       "weightKg": 2360,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1854,7 +1877,8 @@
       "market": "ES",
       "price": 39990,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Changan",
@@ -1881,7 +1905,8 @@
       "market": "ES",
       "price": 34990,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Changan",
@@ -1908,7 +1933,8 @@
       "market": "ES",
       "price": 32990,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Changan",
@@ -1937,25 +1963,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "drive": "RWD",
-      "batteryChemistry": "NMC"
-    },
-    {
-      "make": "Changan",
-      "model": "S07",
-      "year": 2026,
-      "market": "ES",
-      "version": "160 kW FWD 79.97 kWh NMC",
-      "batteryKwh": 79.97,
       "batteryChemistry": "NMC",
-      "powerKw": 160,
-      "drive": "FWD",
-      "wltpKm": 475,
-      "consumptionKwh100": 16.8,
-      "price": 39990,
-      "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "source": "Changan Europe / Deepal; especificaciones oficiales"
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Citroën",
@@ -1980,7 +1989,8 @@
       "lastUpdated": "2026-09-24",
       "price": 26490,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2005,7 +2015,8 @@
       "lastUpdated": "2026-09-24",
       "price": 23800,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2022,7 +2033,8 @@
       "lastUpdated": "2026-09-24",
       "source": "Citroën España; especificaciones oficiales",
       "acKw": 11,
-      "dcKw": 160
+      "dcKw": 160,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2043,7 +2055,8 @@
       "consumptionKwh100": 14,
       "price": 39490,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2062,7 +2075,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2090,7 +2104,8 @@
       "batteryChemistry": "li-ion",
       "price": 48240,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2118,7 +2133,8 @@
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2139,7 +2155,8 @@
       "batteryType": "LFP",
       "batteryChemistry": "LFP",
       "dcKw": 88,
-      "charge10to80Min": 23
+      "charge10to80Min": 23,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2156,7 +2173,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales"
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2183,7 +2201,8 @@
       "currency": "EUR",
       "auditDate": "2026-09-24",
       "drive": "RWD",
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2211,7 +2230,8 @@
       "batteryChemistry": "li-ion",
       "price": 54810,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2239,7 +2259,8 @@
       "batteryChemistry": "li-ion",
       "price": 65060,
       "currency": "EUR",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dacia",
@@ -2265,7 +2286,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 17890,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dacia",
@@ -2292,7 +2314,8 @@
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 18890,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dacia",
@@ -2308,7 +2331,8 @@
       "consumptionKwh100": 12.4,
       "source": "Dacia España; Spring 2026",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dacia",
@@ -2334,7 +2358,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 16245,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dongfeng",
@@ -2353,7 +2378,8 @@
       "lastUpdated": "2026-09-24",
       "source": "Dongfeng España; especificaciones oficiales",
       "acKw": 6.6,
-      "dcKw": 40
+      "dcKw": 40,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dongfeng",
@@ -2373,7 +2399,8 @@
       "price_eur": 28294,
       "auditDate": "2026-09-24",
       "acKw": 6.6,
-      "dcKw": 40
+      "dcKw": 40,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Dongfeng",
@@ -2393,7 +2420,8 @@
       "price_eur": 26394,
       "auditDate": "2026-09-24",
       "acKw": 6.6,
-      "dcKw": 40
+      "dcKw": 40,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "DS",
