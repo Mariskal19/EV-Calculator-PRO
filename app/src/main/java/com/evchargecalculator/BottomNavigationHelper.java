@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,28 +29,28 @@ public final class BottomNavigationHelper {
     bar.setBackground(bg);
     bar.setElevation(dp(activity, 10));
 
-    addItem(activity, bar, "⚡", "Cargar", 0, selected, dark, v -> {
+    addItem(activity, bar, R.drawable.ic_nav_charge, "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
         Intent i = new Intent(activity, PersistentMainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(i);
       }
     });
-    addItem(activity, bar, "🔋", "Coste", 1, selected, dark, v -> {
+    addItem(activity, bar, R.drawable.ic_nav_cost, "Coste", 1, selected, dark, v -> {
       if (selected != 1) {
         Intent i = new Intent(activity, ElectricVsCombustionActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(i);
       }
     });
-    addItem(activity, bar, "🚗", "Coches", 2, selected, dark, v -> {
+    addItem(activity, bar, R.drawable.ic_nav_car, "Coches", 2, selected, dark, v -> {
       if (selected != 2) {
         Intent i = new Intent(activity, CompararCochesActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(i);
       }
     });
-    addItem(activity, bar, "⋮", "Más", 3, selected, dark, v ->
+    addItem(activity, bar, R.drawable.ic_nav_more, "Más", 3, selected, dark, v ->
         AppMenuHelper.show(activity, v, new AppMenuHelper.Listener() {
           public boolean isDark() {
             return dark;
@@ -68,7 +71,7 @@ public final class BottomNavigationHelper {
   private static void addItem(
       Activity activity,
       LinearLayout bar,
-      String icon,
+      int icon,
       String label,
       int index,
       int selected,
@@ -82,11 +85,9 @@ public final class BottomNavigationHelper {
     item.setOnClickListener(listener);
     item.setContentDescription(label);
 
-    TextView iconView = new TextView(activity);
-    iconView.setText(icon);
-    iconView.setTextSize(index == 3 ? 25 : 20);
-    iconView.setGravity(Gravity.CENTER);
-    iconView.setIncludeFontPadding(false);
+    ImageView iconView = new ImageView(activity);
+    iconView.setImageResource(icon);
+    iconView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
@@ -97,7 +98,7 @@ public final class BottomNavigationHelper {
 
     int active = dark ? Color.rgb(105, 175, 255) : Color.rgb(46, 107, 255);
     int inactive = dark ? Color.rgb(180, 190, 205) : Color.rgb(90, 111, 137);
-    iconView.setTextColor(index == selected ? active : inactive);
+    iconView.setColorFilter(new PorterDuffColorFilter(index == selected ? active : inactive, PorterDuff.Mode.SRC_IN));
     labelView.setTextColor(index == selected ? active : inactive);
 
     item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 27)));
