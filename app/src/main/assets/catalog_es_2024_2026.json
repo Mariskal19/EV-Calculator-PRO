@@ -22,7 +22,8 @@
       "acKw": 11,
       "dcKw": 85,
       "charge10to80Min": 35,
-      "batteryChemistry": "NCM"
+      "batteryChemistry": "NCM",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Abarth",
@@ -42,7 +43,8 @@
       "acKw": 11,
       "dcKw": 85,
       "charge10to80Min": 35,
-      "batteryChemistry": "NCM"
+      "batteryChemistry": "NCM",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Alfa Romeo",
@@ -63,7 +65,8 @@
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": 9
+      "acceleration0to100Sec": 9,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Alfa Romeo",
@@ -84,7 +87,8 @@
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": 5.9
+      "acceleration0to100Sec": 5.9,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Alpine",
@@ -100,7 +104,8 @@
       "price": 38700,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Alpine España; especificaciones oficiales"
+      "source": "Alpine España; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Alpine",
@@ -116,7 +121,8 @@
       "price": 44700,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "source": "Alpine España; especificaciones oficiales"
+      "source": "Alpine España; especificaciones oficiales",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Alpine",
@@ -136,7 +142,8 @@
       "batteryChemistry": "NMC",
       "acKw": 11,
       "dcKw": 150,
-      "acceleration0to100Sec": 4.8
+      "acceleration0to100Sec": 4.8,
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Audi",
@@ -1378,7 +1385,8 @@
       "market": "ES",
       "batteryChemistry": "LFP",
       "price": 29990,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1407,7 +1415,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1430,7 +1439,8 @@
       "charge10to80Min": 37,
       "weightKg": 1570,
       "price": 31990,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1456,7 +1466,8 @@
       "drive": "RWD",
       "weightKg": 1880,
       "price": 42990,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1482,7 +1493,8 @@
       "drive": "AWD",
       "weightKg": 1990,
       "price": 45990,
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1511,7 +1523,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1540,7 +1553,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1569,7 +1583,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1598,7 +1613,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1627,7 +1643,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1657,7 +1674,8 @@
       "lastUpdated": "2026-09-24",
       "drive": "RWD",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1687,7 +1705,8 @@
       "lastUpdated": "2026-09-24",
       "drive": "AWD",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1717,7 +1736,8 @@
       "lastUpdated": "2026-09-24",
       "drive": "AWD",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "BYD",
@@ -1746,7 +1766,8 @@
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "lfp",
-      "auditDate": "2026-09-24"
+      "auditDate": "2026-09-24",
+      "auditDateTime": "2026-09-24T18:00:00+02:00"
     },
     {
       "make": "Changan",
