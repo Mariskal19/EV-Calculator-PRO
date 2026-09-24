@@ -5358,8 +5358,8 @@
       "batteryKwh": 92.5,
       "powerKw": 560,
       "drive": "AWD",
-      "wltpKm": 441,
-      "consumptionKwh100": 23,
+      "wltpKm": 447,
+      "consumptionKwh100": 22.4,
       "usableBatteryKwh": 83,
       "source": "Maserati España/Europa; fichas oficiales Folgore",
       "lastUpdated": "2026-09-24",
@@ -5369,7 +5369,7 @@
       "auditDate": "2026-09-24",
       "dcKw": 270,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:15:00+02:00"
     },
     {
       "make": "Maserati",
@@ -5390,7 +5390,7 @@
       "auditDate": "2026-09-24",
       "dcKw": 270,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:15:00+02:00"
     },
     {
       "make": "Maserati",
@@ -5407,7 +5407,8 @@
       "source": "Maserati España; Grecale Folgore MY26",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:15:00+02:00",
+      "acKw": 22
     },
     {
       "make": "Maserati",
@@ -5431,7 +5432,7 @@
       "lastUpdated": "2026-09-24",
       "charge10to80Min": 29,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:15:00+02:00"
     },
     {
       "make": "Mazda",
