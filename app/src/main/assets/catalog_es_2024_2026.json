@@ -4378,7 +4378,8 @@
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "charge10to80Min": 29
     },
     {
       "make": "Kia",
@@ -4425,7 +4426,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 101,
-      "charge10to80Min": 31,
+      "charge10to80Min": 29,
       "acceleration0to100Sec": 7.8,
       "trunkLiters": 435,
       "id": "kia-ev4-hatchback-58-3-kwh-2025-58-3-nmc-150-fwd",
@@ -4559,7 +4560,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30
     },
     {
       "make": "Kia",
@@ -4576,7 +4580,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30
     },
     {
       "make": "Kia",
@@ -4593,7 +4600,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30
     },
     {
       "make": "Kia",
@@ -4610,7 +4620,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30
     },
     {
       "make": "Kia",
@@ -4627,7 +4640,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30
     },
     {
       "make": "Kia",
@@ -4644,7 +4660,10 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 150,
+      "charge10to80Min": 30
     },
     {
       "make": "Lancia",
