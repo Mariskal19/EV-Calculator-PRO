@@ -6858,12 +6858,13 @@
       "powerKw": 83,
       "drive": "FWD",
       "wltpKm": 305,
-      "consumptionKwh100": 14.4,
+      "consumptionKwh100": 18.3,
       "usableBatteryKwh": 43.8,
-      "source": "Opel España; especificaciones oficiales",
+      "source": "Opel/Stellantis oficial; Frontera Electric 44 kWh",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:45:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Opel",
@@ -6875,7 +6876,7 @@
       "usableBatteryKwh": 53.5,
       "batteryType": "LFP",
       "wltpKm": 401,
-      "consumptionKwh100": 13.5,
+      "consumptionKwh100": 15.9,
       "powerKw": 83,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -6889,11 +6890,12 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Opel España; especificaciones oficiales",
+      "source": "Opel/Stellantis oficial; Frontera Electric Extended Range 54 kWh",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "FWD"
+      "auditDateTime": "2026-09-24T19:45:00+02:00",
+      "drive": "FWD",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Opel",
@@ -6908,15 +6910,16 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "source": "Opel España; especificaciones oficiales",
+      "source": "Opel/Stellantis oficial; Frontera Electric Extended Range 54 kWh",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 13.5,
+      "consumptionKwh100": 15.9,
       "usableBatteryKwh": 53.5,
       "acceleration0to100Sec": 14.2,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "FWD"
+      "auditDateTime": "2026-09-24T19:45:00+02:00",
+      "drive": "FWD",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Opel",
@@ -6936,7 +6939,7 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T19:45:00+02:00",
       "drive": "FWD"
     },
     {
@@ -8265,7 +8268,7 @@
       "model": "Twingo E-Tech eléctrico",
       "year": 2026,
       "market": "ES",
-      "version": "Evolution 60 kW FWD 27.5 kWh",
+      "version": "Evolution 60 kW RWD 27.5 kWh",
       "batteryKwh": 27.5,
       "powerKw": 60,
       "drive": "RWD",
@@ -8278,7 +8281,7 @@
       "drivetrain": "RWD",
       "acKw": 6.6,
       "dcKw": null,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:45:00+02:00"
     },
     {
       "make": "Škoda",
