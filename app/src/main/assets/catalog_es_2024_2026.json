@@ -15,7 +15,14 @@
       "drive": "FWD",
       "wltpKm": 334,
       "consumptionKwh100": 16.2,
-      "price": 49000
+      "price": 49000,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Abarth oficial; especificaciones europeas",
+      "acKw": 11,
+      "dcKw": 85,
+      "charge10to80Min": 35,
+      "batteryChemistry": "NCM"
     },
     {
       "make": "Abarth",
@@ -28,7 +35,14 @@
       "drive": "FWD",
       "wltpKm": 334,
       "consumptionKwh100": 16.2,
-      "price": 45000
+      "price": 45000,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Abarth oficial; especificaciones europeas",
+      "acKw": 11,
+      "dcKw": 85,
+      "charge10to80Min": 35,
+      "batteryChemistry": "NCM"
     },
     {
       "make": "Alfa Romeo",
@@ -39,9 +53,17 @@
       "batteryKwh": 54,
       "powerKw": 115,
       "drive": "FWD",
-      "wltpKm": 410,
-      "consumptionKwh100": 13.2,
-      "price": 38500
+      "wltpKm": 408,
+      "consumptionKwh100": 15,
+      "price": 38500,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Alfa Romeo España; especificaciones oficiales",
+      "batteryChemistry": "NCM",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Alfa Romeo",
@@ -52,9 +74,17 @@
       "batteryKwh": 54,
       "powerKw": 207,
       "drive": "FWD",
-      "wltpKm": 334,
-      "consumptionKwh100": 16.2,
-      "price": 48100
+      "wltpKm": 319,
+      "consumptionKwh100": 18.8,
+      "price": 48100,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Alfa Romeo España; especificaciones oficiales",
+      "batteryChemistry": "NCM",
+      "acKw": 11,
+      "dcKw": 100,
+      "charge10to80Min": 30,
+      "acceleration0to100Sec": 5.9
     },
     {
       "make": "Alpine",
