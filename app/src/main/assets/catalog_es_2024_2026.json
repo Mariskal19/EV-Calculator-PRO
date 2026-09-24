@@ -14,7 +14,8 @@
       "powerKw": 207,
       "drive": "FWD",
       "wltpKm": 334,
-      "consumptionKwh100": 16.2
+      "consumptionKwh100": 16.2,
+      "price": 49000
     },
     {
       "make": "Abarth",
@@ -26,7 +27,8 @@
       "powerKw": 175,
       "drive": "FWD",
       "wltpKm": 334,
-      "consumptionKwh100": 16.2
+      "consumptionKwh100": 16.2,
+      "price": 45000
     },
     {
       "make": "Alfa Romeo",
@@ -38,7 +40,8 @@
       "powerKw": 115,
       "drive": "FWD",
       "wltpKm": 410,
-      "consumptionKwh100": 13.2
+      "consumptionKwh100": 13.2,
+      "price": 38500
     },
     {
       "make": "Alfa Romeo",
@@ -50,7 +53,8 @@
       "powerKw": 207,
       "drive": "FWD",
       "wltpKm": 334,
-      "consumptionKwh100": 16.2
+      "consumptionKwh100": 16.2,
+      "price": 48100
     },
     {
       "make": "Alpine",
@@ -62,7 +66,8 @@
       "powerKw": 130,
       "drive": "FWD",
       "wltpKm": 380,
-      "consumptionKwh100": 13.7
+      "consumptionKwh100": 13.7,
+      "price": 38700
     },
     {
       "make": "Alpine",
@@ -74,7 +79,8 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 380,
-      "consumptionKwh100": 13.7
+      "consumptionKwh100": 13.7,
+      "price": 44700
     },
     {
       "make": "Alpine",
@@ -86,7 +92,8 @@
       "powerKw": 300,
       "drive": "AWD",
       "wltpKm": 555,
-      "consumptionKwh100": 16
+      "consumptionKwh100": 16,
+      "price": 67500
     },
     {
       "make": "Audi",
@@ -2819,7 +2826,7 @@
       "version": "Rango extendido AWD",
       "year": 2024,
       "arrivalYear": 2024,
-      "batteryKwh": 77.0,
+      "batteryKwh": 77,
       "batteryType": "NMC",
       "wltpKm": 553,
       "powerKw": 250,
@@ -2830,7 +2837,7 @@
       "lastUpdated": "2026-09-23",
       "market": "ES",
       "consumptionKwh100": 13.9,
-      "usableBatteryKwh": 77.0,
+      "usableBatteryKwh": 77,
       "drive": "AWD"
     },
     {
@@ -2839,7 +2846,7 @@
       "version": "Rango extendido RWD",
       "year": 2024,
       "arrivalYear": 2024,
-      "batteryKwh": 79.0,
+      "batteryKwh": 79,
       "batteryType": "NMC",
       "wltpKm": 602,
       "powerKw": 210,
@@ -2850,7 +2857,7 @@
       "lastUpdated": "2026-09-23",
       "market": "ES",
       "consumptionKwh100": 13.1,
-      "usableBatteryKwh": 79.0,
+      "usableBatteryKwh": 79,
       "drive": "RWD"
     },
     {
