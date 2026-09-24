@@ -2123,7 +2123,9 @@
       "photo": null,
       "source": "Changan Europe Spain; Deepal S05",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 39990,
+      "currency": "EUR"
     },
     {
       "make": "Changan",
@@ -2147,7 +2149,9 @@
       "photo": null,
       "source": "Changan Europe Spain; Deepal S05",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 34990,
+      "currency": "EUR"
     },
     {
       "make": "Changan",
@@ -2171,7 +2175,9 @@
       "photo": null,
       "source": "Changan Europe Spain; Deepal S05",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 32990,
+      "currency": "EUR"
     },
     {
       "make": "Changan",
@@ -2195,7 +2201,9 @@
       "photo": null,
       "source": "Changan Europe Spain; Deepal S07",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price": 39990,
+      "currency": "EUR"
     },
     {
       "make": "Changan Deepal",
@@ -2208,7 +2216,9 @@
       "powerKw": 320,
       "drive": "AWD",
       "wltpKm": 445,
-      "consumptionKwh100": 15.5
+      "consumptionKwh100": 15.5,
+      "price": 39990,
+      "currency": "EUR"
     },
     {
       "make": "Changan Deepal",
@@ -2221,7 +2231,9 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 485,
-      "consumptionKwh100": 14.2
+      "consumptionKwh100": 14.2,
+      "price": 34990,
+      "currency": "EUR"
     },
     {
       "make": "Changan Deepal",
@@ -2234,7 +2246,9 @@
       "powerKw": 200,
       "drive": "RWD",
       "wltpKm": 485,
-      "consumptionKwh100": 14.2
+      "consumptionKwh100": 14.2,
+      "price": 32990,
+      "currency": "EUR"
     },
     {
       "make": "Changan Deepal",
@@ -2247,7 +2261,9 @@
       "powerKw": 160,
       "drive": "FWD",
       "wltpKm": 475,
-      "consumptionKwh100": 16.8
+      "consumptionKwh100": 16.8,
+      "price": 39990,
+      "currency": "EUR"
     },
     {
       "make": "Citroën",
