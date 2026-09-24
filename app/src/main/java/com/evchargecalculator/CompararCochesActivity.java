@@ -46,6 +46,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private static final String KEY_CURRENCY = "app_currency";
     private static final String KEY_MARKET = "compare_market";
     private static final String KEY_SEARCH_COUNT_PREFIX = "compare_search_count_";
+    private static final String KEY_SELECTION_INITIALIZED = "compare_selection_initialized";
 
     private final int blue = Color.rgb(46, 107, 255);
     private final int white = Color.rgb(22, 42, 63);
@@ -254,6 +255,12 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private void loadSelection(){
         selectedIds.clear();
         SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
+        // Primera entrada: no mostrar ningún coche preseleccionado.
+        if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
+            p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
+                    .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
+            return;
+        }
         String logical=p.getString(KEY_SELECTED_LOGICAL,"");
         if(!logical.trim().isEmpty()) for(String key:logical.split("\\Q||\\E")){key=key.trim();Vehicle v=findByLogicalKey(key);if(v!=null&&!selectedIds.contains(v.id)&&selectedIds.size()<3)selectedIds.add(v.id);}
         if(selectedIds.isEmpty()){
@@ -268,6 +275,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     }
     private void saveSelection(){
         SharedPreferences.Editor e=getSharedPreferences(PREFS,MODE_PRIVATE).edit();
+        e.putBoolean(KEY_SELECTION_INITIALIZED,true);
         e.putString(KEY_SELECTED_ORDERED,joinSelection());
         e.putString(KEY_SELECTED_LOGICAL,joinLogicalSelection());
         e.putStringSet(KEY_SELECTED,new LinkedHashSet<>(selectedIds));
