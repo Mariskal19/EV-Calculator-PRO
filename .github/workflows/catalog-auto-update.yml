@@ -21,14 +21,14 @@ jobs:
           CATALOG_SOURCE_2_URL: ${{ vars.CATALOG_SOURCE_2_URL }}
         run: python3 tools/update_protected_catalog.py
 
-      - name: Commit only newly added configurations
+      - name: Commit only new remote configurations
         run: |
-          if git diff --quiet -- app/src/main/assets/catalog_es_2024_2026.json; then
+          if git diff --quiet -- app/src/main/assets/catalog_remote_additions.json; then
             echo "No new validated configurations."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add app/src/main/assets/catalog_es_2024_2026.json
-          git commit -m "Catalog: add new validated configurations automatically"
+          git add app/src/main/assets/catalog_remote_additions.json
+          git commit -m "Catalog: publish new validated configurations remotely"
           git push
