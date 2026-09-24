@@ -5806,8 +5806,9 @@
       "weightKg": null,
       "photo": null,
       "source": "Polestar España; Polestar 2",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5830,8 +5831,9 @@
       "weightKg": null,
       "photo": null,
       "source": "Polestar España; Polestar 2",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5854,8 +5856,9 @@
       "weightKg": null,
       "photo": null,
       "source": "Polestar España; Polestar 2",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5863,23 +5866,24 @@
       "version": "Standard Range Single Motor",
       "year": 2024,
       "arrivalYear": 2024,
-      "batteryKwh": 69,
+      "batteryKwh": 70,
       "usableBatteryKwh": null,
       "batteryType": "Li-ion",
-      "wltpKm": 478,
-      "consumptionKwh100": 15,
+      "wltpKm": 554,
+      "consumptionKwh100": 15.3,
       "powerKw": 200,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 135,
+      "dcKw": 180,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.4,
       "trunkLiters": 405,
       "weightKg": null,
       "photo": null,
       "source": "Polestar España; Polestar 2",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5903,7 +5907,8 @@
       "photo": null,
       "source": "Polestar España; Polestar 3",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5927,7 +5932,8 @@
       "photo": null,
       "source": "Polestar España; Polestar 3",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5950,8 +5956,9 @@
       "weightKg": 2355,
       "photo": null,
       "source": "Polestar España; Polestar 4",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5974,8 +5981,9 @@
       "weightKg": 2230,
       "photo": null,
       "source": "Polestar España; Polestar 4",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -5987,7 +5995,12 @@
       "powerKw": 400,
       "drive": "AWD",
       "wltpKm": 647,
-      "consumptionKwh100": 16.4
+      "consumptionKwh100": 19,
+      "auditDate": "2026-09-24",
+      "dcKw": 350,
+      "acceleration0to100Sec": 4.7,
+      "lastUpdated": "2026-09-24",
+      "source": "Polestar España; Polestar 3"
     },
     {
       "make": "Polestar",
@@ -5999,17 +6012,18 @@
       "powerKw": 500,
       "drive": "AWD",
       "wltpKm": 601,
-      "consumptionKwh100": 17.6,
+      "consumptionKwh100": 20.5,
       "usableBatteryKwh": 107,
       "batteryChemistry": "li-ion",
       "drivetrain": "AWD",
       "acKw": 11,
-      "dcKw": 250,
-      "acceleration0to100Sec": 4.7,
+      "dcKw": 350,
+      "acceleration0to100Sec": 3.9,
       "trunkLiters": 484,
       "weightKg": 2403,
-      "source": "OpenEV Data; Polestar 3 Performance Pack Specifications (https://www.polestar.com/polestar-3)",
-      "lastUpdated": "2026-09-14"
+      "source": "Polestar España; Polestar 3",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Polestar",
@@ -6021,7 +6035,12 @@
       "powerKw": 245,
       "drive": "RWD",
       "wltpKm": 603,
-      "consumptionKwh100": 15.3
+      "consumptionKwh100": 17.7,
+      "auditDate": "2026-09-24",
+      "dcKw": 310,
+      "acceleration0to100Sec": 6.5,
+      "lastUpdated": "2026-09-24",
+      "source": "Polestar España; Polestar 3"
     },
     {
       "make": "Porsche",
@@ -6032,8 +6051,8 @@
       "batteryKwh": 100,
       "powerKw": 300,
       "drive": "AWD",
-      "wltpKm": 613,
-      "consumptionKwh100": 16.3,
+      "wltpKm": 611,
+      "consumptionKwh100": 17.8,
       "usableBatteryKwh": 95,
       "batteryChemistry": "li-ion",
       "drivetrain": "AWD",
@@ -6041,9 +6060,11 @@
       "dcKw": 270,
       "acceleration0to100Sec": 5.2,
       "weightKg": 2235,
-      "source": "OpenEV Data; Porsche Macan Electric 2024 Official Specifications (https://www.porsche.com/international/models/macan/macan-models/macan/)",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 82310
+      "source": "Porsche España; gama eléctrica",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 82310,
+      "auditDate": "2026-09-24",
+      "charge10to80Min": 21
     },
     {
       "make": "Porsche",
@@ -6052,10 +6073,17 @@
       "market": "ES",
       "version": "Macan 4S Electric 330 kW AWD 100 kWh",
       "batteryKwh": 100,
-      "powerKw": 330,
+      "powerKw": 380,
       "drive": "AWD",
-      "wltpKm": 606,
-      "consumptionKwh100": 16.5
+      "wltpKm": 611,
+      "consumptionKwh100": 17.7,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Porsche España; gama eléctrica",
+      "acKw": 11,
+      "dcKw": 270,
+      "charge10to80Min": 21,
+      "acceleration0to100Sec": 4.1
     },
     {
       "make": "Porsche",
@@ -6064,11 +6092,18 @@
       "market": "ES",
       "version": "Macan Electric 250 kW RWD 100 kWh",
       "batteryKwh": 100,
-      "powerKw": 250,
+      "powerKw": 265,
       "drive": "RWD",
       "wltpKm": 641,
-      "consumptionKwh100": 15.6,
-      "price_eur": 82310
+      "consumptionKwh100": 16.7,
+      "price_eur": 82310,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Porsche España; gama eléctrica",
+      "acKw": 11,
+      "dcKw": 270,
+      "charge10to80Min": 21,
+      "acceleration0to100Sec": 5.7
     },
     {
       "make": "Porsche",
@@ -6079,8 +6114,8 @@
       "batteryKwh": 100,
       "powerKw": 470,
       "drive": "AWD",
-      "wltpKm": 591,
-      "consumptionKwh100": 16.9,
+      "wltpKm": 589,
+      "consumptionKwh100": 19,
       "usableBatteryKwh": 95,
       "batteryChemistry": "li-ion",
       "drivetrain": "AWD",
@@ -6088,8 +6123,10 @@
       "dcKw": 270,
       "acceleration0to100Sec": 3.3,
       "weightKg": 2310,
-      "source": "OpenEV Data; Porsche Macan Turbo 2024 Official Specifications (https://www.porsche.com/international/models/macan/macan-models/macan-turbo/)",
-      "lastUpdated": "2026-09-14"
+      "source": "Porsche España; gama eléctrica",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24",
+      "charge10to80Min": 21
     },
     {
       "make": "Renault",
