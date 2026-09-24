@@ -11779,8 +11779,11 @@
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
       "batteryType": "NMC",
-      "batteryChemistry": "li-ion",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "batteryChemistry": "LFP",
+      "auditDateTime": "2026-09-24T21:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 230,
+      "charge10to80Min": 18
     },
     {
       "make": "Zeekr",
@@ -11823,7 +11826,11 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Zeekr Europe; gama europea",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T21:00:00+02:00",
+      "batteryChemistry": "NMC",
+      "acKw": 22,
+      "dcKw": 150,
+      "charge10to80Min": 30
     }
   ]
 }
