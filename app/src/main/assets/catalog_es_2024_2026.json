@@ -1563,20 +1563,6 @@
     {
       "make": "CUPRA",
       "model": "Raval",
-      "year": 2026,
-      "market": "ES",
-      "version": "Endurance 155 kW FWD 52 kWh",
-      "batteryKwh": 52,
-      "powerKw": 155,
-      "drive": "FWD",
-      "wltpKm": 446,
-      "consumptionKwh100": 11.7,
-      "price": 35010,
-      "currency": "EUR"
-    },
-    {
-      "make": "CUPRA",
-      "model": "Raval",
       "version": "Endurance 55 kWh",
       "year": 2026,
       "arrivalYear": 2026,
