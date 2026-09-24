@@ -4839,7 +4839,8 @@
       "source": "Kia Iberia; EV9; especificaciones españolas",
       "lastUpdated": "2026-09-10",
       "market": "ES",
-      "consumptionKwh100": 17.7
+      "consumptionKwh100": 17.7,
+      "price_eur": 85100
     },
     {
       "make": "Kia",
@@ -4863,7 +4864,8 @@
       "powerKw": 89.4,
       "drive": "FWD",
       "wltpKm": 296,
-      "consumptionKwh100": 17.4
+      "consumptionKwh100": 17.4,
+      "price_eur": 39900
     },
     {
       "make": "Kia",
@@ -4875,7 +4877,8 @@
       "powerKw": 120,
       "drive": "FWD",
       "wltpKm": 416,
-      "consumptionKwh100": 17.1
+      "consumptionKwh100": 17.1,
+      "price_eur": 45775
     },
     {
       "make": "Kia",
@@ -4887,7 +4890,8 @@
       "powerKw": 120,
       "drive": "FWD",
       "wltpKm": 412,
-      "consumptionKwh100": 17.3
+      "consumptionKwh100": 17.3,
+      "price_eur": 42755
     },
     {
       "make": "Kia",
@@ -4899,7 +4903,8 @@
       "powerKw": 89.4,
       "drive": "FWD",
       "wltpKm": 295,
-      "consumptionKwh100": 17.5
+      "consumptionKwh100": 17.5,
+      "price_eur": 38755
     },
     {
       "make": "Kia",
@@ -4911,7 +4916,8 @@
       "powerKw": 120,
       "drive": "FWD",
       "wltpKm": 412,
-      "consumptionKwh100": 17.3
+      "consumptionKwh100": 17.3,
+      "price_eur": 45155
     },
     {
       "make": "Lancia",
@@ -8503,7 +8509,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "price_eur": 19500
     },
     {
       "make": "Renault",
@@ -8530,7 +8537,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "price_eur": 21100
     },
     {
       "make": "Renault",
@@ -8542,7 +8550,8 @@
       "powerKw": 60,
       "drive": "FWD",
       "wltpKm": 264,
-      "consumptionKwh100": 10.4
+      "consumptionKwh100": 10.4,
+      "price_eur": 19500
     },
     {
       "make": "Skoda",
