@@ -9160,7 +9160,7 @@
       "version": "Performance 461 kW AWD 79 kWh",
       "batteryKwh": 79,
       "batteryChemistry": "NMC",
-      "powerKw": 461,
+      "powerKw": 303,
       "drive": "AWD",
       "wltpKm": 571,
       "consumptionKwh100": 16.5,
@@ -9268,7 +9268,7 @@
       "version": "Performance 461 kW AWD 79 kWh",
       "batteryKwh": 79,
       "batteryChemistry": "NMC",
-      "powerKw": 461,
+      "powerKw": 303,
       "drive": "AWD",
       "wltpKm": 571,
       "consumptionKwh100": 16.5,
@@ -9511,7 +9511,7 @@
       "version": "Performance 461 kW AWD 75 kWh",
       "batteryKwh": 75,
       "batteryChemistry": "NMC",
-      "powerKw": 461,
+      "powerKw": 303,
       "drive": "AWD",
       "wltpKm": 580,
       "consumptionKwh100": 16.2,
@@ -10433,7 +10433,9 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "dcKw": 400,
+      "charge10to80Min": 16
     },
     {
       "make": "Volvo",
@@ -10449,7 +10451,9 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "dcKw": 400,
+      "charge10to80Min": 16
     },
     {
       "make": "Volvo",
@@ -10465,7 +10469,9 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "dcKw": 350,
+      "charge10to80Min": 16
     },
     {
       "make": "Volvo",
@@ -11364,16 +11370,16 @@
       "version": "Long Range RWD",
       "year": 2026,
       "arrivalYear": 2026,
-      "batteryKwh": 69,
-      "usableBatteryKwh": 65,
+      "batteryKwh": 61,
+      "usableBatteryKwh": 61,
       "batteryType": "NMC",
-      "wltpKm": 446,
+      "wltpKm": 405,
       "consumptionKwh100": 16.4,
-      "powerKw": 200,
+      "powerKw": 250,
       "drivetrain": "RWD",
       "acKw": 22,
-      "dcKw": 150,
-      "charge10to80Min": 29,
+      "dcKw": 230,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 5.6,
       "trunkLiters": 362,
       "weightKg": null,
@@ -11382,7 +11388,8 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:30:00+02:00"
+      "auditDateTime": "2026-09-24T20:30:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Zeekr",
@@ -11410,19 +11417,19 @@
     {
       "make": "Zeekr",
       "model": "X",
-      "version": "Performance AWD",
+      "version": "Privilege AWD 365 kW 69 kWh",
       "year": 2026,
       "arrivalYear": 2026,
       "batteryKwh": 69,
       "usableBatteryKwh": null,
       "batteryType": "NMC",
-      "wltpKm": 425,
+      "wltpKm": 415,
       "consumptionKwh100": 17.3,
-      "powerKw": 315,
+      "powerKw": 365,
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "charge10to80Min": 30,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 3.8,
       "trunkLiters": 362,
       "weightKg": null,
@@ -11452,7 +11459,7 @@
       "batteryChemistry": "NMC",
       "acKw": 22,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 18
     }
   ]
 }
