@@ -3463,7 +3463,8 @@
       "powerKw": 150,
       "drive": "FWD",
       "wltpKm": 510,
-      "consumptionKwh100": 14.8
+      "consumptionKwh100": 14.8,
+      "price_eur": 37995
     },
     {
       "make": "Geely",
