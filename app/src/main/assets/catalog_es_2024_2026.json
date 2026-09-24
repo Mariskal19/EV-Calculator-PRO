@@ -2375,33 +2375,6 @@
       "dcKw": 40
     },
     {
-      "make": "Dacia",
-      "model": "Spring",
-      "version": "Electric 70",
-      "year": 2026,
-      "arrivalYear": 2026,
-      "batteryKwh": 24.3,
-      "usableBatteryKwh": null,
-      "batteryType": "LFP",
-      "wltpKm": 226,
-      "consumptionKwh100": 12.4,
-      "powerKw": 52,
-      "drivetrain": "FWD",
-      "acKw": 7,
-      "dcKw": 40,
-      "charge10to80Min": null,
-      "acceleration0to100Sec": 12.3,
-      "trunkLiters": 288,
-      "weightKg": null,
-      "photo": null,
-      "source": "Dacia España; Spring 2026",
-      "lastUpdated": "2026-09-24",
-      "market": "ES",
-      "price": 16245,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
-    },
-    {
       "make": "Dongfeng",
       "model": "BOX",
       "year": 2024,
@@ -2606,16 +2579,17 @@
       "batteryKwh": 54,
       "powerKw": 115,
       "drive": "FWD",
-      "wltpKm": 409,
-      "consumptionKwh100": 13.2,
-      "usableBatteryKwh": 50.8,
+      "wltpKm": 406,
+      "consumptionKwh100": 15.2,
+      "usableBatteryKwh": 51,
       "source": "Fiat España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": 36000,
       "auditDate": "2026-09-24",
       "acKw": 11,
       "dcKw": 100,
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Fiat",
@@ -2636,7 +2610,9 @@
       "acKw": 11,
       "dcKw": 100,
       "charge20to80Min": 27,
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "batteryChemistry": "LFP",
+      "batteryType": "LFP"
     },
     {
       "make": "Ford",
