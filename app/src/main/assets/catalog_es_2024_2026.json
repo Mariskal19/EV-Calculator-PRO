@@ -6722,10 +6722,11 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; E-Outback 2026; mercado español",
-      "lastUpdated": "2026-09-10",
+      "source": "Subaru España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Subaru",
@@ -6735,15 +6736,16 @@
       "arrivalYear": 2026,
       "batteryKwh": 73.1,
       "batteryType": "Li-ion",
-      "wltpKm": 509,
+      "wltpKm": 550,
       "powerKw": 252,
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; Solterra 2026; ficha técnica España",
-      "lastUpdated": "2026-09-10",
+      "source": "Subaru España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 14.4
+      "consumptionKwh100": 14.4,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Subaru",
@@ -6758,10 +6760,11 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica presentada en Madrid, junio 2026",
-      "lastUpdated": "2026-09-10",
+      "source": "Subaru España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 12.8
+      "consumptionKwh100": 12.8,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Subaru",
@@ -6776,10 +6779,11 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica presentada en Madrid, junio 2026",
-      "lastUpdated": "2026-09-10",
+      "source": "Subaru España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 15.7
+      "consumptionKwh100": 15.7,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Subaru",
@@ -6794,10 +6798,11 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica presentada en Madrid, junio 2026",
-      "lastUpdated": "2026-09-10",
+      "source": "Subaru España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6821,8 +6826,9 @@
       "trunkLiters": 425,
       "weightKg": 1899,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6846,8 +6852,9 @@
       "trunkLiters": 425,
       "weightKg": 1810,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6861,7 +6868,7 @@
       "powerKw": 461,
       "drive": "AWD",
       "wltpKm": 528,
-      "consumptionKwh100": 16.7,
+      "consumptionKwh100": 16.5,
       "usableBatteryKwh": 75,
       "batteryType": "Li-ion",
       "acKw": 11,
@@ -6871,8 +6878,9 @@
       "trunkLiters": 425,
       "weightKg": 1851,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6886,7 +6894,7 @@
       "powerKw": 208,
       "drive": "RWD",
       "wltpKm": 513,
-      "consumptionKwh100": 13.2,
+      "consumptionKwh100": 12.2,
       "usableBatteryKwh": 57,
       "batteryType": "LFP",
       "acKw": 11,
@@ -6896,8 +6904,9 @@
       "trunkLiters": 425,
       "weightKg": 1836,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6921,8 +6930,9 @@
       "trunkLiters": 425,
       "weightKg": 1929,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6946,8 +6956,9 @@
       "trunkLiters": 425,
       "weightKg": 1822,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6971,8 +6982,9 @@
       "trunkLiters": 425,
       "weightKg": 1899,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -6986,7 +6998,7 @@
       "powerKw": 208,
       "drive": "RWD",
       "wltpKm": 554,
-      "consumptionKwh100": 13,
+      "consumptionKwh100": 12.2,
       "usableBatteryKwh": 57,
       "batteryType": "LFP",
       "acKw": 11,
@@ -6996,8 +7008,9 @@
       "trunkLiters": 425,
       "weightKg": 1836,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7021,8 +7034,9 @@
       "trunkLiters": 425,
       "weightKg": 1929,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7046,8 +7060,9 @@
       "trunkLiters": 425,
       "weightKg": 1822,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7071,8 +7086,9 @@
       "trunkLiters": 425,
       "weightKg": 1899,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7086,7 +7102,7 @@
       "powerKw": 208,
       "drive": "RWD",
       "wltpKm": 534,
-      "consumptionKwh100": 13,
+      "consumptionKwh100": 12.2,
       "usableBatteryKwh": 57,
       "batteryType": "LFP",
       "acKw": 11,
@@ -7096,8 +7112,9 @@
       "trunkLiters": 425,
       "weightKg": 1836,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7121,8 +7138,9 @@
       "trunkLiters": 753,
       "weightKg": 2034,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7146,8 +7164,9 @@
       "trunkLiters": 753,
       "weightKg": 2003,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7161,7 +7180,7 @@
       "powerKw": 393,
       "drive": "AWD",
       "wltpKm": 514,
-      "consumptionKwh100": 17.3,
+      "consumptionKwh100": 16.2,
       "usableBatteryKwh": 75,
       "batteryType": "Li-ion",
       "acKw": 11,
@@ -7171,8 +7190,9 @@
       "trunkLiters": 753,
       "weightKg": 2072,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7196,8 +7216,9 @@
       "trunkLiters": 753,
       "weightKg": 1900,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7221,8 +7242,9 @@
       "trunkLiters": 753,
       "weightKg": 2034,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7246,8 +7268,9 @@
       "trunkLiters": 753,
       "weightKg": 2003,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7271,8 +7294,9 @@
       "trunkLiters": 709,
       "weightKg": 2072,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7296,8 +7320,9 @@
       "trunkLiters": 709,
       "weightKg": 2108,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7321,8 +7346,9 @@
       "trunkLiters": 709,
       "weightKg": 1976,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7336,7 +7362,7 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.9,
+      "consumptionKwh100": 15.6,
       "usableBatteryKwh": 75,
       "batteryType": "Li-ion",
       "acKw": 11,
@@ -7346,8 +7372,9 @@
       "trunkLiters": 709,
       "weightKg": 2072,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7371,8 +7398,9 @@
       "trunkLiters": 709,
       "weightKg": 1900,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7396,8 +7424,9 @@
       "trunkLiters": 753,
       "weightKg": 1900,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7421,8 +7450,9 @@
       "trunkLiters": 709,
       "weightKg": 2108,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7446,8 +7476,9 @@
       "trunkLiters": 753,
       "weightKg": 2034,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7461,7 +7492,7 @@
       "powerKw": 378,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 15.9,
+      "consumptionKwh100": 15.6,
       "usableBatteryKwh": 75,
       "batteryType": "Li-ion",
       "acKw": 11,
@@ -7471,8 +7502,9 @@
       "trunkLiters": 709,
       "weightKg": 2072,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7496,8 +7528,9 @@
       "trunkLiters": 709,
       "weightKg": 2072,
       "drivetrain": "AWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7521,8 +7554,9 @@
       "trunkLiters": 709,
       "weightKg": null,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Tesla",
@@ -7536,7 +7570,7 @@
       "powerKw": 227,
       "drive": "RWD",
       "wltpKm": 534,
-      "consumptionKwh100": 13.1,
+      "consumptionKwh100": 14,
       "usableBatteryKwh": 60,
       "batteryType": "Li-ion",
       "acKw": 11,
@@ -7546,8 +7580,9 @@
       "trunkLiters": 709,
       "weightKg": null,
       "drivetrain": "RWD",
-      "source": "Tesla España + KM77; ficha técnica de la versión/periodo",
-      "lastUpdated": "2026-09-14"
+      "source": "Tesla España; especificaciones y consumo WLTP",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Toyota",
