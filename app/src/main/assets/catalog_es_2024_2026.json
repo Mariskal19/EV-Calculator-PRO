@@ -2344,7 +2344,7 @@
       "market": "ES",
       "price": 17890,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Dacia",
@@ -2372,24 +2372,26 @@
       "batteryChemistry": "li-ion",
       "price": 18890,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Dacia",
       "model": "Spring",
       "year": 2026,
       "market": "ES",
-      "version": "Electric 100 75 kW FWD 24.3 kWh",
+      "version": "Electric 70 52 kW FWD 24.3 kWh",
       "batteryKwh": 24.3,
       "batteryChemistry": "LFP",
-      "powerKw": 75,
+      "powerKw": 52,
       "drive": "FWD",
-      "wltpKm": 225,
+      "wltpKm": 226,
       "consumptionKwh100": 12.4,
-      "source": "Dacia España; Spring 2026",
+      "source": "Dacia España; configurador Spring 2026",
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00",
+      "acKw": 7,
+      "dcKw": 40
     },
     {
       "make": "Dacia",
@@ -2416,7 +2418,7 @@
       "market": "ES",
       "price": 16245,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Dongfeng",
@@ -2436,7 +2438,7 @@
       "source": "Dongfeng España; especificaciones oficiales",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Dongfeng",
@@ -2457,7 +2459,7 @@
       "auditDate": "2026-09-24",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Dongfeng",
@@ -2478,7 +2480,7 @@
       "auditDate": "2026-09-24",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "DS",
@@ -3153,7 +3155,7 @@
       "source": "GAC Europe; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 87,
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:30:00+02:00",
       "charge10to80Min": 32
     },
     {
@@ -3174,7 +3176,7 @@
       "source": "GAC Europe; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 180,
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T23:30:00+02:00",
       "charge10to80Min": 24
     },
     {
@@ -3196,9 +3198,10 @@
       "auditDate": "2026-09-24",
       "batteryChemistry": "LFP",
       "acKw": 11,
-      "dcKw": 100,
-      "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "dcKw": 120,
+      "charge10to80Min": null,
+      "auditDateTime": "2026-09-24T23:30:00+02:00",
+      "drive": "FWD"
     },
     {
       "make": "Geely",
@@ -3209,7 +3212,7 @@
       "batteryKwh": 68.4,
       "powerKw": 160,
       "drive": "FWD",
-      "wltpKm": 430,
+      "wltpKm": 450,
       "consumptionKwh100": 15.9,
       "price_eur": 41990,
       "auditDate": "2026-09-24",
@@ -3217,9 +3220,10 @@
       "source": "Geely España; especificaciones oficiales",
       "batteryChemistry": "LFP",
       "acKw": 11,
-      "dcKw": 100,
-      "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "dcKw": 135,
+      "charge10to80Min": null,
+      "auditDateTime": "2026-09-24T23:30:00+02:00",
+      "drivetrain": "FWD"
     },
     {
       "make": "Geely",
@@ -3238,9 +3242,10 @@
       "source": "Geely España; especificaciones oficiales",
       "batteryChemistry": "LFP",
       "acKw": 11,
-      "dcKw": 100,
-      "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "dcKw": 135,
+      "charge10to80Min": null,
+      "auditDateTime": "2026-09-24T23:30:00+02:00",
+      "drivetrain": "FWD"
     },
     {
       "make": "Hyundai",
@@ -3858,7 +3863,7 @@
       "source": "OMODA & JAECOO España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Jaecoo",
@@ -3880,7 +3885,7 @@
       "source": "OMODA & JAECOO España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4103,7 +4108,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 37500,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "KGM",
@@ -4122,7 +4127,7 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 34500,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "KGM",
@@ -4146,7 +4151,7 @@
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "KGM",
@@ -4170,7 +4175,7 @@
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T23:30:00+02:00"
     },
     {
       "make": "Kia",
