@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+import json, os, re, sys
+from pathlib import Path
+from urllib.request import Request, urlopen
+
+ROOT = Path("app/src/main/assets")
+CATALOG = ROOT / "catalog_es_2024_2026.json"
+SOURCES = [
+    os.environ.get("CATALOG_SOURCE_1_URL", "").strip(),
+    os.environ.get("CATALOG_SOURCE_2_URL", "").strip(),
+]
+OUT = ROOT / "catalog_es_2024_2026.json"
+
+FIELDS = [
+    "price","batteryKwh","usableBatteryKwh","batteryType","batteryChemistry",
+    "wltpKm","consumptionKwh100","powerKw","drive","drivetrain","acKw","dcKw",
+    "charge10to80Min","acceleration0to100Sec","trunkLiters","weightKg","photo",
+    "source","lastUpdated","arrivalYear","currency"
+]
+
+def load_json(url):
+    req = Request(url, headers={"User-Agent": "EV-Calculator-PRO-catalog-bot/1.0"})
+    with urlopen(req, timeout=30) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+def num(v):
+    return v if isinstance(v, (int, float)) else 0
+
+def norm(v):
+    return re.sub(r"\s+", " ", str(v or "").strip().lower())
+
+def battery_key(v):
+    b = num(v.get("batteryKwh"))
+    if b > 0:
+        return f"{b:.1f}"
+    m = re.match(r"^(\d+(?:\.\d+)?)\s*kwh\b", str(v.get("version") or ""), re.I)
+    return m.group(1) if m else "0"
+
+def key(v):
+    return "|".join([
+        norm(v.get("make")), norm(v.get("model")), norm(v.get("market") or "ES"),
+        str(v.get("year") or 0), battery_key(v), norm(v.get("version"))
+    ])
+
+def valid(v):
+    if not isinstance(v, dict): return False
+    if v.get("year") not in (2024, 2025, 2026): return False
+    if not v.get("make") or not v.get("model") or not v.get("version"): return False
+    if num(v.get("batteryKwh")) <= 0 or num(v.get("wltpKm")) <= 0 or num(v.get("powerKw")) <= 0: return False
+    if num(v.get("consumptionKwh100")) <= 0: return False
+    c = num(v.get("consumptionKwh100"))
+    if c < 8 or c > 35 or num(v.get("wltpKm")) > 1000: return False
+    if num(v.get("usableBatteryKwh")) > num(v.get("batteryKwh")) + 0.5: return False
+    if num(v.get("dcKw")) and num(v.get("acKw")) and num(v.get("dcKw")) < num(v.get("acKw")): return False
+    return True
+
+if not CATALOG.exists():
+    raise SystemExit("Protected catalog not found")
+
+catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
+existing = catalog.get("vehicles", [])
+existing_keys = {key(v) for v in existing}
+candidates = {}
+
+for url in SOURCES:
+    if not url:
+        continue
+    data = load_json(url)
+    for raw in data.get("vehicles", []) if isinstance(data, dict) else []:
+        v = dict(raw)
+        v.setdefault("market", data.get("market", "ES") if isinstance(data, dict) else "ES")
+        if not valid(v):
+            continue
+        k = key(v)
+        if k in existing_keys:
+            continue
+        if k not in candidates:
+            candidates[k] = v
+        else:
+            # A candidate appearing in both sources must agree on core technical data.
+            other = candidates[k]
+            core = ["batteryKwh","usableBatteryKwh","wltpKm","consumptionKwh100","powerKw","drive","drivetrain","acKw","dcKw"]
+            if any(norm(other.get(f)) != norm(v.get(f)) for f in core if other.get(f) not in (None,"",0) and v.get(f) not in (None,"",0)):
+                candidates.pop(k, None)
+
+added = []
+for k, v in candidates.items():
+    if k in existing_keys or not valid(v):
+        continue
+    v["auditDate"] = v.get("auditDate") or "AUTO"
+    v["lastUpdated"] = v.get("lastUpdated") or "AUTO"
+    v["source"] = v.get("source") or "Automatic source JSON"
+    existing.append(v)
+    existing_keys.add(k)
+    added.append(v)
+
+if added:
+    catalog["vehicles"] = existing
+    OUT.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+print(f"Protected catalog: {len(existing)-len(added)} existing records untouched")
+print(f"Automatically added: {len(added)} new validated configurations")
