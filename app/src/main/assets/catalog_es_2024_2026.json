@@ -23,7 +23,7 @@
       "dcKw": 85,
       "charge10to80Min": 35,
       "batteryChemistry": "NCM",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Abarth",
@@ -44,7 +44,7 @@
       "dcKw": 85,
       "charge10to80Min": 35,
       "batteryChemistry": "NCM",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Alfa Romeo",
@@ -55,7 +55,7 @@
       "batteryKwh": 54,
       "powerKw": 115,
       "drive": "FWD",
-      "wltpKm": 408,
+      "wltpKm": 414,
       "consumptionKwh100": 15,
       "price": 38500,
       "auditDate": "2026-09-24",
@@ -66,7 +66,7 @@
       "dcKw": 100,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Alfa Romeo",
@@ -88,7 +88,7 @@
       "dcKw": 100,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 5.9,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Alpine",
@@ -99,13 +99,16 @@
       "batteryKwh": 52,
       "powerKw": 130,
       "drive": "FWD",
-      "wltpKm": 380,
-      "consumptionKwh100": 13.7,
+      "wltpKm": 382,
+      "consumptionKwh100": 15.8,
       "price": 38700,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 100,
+      "acceleration0to100Sec": 7.4
     },
     {
       "make": "Alpine",
@@ -122,7 +125,9 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "acKw": 11,
+      "dcKw": 100
     },
     {
       "make": "Alpine",
@@ -143,7 +148,7 @@
       "acKw": 11,
       "dcKw": 150,
       "acceleration0to100Sec": 4.8,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Audi",
@@ -8686,7 +8691,8 @@
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": 9.6
+      "acceleration0to100Sec": 9.6,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Skywell",
@@ -8706,7 +8712,8 @@
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": 9.6
+      "acceleration0to100Sec": 9.6,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Skywell",
@@ -8726,7 +8733,8 @@
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": 9.6
+      "acceleration0to100Sec": 9.6,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "Skywell",
@@ -8746,7 +8754,8 @@
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": 9.6
+      "acceleration0to100Sec": 9.6,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8767,7 +8776,8 @@
       "consumptionKwh100": 18.2,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8788,7 +8798,8 @@
       "consumptionKwh100": 16.8,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8809,7 +8820,8 @@
       "consumptionKwh100": 18.1,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8830,7 +8842,8 @@
       "consumptionKwh100": 17.4,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8851,7 +8864,8 @@
       "consumptionKwh100": 17.6,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8872,7 +8886,8 @@
       "consumptionKwh100": 16.3,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8893,7 +8908,8 @@
       "consumptionKwh100": 17.2,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8914,7 +8930,8 @@
       "consumptionKwh100": 16.8,
       "market": "ES",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8935,7 +8952,8 @@
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
-      "charge10to80Min": 18
+      "charge10to80Min": 18,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8956,7 +8974,8 @@
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
-      "charge10to80Min": 18
+      "charge10to80Min": 18,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8977,7 +8996,8 @@
       "auditDate": "2026-09-24",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -8998,7 +9018,8 @@
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
-      "charge10to80Min": 18
+      "charge10to80Min": 18,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -9019,7 +9040,8 @@
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
-      "charge10to80Min": 18
+      "charge10to80Min": 18,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -9040,7 +9062,8 @@
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
-      "charge10to80Min": 18
+      "charge10to80Min": 18,
+      "auditDateTime": "2026-09-24T19:00:00+02:00"
     },
     {
       "make": "smart",
@@ -9060,7 +9083,9 @@
       "charge10to80Min": 18,
       "source": "smart España; ficha técnica 2026",
       "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24"
+      "lastUpdated": "2026-09-24",
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "drivetrain": "AWD"
     },
     {
       "make": "Subaru",
