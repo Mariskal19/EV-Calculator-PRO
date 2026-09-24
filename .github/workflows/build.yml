@@ -162,4 +162,4 @@ jobs:
             --title "EV Calculator PRO ${artifact_version} build ${GITHUB_RUN_NUMBER}" \
             --notes "Automated release build from main. Commit: ${GITHUB_SHA}"
 
-# Build trigger for current UI cleanup
+# Build trigger for catalog release build
