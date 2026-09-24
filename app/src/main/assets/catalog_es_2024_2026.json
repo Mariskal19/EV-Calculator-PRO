@@ -5175,42 +5175,6 @@
     },
     {
       "make": "Mercedes-Benz",
-      "model": "CLA eléctrico",
-      "year": 2025,
-      "market": "ES",
-      "version": "CLA 200 eléctrico 165 kW RWD 58 kWh",
-      "batteryKwh": 58,
-      "powerKw": 165,
-      "drive": "RWD",
-      "wltpKm": 541,
-      "consumptionKwh100": 10.7
-    },
-    {
-      "make": "Mercedes-Benz",
-      "model": "CLA eléctrico",
-      "year": 2025,
-      "market": "ES",
-      "version": "CLA 250+ eléctrico 200 kW RWD 85 kWh",
-      "batteryKwh": 85,
-      "powerKw": 200,
-      "drive": "RWD",
-      "wltpKm": 789,
-      "consumptionKwh100": 10.8
-    },
-    {
-      "make": "Mercedes-Benz",
-      "model": "CLA eléctrico",
-      "year": 2025,
-      "market": "ES",
-      "version": "CLA 350 4MATIC eléctrico 260 kW AWD 85 kWh",
-      "batteryKwh": 85,
-      "powerKw": 260,
-      "drive": "AWD",
-      "wltpKm": 768,
-      "consumptionKwh100": 11.1
-    },
-    {
-      "make": "Mercedes-Benz",
       "model": "Clase G",
       "version": "G 580 con tecnología EQ",
       "year": 2024,
@@ -5419,18 +5383,6 @@
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07"
-    },
-    {
-      "make": "Mercedes-Benz",
-      "model": "GLC eléctrico",
-      "year": 2026,
-      "market": "ES",
-      "version": "400 4MATIC eléctrico 360 kW AWD 94 kWh",
-      "batteryKwh": 94,
-      "powerKw": 360,
-      "drive": "AWD",
-      "wltpKm": 666,
-      "consumptionKwh100": 14.1
     },
     {
       "make": "Mitsubishi",
