@@ -7604,9 +7604,10 @@
       "trunkLiters": null,
       "weightKg": null,
       "photo": null,
-      "source": "Toyota España / Toyota Europe: Urban Cruiser eléctrico, batería 49 kWh",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Toyota",
@@ -7628,9 +7629,10 @@
       "trunkLiters": null,
       "weightKg": null,
       "photo": null,
-      "source": "Toyota España / Toyota Europe: Urban Cruiser eléctrico, batería 61 kWh AWD",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Toyota",
@@ -7652,9 +7654,10 @@
       "trunkLiters": null,
       "weightKg": null,
       "photo": null,
-      "source": "Toyota España / Toyota Europe: Urban Cruiser eléctrico, batería 61 kWh",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Toyota",
@@ -7667,12 +7670,13 @@
       "wltpKm": 596,
       "powerKw": 165,
       "drivetrain": "FWD",
-      "acKw": 11,
+      "acKw": 22,
       "dcKw": 150,
-      "source": "Toyota España; nuevo bZ4X 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 12.3
+      "consumptionKwh100": 13.9,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Toyota",
@@ -7685,12 +7689,13 @@
       "wltpKm": 468,
       "powerKw": 252,
       "drivetrain": "AWD",
-      "acKw": 11,
+      "acKw": 22,
       "dcKw": 150,
-      "source": "Toyota España; nuevo bZ4X 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.9,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Volkswagen",
@@ -7702,7 +7707,10 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 426,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volkswagen",
@@ -7714,7 +7722,10 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 426,
-      "consumptionKwh100": 13.1
+      "consumptionKwh100": 13.1,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volkswagen",
@@ -7727,7 +7738,10 @@
       "powerKw": 155,
       "drive": "RWD",
       "wltpKm": 449,
-      "consumptionKwh100": 12.5
+      "consumptionKwh100": 12.5,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volkswagen",
@@ -7740,7 +7754,10 @@
       "powerKw": 85,
       "drive": "FWD",
       "wltpKm": 329,
-      "consumptionKwh100": 11.6
+      "consumptionKwh100": 11.6,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volkswagen",
@@ -7753,7 +7770,10 @@
       "powerKw": 99,
       "drive": "FWD",
       "wltpKm": 329,
-      "consumptionKwh100": 11.6
+      "consumptionKwh100": 11.6,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volkswagen",
@@ -7764,7 +7784,7 @@
       "batteryKwh": 86,
       "usableBatteryKwh": 86,
       "batteryType": "NMC",
-      "wltpKm": 584,
+      "wltpKm": 600,
       "consumptionKwh100": 14.7,
       "powerKw": 250,
       "drivetrain": "AWD",
@@ -7779,8 +7799,9 @@
       "currency": "EUR",
       "weightKg": null,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "source": "Volkswagen España; gama eléctrica ID",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Volkswagen",
@@ -7791,12 +7812,12 @@
       "batteryKwh": 77,
       "usableBatteryKwh": 86,
       "batteryType": "NMC",
-      "wltpKm": 590,
-      "consumptionKwh100": 13.1,
+      "wltpKm": 683,
+      "consumptionKwh100": 12.6,
       "powerKw": 210,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 175,
+      "dcKw": 200,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 605,
@@ -7806,9 +7827,10 @@
       "currency": "EUR",
       "weightKg": 2120,
       "photo": null,
-      "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "source": "Volkswagen España; gama eléctrica ID",
+      "lastUpdated": "2026-09-24",
+      "batteryChemistry": "li-ion",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Volkswagen",
@@ -7819,19 +7841,20 @@
       "batteryKwh": 86,
       "powerKw": 210,
       "drive": "RWD",
-      "wltpKm": 690,
-      "consumptionKwh100": 12.5,
+      "wltpKm": 683,
+      "consumptionKwh100": 12.6,
       "usableBatteryKwh": 86,
       "batteryChemistry": "li-ion",
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 175,
+      "dcKw": 200,
       "acceleration0to100Sec": 6.5,
       "weightKg": 2120,
-      "source": "OpenEV Data; Volkswagen ID.7 PRO 2024 Official Specifications (https://www.volkswagen.de)",
-      "lastUpdated": "2026-09-14",
+      "source": "Volkswagen España; gama eléctrica ID",
+      "lastUpdated": "2026-09-24",
       "charge10to80Min": 26,
-      "trunkLiters": 605
+      "trunkLiters": 605,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Volkswagen",
@@ -7843,10 +7866,13 @@
       "batteryChemistry": "NMC",
       "powerKw": 250,
       "drive": "AWD",
-      "wltpKm": 585,
+      "wltpKm": 600,
       "acKw": 11,
       "dcKw": 200,
-      "consumptionKwh100": 14.7
+      "consumptionKwh100": 14.7,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volkswagen",
@@ -7861,7 +7887,10 @@
       "wltpKm": 683,
       "acKw": 11,
       "dcKw": 200,
-      "consumptionKwh100": 12.6
+      "consumptionKwh100": 12.6,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Volkswagen España; gama eléctrica ID"
     },
     {
       "make": "Volvo",
@@ -9593,12 +9622,12 @@
       "batteryType": "Li-ion",
       "batteryChemistry": "NMC",
       "wltpKm": 607,
-      "consumptionKwh100": 12.7,
+      "consumptionKwh100": 13.4,
       "powerKw": 165,
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30,
+      "charge10to80Min": 28,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 416,
       "weightKg": null,
@@ -9607,8 +9636,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Toyota España; C-HR+ Advance 250 77 kWh",
-      "lastUpdated": "2026-09-24"
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Toyota",
@@ -9626,7 +9656,7 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "charge10to80Min": 30,
+      "charge10to80Min": 28,
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 416,
       "weightKg": null,
@@ -9635,8 +9665,9 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "source": "Toyota España; C-HR+ Spirit 350 AWD-i 77 kWh",
-      "lastUpdated": "2026-09-24"
+      "source": "Toyota España; gama eléctrica 2026",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
