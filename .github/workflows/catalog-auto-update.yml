@@ -17,7 +17,7 @@ jobs:
 
       - name: Update catalog from external JSON sources
         env:
-          CATALOG_SOURCE_1_URL: ${{ vars.CATALOG_SOURCE_1_URL }}
+          CATALOG_SOURCE_1_URL: https://gaia-charge.github.io/evdb/v1/vehicles.json
           CATALOG_SOURCE_2_URL: ${{ vars.CATALOG_SOURCE_2_URL }}
         run: python3 tools/update_protected_catalog.py
 
