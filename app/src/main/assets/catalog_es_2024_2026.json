@@ -3882,7 +3882,8 @@
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price_eur": 81600
     },
     {
       "make": "Hyundai",
@@ -3910,7 +3911,8 @@
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price_eur": 87100
     },
     {
       "make": "Hyundai",
@@ -3938,7 +3940,8 @@
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
       "lastUpdated": "2026-09-07",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "price_eur": 69900
     },
     {
       "make": "Hyundai",
@@ -3963,7 +3966,8 @@
       "source": "Hyundai IONIQ 9 technical data / Hyundai España",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price_eur": 81600
     },
     {
       "make": "Hyundai",
@@ -3985,7 +3989,8 @@
       "trunkLiters": 620,
       "weightKg": 2650,
       "source": "OpenEV Data; Hyundai IONIQ 9 Official Specifications (https://www.hyundai.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 81600
     },
     {
       "make": "Hyundai",
@@ -4010,7 +4015,8 @@
       "source": "Hyundai IONIQ 9 technical data / Hyundai España",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "li-ion"
+      "batteryChemistry": "li-ion",
+      "price_eur": 87100
     },
     {
       "make": "Hyundai",
@@ -4035,7 +4041,8 @@
       "source": "Hyundai IONIQ 9 technical data / Hyundai España",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "price_eur": 69900
     },
     {
       "make": "Hyundai",
@@ -4053,7 +4060,8 @@
       "dcKw": 350,
       "charge10to80Min": 24,
       "acceleration0to100Sec": 9.4,
-      "trunkLiters": 338
+      "trunkLiters": 338,
+      "price_eur": 69900
     },
     {
       "make": "Hyundai",
@@ -4076,7 +4084,8 @@
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5,
       "trunkLiters": 620,
-      "weightKg": 2650
+      "weightKg": 2650,
+      "price_eur": 87100
     },
     {
       "make": "Hyundai",
@@ -4098,7 +4107,8 @@
       "trunkLiters": 620,
       "weightKg": 2650,
       "source": "OpenEV Data; Hyundai IONIQ 9 Official Specifications (https://www.hyundai.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 87100
     },
     {
       "make": "Hyundai",
@@ -4245,7 +4255,8 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 402,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "price_eur": 38500
     },
     {
       "make": "Jaecoo",
@@ -4258,7 +4269,8 @@
       "powerKw": 155,
       "drive": "FWD",
       "wltpKm": 402,
-      "consumptionKwh100": 15.1
+      "consumptionKwh100": 15.1,
+      "price_eur": 35500
     },
     {
       "make": "Jeep",
@@ -4420,7 +4432,8 @@
       "consumptionKwh100": 15.9,
       "usableBatteryKwh": 72,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 37500
     },
     {
       "make": "KGM",
@@ -4436,7 +4449,8 @@
       "consumptionKwh100": 15.9,
       "usableBatteryKwh": 72,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 34500
     },
     {
       "make": "Kia",
