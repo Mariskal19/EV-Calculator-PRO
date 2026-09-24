@@ -4462,7 +4462,10 @@
       "powerKw": 450,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 18.7
+      "consumptionKwh100": 18.7,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Lotus Cars; especificaciones oficiales"
     },
     {
       "make": "Lotus",
@@ -4483,8 +4486,9 @@
       "acceleration0to100Sec": 2.95,
       "trunkLiters": 688,
       "weightKg": 2590,
-      "source": "OpenEV Data; Lotus Eletre R+ Official Specifications 2024 (https://www.lotuscars.com/eletre)",
-      "lastUpdated": "2026-09-14"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lotus",
@@ -4505,8 +4509,9 @@
       "acceleration0to100Sec": 2.8,
       "trunkLiters": 470,
       "weightKg": 2560,
-      "source": "OpenEV Data; Lotus Emeya Official Specifications 2025 (https://www.lotuscars.com/emeya)",
-      "lastUpdated": "2026-09-14"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lotus",
@@ -4527,8 +4532,9 @@
       "acceleration0to100Sec": 2.8,
       "trunkLiters": 470,
       "weightKg": 2560,
-      "source": "OpenEV Data; Lotus Emeya Official Specifications 2025 (https://www.lotuscars.com/emeya)",
-      "lastUpdated": "2026-09-14"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lynk & Co",
@@ -4550,9 +4556,10 @@
       "trunkLiters": 410,
       "weightKg": null,
       "photo": null,
-      "source": "Lynk & Co España; 02 Core",
+      "source": "Lynk & Co España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lynk & Co",
@@ -4574,9 +4581,10 @@
       "trunkLiters": 410,
       "weightKg": null,
       "photo": null,
-      "source": "Lynk & Co España; 02 More",
+      "source": "Lynk & Co España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "M-HERO",
@@ -4589,7 +4597,10 @@
       "drive": "AWD",
       "wltpKm": 408,
       "consumptionKwh100": 35,
-      "price_eur": 158037
+      "price_eur": 158037,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "M-HERO; especificaciones oficiales"
     },
     {
       "make": "MG",
@@ -4611,9 +4622,10 @@
       "trunkLiters": 249,
       "weightKg": 1985,
       "photo": null,
-      "source": "MG España; Cyberster GT",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4635,9 +4647,10 @@
       "trunkLiters": 249,
       "weightKg": 1960,
       "photo": null,
-      "source": "MG España; Cyberster Trophy",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4659,9 +4672,10 @@
       "trunkLiters": 363,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MG4 2024",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4683,9 +4697,10 @@
       "trunkLiters": 363,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MG4 2024",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4707,9 +4722,10 @@
       "trunkLiters": 363,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MG4 2024",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4731,9 +4747,10 @@
       "trunkLiters": 363,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MG4 2024",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4755,9 +4772,10 @@
       "trunkLiters": 363,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MG4 XPOWER",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4779,9 +4797,10 @@
       "trunkLiters": 507,
       "weightKg": null,
       "photo": null,
-      "source": "MG Motor España; MG4 Urban EV lanzamiento 2026",
+      "source": "MG España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4803,9 +4822,10 @@
       "trunkLiters": 507,
       "weightKg": null,
       "photo": null,
-      "source": "MG Motor España; MG4 Urban EV lanzamiento 2026",
+      "source": "MG España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "market": "ES"
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4827,9 +4847,10 @@
       "trunkLiters": 453,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MGS5 EV lanzamiento 2025",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4851,9 +4872,10 @@
       "trunkLiters": 453,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MGS5 EV lanzamiento 2025",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4875,9 +4897,10 @@
       "trunkLiters": 453,
       "weightKg": null,
       "photo": null,
-      "source": "MG España; MGS5 EV lanzamiento 2025",
-      "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "source": "MG España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "market": "ES",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4899,10 +4922,11 @@
       "trunkLiters": null,
       "weightKg": null,
       "photo": null,
-      "source": "MG Motor España; MGS6 EV lanzamiento 2026",
+      "source": "MG España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MG",
@@ -4924,10 +4948,11 @@
       "trunkLiters": null,
       "weightKg": null,
       "photo": null,
-      "source": "MG Motor España; MGS6 EV lanzamiento 2026",
+      "source": "MG España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "MINI",
@@ -10244,11 +10269,12 @@
       "charge10to80Min": null,
       "acceleration0to100Sec": 9.6,
       "trunkLiters": 332,
-      "source": "MG Motor España; MGS9 PHEV catálogo oficial 2026",
+      "source": "MG España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": null,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Nissan",
@@ -10520,8 +10546,9 @@
       "charge10to80Min": 30,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 522,
-      "source": "Lexus España; RZ 2026 + ficha técnica WLTP",
-      "lastUpdated": "2026-09-24"
+      "source": "Lexus España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lexus",
@@ -10544,8 +10571,9 @@
       "charge10to80Min": 30,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 522,
-      "source": "Lexus España; RZ 2026 + ficha técnica WLTP",
-      "lastUpdated": "2026-09-24"
+      "source": "Lexus España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lexus",
@@ -10568,8 +10596,9 @@
       "charge10to80Min": 30,
       "acceleration0to100Sec": 4.6,
       "trunkLiters": 522,
-      "source": "Lexus España; RZ 2026 + ficha técnica WLTP",
-      "lastUpdated": "2026-09-24"
+      "source": "Lexus España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lexus",
@@ -10592,8 +10621,9 @@
       "charge10to80Min": 30,
       "acceleration0to100Sec": 4.4,
       "trunkLiters": 522,
-      "source": "Lexus España; RZ 2026 + ficha técnica WLTP",
-      "lastUpdated": "2026-09-24"
+      "source": "Lexus España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Hyundai",
@@ -10745,8 +10775,9 @@
       "charge10to80Min": 20,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 688,
-      "source": "Lotus Cars; Eletre MY26 600",
-      "lastUpdated": "2026-09-24"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lotus",
@@ -10768,8 +10799,9 @@
       "charge10to80Min": 20,
       "acceleration0to100Sec": 2.95,
       "trunkLiters": 688,
-      "source": "Lotus Cars; Eletre MY26 900",
-      "lastUpdated": "2026-09-24"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lotus",
@@ -10791,8 +10823,9 @@
       "charge10to80Min": 15,
       "acceleration0to100Sec": 4.2,
       "trunkLiters": 509,
-      "source": "Lotus Cars; Emeya MY26 600",
-      "lastUpdated": "2026-09-24"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Lotus",
@@ -10814,8 +10847,9 @@
       "charge10to80Min": 15,
       "acceleration0to100Sec": 2.8,
       "trunkLiters": 509,
-      "source": "Lotus Cars; Emeya MY26 900",
-      "lastUpdated": "2026-09-24"
+      "source": "Lotus Cars; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Peugeot",
