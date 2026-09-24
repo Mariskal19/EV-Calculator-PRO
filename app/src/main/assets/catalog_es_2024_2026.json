@@ -9612,6 +9612,30 @@
       "lastUpdated": "2026-09-09",
       "market": "ES",
       "consumptionKwh100": 15
+    },
+    {
+      "make": "Renault",
+      "model": "Renault 5 E-Tech",
+      "year": 2024,
+      "market": "ES",
+      "version": "90 kW FWD 40 kWh NMC",
+      "batteryKwh": 40,
+      "batteryChemistry": "NMC",
+      "powerKw": 90,
+      "drive": "FWD",
+      "wltpKm": 312,
+      "arrivalYear": 2024,
+      "consumptionKwh100": 12.8,
+      "usableBatteryKwh": 50,
+      "drivetrain": "FWD",
+      "acKw": 11,
+      "dcKw": 100,
+      "acceleration0to100Sec": 8,
+      "trunkLiters": 326,
+      "weightKg": 1500,
+      "source": "OpenEV Data; Renault 5 E-Tech 2024 Official Specifications (https://www.renault.com)",
+      "lastUpdated": "2026-09-14",
+      "charge10to80Min": 30
     }
   ]
 }
