@@ -1963,8 +1963,8 @@
       "batteryChemistry": "LFP",
       "powerKw": 83,
       "drive": "FWD",
-      "wltpKm": 320,
-      "consumptionKwh100": 13.8,
+      "wltpKm": 328,
+      "consumptionKwh100": 13.4,
       "usableBatteryKwh": 42,
       "drivetrain": "FWD",
       "acKw": 11,
@@ -1972,10 +1972,11 @@
       "acceleration0to100Sec": 11,
       "trunkLiters": 310,
       "weightKg": 1400,
-      "source": "OpenEV Data; Citroën ë-C3 Official Specifications (https://www.citroen.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "Citroën España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 23800,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Citroën",
@@ -1996,10 +1997,11 @@
       "acceleration0to100Sec": 11,
       "trunkLiters": 310,
       "weightKg": 1400,
-      "source": "OpenEV Data; Citroën ë-C3 Official Specifications (https://www.citroen.com)",
-      "lastUpdated": "2026-09-14",
+      "source": "Citroën España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "price": 26490,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Citroën",
@@ -2011,7 +2013,12 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 680,
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Citroën España; especificaciones oficiales",
+      "acKw": 11,
+      "dcKw": 160
     },
     {
       "make": "Citroën",
@@ -2026,12 +2033,13 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "source": "Citroën España / Stellantis Media; ë-C5 Aircross; mercado español",
-      "lastUpdated": "2026-09-10",
+      "source": "Citroën España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14,
       "price": 39490,
-      "currency": "EUR"
+      "currency": "EUR",
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Citroën",
@@ -2042,14 +2050,15 @@
       "batteryKwh": 97,
       "batteryType": "NMC",
       "wltpKm": 680,
-      "powerKw": 169,
+      "powerKw": 170,
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "source": "Citroën España / Stellantis Media; ë-C5 Aircross Long Range 2026; mercado español",
-      "lastUpdated": "2026-09-10",
+      "source": "Citroën España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 14.3
+      "consumptionKwh100": 14.3,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "DS",
@@ -2057,15 +2066,20 @@
       "year": 2025,
       "market": "ES",
       "version": "E-TENSE 213 CV 158 kW FWD 58.3 kWh",
-      "batteryKwh": 58.3,
+      "batteryKwh": 61,
       "powerKw": 158,
       "drive": "FWD",
       "wltpKm": 450,
-      "consumptionKwh100": 13,
-      "usableBatteryKwh": 58.3,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price": 45400
+      "consumptionKwh100": 13.6,
+      "usableBatteryKwh": null,
+      "source": "DS Automobiles España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price": 45400,
+      "auditDate": "2026-09-24",
+      "acKw": 11,
+      "dcKw": 100,
+      "acceleration0to100Sec": 7.1,
+      "trunkLiters": 420
     },
     {
       "make": "DS",
@@ -2081,7 +2095,10 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "price": 49400
+      "price": 49400,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "DS Automobiles España; especificaciones oficiales"
     },
     {
       "make": "DS",
@@ -2097,7 +2114,10 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 160,
-      "price": 68700
+      "price": 68700,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "DS Automobiles España; especificaciones oficiales"
     },
     {
       "make": "DS",
@@ -2113,7 +2133,10 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "price": 55100
+      "price": 55100,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "DS Automobiles España; especificaciones oficiales"
     },
     {
       "make": "DS",
@@ -2126,7 +2149,10 @@
       "drive": "AWD",
       "wltpKm": 688,
       "consumptionKwh100": 14.1,
-      "price": 74200
+      "price": 74200,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "DS Automobiles España; especificaciones oficiales"
     },
     {
       "make": "DS",
@@ -2140,9 +2166,10 @@
       "wltpKm": 550,
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 73.7,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price": 57000
+      "source": "DS Automobiles España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price": 57000,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "DS",
@@ -2155,7 +2182,10 @@
       "drive": "FWD",
       "wltpKm": 750,
       "consumptionKwh100": 13,
-      "price": 62500
+      "price": 62500,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "DS Automobiles España; especificaciones oficiales"
     },
     {
       "make": "Dacia",
@@ -2177,10 +2207,11 @@
       "trunkLiters": 270,
       "weightKg": 984,
       "photo": null,
-      "source": "Dacia España; Nuevo Spring 2024",
-      "lastUpdated": "2026-09-09",
+      "source": "Dacia España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "price": 17890
+      "price": 17890,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Dacia",
@@ -2202,11 +2233,12 @@
       "trunkLiters": 270,
       "weightKg": 984,
       "photo": null,
-      "source": "Dacia España; Nuevo Spring 2024",
-      "lastUpdated": "2026-09-09",
+      "source": "Dacia España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
       "batteryChemistry": "li-ion",
-      "price": 18890
+      "price": 18890,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Dacia",
@@ -2228,10 +2260,11 @@
       "trunkLiters": 288,
       "weightKg": null,
       "photo": null,
-      "source": "Dacia España; Nuevo Spring 2026",
-      "lastUpdated": "2026-09-09",
+      "source": "Dacia España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
       "market": "ES",
-      "price": 16245
+      "price": 16245,
+      "auditDate": "2026-09-24"
     },
     {
       "make": "Dongfeng",
@@ -2245,7 +2278,12 @@
       "drive": "FWD",
       "wltpKm": 240,
       "consumptionKwh100": 13.1,
-      "price_eur": 24294
+      "price_eur": 24294,
+      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-24",
+      "source": "Dongfeng España; especificaciones oficiales",
+      "acKw": 6.6,
+      "dcKw": 40
     },
     {
       "make": "Dongfeng",
@@ -2260,9 +2298,12 @@
       "wltpKm": 340,
       "consumptionKwh100": 12.4,
       "usableBatteryKwh": 40,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 28294
+      "source": "Dongfeng España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 28294,
+      "auditDate": "2026-09-24",
+      "acKw": 6.6,
+      "dcKw": 40
     },
     {
       "make": "Dongfeng",
@@ -2277,9 +2318,12 @@
       "wltpKm": 340,
       "consumptionKwh100": 12.4,
       "usableBatteryKwh": 40,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 26394
+      "source": "Dongfeng España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 26394,
+      "auditDate": "2026-09-24",
+      "acKw": 6.6,
+      "dcKw": 40
     },
     {
       "make": "Fiat",
@@ -2293,9 +2337,12 @@
       "wltpKm": 409,
       "consumptionKwh100": 13.2,
       "usableBatteryKwh": 50.8,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 36000
+      "source": "Fiat España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 36000,
+      "auditDate": "2026-09-24",
+      "acKw": 11,
+      "dcKw": 100
     },
     {
       "make": "Fiat",
@@ -2309,9 +2356,12 @@
       "wltpKm": 320,
       "consumptionKwh100": 13.8,
       "usableBatteryKwh": 43.8,
-      "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14",
-      "price_eur": 25450
+      "source": "Fiat España; especificaciones oficiales",
+      "lastUpdated": "2026-09-24",
+      "price_eur": 25450,
+      "auditDate": "2026-09-24",
+      "acKw": 11,
+      "dcKw": 100
     },
     {
       "make": "Ford",
