@@ -5352,7 +5352,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "M-HERO; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T20:49:00+02:00"
     },
     {
       "make": "Maserati",
@@ -5451,13 +5451,13 @@
       "powerKw": 190,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 195,
+      "dcKw": 200,
       "source": "Mazda Automóviles España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 16.12,
+      "consumptionKwh100": 18.9,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T20:49:00+02:00"
     },
     {
       "make": "Mazda",
@@ -5467,17 +5467,17 @@
       "arrivalYear": 2026,
       "batteryKwh": 78,
       "batteryType": "LFP",
-      "wltpKm": 464,
+      "wltpKm": 468,
       "powerKw": 190,
       "drivetrain": "RWD",
       "acKw": 11,
-      "dcKw": 195,
+      "dcKw": 200,
       "source": "Mazda Automóviles España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "consumptionKwh100": 16.81,
+      "consumptionKwh100": 19.4,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T20:49:00+02:00"
     },
     {
       "make": "Mazda",
@@ -5490,17 +5490,17 @@
       "powerKw": 190,
       "drive": "RWD",
       "wltpKm": 479,
-      "consumptionKwh100": 14.4,
+      "consumptionKwh100": 16.6,
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 165,
-      "charge10to80Min": 27,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 7.6,
       "trunkLiters": 330,
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Mazda Automóviles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T20:49:00+02:00"
     },
     {
       "make": "Mazda",
@@ -5512,7 +5512,7 @@
       "usableBatteryKwh": null,
       "batteryType": "NMC",
       "wltpKm": 552,
-      "consumptionKwh100": 14.5,
+      "consumptionKwh100": 16.5,
       "powerKw": 180,
       "drivetrain": "RWD",
       "acKw": 11,
@@ -5527,7 +5527,7 @@
       "market": "ES",
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:47:00+02:00"
+      "auditDateTime": "2026-09-24T20:49:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
