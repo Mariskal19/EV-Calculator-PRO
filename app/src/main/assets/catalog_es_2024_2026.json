@@ -2162,7 +2162,7 @@
       "price": 48240,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2191,7 +2191,7 @@
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2213,7 +2213,7 @@
       "batteryChemistry": "LFP",
       "dcKw": 88,
       "charge10to80Min": 23,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2231,7 +2231,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2259,7 +2259,7 @@
       "auditDate": "2026-09-24",
       "drive": "RWD",
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2288,7 +2288,7 @@
       "price": 54810,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2317,7 +2317,7 @@
       "price": 65060,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Dacia",
@@ -7496,7 +7496,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7522,7 +7522,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7548,7 +7548,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7574,7 +7574,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7600,7 +7600,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7626,7 +7626,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7652,7 +7652,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7678,7 +7678,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7696,7 +7696,7 @@
       "acceleration0to100Sec": 4.7,
       "lastUpdated": "2026-09-24",
       "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7720,7 +7720,7 @@
       "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Polestar",
@@ -7738,7 +7738,7 @@
       "acceleration0to100Sec": 6.5,
       "lastUpdated": "2026-09-24",
       "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Porsche",
@@ -7763,7 +7763,7 @@
       "price_eur": 82310,
       "auditDate": "2026-09-24",
       "charge10to80Min": 21,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Porsche",
@@ -7783,7 +7783,7 @@
       "dcKw": 270,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 4.1,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Porsche",
@@ -7804,7 +7804,7 @@
       "dcKw": 270,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 5.7,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Porsche",
@@ -7828,7 +7828,7 @@
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
       "charge10to80Min": 21,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:30:00+02:00"
     },
     {
       "make": "Renault",
