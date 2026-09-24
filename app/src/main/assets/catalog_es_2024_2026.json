@@ -3269,7 +3269,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "FWD"
     },
     {
@@ -3299,7 +3299,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "FWD"
     },
     {
@@ -3316,7 +3316,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3332,7 +3332,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3348,7 +3348,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3372,7 +3372,7 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 1950,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "RWD"
     },
     {
@@ -3397,7 +3397,7 @@
       "acceleration0to100Sec": 5.2,
       "weightKg": 2110,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "AWD"
     },
     {
@@ -3428,7 +3428,7 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "RWD"
     },
     {
@@ -3459,7 +3459,7 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "AWD"
     },
     {
@@ -3487,7 +3487,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3514,7 +3514,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3541,7 +3541,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3568,7 +3568,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3595,7 +3595,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3624,7 +3624,7 @@
       "source": "Hyundai Motor España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "AWD"
     },
     {
@@ -3651,7 +3651,7 @@
       "price_eur": 81600,
       "auditDate": "2026-09-24",
       "charge10to80Min": 24,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3674,7 +3674,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3700,7 +3700,7 @@
       "price_eur": 87100,
       "auditDate": "2026-09-24",
       "charge10to80Min": 24,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3730,7 +3730,7 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "FWD"
     },
     {
@@ -3761,7 +3761,7 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-24T22:45:00+02:00",
       "drive": "FWD"
     },
     {
@@ -3779,7 +3779,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3796,7 +3796,7 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3816,7 +3816,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -3836,7 +3836,7 @@
       "lastUpdated": "2026-09-24",
       "source": "Hyundai Motor España; especificaciones oficiales",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jaecoo",
@@ -3902,7 +3902,7 @@
       "source": "Jeep España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3923,7 +3923,7 @@
       "consumptionKwh100": 18.6,
       "auditDate": "2026-09-24",
       "charge10to80Min": 32,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3945,7 +3945,7 @@
       "usableBatteryKwh": 74,
       "auditDate": "2026-09-24",
       "charge10to80Min": 35,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3967,7 +3967,7 @@
       "dcKw": 160,
       "charge10to80Min": 31,
       "acceleration0to100Sec": 5.4,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -3990,7 +3990,7 @@
       "auditDate": "2026-09-24",
       "charge10to80Min": 31,
       "acceleration0to100Sec": 5.4,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4012,7 +4012,7 @@
       "charge10to80Min": 35,
       "trunkLiters": 550,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4032,7 +4032,7 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 32,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4058,7 +4058,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "Jeep",
@@ -4084,7 +4084,7 @@
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T22:45:00+02:00"
     },
     {
       "make": "KGM",
