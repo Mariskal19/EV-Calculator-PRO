@@ -4590,7 +4590,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "price_eur": 41705
     },
     {
       "make": "Kia",
@@ -4610,7 +4611,8 @@
       "market": "ES",
       "consumptionKwh100": 13.4,
       "usableBatteryKwh": 55,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "price_eur": 36930
     },
     {
       "make": "Kia",
@@ -4637,7 +4639,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "price_eur": 43205
     },
     {
       "make": "Kia",
@@ -4656,7 +4659,8 @@
       "lastUpdated": "2026-09-14",
       "drivetrain": "FWD",
       "acKw": 10.5,
-      "dcKw": 102
+      "dcKw": 102,
+      "price_eur": 38430
     },
     {
       "make": "Kia",
@@ -4683,7 +4687,8 @@
       "weightKg": null,
       "photo": null,
       "source": "Spain historical catalog research: manufacturer + KM77 + period-specific sources",
-      "lastUpdated": "2026-09-07"
+      "lastUpdated": "2026-09-07",
+      "price_eur": 48705
     },
     {
       "make": "Kia",
@@ -5125,7 +5130,8 @@
       "photo": null,
       "source": "Leapmotor España / Stellantis; C10 BEV España 2024-2026",
       "lastUpdated": "2026-09-09",
-      "market": "ES"
+      "market": "ES",
+      "price_eur": 34900
     },
     {
       "make": "Leapmotor",
@@ -5150,7 +5156,8 @@
       "source": "Leapmotor España / Stellantis; T03 España 2024-2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "lfp"
+      "batteryChemistry": "lfp",
+      "price_eur": 18900
     },
     {
       "make": "Lotus",
@@ -5332,7 +5339,8 @@
       "powerKw": 800,
       "drive": "AWD",
       "wltpKm": 408,
-      "consumptionKwh100": 35
+      "consumptionKwh100": 35,
+      "price_eur": 158037
     },
     {
       "make": "MG",
@@ -6112,7 +6120,8 @@
       "consumptionKwh100": 20.7,
       "usableBatteryKwh": 83,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 209600
     },
     {
       "make": "Maserati",
@@ -7066,7 +7075,8 @@
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
       "source": "OpenEV Data; Peugeot e-3008 2024 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 49660
     },
     {
       "make": "Peugeot",
@@ -7086,7 +7096,8 @@
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
       "source": "OpenEV Data; Peugeot e-3008 Long Range 2024 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 49660
     },
     {
       "make": "Peugeot",
@@ -7251,7 +7262,8 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "OpenEV Data; Peugeot e-5008 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 49160
     },
     {
       "make": "Peugeot",
@@ -7291,7 +7303,8 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "OpenEV Data; Peugeot e-5008 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 49160
     },
     {
       "make": "Peugeot",
@@ -7311,7 +7324,8 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "OpenEV Data; Peugeot e-5008 Long Range 2024 Official Specifications (https://www.peugeot.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 51660
     },
     {
       "make": "Peugeot",
@@ -7689,7 +7703,8 @@
       "acceleration0to100Sec": 5.2,
       "weightKg": 2235,
       "source": "OpenEV Data; Porsche Macan Electric 2024 Official Specifications (https://www.porsche.com/international/models/macan/macan-models/macan/)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 82310
     },
     {
       "make": "Porsche",
@@ -7713,7 +7728,8 @@
       "powerKw": 250,
       "drive": "RWD",
       "wltpKm": 641,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "price_eur": 82310
     },
     {
       "make": "Porsche",
@@ -11961,7 +11977,8 @@
       "powerKw": 475,
       "drive": "AWD",
       "wltpKm": 540,
-      "consumptionKwh100": 18.5
+      "consumptionKwh100": 18.5,
+      "price_eur": 59000
     },
     {
       "make": "smart",
@@ -11974,7 +11991,8 @@
       "powerKw": 267,
       "drive": "RWD",
       "wltpKm": 590,
-      "consumptionKwh100": 16.9
+      "consumptionKwh100": 16.9,
+      "price_eur": 57500
     },
     {
       "make": "smart",
@@ -11990,7 +12008,8 @@
       "consumptionKwh100": 16.3,
       "usableBatteryKwh": 74.4,
       "source": "European Alternative Fuels Observatory (EAFO) — available electric vehicle models",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price_eur": 48000
     },
     {
       "make": "smart",
@@ -12003,7 +12022,8 @@
       "powerKw": 267,
       "drive": "RWD",
       "wltpKm": 590,
-      "consumptionKwh100": 16.9
+      "consumptionKwh100": 16.9,
+      "price_eur": 53000
     },
     {
       "make": "smart",
@@ -12016,7 +12036,8 @@
       "powerKw": 432,
       "drive": "AWD",
       "wltpKm": 540,
-      "consumptionKwh100": 18.5
+      "consumptionKwh100": 18.5,
+      "price_eur": 57500
     },
     {
       "make": "smart",
@@ -12029,7 +12050,8 @@
       "powerKw": 432,
       "drive": "AWD",
       "wltpKm": 540,
-      "consumptionKwh100": 18.5
+      "consumptionKwh100": 18.5,
+      "price_eur": 59000
     },
     {
       "make": "Škoda",
