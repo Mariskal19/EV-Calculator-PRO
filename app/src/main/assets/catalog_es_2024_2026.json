@@ -857,7 +857,9 @@
       "powerKw": 345,
       "drive": "AWD",
       "wltpKm": 906,
-      "consumptionKwh100": 12
+      "consumptionKwh100": 12,
+      "price": 63650,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -878,7 +880,9 @@
       "acceleration0to100Sec": 3.7,
       "weightKg": 2215,
       "source": "OpenEV Data; BMW i4 M50 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 81350,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -899,7 +903,9 @@
       "acceleration0to100Sec": 5.8,
       "weightKg": 1955,
       "source": "OpenEV Data; BMW i4 eDrive35 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 55950,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -912,7 +918,9 @@
       "powerKw": 250,
       "drive": "RWD",
       "wltpKm": 613,
-      "consumptionKwh100": 13.3
+      "consumptionKwh100": 13.3,
+      "price": 59250,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -933,7 +941,9 @@
       "acceleration0to100Sec": 3.7,
       "weightKg": 2260,
       "source": "OpenEV Data; BMW i5 M60 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 117009.6,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -954,7 +964,9 @@
       "acceleration0to100Sec": 5.7,
       "weightKg": 2150,
       "source": "OpenEV Data; BMW i5 eDrive40 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 77850,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -979,7 +991,9 @@
       "source": "BMW España / KM77 periodo 2024; BMW i5 xDrive40",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "nmc"
+      "batteryChemistry": "nmc",
+      "price": 83850,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -997,7 +1011,9 @@
       "source": "BMW España; i5 M60 xDrive Touring 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "price": 119609.6,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1015,7 +1031,9 @@
       "source": "BMW España; i5 eDrive40 Touring 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.6
+      "consumptionKwh100": 13.6,
+      "price": 80450,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1033,7 +1051,9 @@
       "source": "BMW España; i5 xDrive40 Touring 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 14.5
+      "consumptionKwh100": 14.5,
+      "price": 85050,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1054,7 +1074,9 @@
       "acceleration0to100Sec": 3.5,
       "weightKg": 2805,
       "source": "OpenEV Data; BMW i7 M70 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 190600,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1075,7 +1097,9 @@
       "acceleration0to100Sec": 4.5,
       "weightKg": 2715,
       "source": "OpenEV Data; BMW i7 xDrive60 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 121400,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1088,7 +1112,9 @@
       "powerKw": 485,
       "drive": "AWD",
       "wltpKm": 600,
-      "consumptionKwh100": 18.1
+      "consumptionKwh100": 18.1,
+      "price": 135000,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1101,7 +1127,9 @@
       "powerKw": 300,
       "drive": "AWD",
       "wltpKm": 603,
-      "consumptionKwh100": 15.7
+      "consumptionKwh100": 15.7,
+      "price": 89600,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1114,7 +1142,9 @@
       "powerKw": 400,
       "drive": "AWD",
       "wltpKm": 701,
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "price": 89600,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1132,7 +1162,9 @@
       "source": "BMW España; iX M70 xDrive 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 18.2
+      "consumptionKwh100": 18.2,
+      "price": 135000,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1151,7 +1183,9 @@
       "lastUpdated": "2026-09-09",
       "market": "ES",
       "consumptionKwh100": 15.7,
-      "usableBatteryKwh": 94.8
+      "usableBatteryKwh": 94.8,
+      "price": 89600,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1169,7 +1203,9 @@
       "source": "BMW España; iX xDrive60 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 15.6
+      "consumptionKwh100": 15.6,
+      "price": 89600,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1194,7 +1230,9 @@
       "source": "BMW Group España / periodo 2024; iX1 eDrive20",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "batteryChemistry": "nmc"
+      "batteryChemistry": "nmc",
+      "price": 50300,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1215,7 +1253,9 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2085,
       "source": "OpenEV Data; BMW iX1 xDrive30 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 50300,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1236,7 +1276,9 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2085,
       "source": "OpenEV Data; BMW iX1 xDrive30 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 50300,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1258,7 +1300,7 @@
       "trunkLiters": 525,
       "id": "bmw-ix2-edrive20-2024-66-5-nmc-150-fwd",
       "market": "ES",
-      "price": null,
+      "price": 51800,
       "currency": "EUR",
       "weightKg": 2050,
       "photo": null,
@@ -1285,7 +1327,9 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2050,
       "source": "OpenEV Data; BMW iX2 xDrive30 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 51800,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1306,7 +1350,9 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2050,
       "source": "OpenEV Data; BMW iX2 xDrive30 2024 (https://www.bmw.com)",
-      "lastUpdated": "2026-09-14"
+      "lastUpdated": "2026-09-14",
+      "price": 51800,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1324,7 +1370,9 @@
       "source": "BMW España; nuevo iX3 50 xDrive 2026",
       "lastUpdated": "2026-09-09",
       "market": "ES",
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "price": 63650,
+      "currency": "EUR"
     },
     {
       "make": "BMW",
@@ -1336,7 +1384,9 @@
       "powerKw": 345,
       "drive": "AWD",
       "wltpKm": 805,
-      "consumptionKwh100": 13.5
+      "consumptionKwh100": 13.5,
+      "price": 63650,
+      "currency": "EUR"
     },
     {
       "make": "BYD",
