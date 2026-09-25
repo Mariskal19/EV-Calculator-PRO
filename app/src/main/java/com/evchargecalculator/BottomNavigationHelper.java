@@ -21,7 +21,7 @@ public final class BottomNavigationHelper {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
-    bar.setPadding(0, dp(activity, 6), 0, dp(activity, 4));
+    bar.setPadding(0, dp(activity, 4), 0, dp(activity, 2));
 
     // Google Play-style full-width navigation surface: no outer margins,
     // rounded card or border. The system navigation area uses the same surface
@@ -111,20 +111,20 @@ public final class BottomNavigationHelper {
         index == selected ? active : inactive, PorterDuff.Mode.SRC_IN));
 
     iconSlot.addView(iconView, new FrameLayout.LayoutParams(
-        dp(activity, 28), dp(activity, 28), Gravity.CENTER));
+        dp(activity, 24), dp(activity, 24), Gravity.CENTER));
 
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
-    labelView.setTextSize(14);
+    labelView.setTextSize(12);
     labelView.setTypeface(null, index == selected ? 1 : 0);
     labelView.setGravity(Gravity.CENTER);
     labelView.setIncludeFontPadding(false);
     labelView.setTextColor(index == selected ? active : inactive);
 
     item.addView(iconSlot, new LinearLayout.LayoutParams(
-        dp(activity, 64), dp(activity, 34), 0));
+        dp(activity, 64), dp(activity, 30), 0));
     item.addView(labelView, new LinearLayout.LayoutParams(
-        -1, dp(activity, 24), 0));
+        -1, dp(activity, 20), 0));
     bar.addView(item, new LinearLayout.LayoutParams(0, -1, 1));
   }
 
