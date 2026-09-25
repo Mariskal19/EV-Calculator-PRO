@@ -1,4 +1,5 @@
 package com.evchargecalculator;
+// Footer cleanup build verification
 // Build trigger
 
 import android.app.Activity;
