@@ -67,6 +67,7 @@ public class PrincipalActivity extends BaseNavigationActivity {
     if (!currentLanguage.equals(displayedLanguage)) {
       displayedLanguage = currentLanguage;
       build();
+      EdgeToEdgeHelper.apply(this, dark);
     }
   }
 
