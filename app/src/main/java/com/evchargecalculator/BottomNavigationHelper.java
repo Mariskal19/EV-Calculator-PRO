@@ -116,7 +116,7 @@ public final class BottomNavigationHelper {
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
     labelView.setTextSize(12);
-    labelView.setTypeface(null, index == selected ? 1 : 0);
+    labelView.setTypeface(null, 0);
     labelView.setGravity(Gravity.CENTER);
     labelView.setIncludeFontPadding(false);
     labelView.setTextColor(index == selected ? active : inactive);
