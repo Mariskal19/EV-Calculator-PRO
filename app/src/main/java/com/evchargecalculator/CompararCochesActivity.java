@@ -128,7 +128,29 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         }
     }
 
-    private static class HeaderBitmapView extends View {\n        private final android.graphics.Bitmap bitmap;\n        private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);\n\n        HeaderBitmapView(android.content.Context context) {\n            super(context);\n            bitmap = android.graphics.BitmapFactory.decodeResource(context.getResources(), R.drawable.cabecera_ev_calculator);\n            setLayerType(View.LAYER_TYPE_SOFTWARE, null);\n        }\n\n        @Override protected void onDraw(android.graphics.Canvas canvas) {\n            super.onDraw(canvas);\n            if (bitmap == null || getWidth() <= 0 || getHeight() <= 0) return;\n            float scale = Math.max((float) getWidth() / bitmap.getWidth(), (float) getHeight() / bitmap.getHeight());\n            float w = bitmap.getWidth() * scale;\n            float h = bitmap.getHeight() * scale;\n            float left = (getWidth() - w) * 0.5f;\n            float top = (getHeight() - h) * 0.5f;\n            canvas.drawBitmap(bitmap, null, new android.graphics.RectF(left, top, left + w, top + h), paint);\n        }\n    }\n\n    private int dp(int n) { return (int) (n * getResources().getDisplayMetrics().density + 0.5f); }
+    private static class HeaderBitmapView extends View {
+        private final android.graphics.Bitmap bitmap;
+        private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+
+        HeaderBitmapView(android.content.Context context) {
+            super(context);
+            bitmap = android.graphics.BitmapFactory.decodeResource(context.getResources(), R.drawable.cabecera_ev_calculator);
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+        }
+
+        @Override protected void onDraw(android.graphics.Canvas canvas) {
+            super.onDraw(canvas);
+            if (bitmap == null || getWidth() <= 0 || getHeight() <= 0) return;
+            float scale = Math.max((float) getWidth() / bitmap.getWidth(), (float) getHeight() / bitmap.getHeight());
+            float w = bitmap.getWidth() * scale;
+            float h = bitmap.getHeight() * scale;
+            float left = (getWidth() - w) * 0.5f;
+            float top = (getHeight() - h) * 0.5f;
+            canvas.drawBitmap(bitmap, null, new android.graphics.RectF(left, top, left + w, top + h), paint);
+        }
+    }
+
+    private int dp(int n) { return (int) (n * getResources().getDisplayMetrics().density + 0.5f); }
     private int text() { return dark ? Color.rgb(245, 248, 255) : white; }
     private int sub() { return dark ? Color.rgb(170, 183, 204) : secondary; }
     private int rowAlt() { return dark ? Color.rgb(14, 25, 36) : Color.rgb(248, 251, 255); }
