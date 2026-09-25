@@ -487,8 +487,4 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     fuelPrice.setText(prefs.getString("cmp_fuel_price", fuelPrice.getText().toString()));
   }
 
-  @Override
-  public void onBackPressed() {
-    finish();
-  }
 }
