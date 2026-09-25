@@ -54,8 +54,6 @@ public class MainActivity extends BaseNavigationActivity {
       darkBg = Color.rgb(7, 19, 28),
       statusOk = Color.rgb(29, 142, 121),
       statusWarn = Color.rgb(227, 93, 93);
-  private static final String PRIVACY_URL =
-      "https://mariskal19.github.io/EV-Calculator-PRO-Privacy/";
   private static final String KEY_DARK_THEME = "dark_theme";
   private static final String KEY_CURRENCY = "app_currency";
 
