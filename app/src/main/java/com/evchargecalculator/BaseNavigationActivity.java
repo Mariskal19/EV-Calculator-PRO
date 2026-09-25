@@ -25,8 +25,7 @@ public abstract class BaseNavigationActivity extends Activity {
     View bottomNavigation =
         BottomNavigationHelper.create(this, isDarkTheme(), getBottomNavigationIndex());
     FrameLayout.LayoutParams navParams =
-        new FrameLayout.LayoutParams(-1, dp(56), android.view.Gravity.BOTTOM);
-    navParams.setMargins(dp(10), 0, dp(10), dp(10));
+        new FrameLayout.LayoutParams(-1, dp(78), android.view.Gravity.BOTTOM);
     host.addView(bottomNavigation, navParams);
 
     super.setContentView(host);
