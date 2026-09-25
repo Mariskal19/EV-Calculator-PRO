@@ -63,7 +63,6 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
             ? prefs.getBoolean(KEY_DARK_THEME, false)
             : (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
                 == Configuration.UI_MODE_NIGHT_YES;
-    getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     build();
     EdgeToEdgeHelper.apply(this, dark);
     load();
