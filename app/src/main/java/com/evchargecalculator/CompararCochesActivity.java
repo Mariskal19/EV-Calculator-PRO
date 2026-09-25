@@ -136,6 +136,9 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             super(context);
             bitmap = android.graphics.BitmapFactory.decodeResource(context.getResources(), R.drawable.cabecera_ev_calculator);
             setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                setForceDarkAllowed(false);
+            }
         }
 
         @Override protected void onDraw(android.graphics.Canvas canvas) {
