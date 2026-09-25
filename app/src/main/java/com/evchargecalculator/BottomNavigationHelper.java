@@ -20,12 +20,14 @@ public final class BottomNavigationHelper {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
-    bar.setPadding(dp(activity, 5), dp(activity, 3), dp(activity, 5), dp(activity, 3));
+    bar.setPadding(dp(activity, 5), dp(activity, 4), dp(activity, 5), dp(activity, 4));
+    bar.setMinimumHeight(dp(activity, 76));
 
+    // Barra tipo tarjeta de la referencia: blanca, redondeada y limpia.
     GradientDrawable bg = new GradientDrawable();
     bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.WHITE);
     bg.setCornerRadius(dp(activity, 20));
-    bg.setStroke(dp(activity, 1), dark ? Color.rgb(48, 64, 84) : Color.rgb(225, 231, 238));
+    bg.setStroke(dp(activity, 1), dark ? Color.rgb(48, 64, 84) : Color.rgb(235, 239, 243));
     bar.setBackground(bg);
     bar.setElevation(dp(activity, 10));
 
@@ -88,27 +90,39 @@ public final class BottomNavigationHelper {
     ImageView iconView = new ImageView(activity);
     iconView.setImageResource(icon);
     iconView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    // El icono frontal de Coches de la opción 2 es más ancho que alto.
-    // Compensamos el PNG cuadrado para conservar esa proporción visual en la barra.
+
+    // El icono de Coches de la opción 2 es más ancho que alto.
     if (index == 2) {
       iconView.setScaleX(1.22f);
     }
 
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
-    labelView.setTextSize(11);
+    labelView.setTextSize(15);
     labelView.setTypeface(null, index == selected ? 1 : 0);
     labelView.setGravity(Gravity.CENTER);
     labelView.setIncludeFontPadding(false);
 
-    int active = dark ? Color.rgb(105, 175, 255) : Color.rgb(46, 107, 255);
-    int inactive = dark ? Color.rgb(180, 190, 205) : Color.rgb(90, 111, 137);
-    iconView.setColorFilter(new PorterDuffColorFilter(index == selected ? active : inactive, PorterDuff.Mode.SRC_IN));
-    labelView.setTextColor(index == selected ? active : inactive);
+    // Colores de la referencia: verde para la opción activa y azul marino para las demás.
+    int active = dark ? Color.rgb(96, 181, 82) : Color.rgb(58, 151, 50);
+    int inactive = dark ? Color.rgb(205, 214, 224) : Color.rgb(31, 52, 70);
+    int color = index == selected ? active : inactive;
+    iconView.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
+    labelView.setTextColor(color);
 
-    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 27)));
-    item.addView(labelView, new LinearLayout.LayoutParams(-1, dp(activity, 18)));
-    bar.addView(item, new LinearLayout.LayoutParams(0, dp(activity, 48), 1));
+    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 45)));
+    item.addView(labelView, new LinearLayout.LayoutParams(-1, dp(activity, 21)));
+    bar.addView(item, new LinearLayout.LayoutParams(0, dp(activity, 68), 1));
+
+    // Separadores verticales finos, como en la imagen de referencia.
+    if (index < 3) {
+      View separator = new View(activity);
+      separator.setBackgroundColor(dark ? Color.rgb(55, 72, 89) : Color.rgb(229, 233, 237));
+      LinearLayout.LayoutParams separatorParams =
+          new LinearLayout.LayoutParams(dp(activity, 1), dp(activity, 58));
+      separatorParams.gravity = Gravity.CENTER_VERTICAL;
+      bar.addView(separator, separatorParams);
+    }
   }
 
   private static int dp(Activity activity, int value) {
