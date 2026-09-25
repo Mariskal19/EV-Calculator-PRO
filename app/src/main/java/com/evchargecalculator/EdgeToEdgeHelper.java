@@ -28,6 +28,7 @@ public final class EdgeToEdgeHelper {
 
   private EdgeToEdgeHelper() {}
 
+  @SuppressWarnings("deprecation")
   public static void apply(Activity activity, boolean dark) {
     Window window = activity.getWindow();
 
@@ -46,7 +47,6 @@ public final class EdgeToEdgeHelper {
              : android.graphics.Color.rgb(242, 246, 252));
 
     WindowCompat.setDecorFitsSystemWindows(window, false);
-
 
     WindowInsetsControllerCompat controller =
         WindowCompat.getInsetsController(window, window.getDecorView());
