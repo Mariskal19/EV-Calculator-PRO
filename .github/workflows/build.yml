@@ -79,7 +79,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          version=$(sed -nE "s/^[[:space:]]*versionName[[:space:]]+['\"]([^'\"]+)['\"].*$/\1/p" app/build.gradle | head -n 1)
+          version=$(sed -nE "s/^[[:space:]]*versionName[[:space:]]*(=|[[:space:]]+)[[:space:]]*['\"]([^'\"]+)['\"].*$/\2/p" app/build.gradle | head -n 1)
           if [ -z "$version" ]; then
             echo "Could not determine versionName from app/build.gradle"
             exit 1
