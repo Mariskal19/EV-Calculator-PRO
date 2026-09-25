@@ -33,12 +33,6 @@ public final class EdgeToEdgeHelper {
       window.setNavigationBarContrastEnforced(false);
     }
 
-    // The Android system navigation area must use the same surface as the
-    // app's bottom navigation, including in dark mode.
-    window.setNavigationBarColor(
-        dark ? android.graphics.Color.rgb(16, 28, 42)
-             : android.graphics.Color.rgb(242, 246, 252));
-
     WindowCompat.setDecorFitsSystemWindows(window, false);
 
 
