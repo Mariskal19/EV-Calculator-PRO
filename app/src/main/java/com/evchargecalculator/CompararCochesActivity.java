@@ -135,7 +135,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         HeaderBitmapView(android.content.Context context) {
             super(context);
             android.graphics.Bitmap decoded = null;
-            try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_tema_claro)) {
+            try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_ev_calculator)) {
                 decoded = android.graphics.BitmapFactory.decodeStream(in);
             } catch (Exception ignored) {
             }
@@ -148,18 +148,22 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
         @Override protected void onDraw(android.graphics.Canvas canvas) {
             super.onDraw(canvas);
-            // Prueba de aislamiento: dibujamos directamente sobre Canvas para comprobar
-            // si el problema está en el recurso de imagen o en la capa/renderizado.
-            canvas.drawColor(android.graphics.Color.WHITE);
-            paint.setColor(android.graphics.Color.RED);
-            paint.setTextSize(dpForTest(28));
-            paint.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
-            paint.setTextAlign(android.graphics.Paint.Align.CENTER);
-            canvas.drawText("PRUEBA CABECERA", getWidth() * 0.5f, getHeight() * 0.5f, paint);
-        }
+            if (bitmap == null || bitmap.isRecycled()) {
+                canvas.drawColor(android.graphics.Color.WHITE);
+                return;
+            }
 
-        private float dpForTest(float value) {
-            return value * getResources().getDisplayMetrics().density;
+            // Dibujamos el bitmap directamente en Canvas para evitar cualquier
+            // transformación de imagen asociada al tema oscuro del sistema.
+            float viewW = getWidth();
+            float viewH = getHeight();
+            float scale = Math.max(viewW / bitmap.getWidth(), viewH / bitmap.getHeight());
+            float drawW = bitmap.getWidth() * scale;
+            float drawH = bitmap.getHeight() * scale;
+            float left = (viewW - drawW) * 0.5f;
+            float top = (viewH - drawH) * 0.5f;
+            canvas.drawBitmap(bitmap, null,
+                    new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
         }
     }
 
@@ -317,7 +321,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         LinearLayout root = new LinearLayout(this); root.setOrientation(LinearLayout.VERTICAL); int statusBarHeight = getResources().getIdentifier("status_bar_height", "dimen", "android") > 0 ? getResources().getDimensionPixelSize(getResources().getIdentifier("status_bar_height", "dimen", "android")) : 0; root.setPadding(0,statusBarHeight,0,dp(84)); root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
         FrameLayout hero = new FrameLayout(this); hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
         HeaderBitmapView heroImage = new HeaderBitmapView(this); heroImage.setTranslationY(-dp(10)); hero.addView(heroImage, new FrameLayout.LayoutParams(-1,-1));
-        TextView title = tv("PRUEBA",22,Color.WHITE); title.setTypeface(null,Typeface.BOLD); title.setGravity(Gravity.CENTER); title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0)); FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56)); tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL; tp.leftMargin=dp(40); tp.rightMargin=dp(40); tp.topMargin=dp(4); hero.addView(title,tp);\n        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260))); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
+        TextView title = tv("Comparar coches",22,Color.WHITE); title.setTypeface(null,Typeface.BOLD); title.setGravity(Gravity.CENTER); title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER); title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0)); FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56)); tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL; tp.leftMargin=dp(40); tp.rightMargin=dp(40); tp.topMargin=dp(4); hero.addView(title,tp);\n        ScrollView scroll=new ScrollView(this); scroll.setFillViewport(true); scroll.setClipToPadding(false); LinearLayout scrollContent=new LinearLayout(this); scrollContent.setOrientation(LinearLayout.VERTICAL); scrollContent.setClipChildren(false); scrollContent.addView(hero,new LinearLayout.LayoutParams(-1,dp(260))); LinearLayout content=new LinearLayout(this); content.setOrientation(LinearLayout.VERTICAL); content.setPadding(dp(14),dp(14),dp(14),dp(12));
         LinearLayout intro=new LinearLayout(this); intro.setOrientation(LinearLayout.VERTICAL); intro.setPadding(dp(16),dp(14),dp(16),dp(14)); intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18)); TextView introTitle=tv("Elige tus vehículos",17,text()); introTitle.setTypeface(null,Typeface.BOLD); intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26))); TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub()); hint.setPadding(0,dp(2),0,0); intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36))); LinearLayout.LayoutParams introLp = new LinearLayout.LayoutParams(-1, -2); introLp.topMargin = -dp(26); intro.setLayoutParams(introLp); content.addView(intro);
         HorizontalScrollView carsScroll=new HorizontalScrollView(this); carsScroll.setHorizontalScrollBarEnabled(false); carsScroll.setClipToPadding(false); carsScroll.setPadding(0,dp(12),0,dp(4)); carsRow=new LinearLayout(this); carsRow.setOrientation(LinearLayout.HORIZONTAL); carsRow.setGravity(Gravity.TOP); carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2)); content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
         TextView section=tv("Características",19,text()); section.setTypeface(null,Typeface.BOLD); section.setPadding(dp(2),dp(12),0,dp(2)); content.addView(section,new LinearLayout.LayoutParams(-1,dp(42))); TextView legend=tv("✦  Mejor valor",12,blue); legend.setGravity(Gravity.CENTER_VERTICAL); legend.setPadding(dp(4),0,0,dp(4)); if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
