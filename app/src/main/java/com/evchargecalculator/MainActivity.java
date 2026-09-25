@@ -99,6 +99,10 @@ public class MainActivity extends BaseNavigationActivity {
         applyTheme();
         applyCurrency();
         calculate();
+        // build() replaces the activity root. Reapply edge-to-edge so the
+        // replacement root receives the same system-bar insets after a
+        // language or theme change.
+        EdgeToEdgeHelper.apply(this, dark);
         return;
       }
       applyCurrency();
