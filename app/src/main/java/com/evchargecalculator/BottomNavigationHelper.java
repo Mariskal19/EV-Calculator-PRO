@@ -97,7 +97,7 @@ public final class BottomNavigationHelper {
       iconView.setScaleX(1.22f);
     }
 
-    int active = dark ? Color.rgb(105, 175, 255) : Color.rgb(46, 107, 255);
+    int active = Color.rgb(0, 125, 255);
     int inactive = dark ? Color.rgb(180, 190, 205) : Color.rgb(75, 80, 88);
 
     if (index == selected) {
