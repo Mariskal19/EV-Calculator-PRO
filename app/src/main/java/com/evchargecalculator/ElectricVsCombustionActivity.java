@@ -372,17 +372,6 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     results.addView(perValues);
     root.addView(results);
     Space bottom = new Space(this);
-    root.addView(bottom, new LinearLayout.LayoutParams(1, 0, 1));
-    TextView privacy = tv("Política de privacidad", 13, dark ? Color.rgb(105, 175, 255) : blue);
-    privacy.setGravity(Gravity.CENTER);
-    privacy.setTypeface(null, 1);
-    privacy.setOnClickListener(
-        v ->
-            startActivity(
-                new Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://mariskal19.github.io/EV-Calculator-PRO-Privacy/"))));
-    root.addView(privacy, new LinearLayout.LayoutParams(-1, dp(34)));
     TextView foot = tv("Powered by EV Calculator · v" + version(), 12, sub());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
