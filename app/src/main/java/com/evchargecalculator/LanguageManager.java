@@ -58,6 +58,7 @@ public final class LanguageManager {
     c.getResources().updateConfiguration(cfg, c.getResources().getDisplayMetrics());
   }
 
+  @SuppressWarnings("deprecation")
   private static String getSystemLanguage(Context c) {
     Locale systemLocale;
     Configuration systemConfig = android.content.res.Resources.getSystem().getConfiguration();
