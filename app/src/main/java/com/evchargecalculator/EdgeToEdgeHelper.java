@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -20,6 +22,10 @@ import androidx.core.view.WindowInsetsControllerCompat;
  * are not obscured by system bars.
  */
 public final class EdgeToEdgeHelper {
+  // Stores the padding defined by each activity before system-bar insets are applied.
+  // This prevents repeated apply() calls from accumulating the same bottom inset.
+  private static final Map<View, int[]> BASE_PADDING = new WeakHashMap<>();
+
   private EdgeToEdgeHelper() {}
 
   public static void apply(Activity activity, boolean dark) {
@@ -61,9 +67,19 @@ public final class EdgeToEdgeHelper {
       root = ((ViewGroup) content).getChildAt(0);
     }
 
-    final int left = root.getPaddingLeft();
-    final int right = root.getPaddingRight();
-    final int bottom = root.getPaddingBottom();
+    int[] basePadding = BASE_PADDING.get(root);
+    if (basePadding == null) {
+      basePadding = new int[] {
+        root.getPaddingLeft(),
+        root.getPaddingTop(),
+        root.getPaddingRight(),
+        root.getPaddingBottom()
+      };
+      BASE_PADDING.put(root, basePadding);
+    }
+    final int left = basePadding[0];
+    final int right = basePadding[2];
+    final int bottom = basePadding[3];
 
     ViewCompat.setOnApplyWindowInsetsListener(
         root,
