@@ -20,10 +20,14 @@ public abstract class BaseNavigationActivity extends Activity {
   @Override
   public void setContentView(View view) {
     FrameLayout host = new FrameLayout(this);
+    boolean dark = isDarkTheme();
+    host.setBackgroundColor(dark
+        ? android.graphics.Color.rgb(16, 28, 42)
+        : android.graphics.Color.rgb(242, 246, 252));
     host.addView(view, new FrameLayout.LayoutParams(-1, -1));
 
     View bottomNavigation =
-        BottomNavigationHelper.create(this, isDarkTheme(), getBottomNavigationIndex());
+        BottomNavigationHelper.create(this, dark, getBottomNavigationIndex());
     FrameLayout.LayoutParams navParams =
         new FrameLayout.LayoutParams(-1, dp(78), android.view.Gravity.BOTTOM);
     host.addView(bottomNavigation, navParams);
