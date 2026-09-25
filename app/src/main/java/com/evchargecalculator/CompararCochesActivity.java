@@ -148,13 +148,18 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
         @Override protected void onDraw(android.graphics.Canvas canvas) {
             super.onDraw(canvas);
-            if (bitmap == null || getWidth() <= 0 || getHeight() <= 0) return;
-            float scale = Math.max((float) getWidth() / bitmap.getWidth(), (float) getHeight() / bitmap.getHeight());
-            float w = bitmap.getWidth() * scale;
-            float h = bitmap.getHeight() * scale;
-            float left = (getWidth() - w) * 0.5f;
-            float top = (getHeight() - h) * 0.5f;
-            canvas.drawBitmap(bitmap, null, new android.graphics.RectF(left, top, left + w, top + h), paint);
+            // Prueba de aislamiento: dibujamos directamente sobre Canvas para comprobar
+            // si el problema está en el recurso de imagen o en la capa/renderizado.
+            canvas.drawColor(android.graphics.Color.WHITE);
+            paint.setColor(android.graphics.Color.RED);
+            paint.setTextSize(dpForTest(28));
+            paint.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
+            paint.setTextAlign(android.graphics.Paint.Align.CENTER);
+            canvas.drawText("PRUEBA CABECERA", getWidth() * 0.5f, getHeight() * 0.5f, paint);
+        }
+
+        private float dpForTest(float value) {
+            return value * getResources().getDisplayMetrics().density;
         }
     }
 
