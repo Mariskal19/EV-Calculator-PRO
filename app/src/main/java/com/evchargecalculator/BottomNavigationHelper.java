@@ -87,7 +87,6 @@ public final class BottomNavigationHelper {
 
     // Google Play-style selected capsule behind the icon.
     FrameLayout iconSlot = new FrameLayout(activity);
-    iconSlot.setGravity(Gravity.CENTER);
 
     ImageView iconView = new ImageView(activity);
     iconView.setImageResource(icon);
