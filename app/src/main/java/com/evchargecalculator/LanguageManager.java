@@ -52,9 +52,8 @@ public final class LanguageManager {
     String s = isSupported(l) ? l : "en";
     Locale locale = Locale.forLanguageTag(s);
     Locale.setDefault(locale);
-    Configuration cfg = new Configuration(c.getResources().getConfiguration());
-    cfg.setLocale(locale);
-    c.getResources().updateConfiguration(cfg, c.getResources().getDisplayMetrics());
+    // Keep the process locale in sync for formatting and locale-sensitive APIs.
+    // Activity/resource configuration is applied through the activity lifecycle.
   }
 
   private static String getSystemLanguage(Context c) {
@@ -63,7 +62,7 @@ public final class LanguageManager {
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
       systemLocale = systemConfig.getLocales().isEmpty() ? null : systemConfig.getLocales().get(0);
     } else {
-      systemLocale = systemConfig.locale;
+      systemLocale = systemConfig.getLocales().isEmpty() ? null : systemConfig.getLocales().get(0);
     }
     String s = systemLocale == null ? null : systemLocale.getLanguage();
     return isSupported(s) ? s : "en";
