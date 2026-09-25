@@ -377,17 +377,7 @@ public class MainActivity extends BaseNavigationActivity {
     root.addView(c4);
     Space bottomSpace = new Space(this);
     root.addView(bottomSpace, new LinearLayout.LayoutParams(1, 0, 1));
-    String appVersion = "1.0.2";
-    try {
-      appVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-    } catch (Exception ignored) {
-    }
-    if (appVersion.startsWith("v") || appVersion.startsWith("V"))
-      appVersion = appVersion.substring(1);
-    TextView foot = tv("Powered by EV Calculator · v" + appVersion, 12, sub());
-    foot.setGravity(Gravity.CENTER);
-    root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-    setup();
+        setup();
   }
 
   void space(int n) {
