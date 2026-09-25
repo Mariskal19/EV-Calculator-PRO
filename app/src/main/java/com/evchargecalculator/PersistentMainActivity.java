@@ -11,6 +11,7 @@ public class PersistentMainActivity extends MainActivity {
   private static final String KEY_DARK_THEME = "dark_theme";
 
   @Override
+  @SuppressWarnings("deprecation")
   public void onCreate(Bundle savedInstanceState) {
     SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     if (prefs.contains(KEY_DARK_THEME)) {
