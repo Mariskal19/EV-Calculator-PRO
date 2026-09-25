@@ -117,8 +117,8 @@ public final class BottomNavigationHelper {
     labelView.setText(LanguageManager.t(activity, label));
     labelView.setTextSize(12);
     labelView.setTypeface(null, 0);
-    labelView.setGravity(Gravity.CENTER);
-    labelView.setIncludeFontPadding(false);
+    labelView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
+    labelView.setIncludeFontPadding(true);
     labelView.setTextColor(index == selected ? active : inactive);
 
     item.addView(iconSlot, new LinearLayout.LayoutParams(
