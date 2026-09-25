@@ -119,9 +119,10 @@ public final class BottomNavigationHelper {
     labelView.setTypeface(null, index == selected ? 1 : 0);
     labelView.setGravity(Gravity.CENTER);
     labelView.setIncludeFontPadding(false);
-    // Align the Más label optically in dark theme without changing the bar layout.
+    // The Más label sits slightly closer to its icon in dark theme;
+    // lower it by 1dp to match the other navigation labels.
     if (dark && index == 3) {
-      labelView.setTranslationY(-dp(activity, 1));
+      labelView.setTranslationY(dp(activity, 1));
     }
     labelView.setTextColor(index == selected ? active : inactive);
 
