@@ -19,7 +19,7 @@ public class PersistentMainActivity extends MainActivity {
       config.uiMode =
           (config.uiMode & ~Configuration.UI_MODE_NIGHT_MASK)
               | (dark ? Configuration.UI_MODE_NIGHT_YES : Configuration.UI_MODE_NIGHT_NO);
-      getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+      applyOverrideConfiguration(config);
     }
     CurrencyRateManager.refreshIfNeeded(this);
     super.onCreate(savedInstanceState);
