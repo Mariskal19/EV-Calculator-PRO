@@ -48,6 +48,7 @@ public final class LanguageManager {
     apply(c, getSelectedLanguage(c));
   }
 
+  @SuppressWarnings("deprecation")
   public static void apply(Context c, String l) {
     String s = isSupported(l) ? l : "en";
     Locale locale = Locale.forLanguageTag(s);
