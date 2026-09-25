@@ -71,16 +71,13 @@ public final class EdgeToEdgeHelper {
           Insets bars =
               insets.getInsets(WindowInsetsCompat.Type.systemBars()
                   | WindowInsetsCompat.Type.displayCutout());
-          // Keep the activity root fully edge-to-edge. The permanent bottom
-          // navigation is deliberately drawn behind the system navigation
-          // area, so applying the navigation-bar inset to this parent would
-          // move the entire bottom bar upward and can leave it offset when
-          // returning from another Activity.
+          // Keep the top edge-to-edge so the header/background reaches the
+          // status bar. Protect the sides and bottom from system UI instead.
           view.setPadding(
               left + bars.left,
               0,
               right + bars.right,
-              bottom);
+              bottom + bars.bottom);
           return insets;
         });
     ViewCompat.requestApplyInsets(root);
