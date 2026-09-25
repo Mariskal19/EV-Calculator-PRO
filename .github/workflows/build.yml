@@ -87,19 +87,6 @@ jobs:
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "App version: $version"
 
-      - name: Diagnose Java deprecations
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat > "$RUNNER_TEMP/deprecation-init.gradle" <<'EOF'
-          allprojects {
-            tasks.withType(JavaCompile).configureEach {
-              options.compilerArgs.add('-Xlint:deprecation')
-            }
-          }
-          EOF
-          gradle --no-daemon --init-script "$RUNNER_TEMP/deprecation-init.gradle" compileReleaseJavaWithJavac
-
       - name: Build Release APK and AAB
         env:
           EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/evcalculator-upload.jks
