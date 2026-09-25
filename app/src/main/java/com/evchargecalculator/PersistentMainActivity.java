@@ -38,6 +38,10 @@ public class PersistentMainActivity extends MainActivity {
         loadPreferences();
         applyTheme();
         calculate();
+        // Reapply edge-to-edge after rebuilding the root following a theme change.
+        // Without this, the new root can lose its system-bar inset listener and
+        // the bottom navigation may shift when returning with the system Back button.
+        EdgeToEdgeHelper.apply(this, dark);
       }
     }
   }
