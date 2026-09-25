@@ -384,19 +384,6 @@ public class MainActivity extends BaseNavigationActivity {
     }
     if (appVersion.startsWith("v") || appVersion.startsWith("V"))
       appVersion = appVersion.substring(1);
-    TextView privacyLink = tv("Política de privacidad", 13, dark ? Color.rgb(105, 175, 255) : blue);
-    privacyLink.setGravity(Gravity.CENTER);
-    privacyLink.setTypeface(null, 1);
-    privacyLink.setPadding(0, dp(4), 0, dp(4));
-    privacyLink.setClickable(true);
-    privacyLink.setFocusable(true);
-    privacyLink.setContentDescription(LanguageManager.t(this, "Política de privacidad"));
-    privacyLink.setOnClickListener(
-        v -> {
-          Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_URL));
-          startActivity(intent);
-        });
-    root.addView(privacyLink, new LinearLayout.LayoutParams(-1, dp(34)));
     TextView foot = tv("Powered by EV Calculator · v" + appVersion, 12, sub());
     foot.setGravity(Gravity.CENTER);
     root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
