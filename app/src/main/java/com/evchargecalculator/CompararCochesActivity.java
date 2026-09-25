@@ -311,7 +311,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
     private String marketName(String c) {
         if (c == null || c.trim().isEmpty()) return ""; String code = c.equalsIgnoreCase("UK") ? "GB" : c.toUpperCase(Locale.ROOT);
-        if (code.matches("[A-Z]{2}")) { Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)); String name = new Locale("", code).getDisplayCountry(displayLocale); if (name != null && !name.trim().isEmpty() && !name.equalsIgnoreCase(code)) return name; }
+        if (code.matches("[A-Z]{2}")) { Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)); String name = new Locale.Builder().setRegion(code).build().getDisplayCountry(displayLocale); if (name != null && !name.trim().isEmpty() && !name.equalsIgnoreCase(code)) return name; }
         return code;
     }
     private String marketFlag(String c) { if ("ES".equalsIgnoreCase(c)) return "🇪🇸"; if ("FR".equalsIgnoreCase(c)) return "🇫🇷"; if ("DE".equalsIgnoreCase(c)) return "🇩🇪"; if ("IT".equalsIgnoreCase(c)) return "🇮🇹"; if ("PT".equalsIgnoreCase(c)) return "🇵🇹"; if ("GB".equalsIgnoreCase(c) || "UK".equalsIgnoreCase(c)) return "🇬🇧"; if (c != null && c.matches("[A-Za-z]{2}")) { int a = Character.toUpperCase(c.charAt(0)) - 'A' + 127462; int b = Character.toUpperCase(c.charAt(1)) - 'A' + 127462; return new String(Character.toChars(a)) + new String(Character.toChars(b)); } return "🌐"; }
@@ -420,7 +420,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         LinearLayout body=new LinearLayout(this); body.setOrientation(LinearLayout.VERTICAL); body.setPadding(dp(12),dp(12),dp(12),dp(8)); body.addView(input,new LinearLayout.LayoutParams(-1,dp(50))); body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56))); body.addView(list,new LinearLayout.LayoutParams(-1,0,1));
         AlertDialog d=new AlertDialog.Builder(this).setView(body).create(); input.setTag(d);
         input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){input.post(refreshResults);}public void afterTextChanged(Editable e){}});
-        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE|WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);input.post(refreshResults);});});
+        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);input.post(refreshResults);});});
         d.show(); d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20)); input.requestFocus();
     }
 
