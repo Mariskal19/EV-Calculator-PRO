@@ -114,25 +114,8 @@ new_build = r'''    private void build() {
         summary.setPadding(0,dp(18),0,dp(8));
         content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
 
-        LinearLayout footer=new LinearLayout(this);
-        footer.setOrientation(LinearLayout.VERTICAL);
-        footer.setGravity(Gravity.CENTER);
-        footer.setPadding(dp(14),0,dp(14),dp(4));
-        String appVersion="1.0.4";
-        try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}
-        if(appVersion.startsWith("v")||appVersion.startsWith("V"))appVersion=appVersion.substring(1);
-        TextView foot=tv("Powered by EV Calculator · v"+appVersion,12,sub());
-        foot.setGravity(Gravity.CENTER);
-        footer.addView(foot,new LinearLayout.LayoutParams(-1,dp(24)));
-
-        if(selectedIds.isEmpty()){
-            Space emptyStateSpacer=new Space(this);
-            content.addView(emptyStateSpacer,new LinearLayout.LayoutParams(-1,dp(120)));
-        }
         Space footerSpacer=new Space(this);
         content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1));
-        content.addView(footer,new LinearLayout.LayoutParams(-1,dp(28)));
-
         scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2));
         scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
