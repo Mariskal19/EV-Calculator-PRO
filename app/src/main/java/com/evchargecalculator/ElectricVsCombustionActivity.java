@@ -236,7 +236,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     scroll.setFillViewport(true);
     LinearLayout root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
-    root.setPadding(0, 0, 0, dp(84));
+    root.setPadding(0, 0, 0, 0);
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
     setContentView(frame);
