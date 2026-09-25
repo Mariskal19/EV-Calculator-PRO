@@ -168,16 +168,7 @@ public class PrincipalActivity extends BaseNavigationActivity {
     privacy.setOnClickListener(
         v -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_URL))));
     root.addView(privacy, new LinearLayout.LayoutParams(-1, dp(34)));
-    String ver = "1.0.2";
-    try {
-      ver = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-    } catch (Exception ignored) {
-    }
-    if (ver.startsWith("v") || ver.startsWith("V")) ver = ver.substring(1);
-    TextView foot = tv("Powered by EV Calculator · v" + ver, 12, subColor());
-    foot.setGravity(Gravity.CENTER);
-    root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
-  }
+      }
 
   private TextView tv(String s, int sp, int c) {
     TextView t = new TextView(this);
