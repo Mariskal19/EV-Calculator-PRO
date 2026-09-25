@@ -24,6 +24,21 @@ public final class EdgeToEdgeHelper {
 
   public static void apply(Activity activity, boolean dark) {
     Window window = activity.getWindow();
+
+    // Keep Android's automatic darkening disabled for this activity. The app
+    // controls dark mode itself, so raster images (such as the comparison
+    // header) must retain their original brightness and colors.
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      window.getDecorView().setForceDarkAllowed(false);
+      window.setNavigationBarContrastEnforced(false);
+    }
+
+    // The Android system navigation area must use the same surface as the
+    // app's bottom navigation, including in dark mode.
+    window.setNavigationBarColor(
+        dark ? android.graphics.Color.rgb(16, 28, 42)
+             : android.graphics.Color.rgb(242, 246, 252));
+
     WindowCompat.setDecorFitsSystemWindows(window, false);
 
 
@@ -39,6 +54,9 @@ public final class EdgeToEdgeHelper {
     // container. Padding the decor container creates a visible strip between
     // the status bar and the screen header, exposing the window background.
     View root = content;
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      root.setForceDarkAllowed(false);
+    }
     if (content instanceof ViewGroup && ((ViewGroup) content).getChildCount() > 0) {
       root = ((ViewGroup) content).getChildAt(0);
     }
