@@ -371,7 +371,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     perValues.addView(fuelPer100, new LinearLayout.LayoutParams(0, dp(24), 1));
     results.addView(perValues);
     root.addView(results);
-    space(root, 14);
+    space(root, 78);
   }
 
   public void refreshLanguage() {
