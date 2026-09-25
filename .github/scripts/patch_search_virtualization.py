@@ -20,12 +20,11 @@ new_build = r'''    private void build() {
         hero.setClipChildren(false);
         hero.setBackgroundColor(Color.TRANSPARENT);
 
-        ImageView heroImage = new ImageView(this);
-        heroImage.setImageResource(R.drawable.cabecera_ev_calculator);
+        HeaderBitmapView heroImage = new HeaderBitmapView(this);
         heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
         heroImage.setAdjustViewBounds(false);
         heroImage.setTranslationY(-dp(10));
-        heroImage.setColorFilter(dark ? 0x88000000 : Color.TRANSPARENT, android.graphics.PorterDuff.Mode.SRC_OVER);
+
         hero.addView(heroImage, new FrameLayout.LayoutParams(-1, dp(260)));
 
         View topFade = new View(this);
