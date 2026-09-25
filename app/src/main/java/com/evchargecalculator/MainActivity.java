@@ -62,7 +62,7 @@ public class MainActivity extends BaseNavigationActivity {
   @Override
   public void onCreate(Bundle b) {
     super.onCreate(b);
-    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+    
     prefs = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE);
     dark =
         prefs.contains(KEY_DARK_THEME)
