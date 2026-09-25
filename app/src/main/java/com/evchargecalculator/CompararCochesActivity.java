@@ -314,7 +314,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
     private String marketName(String c) {
         if (c == null || c.trim().isEmpty()) return ""; String code = c.equalsIgnoreCase("UK") ? "GB" : c.toUpperCase(Locale.ROOT);
-        if (code.matches("[A-Z]{2}")) { Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)); String name = new Locale("", code).getDisplayCountry(displayLocale); if (name != null && !name.trim().isEmpty() && !name.equalsIgnoreCase(code)) return name; }
+        if (code.matches("[A-Z]{2}")) { Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)); String name = new Locale.Builder().setRegion(code).build().getDisplayCountry(displayLocale); if (name != null && !name.trim().isEmpty() && !name.equalsIgnoreCase(code)) return name; }
         return code;
     }
     private String marketFlag(String c) { if ("ES".equalsIgnoreCase(c)) return "🇪🇸"; if ("FR".equalsIgnoreCase(c)) return "🇫🇷"; if ("DE".equalsIgnoreCase(c)) return "🇩🇪"; if ("IT".equalsIgnoreCase(c)) return "🇮🇹"; if ("PT".equalsIgnoreCase(c)) return "🇵🇹"; if ("GB".equalsIgnoreCase(c) || "UK".equalsIgnoreCase(c)) return "🇬🇧"; if (c != null && c.matches("[A-Za-z]{2}")) { int a = Character.toUpperCase(c.charAt(0)) - 'A' + 127462; int b = Character.toUpperCase(c.charAt(1)) - 'A' + 127462; return new String(Character.toChars(a)) + new String(Character.toChars(b)); } return "🌐"; }
