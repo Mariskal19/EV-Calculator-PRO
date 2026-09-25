@@ -123,7 +123,10 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         lastCurrency = newCurrency;
         if (!vehicles.isEmpty()) {
             loadSelection();
-            if (themeChanged || languageChanged || currencyChanged) build();
+            if (themeChanged || languageChanged || currencyChanged) {
+                build();
+                EdgeToEdgeHelper.apply(this, dark);
+            }
             rebuild();
         }
     }
