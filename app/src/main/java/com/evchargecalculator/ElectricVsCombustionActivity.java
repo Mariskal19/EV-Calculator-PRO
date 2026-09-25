@@ -93,6 +93,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
         load();
         applyCurrency();
         calculate();
+        EdgeToEdgeHelper.apply(this, dark);
         return;
       }
       applyCurrency();
