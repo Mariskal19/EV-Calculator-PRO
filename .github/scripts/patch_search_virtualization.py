@@ -121,29 +121,17 @@ new_build = r'''    private void build() {
         String appVersion="1.0.4";
         try{appVersion=getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception ignored){}
         if(appVersion.startsWith("v")||appVersion.startsWith("V"))appVersion=appVersion.substring(1);
-        TextView privacyLink=tv("Política de privacidad",13,dark?Color.rgb(105,175,255):blue);
-        privacyLink.setGravity(Gravity.CENTER);
-        privacyLink.setTypeface(null,Typeface.BOLD);
-        privacyLink.setClickable(true);
-        privacyLink.setFocusable(true);
-        privacyLink.setContentDescription("Política de privacidad");
-        privacyLink.setOnClickListener(v->startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://mariskal19.github.io/EV-Calculator-PRO-Privacy/"))));
-        footer.addView(privacyLink,new LinearLayout.LayoutParams(-1,dp(30)));
         TextView foot=tv("Powered by EV Calculator · v"+appVersion,12,sub());
         foot.setGravity(Gravity.CENTER);
         footer.addView(foot,new LinearLayout.LayoutParams(-1,dp(24)));
 
-        // When no car is selected the page content is short, so the privacy
-        // link would otherwise sit too close to the vehicle selector. Add a
-        // fixed breathing space only in that empty state; selected-car views
-        // keep their existing footer position.
         if(selectedIds.isEmpty()){
             Space emptyStateSpacer=new Space(this);
             content.addView(emptyStateSpacer,new LinearLayout.LayoutParams(-1,dp(120)));
         }
         Space footerSpacer=new Space(this);
         content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1));
-        content.addView(footer,new LinearLayout.LayoutParams(-1,dp(62)));
+        content.addView(footer,new LinearLayout.LayoutParams(-1,dp(28)));
 
         scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2));
         scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
