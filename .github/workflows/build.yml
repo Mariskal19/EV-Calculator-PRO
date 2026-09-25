@@ -90,7 +90,7 @@ jobs:
       - name: Build Release APK and AAB
         env:
           EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/evcalculator-upload.jks
-        run: gradle --no-daemon clean assembleRelease bundleRelease
+        run: gradle --no-daemon --warning-mode all clean assembleRelease bundleRelease
 
       - name: Verify release outputs
         shell: bash
