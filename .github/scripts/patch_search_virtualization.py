@@ -149,9 +149,7 @@ new_build = r'''    private void build() {
         scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
-        getWindow().setStatusBarColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
-        getWindow().setNavigationBarColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
-        getWindow().getDecorView().setSystemUiVisibility(dark?0:View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        EdgeToEdgeHelper.apply(this, dark);
     }
 '''
 
