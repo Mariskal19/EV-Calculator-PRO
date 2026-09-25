@@ -88,6 +88,11 @@ public final class BottomNavigationHelper {
     ImageView iconView = new ImageView(activity);
     iconView.setImageResource(icon);
     iconView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    // El icono frontal de Coches de la opción 2 es más ancho que alto.
+    // Compensamos el PNG cuadrado para conservar esa proporción visual en la barra.
+    if (index == 2) {
+      iconView.setScaleX(1.15f);
+    }
 
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
