@@ -3,15 +3,15 @@ plugins {
 }
 
 android {
-    namespace 'com.evchargecalculator'
-    compileSdk 36
+    namespace = 'com.evchargecalculator'
+    compileSdk = 36
 
     defaultConfig {
-        applicationId 'com.evcalculatorpro'
-        minSdk 23
-        targetSdk 36
-        versionCode 57
-        versionName '1.0.4'
+        applicationId = 'com.evcalculatorpro'
+        minSdk = 23
+        targetSdk = 36
+        versionCode = 57
+        versionName = '1.0.4'
     }
 
     signingConfigs {
@@ -22,10 +22,10 @@ android {
             def keyPasswordValue = System.getenv('EV_CALCULATOR_KEY_PASSWORD')
 
             if (keystorePath && keystorePassword && keyAliasValue && keyPasswordValue) {
-                storeFile file(keystorePath)
-                storePassword keystorePassword
-                keyAlias keyAliasValue
-                keyPassword keyPasswordValue
+                storeFile = file(keystorePath)
+                storePassword = keystorePassword
+                keyAlias = keyAliasValue
+                keyPassword = keyPasswordValue
             }
         }
     }
@@ -39,9 +39,9 @@ android {
             if (!hasReleaseSigning) {
                 throw new GradleException('Release signing is not configured. Configure the EV_CALCULATOR_KEYSTORE_* environment variables before building a release.')
             }
-            signingConfig signingConfigs.release
-            minifyEnabled true
-            shrinkResources true
+            signingConfig = signingConfigs.release
+            minifyEnabled = true
+            shrinkResources = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
