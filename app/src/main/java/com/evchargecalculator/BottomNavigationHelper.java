@@ -3,11 +3,12 @@ package com.evchargecalculator;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,14 +21,13 @@ public final class BottomNavigationHelper {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
-    bar.setPadding(dp(activity, 5), dp(activity, 3), dp(activity, 5), dp(activity, 3));
+    bar.setPadding(0, dp(activity, 6), 0, dp(activity, 4));
 
-    GradientDrawable bg = new GradientDrawable();
-    bg.setColor(dark ? Color.rgb(21, 31, 42) : Color.WHITE);
-    bg.setCornerRadius(dp(activity, 20));
-    bg.setStroke(dp(activity, 1), dark ? Color.rgb(48, 64, 84) : Color.rgb(225, 231, 238));
-    bar.setBackground(bg);
-    bar.setElevation(dp(activity, 10));
+    // Google Play-style full-width navigation surface: no outer margins,
+    // rounded card or border. The system navigation area uses the same surface
+    // color so the bottom of the screen reads as one continuous navigation bar.
+    bar.setBackgroundColor(dark ? Color.rgb(16, 28, 42) : Color.rgb(242, 246, 252));
+    bar.setElevation(0);
 
     addItem(activity, bar, R.drawable.ic_nav_charge, "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
@@ -85,30 +85,48 @@ public final class BottomNavigationHelper {
     item.setOnClickListener(listener);
     item.setContentDescription(label);
 
+    // Google Play-style selected capsule behind the icon.
+    FrameLayout iconSlot = new FrameLayout(activity);
+    iconSlot.setGravity(Gravity.CENTER);
+
     ImageView iconView = new ImageView(activity);
     iconView.setImageResource(icon);
     iconView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    // El icono frontal de Coches de la opción 2 es más ancho que alto.
-    // Compensamos el PNG cuadrado para conservar esa proporción visual en la barra.
+
+    // The Coches PNG is square while the artwork is intentionally wider.
     if (index == 2) {
       iconView.setScaleX(1.22f);
     }
 
+    int active = dark ? Color.rgb(105, 175, 255) : Color.rgb(46, 107, 255);
+    int inactive = dark ? Color.rgb(180, 190, 205) : Color.rgb(75, 80, 88);
+
+    if (index == selected) {
+      GradientDrawable pill = new GradientDrawable();
+      pill.setColor(dark ? Color.rgb(35, 67, 91) : Color.rgb(207, 233, 255));
+      pill.setCornerRadius(dp(activity, 24));
+      iconSlot.setBackground(pill);
+    }
+
+    iconView.setColorFilter(new PorterDuffColorFilter(
+        index == selected ? active : inactive, PorterDuff.Mode.SRC_IN));
+
+    iconSlot.addView(iconView, new FrameLayout.LayoutParams(
+        dp(activity, 28), dp(activity, 28), Gravity.CENTER));
+
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
-    labelView.setTextSize(11);
+    labelView.setTextSize(14);
     labelView.setTypeface(null, index == selected ? 1 : 0);
     labelView.setGravity(Gravity.CENTER);
     labelView.setIncludeFontPadding(false);
-
-    int active = dark ? Color.rgb(105, 175, 255) : Color.rgb(46, 107, 255);
-    int inactive = dark ? Color.rgb(180, 190, 205) : Color.rgb(90, 111, 137);
-    iconView.setColorFilter(new PorterDuffColorFilter(index == selected ? active : inactive, PorterDuff.Mode.SRC_IN));
     labelView.setTextColor(index == selected ? active : inactive);
 
-    item.addView(iconView, new LinearLayout.LayoutParams(-1, dp(activity, 27)));
-    item.addView(labelView, new LinearLayout.LayoutParams(-1, dp(activity, 18)));
-    bar.addView(item, new LinearLayout.LayoutParams(0, dp(activity, 48), 1));
+    item.addView(iconSlot, new LinearLayout.LayoutParams(
+        dp(activity, 64), dp(activity, 34), 0));
+    item.addView(labelView, new LinearLayout.LayoutParams(
+        -1, dp(activity, 24), 0));
+    bar.addView(item, new LinearLayout.LayoutParams(0, -1, 1));
   }
 
   private static int dp(Activity activity, int value) {
