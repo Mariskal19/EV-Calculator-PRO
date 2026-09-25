@@ -371,10 +371,6 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     perValues.addView(fuelPer100, new LinearLayout.LayoutParams(0, dp(24), 1));
     results.addView(perValues);
     root.addView(results);
-    Space bottom = new Space(this);
-    TextView foot = tv("Powered by EV Calculator · v" + version(), 12, sub());
-    foot.setGravity(Gravity.CENTER);
-    root.addView(foot, new LinearLayout.LayoutParams(-1, dp(28)));
   }
 
   public void refreshLanguage() {
