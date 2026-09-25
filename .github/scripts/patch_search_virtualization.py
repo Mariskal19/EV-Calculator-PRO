@@ -21,8 +21,6 @@ new_build = r'''    private void build() {
         hero.setBackgroundColor(Color.TRANSPARENT);
 
         HeaderBitmapView heroImage = new HeaderBitmapView(this);
-        heroImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        heroImage.setAdjustViewBounds(false);
         heroImage.setTranslationY(-dp(10));
 
         hero.addView(heroImage, new FrameLayout.LayoutParams(-1, dp(260)));
