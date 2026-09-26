@@ -1,0 +1,1 @@
+Trigger build for logo-only Stripe and PayPal support buttons.
