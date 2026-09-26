@@ -83,7 +83,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     button.setAllCaps(false);
     button.setTypeface(null, 1);
     button.setGravity(Gravity.CENTER);
-    button.setBackground(bg(Color.rgb(214, 55, 72), 16));
+    button.setBackground(bg(Color.rgb(99, 91, 255), 16));
     button.setPadding(dp(12), 0, dp(12), 0);
     button.setOnClickListener(v -> openStripe());
     return button;
