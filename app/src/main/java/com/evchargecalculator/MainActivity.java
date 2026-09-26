@@ -377,7 +377,7 @@ public class MainActivity extends BaseNavigationActivity {
     LinearLayout.LayoutParams c4Params =
         (LinearLayout.LayoutParams) c4.getLayoutParams();
     c4Params.bottomMargin = dp(14);
-    root.addView(c4, c4Params);
+    root.addView(c4);
         setup();
   }
 
