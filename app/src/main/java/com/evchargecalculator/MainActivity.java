@@ -374,8 +374,9 @@ public class MainActivity extends BaseNavigationActivity {
     statusBox.addView(statusTimeR, new LinearLayout.LayoutParams(dp(90), dp(48)));
     spaceIn(c4, 10);
     c4.addView(statusBox, new LinearLayout.LayoutParams(-1, dp(66)));
-    root.addView(c4);
-    space(14);
+    LinearLayout.LayoutParams c4Params = new LinearLayout.LayoutParams(-1, -2);
+    c4Params.bottomMargin = dp(14);
+    root.addView(c4, c4Params);
         setup();
   }
 
