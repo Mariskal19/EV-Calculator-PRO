@@ -1,0 +1,1 @@
+Trigger build for centered Stripe and PayPal logo buttons.
