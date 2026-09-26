@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T11:03:19.628Z",
+  "updatedAt": "2026-09-26T11:22:00Z",
   "vehicles": [
     {
       "gaiaId": "abarth-500e-scorpionissima-2025",
@@ -2348,35 +2348,6 @@
       "weightKg": 1750,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
-      "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
-    },
-    {
-      "gaiaId": "kia-ev3-long-range-2025",
-      "make": "Kia",
-      "model": "EV3",
-      "version": "Long Range",
-      "year": 2025,
-      "market": "ES",
-      "currency": "EUR",
-      "price": 40990,
-      "batteryKwh": 85,
-      "usableBatteryKwh": 81.4,
-      "batteryType": "NMC",
-      "batteryChemistry": "NMC",
-      "wltpKm": 605,
-      "consumptionKwh100": 15,
-      "powerKw": 150,
-      "drive": null,
-      "drivetrain": null,
-      "acKw": 11,
-      "dcKw": 128,
-      "charge10to80Min": null,
-      "acceleration0to100Sec": 7.7,
-      "trunkLiters": 460,
-      "weightKg": 1750,
-      "source": "Gaia Charge EVDB",
-      "arrivalYear": 2025,
       "auditDate": "AUTO",
       "lastUpdated": "AUTO"
     },
