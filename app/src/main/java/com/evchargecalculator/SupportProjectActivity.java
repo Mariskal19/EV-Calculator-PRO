@@ -70,34 +70,24 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     return v;
   }
 
-  private Button stripeButton() {
-    Button button = new Button(this);
+  private ImageButton stripeButton() {
+    ImageButton button = new ImageButton(this);
     button.setContentDescription("Stripe");
-    button.setTextSize(16);
-    button.setTextColor(Color.WHITE);
-    button.setAllCaps(false);
-    button.setTypeface(null, 1);
-    button.setGravity(Gravity.CENTER);
     button.setBackground(bg(Color.rgb(99, 91, 255), 16));
-    button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_stripe_logo, 0, 0, 0);
-    button.setCompoundDrawablePadding(dp(8));
-    button.setPadding(dp(8), 0, dp(8), 0);
+    button.setImageResource(R.drawable.ic_stripe_logo);
+    button.setScaleType(ImageView.ScaleType.CENTER);
+    button.setPadding(dp(12), dp(8), dp(12), dp(8));
     button.setOnClickListener(v -> openStripe());
     return button;
   }
 
-  private Button paypalButton() {
-    Button button = new Button(this);
+  private ImageButton paypalButton() {
+    ImageButton button = new ImageButton(this);
     button.setContentDescription("PayPal");
-    button.setTextSize(16);
-    button.setTextColor(Color.WHITE);
-    button.setAllCaps(false);
-    button.setTypeface(null, 1);
-    button.setGravity(Gravity.CENTER);
     button.setBackground(bg(Color.rgb(0, 48, 135), 16));
-    button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_paypal_logo, 0, 0, 0);
-    button.setCompoundDrawablePadding(dp(8));
-    button.setPadding(dp(8), 0, dp(8), 0);
+    button.setImageResource(R.drawable.ic_paypal_logo);
+    button.setScaleType(ImageView.ScaleType.CENTER);
+    button.setPadding(dp(12), dp(8), dp(12), dp(8));
     button.setOnClickListener(v -> openPaypal());
     return button;
   }
@@ -236,16 +226,19 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     paymentBox.addView(paymentBody);
 
     LinearLayout paymentButtons = new LinearLayout(this);
-    paymentButtons.setOrientation(LinearLayout.HORIZONTAL);
+    paymentButtons.setOrientation(LinearLayout.VERTICAL);
     paymentButtons.setGravity(Gravity.CENTER);
-    Button stripe = stripeButton();
-    LinearLayout.LayoutParams stripeLp = new LinearLayout.LayoutParams(dp(150), dp(52));
+
+    ImageButton stripe = stripeButton();
+    LinearLayout.LayoutParams stripeLp = new LinearLayout.LayoutParams(dp(180), dp(52));
     paymentButtons.addView(stripe, stripeLp);
-    Button paypal = paypalButton();
-    LinearLayout.LayoutParams paypalLp = new LinearLayout.LayoutParams(dp(150), dp(52));
-    paypalLp.leftMargin = dp(12);
+
+    ImageButton paypal = paypalButton();
+    LinearLayout.LayoutParams paypalLp = new LinearLayout.LayoutParams(dp(180), dp(52));
+    paypalLp.topMargin = dp(12);
     paymentButtons.addView(paypal, paypalLp);
-    paymentBox.addView(paymentButtons, new LinearLayout.LayoutParams(-1, dp(52)));
+
+    paymentBox.addView(paymentButtons, new LinearLayout.LayoutParams(-1, dp(116)));
 
     TextView methods = label(
         tr(
