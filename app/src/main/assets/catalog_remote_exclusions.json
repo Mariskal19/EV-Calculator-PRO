@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T14:35:00+02:00",
+  "updatedAt": "2026-09-26T14:50:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -81,6 +81,171 @@
       "gaiaId": "skoda-enyaq-iv-80-2024",
       "reason": "Duplicate of protected Škoda Enyaq 85 2024.",
       "protectedMatch": "Škoda Enyaq 85 2024"
+    },
+    {
+      "gaiaId": "f",
+      "reason": "o",
+      "protectedMatch": "r"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "F",
+      "reason": "o",
+      "protectedMatch": "r"
+    },
+    {
+      "gaiaId": "b",
+      "reason": "y",
+      "protectedMatch": "d"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "B",
+      "reason": "Y",
+      "protectedMatch": "D"
+    },
+    {
+      "gaiaId": "c",
+      "reason": "i",
+      "protectedMatch": "t"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "C",
+      "reason": "i",
+      "protectedMatch": "t"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "t",
+      "reason": "e",
+      "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "D",
+      "reason": "u",
+      "protectedMatch": "p"
+    },
+    {
+      "gaiaId": "T",
+      "reason": "e",
+      "protectedMatch": "s"
     }
   ]
 }
