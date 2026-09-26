@@ -8,7 +8,7 @@ on:
       - "tools/update_protected_catalog.py"
       - ".github/workflows/catalog-auto-update.yml"
   schedule:
-    - cron: "17 4 * * *"
+    - cron: "17 4 * * *" # Daily automatic catalog sync
 
 permissions:
   contents: write
