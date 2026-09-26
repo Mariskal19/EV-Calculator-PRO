@@ -398,7 +398,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             @Override public long getItemId(int position){return position;}
             @Override public View getView(int position,View convertView,android.view.ViewGroup parent){
                 TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(CompararCochesActivity.this);
-                item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); item.setPadding(dp(16),dp(6),dp(42),dp(6)); item.setLineSpacing(0,1.05f);
+                item.setLayoutParams(new android.widget.AbsListView.LayoutParams(-1, dp(60)));\n                item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); item.setPadding(dp(16),dp(6),dp(42),dp(6)); item.setLineSpacing(0,1.05f);
                 Vehicle v=results.get(position);
                 SpannableString styled=new SpannableString(searchLabel(v)); int nl=styled.toString().indexOf('\n');
                 if(nl>0){styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);}
