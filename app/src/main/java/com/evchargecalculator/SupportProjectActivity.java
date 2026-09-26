@@ -239,13 +239,13 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     paymentButtons.setOrientation(LinearLayout.HORIZONTAL);
     paymentButtons.setGravity(Gravity.CENTER);
     Button stripe = stripeButton();
-    LinearLayout.LayoutParams stripeLp = new LinearLayout.LayoutParams(0, dp(52), 1f);
+    LinearLayout.LayoutParams stripeLp = new LinearLayout.LayoutParams(dp(150), dp(52));
     paymentButtons.addView(stripe, stripeLp);
     Button paypal = paypalButton();
-    LinearLayout.LayoutParams paypalLp = new LinearLayout.LayoutParams(0, dp(52), 1f);
-    paypalLp.leftMargin = dp(10);
+    LinearLayout.LayoutParams paypalLp = new LinearLayout.LayoutParams(dp(150), dp(52));
+    paypalLp.leftMargin = dp(12);
     paymentButtons.addView(paypal, paypalLp);
-    paymentBox.addView(paymentButtons);
+    paymentBox.addView(paymentButtons, new LinearLayout.LayoutParams(-1, dp(52)));
 
     TextView methods = label(
         tr(
