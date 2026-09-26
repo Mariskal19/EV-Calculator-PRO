@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json, os, re, sys
+import json, os, re, sys, unicodedata
 from pathlib import Path
 from urllib.request import Request, urlopen
 
@@ -42,17 +42,40 @@ def key(v):
         str(v.get("year") or 0), battery_key(v), norm(v.get("version"))
     ])
 
+# Known naming variations between catalog sources. These aliases are deliberately
+# conservative: they only collapse names that identify the same model family, while
+# preserving body styles that are sold as distinct models (e.g. Q6 vs Q6 Sportback).
+MODEL_ALIASES = {
+    "audi": {
+        "q6 suv e-tron": "q6 e-tron",
+        "q6 e tron": "q6 e-tron",
+    },
+    "volkswagen": {
+        "id buzz": "id.buzz",
+        "id buzz long": "id.buzz",
+    },
+}
+
+def canonical_text(value):
+    text = str(value or "").strip().lower()
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = re.sub(r"\s+", " ", text)
+    return text
+
 def model_key(v):
-    """Normalize model names, including names that repeat the make (e.g. Mazda6e vs 6e)."""
-    make = norm(v.get("make"))
-    model = norm(v.get("model"))
+    """Build a conservative canonical model identity across source naming styles."""
+    make = canonical_text(v.get("make"))
+    model = canonical_text(v.get("model"))
     if make and model.startswith(make):
         model = model[len(make):].strip(" -_/")
+    model = MODEL_ALIASES.get(make, {}).get(model, model)
+    # Treat punctuation/spacing variants as identical: ID.3 == ID-3 == ID 3.
     return re.sub(r"[^a-z0-9]+", "", model)
 
 def tech_duplicate(a, b):
     """Return True when a source record is very likely the same configuration already known."""
-    if norm(a.get("make")) != norm(b.get("make")):
+    if canonical_text(a.get("make")) != canonical_text(b.get("make")):
         return False
     if model_key(a) != model_key(b):
         return False
@@ -75,7 +98,7 @@ def tech_duplicate(a, b):
     power_close = close_num("powerKw", 8.0)
     range_close = close_num("wltpKm", 12)
 
-    da, db = norm(a.get("drive") or a.get("drivetrain")), norm(b.get("drive") or b.get("drivetrain"))
+    da, db = canonical_text(a.get("drive") or a.get("drivetrain")), canonical_text(b.get("drive") or b.get("drivetrain"))
     drive_compatible = not da or not db or da == db
 
     # Conservative technical equivalence: never merge clearly different batteries,
