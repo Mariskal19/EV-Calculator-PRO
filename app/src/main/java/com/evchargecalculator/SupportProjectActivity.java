@@ -16,6 +16,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
    * The link should be configured in Stripe to let the donor choose the amount.
    */
   private static final String STRIPE_PAYMENT_LINK = "";
+  private static final String PAYPAL_PAYMENT_LINK = "";
 
   @Override protected int getBottomNavigationIndex() { return 3; }
 
@@ -89,6 +90,8 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     return button;
   }
 
+  private Button paypalButton() { Button b = new Button(this); b.setText("🅿️  " + tr("Apoyar con PayPal","Support with PayPal","Soutenir avec PayPal","Mit PayPal unterstützen","Supporta con PayPal","Apoiar com PayPal")); b.setTextSize(16); b.setTextColor(Color.WHITE); b.setAllCaps(false); b.setTypeface(null, 1); b.setGravity(Gravity.CENTER); b.setBackground(bg(Color.rgb(0,112,186),16)); b.setPadding(dp(12),0,dp(12),0); b.setOnClickListener(v -> openPaypal()); return b; }
+
   private void openStripe() {
     if (STRIPE_PAYMENT_LINK.isEmpty()) {
       Toast.makeText(this, tr(
@@ -114,6 +117,8 @@ public class SupportProjectActivity extends BaseNavigationActivity {
           "Não foi possível abrir o link de pagamento."), Toast.LENGTH_SHORT).show();
     }
   }
+
+  private void openPaypal() { if (PAYPAL_PAYMENT_LINK.isEmpty()) { Toast.makeText(this, "PayPal link not configured yet.", Toast.LENGTH_SHORT).show(); return; } try { startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PAYPAL_PAYMENT_LINK))); } catch (Exception ignored) {} }
 
   @Override protected void onCreate(Bundle state) {
     super.onCreate(state);
@@ -222,6 +227,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
 
     Button stripe = stripeButton();
     paymentBox.addView(stripe, new LinearLayout.LayoutParams(-1, dp(52)));
+    Button paypal = paypalButton(); LinearLayout.LayoutParams pp = new LinearLayout.LayoutParams(-1, dp(52)); pp.topMargin = dp(10); paymentBox.addView(paypal, pp);
 
     TextView methods = label(
         tr(
