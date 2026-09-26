@@ -14,8 +14,37 @@ import android.widget.FrameLayout;
  */
 public abstract class BaseNavigationActivity extends Activity {
 
+  private String appliedLanguage;
+  private boolean appliedDarkTheme;
+  private String appliedCurrency;
+
   /** 0 = Cargar, 1 = Coste, 2 = Coches, 3 = Más. */
   protected abstract int getBottomNavigationIndex();
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    String language = LanguageManager.getSelectedLanguage(this);
+    boolean dark = isDarkTheme();
+    String currency = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE)
+        .getString("app_currency", "EUR");
+
+    if (appliedLanguage == null) {
+      appliedLanguage = language;
+      appliedDarkTheme = dark;
+      appliedCurrency = currency;
+      return;
+    }
+
+    // Settings are changed in another Activity. When the user presses the
+    // system Back button, refresh this screen so the new preferences are
+    // visible immediately instead of leaving the old UI cached underneath.
+    if (!language.equals(appliedLanguage)
+        || dark != appliedDarkTheme
+        || !currency.equals(appliedCurrency)) {
+      recreate();
+    }
+  }
 
   @Override
   public void setContentView(View view) {
