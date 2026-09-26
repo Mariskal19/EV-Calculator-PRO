@@ -6951,7 +6951,7 @@
       "version": "Standard",
       "year": 2024,
       "arrivalYear": 2024,
-      "batteryKwh": 49,
+      "batteryKwh": 51,
       "usableBatteryKwh": 50.8,
       "batteryType": "LFP",
       "wltpKm": 350,
@@ -6966,10 +6966,10 @@
       "weightKg": null,
       "photo": null,
       "source": "MG España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-26",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
+      "auditDate": "2026-09-26",
+      "auditDateTime": "2026-09-26T15:00:00+02:00",
       "drive": "RWD"
     },
     {
@@ -8484,7 +8484,7 @@
       "drive": "AWD",
       "wltpKm": 601,
       "consumptionKwh100": 20.5,
-      "usableBatteryKwh": 107,
+      "usableBatteryKwh": 106,
       "batteryChemistry": "li-ion",
       "drivetrain": "AWD",
       "acKw": 11,
@@ -8493,9 +8493,9 @@
       "trunkLiters": 484,
       "weightKg": 2403,
       "source": "Polestar España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "lastUpdated": "2026-09-26",
+      "auditDate": "2026-09-26",
+      "auditDateTime": "2026-09-26T15:00:00+02:00"
     },
     {
       "make": "Polestar",
