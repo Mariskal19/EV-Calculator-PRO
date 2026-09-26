@@ -72,7 +72,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
 
   private Button stripeButton() {
     Button button = new Button(this);
-    button.setText("☕  " + tr(
+    button.setText("Stripe  ·  " + tr(
         "Apoyar con Stripe",
         "Support with Stripe",
         "Soutenir avec Stripe",
