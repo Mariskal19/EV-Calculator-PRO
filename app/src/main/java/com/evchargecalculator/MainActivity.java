@@ -175,7 +175,7 @@ public class MainActivity extends BaseNavigationActivity {
     scroll.setFillViewport(true);
     root = new LinearLayout(this);
     root.setOrientation(LinearLayout.VERTICAL);
-    root.setPadding(0, 0, 0, 0);
+    root.setPadding(0, 0, 0, dp(14));
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
     setContentView(frame);
@@ -374,9 +374,6 @@ public class MainActivity extends BaseNavigationActivity {
     statusBox.addView(statusTimeR, new LinearLayout.LayoutParams(dp(90), dp(48)));
     spaceIn(c4, 10);
     c4.addView(statusBox, new LinearLayout.LayoutParams(-1, dp(66)));
-    LinearLayout.LayoutParams c4Params =
-        (LinearLayout.LayoutParams) c4.getLayoutParams();
-    c4Params.bottomMargin = dp(14);
     root.addView(c4);
         setup();
   }
