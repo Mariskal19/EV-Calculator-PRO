@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T13:30:00+02:00",
+  "updatedAt": "2026-09-26T13:45:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -26,6 +26,16 @@
       "gaiaId": "opel-grandland-electric-73-kwh-2024",
       "reason": "Duplicate of protected Opel Grandland 2024 73 kWh configuration under alternate model naming.",
       "protectedMatch": "Opel Grandland Electric 73 kWh 2024"
+    },
+    {
+      "gaiaId": "peugeot-e-3008-98-gt-2025",
+      "reason": "Duplicate of protected Peugeot E-3008 2025 98 kWh 170 kW FWD configuration; external trim naming differs only.",
+      "protectedMatch": "Peugeot E-3008 230 Long Range 170 kW FWD 98 kWh 2025"
+    },
+    {
+      "gaiaId": "peugeot-e-5008-97-gt-long-range-2025",
+      "reason": "Duplicate of protected Peugeot E-5008 2025 Long Range 98 kWh 170 kW FWD configuration; external battery naming differs only.",
+      "protectedMatch": "Peugeot E-5008 230 CV 170 kW 98 kWh FWD 2025"
     }
   ]
 }
