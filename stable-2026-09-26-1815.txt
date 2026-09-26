@@ -1,0 +1,3 @@
+ESTABLE — 2026-09-26 18:15
+Pantalla Apoyar EV Calculator PRO: Stripe y PayPal apilados verticalmente, centrados en la tarjeta, solo logos oficiales, sin texto visible.
+Commit funcional: ac03a438ff90370aa9b9de2a2a40567581097a18
