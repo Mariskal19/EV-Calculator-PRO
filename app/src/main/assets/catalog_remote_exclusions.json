@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T14:50:00+02:00",
+  "updatedAt": "2026-09-26T15:05:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -246,6 +246,71 @@
       "gaiaId": "T",
       "reason": "e",
       "protectedMatch": "s"
+    },
+    {
+      "gaiaId": "byd-atto-2-standard-2025",
+      "reason": "Duplicate of protected BYD ATTO 2 2025 configuration; external trim naming differs only.",
+      "protectedMatch": "BYD ATTO 2 Active Urban Edition 2025"
+    },
+    {
+      "gaiaId": "citroen-c5-aircross-long-range-2025",
+      "reason": "Duplicate of protected Citroën C5 Aircross 2025 long-range configuration; external battery accounting differs but core configuration matches.",
+      "protectedMatch": "Citroën C5 Aircross Long Range 2025"
+    },
+    {
+      "gaiaId": "ford-puma-gen-e-2025",
+      "reason": "Duplicate of protected Ford Puma Gen-E 2025 configuration; external version naming differs only.",
+      "protectedMatch": "Ford Puma Gen-E 123 kW 2025"
+    },
+    {
+      "gaiaId": "kia-ev4-fastback-583-kwh-2025",
+      "reason": "Duplicate of protected Kia EV4 58.3 kWh Fastback 2025 configuration.",
+      "protectedMatch": "Kia EV4 Fastback 58.3 kWh 2025"
+    },
+    {
+      "gaiaId": "kia-ev4-fastback-814-kwh-2025",
+      "reason": "Duplicate of protected Kia EV4 81.4 kWh Fastback 2025 configuration.",
+      "protectedMatch": "Kia EV4 Fastback 81.4 kWh 2025"
+    },
+    {
+      "gaiaId": "tesla-model-3-long-range-awd-2024",
+      "reason": "Duplicate of protected Tesla Model 3 Long Range AWD 2024 configuration.",
+      "protectedMatch": "Tesla Model 3 Long Range AWD 2024"
+    },
+    {
+      "gaiaId": "tesla-model-3-long-range-awd-2025",
+      "reason": "Duplicate of protected Tesla Model 3 Long Range AWD 2025 configuration.",
+      "protectedMatch": "Tesla Model 3 Long Range AWD 2025"
+    },
+    {
+      "gaiaId": "tesla-model-3-premium-awd-2026",
+      "reason": "Duplicate of protected Tesla Model 3 Premium AWD 2026 configuration.",
+      "protectedMatch": "Tesla Model 3 Premium AWD 2026"
+    },
+    {
+      "gaiaId": "tesla-model-3-premium-rwd-2026",
+      "reason": "Duplicate of protected Tesla Model 3 Premium RWD 2026 configuration.",
+      "protectedMatch": "Tesla Model 3 Premium RWD 2026"
+    },
+    {
+      "gaiaId": "tesla-model-y-long-range-awd-2024",
+      "reason": "Duplicate of protected Tesla Model Y Long Range AWD 2024 configuration.",
+      "protectedMatch": "Tesla Model Y Long Range AWD 2024"
+    },
+    {
+      "gaiaId": "tesla-model-y-long-range-awd-2025",
+      "reason": "Duplicate of protected Tesla Model Y Long Range AWD 2025 configuration.",
+      "protectedMatch": "Tesla Model Y Long Range AWD 2025"
+    },
+    {
+      "gaiaId": "tesla-model-y-rwd-2024",
+      "reason": "Duplicate of protected Tesla Model Y RWD 2024 configuration.",
+      "protectedMatch": "Tesla Model Y RWD 2024"
+    },
+    {
+      "gaiaId": "tesla-model-y-rwd-2025",
+      "reason": "Duplicate of protected Tesla Model Y RWD 2025 configuration.",
+      "protectedMatch": "Tesla Model Y RWD 2025"
     }
   ]
 }
