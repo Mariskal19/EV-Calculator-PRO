@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T13:20:00+02:00",
+  "updatedAt": "2026-09-26T13:30:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -16,6 +16,16 @@
       "gaiaId": "kia-ev4-814-kwh-2025",
       "reason": "External EV4 entry maps to the already protected Kia EV4 Hatchback 81.4 kWh configuration.",
       "protectedMatch": "Kia EV4 Hatchback 81.4 kWh 2025"
+    },
+    {
+      "gaiaId": "opel-grandland-electric-long-range-2024",
+      "reason": "Duplicate of protected Opel Grandland 2024 82 kWh configuration under alternate model naming.",
+      "protectedMatch": "Opel Grandland Electric 82 kWh 2024"
+    },
+    {
+      "gaiaId": "opel-grandland-electric-73-kwh-2024",
+      "reason": "Duplicate of protected Opel Grandland 2024 73 kWh configuration under alternate model naming.",
+      "protectedMatch": "Opel Grandland Electric 73 kWh 2024"
     }
   ]
 }
