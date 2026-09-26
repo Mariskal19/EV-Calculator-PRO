@@ -24,13 +24,7 @@ public abstract class BaseNavigationActivity extends Activity {
     host.setBackgroundColor(dark
         ? android.graphics.Color.rgb(16, 28, 42)
         : android.graphics.Color.rgb(242, 246, 252));
-    // Reserve the navigation bar's 64dp inside the content host. This makes
-    // the bar the actual bottom limit of every scrollable screen, rather than
-    // overlaying and hiding the last cards. Screen-level spacers remain the
-    // only visual gap above the navigation bar.
-    FrameLayout.LayoutParams contentParams = new FrameLayout.LayoutParams(-1, -1);
-    contentParams.bottomMargin = dp(64);
-    host.addView(view, contentParams);
+    host.addView(view, new FrameLayout.LayoutParams(-1, -1));
 
     View bottomNavigation =
         BottomNavigationHelper.create(this, dark, getBottomNavigationIndex());
