@@ -1,0 +1,1 @@
+# Build trigger for official Stripe and PayPal logos
