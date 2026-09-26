@@ -42,11 +42,19 @@ def key(v):
         str(v.get("year") or 0), battery_key(v), norm(v.get("version"))
     ])
 
+def model_key(v):
+    """Normalize model names, including names that repeat the make (e.g. Mazda6e vs 6e)."""
+    make = norm(v.get("make"))
+    model = norm(v.get("model"))
+    if make and model.startswith(make):
+        model = model[len(make):].strip(" -_/")
+    return re.sub(r"[^a-z0-9]+", "", model)
+
 def tech_duplicate(a, b):
     """Return True when a source record is very likely the same configuration already known."""
     if norm(a.get("make")) != norm(b.get("make")):
         return False
-    if norm(a.get("model")) != norm(b.get("model")):
+    if model_key(a) != model_key(b):
         return False
     if str(a.get("year") or 0) != str(b.get("year") or 0):
         return False
