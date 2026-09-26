@@ -55,6 +55,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     scroll.addView(root);
     frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));
     setContentView(frame);
+    EdgeToEdgeHelper.apply(this, dark());
 
     TextView title = new TextView(this);
     title.setText("☕  " + tr("Apoyar el proyecto","Support the project","Soutenir le projet",
