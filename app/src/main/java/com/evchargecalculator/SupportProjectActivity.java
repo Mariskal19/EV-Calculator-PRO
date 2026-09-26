@@ -72,7 +72,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
 
   private Button stripeButton() {
     Button button = new Button(this);
-    button.setText("Stripe  ·  " + tr(
+    button.setText(tr(
         "Apoyar con Stripe",
         "Support with Stripe",
         "Soutenir avec Stripe",
@@ -85,6 +85,8 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     button.setTypeface(null, 1);
     button.setGravity(Gravity.CENTER);
     button.setBackground(bg(Color.rgb(99, 91, 255), 16));
+    button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_stripe_logo, 0, 0, 0);
+    button.setCompoundDrawablePadding(dp(8));
     button.setPadding(dp(12), 0, dp(12), 0);
     button.setOnClickListener(v -> openStripe());
     return button;
