@@ -1,13 +1,22 @@
 package com.evchargecalculator;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 
 public class SupportProjectActivity extends BaseNavigationActivity {
+  /*
+   * Stripe Payment Link:
+   * Paste the final Stripe Payment Link here when it is created.
+   * The link should be configured in Stripe to let the donor choose the amount.
+   */
+  private static final String STRIPE_PAYMENT_LINK = "";
+
   @Override protected int getBottomNavigationIndex() { return 3; }
 
   private int dp(int n) {
@@ -60,14 +69,50 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     return v;
   }
 
-  private TextView supportOption(String amount) {
-    TextView option = label("☕  " + amount, 17, Color.WHITE);
-    option.setGravity(Gravity.CENTER);
-    option.setTypeface(null, 1);
-    option.setBackground(bg(Color.rgb(214, 55, 72), 16));
-    option.setPadding(dp(12), 0, dp(12), 0);
-    option.setAlpha(0.92f);
-    return option;
+  private Button stripeButton() {
+    Button button = new Button(this);
+    button.setText("☕  " + tr(
+        "Apoyar con Stripe",
+        "Support with Stripe",
+        "Soutenir avec Stripe",
+        "Mit Stripe unterstützen",
+        "Supporta con Stripe",
+        "Apoiar com Stripe"));
+    button.setTextSize(16);
+    button.setTextColor(Color.WHITE);
+    button.setAllCaps(false);
+    button.setTypeface(null, 1);
+    button.setGravity(Gravity.CENTER);
+    button.setBackground(bg(Color.rgb(214, 55, 72), 16));
+    button.setPadding(dp(12), 0, dp(12), 0);
+    button.setOnClickListener(v -> openStripe());
+    return button;
+  }
+
+  private void openStripe() {
+    if (STRIPE_PAYMENT_LINK.isEmpty()) {
+      Toast.makeText(this, tr(
+          "El enlace de Stripe todavía no está configurado.",
+          "The Stripe link has not been configured yet.",
+          "Le lien Stripe n'est pas encore configuré.",
+          "Der Stripe-Link ist noch nicht konfiguriert.",
+          "Il link Stripe non è ancora configurato.",
+          "O link Stripe ainda não foi configurado."), Toast.LENGTH_SHORT).show();
+      return;
+    }
+
+    try {
+      Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(STRIPE_PAYMENT_LINK));
+      startActivity(intent);
+    } catch (Exception ignored) {
+      Toast.makeText(this, tr(
+          "No se ha podido abrir el enlace de pago.",
+          "The payment link could not be opened.",
+          "Impossible d'ouvrir le lien de paiement.",
+          "Der Zahlungslink konnte nicht geöffnet werden.",
+          "Impossibile aprire il link di pagamento.",
+          "Não foi possível abrir o link de pagamento."), Toast.LENGTH_SHORT).show();
+    }
   }
 
   @Override protected void onCreate(Bundle state) {
@@ -134,67 +179,77 @@ public class SupportProjectActivity extends BaseNavigationActivity {
 
     TextView body = label(
         tr(
-            "Puedes apoyar su mantenimiento y desarrollo con una pequeña aportación voluntaria.",
-            "You can support its maintenance and development with a small voluntary contribution.",
-            "Vous pouvez soutenir sa maintenance et son développement avec une petite contribution volontaire.",
-            "Du kannst ihre Pflege und Weiterentwicklung mit einem kleinen freiwilligen Beitrag unterstützen.",
-            "Puoi sostenere la manutenzione e lo sviluppo con un piccolo contributo volontario.",
-            "Pode apoiar a manutenção e evolução com uma pequena contribuição voluntária."),
+            "Puedes apoyar su mantenimiento y desarrollo con una aportación voluntaria de la cantidad que tú elijas.",
+            "You can support its maintenance and development with a voluntary contribution of any amount you choose.",
+            "Vous pouvez soutenir sa maintenance et son développement avec une contribution volontaire du montant de votre choix.",
+            "Du kannst ihre Pflege und Weiterentwicklung mit einem freiwilligen Beitrag in der von dir gewählten Höhe unterstützen.",
+            "Puoi sostenere la manutenzione e lo sviluppo con un contributo volontario dell'importo che preferisci.",
+            "Pode apoiar a manutenção e evolução com um contributo voluntário do valor que escolher."),
         15, sub());
     body.setPadding(0, dp(9), 0, dp(18));
     card.addView(body);
 
-    TextView optionsTitle = label(
-        tr("Aportación orientativa",
-            "Suggested contribution",
-            "Contribution indicative",
-            "Vorgeschlagener Beitrag",
-            "Contributo indicativo",
-            "Contribuição sugerida"),
+    LinearLayout paymentBox = new LinearLayout(this);
+    paymentBox.setOrientation(LinearLayout.VERTICAL);
+    paymentBox.setGravity(Gravity.CENTER);
+    paymentBox.setPadding(dp(14), dp(14), dp(14), dp(14));
+    paymentBox.setBackground(bg(softColor(), 18));
+
+    TextView paymentTitle = label(
+        tr("Cantidad libre",
+            "Choose your amount",
+            "Montant libre",
+            "Freier Betrag",
+            "Importo libero",
+            "Valor livre"),
+        15, text());
+    paymentTitle.setTypeface(null, 1);
+    paymentTitle.setGravity(Gravity.CENTER);
+    paymentBox.addView(paymentTitle);
+
+    TextView paymentBody = label(
+        tr(
+            "Tú decides cuánto aportar. El pago se realizará de forma segura en Stripe.",
+            "You decide how much to contribute. Payment will be securely handled by Stripe.",
+            "Vous choisissez le montant. Le paiement sera effectué en toute sécurité avec Stripe.",
+            "Du entscheidest, wie viel du beitragen möchtest. Die Zahlung wird sicher über Stripe abgewickelt.",
+            "Decidi tu quanto contribuire. Il pagamento sarà gestito in modo sicuro da Stripe.",
+            "Você decide quanto contribuir. O pagamento será processado de forma segura pelo Stripe."),
         13, sub());
-    optionsTitle.setGravity(Gravity.CENTER);
-    optionsTitle.setPadding(0, 0, 0, dp(8));
-    card.addView(optionsTitle);
+    paymentBody.setGravity(Gravity.CENTER);
+    paymentBody.setPadding(0, dp(7), 0, dp(13));
+    paymentBox.addView(paymentBody);
 
-    LinearLayout options = new LinearLayout(this);
-    options.setOrientation(LinearLayout.HORIZONTAL);
-    options.setGravity(Gravity.CENTER);
-    options.setWeightSum(2);
+    Button stripe = stripeButton();
+    paymentBox.addView(stripe, new LinearLayout.LayoutParams(-1, dp(52)));
 
-    TextView one = supportOption("1 €");
-    TextView three = supportOption("3 €");
+    TextView methods = label(
+        tr(
+            "Tarjeta · Google Pay · otros métodos disponibles",
+            "Card · Google Pay · other available methods",
+            "Carte · Google Pay · autres moyens disponibles",
+            "Karte · Google Pay · weitere verfügbare Zahlungsmethoden",
+            "Carta · Google Pay · altri metodi disponibili",
+            "Cartão · Google Pay · outros métodos disponíveis"),
+        12, sub());
+    methods.setGravity(Gravity.CENTER);
+    methods.setPadding(0, dp(9), 0, 0);
+    paymentBox.addView(methods);
 
-    LinearLayout.LayoutParams optionParams =
-        new LinearLayout.LayoutParams(0, dp(52), 1f);
-    optionParams.setMargins(dp(4), 0, dp(4), 0);
-    options.addView(one, optionParams);
-    options.addView(three, optionParams);
-    card.addView(options);
+    card.addView(paymentBox);
 
     TextView status = label(
-        tr("Las aportaciones estarán disponibles próximamente.",
-            "Support will be available soon.",
-            "Le soutien sera bientôt disponible.",
-            "Die Unterstützung wird bald verfügbar sein.",
-            "Il supporto sarà disponibile prossimamente.",
-            "O apoio estará disponível em breve."),
-        13, sub());
-    status.setGravity(Gravity.CENTER);
-    status.setPadding(dp(8), dp(14), dp(8), dp(4));
-    card.addView(status);
-
-    TextView playNote = label(
         tr(
-            "Cuando esté disponible, Google Play mostrará el importe y la moneda correspondientes a tu país.",
-            "When available, Google Play will show the amount and currency for your country.",
-            "Lorsqu'il sera disponible, Google Play affichera le montant et la devise correspondant à votre pays.",
-            "Sobald verfügbar, zeigt Google Play den für dein Land geltenden Betrag und die Währung an.",
-            "Quando sarà disponibile, Google Play mostrerà l'importo e la valuta del tuo paese.",
-            "Quando estiver disponível, o Google Play mostrará o valor e a moeda correspondentes ao seu país."),
+            "El enlace de pago se abrirá fuera de la app para completar la aportación.",
+            "The payment link will open outside the app to complete your contribution.",
+            "Le lien de paiement s'ouvrira en dehors de l'application pour terminer votre contribution.",
+            "Der Zahlungslink wird außerhalb der App geöffnet, um deinen Beitrag abzuschließen.",
+            "Il link di pagamento si aprirà fuori dall'app per completare il contributo.",
+            "O link de pagamento será aberto fora da aplicação para concluir o seu contributo."),
         12, sub());
-    playNote.setGravity(Gravity.CENTER);
-    playNote.setPadding(dp(8), dp(10), dp(8), 0);
-    card.addView(playNote);
+    status.setGravity(Gravity.CENTER);
+    status.setPadding(dp(8), dp(13), dp(8), dp(3));
+    card.addView(status);
 
     root.addView(card, new LinearLayout.LayoutParams(-1, -2));
 
