@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "updatedAt": "2026-09-26T13:20:00+02:00",
+  "rules": [
+    {
+      "gaiaId": "kia-ev3-long-range-2024",
+      "reason": "Duplicate of protected Kia EV3 2024 long-range configuration; source naming differs but core specs match.",
+      "protectedMatch": "Kia EV3 Air 81.4 kWh Long Range 2024"
+    },
+    {
+      "gaiaId": "kia-ev4-583-kwh-2025",
+      "reason": "External EV4 entry maps to an already protected EV4 body-style configuration; keep excluded from the delta.",
+      "protectedMatch": "Kia EV4 Hatchback/Fastback 58.3 kWh 2025"
+    },
+    {
+      "gaiaId": "kia-ev4-814-kwh-2025",
+      "reason": "External EV4 entry maps to the already protected Kia EV4 Hatchback 81.4 kWh configuration.",
+      "protectedMatch": "Kia EV4 Hatchback 81.4 kWh 2025"
+    }
+  ]
+}
