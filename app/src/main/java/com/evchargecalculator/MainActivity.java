@@ -177,7 +177,11 @@ public class MainActivity extends BaseNavigationActivity {
     root.setOrientation(LinearLayout.VERTICAL);
     root.setPadding(0, 0, 0, 0);
     scroll.addView(root);
-    FrameLayout.LayoutParams scrollParams = new FrameLayout.LayoutParams(-1, -1);\n    // Keep the scrollable content above the permanent bottom navigation.\n    // The final 14dp spacer then remains the visible gap to the navigation bar.\n    scrollParams.bottomMargin = dp(64);\n    frame.addView(scroll, scrollParams);
+    FrameLayout.LayoutParams scrollParams = new FrameLayout.LayoutParams(-1, -1);
+    // Keep the scrollable content above the permanent bottom navigation.
+    // The final 14dp spacer then remains the visible gap to the navigation bar.
+    scrollParams.bottomMargin = dp(64);
+    frame.addView(scroll, scrollParams);
     setContentView(frame);
     FrameLayout hero = new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
