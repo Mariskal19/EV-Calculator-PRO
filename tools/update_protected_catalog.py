@@ -144,6 +144,17 @@ else:
     remote_root = {"version": 1, "updatedAt": None, "vehicles": []}
 remote_existing = remote_root.get("vehicles", [])
 existing_keys = {key(v) for v in existing}
+
+# Remote additions are only the delta over the protected catalog.
+# Purge entries that became protected later, and de-duplicate the remote list itself.
+cleaned_remote = []
+for rv in remote_existing:
+    if any(tech_duplicate(rv, pv) for pv in existing):
+        continue
+    if any(tech_duplicate(rv, prev) for prev in cleaned_remote):
+        continue
+    cleaned_remote.append(rv)
+remote_existing = cleaned_remote
 existing_keys.update(key(v) for v in remote_existing)
 candidates = {}
 
