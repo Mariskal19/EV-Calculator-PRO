@@ -24,6 +24,7 @@ public final class AppMenuHelper {
     popup.getMenu().add(0, 10, 1, "⚙  " + configurationLabel(activity));
     popup.getMenu().add(0, 2, 2, "↗  " + LanguageManager.t(activity, "Compartir app"));
     popup.getMenu().add(0, 3, 3, "★  " + LanguageManager.t(activity, "Calificar app"));
+    popup.getMenu().add(0, 4, 4, "☕  " + supportLabel(activity));
     popup.setOnMenuItemClickListener(
         item -> {
           if (item.getItemId() == 10) {
@@ -41,6 +42,10 @@ public final class AppMenuHelper {
                 Intent.createChooser(share, LanguageManager.t(activity, "Compartir app")));
             return true;
           }
+          if (item.getItemId() == 4) {
+            activity.startActivity(new Intent(activity, SupportProjectActivity.class));
+            return true;
+          }
           if (item.getItemId() == 3) {
             activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PLAY_STORE_URL)));
             return true;
@@ -48,6 +53,16 @@ public final class AppMenuHelper {
           return false;
         });
     popup.show();
+  }
+
+  private static String supportLabel(Activity a) {
+    String l = LanguageManager.getSelectedLanguage(a);
+    if ("es".equals(l)) return "Apoyar el proyecto";
+    if ("fr".equals(l)) return "Soutenir le projet";
+    if ("de".equals(l)) return "Projekt unterstützen";
+    if ("it".equals(l)) return "Supporta il progetto";
+    if ("pt".equals(l)) return "Apoiar o projeto";
+    return "Support the project";
   }
 
   private static String configurationLabel(Activity a) {
