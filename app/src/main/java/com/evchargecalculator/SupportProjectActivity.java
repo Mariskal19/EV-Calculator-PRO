@@ -92,7 +92,27 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     return button;
   }
 
-  private Button paypalButton() { Button b = new Button(this); b.setText("🅿️  " + tr("Apoyar con PayPal","Support with PayPal","Soutenir avec PayPal","Mit PayPal unterstützen","Supporta con PayPal","Apoiar com PayPal")); b.setTextSize(16); b.setTextColor(Color.WHITE); b.setAllCaps(false); b.setTypeface(null, 1); b.setGravity(Gravity.CENTER); b.setBackground(bg(Color.rgb(0,112,186),16)); b.setPadding(dp(12),0,dp(12),0); b.setOnClickListener(v -> openPaypal()); return b; }
+  private Button paypalButton() {
+    Button button = new Button(this);
+    button.setText(tr(
+        "Apoyar con PayPal",
+        "Support with PayPal",
+        "Soutenir avec PayPal",
+        "Mit PayPal unterstützen",
+        "Supporta con PayPal",
+        "Apoiar com PayPal"));
+    button.setTextSize(16);
+    button.setTextColor(Color.WHITE);
+    button.setAllCaps(false);
+    button.setTypeface(null, 1);
+    button.setGravity(Gravity.CENTER);
+    button.setBackground(bg(Color.rgb(0, 48, 135), 16));
+    button.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_paypal_logo, 0, 0, 0);
+    button.setCompoundDrawablePadding(dp(8));
+    button.setPadding(dp(12), 0, dp(12), 0);
+    button.setOnClickListener(v -> openPaypal());
+    return button;
+  }
 
   private void openStripe() {
     if (STRIPE_PAYMENT_LINK.isEmpty()) {
