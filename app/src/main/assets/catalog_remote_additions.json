@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T13:45:00Z",
+  "updatedAt": "2026-09-26T13:50:00Z",
   "vehicles": [
     {
       "gaiaId": "abarth-500e-scorpionissima-2025",
@@ -2667,35 +2667,6 @@
       "weightKg": 2050,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
-    },
-    {
-      "gaiaId": "opel-grandland-electric-long-range-2024",
-      "make": "Opel",
-      "model": "Grandland Electric",
-      "version": "Long Range",
-      "year": 2024,
-      "market": "ES",
-      "currency": "EUR",
-      "price": 48500,
-      "batteryKwh": 82,
-      "usableBatteryKwh": 77,
-      "batteryType": "NMC",
-      "batteryChemistry": "NMC",
-      "wltpKm": 580,
-      "consumptionKwh100": 15.5,
-      "powerKw": 160,
-      "drive": null,
-      "drivetrain": null,
-      "acKw": 11,
-      "dcKw": 160,
-      "charge10to80Min": null,
-      "acceleration0to100Sec": 8.8,
-      "trunkLiters": 550,
-      "weightKg": 1950,
-      "source": "Gaia Charge EVDB",
-      "arrivalYear": 2024,
       "auditDate": "AUTO",
       "lastUpdated": "AUTO"
     },
