@@ -11,6 +11,7 @@ SOURCES = [
 ]
 OUT = ROOT / "catalog_remote_additions.json"
 EXCLUSIONS = ROOT / "catalog_remote_exclusions.json"
+EXCLUSIONS = ROOT / "catalog_remote_exclusions.json"
 
 FIELDS = [
     "price","batteryKwh","usableBatteryKwh","batteryType","batteryChemistry",
@@ -182,6 +183,12 @@ else:
     exclusion_root = {"version": 1, "rules": []}
 exclusion_rules = exclusion_root.get("rules", [])
 excluded_gaia_ids = {str(r.get("gaiaId")) for r in exclusion_rules if r.get("gaiaId")}
+if EXCLUSIONS.exists():
+    exclusion_root = json.loads(EXCLUSIONS.read_text(encoding="utf-8"))
+else:
+    exclusion_root = {"version": 1, "rules": []}
+exclusion_rules = exclusion_root.get("rules", [])
+excluded_gaia_ids = {str(r.get("gaiaId")) for r in exclusion_rules if r.get("gaiaId")}
 
 # Remote additions are only the delta over the protected catalog.
 # Purge entries that became protected later, and de-duplicate the remote list itself.
@@ -278,5 +285,6 @@ if added:
 
 print(f"Protected base catalog: {len(existing)} records untouched")
 print(f"Existing remote additions: {len(remote_existing)-len(added)}")
+print(f"Persistent exclusion rules: {len(exclusion_rules)}")
 print(f"Persistent exclusion rules: {len(exclusion_rules)}")
 print(f"Automatically added remotely: {len(added)} new validated configurations")
