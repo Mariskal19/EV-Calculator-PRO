@@ -375,7 +375,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         introFp.topMargin=cardTop;
         heroStack.addView(intro,introFp);
 
-        ScrollView scroll=new ScrollView(this);
+        ScrollView scroll=new ScrollView(this); scroll.setVerticalScrollBarEnabled(false);
         scroll.setFillViewport(true);
         scroll.setClipToPadding(false);
         scroll.setClipChildren(false);
