@@ -1,0 +1,5 @@
+PUNTO ESTABLE — Domingo 27/09/2026 09:50
+Pantalla Apoyar EV Calculator PRO mantenida exactamente como está.
+Stripe y PayPal presentes visualmente, pero enlaces todavía sin configurar.
+No modificar esta pantalla salvo petición expresa.
+Referencia funcional: commit ac03a438ff90370aa9b9de2a2a40567581097a18
