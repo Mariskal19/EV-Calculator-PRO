@@ -14,10 +14,8 @@ public class BatteryRangeView extends View {
   private int current = 30, target = 80;
   private Listener listener;
   private boolean dark = false;
-  private final int blueStartLight = Color.rgb(18, 82, 214);
-  private final int blueEndLight = Color.rgb(54, 184, 255);
-  private final int blueStartDark = Color.rgb(18, 82, 214);
-  private final int blueEndDark = Color.rgb(54, 184, 255);
+  private final int blueLight = Color.rgb(54, 184, 255);
+  private final int blueDark = Color.rgb(18, 82, 214);
   private final int trackLight = Color.rgb(219, 230, 241);
   private final int trackDark = Color.rgb(42, 58, 75);
   private int activeThumb = -1;
@@ -82,8 +80,8 @@ public class BatteryRangeView extends View {
     float activeRight = xFor(target);
     LinearGradient gradient = new LinearGradient(
         activeLeft, y, activeRight, y,
-        dark ? blueStartDark : blueStartLight,
-        dark ? blueEndDark : blueEndLight,
+        blueLight,
+        blueDark,
         Shader.TileMode.CLAMP
     );
     p.setShader(gradient);
@@ -91,9 +89,9 @@ public class BatteryRangeView extends View {
     p.setShader(null);
 
     p.setShadowLayer(dp(4), 0, dp(2), 0x55000000);
-    p.setColor(dark ? blueStartDark : blueStartLight);
+    p.setColor(blueLight);
     c.drawCircle(activeLeft, y, dp(10), p);
-    p.setColor(dark ? blueEndDark : blueEndLight);
+    p.setColor(blueDark);
     c.drawCircle(activeRight, y, dp(10), p);
     p.clearShadowLayer();
   }
