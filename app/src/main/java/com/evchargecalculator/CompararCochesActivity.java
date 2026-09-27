@@ -455,30 +455,37 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private void loadSelection(){
         selectedIds.clear();
         SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
-        // Primera entrada: no mostrar ningún coche preseleccionado.
         if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
             p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
                     .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
             return;
         }
+        // Una selección vacía es un estado válido: no hay que recuperar claves
+        // antiguas ni reconstruir una selección desde formatos anteriores.
         String logical=p.getString(KEY_SELECTED_LOGICAL,"");
-        if(!logical.trim().isEmpty()) for(String key:logical.split("\\Q||\\E")){key=key.trim();Vehicle v=findByLogicalKey(key);if(v!=null&&!selectedIds.contains(v.id)&&selectedIds.size()<3)selectedIds.add(v.id);}
-        if(selectedIds.isEmpty()){
-            String ordered=p.getString(KEY_SELECTED_ORDERED,"");
-            if(!ordered.trim().isEmpty())for(String id:ordered.split(",")){id=id.trim();Vehicle v=find(id);if(!id.isEmpty()&&v!=null&&!selectedIds.contains(id)&&selectedIds.size()<3)selectedIds.add(id);}
+        if(!logical.trim().isEmpty()){
+            for(String key:logical.split("\\Q||\\E")){
+                key=key.trim();
+                Vehicle v=findByLogicalKey(key);
+                if(v!=null&&!selectedIds.contains(v.id)&&selectedIds.size()<3)selectedIds.add(v.id);
+            }
         }
-        if(selectedIds.isEmpty()){
-            Set<String>s=p.getStringSet(KEY_SELECTED,null);
-            if(s!=null)for(String id:s){Vehicle v=find(id);if(v!=null&&!selectedIds.contains(id)&&selectedIds.size()<3)selectedIds.add(id);}
+        if(selectedIds.isEmpty() && !logical.trim().isEmpty()){
+            p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED).apply();
         }
-        if(!selectedIds.isEmpty())saveSelection();
     }
     private void saveSelection(){
         SharedPreferences.Editor e=getSharedPreferences(PREFS,MODE_PRIVATE).edit();
         e.putBoolean(KEY_SELECTION_INITIALIZED,true);
-        e.putString(KEY_SELECTED_ORDERED,joinSelection());
-        e.putString(KEY_SELECTED_LOGICAL,joinLogicalSelection());
-        e.putStringSet(KEY_SELECTED,new LinkedHashSet<>(selectedIds));
+        if(selectedIds.isEmpty()){
+            // Al quitar el último coche, borrar completamente la selección persistida.
+            // Así una selección antigua no puede reaparecer al volver a entrar.
+            e.remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED);
+        }else{
+            e.putString(KEY_SELECTED_ORDERED,joinSelection());
+            e.putString(KEY_SELECTED_LOGICAL,joinLogicalSelection());
+            e.putStringSet(KEY_SELECTED,new LinkedHashSet<>(selectedIds));
+        }
         e.apply();
     }
     private String joinSelection(){StringBuilder s=new StringBuilder();for(String id:selectedIds){if(s.length()>0)s.append(',');s.append(id);}return s.toString();}
