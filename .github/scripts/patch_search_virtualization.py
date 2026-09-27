@@ -130,13 +130,7 @@ if count != 1:
     raise SystemExit(f"Could not replace Compare build() method (matches={count})")
 
 # Keep the main screen title literal, as already established by the project.
-principal = Path("app/src/main/java/com/evchargecalculator/PrincipalActivity.java")
-s2 = principal.read_text(encoding="utf-8")
-old_title = 'TextView title = tv("EV Calculator PRO", 22, Color.WHITE);'
-new_title = 'TextView title = new TextView(this); title.setText("EV Calculator PRO"); title.setTextSize(22); title.setTextColor(Color.WHITE);'
-if old_title in s2:
-    s2 = s2.replace(old_title, new_title, 1)
-    principal.write_text(s2, encoding="utf-8")
+# PrincipalActivity was retired during the 1.0.4.1 cleanup; no legacy patch is needed.
 
 compare.write_text(s, encoding="utf-8")
 print("Compare hero/card rebuilt as a real overlay stack, with the card lowered 10dp and extra empty-state footer spacing.")
