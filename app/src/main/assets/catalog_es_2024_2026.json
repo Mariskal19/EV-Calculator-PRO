@@ -2727,7 +2727,7 @@
     },
     {
       "gaiaId": "cupra-born-58-kwh-2024",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Born",
       "version": "58kWh",
       "year": 2024,
@@ -2756,7 +2756,7 @@
     },
     {
       "gaiaId": "cupra-born-e-boost-2024",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Born",
       "version": "e-Boost 77kWh",
       "year": 2024,
@@ -2814,7 +2814,7 @@
     },
     {
       "gaiaId": "cupra-born-59-kwh-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Born",
       "version": "59kWh",
       "year": 2025,
@@ -2843,7 +2843,7 @@
     },
     {
       "gaiaId": "cupra-born-79-kwh-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Born",
       "version": "79kWh",
       "year": 2025,
@@ -2872,7 +2872,7 @@
     },
     {
       "gaiaId": "cupra-born-vz-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Born",
       "version": "VZ 79kWh",
       "year": 2025,
@@ -2901,7 +2901,7 @@
     },
     {
       "gaiaId": "cupra-raval-38-kwh-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Raval",
       "version": "38 kWh",
       "year": 2025,
@@ -2930,7 +2930,7 @@
     },
     {
       "gaiaId": "cupra-raval-58-kwh-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Raval",
       "version": "58 kWh",
       "year": 2025,
@@ -3114,7 +3114,7 @@
     },
     {
       "gaiaId": "cupra-tavascan-endurance-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Tavascan",
       "version": "Endurance",
       "year": 2025,
@@ -3143,7 +3143,7 @@
     },
     {
       "gaiaId": "cupra-tavascan-vz-2025",
-      "make": "Cupra",
+      "make": "CUPRA",
       "model": "Tavascan",
       "version": "VZ",
       "year": 2025,
@@ -15742,7 +15742,7 @@
     },
     {
       "gaiaId": "ds-3-e-tense-so-chic-2024",
-      "make": "DS Automobiles",
+      "make": "DS",
       "model": "3 E-Tense",
       "version": "So Chic",
       "year": 2024,
@@ -15772,7 +15772,7 @@
     },
     {
       "gaiaId": "ds-n8-awd-long-range-2025",
-      "make": "DS Automobiles",
+      "make": "DS",
       "model": "N°8",
       "version": "DS N°8 AWD Long Range",
       "year": 2025,
@@ -15802,7 +15802,7 @@
     },
     {
       "gaiaId": "ds-n8-fwd-long-range-2025",
-      "make": "DS Automobiles",
+      "make": "DS",
       "model": "N°8",
       "version": "DS N°8 FWD Long Range",
       "year": 2025,
