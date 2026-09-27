@@ -14,10 +14,12 @@ public class BatteryRangeView extends View {
   private int current = 30, target = 80;
   private Listener listener;
   private boolean dark = false;
-  private final int blueLight = Color.rgb(46, 107, 255);
-  private final int greenLight = Color.rgb(40, 198, 164);
-  private final int blueDark = Color.rgb(93, 164, 255);
-  private final int greenDark = Color.rgb(66, 215, 175);
+  private final int blueStartLight = Color.rgb(18, 82, 214);
+  private final int blueEndLight = Color.rgb(54, 184, 255);
+  private final int blueStartDark = Color.rgb(18, 82, 214);
+  private final int blueEndDark = Color.rgb(54, 184, 255);
+  private final int trackLight = Color.rgb(219, 230, 241);
+  private final int trackDark = Color.rgb(42, 58, 75);
   private int activeThumb = -1;
 
   public BatteryRangeView(Context c) {
@@ -69,20 +71,30 @@ public class BatteryRangeView extends View {
   protected void onDraw(Canvas c) {
     super.onDraw(c);
     float y = getHeight() / 2f, left = xFor(0), right = xFor(100);
-    int track = dark ? Color.rgb(42, 58, 75) : Color.rgb(219, 230, 241);
-    int currentColor = dark ? blueDark : blueLight;
-    int targetColor = dark ? greenDark : greenLight;
+    int track = dark ? trackDark : trackLight;
+
     p.setStrokeWidth(dp(5));
     p.setStrokeCap(Paint.Cap.ROUND);
     p.setColor(track);
     c.drawLine(left, y, right, y, p);
-    p.setColor(targetColor);
-    c.drawLine(xFor(current), y, xFor(target), y, p);
+
+    float activeLeft = xFor(current);
+    float activeRight = xFor(target);
+    LinearGradient gradient = new LinearGradient(
+        activeLeft, y, activeRight, y,
+        dark ? blueStartDark : blueStartLight,
+        dark ? blueEndDark : blueEndLight,
+        Shader.TileMode.CLAMP
+    );
+    p.setShader(gradient);
+    c.drawLine(activeLeft, y, activeRight, y, p);
+    p.setShader(null);
+
     p.setShadowLayer(dp(4), 0, dp(2), 0x55000000);
-    p.setColor(currentColor);
-    c.drawCircle(xFor(current), y, dp(10), p);
-    p.setColor(targetColor);
-    c.drawCircle(xFor(target), y, dp(10), p);
+    p.setColor(dark ? blueStartDark : blueStartLight);
+    c.drawCircle(activeLeft, y, dp(10), p);
+    p.setColor(dark ? blueEndDark : blueEndLight);
+    c.drawCircle(activeRight, y, dp(10), p);
     p.clearShadowLayer();
   }
 
