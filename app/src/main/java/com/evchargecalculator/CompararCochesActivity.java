@@ -483,7 +483,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         input.setPadding(dp(14),0,dp(14),0);
         input.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
         final ListView list=new ListView(this);
-        list.setDivider(null); list.setVerticalScrollBarEnabled(true); list.setPadding(0,dp(2),0,0); list.setClipToPadding(false);
+        list.setDivider(null); list.setVerticalScrollBarEnabled(false); list.setPadding(0,dp(2),0,0); list.setClipToPadding(false);
         final TextView header=tv("Todos los vehículos",13,blue);
         header.setTypeface(null,Typeface.BOLD); header.setPadding(dp(18),dp(16),dp(18),dp(7)); header.setBackgroundColor(Color.TRANSPARENT);
         list.addHeaderView(header,null,false);
