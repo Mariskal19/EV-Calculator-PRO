@@ -68,9 +68,12 @@ new_build = r'''    private void build() {
         heroStack.addView(intro,introFp);
 
         ScrollView scroll=new ScrollView(this);
+        scroll.setVerticalScrollBarEnabled(false);
+        scroll.setHorizontalScrollBarEnabled(false);
+        scroll.setScrollbarFadingEnabled(false);
+        scroll.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
         scroll.setFillViewport(true);
-        scroll.setClipToPadding(false);
-        scroll.setClipChildren(false);
         LinearLayout scrollContent=new LinearLayout(this);
         scrollContent.setOrientation(LinearLayout.VERTICAL);
         scrollContent.setClipChildren(false);
@@ -84,7 +87,8 @@ new_build = r'''    private void build() {
 
         HorizontalScrollView carsScroll=new HorizontalScrollView(this);
         carsScroll.setHorizontalScrollBarEnabled(false);
-        carsScroll.setClipToPadding(false);
+        carsScroll.setVerticalScrollBarEnabled(false);
+        carsScroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
         carsScroll.setPadding(0,dp(12),0,dp(4));
         carsRow=new LinearLayout(this);
         carsRow.setOrientation(LinearLayout.HORIZONTAL);
@@ -104,10 +108,7 @@ new_build = r'''    private void build() {
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
-        HorizontalScrollView tableScroll=new HorizontalScrollView(this);
-        tableScroll.setHorizontalScrollBarEnabled(false);
-        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
-        content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
+        content.addView(table,new LinearLayout.LayoutParams(-1,-2));
 
         summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
