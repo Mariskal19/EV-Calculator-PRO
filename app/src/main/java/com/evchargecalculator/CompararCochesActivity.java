@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import androidx.core.widget.NestedScrollView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -375,20 +376,18 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         introFp.topMargin=cardTop;
         heroStack.addView(intro,introFp);
 
-        ScrollView scroll=new ScrollView(this);
+        NestedScrollView scroll=new NestedScrollView(this);
+        scroll.setVerticalScrollBarEnabled(false);
+        scroll.setHorizontalScrollBarEnabled(false);
+        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
         scroll.setFillViewport(true);
-        scroll.setClipToPadding(false);
-        scroll.setClipChildren(false);
         LinearLayout scrollContent=new LinearLayout(this);
         scrollContent.setOrientation(LinearLayout.VERTICAL);
-        scrollContent.setClipChildren(false);
-        scrollContent.setClipToPadding(false);
         scrollContent.addView(heroStack,new LinearLayout.LayoutParams(-1,stackHeight));
 
         LinearLayout content=new LinearLayout(this);
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(14),dp(0),dp(14),dp(12));
-        content.setClipChildren(false);
 
         HorizontalScrollView carsScroll=new HorizontalScrollView(this);
         carsScroll.setHorizontalScrollBarEnabled(false);
@@ -425,7 +424,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         Space footerSpacer=new Space(this);
         content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1));
         scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2));
-        scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
+        scroll.addView(scrollContent,new NestedScrollView.LayoutParams(-1,-2));
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
         EdgeToEdgeHelper.apply(this, dark);
