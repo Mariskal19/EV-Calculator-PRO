@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-26T15:05:00+02:00",
+  "updatedAt": "2026-09-27T10:00:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -146,6 +146,11 @@
       "gaiaId": "tesla-model-y-rwd-2025",
       "reason": "Duplicate of protected Tesla Model Y RWD 2025 configuration.",
       "protectedMatch": "Tesla Model Y RWD 2025"
+    },
+    {
+      "gaiaId": "audi-q6-sportback-e-tron-performance-2025",
+      "reason": "Duplicate of protected Audi Q6 Sportback e-tron performance 100 kWh RWD 2025. Gaia reports 240 kW, which Audi identifies as Launch Control peak; the normal maximum electrical output is 225 kW. Battery, range, drivetrain and configuration match.",
+      "protectedMatch": "Audi Q6 Sportback e-tron performance 100 kWh 2025"
     }
   ]
 }
