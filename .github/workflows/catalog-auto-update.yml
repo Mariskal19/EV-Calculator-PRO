@@ -6,6 +6,7 @@ on:
     branches: [ main ]
     paths:
       - "tools/update_protected_catalog.py"
+      - "app/src/main/assets/catalog_remote_exclusions.json"
       - ".github/workflows/catalog-auto-update.yml"
   schedule:
     - cron: "17 4 * * *" # Daily automatic catalog sync
