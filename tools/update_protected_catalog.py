@@ -46,6 +46,11 @@ def key(v):
 # Known naming variations between catalog sources. These aliases are deliberately
 # conservative: they only collapse names that identify the same model family, while
 # preserving body styles that are sold as distinct models (e.g. Q6 vs Q6 Sportback).
+MAKE_ALIASES = {
+    "cupra": "CUPRA",
+    "ds automobiles": "DS",
+}
+
 MODEL_ALIASES = {
     "audi": {
         "q6 suv e-tron": "q6 e-tron",
@@ -64,9 +69,13 @@ def canonical_text(value):
     text = re.sub(r"\s+", " ", text)
     return text
 
+def canonical_make(value):
+    value = canonical_text(value)
+    return MAKE_ALIASES.get(value, value)
+
 def model_key(v):
     """Build a conservative canonical model identity across source naming styles."""
-    make = canonical_text(v.get("make"))
+    make = canonical_make(v.get("make"))
     model = canonical_text(v.get("model"))
     if make and model.startswith(make):
         model = model[len(make):].strip(" -_/")
@@ -76,7 +85,7 @@ def model_key(v):
 
 def tech_duplicate(a, b):
     """Return True when a source record is very likely the same configuration already known."""
-    if canonical_text(a.get("make")) != canonical_text(b.get("make")):
+    if canonical_make(a.get("make")) != canonical_make(b.get("make")):
         return False
     if model_key(a) != model_key(b):
         return False
@@ -208,7 +217,7 @@ for url in SOURCES:
     raw_items = data.get("results", data.get("vehicles", [])) if isinstance(data, dict) else []
     is_gaia = "gaia-charge.github.io/evdb/" in url
     known_identities = {
-        "|".join([norm(x.get("make")), norm(x.get("model")),
+        "|".join([canonical_make(x.get("make")), norm(x.get("model")),
                   str(x.get("year")), norm(x.get("version")),
                   str(x.get("usableBatteryKwh") or "")])
         for x in list(existing) + list(remote_existing)
