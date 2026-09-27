@@ -446,12 +446,10 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         vehicleById.clear();
         for(Vehicle v:vehicles) if(v.id!=null&&!v.id.isEmpty()) vehicleById.put(v.id,v);
     }
+    // El índice se reconstruye cada vez que cambia el catálogo; las búsquedas por ID
+    // no necesitan volver a recorrer linealmente toda la lista.
     private Vehicle find(String id){
-        if(id==null)return null;
-        Vehicle v=vehicleById.get(id);
-        if(v!=null)return v;
-        for(Vehicle candidate:vehicles)if(id.equals(candidate.id))return candidate;
-        return null;
+        return id==null?null:vehicleById.get(id);
     }
     private Vehicle findByLogicalKey(String key){for(Vehicle v:vehicles)if(logicalKey(v).equals(key))return v;return null;}
     private void loadSelection(){
