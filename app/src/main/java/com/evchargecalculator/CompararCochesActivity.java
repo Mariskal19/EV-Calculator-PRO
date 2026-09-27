@@ -620,22 +620,27 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         l.setIncludeFontPadding(false);
         l.setPadding(dp(6),0,dp(6),0);
         r.addView(l,new LinearLayout.LayoutParams(dp(112),dp(52)));
+        // Calcular los valores numéricos una sola vez por fila y reutilizarlos
+        // tanto para determinar el mejor valor como para resaltar la celda.
+        double[] nums=new double[chosen.size()];
+        for(int i=0;i<chosen.size();i++) nums[i]=numeric(chosen.get(i),key);
+
         double best=Double.NaN;
         if(numeric&&chosen.size()>=2){
             boolean higher=!key.equals("cons")&&!key.equals("charge")&&!key.equals("price")&&!key.equals("weight");
-            for(Vehicle v:chosen){
-                double n=numeric(v,key);
+            for(double n:nums){
                 if(Double.isNaN(n))continue;
                 if(Double.isNaN(best)||(higher?n>best:n<best))best=n;
             }
         }
-        for(Vehicle v:chosen){
+        for(int i=0;i<chosen.size();i++){
+            Vehicle v=chosen.get(i);
             String value=value(v,key);
             TextView cell=tv(value,13,text());
             cell.setGravity(Gravity.CENTER);
             cell.setIncludeFontPadding(false);
             cell.setBackgroundColor(rowAlt());
-            double n=numeric(v,key);
+            double n=nums[i];
             if(chosen.size()>=2&&!Double.isNaN(best)&&!Double.isNaN(n)&&Math.abs(n-best)<0.0001)cell.setTextColor(blue);
             r.addView(cell,new LinearLayout.LayoutParams(dp(145),dp(52)));
         }
