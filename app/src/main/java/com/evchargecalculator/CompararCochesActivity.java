@@ -579,11 +579,25 @@ public class CompararCochesActivity extends BaseNavigationActivity {
                 if(nl>0){styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);}
                 item.setText(styled); item.setTextSize(14); item.setTextColor(text());
                 item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));
-                item.setOnClickListener(x->{Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();selectedIds.add(v.id);SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX+v.id,prefs.getInt(KEY_SEARCH_COUNT_PREFIX+v.id,0)+1).apply();saveSelection();rebuild();});
+                
                 return item;
             }
         };
         list.setAdapter(adapter);
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            int headerCount = list.getHeaderViewsCount();
+            int resultPosition = position - headerCount;
+            if (resultPosition < 0 || resultPosition >= results.size()) return;
+            Vehicle v = results.get(resultPosition);
+            Object tag = input.getTag();
+            if (tag instanceof AlertDialog) ((AlertDialog) tag).dismiss();
+            selectedIds.add(v.id);
+            SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+            prefs.edit().putInt(KEY_SEARCH_COUNT_PREFIX + v.id,
+                    prefs.getInt(KEY_SEARCH_COUNT_PREFIX + v.id, 0) + 1).apply();
+            saveSelection();
+            rebuild();
+        });
         LinearLayout marketRow=new LinearLayout(this); marketRow.setOrientation(LinearLayout.HORIZONTAL); marketRow.setGravity(Gravity.CENTER_VERTICAL); marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
         TextView marketTitle=tv("Mercado",12,sub()); marketTitle.setTypeface(null,Typeface.BOLD); marketTitle.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
         final Spinner searchMarketSpinner=new Spinner(this); List<String> ms=markets(); List<String> labels=new ArrayList<>(); for(String m:ms)labels.add(marketLabel(m));
