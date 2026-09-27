@@ -136,7 +136,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         HeaderBitmapView(android.content.Context context) {
             super(context);
             android.graphics.Bitmap decoded = null;
-            try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_ev_calculator)) {
+            try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
                 decoded = android.graphics.BitmapFactory.decodeStream(in);
             } catch (Exception ignored) {
             }
