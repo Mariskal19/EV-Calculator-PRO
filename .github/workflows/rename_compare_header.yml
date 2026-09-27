@@ -1,0 +1,25 @@
+name: Rename Compare Cars header resource
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  rename:
+    if: ${{ github.event.head_commit.message != 'Rename Compare Cars header resource file' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Copy header to descriptive resource name
+        run: |
+          set -e
+          test -f app/src/main/res/raw/cabecera_ev_calculator.jpg
+          cp app/src/main/res/raw/cabecera_ev_calculator.jpg app/src/main/res/raw/cabecera_comparar_coches.jpg
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/res/raw/cabecera_comparar_coches.jpg
+          git commit -m "Rename Compare Cars header resource file"
+          git push
