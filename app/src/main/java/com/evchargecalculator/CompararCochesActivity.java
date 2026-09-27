@@ -64,6 +64,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private final List<String> selectedIds = new ArrayList<>();
     // Caché de los vehículos seleccionados para evitar repetir búsquedas en cada fila.
     private final List<Vehicle> selectedVehiclesCache = new ArrayList<>();
+    // Índice por ID para resolver rápidamente las selecciones guardadas.
+    private final Map<String, Vehicle> vehicleById = new HashMap<>();
     private String selectedMarket = "ES";
 
     /** Comparar coches no utiliza el menú superior de la aplicación. */
@@ -206,12 +208,14 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         // El catálogo empaquetado es la base protegida. El remoto solo puede añadir
         // configuraciones cuya clave lógica todavía no exista.
         applyRemoteAdditions(RemoteCatalogManager.loadCached(this));
+        rebuildVehicleIndex();
         RemoteCatalogManager.refreshIfDue(this, additions -> {
             if (additions == null || additions.length() == 0 || isFinishing() || isDestroyed()) return;
             int before = vehicles.size();
             applyRemoteAdditions(additions);
             if (vehicles.size() != before) {
                 normalizeVehicleList();
+                rebuildVehicleIndex();
                 rebuild();
             }
         });
@@ -438,7 +442,17 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
     private int tableWidth(){return dp(112+145*Math.max(1,selectedIds.size()));}
 
-    private Vehicle find(String id){for(Vehicle v:vehicles)if(v.id.equals(id))return v;return null;}
+    private void rebuildVehicleIndex(){
+        vehicleById.clear();
+        for(Vehicle v:vehicles) if(v.id!=null&&!v.id.isEmpty()) vehicleById.put(v.id,v);
+    }
+    private Vehicle find(String id){
+        if(id==null)return null;
+        Vehicle v=vehicleById.get(id);
+        if(v!=null)return v;
+        for(Vehicle candidate:vehicles)if(id.equals(candidate.id))return candidate;
+        return null;
+    }
     private Vehicle findByLogicalKey(String key){for(Vehicle v:vehicles)if(logicalKey(v).equals(key))return v;return null;}
     private void loadSelection(){
         selectedIds.clear();
