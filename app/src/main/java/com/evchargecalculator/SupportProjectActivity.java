@@ -129,7 +129,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     background.setShowVehicle(false);
     frame.addView(background, new FrameLayout.LayoutParams(-1, -1));
 
-    ScrollView scroll = new ScrollView(this);
+    ScrollView scroll = new ScrollView(this); scroll.setVerticalScrollBarEnabled(false);
     scroll.setFillViewport(true);
 
     LinearLayout root = new LinearLayout(this);
