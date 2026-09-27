@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-27T12:00:00+02:00",
+  "updatedAt": "2026-09-27T10:00:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -176,26 +176,6 @@
       "gaiaId": "audi-sq6-e-tron-2024",
       "reason": "Duplicate of protected Audi SQ6 SUV e-tron quattro 2024. Gaia reports 360 kW normal system output; Audi specifies 380 kW including Launch Control. Battery, range, drivetrain, body and acceleration match.",
       "protectedMatch": "Audi SQ6 SUV e-tron quattro 2024"
-    },
-    {
-      "gaiaId": "audi-s-e-tron-gt-2025",
-      "reason": "Duplicate of protected Audi S e-tron GT 2025; Gaia naming differs but battery, power, drivetrain, range and performance match.",
-      "protectedMatch": "Audi e-tron GT S 500 kW AWD 105 kWh 2025"
-    },
-    {
-      "gaiaId": "fiat-600e-la-prima-2024",
-      "reason": "Duplicate of protected Fiat 600e 2024 configuration; La Prima is the trim name for the protected 54 kWh/115 kW FWD configuration.",
-      "protectedMatch": "Fiat 600e 115 kW FWD 54 kWh 2024"
-    },
-    {
-      "gaiaId": "renault-4-e-tech-techno-52-2025",
-      "reason": "Duplicate of protected Renault 4 E-Tech Techno 52 2025; trim, battery, power, drivetrain and range match.",
-      "protectedMatch": "Renault 4 E-Tech techno 52 kWh 2025"
-    },
-    {
-      "gaiaId": "scenic-e-tech-long-range-2025",
-      "reason": "Duplicate of protected Renault Scenic E-Tech Long Range 2025; 87 kWh/160 kW FWD and 625 km configuration match.",
-      "protectedMatch": "Renault Scenic E-Tech Long Range 87 kWh 2025"
     }
   ]
 }
