@@ -14,7 +14,7 @@ public class BatteryRangeView extends View {
   private int current = 30, target = 80;
   private Listener listener;
   private boolean dark = false;
-  private final int blueLight = Color.rgb(54, 184, 255);
+  private final int blueLight = Color.rgb(41, 179, 255);
   private final int blueDark = Color.rgb(16, 144, 230);
   private final int trackLight = Color.rgb(219, 230, 241);
   private final int trackDark = Color.rgb(42, 58, 75);
