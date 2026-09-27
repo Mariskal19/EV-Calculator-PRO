@@ -84,7 +84,7 @@ def model_key(v):
     return re.sub(r"[^a-z0-9]+", "", model)
 
 def tech_duplicate(a, b):
-    """Return True when a source record is very likely the same configuration already known."""
+    """Return True only when the source clearly identifies the same configuration."""
     if canonical_make(a.get("make")) != canonical_make(b.get("make")):
         return False
     if model_key(a) != model_key(b):
@@ -95,26 +95,17 @@ def tech_duplicate(a, b):
         return False
 
     va, vb = norm(a.get("version")), norm(b.get("version"))
-    if va and vb:
-        # Same trim name, or one name is a commercial expansion of the other.
-        if va == vb or va.startswith(vb + " ") or vb.startswith(va + " "):
-            return True
+    if not va or not vb:
+        return False
 
-    def close_num(field, tolerance):
-        x, y = num(a.get(field)), num(b.get(field))
-        return x > 0 and y > 0 and abs(x - y) <= tolerance
+    # Different commercial trim names can share the same powertrain.
+    # Only an identical/expanded version name is auto-deduplicated.
+    if va == vb or va.startswith(vb + " ") or vb.startswith(va + " "):
+        return True
 
-    battery_close = close_num("batteryKwh", 2.0)
-    power_close = close_num("powerKw", 8.0)
-    range_close = close_num("wltpKm", 12)
+    # Verified duplicate Gaia IDs are handled by persistent exclusions.
+    return False
 
-    da, db = canonical_text(a.get("drive") or a.get("drivetrain")), canonical_text(b.get("drive") or b.get("drivetrain"))
-    drive_compatible = not da or not db or da == db
-
-    # Conservative technical equivalence: never merge clearly different batteries,
-    # motors, drivetrains or WLTP figures. A source with only a trim-name variation
-    # is treated as the same configuration when the core specs also agree.
-    return battery_close and power_close and range_close and drive_compatible
 
 def flatten_gaia(item):
     """Convert Gaia EVDB summary or full records into our catalog shape."""
