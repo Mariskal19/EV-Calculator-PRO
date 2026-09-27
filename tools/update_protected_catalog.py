@@ -39,7 +39,7 @@ def battery_key(v):
 
 def key(v):
     return "|".join([
-        norm(v.get("make")), norm(v.get("model")), norm(v.get("market") or "ES"),
+        canonical_make(v.get("make")), norm(v.get("model")), norm(v.get("market") or "ES"),
         str(v.get("year") or 0), battery_key(v), norm(v.get("version"))
     ])
 
@@ -47,8 +47,8 @@ def key(v):
 # conservative: they only collapse names that identify the same model family, while
 # preserving body styles that are sold as distinct models (e.g. Q6 vs Q6 Sportback).
 MAKE_ALIASES = {
-    "cupra": "CUPRA",
-    "ds automobiles": "DS",
+    "cupra": "cupra",
+    "ds automobiles": "ds",
 }
 
 MODEL_ALIASES = {
