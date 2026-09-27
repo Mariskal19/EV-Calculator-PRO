@@ -455,11 +455,25 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private void loadSelection(){
         selectedIds.clear();
         SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
+
+        // Android puede restaurar SharedPreferences desde una copia de seguridad
+        // incluso después de desinstalar/reinstalar. Usamos un marcador en
+        // noBackupFilesDir para distinguir una instalación realmente nueva.
+        java.io.File installMarker=new java.io.File(getNoBackupFilesDir(),"compare_selection_install.marker");
+        boolean freshInstall=!installMarker.exists();
+        if(freshInstall){
+            p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
+                    .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
+            try{installMarker.createNewFile();}catch(Exception ignored){}
+            return;
+        }
+
         if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
             p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
                     .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
             return;
         }
+
         // Una selección vacía es un estado válido: no hay que recuperar claves
         // antiguas ni reconstruir una selección desde formatos anteriores.
         String logical=p.getString(KEY_SELECTED_LOGICAL,"");
