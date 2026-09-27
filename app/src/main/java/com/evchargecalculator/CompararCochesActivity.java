@@ -325,6 +325,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
 
         FrameLayout hero = new FrameLayout(this);
+        hero.setClipChildren(false);
         hero.setBackgroundColor(Color.TRANSPARENT);
 
         HeaderBitmapView heroImage = new HeaderBitmapView(this);
@@ -364,6 +365,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         int cardTop = dp(236);
         int stackHeight = dp(336);
         FrameLayout heroStack = new FrameLayout(this);
+        heroStack.setClipChildren(false);
+        heroStack.setClipToPadding(false);
         heroStack.setLayoutParams(new LinearLayout.LayoutParams(-1,stackHeight));
         heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
         FrameLayout.LayoutParams introFp = new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
@@ -373,20 +376,23 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         heroStack.addView(intro,introFp);
 
         ScrollView scroll=new ScrollView(this);
-        scroll.setVerticalScrollBarEnabled(false);
-        scroll.setHorizontalScrollBarEnabled(false);
-        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
         scroll.setFillViewport(true);
+        scroll.setClipToPadding(false);
+        scroll.setClipChildren(false);
         LinearLayout scrollContent=new LinearLayout(this);
         scrollContent.setOrientation(LinearLayout.VERTICAL);
+        scrollContent.setClipChildren(false);
+        scrollContent.setClipToPadding(false);
         scrollContent.addView(heroStack,new LinearLayout.LayoutParams(-1,stackHeight));
 
         LinearLayout content=new LinearLayout(this);
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(14),dp(0),dp(14),dp(12));
+        content.setClipChildren(false);
 
         HorizontalScrollView carsScroll=new HorizontalScrollView(this);
         carsScroll.setHorizontalScrollBarEnabled(false);
+        carsScroll.setClipToPadding(false);
         carsScroll.setPadding(0,dp(12),0,dp(4));
         carsRow=new LinearLayout(this);
         carsRow.setOrientation(LinearLayout.HORIZONTAL);
