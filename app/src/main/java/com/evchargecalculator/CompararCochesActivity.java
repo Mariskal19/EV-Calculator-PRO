@@ -640,6 +640,10 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             TextView t=tv("Selecciona un coche para mostrar sus características.",14,sub());
             t.setGravity(Gravity.CENTER);
             t.setPadding(dp(10),dp(18),dp(10),dp(18));
+            // La tabla de datos empieza 112dp a la derecha para dejar fija
+            // la columna de características. Sin coches, el mensaje debe
+            // centrarse respecto a toda la pantalla, no solo respecto a esa columna.
+            t.setTranslationX(-dp(56));
             table.addView(t,new LinearLayout.LayoutParams(tableWidth(),-2));
         }
     }
