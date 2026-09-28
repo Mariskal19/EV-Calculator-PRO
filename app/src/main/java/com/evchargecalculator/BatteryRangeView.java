@@ -72,7 +72,7 @@ public class BatteryRangeView extends View {
     int track = dark ? trackDark : trackLight;
 
     // Thick rounded progress-bar style, matching the second blue reference bar.
-    p.setStrokeWidth(dp(8));
+    p.setStrokeWidth(dp(6));
     p.setStrokeCap(Paint.Cap.ROUND);
     p.setColor(track);
     c.drawLine(left, y, right, y, p);
@@ -85,9 +85,10 @@ public class BatteryRangeView extends View {
     c.drawLine(activeLeft, y, activeRight, y, p);
     p.setShader(null);
 
-    // Small, subtle round handles: interactive without looking like a conventional SeekBar.
+    // Small round handles: dark blue on the left, light blue on the right.
     p.setColor(blueDark);
     c.drawCircle(activeLeft, y, dp(7), p);
+    p.setColor(blueLight);
     c.drawCircle(activeRight, y, dp(7), p);
   }
 
