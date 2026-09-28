@@ -423,6 +423,13 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         legend.setPadding(dp(4),0,0,dp(4));
         if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
 
+        // Mensaje de estado fuera de la tabla para que nunca quede tapado por la columna fija.
+        emptyMessage=tv("Selecciona un coche para mostrar sus características.",14,sub());
+        emptyMessage.setGravity(Gravity.CENTER);
+        emptyMessage.setPadding(dp(10),dp(10),dp(10),dp(10));
+        emptyMessage.setVisibility(View.GONE);
+        content.addView(emptyMessage,new LinearLayout.LayoutParams(-1,-2));
+
         // La columna de características queda fija; los datos se desplazan por debajo.
         FrameLayout compareTable=new FrameLayout(this);
         compareTable.setClipChildren(true);
