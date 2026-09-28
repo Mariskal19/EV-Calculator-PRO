@@ -555,6 +555,12 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         }
 
         if(tableDataHost!=null){
+            // La tabla puede seguir siendo hija del HorizontalScrollView anterior
+            // cuando pasamos de 3 coches a 2. Hay que desacoplarla antes de
+            // reconstruir el contenedor para evitar "The specified child already has a parent".
+            if(table!=null && table.getParent()!=null){
+                ((android.view.ViewGroup)table.getParent()).removeView(table);
+            }
             tableDataHost.removeAllViews();
             if(selectedIds.size()>=3){
                 tableScroll=new HorizontalScrollView(this);
