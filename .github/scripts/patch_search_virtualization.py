@@ -103,9 +103,10 @@ new_build = r'''    private void build() {
         content.addView(emptyMessage,new LinearLayout.LayoutParams(-1,dp(52)));
 
         characteristicsSection=tv("Características",19,text());
-        section.setTypeface(null,Typeface.BOLD);
-        section.setPadding(dp(2),dp(12),0,dp(2));
-        content.addView(section,new LinearLayout.LayoutParams(-1,dp(42)));
+        characteristicsSection.setTypeface(null,Typeface.BOLD);
+        characteristicsSection.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
+        content.addView(characteristicsSection,new LinearLayout.LayoutParams(-1,dp(42)));
         TextView legend=tv("✦  Mejor valor",12,blue);
         legend.setGravity(Gravity.CENTER_VERTICAL);
         legend.setPadding(dp(4),0,0,dp(4));
