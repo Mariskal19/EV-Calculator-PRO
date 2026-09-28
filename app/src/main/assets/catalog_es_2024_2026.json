@@ -132,13 +132,14 @@
       "wltpKm": 380,
       "consumptionKwh100": 16.6,
       "price": 44700,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "acKw": 11,
       "dcKw": 100,
-      "trunkLiters": 326
+      "trunkLiters": 326,
+      "weightKg": 1554
     },
     {
       "make": "Alpine",
@@ -152,15 +153,16 @@
       "wltpKm": 557,
       "consumptionKwh100": 18.7,
       "price": 67500,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Alpine España; especificaciones oficiales",
       "batteryChemistry": "NMC",
       "acKw": 11,
       "dcKw": 150,
       "acceleration0to100Sec": 4.8,
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "trunkLiters": 532
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 532,
+      "weightKg": 2124
     },
     {
       "make": "Audi",
@@ -182,9 +184,10 @@
       "acceleration0to100Sec": 8.8,
       "market": "ES",
       "source": "Audi España / Audi oficial; A2 e-tron",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1915
     },
     {
       "make": "Audi",
@@ -206,9 +209,10 @@
       "acceleration0to100Sec": 7.9,
       "market": "ES",
       "source": "Audi España / Audi oficial; A2 e-tron",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1915
     },
     {
       "make": "Audi",
@@ -230,9 +234,10 @@
       "acceleration0to100Sec": 7,
       "market": "ES",
       "source": "Audi España / Audi oficial; A2 e-tron",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1985
     },
     {
       "make": "Audi",
@@ -254,9 +259,10 @@
       "acceleration0to100Sec": 5.7,
       "market": "ES",
       "source": "Audi España / Audi oficial; A2 e-tron",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2005
     },
     {
       "make": "Audi",
@@ -572,14 +578,14 @@
       "charge10to80Min": 24,
       "acceleration0to100Sec": 8.1,
       "trunkLiters": 535,
-      "weightKg": null,
+      "weightKg": 2050,
       "photo": null,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "price": 52070,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "RWD"
     },
     {
@@ -735,12 +741,12 @@
       "market": "ES",
       "price": 70080,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2310,
       "photo": null,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "RWD"
     },
     {
@@ -788,13 +794,14 @@
       "acKw": 11,
       "dcKw": 225,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.3,
       "price": 66370,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drive": "RWD",
+      "weightKg": 2200
     },
     {
       "make": "Audi",
@@ -811,13 +818,14 @@
       "acKw": 11,
       "dcKw": 270,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.6,
       "price": 70080,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drive": "RWD",
+      "weightKg": 2310
     },
     {
       "make": "Audi",
@@ -947,12 +955,12 @@
       "market": "ES",
       "price": 96960,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2425,
       "photo": null,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "AWD"
     },
     {
@@ -3367,12 +3375,13 @@
       "wltpKm": 240,
       "consumptionKwh100": 13.1,
       "price_eur": 24294,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Dongfeng España; especificaciones oficiales",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1356
     },
     {
       "make": "Dongfeng",
@@ -3388,12 +3397,13 @@
       "consumptionKwh100": 12.4,
       "usableBatteryKwh": 40,
       "source": "Dongfeng España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 28294,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1430
     },
     {
       "make": "Dongfeng",
@@ -3409,12 +3419,13 @@
       "consumptionKwh100": 12.4,
       "usableBatteryKwh": 40,
       "source": "Dongfeng España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 26394,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1430
     },
     {
       "make": "DS",
@@ -3429,14 +3440,15 @@
       "consumptionKwh100": 13.6,
       "usableBatteryKwh": null,
       "source": "DS Automobiles España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price": 45400,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "acKw": 11,
       "dcKw": 100,
       "acceleration0to100Sec": 7.1,
       "trunkLiters": 420,
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1820
     },
     {
       "make": "DS",
@@ -3516,11 +3528,12 @@
       "wltpKm": 688,
       "consumptionKwh100": 14.1,
       "price": 74200,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
-      "trunkLiters": 620
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 620,
+      "weightKg": 2375
     },
     {
       "make": "DS",
@@ -3554,11 +3567,12 @@
       "wltpKm": 750,
       "consumptionKwh100": 13,
       "price": 62500,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
-      "trunkLiters": 620
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 620,
+      "weightKg": 2289
     },
     {
       "gaiaId": "fiat-500e-icon-42kwh-2024",
@@ -3731,7 +3745,7 @@
       "consumptionKwh100": 13.3,
       "usableBatteryKwh": 79,
       "source": "Ford España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 185,
@@ -3739,8 +3753,9 @@
       "acceleration0to100Sec": 5.3,
       "trunkLiters": 572,
       "price_eur": 61255,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2098
     },
     {
       "make": "Ford",
@@ -3900,10 +3915,11 @@
       "consumptionKwh100": 17.8,
       "usableBatteryKwh": 91,
       "source": "Ford España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": null,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2258
     },
     {
       "make": "Ford",
@@ -4145,12 +4161,13 @@
       "consumptionKwh100": 13,
       "usableBatteryKwh": 46.8,
       "source": "Ford España / Ford oficial; Puma Gen-E MY2026",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 23,
-      "auditDateTime": "2026-09-24T19:30:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1566
     },
     {
       "make": "GAC",
@@ -4165,13 +4182,14 @@
       "wltpKm": 430,
       "consumptionKwh100": 16.4,
       "price_eur": 30995,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "GAC Europe; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 87,
-      "auditDateTime": "2026-09-24T23:30:00+02:00",
-      "charge10to80Min": 32
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "charge10to80Min": 32,
+      "weightKg": 1645
     },
     {
       "make": "GAC",
@@ -4186,13 +4204,14 @@
       "wltpKm": 510,
       "consumptionKwh100": 16.7,
       "price_eur": 37995,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "GAC Europe; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 180,
-      "auditDateTime": "2026-09-24T23:30:00+02:00",
-      "charge10to80Min": 24
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "charge10to80Min": 24,
+      "weightKg": 1955
     },
     {
       "make": "Geely",
@@ -4206,17 +4225,18 @@
       "powerKw": 160,
       "drivetrain": "FWD",
       "source": "Geely España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14,
       "price_eur": 37490,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "batteryChemistry": "LFP",
       "acKw": 11,
       "dcKw": 120,
       "charge10to80Min": null,
-      "auditDateTime": "2026-09-24T23:30:00+02:00",
-      "drive": "FWD"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drive": "FWD",
+      "weightKg": 1675
     },
     {
       "make": "Geely",
@@ -4230,15 +4250,16 @@
       "wltpKm": 450,
       "consumptionKwh100": 15.9,
       "price_eur": 41990,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Geely España; especificaciones oficiales",
       "batteryChemistry": "LFP",
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": null,
-      "auditDateTime": "2026-09-24T23:30:00+02:00",
-      "drivetrain": "FWD"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drivetrain": "FWD",
+      "weightKg": 1760
     },
     {
       "make": "Geely",
@@ -4252,15 +4273,16 @@
       "wltpKm": 475,
       "consumptionKwh100": 14.4,
       "price_eur": 39990,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Geely España; especificaciones oficiales",
       "batteryChemistry": "LFP",
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": null,
-      "auditDateTime": "2026-09-24T23:30:00+02:00",
-      "drivetrain": "FWD"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drivetrain": "FWD",
+      "weightKg": 1760
     },
     {
       "make": "Hyundai",
@@ -4273,11 +4295,12 @@
       "drive": "FWD",
       "wltpKm": 360,
       "consumptionKwh100": 13.6,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:42:00+02:00",
-      "trunkLiters": 238
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 238,
+      "weightKg": 1430
     },
     {
       "make": "Hyundai",
@@ -4350,13 +4373,14 @@
       "drive": "FWD",
       "wltpKm": 496,
       "consumptionKwh100": 12.3,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "acKw": 22,
       "charge10to80Min": 29,
-      "trunkLiters": 441
+      "trunkLiters": 441,
+      "weightKg": 1900
     },
     {
       "make": "Hyundai",
@@ -4369,13 +4393,14 @@
       "drive": "FWD",
       "wltpKm": 344,
       "consumptionKwh100": 12.3,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "acKw": 22,
       "charge10to80Min": 29,
-      "trunkLiters": 441
+      "trunkLiters": 441,
+      "weightKg": 1800
     },
     {
       "make": "Hyundai",
@@ -4600,9 +4625,10 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-28",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:42:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2105
     },
     {
       "make": "Hyundai",
@@ -4655,9 +4681,10 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-28",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:42:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2000
     },
     {
       "make": "Hyundai",
@@ -4703,10 +4730,11 @@
       "acceleration0to100Sec": 9.4,
       "trunkLiters": 338,
       "price_eur": 69900,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:42:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2510
     },
     {
       "make": "Hyundai",
@@ -4896,9 +4924,10 @@
       "acceleration0to100Sec": 7.7,
       "trunkLiters": 480,
       "source": "OMODA & JAECOO España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1765
     },
     {
       "make": "Jaecoo",
@@ -4918,9 +4947,10 @@
       "acceleration0to100Sec": 7.7,
       "trunkLiters": 480,
       "source": "OMODA & JAECOO España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1765
     },
     {
       "gaiaId": "jaguar-i-pace-ev400-2024",
@@ -4968,9 +4998,10 @@
       "dcKw": 100,
       "charge10to80Min": 30,
       "source": "Jeep España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1595
     },
     {
       "make": "Jeep",
@@ -4986,12 +5017,13 @@
       "acKw": 11,
       "dcKw": 160,
       "source": "Jeep España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 18.6,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "charge10to80Min": 32,
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2235
     },
     {
       "make": "Jeep",
@@ -5007,13 +5039,14 @@
       "acKw": 11,
       "dcKw": 160,
       "source": "Jeep España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.5,
       "usableBatteryKwh": 74,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "charge10to80Min": 35,
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2090
     },
     {
       "make": "Jeep",
@@ -5026,8 +5059,8 @@
       "drive": "AWD",
       "wltpKm": 600,
       "consumptionKwh100": 19.5,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Jeep España; especificaciones oficiales",
       "usableBatteryKwh": 96.1,
       "drivetrain": "AWD",
@@ -5035,7 +5068,8 @@
       "dcKw": 160,
       "charge10to80Min": 31,
       "acceleration0to100Sec": 5.4,
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2347
     },
     {
       "make": "Jeep",
@@ -5050,14 +5084,15 @@
       "consumptionKwh100": 14.8,
       "usableBatteryKwh": 74,
       "source": "Jeep España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 35,
       "trunkLiters": 550,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2185
     },
     {
       "make": "Jeep",
@@ -5068,8 +5103,8 @@
       "powerKw": 170,
       "drive": "FWD",
       "wltpKm": 650,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Jeep España; especificaciones oficiales",
       "batteryKwh": 96,
       "consumptionKwh100": 18.6,
@@ -5077,7 +5112,8 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 32,
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2235
     },
     {
       "make": "KGM",
@@ -5322,13 +5358,13 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1885,
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 41705,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "FWD"
     },
     {
@@ -5345,16 +5381,17 @@
       "acKw": 10.5,
       "dcKw": 102,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-28",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.4,
       "usableBatteryKwh": 55,
       "batteryChemistry": "NMC",
       "price_eur": 36930,
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "FWD",
-      "trunkLiters": 460
+      "trunkLiters": 460,
+      "weightKg": 1800
     },
     {
       "make": "Kia",
@@ -5378,13 +5415,13 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1885,
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 43205,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "FWD"
     },
     {
@@ -5401,14 +5438,15 @@
       "consumptionKwh100": 13.4,
       "usableBatteryKwh": 55,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-28",
+      "lastUpdated": "2026-09-29",
       "drivetrain": "FWD",
       "acKw": 10.5,
       "dcKw": 102,
       "price_eur": 38430,
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00",
-      "trunkLiters": 460
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 460,
+      "weightKg": 1800
     },
     {
       "make": "Kia",
@@ -5432,13 +5470,13 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1885,
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 48705,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "drive": "FWD"
     },
     {
@@ -5636,10 +5674,11 @@
       "dcKw": 350,
       "charge10to80Min": 18,
       "source": "Kia Iberia; EV6 especificaciones oficiales",
-      "lastUpdated": "2026-09-28",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00",
-      "trunkLiters": 490
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 490,
+      "weightKg": 1985
     },
     {
       "make": "Kia",
@@ -5677,14 +5716,15 @@
       "drive": "FWD",
       "wltpKm": 416,
       "consumptionKwh100": 17.1,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "trunkLiters": 4420
+      "trunkLiters": 4420,
+      "weightKg": 1910
     },
     {
       "make": "Kia",
@@ -5698,14 +5738,15 @@
       "wltpKm": 296,
       "consumptionKwh100": 17.4,
       "price_eur": 39900,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "trunkLiters": 4420
+      "trunkLiters": 4420,
+      "weightKg": 1830
     },
     {
       "make": "Kia",
@@ -5719,14 +5760,15 @@
       "wltpKm": 416,
       "consumptionKwh100": 17.1,
       "price_eur": 45775,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "trunkLiters": 4420
+      "trunkLiters": 4420,
+      "weightKg": 1910
     },
     {
       "make": "Kia",
@@ -6330,9 +6372,10 @@
       "acceleration0to100Sec": 2.8,
       "trunkLiters": 509,
       "source": "Lotus Cars; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2705
     },
     {
       "make": "Lynk & Co",
@@ -6510,10 +6553,11 @@
       "charge10to80Min": 24,
       "acceleration0to100Sec": 7.6,
       "trunkLiters": 330,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Mazda Automóviles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T20:49:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1940
     },
     {
       "make": "Mazda",
@@ -6533,14 +6577,14 @@
       "charge10to80Min": 47,
       "acceleration0to100Sec": 7.8,
       "trunkLiters": 330,
-      "weightKg": null,
+      "weightKg": 1980,
       "photo": null,
       "source": "Mazda Automóviles España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:49:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -6606,13 +6650,14 @@
       "acKw": 11,
       "dcKw": 320,
       "source": "Mercedes-Benz España; especificaciones oficiales",
-      "lastUpdated": "2026-09-28",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.3,
-      "auditDate": "2026-09-28",
+      "auditDate": "2026-09-29",
       "acceleration0to100Sec": 5,
-      "auditDateTime": "2026-09-28T23:38:00+02:00",
-      "trunkLiters": 405
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "trunkLiters": 405,
+      "weightKg": 2145
     },
     {
       "make": "Mercedes-Benz",
@@ -6695,12 +6740,12 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2135,
       "photo": null,
       "source": "Mercedes-Benz España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -6806,12 +6851,12 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2075,
       "photo": null,
       "source": "Mercedes-Benz España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -7329,13 +7374,14 @@
       "acceleration0to100Sec": 9.6,
       "trunkLiters": 332,
       "source": "MG España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drive": "FWD",
+      "weightKg": 2275
     },
     {
       "make": "MINI",
@@ -7782,10 +7828,11 @@
       "drive": "FWD",
       "wltpKm": 430,
       "consumptionKwh100": 14.2,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T21:45:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1765
     },
     {
       "make": "Omoda",
@@ -7799,10 +7846,11 @@
       "drive": "FWD",
       "wltpKm": 430,
       "consumptionKwh100": 14.2,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T21:45:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1765
     },
     {
       "make": "Omoda",
@@ -7819,10 +7867,11 @@
       "consumptionKwh100": 19.5,
       "acceleration0to100Sec": 4.9,
       "source": "OMODA España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T21:45:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2190
     },
     {
       "make": "Opel",
@@ -7837,12 +7886,13 @@
       "dcKw": 100,
       "consumptionKwh100": 15.6,
       "source": "Opel España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "wltpKm": 454,
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drive": "FWD",
+      "weightKg": 1670
     },
     {
       "make": "Opel",
@@ -8153,9 +8203,10 @@
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2183
     },
     {
       "make": "Peugeot",
@@ -8171,9 +8222,10 @@
       "consumptionKwh100": 14.7,
       "usableBatteryKwh": 73,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2337
     },
     {
       "make": "Peugeot",
@@ -8193,10 +8245,11 @@
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 49660,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2241
     },
     {
       "make": "Peugeot",
@@ -8216,9 +8269,10 @@
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2183
     },
     {
       "make": "Peugeot",
@@ -8238,9 +8292,10 @@
       "dcKw": 160,
       "acceleration0to100Sec": 6.5,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2337
     },
     {
       "make": "Peugeot",
@@ -8254,11 +8309,12 @@
       "drive": "FWD",
       "wltpKm": 526,
       "consumptionKwh100": 13.9,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2183
     },
     {
       "make": "Peugeot",
@@ -8279,9 +8335,10 @@
       "dcKw": 160,
       "charge10to80Min": 30,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2241
     },
     {
       "make": "Peugeot",
@@ -8298,10 +8355,11 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 30,
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2337
     },
     {
       "make": "Peugeot",
@@ -8322,9 +8380,10 @@
       "dcKw": 120,
       "acceleration0to100Sec": 8.5,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2190
     },
     {
       "make": "Peugeot",
@@ -8344,10 +8403,11 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 49160,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Peugeot",
@@ -8367,10 +8427,11 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 51660,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Peugeot",
@@ -8386,9 +8447,10 @@
       "consumptionKwh100": 14.6,
       "usableBatteryKwh": 73,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2406
     },
     {
       "make": "Peugeot",
@@ -8408,9 +8470,10 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Peugeot",
@@ -8430,9 +8493,10 @@
       "dcKw": 160,
       "acceleration0to100Sec": 9,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Peugeot",
@@ -8446,11 +8510,12 @@
       "drive": "FWD",
       "wltpKm": 504,
       "consumptionKwh100": 14.5,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Peugeot",
@@ -8466,12 +8531,13 @@
       "consumptionKwh100": 18.4,
       "usableBatteryKwh": 96.9,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 30,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Peugeot",
@@ -8492,9 +8558,10 @@
       "dcKw": 160,
       "charge10to80Min": 30,
       "source": "Peugeot España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2260
     },
     {
       "make": "Polestar",
@@ -9273,12 +9340,13 @@
       "acKw": 11,
       "dcKw": 185,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 470,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2115
     },
     {
       "make": "Škoda",
@@ -9716,15 +9784,16 @@
       "drive": "FWD",
       "wltpKm": 400,
       "consumptionKwh100": 15.6,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1955
     },
     {
       "make": "Skywell",
@@ -9737,15 +9806,16 @@
       "drive": "FWD",
       "wltpKm": 477,
       "consumptionKwh100": 15.4,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1955
     },
     {
       "make": "Skywell",
@@ -9758,15 +9828,16 @@
       "drive": "FWD",
       "wltpKm": 477,
       "consumptionKwh100": 15.4,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1955
     },
     {
       "make": "Skywell",
@@ -9779,15 +9850,16 @@
       "drive": "FWD",
       "wltpKm": 400,
       "consumptionKwh100": 15.6,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1955
     },
     {
       "make": "smart",
@@ -9807,9 +9879,10 @@
       "wltpKm": 400,
       "consumptionKwh100": 18.2,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1900
     },
     {
       "make": "smart",
@@ -9829,9 +9902,10 @@
       "wltpKm": 440,
       "consumptionKwh100": 16.8,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1770
     },
     {
       "make": "smart",
@@ -9851,9 +9925,10 @@
       "wltpKm": 310,
       "consumptionKwh100": 18.1,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1770
     },
     {
       "make": "smart",
@@ -9873,9 +9948,10 @@
       "wltpKm": 420,
       "consumptionKwh100": 17.4,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1770
     },
     {
       "make": "smart",
@@ -9895,9 +9971,10 @@
       "wltpKm": 415,
       "consumptionKwh100": 17.6,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1905
     },
     {
       "make": "smart",
@@ -9917,9 +9994,10 @@
       "wltpKm": 455,
       "consumptionKwh100": 16.3,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1845
     },
     {
       "make": "smart",
@@ -9939,9 +10017,10 @@
       "wltpKm": 325,
       "consumptionKwh100": 17.2,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1845
     },
     {
       "make": "smart",
@@ -9961,9 +10040,10 @@
       "wltpKm": 435,
       "consumptionKwh100": 16.8,
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1845
     },
     {
       "make": "smart",
@@ -9978,14 +10058,15 @@
       "wltpKm": 540,
       "consumptionKwh100": 19.9,
       "price_eur": 59000,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "smart España; ficha técnica 2026",
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2445
     },
     {
       "make": "smart",
@@ -10000,14 +10081,15 @@
       "wltpKm": 590,
       "consumptionKwh100": 18.4,
       "price_eur": 57500,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "smart España; ficha técnica 2026",
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2335
     },
     {
       "make": "smart",
@@ -10023,13 +10105,14 @@
       "consumptionKwh100": 18.5,
       "usableBatteryKwh": 74.4,
       "source": "smart España; ficha técnica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 48000,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2275
     },
     {
       "make": "smart",
@@ -10044,14 +10127,15 @@
       "wltpKm": 590,
       "consumptionKwh100": 18.4,
       "price_eur": 53000,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "smart España; ficha técnica 2026",
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2335
     },
     {
       "make": "smart",
@@ -10066,14 +10150,15 @@
       "wltpKm": 540,
       "consumptionKwh100": 19.9,
       "price_eur": 57500,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "smart España; ficha técnica 2026",
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2420
     },
     {
       "make": "smart",
@@ -10088,14 +10173,15 @@
       "wltpKm": 540,
       "consumptionKwh100": 19.9,
       "price_eur": 59000,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "smart España; ficha técnica 2026",
       "usableBatteryKwh": 94,
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2445
     },
     {
       "make": "smart",
@@ -10114,10 +10200,11 @@
       "dcKw": 400,
       "charge10to80Min": 18,
       "source": "smart España; ficha técnica 2026",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drivetrain": "AWD"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "drivetrain": "AWD",
+      "weightKg": 2335
     },
     {
       "make": "Subaru",
@@ -10133,11 +10220,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Subaru España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2120
     },
     {
       "make": "Subaru",
@@ -10153,11 +10241,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Subaru España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.4,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2100
     },
     {
       "make": "Subaru",
@@ -10173,11 +10262,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Subaru España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 12.8,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1850
     },
     {
       "make": "Subaru",
@@ -10193,11 +10283,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Subaru España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.7,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2050
     },
     {
       "make": "Subaru",
@@ -10213,11 +10304,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Subaru España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.1,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1950
     },
     {
       "make": "Tesla",
@@ -10935,11 +11027,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.9,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1890
     },
     {
       "make": "Toyota",
@@ -10955,11 +11048,12 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.9,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 1995
     },
     {
       "make": "Toyota",
@@ -10980,16 +11074,16 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 416,
-      "weightKg": null,
+      "weightKg": 1885,
       "photo": null,
       "id": "toyota-c-hr-250-advance-2025-77-nmc-165-fwd",
       "market": "ES",
       "price": null,
       "currency": "EUR",
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Toyota",
@@ -11010,16 +11104,16 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 416,
-      "weightKg": null,
+      "weightKg": 2050,
       "photo": null,
       "id": "toyota-c-hr-spirit-350-awd-i-2026-77-nmc-252-awd",
       "market": "ES",
       "price": null,
       "currency": "EUR",
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Toyota",
@@ -11039,13 +11133,13 @@
       "charge10to80Min": 45,
       "acceleration0to100Sec": 9,
       "trunkLiters": null,
-      "weightKg": null,
+      "weightKg": 1720,
       "photo": null,
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Toyota",
@@ -11065,13 +11159,13 @@
       "charge10to80Min": 45,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": null,
-      "weightKg": null,
+      "weightKg": 1935,
       "photo": null,
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Toyota",
@@ -11091,13 +11185,13 @@
       "charge10to80Min": 45,
       "acceleration0to100Sec": 7.9,
       "trunkLiters": null,
-      "weightKg": null,
+      "weightKg": 1835,
       "photo": null,
       "source": "Toyota España; gama eléctrica 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -11228,12 +11322,12 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2340,
       "photo": null,
       "source": "Volkswagen España; gama eléctrica ID",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -11423,11 +11517,12 @@
       "consumptionKwh100": 15.6,
       "usableBatteryKwh": 88,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
       "dcKw": 300,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2410
     },
     {
       "make": "Volvo",
@@ -12149,9 +12244,10 @@
       "consumptionKwh100": 20.1,
       "dcKw": 525,
       "acceleration0to100Sec": 3.9,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2470
     },
     {
       "make": "XPeng",
@@ -12175,9 +12271,10 @@
       "consumptionKwh100": 18.6,
       "dcKw": 525,
       "acceleration0to100Sec": 6.4,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2365
     },
     {
       "make": "XPeng",
@@ -12201,9 +12298,10 @@
       "consumptionKwh100": 18.4,
       "dcKw": 445,
       "acceleration0to100Sec": 6.6,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2285
     },
     {
       "make": "XPeng",
@@ -12460,9 +12558,10 @@
       "acceleration0to100Sec": 5.3,
       "trunkLiters": null,
       "source": "Zeekr España/Europa; 7GT",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:15:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "weightKg": 2265
     },
     {
       "make": "Zeekr",
@@ -12475,14 +12574,15 @@
       "drive": "RWD",
       "wltpKm": 655,
       "consumptionKwh100": 15.3,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Zeekr Europe; gama europea",
       "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-09-24T20:15:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "batteryChemistry": "NMC",
-      "acKw": 22
+      "acKw": 22,
+      "weightKg": 2285
     },
     {
       "make": "Zeekr",
@@ -12495,14 +12595,15 @@
       "drive": "AWD",
       "wltpKm": 558,
       "consumptionKwh100": 17.9,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Zeekr Europe; gama europea",
       "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-09-24T20:15:00+02:00",
+      "auditDateTime": "2026-09-29T02:00:00+02:00",
       "batteryChemistry": "NMC",
-      "acKw": 22
+      "acKw": 22,
+      "weightKg": 2405
     },
     {
       "make": "Zeekr",
