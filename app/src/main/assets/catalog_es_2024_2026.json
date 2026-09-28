@@ -1011,7 +1011,8 @@
       "price": 55950,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 470
     },
     {
       "make": "BMW",
@@ -1030,7 +1031,8 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 470
     },
     {
       "make": "BMW",
@@ -1055,7 +1057,8 @@
       "price": 81350,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 470
     },
     {
       "make": "BMW",
@@ -1077,7 +1080,9 @@
       "price": 80450,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2255
     },
     {
       "make": "BMW",
@@ -1099,7 +1104,9 @@
       "price": 119609.6,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2425
     },
     {
       "make": "BMW",
@@ -1121,7 +1128,9 @@
       "price": 85050,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2395
     },
     {
       "make": "BMW",
@@ -1146,7 +1155,8 @@
       "price": 77850,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 490
     },
     {
       "make": "BMW",
@@ -1171,7 +1181,8 @@
       "price": 117009.6,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 490
     },
     {
       "make": "BMW",
@@ -1225,7 +1236,8 @@
       "price": 190600,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1250,7 +1262,8 @@
       "price": 121400,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1323,7 +1336,8 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1342,7 +1356,8 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1361,7 +1376,8 @@
       "auditDate": "2026-09-24",
       "lastUpdated": "2026-09-24",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1383,7 +1399,8 @@
       "price": 135000,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1406,7 +1423,8 @@
       "price": 89600,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1428,7 +1446,8 @@
       "price": 89600,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "trunkLiters": 500
     },
     {
       "make": "BMW",
@@ -1587,7 +1606,7 @@
       "market": "ES",
       "price": 36200,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1720,
       "photo": null,
       "source": "BYD España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
