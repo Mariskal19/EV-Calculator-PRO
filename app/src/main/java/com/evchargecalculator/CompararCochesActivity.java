@@ -648,7 +648,10 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         TextView fixed=tv(title,14,blue);
         fixed.setTypeface(null,Typeface.BOLD);
         fixed.setGravity(Gravity.CENTER_VERTICAL);
-        fixed.setPadding(dp(4),dp(12),dp(4),dp(6));
+        fixed.setSingleLine(false);
+        fixed.setMaxLines(2);
+        fixed.setEllipsize(null);
+        fixed.setPadding(dp(4),dp(7),dp(4),dp(5));
         tableLabels.addView(fixed,new LinearLayout.LayoutParams(-1,dp(40)));
 
         Space data= new Space(this);
