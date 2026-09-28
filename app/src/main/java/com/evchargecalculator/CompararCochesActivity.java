@@ -59,6 +59,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private String lastCurrency = "";
     private LinearLayout carsRow, table, tableLabels, summary;
     private HorizontalScrollView tableScroll;
+    private FrameLayout tableDataHost;
     private Spinner marketSpinner;
 
     private final List<Vehicle> vehicles = new ArrayList<>();
@@ -432,27 +433,15 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setPadding(0,dp(2),0,0);
         compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
 
-        tableLabels=new LinearLayout(this);
-        tableLabels.setOrientation(LinearLayout.VERTICAL);
-        tableLabels.setPadding(0,dp(2),0,0);
-        compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
-
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
 
-        tableScroll=new HorizontalScrollView(this);
-        tableScroll.setHorizontalScrollBarEnabled(false);
-        tableScroll.setVerticalScrollBarEnabled(false);
-        tableScroll.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
-        tableScroll.setFillViewport(false);
-        tableScroll.setClipChildren(false);
-        tableScroll.setClipToPadding(false);
-        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
-        compareTable.addView(tableScroll,new LinearLayout.LayoutParams(0,-2,1));
-        content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));
-
-        summary=new LinearLayout(this);
+        tableDataHost=new FrameLayout(this);
+        tableDataHost.setClipChildren(false);
+        tableDataHost.setClipToPadding(false);
+        compareTable.addView(tableDataHost,new LinearLayout.LayoutParams(0,-2,1));
+        content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));\n\n        summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
         summary.setPadding(0,dp(18),0,dp(8));
         content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
@@ -467,7 +456,23 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     }
 
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
-    private int tableWidth(){return dp(145*Math.max(1,selectedIds.size()));}
+    private int tableWidth(){
+        int count=Math.max(1,selectedIds.size());
+        if(count<=2){
+            int screen=getResources().getDisplayMetrics().widthPixels;
+            int label=dp(112);
+            return Math.max(dp(120), (screen-label)/count);
+        }
+        return dp(145*count);
+    }
+    private int carColumnWidth(){
+        int count=Math.max(1,selectedIds.size());
+        if(count<=2){
+            int screen=getResources().getDisplayMetrics().widthPixels;
+            return Math.max(dp(120),(screen-dp(112))/count);
+        }
+        return dp(145);
+    }
 
     private void rebuildVehicleIndex(){
         vehicleById.clear();
@@ -542,17 +547,31 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             if(v!=null) selectedVehiclesCache.add(v);
         }
 
-        if(tableScroll!=null) { tableScroll.scrollTo(0,0); tableScroll.setHorizontalScrollBarEnabled(selectedIds.size()>=3); }
+        if(tableDataHost!=null){
+            tableDataHost.removeAllViews();
+            if(selectedIds.size()>=3){
+                tableScroll=new HorizontalScrollView(this);
+                tableScroll.setHorizontalScrollBarEnabled(false);
+                tableScroll.setVerticalScrollBarEnabled(false);
+                tableScroll.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+                tableScroll.setFillViewport(false);
+                tableScroll.setClipChildren(false);
+                tableScroll.setClipToPadding(false);
+                tableDataHost.addView(tableScroll,new FrameLayout.LayoutParams(-1,-2));
+                tableScroll.addView(table,new HorizontalScrollView.LayoutParams(tableWidth(),-2));
+            }else{
+                tableScroll=null;
+                tableDataHost.addView(table,new FrameLayout.LayoutParams(tableWidth(),-2));
+            }
+        }
 
         // La anchura real de la tabla depende del número de coches.
         // Actualizarla aquí garantiza que el HorizontalScrollView tenga
         // contenido desplazable también al pasar de 2 a 3 coches.
-        if(table!=null){
+        if(table!=null && table.getLayoutParams()!=null){
             android.view.ViewGroup.LayoutParams tableLp=table.getLayoutParams();
-            if(tableLp!=null) {
-                tableLp.width=tableWidth();
-                table.setLayoutParams(tableLp);
-            }
+            tableLp.width=tableWidth();
+            table.setLayoutParams(tableLp);
         }
         if(tableScroll!=null) tableScroll.scrollTo(0,0);
 
@@ -619,7 +638,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.addView(fixed,new LinearLayout.LayoutParams(-1,dp(40)));
 
         Space data= new Space(this);
-        table.addView(data,new LinearLayout.LayoutParams(Math.max(dp(145)*Math.max(1,selectedIds.size()),dp(145)),dp(40)));
+        table.addView(data,new LinearLayout.LayoutParams(tableWidth(),dp(40)));
     }
     private TextView chip(String label){TextView t=tv(label,10.5f,sub());t.setGravity(Gravity.CENTER);t.setIncludeFontPadding(false);t.setPadding(dp(6),dp(4),dp(6),dp(4));t.setBackground(strokeBg(dark?Color.rgb(13,28,41):Color.rgb(244,248,253),dark?Color.rgb(43,65,84):Color.rgb(222,231,240),10));return t;}
     private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(10),dp(11),dp(10),dp(9));c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));TextView make=tv(v.make.toUpperCase(Locale.ROOT),11,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);make.setIncludeFontPadding(false);c.addView(make,new LinearLayout.LayoutParams(-1,dp(20)));TextView model=tv(v.model,17,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);model.setIncludeFontPadding(false);model.setMaxLines(2);c.addView(model,new LinearLayout.LayoutParams(-1,dp(43)));TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());ver.setGravity(Gravity.START|Gravity.TOP);ver.setIncludeFontPadding(false);ver.setMaxLines(3);ver.setEllipsize(android.text.TextUtils.TruncateAt.END);ver.setPadding(dp(2),dp(7),dp(2),0);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(58)));TextView rem=tv("Quitar",11,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setIncludeFontPadding(false);rem.setPadding(0,dp(5),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(27)));return c;}
@@ -729,9 +748,9 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             cell.setBackgroundColor(bgColor);
             double n=nums[i];
             if(chosen.size()>=2&&!Double.isNaN(best)&&!Double.isNaN(n)&&Math.abs(n-best)<0.0001)cell.setTextColor(blue);
-            r.addView(cell,new LinearLayout.LayoutParams(dp(145),dp(52)));
+            r.addView(cell,new LinearLayout.LayoutParams(carColumnWidth(),dp(52)));
         }
-        table.addView(r,new LinearLayout.LayoutParams(dp(145)*Math.max(1,chosen.size()),dp(52)));
+        table.addView(r,new LinearLayout.LayoutParams(carColumnWidth()*Math.max(1,chosen.size()),dp(52)));
     }
     private String value(Vehicle v,String key){if("battery".equals(key))return v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";if("type".equals(key))return empty(v.batteryType);if("range".equals(key))return v.wltpKm>0?String.format(Locale.US,"%.0f km",v.wltpKm):"—";if("cons".equals(key))return v.consumption>0?fmt(v.consumption)+" kWh/100 km":"—";if("power".equals(key))return v.powerKw>0?Math.round(v.powerKw*1.35962)+" CV ("+String.format(Locale.US,"%.0f kW",v.powerKw)+")":"—";if("drive".equals(key))return empty(v.drivetrain);if("acc".equals(key))return v.acc>0?fmt(v.acc)+" s":"—";if("ac".equals(key))return v.acKw>0?fmt(v.acKw)+" kW":"—";if("dc".equals(key))return v.dcKw>0?fmt(v.dcKw)+" kW":"—";if("charge".equals(key))return v.chargeMin>0?String.format(Locale.US,"%.0f min",v.chargeMin):"—";if("trunk".equals(key))return v.trunk>0?String.format(Locale.US,"%.0f L",v.trunk):"—";if("weight".equals(key))return v.weight>0?String.format(Locale.US,"%.0f kg",v.weight):"—";if("price".equals(key))return formatPrice(v.price);return "—";}
     private double numeric(Vehicle v,String key){if("battery".equals(key))return v.batteryKwh;if("range".equals(key))return v.wltpKm;if("cons".equals(key))return v.consumption;if("power".equals(key))return v.powerKw;if("acc".equals(key))return v.acc;if("ac".equals(key))return v.acKw;if("dc".equals(key))return v.dcKw;if("charge".equals(key))return v.chargeMin;if("trunk".equals(key))return v.trunk;if("weight".equals(key))return v.weight;if("price".equals(key))return v.price;return Double.NaN;}
