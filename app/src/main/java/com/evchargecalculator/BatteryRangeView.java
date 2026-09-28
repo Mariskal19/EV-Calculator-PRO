@@ -14,9 +14,9 @@ public class BatteryRangeView extends View {
   private int current = 30, target = 80;
   private Listener listener;
   private boolean dark = false;
-  private final int blueLight = Color.rgb(41, 179, 255);
-  private final int blueDark = Color.rgb(16, 144, 230);
-  private final int trackLight = Color.rgb(219, 230, 241);
+  private final int blueLight = Color.rgb(46, 108, 255);
+  private final int blueDark = Color.rgb(40, 198, 165);
+  private final int trackLight = Color.rgb(220, 230, 240);
   private final int trackDark = Color.rgb(42, 58, 75);
   private int activeThumb = -1;
 
@@ -79,17 +79,12 @@ public class BatteryRangeView extends View {
 
     float activeLeft = xFor(current);
     float activeRight = xFor(target);
-    LinearGradient gradient = new LinearGradient(
-        activeLeft, y, activeRight, y,
-        blueLight,
-        blueDark,
-        Shader.TileMode.CLAMP
-    );
-    p.setShader(gradient);
-    c.drawLine(activeLeft, y, activeRight, y, p);
-    p.setShader(null);
 
-    // Rounded blue handles, integrated into the progress bar.
+    // Active section: solid teal, exactly like the second reference bar.
+    p.setColor(blueDark);
+    c.drawLine(activeLeft, y, activeRight, y, p);
+
+    // Two solid round handles: blue at the start, teal at the end.
     p.setShadowLayer(dp(4), 0, dp(2), 0x55000000);
     p.setColor(blueLight);
     c.drawCircle(activeLeft, y, dp(10), p);
