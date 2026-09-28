@@ -422,27 +422,29 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         legend.setPadding(dp(4),0,0,dp(4));
         if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
 
-        // La columna de características queda fija; solo las columnas de coches se desplazan.
-        LinearLayout compareTable=new LinearLayout(this);
-        compareTable.setOrientation(LinearLayout.HORIZONTAL);
-        compareTable.setClipChildren(false);
+        // La columna de características queda fija; los datos se desplazan por debajo.
+        FrameLayout compareTable=new FrameLayout(this);
+        compareTable.setClipChildren(true);
         compareTable.setClipToPadding(false);
+
+        tableDataHost=new FrameLayout(this);
+        tableDataHost.setClipChildren(true);
+        tableDataHost.setClipToPadding(true);
+        FrameLayout.LayoutParams dataHostLp=new FrameLayout.LayoutParams(-1,-2);
+        dataHostLp.leftMargin=dp(112);
+        compareTable.addView(tableDataHost,dataHostLp);
 
         tableLabels=new LinearLayout(this);
         tableLabels.setOrientation(LinearLayout.VERTICAL);
         tableLabels.setPadding(0,dp(2),0,0);
-        compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
+        tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
 
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
 
-        // Esta pantalla es especial: la columna de etiquetas queda fija.
-        // Con 1/2 coches no hay desplazamiento; con 3 solo se desplazan los datos.
-        tableDataHost=new FrameLayout(this);
-        tableDataHost.setClipChildren(false);
-        tableDataHost.setClipToPadding(false);
-        compareTable.addView(tableDataHost,new LinearLayout.LayoutParams(0,-2,1));
         content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));
 
         summary=new LinearLayout(this);
