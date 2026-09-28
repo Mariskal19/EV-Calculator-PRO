@@ -71,7 +71,8 @@ public class BatteryRangeView extends View {
     float y = getHeight() / 2f, left = xFor(0), right = xFor(100);
     int track = dark ? trackDark : trackLight;
 
-    p.setStrokeWidth(dp(5));
+    // Progress-bar style track, matching the reference image.
+    p.setStrokeWidth(dp(8));
     p.setStrokeCap(Paint.Cap.ROUND);
     p.setColor(track);
     c.drawLine(left, y, right, y, p);
@@ -88,6 +89,7 @@ public class BatteryRangeView extends View {
     c.drawLine(activeLeft, y, activeRight, y, p);
     p.setShader(null);
 
+    // Rounded blue handles, integrated into the progress bar.
     p.setShadowLayer(dp(4), 0, dp(2), 0x55000000);
     p.setColor(blueLight);
     c.drawCircle(activeLeft, y, dp(10), p);
