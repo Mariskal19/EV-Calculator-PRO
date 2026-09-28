@@ -8915,14 +8915,16 @@
       "drive": "FWD",
       "wltpKm": 308,
       "consumptionKwh100": 14.1,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Renault España; gama E-Tech eléctrico",
       "usableBatteryKwh": 39,
       "acKw": 11,
       "dcKw": 100,
       "drivetrain": "FWD",
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T00:05:00+02:00",
+      "trunkLiters": 420,
+      "weightKg": 1410
     },
     {
       "make": "Renault",
@@ -8936,14 +8938,16 @@
       "drive": "FWD",
       "wltpKm": 409,
       "consumptionKwh100": 14.8,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Renault España; gama E-Tech eléctrico",
       "usableBatteryKwh": 52,
       "acKw": 11,
       "dcKw": 100,
       "drivetrain": "FWD",
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T00:05:00+02:00",
+      "trunkLiters": 420,
+      "weightKg": 1410
     },
     {
       "make": "Renault",
@@ -9103,13 +9107,15 @@
       "wltpKm": 263,
       "consumptionKwh100": 12.2,
       "price_eur": 19500,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Renault España; gama E-Tech eléctrico",
       "drivetrain": "RWD",
       "acKw": 6.6,
       "dcKw": null,
-      "auditDateTime": "2026-09-24T20:52:00+02:00"
+      "auditDateTime": "2026-09-29T00:05:00+02:00",
+      "trunkLiters": 360,
+      "weightKg": 1200
     },
     {
       "make": "Škoda",
@@ -17687,5 +17693,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-28T23:59:00+02:00"
+  "updatedAt": "2026-09-29T00:05:00+02:00"
 }
