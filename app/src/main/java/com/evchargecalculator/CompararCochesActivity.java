@@ -440,8 +440,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         // Esta pantalla es especial: la columna de etiquetas queda fija.
         // Con 1/2 coches no hay desplazamiento; con 3 solo se desplazan los datos.
         tableDataHost=new FrameLayout(this);
-        tableDataHost.setClipChildren(true);
-        tableDataHost.setClipToPadding(true);
+        tableDataHost.setClipChildren(false);
+        tableDataHost.setClipToPadding(false);
         compareTable.addView(tableDataHost,new LinearLayout.LayoutParams(0,-2,1));
         content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));
 
