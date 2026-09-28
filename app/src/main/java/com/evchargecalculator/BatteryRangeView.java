@@ -19,6 +19,7 @@ public class BatteryRangeView extends View {
   private final int trackLight = Color.rgb(220, 235, 247);
   private final int trackDark = Color.rgb(42, 58, 75);
   private int activeThumb = -1;
+  private float thumbScale = 1f;
 
   public BatteryRangeView(Context c) {
     super(c);
@@ -88,9 +89,9 @@ public class BatteryRangeView extends View {
     // Small round handles with the same subtle depth/effect as the capacity slider thumb.
     p.setShadowLayer(dp(2), 0, dp(1), Color.argb(90, 0, 0, 0));
     p.setColor(blueDark);
-    c.drawCircle(activeLeft, y, dp(7), p);
+    c.drawCircle(activeLeft, y, dp(7) * (activeThumb == 0 ? thumbScale : 1f), p);
     p.setColor(blueLight);
-    c.drawCircle(activeRight, y, dp(7), p);
+    c.drawCircle(activeRight, y, dp(7) * (activeThumb == 1 ? thumbScale : 1f), p);
     p.clearShadowLayer();
   }
 
@@ -100,6 +101,7 @@ public class BatteryRangeView extends View {
     if (e.getAction() == MotionEvent.ACTION_DOWN) {
       float dc = Math.abs(x - xFor(current)), dt = Math.abs(x - xFor(target));
       activeThumb = dc <= dt ? 0 : 1;
+      animateThumb(true);
       getParent().requestDisallowInterceptTouchEvent(true);
       updateThumb(x);
       return true;
@@ -110,12 +112,29 @@ public class BatteryRangeView extends View {
     }
     if (e.getAction() == MotionEvent.ACTION_UP || e.getAction() == MotionEvent.ACTION_CANCEL) {
       updateThumb(x);
+      animateThumb(false);
       activeThumb = -1;
       getParent().requestDisallowInterceptTouchEvent(false);
       performClick();
       return true;
     }
     return true;
+  }
+
+  private void animateThumb(boolean enlarge) {
+    final float from = thumbScale;
+    final float to = enlarge ? 1.28f : 1f;
+    long start = System.currentTimeMillis();
+    Runnable anim = new Runnable() {
+      @Override public void run() {
+        float t = Math.min(1f, (System.currentTimeMillis() - start) / 140f);
+        float eased = 1f - (1f - t) * (1f - t);
+        thumbScale = from + (to - from) * eased;
+        invalidate();
+        if (t < 1f) postOnAnimation(this);
+      }
+    };
+    post(anim);
   }
 
   private void updateThumb(float x) {
