@@ -2792,8 +2792,9 @@
       "weightKg": 1835,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-born-e-boost-2024",
@@ -2821,8 +2822,9 @@
       "weightKg": 1950,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -2845,13 +2847,13 @@
       "weightKg": 1950,
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 48240,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-born-59-kwh-2025",
@@ -2879,8 +2881,9 @@
       "weightKg": 1845,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-born-79-kwh-2025",
@@ -2908,8 +2911,9 @@
       "weightKg": 1945,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-born-vz-2025",
@@ -2937,8 +2941,9 @@
       "weightKg": 1970,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-raval-38-kwh-2025",
@@ -2966,8 +2971,9 @@
       "weightKg": 1500,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-raval-58-kwh-2025",
@@ -2995,8 +3001,9 @@
       "weightKg": 1600,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -3025,7 +3032,7 @@
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
       "lastUpdated": "2026-09-28",
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:35:40+02:00"
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -3047,7 +3054,7 @@
       "batteryChemistry": "LFP",
       "dcKw": 88,
       "charge10to80Min": 23,
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-28T23:59:00+02:00",
       "trunkLiters": 441,
       "weightKg": 1610
     },
@@ -3067,7 +3074,7 @@
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-28T23:59:00+02:00",
       "trunkLiters": 441,
       "weightKg": 1615
     },
@@ -3097,7 +3104,7 @@
       "auditDate": "2026-09-28",
       "drive": "RWD",
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-28T23:59:00+02:00",
       "trunkLiters": 540
     },
     {
@@ -3121,13 +3128,13 @@
       "weightKg": 2130,
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 54810,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -3150,13 +3157,13 @@
       "weightKg": 2250,
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 65060,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-tavascan-endurance-2025",
@@ -3184,8 +3191,9 @@
       "weightKg": 2098,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "cupra-tavascan-vz-2025",
@@ -3213,8 +3221,9 @@
       "weightKg": 2199,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "Dacia",
@@ -3237,11 +3246,11 @@
       "weightKg": 984,
       "photo": null,
       "source": "Dacia España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "price": 17890,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "Dacia",
@@ -3264,12 +3273,12 @@
       "weightKg": 984,
       "photo": null,
       "source": "Dacia España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "price": 18890,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:30:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "gaiaId": "dacia-spring-expression-2025",
@@ -3297,8 +3306,9 @@
       "weightKg": 984,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:59:00+02:00"
     },
     {
       "make": "Dacia",
@@ -3315,7 +3325,7 @@
       "source": "Dacia España; configurador Spring 2026",
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-28T23:59:00+02:00",
       "acKw": 7,
       "dcKw": 40,
       "trunkLiters": 288,
@@ -17677,5 +17687,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-28T23:55:00+02:00"
+  "updatedAt": "2026-09-28T23:59:00+02:00"
 }
