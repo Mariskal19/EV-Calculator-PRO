@@ -113,12 +113,13 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:05:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "acKw": 11,
       "dcKw": 100,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 326,
-      "weightKg": 1479
+      "weightKg": 1479,
+      "charge10to80Min": 33
     },
     {
       "make": "Alpine",
@@ -135,11 +136,12 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "acKw": 11,
       "dcKw": 100,
       "trunkLiters": 326,
-      "weightKg": 1554
+      "weightKg": 1554,
+      "charge10to80Min": 33
     },
     {
       "make": "Alpine",
@@ -160,9 +162,10 @@
       "acKw": 11,
       "dcKw": 150,
       "acceleration0to100Sec": 4.8,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 532,
-      "weightKg": 2124
+      "weightKg": 2124,
+      "charge10to80Min": 36
     },
     {
       "make": "Audi",
@@ -288,10 +291,11 @@
       "consumptionKwh100": 13.9,
       "price": 70480,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
-      "weightKg": 2185
+      "weightKg": 2185,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -313,10 +317,11 @@
       "consumptionKwh100": 13.9,
       "price": 83380,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
-      "weightKg": 2185
+      "weightKg": 2185,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -338,10 +343,11 @@
       "consumptionKwh100": 14.6,
       "price": 89820,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 502,
-      "weightKg": 2185
+      "weightKg": 2185,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -393,10 +399,11 @@
       "consumptionKwh100": 13.3,
       "price": 67980,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
-      "weightKg": 2175
+      "weightKg": 2175,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -418,10 +425,11 @@
       "consumptionKwh100": 13.3,
       "price": 80880,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
-      "weightKg": 2175
+      "weightKg": 2175,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -443,10 +451,11 @@
       "consumptionKwh100": 14,
       "price": 87320,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 502,
-      "weightKg": 2175
+      "weightKg": 2175,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -697,9 +706,10 @@
       "weightKg": 2350,
       "price": 74090,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 511
+      "trunkLiters": 511,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -723,9 +733,10 @@
       "auditDate": "2026-09-29",
       "wltpKm": 607,
       "consumptionKwh100": 17.2,
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 499
+      "trunkLiters": 499,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -807,10 +818,11 @@
       "consumptionKwh100": 13.3,
       "price": 66370,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "weightKg": 2200,
-      "trunkLiters": 526
+      "trunkLiters": 526,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -832,10 +844,11 @@
       "consumptionKwh100": 15.6,
       "price": 70080,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "weightKg": 2310,
-      "trunkLiters": 526
+      "trunkLiters": 526,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -860,9 +873,10 @@
       "weightKg": 2350,
       "price": 71650,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 526
+      "trunkLiters": 526,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -887,9 +901,10 @@
       "weightKg": 2420,
       "price": 94520,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 526
+      "trunkLiters": 526,
+      "charge10to80Min": 20
     },
     {
       "make": "Audi",
@@ -1048,8 +1063,9 @@
       "price": 55950,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "trunkLiters": 470
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 470,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1095,8 +1111,9 @@
       "price": 81350,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "trunkLiters": 470
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 470,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1118,9 +1135,10 @@
       "price": 80450,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2255
+      "weightKg": 2255,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1142,9 +1160,10 @@
       "price": 119609.6,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2425
+      "weightKg": 2425,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1166,9 +1185,10 @@
       "price": 85050,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2395
+      "weightKg": 2395,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1193,8 +1213,9 @@
       "price": 77850,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "trunkLiters": 490
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 490,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1219,8 +1240,9 @@
       "price": 117009.6,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "trunkLiters": 490
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 490,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1274,8 +1296,9 @@
       "price": 190600,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "trunkLiters": 500
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 500,
+      "charge10to80Min": 32
     },
     {
       "make": "BMW",
@@ -1300,8 +1323,9 @@
       "price": 121400,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "trunkLiters": 500
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 500,
+      "charge10to80Min": 32
     },
     {
       "make": "BMW",
@@ -1356,7 +1380,8 @@
       "price": 50300,
       "currency": "EUR",
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:44:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 32
     },
     {
       "make": "BMW",
@@ -1441,9 +1466,10 @@
       "price": 135000,
       "currency": "EUR",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 500,
-      "weightKg": 2655
+      "weightKg": 2655,
+      "charge10to80Min": 34
     },
     {
       "make": "BMW",
@@ -1466,9 +1492,10 @@
       "price": 89600,
       "currency": "EUR",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 500,
-      "weightKg": 2525
+      "weightKg": 2525,
+      "charge10to80Min": 33
     },
     {
       "make": "BMW",
@@ -1490,9 +1517,10 @@
       "price": 89600,
       "currency": "EUR",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 500,
-      "weightKg": 2580
+      "weightKg": 2580,
+      "charge10to80Min": 34
     },
     {
       "make": "BMW",
@@ -1548,8 +1576,9 @@
       "price": 51800,
       "currency": "EUR",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
-      "trunkLiters": 525
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 525,
+      "charge10to80Min": 32
     },
     {
       "make": "BMW",
@@ -1576,7 +1605,8 @@
       "trunkLiters": 520,
       "weightKg": 2360,
       "batteryChemistry": "NMC",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 15
     },
     {
       "make": "BYD",
@@ -1735,14 +1765,15 @@
       "drivetrain": null,
       "acKw": 7,
       "dcKw": 88,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 7.3,
       "trunkLiters": 440,
       "weightKg": 1795,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-atto-3-extended-range-2025",
@@ -1764,14 +1795,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 88,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 7.3,
       "trunkLiters": 440,
       "weightKg": 1795,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "BYD",
@@ -1883,14 +1915,15 @@
       "drivetrain": null,
       "acKw": 7,
       "dcKw": 60,
-      "charge10to80Min": null,
+      "charge10to80Min": 51,
       "acceleration0to100Sec": 13.9,
       "trunkLiters": 345,
       "weightKg": 1460,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-dolphin-comfort-2024",
@@ -1912,14 +1945,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 88,
-      "charge10to80Min": null,
+      "charge10to80Min": 47,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 345,
       "weightKg": 1550,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-dolphin-design-2025",
@@ -1941,14 +1975,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 95,
-      "charge10to80Min": null,
+      "charge10to80Min": 44,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 345,
       "weightKg": 1545,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "BYD",
@@ -2030,7 +2065,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 140,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 9.6,
       "trunkLiters": 552,
       "weightKg": 1995,
@@ -2038,7 +2073,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:35:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-seal-u-design-2025",
@@ -2060,7 +2095,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 140,
-      "charge10to80Min": null,
+      "charge10to80Min": 40,
       "acceleration0to100Sec": 9.9,
       "trunkLiters": 552,
       "weightKg": 2122,
@@ -2068,7 +2103,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:35:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-seal-design-2024",
@@ -2090,14 +2125,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 5.9,
       "trunkLiters": 400,
       "weightKg": 1885,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-seal-excellence-2024",
@@ -2119,14 +2155,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 3.8,
       "trunkLiters": 400,
       "weightKg": 2150,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-seal-design-rwd-2025",
@@ -2148,14 +2185,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 5.9,
       "trunkLiters": 400,
       "weightKg": 1885,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-seal-excellence-2025",
@@ -2177,14 +2215,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 3.8,
       "trunkLiters": 400,
       "weightKg": 2145,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-seal-design-rwd-2026",
@@ -2206,14 +2245,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 5.9,
       "trunkLiters": 400,
       "weightKg": 1885,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "BYD",
@@ -2328,14 +2368,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 29,
       "acceleration0to100Sec": 6.7,
       "trunkLiters": 520,
       "weightKg": 2210,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "byd-sealion-7-excellence-awd-2025",
@@ -2357,14 +2398,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 230,
-      "charge10to80Min": null,
+      "charge10to80Min": 23,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 520,
       "weightKg": 2430,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "BYD",
@@ -2416,14 +2458,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 39,
       "acceleration0to100Sec": 4.9,
       "trunkLiters": 235,
       "weightKg": 2640,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Changan",
@@ -2563,7 +2606,8 @@
       "price": 26490,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 28
     },
     {
       "gaiaId": "citroen-e-c3-aircross-44-2025",
@@ -2585,14 +2629,15 @@
       "drivetrain": null,
       "acKw": 7.4,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 28,
       "acceleration0to100Sec": 11,
       "trunkLiters": 460,
       "weightKg": 1540,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "citroen-e-c3-aircross-54-2025",
@@ -2614,14 +2659,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 11,
       "trunkLiters": 460,
       "weightKg": 1610,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2647,7 +2693,8 @@
       "price": 23800,
       "currency": "EUR",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 28
     },
     {
       "gaiaId": "citroen-e-c3-you-2025",
@@ -2669,14 +2716,15 @@
       "drivetrain": "FWD",
       "acKw": 7.4,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 28,
       "acceleration0to100Sec": 11,
       "trunkLiters": 310,
       "weightKg": 1416,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "citroen-e-c4-x-max-2025",
@@ -2698,14 +2746,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9.3,
       "trunkLiters": 510,
       "weightKg": 1611,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "citroen-e-c4-shine-plus-2024",
@@ -2727,14 +2776,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 9.7,
       "trunkLiters": 380,
       "weightKg": 1559,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "citroen-e-c4-you-54-2025",
@@ -2756,14 +2806,15 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9,
       "trunkLiters": 380,
       "weightKg": 1590,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2781,10 +2832,11 @@
       "source": "Citroën España; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 160,
-      "auditDateTime": "2026-09-28T23:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "batteryChemistry": "NMC",
       "trunkLiters": 565,
-      "weightKg": 2246
+      "weightKg": 2246,
+      "charge10to80Min": 37
     },
     {
       "make": "Citroën",
@@ -2806,9 +2858,10 @@
       "price": 39490,
       "currency": "EUR",
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 565,
-      "weightKg": 2184
+      "weightKg": 2184,
+      "charge10to80Min": 28
     },
     {
       "gaiaId": "cupra-born-58-kwh-2024",
@@ -3009,7 +3062,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 130,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 8,
       "trunkLiters": 345,
       "weightKg": 1500,
@@ -3017,7 +3070,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "cupra-raval-58-kwh-2025",
@@ -3039,7 +3092,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 175,
-      "charge10to80Min": null,
+      "charge10to80Min": 21,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 300,
       "weightKg": 1600,
@@ -3047,7 +3100,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -3259,7 +3312,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 135,
-      "charge10to80Min": null,
+      "charge10to80Min": 39,
       "acceleration0to100Sec": 5.6,
       "trunkLiters": 540,
       "weightKg": 2199,
@@ -3267,7 +3320,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Dacia",
@@ -3344,7 +3397,7 @@
       "drivetrain": "FWD",
       "acKw": 7,
       "dcKw": 30,
-      "charge10to80Min": null,
+      "charge10to80Min": 60,
       "acceleration0to100Sec": 13.7,
       "trunkLiters": 308,
       "weightKg": 984,
@@ -3352,7 +3405,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Dacia",
@@ -3369,11 +3422,12 @@
       "source": "Dacia España; configurador Spring 2026",
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "acKw": 7,
       "dcKw": 40,
       "trunkLiters": 288,
-      "weightKg": 1068
+      "weightKg": 1068,
+      "charge10to80Min": 40
     },
     {
       "make": "Dongfeng",
@@ -3393,9 +3447,10 @@
       "source": "Dongfeng España; especificaciones oficiales",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1356,
-      "trunkLiters": 326
+      "trunkLiters": 326,
+      "charge10to80Min": 52
     },
     {
       "make": "Dongfeng",
@@ -3416,9 +3471,10 @@
       "auditDate": "2026-09-29",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1430,
-      "trunkLiters": 326
+      "trunkLiters": 326,
+      "charge10to80Min": 69
     },
     {
       "make": "Dongfeng",
@@ -3439,9 +3495,10 @@
       "auditDate": "2026-09-29",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1430,
-      "trunkLiters": 326
+      "trunkLiters": 326,
+      "charge10to80Min": 69
     },
     {
       "make": "DS",
@@ -3463,8 +3520,9 @@
       "dcKw": 100,
       "acceleration0to100Sec": 7.1,
       "trunkLiters": 420,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1820
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1820,
+      "charge10to80Min": 39
     },
     {
       "make": "DS",
@@ -3484,9 +3542,10 @@
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 560,
-      "weightKg": 2166
+      "weightKg": 2166,
+      "charge10to80Min": 28
     },
     {
       "make": "DS",
@@ -3506,9 +3565,10 @@
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 515,
-      "weightKg": 2327
+      "weightKg": 2327,
+      "charge10to80Min": 37
     },
     {
       "make": "DS",
@@ -3528,9 +3588,10 @@
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 560,
-      "weightKg": 2213
+      "weightKg": 2213,
+      "charge10to80Min": 37
     },
     {
       "make": "DS",
@@ -3616,7 +3677,9 @@
       "source": "Fiat España; especificaciones oficiales / Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "charge10to80Min": 32,
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "fiat-500e-icon-42kwh-2025",
@@ -3645,7 +3708,8 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "trunkLiters": 185,
-      "auditDateTime": "2026-09-29T02:55:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 32
     },
     {
       "make": "Fiat",
@@ -3665,10 +3729,11 @@
       "auditDate": "2026-09-29",
       "acKw": 11,
       "dcKw": 100,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "acceleration0to100Sec": 9,
       "weightKg": 1595,
-      "trunkLiters": 360
+      "trunkLiters": 360,
+      "charge10to80Min": 34
     },
     {
       "make": "Fiat",
@@ -3689,11 +3754,12 @@
       "acKw": 11,
       "dcKw": 100,
       "charge20to80Min": 27,
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "batteryChemistry": "LFP",
       "batteryType": "LFP",
       "trunkLiters": 361,
-      "weightKg": 1511
+      "weightKg": 1511,
+      "charge10to80Min": 28
     },
     {
       "make": "Ford",
@@ -3897,7 +3963,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 81428,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -3922,7 +3989,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": null,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -3961,11 +4029,12 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "acKw": 10.5,
       "dcKw": 150,
       "weightKg": 2175,
-      "trunkLiters": 402
+      "trunkLiters": 402,
+      "charge10to80Min": 29
     },
     {
       "make": "Ford",
@@ -3983,11 +4052,12 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "acKw": 10.5,
       "dcKw": 150,
       "weightKg": 2240,
-      "trunkLiters": 402
+      "trunkLiters": 402,
+      "charge10to80Min": 29
     },
     {
       "make": "Ford",
@@ -4032,7 +4102,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 72233,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -4057,7 +4128,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": 81428,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -4103,7 +4175,8 @@
       "lastUpdated": "2026-09-24",
       "price_eur": null,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -4265,8 +4338,8 @@
       "batteryChemistry": "LFP",
       "acKw": 11,
       "dcKw": 120,
-      "charge10to80Min": null,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "charge10to80Min": 32,
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "weightKg": 1675,
       "trunkLiters": 461
@@ -4289,8 +4362,8 @@
       "batteryChemistry": "LFP",
       "acKw": 11,
       "dcKw": 135,
-      "charge10to80Min": null,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "charge10to80Min": 32,
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drivetrain": "FWD",
       "weightKg": 1760,
       "trunkLiters": 461
@@ -4313,8 +4386,8 @@
       "batteryChemistry": "LFP",
       "acKw": 11,
       "dcKw": 135,
-      "charge10to80Min": null,
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "charge10to80Min": 32,
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drivetrain": "FWD",
       "weightKg": 1760,
       "trunkLiters": 461
@@ -4490,9 +4563,10 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 1950,
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
-      "trunkLiters": 520
+      "trunkLiters": 520,
+      "charge10to80Min": 15
     },
     {
       "make": "Hyundai",
@@ -4516,9 +4590,10 @@
       "acceleration0to100Sec": 5.2,
       "weightKg": 2110,
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 520
+      "trunkLiters": 520,
+      "charge10to80Min": 15
     },
     {
       "make": "Hyundai",
@@ -4961,8 +5036,9 @@
       "source": "OMODA & JAECOO España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1765
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1765,
+      "charge10to80Min": 30
     },
     {
       "make": "Jaecoo",
@@ -4984,8 +5060,9 @@
       "source": "OMODA & JAECOO España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1765
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1765,
+      "charge10to80Min": 30
     },
     {
       "gaiaId": "jaguar-i-pace-ev400-2024",
@@ -5013,7 +5090,9 @@
       "source": "Jaguar España; especificaciones oficiales / Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "lastUpdated": "2026-09-26",
+      "charge10to80Min": 57,
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Jeep",
@@ -5219,8 +5298,9 @@
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 1915
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1915,
+      "charge10to80Min": 43
     },
     {
       "make": "KGM",
@@ -5244,8 +5324,9 @@
       "source": "KGM España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 1915
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1915,
+      "charge10to80Min": 43
     },
     {
       "make": "Kia",
@@ -5430,10 +5511,11 @@
       "batteryChemistry": "NMC",
       "price_eur": 36930,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "trunkLiters": 460,
-      "weightKg": 1800
+      "weightKg": 1800,
+      "charge10to80Min": 36
     },
     {
       "make": "Kia",
@@ -5486,9 +5568,10 @@
       "dcKw": 102,
       "price_eur": 38430,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 460,
-      "weightKg": 1800
+      "weightKg": 1800,
+      "charge10to80Min": 36
     },
     {
       "make": "Kia",
@@ -5894,13 +5977,13 @@
       "consumptionKwh100": 16.2,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 5.6,
       "trunkLiters": 309,
       "source": "Lancia España; Ypsilon HF 280 CV",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1631
     },
     {
@@ -5919,10 +6002,10 @@
       "source": "Lancia España; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 8.2,
       "trunkLiters": 309,
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1561
     },
     {
@@ -5944,8 +6027,9 @@
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 510,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 1625
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1625,
+      "charge10to80Min": 25
     },
     {
       "make": "Leapmotor",
@@ -5966,8 +6050,9 @@
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 510,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 1525
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1525,
+      "charge10to80Min": 25
     },
     {
       "make": "Leapmotor",
@@ -5988,8 +6073,9 @@
       "trunkLiters": 345,
       "batteryChemistry": "LFP",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 1855
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1855,
+      "charge10to80Min": 23
     },
     {
       "make": "Leapmotor",
@@ -6010,8 +6096,9 @@
       "trunkLiters": 345,
       "batteryChemistry": "LFP",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 1824
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1824,
+      "charge10to80Min": 20
     },
     {
       "make": "Leapmotor",
@@ -6035,7 +6122,8 @@
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:47:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 24
     },
     {
       "make": "Leapmotor",
@@ -6059,7 +6147,8 @@
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:47:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 20
     },
     {
       "make": "Leapmotor",
@@ -6265,7 +6354,8 @@
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 17
     },
     {
       "make": "Lotus",
@@ -6341,7 +6431,8 @@
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 15
     },
     {
       "make": "Lotus",
@@ -6365,7 +6456,8 @@
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 15
     },
     {
       "make": "Lotus",
@@ -6555,9 +6647,10 @@
       "market": "ES",
       "consumptionKwh100": 18.9,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2205,
-      "trunkLiters": 468
+      "trunkLiters": 468,
+      "charge10to80Min": 23
     },
     {
       "make": "Mazda",
@@ -6577,9 +6670,10 @@
       "market": "ES",
       "consumptionKwh100": 19.4,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2205,
-      "trunkLiters": 468
+      "trunkLiters": 468,
+      "charge10to80Min": 23
     },
     {
       "make": "Mazda",
@@ -6677,9 +6771,10 @@
       "consumptionKwh100": 12.8,
       "auditDate": "2026-09-29",
       "acceleration0to100Sec": 6.8,
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 405,
-      "weightKg": 2075
+      "weightKg": 2075,
+      "charge10to80Min": 15
     },
     {
       "make": "Mercedes-Benz",
@@ -6701,9 +6796,10 @@
       "consumptionKwh100": 13.3,
       "auditDate": "2026-09-29",
       "acceleration0to100Sec": 5,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 405,
-      "weightKg": 2145
+      "weightKg": 2145,
+      "charge10to80Min": 15
     },
     {
       "make": "Mercedes-Benz",
@@ -7676,8 +7772,9 @@
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 545,
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:39:00+02:00",
-      "weightKg": 1826
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1826,
+      "charge10to80Min": 37
     },
     {
       "make": "Mitsubishi",
@@ -7701,8 +7798,9 @@
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 545,
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:39:00+02:00",
-      "weightKg": 1839
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1839,
+      "charge10to80Min": 37
     },
     {
       "make": "Nissan",
@@ -7837,8 +7935,9 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 1410
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1410,
+      "charge10to80Min": 33
     },
     {
       "make": "Nissan",
@@ -7859,8 +7958,9 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 1520
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "weightKg": 1520,
+      "charge10to80Min": 33
     },
     {
       "make": "Omoda",
@@ -7918,9 +8018,10 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2190,
-      "trunkLiters": 495
+      "trunkLiters": 495,
+      "charge10to80Min": 35
     },
     {
       "make": "Opel",
@@ -7939,10 +8040,11 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "wltpKm": 454,
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "weightKg": 1670,
-      "trunkLiters": 352
+      "trunkLiters": 352,
+      "charge10to80Min": 34
     },
     {
       "make": "Opel",
@@ -7961,10 +8063,11 @@
       "lastUpdated": "2026-09-28",
       "market": "ES",
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "trunkLiters": 267,
-      "weightKg": 1544
+      "weightKg": 1544,
+      "charge10to80Min": 32
     },
     {
       "make": "Opel",
@@ -7983,10 +8086,11 @@
       "lastUpdated": "2026-09-28",
       "market": "ES",
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "trunkLiters": 267,
-      "weightKg": 1544
+      "weightKg": 1544,
+      "charge10to80Min": 32
     },
     {
       "make": "Opel",
@@ -8003,7 +8107,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 14.2,
       "trunkLiters": 460,
       "id": "opel-frontera-electric-54-kwh-2025-54-lfp-83-fwd",
@@ -8015,7 +8119,7 @@
       "source": "Opel/Stellantis oficial; Frontera Electric Extended Range 54 kWh",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "batteryChemistry": "LFP"
     },
@@ -8037,10 +8141,11 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "weightKg": 1573,
-      "trunkLiters": 460
+      "trunkLiters": 460,
+      "charge10to80Min": 28
     },
     {
       "make": "Opel",
@@ -8133,10 +8238,11 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "trunkLiters": 550,
-      "weightKg": 2250
+      "weightKg": 2250,
+      "charge10to80Min": 37
     },
     {
       "make": "Opel",
@@ -8212,10 +8318,11 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "trunkLiters": 310,
-      "weightKg": 1615
+      "weightKg": 1615,
+      "charge10to80Min": 34
     },
     {
       "make": "Opel",
@@ -8235,10 +8342,11 @@
       "market": "ES",
       "consumptionKwh100": 15.7,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD",
       "trunkLiters": 310,
-      "weightKg": 1672
+      "weightKg": 1672,
+      "charge10to80Min": 34
     },
     {
       "make": "Peugeot",
@@ -8260,9 +8368,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2183,
-      "trunkLiters": 520
+      "trunkLiters": 520,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8305,9 +8414,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 49660,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2241,
-      "trunkLiters": 520
+      "trunkLiters": 520,
+      "charge10to80Min": 37
     },
     {
       "make": "Peugeot",
@@ -8329,9 +8439,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2183,
-      "trunkLiters": 520
+      "trunkLiters": 520,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8353,9 +8464,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2337,
-      "trunkLiters": 544
+      "trunkLiters": 544,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8373,9 +8485,10 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2183,
-      "trunkLiters": 520
+      "trunkLiters": 520,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8445,9 +8558,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2190,
-      "trunkLiters": 471
+      "trunkLiters": 471,
+      "charge10to80Min": 31
     },
     {
       "make": "Peugeot",
@@ -8470,9 +8584,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 49160,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2260,
-      "trunkLiters": 748
+      "trunkLiters": 748,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8495,9 +8610,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 51660,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2260,
-      "trunkLiters": 748
+      "trunkLiters": 748,
+      "charge10to80Min": 37
     },
     {
       "make": "Peugeot",
@@ -8539,9 +8655,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2260,
-      "trunkLiters": 748
+      "trunkLiters": 748,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8563,9 +8680,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2260,
-      "trunkLiters": 748
+      "trunkLiters": 748,
+      "charge10to80Min": 37
     },
     {
       "make": "Peugeot",
@@ -8583,9 +8701,10 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2260,
-      "trunkLiters": 748
+      "trunkLiters": 748,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8807,9 +8926,10 @@
       "acceleration0to100Sec": 4.7,
       "lastUpdated": "2026-09-29",
       "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2565,
-      "trunkLiters": 484
+      "trunkLiters": 484,
+      "charge10to80Min": 17
     },
     {
       "make": "Polestar",
@@ -8833,7 +8953,8 @@
       "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-26",
       "auditDate": "2026-09-26",
-      "auditDateTime": "2026-09-26T15:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 17
     },
     {
       "make": "Polestar",
@@ -8851,9 +8972,10 @@
       "acceleration0to100Sec": 6.5,
       "lastUpdated": "2026-09-29",
       "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2400,
-      "trunkLiters": 484
+      "trunkLiters": 484,
+      "charge10to80Min": 16
     },
     {
       "make": "Porsche",
@@ -9121,7 +9243,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 7,
       "trunkLiters": 326,
       "id": "renault-5-e-tech-52-kwh-2025-52-0-nmc-110-fwd",
@@ -9134,7 +9256,7 @@
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
       "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "FWD"
     },
     {
@@ -9156,9 +9278,10 @@
       "acKw": 11,
       "dcKw": 100,
       "drivetrain": "FWD",
-      "auditDateTime": "2026-09-29T00:05:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 420,
-      "weightKg": 1410
+      "weightKg": 1410,
+      "charge10to80Min": 25
     },
     {
       "make": "Renault",
@@ -9179,9 +9302,10 @@
       "acKw": 11,
       "dcKw": 100,
       "drivetrain": "FWD",
-      "auditDateTime": "2026-09-29T00:05:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 420,
-      "weightKg": 1410
+      "weightKg": 1410,
+      "charge10to80Min": 33
     },
     {
       "make": "Renault",
@@ -9444,9 +9568,10 @@
       "auditDate": "2026-09-29",
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 470,
-      "weightKg": 2230
+      "weightKg": 2230,
+      "charge10to80Min": 27
     },
     {
       "make": "Škoda",
@@ -9466,9 +9591,10 @@
       "auditDate": "2026-09-29",
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 470,
-      "weightKg": 2229
+      "weightKg": 2229,
+      "charge10to80Min": 28
     },
     {
       "make": "Škoda",
@@ -9488,9 +9614,10 @@
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2145
+      "weightKg": 2145,
+      "charge10to80Min": 39
     },
     {
       "make": "Škoda",
@@ -9510,9 +9637,10 @@
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2230
+      "weightKg": 2230,
+      "charge10to80Min": 29
     },
     {
       "make": "Škoda",
@@ -9532,9 +9660,10 @@
       "usableBatteryKwh": 79,
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2258
+      "weightKg": 2258,
+      "charge10to80Min": 28
     },
     {
       "make": "Škoda",
@@ -9556,10 +9685,11 @@
       "batteryChemistry": "li-ion",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 570,
-      "weightKg": 2002
+      "weightKg": 2002,
+      "charge10to80Min": 23
     },
     {
       "make": "Škoda",
@@ -9580,9 +9710,10 @@
       "acKw": 11,
       "dcKw": 185,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 570,
-      "weightKg": 2239
+      "weightKg": 2239,
+      "charge10to80Min": 28
     },
     {
       "make": "Škoda",
@@ -9685,9 +9816,10 @@
       "usableBatteryKwh": 59,
       "dcKw": 165,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 585,
-      "weightKg": 2002
+      "weightKg": 2002,
+      "charge10to80Min": 23
     },
     {
       "make": "Škoda",
@@ -9707,9 +9839,10 @@
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 585,
-      "weightKg": 2141
+      "weightKg": 2141,
+      "charge10to80Min": 39
     },
     {
       "make": "Škoda",
@@ -9729,9 +9862,10 @@
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 585,
-      "weightKg": 2230
+      "weightKg": 2230,
+      "charge10to80Min": 29
     },
     {
       "make": "Škoda",
@@ -9798,10 +9932,11 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 935,
-      "weightKg": 2125
+      "weightKg": 2125,
+      "charge10to80Min": 23
     },
     {
       "make": "Škoda",
@@ -9822,10 +9957,11 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 935,
-      "weightKg": 2309
+      "weightKg": 2309,
+      "charge10to80Min": 27
     },
     {
       "make": "Škoda",
@@ -9846,10 +9982,11 @@
       "market": "ES",
       "consumptionKwh100": 15,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 935,
-      "weightKg": 2382
+      "weightKg": 2382,
+      "charge10to80Min": 27
     },
     {
       "make": "Skywell",
@@ -9963,9 +10100,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1900,
-      "trunkLiters": 313
+      "trunkLiters": 313,
+      "charge10to80Min": 27
     },
     {
       "make": "smart",
@@ -9987,9 +10125,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1770,
-      "trunkLiters": 323
+      "trunkLiters": 323,
+      "charge10to80Min": 27
     },
     {
       "make": "smart",
@@ -10011,9 +10150,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1770,
-      "trunkLiters": 323
+      "trunkLiters": 323,
+      "charge10to80Min": 24
     },
     {
       "make": "smart",
@@ -10035,9 +10175,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1770,
-      "trunkLiters": 323
+      "trunkLiters": 323,
+      "charge10to80Min": 27
     },
     {
       "make": "smart",
@@ -10059,9 +10200,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1905,
-      "trunkLiters": 370
+      "trunkLiters": 370,
+      "charge10to80Min": 27
     },
     {
       "make": "smart",
@@ -10083,9 +10225,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1845,
-      "trunkLiters": 370
+      "trunkLiters": 370,
+      "charge10to80Min": 27
     },
     {
       "make": "smart",
@@ -10107,9 +10250,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1845,
-      "trunkLiters": 370
+      "trunkLiters": 370,
+      "charge10to80Min": 24
     },
     {
       "make": "smart",
@@ -10131,9 +10275,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1845,
-      "trunkLiters": 370
+      "trunkLiters": 370,
+      "charge10to80Min": 27
     },
     {
       "make": "smart",
@@ -10321,9 +10466,10 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2120,
-      "trunkLiters": 475
+      "trunkLiters": 475,
+      "charge10to80Min": 30
     },
     {
       "make": "Subaru",
@@ -10343,9 +10489,10 @@
       "market": "ES",
       "consumptionKwh100": 14.4,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2100,
-      "trunkLiters": 441
+      "trunkLiters": 441,
+      "charge10to80Min": 30
     },
     {
       "make": "Subaru",
@@ -10365,9 +10512,10 @@
       "market": "ES",
       "consumptionKwh100": 12.8,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1850,
-      "trunkLiters": 441
+      "trunkLiters": 441,
+      "charge10to80Min": 23
     },
     {
       "make": "Subaru",
@@ -10387,9 +10535,10 @@
       "market": "ES",
       "consumptionKwh100": 15.7,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2050,
-      "trunkLiters": 441
+      "trunkLiters": 441,
+      "charge10to80Min": 31
     },
     {
       "make": "Subaru",
@@ -10409,9 +10558,10 @@
       "market": "ES",
       "consumptionKwh100": 13.1,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1950,
-      "trunkLiters": 441
+      "trunkLiters": 441,
+      "charge10to80Min": 31
     },
     {
       "make": "Tesla",
@@ -11133,9 +11283,10 @@
       "market": "ES",
       "consumptionKwh100": 13.9,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1890,
-      "trunkLiters": 452
+      "trunkLiters": 452,
+      "charge10to80Min": 30
     },
     {
       "make": "Toyota",
@@ -11155,9 +11306,10 @@
       "market": "ES",
       "consumptionKwh100": 15.9,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1995,
-      "trunkLiters": 452
+      "trunkLiters": 452,
+      "charge10to80Min": 30
     },
     {
       "make": "Toyota",
@@ -11506,9 +11658,10 @@
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID",
       "usableBatteryKwh": 86,
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 605,
-      "weightKg": 2340
+      "weightKg": 2340,
+      "charge10to80Min": 25
     },
     {
       "make": "Volkswagen",
@@ -11527,9 +11680,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 605,
-      "weightKg": 2235
+      "weightKg": 2235,
+      "charge10to80Min": 25
     },
     {
       "make": "Volvo",
@@ -11553,9 +11707,10 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 2065,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
-      "trunkLiters": 404
+      "trunkLiters": 404,
+      "charge10to80Min": 20
     },
     {
       "make": "Volvo",
@@ -11576,10 +11731,11 @@
       "consumptionKwh100": 16.2,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 404,
-      "weightKg": 2095
+      "weightKg": 2095,
+      "charge10to80Min": 24
     },
     {
       "make": "Volvo",
@@ -11603,9 +11759,10 @@
       "acceleration0to100Sec": 4.7,
       "weightKg": 2185,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 404
+      "trunkLiters": 404,
+      "charge10to80Min": 24
     },
     {
       "make": "Volvo",
@@ -11625,9 +11782,10 @@
       "auditDate": "2026-09-29",
       "dcKw": 300,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2410,
-      "trunkLiters": 442
+      "trunkLiters": 442,
+      "charge10to80Min": 17
     },
     {
       "make": "Volvo",
@@ -11649,10 +11807,11 @@
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-29",
       "usableBatteryKwh": 100,
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 442,
-      "weightKg": 2610
+      "weightKg": 2610,
+      "charge10to80Min": 17
     },
     {
       "make": "Volvo",
@@ -11674,10 +11833,11 @@
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-29",
       "usableBatteryKwh": 100,
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 442,
-      "weightKg": 2610
+      "weightKg": 2610,
+      "charge10to80Min": 17
     },
     {
       "make": "Volvo",
@@ -11701,9 +11861,10 @@
       "acceleration0to100Sec": 5.7,
       "weightKg": 1840,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
-      "trunkLiters": 318
+      "trunkLiters": 318,
+      "charge10to80Min": 21
     },
     {
       "make": "Volvo",
@@ -11749,10 +11910,11 @@
       "consumptionKwh100": 17.5,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 318,
-      "weightKg": 1960
+      "weightKg": 1960,
+      "charge10to80Min": 24
     },
     {
       "make": "Volvo",
@@ -11776,9 +11938,10 @@
       "acceleration0to100Sec": 7.4,
       "weightKg": 2040,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
-      "trunkLiters": 410
+      "trunkLiters": 410,
+      "charge10to80Min": 20
     },
     {
       "make": "Volvo",
@@ -11799,10 +11962,11 @@
       "consumptionKwh100": 16.6,
       "batteryChemistry": "NMC",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 410,
-      "weightKg": 2075
+      "weightKg": 2075,
+      "charge10to80Min": 24
     },
     {
       "make": "Volvo",
@@ -11826,9 +11990,10 @@
       "acceleration0to100Sec": 4.9,
       "weightKg": 2170,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
-      "trunkLiters": 410
+      "trunkLiters": 410,
+      "charge10to80Min": 24
     },
     {
       "make": "Volvo",
@@ -11994,8 +12159,9 @@
       "source": "VOYAH España; VOYAH FREE",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:35:00+02:00",
-      "trunkLiters": 560
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 560,
+      "charge10to80Min": 43
     },
     {
       "make": "XPeng",
@@ -12860,7 +13026,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 23,
       "acceleration0to100Sec": 8.3,
       "trunkLiters": 828,
       "weightKg": 1835,
@@ -12868,7 +13034,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-gt-2024",
@@ -12890,14 +13056,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 3.5,
       "trunkLiters": 480,
       "weightKg": 2125,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-gt-2025",
@@ -12919,7 +13086,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 19,
       "acceleration0to100Sec": 3.4,
       "trunkLiters": 490,
       "weightKg": 2145,
@@ -12927,7 +13094,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-long-range-awd-2024",
@@ -12949,14 +13116,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 490,
       "weightKg": 2055,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-long-range-awd-2025",
@@ -12978,7 +13146,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 19,
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 490,
       "weightKg": 2130,
@@ -12986,7 +13154,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-long-range-rwd-2024",
@@ -13008,14 +13176,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 7.3,
       "trunkLiters": 490,
       "weightKg": 1995,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-long-range-rwd-2025",
@@ -13037,7 +13206,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 19,
       "acceleration0to100Sec": 7.3,
       "trunkLiters": 490,
       "weightKg": 2010,
@@ -13045,7 +13214,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:48:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev9-air-rwd-2025",
@@ -13125,14 +13294,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 210,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 9.4,
       "trunkLiters": 333,
       "weightKg": 2355,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "lexus-rz-350e-2025",
@@ -13183,14 +13353,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 30,
       "acceleration0to100Sec": 5.3,
       "trunkLiters": 522,
       "weightKg": 2050,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "lexus-rz-500e-2025",
@@ -13270,14 +13441,15 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 300,
-      "charge10to80Min": null,
+      "charge10to80Min": 15,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 456,
       "weightKg": 2360,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "maserati-granturismo-folgore-2025",
@@ -13299,14 +13471,15 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 270,
-      "charge10to80Min": null,
+      "charge10to80Min": 21,
       "acceleration0to100Sec": 2.7,
       "trunkLiters": 310,
       "weightKg": 2260,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "maserati-grecale-folgore-2025",
@@ -13328,14 +13501,15 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 44,
       "acceleration0to100Sec": 4.1,
       "trunkLiters": 535,
       "weightKg": 2480,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mazda-mx-30-35kwh-2024",
@@ -13386,14 +13560,15 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 340,
       "weightKg": 2040,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqb-250-plus-2025",
@@ -13415,14 +13590,15 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 9,
       "trunkLiters": 495,
       "weightKg": 2175,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqb-300-4matic-2024",
@@ -13444,14 +13620,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 8,
       "trunkLiters": 495,
       "weightKg": 2260,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqb-300-4matic-2025",
@@ -13473,14 +13650,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 8,
       "trunkLiters": 495,
       "weightKg": 2260,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqb-350-4matic-2024",
@@ -13502,14 +13680,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 45,
       "acceleration0to100Sec": 6.2,
       "trunkLiters": 495,
       "weightKg": 2285,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-350-plus-2024",
@@ -13531,14 +13710,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 6.4,
       "trunkLiters": 430,
       "weightKg": 2355,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-350-plus-2025",
@@ -13560,14 +13740,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 6.4,
       "trunkLiters": 430,
       "weightKg": 2355,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-350-plus-2026",
@@ -13589,14 +13770,15 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 180,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 6.2,
       "trunkLiters": 430,
       "weightKg": 2255,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2026,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-43-amg-4matic-2025",
@@ -13618,14 +13800,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 4.2,
       "trunkLiters": 430,
       "weightKg": 2430,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-350-4matic-2024",
@@ -13647,14 +13830,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 6,
       "trunkLiters": 520,
       "weightKg": 2625,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-350-plus-2024",
@@ -13676,14 +13860,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 520,
       "weightKg": 2505,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-350-plus-2025",
@@ -13705,14 +13890,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 520,
       "weightKg": 2505,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-500-4matic-2024",
@@ -13734,14 +13920,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 4.9,
       "trunkLiters": 520,
       "weightKg": 2685,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-450-plus-2024",
@@ -13763,14 +13950,15 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": null,
       "trunkLiters": 610,
       "weightKg": 2480,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-450-plus-2025",
@@ -13792,14 +13980,15 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": null,
       "trunkLiters": 610,
       "weightKg": 2480,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-580-4matic-2025",
@@ -13821,14 +14010,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": null,
       "trunkLiters": 610,
       "weightKg": 2585,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-suv-450-4matic-2024",
@@ -13850,14 +14040,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 36,
       "acceleration0to100Sec": null,
       "trunkLiters": 645,
       "weightKg": 2855,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-suv-450-plus-2025",
@@ -13879,14 +14070,15 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 36,
       "acceleration0to100Sec": 6.7,
       "trunkLiters": 645,
       "weightKg": 2735,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-g580-2025",
@@ -13908,14 +14100,15 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": null,
       "trunkLiters": 526,
       "weightKg": 3085,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev3-long-range-2025",
@@ -13937,7 +14130,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 128,
-      "charge10to80Min": null,
+      "charge10to80Min": 42,
       "acceleration0to100Sec": 7.7,
       "trunkLiters": 460,
       "weightKg": 1750,
@@ -13945,7 +14138,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:22:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "nissan-ariya-63-kwh-fwd-2024",
@@ -14147,7 +14340,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 22,
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 435,
       "weightKg": 1640,
@@ -14155,7 +14348,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "nissan-leaf-75kwh-2025",
@@ -14177,7 +14370,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 7,
       "trunkLiters": 435,
       "weightKg": 1750,
@@ -14185,7 +14378,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-astra-e-edition-2024",
@@ -14207,7 +14400,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9,
       "trunkLiters": 352,
       "weightKg": 1620,
@@ -14215,7 +14408,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-astra-e-gs-2025",
@@ -14237,7 +14430,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9,
       "trunkLiters": 352,
       "weightKg": 1635,
@@ -14245,7 +14438,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-astra-e-gs-58kwh-2026",
@@ -14267,7 +14460,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 37,
       "acceleration0to100Sec": 9.3,
       "trunkLiters": 352,
       "weightKg": 1680,
@@ -14275,7 +14468,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-corsa-e-edition-2024",
@@ -14297,7 +14490,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 8.1,
       "trunkLiters": 267,
       "weightKg": 1445,
@@ -14305,7 +14498,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-corsa-e-gs-2025",
@@ -14327,7 +14520,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 8.1,
       "trunkLiters": 267,
       "weightKg": 1530,
@@ -14335,7 +14528,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-frontera-electric-long-range-2025",
@@ -14387,7 +14580,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 350,
       "weightKg": 1525,
@@ -14395,7 +14588,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "peugeot-e-2008-allure-2024",
@@ -14417,7 +14610,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9.1,
       "trunkLiters": 405,
       "weightKg": 1550,
@@ -14425,7 +14618,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "peugeot-e-2008-allure-54kwh-2025",
@@ -14447,7 +14640,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 8.7,
       "trunkLiters": 405,
       "weightKg": 1555,
@@ -14455,7 +14648,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "peugeot-e-208-allure-51kwh-2024",
@@ -14477,7 +14670,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 9,
       "trunkLiters": 309,
       "weightKg": 1445,
@@ -14485,7 +14678,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "peugeot-e-208-allure-54kwh-2025",
@@ -14507,7 +14700,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 8.3,
       "trunkLiters": 311,
       "weightKg": 1460,
@@ -14515,7 +14708,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "peugeot-e-308-allure-2024",
@@ -14537,7 +14730,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9.8,
       "trunkLiters": 361,
       "weightKg": 1640,
@@ -14545,7 +14738,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "peugeot-e-308-allure-54-2025",
@@ -14567,7 +14760,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9.8,
       "trunkLiters": 361,
       "weightKg": 1640,
@@ -14575,7 +14768,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "polestar-4-long-range-dual-motor-2025",
@@ -14597,7 +14790,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 30,
       "acceleration0to100Sec": 3.8,
       "trunkLiters": 526,
       "weightKg": 2390,
@@ -14605,7 +14798,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "porsche-taycan-4s-performance-battery-plus-2024",
@@ -14627,7 +14820,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "charge10to80Min": null,
+      "charge10to80Min": 21,
       "acceleration0to100Sec": 4,
       "trunkLiters": 407,
       "weightKg": 2295,
@@ -14635,7 +14828,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T13:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "abarth-500e-scorpionissima-2025",
@@ -14657,7 +14850,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 85,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 7,
       "trunkLiters": 185,
       "weightKg": 1390,
@@ -14665,7 +14858,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "abarth-600e-scorpionissima-2025",
@@ -14747,7 +14940,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 326,
       "weightKg": 1479,
@@ -14755,7 +14948,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "alpine-a290-gts-52-2025",
@@ -14777,7 +14970,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 6.4,
       "trunkLiters": 326,
       "weightKg": 1490,
@@ -14785,7 +14978,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "alpine-a390-gt-2026",
@@ -14807,7 +15000,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 38,
       "acceleration0to100Sec": 4.8,
       "trunkLiters": 535,
       "weightKg": 2199,
@@ -14815,7 +15008,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "alpine-a390-gts-2026",
@@ -14837,7 +15030,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 190,
-      "charge10to80Min": null,
+      "charge10to80Min": 30,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 500,
       "weightKg": 2199,
@@ -14845,7 +15038,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-a6-avant-e-tron-performance-2025",
@@ -14867,7 +15060,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 269,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 5.4,
       "trunkLiters": 502,
       "weightKg": 2260,
@@ -14875,7 +15068,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-a6-avant-e-tron-quattro-2025",
@@ -14897,7 +15090,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 269,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 502,
       "weightKg": 2340,
@@ -14905,7 +15098,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-a6-sportback-e-tron-performance-2025",
@@ -14927,7 +15120,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 269,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 5.4,
       "trunkLiters": 502,
       "weightKg": 2250,
@@ -14935,7 +15128,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-a6-sportback-e-tron-quattro-2025",
@@ -14957,7 +15150,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 269,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 4.7,
       "trunkLiters": 502,
       "weightKg": 2360,
@@ -14965,7 +15158,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-e-tron-gt-quattro-2024",
@@ -15047,7 +15240,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 135,
-      "charge10to80Min": null,
+      "charge10to80Min": 39,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 520,
       "weightKg": 2000,
@@ -15055,7 +15248,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q4-e-tron-45-quattro-2024",
@@ -15077,7 +15270,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 135,
-      "charge10to80Min": null,
+      "charge10to80Min": 39,
       "acceleration0to100Sec": 6.9,
       "trunkLiters": 520,
       "weightKg": 2135,
@@ -15085,7 +15278,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q4-sportback-e-tron-40-2024",
@@ -15107,7 +15300,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 135,
-      "charge10to80Min": null,
+      "charge10to80Min": 39,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 535,
       "weightKg": 2010,
@@ -15115,7 +15308,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q6-e-tron-base-2025",
@@ -15137,7 +15330,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 7,
       "trunkLiters": 526,
       "weightKg": 2150,
@@ -15145,7 +15338,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q6-sportback-e-tron-rwd-2024",
@@ -15167,7 +15360,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 511,
       "weightKg": 2150,
@@ -15175,7 +15368,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q8-e-tron-50-quattro-2024",
@@ -15197,7 +15390,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 39,
       "acceleration0to100Sec": 6.8,
       "trunkLiters": 569,
       "weightKg": 2550,
@@ -15205,7 +15398,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q8-e-tron-55-quattro-2024",
@@ -15227,7 +15420,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 41,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 569,
       "weightKg": 2620,
@@ -15235,7 +15428,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-q8-sportback-e-tron-55-quattro-2024",
@@ -15257,7 +15450,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 41,
       "acceleration0to100Sec": 6.6,
       "trunkLiters": 528,
       "weightKg": 2615,
@@ -15265,7 +15458,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-rs-e-tron-gt-2025",
@@ -15317,7 +15510,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 269,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 502,
       "weightKg": 2380,
@@ -15325,7 +15518,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-s6-sportback-e-tron-2025",
@@ -15347,7 +15540,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 269,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 502,
       "weightKg": 2410,
@@ -15355,7 +15548,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "audi-sq8-e-tron-2024",
@@ -15377,7 +15570,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 170,
-      "charge10to80Min": null,
+      "charge10to80Min": 41,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 569,
       "weightKg": 2710,
@@ -15385,7 +15578,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i4-edrive35-2025",
@@ -15407,7 +15600,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 180,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 6,
       "trunkLiters": 470,
       "weightKg": 2050,
@@ -15415,7 +15608,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i4-edrive40-2025",
@@ -15437,7 +15630,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 5.7,
       "trunkLiters": 470,
       "weightKg": 2125,
@@ -15445,7 +15638,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i4-m50-2025",
@@ -15467,7 +15660,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 470,
       "weightKg": 2215,
@@ -15475,7 +15668,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i4-xdrive40-2024",
@@ -15497,7 +15690,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 5.5,
       "trunkLiters": 470,
       "weightKg": 2195,
@@ -15505,7 +15698,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i5-edrive40-2025",
@@ -15527,7 +15720,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 6,
       "trunkLiters": 490,
       "weightKg": 2230,
@@ -15535,7 +15728,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i5-edrive40-2026",
@@ -15557,7 +15750,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 6,
       "trunkLiters": 490,
       "weightKg": 2228,
@@ -15565,7 +15758,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i5-m60-xdrive-2025",
@@ -15587,7 +15780,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 3.8,
       "trunkLiters": 490,
       "weightKg": 2350,
@@ -15595,7 +15788,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i5-touring-edrive40-2025",
@@ -15617,7 +15810,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": null,
       "trunkLiters": 570,
       "weightKg": 2215,
@@ -15625,7 +15818,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i5-touring-m60-xdrive-2025",
@@ -15647,7 +15840,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 205,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 570,
       "weightKg": 2435,
@@ -15655,7 +15848,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-i7-edrive50-2024",
@@ -15767,7 +15960,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 195,
-      "charge10to80Min": null,
+      "charge10to80Min": 35,
       "acceleration0to100Sec": null,
       "trunkLiters": 500,
       "weightKg": 2710,
@@ -15775,7 +15968,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-ix-xdrive40-2024",
@@ -15797,7 +15990,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 31,
       "acceleration0to100Sec": 6.1,
       "trunkLiters": 500,
       "weightKg": 2365,
@@ -15805,7 +15998,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-ix-xdrive50-2024",
@@ -15857,7 +16050,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 210,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 500,
       "weightKg": 2595,
@@ -15865,7 +16058,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-ix1-edrive20-2025",
@@ -15887,7 +16080,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 130,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 8.6,
       "trunkLiters": 490,
       "weightKg": 1950,
@@ -15895,7 +16088,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-ix1-xdrive30-2025",
@@ -15917,7 +16110,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 130,
-      "charge10to80Min": null,
+      "charge10to80Min": 33,
       "acceleration0to100Sec": 5.7,
       "trunkLiters": 490,
       "weightKg": 2085,
@@ -15925,7 +16118,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "bmw-ix2-edrive20-2025",
@@ -16007,7 +16200,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 6.8,
       "trunkLiters": 510,
       "weightKg": 2260,
@@ -16015,7 +16208,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:00:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "dongfeng-nammi-box-comfort-2025",
@@ -16037,7 +16230,7 @@
       "drivetrain": "FWD",
       "acKw": 6.6,
       "dcKw": 70,
-      "charge10to80Min": null,
+      "charge10to80Min": 40,
       "acceleration0to100Sec": 12,
       "trunkLiters": 326,
       "weightKg": 1410,
@@ -16045,7 +16238,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "ds-3-e-tense-so-chic-2024",
@@ -16067,7 +16260,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 8.7,
       "trunkLiters": 350,
       "weightKg": 1590,
@@ -16075,7 +16268,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "ds-n8-awd-long-range-2025",
@@ -16097,7 +16290,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 160,
-      "charge10to80Min": null,
+      "charge10to80Min": 38,
       "acceleration0to100Sec": 5.4,
       "trunkLiters": 620,
       "weightKg": 2289,
@@ -16105,7 +16298,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "ds-n8-fwd-long-range-2025",
@@ -16127,7 +16320,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "charge10to80Min": null,
+      "charge10to80Min": 38,
       "acceleration0to100Sec": 7.8,
       "trunkLiters": 620,
       "weightKg": 2150,
@@ -16135,7 +16328,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "fiat-600e-red-2025",
@@ -16157,7 +16350,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9,
       "trunkLiters": 360,
       "weightKg": 1505,
@@ -16165,7 +16358,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "honda-e-ny1-68kwh-2024",
@@ -16247,7 +16440,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 120,
-      "charge10to80Min": null,
+      "charge10to80Min": 27,
       "acceleration0to100Sec": 10.6,
       "trunkLiters": 280,
       "weightKg": 1400,
@@ -16255,7 +16448,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-inster-standard-42-2025",
@@ -16277,7 +16470,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 120,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 11.7,
       "trunkLiters": 280,
       "weightKg": 1350,
@@ -16285,7 +16478,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-5-long-range-awd-2024",
@@ -16307,7 +16500,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 238,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 5.1,
       "trunkLiters": 527,
       "weightKg": 2055,
@@ -16315,7 +16508,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-5-long-range-awd-2026",
@@ -16337,7 +16530,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 19,
       "acceleration0to100Sec": 5,
       "trunkLiters": 531,
       "weightKg": 2068,
@@ -16345,7 +16538,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-5-n-2025",
@@ -16367,7 +16560,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 20,
       "acceleration0to100Sec": 3.4,
       "trunkLiters": 490,
       "weightKg": 2231,
@@ -16375,7 +16568,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-5-standard-range-2024",
@@ -16397,7 +16590,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 220,
-      "charge10to80Min": null,
+      "charge10to80Min": 16,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 527,
       "weightKg": 1890,
@@ -16405,7 +16598,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-5-standard-range-rwd-2026",
@@ -16427,7 +16620,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 220,
-      "charge10to80Min": null,
+      "charge10to80Min": 16,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 527,
       "weightKg": 1950,
@@ -16435,7 +16628,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-6-long-range-awd-2024",
@@ -16517,7 +16710,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 233,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 401,
       "weightKg": 1855,
@@ -16525,7 +16718,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-6-long-range-rwd-2025",
@@ -16547,7 +16740,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 233,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 401,
       "weightKg": 1855,
@@ -16555,7 +16748,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-6-n-2025",
@@ -16577,7 +16770,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 240,
-      "charge10to80Min": null,
+      "charge10to80Min": 19,
       "acceleration0to100Sec": 3.4,
       "trunkLiters": 401,
       "weightKg": 2150,
@@ -16585,7 +16778,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-6-standard-range-rwd-2024",
@@ -16607,7 +16800,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 180,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 401,
       "weightKg": 1730,
@@ -16615,7 +16808,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-6-standard-range-rwd-2025",
@@ -16637,7 +16830,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 180,
-      "charge10to80Min": null,
+      "charge10to80Min": 18,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 401,
       "weightKg": 1730,
@@ -16645,7 +16838,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-ioniq-9-awd-performance-2025",
@@ -16667,7 +16860,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 350,
-      "charge10to80Min": null,
+      "charge10to80Min": 17,
       "acceleration0to100Sec": 5.2,
       "trunkLiters": 620,
       "weightKg": 2780,
@@ -16675,7 +16868,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-kona-electric-long-range-2025",
@@ -16697,7 +16890,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 102,
-      "charge10to80Min": null,
+      "charge10to80Min": 42,
       "acceleration0to100Sec": 7.7,
       "trunkLiters": 466,
       "weightKg": 1740,
@@ -16705,7 +16898,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "hyundai-kona-electric-standard-range-2025",
@@ -16727,7 +16920,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 102,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 8.8,
       "trunkLiters": 466,
       "weightKg": 1630,
@@ -16735,7 +16928,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "jeep-avenger-altitude-2024",
@@ -16757,7 +16950,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9,
       "trunkLiters": 355,
       "weightKg": 1525,
@@ -16765,7 +16958,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "jeep-avenger-electric-2025",
@@ -16787,7 +16980,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 9,
       "trunkLiters": 355,
       "weightKg": 1536,
@@ -16795,7 +16988,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:15:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev3-standard-range-2024",
@@ -16817,7 +17010,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 102,
-      "charge10to80Min": null,
+      "charge10to80Min": 37,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 460,
       "weightKg": 1650,
@@ -16825,7 +17018,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "kia-ev3-standard-range-2025",
@@ -16847,7 +17040,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 102,
-      "charge10to80Min": null,
+      "charge10to80Min": 37,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 460,
       "weightKg": 1650,
@@ -16855,7 +17048,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "lancia-ypsilon-54-kwh-2025",
@@ -16877,7 +17070,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 107,
-      "charge10to80Min": null,
+      "charge10to80Min": 32,
       "acceleration0to100Sec": 8.2,
       "trunkLiters": 309,
       "weightKg": 1590,
@@ -16885,7 +17078,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "lotus-eletre-base-2025",
@@ -16907,7 +17100,7 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 350,
-      "charge10to80Min": null,
+      "charge10to80Min": 17,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 688,
       "weightKg": 2640,
@@ -16915,7 +17108,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "lotus-eletre-s-2025",
@@ -16937,7 +17130,7 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 350,
-      "charge10to80Min": null,
+      "charge10to80Min": 17,
       "acceleration0to100Sec": 2.95,
       "trunkLiters": 688,
       "weightKg": 2710,
@@ -16945,7 +17138,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "lynk-co-02-core-2025",
@@ -16967,7 +17160,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 27,
       "acceleration0to100Sec": 5.5,
       "trunkLiters": 410,
       "weightKg": 1895,
@@ -16975,7 +17168,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "renault-megane-e-tech-ev40-2025",
@@ -16997,7 +17190,7 @@
       "drivetrain": null,
       "acKw": 7.4,
       "dcKw": 85,
-      "charge10to80Min": null,
+      "charge10to80Min": 31,
       "acceleration0to100Sec": 10,
       "trunkLiters": 440,
       "weightKg": 1624,
@@ -17005,7 +17198,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "renault-megane-e-tech-ev60-iconic-2025",
@@ -17027,7 +17220,7 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 130,
-      "charge10to80Min": null,
+      "charge10to80Min": 29,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 440,
       "weightKg": 1728,
@@ -17035,7 +17228,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "renault-megane-e-tech-ev60-techno-2025",
@@ -17057,7 +17250,7 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 130,
-      "charge10to80Min": null,
+      "charge10to80Min": 29,
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 440,
       "weightKg": 1713,
@@ -17065,7 +17258,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:30:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "renault-scenic-e-tech-long-range-87-2025",
@@ -17237,7 +17430,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 250,
-      "charge10to80Min": null,
+      "charge10to80Min": 23,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 2614,
       "weightKg": 2455,
@@ -17245,7 +17438,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "tesla-model-x-long-range-awd-2024",
@@ -17267,7 +17460,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 250,
-      "charge10to80Min": null,
+      "charge10to80Min": 23,
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 935,
       "weightKg": 2455,
@@ -17275,7 +17468,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "tesla-model-x-long-range-awd-2025",
@@ -17327,7 +17520,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 250,
-      "charge10to80Min": null,
+      "charge10to80Min": 23,
       "acceleration0to100Sec": 2.9,
       "trunkLiters": 2614,
       "weightKg": 2536,
@@ -17335,7 +17528,7 @@
       "arrivalYear": 2026,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "toyota-bz4x-awd-2024",
@@ -17357,7 +17550,7 @@
       "drivetrain": "AWD",
       "acKw": 6.6,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 30,
       "acceleration0to100Sec": 6.9,
       "trunkLiters": 452,
       "weightKg": 2005,
@@ -17365,7 +17558,7 @@
       "arrivalYear": 2024,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "toyota-bz4x-fwd-2025",
@@ -17387,7 +17580,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": null,
+      "charge10to80Min": 30,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 452,
       "weightKg": 1920,
@@ -17395,7 +17588,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "volkswagen-id-buzz-pro-long-2024",
@@ -17837,7 +18030,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "charge10to80Min": null,
+      "charge10to80Min": 24,
       "acceleration0to100Sec": 6.7,
       "trunkLiters": 404,
       "weightKg": 2095,
@@ -17845,7 +18038,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:40:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "volvo-ex90-single-motor-2025",
@@ -17957,7 +18150,7 @@
       "drivetrain": null,
       "acKw": 22,
       "dcKw": 160,
-      "charge10to80Min": null,
+      "charge10to80Min": 37,
       "acceleration0to100Sec": 8.4,
       "trunkLiters": 550,
       "weightKg": 2050,
@@ -17965,7 +18158,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-mokka-e-electric-2025",
@@ -17987,7 +18180,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 8.2,
       "trunkLiters": 310,
       "weightKg": 1540,
@@ -17995,7 +18188,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "opel-mokka-e-gse-2025",
@@ -18017,7 +18210,7 @@
       "drivetrain": null,
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 7.2,
       "trunkLiters": 310,
       "weightKg": 1560,
@@ -18025,7 +18218,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "gaiaId": "alfa-romeo-junior-veloce-2025",
@@ -18047,7 +18240,7 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "charge10to80Min": null,
+      "charge10to80Min": 34,
       "acceleration0to100Sec": 5.9,
       "trunkLiters": 400,
       "weightKg": 1680,
@@ -18055,7 +18248,7 @@
       "arrivalYear": 2025,
       "auditDate": "2026-09-26",
       "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     }
   ],
   "updatedAt": "2026-09-29"
