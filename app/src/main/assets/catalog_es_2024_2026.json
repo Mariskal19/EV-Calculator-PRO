@@ -799,9 +799,10 @@
       "consumptionKwh100": 13.3,
       "price": 66370,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "drive": "RWD",
-      "weightKg": 2200
+      "weightKg": 2200,
+      "trunkLiters": 526
     },
     {
       "make": "Audi",
@@ -823,9 +824,10 @@
       "consumptionKwh100": 15.6,
       "price": 70080,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "drive": "RWD",
-      "weightKg": 2310
+      "weightKg": 2310,
+      "trunkLiters": 526
     },
     {
       "make": "Audi",
@@ -842,16 +844,17 @@
       "acKw": 11,
       "dcKw": 270,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.9,
       "weightKg": 2350,
       "price": 71650,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "AWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 526
     },
     {
       "make": "Audi",
@@ -868,16 +871,17 @@
       "acKw": 11,
       "dcKw": 270,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.1,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 4.3,
       "weightKg": 2420,
       "price": 94520,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "AWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 526
     },
     {
       "make": "Audi",
@@ -3380,8 +3384,9 @@
       "source": "Dongfeng España; especificaciones oficiales",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1356
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "weightKg": 1356,
+      "trunkLiters": 326
     },
     {
       "make": "Dongfeng",
@@ -3402,8 +3407,9 @@
       "auditDate": "2026-09-29",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1430
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "weightKg": 1430,
+      "trunkLiters": 326
     },
     {
       "make": "Dongfeng",
@@ -3424,8 +3430,9 @@
       "auditDate": "2026-09-29",
       "acKw": 6.6,
       "dcKw": 40,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1430
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "weightKg": 1430,
+      "trunkLiters": 326
     },
     {
       "make": "DS",
@@ -3647,9 +3654,10 @@
       "auditDate": "2026-09-29",
       "acKw": 11,
       "dcKw": 100,
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "acceleration0to100Sec": 9,
-      "weightKg": 1595
+      "weightKg": 1595,
+      "trunkLiters": 360
     },
     {
       "make": "Fiat",
@@ -3918,8 +3926,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": null,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2258
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "weightKg": 2258,
+      "trunkLiters": 402
     },
     {
       "make": "Ford",
@@ -4166,8 +4175,9 @@
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 23,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1566
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "weightKg": 1566,
+      "trunkLiters": 523
     },
     {
       "make": "GAC",
@@ -4187,9 +4197,10 @@
       "source": "GAC Europe; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 87,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "charge10to80Min": 32,
-      "weightKg": 1645
+      "weightKg": 1645,
+      "trunkLiters": 440
     },
     {
       "make": "GAC",
@@ -4209,9 +4220,10 @@
       "source": "GAC Europe; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 180,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "charge10to80Min": 24,
-      "weightKg": 1955
+      "weightKg": 1955,
+      "trunkLiters": 427
     },
     {
       "make": "Geely",
@@ -4234,9 +4246,10 @@
       "acKw": 11,
       "dcKw": 120,
       "charge10to80Min": null,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "drive": "FWD",
-      "weightKg": 1675
+      "weightKg": 1675,
+      "trunkLiters": 461
     },
     {
       "make": "Geely",
@@ -4257,9 +4270,10 @@
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": null,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "drivetrain": "FWD",
-      "weightKg": 1760
+      "weightKg": 1760,
+      "trunkLiters": 461
     },
     {
       "make": "Geely",
@@ -4280,9 +4294,10 @@
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": null,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:20:00+02:00",
       "drivetrain": "FWD",
-      "weightKg": 1760
+      "weightKg": 1760,
+      "trunkLiters": 461
     },
     {
       "make": "Hyundai",
