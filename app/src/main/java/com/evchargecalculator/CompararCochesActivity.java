@@ -421,13 +421,21 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         legend.setPadding(dp(4),0,0,dp(4));
         if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
 
+        // Columna de características fija + datos desplazables solo con 3 coches.
+        LinearLayout compareTable=new LinearLayout(this);
+        compareTable.setOrientation(LinearLayout.HORIZONTAL);
+        compareTable.setClipChildren(false);
+        compareTable.setClipToPadding(false);
+
+        tableLabels=new LinearLayout(this);
+        tableLabels.setOrientation(LinearLayout.VERTICAL);
+        tableLabels.setPadding(0,dp(2),0,0);
+        compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
+
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
 
-        // Comparar coches necesita un desplazamiento horizontal independiente
-        // para toda la tabla de características. El ScrollView exterior
-        // se reserva exclusivamente para el desplazamiento vertical.
         tableScroll=new HorizontalScrollView(this);
         tableScroll.setHorizontalScrollBarEnabled(false);
         tableScroll.setVerticalScrollBarEnabled(false);
@@ -435,8 +443,9 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableScroll.setFillViewport(false);
         tableScroll.setClipChildren(false);
         tableScroll.setClipToPadding(false);
-        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(tableWidth(),-2));
-        content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
+        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
+        compareTable.addView(tableScroll,new LinearLayout.LayoutParams(0,-2,1));
+        content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));
 
         summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
@@ -528,7 +537,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             if(v!=null) selectedVehiclesCache.add(v);
         }
 
-        if(tableScroll!=null) tableScroll.scrollTo(0,0);
+        if(tableScroll!=null) { tableScroll.scrollTo(0,0); tableScroll.setHorizontalScrollBarEnabled(selectedIds.size()>=3); }
 
         // La anchura real de la tabla depende del número de coches.
         // Actualizarla aquí garantiza que el HorizontalScrollView tenga
