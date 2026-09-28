@@ -16,15 +16,16 @@
       "wltpKm": 334,
       "consumptionKwh100": 16.2,
       "price": 49000,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Abarth oficial; especificaciones europeas",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 35,
       "batteryChemistry": "NCM",
-      "auditDateTime": "2026-09-28T23:00:00+02:00",
-      "trunkLiters": 360
+      "auditDateTime": "2026-09-29T01:05:00+02:00",
+      "trunkLiters": 360,
+      "weightKg": 1640
     },
     {
       "make": "Abarth",
@@ -38,15 +39,16 @@
       "wltpKm": 334,
       "consumptionKwh100": 16.2,
       "price": 45000,
-      "auditDate": "2026-09-28",
-      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Abarth oficial; especificaciones europeas",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 35,
       "batteryChemistry": "NCM",
-      "auditDateTime": "2026-09-28T23:00:00+02:00",
-      "trunkLiters": 360
+      "auditDateTime": "2026-09-29T01:05:00+02:00",
+      "trunkLiters": 360,
+      "weightKg": 1624
     },
     {
       "make": "Alfa Romeo",
@@ -60,16 +62,17 @@
       "wltpKm": 414,
       "consumptionKwh100": 15,
       "price": 38500,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Alfa Romeo España; especificaciones oficiales",
       "batteryChemistry": "NCM",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9,
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "trunkLiters": 400
+      "auditDateTime": "2026-09-29T01:05:00+02:00",
+      "trunkLiters": 400,
+      "weightKg": 1545
     },
     {
       "make": "Alfa Romeo",
@@ -83,16 +86,17 @@
       "wltpKm": 319,
       "consumptionKwh100": 18.8,
       "price": 48100,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Alfa Romeo España; especificaciones oficiales",
       "batteryChemistry": "NCM",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 5.9,
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "trunkLiters": 400
+      "auditDateTime": "2026-09-29T01:05:00+02:00",
+      "trunkLiters": 400,
+      "weightKg": 1590
     },
     {
       "make": "Alpine",
@@ -106,14 +110,15 @@
       "wltpKm": 382,
       "consumptionKwh100": 15.8,
       "price": 38700,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "auditDateTime": "2026-09-29T01:05:00+02:00",
       "acKw": 11,
       "dcKw": 100,
       "acceleration0to100Sec": 7.4,
-      "trunkLiters": 326
+      "trunkLiters": 326,
+      "weightKg": 1479
     },
     {
       "make": "Alpine",
@@ -17760,5 +17765,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-29T00:55:00+02:00"
+  "updatedAt": "2026-09-29T01:05:00+02:00"
 }
