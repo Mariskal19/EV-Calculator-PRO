@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-09-27T10:00:00+02:00",
+  "updatedAt": "2026-09-28T10:00:00+02:00",
   "rules": [
     {
       "gaiaId": "kia-ev3-long-range-2024",
@@ -176,6 +176,16 @@
       "gaiaId": "audi-sq6-e-tron-2024",
       "reason": "Duplicate of protected Audi SQ6 SUV e-tron quattro 2024. Gaia reports 360 kW normal system output; Audi specifies 380 kW including Launch Control. Battery, range, drivetrain, body and acceleration match.",
       "protectedMatch": "Audi SQ6 SUV e-tron quattro 2024"
+    },
+    {
+      "gaiaId": "fiat-500e-icon-42kwh-2024",
+      "reason": "Clear duplicate of the audited protected Fiat 500e Icon 42 kWh 2024 configuration; same Gaia ID and equivalent technical data, with only minor naming/metadata differences.",
+      "protectedMatch": "Fiat 500e Icon 42 kWh 2024"
+    },
+    {
+      "gaiaId": "fiat-500e-icon-42kwh-2025",
+      "reason": "Clear duplicate of the audited protected Fiat 500e Icon 42 kWh 2025 configuration; same Gaia ID and equivalent technical data, with only minor naming/metadata differences.",
+      "protectedMatch": "Fiat 500e Icon 42 kWh 2025"
     }
   ]
 }
