@@ -553,6 +553,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
         carsRow.removeAllViews();
         table.removeAllViews();
+        if(tableLabels!=null) tableLabels.removeAllViews();
         summary.removeAllViews();
 
         for(Vehicle v:selectedVehiclesCache){
