@@ -116,6 +116,11 @@ new_build = r'''    private void build() {
         tableLabels.setPadding(0,dp(2),0,0);
         compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
 
+        tableLabels=new LinearLayout(this);
+        tableLabels.setOrientation(LinearLayout.VERTICAL);
+        tableLabels.setPadding(0,dp(2),0,0);
+        compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
+
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
