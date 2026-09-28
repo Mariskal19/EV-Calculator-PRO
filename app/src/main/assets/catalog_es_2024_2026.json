@@ -11258,16 +11258,17 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.5,
       "usableBatteryKwh": 69,
       "batteryChemistry": "nmc",
       "acceleration0to100Sec": 7.4,
-      "weightKg": 2100,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "RWD"
+      "weightKg": 2065,
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 404
     },
     {
       "make": "Volvo",
@@ -11283,13 +11284,15 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.2,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 404,
+      "weightKg": 2095
     },
     {
       "make": "Volvo",
@@ -11305,16 +11308,17 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.5,
       "usableBatteryKwh": 69,
       "batteryChemistry": "nmc",
       "acceleration0to100Sec": 4.7,
-      "weightKg": 2180,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "AWD"
+      "weightKg": 2185,
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 404
     },
     {
       "make": "Volvo",
@@ -11350,14 +11354,16 @@
       "acKw": 11,
       "dcKw": 350,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.7,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "usableBatteryKwh": 100,
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "AWD"
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 442,
+      "weightKg": 2610
     },
     {
       "make": "Volvo",
@@ -11373,14 +11379,16 @@
       "acKw": 11,
       "dcKw": 350,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.7,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "usableBatteryKwh": 100,
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "AWD"
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 442,
+      "weightKg": 2610
     },
     {
       "make": "Volvo",
@@ -11396,16 +11404,17 @@
       "acKw": 11,
       "dcKw": 150,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.1,
       "usableBatteryKwh": 49,
       "batteryChemistry": "lfp",
       "acceleration0to100Sec": 5.7,
-      "weightKg": 1830,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "RWD"
+      "weightKg": 1840,
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 318
     },
     {
       "make": "Volvo",
@@ -11446,13 +11455,15 @@
       "acKw": 11,
       "dcKw": 175,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.5,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "AWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 318,
+      "weightKg": 1960
     },
     {
       "make": "Volvo",
@@ -11468,16 +11479,17 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.6,
       "usableBatteryKwh": 69,
       "batteryChemistry": "nmc",
       "acceleration0to100Sec": 7.4,
-      "weightKg": 2118,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "RWD"
+      "weightKg": 2040,
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 410
     },
     {
       "make": "Volvo",
@@ -11493,13 +11505,15 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.6,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 410,
+      "weightKg": 2075
     },
     {
       "make": "Volvo",
@@ -11515,16 +11529,17 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.6,
       "usableBatteryKwh": 69,
       "batteryChemistry": "nmc",
       "acceleration0to100Sec": 4.9,
-      "weightKg": 2200,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00",
-      "drive": "AWD"
+      "weightKg": 2170,
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 410
     },
     {
       "make": "Volvo",
@@ -17519,13 +17534,13 @@
       "dcKw": 200,
       "charge10to80Min": null,
       "acceleration0to100Sec": 6.7,
-      "trunkLiters": 413,
-      "weightKg": 2070,
+      "trunkLiters": 404,
+      "weightKg": 2095,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26",
-      "auditDateTime": "2026-09-26T14:45:00+02:00"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:40:00+02:00"
     },
     {
       "gaiaId": "volvo-ex90-single-motor-2025",
@@ -17738,5 +17753,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-29T00:35:00+02:00"
+  "updatedAt": "2026-09-29T00:40:00+02:00"
 }
