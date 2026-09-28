@@ -5283,15 +5283,16 @@
       "acKw": 10.5,
       "dcKw": 102,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 13.4,
       "usableBatteryKwh": 55,
       "batteryChemistry": "NMC",
       "price_eur": 36930,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "drive": "FWD",
+      "trunkLiters": 460
     },
     {
       "make": "Kia",
@@ -5338,13 +5339,14 @@
       "consumptionKwh100": 13.4,
       "usableBatteryKwh": 55,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "drivetrain": "FWD",
       "acKw": 10.5,
       "dcKw": 102,
       "price_eur": 38430,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "trunkLiters": 460
     },
     {
       "make": "Kia",
@@ -5419,12 +5421,13 @@
       "wltpKm": 456,
       "arrivalYear": 2025,
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "charge10to80Min": 29
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "charge10to80Min": 29,
+      "trunkLiters": 490
     },
     {
       "make": "Kia",
@@ -5498,13 +5501,14 @@
       "wltpKm": 530,
       "arrivalYear": 2026,
       "consumptionKwh100": 15.4,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "trunkLiters": 828
     },
     {
       "make": "Kia",
@@ -5518,13 +5522,14 @@
       "wltpKm": 520,
       "arrivalYear": 2026,
       "consumptionKwh100": 15.7,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "trunkLiters": 828
     },
     {
       "make": "Kia",
@@ -5538,13 +5543,14 @@
       "wltpKm": 505,
       "arrivalYear": 2026,
       "consumptionKwh100": 16.1,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "trunkLiters": 828
     },
     {
       "make": "Kia",
@@ -5564,9 +5570,10 @@
       "dcKw": 350,
       "charge10to80Min": 18,
       "source": "Kia Iberia; EV6 especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "trunkLiters": 490
     },
     {
       "make": "Kia",
@@ -5582,14 +5589,15 @@
       "acKw": 11,
       "dcKw": 240,
       "source": "Kia Iberia; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 17.7,
       "price_eur": 85100,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-28",
       "charge10to80Min": 24,
-      "auditDateTime": "2026-09-24T21:00:00+02:00",
-      "drive": "AWD"
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 828
     },
     {
       "make": "Kia",
@@ -5602,13 +5610,14 @@
       "drive": "FWD",
       "wltpKm": 416,
       "consumptionKwh100": 17.1,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "trunkLiters": 4420
     },
     {
       "make": "Kia",
@@ -5622,13 +5631,14 @@
       "wltpKm": 296,
       "consumptionKwh100": 17.4,
       "price_eur": 39900,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "trunkLiters": 4420
     },
     {
       "make": "Kia",
@@ -5642,13 +5652,14 @@
       "wltpKm": 416,
       "consumptionKwh100": 17.1,
       "price_eur": 45775,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "trunkLiters": 4420
     },
     {
       "make": "Kia",
@@ -5662,13 +5673,14 @@
       "wltpKm": 412,
       "consumptionKwh100": 17.3,
       "price_eur": 42755,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "trunkLiters": 1320
     },
     {
       "make": "Kia",
@@ -5682,13 +5694,14 @@
       "wltpKm": 295,
       "consumptionKwh100": 17.5,
       "price_eur": 38755,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "trunkLiters": 1320
     },
     {
       "make": "Kia",
@@ -5702,13 +5715,14 @@
       "wltpKm": 412,
       "consumptionKwh100": 17.3,
       "price_eur": 45155,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Kia Iberia; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
+      "auditDateTime": "2026-09-28T23:48:00+02:00",
       "acKw": 11,
       "dcKw": 150,
-      "charge10to80Min": 30
+      "charge10to80Min": 30,
+      "trunkLiters": 1320
     },
     {
       "make": "Lancia",
@@ -12442,12 +12456,13 @@
       "dcKw": 200,
       "charge10to80Min": null,
       "acceleration0to100Sec": 8.3,
-      "trunkLiters": null,
+      "trunkLiters": 828,
       "weightKg": 1835,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-gt-2024",
@@ -12500,12 +12515,13 @@
       "dcKw": 240,
       "charge10to80Min": null,
       "acceleration0to100Sec": 3.4,
-      "trunkLiters": null,
+      "trunkLiters": 490,
       "weightKg": 2145,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-long-range-awd-2024",
@@ -12558,12 +12574,13 @@
       "dcKw": 240,
       "charge10to80Min": null,
       "acceleration0to100Sec": 5.2,
-      "trunkLiters": null,
+      "trunkLiters": 490,
       "weightKg": 2130,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00"
     },
     {
       "gaiaId": "kia-ev6-long-range-rwd-2024",
@@ -12616,12 +12633,13 @@
       "dcKw": 240,
       "charge10to80Min": null,
       "acceleration0to100Sec": 7.3,
-      "trunkLiters": null,
+      "trunkLiters": 490,
       "weightKg": 2010,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:48:00+02:00"
     },
     {
       "gaiaId": "kia-ev9-air-rwd-2025",
@@ -17634,5 +17652,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-28T23:42:00+02:00"
+  "updatedAt": "2026-09-28T23:48:00+02:00"
 }
