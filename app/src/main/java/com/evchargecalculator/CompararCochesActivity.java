@@ -432,11 +432,6 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setPadding(0,dp(2),0,0);
         compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
 
-        tableLabels=new LinearLayout(this);
-        tableLabels.setOrientation(LinearLayout.VERTICAL);
-        tableLabels.setPadding(0,dp(2),0,0);
-        compareTable.addView(tableLabels,new LinearLayout.LayoutParams(dp(112),-2));
-
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
@@ -467,7 +462,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     }
 
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
-    private int tableWidth(){return dp(112+145*Math.max(1,selectedIds.size()));}
+    private int tableWidth(){return dp(145*Math.max(1,selectedIds.size()));}
 
     private void rebuildVehicleIndex(){
         vehicleById.clear();
