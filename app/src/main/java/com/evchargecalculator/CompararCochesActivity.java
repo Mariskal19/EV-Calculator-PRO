@@ -424,7 +424,17 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
-        content.addView(table,new LinearLayout.LayoutParams(-1,-2));
+
+        // Comparar coches es una pantalla especial: el ScrollView exterior
+        // solo desplaza verticalmente. La tabla necesita su propio scroll
+        // horizontal para mostrar la tercera columna cuando hay 3 coches.
+        tableScroll=new HorizontalScrollView(this);
+        tableScroll.setHorizontalScrollBarEnabled(false);
+        tableScroll.setVerticalScrollBarEnabled(false);
+        tableScroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        tableScroll.setFillViewport(false);
+        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
+        content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
 
         summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
@@ -515,6 +525,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             Vehicle v=find(id);
             if(v!=null) selectedVehiclesCache.add(v);
         }
+
+        if(tableScroll!=null) tableScroll.scrollTo(0,0);
 
         // La anchura real de la tabla depende del número de coches.
         // Actualizarla aquí garantiza que el HorizontalScrollView tenga
