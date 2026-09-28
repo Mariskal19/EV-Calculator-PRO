@@ -68,7 +68,8 @@
       "dcKw": 100,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "trunkLiters": 400
     },
     {
       "make": "Alfa Romeo",
@@ -90,7 +91,8 @@
       "dcKw": 100,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 5.9,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "trunkLiters": 400
     },
     {
       "make": "Alpine",
@@ -110,7 +112,8 @@
       "auditDateTime": "2026-09-24T19:00:00+02:00",
       "acKw": 11,
       "dcKw": 100,
-      "acceleration0to100Sec": 7.4
+      "acceleration0to100Sec": 7.4,
+      "trunkLiters": 326
     },
     {
       "make": "Alpine",
@@ -129,7 +132,8 @@
       "source": "Alpine España; especificaciones oficiales",
       "auditDateTime": "2026-09-24T19:00:00+02:00",
       "acKw": 11,
-      "dcKw": 100
+      "dcKw": 100,
+      "trunkLiters": 326
     },
     {
       "make": "Alpine",
@@ -150,7 +154,8 @@
       "acKw": 11,
       "dcKw": 150,
       "acceleration0to100Sec": 4.8,
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-24T19:00:00+02:00",
+      "trunkLiters": 532
     },
     {
       "make": "Audi",
@@ -269,7 +274,8 @@
       "price": 70480,
       "auditDate": "2026-09-24",
       "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "RWD"
+      "drive": "RWD",
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -292,7 +298,8 @@
       "price": 83380,
       "auditDate": "2026-09-24",
       "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "RWD"
+      "drive": "RWD",
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -315,7 +322,8 @@
       "price": 89820,
       "auditDate": "2026-09-24",
       "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "AWD"
+      "drive": "AWD",
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -368,7 +376,8 @@
       "price": 67980,
       "auditDate": "2026-09-24",
       "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "RWD"
+      "drive": "RWD",
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -391,7 +400,8 @@
       "price": 80880,
       "auditDate": "2026-09-24",
       "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "RWD"
+      "drive": "RWD",
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
@@ -414,7 +424,8 @@
       "price": 87320,
       "auditDate": "2026-09-24",
       "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "AWD"
+      "drive": "AWD",
+      "trunkLiters": 502
     },
     {
       "make": "Audi",
