@@ -5,8 +5,8 @@ import re
 
 compare = Path("app/src/main/java/com/evchargecalculator/CompararCochesActivity.java")
 s = compare.read_text(encoding="utf-8")
-field_old = '    private LinearLayout carsRow, table, tableLabels, summary;\\n    private HorizontalScrollView tableScroll;'
-field_new = '    private LinearLayout carsRow, table, tableLabels, summary;\\n    private HorizontalScrollView tableScroll;\\n    private FrameLayout tableDataHost;'
+field_old = '    private LinearLayout carsRow, table, tableLabels, summary;\n    private HorizontalScrollView tableScroll;'
+field_new = '    private LinearLayout carsRow, table, tableLabels, summary;\\n    private HorizontalScrollView tableScroll;\n    private FrameLayout tableDataHost;'
 s = s.replace(field_old, field_new)
 
 # Rebuild the Compare screen layout as a real overlay stack.  The vehicle
