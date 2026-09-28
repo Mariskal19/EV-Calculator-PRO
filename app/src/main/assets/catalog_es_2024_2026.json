@@ -6441,10 +6441,11 @@
       "wltpKm": 408,
       "consumptionKwh100": 35,
       "price_eur": 158037,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "M-HERO; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T20:49:00+02:00"
+      "auditDateTime": "2026-09-29T02:05:00+02:00",
+      "weightKg": 3020
     },
     {
       "make": "Maserati",
@@ -8581,13 +8582,13 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 405,
-      "weightKg": null,
+      "weightKg": 2183,
       "photo": null,
       "source": "Polestar España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:05:00+02:00"
     },
     {
       "make": "Polestar",
@@ -8607,13 +8608,13 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 4.2,
       "trunkLiters": 405,
-      "weightKg": null,
+      "weightKg": 2183,
       "photo": null,
       "source": "Polestar España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:05:00+02:00"
     },
     {
       "make": "Polestar",
@@ -8633,13 +8634,13 @@
       "charge10to80Min": 28,
       "acceleration0to100Sec": 6.2,
       "trunkLiters": 405,
-      "weightKg": null,
+      "weightKg": 2084,
       "photo": null,
       "source": "Polestar España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:05:00+02:00"
     },
     {
       "make": "Polestar",
@@ -8659,13 +8660,13 @@
       "charge10to80Min": 26,
       "acceleration0to100Sec": 6.4,
       "trunkLiters": 405,
-      "weightKg": null,
+      "weightKg": 2084,
       "photo": null,
       "source": "Polestar España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:05:00+02:00"
     },
     {
       "make": "Polestar",
