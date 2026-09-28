@@ -414,10 +414,11 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
         content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
 
-        TextView section=tv("Características",19,text());
-        section.setTypeface(null,Typeface.BOLD);
-        section.setPadding(dp(2),dp(12),0,dp(2));
-        content.addView(section,new LinearLayout.LayoutParams(-1,dp(42)));
+        characteristicsSection=tv("Características",19,text());
+        characteristicsSection.setTypeface(null,Typeface.BOLD);
+        characteristicsSection.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
+        content.addView(characteristicsSection,new LinearLayout.LayoutParams(-1,dp(42)));
         TextView legend=tv("✦  Mejor valor",12,blue);
         legend.setGravity(Gravity.CENTER_VERTICAL);
         legend.setPadding(dp(4),0,0,dp(4));
@@ -600,7 +601,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         if(emptyMessage!=null) emptyMessage.setVisibility(View.GONE);
         if(characteristicsSection!=null){
             characteristicsSection.setText(emptyState
-                    ? "Características\\n\\nSelecciona un coche para mostrar sus características."
+                    ? "Características\n\nSelecciona un coche para mostrar sus características."
                     : "Características");
             characteristicsSection.setTextSize(emptyState ? 14 : 19);
             characteristicsSection.setTextColor(emptyState ? sub() : text());
