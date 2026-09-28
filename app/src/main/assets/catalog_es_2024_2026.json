@@ -1038,7 +1038,8 @@
       "trunkLiters": 500,
       "weightKg": 2670,
       "source": "BMW España; nuevo BMW i3 50 xDrive First Edition",
-      "auditDateTime": "2026-09-28T23:44:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "charge10to80Min": 15
     },
     {
       "make": "BMW",
@@ -1085,8 +1086,9 @@
       "lastUpdated": "2026-09-28",
       "weightKg": 2120,
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:44:00+02:00",
-      "trunkLiters": 470
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "trunkLiters": 470,
+      "charge10to80Min": 23
     },
     {
       "make": "BMW",
@@ -1400,9 +1402,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 500,
-      "weightKg": 2655
+      "weightKg": 2655,
+      "charge10to80Min": 30
     },
     {
       "make": "BMW",
@@ -1421,9 +1424,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 500,
-      "weightKg": 2525
+      "weightKg": 2525,
+      "charge10to80Min": 26
     },
     {
       "make": "BMW",
@@ -1442,9 +1446,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "BMW España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 500,
-      "weightKg": 2580
+      "weightKg": 2580,
+      "charge10to80Min": 30
     },
     {
       "make": "BMW",
@@ -3171,9 +3176,10 @@
       "auditDate": "2026-09-28",
       "lastUpdated": "2026-09-28",
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "auditDateTime": "2026-09-28T23:59:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 441,
-      "weightKg": 1615
+      "weightKg": 1615,
+      "charge10to80Min": 18
     },
     {
       "make": "CUPRA",
@@ -3337,7 +3343,7 @@
       "drivetrain": "FWD",
       "acKw": 7.4,
       "dcKw": null,
-      "charge10to80Min": null,
+      "charge10to80Min": 44,
       "acceleration0to100Sec": 19.1,
       "trunkLiters": 270,
       "weightKg": 984,
@@ -3347,7 +3353,7 @@
       "market": "ES",
       "price": 17890,
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00"
+      "auditDateTime": "2026-09-29T03:15:00+02:00"
     },
     {
       "make": "Dacia",
@@ -3608,9 +3614,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 620,
-      "weightKg": 2375
+      "weightKg": 2375,
+      "charge10to80Min": 37
     },
     {
       "make": "DS",
@@ -3628,9 +3635,10 @@
       "lastUpdated": "2026-09-28",
       "price": 57000,
       "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 620,
-      "weightKg": 2132
+      "weightKg": 2132,
+      "charge10to80Min": 28
     },
     {
       "make": "DS",
@@ -3647,9 +3655,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 620,
-      "weightKg": 2289
+      "weightKg": 2289,
+      "charge10to80Min": 37
     },
     {
       "gaiaId": "fiat-500e-icon-42kwh-2024",
@@ -4009,9 +4018,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": null,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2258,
-      "trunkLiters": 402
+      "trunkLiters": 402,
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -4075,9 +4085,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2260,
-      "trunkLiters": 402
+      "trunkLiters": 402,
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -4148,9 +4159,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": null,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2175,
-      "trunkLiters": 402
+      "trunkLiters": 402,
+      "charge10to80Min": 29
     },
     {
       "make": "Ford",
@@ -4195,9 +4207,10 @@
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
       "usableBatteryKwh": 91,
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2351,
-      "trunkLiters": 402
+      "trunkLiters": 402,
+      "charge10to80Min": 37
     },
     {
       "make": "Ford",
@@ -4406,9 +4419,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 238,
-      "weightKg": 1430
+      "weightKg": 1430,
+      "charge10to80Min": 26
     },
     {
       "make": "Hyundai",
@@ -4949,9 +4963,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 466,
-      "weightKg": 1690
+      "weightKg": 1690,
+      "charge10to80Min": 30
     },
     {
       "make": "Hyundai",
@@ -4968,9 +4983,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 466,
-      "weightKg": 1773
+      "weightKg": 1773,
+      "charge10to80Min": 41
     },
     {
       "make": "Hyundai",
@@ -5251,9 +5267,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 37500,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1979,
-      "trunkLiters": 599
+      "trunkLiters": 599,
+      "charge10to80Min": 39
     },
     {
       "make": "KGM",
@@ -5272,9 +5289,10 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 34500,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1979,
-      "trunkLiters": 599
+      "trunkLiters": 599,
+      "charge10to80Min": 39
     },
     {
       "make": "KGM",
@@ -6328,9 +6346,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Lotus Cars; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 688,
-      "weightKg": 2565
+      "weightKg": 2565,
+      "charge10to80Min": 17
     },
     {
       "make": "Lotus",
@@ -6578,9 +6597,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "M-HERO; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 3020,
-      "trunkLiters": 452
+      "trunkLiters": 452,
+      "charge10to80Min": 67
     },
     {
       "make": "Maserati",
@@ -7977,9 +7997,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1765,
-      "trunkLiters": 360
+      "trunkLiters": 360,
+      "charge10to80Min": 30
     },
     {
       "make": "Omoda",
@@ -7996,9 +8017,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 1765,
-      "trunkLiters": 360
+      "trunkLiters": 360,
+      "charge10to80Min": 30
     },
     {
       "make": "Omoda",
@@ -8162,10 +8184,11 @@
       "source": "Opel/Stellantis oficial; Frontera Electric 44 kWh",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "batteryChemistry": "LFP",
       "weightKg": 1573,
-      "trunkLiters": 460
+      "trunkLiters": 460,
+      "charge10to80Min": 28
     },
     {
       "make": "Opel",
@@ -8259,9 +8282,10 @@
       "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2207,
-      "trunkLiters": 550
+      "trunkLiters": 550,
+      "charge10to80Min": 28
     },
     {
       "make": "Opel",
@@ -8278,9 +8302,10 @@
       "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2195,
-      "trunkLiters": 550
+      "trunkLiters": 550,
+      "charge10to80Min": 31
     },
     {
       "make": "Opel",
@@ -8297,9 +8322,10 @@
       "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2207,
-      "trunkLiters": 550
+      "trunkLiters": 550,
+      "charge10to80Min": 28
     },
     {
       "make": "Opel",
@@ -8389,9 +8415,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2337,
-      "trunkLiters": 544
+      "trunkLiters": 544,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -8631,9 +8658,10 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2406,
-      "trunkLiters": 748
+      "trunkLiters": 748,
+      "charge10to80Min": 28
     },
     {
       "make": "Peugeot",
@@ -9909,9 +9937,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 475,
-      "weightKg": 1518
+      "weightKg": 1518,
+      "charge10to80Min": 24
     },
     {
       "make": "Škoda",
@@ -11508,9 +11537,10 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDateTime": "2026-09-29T03:15:00+02:00",
       "trunkLiters": 441,
-      "weightKg": 1576
+      "weightKg": 1576,
+      "charge10to80Min": 41
     },
     {
       "make": "Volkswagen",
