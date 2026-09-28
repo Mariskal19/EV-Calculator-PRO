@@ -9203,11 +9203,13 @@
       "consumptionKwh100": 15.2,
       "usableBatteryKwh": 77,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 470,
+      "weightKg": 2230
     },
     {
       "make": "Škoda",
@@ -9223,11 +9225,13 @@
       "consumptionKwh100": 15,
       "usableBatteryKwh": 79,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 470,
+      "weightKg": 2229
     },
     {
       "make": "Škoda",
@@ -9241,13 +9245,15 @@
       "drive": "RWD",
       "wltpKm": 590,
       "consumptionKwh100": 13.9,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2145
     },
     {
       "make": "Škoda",
@@ -9261,13 +9267,15 @@
       "drive": "AWD",
       "wltpKm": 549,
       "consumptionKwh100": 15,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2230
     },
     {
       "make": "Škoda",
@@ -9281,13 +9289,15 @@
       "drive": "AWD",
       "wltpKm": 573,
       "consumptionKwh100": 15,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 79,
       "dcKw": 185,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2258
     },
     {
       "make": "Škoda",
@@ -9307,10 +9317,12 @@
       "market": "ES",
       "consumptionKwh100": 15.1,
       "batteryChemistry": "li-ion",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00",
-      "drive": "RWD"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 570,
+      "weightKg": 2002
     },
     {
       "make": "Škoda",
@@ -9326,12 +9338,14 @@
       "consumptionKwh100": 15,
       "usableBatteryKwh": 79,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 185,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 570,
+      "weightKg": 2239
     },
     {
       "make": "Škoda",
@@ -9428,13 +9442,15 @@
       "drive": "RWD",
       "wltpKm": 437,
       "consumptionKwh100": 15.1,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 59,
       "dcKw": 165,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 585,
+      "weightKg": 2002
     },
     {
       "make": "Škoda",
@@ -9448,13 +9464,15 @@
       "drive": "RWD",
       "wltpKm": 581,
       "consumptionKwh100": 14.1,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 585,
+      "weightKg": 2141
     },
     {
       "make": "Škoda",
@@ -9468,13 +9486,15 @@
       "drive": "AWD",
       "wltpKm": 549,
       "consumptionKwh100": 15,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 585,
+      "weightKg": 2230
     },
     {
       "make": "Škoda",
@@ -9494,14 +9514,14 @@
       "charge10to80Min": 26,
       "acceleration0to100Sec": 5.4,
       "trunkLiters": 585,
-      "weightKg": null,
+      "weightKg": 2236,
       "photo": null,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "batteryChemistry": "Li-ion",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
       "drive": "AWD"
     },
     {
@@ -9515,10 +9535,12 @@
       "drive": "FWD",
       "wltpKm": 437,
       "consumptionKwh100": 12.6,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-24T23:50:00+02:00"
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "trunkLiters": 475,
+      "weightKg": 1518
     },
     {
       "make": "Škoda",
@@ -9535,12 +9557,14 @@
       "acKw": 11,
       "dcKw": 165,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 935,
+      "weightKg": 2125
     },
     {
       "make": "Škoda",
@@ -9557,12 +9581,14 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 935,
+      "weightKg": 2309
     },
     {
       "make": "Škoda",
@@ -9579,12 +9605,14 @@
       "acKw": 11,
       "dcKw": 200,
       "source": "Škoda España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:50:00+02:00",
-      "drive": "AWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 935,
+      "weightKg": 2382
     },
     {
       "make": "Skywell",
@@ -17693,5 +17721,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-29T00:05:00+02:00"
+  "updatedAt": "2026-09-29T00:12:00+02:00"
 }
