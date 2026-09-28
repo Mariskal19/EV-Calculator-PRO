@@ -5147,8 +5147,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 37500,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 1979
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1979,
+      "trunkLiters": 599
     },
     {
       "make": "KGM",
@@ -5167,8 +5168,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 34500,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 1979
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1979,
+      "trunkLiters": 599
     },
     {
       "make": "KGM",
@@ -7847,8 +7849,9 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1765
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1765,
+      "trunkLiters": 360
     },
     {
       "make": "Omoda",
@@ -7865,8 +7868,9 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "OMODA España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1765
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1765,
+      "trunkLiters": 360
     },
     {
       "make": "Omoda",
@@ -7886,8 +7890,9 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2190
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2190,
+      "trunkLiters": 495
     },
     {
       "make": "Opel",
@@ -7906,9 +7911,10 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "wltpKm": 454,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
       "drive": "FWD",
-      "weightKg": 1670
+      "weightKg": 1670,
+      "trunkLiters": 352
     },
     {
       "make": "Opel",
@@ -8022,9 +8028,10 @@
       "source": "Opel/Stellantis oficial; Frontera Electric 44 kWh",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
       "batteryChemistry": "LFP",
-      "weightKg": 1573
+      "weightKg": 1573,
+      "trunkLiters": 460
     },
     {
       "make": "Opel",
@@ -8117,8 +8124,9 @@
       "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2207
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2207,
+      "trunkLiters": 550
     },
     {
       "make": "Opel",
@@ -8135,8 +8143,9 @@
       "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2195
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2195,
+      "trunkLiters": 550
     },
     {
       "make": "Opel",
@@ -8153,8 +8162,9 @@
       "source": "Opel España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2207
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2207,
+      "trunkLiters": 550
     },
     {
       "make": "Opel",
@@ -8221,8 +8231,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2183
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2183,
+      "trunkLiters": 520
     },
     {
       "make": "Peugeot",
@@ -8240,8 +8251,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2337
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2337,
+      "trunkLiters": 544
     },
     {
       "make": "Peugeot",
@@ -8264,8 +8276,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 49660,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2241
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2241,
+      "trunkLiters": 520
     },
     {
       "make": "Peugeot",
@@ -8287,8 +8300,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2183
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2183,
+      "trunkLiters": 520
     },
     {
       "make": "Peugeot",
@@ -8310,8 +8324,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2337
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2337,
+      "trunkLiters": 544
     },
     {
       "make": "Peugeot",
@@ -8329,8 +8344,9 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2183
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2183,
+      "trunkLiters": 520
     },
     {
       "make": "Peugeot",
@@ -8353,8 +8369,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2241
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2241,
+      "trunkLiters": 520
     },
     {
       "make": "Peugeot",
@@ -8374,8 +8391,9 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2337
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2337,
+      "trunkLiters": 544
     },
     {
       "make": "Peugeot",
@@ -8398,8 +8416,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2190
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2190,
+      "trunkLiters": 471
     },
     {
       "make": "Peugeot",
@@ -8422,8 +8441,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 49160,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8446,8 +8466,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": 51660,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8465,8 +8486,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2406
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2406,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8488,8 +8510,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8511,8 +8534,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8530,8 +8554,9 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales",
       "dcKw": 160,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8552,8 +8577,9 @@
       "dcKw": 160,
       "charge10to80Min": 30,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Peugeot",
@@ -8576,8 +8602,9 @@
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 748
     },
     {
       "make": "Polestar",
@@ -8751,8 +8778,9 @@
       "acceleration0to100Sec": 4.7,
       "lastUpdated": "2026-09-29",
       "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 2565
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2565,
+      "trunkLiters": 484
     },
     {
       "make": "Polestar",
@@ -8794,8 +8822,9 @@
       "acceleration0to100Sec": 6.5,
       "lastUpdated": "2026-09-29",
       "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2400
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2400,
+      "trunkLiters": 484
     },
     {
       "make": "Porsche",
@@ -8816,11 +8845,12 @@
       "acceleration0to100Sec": 5.2,
       "weightKg": 2235,
       "source": "Porsche España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price_eur": 82310,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "charge10to80Min": 21,
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "trunkLiters": 540
     },
     {
       "make": "Porsche",
@@ -8840,8 +8870,9 @@
       "dcKw": 270,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 4.1,
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 2420
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2420,
+      "trunkLiters": 540
     },
     {
       "make": "Porsche",
@@ -8862,8 +8893,9 @@
       "dcKw": 270,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 5.7,
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2330
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2330,
+      "trunkLiters": 540
     },
     {
       "make": "Porsche",
@@ -8884,10 +8916,11 @@
       "acceleration0to100Sec": 3.3,
       "weightKg": 2310,
       "source": "Porsche España; gama eléctrica",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
       "charge10to80Min": 21,
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "trunkLiters": 540
     },
     {
       "make": "Renault",
@@ -9897,8 +9930,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1900
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1900,
+      "trunkLiters": 313
     },
     {
       "make": "smart",
@@ -9920,8 +9954,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1770
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1770,
+      "trunkLiters": 323
     },
     {
       "make": "smart",
@@ -9943,8 +9978,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1770
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1770,
+      "trunkLiters": 323
     },
     {
       "make": "smart",
@@ -9966,8 +10002,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1770
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1770,
+      "trunkLiters": 323
     },
     {
       "make": "smart",
@@ -9989,8 +10026,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1905
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1905,
+      "trunkLiters": 370
     },
     {
       "make": "smart",
@@ -10012,8 +10050,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1845
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1845,
+      "trunkLiters": 370
     },
     {
       "make": "smart",
@@ -10035,8 +10074,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1845
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1845,
+      "trunkLiters": 370
     },
     {
       "make": "smart",
@@ -10058,8 +10098,9 @@
       "market": "ES",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1845
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1845,
+      "trunkLiters": 370
     },
     {
       "make": "smart",
@@ -10081,8 +10122,9 @@
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2445
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2445,
+      "trunkLiters": 630
     },
     {
       "make": "smart",
@@ -10104,8 +10146,9 @@
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2335
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2335,
+      "trunkLiters": 630
     },
     {
       "make": "smart",
@@ -10127,8 +10170,9 @@
       "acKw": 11,
       "dcKw": 150,
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2275
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2275,
+      "trunkLiters": 630
     },
     {
       "make": "smart",
@@ -10150,8 +10194,9 @@
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2335
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2335,
+      "trunkLiters": 630
     },
     {
       "make": "smart",
@@ -10173,8 +10218,9 @@
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2420
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2420,
+      "trunkLiters": 630
     },
     {
       "make": "smart",
@@ -10196,8 +10242,9 @@
       "acKw": 22,
       "dcKw": 400,
       "charge10to80Min": 18,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2445
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2445,
+      "trunkLiters": 630
     },
     {
       "make": "smart",
@@ -10218,9 +10265,10 @@
       "source": "smart España; ficha técnica 2026",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
       "drivetrain": "AWD",
-      "weightKg": 2335
+      "weightKg": 2335,
+      "trunkLiters": 630
     },
     {
       "make": "Subaru",
@@ -10240,8 +10288,9 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2120
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2120,
+      "trunkLiters": 475
     },
     {
       "make": "Subaru",
@@ -10261,8 +10310,9 @@
       "market": "ES",
       "consumptionKwh100": 14.4,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2100
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2100,
+      "trunkLiters": 441
     },
     {
       "make": "Subaru",
@@ -10282,8 +10332,9 @@
       "market": "ES",
       "consumptionKwh100": 12.8,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1850
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1850,
+      "trunkLiters": 441
     },
     {
       "make": "Subaru",
@@ -10303,8 +10354,9 @@
       "market": "ES",
       "consumptionKwh100": 15.7,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2050
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2050,
+      "trunkLiters": 441
     },
     {
       "make": "Subaru",
@@ -10324,8 +10376,9 @@
       "market": "ES",
       "consumptionKwh100": 13.1,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1950
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1950,
+      "trunkLiters": 441
     },
     {
       "make": "Tesla",
@@ -11047,8 +11100,9 @@
       "market": "ES",
       "consumptionKwh100": 13.9,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1890
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1890,
+      "trunkLiters": 452
     },
     {
       "make": "Toyota",
@@ -11068,8 +11122,9 @@
       "market": "ES",
       "consumptionKwh100": 15.9,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1995
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 1995,
+      "trunkLiters": 452
     },
     {
       "make": "Toyota",
@@ -11148,14 +11203,14 @@
       "dcKw": 100,
       "charge10to80Min": 45,
       "acceleration0to100Sec": 9,
-      "trunkLiters": null,
+      "trunkLiters": 388,
       "weightKg": 1720,
       "photo": null,
       "source": "Toyota España; gama eléctrica 2026",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:35:00+02:00"
     },
     {
       "make": "Toyota",
@@ -11174,14 +11229,14 @@
       "dcKw": 150,
       "charge10to80Min": 45,
       "acceleration0to100Sec": 7.4,
-      "trunkLiters": null,
+      "trunkLiters": 388,
       "weightKg": 1935,
       "photo": null,
       "source": "Toyota España; gama eléctrica 2026",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:35:00+02:00"
     },
     {
       "make": "Toyota",
@@ -11200,14 +11255,14 @@
       "dcKw": 150,
       "charge10to80Min": 45,
       "acceleration0to100Sec": 7.9,
-      "trunkLiters": null,
+      "trunkLiters": 388,
       "weightKg": 1835,
       "photo": null,
       "source": "Toyota España; gama eléctrica 2026",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00"
+      "auditDateTime": "2026-09-29T02:35:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -11537,8 +11592,9 @@
       "auditDate": "2026-09-29",
       "dcKw": 300,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2410
+      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "weightKg": 2410,
+      "trunkLiters": 442
     },
     {
       "make": "Volvo",
