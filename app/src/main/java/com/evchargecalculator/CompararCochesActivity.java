@@ -421,7 +421,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         legend.setPadding(dp(4),0,0,dp(4));
         if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
 
-        // Columna de características fija + datos desplazables solo con 3 coches.
+        // La columna de características queda fija; solo las columnas de coches se desplazan.
         LinearLayout compareTable=new LinearLayout(this);
         compareTable.setOrientation(LinearLayout.HORIZONTAL);
         compareTable.setClipChildren(false);
