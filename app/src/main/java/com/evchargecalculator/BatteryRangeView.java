@@ -14,9 +14,9 @@ public class BatteryRangeView extends View {
   private int current = 30, target = 80;
   private Listener listener;
   private boolean dark = false;
-  private final int blueLight = Color.rgb(46, 108, 255);
-  private final int blueDark = Color.rgb(40, 198, 165);
-  private final int trackLight = Color.rgb(220, 230, 240);
+  private final int blueLight = Color.rgb(41, 179, 255);
+  private final int blueDark = Color.rgb(16, 144, 230);
+  private final int trackLight = Color.rgb(220, 235, 247);
   private final int trackDark = Color.rgb(42, 58, 75);
   private int activeThumb = -1;
 
@@ -71,8 +71,8 @@ public class BatteryRangeView extends View {
     float y = getHeight() / 2f, left = xFor(0), right = xFor(100);
     int track = dark ? trackDark : trackLight;
 
-    // Progress-bar style track, matching the reference image.
-    p.setStrokeWidth(dp(8));
+    // Thick rounded progress-bar style, matching the second blue reference bar.
+    p.setStrokeWidth(dp(10));
     p.setStrokeCap(Paint.Cap.ROUND);
     p.setColor(track);
     c.drawLine(left, y, right, y, p);
@@ -80,17 +80,15 @@ public class BatteryRangeView extends View {
     float activeLeft = xFor(current);
     float activeRight = xFor(target);
 
-    // Active section: solid teal, exactly like the second reference bar.
-    p.setColor(blueDark);
+    // Active section: blue, with the same light-to-dark direction used by the app.
+    p.setShader(new LinearGradient(activeLeft, y, activeRight, y, blueLight, blueDark, Shader.TileMode.CLAMP));
     c.drawLine(activeLeft, y, activeRight, y, p);
+    p.setShader(null);
 
-    // Two solid round handles: blue at the start, teal at the end.
-    p.setShadowLayer(dp(4), 0, dp(2), 0x55000000);
-    p.setColor(blueLight);
-    c.drawCircle(activeLeft, y, dp(10), p);
+    // Small, subtle round handles: interactive without looking like a conventional SeekBar.
     p.setColor(blueDark);
-    c.drawCircle(activeRight, y, dp(10), p);
-    p.clearShadowLayer();
+    c.drawCircle(activeLeft, y, dp(7), p);
+    c.drawCircle(activeRight, y, dp(7), p);
   }
 
   @Override
