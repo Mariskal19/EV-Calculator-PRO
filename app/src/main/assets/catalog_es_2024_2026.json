@@ -16,14 +16,15 @@
       "wltpKm": 334,
       "consumptionKwh100": 16.2,
       "price": 49000,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Abarth oficial; especificaciones europeas",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 35,
       "batteryChemistry": "NCM",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:00:00+02:00",
+      "trunkLiters": 360
     },
     {
       "make": "Abarth",
@@ -37,14 +38,15 @@
       "wltpKm": 334,
       "consumptionKwh100": 16.2,
       "price": 45000,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Abarth oficial; especificaciones europeas",
       "acKw": 11,
       "dcKw": 100,
       "charge10to80Min": 35,
       "batteryChemistry": "NCM",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:00:00+02:00",
+      "trunkLiters": 360
     },
     {
       "make": "Alfa Romeo",
