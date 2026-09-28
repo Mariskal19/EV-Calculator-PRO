@@ -81,7 +81,7 @@ public class BatteryRangeView extends View {
     float activeRight = xFor(target);
 
     // Active section: blue, with the same light-to-dark direction used by the app.
-    p.setShader(new LinearGradient(activeLeft, y, activeRight, y, blueLight, blueDark, Shader.TileMode.CLAMP));
+    p.setShader(new LinearGradient(activeLeft, y, activeRight, y, blueDark, blueLight, Shader.TileMode.CLAMP));
     c.drawLine(activeLeft, y, activeRight, y, p);
     p.setShader(null);
 
