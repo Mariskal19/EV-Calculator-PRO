@@ -2482,18 +2482,18 @@
       "dcKw": 200,
       "charge10to80Min": 24,
       "acceleration0to100Sec": 7.8,
-      "trunkLiters": null,
-      "weightKg": null,
+      "trunkLiters": 510,
+      "weightKg": 2110,
       "photo": null,
       "source": "Changan Europe Spain; DEEPAL S07 MY26, especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "price": 45990,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-28",
       "drive": "RWD",
       "batteryChemistry": "LFP",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:55:00+02:00"
     },
     {
       "make": "Citroën",
@@ -2732,13 +2732,15 @@
       "drive": "FWD",
       "wltpKm": 680,
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Citroën España; especificaciones oficiales",
       "acKw": 11,
       "dcKw": 160,
-      "auditDateTime": "2026-09-24T23:15:00+02:00",
-      "batteryChemistry": "NMC"
+      "auditDateTime": "2026-09-28T23:55:00+02:00",
+      "batteryChemistry": "NMC",
+      "trunkLiters": 565,
+      "weightKg": 2246
     },
     {
       "make": "Citroën",
@@ -2754,13 +2756,15 @@
       "acKw": 11,
       "dcKw": 160,
       "source": "Citroën España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 14,
       "price": 39490,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:15:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:55:00+02:00",
+      "trunkLiters": 565,
+      "weightKg": 2184
     },
     {
       "gaiaId": "cupra-born-58-kwh-2024",
@@ -17673,5 +17677,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-28T23:44:00+02:00"
+  "updatedAt": "2026-09-28T23:55:00+02:00"
 }
