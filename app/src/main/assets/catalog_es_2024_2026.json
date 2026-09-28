@@ -4220,10 +4220,11 @@
       "drive": "FWD",
       "wltpKm": 360,
       "consumptionKwh100": 13.6,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "trunkLiters": 238
     },
     {
       "make": "Hyundai",
@@ -4250,9 +4251,9 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
       "drive": "FWD"
     },
     {
@@ -4280,9 +4281,9 @@
       "weightKg": null,
       "photo": null,
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
       "drive": "FWD"
     },
     {
@@ -4296,12 +4297,13 @@
       "drive": "FWD",
       "wltpKm": 496,
       "consumptionKwh100": 12.3,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
       "acKw": 22,
-      "charge10to80Min": 29
+      "charge10to80Min": 29,
+      "trunkLiters": 441
     },
     {
       "make": "Hyundai",
@@ -4314,12 +4316,13 @@
       "drive": "FWD",
       "wltpKm": 344,
       "consumptionKwh100": 12.3,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
       "acKw": 22,
-      "charge10to80Min": 29
+      "charge10to80Min": 29,
+      "trunkLiters": 441
     },
     {
       "make": "Hyundai",
@@ -4366,16 +4369,17 @@
       "acKw": 11,
       "dcKw": 350,
       "source": "Hyundai Motor España; especificaciones oficiales; capacidad útil contrastada con EV Database",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 14.3,
       "usableBatteryKwh": 60,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.4,
       "weightKg": 1950,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
-      "drive": "RWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "drive": "RWD",
+      "trunkLiters": 520
     },
     {
       "make": "Hyundai",
@@ -4391,16 +4395,17 @@
       "acKw": 11,
       "dcKw": 350,
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 16.8,
       "usableBatteryKwh": 72.6,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.2,
       "weightKg": 2110,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
-      "drive": "AWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 520
     },
     {
       "make": "Hyundai",
@@ -4455,12 +4460,12 @@
       "market": "ES",
       "price": null,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2166,
       "photo": null,
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00",
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
       "drive": "AWD"
     },
     {
@@ -4486,9 +4491,10 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "weightKg": 1817
     },
     {
       "make": "Hyundai",
@@ -4513,9 +4519,10 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "weightKg": 2030
     },
     {
       "make": "Hyundai",
@@ -4540,9 +4547,9 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -4567,9 +4574,10 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "weightKg": 1925
     },
     {
       "make": "Hyundai",
@@ -4594,9 +4602,9 @@
       "price": null,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -4642,10 +4650,10 @@
       "acceleration0to100Sec": 9.4,
       "trunkLiters": 338,
       "price_eur": 69900,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-28T23:42:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -4747,10 +4755,11 @@
       "drive": "FWD",
       "wltpKm": 380,
       "consumptionKwh100": 12.7,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "trunkLiters": 466
     },
     {
       "make": "Hyundai",
@@ -4764,10 +4773,11 @@
       "drive": "FWD",
       "wltpKm": 510,
       "consumptionKwh100": 12.8,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "trunkLiters": 466
     },
     {
       "make": "Hyundai",
@@ -4784,10 +4794,11 @@
       "acKw": 10.5,
       "dcKw": 74,
       "charge10to80Min": 41,
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "trunkLiters": 466
     },
     {
       "make": "Hyundai",
@@ -4804,10 +4815,11 @@
       "acKw": 10.5,
       "dcKw": 101,
       "charge10to80Min": 41,
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:45:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:42:00+02:00",
+      "trunkLiters": 466
     },
     {
       "make": "Jaecoo",
@@ -17622,5 +17634,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-28T23:35:40+02:00"
+  "updatedAt": "2026-09-28T23:42:00+02:00"
 }
