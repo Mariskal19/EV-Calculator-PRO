@@ -1930,13 +1930,13 @@
       "market": "ES",
       "price": 43790,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1995,
       "photo": null,
       "source": "BYD España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:35:00+02:00"
     },
     {
       "make": "BYD",
@@ -1960,13 +1960,13 @@
       "market": "ES",
       "price": 47290,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 2122,
       "photo": null,
       "source": "BYD España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "batteryChemistry": "LFP",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:35:00+02:00"
     },
     {
       "gaiaId": "byd-seal-u-comfort-2025",
@@ -1991,11 +1991,12 @@
       "charge10to80Min": null,
       "acceleration0to100Sec": 9.6,
       "trunkLiters": 552,
-      "weightKg": 1950,
+      "weightKg": 1995,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:35:00+02:00"
     },
     {
       "gaiaId": "byd-seal-u-design-2025",
@@ -2020,11 +2021,12 @@
       "charge10to80Min": null,
       "acceleration0to100Sec": 9.9,
       "trunkLiters": 552,
-      "weightKg": 2070,
+      "weightKg": 2122,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:35:00+02:00"
     },
     {
       "gaiaId": "byd-seal-design-2024",
@@ -11678,11 +11680,12 @@
       "acKw": 11,
       "dcKw": 150,
       "acceleration0to100Sec": 4.4,
-      "weightKg": 2350,
+      "weightKg": 2310,
       "source": "VOYAH España; VOYAH FREE",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T19:00:00+02:00"
+      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T00:35:00+02:00",
+      "trunkLiters": 560
     },
     {
       "make": "XPeng",
@@ -17735,5 +17738,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-29T00:20:00+02:00"
+  "updatedAt": "2026-09-29T00:35:00+02:00"
 }
