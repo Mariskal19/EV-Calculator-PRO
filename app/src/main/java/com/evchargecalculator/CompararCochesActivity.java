@@ -437,11 +437,18 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
 
-        tableDataHost=new FrameLayout(this);
-        tableDataHost.setClipChildren(false);
-        tableDataHost.setClipToPadding(false);
-        compareTable.addView(tableDataHost,new LinearLayout.LayoutParams(0,-2,1));
-        content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));\n\n        summary=new LinearLayout(this);
+        tableScroll=new HorizontalScrollView(this);
+        tableScroll.setHorizontalScrollBarEnabled(false);
+        tableScroll.setVerticalScrollBarEnabled(false);
+        tableScroll.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+        tableScroll.setFillViewport(false);
+        tableScroll.setClipChildren(false);
+        tableScroll.setClipToPadding(false);
+        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(-2,-2));
+        compareTable.addView(tableScroll,new LinearLayout.LayoutParams(0,-2,1));
+        content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));
+
+        summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
         summary.setPadding(0,dp(18),0,dp(8));
         content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
