@@ -7488,15 +7488,16 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Mitsubishi Motors España; catálogo oficial Eclipse Cross EV 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 16.5,
       "usableBatteryKwh": 87,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 545,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T21:45:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "weightKg": 1826
     },
     {
       "make": "Mitsubishi",
@@ -7512,15 +7513,16 @@
       "acKw": 22,
       "dcKw": 150,
       "source": "Mitsubishi Motors España; catálogo oficial Eclipse Cross EV 2026",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 16.9,
       "usableBatteryKwh": 87,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 7.9,
       "trunkLiters": 545,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T21:45:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "weightKg": 1839
     },
     {
       "make": "Nissan",
@@ -7761,11 +7763,13 @@
       "wltpKm": 355,
       "consumptionKwh100": 16,
       "source": "Opel España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "drive": "FWD",
+      "trunkLiters": 267,
+      "weightKg": 1544
     },
     {
       "make": "Opel",
@@ -7781,11 +7785,13 @@
       "wltpKm": 428,
       "consumptionKwh100": 14.35,
       "source": "Opel España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "drive": "FWD",
+      "trunkLiters": 267,
+      "weightKg": 1544
     },
     {
       "make": "Opel",
@@ -7925,11 +7931,12 @@
       "wltpKm": 694,
       "consumptionKwh100": 17.3,
       "source": "Opel España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "drive": "FWD",
+      "trunkLiters": 550
     },
     {
       "make": "Opel",
@@ -7996,11 +8003,12 @@
       "wltpKm": 403,
       "consumptionKwh100": 15.55,
       "source": "Opel España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "drive": "FWD",
+      "trunkLiters": 310
     },
     {
       "make": "Opel",
@@ -8016,12 +8024,13 @@
       "acKw": 11,
       "dcKw": 100,
       "source": "Opel España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 15.7,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
-      "drive": "FWD"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:39:00+02:00",
+      "drive": "FWD",
+      "trunkLiters": 310
     },
     {
       "make": "Peugeot",
@@ -17660,5 +17669,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-28T23:38:00+02:00"
+  "updatedAt": "2026-09-28T23:39:00+02:00"
 }
