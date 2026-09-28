@@ -460,20 +460,21 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     }
 
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
+    private int availableCompareWidthPx(){
+        int screen=getResources().getDisplayMetrics().widthPixels;
+        return Math.max(dp(120), screen-dp(112));
+    }
     private int tableWidth(){
         int count=Math.max(1,selectedIds.size());
         if(count<=2){
-            int screen=getResources().getDisplayMetrics().widthPixels;
-            int label=dp(112);
-            return Math.max(dp(120), (screen-label)/count);
+            return Math.max(dp(120), availableCompareWidthPx());
         }
         return dp(145*count);
     }
     private int carColumnWidth(){
         int count=Math.max(1,selectedIds.size());
         if(count<=2){
-            int screen=getResources().getDisplayMetrics().widthPixels;
-            return Math.max(dp(120),(screen-dp(112))/count);
+            return Math.max(dp(120), availableCompareWidthPx()/count);
         }
         return dp(145);
     }
