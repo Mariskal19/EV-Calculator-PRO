@@ -58,6 +58,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private String lastLanguage = "";
     private String lastCurrency = "";
     private LinearLayout carsRow, table, tableLabels, summary;
+    private TextView emptyMessage;
     private HorizontalScrollView tableScroll;
     private FrameLayout tableDataHost;
     private Spinner marketSpinner;
@@ -422,6 +423,12 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         legend.setPadding(dp(4),0,0,dp(4));
         if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
 
+        emptyMessage=tv("Selecciona un coche para mostrar sus características.",14,sub());
+        emptyMessage.setGravity(Gravity.CENTER);
+        emptyMessage.setPadding(dp(10),dp(10),dp(10),dp(10));
+        emptyMessage.setVisibility(View.GONE);
+        content.addView(emptyMessage,new LinearLayout.LayoutParams(-1,-2));
+
         // La columna de características queda fija; los datos se desplazan por debajo.
         FrameLayout compareTable=new FrameLayout(this);
         compareTable.setClipChildren(true);
@@ -592,6 +599,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         table.removeAllViews();
         if(tableLabels!=null) tableLabels.removeAllViews();
         summary.removeAllViews();
+        if(emptyMessage!=null) emptyMessage.setVisibility(selectedVehiclesCache.isEmpty()?View.VISIBLE:View.GONE);
 
         int cardWidth = Math.max(dp(96), (getResources().getDisplayMetrics().widthPixels - dp(46)) / 3);
         for(Vehicle v:selectedVehiclesCache){
@@ -636,16 +644,6 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             addSection("Precio");
             addRow("Precio","price",false,selectedVehiclesCache);
             if(selectedVehiclesCache.size()>=2)buildSummary(selectedVehiclesCache);
-        }else{
-            TextView t=tv("Selecciona un coche para mostrar sus características.",14,sub());
-            t.setGravity(Gravity.CENTER);
-            t.setPadding(dp(10),dp(18),dp(10),dp(18));
-            // Sin coches no mostramos el mensaje dentro de la tabla, porque
-            // la columna fija de características podría taparlo. Lo añadimos
-            // directamente al contenido, centrado respecto a toda la pantalla.
-            LinearLayout.LayoutParams messageLp=new LinearLayout.LayoutParams(-1,-2);
-            messageLp.setMargins(0,dp(8),0,dp(8));
-            content.addView(t,messageLp);
         }
     }
 
