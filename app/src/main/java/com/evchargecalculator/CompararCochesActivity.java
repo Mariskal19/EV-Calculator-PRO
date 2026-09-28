@@ -424,20 +424,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
-        table.setClipChildren(false);
-
-        // Esta pantalla es especial: el contenido general hace scroll vertical,
-        // pero la tabla de características necesita su propio scroll horizontal
-        // cuando hay 3 coches. No se puede dejar la tabla directamente dentro
-        // del ScrollView vertical porque el tercer coche queda fuera del viewport.
-        tableScroll=new HorizontalScrollView(this);
-        tableScroll.setHorizontalScrollBarEnabled(false);
-        tableScroll.setVerticalScrollBarEnabled(false);
-        tableScroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        tableScroll.setFillViewport(false);
-        tableScroll.setClipChildren(false);
-        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(tableWidth(),-2));
-        content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
+        content.addView(table,new LinearLayout.LayoutParams(-1,-2));
 
         summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
