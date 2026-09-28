@@ -651,11 +651,11 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         fixed.setSingleLine(false);
         fixed.setMaxLines(2);
         fixed.setEllipsize(null);
-        fixed.setPadding(dp(4),dp(7),dp(4),dp(5));
-        tableLabels.addView(fixed,new LinearLayout.LayoutParams(-1,dp(40)));
+        fixed.setPadding(dp(4),dp(4),dp(4),dp(4));
+        tableLabels.addView(fixed,new LinearLayout.LayoutParams(-1,dp(52)));
 
         Space data= new Space(this);
-        table.addView(data,new LinearLayout.LayoutParams(tableWidth(),dp(40)));
+        table.addView(data,new LinearLayout.LayoutParams(tableWidth(),dp(52)));
     }
     private TextView chip(String label){TextView t=tv(label,10.5f,sub());t.setGravity(Gravity.CENTER);t.setIncludeFontPadding(false);t.setPadding(dp(6),dp(4),dp(6),dp(4));t.setBackground(strokeBg(dark?Color.rgb(13,28,41):Color.rgb(244,248,253),dark?Color.rgb(43,65,84):Color.rgb(222,231,240),10));return t;}
     private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(8),dp(6),dp(8),dp(6));c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));TextView make=tv(v.make.toUpperCase(Locale.ROOT),11,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);make.setIncludeFontPadding(false);c.addView(make,new LinearLayout.LayoutParams(-1,dp(18)));TextView model=tv(v.model,17,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);model.setIncludeFontPadding(false);model.setMaxLines(2);c.addView(model,new LinearLayout.LayoutParams(-1,dp(38)));TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());ver.setGravity(Gravity.START|Gravity.TOP);ver.setIncludeFontPadding(false);ver.setMaxLines(3);ver.setEllipsize(android.text.TextUtils.TruncateAt.END);ver.setPadding(dp(2),dp(4),dp(2),0);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(45)));TextView rem=tv("Quitar",11,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setIncludeFontPadding(false);rem.setPadding(0,dp(2),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(19)));return c;}
