@@ -414,6 +414,12 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
         content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
 
+        // Estado vacío: fuera de la tabla especial para que nunca quede tapado por la columna fija.
+        emptyMessage=tv("Selecciona un coche para mostrar sus características.",14,sub());
+        emptyMessage.setGravity(Gravity.CENTER);
+        emptyMessage.setPadding(dp(10),dp(8),dp(10),dp(8));
+        content.addView(emptyMessage,new LinearLayout.LayoutParams(-1,dp(44)));
+
         TextView section=tv("Características",19,text());
         section.setTypeface(null,Typeface.BOLD);
         section.setPadding(dp(2),dp(12),0,dp(2));
