@@ -1574,15 +1574,16 @@
       "consumptionKwh100": 16,
       "usableBatteryKwh": 45.1,
       "source": "BYD España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 65,
       "charge10to80Min": 37,
       "weightKg": 1570,
       "price": 31990,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 400
     },
     {
       "make": "BYD",
@@ -3006,17 +3007,17 @@
       "dcKw": 125,
       "charge10to80Min": 26,
       "acceleration0to100Sec": 7.1,
-      "trunkLiters": null,
+      "trunkLiters": 441,
       "id": "cupra-raval-endurance-55-kwh-2026-55-2-nmc-155-fwd",
       "market": "ES",
       "price": 35010,
       "currency": "EUR",
-      "weightKg": null,
+      "weightKg": 1610,
       "photo": null,
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "lastUpdated": "2026-09-28",
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:35:40+02:00"
     },
     {
       "make": "CUPRA",
@@ -3031,14 +3032,16 @@
       "consumptionKwh100": 11.3,
       "price": 29530,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
       "batteryType": "LFP",
       "batteryChemistry": "LFP",
       "dcKw": 88,
       "charge10to80Min": 23,
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 441,
+      "weightKg": 1610
     },
     {
       "make": "CUPRA",
@@ -3053,10 +3056,12 @@
       "consumptionKwh100": 11.8,
       "price": 39070,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 441,
+      "weightKg": 1615
     },
     {
       "make": "CUPRA",
@@ -3072,7 +3077,7 @@
       "acKw": 11,
       "dcKw": 105,
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 15.5,
       "usableBatteryKwh": 58,
@@ -3081,10 +3086,11 @@
       "weightKg": 2130,
       "price": 42530,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-28",
       "drive": "RWD",
       "charge10to80Min": 30,
-      "auditDateTime": "2026-09-24T22:30:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 540
     },
     {
       "make": "CUPRA",
@@ -3299,11 +3305,13 @@
       "wltpKm": 226,
       "consumptionKwh100": 12.4,
       "source": "Dacia España; configurador Spring 2026",
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:30:00+02:00",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
       "acKw": 7,
-      "dcKw": 40
+      "dcKw": 40,
+      "trunkLiters": 288,
+      "weightKg": 1068
     },
     {
       "make": "Dongfeng",
@@ -3404,10 +3412,12 @@
       "acKw": 11,
       "dcKw": 160,
       "price": 49400,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 560,
+      "weightKg": 2166
     },
     {
       "make": "DS",
@@ -3424,10 +3434,12 @@
       "acKw": 11,
       "dcKw": 160,
       "price": 68700,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 515,
+      "weightKg": 2327
     },
     {
       "make": "DS",
@@ -3444,10 +3456,12 @@
       "acKw": 11,
       "dcKw": 160,
       "price": 55100,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 560,
+      "weightKg": 2213
     },
     {
       "make": "DS",
@@ -3461,10 +3475,11 @@
       "wltpKm": 688,
       "consumptionKwh100": 14.1,
       "price": 74200,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 620
     },
     {
       "make": "DS",
@@ -3479,10 +3494,12 @@
       "consumptionKwh100": 13.5,
       "usableBatteryKwh": 73.7,
       "source": "DS Automobiles España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "price": 57000,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDate": "2026-09-28",
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 620,
+      "weightKg": 2132
     },
     {
       "make": "DS",
@@ -3496,10 +3513,11 @@
       "wltpKm": 750,
       "consumptionKwh100": 13,
       "price": 62500,
-      "auditDate": "2026-09-24",
-      "lastUpdated": "2026-09-24",
+      "auditDate": "2026-09-28",
+      "lastUpdated": "2026-09-28",
       "source": "DS Automobiles España; especificaciones oficiales",
-      "auditDateTime": "2026-09-24T23:00:00+02:00"
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
+      "trunkLiters": 620
     },
     {
       "gaiaId": "fiat-500e-icon-42kwh-2024",
@@ -3590,15 +3608,16 @@
       "consumptionKwh100": 16.8,
       "usableBatteryKwh": 43.8,
       "source": "Fiat España; Grande Panda eléctrico",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-28",
       "price_eur": 25450,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-28",
       "acKw": 11,
       "dcKw": 100,
       "charge20to80Min": 27,
-      "auditDateTime": "2026-09-24T22:15:00+02:00",
+      "auditDateTime": "2026-09-28T23:35:40+02:00",
       "batteryChemistry": "LFP",
-      "batteryType": "LFP"
+      "batteryType": "LFP",
+      "trunkLiters": 361
     },
     {
       "make": "Ford",
@@ -17603,5 +17622,5 @@
       "auditDateTime": "2026-09-26T14:45:00+02:00"
     }
   ],
-  "updatedAt": "2026-09-27T10:00:00+02:00"
+  "updatedAt": "2026-09-28T23:35:40+02:00"
 }
