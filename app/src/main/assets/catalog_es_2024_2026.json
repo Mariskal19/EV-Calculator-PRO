@@ -186,8 +186,9 @@
       "source": "Audi España / Audi oficial; A2 e-tron",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1915
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1915,
+      "trunkLiters": 396
     },
     {
       "make": "Audi",
@@ -211,8 +212,9 @@
       "source": "Audi España / Audi oficial; A2 e-tron",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1915
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1915,
+      "trunkLiters": 396
     },
     {
       "make": "Audi",
@@ -236,8 +238,9 @@
       "source": "Audi España / Audi oficial; A2 e-tron",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1985
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1985,
+      "trunkLiters": 396
     },
     {
       "make": "Audi",
@@ -261,8 +264,9 @@
       "source": "Audi España / Audi oficial; A2 e-tron",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2005
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2005,
+      "trunkLiters": 396
     },
     {
       "make": "Audi",
@@ -638,10 +642,11 @@
       "consumptionKwh100": 16.4,
       "price": 74150,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "drive": "RWD",
       "charge10to80Min": 21,
-      "weightKg": 2200
+      "weightKg": 2200,
+      "trunkLiters": 511
     },
     {
       "make": "Audi",
@@ -663,10 +668,11 @@
       "consumptionKwh100": 14.8,
       "price": 72520,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "drive": "RWD",
       "charge10to80Min": 21,
-      "weightKg": 2200
+      "weightKg": 2200,
+      "trunkLiters": 511
     },
     {
       "make": "Audi",
@@ -683,16 +689,17 @@
       "acKw": 11,
       "dcKw": 270,
       "source": "Audi España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.2,
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.9,
       "weightKg": 2350,
       "price": 74090,
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "AWD"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 511
     },
     {
       "make": "Audi",
@@ -707,17 +714,18 @@
       "acKw": 11,
       "dcKw": 270,
       "source": "Audi oficial; especificaciones técnicas SQ6 Sportback e-tron",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "market": "ES",
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 4.3,
       "weightKg": 2420,
       "price": 96960,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-09-29",
       "wltpKm": 607,
       "consumptionKwh100": 17.2,
-      "auditDateTime": "2026-09-24T18:00:00+02:00",
-      "drive": "AWD"
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "drive": "AWD",
+      "trunkLiters": 499
     },
     {
       "make": "Audi",
@@ -1536,11 +1544,12 @@
       "acceleration0to100Sec": 5.6,
       "weightKg": 2050,
       "source": "BMW España; especificaciones oficiales",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-09-29",
       "price": 51800,
       "currency": "EUR",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T18:00:00+02:00"
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "trunkLiters": 525
     },
     {
       "make": "BMW",
@@ -3633,8 +3642,10 @@
       "weightKg": 1365,
       "source": "Fiat España; especificaciones oficiales / Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "2026-09-26",
-      "lastUpdated": "2026-09-26"
+      "auditDate": "2026-09-29",
+      "lastUpdated": "2026-09-29",
+      "trunkLiters": 185,
+      "auditDateTime": "2026-09-29T02:55:00+02:00"
     },
     {
       "make": "Fiat",
@@ -3781,12 +3792,13 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford oficial; Explorer Standard Range RWD",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "usableBatteryKwh": 58,
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": 26,
-      "weightKg": 1908
+      "weightKg": 1908,
+      "trunkLiters": 450
     },
     {
       "make": "Ford",
@@ -3806,10 +3818,11 @@
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
       "dcKw": 135,
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "acKw": 11,
       "charge10to80Min": 28,
-      "weightKg": 2090
+      "weightKg": 2090,
+      "trunkLiters": 450
     },
     {
       "make": "Ford",
@@ -3828,12 +3841,13 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford oficial; Explorer Extended Range AWD",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "usableBatteryKwh": 79,
       "acKw": 11,
       "dcKw": 185,
       "charge10to80Min": 26,
-      "weightKg": 2167
+      "weightKg": 2167,
+      "trunkLiters": 450
     },
     {
       "make": "Ford",
@@ -3852,12 +3866,13 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford oficial; especificaciones Explorer MY2026",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "usableBatteryKwh": 77,
       "acKw": 11,
       "dcKw": 135,
       "charge10to80Min": 28,
-      "weightKg": 2090
+      "weightKg": 2090,
+      "trunkLiters": 450
     },
     {
       "make": "Ford",
@@ -3946,10 +3961,11 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "acKw": 10.5,
       "dcKw": 150,
-      "weightKg": 2175
+      "weightKg": 2175,
+      "trunkLiters": 402
     },
     {
       "make": "Ford",
@@ -3967,10 +3983,11 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "acKw": 10.5,
       "dcKw": 150,
-      "weightKg": 2240
+      "weightKg": 2240,
+      "trunkLiters": 402
     },
     {
       "make": "Ford",
@@ -3988,8 +4005,9 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 2260
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2260,
+      "trunkLiters": 402
     },
     {
       "make": "Ford",
@@ -4058,8 +4076,9 @@
       "lastUpdated": "2026-09-29",
       "price_eur": null,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 2175
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2175,
+      "trunkLiters": 402
     },
     {
       "make": "Ford",
@@ -4103,8 +4122,9 @@
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
       "usableBatteryKwh": 91,
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
-      "weightKg": 2351
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2351,
+      "trunkLiters": 402
     },
     {
       "make": "Ford",
@@ -5015,8 +5035,9 @@
       "source": "Jeep España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1595
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1595,
+      "trunkLiters": 355
     },
     {
       "make": "Jeep",
@@ -5037,8 +5058,9 @@
       "consumptionKwh100": 18.6,
       "auditDate": "2026-09-29",
       "charge10to80Min": 32,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2235
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2235,
+      "trunkLiters": 550
     },
     {
       "make": "Jeep",
@@ -5060,8 +5082,9 @@
       "usableBatteryKwh": 74,
       "auditDate": "2026-09-29",
       "charge10to80Min": 35,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2090
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2090,
+      "trunkLiters": 550
     },
     {
       "make": "Jeep",
@@ -5083,8 +5106,9 @@
       "dcKw": 160,
       "charge10to80Min": 31,
       "acceleration0to100Sec": 5.4,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2347
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2347,
+      "trunkLiters": 550
     },
     {
       "make": "Jeep",
@@ -5127,8 +5151,9 @@
       "acKw": 11,
       "dcKw": 160,
       "charge10to80Min": 32,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 2235
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2235,
+      "trunkLiters": 550
     },
     {
       "make": "KGM",
@@ -6461,8 +6486,9 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "M-HERO; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:05:00+02:00",
-      "weightKg": 3020
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 3020,
+      "trunkLiters": 452
     },
     {
       "make": "Maserati",
@@ -6529,8 +6555,9 @@
       "market": "ES",
       "consumptionKwh100": 18.9,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2205
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2205,
+      "trunkLiters": 468
     },
     {
       "make": "Mazda",
@@ -6550,8 +6577,9 @@
       "market": "ES",
       "consumptionKwh100": 19.4,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
-      "weightKg": 2205
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 2205,
+      "trunkLiters": 468
     },
     {
       "make": "Mazda",
@@ -7977,7 +8005,7 @@
       "dcKw": 100,
       "charge10to80Min": null,
       "acceleration0to100Sec": 14.2,
-      "trunkLiters": null,
+      "trunkLiters": 460,
       "id": "opel-frontera-electric-54-kwh-2025-54-lfp-83-fwd",
       "market": "ES",
       "price": null,
@@ -7987,7 +8015,7 @@
       "source": "Opel/Stellantis oficial; Frontera Electric Extended Range 54 kWh",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "drive": "FWD",
       "batteryChemistry": "LFP"
     },
@@ -8009,9 +8037,10 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "drive": "FWD",
-      "weightKg": 1573
+      "weightKg": 1573,
+      "trunkLiters": 460
     },
     {
       "make": "Opel",
@@ -9841,8 +9870,9 @@
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1955
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1955,
+      "trunkLiters": 467
     },
     {
       "make": "Skywell",
@@ -9863,8 +9893,9 @@
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1955
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1955,
+      "trunkLiters": 467
     },
     {
       "make": "Skywell",
@@ -9885,8 +9916,9 @@
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1955
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1955,
+      "trunkLiters": 467
     },
     {
       "make": "Skywell",
@@ -9907,8 +9939,9 @@
       "dcKw": null,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
-      "weightKg": 1955
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "weightKg": 1955,
+      "trunkLiters": 467
     },
     {
       "make": "smart",
@@ -12628,11 +12661,11 @@
       "dcKw": 480,
       "charge10to80Min": 13,
       "acceleration0to100Sec": 5.3,
-      "trunkLiters": null,
+      "trunkLiters": 456,
       "source": "Zeekr España/Europa; 7GT",
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "weightKg": 2265
     },
     {
@@ -12651,10 +12684,11 @@
       "source": "Zeekr Europe; gama europea",
       "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "batteryChemistry": "NMC",
       "acKw": 22,
-      "weightKg": 2285
+      "weightKg": 2285,
+      "trunkLiters": 456
     },
     {
       "make": "Zeekr",
@@ -12672,10 +12706,11 @@
       "source": "Zeekr Europe; gama europea",
       "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "batteryChemistry": "NMC",
       "acKw": 22,
-      "weightKg": 2405
+      "weightKg": 2405,
+      "trunkLiters": 456
     },
     {
       "make": "Zeekr",
@@ -12797,12 +12832,13 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Zeekr Europe; gama europea",
-      "auditDateTime": "2026-09-29T00:55:00+02:00",
+      "auditDateTime": "2026-09-29T02:55:00+02:00",
       "batteryChemistry": "NMC",
       "acKw": 22,
       "dcKw": 150,
       "charge10to80Min": 18,
-      "weightKg": 1960
+      "weightKg": 1960,
+      "trunkLiters": 362
     },
     {
       "gaiaId": "kia-ev5-air-2025",
