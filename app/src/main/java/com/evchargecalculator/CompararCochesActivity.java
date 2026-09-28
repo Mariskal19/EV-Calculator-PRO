@@ -593,8 +593,9 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         if(tableLabels!=null) tableLabels.removeAllViews();
         summary.removeAllViews();
 
+        int cardWidth = selectedVehiclesCache.size()>=3 ? Math.max(dp(96), (getResources().getDisplayMetrics().widthPixels - dp(46)) / 3) : dp(145);
         for(Vehicle v:selectedVehiclesCache){
-            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),-2);
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(cardWidth,-2);
             lp.setMargins(dp(3),0,dp(3),0);
             carsRow.addView(carCard(v),lp);
         }
@@ -611,7 +612,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             n.setGravity(Gravity.CENTER);
             empty.addView(n,new LinearLayout.LayoutParams(-1,dp(24)));
             empty.setOnClickListener(v->showSearch());
-            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(145),dp(150));
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(cardWidth,dp(132));
             lp.setMargins(dp(3),0,dp(3),0);
             carsRow.addView(empty,lp);
         }
@@ -654,7 +655,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         table.addView(data,new LinearLayout.LayoutParams(tableWidth(),dp(40)));
     }
     private TextView chip(String label){TextView t=tv(label,10.5f,sub());t.setGravity(Gravity.CENTER);t.setIncludeFontPadding(false);t.setPadding(dp(6),dp(4),dp(6),dp(4));t.setBackground(strokeBg(dark?Color.rgb(13,28,41):Color.rgb(244,248,253),dark?Color.rgb(43,65,84):Color.rgb(222,231,240),10));return t;}
-    private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(10),dp(11),dp(10),dp(9));c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));TextView make=tv(v.make.toUpperCase(Locale.ROOT),11,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);make.setIncludeFontPadding(false);c.addView(make,new LinearLayout.LayoutParams(-1,dp(20)));TextView model=tv(v.model,17,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);model.setIncludeFontPadding(false);model.setMaxLines(2);c.addView(model,new LinearLayout.LayoutParams(-1,dp(43)));TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());ver.setGravity(Gravity.START|Gravity.TOP);ver.setIncludeFontPadding(false);ver.setMaxLines(3);ver.setEllipsize(android.text.TextUtils.TruncateAt.END);ver.setPadding(dp(2),dp(7),dp(2),0);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(58)));TextView rem=tv("Quitar",11,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setIncludeFontPadding(false);rem.setPadding(0,dp(5),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(27)));return c;}
+    private View carCard(Vehicle v){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(8),dp(8),dp(8),dp(7));c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));TextView make=tv(v.make.toUpperCase(Locale.ROOT),11,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);make.setIncludeFontPadding(false);c.addView(make,new LinearLayout.LayoutParams(-1,dp(18)));TextView model=tv(v.model,17,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);model.setIncludeFontPadding(false);model.setMaxLines(2);c.addView(model,new LinearLayout.LayoutParams(-1,dp(38)));TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());ver.setGravity(Gravity.START|Gravity.TOP);ver.setIncludeFontPadding(false);ver.setMaxLines(3);ver.setEllipsize(android.text.TextUtils.TruncateAt.END);ver.setPadding(dp(2),dp(5),dp(2),0);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(50)));TextView rem=tv("Quitar",11,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setIncludeFontPadding(false);rem.setPadding(0,dp(4),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(24)));return c;}
     private void remove(String id){selectedIds.remove(id);saveSelection();rebuild();}
 
     private void showSearch(){
