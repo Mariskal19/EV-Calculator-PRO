@@ -424,7 +424,19 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
         table.setPadding(0,dp(2),0,0);
-        content.addView(table,new LinearLayout.LayoutParams(-1,-2));
+
+        // Comparar coches necesita un desplazamiento horizontal independiente
+        // para toda la tabla de características. El ScrollView exterior
+        // se reserva exclusivamente para el desplazamiento vertical.
+        tableScroll=new HorizontalScrollView(this);
+        tableScroll.setHorizontalScrollBarEnabled(false);
+        tableScroll.setVerticalScrollBarEnabled(false);
+        tableScroll.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+        tableScroll.setFillViewport(false);
+        tableScroll.setClipChildren(false);
+        tableScroll.setClipToPadding(false);
+        tableScroll.addView(table,new HorizontalScrollView.LayoutParams(tableWidth(),-2));
+        content.addView(tableScroll,new LinearLayout.LayoutParams(-1,-2));
 
         summary=new LinearLayout(this);
         summary.setOrientation(LinearLayout.VERTICAL);
