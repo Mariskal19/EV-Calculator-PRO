@@ -89,9 +89,9 @@ public class BatteryRangeView extends View {
     // Small round handles with the same subtle depth/effect as the capacity slider thumb.
     p.setShadowLayer(dp(2), 0, dp(1), Color.argb(90, 0, 0, 0));
     p.setColor(blueDark);
-    c.drawCircle(activeLeft, y, dp(7) * (activeThumb == 0 ? thumbScale : 1f), p);
+    c.drawCircle(activeLeft, y, dp(8) * (activeThumb == 0 ? thumbScale : 1f), p);
     p.setColor(blueLight);
-    c.drawCircle(activeRight, y, dp(7) * (activeThumb == 1 ? thumbScale : 1f), p);
+    c.drawCircle(activeRight, y, dp(8) * (activeThumb == 1 ? thumbScale : 1f), p);
     p.clearShadowLayer();
   }
 
