@@ -414,10 +414,11 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
         content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
 
-        TextView section=tv("Características",19,text());
-        section.setTypeface(null,Typeface.BOLD);
-        section.setPadding(dp(2),dp(12),0,dp(2));
-        content.addView(section,new LinearLayout.LayoutParams(-1,dp(42)));
+        characteristicsSection=tv("Características",19,text());
+        characteristicsSection.setTypeface(null,Typeface.BOLD);
+        characteristicsSection.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
+        content.addView(characteristicsSection,new LinearLayout.LayoutParams(-1,dp(42)));
         TextView legend=tv("✦  Mejor valor",12,blue);
         legend.setGravity(Gravity.CENTER_VERTICAL);
         legend.setPadding(dp(4),0,0,dp(4));
@@ -594,22 +595,23 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         if(tableLabels!=null) tableLabels.removeAllViews();
         summary.removeAllViews();
 
-        // El estado vacío se muestra en el propio encabezado de Características.
-        // Así no puede quedar detrás de la columna fija de la tabla.
+        // El estado vacío se crea y controla dinámicamente desde rebuild().
+        // No lo mezclamos con la columna/tabla de características.
         boolean emptyState=selectedVehiclesCache.isEmpty();
-        if(emptyMessage!=null) emptyMessage.setVisibility(View.GONE);
         if(characteristicsSection!=null){
-            characteristicsSection.setText(emptyState
-                    ? "Características\n\nSelecciona un coche para mostrar sus características."
-                    : "Características");
-            characteristicsSection.setTextSize(emptyState ? 14 : 19);
-            characteristicsSection.setTextColor(emptyState ? sub() : text());
-            characteristicsSection.setTypeface(null, emptyState ? Typeface.NORMAL : Typeface.BOLD);
-            characteristicsSection.setGravity(emptyState ? Gravity.CENTER : Gravity.CENTER_VERTICAL|Gravity.START);
-            characteristicsSection.setPadding(dp(2), emptyState ? dp(4) : dp(12), 0, emptyState ? dp(4) : dp(2));
-            android.view.ViewGroup.LayoutParams sectionLp=characteristicsSection.getLayoutParams();
-            sectionLp.height=dp(emptyState ? 76 : 42);
-            characteristicsSection.setLayoutParams(sectionLp);
+            characteristicsSection.setText("Características");
+            characteristicsSection.setTextSize(19);
+            characteristicsSection.setTextColor(text());
+            characteristicsSection.setTypeface(null,Typeface.BOLD);
+            characteristicsSection.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+            characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
+        }
+        if(emptyMessage!=null){
+            emptyMessage.setText("Selecciona un coche para mostrar sus características.");
+            emptyMessage.setTextSize(14);
+            emptyMessage.setTextColor(sub());
+            emptyMessage.setGravity(Gravity.CENTER);
+            emptyMessage.setVisibility(emptyState ? View.VISIBLE : View.GONE);
         }
 
         int cardWidth = Math.max(dp(96), (getResources().getDisplayMetrics().widthPixels - dp(46)) / 3);
