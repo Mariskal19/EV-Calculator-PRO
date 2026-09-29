@@ -130,8 +130,8 @@
       "price": 38700,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "acKw": 11,
       "dcKw": 100,
       "acceleration0to100Sec": 7.4,
@@ -141,7 +141,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Alpine",
@@ -157,8 +158,8 @@
       "price": 44700,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Alpine España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "acKw": 11,
       "dcKw": 100,
       "trunkLiters": 326,
@@ -168,7 +169,8 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.4
+      "acceleration0to100Sec": 6.4,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Alpine",
@@ -4345,13 +4347,13 @@
       "wltpKm": 406,
       "consumptionKwh100": 15.2,
       "usableBatteryKwh": 51,
-      "source": "Fiat España; especificaciones oficiales",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-29",
       "price_eur": 36000,
       "auditDate": "2026-09-29",
       "acKw": 11,
       "dcKw": 100,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "acceleration0to100Sec": 9,
       "weightKg": 1595,
       "trunkLiters": 360,
@@ -4359,7 +4361,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Fiat",
@@ -9185,17 +9188,18 @@
       "dcKw": 130,
       "acceleration0to100Sec": 7.5,
       "trunkLiters": 466,
-      "source": "Nissan España; especificaciones oficiales 2026",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "charge10to80Min": 40,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 1980,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Nissan",
@@ -9213,17 +9217,18 @@
       "dcKw": 130,
       "acceleration0to100Sec": 7.6,
       "trunkLiters": 466,
-      "source": "Nissan España; especificaciones oficiales 2026",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "charge10to80Min": 40,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 2180,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Nissan",
@@ -9241,17 +9246,18 @@
       "dcKw": 130,
       "acceleration0to100Sec": 5.7,
       "trunkLiters": 466,
-      "source": "Nissan España; especificaciones oficiales 2026",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "charge10to80Min": 40,
       "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 2300,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Nissan",
@@ -9485,11 +9491,11 @@
       "dcKw": 100,
       "wltpKm": 355,
       "consumptionKwh100": 16,
-      "source": "Opel España; especificaciones oficiales",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "drive": "FWD",
       "trunkLiters": 267,
       "weightKg": 1544,
@@ -9498,7 +9504,8 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.1
+      "acceleration0to100Sec": 8.1,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Opel",
@@ -9513,11 +9520,11 @@
       "dcKw": 100,
       "wltpKm": 428,
       "consumptionKwh100": 14.35,
-      "source": "Opel España; especificaciones oficiales",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-09-29",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "drive": "FWD",
       "trunkLiters": 267,
       "weightKg": 1544,
@@ -9526,7 +9533,8 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 14.2
+      "acceleration0to100Sec": 14.2,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Opel",
@@ -10541,8 +10549,8 @@
       "dcKw": 350,
       "acceleration0to100Sec": 4.7,
       "lastUpdated": "2026-09-29",
-      "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 2565,
       "trunkLiters": 484,
       "charge10to80Min": 17,
@@ -10551,7 +10559,8 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
       "acKw": 11,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -10597,8 +10606,8 @@
       "dcKw": 310,
       "acceleration0to100Sec": 6.5,
       "lastUpdated": "2026-09-29",
-      "source": "Polestar España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 2400,
       "trunkLiters": 484,
       "charge10to80Min": 16,
@@ -10607,7 +10616,8 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
       "acKw": 11,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Porsche",
@@ -10652,18 +10662,19 @@
       "consumptionKwh100": 17.7,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Porsche España; gama eléctrica",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "acKw": 11,
       "dcKw": 270,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 4.1,
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 2420,
       "trunkLiters": 540,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Porsche",
@@ -10679,18 +10690,19 @@
       "price_eur": 82310,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Porsche España; gama eléctrica",
+      "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO",
       "acKw": 11,
       "dcKw": 270,
       "charge10to80Min": 21,
       "acceleration0to100Sec": 5.7,
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDateTime": "2026-09-29T18:45:00+02:00",
       "weightKg": 2330,
       "trunkLiters": 540,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Porsche",
