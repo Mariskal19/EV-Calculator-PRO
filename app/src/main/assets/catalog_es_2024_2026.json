@@ -13274,7 +13274,8 @@
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T08:08:00+02:00"
     },
     {
       "gaiaId": "kia-ev9-gt-awd-2025",
@@ -13303,7 +13304,8 @@
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T08:08:00+02:00"
     },
     {
       "gaiaId": "kia-ev9-standard-range-rwd-2024",
@@ -13362,7 +13364,8 @@
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T08:08:00+02:00"
     },
     {
       "gaiaId": "lexus-rz-450e-2024",
@@ -13421,7 +13424,8 @@
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T08:08:00+02:00"
     },
     {
       "gaiaId": "lexus-rz-550e-f-sport-2025",
@@ -13450,7 +13454,8 @@
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T08:08:00+02:00"
     },
     {
       "gaiaId": "lucid-air-pure-rwd-2025",
@@ -13569,7 +13574,8 @@
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2024,
       "auditDate": "AUTO",
-      "lastUpdated": "AUTO"
+      "lastUpdated": "AUTO",
+      "auditDateTime": "2026-09-29T08:08:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqa-250-plus-2025",
