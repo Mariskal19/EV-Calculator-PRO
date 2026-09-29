@@ -1200,12 +1200,12 @@
       "consumptionKwh100": 12,
       "price": 66511.48,
       "currency": "EUR",
-      "auditDate": "2026-09-28",
+      "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-28",
       "trunkLiters": 500,
       "weightKg": 2670,
-      "source": "BMW España; nuevo BMW i3 50 xDrive First Edition",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "charge10to80Min": 15,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -1214,7 +1214,8 @@
       "acceleration0to100Sec": 5.1,
       "acKw": 11,
       "dcKw": 205,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -4083,7 +4084,7 @@
       "wltpKm": 450,
       "consumptionKwh100": 13.6,
       "usableBatteryKwh": null,
-      "source": "DS Automobiles España; especificaciones oficiales",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
       "lastUpdated": "2026-09-29",
       "price": 45400,
       "auditDate": "2026-09-29",
@@ -4091,13 +4092,14 @@
       "dcKw": 100,
       "acceleration0to100Sec": 7.1,
       "trunkLiters": 420,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "weightKg": 1820,
       "charge10to80Min": 39,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "DS",
@@ -5278,8 +5280,8 @@
       "consumptionKwh100": 12.3,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "acKw": 22,
       "charge10to80Min": 29,
       "trunkLiters": 441,
@@ -5290,7 +5292,8 @@
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 7.7,
       "dcKw": 150,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Hyundai",
@@ -5305,8 +5308,8 @@
       "consumptionKwh100": 12.3,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "acKw": 22,
       "charge10to80Min": 29,
       "trunkLiters": 441,
@@ -5317,7 +5320,8 @@
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 7.7,
       "dcKw": 150,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Hyundai",
@@ -6439,14 +6443,15 @@
       "trunkLiters": 362,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Kia Iberia; especificaciones oficiales",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
       "dcKw": 105,
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "weightKg": 1615,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Kia",
@@ -7775,8 +7780,8 @@
       "price_eur": 158037,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "M-HERO; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "weightKg": 3020,
       "trunkLiters": 452,
       "charge10to80Min": 67,
@@ -7787,7 +7792,8 @@
       "acceleration0to100Sec": 4.2,
       "acKw": 11,
       "dcKw": 100,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Maserati",
@@ -11743,8 +11749,8 @@
       "consumptionKwh100": 12.6,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Škoda España; gama eléctrica",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
+      "auditDateTime": "2026-09-29T19:55:00+02:00",
       "trunkLiters": 475,
       "weightKg": 1518,
       "charge10to80Min": 24,
@@ -11755,7 +11761,8 @@
       "acceleration0to100Sec": 5.4,
       "acKw": 11,
       "dcKw": 133,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Škoda",
