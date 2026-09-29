@@ -29,7 +29,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.85
     },
     {
       "make": "Abarth",
@@ -56,7 +57,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.24
     },
     {
       "make": "Alfa Romeo",
@@ -165,7 +167,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.4
     },
     {
       "make": "Alpine",
@@ -343,7 +346,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.6
     },
     {
       "make": "Audi",
@@ -373,7 +377,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Audi",
@@ -403,7 +408,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.5
     },
     {
       "make": "Audi",
@@ -467,7 +473,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.6
     },
     {
       "make": "Audi",
@@ -497,7 +504,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Audi",
@@ -527,7 +535,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.5
     },
     {
       "make": "Audi",
@@ -755,7 +764,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7
     },
     {
       "make": "Audi",
@@ -785,7 +795,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.6
     },
     {
       "make": "Audi",
@@ -946,7 +957,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.6
     },
     {
       "make": "Audi",
@@ -976,7 +988,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.6
     },
     {
       "make": "Audi",
@@ -1195,7 +1208,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "BMW",
@@ -1252,7 +1266,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.6
     },
     {
       "make": "BMW",
@@ -1312,7 +1327,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.1
     },
     {
       "make": "BMW",
@@ -1341,7 +1357,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 3.9
     },
     {
       "make": "BMW",
@@ -1370,7 +1387,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.5
     },
     {
       "make": "BMW",
@@ -1617,7 +1635,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 3.8
     },
     {
       "make": "BMW",
@@ -1643,7 +1662,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.6
     },
     {
       "make": "BMW",
@@ -1669,7 +1689,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.6
     },
     {
       "make": "BMW",
@@ -1698,7 +1719,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 3.8
     },
     {
       "make": "BMW",
@@ -1728,7 +1750,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "BMW",
@@ -1757,7 +1780,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.6
     },
     {
       "make": "BMW",
@@ -1916,7 +1940,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.9
     },
     {
       "make": "BYD",
@@ -3253,7 +3278,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Citroën",
@@ -3282,7 +3308,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.9
     },
     {
       "gaiaId": "cupra-born-58-kwh-2024",
@@ -3614,7 +3641,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.5
     },
     {
       "make": "CUPRA",
@@ -3639,7 +3667,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.8
     },
     {
       "make": "CUPRA",
@@ -3929,7 +3958,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 13.7
     },
     {
       "make": "Dongfeng",
@@ -3956,7 +3986,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.5
     },
     {
       "make": "Dongfeng",
@@ -3984,7 +4015,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.5
     },
     {
       "make": "Dongfeng",
@@ -4012,7 +4044,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.5
     },
     {
       "make": "DS",
@@ -4067,7 +4100,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.7
     },
     {
       "make": "DS",
@@ -4094,7 +4128,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "DS",
@@ -4121,7 +4156,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.8
     },
     {
       "make": "DS",
@@ -4145,7 +4181,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "DS",
@@ -4170,7 +4207,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.2
     },
     {
       "make": "DS",
@@ -4194,7 +4232,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.8
     },
     {
       "gaiaId": "fiat-500e-icon-42kwh-2024",
@@ -4320,7 +4359,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 11
     },
     {
       "make": "Ford",
@@ -4441,7 +4481,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.3
     },
     {
       "make": "Ford",
@@ -4469,7 +4510,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.4
     },
     {
       "make": "Ford",
@@ -4498,7 +4540,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.3
     },
     {
       "make": "Ford",
@@ -4527,7 +4570,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.4
     },
     {
       "make": "Ford",
@@ -4613,7 +4657,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.6
     },
     {
       "make": "Ford",
@@ -4640,7 +4685,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.5
     },
     {
       "make": "Ford",
@@ -4667,7 +4713,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.6
     },
     {
       "make": "Ford",
@@ -4692,7 +4739,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.3
     },
     {
       "make": "Ford",
@@ -4778,7 +4826,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.5
     },
     {
       "make": "Ford",
@@ -4834,7 +4883,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.4
     },
     {
       "make": "Ford",
@@ -4919,7 +4969,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8
     },
     {
       "make": "GAC",
@@ -4946,7 +4997,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.5
     },
     {
       "make": "GAC",
@@ -4973,7 +5025,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.9
     },
     {
       "make": "Geely",
@@ -5003,7 +5056,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.9
     },
     {
       "make": "Geely",
@@ -5031,7 +5085,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.6
     },
     {
       "make": "Geely",
@@ -5059,7 +5114,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.6
     },
     {
       "make": "Hyundai",
@@ -5082,7 +5138,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 10.6
     },
     {
       "make": "Hyundai",
@@ -5174,7 +5231,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.7
     },
     {
       "make": "Hyundai",
@@ -5198,7 +5256,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.7
     },
     {
       "make": "Hyundai",
@@ -5706,7 +5765,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.9
     },
     {
       "make": "Hyundai",
@@ -5730,7 +5790,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "Hyundai",
@@ -5756,7 +5817,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9.9
     },
     {
       "make": "Hyundai",
@@ -5782,7 +5844,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "Jaecoo",
@@ -5900,7 +5963,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Jeep",
@@ -5927,7 +5991,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.5
     },
     {
       "make": "Jeep",
@@ -5955,7 +6020,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Jeep",
@@ -6010,7 +6076,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.3
     },
     {
       "make": "Jeep",
@@ -6036,7 +6103,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.3
     },
     {
       "make": "KGM",
@@ -6062,7 +6130,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "KGM",
@@ -6088,7 +6157,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "KGM",
@@ -6166,7 +6236,7 @@
       "acKw": 11,
       "dcKw": 125,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 8.7,
       "trunkLiters": 362,
       "weightKg": 1615,
       "photo": null,
@@ -6179,7 +6249,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "make": "Kia",
@@ -6228,7 +6298,7 @@
       "acKw": 11,
       "dcKw": 125,
       "charge10to80Min": 30,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 8.7,
       "trunkLiters": 362,
       "weightKg": 1615,
       "photo": null,
@@ -6241,7 +6311,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "make": "Kia",
@@ -6365,7 +6435,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.5
     },
     {
       "make": "Kia",
@@ -6429,7 +6500,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.5
     },
     {
       "make": "Kia",
@@ -6523,7 +6595,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.4
     },
     {
       "make": "Kia",
@@ -6617,7 +6690,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Kia",
@@ -6643,7 +6717,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Kia",
@@ -6669,7 +6744,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Kia",
@@ -6697,7 +6773,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.7
     },
     {
       "make": "Kia",
@@ -6726,7 +6803,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.3
     },
     {
       "make": "Kia",
@@ -6751,7 +6829,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.1
     },
     {
       "make": "Kia",
@@ -6777,7 +6856,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 13.4
     },
     {
       "make": "Kia",
@@ -6803,7 +6883,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.1
     },
     {
       "make": "Kia",
@@ -6829,7 +6910,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 13.4
     },
     {
       "make": "Kia",
@@ -6855,7 +6937,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.1
     },
     {
       "make": "Kia",
@@ -6881,7 +6964,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 13.4
     },
     {
       "make": "Lancia",
@@ -7313,7 +7397,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.5
     },
     {
       "make": "Lotus",
@@ -7604,7 +7689,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.2
     },
     {
       "make": "Maserati",
@@ -7686,7 +7772,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.9
     },
     {
       "make": "Mazda",
@@ -7713,7 +7800,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.9
     },
     {
       "make": "Mazda",
@@ -9113,7 +9201,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.6
     },
     {
       "make": "Nissan",
@@ -9138,7 +9227,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.6
     },
     {
       "make": "Nissan",
@@ -9165,7 +9255,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8
     },
     {
       "make": "Nissan",
@@ -9192,7 +9283,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8
     },
     {
       "make": "Omoda",
@@ -9216,7 +9308,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.6
     },
     {
       "make": "Omoda",
@@ -9240,7 +9333,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.6
     },
     {
       "make": "Omoda",
@@ -9294,7 +9388,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Opel",
@@ -9321,7 +9416,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "Opel",
@@ -9348,7 +9444,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 14.2
     },
     {
       "make": "Opel",
@@ -9411,7 +9508,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 14.2
     },
     {
       "make": "Opel",
@@ -9436,7 +9534,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.8
     },
     {
       "make": "Opel",
@@ -9525,7 +9624,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.8
     },
     {
       "make": "Opel",
@@ -9549,7 +9649,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.1
     },
     {
       "make": "Opel",
@@ -9573,7 +9674,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Opel",
@@ -9597,7 +9699,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.9
     },
     {
       "make": "Opel",
@@ -9624,7 +9727,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6
     },
     {
       "make": "Opel",
@@ -9652,7 +9756,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6
     },
     {
       "make": "Peugeot",
@@ -9706,7 +9811,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.5
     },
     {
       "make": "Peugeot",
@@ -9819,7 +9925,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.5
     },
     {
       "make": "Peugeot",
@@ -9848,7 +9955,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.5
     },
     {
       "make": "Peugeot",
@@ -9874,7 +9982,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.5
     },
     {
       "make": "Peugeot",
@@ -9989,7 +10098,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.2
     },
     {
       "make": "Peugeot",
@@ -10072,7 +10182,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6
     },
     {
       "make": "Peugeot",
@@ -10099,7 +10210,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.5
     },
     {
       "make": "Peugeot",
@@ -10128,7 +10240,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.5
     },
     {
       "make": "Polestar",
@@ -10737,7 +10850,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Renault",
@@ -10765,7 +10879,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Renault",
@@ -10958,7 +11073,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6
     },
     {
       "make": "Škoda",
@@ -11072,7 +11188,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.7
     },
     {
       "make": "Škoda",
@@ -11099,7 +11216,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 12.1
     },
     {
       "make": "Škoda",
@@ -11126,7 +11244,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.5
     },
     {
       "make": "Škoda",
@@ -11153,7 +11272,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.8
     },
     {
       "make": "Škoda",
@@ -11180,7 +11300,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.2
     },
     {
       "make": "Škoda",
@@ -11210,7 +11331,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.7
     },
     {
       "make": "Škoda",
@@ -11238,7 +11360,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Škoda",
@@ -11360,7 +11483,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.7
     },
     {
       "make": "Škoda",
@@ -11387,7 +11511,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.7
     },
     {
       "make": "Škoda",
@@ -11414,7 +11539,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Škoda",
@@ -11469,7 +11595,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Škoda",
@@ -11498,7 +11625,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.7
     },
     {
       "make": "Škoda",
@@ -11527,7 +11655,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Škoda",
@@ -11556,7 +11685,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "Skywell",
@@ -11693,7 +11823,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.1
     },
     {
       "make": "smart",
@@ -11722,7 +11853,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.8
     },
     {
       "make": "smart",
@@ -11751,7 +11883,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.7
     },
     {
       "make": "smart",
@@ -11780,7 +11913,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.8
     },
     {
       "make": "smart",
@@ -11809,7 +11943,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.8
     },
     {
       "make": "smart",
@@ -11838,7 +11973,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 3.7
     },
     {
       "make": "smart",
@@ -11867,7 +12003,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.5
     },
     {
       "make": "smart",
@@ -11896,7 +12033,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.5
     },
     {
       "make": "smart",
@@ -11924,7 +12062,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.5
     },
     {
       "make": "smart",
@@ -11952,7 +12091,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.9
     },
     {
       "make": "smart",
@@ -11980,7 +12120,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.9
     },
     {
       "make": "smart",
@@ -12008,7 +12149,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.9
     },
     {
       "make": "smart",
@@ -12036,7 +12178,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.9
     },
     {
       "make": "smart",
@@ -12064,7 +12207,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "smart",
@@ -12092,7 +12236,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "Subaru",
@@ -12119,7 +12264,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.4
     },
     {
       "make": "Subaru",
@@ -12146,7 +12292,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5
     },
     {
       "make": "Subaru",
@@ -12173,7 +12320,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.3
     },
     {
       "make": "Subaru",
@@ -12200,7 +12348,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.4
     },
     {
       "make": "Subaru",
@@ -12227,7 +12376,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "Tesla",
@@ -13060,7 +13210,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.5
     },
     {
       "make": "Toyota",
@@ -13087,7 +13238,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 8.5
     },
     {
       "make": "Toyota",
@@ -13271,7 +13423,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7
     },
     {
       "make": "Volkswagen",
@@ -13297,7 +13450,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Volkswagen",
@@ -13321,7 +13475,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 9
     },
     {
       "make": "Volkswagen",
@@ -13347,7 +13502,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.5
     },
     {
       "make": "Volkswagen",
@@ -13373,7 +13529,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.6
     },
     {
       "make": "Volkswagen",
@@ -13496,7 +13653,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.3
     },
     {
       "make": "Volkswagen",
@@ -13522,7 +13680,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.6
     },
     {
       "make": "Volvo",
@@ -13582,7 +13741,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.6
     },
     {
       "make": "Volvo",
@@ -13640,7 +13800,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.4
     },
     {
       "make": "Volvo",
@@ -13670,7 +13831,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4
     },
     {
       "make": "Volvo",
@@ -13700,7 +13862,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.5
     },
     {
       "make": "Volvo",
@@ -13760,7 +13923,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 5.1
     },
     {
       "make": "Volvo",
@@ -13789,7 +13953,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 7.9
     },
     {
       "make": "Volvo",
@@ -13849,7 +14014,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.9
     },
     {
       "make": "Volvo",
@@ -13904,7 +14070,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.9
     },
     {
       "make": "Volvo",
@@ -13928,7 +14095,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.9
     },
     {
       "make": "Volvo",
@@ -13952,7 +14120,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.9
     },
     {
       "make": "Volvo",
@@ -14865,7 +15034,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.2
     },
     {
       "make": "Zeekr",
@@ -14891,7 +15061,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 6.2
     },
     {
       "make": "Zeekr",
@@ -15039,7 +15210,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "acceleration0to100Sec": 4.8
     },
     {
       "gaiaId": "kia-ev5-air-2025",
@@ -16116,7 +16288,7 @@
       "acKw": 11,
       "dcKw": 200,
       "charge10to80Min": 32,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 6.2,
       "trunkLiters": 610,
       "weightKg": 2480,
       "source": "Gaia Charge EVDB",
@@ -16127,7 +16299,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-450-plus-2025",
@@ -16150,7 +16322,7 @@
       "acKw": 11,
       "dcKw": 200,
       "charge10to80Min": 32,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 6.2,
       "trunkLiters": 610,
       "weightKg": 2480,
       "source": "Gaia Charge EVDB",
@@ -16161,7 +16333,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-580-4matic-2025",
@@ -16184,7 +16356,7 @@
       "acKw": 11,
       "dcKw": 200,
       "charge10to80Min": 32,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 4.1,
       "trunkLiters": 610,
       "weightKg": 2585,
       "source": "Gaia Charge EVDB",
@@ -16195,7 +16367,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-suv-450-4matic-2024",
@@ -16218,7 +16390,7 @@
       "acKw": 11,
       "dcKw": 200,
       "charge10to80Min": 36,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 6,
       "trunkLiters": 645,
       "weightKg": 2855,
       "source": "Gaia Charge EVDB",
@@ -16229,7 +16401,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "mercedes-benz-eqs-suv-450-plus-2025",
@@ -16286,7 +16458,7 @@
       "acKw": 11,
       "dcKw": 200,
       "charge10to80Min": 34,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 4.7,
       "trunkLiters": 526,
       "weightKg": 3085,
       "source": "Gaia Charge EVDB",
@@ -16297,7 +16469,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "kia-ev3-long-range-2025",
@@ -18224,7 +18396,7 @@
       "acKw": 11,
       "dcKw": 205,
       "charge10to80Min": 24,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 6.1,
       "trunkLiters": 570,
       "weightKg": 2215,
       "source": "Gaia Charge EVDB",
@@ -18235,7 +18407,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "bmw-i5-touring-m60-xdrive-2025",
@@ -18394,7 +18566,7 @@
       "acKw": 11,
       "dcKw": 195,
       "charge10to80Min": 35,
-      "acceleration0to100Sec": null,
+      "acceleration0to100Sec": 3.8,
       "trunkLiters": 500,
       "weightKg": 2710,
       "source": "Gaia Charge EVDB",
@@ -18405,7 +18577,7 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
     },
     {
       "gaiaId": "bmw-ix-xdrive40-2024",
