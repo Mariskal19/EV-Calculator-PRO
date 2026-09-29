@@ -11175,13 +11175,13 @@
       "auditDateTime": "2026-09-29T18:00:00+02:00",
       "trunkLiters": 360,
       "weightKg": 1200,
-      "charge10to80Min": 42,
+      "charge10to80Min": 30,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 6,
-      "chargingAuditDateTime": "2026-09-29T18:00:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T18:20:00+02:00",
       "batteryChemistry": "LFP"
     },
     {
