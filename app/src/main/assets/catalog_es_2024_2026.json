@@ -5172,8 +5172,8 @@
       "consumptionKwh100": 13.6,
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
-      "source": "Hyundai Motor España; especificaciones oficiales",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "source": "Fabricante: Hyundai Motor España / Kia Iberia; especificaciones oficiales",
+      "auditDateTime": "2026-09-29T18:30:00+02:00",
       "trunkLiters": 238,
       "weightKg": 1430,
       "charge10to80Min": 26,
@@ -5184,7 +5184,8 @@
       "acceleration0to100Sec": 10.6,
       "acKw": 11,
       "dcKw": 85,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "batteryChemistry": "Li-ion"
     },
     {
       "make": "Hyundai",
