@@ -1209,7 +1209,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.1
+      "acceleration0to100Sec": 5.1,
+      "acKw": 11,
+      "dcKw": 205,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1267,7 +1270,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.6
+      "acceleration0to100Sec": 5.6,
+      "acKw": 11,
+      "dcKw": 205,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1636,7 +1642,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 3.8
+      "acceleration0to100Sec": 3.8,
+      "acKw": 11,
+      "dcKw": 195,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1663,7 +1672,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.6
+      "acceleration0to100Sec": 5.6,
+      "acKw": 11,
+      "dcKw": 175,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -1690,7 +1702,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.6
+      "acceleration0to100Sec": 4.6,
+      "acKw": 11,
+      "dcKw": 195,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "BMW",
@@ -3633,7 +3648,7 @@
       "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
       "batteryType": "LFP",
       "batteryChemistry": "LFP",
-      "dcKw": 88,
+      "dcKw": 105,
       "charge10to80Min": 23,
       "auditDateTime": "2026-09-28T23:59:00+02:00",
       "trunkLiters": 441,
@@ -3642,7 +3657,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9.5
+      "acceleration0to100Sec": 9.5,
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -3668,7 +3685,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.8
+      "acceleration0to100Sec": 6.8,
+      "acKw": 11,
+      "dcKw": 105,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "CUPRA",
@@ -3851,7 +3871,7 @@
       "powerKw": 33,
       "drivetrain": "FWD",
       "acKw": 7.4,
-      "dcKw": null,
+      "dcKw": 30,
       "charge10to80Min": 44,
       "acceleration0to100Sec": 19.1,
       "trunkLiters": 270,
@@ -3866,7 +3886,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Dacia",
@@ -4182,7 +4203,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.4
+      "acceleration0to100Sec": 5.4,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "DS",
@@ -4208,7 +4232,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.2
+      "acceleration0to100Sec": 8.2,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "DS",
@@ -4233,7 +4260,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.8
+      "acceleration0to100Sec": 7.8,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "gaiaId": "fiat-500e-icon-42kwh-2024",
@@ -4658,7 +4688,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.6
+      "acceleration0to100Sec": 4.6,
+      "acKw": 11,
+      "dcKw": 150,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Ford",
@@ -4740,7 +4773,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.3
+      "acceleration0to100Sec": 6.3,
+      "acKw": 11,
+      "dcKw": 150,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Ford",
@@ -4827,7 +4863,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.5
+      "acceleration0to100Sec": 7.5,
+      "acKw": 11,
+      "dcKw": 150,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Ford",
@@ -4884,7 +4923,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.4
+      "acceleration0to100Sec": 4.4,
+      "acKw": 11,
+      "dcKw": 150,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Ford",
@@ -5139,7 +5181,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 10.6
+      "acceleration0to100Sec": 10.6,
+      "acKw": 11,
+      "dcKw": 85,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -5232,7 +5277,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.7
+      "acceleration0to100Sec": 7.7,
+      "dcKw": 150,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -5257,7 +5304,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.7
+      "acceleration0to100Sec": 7.7,
+      "dcKw": 150,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -5641,7 +5690,9 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -5766,7 +5817,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9.9
+      "acceleration0to100Sec": 9.9,
+      "acKw": 11,
+      "dcKw": 74,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -5791,7 +5845,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.1
+      "acceleration0to100Sec": 8.1,
+      "acKw": 11,
+      "dcKw": 101,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Hyundai",
@@ -6131,7 +6188,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.1
+      "acceleration0to100Sec": 8.1,
+      "acKw": 11,
+      "dcKw": 120,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "KGM",
@@ -6158,7 +6218,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.1
+      "acceleration0to100Sec": 8.1,
+      "acKw": 11,
+      "dcKw": 120,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "KGM",
@@ -6587,7 +6650,7 @@
       "auditDate": "2026-09-29",
       "lastUpdated": "2026-09-29",
       "source": "Kia Iberia; especificaciones oficiales",
-      "acKw": 11,
+      "acKw": 10.5,
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "charge10to80Min": 29,
       "trunkLiters": 490,
@@ -6596,7 +6659,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.4
+      "acceleration0to100Sec": 7.4,
+      "dcKw": 101,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Kia",
@@ -7398,7 +7463,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.5
+      "acceleration0to100Sec": 4.5,
+      "acKw": 22,
+      "dcKw": 350,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Lotus",
@@ -7690,7 +7758,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.2
+      "acceleration0to100Sec": 4.2,
+      "acKw": 11,
+      "dcKw": 100,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Maserati",
@@ -8383,7 +8454,7 @@
       "consumptionKwh100": 13.2,
       "powerKw": 110,
       "drivetrain": "FWD",
-      "acKw": null,
+      "acKw": 11,
       "dcKw": 82,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 9.6,
@@ -8399,7 +8470,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -8414,7 +8486,7 @@
       "consumptionKwh100": 12.9,
       "powerKw": 110,
       "drivetrain": "FWD",
-      "acKw": null,
+      "acKw": 11,
       "dcKw": 82,
       "charge10to80Min": 28,
       "acceleration0to100Sec": 9.6,
@@ -8430,7 +8502,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -8775,7 +8848,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "MINI",
@@ -9309,7 +9383,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.6
+      "acceleration0to100Sec": 7.6,
+      "acKw": 10.3,
+      "dcKw": 130,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Omoda",
@@ -9334,7 +9411,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.6
+      "acceleration0to100Sec": 7.6,
+      "acKw": 10.3,
+      "dcKw": 130,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Omoda",
@@ -9535,7 +9615,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.8
+      "acceleration0to100Sec": 8.8,
+      "acKw": 7.4,
+      "dcKw": 100,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Opel",
@@ -9650,7 +9733,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.1
+      "acceleration0to100Sec": 6.1,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Opel",
@@ -9675,7 +9761,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9
+      "acceleration0to100Sec": 9,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Opel",
@@ -9700,7 +9789,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.9
+      "acceleration0to100Sec": 5.9,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Opel",
@@ -9812,7 +9904,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.5
+      "acceleration0to100Sec": 6.5,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -9926,7 +10021,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.5
+      "acceleration0to100Sec": 6.5,
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -10099,7 +10196,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.2
+      "acceleration0to100Sec": 8.2,
+      "acKw": 11,
+      "dcKw": 160,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -10183,7 +10283,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6
+      "acceleration0to100Sec": 6,
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Peugeot",
@@ -10446,7 +10548,9 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Polestar",
@@ -10500,7 +10604,9 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Porsche",
@@ -11074,7 +11180,8 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6
+      "acceleration0to100Sec": 6,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Škoda",
@@ -11596,7 +11703,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.4
+      "acceleration0to100Sec": 5.4,
+      "acKw": 11,
+      "dcKw": 133,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Škoda",
@@ -11704,7 +11814,7 @@
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
-      "dcKw": null,
+      "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
       "auditDateTime": "2026-09-29T02:55:00+02:00",
@@ -11713,7 +11823,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Skywell",
@@ -11731,7 +11842,7 @@
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
-      "dcKw": null,
+      "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
       "auditDateTime": "2026-09-29T02:55:00+02:00",
@@ -11740,7 +11851,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Skywell",
@@ -11758,7 +11870,7 @@
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
-      "dcKw": null,
+      "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
       "auditDateTime": "2026-09-29T02:55:00+02:00",
@@ -11767,7 +11879,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Skywell",
@@ -11785,7 +11898,7 @@
       "source": "Skywell España; ficha técnica BE11",
       "drivetrain": "FWD",
       "acKw": 6.6,
-      "dcKw": null,
+      "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
       "auditDateTime": "2026-09-29T02:55:00+02:00",
@@ -11794,7 +11907,8 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "smart",
@@ -13476,7 +13590,10 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9
+      "acceleration0to100Sec": 9,
+      "acKw": 11,
+      "dcKw": 105,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Volkswagen",
@@ -14071,7 +14188,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.9
+      "acceleration0to100Sec": 6.9,
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Volvo",
@@ -14096,7 +14215,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.9
+      "acceleration0to100Sec": 6.9,
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Volvo",
@@ -14121,7 +14242,9 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.9
+      "acceleration0to100Sec": 6.9,
+      "acKw": 11,
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
     },
     {
       "make": "Volvo",
