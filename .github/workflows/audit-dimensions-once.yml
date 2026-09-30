@@ -103,38 +103,47 @@ jobs:
                       continue
                   fallback.setdefault((makekey(r.get("brand")),norm(r.get("model"))),d)
 
-          from difflib import SequenceMatcher
-          def model_score(a,b):
-              a0=norm(a); b0=norm(b)
-              if a0==b0: return 1.0
-              nums_a=re.findall(r"\\d+",a0); nums_b=re.findall(r"\\d+",b0)
-              if nums_a and nums_b and nums_a != nums_b: return 0.0
-              toks_a=set(re.findall(r"[a-z]+",a0)); toks_b=set(re.findall(r"[a-z]+",b0))
-              overlap=len(toks_a&toks_b)/max(1,len(toks_a|toks_b))
-              seq=SequenceMatcher(None,a0,b0).ratio()
-              return max(seq,overlap*0.9+seq*0.1)
+          model_alias = {
+              "q6suvetron":"q6etron",
+              "sq6suvetron":"sq6etron",
+              "atto3evo":"atto3",
+              "dolphinsurf":"dolphinsurf",
+              "ionq5":"ioniq5"
+          }
+          def modelkey(s):
+              n=norm(s)
+              return model_alias.get(n,n)
 
           def find_dims(v):
-              key=(makekey(v.get("make")), norm(v.get("model")))
+              mk=makekey(v.get("make"))
+              md=modelkey(v.get("model"))
+              key=(mk,md)
               if key in gaia:
                   return gaia[key], "Gaia EVDB"
+              exact_slug=slug(v.get("make"))+"-"+slug(v.get("model"))
+              if exact_slug in gaia_slug:
+                  return gaia_slug[exact_slug], "Gaia EVDB (slug match)"
               if key in fallback:
                   return fallback[key], "EV Database dataset 2025"
-              candidates=[]
-              for (mk,md),d in gaia.items():
-                  if makekey(mk) != key[0] or mk == "__model_id__": continue
-                  sc=model_score(v.get("model",""),md)
-                  if sc>=0.68: candidates.append((sc,d,"Gaia EVDB (fuzzy model match)"))
-              for (mk,md),d in fallback.items():
-                  if makekey(mk) != key[0]: continue
-                  sc=model_score(v.get("model",""),md)
-                  if sc>=0.68: candidates.append((sc,d,"EV Database dataset 2025 (fuzzy model match)"))
-              if candidates:
-                  candidates.sort(key=lambda x:x[0],reverse=True)
-                  best=candidates[0]
-                  # Avoid ambiguous near-ties: do not guess when two different models are equally close.
-                  if len(candidates)==1 or best[0]-candidates[1][0]>=0.08:
-                      return best[1], best[2]
+              # Controlled model-name variants: same make and one model name contains the other.
+              gmatches=[]
+              for (gmk,gmd),d in gaia.items():
+                  if makekey(gmk)!=mk: continue
+                  gm=modelkey(gmd)
+                  if md and (md in gm or gm in md):
+                      gmatches.append((abs(len(gm)-len(md)),d))
+              if gmatches:
+                  gmatches.sort(key=lambda x:x[0])
+                  return gmatches[0][1], "Gaia EVDB (model variant match)"
+              fmatches=[]
+              for (fmk,fmd),d in fallback.items():
+                  if makekey(fmk)!=mk: continue
+                  fm=modelkey(fmd)
+                  if md and (md in fm or fm in md):
+                      fmatches.append((abs(len(fm)-len(md)),d))
+              if fmatches:
+                  fmatches.sort(key=lambda x:x[0])
+                  return fmatches[0][1], "EV Database dataset 2025 (model variant match)"
               return None, None
 
           audit = datetime.now().astimezone().isoformat(timespec="seconds")
