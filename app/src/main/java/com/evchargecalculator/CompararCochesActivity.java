@@ -660,7 +660,10 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             addSection("Practicidad");
             addRow("Maletero","trunk",true,selectedVehiclesCache);
             addRow("Peso","weight",false,selectedVehiclesCache);
-            addRow("Dimensiones","dimensions",false,selectedVehiclesCache);
+            addSection("Dimensiones");
+            addRow("Largo","length",false,selectedVehiclesCache);
+            addRow("Ancho","width",false,selectedVehiclesCache);
+            addRow("Alto","height",false,selectedVehiclesCache);
             addSection("Precio");
             addRow("Precio","price",false,selectedVehiclesCache);
             if(selectedVehiclesCache.size()>=2)buildSummary(selectedVehiclesCache);
@@ -804,7 +807,6 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private void addSummaryWinner(LinearLayout parent,String label,String key,boolean higherBetter,List<Vehicle> chosen){Vehicle bestV=null;double best=Double.NaN;for(Vehicle v:chosen){double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higherBetter?n>best:n<best)){best=n;bestV=v;}}if(bestV==null)return;String val=value(bestV,key);TextView row=tv(label+"  ·  "+bestV.make+" "+bestV.model+"  →  "+val,13,text());row.setPadding(0,dp(4),0,dp(4));parent.addView(row,new LinearLayout.LayoutParams(-1,dp(30)));}
     private String summaryComment(List<Vehicle> chosen){if(chosen.size()<2)return"";Vehicle bestRange=bestVehicle("range",true,chosen),bestCons=bestVehicle("cons",false,chosen),bestPrice=bestVehicle("price",false,chosen);StringBuilder out=new StringBuilder();out.append("En conjunto, ");if(bestRange!=null)out.append(bestRange.make).append(" ").append(bestRange.model).append(" destaca por autonomía");if(bestCons!=null&&bestCons!=bestRange)out.append(", mientras que ").append(bestCons.make).append(" ").append(bestCons.model).append(" ofrece el menor consumo");if(bestPrice!=null&&bestPrice!=bestRange&&bestPrice!=bestCons)out.append(" y ").append(bestPrice.make).append(" ").append(bestPrice.model).append(" es la opción más económica");out.append(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.");return out.toString();}
     private Vehicle bestVehicle(String key,boolean higherBetter,List<Vehicle> chosen){Vehicle bestV=null;double best=Double.NaN;for(Vehicle v:chosen){double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higherBetter?n>best:n<best)){best=n;bestV=v;}}return bestV;}
-    private String dimensions(Vehicle v){if(v.lengthMm<=0||v.widthMm<=0||v.heightMm<=0)return"—";return String.format(Locale.US,"%.0f × %.0f × %.0f mm",v.lengthMm,v.widthMm,v.heightMm);}
     private String empty(String s){return s==null||s.trim().isEmpty()?"—":s;}
     private String fmt(double n){return String.format(Locale.US,"%.1f",n).replace('.',',');}
     private String formatPrice(double p){if(p<=0)return"—";String currency=getSharedPreferences(PREFS,MODE_PRIVATE).getString(KEY_CURRENCY,"EUR");return String.format(Locale.US,"%,.0f %s",p,currency).replace(',','.');}
