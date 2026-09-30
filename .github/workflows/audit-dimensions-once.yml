@@ -1,5 +1,6 @@
 name: One-time dimensions audit
 # Triggered once by this update.
+# Final dimension audit pass.
 
 on:
   push:
