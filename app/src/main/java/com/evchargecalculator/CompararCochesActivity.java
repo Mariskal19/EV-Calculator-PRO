@@ -821,7 +821,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     }
     private String fmt2(double n){
         NumberFormat f=NumberFormat.getNumberInstance(appLocale());
-        f.setMinimumFractionDigits(2); f.setMaximumFractionDigits(2);
+        f.setMinimumFractionDigits(0); f.setMaximumFractionDigits(2);
         return f.format(n);
     }
     private String formatInteger(double n){
