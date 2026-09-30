@@ -103,6 +103,55 @@ jobs:
                       continue
                   fallback.setdefault((makekey(r.get("brand")),norm(r.get("model"))),d)
 
+          import urllib.request, time
+          from bs4 import BeautifulSoup
+
+          auto_dim = {}
+          carsguide_dim = {}
+
+          def fetch_text(url):
+              try:
+                  req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0 EV-Calculator-PRO dimensions audit"})
+                  with urllib.request.urlopen(req,timeout=12) as resp:
+                      return resp.read().decode("utf-8","ignore")
+              except Exception:
+                  return ""
+
+          def parse_auto_model(html):
+              if not html: return None
+              text=BeautifulSoup(html,"html.parser").get_text(" ",strip=True)
+              m=re.search(r"has a length of\s*(\d+)\s*mm,\s*a height of\s*(\d+)\s*mm,\s*a width of\s*(\d+)\s*mm",text,re.I)
+              if m: return {"length":int(m.group(1)),"width":int(m.group(3)),"height":int(m.group(2))}
+              m=re.search(r"L x W x H:\s*(\d+)\s*x\s*(\d+)\s*x\s*(\d+)\s*mm",text,re.I)
+              if m: return {"length":int(m.group(1)),"width":int(m.group(2)),"height":int(m.group(3))}
+              return None
+
+          def parse_carsguide(html):
+              if not html: return None
+              text=BeautifulSoup(html,"html.parser").get_text(" ",strip=True)
+              m=re.search(r"Height from\s*(\d+)\s*mm.*?Width from\s*(\d+)\s*mm.*?Length from\s*(\d+)\s*mm",text,re.I)
+              if m: return {"length":int(m.group(3)),"width":int(m.group(2)),"height":int(m.group(1))}
+              m=re.search(r"Height x Width x Length:\s*(\d+)\s*x\s*(\d+)\s*x\s*(\d+)\s*mm",text,re.I)
+              if m: return {"length":int(m.group(3)),"width":int(m.group(2)),"height":int(m.group(1))}
+              return None
+
+          catalog_models=[(v.get("make",""),v.get("model","")) for v in catalog.get("vehicles",[])]
+          seen=set()
+          for make,model in catalog_models:
+              k=(makekey(make) if "makekey" in globals() else norm(make), norm(model))
+              if k in seen: continue
+              seen.add(k)
+              ms=slug(make); ds=slug(model)
+              h=fetch_text(f"https://www.automobiledimension.com/model/{ms}/{ds}")
+              d=parse_auto_model(h)
+              if d: auto_dim[k]=d
+              if k not in auto_dim:
+                  for y in (2026,2025,2024):
+                      h=fetch_text(f"https://www.carsguide.com.au/{ms}/{ds}/car-dimensions/{y}")
+                      d=parse_carsguide(h)
+                      if d:
+                          carsguide_dim[k]=d; break
+              time.sleep(0.03)
           model_alias = {
               "q6suvetron":"q6etron",
               "sq6suvetron":"sq6etron",
@@ -125,6 +174,10 @@ jobs:
                   return gaia_slug[exact_slug], "Gaia EVDB (slug match)"
               if key in fallback:
                   return fallback[key], "EV Database dataset 2025"
+              if key in auto_dim:
+                  return auto_dim[key], "AutomobileDimension.com"
+              if key in carsguide_dim:
+                  return carsguide_dim[key], "CarsGuide"
               # Controlled model-name variants: same make and one model name contains the other.
               gmatches=[]
               for (gmk,gmd),d in gaia.items():
