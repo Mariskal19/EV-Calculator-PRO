@@ -21,7 +21,7 @@ jobs:
         env:
           TZ: Europe/Madrid
         run: |
-          python -m pip install --disable-pip-version-check pyyaml
+          python -m pip install --disable-pip-version-check pyyaml beautifulsoup4
           python <<'PY'
           import csv, json, re, subprocess, unicodedata
           from datetime import datetime
