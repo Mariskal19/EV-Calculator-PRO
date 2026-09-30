@@ -67,7 +67,7 @@ jobs:
               catalog = json.load(f)
 
           # Gaia model-level dimensions: current structured source, preferred.
-          gaia = {}
+          gaia = {}\n          gaia_slug = {}
           for p in (GAIA/"data/vehicle-models").glob("*.yaml"):
               o = load_yaml(p)
               d = dimensions_from_obj(o)
@@ -88,6 +88,11 @@ jobs:
               if mid:
                   gaia.setdefault(("__model_id__", norm(mid)), d)
 
+          make_alias = {"alfaromeo":"alfa","skoda":"skoda","cupra":"cupra","mg":"mg","mercedesbenz":"mercedesbenz","smart":"smart","citroen":"citroen","peugeot":"peugeot","volkswagen":"volkswagen"}
+          def makekey(s):
+              n=norm(s)
+              return make_alias.get(n,n)
+
           fallback = {}
           with FALLBACK.open(encoding="utf-8", newline="") as f:
               for r in csv.DictReader(f):
@@ -95,7 +100,7 @@ jobs:
                       d={"length":int(float(r["length_mm"])),"width":int(float(r["width_mm"])),"height":int(float(r["height_mm"]))}
                   except Exception:
                       continue
-                  fallback.setdefault((norm(r.get("brand")),norm(r.get("model"))),d)
+                  fallback.setdefault((makekey(r.get("brand")),norm(r.get("model"))),d)
 
           from difflib import SequenceMatcher
           def model_score(a,b):
@@ -109,18 +114,18 @@ jobs:
               return max(seq,overlap*0.9+seq*0.1)
 
           def find_dims(v):
-              key=(norm(v.get("make")), norm(v.get("model")))
+              key=(makekey(v.get("make")), norm(v.get("model")))
               if key in gaia:
                   return gaia[key], "Gaia EVDB"
               if key in fallback:
                   return fallback[key], "EV Database dataset 2025"
               candidates=[]
               for (mk,md),d in gaia.items():
-                  if mk != key[0] or mk == "__model_id__": continue
+                  if makekey(mk) != key[0] or mk == "__model_id__": continue
                   sc=model_score(v.get("model",""),md)
                   if sc>=0.68: candidates.append((sc,d,"Gaia EVDB (fuzzy model match)"))
               for (mk,md),d in fallback.items():
-                  if mk != key[0]: continue
+                  if makekey(mk) != key[0]: continue
                   sc=model_score(v.get("model",""),md)
                   if sc>=0.68: candidates.append((sc,d,"EV Database dataset 2025 (fuzzy model match)"))
               if candidates:
