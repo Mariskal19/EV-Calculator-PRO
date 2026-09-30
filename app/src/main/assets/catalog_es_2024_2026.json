@@ -11392,7 +11392,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4140,
+      "widthMm": 1800,
+      "heightMm": 1570,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11427,7 +11432,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4140,
+      "widthMm": 1800,
+      "heightMm": 1570,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11462,7 +11472,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4140,
+      "widthMm": 1800,
+      "heightMm": 1570,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11497,7 +11512,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4140,
+      "widthMm": 1800,
+      "heightMm": 1570,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11532,7 +11552,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 3920,
+      "widthMm": 1770,
+      "heightMm": 1500,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11567,7 +11592,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 3920,
+      "widthMm": 1770,
+      "heightMm": 1500,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11655,7 +11685,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 3920,
+      "widthMm": 1770,
+      "heightMm": 1500,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11686,7 +11721,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4470,
+      "widthMm": 1864,
+      "heightMm": 1571,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11721,7 +11761,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4470,
+      "widthMm": 1864,
+      "heightMm": 1571,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11756,7 +11801,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4470,
+      "widthMm": 1864,
+      "heightMm": 1571,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -11791,7 +11841,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4470,
+      "widthMm": 1864,
+      "heightMm": 1571,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Renault",
@@ -12139,7 +12194,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4649,
+      "widthMm": 1879,
+      "heightMm": 1616,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Škoda",
@@ -12171,7 +12231,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4653,
+      "widthMm": 1879,
+      "heightMm": 1594,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Škoda",
@@ -12319,7 +12384,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4648,
+      "widthMm": 1877,
+      "heightMm": 1618,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Škoda",
@@ -12583,7 +12653,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.1
+      "acceleration0to100Sec": 8.1,
+      "lengthMm": 4270,
+      "widthMm": 1822,
+      "heightMm": 1636,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12613,7 +12688,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.8
+      "acceleration0to100Sec": 6.8,
+      "lengthMm": 4270,
+      "widthMm": 1822,
+      "heightMm": 1636,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12643,7 +12723,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.7
+      "acceleration0to100Sec": 6.7,
+      "lengthMm": 4270,
+      "widthMm": 1822,
+      "heightMm": 1636,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12673,7 +12758,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.8
+      "acceleration0to100Sec": 5.8,
+      "lengthMm": 4270,
+      "widthMm": 1822,
+      "heightMm": 1636,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12703,7 +12793,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.8
+      "acceleration0to100Sec": 5.8,
+      "lengthMm": 4233,
+      "widthMm": 1837,
+      "heightMm": 1549,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12733,7 +12828,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 3.7
+      "acceleration0to100Sec": 3.7,
+      "lengthMm": 4233,
+      "widthMm": 1837,
+      "heightMm": 1549,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12763,7 +12863,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.5
+      "acceleration0to100Sec": 6.5,
+      "lengthMm": 4233,
+      "widthMm": 1837,
+      "heightMm": 1549,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
@@ -12793,7 +12898,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.5
+      "acceleration0to100Sec": 6.5,
+      "lengthMm": 4233,
+      "widthMm": 1837,
+      "heightMm": 1549,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "smart",
