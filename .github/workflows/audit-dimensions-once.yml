@@ -120,7 +120,8 @@ jobs:
                   q='SELECT make,model,length_mm,width_mm,height_mm FROM "'+table+'" WHERE length_mm IS NOT NULL AND width_mm IS NOT NULL AND height_mm IS NOT NULL'
                   for row in cur.execute(q):
                       try:
-                          mk0=norm(row[0]) if row[0] else ""\n                          mk={"alfaromeo":"alfa","mercedesbenz":"mercedesbenz","citroen":"citroen","skoda":"skoda"}.get(mk0,mk0)
+                          mk0=norm(row[0]) if row[0] else ""
+                          mk={"alfaromeo":"alfa","mercedesbenz":"mercedesbenz","citroen":"citroen","skoda":"skoda"}.get(mk0,mk0)
                           md=norm(row[1])
                           d={"length":int(float(row[2])),"width":int(float(row[3])),"height":int(float(row[4]))}
                           if mk and md: vehicle_db.setdefault((mk,md),d)
