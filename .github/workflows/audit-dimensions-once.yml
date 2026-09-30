@@ -97,35 +97,38 @@ jobs:
                       continue
                   fallback.setdefault((norm(r.get("brand")),norm(r.get("model"))),d)
 
+          from difflib import SequenceMatcher
+          def model_score(a,b):
+              a0=norm(a); b0=norm(b)
+              if a0==b0: return 1.0
+              nums_a=re.findall(r"\\d+",a0); nums_b=re.findall(r"\\d+",b0)
+              if nums_a and nums_b and nums_a != nums_b: return 0.0
+              toks_a=set(re.findall(r"[a-z]+",a0)); toks_b=set(re.findall(r"[a-z]+",b0))
+              overlap=len(toks_a&toks_b)/max(1,len(toks_a|toks_b))
+              seq=SequenceMatcher(None,a0,b0).ratio()
+              return max(seq,overlap*0.9+seq*0.1)
+
           def find_dims(v):
-              key=(norm(v.get("make")),norm(v.get("model")))
+              key=(norm(v.get("make")), norm(v.get("model")))
               if key in gaia:
                   return gaia[key], "Gaia EVDB"
-              # Useful aliases for catalog naming differences.
-              mk, md = key
-              aliases = {
-                  "q6suvetron":"q6etron",
-                  "sq6suvetron":"sq6etron",
-                  "q6sportbacketron":"q6sportbacketron",
-                  "sq6sportbacketron":"sq6sportbacketron",
-                  "ioniq5":"ioniq5",
-                  "ioniq6":"ioniq6",
-                  "atto3":"atto3",
-                  "seal":"seal",
-                  "sealu":"seal-u",
-                  "dolphinsurf":"dolphin-surf",
-                  "tang":"tang",
-              }
-              for (gk,d) in gaia.items():
-                  if gk[0] != mk or gk[0] == "__model_id__":
-                      continue
-                  if gk[1] == md or md in gk[1] or gk[1] in md:
-                      return d, "Gaia EVDB (model match)"
               if key in fallback:
                   return fallback[key], "EV Database dataset 2025"
-              for (fk,d) in fallback.items():
-                  if fk[0] == mk and (md in fk[1] or fk[1] in md):
-                      return d, "EV Database dataset 2025 (model match)"
+              candidates=[]
+              for (mk,md),d in gaia.items():
+                  if mk != key[0] or mk == "__model_id__": continue
+                  sc=model_score(v.get("model",""),md)
+                  if sc>=0.68: candidates.append((sc,d,"Gaia EVDB (fuzzy model match)"))
+              for (mk,md),d in fallback.items():
+                  if mk != key[0]: continue
+                  sc=model_score(v.get("model",""),md)
+                  if sc>=0.68: candidates.append((sc,d,"EV Database dataset 2025 (fuzzy model match)"))
+              if candidates:
+                  candidates.sort(key=lambda x:x[0],reverse=True)
+                  best=candidates[0]
+                  # Avoid ambiguous near-ties: do not guess when two different models are equally close.
+                  if len(candidates)==1 or best[0]-candidates[1][0]>=0.08:
+                      return best[1], best[2]
               return None, None
 
           audit = datetime.now().astimezone().isoformat(timespec="seconds")
