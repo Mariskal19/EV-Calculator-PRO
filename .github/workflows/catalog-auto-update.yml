@@ -2,15 +2,9 @@ name: Automatic protected catalog update
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - "tools/update_protected_catalog.py"
-      - "app/src/main/assets/catalog_remote_exclusions.json"
-      - ".github/workflows/catalog-auto-update.yml"
   schedule:
-    - cron: "10 11 * * *"
-      timezone: "Europe/Madrid" # Test: automatic catalog sync at 11:10 Spain time
+    - cron: "10 16 * * *"
+      timezone: "Europe/Madrid" # Temporary schedule test at 16:10 Spain time
 
 permissions:
   contents: write
