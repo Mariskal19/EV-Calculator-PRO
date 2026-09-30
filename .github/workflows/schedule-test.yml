@@ -11,6 +11,6 @@ jobs:
     steps:
       - name: Confirm scheduled execution
         run: |
-          echo "SCHEDULE TEST 19:10 MADRID OK"
+          echo "SCHEDULE TEST 19:10 MADRID OK - manual"
           echo "UTC: $(date -u)"
           echo "Madrid: $(TZ=Europe/Madrid date)"
