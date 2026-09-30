@@ -1,15 +1,16 @@
 name: GitHub schedule test
 
 on:
-schedule:
+  schedule:
     - cron: "30 17 * * *"
   workflow_dispatch:
+
 jobs:
   schedule-test:
     runs-on: ubuntu-latest
     steps:
       - name: Confirm scheduled execution
         run: |
-          echo "SCHEDULE TEST 19:10 MADRID OK - manual"
+          echo "SCHEDULE TEST 19:30 MADRID"
           echo "UTC: $(date -u)"
           echo "Madrid: $(TZ=Europe/Madrid date)"
