@@ -1,4 +1,5 @@
 name: One-time dimensions audit
+# Triggered once by this update.
 
 on:
   push:
