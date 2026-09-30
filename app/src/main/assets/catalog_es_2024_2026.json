@@ -15686,7 +15686,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5056,
+      "widthMm": 1937,
+      "heightMm": 1512,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "XPeng",
@@ -15822,7 +15827,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5056,
+      "widthMm": 1937,
+      "heightMm": 1512,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -15853,7 +15863,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4970,
+      "widthMm": 1999,
+      "heightMm": 1560,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -15914,7 +15929,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4817,
+      "widthMm": 1910,
+      "heightMm": 1456,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -15941,7 +15961,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.2
+      "acceleration0to100Sec": 6.2,
+      "lengthMm": 4817,
+      "widthMm": 1910,
+      "heightMm": 1456,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -15968,7 +15993,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.2
+      "acceleration0to100Sec": 6.2,
+      "lengthMm": 4817,
+      "widthMm": 1910,
+      "heightMm": 1456,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -16028,7 +16058,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4825,
+      "widthMm": 1930,
+      "heightMm": 1656,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -16089,7 +16124,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4825,
+      "widthMm": 1930,
+      "heightMm": 1656,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Zeekr",
@@ -16117,7 +16157,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.8
+      "acceleration0to100Sec": 4.8,
+      "lengthMm": 4450,
+      "widthMm": 1836,
+      "heightMm": 1572,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "kia-ev5-air-2025",
@@ -22451,7 +22496,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4970,
+      "widthMm": 1999,
+      "heightMm": 1560,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "opel-grandland-electric-98-long-range-2025",
