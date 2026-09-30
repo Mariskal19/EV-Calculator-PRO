@@ -143,16 +143,27 @@ jobs:
               seen.add(k)
               if k in gaia or k in fallback or (slug(make)+"-"+slug(model)) in gaia_slug:
                   continue
-              ms=slug(make); ds=slug(model)
-              h=fetch_text(f"https://www.automobiledimension.com/model/{ms}/{ds}")
-              d=parse_auto_model(h)
-              if d: auto_dim[k]=d
+              ms=slug(make)
+              ds0=slug(model)
+              ds_candidates=[ds0]
+              cleaned=re.sub(r"(?i)(eléctrico|electric|e-tech|e tech|ev|suv|bev|shs)","",model)
+              ds_clean=slug(cleaned)
+              if ds_clean and ds_clean not in ds_candidates: ds_candidates.append(ds_clean)
+              special={"clase-g":"g-class","explorer-electrico":"explorer","kona-electrico":"kona","frontera-electric":"frontera","grandland-electric":"grandland","e-c5-aircross":"c5-aircross","ë-c5-aircross":"c5-aircross","renault-4-e-tech-electrico":"4-e-tech","renault-5-e-tech":"5-e-tech"}
+              if ds0 in special and special[ds0] not in ds_candidates: ds_candidates.append(special[ds0])
+              for ds in ds_candidates[:3]:
+                  h=fetch_text(f"https://www.automobiledimension.com/model/{ms}/{ds}")
+                  d=parse_auto_model(h)
+                  if d:
+                      auto_dim[k]=d; break
               if k not in auto_dim:
-                  for y in (2026,2025,2024):
-                      h=fetch_text(f"https://www.carsguide.com.au/{ms}/{ds}/car-dimensions/{y}")
-                      d=parse_carsguide(h)
-                      if d:
-                          carsguide_dim[k]=d; break
+                  for ds in ds_candidates[:3]:
+                      for y in (2026,2025,2024):
+                          h=fetch_text(f"https://www.carsguide.com.au/{ms}/{ds}/car-dimensions/{y}")
+                          d=parse_carsguide(h)
+                          if d:
+                              carsguide_dim[k]=d; break
+                      if k in carsguide_dim: break
               time.sleep(0.03)
           model_alias = {
               "q6suvetron":"q6etron",
