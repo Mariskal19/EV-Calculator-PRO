@@ -1405,7 +1405,12 @@
       "acKw": 11,
       "dcKw": 205,
       "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4872,
+      "widthMm": 1846,
+      "heightMm": 1481,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; generación 2026"
     },
     {
       "make": "BMW",
@@ -3802,7 +3807,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.4
+      "acceleration0to100Sec": 8.4,
+      "lengthMm": 4652,
+      "widthMm": 1902,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo 2026"
     },
     {
       "make": "Citroën",
@@ -3832,7 +3842,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 8.9
+      "acceleration0to100Sec": 8.9,
+      "lengthMm": 4652,
+      "widthMm": 1902,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo 2026"
     },
     {
       "gaiaId": "cupra-born-58-kwh-2024",
@@ -4719,7 +4734,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4400,
+      "widthMm": 1830,
+      "heightMm": 1490,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo 2026"
     },
     {
       "make": "DS",
@@ -4748,7 +4768,12 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 7.7,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4660,
+      "widthMm": 1900,
+      "heightMm": 1635,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; modelo 2026"
     },
     {
       "make": "DS",
@@ -4777,7 +4802,12 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 5.4,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4660,
+      "widthMm": 1900,
+      "heightMm": 1635,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; modelo 2026"
     },
     {
       "make": "DS",
@@ -4806,7 +4836,12 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 7.8,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4660,
+      "widthMm": 1900,
+      "heightMm": 1635,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; modelo 2026"
     },
     {
       "make": "DS",
@@ -5194,7 +5229,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9.3
+      "acceleration0to100Sec": 9.3,
+      "lengthMm": 4460,
+      "widthMm": 1870,
+      "heightMm": 1600,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo eléctrico europeo"
     },
     {
       "make": "Ford",
@@ -5223,7 +5263,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.4
+      "acceleration0to100Sec": 6.4,
+      "lengthMm": 4460,
+      "widthMm": 1870,
+      "heightMm": 1600,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo eléctrico europeo"
     },
     {
       "make": "Ford",
@@ -5253,7 +5298,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.3
+      "acceleration0to100Sec": 5.3,
+      "lengthMm": 4460,
+      "widthMm": 1870,
+      "heightMm": 1600,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo eléctrico europeo"
     },
     {
       "make": "Ford",
@@ -5283,7 +5333,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.4
+      "acceleration0to100Sec": 6.4,
+      "lengthMm": 4460,
+      "widthMm": 1870,
+      "heightMm": 1600,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "AutomobileDimension.com; modelo eléctrico europeo"
     },
     {
       "make": "Ford",
@@ -5313,7 +5368,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4713,
+      "widthMm": 1881,
+      "heightMm": 1624,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; base Mustang Mach-E"
     },
     {
       "make": "Ford",
@@ -5343,7 +5403,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4713,
+      "widthMm": 1881,
+      "heightMm": 1624,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; base Mustang Mach-E"
     },
     {
       "make": "Ford",
@@ -5373,7 +5438,12 @@
       "acceleration0to100Sec": 4.6,
       "acKw": 11,
       "dcKw": 150,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "lengthMm": 4713,
+      "widthMm": 1881,
+      "heightMm": 1624,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; base Mustang Mach-E"
     },
     {
       "make": "Ford",
@@ -5846,7 +5916,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9.9
+      "acceleration0to100Sec": 9.9,
+      "lengthMm": 4615,
+      "widthMm": 1901,
+      "heightMm": 1670,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; Galaxy E5/Geely E5"
     },
     {
       "make": "Geely",
@@ -5875,7 +5950,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9.6
+      "acceleration0to100Sec": 9.6,
+      "lengthMm": 4615,
+      "widthMm": 1901,
+      "heightMm": 1670,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; Galaxy E5/Geely E5"
     },
     {
       "make": "Geely",
@@ -5904,7 +5984,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 9.6
+      "acceleration0to100Sec": 9.6,
+      "lengthMm": 4615,
+      "widthMm": 1901,
+      "heightMm": 1670,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; Galaxy E5/Geely E5"
     },
     {
       "make": "Hyundai",
@@ -9524,7 +9609,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4565,
+      "widthMm": 1873,
+      "heightMm": 1604,
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "dimensionsSource": "Vehicle Makes & Models dataset; GLA 2026"
     },
     {
       "make": "Mercedes-Benz",
@@ -24640,5 +24730,11 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     }
   ],
-  "updatedAt": "2026-09-29"
+  "updatedAt": "2026-09-29",
+  "dimensionsAudit": {
+    "auditDateTime": "2026-09-30T11:16:31+02:00",
+    "recordsAudited": 676,
+    "recordsFilled": 676,
+    "recordsMissing": 0
+  }
 }
