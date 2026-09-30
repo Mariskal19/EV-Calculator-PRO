@@ -14584,7 +14584,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4440,
+      "widthMm": 1873,
+      "heightMm": 1596,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Volvo",
@@ -14614,7 +14619,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.6
+      "acceleration0to100Sec": 6.6,
+      "lengthMm": 4440,
+      "widthMm": 1873,
+      "heightMm": 1596,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Volvo",
@@ -15033,7 +15043,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5037,
+      "widthMm": 1964,
+      "heightMm": 1744,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Volvo",
@@ -15065,7 +15080,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5037,
+      "widthMm": 1964,
+      "heightMm": 1744,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Volvo",
@@ -15097,7 +15117,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5037,
+      "widthMm": 1964,
+      "heightMm": 1744,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Voyah",
@@ -21526,7 +21551,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5021,
+      "widthMm": 1960,
+      "heightMm": 1440,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "tesla-model-s-plaid-2025",
@@ -21560,7 +21590,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5021,
+      "widthMm": 1960,
+      "heightMm": 1440,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "tesla-model-x-awd-2026",
@@ -21594,7 +21629,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5057,
+      "widthMm": 1999,
+      "heightMm": 1680,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "tesla-model-x-long-range-awd-2024",
@@ -21696,7 +21736,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5057,
+      "widthMm": 1999,
+      "heightMm": 1680,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "toyota-bz4x-awd-2024",
@@ -21730,7 +21775,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4690,
+      "widthMm": 1860,
+      "heightMm": 1650,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "toyota-bz4x-fwd-2025",
@@ -21764,7 +21814,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4690,
+      "widthMm": 1860,
+      "heightMm": 1650,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "volkswagen-id-buzz-pro-long-2024",
@@ -21798,7 +21853,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4962,
+      "widthMm": 1985,
+      "heightMm": 1927,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "volkswagen-id-buzz-pro-s-2025",
@@ -22274,7 +22334,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4440,
+      "widthMm": 1873,
+      "heightMm": 1596,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "volvo-ex90-single-motor-2025",
@@ -22308,7 +22373,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5037,
+      "widthMm": 1964,
+      "heightMm": 1744,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "volvo-ex90-twin-motor-2025",
@@ -22342,7 +22412,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5037,
+      "widthMm": 1964,
+      "heightMm": 1744,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "zeekr-001-long-range-rwd-2025",
