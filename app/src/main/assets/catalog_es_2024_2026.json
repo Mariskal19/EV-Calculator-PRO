@@ -9069,7 +9069,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4287,
+      "widthMm": 1836,
+      "heightMm": 1504,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "MG",
@@ -9131,7 +9136,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4287,
+      "widthMm": 1836,
+      "heightMm": 1504,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "MG",
@@ -9162,7 +9172,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4287,
+      "widthMm": 1836,
+      "heightMm": 1516,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "MG",
@@ -9699,7 +9714,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Nissan",
@@ -9728,7 +9748,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Nissan",
@@ -9757,7 +9782,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Nissan",
@@ -9840,7 +9870,12 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 8,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4084,
+      "widthMm": 1780,
+      "heightMm": 1505,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Nissan",
@@ -9869,7 +9904,12 @@
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
       "acceleration0to100Sec": 8,
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "lengthMm": 4084,
+      "widthMm": 1780,
+      "heightMm": 1505,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Omoda",
@@ -16708,7 +16748,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-350-plus-2025",
@@ -16742,7 +16787,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-350-plus-2026",
@@ -16776,7 +16826,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-43-amg-4matic-2025",
@@ -16810,7 +16865,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-350-4matic-2024",
@@ -16844,7 +16904,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-350-plus-2024",
@@ -16878,7 +16943,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-350-plus-2025",
@@ -16912,7 +16982,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqe-suv-500-4matic-2024",
@@ -16946,7 +17021,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4863,
+      "widthMm": 1940,
+      "heightMm": 1686,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqs-450-plus-2024",
@@ -16980,7 +17060,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "lengthMm": 5125,
+      "widthMm": 1959,
+      "heightMm": 1718,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqs-450-plus-2025",
@@ -17014,7 +17099,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "lengthMm": 5125,
+      "widthMm": 1959,
+      "heightMm": 1718,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqs-580-4matic-2025",
@@ -17048,7 +17138,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "lengthMm": 5216,
+      "widthMm": 1926,
+      "heightMm": 1512,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqs-suv-450-4matic-2024",
@@ -17082,7 +17177,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "lengthMm": 5125,
+      "widthMm": 1959,
+      "heightMm": 1718,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-eqs-suv-450-plus-2025",
@@ -17116,7 +17216,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5125,
+      "widthMm": 1959,
+      "heightMm": 1718,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "mercedes-benz-g580-2025",
@@ -17218,7 +17323,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "nissan-ariya-63-kwh-fwd-2025",
@@ -17252,7 +17362,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "nissan-ariya-87-kwh-fwd-2024",
@@ -17286,7 +17401,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "nissan-ariya-87-kwh-fwd-2025",
@@ -17320,7 +17440,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1660,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "nissan-ariya-e-4orce-63kwh-2024",
@@ -17354,7 +17479,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4595,
+      "widthMm": 1850,
+      "heightMm": 1655,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "nissan-leaf-40kwh-2024",
@@ -17388,7 +17518,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4480,
+      "widthMm": 1790,
+      "heightMm": 1540,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "nissan-leaf-52kwh-2025",
