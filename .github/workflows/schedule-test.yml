@@ -2,7 +2,7 @@ name: GitHub schedule test
 
 on:
   schedule:
-    - cron: "00 15 * * *"
+    - cron: "30 15 * * *"
   workflow_dispatch:
 
 jobs:
