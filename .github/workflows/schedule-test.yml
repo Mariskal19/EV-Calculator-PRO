@@ -1,0 +1,17 @@
+name: GitHub schedule test
+
+on:
+  schedule:
+    - cron: "40 14 * * *"
+      timezone: "Europe/Madrid"
+  workflow_dispatch:
+
+jobs:
+  schedule-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm scheduled execution
+        run: |
+          echo "SCHEDULE TEST OK"
+          echo "UTC: $(date -u)"
+          echo "Madrid: $(TZ=Europe/Madrid date)"
