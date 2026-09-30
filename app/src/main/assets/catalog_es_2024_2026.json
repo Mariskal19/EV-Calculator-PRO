@@ -30,7 +30,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.85
+      "acceleration0to100Sec": 5.85,
+      "lengthMm": 4171,
+      "widthMm": 1781,
+      "heightMm": 1523,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Abarth",
@@ -58,7 +63,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.24
+      "acceleration0to100Sec": 6.24,
+      "lengthMm": 4171,
+      "widthMm": 1781,
+      "heightMm": 1523,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Alfa Romeo",
@@ -86,7 +96,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4173,
+      "widthMm": 1781,
+      "heightMm": 1534,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Alfa Romeo",
@@ -114,7 +129,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4173,
+      "widthMm": 1781,
+      "heightMm": 1534,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Alpine",
@@ -198,7 +218,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4520,
+      "widthMm": 1900,
+      "heightMm": 1550,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -349,7 +374,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.6
+      "acceleration0to100Sec": 7.6,
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -380,7 +410,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.4
+      "acceleration0to100Sec": 5.4,
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -411,7 +446,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.5
+      "acceleration0to100Sec": 4.5,
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -445,7 +485,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -476,7 +521,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7.6
+      "acceleration0to100Sec": 7.6,
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -507,7 +557,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.4
+      "acceleration0to100Sec": 5.4,
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -538,7 +593,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.5
+      "acceleration0to100Sec": 4.5,
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -572,7 +632,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -604,7 +669,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4989,
+      "widthMm": 1964,
+      "heightMm": 1396,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -636,7 +706,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4989,
+      "widthMm": 1964,
+      "heightMm": 1396,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -670,7 +745,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4588,
+      "widthMm": 1865,
+      "heightMm": 1632,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -702,7 +782,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4588,
+      "widthMm": 1865,
+      "heightMm": 1614,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -736,7 +821,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4771,
+      "widthMm": 1939,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -767,7 +857,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 7
+      "acceleration0to100Sec": 7,
+      "lengthMm": 4771,
+      "widthMm": 1939,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -798,7 +893,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.6
+      "acceleration0to100Sec": 6.6,
+      "lengthMm": 4771,
+      "widthMm": 1939,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -830,7 +930,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4771,
+      "widthMm": 1939,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -861,7 +966,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4771,
+      "widthMm": 1939,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -1086,7 +1196,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1527,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -1117,7 +1232,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1468,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "Audi",
@@ -1246,7 +1366,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1276,7 +1401,12 @@
       "acceleration0to100Sec": 5.6,
       "acKw": 11,
       "dcKw": 205,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1307,7 +1437,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1337,7 +1472,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 6.1
+      "acceleration0to100Sec": 6.1,
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1367,7 +1507,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 3.9
+      "acceleration0to100Sec": 3.9,
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1397,7 +1542,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.5
+      "acceleration0to100Sec": 5.5,
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1428,7 +1578,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1459,7 +1614,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1492,7 +1652,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1523,7 +1688,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5391,
+      "widthMm": 1950,
+      "heightMm": 1544,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1554,7 +1724,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5391,
+      "widthMm": 1950,
+      "heightMm": 1544,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1587,7 +1762,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4500,
+      "widthMm": 1845,
+      "heightMm": 1642,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1618,7 +1798,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4500,
+      "widthMm": 1845,
+      "heightMm": 1642,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1648,7 +1833,12 @@
       "acceleration0to100Sec": 3.8,
       "acKw": 11,
       "dcKw": 195,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1678,7 +1868,12 @@
       "acceleration0to100Sec": 5.6,
       "acKw": 11,
       "dcKw": 175,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1708,7 +1903,12 @@
       "acceleration0to100Sec": 4.6,
       "acKw": 11,
       "dcKw": 195,
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00"
+      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1738,7 +1938,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 3.8
+      "acceleration0to100Sec": 3.8,
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1769,7 +1974,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 5.1
+      "acceleration0to100Sec": 5.1,
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1799,7 +2009,12 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
-      "acceleration0to100Sec": 4.6
+      "acceleration0to100Sec": 4.6,
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1834,7 +2049,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4554,
+      "widthMm": 1845,
+      "heightMm": 1590,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1865,7 +2085,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4554,
+      "widthMm": 1845,
+      "heightMm": 1590,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BMW",
@@ -1897,7 +2122,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4755,
+      "widthMm": 1920,
+      "heightMm": 1665,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "make": "BYD",
@@ -17505,7 +17735,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 3675,
+      "widthMm": 1683,
+      "heightMm": 1513,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "abarth-600e-scorpionissima-2025",
@@ -17539,7 +17774,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4171,
+      "widthMm": 1781,
+      "heightMm": 1523,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "abarth-600e-turismo-2025",
@@ -17573,7 +17813,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4171,
+      "widthMm": 1781,
+      "heightMm": 1523,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "alpine-a290-gt-52-2025",
@@ -17675,7 +17920,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4520,
+      "widthMm": 1900,
+      "heightMm": 1550,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "alpine-a390-gts-2026",
@@ -17709,7 +17959,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4520,
+      "widthMm": 1900,
+      "heightMm": 1550,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-a6-avant-e-tron-performance-2025",
@@ -17743,7 +17998,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-a6-avant-e-tron-quattro-2025",
@@ -17777,7 +18037,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-a6-sportback-e-tron-performance-2025",
@@ -17811,7 +18076,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-a6-sportback-e-tron-quattro-2025",
@@ -17845,7 +18115,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-e-tron-gt-quattro-2024",
@@ -17879,7 +18154,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4989,
+      "widthMm": 1964,
+      "heightMm": 1396,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-e-tron-gt-rs-2024",
@@ -17913,7 +18193,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4989,
+      "widthMm": 1964,
+      "heightMm": 1396,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q4-e-tron-40-2024",
@@ -17947,7 +18232,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4588,
+      "widthMm": 1865,
+      "heightMm": 1632,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q4-e-tron-45-quattro-2024",
@@ -17981,7 +18271,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4588,
+      "widthMm": 1865,
+      "heightMm": 1632,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q4-sportback-e-tron-40-2024",
@@ -18015,7 +18310,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4588,
+      "widthMm": 1865,
+      "heightMm": 1614,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q6-e-tron-base-2025",
@@ -18049,7 +18349,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4771,
+      "widthMm": 1965,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q6-sportback-e-tron-rwd-2024",
@@ -18083,7 +18388,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4771,
+      "widthMm": 1939,
+      "heightMm": 1648,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q8-e-tron-50-quattro-2024",
@@ -18117,7 +18427,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4915,
+      "widthMm": 1937,
+      "heightMm": 1633,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q8-e-tron-55-quattro-2024",
@@ -18151,7 +18466,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4915,
+      "widthMm": 1937,
+      "heightMm": 1633,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-q8-sportback-e-tron-55-quattro-2024",
@@ -18185,7 +18505,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4915,
+      "widthMm": 1937,
+      "heightMm": 1633,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-rs-e-tron-gt-2025",
@@ -18219,7 +18544,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4989,
+      "widthMm": 1964,
+      "heightMm": 1396,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-s6-avant-e-tron-2025",
@@ -18253,7 +18583,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1525,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-s6-sportback-e-tron-2025",
@@ -18287,7 +18622,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4928,
+      "widthMm": 1923,
+      "heightMm": 1465,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "audi-sq8-e-tron-2024",
@@ -18321,7 +18661,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4915,
+      "widthMm": 1937,
+      "heightMm": 1633,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i4-edrive35-2025",
@@ -18355,7 +18700,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i4-edrive40-2025",
@@ -18389,7 +18739,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i4-m50-2025",
@@ -18423,7 +18778,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i4-xdrive40-2024",
@@ -18457,7 +18817,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4783,
+      "widthMm": 1852,
+      "heightMm": 1448,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i5-edrive40-2025",
@@ -18491,7 +18856,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i5-edrive40-2026",
@@ -18525,7 +18895,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i5-m60-xdrive-2025",
@@ -18559,7 +18934,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i5-touring-edrive40-2025",
@@ -18593,7 +18973,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i5-touring-m60-xdrive-2025",
@@ -18627,7 +19012,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5060,
+      "widthMm": 1900,
+      "heightMm": 1515,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i7-edrive50-2024",
@@ -18661,7 +19051,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5391,
+      "widthMm": 1950,
+      "heightMm": 1544,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i7-edrive50-2026",
@@ -18695,7 +19090,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5391,
+      "widthMm": 1950,
+      "heightMm": 1544,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-i7-m70-xdrive-2026",
@@ -18729,7 +19129,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 5391,
+      "widthMm": 1950,
+      "heightMm": 1544,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix-m60-2024",
@@ -18763,7 +19168,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:45:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix-xdrive40-2024",
@@ -18797,7 +19207,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix-xdrive50-2024",
@@ -18831,7 +19246,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix-xdrive50-2026",
@@ -18865,7 +19285,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4953,
+      "widthMm": 1967,
+      "heightMm": 1696,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix1-edrive20-2025",
@@ -18899,7 +19324,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4500,
+      "widthMm": 1845,
+      "heightMm": 1642,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix1-xdrive30-2025",
@@ -18933,7 +19363,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4500,
+      "widthMm": 1845,
+      "heightMm": 1642,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix2-edrive20-2025",
@@ -18967,7 +19402,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4554,
+      "widthMm": 1845,
+      "heightMm": 1590,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix2-xdrive30-2025",
@@ -19001,7 +19441,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4554,
+      "widthMm": 1845,
+      "heightMm": 1590,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "bmw-ix3-2024",
@@ -19035,7 +19480,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4755,
+      "widthMm": 1920,
+      "heightMm": 1665,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     },
     {
       "gaiaId": "dongfeng-nammi-box-comfort-2025",
@@ -21347,7 +21797,12 @@
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
-      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00"
+      "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
+      "lengthMm": 4173,
+      "widthMm": 1781,
+      "heightMm": 1534,
+      "dimensionsAuditDateTime": "2026-09-30T10:50:47+02:00",
+      "dimensionsSource": "Gaia EVDB; dimensiones auditadas"
     }
   ],
   "updatedAt": "2026-09-29"
