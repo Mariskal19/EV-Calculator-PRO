@@ -1,0 +1,171 @@
+name: One-time dimensions audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-dimensions-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Audit and fill vehicle dimensions
+        env:
+          TZ: Europe/Madrid
+        run: |
+          python -m pip install --disable-pip-version-check pyyaml
+          python <<'PY'
+          import csv, json, re, subprocess, unicodedata
+          from datetime import datetime
+          from pathlib import Path
+          import yaml
+
+          CATALOG = Path("app/src/main/assets/catalog_es_2024_2026.json")
+          GAIA = Path("/tmp/evdb")
+          FALLBACK = Path("/tmp/ev.csv")
+
+          def norm(s):
+              s = unicodedata.normalize("NFD", str(s or "")).encode("ascii","ignore").decode()
+              return re.sub(r"[^a-z0-9]+", "", s.lower())
+
+          def slug(s):
+              s = unicodedata.normalize("NFD", str(s or "")).encode("ascii","ignore").decode().lower()
+              return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+          def load_yaml(path):
+              try:
+                  with path.open(encoding="utf-8") as f:
+                      return yaml.safe_load(f) or {}
+              except Exception:
+                  return {}
+
+          def dimensions_from_obj(o):
+              if not isinstance(o, dict):
+                  return None
+              d = o.get("dimensions")
+              if isinstance(d, dict):
+                  try:
+                      vals = (d.get("length_mm"), d.get("width_mm"), d.get("height_mm"))
+                      if all(v not in (None, "") for v in vals):
+                          return {"length": int(float(vals[0])), "width": int(float(vals[1])), "height": int(float(vals[2]))}
+                  except Exception:
+                      pass
+              return None
+
+          subprocess.run(["git","clone","--depth","1","https://github.com/gaia-charge/evdb.git",str(GAIA)],check=True,stdout=subprocess.DEVNULL)
+          subprocess.run(["curl","-L","--fail","-o",str(FALLBACK),"https://raw.githubusercontent.com/manisharya490/Electric-Vehicle-Recommendation-System/main/ev.csv"],check=True)
+
+          with CATALOG.open(encoding="utf-8") as f:
+              catalog = json.load(f)
+
+          # Gaia model-level dimensions: current structured source, preferred.
+          gaia = {}
+          for p in (GAIA/"data/vehicle-models").glob("*.yaml"):
+              o = load_yaml(p)
+              d = dimensions_from_obj(o)
+              if not d:
+                  continue
+              make = ((o.get("make") or {}).get("name") if isinstance(o.get("make"),dict) else o.get("make")) or ""
+              model = ((o.get("model") or {}).get("name") if isinstance(o.get("model"),dict) else o.get("model")) or ""
+              if make and model:
+                  gaia[(norm(make), norm(model))] = d
+
+          # Gaia variants as a second source when the model file is absent.
+          for p in (GAIA/"data/vehicle-variants").glob("*.yaml"):
+              o = load_yaml(p)
+              d = dimensions_from_obj(o)
+              if not d:
+                  continue
+              mid = str(o.get("model_id") or "")
+              if mid:
+                  gaia.setdefault(("__model_id__", norm(mid)), d)
+
+          fallback = {}
+          with FALLBACK.open(encoding="utf-8", newline="") as f:
+              for r in csv.DictReader(f):
+                  try:
+                      d={"length":int(float(r["length_mm"])),"width":int(float(r["width_mm"])),"height":int(float(r["height_mm"]))}
+                  except Exception:
+                      continue
+                  fallback.setdefault((norm(r.get("brand")),norm(r.get("model"))),d)
+
+          def find_dims(v):
+              key=(norm(v.get("make")),norm(v.get("model")))
+              if key in gaia:
+                  return gaia[key], "Gaia EVDB"
+              # Useful aliases for catalog naming differences.
+              mk, md = key
+              aliases = {
+                  "q6suvetron":"q6etron",
+                  "sq6suvetron":"sq6etron",
+                  "q6sportbacketron":"q6sportbacketron",
+                  "sq6sportbacketron":"sq6sportbacketron",
+                  "ioniq5":"ioniq5",
+                  "ioniq6":"ioniq6",
+                  "atto3":"atto3",
+                  "seal":"seal",
+                  "sealu":"seal-u",
+                  "dolphinsurf":"dolphin-surf",
+                  "tang":"tang",
+              }
+              for (gk,d) in gaia.items():
+                  if gk[0] != mk or gk[0] == "__model_id__":
+                      continue
+                  if gk[1] == md or md in gk[1] or gk[1] in md:
+                      return d, "Gaia EVDB (model match)"
+              if key in fallback:
+                  return fallback[key], "EV Database dataset 2025"
+              for (fk,d) in fallback.items():
+                  if fk[0] == mk and (md in fk[1] or fk[1] in md):
+                      return d, "EV Database dataset 2025 (model match)"
+              return None, None
+
+          audit = datetime.now().astimezone().isoformat(timespec="seconds")
+          found = 0
+          missing = []
+          sources = {}
+          for v in catalog.get("vehicles", []):
+              d, source = find_dims(v)
+              if d:
+                  v["lengthMm"] = d["length"]
+                  v["widthMm"] = d["width"]
+                  v["heightMm"] = d["height"]
+                  v["dimensionsAuditDateTime"] = audit
+                  v["dimensionsSource"] = source
+                  found += 1
+                  sources[source] = sources.get(source,0)+1
+              else:
+                  missing.append(f'{v.get("make","")} | {v.get("model","")} | {v.get("version","")}')
+
+          if missing:
+              Path("/tmp/dimensions_missing.txt").write_text("\n".join(missing),encoding="utf-8")
+              raise SystemExit(f"Dimensions missing for {len(missing)} records; catalog was not committed.")
+
+          catalog["dimensionsAudit"] = {
+              "auditDateTime": audit,
+              "recordsAudited": len(catalog.get("vehicles",[])),
+              "recordsFilled": found,
+              "sources": sources
+          }
+          with CATALOG.open("w",encoding="utf-8") as f:
+              json.dump(catalog,f,ensure_ascii=False,indent=2)
+              f.write("\n")
+
+          print(json.dumps(catalog["dimensionsAudit"],ensure_ascii=False))
+          PY
+
+      - name: Commit audited catalog and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/assets/catalog_es_2024_2026.json
+          git rm .github/workflows/audit-dimensions-once.yml
+          git commit -m "Audit and fill vehicle dimensions"
+          git push
