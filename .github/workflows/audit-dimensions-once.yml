@@ -133,6 +133,41 @@ jobs:
           from bs4 import BeautifulSoup
 
           auto_dim = {}
+          brand_json_dim = {}
+
+          def load_brand_json(make):
+              candidates=[slug(make)]
+              if makekey(make)=="changan" and "deepal" not in candidates: candidates.append("deepal")
+              if makekey(make)=="mercedesbenz": candidates.append("mercedes-benz")
+              if makekey(make)=="alfaromeo": candidates.append("alfa-romeo")
+              if makekey(make)=="skoda": candidates.append("skoda")
+              for bs in candidates:
+                  raw=fetch_text(f"https://raw.githubusercontent.com/gor3a/vehicle-makes-models/main/data/json/{bs}.json")
+                  if not raw: continue
+                  try:
+                      data=json.loads(raw)
+                  except Exception:
+                      continue
+                  for mkobj in data.get("makes",[]):
+                      actual_make=mkobj.get("name","")
+                      for model in mkobj.get("models",[]):
+                          model_name=model.get("name","")
+                          best=None; best_year=-1
+                          for gen in model.get("generations",[]):
+                              gy=gen.get("yearStart") or 0
+                              for eng in gen.get("engines",[]):
+                                  vals=(eng.get("lengthMm"),eng.get("widthMm"),eng.get("heightMm"))
+                                  if all(v not in (None,"") for v in vals) and gy>=best_year:
+                                      best={"length":int(float(vals[0])),"width":int(float(vals[1])),"height":int(float(vals[2]))}
+                                      best_year=gy
+                          if best and model_name:
+                              brand_json_dim[(makekey(actual_make),norm(model_name))]=best
+                  break
+
+          needed_makes=sorted(set(v.get("make","") for v in catalog.get("vehicles",[])))
+          for make in needed_makes:
+              load_brand_json(make)
+
           carsguide_dim = {}
 
           def fetch_text(url):
@@ -167,7 +202,7 @@ jobs:
               k=(makekey(make) if "makekey" in globals() else norm(make), norm(model))
               if k in seen: continue
               seen.add(k)
-              if k in gaia or k in fallback or k in vehicle_db or (slug(make)+"-"+slug(model)) in gaia_slug:
+              if k in gaia or k in fallback or k in vehicle_db or k in brand_json_dim or (slug(make)+"-"+slug(model)) in gaia_slug:
                   continue
               ms=slug(make)
               ds0=slug(model)
@@ -215,6 +250,8 @@ jobs:
                   return fallback[key], "EV Database dataset 2025"
               if key in vehicle_db:
                   return vehicle_db[key], "Vehicle Makes & Models dataset"
+              if key in brand_json_dim:
+                  return brand_json_dim[key], "Vehicle Makes & Models JSON dataset"
               if key in auto_dim:
                   return auto_dim[key], "AutomobileDimension.com"
               if key in carsguide_dim:
