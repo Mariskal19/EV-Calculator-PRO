@@ -67,7 +67,8 @@ jobs:
               catalog = json.load(f)
 
           # Gaia model-level dimensions: current structured source, preferred.
-          gaia = {}\n          gaia_slug = {}
+          gaia = {}
+          gaia_slug = {}
           for p in (GAIA/"data/vehicle-models").glob("*.yaml"):
               o = load_yaml(p)
               d = dimensions_from_obj(o)
