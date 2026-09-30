@@ -104,6 +104,32 @@ jobs:
                   fallback.setdefault((makekey(r.get("brand")),norm(r.get("model"))),d)
 
           import urllib.request, time
+          import sqlite3
+          import subprocess
+
+          vehicle_db = {}
+          try:
+              subprocess.run(["curl","-L","--fail","--silent","--show-error","-o","/tmp/vehicles.sqlite","https://raw.githubusercontent.com/gor3a/vehicle-makes-models/main/data/vehicles.sqlite"],check=True)
+              conn=sqlite3.connect("/tmp/vehicles.sqlite")
+              cur=conn.cursor()
+              tables=[r[0] for r in cur.execute("SELECT name FROM sqlite_master WHERE type='table'")]
+              for table in tables:
+                  cols=[r[1] for r in cur.execute("PRAGMA table_info('"+table+"')")]
+                  req={"make","model","length_mm","width_mm","height_mm"}
+                  if not req.issubset(set(cols)): continue
+                  q='SELECT make,model,length_mm,width_mm,height_mm FROM "'+table+'" WHERE length_mm IS NOT NULL AND width_mm IS NOT NULL AND height_mm IS NOT NULL'
+                  for row in cur.execute(q):
+                      try:
+                          mk=makekey(row[0]) if row[0] else ""
+                          md=norm(row[1])
+                          d={"length":int(float(row[2])),"width":int(float(row[3])),"height":int(float(row[4]))}
+                          if mk and md: vehicle_db.setdefault((mk,md),d)
+                      except Exception:
+                          pass
+              conn.close()
+          except Exception:
+              vehicle_db={}
+
           from bs4 import BeautifulSoup
 
           auto_dim = {}
@@ -141,7 +167,7 @@ jobs:
               k=(makekey(make) if "makekey" in globals() else norm(make), norm(model))
               if k in seen: continue
               seen.add(k)
-              if k in gaia or k in fallback or (slug(make)+"-"+slug(model)) in gaia_slug:
+              if k in gaia or k in fallback or k in vehicle_db or (slug(make)+"-"+slug(model)) in gaia_slug:
                   continue
               ms=slug(make)
               ds0=slug(model)
@@ -187,6 +213,8 @@ jobs:
                   return gaia_slug[exact_slug], "Gaia EVDB (slug match)"
               if key in fallback:
                   return fallback[key], "EV Database dataset 2025"
+              if key in vehicle_db:
+                  return vehicle_db[key], "Vehicle Makes & Models dataset"
               if key in auto_dim:
                   return auto_dim[key], "AutomobileDimension.com"
               if key in carsguide_dim:
