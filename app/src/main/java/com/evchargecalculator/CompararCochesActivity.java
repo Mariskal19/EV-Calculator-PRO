@@ -762,7 +762,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         l.setIncludeFontPadding(false);
         l.setPadding(dp(6),0,dp(6),0);
         l.setBackgroundColor(bgColor);
-        tableLabels.addView(l,new LinearLayout.LayoutParams(-1,dp(52)));
+        int rowHeight = "dimensions".equals(key) ? dp(64) : dp(52);
+        tableLabels.addView(l,new LinearLayout.LayoutParams(-1,rowHeight));
 
         LinearLayout r=new LinearLayout(this);
         r.setOrientation(LinearLayout.HORIZONTAL);
@@ -785,12 +786,17 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             TextView cell=tv(value(v,key),13,text());
             cell.setGravity(Gravity.CENTER);
             cell.setIncludeFontPadding(false);
+            if ("dimensions".equals(key)) {
+                cell.setMaxLines(2);
+                cell.setLineSpacing(0,1.0f);
+                cell.setPadding(dp(2),0,dp(2),0);
+            }
             cell.setBackgroundColor(bgColor);
             double n=nums[i];
             if(chosen.size()>=2&&!Double.isNaN(best)&&!Double.isNaN(n)&&Math.abs(n-best)<0.0001)cell.setTextColor(blue);
-            r.addView(cell,new LinearLayout.LayoutParams(carColumnWidth(),dp(52)));
+            r.addView(cell,new LinearLayout.LayoutParams(carColumnWidth(),rowHeight));
         }
-        table.addView(r,new LinearLayout.LayoutParams(carColumnWidth()*Math.max(1,chosen.size()),dp(52)));
+        table.addView(r,new LinearLayout.LayoutParams(carColumnWidth()*Math.max(1,chosen.size()),rowHeight));
     }
     private String value(Vehicle v,String key){if("battery".equals(key))return v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";if("type".equals(key))return empty(v.batteryType);if("range".equals(key))return v.wltpKm>0?String.format(Locale.US,"%.0f km",v.wltpKm):"—";if("cons".equals(key))return v.consumption>0?fmt(v.consumption)+" kWh/100 km":"—";if("power".equals(key))return v.powerKw>0?Math.round(v.powerKw*1.35962)+" CV ("+String.format(Locale.US,"%.0f kW",v.powerKw)+")":"—";if("drive".equals(key))return empty(v.drivetrain);if("acc".equals(key))return v.acc>0?fmt(v.acc)+" s":"—";if("ac".equals(key))return v.acKw>0?fmt(v.acKw)+" kW":"—";if("dc".equals(key))return v.dcKw>0?fmt(v.dcKw)+" kW":"—";if("charge".equals(key))return v.chargeMin>0?String.format(Locale.US,"%.0f min",v.chargeMin):"—";if("trunk".equals(key))return v.trunk>0?String.format(Locale.US,"%.0f L",v.trunk):"—";if("weight".equals(key))return v.weight>0?String.format(Locale.US,"%.0f kg",v.weight):"—";if("dimensions".equals(key))return dimensions(v);if("price".equals(key))return formatPrice(v.price);return "—";}
     private double numeric(Vehicle v,String key){if("battery".equals(key))return v.batteryKwh;if("range".equals(key))return v.wltpKm;if("cons".equals(key))return v.consumption;if("power".equals(key))return v.powerKw;if("acc".equals(key))return v.acc;if("ac".equals(key))return v.acKw;if("dc".equals(key))return v.dcKw;if("charge".equals(key))return v.chargeMin;if("trunk".equals(key))return v.trunk;if("weight".equals(key))return v.weight;return Double.NaN;}
