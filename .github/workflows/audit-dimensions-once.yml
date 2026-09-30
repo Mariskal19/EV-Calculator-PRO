@@ -219,7 +219,11 @@ jobs:
                   missing.append(f'{v.get("make","")} | {v.get("model","")} | {v.get("version","")}')
 
           if missing:
-              Path("/tmp/dimensions_missing.txt").write_text("\n".join(missing),encoding="utf-8")
+              unique_missing=sorted(set(missing))
+              print("MISSING_DIMENSIONS_START")
+              print("\n".join(unique_missing))
+              print("MISSING_DIMENSIONS_END")
+              Path("/tmp/dimensions_missing.txt").write_text("\n".join(unique_missing),encoding="utf-8")
               raise SystemExit(f"Dimensions missing for {len(missing)} records; catalog was not committed.")
 
           catalog["dimensionsAudit"] = {
