@@ -164,10 +164,6 @@ jobs:
                               brand_json_dim[(makekey(actual_make),norm(model_name))]=best
                   break
 
-          needed_makes=sorted(set(v.get("make","") for v in catalog.get("vehicles",[])))
-          for make in needed_makes:
-              load_brand_json(make)
-
           carsguide_dim = {}
 
           def fetch_text(url):
@@ -195,6 +191,10 @@ jobs:
               m=re.search(r"Height x Width x Length:\s*(\d+)\s*x\s*(\d+)\s*x\s*(\d+)\s*mm",text,re.I)
               if m: return {"length":int(m.group(3)),"width":int(m.group(2)),"height":int(m.group(1))}
               return None
+
+          needed_makes=sorted(set(v.get("make","") for v in catalog.get("vehicles",[])))
+          for make in needed_makes:
+              load_brand_json(make)
 
           catalog_models=[(v.get("make",""),v.get("model","")) for v in catalog.get("vehicles",[])]
           seen=set()
