@@ -738,3 +738,11 @@ Cuando se retome EV Calculator PRO:
 - Cuando coinciden, se mantiene una sola capacidad.
 - Commit: `e26fcaebd7dad945719b3f4195790255ef1b31fa`.
 - Estado: pendiente de build y prueba visual en dispositivo.
+
+
+## 2026-10-01 — Resaltado de mejores resultados
+
+- La fila `0–100 km/h` vuelve a participar en el cálculo de mejor resultado y se resalta en azul el menor tiempo.
+- La fila `10–80 %` participa en el cálculo de mejor resultado y se resalta en azul el menor tiempo.
+- Commit: `f242c2c85adcb9b3f038fe645b8f8cd9ca725d6f`.
+- Estado: pendiente de build y prueba visual junto con el ajuste de batería en dos líneas.
