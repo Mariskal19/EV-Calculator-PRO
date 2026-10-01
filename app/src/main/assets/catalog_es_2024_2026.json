@@ -13421,7 +13421,7 @@
       "acceleration0to100Sec": 4.7,
       "lastUpdated": "2026-09-29",
       "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:04:00+02:00",
       "weightKg": 2565,
       "trunkLiters": 484,
       "charge10to80Min": 17,
@@ -13438,7 +13438,11 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 102
+      "usableBatteryKwh": 102,
+      "price": 91900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:04:00+02:00",
+      "priceSource": "Polestar España"
     },
     {
       "make": "Polestar",
@@ -13461,8 +13465,8 @@
       "weightKg": 2403,
       "source": "Polestar España; especificaciones oficiales",
       "lastUpdated": "2026-09-26",
-      "auditDate": "2026-09-26",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:04:00+02:00",
       "charge10to80Min": 17,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -13473,7 +13477,11 @@
       "heightMm": 1614,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 110300,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:04:00+02:00",
+      "priceSource": "Polestar España"
     },
     {
       "make": "Polestar",
@@ -13491,7 +13499,7 @@
       "acceleration0to100Sec": 6.5,
       "lastUpdated": "2026-09-29",
       "source": "Fabricante/documentación técnica contrastada; auditoría catálogo EV Calculator PRO; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:04:00+02:00",
       "weightKg": 2400,
       "trunkLiters": 484,
       "charge10to80Min": 16,
@@ -13508,7 +13516,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 88
+      "usableBatteryKwh": 88,
+      "price": 81900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:04:00+02:00",
+      "priceSource": "Polestar España"
     },
     {
       "make": "Porsche",
