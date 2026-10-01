@@ -653,11 +653,11 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             addSection("Prestaciones");
             addRow("Potencia","power",true,selectedVehiclesCache);
             addRow("Tracción","drive",false,selectedVehiclesCache);
-            addRow("0–100 km/h","acc",false,selectedVehiclesCache);
+            addRow("0–100 km/h","acc",true,selectedVehiclesCache);
             addSection("Carga");
             addRow("Carga AC","ac",true,selectedVehiclesCache);
             addRow("Carga DC","dc",true,selectedVehiclesCache);
-            addRow("10–80 %","charge",false,selectedVehiclesCache);
+            addRow("10–80 %","charge",true,selectedVehiclesCache);
             addSection("Practicidad");
             addRow("Maletero","trunk",true,selectedVehiclesCache);
             addRow("Peso","weight",false,selectedVehiclesCache);
@@ -779,7 +779,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
         double best=Double.NaN;
         if(numeric&&chosen.size()>=2){
-            boolean higher=!key.equals("cons")&&!key.equals("charge")&&!key.equals("price")&&!key.equals("weight");
+            boolean higher=!key.equals("cons")&&!key.equals("charge")&&!key.equals("price")&&!key.equals("weight")&&!key.equals("acc");
             for(double n:nums){
                 if(Double.isNaN(n))continue;
                 if(Double.isNaN(best)||(higher?n>best:n<best))best=n;
