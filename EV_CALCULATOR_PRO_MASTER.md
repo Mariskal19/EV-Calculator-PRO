@@ -753,3 +753,13 @@ Cuando se retome EV Calculator PRO:
 - Los valores de texto nulos o con el literal `null` ahora se muestran como `—` en lugar de `null`.
 - Aplicable, entre otros, a la fila de Tracción cuando el catálogo no tiene dato.
 - Commit: `46a7da27e52b7b835d9566426447efd509aa5102`.
+
+
+## 2026-10-01 — Estado estable de Comparar coches
+
+- Confirmado por el usuario como correcto el estado actual de la pantalla Comparar coches.
+- Batería: cuando bruta y utilizable difieren, se muestran en dos líneas; si coinciden, una sola.
+- Mejores resultados: `0–100 km/h` y `10–80 %` resaltan en azul el menor tiempo.
+- Valores textuales `null` o vacíos se muestran como `—`.
+- Estado: **estable / listo para build y prueba final**.
+- Último commit funcional de código: `46a7da27e52b7b835d9566426447efd509aa5102`.
