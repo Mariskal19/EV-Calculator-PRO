@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 01/10/2026.
+> Última actualización: 01/10/2026 (auditoría catálogo, después de Explorer 2024–2026).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -15,9 +15,12 @@
 - **Versión de referencia actual:** 1.0.4 / línea de trabajo posterior a los checkpoints de septiembre de 2026.
 - **Google Play:** la publicación/revisión de producción seguía pendiente al último checkpoint conocido.
 - **Catálogo:** objetivo operativo actual de **607 registros**.
-- **Último estado de auditoría conocido:** se detectaron **676 registros** en el estado revisado, por lo que el objetivo de 607 todavía no debe considerarse certificado.
-- **Duplicados:** la comprobación conocida no detectó duplicados comerciales según la clave `marca + modelo + año + versión`; debe repetirse la comprobación final antes de certificar los 607.
-- **Auditoría final:** puntos 3–6 pendientes de certificación definitiva si no constan cerrados posteriormente.
+- **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
+- **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
+- **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
+- **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
+- **Objetivo histórico de 607:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
+- **Auditoría final:** puntos de integridad de catálogo completados; queda pendiente resolver de forma explícita la diferencia 682 vs 607 y ejecutar/validar el build final.
 - **Build final:** pendiente de ejecutar/verificar con el catálogo corregido.
 - **APK/AAB:** debe comprobarse que el catálogo corregido queda realmente incluido en el artefacto generado.
 - **Stable:** no tocar.
@@ -131,7 +134,9 @@ No introducir fechas ficticias ni reutilizar una fecha antigua como si fuera una
 
 ## 4.5 Objetivo actual
 
-**Objetivo: 607 registros certificados y sin duplicados.**
+**Objetivo documentado: 607 registros certificados y sin duplicados. Estado actual verificado: 682 registros, 0 duplicados.**
+
+La diferencia de 75 registros no se resolverá mediante borrado automático. Debe definirse primero si esos registros son parte del catálogo protegido o incorporaciones externas que deben quedar fuera del conjunto certificado.
 
 Antes de dar el catálogo por terminado:
 
@@ -412,14 +417,14 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 
 ### Prioridad 1 — Auditoría final del catálogo
 
-- [ ] Ejecutar puntos 3–6 si aún no están certificados.
-- [ ] Confirmar número final: **607**.
-- [ ] Confirmar ausencia de IDs duplicados.
-- [ ] Confirmar ausencia de duplicados lógicos.
-- [ ] Revisar registros corregidos.
-- [ ] Revisar dimensiones.
-- [ ] Revisar batería/carga.
-- [ ] Confirmar `auditDateTime`.
+- [x] Comprobar estado real del catálogo en `main`.
+- [x] Confirmar **682** registros actuales.
+- [x] Confirmar ausencia de IDs duplicados.
+- [x] Confirmar ausencia de duplicados lógicos.
+- [x] Revisar el conjunto Ford Explorer 2024–2026 incorporado/corregido.
+- [x] Confirmar dimensiones presentes en 682/682 registros.
+- [x] Confirmar `auditDateTime` presente en 682/682 registros.
+- [ ] Resolver de forma controlada la diferencia entre 682 actuales y el objetivo histórico de 607.
 
 ### Prioridad 2 — Build
 
@@ -472,6 +477,7 @@ Cuando se retome EV Calculator PRO:
 | Fecha | Cambio |
 |---|---|
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
+| 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo 607 no puede alcanzarse mediante borrado arbitrario. |
 
 ---
 
