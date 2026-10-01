@@ -9821,10 +9821,10 @@
       "wltpKm": 408,
       "consumptionKwh100": 35,
       "price_eur": 158037,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
-      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO",
-      "auditDateTime": "2026-09-29T19:55:00+02:00",
+      "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO; batería utilizable contrastada con EVKX (135.0 kWh netos)",
+      "auditDateTime": "2026-10-01T18:00:00+02:00",
       "weightKg": 3020,
       "trunkLiters": 452,
       "charge10to80Min": 67,
@@ -9844,7 +9844,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 158037,
-      "currency": "EUR"
+      "currency": "EUR",
+      "usableBatteryKwh": 135
     },
     {
       "make": "Maserati",
