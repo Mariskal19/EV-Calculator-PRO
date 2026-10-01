@@ -13548,7 +13548,9 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 119649,
+      "priceAuditDateTime": "2026-10-01T17:35:00+02:00"
     },
     {
       "make": "Renault",
