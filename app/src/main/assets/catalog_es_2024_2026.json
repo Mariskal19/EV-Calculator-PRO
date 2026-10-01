@@ -5809,7 +5809,7 @@
       "source": "Ford España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "price_eur": null,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "charge10to80Min": 37,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -5821,7 +5821,10 @@
       "heightMm": 1624,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; base Mustang Mach-E",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 81428,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "PVP España; fuentes españolas de precios del Mustang Mach-E Rally (Ford/Actualidad Motor), sin ayudas ni descuentos"
     },
     {
       "make": "Ford",
@@ -5839,7 +5842,7 @@
       "source": "Ford España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "price_eur": null,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "weightKg": 2258,
       "trunkLiters": 402,
@@ -5857,7 +5860,10 @@
       "heightMm": 1624,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; base Mustang Mach-E",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 81428,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "PVP España 2026; Autonomía Coches Eléctricos, 01/10/2026; corroborado con fuentes españolas de mercado"
     },
     {
       "make": "Ford",
@@ -6136,7 +6142,7 @@
       "wltpKm": 490,
       "consumptionKwh100": 18.6,
       "price_eur": null,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Ford España; especificaciones oficiales",
       "usableBatteryKwh": 91,
@@ -6157,7 +6163,10 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 79008,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "PVP España 2026; Carwow España, septiembre 2026; GT AWD 358 kW/487 CV"
     },
     {
       "make": "Ford",
