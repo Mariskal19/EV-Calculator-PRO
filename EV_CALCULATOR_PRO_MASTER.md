@@ -18,6 +18,8 @@
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
+- **Batería utilizable:** auditoría ampliada el 01/10/2026; 119 registros adicionales completados con datos contrastados; quedan 79 registros pendientes de verificación.
+- **Precio:** 362 registros siguen sin PVP; no se rellenan por estimación ni con precios de otros mercados.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
@@ -424,7 +426,10 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Revisar el conjunto Ford Explorer 2024–2026 incorporado/corregido.
 - [x] Confirmar dimensiones presentes en 682/682 registros.
 - [x] Confirmar `auditDateTime` presente en 682/682 registros.
-- [ ] Mantener el catálogo certificado en 682 registros.
+- [x] Mantener el catálogo en 682 registros.
+- [x] Completar 119 registros de `usableBatteryKwh` con fuente contrastada.
+- [ ] Revisar los 79 registros restantes sin `usableBatteryKwh`.
+- [ ] Auditar/completar los 362 registros sin `price` usando PVP español de versión exacta.
 
 ### Prioridad 2 — Build
 
@@ -492,6 +497,12 @@ Cuando se retome EV Calculator PRO:
 
 **Stable no se toca sin autorización expresa.**
 
+
+## 2026-10-01 — Auditoría de datos de detalle del coche
+- Se revisaron los 198 registros inicialmente sin `usableBatteryKwh`.
+- Se completaron **119** con correspondencia de versión/batería contrastada con EV Database; quedan **79** pendientes.
+- No se han rellenado los precios ausentes con estimaciones ni precios de Alemania/Países Bajos/Reino Unido: quedan **362** para auditoría específica de PVP español.
+- Los registros modificados llevan `auditDateTime` de esta auditoría y la fuente ampliada con EV Database.
 
 ## 2026-10-01 — Estado UI y trabajo actual
 - Auditoría UI transversal realizada.
