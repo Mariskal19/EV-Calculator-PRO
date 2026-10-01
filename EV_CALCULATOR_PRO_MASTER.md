@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 01/10/2026 (limpieza de estado tras auditoría UI y corrección de navegación inferior).
+> Última actualización: 01/10/2026 (estado consolidado tras auditorías de catálogo y cierre estable de Comparar coches 21:30).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -18,7 +18,7 @@
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
-- **Batería utilizable:** auditoría ampliada el 01/10/2026; 197 registros adicionales completados con datos contrastados; queda 1 registro pendiente de verificación.
+- **Batería utilizable:** auditoría cerrada el 01/10/2026; **682/682 registros** tienen `usableBatteryKwh`; quedan **0 pendientes**.
 - **Precio:** **0 registros** siguen sin PVP tras la auditoría completada el 01/10/2026. Los 682 registros del catálogo tienen price informado.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
@@ -154,9 +154,9 @@ Antes de dar el catálogo por terminado:
 - ejecutar build;
 - verificar que el catálogo corregido termina dentro del APK/AAB.
 
-### Importante
+### Estado consolidado
 
-El último estado conocido mostró **676 registros**, por lo que no debe afirmarse que el catálogo tiene 682 hasta realizar una comprobación real posterior.
+La comprobación real posterior confirmó **682 registros** en `main`. La cifra de 676 pertenece a un estado histórico y no debe utilizarse como estado actual.
 
 ---
 
@@ -428,7 +428,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Confirmar `auditDateTime` presente en 682/682 registros.
 - [x] Mantener el catálogo en 682 registros.
 - [x] Completar 197 registros de `usableBatteryKwh` con fuente contrastada.
-- [ ] Revisar el 1 registro restante sin `usableBatteryKwh` (`M-HERO I 2024`).
+- [x] Resolver el último registro sin `usableBatteryKwh` (`M-HERO I 2024` → 135,0 kWh contrastados).
 - [x] Auditar/completar los registros sin `price` usando PVP español; quedan **0 registros sin precio**.
 
 ### Prioridad 2 — Build
@@ -506,10 +506,10 @@ Cuando se retome EV Calculator PRO:
 
 ## 2026-10-01 — Auditoría ampliada de batería utilizable
 - Se completaron **78** registros adicionales de `usableBatteryKwh`, pasando de 119 a **197** completados en esta fase.
-- El catálogo permanece en **682 registros**.
-- Queda **1** registro sin batería utilizable: `M-HERO I 2024 — BEV 800 kW AWD 142.87 kWh`; se mantiene vacío hasta disponer de una fuente suficientemente fiable y específica.
-- Los 78 registros modificados llevan `auditDate=2026-10-01`, `auditDateTime=2026-10-01T15:00:00+02:00` y fuente ampliada con EV Database.
-- Verificación posterior al commit: 682 registros y 1 único `usableBatteryKwh` pendiente.
+- El catálogo permaneció en **682 registros**.
+- Posteriormente se resolvió el único registro pendiente: `M-HERO I 2024 — BEV 800 kW AWD 142.87 kWh` → **135,0 kWh utilizables**, con contraste EVKX.
+- Los 78 registros modificados en esta fase llevan `auditDate=2026-10-01`, `auditDateTime=2026-10-01T15:00:00+02:00` y fuente ampliada con EV Database.
+- La verificación global final confirmó **682/682** con `usableBatteryKwh`.
 
 ## 2026-10-01 — Estado UI y trabajo actual
 - Auditoría UI transversal realizada.
@@ -571,7 +571,7 @@ Cuando se retome EV Calculator PRO:
 - Batch 7: 15 precios añadidos, commit `9f7f6a0245c4f42dc3415b31073a683619f88819`.
 - Batch 8: 41 precios ya auditados que tenían `price_eur` se normalizaron al campo `price`, sin inventar nuevos valores ni alterar su fecha de auditoría. Commit `9bec3c40d3575d37f57bc7fd861c5da19ab61149`.
 - La fuente de referencia externa para PVP de tarifa en España sigue siendo Electrolitros cuando existe coincidencia exacta; sus precios excluyen descuentos de marca, financiación y MOVES. urlTabla de precios de Electrolitroshttps://electrolitros.com/precios/
-- **No dar por cerrada la auditoría de precios todavía**: quedan 207 registros y las siguientes tandas deben exigir coincidencia exacta de versión/año cuando sea posible.
+- La auditoría continuó hasta completar los campos `price`; el cierre definitivo se documenta a continuación.
 
 
 ## 2026-10-01 — Cierre definitivo de auditoría de precios
@@ -632,3 +632,36 @@ Cuando se retome EV Calculator PRO:
 - Las filas de características mantienen **42 dp** y las filas azules de sección **52 dp**.
 - **Commit del ajuste visual:** `7938efff5788eda55feb214c346b9c016a595296`.
 - Este estado queda guardado como checkpoint estable de **21:30 del 01/10/2026**. No modificarlo salvo nueva incidencia visual.
+
+
+## 2026-10-01 — Estado consolidado y hoja de ruta de cierre
+
+- **Catálogo:** 682/682 registros en `main`.
+- **Precio:** 682/682 con `price`; 0 sin precio.
+- **Batería utilizable:** 682/682; 0 pendientes.
+- **Dimensiones:** 682/682.
+- **auditDateTime:** 682/682.
+- **Duplicados:** 0 IDs duplicados y 0 duplicados lógicos.
+- **Comparar coches:** estable y probado a las **21:30**; checkpoint visual `7938efff5788eda55feb214c346b9c016a595296`.
+- **Build:** existe un build correcto anterior, pero el ajuste visual de Comparar coches de 21:30 todavía debe pasar por un build de verificación antes de considerarlo candidato final.
+- **Pendiente de datos:** revisar los campos de calidad que todavía no están cerrados globalmente: `dcKw`, `charge10to80Min` y `batteryChemistry`.
+- **Detalle del coche:** pendiente de revisión final.
+- **Buscador de coches:** pendiente de revisión final.
+- **Coches similares:** aparcado temporalmente.
+- **Automatizaciones:** pendiente de comprobación final de workflows y schedules.
+- **MASTER:** este documento queda como estado consolidado; las secciones históricas pueden contener estados intermedios, pero los apartados de cierre posteriores y la comprobación real de `main` son la referencia actual.
+- **Google Play:** el envío 15 de Producción seguía **En revisión** el 01/10/2026.
+- **ASO:** pendiente después de cerrar la versión candidata.
+
+### Orden recomendado para el cierre
+
+1. Auditoría de `dcKw`, `charge10to80Min` y `batteryChemistry`.
+2. Revisión final de **Detalle del coche**.
+3. Revisión final del **Buscador de coches**.
+4. Comprobación de las **3 automatizaciones** y sus schedules mediante runs reales.
+5. Auditoría global final del catálogo.
+6. Build candidato desde `main`.
+7. Verificación del APK/AAB y del catálogo incluido.
+8. Prueba final en dispositivo.
+9. Preparación de ASO/ficha de Google Play.
+10. Revisar el estado real de Google Play antes de cualquier acción de release.
