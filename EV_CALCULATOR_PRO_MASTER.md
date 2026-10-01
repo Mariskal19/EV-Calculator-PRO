@@ -763,3 +763,12 @@ Cuando se retome EV Calculator PRO:
 - Valores textuales `null` o vacíos se muestran como `—`.
 - Estado: **estable / listo para build y prueba final**.
 - Último commit funcional de código: `46a7da27e52b7b835d9566426447efd509aa5102`.
+
+
+## 2026-10-01 — Prueba completa de Comparar coches
+
+- El usuario realizó una **prueba funcional y visual completa de la pantalla Comparar coches en el dispositivo** después de los últimos ajustes.
+- Resultado: **correcto y validado**.
+- Quedan confirmados en uso real: batería bruta/utilizable, resaltado de mejores resultados en `0–100 km/h` y `10–80 %`, sustitución de `null`/vacíos por `—`, dimensiones y formato numérico, traducción de la sección **Dimensiones** y sus etiquetas, y comportamiento general de la tabla y desplazamiento con las configuraciones probadas.
+- La pantalla **Comparar coches queda cerrada como bloque funcional/visual**, salvo regresión futura.
+- Siguiente bloque previsto: **revisión final del Buscador de coches**.
