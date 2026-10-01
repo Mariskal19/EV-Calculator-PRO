@@ -423,13 +423,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.9,
       "price": 70480,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
       "weightKg": 2185,
@@ -444,7 +444,8 @@
       "heightMm": 1525,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -460,13 +461,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.9,
       "price": 83380,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
       "weightKg": 2185,
@@ -481,7 +482,8 @@
       "heightMm": 1525,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -497,13 +499,13 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.6,
       "price": 89820,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "trunkLiters": 502,
       "weightKg": 2185,
@@ -518,7 +520,8 @@
       "heightMm": 1525,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -544,10 +547,10 @@
       "currency": "EUR",
       "weightKg": 2185,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -558,7 +561,8 @@
       "heightMm": 1525,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -574,13 +578,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.3,
       "price": 67980,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
       "weightKg": 2175,
@@ -595,7 +599,8 @@
       "heightMm": 1465,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -611,13 +616,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.3,
       "price": 80880,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "trunkLiters": 502,
       "weightKg": 2175,
@@ -632,7 +637,8 @@
       "heightMm": 1465,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -648,13 +654,13 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14,
       "price": 87320,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "trunkLiters": 502,
       "weightKg": 2175,
@@ -669,7 +675,8 @@
       "heightMm": 1465,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -695,10 +702,10 @@
       "currency": "EUR",
       "weightKg": 2175,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -709,7 +716,8 @@
       "heightMm": 1465,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -811,10 +819,10 @@
       "currency": "EUR",
       "weightKg": 2035,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -825,7 +833,8 @@
       "heightMm": 1632,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -847,12 +856,12 @@
       "trunkLiters": 535,
       "weightKg": 2050,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "price": 52070,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -863,7 +872,8 @@
       "heightMm": 1614,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -889,10 +899,10 @@
       "currency": "EUR",
       "weightKg": 2200,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -903,7 +913,8 @@
       "heightMm": 1648,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -919,13 +930,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi oficial; Q6 Sportback e-tron 83 kWh RWD",
+      "source": "Audi oficial; Q6 Sportback e-tron 83 kWh RWD; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 16.4,
       "price": 74150,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "charge10to80Min": 21,
       "weightKg": 2200,
@@ -940,7 +951,8 @@
       "heightMm": 1648,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -956,13 +968,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 260,
-      "source": "Audi oficial; Q6 Sportback e-tron performance 100 kWh RWD",
+      "source": "Audi oficial; Q6 Sportback e-tron performance 100 kWh RWD; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.8,
       "price": 72520,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "charge10to80Min": 21,
       "weightKg": 2200,
@@ -977,7 +989,8 @@
       "heightMm": 1648,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1078,10 +1091,10 @@
       "currency": "EUR",
       "weightKg": 2310,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -1092,7 +1105,8 @@
       "heightMm": 1648,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1118,10 +1132,10 @@
       "currency": "EUR",
       "weightKg": 2400,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -1132,7 +1146,8 @@
       "heightMm": 1648,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1148,13 +1163,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 225,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.3,
       "price": 66370,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "weightKg": 2200,
       "trunkLiters": 526,
@@ -1169,7 +1184,8 @@
       "heightMm": 1648,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1185,13 +1201,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.6,
       "price": 70080,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "weightKg": 2310,
       "trunkLiters": 526,
@@ -1206,7 +1222,8 @@
       "heightMm": 1648,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1298,7 +1315,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.7,
@@ -1306,8 +1323,8 @@
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 502,
       "price": 106880,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "weightKg": 2410,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -1319,7 +1336,8 @@
       "heightMm": 1527,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1335,7 +1353,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 270,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.1,
@@ -1343,8 +1361,8 @@
       "acceleration0to100Sec": 3.9,
       "trunkLiters": 502,
       "price": 104380,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "weightKg": 2400,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -1356,7 +1374,8 @@
       "heightMm": 1468,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1382,10 +1401,10 @@
       "currency": "EUR",
       "weightKg": 2425,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -1396,7 +1415,8 @@
       "heightMm": 1665,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Audi",
@@ -1422,10 +1442,10 @@
       "currency": "EUR",
       "weightKg": 2425,
       "photo": null,
-      "source": "Audi España; especificaciones oficiales",
+      "source": "Audi España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -1436,7 +1456,8 @@
       "heightMm": 1685,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -1599,14 +1620,14 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 205,
-      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 13.6,
       "price": 80450,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 570,
       "weightKg": 2255,
       "charge10to80Min": 23,
@@ -1621,7 +1642,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 81.2
+      "usableBatteryKwh": 81.2,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -1636,14 +1658,14 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 205,
-      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 15.6,
       "price": 119609.6,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 570,
       "weightKg": 2425,
       "charge10to80Min": 23,
@@ -1658,7 +1680,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 81.2
+      "usableBatteryKwh": 81.2,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -1673,14 +1696,14 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 205,
-      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "consumptionKwh100": 14.5,
       "price": 85050,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 570,
       "weightKg": 2395,
       "charge10to80Min": 23,
@@ -1695,7 +1718,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 81.2
+      "usableBatteryKwh": 81.2,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -2084,14 +2108,14 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 195,
-      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 18.2,
       "price": 135000,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 500,
       "weightKg": 2655,
       "charge10to80Min": 34,
@@ -2106,7 +2130,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 108.9
+      "usableBatteryKwh": 108.9,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -2121,15 +2146,15 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 175,
-      "source": "BMW España; especificaciones oficiales",
+      "source": "BMW España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.7,
       "usableBatteryKwh": 94.8,
       "price": 89600,
       "currency": "EUR",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 500,
       "weightKg": 2525,
       "charge10to80Min": 33,
@@ -2143,7 +2168,8 @@
       "heightMm": 1696,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -2158,14 +2184,14 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 195,
-      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "BMW España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.6,
       "price": 89600,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 500,
       "weightKg": 2580,
       "charge10to80Min": 34,
@@ -2180,7 +2206,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 109.1
+      "usableBatteryKwh": 109.1,
+      "batteryChemistry": "NMC"
     },
     {
       "make": "BMW",
@@ -3472,13 +3499,13 @@
       "trunkLiters": 492,
       "weightKg": 2040,
       "photo": null,
-      "source": "Changan Europe / Deepal; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Changan Europe / Deepal; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 43390,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -3488,7 +3515,8 @@
       "heightMm": 1600,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Changan",
@@ -3510,13 +3538,13 @@
       "trunkLiters": 492,
       "weightKg": 1940,
       "photo": null,
-      "source": "Changan Europe / Deepal; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Changan Europe / Deepal; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 40390,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -3526,7 +3554,8 @@
       "heightMm": 1600,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Changan",
@@ -3548,13 +3577,13 @@
       "trunkLiters": 492,
       "weightKg": 1940,
       "photo": null,
-      "source": "Changan Europe / Deepal; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Changan Europe / Deepal; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "price": 37390,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -3564,7 +3593,8 @@
       "heightMm": 1600,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Changan",
@@ -3969,14 +3999,14 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "source": "Citroën España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Citroën España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 14,
       "price": 39490,
       "currency": "EUR",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 565,
       "weightKg": 2184,
       "charge10to80Min": 28,
@@ -3991,7 +4021,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "AutomobileDimension.com; modelo 2026",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 73
+      "usableBatteryKwh": 73,
+      "batteryChemistry": "NMC"
     },
     {
       "gaiaId": "cupra-born-58-kwh-2024",
@@ -4336,10 +4367,10 @@
       "currency": "EUR",
       "weightKg": 1610,
       "photo": null,
-      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales",
+      "source": "CUPRA España / SEAT-CUPRA Media Center; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:59:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -4349,7 +4380,8 @@
       "heightMm": 1530,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "CUPRA",
@@ -4643,12 +4675,12 @@
       "trunkLiters": 270,
       "weightKg": 984,
       "photo": null,
-      "source": "Dacia España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Dacia España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
       "market": "ES",
       "price": 17890,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -4659,7 +4691,8 @@
       "heightMm": 1522,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Dacia",
@@ -6531,10 +6564,10 @@
       "currency": "EUR",
       "weightKg": 1380,
       "photo": null,
-      "source": "Hyundai Motor España; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
+      "source": "Hyundai Motor España; especificaciones oficiales; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -6545,7 +6578,8 @@
       "heightMm": 1575,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Hyundai",
@@ -6571,10 +6605,10 @@
       "currency": "EUR",
       "weightKg": 1410,
       "photo": null,
-      "source": "Hyundai Motor España; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
+      "source": "Hyundai Motor España; especificaciones oficiales; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -6585,7 +6619,8 @@
       "heightMm": 1575,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Hyundai",
@@ -6851,10 +6886,10 @@
       "currency": "EUR",
       "weightKg": 2166,
       "photo": null,
-      "source": "Hyundai Motor España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado",
+      "source": "Hyundai Motor España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -6865,7 +6900,8 @@
       "heightMm": 1495,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Hyundai",
@@ -7579,13 +7615,13 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "source": "Jeep España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Jeep España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 18.6,
       "auditDate": "2026-10-01",
       "charge10to80Min": 32,
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2235,
       "trunkLiters": 550,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -7603,7 +7639,8 @@
       "price": 53305,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "Precio nuevo en España 2026; PVP de versión Full Electric BEV Altitude Long Range contrastado con Coches.net/JATO"
+      "priceSource": "Precio nuevo en España 2026; PVP de versión Full Electric BEV Altitude Long Range contrastado con Coches.net/JATO",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Jeep",
@@ -7618,14 +7655,14 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 160,
-      "source": "Jeep España; especificaciones oficiales",
+      "source": "Jeep España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.5,
       "usableBatteryKwh": 74,
       "auditDate": "2026-10-01",
       "charge10to80Min": 35,
-      "auditDateTime": "2026-09-29T02:55:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2090,
       "trunkLiters": 550,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -7641,7 +7678,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 47673,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "km77, Jeep Compass eléctrico España 2025; PVP de lanzamiento de la versión 74 kWh/213 CV"
+      "priceSource": "km77, Jeep Compass eléctrico España 2025; PVP de lanzamiento de la versión 74 kWh/213 CV",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Jeep",
@@ -7931,11 +7969,11 @@
       "trunkLiters": 362,
       "weightKg": 1615,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -7949,7 +7987,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 33450,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Air 2026"
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Air 2026",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -7971,11 +8010,11 @@
       "trunkLiters": 362,
       "weightKg": 1615,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -7989,7 +8028,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 29450,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Air 2026"
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Air 2026",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Kia",
@@ -8011,11 +8051,11 @@
       "trunkLiters": 362,
       "weightKg": 1615,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8029,7 +8069,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 37575,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Earth 2026"
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Earth 2026",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -8051,11 +8092,11 @@
       "trunkLiters": 362,
       "weightKg": 1615,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8069,7 +8110,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 33575,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Earth 2026"
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Earth 2026",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Kia",
@@ -8134,11 +8176,11 @@
       "currency": "EUR",
       "weightKg": 1885,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
+      "source": "Kia Iberia; especificaciones oficiales; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "price_eur": 41705,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8149,7 +8191,8 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -8215,11 +8258,11 @@
       "currency": "EUR",
       "weightKg": 1885,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; PVP España contrastado con Electrolitros",
+      "source": "Kia Iberia; especificaciones oficiales; PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "price_eur": 43205,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8230,7 +8273,8 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -8294,11 +8338,11 @@
       "currency": "EUR",
       "weightKg": 1885,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales",
+      "source": "Kia Iberia; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "price_eur": 48705,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8309,7 +8353,8 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -8335,10 +8380,10 @@
       "currency": "EUR",
       "weightKg": 1900,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
+      "source": "Kia Iberia; especificaciones oficiales; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8349,7 +8394,8 @@
       "heightMm": 1480,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -8413,10 +8459,10 @@
       "currency": "EUR",
       "weightKg": 1896,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; PVP España contrastado con Electrolitros; PVP España contrastado con Electrolitros",
+      "source": "Kia Iberia; especificaciones oficiales; PVP España contrastado con Electrolitros; PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8427,7 +8473,8 @@
       "heightMm": 1495,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -8453,10 +8500,10 @@
       "currency": "EUR",
       "weightKg": 1811,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales",
+      "source": "Kia Iberia; especificaciones oficiales; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -8469,7 +8516,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Motor.es, precios España EV4 Hatchback, agosto 2025; PVP sin descuentos"
+      "priceSource": "Motor.es, precios España EV4 Hatchback, agosto 2025; PVP sin descuentos",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Kia",
@@ -8636,14 +8684,14 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 240,
-      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros",
+      "source": "Kia Iberia; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.7,
       "price_eur": 85100,
       "auditDate": "2026-10-01",
       "charge10to80Min": 24,
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "trunkLiters": 828,
       "weightKg": 2625,
@@ -8660,7 +8708,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 96,
       "price": 76290,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Kia",
@@ -9519,10 +9568,10 @@
       "charge10to80Min": 20,
       "acceleration0to100Sec": 4.5,
       "trunkLiters": 688,
-      "source": "Lotus Cars; especificaciones oficiales",
+      "source": "Lotus Cars; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2565,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -9536,7 +9585,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 101706,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Motor.es/Autonoción, PVP España actual de entrada Eletre 600"
+      "priceSource": "Motor.es/Autonoción, PVP España actual de entrada Eletre 600",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Lotus",
@@ -9558,10 +9608,10 @@
       "charge10to80Min": 20,
       "acceleration0to100Sec": 2.95,
       "trunkLiters": 688,
-      "source": "Lotus Cars; especificaciones oficiales",
+      "source": "Lotus Cars; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2725,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -9575,7 +9625,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 149290,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Motor.es, tarifa España Eletre 900; versión 675 kW"
+      "priceSource": "Motor.es, tarifa España Eletre 900; versión 675 kW",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Lotus",
@@ -9673,10 +9724,10 @@
       "charge10to80Min": 15,
       "acceleration0to100Sec": 4.2,
       "trunkLiters": 509,
-      "source": "Lotus Cars; especificaciones oficiales",
+      "source": "Lotus Cars; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2555,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -9690,7 +9741,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 110690,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Coches.net, precios España Emeya 2026; versión 600"
+      "priceSource": "Coches.net, precios España Emeya 2026; versión 600",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Lotus",
@@ -9712,10 +9764,10 @@
       "charge10to80Min": 15,
       "acceleration0to100Sec": 2.8,
       "trunkLiters": 509,
-      "source": "Lotus Cars; especificaciones oficiales",
+      "source": "Lotus Cars; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2705,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -9729,7 +9781,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 149290,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Coches.net, precios España Emeya 2026; versión 900"
+      "priceSource": "Coches.net, precios España Emeya 2026; versión 900",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Lynk & Co",
@@ -9751,11 +9804,11 @@
       "trunkLiters": 410,
       "weightKg": 1820,
       "photo": null,
-      "source": "Lynk & Co España; especificaciones oficiales",
+      "source": "Lynk & Co España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -9768,7 +9821,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 35495,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Lynk & Co / Motor.es, PVP España desde octubre 2024"
+      "priceSource": "Lynk & Co / Motor.es, PVP España desde octubre 2024",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Lynk & Co",
@@ -9790,11 +9844,11 @@
       "trunkLiters": 410,
       "weightKg": 1820,
       "photo": null,
-      "source": "Lynk & Co España; especificaciones oficiales",
+      "source": "Lynk & Co España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -9807,7 +9861,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 39495,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Lynk & Co / Motor.es, PVP España desde octubre 2024"
+      "priceSource": "Lynk & Co / Motor.es, PVP España desde octubre 2024",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "M-HERO",
@@ -9934,12 +9989,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "source": "Mazda Automóviles España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mazda Automóviles España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 18.9,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2205,
       "trunkLiters": 468,
       "charge10to80Min": 23,
@@ -9956,7 +10011,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 77,
       "price": 46200,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Mazda",
@@ -9971,12 +10027,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "source": "Mazda Automóviles España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mazda Automóviles España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 19.4,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2205,
       "trunkLiters": 468,
       "charge10to80Min": 23,
@@ -9993,7 +10049,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 77,
       "price": 49200,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Mazda",
@@ -10085,14 +10142,14 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "source": "Mercedes-Benz España; especificaciones oficiales; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 12.8,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "acceleration0to100Sec": 7.6,
       "charge10to80Min": 20,
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 405,
       "weightKg": 2065,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -10106,7 +10163,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 49686.3,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Mercedes-Benz",
@@ -10122,13 +10180,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 320,
-      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "source": "Mercedes-Benz España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 12.8,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "acceleration0to100Sec": 6.8,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 405,
       "weightKg": 2075,
       "charge10to80Min": 15,
@@ -10145,7 +10203,8 @@
       "price": 56125,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77"
+      "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10161,13 +10220,13 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 320,
-      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "source": "Mercedes-Benz España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.3,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "acceleration0to100Sec": 5,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "trunkLiters": 405,
       "weightKg": 2145,
       "charge10to80Min": 15,
@@ -10184,7 +10243,8 @@
       "price": 60725,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77"
+      "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10251,10 +10311,10 @@
       "currency": "EUR",
       "weightKg": 2055,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; PVP España contrastado con Electrolitros",
+      "source": "Mercedes-Benz España; especificaciones oficiales; PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10264,7 +10324,8 @@
       "heightMm": 1439,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10290,10 +10351,10 @@
       "currency": "EUR",
       "weightKg": 2135,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "source": "Mercedes-Benz España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10304,7 +10365,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10330,10 +10392,10 @@
       "currency": "EUR",
       "weightKg": 3085,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10344,7 +10406,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10405,11 +10468,11 @@
       "trunkLiters": 495,
       "weightKg": 2105,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales",
+      "source": "Mercedes-Benz España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10421,7 +10484,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 57777.5,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10447,10 +10511,10 @@
       "currency": "EUR",
       "weightKg": 2075,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10461,7 +10525,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; GLA 2026",
       "dimensionsAuditDate": "2026-09-30",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10487,10 +10552,10 @@
       "currency": "EUR",
       "weightKg": 2195,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10501,7 +10566,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10527,10 +10593,10 @@
       "currency": "EUR",
       "weightKg": 2260,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10542,7 +10608,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "Mercedes-Benz España; PVP en España contrastado con Motor.es"
+      "priceSource": "Mercedes-Benz España; PVP en España contrastado con Motor.es",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10568,10 +10635,10 @@
       "currency": "EUR",
       "weightKg": 2535,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10582,7 +10649,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mercedes-Benz",
@@ -10608,10 +10676,10 @@
       "currency": "EUR",
       "weightKg": 2535,
       "photo": null,
-      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Mercedes-Benz España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -10622,7 +10690,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10644,11 +10713,11 @@
       "trunkLiters": 249,
       "weightKg": 1985,
       "photo": null,
-      "source": "MG España; especificaciones oficiales",
+      "source": "MG España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10661,7 +10730,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 68990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10683,11 +10753,11 @@
       "trunkLiters": 249,
       "weightKg": 1960,
       "photo": null,
-      "source": "MG España; especificaciones oficiales",
+      "source": "MG España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
-      "auditDate": "2026-09-24",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10700,7 +10770,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 63990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10722,11 +10793,11 @@
       "trunkLiters": 507,
       "weightKg": 1640,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10740,7 +10811,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 25490,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "MG",
@@ -10762,11 +10834,11 @@
       "trunkLiters": 507,
       "weightKg": 1660,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10780,7 +10852,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 27990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "MG",
@@ -10802,11 +10875,11 @@
       "trunkLiters": 363,
       "weightKg": 1685,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10819,7 +10892,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 32000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10841,11 +10915,11 @@
       "trunkLiters": 363,
       "weightKg": 1803,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
+      "source": "MG España; especificaciones oficiales; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10858,7 +10932,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 36000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10880,11 +10955,11 @@
       "trunkLiters": 363,
       "weightKg": 1704,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10897,7 +10972,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 36000,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10919,11 +10995,11 @@
       "trunkLiters": 363,
       "weightKg": 1641,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
+      "source": "MG España; especificaciones oficiales; precio PVP España contrastado con Electrolitros; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10936,7 +11012,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 28000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "MG",
@@ -10958,11 +11035,11 @@
       "trunkLiters": 363,
       "weightKg": 1803,
       "photo": null,
-      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "MG España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -10975,7 +11052,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 45000,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -10997,11 +11075,11 @@
       "trunkLiters": 453,
       "weightKg": 1635,
       "photo": null,
-      "source": "MG España; especificaciones oficiales",
+      "source": "MG España; especificaciones oficiales; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:38:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -11014,7 +11092,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 32990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "MG",
@@ -11036,11 +11115,11 @@
       "trunkLiters": 453,
       "weightKg": 1680,
       "photo": null,
-      "source": "MG España; especificaciones oficiales",
+      "source": "MG España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:38:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -11053,7 +11132,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 36490,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -11075,11 +11155,11 @@
       "trunkLiters": 453,
       "weightKg": 1725,
       "photo": null,
-      "source": "MG España; especificaciones oficiales",
+      "source": "MG España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-28",
       "market": "ES",
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-28T23:38:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -11092,7 +11172,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 38990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MG",
@@ -11238,10 +11319,10 @@
       "currency": "EUR",
       "weightKg": 1720,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales; precio PVP España contrastado",
+      "source": "MINI España; especificaciones oficiales; precio PVP España contrastado; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11251,7 +11332,8 @@
       "heightMm": 1514,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11277,10 +11359,10 @@
       "currency": "EUR",
       "weightKg": 1720,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "MINI España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11291,7 +11373,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11316,10 +11399,10 @@
       "currency": "EUR",
       "weightKg": 1720,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales",
+      "source": "MINI España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11330,7 +11413,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11355,10 +11439,10 @@
       "currency": "EUR",
       "weightKg": 1615,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales; precio PVP España contrastado",
+      "source": "MINI España; especificaciones oficiales; precio PVP España contrastado; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11368,7 +11452,8 @@
       "heightMm": 1460,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11393,10 +11478,10 @@
       "currency": "EUR",
       "weightKg": 1710,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales",
+      "source": "MINI España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11407,7 +11492,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11432,10 +11518,10 @@
       "currency": "EUR",
       "weightKg": 1740,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales",
+      "source": "MINI España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11447,7 +11533,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "BMW Group España / MINI; precios 2025 oficiales"
+      "priceSource": "BMW Group España / MINI; precios 2025 oficiales",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11472,10 +11559,10 @@
       "currency": "EUR",
       "weightKg": 1940,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales",
+      "source": "MINI España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11486,7 +11573,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "MINI",
@@ -11511,10 +11599,10 @@
       "currency": "EUR",
       "weightKg": 1940,
       "photo": null,
-      "source": "MINI España; especificaciones oficiales",
+      "source": "MINI España; especificaciones oficiales; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -11525,7 +11613,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Mitsubishi",
@@ -12156,12 +12245,12 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "weightKg": 1573,
       "trunkLiters": 460,
@@ -12179,7 +12268,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 43.8,
       "price": 28854,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Opel",
@@ -12240,11 +12330,11 @@
       "trunkLiters": 550,
       "weightKg": 2207,
       "photo": null,
-      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -12257,7 +12347,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 47450,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Opel",
@@ -12279,11 +12370,11 @@
       "trunkLiters": 550,
       "weightKg": 2195,
       "photo": null,
-      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -12296,7 +12387,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 51650,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Opel",
@@ -12500,12 +12592,12 @@
       "drivetrain": "FWD",
       "acKw": 11,
       "dcKw": 100,
-      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Opel España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.7,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "FWD",
       "trunkLiters": 310,
       "weightKg": 1672,
@@ -12523,7 +12615,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 50.8,
       "price": 46755,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Peugeot",
@@ -13198,11 +13291,11 @@
       "trunkLiters": 405,
       "weightKg": 2183,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros; PVP España contrastado con Electrolitros",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros; PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -13214,7 +13307,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 50000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -13236,11 +13330,11 @@
       "trunkLiters": 405,
       "weightKg": 2183,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -13254,7 +13348,8 @@
       "price": 64450,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Polestar España"
+      "priceSource": "Polestar España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -13276,11 +13371,11 @@
       "trunkLiters": 405,
       "weightKg": 2084,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -13292,7 +13387,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 55000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -13314,11 +13410,11 @@
       "trunkLiters": 405,
       "weightKg": 2084,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -13330,7 +13426,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 50000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -13352,11 +13449,11 @@
       "trunkLiters": 526,
       "weightKg": 2355,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -13370,7 +13467,8 @@
       "price": 58600,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Polestar España"
+      "priceSource": "Polestar España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -13392,11 +13490,11 @@
       "trunkLiters": 526,
       "weightKg": 2230,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -13408,7 +13506,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 65900,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Polestar",
@@ -14643,11 +14742,11 @@
       "trunkLiters": 585,
       "weightKg": 1992,
       "photo": null,
-      "source": "Škoda España; gama eléctrica; precio PVP España contrastado con Electrolitros",
+      "source": "Škoda España; gama eléctrica; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -14660,7 +14759,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 42000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Škoda",
@@ -14953,12 +15053,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 165,
-      "source": "Škoda España; gama eléctrica",
+      "source": "Škoda España; gama eléctrica; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "trunkLiters": 935,
       "weightKg": 2125,
@@ -14977,7 +15077,8 @@
       "price": 41900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Škoda",
@@ -14993,12 +15094,12 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 200,
-      "source": "Škoda España; gama eléctrica",
+      "source": "Škoda España; gama eléctrica; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "trunkLiters": 935,
       "weightKg": 2309,
@@ -15017,7 +15118,8 @@
       "price": 45200,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Škoda",
@@ -15033,12 +15135,12 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 200,
-      "source": "Škoda España; gama eléctrica",
+      "source": "Škoda España; gama eléctrica; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "AWD",
       "trunkLiters": 935,
       "weightKg": 2382,
@@ -15057,7 +15159,8 @@
       "price": 53350,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Skywell",
@@ -15821,12 +15924,12 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:30:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2120,
       "trunkLiters": 475,
       "charge10to80Min": 30,
@@ -15845,7 +15948,8 @@
       "price": 44000,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Subaru",
@@ -15860,12 +15964,12 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.4,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:30:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2100,
       "trunkLiters": 441,
       "charge10to80Min": 30,
@@ -15884,7 +15988,8 @@
       "price": 41000,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Subaru",
@@ -15899,12 +16004,12 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 12.8,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:30:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 1850,
       "trunkLiters": 441,
       "charge10to80Min": 23,
@@ -15923,7 +16028,8 @@
       "price": 33500,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Subaru",
@@ -15938,12 +16044,12 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.7,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:30:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 2050,
       "trunkLiters": 441,
       "charge10to80Min": 31,
@@ -15962,7 +16068,8 @@
       "price": 41000,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Subaru",
@@ -15977,12 +16084,12 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Subaru España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.1,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:30:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 1950,
       "trunkLiters": 441,
       "charge10to80Min": 31,
@@ -16001,7 +16108,8 @@
       "price": 41000,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Tesla",
@@ -17070,12 +17178,12 @@
       "drivetrain": "FWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 13.9,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 1890,
       "trunkLiters": 452,
       "charge10to80Min": 30,
@@ -17094,7 +17202,8 @@
       "price": 39375,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
-      "priceSource": "Toyota España"
+      "priceSource": "Toyota España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Toyota",
@@ -17109,12 +17218,12 @@
       "drivetrain": "AWD",
       "acKw": 22,
       "dcKw": 150,
-      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15.9,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "weightKg": 1995,
       "trunkLiters": 452,
       "charge10to80Min": 30,
@@ -17133,7 +17242,8 @@
       "price": 46925,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Toyota",
@@ -17239,11 +17349,11 @@
       "trunkLiters": 388,
       "weightKg": 1720,
       "photo": null,
-      "source": "Toyota España; gama eléctrica 2026",
+      "source": "Toyota España; gama eléctrica 2026; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17257,7 +17367,8 @@
       "price": 29900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Toyota",
@@ -17279,11 +17390,11 @@
       "trunkLiters": 388,
       "weightKg": 1935,
       "photo": null,
-      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17297,7 +17408,8 @@
       "price": 37900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Toyota",
@@ -17319,11 +17431,11 @@
       "trunkLiters": 388,
       "weightKg": 1835,
       "photo": null,
-      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database",
+      "source": "Toyota España; gama eléctrica 2026; batería utilizable contrastada con EV Database; química de batería auditada: LFP; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17337,7 +17449,8 @@
       "price": 34900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "LFP"
     },
     {
       "make": "Volkswagen",
@@ -17554,10 +17667,10 @@
       "currency": "EUR",
       "weightKg": 2340,
       "photo": null,
-      "source": "Volkswagen España; gama eléctrica ID",
+      "source": "Volkswagen España; gama eléctrica ID; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T18:35:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17569,7 +17682,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volkswagen",
@@ -18338,11 +18452,11 @@
       "trunkLiters": 697,
       "weightKg": 2585,
       "photo": null,
-      "source": "Volvo Cars España; especificaciones de la gama eléctrica; batería utilizable contrastada con EV Database",
+      "source": "Volvo Cars España; especificaciones de la gama eléctrica; batería utilizable contrastada con EV Database; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-24",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -18357,7 +18471,8 @@
       "price": 84111,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
-      "priceSource": "Volvo Cars España"
+      "priceSource": "Volvo Cars España",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Volvo",
@@ -19494,11 +19609,11 @@
       "trunkLiters": 539,
       "weightKg": 2395,
       "photo": null,
-      "source": "Zeekr Europe; gama europea; precio PVP España contrastado con Electrolitros",
+      "source": "Zeekr Europe; gama europea; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -19510,7 +19625,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 52990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Zeekr",
@@ -19532,11 +19648,11 @@
       "trunkLiters": 539,
       "weightKg": 2415,
       "photo": null,
-      "source": "Zeekr Europe; gama europea; precio PVP España contrastado con Electrolitros",
+      "source": "Zeekr Europe; gama europea; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -19548,7 +19664,8 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 55990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Zeekr",
@@ -19570,11 +19687,11 @@
       "trunkLiters": 539,
       "weightKg": 2535,
       "photo": null,
-      "source": "Zeekr Europe; gama europea; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "source": "Zeekr Europe; gama europea; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros; química de batería auditada: NMC; contraste con EV Database y fuente del fabricante cuando disponible",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T21:38:37+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -19586,7 +19703,8 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 62990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "batteryChemistry": "NMC"
     },
     {
       "make": "Zeekr",
