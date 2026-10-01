@@ -5357,8 +5357,10 @@
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
       "dimensionsAuditDate": "2026-10-01",
-      "price": 45711,
-      "currency": "EUR"
+      "price": 51765,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "PVP España 2024; Motor.es/El País/Autofácil, tarifa sin descuentos"
     },
     {
       "make": "Ford",
@@ -5492,8 +5494,10 @@
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
       "dimensionsAuditDate": "2026-10-01",
-      "price": 49811,
-      "currency": "EUR"
+      "price": 50800,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Tarifa España 11/2025; km77, PVP equivalente a 41.983 € sin impuestos + IVA 21%"
     },
     {
       "make": "Ford",
@@ -5524,7 +5528,10 @@
       "heightMm": 1639,
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-10-01"
+      "dimensionsAuditDate": "2026-10-01",
+      "price": 57800,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Tarifa España 11/2025; Autopista/kM77, PVP tarifa 2025"
     },
     {
       "make": "Ford",
