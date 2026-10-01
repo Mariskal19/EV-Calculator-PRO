@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 01/10/2026 (auditoría catálogo, después de Explorer 2024–2026).
+> Última actualización: 01/10/2026 (limpieza de estado tras auditoría UI y corrección de navegación inferior).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -20,8 +20,8 @@
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
-- **Auditoría final:** puntos de integridad de catálogo completados; queda pendiente resolver de forma explícita la objetivo 682 confirmado y ejecutar/validar el build final.
-- **Build final:** pendiente de ejecutar/verificar con el catálogo corregido.
+- **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
+- **Build final/candidato Play:** pendiente de definir y verificar después de la comprobación final del catálogo y automatizaciones.
 - **APK/AAB:** debe comprobarse que el catálogo corregido queda realmente incluido en el artefacto generado.
 - **Stable:** no tocar.
 
@@ -493,30 +493,19 @@ Cuando se retome EV Calculator PRO:
 **Stable no se toca sin autorización expresa.**
 
 
-## 2026-10-01 — Auditoría UI punto 5
-- Revisada la arquitectura de Edge-to-Edge, navegación inferior y pantallas principales.
-- Se detectó que la barra inferior de 64dp se superponía al contenido porque el host la colocaba como overlay sin reservar su altura.
-- Corregido `BaseNavigationActivity.java` en `main`: el contenido reserva 64dp inferiores antes de añadir la navegación.
-- `EdgeToEdgeHelper` se mantiene sin cambios: Android 15+ edge-to-edge y compatibilidad con Android 14 y anteriores.
-- Icono Coches: ya incorpora `scaleX(1.22f)` para compensar visualmente su arte más estrecho; no se modifica.
-- Commit: `b6b451f4bace07131ad1d45b3de89eddefa296a1`.
-- Build automático lanzado: run `36843722435`, build 1978, inicialmente en cola.
-
-
-## 2026-10-01 — Corrección inmediata navegación inferior
-- Se revirtió la modificación que reservaba 64dp mediante `bottomMargin` en `BaseNavigationActivity`.
-- Esa modificación generaba una franja vacía visible encima de la barra inferior.
-- Se restaura exactamente el modelo anterior: contenido a pantalla completa + barra inferior superpuesta de 64dp.
-- Commit de corrección: `6a0d5c569ab39ecfbb2ccf9fa3e91261ba81924c`.
-
-
-## 2026-10-01 — Próximos pasos confirmados
-- No repetir la auditoría de UI ya realizada.
-- Barra inferior: cerrada y corregida.
-- Icono 🚗 Coches: cerrado y corregido.
-- Edge-to-Edge: revisado; no repetir salvo que aparezca una regresión.
-- Navegación inferior: estructura establecida.
-- Dimensiones del catálogo: auditadas.
-- Buscador de coches: avanzado.
-- Próximo trabajo: **terminar/cerrar la pantalla de Coches similares**.
-- Después: revisión final del detalle del coche, comprobación de automatización del catálogo y preparación del build candidato para Play.
+## 2026-10-01 — Estado UI y trabajo actual
+- Auditoría UI transversal realizada.
+- **Barra inferior:** corregida y cerrada. El comportamiento correcto es contenido a pantalla completa + barra inferior superpuesta de 64dp; no se reserva un margen inferior adicional.
+- **Icono 🚗 Coches:** corregido y cerrado. Mantener el diseño actual salvo nueva incidencia visual.
+- **Edge-to-Edge:** revisado; `EdgeToEdgeHelper` queda sin cambios.
+- No repetir esta auditoría salvo que aparezca una regresión.
+- Corrección de `BaseNavigationActivity.java`: commit `6a0d5c569ab39ecfbb2ccf9fa3e91261ba81924c`.
+- Build automático asociado: run `36844354921`, build 1980.
+- **Coches similares:** aparcado temporalmente.
+- **Buscador de coches:** avanzado.
+- **Dimensiones del catálogo:** auditadas.
+- **Detalle del coche:** pendiente de revisión final cuando se retome el bloque de coches.
+- **Automatizaciones:** pendiente de comprobación final de workflows y schedules.
+- **Google Play:** pendiente de revisar el estado real y preparar posteriormente el candidato de release.
+- **ASO/ficha de Play:** pendiente para después de cerrar la versión candidata.
+- No repetir auditorías ya cerradas salvo regresión o nueva modificación.
