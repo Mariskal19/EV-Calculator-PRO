@@ -8898,7 +8898,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 50.8
+      "usableBatteryKwh": 50.8,
+      "price": 44919,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
     },
     {
       "make": "Lancia",
@@ -9931,7 +9933,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 77
+      "usableBatteryKwh": 77,
+      "price": 46200,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
     },
     {
       "make": "Mazda",
@@ -9966,7 +9970,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 77
+      "usableBatteryKwh": 77,
+      "price": 49200,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
     },
     {
       "make": "Mazda",
@@ -10001,7 +10007,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 68
+      "usableBatteryKwh": 68,
+      "price": 43725,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
     },
     {
       "make": "Mazda",
@@ -10038,7 +10046,9 @@
       "heightMm": 1491,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 45325,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
