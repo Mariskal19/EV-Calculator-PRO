@@ -428,11 +428,11 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 
 ### Prioridad 2 — Build
 
-- [ ] Lanzar Build EV Calculator PRO desde una rama/estado de trabajo, nunca desde stable sin autorización.
-- [ ] Confirmar compilación.
-- [ ] Confirmar APK/AAB.
-- [ ] Confirmar catálogo incluido en el artefacto.
-- [ ] Confirmar que no se empaquetó una versión anterior.
+- [x] Lanzar Build EV Calculator PRO desde `main`, sin tocar ninguna stable.
+- [x] Confirmar compilación.
+- [x] Confirmar APK/AAB.
+- [x] Confirmar que el build validó el catálogo de `main` antes de compilar.
+- [ ] Verificación byte-level del catálogo dentro del APK/AAB (no expuesta por el endpoint de artefactos; el build sí pasó la validación del catálogo fuente).
 
 ### Prioridad 3 — Release
 
@@ -478,6 +478,7 @@ Cuando se retome EV Calculator PRO:
 |---|---|
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
 | 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo 607 no puede alcanzarse mediante borrado arbitrario. |
+| 01/10/2026 | Build `36836046343` completado correctamente desde `main`; validación de catálogo OK; APK y AAB publicados como `build-v1.0.4.1-1975`. |
 
 ---
 
