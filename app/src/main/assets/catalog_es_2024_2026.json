@@ -7930,7 +7930,10 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 33450,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Air 2026"
     },
     {
       "make": "Kia",
@@ -7967,7 +7970,10 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 29450,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Air 2026"
     },
     {
       "make": "Kia",
@@ -8004,7 +8010,10 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 37575,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Earth 2026"
     },
     {
       "make": "Kia",
@@ -8041,7 +8050,10 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 33575,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Earth 2026"
     },
     {
       "make": "Kia",
@@ -8417,13 +8429,13 @@
       "trunkLiters": 435,
       "id": "kia-ev4-hatchback-58-3-kwh-2025-58-3-nmc-150-fwd",
       "market": "ES",
-      "price": null,
+      "price": 37951,
       "currency": "EUR",
       "weightKg": 1811,
       "photo": null,
       "source": "Kia Iberia; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -8435,7 +8447,9 @@
       "heightMm": 1495,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, precios España EV4 Hatchback, agosto 2025; PVP sin descuentos"
     },
     {
       "make": "Kia",
@@ -8470,7 +8484,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 78
+      "usableBatteryKwh": 78,
+      "price": 45308,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Qué coche me compro, PVP tarifa sin descuentos septiembre 2026"
     },
     {
       "make": "Kia",
@@ -8505,7 +8522,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 78
+      "usableBatteryKwh": 78,
+      "price": 46808,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Qué coche me compro, PVP tarifa sin descuentos septiembre 2026"
     },
     {
       "make": "Kia",
@@ -8540,7 +8560,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 78
+      "usableBatteryKwh": 78,
+      "price": 52308,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/Qué coche me compro, PVP tarifa sin descuentos septiembre 2026"
     },
     {
       "make": "Kia",
@@ -8651,7 +8674,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 67
+      "usableBatteryKwh": 67,
+      "price": 43190,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Kia España/coches.net, PVP Cargo LR Essential 71.2 kWh 2025"
     },
     {
       "make": "Kia",
