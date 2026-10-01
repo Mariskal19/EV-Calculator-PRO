@@ -9246,7 +9246,7 @@
       "trunkLiters": 522,
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2005,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9258,7 +9258,10 @@
       "heightMm": 1635,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 52000,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lexus España, gama y precios RZ 2026"
     },
     {
       "make": "Lexus",
@@ -9283,7 +9286,7 @@
       "trunkLiters": 522,
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2005,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9295,7 +9298,10 @@
       "heightMm": 1635,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 52900,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lexus España, gama y precios RZ 2026"
     },
     {
       "make": "Lexus",
@@ -9320,7 +9326,7 @@
       "trunkLiters": 522,
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2005,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9332,7 +9338,10 @@
       "heightMm": 1635,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 61900,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lexus España, gama y precios RZ 2026; e-Executive AWD"
     },
     {
       "make": "Lexus",
@@ -9357,7 +9366,7 @@
       "trunkLiters": 522,
       "source": "Lexus España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2005,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9369,7 +9378,10 @@
       "heightMm": 1635,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 70900,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lexus España, gama y precios RZ 2026"
     },
     {
       "make": "Lotus",
@@ -9404,7 +9416,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 109
+      "usableBatteryKwh": 109,
+      "price": 102590,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, precios España vigentes marzo 2025; primera comercialización española noviembre 2024"
     },
     {
       "make": "Lotus",
@@ -9427,7 +9442,7 @@
       "weightKg": 2590,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "charge10to80Min": 17,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9439,7 +9454,10 @@
       "heightMm": 1630,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 149290,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, precios España vigentes marzo 2025; primera comercialización española noviembre 2024"
     },
     {
       "make": "Lotus",
@@ -9463,7 +9481,7 @@
       "trunkLiters": 688,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2565,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9475,7 +9493,10 @@
       "heightMm": 1630,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 101706,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es/Autonoción, PVP España actual de entrada Eletre 600"
     },
     {
       "make": "Lotus",
@@ -9499,7 +9520,7 @@
       "trunkLiters": 688,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2725,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9511,7 +9532,10 @@
       "heightMm": 1630,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 149290,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, tarifa España Eletre 900; versión 675 kW"
     },
     {
       "make": "Lotus",
@@ -9534,7 +9558,7 @@
       "weightKg": 2560,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "charge10to80Min": 15,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9546,7 +9570,10 @@
       "heightMm": 1459,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 110690,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, precios España vigentes marzo 2025"
     },
     {
       "make": "Lotus",
@@ -9569,7 +9596,7 @@
       "weightKg": 2560,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "charge10to80Min": 15,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9581,7 +9608,10 @@
       "heightMm": 1459,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 149290,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, precios España vigentes marzo 2025"
     },
     {
       "make": "Lotus",
@@ -9605,7 +9635,7 @@
       "trunkLiters": 509,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "weightKg": 2555,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9617,7 +9647,10 @@
       "heightMm": 1459,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 110690,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Coches.net, precios España Emeya 2026; versión 600"
     },
     {
       "make": "Lotus",
@@ -9641,7 +9674,7 @@
       "trunkLiters": 509,
       "source": "Lotus Cars; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T02:00:00+02:00",
       "weightKg": 2705,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9653,7 +9686,10 @@
       "heightMm": 1459,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 149290,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Coches.net, precios España Emeya 2026; versión 900"
     },
     {
       "make": "Lynk & Co",
@@ -9678,7 +9714,7 @@
       "source": "Lynk & Co España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -9689,7 +9725,10 @@
       "heightMm": 1573,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 35495,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lynk & Co / Motor.es, PVP España desde octubre 2024"
     },
     {
       "make": "Lynk & Co",
@@ -9714,7 +9753,7 @@
       "source": "Lynk & Co España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T01:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -9725,7 +9764,10 @@
       "heightMm": 1573,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 39495,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lynk & Co / Motor.es, PVP España desde octubre 2024"
     },
     {
       "make": "M-HERO",
@@ -9817,7 +9859,7 @@
       "lastUpdated": "2026-09-28",
       "acKw": 22,
       "acceleration0to100Sec": 2.7,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "dcKw": 270,
       "charge10to80Min": 18,
       "auditDateTime": "2026-09-29T19:00:00+02:00",
@@ -9833,7 +9875,10 @@
       "heightMm": 1353,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 200900,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Maserati España / km77, PVP España GranTurismo Folgore"
     },
     {
       "make": "Mazda",
@@ -19689,7 +19734,7 @@
       "year": 2025,
       "market": "ES",
       "currency": "EUR",
-      "price": 195294,
+      "price": 200900,
       "batteryKwh": 96,
       "usableBatteryKwh": 92.5,
       "batteryType": "NMC",
@@ -19707,7 +19752,7 @@
       "weightKg": 2260,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2025,
-      "auditDate": "AUTO",
+      "auditDate": "2026-10-01",
       "lastUpdated": "AUTO",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -19719,7 +19764,9 @@
       "heightMm": 1353,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Maserati España / km77, PVP España GranTurismo Folgore"
     },
     {
       "gaiaId": "maserati-grecale-folgore-2025",
