@@ -540,3 +540,8 @@ Cuando se retome EV Calculator PRO:
 - Quedan 301 registros sin precio.
 - Referencia de contraste: Electrolitros, tabla de PVP de España por versión.
 - No se han añadido precios cuando la versión publicada no permitía una correspondencia suficientemente precisa.
+
+## 2026-10-01 — Auditoría de precios España, lotes 3–4
+- Se incorporaron 18 precios PVP España en los lotes 3–4; uno fue corregido inmediatamente tras detectar una cifra transcrita incorrectamente (Ford Explorer: 45.711 €).
+- Estado: **283 registros sin precio** de 682.
+- Fuente de contraste: Electrolitros, tabla de precios PVP España por versión, consultada el 1/10/2026. Los precios de la tabla son de tarifa, sin descuentos ni MOVES. citeturn1view0turn2view0
