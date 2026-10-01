@@ -4737,7 +4737,7 @@
       "drive": "FWD",
       "wltpKm": 226,
       "consumptionKwh100": 12.4,
-      "source": "Dacia España; configurador Spring 2026; batería utilizable contrastada con EV Database",
+      "source": "Dacia España; configurador Spring 2026; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros",
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-28",
       "auditDateTime": "2026-10-01T15:00:00+02:00",
@@ -4757,7 +4757,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 24
+      "usableBatteryKwh": 24,
+      "price": 17500,
+      "currency": "EUR"
     },
     {
       "make": "Dongfeng",
@@ -6666,7 +6668,7 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 350,
-      "source": "Hyundai Motor España; especificaciones oficiales",
+      "source": "Hyundai Motor España; especificaciones oficiales; PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-28",
       "market": "ES",
       "consumptionKwh100": 16.8,
@@ -6674,8 +6676,8 @@
       "batteryChemistry": "li-ion",
       "acceleration0to100Sec": 5.2,
       "weightKg": 2110,
-      "auditDate": "2026-09-28",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "drive": "AWD",
       "trunkLiters": 520,
       "charge10to80Min": 15,
@@ -6688,7 +6690,9 @@
       "heightMm": 1605,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 49900,
+      "currency": "EUR"
     },
     {
       "make": "Hyundai",
@@ -8252,11 +8256,11 @@
       "trunkLiters": 435,
       "id": "kia-ev4-hatchback-81-4-kwh-2025-81-4-nmc-150-fwd",
       "market": "ES",
-      "price": 43228,
+      "price": 41990,
       "currency": "EUR",
       "weightKg": 1896,
       "photo": null,
-      "source": "Kia Iberia; especificaciones oficiales; PVP España contrastado con Electrolitros",
+      "source": "Kia Iberia; especificaciones oficiales; PVP España contrastado con Electrolitros; PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
       "auditDateTime": "2026-10-01T15:00:00+02:00",
@@ -12785,7 +12789,7 @@
       "trunkLiters": 405,
       "weightKg": 2183,
       "photo": null,
-      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros",
+      "source": "Polestar España; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros; PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
@@ -12800,7 +12804,7 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "price": 55000,
+      "price": 50000,
       "currency": "EUR"
     },
     {
@@ -17213,7 +17217,7 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 150,
-      "source": "Volvo Cars España; especificaciones de la gama eléctrica",
+      "source": "Volvo Cars España; especificaciones de la gama eléctrica; PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 17.1,
@@ -17221,8 +17225,8 @@
       "batteryChemistry": "lfp",
       "acceleration0to100Sec": 5.7,
       "weightKg": 1840,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "drive": "RWD",
       "trunkLiters": 318,
       "charge10to80Min": 21,
@@ -17235,7 +17239,9 @@
       "heightMm": 1549,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 37000,
+      "currency": "EUR"
     },
     {
       "make": "Volvo",
