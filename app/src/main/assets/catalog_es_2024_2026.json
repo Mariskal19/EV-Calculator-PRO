@@ -17001,7 +17001,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 69
+      "usableBatteryKwh": 69,
+      "price": 39375,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Toyota España"
     },
     {
       "make": "Toyota",
