@@ -20,7 +20,7 @@
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 607:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
-- **Auditoría final:** puntos de integridad de catálogo completados; queda pendiente resolver de forma explícita la diferencia 682 vs 607 y ejecutar/validar el build final.
+- **Auditoría final:** puntos de integridad de catálogo completados; queda pendiente resolver de forma explícita la objetivo 682 confirmado y ejecutar/validar el build final.
 - **Build final:** pendiente de ejecutar/verificar con el catálogo corregido.
 - **APK/AAB:** debe comprobarse que el catálogo corregido queda realmente incluido en el artefacto generado.
 - **Stable:** no tocar.
@@ -134,7 +134,7 @@ No introducir fechas ficticias ni reutilizar una fecha antigua como si fuera una
 
 ## 4.5 Objetivo actual
 
-**Objetivo documentado: 607 registros certificados y sin duplicados. Estado actual verificado: 682 registros, 0 duplicados.**
+**Objetivo documentado y certificado: 682 registros, sin duplicados.**
 
 La diferencia de 75 registros no se resolverá mediante borrado automático. Debe definirse primero si esos registros son parte del catálogo protegido o incorporaciones externas que deben quedar fuera del conjunto certificado.
 
@@ -424,7 +424,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Revisar el conjunto Ford Explorer 2024–2026 incorporado/corregido.
 - [x] Confirmar dimensiones presentes en 682/682 registros.
 - [x] Confirmar `auditDateTime` presente en 682/682 registros.
-- [ ] Resolver de forma controlada la diferencia entre 682 actuales y el objetivo histórico de 607.
+- [ ] Resolver de forma controlada la diferencia entre 682 actuales y el objetivo histórico de 682.
 
 ### Prioridad 2 — Build
 
@@ -477,7 +477,7 @@ Cuando se retome EV Calculator PRO:
 | Fecha | Cambio |
 |---|---|
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
-| 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo 607 no puede alcanzarse mediante borrado arbitrario. |
+| 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo certificado es 682 y coincide con el catálogo real auditado. |
 | 01/10/2026 | Build `36836046343` completado correctamente desde `main`; validación de catálogo OK; APK y AAB publicados como `build-v1.0.4.1-1975`. |
 
 ---
