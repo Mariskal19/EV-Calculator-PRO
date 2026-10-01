@@ -724,9 +724,17 @@ Cuando se retome EV Calculator PRO:
   - si no existe ninguno, mostrar `—`.
 - Cambio aplicado en `main`.
 - Commit: `05d27923a08a2f60b673aadb9d35bfa19e4ea49d`.
-- **Estado: cambio implementado; build solicitado para verificación y posterior prueba visual en dispositivo.**
+- **Estado: ajuste anterior verificado visualmente; nueva presentación en dos líneas implementada y pendiente de build/prueba visual.**
 
 ## 2026-10-01 — Build de verificación solicitado
 
 - Se solicita build desde `main` para verificar el cambio de visualización de batería del commit `05d27923a08a2f60b673aadb9d35bfa19e4ea49d`.
 - El resultado del build y la prueba en dispositivo quedan pendientes hasta finalizar la ejecución.
+
+
+## 2026-10-01 — Batería en dos líneas
+
+- Cuando `batteryKwh` y `usableBatteryKwh` difieren, la fila Batería muestra la capacidad bruta en la primera línea y la utilizable en la segunda.
+- Cuando coinciden, se mantiene una sola capacidad.
+- Commit: `e26fcaebd7dad945719b3f4195790255ef1b31fa`.
+- Estado: pendiente de build y prueba visual en dispositivo.
