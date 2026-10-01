@@ -14956,8 +14956,8 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "drive": "RWD",
       "trunkLiters": 935,
       "weightKg": 2125,
@@ -14972,7 +14972,11 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 41900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Škoda",
@@ -14992,8 +14996,8 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 14.3,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "drive": "RWD",
       "trunkLiters": 935,
       "weightKg": 2309,
@@ -15008,7 +15012,11 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 45200,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Škoda",
@@ -15028,8 +15036,8 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "consumptionKwh100": 15,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "drive": "AWD",
       "trunkLiters": 935,
       "weightKg": 2382,
@@ -15044,7 +15052,11 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 53350,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Skywell",
@@ -17101,7 +17113,7 @@
       "market": "ES",
       "consumptionKwh100": 15.9,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "weightKg": 1995,
       "trunkLiters": 452,
       "charge10to80Min": 30,
@@ -17116,7 +17128,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 69
+      "usableBatteryKwh": 69,
+      "price": 46925,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Toyota",
@@ -17225,8 +17241,8 @@
       "source": "Toyota España; gama eléctrica 2026",
       "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:35:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17236,7 +17252,11 @@
       "heightMm": 1640,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 29900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Toyota",
@@ -17262,7 +17282,7 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17272,7 +17292,11 @@
       "heightMm": 1640,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 37900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Toyota",
@@ -17298,7 +17322,7 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17308,7 +17332,11 @@
       "heightMm": 1640,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 34900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17324,7 +17352,7 @@
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "batteryChemistry": "NMC",
       "acKw": 11,
       "dcKw": 105,
@@ -17342,7 +17370,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 51.7
+      "usableBatteryKwh": 51.7,
+      "price": 29900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17358,7 +17390,7 @@
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "batteryChemistry": "NMC",
       "acKw": 11,
       "dcKw": 105,
@@ -17376,7 +17408,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 51.7
+      "usableBatteryKwh": 51.7,
+      "price": 33900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17393,7 +17429,7 @@
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "trunkLiters": 441,
       "weightKg": 1576,
       "charge10to80Min": 41,
@@ -17411,7 +17447,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 51.7
+      "usableBatteryKwh": 51.7,
+      "price": 29900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17428,7 +17468,7 @@
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "dcKw": 90,
       "charge10to80Min": 23,
       "acKw": 11,
@@ -17445,7 +17485,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 37.5
+      "usableBatteryKwh": 37.5,
+      "price": 25900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17462,7 +17506,7 @@
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "dcKw": 90,
       "charge10to80Min": 23,
       "acKw": 11,
@@ -17479,7 +17523,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 37.5
+      "usableBatteryKwh": 37.5,
+      "price": 27900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17501,14 +17549,14 @@
       "trunkLiters": 605,
       "id": "volkswagen-id-7-tourer-gtx-2024-86-nmc-250-awd",
       "market": "ES",
-      "price": null,
+      "price": 63955,
       "currency": "EUR",
       "weightKg": 2340,
       "photo": null,
       "source": "Volkswagen España; gama eléctrica ID",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17518,7 +17566,9 @@
       "heightMm": 1551,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17540,15 +17590,15 @@
       "trunkLiters": 605,
       "id": "volkswagen-id-7-tourer-pro-2024-77-nmc-210-rwd",
       "market": "ES",
-      "price": null,
+      "price": 59785,
       "currency": "EUR",
       "weightKg": 2120,
       "photo": null,
       "source": "Volkswagen España; gama eléctrica ID",
       "lastUpdated": "2026-09-29",
       "batteryChemistry": "li-ion",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -17558,7 +17608,9 @@
       "heightMm": 1551,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -17611,11 +17663,11 @@
       "acKw": 11,
       "dcKw": 200,
       "consumptionKwh100": 14.7,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Volkswagen España; gama eléctrica ID",
       "usableBatteryKwh": 86,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "trunkLiters": 605,
       "weightKg": 2340,
       "charge10to80Min": 25,
@@ -17629,7 +17681,11 @@
       "heightMm": 1551,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 63955,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Volkswagen",
@@ -18406,8 +18462,8 @@
       "weightKg": 2310,
       "source": "VOYAH España; VOYAH FREE",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "trunkLiters": 560,
       "charge10to80Min": 43,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -18419,7 +18475,11 @@
       "heightMm": 1645,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 82329,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "XPeng",
@@ -18883,9 +18943,9 @@
       "consumptionKwh100": 20.1,
       "dcKw": 525,
       "acceleration0to100Sec": 3.9,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "weightKg": 2470,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -18896,7 +18956,11 @@
       "heightMm": 1680,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 72600,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "XPeng",
@@ -18959,9 +19023,9 @@
       "consumptionKwh100": 18.4,
       "dcKw": 445,
       "acceleration0to100Sec": 6.6,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
-      "auditDateTime": "2026-09-29T02:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "weightKg": 2285,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -18972,7 +19036,11 @@
       "heightMm": 1680,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 59600,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "XPeng",
@@ -19383,7 +19451,7 @@
       "source": "Zeekr Europe; gama europea; batería utilizable contrastada con EV Database",
       "dcKw": 480,
       "charge10to80Min": 16,
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "batteryChemistry": "NMC",
       "acKw": 22,
       "weightKg": 2405,
@@ -19399,7 +19467,11 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 97
+      "usableBatteryKwh": 97,
+      "price": 59990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Zeekr",
@@ -19538,8 +19610,8 @@
       "source": "Zeekr Europe; gama europea",
       "lastUpdated": "2026-09-29",
       "market": "ES",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:55:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:35:00+02:00",
       "batteryChemistry": "LFP",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -19550,7 +19622,11 @@
       "heightMm": 1656,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 42990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Zeekr",
