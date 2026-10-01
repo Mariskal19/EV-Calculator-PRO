@@ -478,14 +478,14 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private int tableWidth(){
         int count=Math.max(1,selectedIds.size());
         if(count<=2){
-            return Math.max(dp(120), availableCompareWidthPx());
+            return Math.max(dp(120), Math.min(availableCompareWidthPx(), dp(256)));
         }
         return dp(145*count);
     }
     private int carColumnWidth(){
         int count=Math.max(1,selectedIds.size());
         if(count<=2){
-            return Math.max(dp(120), availableCompareWidthPx()/count);
+            return Math.max(dp(120), Math.min(availableCompareWidthPx()/count, dp(128)));
         }
         return dp(145);
     }
@@ -790,6 +790,11 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             TextView cell=tv(value(v,key),13,text());
             cell.setGravity(Gravity.CENTER);
             cell.setIncludeFontPadding(false);
+            if ("cons".equals(key)) {
+                cell.setMaxLines(2);
+                cell.setLineSpacing(0,1.0f);
+                cell.setPadding(dp(1),0,dp(1),0);
+            }
             if ("dimensions".equals(key)) {
                 cell.setMaxLines(2);
                 cell.setLineSpacing(0,1.0f);
