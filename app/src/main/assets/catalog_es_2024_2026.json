@@ -10085,7 +10085,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 49686.3,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10196,7 +10196,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10257,7 +10257,7 @@
       "trunkLiters": 455,
       "id": "mercedes-benz-cla-350-4matic-el-ctrico-2025-90-nmc-260-awd",
       "market": "ES",
-      "price": 79900,
+      "price": 59900,
       "currency": "EUR",
       "weightKg": 2135,
       "photo": null,
@@ -10275,7 +10275,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10315,7 +10315,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10392,7 +10392,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 57777.5,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10432,7 +10432,7 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; GLA 2026",
       "dimensionsAuditDate": "2026-09-30",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10472,7 +10472,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10551,7 +10551,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mercedes-Benz",
@@ -10629,8 +10629,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "price": 68940,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "price": 68990,
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -10668,8 +10668,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "price": 63940,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "price": 63990,
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -10709,7 +10709,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 25490,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -10748,8 +10748,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "price": 27900,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "price": 27990,
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -10865,8 +10865,8 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "price": 38190,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "price": 36000,
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -10943,8 +10943,8 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "price": 43440,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "price": 45000,
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -10983,7 +10983,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 32990,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -11022,7 +11022,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 36490,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -11061,7 +11061,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 38990,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -11101,7 +11101,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 48990,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -11141,7 +11141,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 45990,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MG",
@@ -11182,7 +11182,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MINI",
@@ -11260,7 +11260,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MINI",
@@ -11299,7 +11299,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MINI",
@@ -11376,7 +11376,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MINI",
@@ -11453,7 +11453,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "MINI",
@@ -11492,7 +11492,7 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mitsubishi",
@@ -11530,7 +11530,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 43050,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Mitsubishi",
@@ -11568,7 +11568,7 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 47900,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Nissan",
@@ -11718,7 +11718,7 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 52.9,
       "price": 36695,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Nissan",
@@ -11754,7 +11754,7 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 75.1,
       "price": 41695,
-      "priceAuditDateTime": "2026-10-01T16:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
     },
     {
       "make": "Nissan",
