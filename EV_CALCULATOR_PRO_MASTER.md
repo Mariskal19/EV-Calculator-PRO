@@ -746,3 +746,10 @@ Cuando se retome EV Calculator PRO:
 - La fila `10–80 %` participa en el cálculo de mejor resultado y se resalta en azul el menor tiempo.
 - Commit: `f242c2c85adcb9b3f038fe645b8f8cd9ca725d6f`.
 - Estado: pendiente de build y prueba visual junto con el ajuste de batería en dos líneas.
+
+
+## 2026-10-01 — Valores `null` en Comparar coches
+
+- Los valores de texto nulos o con el literal `null` ahora se muestran como `—` en lugar de `null`.
+- Aplicable, entre otros, a la fila de Tracción cuando el catálogo no tiene dato.
+- Commit: `46a7da27e52b7b835d9566426447efd509aa5102`.
