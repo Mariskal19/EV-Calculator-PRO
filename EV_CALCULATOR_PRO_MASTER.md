@@ -501,3 +501,10 @@ Cuando se retome EV Calculator PRO:
 - Icono Coches: ya incorpora `scaleX(1.22f)` para compensar visualmente su arte más estrecho; no se modifica.
 - Commit: `b6b451f4bace07131ad1d45b3de89eddefa296a1`.
 - Build automático lanzado: run `36843722435`, build 1978, inicialmente en cola.
+
+
+## 2026-10-01 — Corrección inmediata navegación inferior
+- Se revirtió la modificación que reservaba 64dp mediante `bottomMargin` en `BaseNavigationActivity`.
+- Esa modificación generaba una franja vacía visible encima de la barra inferior.
+- Se restaura exactamente el modelo anterior: contenido a pantalla completa + barra inferior superpuesta de 64dp.
+- Commit de corrección: `6a0d5c569ab39ecfbb2ccf9fa3e91261ba81924c`.
