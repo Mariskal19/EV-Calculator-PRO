@@ -621,3 +621,14 @@ Cuando se retome EV Calculator PRO:
 - Cambio aplicado únicamente en `CompararCochesActivity.java`.
 - **Commit estable:** `533a4cc5f04bd32098b971dc613dc3dd0fd80b2d`.
 - Este commit queda como checkpoint de recuperación para la versión de **21:10 del 01/10/2026**.
+
+
+## 2026-10-01 — Stable Comparar coches 21:30
+
+- Se da por **estable** el ajuste final de la tabla de **Comparar coches** tras la prueba visual en el dispositivo.
+- Se mantiene la tipografía de los valores en **13sp**, igual que el resto de valores; no se usa autosize.
+- Para 1–2 coches, la columna de valores queda limitada a **128 dp** para hacerla más estrecha sin aumentar el tamaño de letra.
+- El consumo (`17,5 kWh/100 km`, etc.) puede ocupar hasta **2 líneas** para evitar cortes.
+- Las filas de características mantienen **42 dp** y las filas azules de sección **52 dp**.
+- **Commit del ajuste visual:** `7938efff5788eda55feb214c346b9c016a595296`.
+- Este estado queda guardado como checkpoint estable de **21:30 del 01/10/2026**. No modificarlo salvo nueva incidencia visual.
