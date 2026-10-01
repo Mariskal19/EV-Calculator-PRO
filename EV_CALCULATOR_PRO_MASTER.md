@@ -14,12 +14,12 @@
 - **Ramas stable:** no modificar sin autorización expresa.
 - **Versión de referencia actual:** 1.0.4 / línea de trabajo posterior a los checkpoints de septiembre de 2026.
 - **Google Play:** la publicación/revisión de producción seguía pendiente al último checkpoint conocido.
-- **Catálogo:** objetivo operativo actual de **607 registros**.
+- **Catálogo:** objetivo operativo actual de **682 registros**.
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
-- **Objetivo histórico de 607:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
+- **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** puntos de integridad de catálogo completados; queda pendiente resolver de forma explícita la objetivo 682 confirmado y ejecutar/validar el build final.
 - **Build final:** pendiente de ejecutar/verificar con el catálogo corregido.
 - **APK/AAB:** debe comprobarse que el catálogo corregido queda realmente incluido en el artefacto generado.
@@ -154,7 +154,7 @@ Antes de dar el catálogo por terminado:
 
 ### Importante
 
-El último estado conocido mostró **676 registros**, por lo que no debe afirmarse que el catálogo tiene 607 hasta realizar una comprobación real posterior.
+El último estado conocido mostró **676 registros**, por lo que no debe afirmarse que el catálogo tiene 682 hasta realizar una comprobación real posterior.
 
 ---
 
@@ -306,7 +306,7 @@ El Build de EV Calculator PRO debe servir también como comprobación de integra
 Después de corregir y certificar el catálogo:
 
 1. contar registros del catálogo fuente;
-2. confirmar 607;
+2. confirmar 682;
 3. confirmar ausencia de duplicados;
 4. ejecutar Build EV Calculator PRO;
 5. comprobar que el build termina correctamente;
@@ -424,7 +424,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Revisar el conjunto Ford Explorer 2024–2026 incorporado/corregido.
 - [x] Confirmar dimensiones presentes en 682/682 registros.
 - [x] Confirmar `auditDateTime` presente en 682/682 registros.
-- [ ] Resolver de forma controlada la diferencia entre 682 actuales y el objetivo histórico de 682.
+- [ ] Mantener el catálogo certificado en 682 registros.
 
 ### Prioridad 2 — Build
 
@@ -491,3 +491,13 @@ Cuando se retome EV Calculator PRO:
 **Los builds deben demostrar que el código y el catálogo que hemos validado son los que realmente llegan al APK/AAB.**
 
 **Stable no se toca sin autorización expresa.**
+
+
+## 2026-10-01 — Auditoría UI punto 5
+- Revisada la arquitectura de Edge-to-Edge, navegación inferior y pantallas principales.
+- Se detectó que la barra inferior de 64dp se superponía al contenido porque el host la colocaba como overlay sin reservar su altura.
+- Corregido `BaseNavigationActivity.java` en `main`: el contenido reserva 64dp inferiores antes de añadir la navegación.
+- `EdgeToEdgeHelper` se mantiene sin cambios: Android 15+ edge-to-edge y compatibilidad con Android 14 y anteriores.
+- Icono Coches: ya incorpora `scaleX(1.22f)` para compensar visualmente su arte más estrecho; no se modifica.
+- Commit: `b6b451f4bace07131ad1d45b3de89eddefa296a1`.
+- Build automático lanzado: run `36843722435`, build 1978, inicialmente en cola.
