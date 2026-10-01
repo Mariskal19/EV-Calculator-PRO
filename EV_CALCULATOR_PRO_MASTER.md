@@ -604,3 +604,10 @@ Cuando se retome EV Calculator PRO:
 - Fecha de envío: **12/09/2026 a las 15:47**.
 - Estado comprobado el **01/10/2026**: **En revisión**.
 - No realizar un nuevo envío ni modificar este release mientras permanezca en revisión, salvo que Google Play solicite alguna acción.
+
+
+## 2026-10-01 — Punto de recuperación antes de cambio en Comparar coches
+
+- **Commit de recuperación:** `4761bbf00fd6e3d97b2beabc920d287656022c9d`.
+- Este commit corresponde al estado del proyecto inmediatamente anterior al nuevo cambio previsto en la pantalla **Comparar coches**.
+- Si el cambio visual/funcional posterior provoca una regresión, usar este commit como referencia para recuperar el estado anterior.
