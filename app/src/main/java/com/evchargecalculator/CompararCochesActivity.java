@@ -766,7 +766,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         l.setIncludeFontPadding(false);
         l.setPadding(dp(6),0,dp(6),0);
         l.setBackgroundColor(bgColor);
-        int rowHeight = "dimensions".equals(key) ? dp(64) : dp(52);
+        int rowHeight = "dimensions".equals(key) ? dp(64) : dp(42);
         tableLabels.addView(l,new LinearLayout.LayoutParams(-1,rowHeight));
 
         LinearLayout r=new LinearLayout(this);
