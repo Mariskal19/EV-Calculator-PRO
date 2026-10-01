@@ -12692,8 +12692,8 @@
       "acceleration0to100Sec": 6.5,
       "source": "Peugeot España; especificaciones oficiales",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:02:00+02:00",
       "weightKg": 2337,
       "trunkLiters": 544,
       "charge10to80Min": 28,
@@ -12706,7 +12706,11 @@
       "heightMm": 1646,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 49100,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:02:00+02:00",
+      "priceSource": "Fabricante oficial España"
     },
     {
       "make": "Peugeot",
@@ -12724,7 +12728,7 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales; batería utilizable contrastada con EV Database",
       "dcKw": 160,
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:02:00+02:00",
       "weightKg": 2183,
       "trunkLiters": 520,
       "charge10to80Min": 28,
@@ -12741,7 +12745,11 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 73
+      "usableBatteryKwh": 73,
+      "price": 42650,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:02:00+02:00",
+      "priceSource": "Fabricante oficial España"
     },
     {
       "make": "Peugeot",
@@ -12799,7 +12807,7 @@
       "lastUpdated": "2026-09-29",
       "source": "Peugeot España; especificaciones oficiales; batería utilizable contrastada con EV Database",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:02:00+02:00",
       "weightKg": 2337,
       "trunkLiters": 544,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -12813,7 +12821,11 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 73
+      "usableBatteryKwh": 73,
+      "price": 49100,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:02:00+02:00",
+      "priceSource": "Fabricante oficial España"
     },
     {
       "make": "Peugeot",
