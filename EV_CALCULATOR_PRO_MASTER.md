@@ -584,3 +584,13 @@ Cuando se retome EV Calculator PRO:
 - Los registros modificados en esta fase llevan fecha de auditoría **2026-10-01**.
 - Mantener como control posterior una revisión de trazabilidad de aquellos PVP cuya fuente histórica o correspondencia de acabado sea menos literal; esta revisión no implica dejar campos de precio vacíos.
 - **Siguiente paso:** auditoría final global del catálogo y build, comprobando que los 682 registros y sus precios auditados son los que terminan realmente dentro del APK/AAB.
+
+
+## 2026-10-01 — Cierre definitivo de auditoría de batería utilizable
+
+- Se localizó y verificó el único registro que quedaba sin `usableBatteryKwh`: **M-HERO I 2024 — BEV 800 kW AWD 142.87 kWh**.
+- Batería bruta: **142,87 kWh**; batería utilizable/neto contrastada: **135,0 kWh**.
+- El catálogo ya contiene `usableBatteryKwh: 135` y la fuente registrada indica contraste con EVKX.
+- Comprobación global posterior: **682/682 registros tienen `usableBatteryKwh`**; **0 pendientes**.
+- Con esto queda **cerrada la auditoría de batería utilizable** del catálogo actual.
+- No repetir esta auditoría salvo regresión o modificación de datos.
