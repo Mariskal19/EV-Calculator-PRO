@@ -13818,13 +13818,13 @@
       "drivetrain": "RWD",
       "acKw": 11,
       "dcKw": 165,
-      "source": "Škoda España; gama eléctrica",
+      "source": "Škoda España; gama eléctrica; precio PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "charge10to80Min": 25,
       "acceleration0to100Sec": 8.5,
       "trunkLiters": 470,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "weightKg": 2111,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -13835,7 +13835,9 @@
       "heightMm": 1625,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 37923,
+      "currency": "EUR"
     },
     {
       "make": "Škoda",
