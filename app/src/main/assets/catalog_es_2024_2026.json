@@ -8932,7 +8932,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 48.1
+      "usableBatteryKwh": 48.1,
+      "price": 34500,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Lancia España / Stellantis Media; PVP España de lanzamiento junio 2024, versión eléctrica base"
     },
     {
       "make": "Leapmotor",
