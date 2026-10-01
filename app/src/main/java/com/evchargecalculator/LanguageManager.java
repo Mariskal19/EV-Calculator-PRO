@@ -220,6 +220,10 @@ public final class LanguageManager {
     add("Peso", "Weight", "Poids", "Gewicht", "Peso", "Peso");
     add("Selecciona un coche para mostrar sus características.", "Select a car to show its features.", "Sélectionnez une voiture pour afficher ses caractéristiques.", "Wähle ein Fahrzeug aus, um seine Eigenschaften anzuzeigen.", "Seleziona un'auto per visualizzarne le caratteristiche.", "Selecione um carro para ver as suas características.");
     add("Marca, modelo, año, batería o versión", "Make, model, year, battery or version", "Marque, modèle, année, batterie ou version", "Marke, Modell, Jahr, Batterie oder Version", "Marca, modello, anno, batteria o versione", "Marca, modelo, ano, bateria ou versão");
+    add("Dimensiones", "Dimensions", "Dimensions", "Abmessungen", "Dimensioni", "Dimensões");
+    add("Largo", "Length", "Longueur", "Länge", "Lunghezza", "Comprimento");
+    add("Ancho", "Width", "Largeur", "Breite", "Larghezza", "Largura");
+    add("Alto", "Height", "Hauteur", "Höhe", "Altezza", "Altura");
     add("Mercado", "Market", "Marché", "Markt", "Mercato", "Mercado");
     add("✕  Quitar", "✕  Remove", "✕  Supprimer", "✕  Entfernen", "✕  Rimuovi", "✕  Remover");
     add("Menú", "Menu", "Menu", "Menü", "Menu", "Menu");
