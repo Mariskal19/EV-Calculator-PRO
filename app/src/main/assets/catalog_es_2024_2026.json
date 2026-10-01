@@ -8969,7 +8969,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 52
+      "usableBatteryKwh": 52,
+      "price": 28900,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Carwow, PVP España B03X Design Pro Max 53 kWh, septiembre 2026"
     },
     {
       "make": "Leapmotor",
@@ -9003,7 +9006,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 39
+      "usableBatteryKwh": 39,
+      "price": 24900,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Carwow, PVP España B03X Life Pro 39,8 kWh, septiembre 2026"
     },
     {
       "make": "Leapmotor",
@@ -9037,7 +9043,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 65
+      "usableBatteryKwh": 65,
+      "price": 30264,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, PVP sin descuentos B05 Design ProMax 67,1 kWh, 2026"
     },
     {
       "make": "Leapmotor",
@@ -9071,7 +9080,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 55
+      "usableBatteryKwh": 55,
+      "price": 26264,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, PVP sin descuentos B05 Life Pro 56,2 kWh, 2026"
     },
     {
       "make": "Leapmotor",
@@ -9094,7 +9106,7 @@
       "source": "Leapmotor/Stellantis España; especificaciones oficiales",
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "charge10to80Min": 24,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9106,7 +9118,10 @@
       "heightMm": 1652,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 33264,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, PVP sin descuentos B10 DesignProMax 67,1 kWh, 2026"
     },
     {
       "make": "Leapmotor",
@@ -9129,7 +9144,7 @@
       "source": "Leapmotor/Stellantis España; especificaciones oficiales; capacidad útil contrastada con EVKX",
       "lastUpdated": "2026-09-24",
       "trunkLiters": 515,
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "charge10to80Min": 20,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -9141,7 +9156,10 @@
       "heightMm": 1652,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 29264,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Motor.es, PVP sin descuentos B10 LifePro 56,2 kWh, 2026"
     },
     {
       "make": "Leapmotor",
