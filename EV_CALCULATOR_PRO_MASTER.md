@@ -611,3 +611,13 @@ Cuando se retome EV Calculator PRO:
 - **Commit de recuperación:** `4761bbf00fd6e3d97b2beabc920d287656022c9d`.
 - Este commit corresponde al estado del proyecto inmediatamente anterior al nuevo cambio previsto en la pantalla **Comparar coches**.
 - Si el cambio visual/funcional posterior provoca una regresión, usar este commit como referencia para recuperar el estado anterior.
+
+
+## 2026-10-01 — Stable Comparar coches 21:10
+
+- Se da por **estable** la pantalla **Comparar coches** tras la prueba visual en el dispositivo.
+- Filas azules de sección: **52 dp**, sin cambios.
+- Filas de características/valores: **42 dp**, reducidas desde 52 dp para compactar la tabla.
+- Cambio aplicado únicamente en `CompararCochesActivity.java`.
+- **Commit estable:** `533a4cc5f04bd32098b971dc613dc3dd0fd80b2d`.
+- Este commit queda como checkpoint de recuperación para la versión de **21:10 del 01/10/2026**.
