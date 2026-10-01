@@ -655,7 +655,7 @@ Cuando se retome EV Calculator PRO:
 
 ### Orden recomendado para el cierre
 
-1. Auditoría de `dcKw` y `charge10to80Min`.
+1. Auditoría de `dcKw`.
 2. Revisión final de **Detalle del coche**.
 3. Revisión final del **Buscador de coches**.
 4. Comprobación de las **3 automatizaciones** y sus schedules mediante runs reales.
@@ -679,3 +679,13 @@ Cuando se retome EV Calculator PRO:
 - Commit de catálogo: `345bd8b21569075ca15bba3358734a6aa1220991`.
 - Auditoría ejecutada el **01/10/2026 a las 21:38:37 +02:00**.
 - No repetir esta auditoría salvo regresión o modificación de datos.
+
+
+## 2026-10-01 — Cierre de auditoría de charge10to80Min
+
+- Revisado el único registro que figuraba pendiente: **MG MGS9 PHEV Comfort 2026**.
+- El registro queda **auditado**, pero `charge10to80Min` es **no aplicable**: el MGS9 PHEV no dispone de carga rápida DC (`dcKw` no disponible); MG especifica carga AC de hasta 11 kW. citeturn1search0turn1search3
+- No se ha introducido un número ficticio para representar un tiempo DC inexistente.
+- Se añadió `charge10to80Applicable: false` y la auditoría queda fechada el **01/10/2026 21:45 +02:00**.
+- Estado de auditoría: **682/682 registros revisados; 0 registros con dato DC 10-80% pendiente de determinar**.
+- Commit: `006fd7585d4a557cd7af42e89306dd9b14a3aa18`.
