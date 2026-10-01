@@ -9,8 +9,10 @@ on:
       - "app/src/main/assets/catalog_remote_exclusions.json"
       - ".github/workflows/catalog-auto-update.yml"
   schedule:
-    - cron: "18 8 * * *"
-      timezone: "Europe/Madrid" # Daily automatic catalog sync at 08:18 Spain time
+    - cron: "19 8 * * *"
+      timezone: "Europe/Madrid" # Daily automatic catalog sync at 08:19 Spain time
+    - cron: "0 15 * * *"
+      timezone: "Europe/Madrid" # Daily automatic catalog sync at 15:00 Spain time
 
 permissions:
   contents: write
