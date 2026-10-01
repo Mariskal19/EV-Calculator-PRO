@@ -7029,7 +7029,7 @@
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 401,
       "market": "ES",
-      "price": null,
+      "price": 54550,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales; batería utilizable contrastada con EV Database",
       "lastUpdated": "2026-09-29",
@@ -7046,7 +7046,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 80
+      "usableBatteryKwh": 80,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Hyundai Motor España, comunicado oficial de precios IONIQ 6, 02/07/2026"
     },
     {
       "make": "Hyundai",
