@@ -711,3 +711,17 @@ Cuando se retome EV Calculator PRO:
 - **Resultado: 0 registros aplicables pendientes de `dcKw`.**
 - Auditoría ejecutada el **01/10/2026 a las 21:48:32 +02:00**.
 - No repetir esta auditoría salvo regresión o modificación de datos.
+
+
+## 2026-10-01 — Ajuste de visualización de batería en Comparar coches
+
+- Revisada la implementación real de la fila **Batería** en `CompararCochesActivity.java`.
+- Antes mostraba únicamente `batteryKwh` (capacidad bruta), aunque el catálogo también dispone de `usableBatteryKwh`.
+- Se implementa la nueva lógica:
+  - si solo existe un valor, mostrar ese valor;
+  - si existen ambos y son iguales (con tolerancia de redondeo), mostrar una sola capacidad;
+  - si difieren, mostrar **capacidad bruta + capacidad utilizable**;
+  - si no existe ninguno, mostrar `—`.
+- Cambio aplicado en `main`.
+- Commit: `05d27923a08a2f60b673aadb9d35bfa19e4ea49d`.
+- **Estado: cambio implementado, pendiente de verificación mediante build y prueba visual en dispositivo.**
