@@ -11960,7 +11960,7 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 2190,
       "trunkLiters": 495,
       "charge10to80Min": 35,
@@ -11975,7 +11975,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 34.46
+      "usableBatteryKwh": 34.46,
+      "price": 52900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Opel",
@@ -15061,7 +15065,7 @@
       "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 1955,
       "trunkLiters": 467,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -15076,7 +15080,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 68
+      "usableBatteryKwh": 68,
+      "price": 40416,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Skywell",
@@ -15097,7 +15105,7 @@
       "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 1955,
       "trunkLiters": 467,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -15112,7 +15120,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 81
+      "usableBatteryKwh": 81,
+      "price": 44416,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Skywell",
@@ -15133,7 +15145,7 @@
       "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 1955,
       "trunkLiters": 467,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -15148,7 +15160,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 81
+      "usableBatteryKwh": 81,
+      "price": 47416,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Skywell",
@@ -15169,7 +15185,7 @@
       "dcKw": 120,
       "charge10to80Min": 30,
       "acceleration0to100Sec": 9.6,
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 1955,
       "trunkLiters": 467,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -15184,7 +15200,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 68
+      "usableBatteryKwh": 68,
+      "price": 43416,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "smart",
@@ -15793,7 +15813,7 @@
       "market": "ES",
       "consumptionKwh100": 14.3,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 2120,
       "trunkLiters": 475,
       "charge10to80Min": 30,
@@ -15808,7 +15828,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 71
+      "usableBatteryKwh": 71,
+      "price": 44000,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Subaru",
@@ -15828,7 +15852,7 @@
       "market": "ES",
       "consumptionKwh100": 14.4,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 2100,
       "trunkLiters": 441,
       "charge10to80Min": 30,
@@ -15843,7 +15867,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 69
+      "usableBatteryKwh": 69,
+      "price": 41000,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Subaru",
@@ -15863,7 +15891,7 @@
       "market": "ES",
       "consumptionKwh100": 12.8,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T15:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 1850,
       "trunkLiters": 441,
       "charge10to80Min": 23,
@@ -15878,7 +15906,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 54
+      "usableBatteryKwh": 54,
+      "price": 33500,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Subaru",
@@ -15898,7 +15930,7 @@
       "market": "ES",
       "consumptionKwh100": 15.7,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 2050,
       "trunkLiters": 441,
       "charge10to80Min": 31,
@@ -15913,7 +15945,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 72
+      "usableBatteryKwh": 72,
+      "price": 41000,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Subaru",
@@ -15933,7 +15969,7 @@
       "market": "ES",
       "consumptionKwh100": 13.1,
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:30:00+02:00",
       "weightKg": 1950,
       "trunkLiters": 441,
       "charge10to80Min": 31,
@@ -15948,7 +15984,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 72
+      "usableBatteryKwh": 72,
+      "price": 41000,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
+      "priceSource": "Fabricante / PVP España"
     },
     {
       "make": "Tesla",
