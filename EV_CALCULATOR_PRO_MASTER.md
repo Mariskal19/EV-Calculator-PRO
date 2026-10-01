@@ -543,5 +543,11 @@ Cuando se retome EV Calculator PRO:
 
 ## 2026-10-01 — Auditoría de precios España, lotes 3–4
 - Se incorporaron 18 precios PVP España en los lotes 3–4; uno fue corregido inmediatamente tras detectar una cifra transcrita incorrectamente (Ford Explorer: 45.711 €).
-- Estado: **283 registros sin precio** de 682.
+- Estado: **280 registros sin precio** de 682.
 - Fuente de contraste: Electrolitros, tabla de precios PVP España por versión, consultada el 1/10/2026. Los precios de la tabla son de tarifa, sin descuentos ni MOVES. citeturn1view0turn2view0
+
+## 2026-10-01 — Auditoría de precios España, lote 5
+- Se añadieron **3 precios nuevos** y se corrigieron **2 precios anteriores** al contrastarlos con la tabla actual de PVP España de Electrolitros.
+- Entre las correcciones: Kia EV4 Long Range pasó a 41.990 € y Tesla/otros valores se ajustaron cuando la tabla actual mostraba una cifra distinta.
+- Estado: **280 registros sin precio**.
+- La referencia consultada indica que sus cifras son PVP de tarifa en España, sin descuentos ni MOVES, y muestra fecha de comprobación para cada precio. citeturn0search0turn0search1
