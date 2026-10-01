@@ -11274,7 +11274,7 @@
       "charge10to80Min": null,
       "acceleration0to100Sec": 9.6,
       "trunkLiters": 332,
-      "source": "MG España; especificaciones oficiales",
+      "source": "MG España; especificaciones oficiales; carga DC no disponible, por lo que 10-80% DC no aplica; auditado con MG España y fuentes técnicas",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "price": 42340,
@@ -11287,14 +11287,16 @@
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
       "accelerationAuditDateTime": "2026-09-29T16:30:00+02:00",
-      "chargingAuditDateTime": "2026-09-29T17:00:00+02:00",
+      "chargingAuditDateTime": "2026-10-01T21:45:00+02:00",
       "lengthMm": 4830,
       "widthMm": 1990,
       "heightMm": 1750,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "charge10to80Applicable": false,
+      "charge10to80AuditDateTime": "2026-10-01T21:45:00+02:00"
     },
     {
       "make": "MINI",
