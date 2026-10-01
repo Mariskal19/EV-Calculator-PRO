@@ -534,3 +534,9 @@ Cuando se retome EV Calculator PRO:
 - Se usó como referencia Electrolitros, cuya metodología indica que sus cifras son PVP de tarifa en España, sin descuentos de marca, financiación ni Plan MOVES. citeturn1search0
 - Los registros modificados llevan `market=ES`, `currency=EUR`, `auditDate=2026-10-01` y `auditDateTime=2026-10-01T15:00:00+02:00`.
 - No se han estimado precios ni se han usado precios de otros mercados.
+
+## 2026-10-01 — Auditoría de precios España, lote 2
+- Se añadieron 4 precios PVP con correspondencia exacta de versión/batería: Ford Mustang Mach-E 72,6 RWD, Hyundai IONIQ 5 84 kWh RWD, Kia EV6 84 kWh RWD y Škoda Enyaq 85.
+- Quedan 301 registros sin precio.
+- Referencia de contraste: Electrolitros, tabla de PVP de España por versión.
+- No se han añadido precios cuando la versión publicada no permitía una correspondencia suficientemente precisa.
