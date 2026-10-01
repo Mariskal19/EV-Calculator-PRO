@@ -5322,7 +5322,10 @@
       "heightMm": 1630,
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-10-01"
+      "dimensionsAuditDate": "2026-10-01",
+      "price": 44700,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
     },
     {
       "make": "Ford",
@@ -5386,7 +5389,10 @@
       "heightMm": 1630,
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-10-01"
+      "dimensionsAuditDate": "2026-10-01",
+      "price": 50758,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
     },
     {
       "make": "Ford",
@@ -5417,7 +5423,10 @@
       "heightMm": 1639,
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-10-01"
+      "dimensionsAuditDate": "2026-10-01",
+      "price": 58755,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
     },
     {
       "make": "Ford",
@@ -5448,7 +5457,10 @@
       "heightMm": 1630,
       "dimensionsAuditDateTime": "2026-10-01T09:00:00+02:00",
       "dimensionsSource": "Ford; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-10-01"
+      "dimensionsAuditDate": "2026-10-01",
+      "price": 44700,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
     },
     {
       "make": "Ford",
