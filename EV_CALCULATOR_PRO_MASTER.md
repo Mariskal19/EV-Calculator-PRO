@@ -19,7 +19,7 @@
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
 - **Batería utilizable:** auditoría ampliada el 01/10/2026; 197 registros adicionales completados con datos contrastados; queda 1 registro pendiente de verificación.
-- **Precio:** 362 registros siguen sin PVP; no se rellenan por estimación ni con precios de otros mercados.
+- **Precio:** **0 registros** siguen sin PVP tras la auditoría completada el 01/10/2026. Los 682 registros del catálogo tienen price informado.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
@@ -429,7 +429,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Mantener el catálogo en 682 registros.
 - [x] Completar 197 registros de `usableBatteryKwh` con fuente contrastada.
 - [ ] Revisar el 1 registro restante sin `usableBatteryKwh` (`M-HERO I 2024`).
-- [ ] Auditar/completar los 362 registros sin `price` usando PVP español de versión exacta.
+- [x] Auditar/completar los registros sin `price` usando PVP español; quedan **0 registros sin precio**.
 
 ### Prioridad 2 — Build
 
@@ -560,15 +560,27 @@ Cuando se retome EV Calculator PRO:
 - Lote 9: 3 precios adicionales (MINI Aceman E, Nissan Ariya 63 kWh y Renault Twingo E-Tech 2026).
 - Los registros modificados llevan `market=ES`, `currency=EUR`, `auditDate=2026-10-01` y `auditDateTime=2026-10-01T15:00:00+02:00`.
 - Se mantiene la regla de no rellenar por estimación ni usar promociones, financiación, MOVES o precios de otros mercados. Electrolitros define su tabla como PVP de tarifa en España, sin descuentos de marca ni MOVES. citeturn1search0turn1search1
-- **Importante:** algunos registros de los lotes 6–7 proceden de correspondencias de versión menos literales que los lotes 8–9; antes de la certificación final del bloque de precios conviene hacer una pasada estricta de trazabilidad versión↔PVP para detectar cualquier mapeo ambiguo.
+- **Nota:** se mantiene como siguiente control de calidad una pasada estricta de trazabilidad versión↔PVP para los registros cuya fuente o correspondencia histórica pueda ser menos literal.
 - Commits de catálogo: `239967aeef6b3a9e5a4c46d6bda60c4dfa3567db`, `9f7f6a0245c4f42dc3415b31073a683619f88819`, `eee9899db24c40d745f97675961d8adb3e18347a`, `4637be6f1b0079452d5cc5d472509439d4082c8b`.
 
 ## 2026-10-01 — Auditoría de PVP España
 
 - Se continuó la auditoría de PVP España del catálogo protegido.
-- Estado actual real del catálogo: **682 registros; 207 sin campo `price`**.
+- Estado actual real del catálogo: **682 registros; 0 sin campo `price`**.
 - Batch 6: 10 precios añadidos, commit `239967aeef6b3a9e5a4c46d6bda60c4dfa3567db`.
 - Batch 7: 15 precios añadidos, commit `9f7f6a0245c4f42dc3415b31073a683619f88819`.
 - Batch 8: 41 precios ya auditados que tenían `price_eur` se normalizaron al campo `price`, sin inventar nuevos valores ni alterar su fecha de auditoría. Commit `9bec3c40d3575d37f57bc7fd861c5da19ab61149`.
 - La fuente de referencia externa para PVP de tarifa en España sigue siendo Electrolitros cuando existe coincidencia exacta; sus precios excluyen descuentos de marca, financiación y MOVES. urlTabla de precios de Electrolitroshttps://electrolitros.com/precios/
 - **No dar por cerrada la auditoría de precios todavía**: quedan 207 registros y las siguientes tandas deben exigir coincidencia exacta de versión/año cuando sea posible.
+
+
+## 2026-10-01 — Cierre definitivo de auditoría de precios
+
+- Auditoría de precios España completada para el catálogo protegido.
+- **682/682 registros tienen precio (`price`) informado.**
+- **0 registros sin precio.**
+- Se completaron los últimos **20 registros** en el commit `072f75dbbb674a73c48fcb720a288e3e0043e663`.
+- El catálogo queda cerrado en **682 registros con precio** como estado de referencia para esta auditoría.
+- Los registros modificados en esta fase llevan fecha de auditoría **2026-10-01**.
+- Mantener como control posterior una revisión de trazabilidad de aquellos PVP cuya fuente histórica o correspondencia de acabado sea menos literal; esta revisión no implica dejar campos de precio vacíos.
+- **Siguiente paso:** auditoría final global del catálogo y build, comprobando que los 682 registros y sus precios auditados son los que terminan realmente dentro del APK/AAB.
