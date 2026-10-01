@@ -527,3 +527,10 @@ Cuando se retome EV Calculator PRO:
 - **Google Play:** pendiente de revisar el estado real y preparar posteriormente el candidato de release.
 - **ASO/ficha de Play:** pendiente para después de cerrar la versión candidata.
 - No repetir auditorías ya cerradas salvo regresión o nueva modificación.
+
+## 2026-10-01 — Auditoría de precios España, lote 1
+- Se añadieron **57 precios PVP** con correspondencia clara de modelo/versión y fuente española.
+- Quedan **305 registros** sin precio.
+- Se usó como referencia Electrolitros, cuya metodología indica que sus cifras son PVP de tarifa en España, sin descuentos de marca, financiación ni Plan MOVES. citeturn1search0
+- Los registros modificados llevan `market=ES`, `currency=EUR`, `auditDate=2026-10-01` y `auditDateTime=2026-10-01T15:00:00+02:00`.
+- No se han estimado precios ni se han usado precios de otros mercados.
