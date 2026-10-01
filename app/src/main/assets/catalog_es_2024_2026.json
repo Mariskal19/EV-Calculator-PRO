@@ -284,7 +284,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 50
+      "usableBatteryKwh": 50,
+      "price": 37760,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
     },
     {
       "make": "Audi",
@@ -321,7 +324,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 58
+      "usableBatteryKwh": 58,
+      "price": 41460,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
     },
     {
       "make": "Audi",
@@ -358,7 +364,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 79
+      "usableBatteryKwh": 79,
+      "price": 47360,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
     },
     {
       "make": "Audi",
@@ -395,7 +404,10 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 79
+      "usableBatteryKwh": 79,
+      "price": 56640,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
     },
     {
       "make": "Audi",
