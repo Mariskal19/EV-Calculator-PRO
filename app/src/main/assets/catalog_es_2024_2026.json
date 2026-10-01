@@ -17608,7 +17608,7 @@
       "batteryChemistry": "nmc",
       "acceleration0to100Sec": 7.4,
       "weightKg": 2065,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "RWD",
       "trunkLiters": 404,
@@ -17622,7 +17622,11 @@
       "heightMm": 1596,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 50450,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -17659,7 +17663,11 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 79
+      "usableBatteryKwh": 79,
+      "price": 52900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -17682,7 +17690,7 @@
       "batteryChemistry": "nmc",
       "acceleration0to100Sec": 4.7,
       "weightKg": 2185,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
       "trunkLiters": 404,
@@ -17696,7 +17704,11 @@
       "heightMm": 1596,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 58700,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -17713,7 +17725,7 @@
       "usableBatteryKwh": 88,
       "source": "Volvo Cars España; especificaciones de la gama eléctrica",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "dcKw": 300,
       "acKw": 11,
       "auditDateTime": "2026-09-29T03:15:00+02:00",
@@ -17730,7 +17742,11 @@
       "heightMm": 1546,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 71250,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -17750,7 +17766,7 @@
       "market": "ES",
       "consumptionKwh100": 16.7,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "usableBatteryKwh": 100,
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
@@ -17767,7 +17783,11 @@
       "heightMm": 1546,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 82019,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -17787,7 +17807,7 @@
       "market": "ES",
       "consumptionKwh100": 16.7,
       "batteryChemistry": "NMC",
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "usableBatteryKwh": 100,
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "drive": "AWD",
@@ -17804,7 +17824,11 @@
       "heightMm": 1546,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 87585,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -18073,7 +18097,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 91
+      "usableBatteryKwh": 91,
+      "price": 67925,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -18108,7 +18136,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 112
+      "usableBatteryKwh": 112,
+      "price": 73975,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -18143,7 +18175,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 80
+      "usableBatteryKwh": 80,
+      "price": 64900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -18180,7 +18216,11 @@
       "heightMm": 1744,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 84111,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -18218,7 +18258,11 @@
       "heightMm": 1744,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 89556,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Volvo",
@@ -18256,7 +18300,11 @@
       "heightMm": 1744,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 100325,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:15:00+02:00",
+      "priceSource": "Volvo Cars España"
     },
     {
       "make": "Voyah",
