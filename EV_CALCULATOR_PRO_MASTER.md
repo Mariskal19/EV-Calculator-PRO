@@ -20,6 +20,8 @@
 - **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
 - **Batería utilizable:** auditoría cerrada el 01/10/2026; **682/682 registros** tienen `usableBatteryKwh`; quedan **0 pendientes**.
 - **Precio:** **0 registros** siguen sin PVP tras la auditoría completada el 01/10/2026. Los 682 registros del catálogo tienen price informado.
+- **batteryChemistry:** **682/682 registros** auditados y completos; **0 pendientes**. Cierre de auditoría: 01/10/2026 21:38:37 +02:00.
+- **charge10to80Min:** **682/682 registros revisados**; **0 registros con dato DC 10–80% pendiente**. El único caso no aplicable queda documentado con charge10to80Applicable: false.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
@@ -644,7 +646,7 @@ Cuando se retome EV Calculator PRO:
 - **Duplicados:** 0 IDs duplicados y 0 duplicados lógicos.
 - **Comparar coches:** estable y probado a las **21:30**; checkpoint visual `7938efff5788eda55feb214c346b9c016a595296`.
 - **Build:** existe un build correcto anterior, pero el ajuste visual de Comparar coches de 21:30 todavía debe pasar por un build de verificación antes de considerarlo candidato final.
-- **Pendiente de datos:** revisar los campos de calidad que todavía no están cerrados globalmente: `dcKw`, `charge10to80Min` y `batteryChemistry` queda auditado y completo: 682/682.
+- **Pendiente de datos:** queda por revisar globalmente `dcKw`. `batteryChemistry` y `charge10to80Min` están cerrados: 682/682 revisados/completos y 0 pendientes aplicables.
 - **Detalle del coche:** pendiente de revisión final.
 - **Buscador de coches:** pendiente de revisión final.
 - **Coches similares:** aparcado temporalmente.
@@ -689,3 +691,11 @@ Cuando se retome EV Calculator PRO:
 - Se añadió `charge10to80Applicable: false` y la auditoría queda fechada el **01/10/2026 21:45 +02:00**.
 - Estado de auditoría: **682/682 registros revisados; 0 registros con dato DC 10-80% pendiente de determinar**.
 - Commit: `006fd7585d4a557cd7af42e89306dd9b14a3aa18`.
+
+
+## 2026-10-01 — Confirmación de campos de batería y carga
+
+- Se confirma como estado de referencia que batteryChemistry está cerrado: **682/682, 0 pendientes**.
+- Se confirma como estado de referencia que charge10to80Min está cerrado: **682/682 revisados, 0 registros con tiempo DC 10–80% pendiente de determinar**.
+- El único registro no aplicable a tiempo DC 10–80% es **MG MGS9 PHEV Comfort 2026**, documentado mediante charge10to80Applicable: false.
+- Por tanto, **no quedan pendientes de auditoría en batteryChemistry ni charge10to80Min**. No repetir estas auditorías salvo regresión o modificación de datos.
