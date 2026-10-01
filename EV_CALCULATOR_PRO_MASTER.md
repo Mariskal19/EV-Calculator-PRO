@@ -562,3 +562,13 @@ Cuando se retome EV Calculator PRO:
 - Se mantiene la regla de no rellenar por estimación ni usar promociones, financiación, MOVES o precios de otros mercados. Electrolitros define su tabla como PVP de tarifa en España, sin descuentos de marca ni MOVES. citeturn1search0turn1search1
 - **Importante:** algunos registros de los lotes 6–7 proceden de correspondencias de versión menos literales que los lotes 8–9; antes de la certificación final del bloque de precios conviene hacer una pasada estricta de trazabilidad versión↔PVP para detectar cualquier mapeo ambiguo.
 - Commits de catálogo: `239967aeef6b3a9e5a4c46d6bda60c4dfa3567db`, `9f7f6a0245c4f42dc3415b31073a683619f88819`, `eee9899db24c40d745f97675961d8adb3e18347a`, `4637be6f1b0079452d5cc5d472509439d4082c8b`.
+
+## 2026-10-01 — Auditoría de PVP España
+
+- Se continuó la auditoría de PVP España del catálogo protegido.
+- Estado actual real del catálogo: **682 registros; 207 sin campo `price`**.
+- Batch 6: 10 precios añadidos, commit `239967aeef6b3a9e5a4c46d6bda60c4dfa3567db`.
+- Batch 7: 15 precios añadidos, commit `9f7f6a0245c4f42dc3415b31073a683619f88819`.
+- Batch 8: 41 precios ya auditados que tenían `price_eur` se normalizaron al campo `price`, sin inventar nuevos valores ni alterar su fecha de auditoría. Commit `9bec3c40d3575d37f57bc7fd861c5da19ab61149`.
+- La fuente de referencia externa para PVP de tarifa en España sigue siendo Electrolitros cuando existe coincidencia exacta; sus precios excluyen descuentos de marca, financiación y MOVES. urlTabla de precios de Electrolitroshttps://electrolitros.com/precios/
+- **No dar por cerrada la auditoría de precios todavía**: quedan 207 registros y las siguientes tandas deben exigir coincidencia exacta de versión/año cuando sea posible.
