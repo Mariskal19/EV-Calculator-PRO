@@ -508,3 +508,15 @@ Cuando se retome EV Calculator PRO:
 - Esa modificación generaba una franja vacía visible encima de la barra inferior.
 - Se restaura exactamente el modelo anterior: contenido a pantalla completa + barra inferior superpuesta de 64dp.
 - Commit de corrección: `6a0d5c569ab39ecfbb2ccf9fa3e91261ba81924c`.
+
+
+## 2026-10-01 — Próximos pasos confirmados
+- No repetir la auditoría de UI ya realizada.
+- Barra inferior: cerrada y corregida.
+- Icono 🚗 Coches: cerrado y corregido.
+- Edge-to-Edge: revisado; no repetir salvo que aparezca una regresión.
+- Navegación inferior: estructura establecida.
+- Dimensiones del catálogo: auditadas.
+- Buscador de coches: avanzado.
+- Próximo trabajo: **terminar/cerrar la pantalla de Coches similares**.
+- Después: revisión final del detalle del coche, comprobación de automatización del catálogo y preparación del build candidato para Play.
