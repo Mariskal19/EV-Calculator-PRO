@@ -14099,16 +14099,16 @@
       "trunkLiters": 545,
       "id": "renault-scenic-e-tech-esprit-alpine-87-kwh-2024-87-nmc-160-fwd",
       "market": "ES",
-      "price": null,
+      "price": 44720,
       "currency": "EUR",
       "weightKg": 1920,
       "photo": null,
       "source": "Renault España; gama E-Tech eléctrico",
       "lastUpdated": "2026-09-24",
       "batteryChemistry": "li-ion",
-      "auditDate": "2026-09-24",
+      "auditDate": "2026-10-01",
       "drive": "FWD",
-      "auditDateTime": "2026-09-24T20:52:00+02:00",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -14118,7 +14118,9 @@
       "heightMm": 1571,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Renault España"
     },
     {
       "make": "Renault",
@@ -14555,8 +14557,8 @@
       "consumptionKwh100": 15.1,
       "batteryChemistry": "li-ion",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "drive": "RWD",
       "trunkLiters": 570,
       "weightKg": 2002,
@@ -14571,7 +14573,11 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 33700,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14591,8 +14597,8 @@
       "drivetrain": "AWD",
       "acKw": 11,
       "dcKw": 185,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "trunkLiters": 570,
       "weightKg": 2239,
       "charge10to80Min": 28,
@@ -14606,7 +14612,11 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 43750,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14711,8 +14721,8 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "batteryChemistry": "Li-ion",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -14723,7 +14733,11 @@
       "heightMm": 1616,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 40150,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14737,13 +14751,13 @@
       "drive": "RWD",
       "wltpKm": 437,
       "consumptionKwh100": 15.1,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 59,
       "dcKw": 165,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "trunkLiters": 585,
       "weightKg": 2002,
       "charge10to80Min": 23,
@@ -14757,7 +14771,11 @@
       "heightMm": 1616,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 31400,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14771,13 +14789,13 @@
       "drive": "RWD",
       "wltpKm": 581,
       "consumptionKwh100": 14.1,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 77,
       "dcKw": 135,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "trunkLiters": 585,
       "weightKg": 2141,
       "charge10to80Min": 39,
@@ -14791,7 +14809,11 @@
       "heightMm": 1616,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 37650,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14805,13 +14827,13 @@
       "drive": "AWD",
       "wltpKm": 549,
       "consumptionKwh100": 15,
-      "auditDate": "2026-09-29",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Škoda España; gama eléctrica",
       "usableBatteryKwh": 77,
       "dcKw": 175,
       "acKw": 11,
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "trunkLiters": 585,
       "weightKg": 2230,
       "charge10to80Min": 29,
@@ -14825,7 +14847,11 @@
       "heightMm": 1616,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 40150,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14851,8 +14877,8 @@
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "batteryChemistry": "Li-ion",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:12:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "drive": "AWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -14863,7 +14889,11 @@
       "heightMm": 1618,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 41150,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -14879,7 +14909,7 @@
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
       "source": "Documentación técnica del fabricante / fuente técnica contrastada; auditoría catálogo EV Calculator PRO; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "trunkLiters": 475,
       "weightKg": 1518,
       "charge10to80Min": 24,
@@ -14898,7 +14928,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 51.7
+      "usableBatteryKwh": 51.7,
+      "price": 22800,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Škoda España"
     },
     {
       "make": "Škoda",
@@ -15943,8 +15977,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -15954,7 +15988,11 @@
       "heightMm": 1443,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 44990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -15980,8 +16018,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -15991,7 +16029,11 @@
       "heightMm": 1443,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 57490,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16056,8 +16098,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16067,7 +16109,11 @@
       "heightMm": 1443,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 57490,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16093,8 +16139,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16104,7 +16150,11 @@
       "heightMm": 1443,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 44990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16169,8 +16219,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16180,7 +16230,11 @@
       "heightMm": 1443,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 36990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16245,8 +16299,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16256,7 +16310,11 @@
       "heightMm": 1443,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 36990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16282,8 +16340,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16293,7 +16351,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 50990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16319,8 +16381,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16330,7 +16392,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 52990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16356,8 +16422,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16367,7 +16433,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 62990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16393,8 +16463,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16404,7 +16474,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 40990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16430,8 +16504,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16441,7 +16515,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 50990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16467,8 +16545,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16478,7 +16556,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 52990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16504,8 +16586,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16515,7 +16597,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 52990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16541,8 +16627,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16552,7 +16638,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 62990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16578,8 +16668,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16589,7 +16679,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 50990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16693,8 +16787,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16704,7 +16798,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 40990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16730,8 +16828,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16741,7 +16839,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 50990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16767,8 +16869,8 @@
       "drivetrain": "AWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16778,7 +16880,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 52990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16804,8 +16910,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16815,7 +16921,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 50990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Tesla",
@@ -16841,8 +16951,8 @@
       "drivetrain": "RWD",
       "source": "Tesla España; especificaciones y consumo WLTP",
       "lastUpdated": "2026-09-29",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T00:20:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T18:10:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
       "powerAuditDateTime": "2026-09-29T16:15:00+02:00",
@@ -16852,7 +16962,11 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 40990,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
+      "priceSource": "Tesla España"
     },
     {
       "make": "Toyota",
