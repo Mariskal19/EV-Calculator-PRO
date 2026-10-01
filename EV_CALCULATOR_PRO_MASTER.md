@@ -594,3 +594,13 @@ Cuando se retome EV Calculator PRO:
 - Comprobación global posterior: **682/682 registros tienen `usableBatteryKwh`**; **0 pendientes**.
 - Con esto queda **cerrada la auditoría de batería utilizable** del catálogo actual.
 - No repetir esta auditoría salvo regresión o modificación de datos.
+
+
+## 2026-10-01 — Estado Google Play Producción
+
+- **EV Calculator PRO** mantiene en Google Play Console el **envío 15** de Producción.
+- Versión publicada en el envío: **56 (1.0.4)**.
+- Cambios enviados: **1 cambio**.
+- Fecha de envío: **12/09/2026 a las 15:47**.
+- Estado comprobado el **01/10/2026**: **En revisión**.
+- No realizar un nuevo envío ni modificar este release mientras permanezca en revisión, salvo que Google Play solicite alguna acción.
