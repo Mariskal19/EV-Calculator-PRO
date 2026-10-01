@@ -644,7 +644,7 @@ Cuando se retome EV Calculator PRO:
 - **Duplicados:** 0 IDs duplicados y 0 duplicados lógicos.
 - **Comparar coches:** estable y probado a las **21:30**; checkpoint visual `7938efff5788eda55feb214c346b9c016a595296`.
 - **Build:** existe un build correcto anterior, pero el ajuste visual de Comparar coches de 21:30 todavía debe pasar por un build de verificación antes de considerarlo candidato final.
-- **Pendiente de datos:** revisar los campos de calidad que todavía no están cerrados globalmente: `dcKw`, `charge10to80Min` y `batteryChemistry`.
+- **Pendiente de datos:** revisar los campos de calidad que todavía no están cerrados globalmente: `dcKw`, `charge10to80Min` y `batteryChemistry` queda auditado y completo: 682/682.
 - **Detalle del coche:** pendiente de revisión final.
 - **Buscador de coches:** pendiente de revisión final.
 - **Coches similares:** aparcado temporalmente.
@@ -655,7 +655,7 @@ Cuando se retome EV Calculator PRO:
 
 ### Orden recomendado para el cierre
 
-1. Auditoría de `dcKw`, `charge10to80Min` y `batteryChemistry`.
+1. Auditoría de `dcKw` y `charge10to80Min`.
 2. Revisión final de **Detalle del coche**.
 3. Revisión final del **Buscador de coches**.
 4. Comprobación de las **3 automatizaciones** y sus schedules mediante runs reales.
@@ -665,3 +665,17 @@ Cuando se retome EV Calculator PRO:
 8. Prueba final en dispositivo.
 9. Preparación de ASO/ficha de Google Play.
 10. Revisar el estado real de Google Play antes de cualquier acción de release.
+
+
+## 2026-10-01 — Cierre de auditoría de química de batería
+
+- Auditoría completada sobre los **118 registros** que tenían `batteryChemistry` vacío.
+- Se completaron **118/118** registros.
+- Estado final: **682/682 registros** tienen `batteryChemistry` informado; **0 pendientes**.
+- Se asignaron las químicas contrastadas por versión/batería, principalmente **NMC** y **LFP**.
+- El contraste se realizó con EV Database y, en casos concretos, con documentación/fuentes del fabricante. EV Database identifica NMC en las familias Audi PPE, BMW i5/iX, Kia EV3/EV4, Polestar 2/4, Subaru Solterra/Uncharted/E-Outback, Toyota bZ4X y Volkswagen ID.7, y LFP en versiones como Kia EV2 Standard Range, Mazda CX-6e, Opel Frontera 44 kWh y Zeekr 7X Core. citeturn1search0turn2search11turn2search7turn3search0turn4search6turn5search1turn5search4turn4search11
+- Casos específicos: **MG Cyberster → NMC** y **Mercedes G 580 → NMC**. citeturn10search27turn8search0
+- **Dacia Spring 2024 26,8 kWh → NMC**; la química LFP corresponde a la generación posterior con batería de 24,3 kWh. citeturn12search1turn12search10
+- Commit de catálogo: `345bd8b21569075ca15bba3358734a6aa1220991`.
+- Auditoría ejecutada el **01/10/2026 a las 21:38:37 +02:00**.
+- No repetir esta auditoría salvo regresión o modificación de datos.
