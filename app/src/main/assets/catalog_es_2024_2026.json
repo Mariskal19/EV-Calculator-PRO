@@ -6501,7 +6501,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 46
+      "usableBatteryKwh": 46,
+      "price": 32850,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Hyundai España; precio PVP contrastado con km77"
     },
     {
       "make": "Hyundai",
@@ -6616,7 +6620,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 58
+      "usableBatteryKwh": 58,
+      "price": 33995,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Hyundai España / precios de lanzamiento en España contrastados con Motor.es"
     },
     {
       "make": "Hyundai",
@@ -6651,7 +6659,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 41
+      "usableBatteryKwh": 41,
+      "price": 29995,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Hyundai España / precios de lanzamiento en España contrastados con Motor.es"
     },
     {
       "make": "Hyundai",
@@ -7587,7 +7599,11 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 96.3
+      "usableBatteryKwh": 96.3,
+      "price": 53305,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Precio nuevo en España 2026; PVP de versión Full Electric BEV Altitude Long Range contrastado con Coches.net/JATO"
     },
     {
       "make": "Jeep",
@@ -10120,7 +10136,11 @@
       "heightMm": 1469,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 56125,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77"
     },
     {
       "make": "Mercedes-Benz",
@@ -10155,7 +10175,11 @@
       "heightMm": 1469,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 60725,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77"
     },
     {
       "make": "Mercedes-Benz",
@@ -10494,7 +10518,7 @@
       "trunkLiters": 565,
       "id": "mercedes-benz-glb-350-4matic-electrico-2026-85-nmc-260-awd",
       "market": "ES",
-      "price": null,
+      "price": 63800,
       "currency": "EUR",
       "weightKg": 2260,
       "photo": null,
@@ -10511,7 +10535,9 @@
       "heightMm": 1687,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "Mercedes-Benz España; PVP en España contrastado con Motor.es"
     },
     {
       "make": "Mercedes-Benz",
@@ -11397,7 +11423,7 @@
       "acceleration0to100Sec": 5.9,
       "trunkLiters": 210,
       "market": "ES",
-      "price": null,
+      "price": 41680,
       "currency": "EUR",
       "weightKg": 1740,
       "photo": null,
@@ -11414,7 +11440,9 @@
       "heightMm": 1460,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
+      "priceSource": "BMW Group España / MINI; precios 2025 oficiales"
     },
     {
       "make": "MINI",
