@@ -23,6 +23,7 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import androidx.core.widget.NestedScrollView;
+import androidx.core.widget.TextViewCompat;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -440,7 +441,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableDataHost.setClipChildren(true);
         tableDataHost.setClipToPadding(true);
         FrameLayout.LayoutParams dataHostLp=new FrameLayout.LayoutParams(-1,-2);
-        dataHostLp.leftMargin=dp(112);
+        dataHostLp.leftMargin=dp(104);
         compareTable.addView(tableDataHost,dataHostLp);
 
         tableLabels=new LinearLayout(this);
@@ -448,7 +449,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
-        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(104),-2,Gravity.TOP|Gravity.LEFT));
 
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
@@ -473,7 +474,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
     private int availableCompareWidthPx(){
         int screen=getResources().getDisplayMetrics().widthPixels;
-        return Math.max(dp(120), screen-dp(112));
+        return Math.max(dp(120), screen-dp(104));
     }
     private int tableWidth(){
         int count=Math.max(1,selectedIds.size());
@@ -790,6 +791,10 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             TextView cell=tv(value(v,key),13,text());
             cell.setGravity(Gravity.CENTER);
             cell.setIncludeFontPadding(false);
+            if ("cons".equals(key)) {
+                cell.setSingleLine(true);
+                TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(cell, dp(11), dp(13), dp(1), android.util.TypedValue.COMPLEX_UNIT_SP);
+            }
             if ("dimensions".equals(key)) {
                 cell.setMaxLines(2);
                 cell.setLineSpacing(0,1.0f);
