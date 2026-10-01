@@ -5817,8 +5817,8 @@
       "price_eur": 49205,
       "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-29",
-      "source": "Ford España; especificaciones oficiales; batería utilizable contrastada con EV Database",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "source": "Ford España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "acKw": 10.5,
       "dcKw": 150,
       "weightKg": 2175,
@@ -5835,7 +5835,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 72.6
+      "usableBatteryKwh": 72.6,
+      "price": 50000,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -8420,10 +8422,10 @@
       "acKw": 11,
       "dcKw": 350,
       "charge10to80Min": 18,
-      "source": "Kia Iberia; EV6 especificaciones oficiales; batería utilizable contrastada con EV Database",
+      "source": "Kia Iberia; EV6 especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "auditDate": "2026-10-01",
-      "auditDateTime": "2026-10-01T14:00:00+02:00",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "trunkLiters": 490,
       "weightKg": 1985,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -8437,7 +8439,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 80
+      "usableBatteryKwh": 80,
+      "price": 53380,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -12225,11 +12229,11 @@
       "acKw": 11,
       "dcKw": 160,
       "acceleration0to100Sec": 8.7,
-      "source": "Peugeot España; especificaciones oficiales",
+      "source": "Peugeot España; especificaciones oficiales; precio PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "price_eur": 49660,
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T03:15:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "weightKg": 2241,
       "trunkLiters": 520,
       "charge10to80Min": 37,
@@ -12242,7 +12246,9 @@
       "heightMm": 1646,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 53000,
+      "currency": "EUR"
     },
     {
       "make": "Peugeot",
@@ -14169,12 +14175,12 @@
       "trunkLiters": 585,
       "weightKg": 2155,
       "photo": null,
-      "source": "Škoda España; gama eléctrica",
+      "source": "Škoda España; gama eléctrica; precio PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-29",
       "market": "ES",
       "batteryChemistry": "Li-ion",
-      "auditDate": "2026-09-29",
-      "auditDateTime": "2026-09-29T01:45:00+02:00",
+      "auditDate": "2026-10-01",
+      "auditDateTime": "2026-10-01T15:00:00+02:00",
       "drive": "RWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -14185,7 +14191,9 @@
       "heightMm": 1594,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 49500,
+      "currency": "EUR"
     },
     {
       "make": "Škoda",
