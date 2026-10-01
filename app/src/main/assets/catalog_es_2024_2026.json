@@ -4796,7 +4796,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 29
+      "usableBatteryKwh": 29,
+      "price": 24294,
+      "currency": "EUR"
     },
     {
       "make": "Dongfeng",
@@ -5634,7 +5636,9 @@
       "heightMm": 1626,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 47200,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -5671,7 +5675,9 @@
       "heightMm": 1626,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 54265,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -5708,7 +5714,9 @@
       "heightMm": 1626,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 61255,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -5744,7 +5752,9 @@
       "heightMm": 1624,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; base Mustang Mach-E",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 81428,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -5888,7 +5898,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 72.6
+      "usableBatteryKwh": 72.6,
+      "price": 52835,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -5962,7 +5974,9 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 72233,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -5998,7 +6012,9 @@
       "heightMm": 1624,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 81428,
+      "currency": "EUR"
     },
     {
       "make": "Ford",
@@ -6255,7 +6271,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 60
+      "usableBatteryKwh": 60,
+      "price": 30995,
+      "currency": "EUR"
     },
     {
       "make": "GAC",
@@ -6290,7 +6308,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 75.26
+      "usableBatteryKwh": 75.26,
+      "price": 37995,
+      "currency": "EUR"
     },
     {
       "make": "Geely",
@@ -6328,7 +6348,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; Galaxy E5/Geely E5",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 60.22
+      "usableBatteryKwh": 60.22,
+      "price": 37490,
+      "currency": "EUR"
     },
     {
       "make": "Geely",
@@ -6364,7 +6386,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; Galaxy E5/Geely E5",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 68.39
+      "usableBatteryKwh": 68.39,
+      "price": 41990,
+      "currency": "EUR"
     },
     {
       "make": "Geely",
@@ -6400,7 +6424,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; Galaxy E5/Geely E5",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 68.39
+      "usableBatteryKwh": 68.39,
+      "price": 39990,
+      "currency": "EUR"
     },
     {
       "make": "Hyundai",
@@ -7016,7 +7042,9 @@
       "heightMm": 1790,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "price": 81600,
+      "currency": "EUR"
     },
     {
       "make": "Hyundai",
@@ -7091,7 +7119,9 @@
       "heightMm": 1790,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 87100,
+      "currency": "EUR"
     },
     {
       "make": "Hyundai",
@@ -7354,7 +7384,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 58.9
+      "usableBatteryKwh": 58.9,
+      "price": 38500,
+      "currency": "EUR"
     },
     {
       "make": "Jaecoo",
@@ -7678,7 +7710,9 @@
       "heightMm": 1725,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 37500,
+      "currency": "EUR"
     },
     {
       "make": "KGM",
@@ -7714,7 +7748,9 @@
       "heightMm": 1725,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 34500,
+      "currency": "EUR"
     },
     {
       "make": "KGM",
@@ -7751,7 +7787,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 80.6
+      "usableBatteryKwh": 80.6,
+      "price": 37500,
+      "currency": "EUR"
     },
     {
       "make": "KGM",
@@ -7788,7 +7826,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 80.6
+      "usableBatteryKwh": 80.6,
+      "price": 35000,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -8129,7 +8169,9 @@
       "heightMm": 1560,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 38430,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -8151,7 +8193,7 @@
       "trunkLiters": 460,
       "id": "kia-ev3-gt-line-long-range-2024-81-4-nmc-150-fwd",
       "market": "ES",
-      "price": null,
+      "price": 48705,
       "currency": "EUR",
       "weightKg": 1885,
       "photo": null,
@@ -8579,7 +8621,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 48
+      "usableBatteryKwh": 48,
+      "price": 39900,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -8614,7 +8658,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 67
+      "usableBatteryKwh": 67,
+      "price": 45775,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -8649,7 +8695,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 67
+      "usableBatteryKwh": 67,
+      "price": 42755,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -8684,7 +8732,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 48
+      "usableBatteryKwh": 48,
+      "price": 38755,
+      "currency": "EUR"
     },
     {
       "make": "Kia",
@@ -8719,7 +8769,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 67
+      "usableBatteryKwh": 67,
+      "price": 45155,
+      "currency": "EUR"
     },
     {
       "make": "Lancia",
@@ -9033,7 +9085,9 @@
       "heightMm": 1680,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 34900,
+      "currency": "EUR"
     },
     {
       "make": "Leapmotor",
@@ -9071,7 +9125,9 @@
       "heightMm": 1577,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 18900,
+      "currency": "EUR"
     },
     {
       "make": "Lexus",
@@ -9610,7 +9666,9 @@
       "heightMm": 1935,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 158037,
+      "currency": "EUR"
     },
     {
       "make": "Maserati",
@@ -9645,7 +9703,9 @@
       "heightMm": 1365,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 209600,
+      "currency": "EUR"
     },
     {
       "make": "Maserati",
@@ -12545,7 +12605,9 @@
       "heightMm": 1694,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 49160,
+      "currency": "EUR"
     },
     {
       "make": "Peugeot",
@@ -12581,7 +12643,9 @@
       "heightMm": 1694,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 51660,
+      "currency": "EUR"
     },
     {
       "make": "Peugeot",
@@ -13160,7 +13224,9 @@
       "heightMm": 1623,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 82310,
+      "currency": "EUR"
     },
     {
       "make": "Porsche",
@@ -13231,7 +13297,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 94.9
+      "usableBatteryKwh": 94.9,
+      "price": 82310,
+      "currency": "EUR"
     },
     {
       "make": "Porsche",
@@ -15057,7 +15125,9 @@
       "heightMm": 1705,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 59000,
+      "currency": "EUR"
     },
     {
       "make": "smart",
@@ -15092,7 +15162,9 @@
       "heightMm": 1705,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 57500,
+      "currency": "EUR"
     },
     {
       "make": "smart",
@@ -15127,7 +15199,9 @@
       "heightMm": 1705,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 48000,
+      "currency": "EUR"
     },
     {
       "make": "smart",
@@ -15162,7 +15236,9 @@
       "heightMm": 1705,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 53000,
+      "currency": "EUR"
     },
     {
       "make": "smart",
@@ -15197,7 +15273,9 @@
       "heightMm": 1705,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 57500,
+      "currency": "EUR"
     },
     {
       "make": "smart",
@@ -15232,7 +15310,9 @@
       "heightMm": 1705,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "price": 59000,
+      "currency": "EUR"
     },
     {
       "make": "smart",
