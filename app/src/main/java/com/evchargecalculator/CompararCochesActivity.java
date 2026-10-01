@@ -23,7 +23,6 @@ import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import androidx.core.widget.NestedScrollView;
-import androidx.core.widget.TextViewCompat;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -791,10 +790,6 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             TextView cell=tv(value(v,key),13,text());
             cell.setGravity(Gravity.CENTER);
             cell.setIncludeFontPadding(false);
-            if ("cons".equals(key)) {
-                cell.setSingleLine(true);
-                TextViewCompat.setAutoSizeTextTypeUniformWithConfiguration(cell, dp(11), dp(13), dp(1), android.util.TypedValue.COMPLEX_UNIT_SP);
-            }
             if ("dimensions".equals(key)) {
                 cell.setMaxLines(2);
                 cell.setLineSpacing(0,1.0f);
