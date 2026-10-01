@@ -441,7 +441,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableDataHost.setClipChildren(true);
         tableDataHost.setClipToPadding(true);
         FrameLayout.LayoutParams dataHostLp=new FrameLayout.LayoutParams(-1,-2);
-        dataHostLp.leftMargin=dp(104);
+        dataHostLp.leftMargin=dp(112);
         compareTable.addView(tableDataHost,dataHostLp);
 
         tableLabels=new LinearLayout(this);
@@ -449,7 +449,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
-        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(104),-2,Gravity.TOP|Gravity.LEFT));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
 
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
