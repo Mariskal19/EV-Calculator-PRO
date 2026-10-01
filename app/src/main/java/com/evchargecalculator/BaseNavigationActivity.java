@@ -1,7 +1,6 @@
 package com.evchargecalculator;
 
 import android.app.Activity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -36,9 +35,6 @@ public abstract class BaseNavigationActivity extends Activity {
       return;
     }
 
-    // Settings are changed in another Activity. When the user presses the
-    // system Back button, refresh this screen so the new preferences are
-    // visible immediately instead of leaving the old UI cached underneath.
     if (!language.equals(appliedLanguage)
         || dark != appliedDarkTheme
         || !currency.equals(appliedCurrency)) {
@@ -53,14 +49,7 @@ public abstract class BaseNavigationActivity extends Activity {
     host.setBackgroundColor(dark
         ? android.graphics.Color.rgb(16, 28, 42)
         : android.graphics.Color.rgb(242, 246, 252));
-
-    // The bottom navigation is an overlay inside the edge-to-edge window.
-    // Reserve its full height in the content area so scrollable screens cannot
-    // leave their last controls hidden underneath the navigation bar.
-    FrameLayout.LayoutParams contentParams =
-        new FrameLayout.LayoutParams(-1, -1);
-    contentParams.bottomMargin = dp(64);
-    host.addView(view, contentParams);
+    host.addView(view, new FrameLayout.LayoutParams(-1, -1));
 
     View bottomNavigation =
         BottomNavigationHelper.create(this, dark, getBottomNavigationIndex());
@@ -71,7 +60,6 @@ public abstract class BaseNavigationActivity extends Activity {
     super.setContentView(host);
   }
 
-  /** Screens can override this when their theme state is not stored in the common preference. */
   protected boolean isDarkTheme() {
     return getSharedPreferences("ev_charge_calculator", MODE_PRIVATE)
         .getBoolean("dark_theme", false);
