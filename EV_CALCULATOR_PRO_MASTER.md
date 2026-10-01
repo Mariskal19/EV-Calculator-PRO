@@ -783,3 +783,16 @@ Cuando se retome EV Calculator PRO:
   - **Build EV Calculator PRO** (`build.yml`): `push` a `main` (salvo cambios exclusivos en catalog_remote_additions) y manual; genera APK + AAB de release.
 - El build **36844354921 (#1980)** terminó correctamente, pero corresponde al commit anterior `6a0d5c...`; **no se considera todavía el build candidato de la versión actual** porque después se realizaron los cambios finales de Comparar coches, traducciones y documentación.
 - Este checkpoint restaura el contenido completo del MASTER y deja preparado un nuevo build de verificación con el estado actual. Cuando termine, habrá que comprobar APK/AAB y, especialmente, que el catálogo de 682 registros queda integrado en el artefacto.
+
+
+## 2026-10-01 — Catálogo verificado dentro del APK 1.0.4.1 build 2062
+
+- Se inspeccionó directamente el APK **EV-Calculator-PRO-v1.0.4.1.apk** del build **2062**.
+- Se extrajo `assets/catalog_es_2024_2026.json` del binario.
+- Resultado: **682/682 registros presentes dentro del APK**.
+- Claves lógicas `marca + modelo + año + versión`: **682 únicas / 682**.
+- El catálogo está físicamente empaquetado en el APK y disponible como asset local; no depende de una descarga externa para esos registros.
+- SHA-256 del catálogo extraído del APK: `e4362d76ee86a306b9b5bd7552dfa136931fad20fc9d43ab5da0be8b4795c8ea`.
+- Tamaño del JSON extraído: **922.755 bytes**.
+- Esta comprobación **certifica la presencia e integridad interna del catálogo en el APK**. No se marca como verificación byte a byte frente al fichero fuente de GitHub porque el SHA anotado previamente (`410a5855...`) corresponde al **SHA del blob Git**, no a un SHA-256 del contenido.
+- **Estado: catálogo 682/682 verificado dentro del APK 1.0.4.1 build 2062.**
