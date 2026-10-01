@@ -6673,7 +6673,7 @@
       "trunkLiters": 480,
       "id": "hyundai-ioniq-5-n-84-kwh-awd-2024-84-nmc-448-awd",
       "market": "ES",
-      "price": 79900,
+      "price": 78000,
       "currency": "EUR",
       "weightKg": 2235,
       "photo": null,
@@ -6692,7 +6692,9 @@
       "heightMm": 1585,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Hyundai Motor España, comunicado oficial de lanzamiento del IONIQ 5 N, 27/02/2024"
     },
     {
       "make": "Hyundai",
@@ -6873,7 +6875,7 @@
       "acceleration0to100Sec": 8.3,
       "trunkLiters": 401,
       "market": "ES",
-      "price": 47100,
+      "price": 44650,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales; batería utilizable contrastada con EV Database; precio PVP España contrastado",
       "lastUpdated": "2026-09-28",
@@ -6890,7 +6892,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 60
+      "usableBatteryKwh": 60,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Hyundai Motor España, precios gama IONIQ 6, comunicado 02/07/2026"
     },
     {
       "make": "Hyundai",
@@ -6990,7 +6994,7 @@
       "acceleration0to100Sec": 7.4,
       "trunkLiters": 401,
       "market": "ES",
-      "price": 53100,
+      "price": 53000,
       "currency": "EUR",
       "source": "Hyundai Motor España; especificaciones oficiales; batería utilizable contrastada con EV Database; PVP España contrastado con Electrolitros",
       "lastUpdated": "2026-09-28",
@@ -7007,7 +7011,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "usableBatteryKwh": 80
+      "usableBatteryKwh": 80,
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Hyundai Motor España, precios gama IONIQ 6, comunicado 02/07/2026"
     },
     {
       "make": "Hyundai",
@@ -7124,8 +7130,10 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "usableBatteryKwh": 106,
-      "price": 69295,
-      "currency": "EUR"
+      "price": 69900,
+      "currency": "EUR",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Hyundai Motor España, precios gama IONIQ 9; PVP RWD Star 69.900 €"
     },
     {
       "make": "Hyundai",
@@ -23837,7 +23845,7 @@
       "year": 2026,
       "market": "ES",
       "currency": "EUR",
-      "price": 47490,
+      "price": 44790,
       "batteryKwh": 63,
       "usableBatteryKwh": 58,
       "batteryType": "NMC",
@@ -23855,7 +23863,7 @@
       "weightKg": 1950,
       "source": "Gaia Charge EVDB",
       "arrivalYear": 2026,
-      "auditDate": "2026-09-26",
+      "auditDate": "2026-10-01",
       "lastUpdated": "2026-09-26",
       "auditDateTime": "2026-09-29T03:15:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -23867,7 +23875,9 @@
       "heightMm": 1605,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
+      "priceSource": "Hyundai Motor España, PVP publicado actualmente para IONIQ 5 170 CV 63 kWh RWD LIGHT; precio sin descuentos"
     },
     {
       "gaiaId": "hyundai-ioniq-6-long-range-awd-2024",
