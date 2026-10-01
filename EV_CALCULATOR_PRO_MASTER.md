@@ -22,6 +22,7 @@
 - **Precio:** **0 registros** siguen sin PVP tras la auditoría completada el 01/10/2026. Los 682 registros del catálogo tienen price informado.
 - **batteryChemistry:** **682/682 registros** auditados y completos; **0 pendientes**. Cierre de auditoría: 01/10/2026 21:38:37 +02:00.
 - **charge10to80Min:** **682/682 registros revisados**; **0 registros con dato DC 10–80% pendiente**. El único caso no aplicable queda documentado con charge10to80Applicable: false.
+- **dcKw:** auditoría global cerrada el **01/10/2026 21:48:32 +02:00**. Hay **681/681 registros aplicables** con `dcKw` informado; el único registro no aplicable es `MG MGS9 PHEV Comfort 2026`, que no dispone de carga rápida DC y mantiene `dcKw: null`. **0 pendientes aplicables**.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
@@ -432,6 +433,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Completar 197 registros de `usableBatteryKwh` con fuente contrastada.
 - [x] Resolver el último registro sin `usableBatteryKwh` (`M-HERO I 2024` → 135,0 kWh contrastados).
 - [x] Auditar/completar los registros sin `price` usando PVP español; quedan **0 registros sin precio**.
+- [x] Auditar globalmente `dcKw`: **681/681 aplicables** completos; 1 registro PHEV no aplicable (`MG MGS9 PHEV Comfort 2026`), 0 pendientes aplicables.
 
 ### Prioridad 2 — Build
 
@@ -646,7 +648,7 @@ Cuando se retome EV Calculator PRO:
 - **Duplicados:** 0 IDs duplicados y 0 duplicados lógicos.
 - **Comparar coches:** estable y probado a las **21:30**; checkpoint visual `7938efff5788eda55feb214c346b9c016a595296`.
 - **Build:** existe un build correcto anterior, pero el ajuste visual de Comparar coches de 21:30 todavía debe pasar por un build de verificación antes de considerarlo candidato final.
-- **Pendiente de datos:** queda por revisar globalmente `dcKw`. `batteryChemistry` y `charge10to80Min` están cerrados: 682/682 revisados/completos y 0 pendientes aplicables.
+- **Datos de carga:** `dcKw` queda cerrado: **681/681 registros aplicables completos**, con `MG MGS9 PHEV Comfort 2026` como único caso no aplicable por ausencia de carga DC. `batteryChemistry` y `charge10to80Min` también están cerrados.
 - **Detalle del coche:** pendiente de revisión final.
 - **Buscador de coches:** pendiente de revisión final.
 - **Coches similares:** aparcado temporalmente.
@@ -657,8 +659,7 @@ Cuando se retome EV Calculator PRO:
 
 ### Orden recomendado para el cierre
 
-1. Auditoría de `dcKw`.
-2. Revisión final de **Detalle del coche**.
+1. Revisión final de **Detalle del coche**.
 3. Revisión final del **Buscador de coches**.
 4. Comprobación de las **3 automatizaciones** y sus schedules mediante runs reales.
 5. Auditoría global final del catálogo.
@@ -699,3 +700,14 @@ Cuando se retome EV Calculator PRO:
 - Se confirma como estado de referencia que charge10to80Min está cerrado: **682/682 revisados, 0 registros con tiempo DC 10–80% pendiente de determinar**.
 - El único registro no aplicable a tiempo DC 10–80% es **MG MGS9 PHEV Comfort 2026**, documentado mediante charge10to80Applicable: false.
 - Por tanto, **no quedan pendientes de auditoría en batteryChemistry ni charge10to80Min**. No repetir estas auditorías salvo regresión o modificación de datos.
+
+
+## 2026-10-01 — Cierre de auditoría de dcKw
+
+- Auditoría global realizada sobre los **682 registros** del catálogo en `main`.
+- **681/681 registros aplicables** tienen `dcKw` informado.
+- El único registro sin `dcKw` es **MG MGS9 PHEV Comfort 2026**, y se confirma como **no aplicable** porque es PHEV y su documentación oficial de MG España especifica carga AC de hasta 11 kW, sin carga rápida DC. citeturn2search19turn2search0
+- No se ha inventado ningún valor DC para ese registro: mantiene `dcKw: null`.
+- **Resultado: 0 registros aplicables pendientes de `dcKw`.**
+- Auditoría ejecutada el **01/10/2026 a las 21:48:32 +02:00**.
+- No repetir esta auditoría salvo regresión o modificación de datos.
