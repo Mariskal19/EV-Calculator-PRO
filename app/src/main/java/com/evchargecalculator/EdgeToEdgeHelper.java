@@ -28,7 +28,6 @@ public final class EdgeToEdgeHelper {
 
   private EdgeToEdgeHelper() {}
 
-  @SuppressWarnings("deprecation")
   public static void apply(Activity activity, boolean dark) {
     Window window = activity.getWindow();
 
@@ -40,11 +39,14 @@ public final class EdgeToEdgeHelper {
       window.setNavigationBarContrastEnforced(false);
     }
 
-    // The Android system navigation area must use the same surface as the
-    // app's bottom navigation, including in dark mode.
-    window.setNavigationBarColor(
-        dark ? android.graphics.Color.rgb(16, 28, 42)
-             : android.graphics.Color.rgb(242, 246, 252));
+    // Keep the legacy navigation-bar color only on Android 14 and older.
+    // Android 15+ uses edge-to-edge and this API is deprecated/ineffective
+    // for gesture navigation.
+    if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+      window.setNavigationBarColor(
+          dark ? android.graphics.Color.rgb(16, 28, 42)
+               : android.graphics.Color.rgb(242, 246, 252));
+    }
 
     WindowCompat.setDecorFitsSystemWindows(window, false);
 
