@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 01/10/2026 (estado consolidado tras auditorías de catálogo y cierre estable de Comparar coches 21:30).
+> Última actualización: 02/10/2026 (comprobación de versionado 1.0.4.1 y build candidato).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -12,7 +12,8 @@
 - **Repositorio:** `Mariskal19/EV-Calculator-PRO`
 - **Rama de trabajo principal:** `main`
 - **Ramas stable:** no modificar sin autorización expresa.
-- **Versión de referencia actual:** 1.0.4 / línea de trabajo posterior a los checkpoints de septiembre de 2026.
+- **Versión publicada en Google Play:** 1.0.4 / versionCode 56.
+- **Versión candidata actual en `main`:** 1.0.4.1 / versionCode 58.
 - **Google Play:** EV Calculator PRO ya está publicada en Producción; el envío 15 corresponde a la versión **1.0.4**.
 - **Catálogo:** objetivo operativo actual de **682 registros**.
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
@@ -27,7 +28,7 @@
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
 - **Build publicado en Google Play:** **1.0.4 (versión 56)**. La versión 1.0.4.1/build 2062 fue verificada en APK como checkpoint técnico de catálogo, pero **no es la versión publicada en Producción**.
-- **APK/AAB:** debe comprobarse que el catálogo corregido queda realmente incluido en el artefacto generado.
+- **APK/AAB:** build #2065 (run `37053413924`) terminó correctamente desde `main`; el endpoint de artefactos no devuelve artefactos, por lo que la descarga/verificación física del AAB aún queda pendiente.
 - **Stable:** no tocar.
 
 ---
@@ -443,11 +444,16 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Confirmar que el build validó el catálogo de `main` antes de compilar.
 - [ ] Verificación byte-level del catálogo dentro del APK/AAB (no expuesta por el endpoint de artefactos; el build sí pasó la validación del catálogo fuente).
 
-### Prioridad 3 — Release
+### Prioridad 3 — Release 1.0.4.1
 
-- [ ] Determinar checkpoint que debe considerarse candidato a release.
-- [ ] No convertirlo en stable hasta autorización.
-- [x] Revisar Google Play: **Producción publicada con 1.0.4**.
+- [x] Confirmar `versionName = 1.0.4.1` en `app/build.gradle`.
+- [x] Confirmar `versionCode = 58` en `app/build.gradle`.
+- [x] Confirmar que es superior al versionCode publicado en Google Play (56).
+- [x] Confirmar build #2065 / run `37053413924` con conclusión **success**.
+- [ ] Obtener/descargar el AAB final del build.
+- [ ] Instalar y probar en el Redmi Note 13 Pro el build final exacto.
+- [ ] Subir 1.0.4.1 / versionCode 58 a Google Play Producción.
+- [x] Revisar Google Play: **Producción publicada con 1.0.4 / versionCode 56**.
 
 ---
 
@@ -485,6 +491,7 @@ Cuando se retome EV Calculator PRO:
 
 | Fecha | Cambio |
 |---|---|
+| 02/10/2026 | Comprobado `app/build.gradle`: candidato 1.0.4.1 / versionCode 58. Es superior al 56 publicado en Google Play. Build #2065 / run 37053413924 terminó correctamente; artefactos no expuestos por el endpoint. Buscador y Detalle quedan para 1.0.5. |
 | 02/10/2026 | EV Calculator PRO ya está publicada en Google Play Producción. Envío 15, versión 1.0.4 / 56; publicación confirmada a las 15:00. El usuario salió de la beta y la prueba cerrada quedó en pausa. |
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
 | 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo certificado es 682 y coincide con el catálogo real auditado. |
@@ -641,6 +648,16 @@ Cuando se retome EV Calculator PRO:
 - Este estado queda guardado como checkpoint estable de **21:30 del 01/10/2026**. No modificarlo salvo nueva incidencia visual.
 
 
+## 2026-10-02 — Comprobación de versionado y build candidato
+
+- Comprobado directamente en `main`, `app/build.gradle`: **versionName 1.0.4.1** y **versionCode 58**.
+- La versión actualmente publicada en Google Play es **1.0.4 / versionCode 56**.
+- Por tanto, el candidato `1.0.4.1 / 58` tiene un versionCode válido y superior al publicado. No se debe reducir a 57: el repositorio ya está preparado con 58 y Google Play exige que cada nueva versión tenga un versionCode superior al publicado.
+- Build de `main`: **#2065**, run `37053413924`, terminado correctamente (**success**), generado el 02/10/2026.
+- El endpoint de artefactos de ese run actualmente devuelve **0 artefactos**, por lo que todavía no se considera completada la comprobación física del AAB.
+- Catálogo de referencia: **682 registros**, con las auditorías principales cerradas y el checkpoint APK 1.0.4.1/build 2062 ya verificado con 682/682 dentro del APK.
+- **Buscador de coches y Detalle del coche quedan explícitamente fuera de 1.0.4.1 y pasan a la versión 1.0.5.**
+
 ## 2026-10-02 — Estado consolidado y hoja de ruta de cierre
 
 - **Catálogo:** 682/682 registros en `main`.
@@ -652,9 +669,9 @@ Cuando se retome EV Calculator PRO:
 - **Comparar coches:** estable y probado a las **21:30**; checkpoint visual `7938efff5788eda55feb214c346b9c016a595296`.
 - **Build:** existe un build correcto anterior, pero el ajuste visual de Comparar coches de 21:30 todavía debe pasar por un build de verificación antes de considerarlo candidato final.
 - **Datos de carga:** `dcKw` queda cerrado: **681/681 registros aplicables completos**, con `MG MGS9 PHEV Comfort 2026` como único caso no aplicable por ausencia de carga DC. `batteryChemistry` y `charge10to80Min` también están cerrados.
-- **Detalle del coche:** pendiente de revisión final.
-- **Buscador de coches:** pendiente de revisión final.
-- **Coches similares:** aparcado temporalmente.
+- **Detalle del coche:** aplazado a versión **1.0.5**.
+- **Buscador de coches:** aplazado a versión **1.0.5**.
+- **Coches similares:** aplazado temporalmente junto con las nuevas pantallas de búsqueda.
 - **Automatizaciones:** pendiente de comprobación final de workflows y schedules.
 - **MASTER:** este documento queda como estado consolidado; las secciones históricas pueden contener estados intermedios, pero los apartados de cierre posteriores y la comprobación real de `main` son la referencia actual.
 - **Google Play:** el envío 15 de Producción está **Publicado** desde el 02/10/2026 a las 15:00; versión **1.0.4 / 56**.
@@ -664,15 +681,14 @@ Cuando se retome EV Calculator PRO:
 
 ### Orden recomendado para el cierre
 
-1. Revisión final de **Detalle del coche**.
-3. Revisión final del **Buscador de coches**.
-4. Comprobación de las **3 automatizaciones** y sus schedules mediante runs reales.
-5. Auditoría global final del catálogo.
-6. Build candidato desde `main`.
-7. Verificación del APK/AAB y del catálogo incluido.
-8. Prueba final en dispositivo.
-9. Preparación de ASO/ficha de Google Play.
-10. Revisar el estado real de Google Play antes de cualquier acción de release.
+1. Comprobación de las **3 automatizaciones** y sus schedules mediante runs reales.
+2. Auditoría global final del catálogo.
+3. Build candidato desde `main` — **ya realizado: #2065 success**.
+4. Obtener/verificar el AAB final y confirmar el catálogo incluido.
+5. Prueba final en dispositivo.
+6. Subir **1.0.4.1 / versionCode 58** a Google Play Producción.
+7. Continuar ASO/ficha de Google Play sin necesidad de subir una nueva versión para cambios de texto.
+8. Mantener **Buscador** y **Detalle** para 1.0.5.
 
 
 ## 2026-10-01 — Cierre de auditoría de química de batería
