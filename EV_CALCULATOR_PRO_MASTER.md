@@ -13,7 +13,7 @@
 - **Rama de trabajo principal:** `main`
 - **Ramas stable:** no modificar sin autorización expresa.
 - **Versión de referencia actual:** 1.0.4 / línea de trabajo posterior a los checkpoints de septiembre de 2026.
-- **Google Play:** la publicación/revisión de producción seguía pendiente al último checkpoint conocido.
+- **Google Play:** EV Calculator PRO ya está publicada en Producción; el envío 15 corresponde a la versión **1.0.4**.
 - **Catálogo:** objetivo operativo actual de **682 registros**.
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
@@ -26,7 +26,7 @@
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
-- **Build final/candidato Play:** pendiente de definir y verificar después de la comprobación final del catálogo y automatizaciones.
+- **Build publicado en Google Play:** **1.0.4 (versión 56)**. La versión 1.0.4.1/build 2062 fue verificada en APK como checkpoint técnico de catálogo, pero **no es la versión publicada en Producción**.
 - **APK/AAB:** debe comprobarse que el catálogo corregido queda realmente incluido en el artefacto generado.
 - **Stable:** no tocar.
 
@@ -447,7 +447,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 
 - [ ] Determinar checkpoint que debe considerarse candidato a release.
 - [ ] No convertirlo en stable hasta autorización.
-- [ ] Revisar Google Play.
+- [x] Revisar Google Play: **Producción publicada con 1.0.4**.
 
 ---
 
@@ -485,6 +485,7 @@ Cuando se retome EV Calculator PRO:
 
 | Fecha | Cambio |
 |---|---|
+| 02/10/2026 | EV Calculator PRO ya está publicada en Google Play Producción. Envío 15, versión 1.0.4 / 56; publicación confirmada a las 15:00. El usuario salió de la beta y la prueba cerrada quedó en pausa. |
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
 | 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo certificado es 682 y coincide con el catálogo real auditado. |
 | 01/10/2026 | Build `36836046343` completado correctamente desde `main`; validación de catálogo OK; APK y AAB publicados como `build-v1.0.4.1-1975`. |
@@ -600,14 +601,16 @@ Cuando se retome EV Calculator PRO:
 - No repetir esta auditoría salvo regresión o modificación de datos.
 
 
-## 2026-10-01 — Estado Google Play Producción
+## 2026-10-02 — Estado Google Play Producción
 
 - **EV Calculator PRO** mantiene en Google Play Console el **envío 15** de Producción.
 - Versión publicada en el envío: **56 (1.0.4)**.
 - Cambios enviados: **1 cambio**.
 - Fecha de envío: **12/09/2026 a las 15:47**.
-- Estado comprobado el **01/10/2026**: **En revisión**.
-- No realizar un nuevo envío ni modificar este release mientras permanezca en revisión, salvo que Google Play solicite alguna acción.
+- Estado actualizado el **02/10/2026**: **Publicada**.
+- Publicación confirmada el **02/10/2026 a las 15:00**.
+- Tras la publicación, se salió de la beta y la pista de prueba cerrada quedó en pausa.
+- **No confundir:** el APK 1.0.4.1/build 2062 fue un checkpoint técnico verificado del catálogo, pero la versión que Google Play tiene publicada es **1.0.4 / versión 56**.
 
 
 ## 2026-10-01 — Punto de recuperación antes de cambio en Comparar coches
@@ -638,7 +641,7 @@ Cuando se retome EV Calculator PRO:
 - Este estado queda guardado como checkpoint estable de **21:30 del 01/10/2026**. No modificarlo salvo nueva incidencia visual.
 
 
-## 2026-10-01 — Estado consolidado y hoja de ruta de cierre
+## 2026-10-02 — Estado consolidado y hoja de ruta de cierre
 
 - **Catálogo:** 682/682 registros en `main`.
 - **Precio:** 682/682 con `price`; 0 sin precio.
@@ -654,8 +657,10 @@ Cuando se retome EV Calculator PRO:
 - **Coches similares:** aparcado temporalmente.
 - **Automatizaciones:** pendiente de comprobación final de workflows y schedules.
 - **MASTER:** este documento queda como estado consolidado; las secciones históricas pueden contener estados intermedios, pero los apartados de cierre posteriores y la comprobación real de `main` son la referencia actual.
-- **Google Play:** el envío 15 de Producción seguía **En revisión** el 01/10/2026.
-- **ASO:** pendiente después de cerrar la versión candidata.
+- **Google Play:** el envío 15 de Producción está **Publicado** desde el 02/10/2026 a las 15:00; versión **1.0.4 / 56**.
+- **Beta personal:** el usuario salió del programa beta tras la publicación.
+- **Prueba cerrada:** la pista está **en pausa**; no reanudarla salvo decisión expresa.
+- **ASO:** iniciado tras la publicación; se están preparando nuevas descripciones de ficha sin subir una nueva versión de la app.
 
 ### Orden recomendado para el cierre
 
