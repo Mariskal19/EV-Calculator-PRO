@@ -817,3 +817,10 @@ Cuando se retome EV Calculator PRO:
 - Tamaño del JSON extraído: **922.755 bytes**.
 - Esta comprobación **certifica la presencia e integridad interna del catálogo en el APK**. No se marca como verificación byte a byte frente al fichero fuente de GitHub porque el SHA anotado previamente (`410a5855...`) corresponde al **SHA del blob Git**, no a un SHA-256 del contenido.
 - **Estado: catálogo 682/682 verificado dentro del APK 1.0.4.1 build 2062.**
+
+## 2026-10-02 — Avisos de GitHub Actions pendientes
+
+Quedan anotados para revisar **después de publicar la 1.0.4.1**:
+
+- [ ] **Gradle 9.1.0**: GitHub Actions lo marca como versión desactualizada. Revisar y actualizar cuando la versión 1.0.4.1 esté publicada y estable.
+- [ ] **Runner `ubuntu-latest`**: GitHub ha avisado de la migración a **Ubuntu 26** a partir del **19/10/2026**. Revisar los workflows y comprobar compatibilidad antes de esa fecha.
