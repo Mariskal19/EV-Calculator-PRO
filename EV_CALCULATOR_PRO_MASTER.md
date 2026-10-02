@@ -818,6 +818,13 @@ Cuando se retome EV Calculator PRO:
 - Esta comprobación **certifica la presencia e integridad interna del catálogo en el APK**. No se marca como verificación byte a byte frente al fichero fuente de GitHub porque el SHA anotado previamente (`410a5855...`) corresponde al **SHA del blob Git**, no a un SHA-256 del contenido.
 - **Estado: catálogo 682/682 verificado dentro del APK 1.0.4.1 build 2062.**
 
+## 2026-10-02 — Estable: traducción de «Quitar» en Comparar coches
+
+- [x] **Comparar coches → acción «Quitar»**: corregido el texto que aparecía siempre en español.
+- [x] Integrado con `LanguageManager`.
+- [x] Traducciones **ES / EN / FR / DE / IT / PT** añadidas y verificadas.
+- [x] Corrección confirmada como **estable**.
+
 ## 2026-10-02 — Estable: traducción del diálogo de información de pérdidas de carga
 
 - [x] **ⓘ Información sobre pérdidas de carga**: corregido el texto explicativo que quedaba siempre en español.
