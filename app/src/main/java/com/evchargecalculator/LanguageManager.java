@@ -212,6 +212,7 @@ public final class LanguageManager {
     add("Carga DC", "DC charging", "Recharge DC", "DC-Laden", "Ricarica DC", "Carregamento DC");
     add("Error al abrir Comparar coches", "Error opening Compare cars", "Erreur lors de l'ouverture de Comparer les voitures", "Fehler beim Öffnen von Autos vergleichen", "Errore nell'apertura di Confronta auto", "Erro ao abrir Comparar carros");
     add("Añadir coche", "Add car", "Ajouter une voiture", "Auto hinzufügen", "Aggiungi auto", "Adicionar carro");
+     add("Quitar", "Remove", "Supprimer", "Entfernen", "Rimuovi", "Remover");
     add("Batería y autonomía", "Battery & range", "Batterie et autonomie", "Batterie & Reichweite", "Batteria e autonomia", "Bateria e autonomia");
     add("Prestaciones", "Performance", "Performances", "Leistung", "Prestazioni", "Desempenho");
     add("Tracción", "Drivetrain", "Transmission", "Antrieb", "Trazione", "Tração");
