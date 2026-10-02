@@ -818,6 +818,13 @@ Cuando se retome EV Calculator PRO:
 - Esta comprobación **certifica la presencia e integridad interna del catálogo en el APK**. No se marca como verificación byte a byte frente al fichero fuente de GitHub porque el SHA anotado previamente (`410a5855...`) corresponde al **SHA del blob Git**, no a un SHA-256 del contenido.
 - **Estado: catálogo 682/682 verificado dentro del APK 1.0.4.1 build 2062.**
 
+## 2026-10-02 — Estable: traducción del diálogo de información de pérdidas de carga
+
+- [x] **ⓘ Información sobre pérdidas de carga**: corregido el texto explicativo que quedaba siempre en español.
+- [x] Verificada la causa: faltaba la traducción del mensaje completo en `LanguageManager.java`.
+- [x] Añadidas traducciones para **EN / ES / FR / DE / IT / PT**.
+- [x] Corrección confirmada como **estable** en el código actual (commit `bd7be1b0ce65c5de942bd1bfeb217d3eb63248b2`).
+
 ## 2026-10-02 — Avisos de GitHub Actions pendientes
 
 Quedan anotados para revisar **después de publicar la 1.0.4.1**:
