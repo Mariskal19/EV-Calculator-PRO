@@ -14,7 +14,7 @@
 - **Ramas stable:** no modificar sin autorización expresa.
 - **Versión publicada en Google Play:** 1.0.4 / versionCode 56.
 - **Versión candidata actual en `main`:** 1.0.4.1 / versionCode 58.
-- **Google Play:** EV Calculator PRO ya está publicada en Producción; el envío 15 corresponde a la versión **1.0.4**.
+- **Google Play:** 1.0.4 / versionCode 56 está publicada. La **1.0.4.1 / versionCode 58** ya fue cargada en Producción y se inició el lanzamiento completo; el envío 17 está **En revisión** junto con los cambios de ficha.
 - **Catálogo:** objetivo operativo actual de **682 registros**.
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
@@ -452,7 +452,9 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Confirmar build #2065 / run `37053413924` con conclusión **success**.
 - [ ] Obtener/descargar el AAB final del build.
 - [ ] Instalar y probar en el Redmi Note 13 Pro el build final exacto.
-- [ ] Subir 1.0.4.1 / versionCode 58 a Google Play Producción.
+- [x] Subir 1.0.4.1 / versionCode 58 a Google Play Producción.
+- [x] Iniciar el lanzamiento completo de 1.0.4.1 en Producción.
+- [ ] Esperar la revisión/publicación de Google Play y verificar que 1.0.4.1 / 58 aparece disponible públicamente.
 - [x] Revisar Google Play: **Producción publicada con 1.0.4 / versionCode 56**.
 
 ---
@@ -491,7 +493,7 @@ Cuando se retome EV Calculator PRO:
 
 | Fecha | Cambio |
 |---|---|
-| 02/10/2026 | Comprobado `app/build.gradle`: candidato 1.0.4.1 / versionCode 58. Es superior al 56 publicado en Google Play. Build #2065 / run 37053413924 terminó correctamente; artefactos no expuestos por el endpoint. Buscador y Detalle quedan para 1.0.5. |
+| 02/10/2026 | **1.0.4.1 / versionCode 58 enviada a Producción y lanzamiento completo iniciado.** Play Console muestra el envío 17 **En revisión**; incluye también los cambios de descripción de la ficha. Pendiente verificar publicación pública. |
 | 02/10/2026 | EV Calculator PRO ya está publicada en Google Play Producción. Envío 15, versión 1.0.4 / 56; publicación confirmada a las 15:00. El usuario salió de la beta y la prueba cerrada quedó en pausa. |
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
 | 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo certificado es 682 y coincide con el catálogo real auditado. |
@@ -831,6 +833,15 @@ Cuando se retome EV Calculator PRO:
 - [x] Verificada la causa: faltaba la traducción del mensaje completo en `LanguageManager.java`.
 - [x] Añadidas traducciones para **EN / ES / FR / DE / IT / PT**.
 - [x] Corrección confirmada como **estable** en el código actual (commit `bd7be1b0ce65c5de942bd1bfeb217d3eb63248b2`).
+
+## 2026-10-02 — 1.0.4.1 enviada a Producción
+
+- **Google Play Producción:** se ha cargado correctamente **versionCode 58 / versionName 1.0.4.1**.
+- Se ha pulsado **«Iniciar lanzamiento completo»**.
+- **Envío 17:** incluye la versión 1.0.4.1 y los cambios de descripción de la ficha de Play Store.
+- Estado actual mostrado por Play Console: **En revisión**.
+- La versión anterior **1.0.4 / versionCode 56** permanece como versión publicada mientras Google completa la revisión del nuevo envío.
+- **Siguiente comprobación:** esperar a que Google termine la revisión/publicación y verificar en Google Play que la versión pública pasa a **1.0.4.1 / 58**.
 
 ## 2026-10-02 — Avisos de GitHub Actions pendientes
 
