@@ -849,3 +849,13 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 
 - [ ] **Gradle 9.1.0**: GitHub Actions lo marca como versión desactualizada. Revisar y actualizar cuando la versión 1.0.4.1 esté publicada y estable.
 - [ ] **Runner `ubuntu-latest`**: GitHub ha avisado de la migración a **Ubuntu 26** a partir del **19/10/2026**. Revisar los workflows y comprobar compatibilidad antes de esa fecha.
+
+
+## 2026-10-03 — Clasificación IARC
+
+- **IARC Global Rating ID:** `9d7279dd-a574-8646-8790-3fa100060b99`.
+- **Producto:** EV Calculator PRO.
+- **Storefront:** Google Play.
+- **Fecha de clasificación:** 03/10/2026.
+- IARC confirma que las clasificaciones generadas a partir del cuestionario enviado están **Live**.
+- Este ID queda registrado como referencia de la clasificación IARC actual de EV Calculator PRO.
