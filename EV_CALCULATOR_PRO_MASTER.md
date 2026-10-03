@@ -859,3 +859,21 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - **Fecha de clasificación:** 03/10/2026.
 - IARC confirma que las clasificaciones generadas a partir del cuestionario enviado están **Live**.
 - Este ID queda registrado como referencia de la clasificación IARC actual de EV Calculator PRO.
+
+
+## 2026-10-03 — Plan de colección visual para capturas de Google Play
+
+- Se acuerda crear una colección coherente de **6 capturas promocionales** para la ficha de Google Play, inspirada en composiciones cuidadas de apps actuales (por ejemplo, la referencia GreenEV compartida por el usuario).
+- **Orden acordado:** las primeras **3 capturas en tema claro** y las siguientes **3 en tema oscuro**, para mostrar variedad y comunicar que la app admite ambos temas.
+- No duplicar sin más las mismas imágenes cambiando el tema: variar ligeramente composición, fondo y mensaje manteniendo una identidad visual común.
+- Mantener una línea visual de **azul eléctrico/cian** para EV Calculator PRO; las tres primeras con una estética más luminosa y las tres últimas con fondos oscuros/eléctricos.
+- Usar siempre la **interfaz real de EV Calculator PRO** como contenido del móvil, sin inventar botones, textos ni funciones que no estén en la aplicación.
+- Temas de trabajo propuestos:
+  1. **Claro — «Calcula tu carga»**: Charge Calculator.
+  2. **Claro — «Controla el coste de cargar»**: pantalla Coste.
+  3. **Claro — «Compara coches eléctricos»**: Comparar coches.
+  4. **Oscuro — «Planifica tu carga»**: Charge Calculator.
+  5. **Oscuro — «Conoce tu coche»**: comparación/detalle; ajustar la captura a las pantallas que estén realmente disponibles en la versión que se promocione.
+  6. **Oscuro — «Todo tu EV en una app»**: composición final/resumen de funciones reales.
+- La composición puede utilizar fondos con degradados, recursos gráficos eléctricos y mockups de móvil con encuadres dinámicos, pero los textos y datos de la interfaz deben seguir siendo legibles.
+- **Próximo paso:** continuar la creación de la colección empezando por la captura 1 en tema claro. Antes de componerla, disponer de una captura real y actual de Charge Calculator para preservar la fidelidad de la interfaz. Guardar cada recurso final en la Biblioteca solo cuando se haya completado y verificado el guardado.
