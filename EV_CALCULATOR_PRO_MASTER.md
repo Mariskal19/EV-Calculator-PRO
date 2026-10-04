@@ -901,3 +901,16 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
   - 05_Conoce_tus_opciones_Dark.png
   - 06_Todo_tu_EV_Dark.png
 - Estado: colección v1 creada y guardada. Antes de subirla a Google Play se debe hacer una revisión visual final de las seis piezas y, si se dispone de una captura real de la pantalla Coste/Detalle en una versión posterior, sustituir únicamente la pieza correspondiente manteniendo exactamente la identidad visual de la colección.
+
+
+## 2026-10-04 — Automatización definitiva del catálogo
+
+- Se ha comprobado que las ejecuciones automáticas del workflow Automatic protected catalog update (catalog-auto-update.yml) se lanzan y terminan correctamente.
+- Se elimina el schedule de 08:19 de GitHub Actions.
+- El workflow queda configurado con una única ejecución programada diaria a las 15:00, zona horaria Europe/Madrid.
+- Se mantiene workflow_dispatch para lanzamientos manuales.
+- Se mantiene el disparo por push cuando cambian los archivos definidos en el workflow.
+- La automatización externa de cron-job.org de las 07:00 ha sido eliminada por el usuario.
+- No quedan automatizaciones de ChatGPT activas para este proceso.
+- Configuración definitiva: actualización automática programada del catálogo → todos los días a las 15:00 (Europe/Madrid).
+- No debe volver a añadirse una segunda ejecución programada salvo decisión expresa.
