@@ -877,3 +877,27 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
   6. **Oscuro — «Todo tu EV en una app»**: composición final/resumen de funciones reales.
 - La composición puede utilizar fondos con degradados, recursos gráficos eléctricos y mockups de móvil con encuadres dinámicos, pero los textos y datos de la interfaz deben seguir siendo legibles.
 - **Próximo paso:** continuar la creación de la colección empezando por la captura 1 en tema claro. Antes de componerla, disponer de una captura real y actual de Charge Calculator para preservar la fidelidad de la interfaz. Guardar cada recurso final en la Biblioteca solo cuando se haya completado y verificado el guardado.
+
+
+## 2026-10-04 — Colección visual Google Play creada
+
+- Se ha creado la colección completa de 6 capturas promocionales siguiendo el plan acordado:
+  1. Claro — «Calcula tu carga».
+  2. Claro — «Controla el coste de cargar».
+  3. Claro — «Compara coches eléctricos».
+  4. Oscuro — «Planifica tu carga».
+  5. Oscuro — «Compara y conoce tus opciones».
+  6. Oscuro — «Todo tu EV en una app».
+- La colección mantiene una identidad coherente: azul eléctrico/cian, composición promocional, fondos claros para 1–3 y fondos oscuros/eléctricos para 4–6, con variación de encuadre para evitar seis imágenes clonadas.
+- Regla de fidelidad cumplida: las pantallas mostradas dentro de los móviles proceden de capturas reales de EV Calculator PRO. No se han creado interfaces ficticias.
+- La captura 2 utiliza la pantalla real de Charge Calculator para comunicar el coste de carga, ya que la pantalla específica Coste no estaba disponible entre los recursos reales recuperados para esta colección.
+- La captura 5 utiliza la pantalla real de Comparar coches, adaptando el mensaje para no inventar una pantalla de Detalle que todavía corresponde a la versión 1.0.5.
+- La colección final se ha guardado en la Biblioteca: /EV Calculator PRO/Google Play/Colección 6 capturas/
+- Archivos:
+  - 01_Calcula_tu_carga_Light.png
+  - 02_Controla_el_coste_Light.png
+  - 03_Compara_coches_Light.png
+  - 04_Planifica_tu_carga_Dark.png
+  - 05_Conoce_tus_opciones_Dark.png
+  - 06_Todo_tu_EV_Dark.png
+- Estado: colección v1 creada y guardada. Antes de subirla a Google Play se debe hacer una revisión visual final de las seis piezas y, si se dispone de una captura real de la pantalla Coste/Detalle en una versión posterior, sustituir únicamente la pieza correspondiente manteniendo exactamente la identidad visual de la colección.
