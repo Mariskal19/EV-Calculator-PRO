@@ -212,6 +212,18 @@ Presentación:
 
 La clasificación SUV/berlina/etc. queda como ampliación futura y no debe mezclarse con la auditoría actual de dimensiones salvo que se solicite expresamente.
 
+## Flujo definitivo de coches similares — 1.0.5
+
+- **Comparar coches** mantiene su función de comparar hasta 3 vehículos.
+- Desde Comparar coches se accede a **Buscar coches similares**.
+- La nueva pantalla permite localizar un coche de referencia mediante buscador por marca/modelo/versión y filtros de mercado, año, tracción y rango de batería.
+- Al seleccionar el coche de referencia, la app calcula y muestra **5 opciones similares**.
+- La similitud combina batería, autonomía WLTP, potencia, consumo, precio, dimensiones, maletero, aceleración, carga DC y tracción.
+- Al pulsar una de las 5 opciones se abre **CarDetailActivity**, la pantalla de detalle completa.
+- Desde el detalle, **Añadir a comparativa** incorpora el vehículo a la comparativa existente.
+- La fuente de datos es siempre **catálogo protegido + catálogo externo validado**, sin sobrescribir datos protegidos.
+- La pantalla de detalle creada en 1.0.5 se conserva y se reutiliza en este flujo; no sustituye a la pantalla de búsqueda de similares.
+
 ---
 
 # 7. DISEÑO VISUAL
