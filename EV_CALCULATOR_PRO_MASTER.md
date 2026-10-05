@@ -961,6 +961,11 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 
 ## 2026-10-06 — Preparada versión 1.0.5
 
+- Se implementa el flujo inicial **Búsqueda → Detalle del coche → Añadir a comparativa**. La búsqueda abre ahora una pantalla de detalle con los datos del vehículo seleccionado y conserva la clave lógica del catálogo para integrarlo con la comparativa sin depender de un ID remoto mutable.
+- El detalle muestra batería, autonomía, consumo, potencia, tracción, carga AC/DC, 10–80 %, maletero, peso, dimensiones y precio, respetando datos ausentes como `—` y diferenciando catálogo protegido de adiciones externas validadas.
+- Se añade `CarDetailActivity` y su registro en `AndroidManifest.xml`, con navegación inferior común y traducciones ES/EN/FR/DE/IT/PT.
+- Pendiente: compilación y prueba funcional de 1.0.5 antes de continuar con coches similares o nuevos cambios de UI.
+
 - Inicio del bloque funcional **Búsqueda de coches**: el buscador de Comparar coches se mantiene sobre el catálogo protegido + adiciones externas cacheadas, sin sobrescritura de registros protegidos.
 - La búsqueda 1.0.5 se mejora con normalización de acentos, coincidencia por múltiples términos y ordenación por relevancia (marca/modelo antes que coincidencias secundarias), manteniendo filtro por mercado y exclusión de vehículos ya seleccionados.
 - Este cambio está en `develop/1.0.5` y queda pendiente de compilación/prueba funcional antes de continuar con Detalle del coche.
