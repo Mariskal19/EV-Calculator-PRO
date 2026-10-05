@@ -265,7 +265,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+String.format(Locale.US,"%.1f",v.batteryKwh)+"|"+v.version).toLowerCase(Locale.ROOT).trim();}
-    private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\p{M}","").toLowerCase(Locale.ROOT).trim();}
+    private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
     private String market(String s){return s==null||s.isEmpty()?"🌐":s;}
     private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmt(v.powerKw)+" kW":"—";return bat+"  ·  "+range+"  ·  "+p;}
     private String fmt(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(1);return f.format(n);}
