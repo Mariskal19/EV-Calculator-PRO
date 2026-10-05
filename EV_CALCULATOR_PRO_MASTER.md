@@ -931,3 +931,17 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - Los recursos promocionales generados anteriormente sirven únicamente como **referencia de estilo/composición** si contienen interfaces ficticias; no deben reutilizar esas interfaces ficticias en la versión final.
 - La siguiente generación debe partir de estos recursos reales y conservar la fidelidad de la pantalla y del icono.
 - **Estado:** pendiente de generar/revisar la nueva versión de la captura 01 cuando el generador de imágenes vuelva a estar disponible.
+
+## 2026-10-05 — Checkpoint de seguridad antes de 1.0.5
+
+- Se crea la rama de recuperación **`stable/pre-1.0.5-2026-10-05`**.
+- Esta rama queda basada exactamente en el commit **`7ac0edce0e017844e41334eabc21ce1e7012793c`**, correspondiente al estado estable conocido tras fijar los recursos reales de las capturas de Google Play.
+- **Regla:** esta rama es un punto de seguridad y **no debe modificarse** durante el desarrollo de 1.0.5.
+- Antes de iniciar cambios funcionales de 1.0.5 se revisa la infraestructura de build:
+  - AGP actual: **9.0.1**.
+  - Gradle usado por GitHub Actions: **9.1.0**.
+  - Java: **Temurin 17**.
+  - Runner actual del workflow: **`ubuntu-latest`**.
+- Decisión técnica provisional: **no actualizar AGP/Gradle todavía**; la combinación AGP 9.0.1 + Gradle 9.1.0 se considera estable y no se introduce una actualización innecesaria antes de 1.0.5.
+- Queda pendiente probar el runner **`ubuntu-26.04`** de forma controlada antes de decidir si se sustituye `ubuntu-latest`. Si la prueba falla, se podrá volver a `ubuntu-24.04`.
+- El desarrollo de **1.0.5** se realizará en una rama de trabajo separada, manteniendo este checkpoint como rollback.
