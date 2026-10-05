@@ -945,3 +945,15 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - Decisión técnica provisional: **no actualizar AGP/Gradle todavía**; la combinación AGP 9.0.1 + Gradle 9.1.0 se considera estable y no se introduce una actualización innecesaria antes de 1.0.5.
 - Queda pendiente probar el runner **`ubuntu-26.04`** de forma controlada antes de decidir si se sustituye `ubuntu-latest`. Si la prueba falla, se podrá volver a `ubuntu-24.04`.
 - El desarrollo de **1.0.5** se realizará en una rama de trabajo separada, manteniendo este checkpoint como rollback.
+
+
+## 2026-10-05 — Upgrade de toolchain validado para 1.0.5
+
+- Se crea la rama aislada **`test/agp-9.4.0`** para probar la actualización sin tocar el checkpoint estable.
+- Prueba completada correctamente en GitHub Actions, run **2084** (`37379945025`).
+- Combinación validada: **AGP 9.4.0 + Gradle 9.6.0 + Java 17 + ubuntu-26.04**.
+- El build Release completó correctamente `assembleRelease` y `bundleRelease`, incluyendo R8/minificación, firma y generación de APK/AAB.
+- La prueba no produjo cambios automáticos adicionales en `main`: el paso de persistencia indicó que el código de búsqueda ya estaba optimizado.
+- Tras la validación, **`develop/1.0.5` adopta AGP 9.4.0 y Gradle 9.6.0**.
+- El checkpoint **`stable/pre-1.0.5-2026-10-05`** permanece intacto y sigue siendo el rollback de seguridad.
+- Siguiente fase: desarrollo funcional de 1.0.5 (búsqueda de vehículos, detalle y flujo hacia comparación) sobre `develop/1.0.5`.
