@@ -914,3 +914,20 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - No quedan automatizaciones de ChatGPT activas para este proceso.
 - Configuración definitiva: actualización automática programada del catálogo → todos los días a las 15:00 (Europe/Madrid).
 - No debe volver a añadirse una segunda ejecución programada salvo decisión expresa.
+
+## 2026-10-05 — Recursos reales definitivos para capturas Google Play
+
+- Se fija como **fuente de verdad de las capturas reales de la campaña** la Biblioteca compartida por el usuario:
+  https://chatgpt.com/library/share/6ac02f21b0b481919c69f981d517bedb?account_id=personal
+- Para las composiciones promocionales **no se deben inventar interfaces ni sustituir las pantallas reales de EV Calculator PRO por mockups ficticios**.
+- El **icono oficial de la app** debe tomarse del recurso real de la Biblioteca: `Icono de Calculadora EV Profesional.png`.
+- La **captura real de Charge Calculator en tema claro** para la primera pieza es: `Captura 1 Claro.jpg`.
+- La primera pieza de la colección queda definida como:
+  - **Captura 01 — tema claro**.
+  - Usar el **icono real** de EV Calculator PRO.
+  - Usar dentro del mockup del teléfono la **interfaz real de `Captura 1 Claro.jpg`**.
+  - Mantener la identidad visual común de las 6 piezas: azul eléctrico/cian, composición premium para Google Play, tipografía y jerarquía coherentes, fondo trabajado y recursos gráficos coordinados.
+  - Las seis imágenes son una **única colección/campaña coordinada**, no seis capturas independientes.
+- Los recursos promocionales generados anteriormente sirven únicamente como **referencia de estilo/composición** si contienen interfaces ficticias; no deben reutilizar esas interfaces ficticias en la versión final.
+- La siguiente generación debe partir de estos recursos reales y conservar la fidelidad de la pantalla y del icono.
+- **Estado:** pendiente de generar/revisar la nueva versión de la captura 01 cuando el generador de imágenes vuelva a estar disponible.
