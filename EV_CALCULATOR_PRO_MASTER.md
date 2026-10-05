@@ -214,15 +214,17 @@ La clasificación SUV/berlina/etc. queda como ampliación futura y no debe mezcl
 
 ## Flujo definitivo de coches similares — 1.0.5
 
-- **Comparar coches** mantiene su función de comparar hasta 3 vehículos.
-- Desde Comparar coches se accede a **Buscar coches similares**.
-- La nueva pantalla permite localizar un coche de referencia mediante buscador por marca/modelo/versión y filtros de mercado, año, tracción y rango de batería.
+- **Coches** es ahora una sección independiente que ofrece dos funciones claramente separadas:
+  1. **Comparar coches** → pantalla de comparación de hasta 3 vehículos.
+  2. **Buscar coches similares** → pantalla independiente de búsqueda y similitud.
+- **Comparar coches** no contiene la pantalla de búsqueda de similares: mantiene exclusivamente su función de comparación.
+- **Buscar coches similares** permite localizar un coche de referencia mediante buscador por marca/modelo/versión y filtros de mercado, año, tracción y rango de batería.
 - Al seleccionar el coche de referencia, la app calcula y muestra **5 opciones similares**.
 - La similitud combina batería, autonomía WLTP, potencia, consumo, precio, dimensiones, maletero, aceleración, carga DC y tracción.
 - Al pulsar una de las 5 opciones se abre **CarDetailActivity**, la pantalla de detalle completa.
 - Desde el detalle, **Añadir a comparativa** incorpora el vehículo a la comparativa existente.
 - La fuente de datos es siempre **catálogo protegido + catálogo externo validado**, sin sobrescribir datos protegidos.
-- La pantalla de detalle creada en 1.0.5 se conserva y se reutiliza en este flujo; no sustituye a la pantalla de búsqueda de similares.
+- **CochesActivity** actúa como selector de estas dos funciones; las pantallas de comparación y similares permanecen como Activities independientes.
 
 ---
 
@@ -985,3 +987,14 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - Se establece **versionName 1.0.5** y **versionCode 59** en `app/build.gradle`.
 - La versión 1.0.5 queda preparada para iniciar el desarrollo funcional sobre `develop/1.0.5`.
 - No se ha generado ni publicado todavía un APK/AAB de 1.0.5; primero se implementarán y probarán las nuevas funciones.
+
+
+## 2026-10-06 — Separación definitiva de las funciones de Coches en 1.0.5
+
+- Se crea **CochesActivity** como selector independiente de las dos funciones de vehículos.
+- La pestaña inferior **🚗 Coches** abre ahora este selector.
+- **Comparar coches** y **Buscar coches similares** quedan como dos pantallas/Activities independientes.
+- Comparar coches mantiene exclusivamente la comparativa de hasta 3 vehículos.
+- Buscar coches similares mantiene el flujo independiente: referencia → 5 similares → detalle → Añadir a comparativa.
+- Se registra CochesActivity en el manifest y se actualiza BottomNavigationHelper.
+- Estado: cambios realizados en **develop/1.0.5**; **pendiente de build y prueba en dispositivo**.
