@@ -21,7 +21,7 @@ public class CarDetailActivity extends BaseNavigationActivity {
  private String num(double n){return nf(1).format(n);} private String num2(double n){return nf(2).format(n);}
  private String integer(double n){return NumberFormat.getIntegerInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this))).format(Math.round(n));}
  private String price(double n){if(n<=0)return"—";return integer(n)+" "+getSharedPreferences("ev_charge_calculator",0).getString("app_currency","EUR");}
- @Override protected void onCreate(Bundle b){super.onCreate(b);LanguageManager.applyStored(this);dark=isDarkTheme();build();}
+ @Override protected void onCreate(Bundle b){super.onCreate(b);LanguageManager.applyStored(this);dark=isDarkTheme();build();EdgeToEdgeHelper.apply(this,dark);}
  private void build(){
   Intent i=getIntent(); LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
   ScrollView scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setPadding(dp(14),dp(18),dp(14),dp(18));
