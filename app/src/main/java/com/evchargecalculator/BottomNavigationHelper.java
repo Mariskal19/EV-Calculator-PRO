@@ -45,7 +45,7 @@ public final class BottomNavigationHelper {
     });
     addItem(activity, bar, R.drawable.ic_nav_car_modern, "Coches", 2, selected, dark, v -> {
       if (selected != 2) {
-        Intent i = new Intent(activity, CompararCochesActivity.class);
+        Intent i = new Intent(activity, CochesActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         activity.startActivity(i);
       }
