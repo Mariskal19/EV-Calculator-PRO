@@ -139,6 +139,26 @@ public final class LanguageManager {
     add("Cargar", "Charge", "Recharger", "Laden", "Ricarica", "Carregar");
     add("Coste", "Cost", "Coût", "Kosten", "Costo", "Custo");
     add("Coches", "Cars", "Voitures", "Autos", "Auto", "Carros");
+    add("Comparar coches", "Compare cars", "Comparer les voitures", "Autos vergleichen", "Confronta auto", "Comparar carros");
+    add("Volver a coches", "Back to cars", "Retour aux voitures", "Zurück zu den Autos", "Torna alle auto", "Voltar aos carros");
+    add("Añadir a comparativa", "Add to comparison", "Ajouter à la comparaison", "Zum Vergleich hinzufügen", "Aggiungi al confronto", "Adicionar à comparação");
+    add("Batería y autonomía", "Battery & range", "Batterie et autonomie", "Batterie & Reichweite", "Batteria e autonomia", "Bateria e autonomia");
+    add("Tipo batería", "Battery type", "Type de batterie", "Batterietyp", "Tipo di batteria", "Tipo de bateria");
+    add("Autonomía WLTP", "WLTP range", "Autonomie WLTP", "WLTP-Reichweite", "Autonomia WLTP", "Autonomia WLTP");
+    add("Prestaciones", "Performance", "Performances", "Leistung", "Prestazioni", "Desempenho");
+    add("Tracción", "Drivetrain", "Transmission", "Antrieb", "Trazione", "Tração");
+    add("Carga", "Charging", "Recharge", "Laden", "Ricarica", "Carregamento");
+    add("Carga AC", "AC charging", "Recharge AC", "AC-Laden", "Ricarica AC", "Carregamento AC");
+    add("Carga DC", "DC charging", "Recharge DC", "DC-Laden", "Ricarica DC", "Carregamento DC");
+    add("Practicidad", "Practicality", "Praticité", "Praktikabilität", "Praticità", "Praticidade");
+    add("Maletero", "Trunk", "Coffre", "Kofferraum", "Bagagliaio", "Bagageira");
+    add("Peso", "Weight", "Poids", "Gewicht", "Peso", "Peso");
+    add("Dimensiones", "Dimensions", "Dimensions", "Abmessungen", "Dimensioni", "Dimensões");
+    add("Largo", "Length", "Longueur", "Länge", "Lunghezza", "Comprimento");
+    add("Ancho", "Width", "Largeur", "Breite", "Larghezza", "Largura");
+    add("Alto", "Height", "Hauteur", "Höhe", "Altezza", "Altura");
+    add("Precio", "Price", "Prix", "Preis", "Prezzo", "Preço");
+
     add("Más", "More", "Plus", "Mehr", "Altro", "Mais");
     add("Calcula y planifica la carga de tu vehículo eléctrico.", "Calculate and plan your electric vehicle charging.", "Calculez et planifiez la recharge de votre véhicule électrique.", "Berechne und plane das Laden deines Elektrofahrzeugs.", "Calcola e pianifica la ricarica del tuo veicolo elettrico.", "Calcule e planeie o carregamento do seu veículo elétrico.");
     add("Electric Vs\nCombustion Calculator", "Electric vs\nCombustion", "Eléctrico vs\nCombustión", "Électrique vs\nCombustion", "Elektro vs\nVerbrenner", "Elettrico vs\nCombustione", "Elétrico vs\nCombustão");
