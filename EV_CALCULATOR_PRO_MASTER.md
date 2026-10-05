@@ -961,6 +961,10 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 
 ## 2026-10-06 — Preparada versión 1.0.5
 
+- Inicio del bloque funcional **Búsqueda de coches**: el buscador de Comparar coches se mantiene sobre el catálogo protegido + adiciones externas cacheadas, sin sobrescritura de registros protegidos.
+- La búsqueda 1.0.5 se mejora con normalización de acentos, coincidencia por múltiples términos y ordenación por relevancia (marca/modelo antes que coincidencias secundarias), manteniendo filtro por mercado y exclusión de vehículos ya seleccionados.
+- Este cambio está en `develop/1.0.5` y queda pendiente de compilación/prueba funcional antes de continuar con Detalle del coche.
+
 - Se establece **versionName 1.0.5** y **versionCode 59** en `app/build.gradle`.
 - La versión 1.0.5 queda preparada para iniciar el desarrollo funcional sobre `develop/1.0.5`.
 - No se ha generado ni publicado todavía un APK/AAB de 1.0.5; primero se implementarán y probarán las nuevas funciones.
