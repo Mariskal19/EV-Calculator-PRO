@@ -957,3 +957,10 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - Tras la validación, **`develop/1.0.5` adopta AGP 9.4.0 y Gradle 9.6.0**.
 - El checkpoint **`stable/pre-1.0.5-2026-10-05`** permanece intacto y sigue siendo el rollback de seguridad.
 - Siguiente fase: desarrollo funcional de 1.0.5 (búsqueda de vehículos, detalle y flujo hacia comparación) sobre `develop/1.0.5`.
+
+
+## 2026-10-06 — Preparada versión 1.0.5
+
+- Se establece **versionName 1.0.5** y **versionCode 59** en `app/build.gradle`.
+- La versión 1.0.5 queda preparada para iniciar el desarrollo funcional sobre `develop/1.0.5`.
+- No se ha generado ni publicado todavía un APK/AAB de 1.0.5; primero se implementarán y probarán las nuevas funciones.
