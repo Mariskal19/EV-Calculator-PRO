@@ -60,7 +60,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         c.setOrientation(LinearLayout.VERTICAL);
         c.setPadding(dp(14),dp(18),dp(14),dp(18));
 
-        TextView back=tv("‹  Volver a comparar coches",14,blue);
+        TextView back=tv("‹  Volver a coches",14,blue);
         back.setTypeface(null,Typeface.BOLD);
         back.setPadding(dp(4),0,0,dp(10));
         back.setOnClickListener(v->finish());
