@@ -403,20 +403,24 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         results.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         List<Scored> scored=new ArrayList<>();
-        for(Vehicle v:vehicles){
-            if(v==reference)continue;
-            // La comparación debe ser temporalmente coherente con la referencia:
-            // un coche de 2025 solo se compara con candidatos de 2025, etc.
-            if(reference.year>0&&v.year>0&&v.year!=reference.year)continue;
-            // Los similares deben ser siempre de una marca distinta a la del coche de referencia.
-            if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
-            if(!passesFilters(v))continue;
-            if(!sameVehicleClass(reference,v))continue;
-            double score=similarity(reference,v);
-            if(Double.isFinite(score))scored.add(new Scored(v,score));
+        int referenceYear=reference.year;
+        int minYear=referenceYear>0?referenceYear-5:0;
+        for(int targetYear=referenceYear;targetYear>=minYear&&scored.size()<8;targetYear--){
+            List<Scored> batch=new ArrayList<>();
+            for(Vehicle v:vehicles){
+                if(v==reference)continue;
+                if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
+                if(referenceYear>0&&v.year!=targetYear)continue;
+                if(!passesFilters(v))continue;
+                if(!sameVehicleClass(reference,v))continue;
+                double score=similarity(reference,v);
+                if(Double.isFinite(score))batch.add(new Scored(v,score));
+            }
+            Collections.sort(batch,(x,y)->Double.compare(x.score,y.score));
+            // Añadimos por año: primero todos los candidatos del año de referencia,
+            // y solo si faltan plazas ampliamos al año inmediatamente anterior.
+            scored.addAll(batch);
         }
-        // El Top 8 muestra como máximo un vehículo por marca.
-        // Para cada marca se conserva únicamente su vehículo más similar.
         Map<String,Scored> bestByMake=new HashMap<>();
         for(Scored s:scored){
             String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
