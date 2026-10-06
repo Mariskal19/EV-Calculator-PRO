@@ -286,7 +286,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             Object tag=input.getTag();
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
-            picker.setText(LanguageManager.t("✓  "+v.make+" "+v.model+" · "+v.version));
+            picker.setText("✓  "+v.make+" "+v.model+" · "+v.version);
             showSimilar();
         });
 
