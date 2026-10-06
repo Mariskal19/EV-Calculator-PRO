@@ -88,7 +88,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         intro.setLineSpacing(0,1.15f);
         hero.addView(intro,new LinearLayout.LayoutParams(-1,dp(40)));
 
-        content.addView(hero,marginLp(-1,-2,0,dp(14),0,0));
+        content.addView(hero,marginLp(-1,-2,0,dp(20),0,0));
 
         LinearLayout searchCard=card();
         searchCard.setPadding(dp(14),dp(14),dp(14),dp(14));
