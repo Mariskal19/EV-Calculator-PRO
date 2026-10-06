@@ -212,6 +212,20 @@ Presentación:
 
 La clasificación SUV/berlina/etc. queda como ampliación futura y no debe mezclarse con la auditoría actual de dimensiones salvo que se solicite expresamente.
 
+## Flujo definitivo de coches similares — 1.0.5
+
+- **Coches** es ahora una sección independiente que ofrece dos funciones claramente separadas:
+  1. **Comparar coches** → pantalla de comparación de hasta 3 vehículos.
+  2. **Buscar coches similares** → pantalla independiente de búsqueda y similitud.
+- **Comparar coches** no contiene la pantalla de búsqueda de similares: mantiene exclusivamente su función de comparación.
+- **Buscar coches similares** permite localizar un coche de referencia mediante buscador por marca/modelo/versión y filtros de mercado, año, tracción y rango de batería.
+- Al seleccionar el coche de referencia, la app calcula y muestra **5 opciones similares**.
+- La similitud combina batería, autonomía WLTP, potencia, consumo, precio, dimensiones, maletero, aceleración, carga DC y tracción.
+- Al pulsar una de las 5 opciones se abre **CarDetailActivity**, la pantalla de detalle completa.
+- Desde el detalle, **Añadir a comparativa** incorpora el vehículo a la comparativa existente.
+- La fuente de datos es siempre **catálogo protegido + catálogo externo validado**, sin sobrescribir datos protegidos.
+- **CochesActivity** actúa como selector de estas dos funciones; las pantallas de comparación y similares permanecen como Activities independientes.
+
 ---
 
 # 7. DISEÑO VISUAL
@@ -945,3 +959,42 @@ Quedan anotados para revisar **después de publicar la 1.0.4.1**:
 - Decisión técnica provisional: **no actualizar AGP/Gradle todavía**; la combinación AGP 9.0.1 + Gradle 9.1.0 se considera estable y no se introduce una actualización innecesaria antes de 1.0.5.
 - Queda pendiente probar el runner **`ubuntu-26.04`** de forma controlada antes de decidir si se sustituye `ubuntu-latest`. Si la prueba falla, se podrá volver a `ubuntu-24.04`.
 - El desarrollo de **1.0.5** se realizará en una rama de trabajo separada, manteniendo este checkpoint como rollback.
+
+
+## 2026-10-05 — Upgrade de toolchain validado para 1.0.5
+
+- Se crea la rama aislada **`test/agp-9.4.0`** para probar la actualización sin tocar el checkpoint estable.
+- Prueba completada correctamente en GitHub Actions, run **2084** (`37379945025`).
+- Combinación validada: **AGP 9.4.0 + Gradle 9.6.0 + Java 17 + ubuntu-26.04**.
+- El build Release completó correctamente `assembleRelease` y `bundleRelease`, incluyendo R8/minificación, firma y generación de APK/AAB.
+- La prueba no produjo cambios automáticos adicionales en `main`: el paso de persistencia indicó que el código de búsqueda ya estaba optimizado.
+- Tras la validación, **`develop/1.0.5` adopta AGP 9.4.0 y Gradle 9.6.0**.
+- El checkpoint **`stable/pre-1.0.5-2026-10-05`** permanece intacto y sigue siendo el rollback de seguridad.
+- Siguiente fase: desarrollo funcional de 1.0.5 (búsqueda de vehículos, detalle y flujo hacia comparación) sobre `develop/1.0.5`.
+
+
+## 2026-10-06 — Preparada versión 1.0.5
+
+- Se implementa el flujo inicial **Búsqueda → Detalle del coche → Añadir a comparativa**. La búsqueda abre ahora una pantalla de detalle con los datos del vehículo seleccionado y conserva la clave lógica del catálogo para integrarlo con la comparativa sin depender de un ID remoto mutable.
+- El detalle muestra batería, autonomía, consumo, potencia, tracción, carga AC/DC, 10–80 %, maletero, peso, dimensiones y precio, respetando datos ausentes como `—` y diferenciando catálogo protegido de adiciones externas validadas.
+- Se añade `CarDetailActivity` y su registro en `AndroidManifest.xml`, con navegación inferior común y traducciones ES/EN/FR/DE/IT/PT.
+- Pendiente: compilación y prueba funcional de 1.0.5 antes de continuar con coches similares o nuevos cambios de UI.
+
+- Inicio del bloque funcional **Búsqueda de coches**: el buscador de Comparar coches se mantiene sobre el catálogo protegido + adiciones externas cacheadas, sin sobrescritura de registros protegidos.
+- La búsqueda 1.0.5 se mejora con normalización de acentos, coincidencia por múltiples términos y ordenación por relevancia (marca/modelo antes que coincidencias secundarias), manteniendo filtro por mercado y exclusión de vehículos ya seleccionados.
+- Este cambio está en `develop/1.0.5` y queda pendiente de compilación/prueba funcional antes de continuar con Detalle del coche.
+
+- Se establece **versionName 1.0.5** y **versionCode 59** en `app/build.gradle`.
+- La versión 1.0.5 queda preparada para iniciar el desarrollo funcional sobre `develop/1.0.5`.
+- No se ha generado ni publicado todavía un APK/AAB de 1.0.5; primero se implementarán y probarán las nuevas funciones.
+
+
+## 2026-10-06 — Separación definitiva de las funciones de Coches en 1.0.5
+
+- Se crea **CochesActivity** como selector independiente de las dos funciones de vehículos.
+- La pestaña inferior **🚗 Coches** abre ahora este selector.
+- **Comparar coches** y **Buscar coches similares** quedan como dos pantallas/Activities independientes.
+- Comparar coches mantiene exclusivamente la comparativa de hasta 3 vehículos.
+- Buscar coches similares mantiene el flujo independiente: referencia → 5 similares → detalle → Añadir a comparativa.
+- Se registra CochesActivity en el manifest y se actualiza BottomNavigationHelper.
+- Estado: cambios realizados en **develop/1.0.5**; **pendiente de build y prueba en dispositivo**.

@@ -145,6 +145,8 @@ def flatten_gaia(item):
         "charge10to80Min": charging.get("time_10_to_80_min") or item.get("dc_charge_time_10_80_min"),
         "acceleration0to100Sec": performance.get("acceleration_0_100_sec") or item.get("acceleration_0_100_sec"),
         "trunkLiters": cargo.get("trunk_capacity_liters") or item.get("trunk_capacity_liters"),
+        "bodyStyle": item.get("body_style") or item.get("bodyStyle"),
+        "segment": item.get("segment"),
         "weightKg": weight.get("curb_weight_kg") or item.get("weight_curb_kg"),
         "source": "Gaia Charge EVDB",
         "arrivalYear": item.get("model_year") or item.get("year")
