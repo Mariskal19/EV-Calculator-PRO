@@ -37,7 +37,7 @@ public class CarDetailActivity extends BaseNavigationActivity {
   addSection(c,"Practicidad");addRow(c,"Maletero",lit(i,"trunk"," L"));addRow(c,"Peso",lit(i,"weight"," kg"));
   addSection(c,"Dimensiones");addRow(c,"Largo",dim(i,"lengthMm"));addRow(c,"Ancho",dim(i,"widthMm"));addRow(c,"Alto",dim(i,"heightMm"));
   addSection(c,"Precio");addRow(c,"Precio",price(i.getDoubleExtra("price",0)));
-  c.addView(tv(i.getBooleanExtra("remoteSource",false)?"Datos añadidos desde catálogo externo validado.":"Datos del catálogo protegido.",12,sub()),new LinearLayout.LayoutParams(-1,dp(44)));
+
   scroll.addView(c);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));setContentView(root);
  }
  private String battery(Intent i){double g=i.getDoubleExtra("batteryKwh",0),u=i.getDoubleExtra("usableBatteryKwh",0);if(g<=0&&u<=0)return"—";return g>0&&u>0&&Math.abs(g-u)>.05?num(g)+" kWh\n"+num(u)+" kWh utilizable":num(g>0?g:u)+" kWh";}
