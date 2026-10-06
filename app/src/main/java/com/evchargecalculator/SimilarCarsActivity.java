@@ -496,7 +496,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         d=relativeDistance(a.consumption,b.consumption,.15); if(d>=0){sum+=d*.09;weight+=.09;}
         d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.10;weight+=.10;}
         d=relativeDistance(a.trunk,b.trunk,.25); if(d>=0){sum+=d*.11;weight+=.11;}
-        d=dimensionDistance(a,b); if(d>=0){sum+=d*.22;weight+=.22;}
+        d=dimensionDistance(a,b); if(d>=0){sum+=d*.20;weight+=.20;}
+        d=bodyStyleDistance(a,b); if(d>=0){sum+=d*.05;weight+=.05;}
+        d=segmentDistance(a,b); if(d>=0){sum+=d*.05;weight+=.05;}
         d=relativeDistance(a.acc,b.acc,.20); if(d>=0){sum+=d*.03;weight+=.03;}
         d=relativeDistance(a.dcKw,b.dcKw,.25); if(d>=0){sum+=d*.05;weight+=.05;}
         d=relativeDistance(a.chargeMin,b.chargeMin,.20); if(d>=0){sum+=d*.07;weight+=.07;}
@@ -518,6 +520,42 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double reference=Math.max(a,b);
         double ratio=Math.abs(a-b)/reference;
         return Math.min(1,ratio/tolerance);
+    }
+
+    /**
+     * SUV y crossover se consideran equivalentes para la similitud:
+     * son carrocerías muy próximas y, en este contexto, rivales directos.
+     */
+    private double bodyStyleDistance(Vehicle a,Vehicle b){
+        String x=normalizeBodyStyle(a.bodyStyle), y=normalizeBodyStyle(b.bodyStyle);
+        if(x.isEmpty()||y.isEmpty())return -1;
+        if(x.equals(y))return 0;
+        if((x.equals("suv")&&y.equals("crossover"))||(x.equals("crossover")&&y.equals("suv")))return 0;
+        return 1;
+    }
+
+    private String normalizeBodyStyle(String s){
+        String x=s==null?"":s.trim().toLowerCase(Locale.ROOT);
+        return x.equals("suv")||x.equals("crossover")?x:x;
+    }
+
+    /**
+     * El segmento aporta contexto, pero con poco peso. Para SUV/crossover
+     * permitimos diferencias de letra del catálogo Gaia sin convertirlas
+     * en una penalización fuerte (p.ej. G6 C frente a Model Y J).
+     */
+    private double segmentDistance(Vehicle a,Vehicle b){
+        String x=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
+        String y=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        if(x.isEmpty()||y.isEmpty())return -1;
+        if(x.equals(y))return 0;
+        if(isSuvLike(a.bodyStyle)&&isSuvLike(b.bodyStyle))return .20;
+        return 1;
+    }
+
+    private boolean isSuvLike(String s){
+        String x=normalizeBodyStyle(s);
+        return x.equals("suv")||x.equals("crossover");
     }
 
     private double dimensionDistance(Vehicle a,Vehicle b){
@@ -616,7 +654,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
         Vehicle(JSONObject o,boolean remote){
             remoteSource=remote;make=o.optString("make",o.optString("brand",""));model=o.optString("model","");version=o.optString("version",o.optString("trim",""));
-            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);
+            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);\n            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(Locale.ROOT);\n            segment=o.optString("segment","").trim().toUpperCase(Locale.ROOT);
             year=o.optInt("year",o.optInt("modelYear",0));price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",o.optDouble("battery_capacity_kwh",0));usableBatteryKwh=o.optDouble("usableBatteryKwh",0);
             wltpKm=o.optDouble("wltpKm",o.optDouble("rangeKm",0));consumption=o.optDouble("consumption",o.optDouble("consumptionKwh100",0));powerKw=o.optDouble("powerKw",o.optDouble("power_kW",0));
             acKw=o.optDouble("acKw",o.optDouble("acChargeKw",0));dcKw=o.optDouble("dcKw",o.optDouble("dcChargeKw",0));chargeMin=o.optDouble("charge10to80Min",o.optDouble("chargeMin",0));
