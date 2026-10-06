@@ -99,7 +99,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         LinearLayout searchCard=card();
         searchCard.setPadding(dp(14),dp(14),dp(14),dp(14));
 
-        TextView searchLabel=tv("1. Busca tu coche de referencia",16,text());
+        TextView searchLabel=tv("Busca tu coche de referencia",16,text());
         searchLabel.setTypeface(null,Typeface.BOLD);
         searchCard.addView(searchLabel,new LinearLayout.LayoutParams(-1,dp(30)));
 
@@ -116,25 +116,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         content.addView(searchCard,marginLp(-1,-2,0,0,0,dp(10)));
 
 
-        selectedTitle=tv("2. Elige el coche de referencia",17,text());
+        referenceResults=card();
+        referenceResults.setPadding(dp(14),dp(10),dp(14),dp(10));
+        selectedTitle=tv("Coche de referencia",17,text());
         selectedTitle.setTypeface(null,Typeface.BOLD);
-        content.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        content.addView(referenceResults,marginLp(-1,-2,0,0,0,dp(10)));
 
-        referenceResults=new LinearLayout(this);
-        referenceResults.setOrientation(LinearLayout.VERTICAL);
-        referenceResults.setPadding(0,0,0,dp(4));
-        content.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
-
-        resultsTitle=tv("3. Coches similares",17,text());
+        results=card();
+        results.setPadding(dp(14),dp(10),dp(14),dp(10));
+        resultsTitle=tv("Coches similares",17,text());
         resultsTitle.setTypeface(null,Typeface.BOLD);
         resultsTitle.setVisibility(View.GONE);
-
-        results=new LinearLayout(this);
-        results.setOrientation(LinearLayout.VERTICAL);
-        content.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
-        results=new LinearLayout(this);
-        results.setOrientation(LinearLayout.VERTICAL);
-        content.addView(results,new LinearLayout.LayoutParams(-1,-2));
+        results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        content.addView(results,marginLp(-1,-2,0,0,0,dp(10)));
 
         TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones.",12,sub());
         note.setLineSpacing(0,1.15f);
