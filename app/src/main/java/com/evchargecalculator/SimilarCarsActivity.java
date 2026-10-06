@@ -119,26 +119,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         searchCard.addView(picker,new LinearLayout.LayoutParams(-1,dp(52)));
         content.addView(searchCard,marginLp(-1,-2,0,0,0,dp(10)));
 
-        LinearLayout filters=card();
-        filters.setPadding(dp(14),dp(12),dp(14),dp(12));
-
-        TextView filterTitle=tv("Filtros opcionales",14,text());
-        filterTitle.setTypeface(null,Typeface.BOLD);
-        filters.addView(filterTitle,new LinearLayout.LayoutParams(-1,dp(28)));
-
-        LinearLayout row1=new LinearLayout(this);
-        row1.setOrientation(LinearLayout.HORIZONTAL);
-        marketSpinner=spinner(); yearSpinner=spinner();
-        addSpinner(row1,marketSpinner,0.5f); addSpinner(row1,yearSpinner,0.5f);
-        filters.addView(row1,new LinearLayout.LayoutParams(-1,dp(50)));
-
-        LinearLayout row2=new LinearLayout(this);
-        row2.setOrientation(LinearLayout.HORIZONTAL);
-        driveSpinner=spinner(); batterySpinner=spinner();
-        addSpinner(row2,driveSpinner,0.5f); addSpinner(row2,batterySpinner,0.5f);
-        filters.addView(row2,new LinearLayout.LayoutParams(-1,dp(50)));
-
-        content.addView(filters,marginLp(-1,-2,0,0,0,dp(14)));
 
         selectedTitle=tv("2. Elige el coche de referencia",17,text());
         selectedTitle.setTypeface(null,Typeface.BOLD);
