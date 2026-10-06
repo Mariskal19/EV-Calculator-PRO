@@ -351,7 +351,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ver=v.version==null?"":v.version.trim().replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kwh\\b","").replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kw\\b","").replaceAll("\\s+"," ").trim();
         if(!ver.isEmpty()){if(second.length()>0)second.append(" · ");second.append(ver);}
         if(v.batteryKwh>0){if(second.length()>0)second.append(" · ");second.append(fmt(v.batteryKwh)).append(" kWh");}
-        return first+"\\n"+second;
+        return first+"\n"+second;
     }
 
     private void showReferenceCandidates(){
