@@ -451,7 +451,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
 
         LinearLayout card=card();
-        card.setPadding(dp(16),dp(13),dp(16),dp(13));
+        card.setPadding(dp(16),dp(9),dp(16),dp(9));
 
         LinearLayout top=new LinearLayout(this);
         top.setOrientation(LinearLayout.HORIZONTAL);
@@ -474,23 +474,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         score.setBackground(strokeBg(dark?Color.rgb(13,36,58):Color.rgb(235,243,255),blue,10));
         top.addView(score,new LinearLayout.LayoutParams(dp(64),dp(30)));
 
-        card.addView(top,new LinearLayout.LayoutParams(-1,dp(34)));
+        card.addView(top,new LinearLayout.LayoutParams(-1,dp(31)));
 
         TextView ver=tv(v.version+"  ·  "+v.year,12,sub());
-        card.addView(ver,new LinearLayout.LayoutParams(-1,dp(25)));
+        card.addView(ver,new LinearLayout.LayoutParams(-1,dp(21)));
 
         TextView specs=tv(specLine(v),12,sub());
         specs.setPadding(0,dp(2),0,dp(4));
-        card.addView(specs,new LinearLayout.LayoutParams(-1,dp(27)));
+        card.addView(specs,new LinearLayout.LayoutParams(-1,dp(23)));
 
         TextView action=tv("Ver detalles  ›",13,blue);
         action.setTypeface(null,Typeface.BOLD);
         action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
         action.setOnClickListener(x->openDetail(v));
-        card.addView(action,new LinearLayout.LayoutParams(-1,dp(27)));
+        card.addView(action,new LinearLayout.LayoutParams(-1,dp(24)));
 
         card.setOnClickListener(x->addSimilarToComparison(v));
-        results.addView(card,marginLp(-1,-2,0,0,0,dp(8)));
+        results.addView(card,marginLp(-1,-2,0,0,0,dp(6)));
     }
 
     private LinearLayout card(){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setPadding(dp(14),dp(10),dp(14),dp(10));c.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),14));return c;}
