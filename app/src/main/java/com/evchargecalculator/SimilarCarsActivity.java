@@ -568,6 +568,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Intent i=new Intent(this,CarDetailActivity.class);
         i.putExtra("vehicle_id",v.id);
         i.putExtra("logical_key",logicalKey(v));
+        i.putExtra("similar_flow",true);
+        i.putExtra("reference_vehicle_id",reference==null?null:reference.id);
+        i.putExtra("reference_logical_key",reference==null?null:logicalKey(reference));
         i.putExtra("make",v.make);i.putExtra("model",v.model);i.putExtra("version",v.version);i.putExtra("market",v.market);i.putExtra("year",String.valueOf(v.year));
         i.putExtra("price",v.price);i.putExtra("batteryKwh",v.batteryKwh);i.putExtra("usableBatteryKwh",v.usableBatteryKwh);i.putExtra("batteryType",v.batteryType);i.putExtra("wltpKm",v.wltpKm);i.putExtra("consumption",v.consumption);i.putExtra("powerKw",v.powerKw);i.putExtra("drivetrain",v.drivetrain);i.putExtra("acKw",v.acKw);i.putExtra("dcKw",v.dcKw);i.putExtra("chargeMin",v.chargeMin);i.putExtra("acc",v.acc);i.putExtra("trunk",v.trunk);i.putExtra("weight",v.weight);i.putExtra("lengthMm",v.lengthMm);i.putExtra("widthMm",v.widthMm);i.putExtra("heightMm",v.heightMm);i.putExtra("remoteSource",v.remoteSource);
         startActivity(i);
