@@ -357,7 +357,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(results==null||referenceResults==null)return;
         if(reference==null){
             referenceResults.removeAllViews();
+            referenceResults.setVisibility(View.VISIBLE);
+            selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
+            referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
             results.removeAllViews();
+            results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
             resultsTitle.setVisibility(View.GONE);
         }
     }
