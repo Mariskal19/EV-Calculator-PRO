@@ -89,7 +89,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         title.setTypeface(null,Typeface.BOLD);
         hero.addView(title,new LinearLayout.LayoutParams(-1,dp(38)));
 
-        TextView intro=tv("Elige un coche de referencia y descubre las 5 alternativas más similares del catálogo.",14,Color.WHITE);
+        TextView intro=tv("Elige un coche de referencia y descubre las 8 alternativas más similares del catálogo.",14,Color.WHITE);
         intro.setAlpha(0.94f);
         intro.setLineSpacing(0,1.15f);
         hero.addView(intro,new LinearLayout.LayoutParams(-1,dp(44)));
@@ -150,7 +150,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         content.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
         results=referenceResults;
 
-        resultsTitle=tv("3. 5 coches similares",17,text());
+        resultsTitle=tv("3. 8 coches similares",17,text());
         resultsTitle.setTypeface(null,Typeface.BOLD);
         resultsTitle.setVisibility(View.GONE);
         content.addView(resultsTitle,marginLp(-1,dp(8),0,0,0,dp(2)));
@@ -411,7 +411,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             double score=similarity(reference,v);
             if(Double.isFinite(score))scored.add(new Scored(v,score));
         }
-        // El Top 5 muestra como máximo un vehículo por marca.
+        // El Top 8 muestra como máximo un vehículo por marca.
         // Para cada marca se conserva únicamente su vehículo más similar.
         Map<String,Scored> bestByMake=new HashMap<>();
         for(Scored s:scored){
@@ -424,7 +424,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
         Collections.sort(uniqueBrands,(a,b)->Double.compare(a.score,b.score));
 
-        int n=Math.min(5,uniqueBrands.size());
+        int n=Math.min(8,uniqueBrands.size());
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
