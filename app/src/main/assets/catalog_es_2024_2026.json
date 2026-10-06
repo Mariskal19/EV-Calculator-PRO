@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": "catalog-es-2024-2026-1.2",
+  "datasetVersion": "catalog-es-2024-2026-1.3",
   "marketDefault": "ES",
   "catalogOrder": "market>make>model>year>trim>technical",
   "vehicles": [
@@ -111,7 +111,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 50.8
+      "usableBatteryKwh": 50.8,
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Alfa Romeo",
@@ -146,7 +148,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 50.8
+      "usableBatteryKwh": 50.8,
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Alpine",
@@ -297,7 +301,9 @@
       "usableBatteryKwh": 50,
       "price": 37760,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Audi",
@@ -337,7 +343,9 @@
       "usableBatteryKwh": 58,
       "price": 41460,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Audi",
@@ -377,7 +385,9 @@
       "usableBatteryKwh": 79,
       "price": 47360,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Audi",
@@ -417,7 +427,9 @@
       "usableBatteryKwh": 79,
       "price": 56640,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es"
+      "priceSource": "Europa Press 07/09/2026; precios de lanzamiento en España comunicados por Audi; corroborado por Motor.es",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Audi",
@@ -1150,7 +1162,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Audi",
@@ -1191,7 +1205,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Audi",
@@ -1229,7 +1245,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Audi",
@@ -1267,7 +1285,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Audi",
@@ -1305,7 +1325,9 @@
       "heightMm": 1648,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Audi",
@@ -1343,7 +1365,9 @@
       "heightMm": 1648,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Audi",
@@ -1381,7 +1405,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "wagon",
+      "segment": "E"
     },
     {
       "make": "Audi",
@@ -1419,7 +1445,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "Audi",
@@ -1503,7 +1531,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "BMW",
@@ -1540,7 +1570,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Vehicle Makes & Models dataset; generación 2026",
       "dimensionsAuditDate": "2026-09-30",
-      "usableBatteryKwh": 108.7
+      "usableBatteryKwh": 108.7,
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "BMW",
@@ -3664,7 +3696,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Changan",
@@ -3703,7 +3737,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Changan",
@@ -3742,7 +3778,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Changan",
@@ -3782,7 +3820,9 @@
       "heightMm": 1625,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Citroën",
@@ -5051,7 +5091,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 29,
       "price": 24294,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "hatchback",
+      "segment": "A"
     },
     {
       "make": "Dongfeng",
@@ -5088,7 +5130,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 27266,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "hatchback",
+      "segment": "A"
     },
     {
       "make": "Dongfeng",
@@ -5125,7 +5169,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 27266,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "hatchback",
+      "segment": "A"
     },
     {
       "make": "DS",
@@ -5160,7 +5206,9 @@
       "heightMm": 1490,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "AutomobileDimension.com; modelo 2026",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "DS",
@@ -5586,7 +5634,9 @@
       "dimensionsAuditDate": "2026-10-01",
       "price": 44700,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5621,7 +5671,9 @@
       "price": 51765,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "PVP España 2024; Motor.es/El País/Autofácil, tarifa sin descuentos"
+      "priceSource": "PVP España 2024; Motor.es/El País/Autofácil, tarifa sin descuentos",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5655,7 +5707,9 @@
       "dimensionsAuditDate": "2026-10-01",
       "price": 50758,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5689,7 +5743,9 @@
       "dimensionsAuditDate": "2026-10-01",
       "price": 58755,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5723,7 +5779,9 @@
       "dimensionsAuditDate": "2026-10-01",
       "price": 44700,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas"
+      "priceSource": "Tarifa/PVP España Ford Explorer; fuentes españolas de lanzamiento y fichas de mercado (Ford/medios españoles), sin descuentos ni ayudas",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5758,7 +5816,9 @@
       "price": 50800,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Tarifa España 11/2025; km77, PVP equivalente a 41.983 € sin impuestos + IVA 21%"
+      "priceSource": "Tarifa España 11/2025; km77, PVP equivalente a 41.983 € sin impuestos + IVA 21%",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5792,7 +5852,9 @@
       "dimensionsAuditDate": "2026-10-01",
       "price": 57800,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Tarifa España 11/2025; Autopista/kM77, PVP tarifa 2025"
+      "priceSource": "Tarifa España 11/2025; Autopista/kM77, PVP tarifa 2025",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5825,7 +5887,9 @@
       "dimensionsSource": "Ford; dimensiones auditadas",
       "dimensionsAuditDate": "2026-10-01",
       "price": 45710,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5858,7 +5922,9 @@
       "dimensionsSource": "Ford; dimensiones auditadas",
       "dimensionsAuditDate": "2026-10-01",
       "price": 49810,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5891,7 +5957,9 @@
       "dimensionsSource": "Ford; dimensiones auditadas",
       "dimensionsAuditDate": "2026-10-01",
       "price": 56360,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5930,7 +5998,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 47200,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "crossover",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -5969,7 +6039,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 54265,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "crossover",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -6008,7 +6080,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 61255,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "crossover",
+      "segment": "C"
     },
     {
       "make": "Ford",
@@ -6602,7 +6676,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 60,
       "price": 30995,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "GAC",
@@ -6639,7 +6715,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 75.26,
       "price": 37995,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Geely",
@@ -6679,7 +6757,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "usableBatteryKwh": 60.22,
       "price": 37490,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Geely",
@@ -6717,7 +6797,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "usableBatteryKwh": 68.39,
       "price": 41990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Geely",
@@ -6755,7 +6837,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "usableBatteryKwh": 68.39,
       "price": 39990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Hyundai",
@@ -6921,7 +7005,9 @@
       "price": 33995,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "Hyundai España / precios de lanzamiento en España contrastados con Motor.es"
+      "priceSource": "Hyundai España / precios de lanzamiento en España contrastados con Motor.es",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Hyundai",
@@ -6960,7 +7046,9 @@
       "price": 29995,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "Hyundai España / precios de lanzamiento en España contrastados con Motor.es"
+      "priceSource": "Hyundai España / precios de lanzamiento en España contrastados con Motor.es",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Hyundai",
@@ -7784,7 +7872,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 58.9,
       "price": 38500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Jaecoo",
@@ -7821,7 +7911,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 58.9,
       "price": 34895,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "gaiaId": "jaguar-i-pace-ev400-2024",
@@ -7944,7 +8036,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
       "priceSource": "Precio nuevo en España 2026; PVP de versión Full Electric BEV Altitude Long Range contrastado con Coches.net/JATO",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Jeep",
@@ -7983,7 +8077,9 @@
       "price": 47673,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
       "priceSource": "km77, Jeep Compass eléctrico España 2025; PVP de lanzamiento de la versión 74 kWh/213 CV",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Jeep",
@@ -8021,7 +8117,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 59805,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Precio oficial España 2026; tarifa/precio oficial de versión Overland 4xe, corroborado por concesionario oficial y fuentes de mercado"
+      "priceSource": "Precio oficial España 2026; tarifa/precio oficial de versión Overland 4xe, corroborado por concesionario oficial y fuentes de mercado",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Jeep",
@@ -8059,7 +8157,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 50600,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Jeep España, tarifa Compass MY26; PVP recomendado IVA incluido, 74 kWh 213 CV FWD"
+      "priceSource": "Jeep España, tarifa Compass MY26; PVP recomendado IVA incluido, 74 kWh 213 CV FWD",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Jeep",
@@ -8097,7 +8197,9 @@
       "usableBatteryKwh": 96.3,
       "price": 53850,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "El Independiente, 24/07/2026; precio español Altitude 96.3 kWh/231 CV sin descuentos ni ayudas"
+      "priceSource": "El Independiente, 24/07/2026; precio español Altitude 96.3 kWh/231 CV sin descuentos ni ayudas",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "KGM",
@@ -8135,7 +8237,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 37500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "KGM",
@@ -8173,7 +8277,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 34500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "KGM",
@@ -8212,7 +8318,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 80.6,
       "price": 37500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "KGM",
@@ -8251,7 +8359,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 80.6,
       "price": 35000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Kia",
@@ -8292,7 +8402,9 @@
       "price": 33450,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
       "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Air 2026",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Kia",
@@ -8333,7 +8445,9 @@
       "price": 29450,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
       "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Air 2026",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Kia",
@@ -8374,7 +8488,9 @@
       "price": 37575,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
       "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Long Range Earth 2026",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Kia",
@@ -8415,7 +8531,9 @@
       "price": 33575,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
       "priceSource": "Kia España/Carwow, PVP sin oferta EV2 Standard Range Earth 2026",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Kia",
@@ -8454,7 +8572,9 @@
       "price": 40665,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
-      "priceSource": "KM77; tarifa 09/2026"
+      "priceSource": "KM77; tarifa 09/2026",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Kia",
@@ -9078,7 +9198,9 @@
       "usableBatteryKwh": 67,
       "price": 43190,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Kia España/coches.net, PVP Cargo LR Essential 71.2 kWh 2025"
+      "priceSource": "Kia España/coches.net, PVP Cargo LR Essential 71.2 kWh 2025",
+      "bodyStyle": "van",
+      "segment": "M"
     },
     {
       "make": "Kia",
@@ -9115,7 +9237,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 48,
       "price": 39900,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "van",
+      "segment": "M"
     },
     {
       "make": "Kia",
@@ -9152,7 +9276,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 67,
       "price": 45775,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "van",
+      "segment": "M"
     },
     {
       "make": "Kia",
@@ -9189,7 +9315,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 67,
       "price": 42755,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "van",
+      "segment": "M"
     },
     {
       "make": "Kia",
@@ -9226,7 +9354,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 48,
       "price": 38755,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "van",
+      "segment": "M"
     },
     {
       "make": "Kia",
@@ -9263,7 +9393,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 67,
       "price": 45155,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "van",
+      "segment": "M"
     },
     {
       "make": "Lancia",
@@ -9379,7 +9511,9 @@
       "usableBatteryKwh": 52,
       "price": 28900,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Carwow, PVP España B03X Design Pro Max 53 kWh, septiembre 2026"
+      "priceSource": "Carwow, PVP España B03X Design Pro Max 53 kWh, septiembre 2026",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Leapmotor",
@@ -9416,7 +9550,9 @@
       "usableBatteryKwh": 39,
       "price": 24900,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Carwow, PVP España B03X Life Pro 39,8 kWh, septiembre 2026"
+      "priceSource": "Carwow, PVP España B03X Life Pro 39,8 kWh, septiembre 2026",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Leapmotor",
@@ -9453,7 +9589,9 @@
       "usableBatteryKwh": 65,
       "price": 30264,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Motor.es, PVP sin descuentos B05 Design ProMax 67,1 kWh, 2026"
+      "priceSource": "Motor.es, PVP sin descuentos B05 Design ProMax 67,1 kWh, 2026",
+      "bodyStyle": "crossover",
+      "segment": "C"
     },
     {
       "make": "Leapmotor",
@@ -9490,7 +9628,9 @@
       "usableBatteryKwh": 55,
       "price": 26264,
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "priceSource": "Motor.es, PVP sin descuentos B05 Life Pro 56,2 kWh, 2026"
+      "priceSource": "Motor.es, PVP sin descuentos B05 Life Pro 56,2 kWh, 2026",
+      "bodyStyle": "crossover",
+      "segment": "C"
     },
     {
       "make": "Leapmotor",
@@ -10272,7 +10412,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 158037,
       "currency": "EUR",
-      "usableBatteryKwh": 135
+      "usableBatteryKwh": 135,
+      "bodyStyle": "suv",
+      "segment": "E"
     },
     {
       "make": "Maserati",
@@ -10309,7 +10451,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 209600,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "convertible",
+      "segment": "S"
     },
     {
       "make": "Maserati",
@@ -10546,7 +10690,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 49686.3,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "wagon",
+      "segment": "D"
     },
     {
       "make": "Mercedes-Benz",
@@ -10586,7 +10732,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
       "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "wagon",
+      "segment": "D"
     },
     {
       "make": "Mercedes-Benz",
@@ -10626,7 +10774,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T17:13:00+02:00",
       "priceSource": "Mercedes-Benz España; PVP de lanzamiento/venta en España contrastado con km77",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "wagon",
+      "segment": "D"
     },
     {
       "make": "Mercedes-Benz",
@@ -10920,7 +11070,9 @@
       "dimensionsSource": "Vehicle Makes & Models dataset; GLA 2026",
       "dimensionsAuditDate": "2026-09-30",
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Mercedes-Benz",
@@ -11048,7 +11200,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Mercedes-Benz",
@@ -11089,7 +11243,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T16:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "MG",
@@ -11129,7 +11285,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 68990,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "convertible",
+      "segment": "S"
     },
     {
       "make": "MG",
@@ -11169,7 +11327,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 63990,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "convertible",
+      "segment": "S"
     },
     {
       "make": "MG",
@@ -11210,7 +11370,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 25490,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11251,7 +11413,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 27990,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11291,7 +11455,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 32000,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11331,7 +11497,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "price": 36000,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11371,7 +11539,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 36000,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11411,7 +11581,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "price": 28000,
       "currency": "EUR",
-      "batteryChemistry": "LFP"
+      "batteryChemistry": "LFP",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11451,7 +11623,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "price": 45000,
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "hatchback",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11617,7 +11791,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 48990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11657,7 +11833,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 45990,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "MG",
@@ -11700,7 +11878,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
       "charge10to80Applicable": false,
-      "charge10to80AuditDateTime": "2026-10-01T21:45:00+02:00"
+      "charge10to80AuditDateTime": "2026-10-01T21:45:00+02:00",
+      "bodyStyle": "suv",
+      "segment": "E"
     },
     {
       "make": "MINI",
@@ -12074,7 +12254,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 43050,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Mitsubishi",
@@ -12112,7 +12294,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 47900,
-      "priceAuditDateTime": "2026-10-01T17:00:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:00:00+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Nissan",
@@ -12427,7 +12611,9 @@
       "price": 37295,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "OMODA España/Motor.es"
+      "priceSource": "OMODA España/Motor.es",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Omoda",
@@ -12466,7 +12652,9 @@
       "price": 34295,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "OMODA España/Motor.es"
+      "priceSource": "OMODA España/Motor.es",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Omoda",
@@ -12505,7 +12693,9 @@
       "price": 52900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Opel",
@@ -12754,7 +12944,9 @@
       "price": 29550,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Opel España"
+      "priceSource": "Opel España",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Opel",
@@ -12915,7 +13107,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 47450,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Opel",
@@ -12952,7 +13146,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 51650,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Opel",
@@ -12989,7 +13185,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 59090,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Opel",
@@ -13070,7 +13268,9 @@
       "usableBatteryKwh": 50.8,
       "price": 46755,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Peugeot",
@@ -13433,7 +13633,9 @@
       "price": 41290,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Peugeot España"
+      "priceSource": "Peugeot España",
+      "bodyStyle": "liftback",
+      "segment": "C"
     },
     {
       "make": "Peugeot",
@@ -14166,7 +14368,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 82310,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Porsche",
@@ -14202,7 +14406,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "usableBatteryKwh": 94.9,
       "price": 100000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Porsche",
@@ -14239,7 +14445,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "usableBatteryKwh": 94.9,
       "price": 82310,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Porsche",
@@ -14276,7 +14484,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 119649,
-      "priceAuditDateTime": "2026-10-01T17:35:00+02:00"
+      "priceAuditDateTime": "2026-10-01T17:35:00+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Renault",
@@ -14703,7 +14913,9 @@
       "price": 41160,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Renault España"
+      "priceSource": "Renault España",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Renault",
@@ -14746,7 +14958,9 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Renault España"
+      "priceSource": "Renault España",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Renault",
@@ -14789,7 +15003,9 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Renault España"
+      "priceSource": "Renault España",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Renault",
@@ -14832,7 +15048,9 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
-      "priceSource": "Renault España"
+      "priceSource": "Renault España",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Renault",
@@ -15102,7 +15320,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 50500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "coupe",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15138,7 +15358,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 53500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "coupe",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15174,7 +15396,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 60000,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "coupe",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15215,7 +15439,9 @@
       "price": 33700,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "coupe",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15254,7 +15480,9 @@
       "price": 43750,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "coupe",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15294,7 +15522,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "price": 42000,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15334,7 +15564,9 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "price": 49500,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15376,7 +15608,9 @@
       "price": 40150,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15414,7 +15648,9 @@
       "price": 31400,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15452,7 +15688,9 @@
       "price": 37650,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15490,7 +15728,9 @@
       "price": 40150,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15532,7 +15772,9 @@
       "price": 41150,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "make": "Škoda",
@@ -15571,7 +15813,9 @@
       "price": 22800,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Škoda España"
+      "priceSource": "Škoda España",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Škoda",
@@ -15612,7 +15856,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "E"
     },
     {
       "make": "Škoda",
@@ -15653,7 +15899,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "E"
     },
     {
       "make": "Škoda",
@@ -15694,7 +15942,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "E"
     },
     {
       "make": "Skywell",
@@ -15734,7 +15984,9 @@
       "price": 40416,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Skywell",
@@ -15774,7 +16026,9 @@
       "price": 44416,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Skywell",
@@ -15814,7 +16068,9 @@
       "price": 47416,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Skywell",
@@ -15854,7 +16110,9 @@
       "price": 43416,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "smart",
@@ -16513,7 +16771,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "wagon",
+      "segment": "D"
     },
     {
       "make": "Subaru",
@@ -16595,7 +16855,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Subaru",
@@ -16635,7 +16897,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Subaru",
@@ -16675,7 +16939,9 @@
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:30:00+02:00",
       "priceSource": "Fabricante / PVP España",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "Tesla",
@@ -18120,7 +18386,9 @@
       "price": 29900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Volkswagen",
@@ -18158,7 +18426,9 @@
       "price": 33900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "B"
     },
     {
       "make": "Volkswagen",
@@ -18197,7 +18467,9 @@
       "price": 29900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Volkswagen",
@@ -18235,7 +18507,9 @@
       "price": 25900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Volkswagen",
@@ -18273,7 +18547,9 @@
       "price": 27900,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "hatchback",
+      "segment": "B"
     },
     {
       "make": "Volkswagen",
@@ -19273,7 +19549,9 @@
       "price": 82329,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:35:00+02:00",
-      "priceSource": "Fabricante / PVP España"
+      "priceSource": "Fabricante / PVP España",
+      "bodyStyle": "suv",
+      "segment": "E"
     },
     {
       "make": "XPeng",
