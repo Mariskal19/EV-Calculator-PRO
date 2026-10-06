@@ -350,7 +350,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ver=v.version==null?"":v.version.trim();
         if(!ver.isEmpty()){if(!second.isEmpty())second+=" · ";second+=ver;}
         if(v.batteryKwh>0){if(!second.isEmpty())second+=" · ";second+=fmt(v.batteryKwh)+" kWh";}
-        return first+"\\n"+second;
+        return first+"\n"+second;
     }
 
     private void showReferenceCandidates(){
