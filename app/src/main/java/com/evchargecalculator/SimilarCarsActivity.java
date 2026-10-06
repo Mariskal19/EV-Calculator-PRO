@@ -144,11 +144,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
 
-        populateFilters();
-        AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener(){public void onItemSelected(AdapterView<?> p,View v,int a,long b){if(reference!=null)showSimilar();} public void onNothingSelected(AdapterView<?> p){}};
-        marketSpinner.setOnItemSelectedListener(listener); yearSpinner.setOnItemSelectedListener(listener); driveSpinner.setOnItemSelectedListener(listener); batterySpinner.setOnItemSelectedListener(listener);
-    }
-
     private LinearLayout.LayoutParams marginLp(int w,int h,int l,int t,int r,int b){
         LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(w,h);p.setMargins(l,t,r,b);return p;
     }
