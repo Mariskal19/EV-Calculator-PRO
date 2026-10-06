@@ -384,8 +384,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void showReferenceCandidates(){
         // Ya no se utiliza una búsqueda libre en pantalla: el coche de referencia
         // se selecciona exclusivamente desde el selector del catálogo.
-        if(results==null)return;
+        if(results==null||referenceResults==null)return;
         if(reference==null){
+            referenceResults.removeAllViews();
             results.removeAllViews();
             resultsTitle.setVisibility(View.GONE);
         }
