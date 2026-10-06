@@ -371,6 +371,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub());
         hint.setPadding(0,dp(2),0,0);
         intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
+
         // The card is deliberately laid over the bottom of the hero image.
         // Keep a little more room below it so moving it down does not clip it.
         int cardTop = dp(236);
