@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": "catalog-es-2024-2026-1.3",
+  "datasetVersion": "catalog-es-2024-2026-1.4",
   "marketDefault": "ES",
   "catalogOrder": "market>make>model>year>trim>technical",
   "vehicles": [
@@ -20180,7 +20180,9 @@
       "heightMm": 1495,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "XPeng",
@@ -20220,7 +20222,9 @@
       "heightMm": 1512,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "XPeng",
@@ -20260,7 +20264,9 @@
       "heightMm": 1495,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "XPeng",
@@ -20300,7 +20306,9 @@
       "heightMm": 1450,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "XPeng",
@@ -20340,7 +20348,9 @@
       "heightMm": 1450,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "XPeng",
@@ -20380,7 +20390,9 @@
       "heightMm": 1512,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "bodyStyle": "sedan",
+      "segment": "E"
     },
     {
       "make": "Zeekr",
