@@ -474,7 +474,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         card.addView(top,new LinearLayout.LayoutParams(-1,dp(34)));
 
-        TextView ver=tv(v.version+"  ·  "+v.year+"  ·  "+market(v.market),12,sub());
+        TextView ver=tv(v.version+"  ·  "+v.year,12,sub());
         card.addView(ver,new LinearLayout.LayoutParams(-1,dp(25)));
 
         TextView specs=tv(specLine(v),12,sub());
