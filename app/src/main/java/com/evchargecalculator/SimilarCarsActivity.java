@@ -580,9 +580,17 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ba=normalizeBodyStyle(a.bodyStyle);
         String bb=normalizeBodyStyle(b.bodyStyle);
         if(sa.isEmpty()||sb.isEmpty()||ba.isEmpty()||bb.isEmpty())return false;
-        if(!sa.equals(sb))return false;
-        if(ba.equals(bb))return true;
-        return isSuvLike(ba)&&isSuvLike(bb);
+        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb)))return false;
+        if(sa.equals(sb))return true;
+        // Gaia usa códigos distintos para algunos SUV/crossover que son rivales directos.
+        return isSuvLike(ba)&&isSuvLike(bb)&&samePhysicalClass(a,b);
+    }
+
+    private boolean samePhysicalClass(Vehicle a,Vehicle b){
+        if(a.lengthMm<=0||b.lengthMm<=0||a.widthMm<=0||b.widthMm<=0||a.heightMm<=0||b.heightMm<=0)return false;
+        return relativeDistance(a.lengthMm,b.lengthMm,.08)<=1
+            &&relativeDistance(a.widthMm,b.widthMm,.05)<=1
+            &&relativeDistance(a.heightMm,b.heightMm,.08)<=1;
     }
 
     private boolean passesFilters(Vehicle v){
