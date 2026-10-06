@@ -99,19 +99,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         searchLabel.setTypeface(null,Typeface.BOLD);
         searchCard.addView(searchLabel,new LinearLayout.LayoutParams(-1,dp(30)));
 
-        TextView searchHint=tv("Puedes buscar por marca, modelo o versión.",12,sub());
+        TextView searchHint=tv("Selecciona directamente un coche del catálogo, igual que en Comparar coches.",12,sub());
         searchHint.setPadding(0,0,0,dp(9));
         searchCard.addView(searchHint,new LinearLayout.LayoutParams(-1,dp(26)));
 
         search=new EditText(this);
-        search.setSingleLine(true);
-        search.setHint(LanguageManager.t(this,"🔎 Marca o modelo"));
-        search.setTextColor(text());
-        search.setHintTextColor(sub());
-        search.setTextSize(15);
-        search.setPadding(dp(14),0,dp(14),0);
-        search.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),14));
-        searchCard.addView(search,new LinearLayout.LayoutParams(-1,dp(52)));
+        search.setVisibility(View.GONE);
+
+        TextView picker=tv("🚗  Seleccionar coche del catálogo  ›",15,text());
+        picker.setTypeface(null,Typeface.BOLD);
+        picker.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        picker.setPadding(dp(14),0,dp(14),0);
+        picker.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),14));
+        picker.setOnClickListener(v->showVehiclePicker(picker));
+        searchCard.addView(picker,new LinearLayout.LayoutParams(-1,dp(52)));
         content.addView(searchCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         LinearLayout filters=card();
@@ -160,11 +161,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         setContentView(root);
 
         populateFilters();
-        TextWatcher w=new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){} public void onTextChanged(CharSequence s,int st,int b,int c){showReferenceCandidates();} public void afterTextChanged(Editable e){}};
-        search.addTextChangedListener(w);
-        AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener(){public void onItemSelected(AdapterView<?> p,View v,int a,long b){showReferenceCandidates();} public void onNothingSelected(AdapterView<?> p){}};
+        AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener(){public void onItemSelected(AdapterView<?> p,View v,int a,long b){if(reference!=null)showSimilar();} public void onNothingSelected(AdapterView<?> p){}};
         marketSpinner.setOnItemSelectedListener(listener); yearSpinner.setOnItemSelectedListener(listener); driveSpinner.setOnItemSelectedListener(listener); batterySpinner.setOnItemSelectedListener(listener);
-        showReferenceCandidates();
     }
 
     private LinearLayout.LayoutParams marginLp(int w,int h,int l,int t,int r,int b){
@@ -185,45 +183,186 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
     private void setAdapter(Spinner s,List<String> data){ArrayAdapter<String>a=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,data){@Override public View getView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getView(p,v,g);t.setTextColor(text());t.setTextSize(12);t.setPadding(dp(8),0,dp(4),0);return t;}@Override public View getDropDownView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getDropDownView(p,v,g);t.setTextColor(Color.DKGRAY);t.setTextSize(13);return t;}};a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);s.setAdapter(a);}
 
-    private void showReferenceCandidates(){
-        if(results==null)return;
-        reference=null; resultsTitle.setVisibility(View.GONE);
-        results.removeAllViews();
-        String q=norm(search.getText().toString());
-        int count=0;
-        for(Vehicle v:vehicles){
-            if(!passesFilters(v))continue;
-            if(!q.isEmpty()&&!norm(v.make+" "+v.model+" "+v.version).contains(q))continue;
-            addReferenceCard(v);
-            if(++count>=8)break;
+    private void showVehiclePicker(TextView picker){
+        final EditText input=new EditText(this);
+        input.setSingleLine(true);
+        input.setHint(LanguageManager.t(this,"Marca, modelo, año, batería o versión"));
+        input.setTextColor(text()); input.setHintTextColor(sub()); input.setTextSize(15);
+        input.setPadding(dp(14),0,dp(14),0);
+        input.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
+
+        final ListView list=new ListView(this);
+        list.setDivider(null); list.setVerticalScrollBarEnabled(false); list.setPadding(0,dp(2),0,0); list.setClipToPadding(false);
+        final TextView header=tv("Todos los vehículos",13,blue);
+        header.setTypeface(null,Typeface.BOLD); header.setPadding(dp(18),dp(16),dp(18),dp(7));
+        list.addHeaderView(header,null,false);
+
+        final List<Vehicle> found=new ArrayList<>();
+        final BaseAdapter adapter=new BaseAdapter(){
+            @Override public int getCount(){return found.size();}
+            @Override public Object getItem(int position){return found.get(position);}
+            @Override public long getItemId(int position){return position;}
+            @Override public View getView(int position,View convertView,android.view.ViewGroup parent){
+                TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(SimilarCarsActivity.this);
+                item.setLayoutParams(new android.widget.AbsListView.LayoutParams(-1,dp(60)));
+                item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+                item.setPadding(dp(16),dp(6),dp(42),dp(6));
+                item.setLineSpacing(0,1.05f);
+                Vehicle v=found.get(position);
+                android.text.SpannableString styled=new android.text.SpannableString(pickerLabel(v));
+                int nl=styled.toString().indexOf('\\n');
+                if(nl>0){
+                    styled.setSpan(new android.text.style.StyleSpan(Typeface.BOLD),0,nl,android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    if(nl+1<styled.length())styled.setSpan(new android.text.style.RelativeSizeSpan(0.86f),nl+1,styled.length(),android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+                item.setText(styled); item.setTextSize(14); item.setTextColor(text());
+                item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));
+                return item;
+            }
+        };
+        list.setAdapter(adapter);
+
+        LinearLayout marketRow=new LinearLayout(this);
+        marketRow.setOrientation(LinearLayout.HORIZONTAL);
+        marketRow.setGravity(Gravity.CENTER_VERTICAL);
+        marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
+        TextView marketTitle=tv("Mercado",12,sub());
+        marketTitle.setTypeface(null,Typeface.BOLD);
+        marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
+
+        final Spinner searchMarketSpinner=new Spinner(this);
+        List<String> ms=new ArrayList<>();
+        TreeSet<String> marketSet=new TreeSet<>();
+        for(Vehicle v:vehicles)if(v.market!=null&&!v.market.isEmpty())marketSet.add(v.market);
+        ms.addAll(marketSet);
+        List<String> labels=new ArrayList<>();
+        for(String m:ms)labels.add(market(m));
+        ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){
+            @Override public View getView(int p,View c,android.view.ViewGroup parent){
+                TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;
+            }
+            @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){
+                TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);
+                v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));
+                v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;
+            }
+        };
+        searchMarketSpinner.setAdapter(marketAdapter);
+        searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14));
+        searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
+
+        final String defaultMarket=ms.contains("ES")?"ES":(ms.isEmpty()?"":ms.get(0));
+        int marketIndex=ms.indexOf(defaultMarket);
+        if(marketIndex>=0)searchMarketSpinner.setSelection(marketIndex);
+
+        Runnable refresh=()->{
+            String q=input.getText()==null?"":input.getText().toString().trim();
+            String selectedMarket=searchMarketSpinner.getSelectedItem()==null?"":String.valueOf(searchMarketSpinner.getSelectedItem());
+            found.clear();
+            String nq=norm(q);
+            for(Vehicle v:vehicles){
+                if(!selectedMarket.isEmpty()&&!market(v.market).equalsIgnoreCase(selectedMarket))continue;
+                if(!nq.isEmpty()&&!norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version).contains(nq))continue;
+                found.add(v);
+            }
+            Collections.sort(found,(a,b)->{
+                if(!nq.isEmpty()){
+                    int sa=pickerScore(a,nq),sb=pickerScore(b,nq);
+                    if(sa!=sb)return Integer.compare(sb,sa);
+                }
+                int c=a.make.compareToIgnoreCase(b.make); if(c!=0)return c;
+                c=a.model.compareToIgnoreCase(b.model); if(c!=0)return c;
+                c=Integer.compare(b.year,a.year); if(c!=0)return c;
+                return a.version.compareToIgnoreCase(b.version);
+            });
+            header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);
+            adapter.notifyDataSetChanged();
+        };
+
+        list.setOnItemClickListener((parent,view,position,id)->{
+            int resultPosition=position-list.getHeaderViewsCount();
+            if(resultPosition<0||resultPosition>=found.size())return;
+            Vehicle v=found.get(resultPosition);
+            Object tag=input.getTag();
+            if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
+            reference=v;
+            picker.setText(LanguageManager.t("✓  "+v.make+" "+v.model+" · "+v.version));
+            showSimilar();
+        });
+
+        searchMarketSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            public void onItemSelected(AdapterView<?> p,View v,int a,long b){input.post(refresh);}
+            public void onNothingSelected(AdapterView<?> p){}
+        });
+
+        LinearLayout body=new LinearLayout(this);
+        body.setOrientation(LinearLayout.VERTICAL);
+        body.setPadding(dp(12),dp(12),dp(12),dp(8));
+        body.addView(input,new LinearLayout.LayoutParams(-1,dp(50)));
+        body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56)));
+        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(180),dp(38)));
+        body.addView(list,new LinearLayout.LayoutParams(-1,0,1));
+
+        AlertDialog d=new AlertDialog.Builder(this).setView(body).create();
+        input.setTag(d);
+        input.addTextChangedListener(new TextWatcher(){
+            public void beforeTextChanged(CharSequence s,int st,int c,int a){}
+            public void onTextChanged(CharSequence s,int st,int b,int c){input.post(refresh);}
+            public void afterTextChanged(Editable e){}
+        });
+        d.setOnShowListener(x->{
+            if(d.getWindow()==null)return;
+            d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+            d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));
+            input.requestFocus();
+            input.post(()->{
+                InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);
+                input.post(refresh);
+            });
+        });
+        d.show();
+        Window searchWindow=d.getWindow();
+        if(searchWindow!=null){
+            searchWindow.setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));
+            searchWindow.setLayout(-1,-1);
+            searchWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         }
-        if(count==0){
-            TextView empty=tv("No se han encontrado coches con esos criterios.",13,sub());empty.setPadding(dp(10),dp(12),dp(10),dp(12));results.addView(empty);
+        input.requestFocus();
+    }
+
+    private int pickerScore(Vehicle v,String q){
+        int score=0;
+        String make=norm(v.make),model=norm(v.model),version=norm(v.version);
+        if(make.equals(q))score+=120; else if(make.startsWith(q))score+=70; else if(make.contains(q))score+=45;
+        if(model.equals(q))score+=110; else if(model.startsWith(q))score+=65; else if(model.contains(q))score+=40;
+        if(version.contains(q))score+=20;
+        return score;
+    }
+
+    private String pickerLabel(Vehicle v){
+        String first=v.make+" "+v.model;
+        String second=v.year>0?String.valueOf(v.year):"";
+        String ver=v.version==null?"":v.version.trim();
+        if(!ver.isEmpty()){if(!second.isEmpty())second+=" · ";second+=ver;}
+        if(v.batteryKwh>0){if(!second.isEmpty())second+=" · ";second+=fmt(v.batteryKwh)+" kWh";}
+        return first+"\\n"+second;
+    }
+
+    private void showReferenceCandidates(){
+        // Ya no se utiliza una búsqueda libre en pantalla: el coche de referencia
+        // se selecciona exclusivamente desde el selector del catálogo.
+        if(results==null)return;
+        if(reference==null){
+            results.removeAllViews();
+            resultsTitle.setVisibility(View.GONE);
         }
     }
 
     private void addReferenceCard(Vehicle v){
-        LinearLayout card=card();
-        card.setPadding(dp(16),dp(13),dp(16),dp(13));
-
-        TextView name=tv(v.make+" "+v.model,17,text());
-        name.setTypeface(null,Typeface.BOLD);
-        card.addView(name,new LinearLayout.LayoutParams(-1,dp(29)));
-
-        TextView info=tv(v.version+"  ·  "+v.year+"  ·  "+market(v.market),12,sub());
-        card.addView(info,new LinearLayout.LayoutParams(-1,dp(24)));
-
-        TextView specs=tv(specLine(v),12,sub());
-        specs.setPadding(0,dp(2),0,dp(4));
-        card.addView(specs,new LinearLayout.LayoutParams(-1,dp(27)));
-
-        TextView action=tv("Usar como referencia  ›",13,blue);
-        action.setTypeface(null,Typeface.BOLD);
-        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
-        card.addView(action,new LinearLayout.LayoutParams(-1,dp(28)));
-
-        card.setOnClickListener(x->{reference=v;showSimilar();});
-        results.addView(card,marginLp(-1,-2,0,0,0,dp(8)));
+        // Conservado para compatibilidad con el flujo anterior; la selección actual
+        // se realiza mediante el selector del catálogo.
+        if(v!=null){reference=v;showSimilar();}
     }
 
     private void showSimilar(){
