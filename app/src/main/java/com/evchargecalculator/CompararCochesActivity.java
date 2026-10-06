@@ -371,16 +371,6 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub());
         hint.setPadding(0,dp(2),0,0);
         intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
-
-        Button similarButton = new Button(this);
-        similarButton.setText(LanguageManager.t(this,"🔎 Buscar coches similares"));
-        similarButton.setTextColor(Color.WHITE);
-        similarButton.setTextSize(14);
-        similarButton.setAllCaps(false);
-        similarButton.setBackground(bg(blue,14));
-        similarButton.setOnClickListener(v -> startActivity(new Intent(this, SimilarCarsActivity.class)));
-        intro.addView(similarButton,new LinearLayout.LayoutParams(-1,dp(48)));
-
         // The card is deliberately laid over the bottom of the hero image.
         // Keep a little more room below it so moving it down does not clip it.
         int cardTop = dp(236);
