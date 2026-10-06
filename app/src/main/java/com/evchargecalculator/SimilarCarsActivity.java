@@ -266,17 +266,27 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             String nq=norm(q);
             for(Vehicle v:vehicles){
                 if(!selectedMarket.isEmpty()&&!market(v.market).equalsIgnoreCase(selectedMarket))continue;
-                if(!nq.isEmpty()&&!norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version).contains(nq))continue;
+                String hay=norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version);
+                boolean matches=true;
+                for(String token:nq.split("\\s+")){
+                    if(!token.isEmpty()&&!hay.contains(token)){matches=false;break;}
+                }
+                if(!matches)continue;
                 found.add(v);
             }
             Collections.sort(found,(a,b)->{
-                if(!nq.isEmpty()){
-                    int sa=pickerScore(a,nq),sb=pickerScore(b,nq);
-                    if(sa!=sb)return Integer.compare(sb,sa);
-                }
-                int c=a.make.compareToIgnoreCase(b.make); if(c!=0)return c;
-                c=a.model.compareToIgnoreCase(b.model); if(c!=0)return c;
-                c=Integer.compare(b.year,a.year); if(c!=0)return c;
+                int c=Integer.compare(pickerSearchScore(b,nq),pickerSearchScore(a,nq));
+                if(c!=0)return c;
+                c=Integer.compare(b.year,a.year);
+                if(c!=0)return c;
+                c=a.make.compareToIgnoreCase(b.make);
+                if(c!=0)return c;
+                c=a.model.compareToIgnoreCase(b.model);
+                if(c!=0)return c;
+                c=Integer.compare(trimRank(a),trimRank(b));
+                if(c!=0)return c;
+                c=Double.compare(a.batteryKwh,b.batteryKwh);
+                if(c!=0)return c;
                 return a.version.compareToIgnoreCase(b.version);
             });
             header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);
@@ -335,12 +345,24 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         input.requestFocus();
     }
 
-    private int pickerScore(Vehicle v,String q){
-        int score=0;
+    private int pickerSearchScore(Vehicle v,String q){
+        if(q.isEmpty())return 0;
         String make=norm(v.make),model=norm(v.model),version=norm(v.version);
-        if(make.equals(q))score+=120; else if(make.startsWith(q))score+=70; else if(make.contains(q))score+=45;
-        if(model.equals(q))score+=110; else if(model.startsWith(q))score+=65; else if(model.contains(q))score+=40;
-        if(version.contains(q))score+=20;
+        String all=norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version);
+        int score=0;
+        for(String token:q.split("\\s+")){
+            if(token.isEmpty())continue;
+            if(make.equals(token))score+=120;
+            else if(make.startsWith(token))score+=70;
+            else if(make.contains(token))score+=45;
+            if(model.equals(token))score+=110;
+            else if(model.startsWith(token))score+=65;
+            else if(model.contains(token))score+=40;
+            if(version.contains(token))score+=20;
+            if(all.contains(token))score+=10;
+        }
+        if(norm(v.make+" "+v.model).equals(q))score+=180;
+        else if(norm(v.make+" "+v.model).startsWith(q))score+=100;
         return score;
     }
 
