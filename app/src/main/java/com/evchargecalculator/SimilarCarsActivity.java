@@ -558,7 +558,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         }catch(Exception ignored){}
     }
 
-    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+String.format(Locale.US,"%.1f",v.batteryKwh)+"|"+v.version).toLowerCase(Locale.ROOT).trim();}
+    private String effectiveBatteryKey(Vehicle v){\n        if(v.batteryKwh>0)return String.format(Locale.US,"%.1f",v.batteryKwh);\n        String s=v.version==null?"":v.version.trim();\n        java.util.regex.Matcher m=java.util.regex.Pattern.compile("^(\\\\d+(?:\\\\.\\\\d+)?)\\\\s*kwh\\\\b",java.util.regex.Pattern.CASE_INSENSITIVE).matcher(s);\n        return m.find()?m.group(1):"0";\n    }\n    private String normalizedVersion(Vehicle v){\n        String ver=v.version==null?"":v.version.trim().toLowerCase(Locale.ROOT);\n        ver=ver.replaceAll("^\\\\d+(?:\\\\.\\\\d+)?\\\\s*kwh\\\\s*","");\n        ver=ver.replaceAll("\\\\s+"," ").trim();\n        return ver;\n    }\n    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
     private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
     private String market(String s){return s==null||s.isEmpty()?"🌐":s;}
     private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmt(v.powerKw)+" kW":"—";return bat+"  ·  "+range+"  ·  "+p;}
