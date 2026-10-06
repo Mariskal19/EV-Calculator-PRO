@@ -149,7 +149,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         referenceResults.setPadding(0,0,0,dp(4));
         content.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
 
-        resultsTitle=tv("3. 8 coches similares",17,text());
+        resultsTitle=tv("3. Coches similares",17,text());
         resultsTitle.setTypeface(null,Typeface.BOLD);
         resultsTitle.setVisibility(View.GONE);
         content.addView(resultsTitle,marginLp(-1,dp(8),0,0,0,dp(2)));
