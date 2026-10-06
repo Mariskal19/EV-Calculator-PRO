@@ -31,7 +31,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private final List<Vehicle> vehicles=new ArrayList<>();
     private EditText search;
     private Spinner marketSpinner, yearSpinner, driveSpinner, batterySpinner;
-    private LinearLayout results;
+    private LinearLayout results, referenceResults;
     private TextView selectedTitle, resultsTitle;
     private Vehicle reference;
 
@@ -144,16 +144,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         selectedTitle.setTypeface(null,Typeface.BOLD);
         content.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
+        referenceResults=new LinearLayout(this);
+        referenceResults.setOrientation(LinearLayout.VERTICAL);
+        referenceResults.setPadding(0,0,0,dp(4));
+        content.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
+
         resultsTitle=tv("3. 8 coches similares",17,text());
         resultsTitle.setTypeface(null,Typeface.BOLD);
         resultsTitle.setVisibility(View.GONE);
         content.addView(resultsTitle,marginLp(-1,dp(8),0,0,0,dp(2)));
 
-        LinearLayout referenceResults=new LinearLayout(this);
-        referenceResults.setOrientation(LinearLayout.VERTICAL);
-        referenceResults.setPadding(0,0,0,dp(4));
-        content.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
-        results=referenceResults;
+        results=new LinearLayout(this);
+        results.setOrientation(LinearLayout.VERTICAL);
+        content.addView(results,new LinearLayout.LayoutParams(-1,-2));
 
         TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones.",12,sub());
         note.setLineSpacing(0,1.15f);
@@ -396,6 +399,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void showSimilar(){
         results.removeAllViews();
+        referenceResults.removeAllViews();
         selectedTitle.setText(LanguageManager.t(this,"2. Coche de referencia seleccionado"));
         resultsTitle.setVisibility(View.VISIBLE);
 
@@ -425,7 +429,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         });
         refCard.addView(change,new LinearLayout.LayoutParams(-1,dp(32)));
 
-        results.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
+        referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         List<Scored> scored=new ArrayList<>();
         int referenceYear=reference.year;
