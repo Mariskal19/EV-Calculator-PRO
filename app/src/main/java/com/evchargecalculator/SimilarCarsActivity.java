@@ -64,7 +64,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         LinearLayout content=new LinearLayout(this);
         content.setOrientation(LinearLayout.VERTICAL);
-        content.setPadding(dp(14),0,dp(14),dp(18));
+        content.setPadding(dp(14),0,dp(14),dp(92));
 
         LinearLayout hero=new LinearLayout(this);
         hero.setOrientation(LinearLayout.VERTICAL);
