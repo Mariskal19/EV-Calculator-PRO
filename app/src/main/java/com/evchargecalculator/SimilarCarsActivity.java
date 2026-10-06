@@ -214,7 +214,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 item.setLineSpacing(0,1.05f);
                 Vehicle v=found.get(position);
                 android.text.SpannableString styled=new android.text.SpannableString(pickerLabel(v));
-                int nl=styled.toString().indexOf('\n');
+                int nl=styled.toString().indexOf('
+');
                 if(nl>0){
                     styled.setSpan(new android.text.style.StyleSpan(Typeface.BOLD),0,nl,android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     if(nl+1<styled.length())styled.setSpan(new android.text.style.RelativeSizeSpan(0.86f),nl+1,styled.length(),android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -350,7 +351,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ver=v.version==null?"":v.version.trim();
         if(!ver.isEmpty()){if(!second.isEmpty())second+=" · ";second+=ver;}
         if(v.batteryKwh>0){if(!second.isEmpty())second+=" · ";second+=fmt(v.batteryKwh)+" kWh";}
-        return first+"\n"+second;
+        return first+"
+"+second;
     }
 
     private void showReferenceCandidates(){
@@ -673,7 +675,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
         Vehicle(JSONObject o,boolean remote){
             remoteSource=remote;make=o.optString("make",o.optString("brand",""));model=o.optString("model","");version=o.optString("version",o.optString("trim",""));
-            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);\n            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(Locale.ROOT);\n            segment=o.optString("segment","").trim().toUpperCase(Locale.ROOT);
+            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);
+            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(Locale.ROOT);
+            segment=o.optString("segment","").trim().toUpperCase(Locale.ROOT);
             year=o.optInt("year",o.optInt("modelYear",0));price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",o.optDouble("battery_capacity_kwh",0));usableBatteryKwh=o.optDouble("usableBatteryKwh",0);
             wltpKm=o.optDouble("wltpKm",o.optDouble("rangeKm",0));consumption=o.optDouble("consumption",o.optDouble("consumptionKwh100",0));powerKw=o.optDouble("powerKw",o.optDouble("power_kW",0));
             acKw=o.optDouble("acKw",o.optDouble("acChargeKw",0));dcKw=o.optDouble("dcKw",o.optDouble("dcChargeKw",0));chargeMin=o.optDouble("charge10to80Min",o.optDouble("chargeMin",0));
