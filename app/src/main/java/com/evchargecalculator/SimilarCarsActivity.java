@@ -121,6 +121,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         selectedTitle=tv("Coche de referencia",17,text());
         selectedTitle.setTypeface(null,Typeface.BOLD);
         referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        referenceResults.setVisibility(View.GONE);
         content.addView(referenceResults,marginLp(-1,-2,0,0,0,dp(10)));
 
         results=card();
@@ -370,6 +371,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void showSimilar(){
         results.removeAllViews();
         referenceResults.removeAllViews();
+        referenceResults.setVisibility(View.VISIBLE);
         selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
         resultsTitle.setVisibility(View.VISIBLE);
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
