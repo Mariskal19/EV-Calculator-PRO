@@ -370,11 +370,13 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void showSimilar(){
         results.removeAllViews();
         referenceResults.removeAllViews();
-        selectedTitle.setText(LanguageManager.t(this,"2. Coche de referencia seleccionado"));
+        selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
         resultsTitle.setVisibility(View.VISIBLE);
+        results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         LinearLayout refCard=card();
-        refCard.setPadding(dp(16),dp(13),dp(16),dp(13));
+        refCard.setPadding(dp(16),dp(10),dp(16),dp(10));
+        refCard.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         TextView refLabel=tv("Coche de referencia",12,blue);
         refLabel.setTypeface(null,Typeface.BOLD);
