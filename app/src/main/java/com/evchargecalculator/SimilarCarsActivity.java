@@ -214,8 +214,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 item.setLineSpacing(0,1.05f);
                 Vehicle v=found.get(position);
                 android.text.SpannableString styled=new android.text.SpannableString(pickerLabel(v));
-                int nl=styled.toString().indexOf('
-');
+                int nl=styled.toString().indexOf('\\n');
                 if(nl>0){
                     styled.setSpan(new android.text.style.StyleSpan(Typeface.BOLD),0,nl,android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     if(nl+1<styled.length())styled.setSpan(new android.text.style.RelativeSizeSpan(0.86f),nl+1,styled.length(),android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -351,8 +350,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ver=v.version==null?"":v.version.trim();
         if(!ver.isEmpty()){if(!second.isEmpty())second+=" · ";second+=ver;}
         if(v.batteryKwh>0){if(!second.isEmpty())second+=" · ";second+=fmt(v.batteryKwh)+" kWh";}
-        return first+"
-"+second;
+        return first+"\\n"+second;
     }
 
     private void showReferenceCandidates(){
