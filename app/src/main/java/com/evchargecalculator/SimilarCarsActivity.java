@@ -411,9 +411,21 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             double score=similarity(reference,v);
             if(Double.isFinite(score))scored.add(new Scored(v,score));
         }
-        Collections.sort(scored,(a,b)->Double.compare(a.score,b.score));
-        int n=Math.min(5,scored.size());
-        for(int i=0;i<n;i++)addSimilarCard(scored.get(i),i+1);
+        // El Top 5 muestra como máximo un vehículo por marca.
+        // Para cada marca se conserva únicamente su vehículo más similar.
+        Map<String,Scored> bestByMake=new HashMap<>();
+        for(Scored s:scored){
+            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
+            if(make.isEmpty())continue;
+            Scored current=bestByMake.get(make);
+            if(current==null||s.score<current.score)bestByMake.put(make,s);
+        }
+
+        List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
+        Collections.sort(uniqueBrands,(a,b)->Double.compare(a.score,b.score));
+
+        int n=Math.min(5,uniqueBrands.size());
+        for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
 
