@@ -346,11 +346,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private String pickerLabel(Vehicle v){
         String first=v.make+" "+v.model;
-        String second=v.year>0?String.valueOf(v.year):"";
-        String ver=v.version==null?"":v.version.trim();
-        if(!ver.isEmpty()){if(!second.isEmpty())second+=" · ";second+=ver;}
-        if(v.batteryKwh>0){if(!second.isEmpty())second+=" · ";second+=fmt(v.batteryKwh)+" kWh";}
-        return first+"\n"+second;
+        StringBuilder second=new StringBuilder();
+        if(v.year>0)second.append(v.year);
+        String ver=v.version==null?"":v.version.trim().replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kwh\\b","").replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kw\\b","").replaceAll("\\s+"," ").trim();
+        if(!ver.isEmpty()){if(second.length()>0)second.append(" · ");second.append(ver);}
+        if(v.batteryKwh>0){if(second.length()>0)second.append(" · ");second.append(fmt(v.batteryKwh)).append(" kWh");}
+        return first+"\\n"+second;
     }
 
     private void showReferenceCandidates(){
