@@ -405,7 +405,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         List<Scored> scored=new ArrayList<>();
         int referenceYear=reference.year;
         int minYear=referenceYear>0?referenceYear-5:0;
-        for(int targetYear=referenceYear;targetYear>=minYear&&scored.size()<8;targetYear--){
+        for(int targetYear=referenceYear;targetYear>=minYear;targetYear--){
             List<Scored> batch=new ArrayList<>();
             for(Vehicle v:vehicles){
                 if(v==reference)continue;
@@ -420,6 +420,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             // Añadimos por año: primero todos los candidatos del año de referencia,
             // y solo si faltan plazas ampliamos al año inmediatamente anterior.
             scored.addAll(batch);
+            Set<String> brands=new HashSet<>();
+            for(Scored s:scored){
+                String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
+                if(!make.isEmpty())brands.add(make);
+            }
+            if(brands.size()>=8)break;
         }
         Map<String,Scored> bestByMake=new HashMap<>();
         for(Scored s:scored){
