@@ -56,23 +56,52 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         ScrollView scroll=new ScrollView(this);
         scroll.setFillViewport(true);
         scroll.setVerticalScrollBarEnabled(false);
-        LinearLayout c=new LinearLayout(this);
-        c.setOrientation(LinearLayout.VERTICAL);
-        c.setPadding(dp(14),dp(18),dp(14),dp(18));
+        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
-        TextView back=tv("‹  Volver a coches",14,blue);
+        LinearLayout content=new LinearLayout(this);
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.setPadding(dp(14),0,dp(14),dp(18));
+
+        LinearLayout hero=new LinearLayout(this);
+        hero.setOrientation(LinearLayout.VERTICAL);
+        hero.setPadding(dp(18),dp(20),dp(18),dp(20));
+        GradientDrawable heroBg=new GradientDrawable(
+            GradientDrawable.Orientation.TL_BR,
+            new int[]{dark?Color.rgb(12,42,66):Color.rgb(20,123,207),dark?Color.rgb(7,28,44):Color.rgb(46,107,255)}
+        );
+        heroBg.setCornerRadius(dp(22));
+        hero.setBackground(heroBg);
+
+        TextView back=tv("‹  Volver a coches",14,Color.WHITE);
         back.setTypeface(null,Typeface.BOLD);
-        back.setPadding(dp(4),0,0,dp(10));
+        back.setPadding(0,0,0,dp(10));
         back.setOnClickListener(v->finish());
-        c.addView(back,new LinearLayout.LayoutParams(-1,dp(36)));
+        hero.addView(back,new LinearLayout.LayoutParams(-1,dp(30)));
 
-        TextView title=tv("Buscar coches similares",24,text());
+        TextView icon=tv("🔎",34,Color.WHITE);
+        hero.addView(icon,new LinearLayout.LayoutParams(-1,dp(40)));
+
+        TextView title=tv("Buscar coches similares",25,Color.WHITE);
         title.setTypeface(null,Typeface.BOLD);
-        c.addView(title,new LinearLayout.LayoutParams(-1,dp(38)));
+        hero.addView(title,new LinearLayout.LayoutParams(-1,dp(38)));
 
-        TextView intro=tv("Busca un coche de referencia y te mostraremos las 5 opciones más similares del catálogo.",14,sub());
+        TextView intro=tv("Elige un coche de referencia y descubre las 5 alternativas más similares del catálogo.",14,Color.WHITE);
+        intro.setAlpha(0.94f);
         intro.setLineSpacing(0,1.15f);
-        c.addView(intro,new LinearLayout.LayoutParams(-1,dp(48)));
+        hero.addView(intro,new LinearLayout.LayoutParams(-1,dp(44)));
+
+        content.addView(hero,marginLp(-1,-2,0,dp(14),0,0));
+
+        LinearLayout searchCard=card();
+        searchCard.setPadding(dp(14),dp(14),dp(14),dp(14));
+
+        TextView searchLabel=tv("1. Busca tu coche de referencia",16,text());
+        searchLabel.setTypeface(null,Typeface.BOLD);
+        searchCard.addView(searchLabel,new LinearLayout.LayoutParams(-1,dp(30)));
+
+        TextView searchHint=tv("Puedes buscar por marca, modelo o versión.",12,sub());
+        searchHint.setPadding(0,0,0,dp(9));
+        searchCard.addView(searchHint,new LinearLayout.LayoutParams(-1,dp(26)));
 
         search=new EditText(this);
         search.setSingleLine(true);
@@ -81,44 +110,52 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         search.setHintTextColor(sub());
         search.setTextSize(15);
         search.setPadding(dp(14),0,dp(14),0);
-        search.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),14));
-        c.addView(search,new LinearLayout.LayoutParams(-1,dp(52)));
+        search.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),14));
+        searchCard.addView(search,new LinearLayout.LayoutParams(-1,dp(52)));
+        content.addView(searchCard,marginLp(-1,-2,0,0,0,dp(10)));
 
-        LinearLayout filters=new LinearLayout(this);
-        filters.setOrientation(LinearLayout.VERTICAL);
-        filters.setPadding(dp(10),dp(10),dp(10),dp(10));
-        filters.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),16));
-        LinearLayout row1=new LinearLayout(this); row1.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout filters=card();
+        filters.setPadding(dp(14),dp(12),dp(14),dp(12));
+
+        TextView filterTitle=tv("Filtros opcionales",14,text());
+        filterTitle.setTypeface(null,Typeface.BOLD);
+        filters.addView(filterTitle,new LinearLayout.LayoutParams(-1,dp(28)));
+
+        LinearLayout row1=new LinearLayout(this);
+        row1.setOrientation(LinearLayout.HORIZONTAL);
         marketSpinner=spinner(); yearSpinner=spinner();
         addSpinner(row1,marketSpinner,0.5f); addSpinner(row1,yearSpinner,0.5f);
         filters.addView(row1,new LinearLayout.LayoutParams(-1,dp(50)));
-        LinearLayout row2=new LinearLayout(this); row2.setOrientation(LinearLayout.HORIZONTAL);
+
+        LinearLayout row2=new LinearLayout(this);
+        row2.setOrientation(LinearLayout.HORIZONTAL);
         driveSpinner=spinner(); batterySpinner=spinner();
         addSpinner(row2,driveSpinner,0.5f); addSpinner(row2,batterySpinner,0.5f);
         filters.addView(row2,new LinearLayout.LayoutParams(-1,dp(50)));
-        c.addView(filters,marginLp(-1,-2,0,dp(10),0,dp(10)));
 
-        selectedTitle=tv("1. Elige el coche de referencia",17,text());
+        content.addView(filters,marginLp(-1,-2,0,0,0,dp(14)));
+
+        selectedTitle=tv("2. Elige el coche de referencia",17,text());
         selectedTitle.setTypeface(null,Typeface.BOLD);
-        c.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        content.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         LinearLayout referenceResults=new LinearLayout(this);
         referenceResults.setOrientation(LinearLayout.VERTICAL);
-        referenceResults.setPadding(0,0,0,dp(8));
-        c.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
+        referenceResults.setPadding(0,0,0,dp(4));
+        content.addView(referenceResults,new LinearLayout.LayoutParams(-1,-2));
         results=referenceResults;
 
-        resultsTitle=tv("2. 5 coches similares",17,text());
+        resultsTitle=tv("3. 5 coches similares",17,text());
         resultsTitle.setTypeface(null,Typeface.BOLD);
         resultsTitle.setVisibility(View.GONE);
-        c.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(36)));
+        content.addView(resultsTitle,marginLp(-1,dp(8),0,0,0,dp(2)));
 
-        TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones. Los datos protegidos no se sobrescriben con los externos.",12,sub());
+        TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones.",12,sub());
         note.setLineSpacing(0,1.15f);
-        note.setPadding(dp(4),dp(8),dp(4),dp(12));
-        c.addView(note,new LinearLayout.LayoutParams(-1,-2));
+        note.setPadding(dp(4),dp(14),dp(4),dp(8));
+        content.addView(note,new LinearLayout.LayoutParams(-1,-2));
 
-        scroll.addView(c);
+        scroll.addView(content);
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
 
