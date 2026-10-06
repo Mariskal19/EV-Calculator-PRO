@@ -396,17 +396,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         refInfo.setLineSpacing(0,1.05f);
         refCard.addView(refInfo,new LinearLayout.LayoutParams(-1,dp(42)));
 
-        TextView change=tv("‹  Cambiar coche de referencia",13,blue);
-        change.setTypeface(null,Typeface.BOLD);
-        change.setPadding(0,dp(6),0,0);
-        change.setOnClickListener(x->{
-            reference=null;
-            selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
-            resultsTitle.setVisibility(View.GONE);
-            showReferenceCandidates();
-        });
-        refCard.addView(change,new LinearLayout.LayoutParams(-1,dp(32)));
-
         referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         List<Scored> scored=new ArrayList<>();
