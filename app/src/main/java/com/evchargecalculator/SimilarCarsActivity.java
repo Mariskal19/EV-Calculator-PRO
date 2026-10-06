@@ -477,18 +477,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private double similarity(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
 
-        d=relativeDistance(a.batteryKwh,b.batteryKwh,.20); if(d>=0){sum+=d*.12;weight+=.12;}
-        d=relativeDistance(a.wltpKm,b.wltpKm,.20); if(d>=0){sum+=d*.14;weight+=.14;}
-        d=relativeDistance(a.powerKw,b.powerKw,.25); if(d>=0){sum+=d*.13;weight+=.13;}
-        d=relativeDistance(a.consumption,b.consumption,.15); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=relativeDistance(a.trunk,b.trunk,.25); if(d>=0){sum+=d*.08;weight+=.08;}
-        d=dimensionDistance(a,b); if(d>=0){sum+=d*.12;weight+=.12;}
-        d=relativeDistance(a.acc,b.acc,.20); if(d>=0){sum+=d*.06;weight+=.06;}
+        d=relativeDistance(a.batteryKwh,b.batteryKwh,.20); if(d>=0){sum+=d*.10;weight+=.10;}
+        d=relativeDistance(a.wltpKm,b.wltpKm,.20); if(d>=0){sum+=d*.12;weight+=.12;}
+        d=relativeDistance(a.powerKw,b.powerKw,.25); if(d>=0){sum+=d*.11;weight+=.11;}
+        d=relativeDistance(a.consumption,b.consumption,.15); if(d>=0){sum+=d*.09;weight+=.09;}
+        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.08;weight+=.08;}
+        d=relativeDistance(a.trunk,b.trunk,.25); if(d>=0){sum+=d*.07;weight+=.07;}
+        d=dimensionDistance(a,b); if(d>=0){sum+=d*.22;weight+=.22;}
+        d=relativeDistance(a.acc,b.acc,.20); if(d>=0){sum+=d*.05;weight+=.07;}
         d=relativeDistance(a.dcKw,b.dcKw,.25); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=relativeDistance(a.chargeMin,b.chargeMin,.20); if(d>=0){sum+=d*.05;weight+=.05;}
+        d=relativeDistance(a.chargeMin,b.chargeMin,.20); if(d>=0){sum+=d*.04;weight+=.04;}
         if(!a.drivetrain.isEmpty()&&!b.drivetrain.isEmpty()){
-            sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.05;
+            sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.07;
             weight+=.05;
         }
 
@@ -509,9 +509,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private double dimensionDistance(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
-        d=relativeDistance(a.lengthMm,b.lengthMm,.08); if(d>=0){sum+=d*.45;weight+=.45;}
-        d=relativeDistance(a.widthMm,b.widthMm,.05); if(d>=0){sum+=d*.35;weight+=.35;}
-        d=relativeDistance(a.heightMm,b.heightMm,.05); if(d>=0){sum+=d*.20;weight+=.20;}
+        d=relativeDistance(a.lengthMm,b.lengthMm,.08); if(d>=0){sum+=d*.50;weight+=.50;}
+        d=relativeDistance(a.widthMm,b.widthMm,.05); if(d>=0){sum+=d*.20;weight+=.20;}
+        d=relativeDistance(a.heightMm,b.heightMm,.05); if(d>=0){sum+=d*.30;weight+=.30;}
         return weight>0?Math.min(1,sum/weight):-1;
     }
 
