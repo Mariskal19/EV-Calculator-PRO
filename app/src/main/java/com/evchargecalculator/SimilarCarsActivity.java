@@ -469,9 +469,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         TextView action=tv("Ver detalles  ›",13,blue);
         action.setTypeface(null,Typeface.BOLD);
         action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+        action.setOnClickListener(x->openDetail(v));
         card.addView(action,new LinearLayout.LayoutParams(-1,dp(27)));
 
-        card.setOnClickListener(x->openDetail(v));
+        card.setOnClickListener(x->addSimilarToComparison(v));
         results.addView(card,marginLp(-1,-2,0,0,0,dp(8)));
     }
 
@@ -576,7 +577,28 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmt(v.powerKw)+" kW":"—";return bat+"  ·  "+range+"  ·  "+p;}
     private String fmt(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(1);return f.format(n);}
 
-    private void addSimilarToComparison(Vehicle v){\n        if(v==null||reference==null)return;\n        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);\n        ArrayList<String> ids=new ArrayList<>();\n        ArrayList<String> keys=new ArrayList<>();\n        if(reference.id!=null&&!reference.id.trim().isEmpty())ids.add(reference.id.trim());\n        if(v.id!=null&&!v.id.trim().isEmpty()&&!ids.contains(v.id.trim()))ids.add(v.id.trim());\n        String refKey=logicalKey(reference);\n        String selectedKey=logicalKey(v);\n        if(!refKey.isEmpty())keys.add(refKey);\n        if(!selectedKey.isEmpty()&&!keys.contains(selectedKey))keys.add(selectedKey);\n        p.edit().putBoolean("compare_selection_initialized",true)\n            .putString("compare_vehicle_ids_ordered",android.text.TextUtils.join(",",ids))\n            .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))\n            .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();\n        Intent back=new Intent(this,CompararCochesActivity.class);\n        back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);\n        startActivity(back);\n        finish();\n    }\n\n    private void openDetail(Vehicle v){
+    private void addSimilarToComparison(Vehicle v){
+        if(v==null||reference==null)return;
+        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
+        ArrayList<String> ids=new ArrayList<>();
+        ArrayList<String> keys=new ArrayList<>();
+        if(reference.id!=null&&!reference.id.trim().isEmpty())ids.add(reference.id.trim());
+        if(v.id!=null&&!v.id.trim().isEmpty()&&!ids.contains(v.id.trim()))ids.add(v.id.trim());
+        String refKey=logicalKey(reference);
+        String selectedKey=logicalKey(v);
+        if(!refKey.isEmpty())keys.add(refKey);
+        if(!selectedKey.isEmpty()&&!keys.contains(selectedKey))keys.add(selectedKey);
+        p.edit().putBoolean("compare_selection_initialized",true)
+            .putString("compare_vehicle_ids_ordered",android.text.TextUtils.join(",",ids))
+            .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))
+            .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
+        Intent back=new Intent(this,CompararCochesActivity.class);
+        back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(back);
+        finish();
+    }
+
+    private void openDetail(Vehicle v){
         Intent i=new Intent(this,CarDetailActivity.class);
         i.putExtra("vehicle_id",v.id);
         i.putExtra("logical_key",logicalKey(v));
