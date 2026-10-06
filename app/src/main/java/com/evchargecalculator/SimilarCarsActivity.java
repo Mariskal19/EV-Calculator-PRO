@@ -378,7 +378,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         LinearLayout refCard=card();
         refCard.setPadding(dp(16),dp(10),dp(16),dp(10));
-        refCard.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         TextView refLabel=tv("Coche de referencia",12,blue);
         refLabel.setTypeface(null,Typeface.BOLD);
@@ -397,7 +397,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         change.setPadding(0,dp(6),0,0);
         change.setOnClickListener(x->{
             reference=null;
-            selectedTitle.setText(LanguageManager.t(this,"2. Elige el coche de referencia"));
+            selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
             resultsTitle.setVisibility(View.GONE);
             showReferenceCandidates();
         });
