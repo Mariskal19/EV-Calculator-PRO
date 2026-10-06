@@ -415,7 +415,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(v==reference)continue;
                 if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
                 if(referenceYear>0&&v.year!=targetYear)continue;
-                if(!passesFilters(v))continue;
                 if(!sameVehicleClass(reference,v))continue;
                 double score=similarity(reference,v);
                 if(Double.isFinite(score))batch.add(new Scored(v,score));
@@ -608,15 +607,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return relativeDistance(a.lengthMm,b.lengthMm,.08)<=1
             &&relativeDistance(a.widthMm,b.widthMm,.05)<=1
             &&relativeDistance(a.heightMm,b.heightMm,.08)<=1;
-    }
-
-    private boolean passesFilters(Vehicle v){
-        String m=String.valueOf(marketSpinner.getSelectedItem()); if(m!=null&&!m.equals("Todos los mercados")&&!v.market.equalsIgnoreCase(m))return false;
-        String y=String.valueOf(yearSpinner.getSelectedItem()); if(y!=null&&!y.startsWith("Todos")&&v.year!=Integer.parseInt(y))return false;
-        String d=String.valueOf(driveSpinner.getSelectedItem()); if(d!=null&&!d.startsWith("Cualquier")&&!v.drivetrain.toUpperCase(Locale.ROOT).contains(d))return false;
-        String b=String.valueOf(batterySpinner.getSelectedItem()); double k=v.batteryKwh;
-        if(b!=null&&!b.startsWith("Cualquier")&&k>0){if(b.startsWith("≤")&&k>50)return false;if(b.startsWith("50")&&(k<50||k>70))return false;if(b.startsWith("70")&&(k<70||k>90))return false;if(b.startsWith(">")&&k<=90)return false;}
-        return true;
     }
 
     private void loadVehicles(){
