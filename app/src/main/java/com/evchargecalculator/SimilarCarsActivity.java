@@ -461,28 +461,54 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private LinearLayout card(){LinearLayout c=new LinearLayout(this);c.setOrientation(LinearLayout.VERTICAL);c.setPadding(dp(14),dp(10),dp(14),dp(10));c.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),14));return c;}
 
+    /**
+     * Calcula una distancia de similitud normalizada entre 0 (idénticos) y 1
+     * (muy diferentes). La puntuación visible se obtiene como 100 - distancia*100.
+     *
+     * El algoritmo usa tolerancias relativas en lugar de escalas absolutas.
+     * Así, por ejemplo, 10 kWh de diferencia no pesan igual en una batería de
+     * 40 kWh que en una de 100 kWh. Los campos ausentes se excluyen y el peso
+     * restante se renormaliza, evitando penalizar a un coche por datos que no existen.
+     */
     private double similarity(Vehicle a,Vehicle b){
-        double sum=0,weight=0;
-        double d;
-        d=rel(a.batteryKwh,b.batteryKwh,80); if(d>=0){sum+=d*.15;weight+=.15;}
-        d=rel(a.wltpKm,b.wltpKm,400); if(d>=0){sum+=d*.15;weight+=.15;}
-        d=rel(a.powerKw,b.powerKw,250); if(d>=0){sum+=d*.15;weight+=.15;}
-        d=rel(a.consumption,b.consumption,10); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=rel(a.price,b.price,40000); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=rel(a.trunk,b.trunk,500); if(d>=0){sum+=d*.08;weight+=.08;}
+        double sum=0,weight=0,d;
+
+        d=relativeDistance(a.batteryKwh,b.batteryKwh,.20); if(d>=0){sum+=d*.12;weight+=.12;}
+        d=relativeDistance(a.wltpKm,b.wltpKm,.20); if(d>=0){sum+=d*.14;weight+=.14;}
+        d=relativeDistance(a.powerKw,b.powerKw,.25); if(d>=0){sum+=d*.13;weight+=.13;}
+        d=relativeDistance(a.consumption,b.consumption,.15); if(d>=0){sum+=d*.10;weight+=.10;}
+        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.10;weight+=.10;}
+        d=relativeDistance(a.trunk,b.trunk,.25); if(d>=0){sum+=d*.08;weight+=.08;}
         d=dimensionDistance(a,b); if(d>=0){sum+=d*.12;weight+=.12;}
-        d=rel(a.acc,b.acc,5); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=rel(a.dcKw,b.dcKw,150); if(d>=0){sum+=d*.05;weight+=.05;}
-        if(!a.drivetrain.isEmpty()&&!b.drivetrain.isEmpty()){sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.35)*.05;weight+=.05;}
-        return weight>0?sum/weight:Double.POSITIVE_INFINITY;
+        d=relativeDistance(a.acc,b.acc,.20); if(d>=0){sum+=d*.06;weight+=.06;}
+        d=relativeDistance(a.dcKw,b.dcKw,.25); if(d>=0){sum+=d*.05;weight+=.05;}
+        d=relativeDistance(a.chargeMin,b.chargeMin,.20); if(d>=0){sum+=d*.05;weight+=.05;}
+        if(!a.drivetrain.isEmpty()&&!b.drivetrain.isEmpty()){
+            sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.05;
+            weight+=.05;
+        }
+
+        return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
     }
-    private double rel(double a,double b,double scale){if(a<=0||b<=0)return -1;return Math.min(1,Math.abs(a-b)/scale);}
+
+    /**
+     * Convierte una diferencia relativa en una distancia suave 0..1.
+     * La tolerancia indica aproximadamente qué diferencia debe considerarse
+     * una similitud media; diferencias mayores se saturan progresivamente.
+     */
+    private double relativeDistance(double a,double b,double tolerance){
+        if(a<=0||b<=0||tolerance<=0)return -1;
+        double reference=Math.max(a,b);
+        double ratio=Math.abs(a-b)/reference;
+        return Math.min(1,ratio/tolerance);
+    }
+
     private double dimensionDistance(Vehicle a,Vehicle b){
-        double sum=0;int n=0;
-        if(a.lengthMm>0&&b.lengthMm>0){sum+=Math.min(1,Math.abs(a.lengthMm-b.lengthMm)/1000);n++;}
-        if(a.widthMm>0&&b.widthMm>0){sum+=Math.min(1,Math.abs(a.widthMm-b.widthMm)/500);n++;}
-        if(a.heightMm>0&&b.heightMm>0){sum+=Math.min(1,Math.abs(a.heightMm-b.heightMm)/500);n++;}
-        return n==0?-1:sum/n;
+        double sum=0,weight=0,d;
+        d=relativeDistance(a.lengthMm,b.lengthMm,.08); if(d>=0){sum+=d*.45;weight+=.45;}
+        d=relativeDistance(a.widthMm,b.widthMm,.05); if(d>=0){sum+=d*.35;weight+=.35;}
+        d=relativeDistance(a.heightMm,b.heightMm,.05); if(d>=0){sum+=d*.20;weight+=.20;}
+        return weight>0?Math.min(1,sum/weight):-1;
     }
 
     private boolean passesFilters(Vehicle v){
