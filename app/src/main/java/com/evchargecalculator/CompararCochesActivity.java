@@ -510,10 +510,14 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         java.io.File installMarker=new java.io.File(getNoBackupFilesDir(),"compare_selection_install.marker");
         boolean freshInstall=!installMarker.exists();
         if(freshInstall){
-            p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
-                    .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
+            // No borrar una selección recién creada desde Buscar similares/Detalle.
+            // En una instalación nueva, esa selección puede haber sido guardada justo
+            // antes de abrir Comparar coches por primera vez.
+            if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
+                p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
+                        .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
+            }
             try{installMarker.createNewFile();}catch(Exception ignored){}
-            return;
         }
 
         if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
