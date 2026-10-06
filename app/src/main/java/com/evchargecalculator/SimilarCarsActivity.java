@@ -68,7 +68,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         LinearLayout hero=new LinearLayout(this);
         hero.setOrientation(LinearLayout.VERTICAL);
-        hero.setPadding(dp(18),dp(20),dp(18),dp(20));
+        hero.setPadding(dp(18),dp(16),dp(18),dp(16));
         GradientDrawable heroBg=new GradientDrawable(
             GradientDrawable.Orientation.TL_BR,
             new int[]{dark?Color.rgb(12,42,66):Color.rgb(20,123,207),dark?Color.rgb(7,28,44):Color.rgb(46,107,255)}
@@ -76,23 +76,17 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         heroBg.setCornerRadius(dp(22));
         hero.setBackground(heroBg);
 
-        TextView back=tv("‹  Volver a coches",14,Color.WHITE);
-        back.setTypeface(null,Typeface.BOLD);
-        back.setPadding(0,0,0,dp(10));
-        back.setOnClickListener(v->finish());
-        hero.addView(back,new LinearLayout.LayoutParams(-1,dp(30)));
-
         TextView icon=tv("🔎",34,Color.WHITE);
-        hero.addView(icon,new LinearLayout.LayoutParams(-1,dp(40)));
+        hero.addView(icon,new LinearLayout.LayoutParams(-1,dp(38)));
 
         TextView title=tv("Buscar coches similares",25,Color.WHITE);
         title.setTypeface(null,Typeface.BOLD);
-        hero.addView(title,new LinearLayout.LayoutParams(-1,dp(38)));
+        hero.addView(title,new LinearLayout.LayoutParams(-1,dp(36)));
 
         TextView intro=tv("Elige un coche de referencia y descubre las 8 alternativas más similares del catálogo.",14,Color.WHITE);
         intro.setAlpha(0.94f);
         intro.setLineSpacing(0,1.15f);
-        hero.addView(intro,new LinearLayout.LayoutParams(-1,dp(44)));
+        hero.addView(intro,new LinearLayout.LayoutParams(-1,dp(40)));
 
         content.addView(hero,marginLp(-1,-2,0,dp(14),0,0));
 
