@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": "catalog-es-2024-2026-1.0",
+  "datasetVersion": "catalog-es-2024-2026-1.1",
   "marketDefault": "ES",
   "catalogOrder": "market>make>model>year>trim>technical",
   "vehicles": [
@@ -3235,7 +3235,9 @@
       "heightMm": 1620,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "BYD",
@@ -3276,7 +3278,9 @@
       "heightMm": 1620,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "BYD",
@@ -3317,7 +3321,9 @@
       "heightMm": 1620,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "gaiaId": "byd-sealion-7-comfort-rwd-2025",
@@ -3357,7 +3363,9 @@
       "heightMm": 1620,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "gaiaId": "byd-sealion-7-excellence-awd-2025",
@@ -3397,7 +3405,9 @@
       "heightMm": 1620,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "BYD",
@@ -16554,7 +16564,9 @@
       "price": 50990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16595,7 +16607,9 @@
       "price": 52990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16636,7 +16650,9 @@
       "price": 62990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16677,7 +16693,9 @@
       "price": 40990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16718,7 +16736,9 @@
       "price": 50990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16759,7 +16779,9 @@
       "price": 52990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16800,7 +16822,9 @@
       "price": 52990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16841,7 +16865,9 @@
       "price": 62990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16882,7 +16908,9 @@
       "price": 50990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16921,7 +16949,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 52970,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -16960,7 +16990,9 @@
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 39990,
-      "currency": "EUR"
+      "currency": "EUR",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -17001,7 +17033,9 @@
       "price": 40990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -17042,7 +17076,9 @@
       "price": 50990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -17083,7 +17119,9 @@
       "price": 52990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -17124,7 +17162,9 @@
       "price": 50990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Tesla",
@@ -17165,7 +17205,9 @@
       "price": 40990,
       "currency": "EUR",
       "priceAuditDateTime": "2026-10-01T18:10:00+02:00",
-      "priceSource": "Tesla España"
+      "priceSource": "Tesla España",
+      "bodyStyle": "crossover",
+      "segment": "J"
     },
     {
       "make": "Toyota",
@@ -18637,7 +18679,9 @@
       "heightMm": 1650,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "XPeng",
@@ -18677,7 +18721,9 @@
       "heightMm": 1650,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "XPeng",
@@ -18717,7 +18763,9 @@
       "heightMm": 1650,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "XPeng",
@@ -18757,7 +18805,9 @@
       "heightMm": 1650,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "XPeng",
@@ -18797,7 +18847,9 @@
       "heightMm": 1650,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "C"
     },
     {
       "make": "XPeng",
@@ -19628,7 +19680,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 52990,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Zeekr",
@@ -19667,7 +19721,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "price": 55990,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Zeekr",
@@ -19706,7 +19762,9 @@
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "price": 62990,
       "currency": "EUR",
-      "batteryChemistry": "NMC"
+      "batteryChemistry": "NMC",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "make": "Zeekr",
@@ -22906,7 +22964,9 @@
       "heightMm": 1648,
       "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
-      "dimensionsAuditDate": "2026-09-30"
+      "dimensionsAuditDate": "2026-09-30",
+      "bodyStyle": "suv",
+      "segment": "D"
     },
     {
       "gaiaId": "audi-q6-sportback-e-tron-rwd-2024",
@@ -26148,7 +26208,9 @@
       "heightMm": 1612,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "gaiaId": "volkswagen-id4-pro-2024",
@@ -26188,7 +26250,9 @@
       "heightMm": 1612,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "gaiaId": "volkswagen-id4-pro-2025",
@@ -26228,7 +26292,9 @@
       "heightMm": 1612,
       "dimensionsAuditDate": "2026-09-30",
       "dimensionsSource": "Gaia EVDB / EV Database; dimensiones auditadas",
-      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00"
+      "dimensionsAuditDateTime": "2026-09-30T11:16:31+02:00",
+      "bodyStyle": "suv",
+      "segment": "J"
     },
     {
       "gaiaId": "volkswagen-id5-gtx-2025",
