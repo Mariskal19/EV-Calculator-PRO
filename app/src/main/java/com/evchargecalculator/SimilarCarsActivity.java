@@ -659,7 +659,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Intent back=new Intent(this,CompararCochesActivity.class);
         back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(back);
-        finish();
     }
 
     private void openDetail(Vehicle v){
