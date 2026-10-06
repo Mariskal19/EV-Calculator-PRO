@@ -490,18 +490,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private double similarity(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
 
-        d=relativeDistance(a.batteryKwh,b.batteryKwh,.20); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=relativeDistance(a.wltpKm,b.wltpKm,.20); if(d>=0){sum+=d*.12;weight+=.12;}
-        d=relativeDistance(a.powerKw,b.powerKw,.25); if(d>=0){sum+=d*.08;weight+=.08;}
-        d=relativeDistance(a.consumption,b.consumption,.15); if(d>=0){sum+=d*.09;weight+=.09;}
+        // Pesos calibrados según los criterios de similitud acordados:
+        // batería 10%, WLTP 12%, potencia 8%, consumo 9%, precio 10%,
+        // maletero 11%, dimensiones 22%, 0-100 3%, DC 5%, 10-80 7%,
+        // tracción 3%. Total: 100%.
+        d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.10;weight+=.10;}
+        d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.12;weight+=.12;}
+        d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.08;weight+=.08;}
+        d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.09;weight+=.09;}
         d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=relativeDistance(a.trunk,b.trunk,.25); if(d>=0){sum+=d*.11;weight+=.11;}
-        d=dimensionDistance(a,b); if(d>=0){sum+=d*.20;weight+=.20;}
-        d=bodyStyleDistance(a,b); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=segmentDistance(a,b); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=relativeDistance(a.acc,b.acc,.20); if(d>=0){sum+=d*.03;weight+=.03;}
-        d=relativeDistance(a.dcKw,b.dcKw,.25); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=relativeDistance(a.chargeMin,b.chargeMin,.20); if(d>=0){sum+=d*.07;weight+=.07;}
+        d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.11;weight+=.11;}
+        d=dimensionDistance(a,b); if(d>=0){sum+=d*.22;weight+=.22;}
+        d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.03;weight+=.03;}
+        d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.05;weight+=.05;}
+        d=relativeDistance(a.chargeMin,b.chargeMin,.50); if(d>=0){sum+=d*.07;weight+=.07;}
         if(!a.drivetrain.isEmpty()&&!b.drivetrain.isEmpty()){
             sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.03;
             weight+=.03;
