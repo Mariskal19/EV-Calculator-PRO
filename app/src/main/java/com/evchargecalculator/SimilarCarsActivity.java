@@ -405,6 +405,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         List<Scored> scored=new ArrayList<>();
         for(Vehicle v:vehicles){
             if(v==reference)continue;
+            // La comparación debe ser temporalmente coherente con la referencia:
+            // un coche de 2025 solo se compara con candidatos de 2025, etc.
+            if(reference.year>0&&v.year>0&&v.year!=reference.year)continue;
             // Los similares deben ser siempre de una marca distinta a la del coche de referencia.
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
             if(!passesFilters(v))continue;
