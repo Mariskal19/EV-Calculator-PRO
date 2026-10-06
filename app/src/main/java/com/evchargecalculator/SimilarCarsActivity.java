@@ -103,10 +103,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         searchLabel.setTypeface(null,Typeface.BOLD);
         searchCard.addView(searchLabel,new LinearLayout.LayoutParams(-1,dp(30)));
 
-        TextView searchHint=tv("Selecciona directamente un coche del catálogo, igual que en Comparar coches.",12,sub());
-        searchHint.setPadding(0,0,0,dp(9));
-        searchCard.addView(searchHint,new LinearLayout.LayoutParams(-1,dp(26)));
-
         search=new EditText(this);
         search.setVisibility(View.GONE);
 
