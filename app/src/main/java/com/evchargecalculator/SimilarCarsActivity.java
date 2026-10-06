@@ -669,7 +669,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     static class Scored{Vehicle v;double score;Scored(Vehicle v,double s){this.v=v;score=s;}}
     static class Vehicle{
-        String id,make,model,version,batteryType,drivetrain,market;int year;boolean remoteSource;
+        String id,make,model,version,batteryType,drivetrain,market,bodyStyle,segment;int year;boolean remoteSource;
         double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
         Vehicle(JSONObject o,boolean remote){
             remoteSource=remote;make=o.optString("make",o.optString("brand",""));model=o.optString("model","");version=o.optString("version",o.optString("trim",""));
