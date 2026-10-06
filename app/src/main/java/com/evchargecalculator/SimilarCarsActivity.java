@@ -204,21 +204,60 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void addReferenceCard(Vehicle v){
         LinearLayout card=card();
-        TextView name=tv(v.make+" "+v.model,16,text());name.setTypeface(null,Typeface.BOLD);
-        card.addView(name,new LinearLayout.LayoutParams(-1,dp(27)));
+        card.setPadding(dp(16),dp(13),dp(16),dp(13));
+
+        TextView name=tv(v.make+" "+v.model,17,text());
+        name.setTypeface(null,Typeface.BOLD);
+        card.addView(name,new LinearLayout.LayoutParams(-1,dp(29)));
+
         TextView info=tv(v.version+"  ·  "+v.year+"  ·  "+market(v.market),12,sub());
         card.addView(info,new LinearLayout.LayoutParams(-1,dp(24)));
-        TextView specs=tv(specLine(v),12,sub());card.addView(specs,new LinearLayout.LayoutParams(-1,dp(25)));
+
+        TextView specs=tv(specLine(v),12,sub());
+        specs.setPadding(0,dp(2),0,dp(4));
+        card.addView(specs,new LinearLayout.LayoutParams(-1,dp(27)));
+
+        TextView action=tv("Usar como referencia  ›",13,blue);
+        action.setTypeface(null,Typeface.BOLD);
+        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+        card.addView(action,new LinearLayout.LayoutParams(-1,dp(28)));
+
         card.setOnClickListener(x->{reference=v;showSimilar();});
         results.addView(card,marginLp(-1,-2,0,0,0,dp(8)));
     }
 
     private void showSimilar(){
         results.removeAllViews();
-        selectedTitle.setText(LanguageManager.t(this,"1. Coche de referencia: "+reference.make+" "+reference.model));
+        selectedTitle.setText(LanguageManager.t(this,"2. Coche de referencia seleccionado"));
         resultsTitle.setVisibility(View.VISIBLE);
-        TextView ref=tv(reference.version+"  ·  "+reference.year+"  ·  "+specLine(reference),12,sub());
-        ref.setPadding(dp(4),0,dp(4),dp(10));results.addView(ref);
+
+        LinearLayout refCard=card();
+        refCard.setPadding(dp(16),dp(13),dp(16),dp(13));
+
+        TextView refLabel=tv("Coche de referencia",12,blue);
+        refLabel.setTypeface(null,Typeface.BOLD);
+        refCard.addView(refLabel,new LinearLayout.LayoutParams(-1,dp(22)));
+
+        TextView refName=tv(reference.make+" "+reference.model,17,text());
+        refName.setTypeface(null,Typeface.BOLD);
+        refCard.addView(refName,new LinearLayout.LayoutParams(-1,dp(29)));
+
+        TextView refInfo=tv(reference.version+"  ·  "+reference.year+"  ·  "+specLine(reference),12,sub());
+        refInfo.setLineSpacing(0,1.05f);
+        refCard.addView(refInfo,new LinearLayout.LayoutParams(-1,dp(42)));
+
+        TextView change=tv("‹  Cambiar coche de referencia",13,blue);
+        change.setTypeface(null,Typeface.BOLD);
+        change.setPadding(0,dp(6),0,0);
+        change.setOnClickListener(x->{
+            reference=null;
+            selectedTitle.setText(LanguageManager.t(this,"2. Elige el coche de referencia"));
+            resultsTitle.setVisibility(View.GONE);
+            showReferenceCandidates();
+        });
+        refCard.addView(change,new LinearLayout.LayoutParams(-1,dp(32)));
+
+        results.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         List<Scored> scored=new ArrayList<>();
         for(Vehicle v:vehicles){
@@ -234,12 +273,47 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private void addSimilarCard(Scored s,int rank){
-        Vehicle v=s.v; LinearLayout card=card();
-        TextView rankTv=tv("#"+rank+"  "+v.make+" "+v.model,16,text());rankTv.setTypeface(null,Typeface.BOLD);
-        card.addView(rankTv,new LinearLayout.LayoutParams(-1,dp(28)));
-        TextView ver=tv(v.version+"  ·  "+v.year+"  ·  "+market(v.market),12,sub());card.addView(ver,new LinearLayout.LayoutParams(-1,dp(24)));
-        TextView specs=tv(specLine(v),12,sub());card.addView(specs,new LinearLayout.LayoutParams(-1,dp(25)));
-        TextView match=tv("Similitud  "+Math.round(Math.max(0,Math.min(100,100-s.score*100)))+" %",12,blue);match.setTypeface(null,Typeface.BOLD);card.addView(match,new LinearLayout.LayoutParams(-1,dp(25)));
+        Vehicle v=s.v;
+        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
+
+        LinearLayout card=card();
+        card.setPadding(dp(16),dp(13),dp(16),dp(13));
+
+        LinearLayout top=new LinearLayout(this);
+        top.setOrientation(LinearLayout.HORIZONTAL);
+        top.setGravity(Gravity.CENTER_VERTICAL);
+
+        TextView badge=tv("#"+rank,12,Color.WHITE);
+        badge.setTypeface(null,Typeface.BOLD);
+        badge.setGravity(Gravity.CENTER);
+        badge.setBackground(bg(blue,12));
+        top.addView(badge,new LinearLayout.LayoutParams(dp(42),dp(28)));
+
+        TextView name=tv(v.make+" "+v.model,17,text());
+        name.setTypeface(null,Typeface.BOLD);
+        name.setPadding(dp(10),0,0,0);
+        top.addView(name,new LinearLayout.LayoutParams(0,dp(32),1));
+
+        TextView score=tv(similarityScore+" %",13,blue);
+        score.setTypeface(null,Typeface.BOLD);
+        score.setGravity(Gravity.CENTER);
+        score.setBackground(strokeBg(dark?Color.rgb(13,36,58):Color.rgb(235,243,255),blue,10));
+        top.addView(score,new LinearLayout.LayoutParams(dp(64),dp(30)));
+
+        card.addView(top,new LinearLayout.LayoutParams(-1,dp(34)));
+
+        TextView ver=tv(v.version+"  ·  "+v.year+"  ·  "+market(v.market),12,sub());
+        card.addView(ver,new LinearLayout.LayoutParams(-1,dp(25)));
+
+        TextView specs=tv(specLine(v),12,sub());
+        specs.setPadding(0,dp(2),0,dp(4));
+        card.addView(specs,new LinearLayout.LayoutParams(-1,dp(27)));
+
+        TextView action=tv("Ver detalles  ›",13,blue);
+        action.setTypeface(null,Typeface.BOLD);
+        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+        card.addView(action,new LinearLayout.LayoutParams(-1,dp(27)));
+
         card.setOnClickListener(x->openDetail(v));
         results.addView(card,marginLp(-1,-2,0,0,0,dp(8)));
     }
