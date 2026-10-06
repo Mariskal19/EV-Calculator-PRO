@@ -408,6 +408,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             // Los similares deben ser siempre de una marca distinta a la del coche de referencia.
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
             if(!passesFilters(v))continue;
+            if(!sameVehicleClass(reference,v))continue;
             double score=similarity(reference,v);
             if(Double.isFinite(score))scored.add(new Scored(v,score));
         }
@@ -492,17 +493,15 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         // Pesos calibrados según los criterios de similitud acordados:
         // batería 10%, WLTP 12%, potencia 8%, consumo 9%, precio 10%,
-        // maletero 11%, dimensiones 16%, carrocería 3%, segmento 3%,
-        // 0-100 3%, DC 5%, 10-80 7%, tracción 3%. Total: 100%.
+        // maletero 11%, dimensiones 22%, 0-100 3%, DC 5%, 10-80 7%,
+        // tracción 3%. Total: 100%. Segmento/carrocería se usan como filtro previo.
         d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.10;weight+=.10;}
         d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.12;weight+=.12;}
         d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.08;weight+=.08;}
         d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.09;weight+=.09;}
         d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.10;weight+=.10;}
         d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.11;weight+=.11;}
-        d=dimensionDistance(a,b); if(d>=0){sum+=d*.16;weight+=.16;}
-        d=bodyStyleDistance(a,b); if(d>=0){sum+=d*.03;weight+=.03;}
-        d=segmentDistance(a,b); if(d>=0){sum+=d*.03;weight+=.03;}
+        d=dimensionDistance(a,b); if(d>=0){sum+=d*.22;weight+=.22;}
         d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.03;weight+=.03;}
         d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.05;weight+=.05;}
         d=relativeDistance(a.chargeMin,b.chargeMin,.50); if(d>=0){sum+=d*.07;weight+=.07;}
@@ -568,6 +567,22 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         d=relativeDistance(a.widthMm,b.widthMm,.05); if(d>=0){sum+=d*.20;weight+=.20;}
         d=relativeDistance(a.heightMm,b.heightMm,.05); if(d>=0){sum+=d*.30;weight+=.30;}
         return weight>0?Math.min(1,sum/weight):-1;
+    }
+
+    /**
+     * Solo permite comparar coches de la misma clase de vehículo.
+     * El segmento y la carrocería son condiciones de entrada, no parte
+     * del porcentaje de similitud. SUV y crossover se consideran equivalentes.
+     */
+    private boolean sameVehicleClass(Vehicle a,Vehicle b){
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        String ba=normalizeBodyStyle(a.bodyStyle);
+        String bb=normalizeBodyStyle(b.bodyStyle);
+        if(sa.isEmpty()||sb.isEmpty()||ba.isEmpty()||bb.isEmpty())return false;
+        if(!sa.equals(sb))return false;
+        if(ba.equals(bb))return true;
+        return isSuvLike(ba)&&isSuvLike(bb);
     }
 
     private boolean passesFilters(Vehicle v){
