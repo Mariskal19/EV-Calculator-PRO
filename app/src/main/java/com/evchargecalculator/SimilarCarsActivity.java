@@ -131,9 +131,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         results=new LinearLayout(this);
         results.setOrientation(LinearLayout.VERTICAL);
-        content.addView(results,new LinearLayout.LayoutParams(-1,-2));
-        content.removeView(resultsTitle);
         content.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        results=new LinearLayout(this);
+        results.setOrientation(LinearLayout.VERTICAL);
+        content.addView(results,new LinearLayout.LayoutParams(-1,-2));
 
         TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones.",12,sub());
         note.setLineSpacing(0,1.15f);
@@ -143,6 +144,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         scroll.addView(content);
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
+    }
 
     private LinearLayout.LayoutParams marginLp(int w,int h,int l,int t,int r,int b){
         LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(w,h);p.setMargins(l,t,r,b);return p;
