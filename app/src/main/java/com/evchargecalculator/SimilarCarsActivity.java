@@ -345,6 +345,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         input.requestFocus();
     }
 
+    private int trimRank(Vehicle v){String k=v.version==null?"":v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
+
     private int pickerSearchScore(Vehicle v,String q){
         if(q.isEmpty())return 0;
         String make=norm(v.make),model=norm(v.model),version=norm(v.version);
