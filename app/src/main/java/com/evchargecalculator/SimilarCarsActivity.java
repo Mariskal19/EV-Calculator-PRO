@@ -522,15 +522,17 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // El 6,5% liberado se redistribuye proporcionalmente entre los otros
         // nueve criterios, manteniendo exactamente el 100% del algoritmo.
         // Batería 10,7471264%, WLTP 12,8965517%, potencia 8,5977011%,
+        // La similitud es simétrica: una diferencia penaliza igual en ambos sentidos.
+        // No se interpreta que un coche sea mejor o peor.
         // consumo 9,6724138%, precio 5%, maletero 11,8218391%,
         // dimensiones 23,6436782%, 0-100 3,2241379%, DC 5,3735632%,
         // 10-80 7,5229885%, tracción 1,5%.
         d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.1074712643678161;weight+=.1074712643678161;}
-        d=advantageAwareDistance(a.wltpKm,b.wltpKm,.25,true); if(d>=0){sum+=d*.1289655172413793;weight+=.1289655172413793;}
+        d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.1289655172413793;weight+=.1289655172413793;}
         d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.08597701149425287;weight+=.08597701149425287;}
-        d=advantageAwareDistance(a.consumption,b.consumption,.25,false); if(d>=0){sum+=d*.09672413793103448;weight+=.09672413793103448;}
+        d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.09672413793103448;weight+=.09672413793103448;}
         d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=advantageAwareDistance(a.trunk,b.trunk,.35,true); if(d>=0){sum+=d*.1182183908045977;weight+=.1182183908045977;}
+        d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.1182183908045977;weight+=.1182183908045977;}
         d=dimensionDistance(a,b); if(d>=0){sum+=d*.2364367816091954;weight+=.2364367816091954;}
         d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.03224137931034483;weight+=.03224137931034483;}
         d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.05373563218390805;weight+=.05373563218390805;}
@@ -548,17 +550,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * La tolerancia indica aproximadamente qué diferencia debe considerarse
      * una similitud media; diferencias mayores se saturan progresivamente.
      */
-    /**
-     * Reduce la penalizacion cuando la diferencia del candidato es favorable:
-     * mas autonomia, mas maletero o menor consumo.
-     */
-    private double advantageAwareDistance(double a,double b,double tolerance,boolean higherIsBetter){
-        double d=relativeDistance(a,b,tolerance);
-        if(d<0)return d;
-        boolean candidateIsBetter=higherIsBetter?(b>a):(b<a);
-        return candidateIsBetter?d*0.50:d;
-    }
-
     private double relativeDistance(double a,double b,double tolerance){
         if(a<=0||b<=0||tolerance<=0)return -1;
         double reference=Math.max(a,b);
