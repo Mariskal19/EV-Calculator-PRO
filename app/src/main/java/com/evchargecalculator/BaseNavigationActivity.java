@@ -57,9 +57,9 @@ public abstract class BaseNavigationActivity extends Activity {
      * but give scrollable screens enough extra scroll range to bring their
      * last real item above the fixed navigation bar. This avoids both:
      *  - content being hidden underneath the bar;
-     *  - a visible 64dp empty band between the last card and the bar.
+     *  - a visible 48dp empty band between the last card and the bar.
      */
-    addBottomScrollSpace(view, dp(64));
+    addBottomScrollSpace(view, dp(48));
 
     FrameLayout.LayoutParams contentParams =
         new FrameLayout.LayoutParams(-1, -1);
