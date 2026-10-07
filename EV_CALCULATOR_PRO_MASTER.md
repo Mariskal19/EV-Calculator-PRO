@@ -823,3 +823,22 @@ Cuando se retome EV Calculator PRO:
 - Commit estable: `e76b931f826b0d25c0e4f731ed9b534f0dbbe0bb` — `fix: reducir espacio final del scroll a 48dp`.
 - Este checkpoint queda como **baseline estable de referencia a las 19:55 del 07/10/2026**.
 - No modificar este comportamiento salvo regresión real comprobada.
+
+
+## 2026-10-07 — Estado consolidado de trabajo y ramas
+
+- **Rama activa de desarrollo:** `main`. Todo el trabajo activo de 1.0.5 debe continuar en `main`.
+- La rama histórica `develop/1.0.5` **ya no es la rama de desarrollo activa**. Se conserva temporalmente como referencia/backup histórico y no debe retomarse para continuar el desarrollo.
+- Ramas/checkpoints históricos `stable/pre-1.0.5-2026-10-05` y `stable/1.0.5-similar-cars`: no modificar salvo autorización expresa.
+- El trabajo de búsqueda, detalle y coches similares pertenece a **1.0.5**.
+- **Buscar coches similares → Detalle → Añadir a comparativa:** al pasar al comparador, el **coche de referencia siempre ocupa la primera posición** y el coche similar seleccionado ocupa la siguiente posición.
+- Al iniciar el flujo desde la búsqueda hacia el comparador, se limpia la selección previa y se reconstruye el comparador con **referencia primero + similar elegido después**.
+- **Búsqueda optimizada:** se mantienen cachés de campos normalizados por vehículo, normalización/tokenización única por consulta, cálculo único de puntuación por candidato, ordenación mediante puntuaciones cacheadas, debounce aproximado de 70 ms y cancelación de refrescos pendientes.
+- **Scroll final estable:** la navegación inferior permanece fija/superpuesta y los ScrollView reciben 48 dp de espacio interno inferior. Este ajuste fue probado y validado en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16), con resultado visual correcto.
+- No modificar estos bloques estables salvo regresión real comprobada.
+
+### Checkpoints confirmados el 07/10/2026
+
+- **17:00 — Búsqueda optimizada:** commit `9b5781da1d600cf36d135a6028d4dd3263495fec`.
+- **19:55 — Scroll final:** commit `e76b931f826b0d25c0e4f731ed9b534f0dbbe0bb`.
+- **19:55 — Actualización de MASTER:** commit `dd092d2bf95c10a098e14cd03f9457d032d0ddd9`.
