@@ -766,13 +766,22 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         };
         searchMarketSpinner.setAdapter(marketAdapter); searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14)); searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
         int marketIndex=0; for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;} searchMarketSpinner.setSelection(marketIndex);
-        Runnable refreshResults=()->{String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle> filtered=orderedSearchVehicles(q);results.clear();results.addAll(filtered);header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);adapter.notifyDataSetChanged();};
-        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=0&&pos<ms.size()){selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();input.post(refreshResults);}}public void onNothingSelected(android.widget.AdapterView<?>p){}});
+        final android.os.Handler searchHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+        final Runnable refreshResults=()->{
+            String q=input.getText()==null?"":input.getText().toString().trim();
+            List<Vehicle> filtered=orderedSearchVehicles(q);
+            results.clear();
+            results.addAll(filtered);
+            header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);
+            adapter.notifyDataSetChanged();
+        };
+        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=0&&pos<ms.size()){selectedMarket=ms.get(pos);getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();searchHandler.removeCallbacks(refreshResults);searchHandler.post(refreshResults);}}public void onNothingSelected(android.widget.AdapterView<?>p){}});
         marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(180),dp(38)));
         LinearLayout body=new LinearLayout(this); body.setOrientation(LinearLayout.VERTICAL); body.setPadding(dp(12),dp(12),dp(12),dp(8)); body.addView(input,new LinearLayout.LayoutParams(-1,dp(50))); body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56))); body.addView(list,new LinearLayout.LayoutParams(-1,0,1));
         AlertDialog d=new AlertDialog.Builder(this).setView(body).create(); input.setTag(d);
-        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){input.post(refreshResults);}public void afterTextChanged(Editable e){}});
-        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);input.post(refreshResults);});});
+        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){searchHandler.removeCallbacks(refreshResults);searchHandler.postDelayed(refreshResults,70);}public void afterTextChanged(Editable e){}});
+        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);searchHandler.removeCallbacks(refreshResults);searchHandler.post(refreshResults);});});
+        d.setOnDismissListener(x->searchHandler.removeCallbacks(refreshResults));
         d.show(); Window searchWindow=d.getWindow(); if(searchWindow!=null){searchWindow.setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20)); searchWindow.setLayout(-1,-1); searchWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);} input.requestFocus();
     }
 
