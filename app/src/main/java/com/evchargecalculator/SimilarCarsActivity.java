@@ -430,8 +430,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(referenceYear>0&&v.year!=targetYear)continue;
                 if(!sameVehicleClass(reference,v))continue;
                 if(!inCompetitiveZone(reference,v))continue;
-                double score=similarity(reference,v);
-                if(Double.isFinite(score))batch.add(new Scored(v,score));
+                double technicalDistance=similarity(reference,v);
+                double competitionDistance=competitionDistance(reference,v);
+                if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
+                    // La competencia real manda sobre la ficha técnica:
+                    // 40% cercanía competitiva + 60% similitud de características.
+                    double score=competitionDistance*.40+technicalDistance*.60;
+                    batch.add(new Scored(v,score));
+                }
             }
             candidates.addAll(batch);
             // No ampliamos a años anteriores si ya tenemos suficiente material
@@ -518,12 +524,46 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * 40 kWh que en una de 100 kWh. Los campos ausentes se excluyen y el peso
      * restante se renormaliza, evitando penalizar a un coche por datos que no existen.
      */
+    /**
+     * Distancia competitiva normalizada: 0 = rival directo, 1 = poco competitivo.
+     *
+     * Se basa únicamente en variables que definen si dos coches se disputan
+     * realmente el mismo comprador:
+     * - carrocería: 25%
+     * - tamaño físico: 35%
+     * - precio: 25%
+     * - segmento: 15%
+     *
+     * SUV y crossover son equivalentes. En SUV/crossover, una diferencia de
+     * segmento del catálogo no elimina al rival, pero sí aporta una pequeña
+     * penalización. No se usa la marca ni su notoriedad.
+     */
+    private double competitionDistance(Vehicle a,Vehicle b){
+        if(a==null||b==null)return Double.POSITIVE_INFINITY;
+
+        double sum=0,weight=0,d;
+
+        d=bodyStyleDistance(a,b);
+        if(d>=0){sum+=d*.25;weight+=.25;}
+
+        d=dimensionDistance(a,b);
+        if(d>=0){sum+=d*.35;weight+=.35;}
+
+        d=relativeDistance(a.price,b.price,.20);
+        if(d>=0){sum+=d*.25;weight+=.25;}
+
+        d=segmentDistance(a,b);
+        if(d>=0){sum+=d*.15;weight+=.15;}
+
+        return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
+    }
+
     private double similarity(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
 
-        // Pesos actualizados: precio 5% y tracción 1,5%.
-        // El 6,5% liberado se redistribuye proporcionalmente entre los otros
-        // nueve criterios, manteniendo exactamente el 100% del algoritmo.
+        // Pesos técnicos: el precio conserva su 5% histórico y la tracción 1,5%.
+        // La cercanía competitiva se calcula aparte y aporta el 40% del ranking;
+        // la ficha técnica aporta el 60%.
         // Batería 10,7471264%, WLTP 12,8965517%, potencia 8,5977011%,
         // La similitud es simétrica: una diferencia penaliza igual en ambos sentidos.
         // No se interpreta que un coche sea mejor o peor.
