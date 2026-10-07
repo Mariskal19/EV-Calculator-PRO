@@ -433,9 +433,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 double technicalDistance=similarity(reference,v);
                 double competitionDistance=competitionDistance(reference,v);
                 if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
-                    // La competencia real manda sobre la ficha técnica:
-                    // 40% cercanía competitiva + 60% similitud de características.
-                    double score=competitionDistance*.40+technicalDistance*.60;
+                    // La competencia real manda claramente sobre la ficha técnica:
+                    // 70% cercanía competitiva + 30% similitud de características.
+                    double score=competitionDistance*.70+technicalDistance*.30;
                     batch.add(new Scored(v,score));
                 }
             }
