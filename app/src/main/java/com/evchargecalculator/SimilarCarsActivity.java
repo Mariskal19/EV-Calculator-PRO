@@ -586,19 +586,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double sum=0,weight=0,d;
 
         d=directionalWorseDistance(reference.powerKw,candidate.powerKw,.30,false);
-        if(d>=0){sum+=d*.30;weight+=.30;}
+        if(d>=0){sum+=d*.15;weight+=.15;}
 
         d=directionalWorseDistance(reference.acc,candidate.acc,.25,true);
         if(d>=0){sum+=d*.20;weight+=.20;}
 
         d=directionalWorseDistance(reference.wltpKm,candidate.wltpKm,.25,false);
-        if(d>=0){sum+=d*.20;weight+=.20;}
+        if(d>=0){sum+=d*.25;weight+=.25;}
 
         d=directionalWorseDistance(reference.consumption,candidate.consumption,.25,true);
-        if(d>=0){sum+=d*.10;weight+=.10;}
+        if(d>=0){sum+=d*.15;weight+=.15;}
 
         d=directionalWorseDistance(reference.chargeMin,candidate.chargeMin,.50,true);
-        if(d>=0){sum+=d*.20;weight+=.20;}
+        if(d>=0){sum+=d*.25;weight+=.25;}
 
         return weight>0?Math.min(1,sum/weight):-1;
     }
