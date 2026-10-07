@@ -684,10 +684,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private boolean samePhysicalClass(Vehicle a,Vehicle b){
-        if(a.lengthMm<=0||b.lengthMm<=0||a.widthMm<=0||b.widthMm<=0||a.heightMm<=0||b.heightMm<=0)return false;
-        return relativeDistance(a.lengthMm,b.lengthMm,.08)<=1
-            &&relativeDistance(a.widthMm,b.widthMm,.05)<=1
-            &&relativeDistance(a.heightMm,b.heightMm,.08)<=1;
+        if(a.lengthMm<=0||b.lengthMm<=0||
+           a.widthMm<=0||b.widthMm<=0||
+           a.heightMm<=0||b.heightMm<=0)return false;
+
+        // Este filtro define la clase física real del vehículo y no la
+        // similitud técnica. Por eso aquí usamos la diferencia relativa
+        // directa y no relativeDistance(), cuya curva tanh nunca supera 1.
+        double lengthDiff=Math.abs(a.lengthMm-b.lengthMm)/Math.max(a.lengthMm,b.lengthMm);
+        double widthDiff=Math.abs(a.widthMm-b.widthMm)/Math.max(a.widthMm,b.widthMm);
+        double heightDiff=Math.abs(a.heightMm-b.heightMm)/Math.max(a.heightMm,b.heightMm);
+
+        return lengthDiff<=0.08
+            &&widthDiff<=0.05
+            &&heightDiff<=0.08;
     }
 
     private void loadVehicles(){
