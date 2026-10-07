@@ -554,7 +554,16 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(a<=0||b<=0||tolerance<=0)return -1;
         double reference=Math.max(a,b);
         double ratio=Math.abs(a-b)/reference;
-        return Math.min(1,ratio/tolerance);
+
+        // Distancia simétrica y suave:
+        // - diferencias pequeñas apenas penalizan;
+        // - la penalización crece de forma progresiva;
+        // - las diferencias muy grandes pueden llegar a 100%.
+        //
+        // La fórmula cuadrática evita que una diferencia razonable (p.ej. 10-15%)
+        // se convierta artificialmente en una penalización del 40-60% del criterio.
+        double normalized=ratio/tolerance;
+        return Math.min(1,normalized*normalized);
     }
 
     /**
