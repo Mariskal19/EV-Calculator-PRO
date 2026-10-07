@@ -2,7 +2,9 @@ package com.evchargecalculator;
 
 import android.app.Activity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 /**
  * Common host for app screens that use the permanent bottom navigation.
@@ -50,11 +52,17 @@ public abstract class BaseNavigationActivity extends Activity {
         ? android.graphics.Color.rgb(16, 28, 42)
         : android.graphics.Color.rgb(242, 246, 252));
 
-    // Reserve the full height of the permanent bottom navigation for the
-    // screen content so the last rows of a ScrollView remain fully visible.
+    /*
+     * Keep the navigation over the content, as it was originally designed,
+     * but give scrollable screens enough extra scroll range to bring their
+     * last real item above the fixed navigation bar. This avoids both:
+     *  - content being hidden underneath the bar;
+     *  - a visible 64dp empty band between the last card and the bar.
+     */
+    addBottomScrollSpace(view, dp(64));
+
     FrameLayout.LayoutParams contentParams =
         new FrameLayout.LayoutParams(-1, -1);
-    contentParams.bottomMargin = dp(64);
     host.addView(view, contentParams);
 
     View bottomNavigation =
@@ -64,6 +72,28 @@ public abstract class BaseNavigationActivity extends Activity {
     host.addView(bottomNavigation, navParams);
 
     super.setContentView(host);
+  }
+
+  /**
+   * Ensures every ScrollView has enough bottom scroll range for the fixed
+   * navigation bar without creating a visible gap outside the scroll view.
+   */
+  private void addBottomScrollSpace(View view, int minBottomPadding) {
+    if (view instanceof ScrollView) {
+      ScrollView scrollView = (ScrollView) view;
+      scrollView.setPadding(
+          scrollView.getPaddingLeft(),
+          scrollView.getPaddingTop(),
+          scrollView.getPaddingRight(),
+          Math.max(scrollView.getPaddingBottom(), minBottomPadding));
+    }
+
+    if (view instanceof ViewGroup) {
+      ViewGroup group = (ViewGroup) view;
+      for (int i = 0; i < group.getChildCount(); i++) {
+        addBottomScrollSpace(group.getChildAt(i), minBottomPadding);
+      }
+    }
   }
 
   protected boolean isDarkTheme() {
