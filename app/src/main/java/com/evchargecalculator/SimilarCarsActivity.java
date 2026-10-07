@@ -643,10 +643,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ba=normalizeBodyStyle(a.bodyStyle);
         String bb=normalizeBodyStyle(b.bodyStyle);
         if(sa.isEmpty()||sb.isEmpty()||ba.isEmpty()||bb.isEmpty())return false;
+
+        // 1) La carrocería es el primer filtro: SUV y crossover son equivalentes.
         if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb)))return false;
+
+        // 2) La clase física siempre debe ser compatible.
+        // Antes, dos coches con el mismo código de segmento podían saltarse
+        // este filtro aunque sus dimensiones fueran muy diferentes.
+        if(!samePhysicalClass(a,b))return false;
+
+        // 3) El segmento aporta contexto, pero no debe bloquear a rivales reales
+        // cuando Gaia utiliza códigos distintos para SUV/crossover.
         if(sa.equals(sb))return true;
-        // Gaia usa códigos distintos para algunos SUV/crossover que son rivales directos.
-        return isSuvLike(ba)&&isSuvLike(bb)&&samePhysicalClass(a,b);
+        return isSuvLike(ba)&&isSuvLike(bb);
     }
 
     private boolean samePhysicalClass(Vehicle a,Vehicle b){
