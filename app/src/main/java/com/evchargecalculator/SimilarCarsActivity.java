@@ -513,23 +513,26 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private double similarity(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
 
-        // Pesos calibrados según los criterios de similitud acordados:
-        // batería 10%, WLTP 12%, potencia 8%, consumo 9%, precio 10%,
-        // maletero 11%, dimensiones 22%, 0-100 3%, DC 5%, 10-80 7%,
-        // tracción 3%. Total: 100%. Segmento/carrocería se usan como filtro previo.
-        d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.12;weight+=.12;}
-        d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.08;weight+=.08;}
-        d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.09;weight+=.09;}
-        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.10;weight+=.10;}
-        d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.11;weight+=.11;}
-        d=dimensionDistance(a,b); if(d>=0){sum+=d*.22;weight+=.22;}
-        d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.03;weight+=.03;}
-        d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=relativeDistance(a.chargeMin,b.chargeMin,.50); if(d>=0){sum+=d*.07;weight+=.07;}
+        // Pesos actualizados: precio 5% y tracción 1,5%.
+        // El 6,5% liberado se redistribuye proporcionalmente entre los otros
+        // nueve criterios, manteniendo exactamente el 100% del algoritmo.
+        // Batería 10,7471264%, WLTP 12,8965517%, potencia 8,5977011%,
+        // consumo 9,6724138%, precio 5%, maletero 11,8218391%,
+        // dimensiones 23,6436782%, 0-100 3,2241379%, DC 5,3735632%,
+        // 10-80 7,5229885%, tracción 1,5%.
+        d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.1074712643678161;weight+=.1074712643678161;}
+        d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.1289655172413793;weight+=.1289655172413793;}
+        d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.08597701149425287;weight+=.08597701149425287;}
+        d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.09672413793103448;weight+=.09672413793103448;}
+        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.05;weight+=.05;}
+        d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.1182183908045977;weight+=.1182183908045977;}
+        d=dimensionDistance(a,b); if(d>=0){sum+=d*.2364367816091954;weight+=.2364367816091954;}
+        d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.03224137931034483;weight+=.03224137931034483;}
+        d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.05373563218390805;weight+=.05373563218390805;}
+        d=relativeDistance(a.chargeMin,b.chargeMin,.50); if(d>=0){sum+=d*.07522988505747126;weight+=.07522988505747126;}
         if(!a.drivetrain.isEmpty()&&!b.drivetrain.isEmpty()){
-            sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.03;
-            weight+=.03;
+            sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.015;
+            weight+=.015;
         }
 
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
