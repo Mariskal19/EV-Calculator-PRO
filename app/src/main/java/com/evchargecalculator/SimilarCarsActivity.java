@@ -555,15 +555,15 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double reference=Math.max(a,b);
         double ratio=Math.abs(a-b)/reference;
 
-        // Distancia simétrica y suave:
-        // - diferencias pequeñas apenas penalizan;
-        // - la penalización crece de forma progresiva;
-        // - las diferencias muy grandes pueden llegar a 100%.
+        // Distancia simétrica y continua:
+        // - diferencias pequeñas penalizan poco;
+        // - 27, 35 y 40 min siguen produciendo valores distintos;
+        // - la función no se satura bruscamente en 1 para diferencias finitas.
         //
-        // La fórmula cúbica suaviza aún más las diferencias moderadas sin eliminar
-        // la capacidad del algoritmo para distinguir coches realmente diferentes.
+        // Usamos una curva hiperbólica (tanh) para conservar información
+        // también cuando la diferencia supera la tolerancia.
         double normalized=ratio/tolerance;
-        return Math.min(1,normalized*normalized*normalized);
+        return Math.tanh(normalized);
     }
 
     /**
