@@ -294,7 +294,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         });
 
         searchMarketSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> p,View v,int a,long b){input.post(refresh);}
+            public void onItemSelected(AdapterView<?> p,View v,int a,long b){searchHandler.removeCallbacks(refresh);searchHandler.post(refresh);}
             public void onNothingSelected(AdapterView<?> p){}
         });
 
@@ -310,7 +310,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         input.setTag(d);
         input.addTextChangedListener(new TextWatcher(){
             public void beforeTextChanged(CharSequence s,int st,int c,int a){}
-            public void onTextChanged(CharSequence s,int st,int b,int c){input.post(refresh);}
+            public void onTextChanged(CharSequence s,int st,int b,int c){searchHandler.removeCallbacks(refresh);searchHandler.postDelayed(refresh,70);}
             public void afterTextChanged(Editable e){}
         });
         d.setOnShowListener(x->{
@@ -321,7 +321,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             input.post(()->{
                 InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
                 if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);
-                input.post(refresh);
+                searchHandler.removeCallbacks(refresh);searchHandler.post(refresh);
             });
         });
         d.show();
@@ -336,24 +336,22 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private int trimRank(Vehicle v){String k=v.version==null?"":v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
 
-    private int pickerSearchScore(Vehicle v,String q){
+    private int pickerSearchScore(SearchIndex idx,String q,String[] tokens){
         if(q.isEmpty())return 0;
-        String make=norm(v.make),model=norm(v.model),version=norm(v.version);
-        String all=norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version);
         int score=0;
-        for(String token:q.split("\\s+")){
+        for(String token:tokens){
             if(token.isEmpty())continue;
-            if(make.equals(token))score+=120;
-            else if(make.startsWith(token))score+=70;
-            else if(make.contains(token))score+=45;
-            if(model.equals(token))score+=110;
-            else if(model.startsWith(token))score+=65;
-            else if(model.contains(token))score+=40;
-            if(version.contains(token))score+=20;
-            if(all.contains(token))score+=10;
+            if(idx.make.equals(token))score+=120;
+            else if(idx.make.startsWith(token))score+=70;
+            else if(idx.make.contains(token))score+=45;
+            if(idx.model.equals(token))score+=110;
+            else if(idx.model.startsWith(token))score+=65;
+            else if(idx.model.contains(token))score+=40;
+            if(idx.version.contains(token))score+=20;
+            if(idx.all.contains(token))score+=10;
         }
-        if(norm(v.make+" "+v.model).equals(q))score+=180;
-        else if(norm(v.make+" "+v.model).startsWith(q))score+=100;
+        if(idx.makeModel.equals(q))score+=180;
+        else if(idx.makeModel.startsWith(q))score+=100;
         return score;
     }
 
