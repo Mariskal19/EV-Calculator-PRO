@@ -538,24 +538,90 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * segmento del catálogo no elimina al rival, pero sí aporta una pequeña
      * penalización. No se usa la marca ni su notoriedad.
      */
+    /**
+     * Distancia competitiva normalizada: 0 = rival directo, 1 = poco competitivo.
+     *
+     * La competencia pesa más que la similitud técnica. Además de carrocería,
+     * tamaño, precio y segmento, incorporamos el posicionamiento de prestaciones.
+     *
+     * Importante: el bloque de prestaciones es DIRECCIONAL:
+     * - si el candidato rinde peor que el referente, se penaliza;
+     * - si rinde igual o mejor, no se penaliza por esa variable.
+     *
+     * Esto evita el error de considerar al Model Y menos competidor del G6
+     * simplemente por tener más potencia, mejor aceleración o mayor autonomía.
+     */
     private double competitionDistance(Vehicle a,Vehicle b){
         if(a==null||b==null)return Double.POSITIVE_INFINITY;
 
         double sum=0,weight=0,d;
 
         d=bodyStyleDistance(a,b);
-        if(d>=0){sum+=d*.25;weight+=.25;}
+        if(d>=0){sum+=d*.20;weight+=.20;}
 
         d=dimensionDistance(a,b);
-        if(d>=0){sum+=d*.35;weight+=.35;}
+        if(d>=0){sum+=d*.30;weight+=.30;}
 
         d=relativeDistance(a.price,b.price,.20);
-        if(d>=0){sum+=d*.25;weight+=.25;}
+        if(d>=0){sum+=d*.20;weight+=.20;}
 
         d=segmentDistance(a,b);
-        if(d>=0){sum+=d*.15;weight+=.15;}
+        if(d>=0){sum+=d*.10;weight+=.10;}
+
+        d=performanceCompetitionDistance(a,b);
+        if(d>=0){sum+=d*.20;weight+=.20;}
 
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
+    }
+
+    /**
+     * Posicionamiento de prestaciones dentro de la competencia.
+     *
+     * Se penaliza únicamente cuando el candidato queda por debajo del
+     * referente. Un rival superior en una variable no recibe castigo.
+     *
+     * Potencia 30%, 0-100 20%, WLTP 20%, consumo 10%, carga 10-80 20%.
+     */
+    private double performanceCompetitionDistance(Vehicle reference,Vehicle candidate){
+        double sum=0,weight=0,d;
+
+        d=directionalWorseDistance(reference.powerKw,candidate.powerKw,.30,false);
+        if(d>=0){sum+=d*.30;weight+=.30;}
+
+        d=directionalWorseDistance(reference.acc,candidate.acc,.25,true);
+        if(d>=0){sum+=d*.20;weight+=.20;}
+
+        d=directionalWorseDistance(reference.wltpKm,candidate.wltpKm,.25,false);
+        if(d>=0){sum+=d*.20;weight+=.20;}
+
+        d=directionalWorseDistance(reference.consumption,candidate.consumption,.25,true);
+        if(d>=0){sum+=d*.10;weight+=.10;}
+
+        d=directionalWorseDistance(reference.chargeMin,candidate.chargeMin,.50,true);
+        if(d>=0){sum+=d*.20;weight+=.20;}
+
+        return weight>0?Math.min(1,sum/weight):-1;
+    }
+
+    /**
+     * Distancia direccional: solo mide cuánto peor es el candidato.
+     *
+     * lowerIsBetter=true para variables donde un valor menor es mejor
+     * (0-100, consumo y tiempo de carga).
+     * lowerIsBetter=false para variables donde un valor mayor es mejor
+     * (potencia y autonomía).
+     */
+    private double directionalWorseDistance(double reference,double candidate,double tolerance,boolean lowerIsBetter){
+        if(reference<=0||candidate<=0||tolerance<=0)return -1;
+
+        double worseRatio;
+        if(lowerIsBetter){
+            worseRatio=Math.max(0,candidate-reference)/reference;
+        }else{
+            worseRatio=Math.max(0,reference-candidate)/reference;
+        }
+
+        return Math.tanh(worseRatio/tolerance);
     }
 
     private double similarity(Vehicle a,Vehicle b){
