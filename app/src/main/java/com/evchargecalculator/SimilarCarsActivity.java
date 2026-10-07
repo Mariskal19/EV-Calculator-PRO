@@ -412,7 +412,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
-        List<Scored> scored=new ArrayList<>();
+        // 1) Construimos el conjunto de candidatos respetando la regla temporal:
+        //    año de referencia primero y, solo si hace falta, años anteriores.
+        // 2) De todos esos candidatos obtenemos el TOP 20 por similitud.
+        // 3) Sobre ese TOP 20 eliminamos las repeticiones de marca, conservando
+        //    únicamente la versión más similar de cada fabricante.
+        // 4) Finalmente mostramos las 8 primeras marcas únicas.
+        final int TOP_POOL = 20;
+        List<Scored> candidates=new ArrayList<>();
         int referenceYear=reference.year;
         int minYear=referenceYear>0?referenceYear-5:0;
         for(int targetYear=referenceYear;targetYear>=minYear;targetYear--){
@@ -422,27 +429,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
                 if(referenceYear>0&&v.year!=targetYear)continue;
                 if(!sameVehicleClass(reference,v))continue;
-                // Zona competitiva automática: el coche debe estar dentro de un
-                // margen económico razonable respecto al vehículo de referencia.
-                // No depende de marca/modelo y permite diferencias de segmento
-                // cuando la carrocería y la clase física ya son compatibles.
                 if(!inCompetitiveZone(reference,v))continue;
                 double score=similarity(reference,v);
                 if(Double.isFinite(score))batch.add(new Scored(v,score));
             }
-            Collections.sort(batch,(x,y)->Double.compare(x.score,y.score));
-            // Añadimos por año: primero todos los candidatos del año de referencia,
-            // y solo si faltan plazas ampliamos al año inmediatamente anterior.
-            scored.addAll(batch);
-            Set<String> brands=new HashSet<>();
-            for(Scored s:scored){
-                String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
-                if(!make.isEmpty())brands.add(make);
-            }
-            if(brands.size()>=8)break;
+            candidates.addAll(batch);
+            // No ampliamos a años anteriores si ya tenemos suficiente material
+            // para formar el TOP 20. Así el TOP 20 sigue siendo coherente con el
+            // año de referencia siempre que haya al menos 20 candidatos.
+            if(candidates.size()>=TOP_POOL)break;
         }
-        Map<String,Scored> bestByMake=new HashMap<>();
-        for(Scored s:scored){
+
+        Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
+        int poolSize=Math.min(TOP_POOL,candidates.size());
+        List<Scored> top20=new ArrayList<>(candidates.subList(0,poolSize));
+
+        Map<String,Scored> bestByMake=new LinkedHashMap<>();
+        for(Scored s:top20){
             String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
             if(make.isEmpty())continue;
             Scored current=bestByMake.get(make);
