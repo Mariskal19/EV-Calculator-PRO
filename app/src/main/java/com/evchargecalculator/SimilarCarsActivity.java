@@ -631,10 +631,35 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      */
     private boolean inCompetitiveZone(Vehicle a,Vehicle b){
         if(a==null||b==null)return false;
-        if(a.price<=0||b.price<=0)return true;
-        double reference=Math.max(a.price,b.price);
-        double priceRatio=Math.abs(a.price-b.price)/reference;
-        return priceRatio<=0.20;
+
+        // Zona competitiva estricta: no basta con parecerse técnicamente.
+        // Debe pertenecer al mismo espacio comercial y físico que el referente.
+        String ba=normalizeBodyStyle(a.bodyStyle);
+        String bb=normalizeBodyStyle(b.bodyStyle);
+        if(ba.isEmpty()||bb.isEmpty())return false;
+        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb)))return false;
+
+        // El tamaño es una condición de entrada: evitamos que un SUV claramente
+        // más pequeño o más grande entre solo por tener especificaciones parecidas.
+        if(!samePhysicalClass(a,b))return false;
+
+        // Con carrocería y tamaño compatibles, permitimos el salto de código de
+        // segmento que existe en algunos catálogos (p.ej. C/D/J para SUV).
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        if(!sa.isEmpty()&&!sb.isEmpty()&&!sa.equals(sb)){
+            if(!isSuvLike(ba)||!isSuvLike(bb))return false;
+        }
+
+        // Finalmente, precio: máximo 15% de diferencia relativa.
+        // El precio sigue siendo un filtro, no un peso adicional.
+        if(a.price>0&&b.price>0){
+            double reference=Math.max(a.price,b.price);
+            double priceRatio=Math.abs(a.price-b.price)/reference;
+            if(priceRatio>0.15)return false;
+        }
+
+        return true;
     }
 
     private boolean sameVehicleClass(Vehicle a,Vehicle b){
