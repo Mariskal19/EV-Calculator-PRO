@@ -560,10 +560,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // - la penalización crece de forma progresiva;
         // - las diferencias muy grandes pueden llegar a 100%.
         //
-        // La fórmula cuadrática evita que una diferencia razonable (p.ej. 10-15%)
-        // se convierta artificialmente en una penalización del 40-60% del criterio.
+        // La fórmula cúbica suaviza aún más las diferencias moderadas sin eliminar
+        // la capacidad del algoritmo para distinguir coches realmente diferentes.
         double normalized=ratio/tolerance;
-        return Math.min(1,normalized*normalized);
+        return Math.min(1,normalized*normalized*normalized);
     }
 
     /**
