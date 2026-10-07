@@ -244,23 +244,27 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         int marketIndex=ms.indexOf(defaultMarket);
         if(marketIndex>=0)searchMarketSpinner.setSelection(marketIndex);
 
-        Runnable refresh=()->{
+        final android.os.Handler searchHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+        final Runnable refresh=()->{
             String q=input.getText()==null?"":input.getText().toString().trim();
             String selectedMarket=searchMarketSpinner.getSelectedItem()==null?"":String.valueOf(searchMarketSpinner.getSelectedItem());
             found.clear();
             String nq=norm(q);
+            String[] tokens=nq.isEmpty()?new String[0]:nq.split("\\s+");
+            final IdentityHashMap<Vehicle,Integer> scores=new IdentityHashMap<>();
             for(Vehicle v:vehicles){
-                if(!selectedMarket.isEmpty()&&!market(v.market).equalsIgnoreCase(selectedMarket))continue;
-                String hay=norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version);
+                SearchIndex idx=searchIndex(v);
+                if(!selectedMarket.isEmpty()&&!idx.marketLabel.equalsIgnoreCase(selectedMarket))continue;
                 boolean matches=true;
-                for(String token:nq.split("\\s+")){
-                    if(!token.isEmpty()&&!hay.contains(token)){matches=false;break;}
+                for(String token:tokens){
+                    if(!token.isEmpty()&&!idx.all.contains(token)){matches=false;break;}
                 }
                 if(!matches)continue;
                 found.add(v);
+                scores.put(v,pickerSearchScore(idx,nq,tokens));
             }
             Collections.sort(found,(a,b)->{
-                int c=Integer.compare(pickerSearchScore(b,nq),pickerSearchScore(a,nq));
+                int c=Integer.compare(scores.get(b),scores.get(a));
                 if(c!=0)return c;
                 c=Integer.compare(b.year,a.year);
                 if(c!=0)return c;
