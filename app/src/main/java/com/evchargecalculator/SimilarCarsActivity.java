@@ -548,7 +548,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * La tolerancia indica aproximadamente qué diferencia debe considerarse
      * una similitud media; diferencias mayores se saturan progresivamente.
      */
-    /**\n     * Reduce la penalizacion cuando la diferencia del candidato es favorable\n     *: mas autonomia, mas maletero o menor consumo.\n     */\n    private double advantageAwareDistance(double a,double b,double tolerance,boolean higherIsBetter){\n        double d=relativeDistance(a,b,tolerance);\n        if(d<0)return d;\n        boolean candidateIsBetter=higherIsBetter?(b>a):(b<a);\n        return candidateIsBetter?d*0.50:d;\n    }\n\n    private double relativeDistance(double a,double b,double tolerance){
+    /**
+     * Reduce la penalizacion cuando la diferencia del candidato es favorable:
+     * mas autonomia, mas maletero o menor consumo.
+     */
+    private double advantageAwareDistance(double a,double b,double tolerance,boolean higherIsBetter){
+        double d=relativeDistance(a,b,tolerance);
+        if(d<0)return d;
+        boolean candidateIsBetter=higherIsBetter?(b>a):(b<a);
+        return candidateIsBetter?d*0.50:d;
+    }
+
+    private double relativeDistance(double a,double b,double tolerance){
         if(a<=0||b<=0||tolerance<=0)return -1;
         double reference=Math.max(a,b);
         double ratio=Math.abs(a-b)/reference;
