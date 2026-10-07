@@ -811,3 +811,15 @@ Cuando se retome EV Calculator PRO:
 - **Regla desde este checkpoint:** no tocar esta parte salvo que aparezca una incidencia real o una regresión comprobada.
 - El flujo **Buscar similares → Detalle → Añadir a comparativa** mantiene como primer vehículo de la comparativa el **coche de referencia**, seguido del similar seleccionado.
 - Este estado se considera el **baseline estable de referencia** para continuar el desarrollo de EV Calculator PRO.
+
+
+## 2026-10-07 — Stable 19:55 — Scroll final validado en Android 10 y Android 16
+
+- Se da por **estable** el ajuste final del espacio de scroll inferior en las pantallas con navegación inferior fija.
+- La solución mantiene la barra inferior superpuesta/fija y añade **48 dp de espacio de scroll interno** al final de los ScrollView, evitando tanto el solapamiento de contenido como la aparición de una banda externa de 64 dp.
+- El usuario ha probado el resultado en **Redmi Note 7 (Android 10)** y **Redmi Note 13 Pro (Android 16)**.
+- Resultado confirmado por el usuario: **“Se ve perfecto en los dos”**.
+- El espacio visual antes de la barra inferior queda consistente entre ambas versiones de Android.
+- Commit estable: `e76b931f826b0d25c0e4f731ed9b534f0dbbe0bb` — `fix: reducir espacio final del scroll a 48dp`.
+- Este checkpoint queda como **baseline estable de referencia a las 19:55 del 07/10/2026**.
+- No modificar este comportamiento salvo regresión real comprobada.
