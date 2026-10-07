@@ -527,19 +527,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // consumo 9,6724138%, precio 5%, maletero 11,8218391%,
         // dimensiones 23,6436782%, 0-100 3,2241379%, DC 5,3735632%,
         // 10-80 7,5229885%, tracción 1,5%.
-        d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.1074712643678161;weight+=.1074712643678161;}
-        d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.1289655172413793;weight+=.1289655172413793;}
-        d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.08597701149425287;weight+=.08597701149425287;}
-        d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.09672413793103448;weight+=.09672413793103448;}
-        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.05;weight+=.05;}
-        d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.1182183908045977;weight+=.1182183908045977;}
-        d=dimensionDistance(a,b); if(d>=0){sum+=d*.2364367816091954;weight+=.2364367816091954;}
-        d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.03224137931034483;weight+=.03224137931034483;}
-        d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.05373563218390805;weight+=.05373563218390805;}
-        d=relativeDistance(a.chargeMin,b.chargeMin,.50); if(d>=0){sum+=d*.07522988505747126;weight+=.07522988505747126;}
+        d=relativeDistance(a.batteryKwh,b.batteryKwh,.25); if(d>=0){sum+=d*.12667469479914104;weight+=.1074712643678161;}
+        d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.1520096339947061;weight+=.1289655172413793;}
+        d=relativeDistance(a.powerKw,b.powerKw,.30); if(d>=0){sum+=d*.10133975560357596;weight+=.08597701149425287;}
+        d=relativeDistance(a.consumption,b.consumption,.25); if(d>=0){sum+=d*.11400722579070065;weight+=.09672413793103448;}
+        d=relativeDistance(a.price,b.price,.20); if(d>=0){sum+=d*.05893421649862657;weight+=.05893421649862657;}
+        d=relativeDistance(a.trunk,b.trunk,.35); if(d>=0){sum+=d*.13934216498626574;weight+=.1182183908045977;}
+        d=dimensionDistance(a,b); if(d>=0){sum+=d*.10;weight+=.2364367816091954;}
+        d=relativeDistance(a.acc,b.acc,.25); if(d>=0){sum+=d*.038002408204005445;weight+=.03224137931034483;}
+        d=relativeDistance(a.dcKw,b.dcKw,.50); if(d>=0){sum+=d*.06333734739957052;weight+=.05373563218390805;}
+        d=relativeDistance(a.chargeMin,b.chargeMin,.50); if(d>=0){sum+=d*.0886722865951356;weight+=.07522988505747126;}
         if(!a.drivetrain.isEmpty()&&!b.drivetrain.isEmpty()){
             sum+=(a.drivetrain.equalsIgnoreCase(b.drivetrain)?0:.80)*.015;
-            weight+=.015;
+            weight+=.01768026494958797;
         }
 
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
