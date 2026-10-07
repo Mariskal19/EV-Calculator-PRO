@@ -49,7 +49,12 @@ public abstract class BaseNavigationActivity extends Activity {
     host.setBackgroundColor(dark
         ? android.graphics.Color.rgb(16, 28, 42)
         : android.graphics.Color.rgb(242, 246, 252));
-    host.addView(view, new FrameLayout.LayoutParams(-1, -1));
+    // Reserve the full height of the permanent bottom navigation for the
+    // screen content. Without this, the last rows of a ScrollView can remain
+    // underneath the navigation bar and appear clipped at the end of the scroll.
+    FrameLayout.LayoutParams contentParams = new FrameLayout.LayoutParams(-1, -1);
+    contentParams.bottomMargin = dp(64);
+    host.addView(view, contentParams);
 
     View bottomNavigation =
         BottomNavigationHelper.create(this, dark, getBottomNavigationIndex());
