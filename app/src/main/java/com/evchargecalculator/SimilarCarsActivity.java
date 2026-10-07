@@ -35,6 +35,24 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private TextView selectedTitle, resultsTitle;
     private Vehicle reference;
 
+    // Search optimization index.
+    private final IdentityHashMap<Vehicle, SearchIndex> searchIndexCache = new IdentityHashMap<>();
+    private static class SearchIndex {
+        final String make, model, version, all, makeModel, marketLabel;
+        SearchIndex(String make, String model, String version, String all, String makeModel, String marketLabel) {
+            this.make=make; this.model=model; this.version=version; this.all=all; this.makeModel=makeModel; this.marketLabel=marketLabel;
+        }
+    }
+    private SearchIndex searchIndex(Vehicle v) {
+        SearchIndex cached=searchIndexCache.get(v);
+        if(cached!=null)return cached;
+        SearchIndex created=new SearchIndex(norm(v.make),norm(v.model),norm(v.version),
+            norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version),
+            norm(v.make+" "+v.model),market(v.market));
+        searchIndexCache.put(v,created);
+        return created;
+    }
+
     private int blue=Color.rgb(46,107,255);
     private int text(){return dark?Color.rgb(245,248,255):Color.rgb(22,42,63);}
     private int sub(){return dark?Color.rgb(170,183,204):Color.rgb(90,111,137);}
