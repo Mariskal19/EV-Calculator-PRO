@@ -72,6 +72,29 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private final Map<String, Vehicle> vehicleById = new HashMap<>();
     private String selectedMarket = "ES";
 
+    // Índice de búsqueda: normalizamos una sola vez por vehículo y reutilizamos
+    // esos datos durante todas las pulsaciones del buscador.
+    private final IdentityHashMap<Vehicle, SearchIndex> searchIndexCache = new IdentityHashMap<>();
+
+    private static class SearchIndex {
+        final String make, model, version, all, makeModel;
+        SearchIndex(String make, String model, String version, String all, String makeModel) {
+            this.make=make; this.model=model; this.version=version; this.all=all; this.makeModel=makeModel;
+        }
+    }
+
+    private SearchIndex searchIndex(Vehicle v) {
+        SearchIndex cached=searchIndexCache.get(v);
+        if(cached!=null)return cached;
+        SearchIndex created=new SearchIndex(
+            normalizeSearch(v.make), normalizeSearch(v.model), normalizeSearch(v.version),
+            normalizeSearch(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version),
+            normalizeSearch(v.make+" "+v.model)
+        );
+        searchIndexCache.put(v,created);
+        return created;
+    }
+
     /** Comparar coches no utiliza el menú superior de la aplicación. */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
