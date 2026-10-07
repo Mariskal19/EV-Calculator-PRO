@@ -422,6 +422,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
                 if(referenceYear>0&&v.year!=targetYear)continue;
                 if(!sameVehicleClass(reference,v))continue;
+                // Zona competitiva automática: el coche debe estar dentro de un
+                // margen económico razonable respecto al vehículo de referencia.
+                // No depende de marca/modelo y permite diferencias de segmento
+                // cuando la carrocería y la clase física ya son compatibles.
+                if(!inCompetitiveZone(reference,v))continue;
                 double score=similarity(reference,v);
                 if(Double.isFinite(score))batch.add(new Scored(v,score));
             }
@@ -599,6 +604,28 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * El segmento y la carrocería son condiciones de entrada, no parte
      * del porcentaje de similitud. SUV y crossover se consideran equivalentes.
      */
+    /**
+     * Determina si dos vehículos pertenecen a una zona económica competitiva.
+     *
+     * El precio no es un criterio adicional con peso: actúa como filtro previo.
+     * Se permite una diferencia máxima del 20% porque el precio por sí solo no
+     * debe decidir la similitud técnica. La combinación con carrocería y clase
+     * física ya se comprueba en sameVehicleClass().
+     *
+     * Ejemplos para un G6 de 47.083 €:
+     * - Model Y de 50.990 € -> 8,3% -> entra.
+     * - ID.4 de 46.900 € -> 0,4% -> entra.
+     * - ID.5 de 52.790 € -> 12,1% -> entra.
+     * - Un SUV equivalente de 60.000 € -> 27,4% -> queda fuera.
+     */
+    private boolean inCompetitiveZone(Vehicle a,Vehicle b){
+        if(a==null||b==null)return false;
+        if(a.price<=0||b.price<=0)return true;
+        double reference=Math.max(a.price,b.price);
+        double priceRatio=Math.abs(a.price-b.price)/reference;
+        return priceRatio<=0.20;
+    }
+
     private boolean sameVehicleClass(Vehicle a,Vehicle b){
         String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
         String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
