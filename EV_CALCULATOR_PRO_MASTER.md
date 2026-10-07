@@ -208,9 +208,64 @@ Presentación:
 - separador decimal según idioma;
 - eliminar ceros decimales innecesarios.
 
-## Tipo de vehículo
+## Tipo de vehículo y filtro de compatibilidad
 
-La clasificación SUV/berlina/etc. queda como ampliación futura y no debe mezclarse con la auditoría actual de dimensiones salvo que se solicite expresamente.
+La pantalla **Buscar coches similares** no busca únicamente coches con especificaciones matemáticamente próximas. Su objetivo es encontrar **coches similares que realmente puedan competir entre sí como alternativas de compra**.
+
+La arquitectura acordada para el algoritmo es por capas:
+
+1. **Carrocería / tipo de vehículo — filtro obligatorio de entrada**
+   - SUV con SUV.
+   - Crossover con crossover.
+   - **SUV y crossover se consideran compatibles entre sí**, porque forman un mismo universo competitivo.
+   - Berlina, familiar, hatchback, coupé, monovolumen, etc. no deben entrar como rivales directos de un SUV salvo que en el futuro se defina explícitamente una compatibilidad equivalente.
+   - La carrocería no es un peso porcentual: es una condición previa de elegibilidad.
+
+2. **Segmento / clase — filtro de compatibilidad**
+   - El segmento se utiliza como segundo filtro.
+   - Si coincide, el vehículo es elegible.
+   - En SUV/crossover se permite que el catálogo utilice letras de segmento distintas cuando las dimensiones demuestran que pertenecen a la misma clase física competitiva.
+   - No se debe utilizar la marca como criterio de similitud o de competitividad.
+
+3. **Zona competitiva**
+   - Una vez superados carrocería y segmento/clase, se evaluará la proximidad de mercado: precio y características de uso/posicionamiento.
+   - El precio no debe dominar la similitud técnica; el peso de precio queda en **5 %**.
+   - Esta capa debe derivarse automáticamente de los datos del catálogo, sin listas manuales de rivales ni reglas específicas como «G6 → Model Y».
+
+4. **Similitud técnica**
+   - Sobre los candidatos elegibles se aplica el algoritmo técnico ponderado.
+   - Pesos actualmente acordados:
+     - Dimensiones: 23,64 %
+     - Autonomía WLTP: 12,90 %
+     - Maletero: 11,82 %
+     - Batería: 10,75 %
+     - Consumo: 9,67 %
+     - Potencia: 8,60 %
+     - Tiempo 10–80 %: 7,52 %
+     - Carga DC: 5,37 %
+     - Precio: 5,00 %
+     - 0–100 km/h: 3,22 %
+     - Tracción: 1,50 %
+     - Total: 100 %
+
+**Comprobación real del catálogo en main (07/10/2026):**
+- 682 registros.
+- bodyStyle: **682/682 completos**; 0 ausentes/vacíos.
+- Distribución bodyStyle: SUV 347, hatchback 90, sedan 108, wagon 23, crossover 84, coupe 18, van 8, convertible 3, liftback 1.
+- segment: **682/682 completos**; 0 ausentes/vacíos.
+- Distribución segment: A 18, B 115, C 171, D 125, E 84, F 19, J 137, M 8, S 5.
+
+La comprobación confirma que el catálogo actual **sí dispone de los dos campos estructurados necesarios para aplicar el primer y segundo filtro automáticamente**. No es necesario añadir manualmente la carrocería a los 682 registros.
+
+## Estado actual de la implementación
+
+SimilarCarsActivity ya contiene una primera versión de esta arquitectura:
+- bodyStyleDistance() trata SUV/crossover como equivalentes.
+- segmentDistance() contempla el contexto de segmento.
+- sameVehicleClass() aplica carrocería y segmento/clase como **condiciones de entrada**, antes del ranking.
+- Los datos se cargan desde el catálogo protegido y posteriormente se incorporan las adiciones remotas mediante RemoteCatalogManager.
+
+La siguiente evolución pendiente no es volver a tocar pesos a ciegas, sino completar la **zona competitiva automática** (especialmente la relación precio/posicionamiento) sobre los candidatos que ya han pasado los filtros de carrocería y clase.
 
 ## Flujo definitivo de coches similares — 1.0.5
 
@@ -507,7 +562,7 @@ Cuando se retome EV Calculator PRO:
 
 | Fecha | Cambio |
 |---|---|
-| 02/10/2026 | **1.0.4.1 / versionCode 58 enviada a Producción y lanzamiento completo iniciado.** Play Console muestra el envío 17 **En revisión**; incluye también los cambios de descripción de la ficha. Pendiente verificar publicación pública. |
+| 07/10/2026 | **Algoritmo de coches similares:** se fija como arquitectura que la carrocería es el primer filtro obligatorio, seguida de segmento/clase; SUV y crossover son compatibles. Comprobación real del catálogo en main: 682/682 registros tienen bodyStyle y 682/682 tienen segment. La siguiente fase será derivar automáticamente la zona competitiva y después aplicar la similitud técnica ponderada, sin reglas manuales por marca/modelo. |\n| 02/10/2026 | **1.0.4.1 / versionCode 58 enviada a Producción y lanzamiento completo iniciado.** Play Console muestra el envío 17 **En revisión**; incluye también los cambios de descripción de la ficha. Pendiente verificar publicación pública. |
 | 02/10/2026 | EV Calculator PRO ya está publicada en Google Play Producción. Envío 15, versión 1.0.4 / 56; publicación confirmada a las 15:00. El usuario salió de la beta y la prueba cerrada quedó en pausa. |
 | 01/10/2026 | Creación de `EV_CALCULATOR_PRO_MASTER.md`. Recoge arquitectura, navegación, catálogo, automatizaciones, builds, reglas de trabajo y estado pendiente. |
 | 01/10/2026 | Auditoría real de `main`: 682 registros, 0 duplicados lógicos, 0 IDs duplicados, dimensiones presentes en 682/682 y `auditDateTime` presente en 682/682. Se documenta que el objetivo certificado es 682 y coincide con el catálogo real auditado. |
