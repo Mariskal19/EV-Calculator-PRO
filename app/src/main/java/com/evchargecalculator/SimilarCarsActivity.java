@@ -469,8 +469,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // principal para ordenar los 10, mientras que las características
         // aportan el 30% restante.
         Collections.sort(uniqueBrands,(a,b)->{
-            double scoreA=a.competitionScore*.70+a.technicalScore*.30;
-            double scoreB=b.competitionScore*.70+b.technicalScore*.30;
+            double scoreA=a.competitionScore*.60+a.technicalScore*.40;
+            double scoreB=b.competitionScore*.60+b.technicalScore*.40;
             int c=Double.compare(scoreA,scoreB);
             if(c!=0)return c;
             c=Double.compare(a.competitionScore,b.competitionScore);
@@ -561,7 +561,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Vehicle v=s.v;
         // El Top 10 ya está seleccionado por competencia.
         // El orden y el porcentaje mostrado usan 70% competencia + 30% características.
-        double finalScore=s.competitionScore*.70+s.technicalScore*.30;
+        double finalScore=s.competitionScore*.60+s.technicalScore*.40;
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
 
         LinearLayout card=card();
