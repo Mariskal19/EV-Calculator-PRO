@@ -395,8 +395,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         final int FINAL_TOP=10;
         int referenceYear=reference.year;
         int minYear=referenceYear>0?referenceYear-5:0;
+        int maxYear=referenceYear>0?referenceYear+1:Integer.MAX_VALUE;
 
-        List<Scored> competitors=buildCompetitionCandidates(reference,COMPETITOR_POOL,referenceYear,minYear);
+        List<Scored> competitors=buildCompetitionCandidates(reference,COMPETITOR_POOL,referenceYear,minYear,maxYear);
 
         // Una marca no se representa por el primer coche que aparece en
         // competencia pura. Primero dejamos entrar un pool amplio por competencia
@@ -408,7 +409,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(make.isEmpty())continue;
 
             Scored current=bestByMake.get(make);
-            if(current==null||compareFinalScore(s,current)<0){
+            if(current==null||compareRepresentative(s,current,referenceYear)<0){
                 bestByMake.put(make,s);
             }
         }
@@ -422,12 +423,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     /** FASE 1: competencia pura. La similitud técnica no decide quién entra. */
-    private List<Scored> buildCompetitionCandidates(Vehicle reference,int topPool,int referenceYear,int minYear){
+    private List<Scored> buildCompetitionCandidates(Vehicle reference,int topPool,int referenceYear,int minYear,int maxYear){
         List<Scored> all=new ArrayList<>();
         for(Vehicle v:vehicles){
             if(v==reference)continue;
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
-            if(referenceYear>0&&(v.year>referenceYear||v.year<minYear))continue;
+            if(referenceYear>0&&(v.year>maxYear||v.year<minYear))continue;
 
             double competition=competitionDistance(reference,v);
             double technical=similarity(reference,v);
@@ -491,6 +492,32 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double referencePrice=Math.max(a.price,b.price);
         double priceRatio=Math.abs(a.price-b.price)/referencePrice;
         return priceRatio<=maxPricePercent/100.0;
+    }
+
+    /**
+     * Para una misma marca, prioriza la versión que representa mejor el año
+     * de mercado del coche de referencia. El año no entra en la competencia
+     * general: solo evita que una versión antigua desplace a la actualización
+     * comercialmente vigente cuando ambas son comparables.
+     *
+     * El año siguiente (+1) se considera especialmente cercano porque puede ser
+     * el modelo actualmente a la venta cuando el referente todavía no se ha
+     * actualizado en el catálogo.
+     */
+    private int compareRepresentative(Scored a,Scored b,int referenceYear){
+        double scoreA=a.competitionScore*.60+a.technicalScore*.40+yearPenalty(a.v.year,referenceYear);
+        double scoreB=b.competitionScore*.60+b.technicalScore*.40+yearPenalty(b.v.year,referenceYear);
+        int cmp=Double.compare(scoreA,scoreB);
+        if(cmp!=0)return cmp;
+        return compareFinalScore(a,b);
+    }
+
+    private double yearPenalty(int year,int referenceYear){
+        if(year<=0||referenceYear<=0)return 0;
+        int diff=Math.abs(year-referenceYear);
+        // Un modelo del año siguiente puede ser el sustituto comercial vigente.
+        if(year==referenceYear+1)return .005;
+        return diff*.01;
     }
 
     private int compareFinalScore(Scored a,Scored b){
