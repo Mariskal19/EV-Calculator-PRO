@@ -35,6 +35,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private LinearLayout results, referenceResults;
     private TextView selectedTitle, resultsTitle, debugPanel;
     private Vehicle reference;
+    private String debugBeforeSort="";
 
     // Search optimization index.
     private final IdentityHashMap<Vehicle, SearchIndex> searchIndexCache = new IdentityHashMap<>();
@@ -401,6 +402,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
         resultsTitle.setVisibility(View.VISIBLE);
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        // El panel se elimina con removeAllViews() al regenerar resultados; lo volvemos a insertar aquí.
+        debugPanel.setVisibility(View.GONE);
+        results.addView(debugPanel,new LinearLayout.LayoutParams(-1,-2));
+        TextView copyDebug=tv("📋  Copiar diagnóstico",12,blue);
+        copyDebug.setGravity(Gravity.CENTER);
+        copyDebug.setTypeface(null,Typeface.BOLD);
+        copyDebug.setPadding(dp(10),dp(8),dp(10),dp(8));
+        copyDebug.setBackground(strokeBg(dark?Color.rgb(12,28,42):Color.rgb(247,250,255),dark?Color.rgb(43,64,82):Color.rgb(210,223,236),10));
+        copyDebug.setOnClickListener(v->{
+            String text=debugPanel.getText()==null?"":debugPanel.getText().toString();
+            android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
+            if(cm!=null){
+                cm.setPrimaryClip(android.content.ClipData.newPlainText("EV Calculator PRO · diagnóstico",text));
+                Toast.makeText(this,"Diagnóstico copiado",Toast.LENGTH_SHORT).show();
+            }
+        });
+        results.addView(copyDebug,new LinearLayout.LayoutParams(-1,-2));
 
         LinearLayout refCard=card();
         refCard.setPadding(dp(16),dp(10),dp(16),dp(10));
@@ -461,7 +479,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.
         // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.
         logTrackedScore("ANTES_ORDENAR", candidates);
-        debugPanel.setText(buildTrackedDebug("ANTES DE ORDENAR", candidates));
+        debugBeforeSort=buildTrackedDebug("ANTES DE ORDENAR", candidates);
 
         Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
         int poolSize=Math.min(TOP_POOL,candidates.size());
@@ -480,8 +498,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         int n=Math.min(8,uniqueBrands.size());
         for(int i=0;i<n;i++)logTrackedScore("ANTES_PINTAR_RANK_"+(i+1), uniqueBrands.get(i));
-        debugPanel.setText(buildTrackedDebug("ANTES DE PINTAR", candidates, uniqueBrands));
-        debugPanel.setVisibility(hasTracked(candidates, uniqueBrands)?View.VISIBLE:View.GONE);
+        String debugBeforePaint=buildTrackedDebug("ANTES DE PINTAR", candidates, uniqueBrands);
+        String combinedDebug=debugBeforeSort;
+        if(!combinedDebug.isEmpty()&&!debugBeforePaint.isEmpty())combinedDebug+="\n\n"+debugBeforePaint;
+        else if(combinedDebug.isEmpty())combinedDebug=debugBeforePaint;
+        debugPanel.setText(combinedDebug);
+        debugPanel.setVisibility(combinedDebug.isEmpty()?View.GONE:View.VISIBLE);
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
@@ -514,7 +536,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private String buildTrackedDebug(String stage,List<Scored>... lists){
         StringBuilder out=new StringBuilder();
-        out.append("DIAGNÓSTICO · ").append(stage).append("\\n");
+        out.append("DIAGNÓSTICO · ").append(stage).append("\n");
         boolean found=false;
         for(List<Scored> list:lists){
             for(Scored s:list){
@@ -525,12 +547,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 double cp=(1-Math.max(0,Math.min(1,cd)))*100.0;
                 double tp=(1-Math.max(0,Math.min(1,td)))*100.0;
                 double totalp=(1-Math.max(0,Math.min(1,total)))*100.0;
-                out.append("\\n").append(s.v.make).append(" ").append(s.v.model);
-                out.append("\\n  Competencia: ").append(String.format(Locale.US,"%.2f%%",cp));
+                out.append("\n").append(s.v.make).append(" ").append(s.v.model);
+                out.append("\n  Competencia: ").append(String.format(Locale.US,"%.2f%%",cp));
                 out.append("  · Características: ").append(String.format(Locale.US,"%.2f%%",tp));
                 out.append("  · TOTAL: ").append(String.format(Locale.US,"%.2f%%",totalp));
-                out.append("\\n  interno: ").append(String.format(Locale.US,"%.8f",s.score));
-                out.append("\\n  puesto: ").append(findRank(list,s));
+                out.append("\n  interno: ").append(String.format(Locale.US,"%.8f",s.score));
+                out.append("\n  puesto: ").append(findRank(list,s));
                 found=true;
             }
         }
