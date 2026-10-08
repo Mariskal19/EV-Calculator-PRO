@@ -423,26 +423,25 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     /** FASE 1: competencia pura. La similitud técnica no decide quién entra. */
-    private List<Scored> buildCompetitionCandidates(Vehicle reference,double maxPricePercent,int topPool,
-            int referenceYear,int minYear,double lengthTolerance,double widthTolerance,double heightTolerance,boolean requireSegment){
+    private List<Scored> buildCompetitionCandidates(Vehicle reference,int topPool,int referenceYear,int minYear){
         List<Scored> all=new ArrayList<>();
         for(Vehicle v:vehicles){
             if(v==reference)continue;
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
             if(referenceYear>0&&(v.year>referenceYear||v.year<minYear))continue;
-            if(!sameBodyStyle(reference,v))continue;
-            if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;
-            if(requireSegment&&!sameSegmentCompatible(reference,v))continue;
-            if(!priceWithin(reference,v,maxPricePercent))continue;
+
             double competition=competitionDistance(reference,v);
             double technical=similarity(reference,v);
-            // Segundo filtro: además de parecerse al referente, se premian
-            // las ventajas objetivas del rival frente al propio referente.
-            technical=Math.max(0,technical-dcChargingSimilarityBonus(reference,v)-referenceAdvantageBonus(reference,v));
-            if(Double.isFinite(competition)&&Double.isFinite(technical))all.add(new Scored(v,competition,technical));
+
+            if(Double.isFinite(competition)&&Double.isFinite(technical)){
+                all.add(new Scored(v,competition,technical));
+            }
         }
+
         Collections.sort(all,(x,y)->{
             int c=Double.compare(x.competitionScore,y.competitionScore);
+            if(c!=0)return c;
+            c=Double.compare(x.technicalScore,y.technicalScore);
             if(c!=0)return c;
             c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));
             if(c!=0)return c;
@@ -450,6 +449,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         });
         return new ArrayList<>(all.subList(0,Math.min(topPool,all.size())));
     }
+
     private int distinctBrandCount(List<Scored> scored){
         Set<String> brands=new HashSet<>();
         for(Scored s:scored){
@@ -497,7 +497,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
         // El Top 10 ya está seleccionado por competencia.
-        // El orden y el porcentaje mostrado usan 70% competencia + 30% características.
+        // El orden y el porcentaje mostrado usan 60% competencia + 40% características.
         double finalScore=s.competitionScore*.60+s.technicalScore*.40;
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
 
