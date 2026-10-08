@@ -580,7 +580,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * Se penaliza únicamente cuando el candidato queda por debajo del
      * referente. Un rival superior en una variable no recibe castigo.
      *
-     * Potencia 20%, 0-100 20%, WLTP 25%, consumo 15%, carga 10-80 20%.
+     * Potencia 20%, 0-100 20%, WLTP 25%, consumo 15%, carga 10-80 20%. Total = 100%.
      */
     private double performanceCompetitionDistance(Vehicle reference,Vehicle candidate){
         double sum=0,weight=0,d;
@@ -598,7 +598,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(d>=0){sum+=d*.15;weight+=.15;}
 
         d=directionalWorseDistance(reference.chargeMin,candidate.chargeMin,.50,true);
-        if(d>=0){sum+=d*.25;weight+=.25;}
+        if(d>=0){sum+=d*.20;weight+=.20;}
 
         return weight>0?Math.min(1,sum/weight):-1;
     }
