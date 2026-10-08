@@ -143,6 +143,13 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         resultsTitle.setTypeface(null,Typeface.BOLD);
         resultsTitle.setVisibility(View.GONE);
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+
+        // Diagnóstico temporal visible en la propia app (sin Android Studio).
+        final TextView debugPanel=tv("",11,sub());
+        debugPanel.setPadding(dp(10),dp(8),dp(10),dp(8));
+        debugPanel.setLineSpacing(0,1.15f);
+        debugPanel.setBackground(strokeBg(dark?Color.rgb(12,28,42):Color.rgb(247,250,255),dark?Color.rgb(43,64,82):Color.rgb(210,223,236),10));
+        results.addView(debugPanel,new LinearLayout.LayoutParams(-1,-2));
         content.addView(results,marginLp(-1,-2,0,0,0,dp(10)));
 
         TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones.",12,sub());
@@ -454,6 +461,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.
         // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.
         logTrackedScore("ANTES_ORDENAR", candidates);
+        debugPanel.setText(buildTrackedDebug("ANTES DE ORDENAR", candidates));
 
         Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
         int poolSize=Math.min(TOP_POOL,candidates.size());
@@ -472,6 +480,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         int n=Math.min(8,uniqueBrands.size());
         for(int i=0;i<n;i++)logTrackedScore("ANTES_PINTAR_RANK_"+(i+1), uniqueBrands.get(i));
+        debugPanel.setText(buildTrackedDebug("ANTES DE PINTAR", candidates, uniqueBrands));
+        debugPanel.setVisibility(hasTracked(candidates, uniqueBrands)?View.VISIBLE:View.GONE);
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
@@ -495,6 +505,45 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             " | total="+String.format(Locale.US,"%.8f (%.4f%%)",total,totalp)+
             " | s.score="+String.format(Locale.US,"%.8f",s.score)+
             " | año="+s.v.year+" | version="+s.v.version);
+    }
+
+    private boolean hasTracked(List<Scored>... lists){
+        for(List<Scored> list:lists) for(Scored s:list) if(isTrackedVehicle(s.v)) return true;
+        return false;
+    }
+
+    private String buildTrackedDebug(String stage,List<Scored>... lists){
+        StringBuilder out=new StringBuilder();
+        out.append("DIAGNÓSTICO · ").append(stage).append("\\n");
+        boolean found=false;
+        for(List<Scored> list:lists){
+            for(Scored s:list){
+                if(!isTrackedVehicle(s.v))continue;
+                double cd=competitionDistance(reference,s.v);
+                double td=Math.max(0,Math.min(1,similarity(reference,s.v)-dcChargingSimilarityBonus(reference,s.v)));
+                double total=cd*.72+td*.28;
+                double cp=(1-Math.max(0,Math.min(1,cd)))*100.0;
+                double tp=(1-Math.max(0,Math.min(1,td)))*100.0;
+                double totalp=(1-Math.max(0,Math.min(1,total)))*100.0;
+                out.append("\\n").append(s.v.make).append(" ").append(s.v.model);
+                out.append("\\n  Competencia: ").append(String.format(Locale.US,"%.2f%%",cp));
+                out.append("  · Características: ").append(String.format(Locale.US,"%.2f%%",tp));
+                out.append("  · TOTAL: ").append(String.format(Locale.US,"%.2f%%",totalp));
+                out.append("\\n  interno: ").append(String.format(Locale.US,"%.8f",s.score));
+                out.append("\\n  puesto: ").append(findRank(list,s));
+                found=true;
+            }
+        }
+        return found?out.toString():"";
+    }
+
+    private int findRank(List<Scored> list,Scored target){
+        int rank=1;
+        for(Scored s:list){
+            if(s==target)return rank;
+            rank++;
+        }
+        return -1;
     }
 
     private boolean isTrackedVehicle(Vehicle v){
