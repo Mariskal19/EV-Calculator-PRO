@@ -912,3 +912,18 @@ Cuando se retome EV Calculator PRO:
   - Tesla está correctamente por delante: diferencia interna `0.00117619` y diferencia visible de **0,12 puntos porcentuales**.
 - El puesto observado en pantalla coincide con el ranking calculado: **Tesla #4 y Opel #5**.
 - No modificar pesos ni ordenamiento por esta diferencia mínima salvo nueva incidencia real y reproducible.
+
+
+## 2026-10-08 — Stable 10:40 — Ranking coches similares y visualización CV
+
+- Se fija como **versión estable de referencia** el estado probado por el usuario a las **10:40 del 08/10/2026**.
+- Algoritmo de coches similares: **72 % competencia + 28 % características**, con ordenación por el valor interno completo antes del redondeo visual.
+- Validación real con XPeng G6 como referencia:
+  - **Tesla Model Y #4:** competencia 83,66 %, características 59,69 %, total 76,95 %, score 0.23050165.
+  - **Opel Grandland Electric #5:** competencia 81,39 %, características 65,10 %, total 76,83 %, score 0.23167884.
+  - Tesla queda correctamente por delante por 0.00117619 de score interno (0,12 puntos porcentuales visibles).
+- Se retiró el diagnóstico temporal del código de producción una vez validado el ranking.
+- En las fichas de coches similares, los **CV se muestran redondeados a 0 decimales** mediante HALF_UP; el cálculo interno no cambia.
+- **Commit final de esta corrección:** b808bd19dcb03a63d92eeb675a5967566320a23c — fix: redondear CV en fichas de coches similares.
+- Este checkpoint queda como **baseline estable de referencia de las 10:40 del 08/10/2026**.
+- No modificar este estado salvo nueva incidencia o regresión comprobada.
