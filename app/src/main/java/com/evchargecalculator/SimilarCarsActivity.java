@@ -419,38 +419,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         //    únicamente la versión más similar de cada fabricante.
         // 4) Finalmente mostramos las 8 primeras marcas únicas.
         final int TOP_POOL = 20;
-        List<Scored> candidates=new ArrayList<>();
+        final int MIN_DISTINCT_BRANDS = 8;
         int referenceYear=reference.year;
         int minYear=referenceYear>0?referenceYear-5:0;
-        for(int targetYear=referenceYear;targetYear>=minYear;targetYear--){
-            List<Scored> batch=new ArrayList<>();
-            for(Vehicle v:vehicles){
-                if(v==reference)continue;
-                if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
-                if(referenceYear>0&&v.year!=targetYear)continue;
-                // Mantenemos los filtros físicos y económicos que definen un rival real:
-                // misma carrocería (SUV/crossover equivalentes), dimensiones parecidas
-                // y zona de precio competitiva.
-                if(!sameVehicleClass(reference,v))continue;
-                if(!inCompetitiveZone(reference,v))continue;
-                double technicalDistance=similarity(reference,v);
-                // Refuerzo pequeño de carga rápida DC: la capacidad de carga es relevante
-                // en viajes y debe favorecer al rival cuya potencia DC esté más cerca
-                // de la del referente, sin dominar el ranking.
-                technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
-                double competitionDistance=competitionDistance(reference,v);
-                if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
-                    // La competencia real manda claramente sobre la ficha técnica:
-                    // 72% cercanía competitiva + 28% similitud de características.
-                    double score=competitionDistance*.72+technicalDistance*.28;
-                    batch.add(new Scored(v,score));
-                }
-            }
-            candidates.addAll(batch);
-            // No ampliamos a años anteriores si ya tenemos suficiente material
-            // para formar el TOP 20. Así el TOP 20 sigue siendo coherente con el
-            // año de referencia siempre que haya al menos 20 candidatos.
-            if(candidates.size()>=TOP_POOL)break;
+
+        // Primer cribado: criterio económico estricto (15%).
+        List<Scored> candidates=buildSimilarCandidates(reference,15.0,TOP_POOL,referenceYear,minYear);
+
+        // Si no permite llegar a 8 marcas distintas, ampliamos SOLO el precio.
+        // Carrocería y dimensiones siguen siendo obligatorias.
+        double[] fallbackPriceLimits={20.0,25.0,30.0,40.0};
+        for(double priceLimit:fallbackPriceLimits){
+            if(distinctBrandCount(candidates)>=MIN_DISTINCT_BRANDS)break;
+            candidates=buildSimilarCandidates(reference,priceLimit,TOP_POOL,referenceYear,minYear);
         }
 
         Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
@@ -472,6 +453,43 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
+    private List<Scored> buildSimilarCandidates(Vehicle reference,double maxPricePercent,int topPool,int referenceYear,int minYear){
+        List<Scored> all=new ArrayList<>();
+        for(int targetYear=referenceYear;targetYear>=minYear;targetYear--){
+            List<Scored> batch=new ArrayList<>();
+            for(Vehicle v:vehicles){
+                if(v==reference)continue;
+                if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
+                if(referenceYear>0&&v.year!=targetYear)continue;
+                if(!sameVehicleClass(reference,v))continue;
+                if(!inCompetitiveZone(reference,v,maxPricePercent))continue;
+
+                double technicalDistance=similarity(reference,v);
+                technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
+                double competitionDistance=competitionDistance(reference,v);
+                if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
+                    double score=competitionDistance*.72+technicalDistance*.28;
+                    batch.add(new Scored(v,score));
+                }
+            }
+            all.addAll(batch);
+            if(all.size()>=topPool)break;
+        }
+        Collections.sort(all,(x,y)->Double.compare(x.score,y.score));
+        return new ArrayList<>(all.subList(0,Math.min(topPool,all.size())));
+    }
+
+    private int distinctBrandCount(List<Scored> scored){
+        Set<String> brands=new HashSet<>();
+        for(Scored s:scored){
+            if(s==null||s.v==null)continue;
+            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
+            if(!make.isEmpty())brands.add(make);
+        }
+        return brands.size();
+    }
+
+
 
 
     private void addSimilarCard(Scored s,int rank){
@@ -765,6 +783,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * - Un SUV equivalente de 60.000 € -> 27,4% -> queda fuera.
      */
     private boolean inCompetitiveZone(Vehicle a,Vehicle b){
+        return inCompetitiveZone(a,b,15.0);
+    }
+
+    private boolean inCompetitiveZone(Vehicle a,Vehicle b,double maxPricePercent){
         if(a==null||b==null)return false;
 
         // Zona competitiva estricta: no basta con parecerse técnicamente.
@@ -786,12 +808,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(!isSuvLike(ba)||!isSuvLike(bb))return false;
         }
 
-        // Finalmente, precio: máximo 15% de diferencia relativa.
-        // El precio sigue siendo un filtro, no un peso adicional.
+        // Finalmente, precio: filtro económico configurable.
+        // En el primer cribado es 15%; solo se amplía si faltan 8 marcas.
         if(a.price>0&&b.price>0){
             double reference=Math.max(a.price,b.price);
             double priceRatio=Math.abs(a.price-b.price)/reference;
-            if(priceRatio>0.15)return false;
+            if(priceRatio>(maxPricePercent/100.0))return false;
         }
 
         return true;
