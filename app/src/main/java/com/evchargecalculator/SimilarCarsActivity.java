@@ -568,8 +568,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         TextView name=tv(v.make+" "+v.model,17,text());
         name.setTypeface(null,Typeface.BOLD);
-        name.setPadding(dp(10),0,0,0);
-        top.addView(name,new LinearLayout.LayoutParams(0,dp(32),1));
+        name.setPadding(dp(10),0,dp(6),0);
+        name.setMaxLines(2);
+        name.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        top.addView(name,new LinearLayout.LayoutParams(0,dp(42),1));
 
         TextView score=tv(similarityScore+" %",13,blue);
         score.setTypeface(null,Typeface.BOLD);
@@ -577,12 +579,16 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         score.setBackground(strokeBg(dark?Color.rgb(13,36,58):Color.rgb(235,243,255),blue,10));
         top.addView(score,new LinearLayout.LayoutParams(dp(64),dp(30)));
 
-        card.addView(top,new LinearLayout.LayoutParams(-1,dp(31)));
+        card.addView(top,new LinearLayout.LayoutParams(-1,dp(42)));
 
         TextView ver=tv(v.version+"  ·  "+v.year,12,sub());
+        ver.setSingleLine(true);
+        ver.setEllipsize(android.text.TextUtils.TruncateAt.END);
         card.addView(ver,new LinearLayout.LayoutParams(-1,dp(21)));
 
         TextView specs=tv(specLine(v),12,sub());
+        specs.setSingleLine(true);
+        specs.setEllipsize(android.text.TextUtils.TruncateAt.END);
         specs.setPadding(0,dp(2),0,dp(4));
         card.addView(specs,new LinearLayout.LayoutParams(-1,dp(23)));
 
