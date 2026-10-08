@@ -14,7 +14,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.util.Log;
 import android.widget.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,9 +32,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private EditText search;
     private Spinner marketSpinner, yearSpinner, driveSpinner, batterySpinner;
     private LinearLayout results, referenceResults;
-    private TextView selectedTitle, resultsTitle, debugPanel;
+    private TextView selectedTitle, resultsTitle;
     private Vehicle reference;
-    private String debugBeforeSort="";
 
     // Search optimization index.
     private final IdentityHashMap<Vehicle, SearchIndex> searchIndexCache = new IdentityHashMap<>();
@@ -145,12 +143,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         resultsTitle.setVisibility(View.GONE);
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
-        // Diagnóstico temporal visible en la propia app (sin Android Studio).
-        debugPanel=tv("",11,sub());
-        debugPanel.setPadding(dp(10),dp(8),dp(10),dp(8));
-        debugPanel.setLineSpacing(0,1.15f);
-        debugPanel.setBackground(strokeBg(dark?Color.rgb(12,28,42):Color.rgb(247,250,255),dark?Color.rgb(43,64,82):Color.rgb(210,223,236),10));
-        results.addView(debugPanel,new LinearLayout.LayoutParams(-1,-2));
         content.addView(results,marginLp(-1,-2,0,0,0,dp(10)));
 
         TextView note=tv("La similitud combina batería, autonomía, potencia, consumo, precio, tamaño, maletero, carga y prestaciones.",12,sub());
@@ -402,24 +394,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
         resultsTitle.setVisibility(View.VISIBLE);
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
-        // El panel se elimina con removeAllViews() al regenerar resultados; lo volvemos a insertar aquí.
-        debugPanel.setVisibility(View.GONE);
-        results.addView(debugPanel,new LinearLayout.LayoutParams(-1,-2));
-        TextView copyDebug=tv("📋  Copiar diagnóstico",12,blue);
-        copyDebug.setGravity(Gravity.CENTER);
-        copyDebug.setTypeface(null,Typeface.BOLD);
-        copyDebug.setPadding(dp(10),dp(8),dp(10),dp(8));
-        copyDebug.setBackground(strokeBg(dark?Color.rgb(12,28,42):Color.rgb(247,250,255),dark?Color.rgb(43,64,82):Color.rgb(210,223,236),10));
-        copyDebug.setOnClickListener(v->{
-            String text=debugPanel.getText()==null?"":debugPanel.getText().toString();
-            android.content.ClipboardManager cm=(android.content.ClipboardManager)getSystemService(CLIPBOARD_SERVICE);
-            if(cm!=null){
-                cm.setPrimaryClip(android.content.ClipData.newPlainText("EV Calculator PRO · diagnóstico",text));
-                Toast.makeText(this,"Diagnóstico copiado",Toast.LENGTH_SHORT).show();
-            }
-        });
-        results.addView(copyDebug,new LinearLayout.LayoutParams(-1,-2));
-
         LinearLayout refCard=card();
         refCard.setPadding(dp(16),dp(10),dp(16),dp(10));
         referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
@@ -476,11 +450,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(candidates.size()>=TOP_POOL)break;
         }
 
-        // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.
-        // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.
-        logTrackedScore("ANTES_ORDENAR", candidates);
-        debugBeforeSort=buildTrackedDebug("ANTES DE ORDENAR", candidates);
-
         Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
         int poolSize=Math.min(TOP_POOL,candidates.size());
         List<Scored> top20=new ArrayList<>(candidates.subList(0,poolSize));
@@ -497,86 +466,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Collections.sort(uniqueBrands,(a,b)->Double.compare(a.score,b.score));
 
         int n=Math.min(8,uniqueBrands.size());
-        for(int i=0;i<n;i++)logTrackedScore("ANTES_PINTAR_RANK_"+(i+1), uniqueBrands.get(i));
-        String debugBeforePaint=buildTrackedDebug("ANTES DE PINTAR", candidates, uniqueBrands);
-        String combinedDebug=debugBeforeSort;
-        if(!combinedDebug.isEmpty()&&!debugBeforePaint.isEmpty())combinedDebug+="\n\n"+debugBeforePaint;
-        else if(combinedDebug.isEmpty())combinedDebug=debugBeforePaint;
-        debugPanel.setText(combinedDebug);
-        debugPanel.setVisibility(combinedDebug.isEmpty()?View.GONE:View.VISIBLE);
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
 
 
-    private void logTrackedScore(String stage, List<Scored> list){
-        for(Scored s:list) logTrackedScore(stage,s);
-    }
-
-    private void logTrackedScore(String stage, Scored s){
-        if(s==null||s.v==null||!isTrackedVehicle(s.v))return;
-        double cd=competitionDistance(reference,s.v);
-        double td=Math.max(0, Math.min(1, similarity(reference,s.v)-dcChargingSimilarityBonus(reference,s.v)));
-        double total=cd*.72+td*.28;
-        double cp=(1-Math.max(0,Math.min(1,cd)))*100.0;
-        double tp=(1-Math.max(0,Math.min(1,td)))*100.0;
-        double totalp=(1-Math.max(0,Math.min(1,total)))*100.0;
-        Log.d("EV_SIM_DEBUG", stage+" | "+s.v.make+" "+s.v.model+
-            " | competencia="+String.format(Locale.US,"%.8f (%.4f%%)",cd,cp)+
-            " | caracteristicas="+String.format(Locale.US,"%.8f (%.4f%%)",td,tp)+
-            " | total="+String.format(Locale.US,"%.8f (%.4f%%)",total,totalp)+
-            " | s.score="+String.format(Locale.US,"%.8f",s.score)+
-            " | año="+s.v.year+" | version="+s.v.version);
-    }
-
-    private boolean hasTracked(List<Scored>... lists){
-        for(List<Scored> list:lists) for(Scored s:list) if(isTrackedVehicle(s.v)) return true;
-        return false;
-    }
-
-    private String buildTrackedDebug(String stage,List<Scored>... lists){
-        StringBuilder out=new StringBuilder();
-        out.append("DIAGNÓSTICO · ").append(stage).append("\n");
-        boolean found=false;
-        for(List<Scored> list:lists){
-            for(Scored s:list){
-                if(!isTrackedVehicle(s.v))continue;
-                double cd=competitionDistance(reference,s.v);
-                double td=Math.max(0,Math.min(1,similarity(reference,s.v)-dcChargingSimilarityBonus(reference,s.v)));
-                double total=cd*.72+td*.28;
-                double cp=(1-Math.max(0,Math.min(1,cd)))*100.0;
-                double tp=(1-Math.max(0,Math.min(1,td)))*100.0;
-                double totalp=(1-Math.max(0,Math.min(1,total)))*100.0;
-                out.append("\n").append(s.v.make).append(" ").append(s.v.model);
-                out.append("\n  Competencia: ").append(String.format(Locale.US,"%.2f%%",cp));
-                out.append("  · Características: ").append(String.format(Locale.US,"%.2f%%",tp));
-                out.append("  · TOTAL: ").append(String.format(Locale.US,"%.2f%%",totalp));
-                out.append("\n  interno: ").append(String.format(Locale.US,"%.8f",s.score));
-                out.append("\n  puesto: ").append(findRank(list,s));
-                found=true;
-            }
-        }
-        return found?out.toString():"";
-    }
-
-    private int findRank(List<Scored> list,Scored target){
-        int rank=1;
-        for(Scored s:list){
-            if(s==target)return rank;
-            rank++;
-        }
-        return -1;
-    }
-
-    private boolean isTrackedVehicle(Vehicle v){
-        if(v==null)return false;
-        String key=((v.make==null?"":v.make)+" "+(v.model==null?"":v.model)).toLowerCase(Locale.ROOT);
-        return key.contains("tesla model y") || key.contains("opel grandland");
-    }
-
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
-        // Solo para visualización: primero se ordena por s.score completo y después se redondea.
+        // El ranking ya se ha calculado con el double completo; solo aquí se redondea para mostrarlo.
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
 
         LinearLayout card=card();
