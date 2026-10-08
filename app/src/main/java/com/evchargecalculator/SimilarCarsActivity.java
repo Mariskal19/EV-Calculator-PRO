@@ -469,7 +469,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
-        // Solo para visualización: primero se ordena por s.score completo y después se redondea.\n        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
+        // Solo para visualización: primero se ordena por s.score completo y después se redondea.
+        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
 
         LinearLayout card=card();
         card.setPadding(dp(16),dp(9),dp(16),dp(9));
