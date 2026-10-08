@@ -811,8 +811,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return weight>0?Math.min(1,sum/weight):-1;
     }
 
-    /**
-     * Solo permite comparar coches de la misma clase de vehículo.
      * El segmento y la carrocería son condiciones de entrada, no parte
      * del porcentaje de similitud. SUV y crossover se consideran equivalentes.
      */
@@ -825,3 +823,151 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * física ya se comprueba en sameVehicleClass().
      *
      * Ejemplos para un G6 de 47.083 €:
+     * - Model Y de 50.990 € -> 8,3% -> entra.
+     * - ID.4 de 46.900 € -> 0,4% -> entra.
+     * - ID.5 de 52.790 € -> 12,1% -> entra.
+     * - Un SUV equivalente de 60.000 € -> 27,4% -> queda fuera.
+     */
+    private boolean inCompetitiveZone(Vehicle a,Vehicle b){
+        return inCompetitiveZone(a,b,15.0);
+    }
+
+    private boolean inCompetitiveZone(Vehicle a,Vehicle b,double maxPricePercent){
+        if(a==null||b==null)return false;
+
+        // Zona competitiva estricta: no basta con parecerse técnicamente.
+        // Debe pertenecer al mismo espacio comercial y físico que el referente.
+        String ba=normalizeBodyStyle(a.bodyStyle);
+        String bb=normalizeBodyStyle(b.bodyStyle);
+        if(ba.isEmpty()||bb.isEmpty())return false;
+        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb)))return false;
+
+        // El tamaño es una condición de entrada: evitamos que un SUV claramente
+        // más pequeño o más grande entre solo por tener especificaciones parecidas.
+        if(!samePhysicalClass(a,b))return false;
+
+        // Con carrocería y tamaño compatibles, permitimos el salto de código de
+        // segmento que existe en algunos catálogos (p.ej. C/D/J para SUV).
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        if(!sa.isEmpty()&&!sb.isEmpty()&&!sa.equals(sb)){
+            if(!isSuvLike(ba)||!isSuvLike(bb))return false;
+        }
+
+        // Finalmente, precio: filtro económico configurable.
+        // En el primer cribado es 15%; solo se amplía si faltan 8 marcas.
+        if(a.price>0&&b.price>0){
+            double reference=Math.max(a.price,b.price);
+            double priceRatio=Math.abs(a.price-b.price)/reference;
+            if(priceRatio>(maxPricePercent/100.0))return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Compatibilidad histórica mantenida para cualquier llamada futura.
+     * La lógica activa de candidatos usa los filtros escalonados de showSimilar().
+     */
+    private boolean sameVehicleClass(Vehicle a,Vehicle b){
+        return sameBodyStyle(a,b)
+            &&samePhysicalClass(a,b,8.0,5.0,8.0)
+            &&sameSegmentCompatible(a,b);
+    }
+
+    private boolean samePhysicalClass(Vehicle a,Vehicle b){
+        return samePhysicalClass(a,b,8.0,5.0,8.0);
+    }
+
+    private void loadVehicles(){
+        try(InputStream in=getAssets().open("catalog_es_2024_2026.json");BufferedReader r=new BufferedReader(new InputStreamReader(in))){
+            StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);
+            JSONArray a=new JSONObject(sb.toString()).optJSONArray("vehicles");if(a==null)throw new IllegalStateException("vehicles missing");
+            for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o,false));}
+        }catch(Exception e){throw new IllegalStateException("No se ha podido cargar el catálogo",e);}
+        Set<String> keys=new HashSet<>();for(Vehicle v:vehicles)keys.add(logicalKey(v));
+        JSONArray remote=RemoteCatalogManager.loadCached(this);
+        addRemote(remote,keys);
+        RemoteCatalogManager.refreshIfDue(this,additions->{if(additions==null)return;int before=vehicles.size();addRemote(additions,keys);if(vehicles.size()!=before)showReferenceCandidates();});
+        Collections.sort(vehicles,(a,b)->{int c=a.make.compareToIgnoreCase(b.make);if(c!=0)return c;return a.model.compareToIgnoreCase(b.model);});
+    }
+    private void addRemote(JSONArray a,Set<String> keys){
+        if(a==null)return;
+        for(int i=0;i<a.length();i++)try{
+            JSONObject o=a.optJSONObject(i);if(o==null)continue;Vehicle v=new Vehicle(o,true);
+            if(v.year<2024||v.year>2026||v.make.isEmpty()||v.model.isEmpty()||v.version.isEmpty()||v.batteryKwh<=0||v.wltpKm<=0||v.powerKw<=0||v.consumption<=0)continue;
+            if(v.consumption<8||v.consumption>35||v.wltpKm>1000||v.usableBatteryKwh>v.batteryKwh+.5)continue;
+            if(keys.add(logicalKey(v)))vehicles.add(v);
+        }catch(Exception ignored){}
+    }
+
+    private String effectiveBatteryKey(Vehicle v){
+        if(v.batteryKwh>0)return String.format(Locale.US,"%.1f",v.batteryKwh);
+        String s=v.version==null?"":v.version.trim();
+        java.util.regex.Matcher m=java.util.regex.Pattern.compile("^(\\d+(?:\\.\\d+)?)\\s*kwh\\b",java.util.regex.Pattern.CASE_INSENSITIVE).matcher(s);
+        return m.find()?m.group(1):"0";
+    }
+    private String normalizedVersion(Vehicle v){
+        String ver=v.version==null?"":v.version.trim().toLowerCase(Locale.ROOT);
+        ver=ver.replaceAll("^\\d+(?:\\.\\d+)?\\s*kwh\\s*","");
+        ver=ver.replaceAll("\\s+"," ").trim();
+        return ver;
+    }
+    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
+    private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
+    private String market(String s){return s==null||s.isEmpty()?"🌐":s;}
+    private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmtCv(v.powerKw*1.35962)+" CV":"—";return bat+"  ·  "+range+"  ·  "+p;}
+    private String cleanVersion(String version){String s=version==null?"":version.trim();s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kwh\\b","");s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kw\\b","");s=s.replaceAll("\\s{2,}"," ").replaceAll("\\s*[·-]\\s*$","").trim();return s;}
+    private String fmt(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(1);return f.format(n);} private String fmtCv(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(0);f.setRoundingMode(java.math.RoundingMode.HALF_UP);return f.format(n);}
+
+    private void addSimilarToComparison(Vehicle v){
+        if(v==null||reference==null)return;
+        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
+        ArrayList<String> ids=new ArrayList<>();
+        ArrayList<String> keys=new ArrayList<>();
+        if(reference.id!=null&&!reference.id.trim().isEmpty())ids.add(reference.id.trim());
+        if(v.id!=null&&!v.id.trim().isEmpty()&&!ids.contains(v.id.trim()))ids.add(v.id.trim());
+        String refKey=logicalKey(reference);
+        String selectedKey=logicalKey(v);
+        if(!refKey.isEmpty())keys.add(refKey);
+        if(!selectedKey.isEmpty()&&!keys.contains(selectedKey))keys.add(selectedKey);
+        p.edit().putBoolean("compare_selection_initialized",true)
+            .putString("compare_vehicle_ids_ordered",android.text.TextUtils.join(",",ids))
+            .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))
+            .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
+        Intent back=new Intent(this,CompararCochesActivity.class);
+        back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(back);
+    }
+
+    private void openDetail(Vehicle v){
+        Intent i=new Intent(this,CarDetailActivity.class);
+        i.putExtra("vehicle_id",v.id);
+        i.putExtra("logical_key",logicalKey(v));
+        i.putExtra("similar_flow",true);
+        i.putExtra("reference_vehicle_id",reference==null?null:reference.id);
+        i.putExtra("reference_logical_key",reference==null?null:logicalKey(reference));
+        i.putExtra("make",v.make);i.putExtra("model",v.model);i.putExtra("version",v.version);i.putExtra("market",v.market);i.putExtra("year",String.valueOf(v.year));
+        i.putExtra("price",v.price);i.putExtra("batteryKwh",v.batteryKwh);i.putExtra("usableBatteryKwh",v.usableBatteryKwh);i.putExtra("batteryType",v.batteryType);i.putExtra("wltpKm",v.wltpKm);i.putExtra("consumption",v.consumption);i.putExtra("powerKw",v.powerKw);i.putExtra("drivetrain",v.drivetrain);i.putExtra("acKw",v.acKw);i.putExtra("dcKw",v.dcKw);i.putExtra("chargeMin",v.chargeMin);i.putExtra("acc",v.acc);i.putExtra("trunk",v.trunk);i.putExtra("weight",v.weight);i.putExtra("lengthMm",v.lengthMm);i.putExtra("widthMm",v.widthMm);i.putExtra("heightMm",v.heightMm);i.putExtra("remoteSource",v.remoteSource);
+        startActivity(i);
+    }
+
+    static class Scored{Vehicle v;double competitionScore;double technicalScore;Scored(Vehicle v,double competitionScore,double technicalScore){this.v=v;this.competitionScore=competitionScore;this.technicalScore=technicalScore;}}
+    static class Vehicle{
+        String id,make,model,version,batteryType,drivetrain,market,bodyStyle,segment;int year;boolean remoteSource;
+        double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
+        Vehicle(JSONObject o,boolean remote){
+            remoteSource=remote;make=o.optString("make",o.optString("brand",""));model=o.optString("model","");version=o.optString("version",o.optString("trim",""));
+            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);
+            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(Locale.ROOT);
+            segment=o.optString("segment","").trim().toUpperCase(Locale.ROOT);
+            year=o.optInt("year",o.optInt("modelYear",0));price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",o.optDouble("battery_capacity_kwh",0));usableBatteryKwh=o.optDouble("usableBatteryKwh",0);
+            wltpKm=o.optDouble("wltpKm",o.optDouble("rangeKm",0));consumption=o.optDouble("consumption",o.optDouble("consumptionKwh100",0));powerKw=o.optDouble("powerKw",o.optDouble("power_kW",0));
+            acKw=o.optDouble("acKw",o.optDouble("acChargeKw",0));dcKw=o.optDouble("dcKw",o.optDouble("dcChargeKw",0));chargeMin=o.optDouble("charge10to80Min",o.optDouble("chargeMin",0));
+            acc=o.optDouble("acceleration0to100Sec",o.optDouble("acc",0));trunk=o.optDouble("trunkLiters",o.optDouble("trunk",0));weight=o.optDouble("weightKg",o.optDouble("weight",0));
+            lengthMm=o.optDouble("lengthMm",o.optDouble("length",0));widthMm=o.optDouble("widthMm",o.optDouble("width",0));heightMm=o.optDouble("heightMm",o.optDouble("height",0));
+            id=o.optString("id","");if(id.isEmpty())id="catalog-"+Integer.toHexString(logicalHash());
+        }
+        private int logicalHash(){return(make+"|"+model+"|"+market+"|"+year+"|"+batteryKwh+"|"+version).toLowerCase(Locale.ROOT).hashCode();}
+    }
+}
