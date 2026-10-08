@@ -548,7 +548,8 @@ Collections.sort(uniqueBrands,(a,b)->{
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
         // El ranking ya se ha calculado con el double completo; solo aquí se redondea para mostrarlo.
-        double finalScore=s.competitionScore*0.70+s.technicalScore*0.30;\n        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
+        double finalScore=s.competitionScore*0.70+s.technicalScore*0.30;
+        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
 
         LinearLayout card=card();
         card.setPadding(dp(16),dp(9),dp(16),dp(9));
