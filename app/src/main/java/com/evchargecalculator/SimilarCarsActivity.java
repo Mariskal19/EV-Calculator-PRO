@@ -413,7 +413,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         // FASE 1: construir primero un universo de competidores reales.
-        final int COMPETITOR_POOL=30;
+        final int COMPETITOR_POOL=100;
         final int FINAL_TOP=10;
         final int MIN_DISTINCT_BRANDS=FINAL_TOP;
         int referenceYear=reference.year;
