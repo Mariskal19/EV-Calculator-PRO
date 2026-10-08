@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 02/10/2026 (comprobación de versionado 1.0.4.1 y build candidato).
+> Última actualización: 08/10/2026 (cierre y validación del algoritmo de coches similares y stable probado por el usuario).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -936,3 +936,38 @@ Cuando se retome EV Calculator PRO:
 - No se modifica el ranking, los cálculos, las puntuaciones ni el porcentaje mostrado.
 - Commit de código: `703c64e3ebc6b893a5b1d62fc702e51f7401489a`.
 - Este checkpoint se considera la referencia estable de la interfaz de tarjetas similares a las 13:20.
+
+
+## 2026-10-08 — Stable final — Ranking de coches similares con distancia técnica direccional
+
+- Se fija como **nuevo estado estable** el commit `5b5ed3c06fc6b359b1d549c7d8a5c0980f95f800` — `Refina ranking de rivales con distancia técnica direccional`.
+- El usuario ha probado la versión resultante en el dispositivo y confirma que **el resultado funciona muy bien**.
+- Este checkpoint sustituye como referencia algorítmica al estado anterior de 72/28: el **código activo actual usa 60 % competencia + 40 % características técnicas**.
+- La fase de competencia sigue determinando la proximidad comercial del rival; la segunda fase calcula una **distancia técnica direccional**.
+- La distancia técnica direccional **solo penaliza al candidato cuando es peor que el coche de referencia**. Si el candidato es mejor en una variable, esa variable no genera penalización.
+- Variables y pesos de la fase técnica actual:
+  - Potencia: **20 %**
+  - 0–100 km/h: **20 %**
+  - Autonomía WLTP: **25 %**
+  - Consumo: **15 %**
+  - Tiempo 10–80 %: **20 %**
+  - Total: **100 %**
+- La normalización de cada variable utiliza una tolerancia y `tanh`; para magnitudes donde más es mejor se penaliza `referencia - candidato`, y para las que menos es mejor se penaliza `candidato - referencia`.
+- Se elimina del cálculo activo la antigua **bonificación arbitraria por carga DC**. La carga 10–80 % ya participa de forma natural con un **20 % dentro de la fase técnica**.
+- El ranking final se ordena utilizando el **valor `double` interno completo**, sin ordenar por el porcentaje redondeado que se muestra en pantalla.
+- Para cada marca se conserva el vehículo representante que minimiza el score combinado **60 % competencia + 40 % técnica**, aplicando además la penalización de año prevista.
+- Después se ordenan los representantes por el score combinado y se muestran las primeras opciones disponibles.
+- Se mantiene la exclusión de la propia marca del coche de referencia y el filtro temporal de modelos alrededor del año de referencia.
+- Se mantiene el ajuste visual estable de las tarjetas: nombre del coche desplazado **4 dp hacia arriba** para quedar correctamente alineado con posición y porcentaje.
+- Los **CV se muestran redondeados a 0 decimales** en las tarjetas, sin modificar los valores internos utilizados en los cálculos.
+- La corrección anterior que eliminó el diagnóstico temporal se mantiene: el panel de diagnóstico no forma parte del código de producción.
+- El workflow de build de `main` continúa configurado para ejecutarse automáticamente con cada `push` a `main`; no se ha modificado esta configuración.
+- **Regla de estabilidad:** no volver a cambiar pesos, fórmula o dirección del algoritmo por diferencias mínimas de ranking sin una incidencia reproducible y una comprobación de los valores internos.
+
+### Checkpoint asociado
+
+- **Commit:** `5b5ed3c06fc6b359b1d549c7d8a5c0980f95f800`
+- **Mensaje:** `Refina ranking de rivales con distancia técnica direccional`
+- **Estado:** probado por el usuario y aceptado como estable.
+- **Rama:** `main`.
+- **Referencia anterior de interfaz:** `703c64e3ebc6b893a5b1d62fc702e51f7401489a` (Stable 13:20, nombre de tarjeta a -4 dp).
