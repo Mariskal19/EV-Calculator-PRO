@@ -33,7 +33,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private EditText search;
     private Spinner marketSpinner, yearSpinner, driveSpinner, batterySpinner;
     private LinearLayout results, referenceResults;
-    private TextView selectedTitle, resultsTitle;
+    private TextView selectedTitle, resultsTitle, debugPanel;
     private Vehicle reference;
 
     // Search optimization index.
@@ -145,7 +145,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         // Diagnóstico temporal visible en la propia app (sin Android Studio).
-        final TextView debugPanel=tv("",11,sub());
+        debugPanel=tv("",11,sub());
         debugPanel.setPadding(dp(10),dp(8),dp(10),dp(8));
         debugPanel.setLineSpacing(0,1.15f);
         debugPanel.setBackground(strokeBg(dark?Color.rgb(12,28,42):Color.rgb(247,250,255),dark?Color.rgb(43,64,82):Color.rgb(210,223,236),10));
