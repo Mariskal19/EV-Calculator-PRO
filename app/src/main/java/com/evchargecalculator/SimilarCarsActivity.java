@@ -581,7 +581,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         card.addView(top,new LinearLayout.LayoutParams(-1,dp(42)));
 
-        TextView ver=tv(v.version+"  ·  "+v.year,12,sub());
+        TextView ver=tv(cleanVersion(v.version)+"  ·  "+v.year,12,sub());
         ver.setSingleLine(true);
         ver.setEllipsize(android.text.TextUtils.TruncateAt.END);
         card.addView(ver,new LinearLayout.LayoutParams(-1,dp(21)));
@@ -933,6 +933,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
     private String market(String s){return s==null||s.isEmpty()?"🌐":s;}
     private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmtCv(v.powerKw*1.35962)+" CV":"—";return bat+"  ·  "+range+"  ·  "+p;}
+    private String cleanVersion(String version){String s=version==null?"":version.trim();s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kwh\\b","");s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kw\\b","");s=s.replaceAll("\\s{2,}"," ").replaceAll("\\s*[·-]\\s*$","").trim();return s;}
     private String fmt(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(1);return f.format(n);} private String fmtCv(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(0);f.setRoundingMode(java.math.RoundingMode.HALF_UP);return f.format(n);}
 
     private void addSimilarToComparison(Vehicle v){
