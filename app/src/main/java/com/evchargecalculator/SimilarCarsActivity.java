@@ -431,7 +431,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(!sameVehicleClass(reference,v))continue;
                 if(!inCompetitiveZone(reference,v))continue;
                 double technicalDistance=similarity(reference,v);
-                // Refuerzo pequeño de carga rápida DC: la capacidad de carga es relevante\n                // en viajes y debe favorecer al rival cuya potencia DC esté más cerca\n                // de la del referente, sin dominar el ranking.\n                technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
+                // Refuerzo pequeño de carga rápida DC: la capacidad de carga es relevante
+                // en viajes y debe favorecer al rival cuya potencia DC esté más cerca
+                // de la del referente, sin dominar el ranking.\n                technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
                 double competitionDistance=competitionDistance(reference,v);
                 if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
                     // La competencia real manda claramente sobre la ficha técnica:
