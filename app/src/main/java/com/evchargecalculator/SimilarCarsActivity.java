@@ -431,6 +431,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(!sameVehicleClass(reference,v))continue;
                 if(!inCompetitiveZone(reference,v))continue;
                 double technicalDistance=similarity(reference,v);
+                // Refuerzo pequeño de carga rápida DC: la capacidad de carga es relevante\n                // en viajes y debe favorecer al rival cuya potencia DC esté más cerca\n                // de la del referente, sin dominar el ranking.\n                technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
                 double competitionDistance=competitionDistance(reference,v);
                 if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
                     // La competencia real manda claramente sobre la ficha técnica:
@@ -659,6 +660,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * La tolerancia indica aproximadamente qué diferencia debe considerarse
      * una similitud media; diferencias mayores se saturan progresivamente.
      */
+    /**
+     * Pequeño refuerzo específico para la carga rápida DC.
+     * Máximo 0,02 puntos de distancia técnica, equivalente a un máximo
+     * aproximado de 0,56 puntos porcentuales en el ranking final (28% técnico).
+     * La ventaja se basa en la cercanía de la potencia DC del candidato a la
+     * del referente, de forma que un rival con mejor DC que otro pueda quedar
+     * ligeramente favorecido sin alterar el peso principal de competencia.
+     */
+    private double dcChargingSimilarityBonus(Vehicle reference,Vehicle candidate){
+        if(reference==null||candidate==null||reference.dcKw<=0||candidate.dcKw<=0)return 0;
+        double max=Math.max(reference.dcKw,candidate.dcKw);
+        if(max<=0)return 0;
+        double difference=Math.abs(reference.dcKw-candidate.dcKw)/max;
+        double closeness=Math.max(0,1-difference);
+        return 0.02*closeness;
+    }
+
     private double relativeDistance(double a,double b,double tolerance){
         if(a<=0||b<=0||tolerance<=0)return -1;
         double reference=Math.max(a,b);
