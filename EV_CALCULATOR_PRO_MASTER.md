@@ -927,3 +927,12 @@ Cuando se retome EV Calculator PRO:
 - **Commit final de esta corrección:** b808bd19dcb03a63d92eeb675a5967566320a23c — fix: redondear CV en fichas de coches similares.
 - Este checkpoint queda como **baseline estable de referencia de las 10:40 del 08/10/2026**.
 - No modificar este estado salvo nueva incidencia o regresión comprobada.
+
+
+### 2026-10-08 — Stable 13:20 — Tarjetas de coches similares
+- Punto estable fijado a las **13:20 del 08/10/2026**.
+- En las tarjetas de resultados, el nombre del coche queda centrado verticalmente respecto al número de posición y al porcentaje de coincidencia.
+- Ajuste final: **4 dp hacia arriba** mediante `translationY(-dp(4))` sobre el nombre.
+- No se modifica el ranking, los cálculos, las puntuaciones ni el porcentaje mostrado.
+- Commit de código: `703c64e3ebc6b893a5b1d62fc702e51f7401489a`.
+- Este checkpoint se considera la referencia estable de la interfaz de tarjetas similares a las 13:20.
