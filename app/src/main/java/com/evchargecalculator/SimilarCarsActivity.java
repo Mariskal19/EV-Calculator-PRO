@@ -412,7 +412,55 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         refCard.addView(refInfo,new LinearLayout.LayoutParams(-1,dp(42)));
         referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
-        // FASE 1: construir primero un universo de competidores reales.\n        final int COMPETITOR_POOL=30;\n        final int FINAL_TOP=10;\n        final int MIN_DISTINCT_BRANDS=FINAL_TOP;\n        int referenceYear=reference.year;\n        int minYear=referenceYear>0?referenceYear-5:0;\n\n        List<Scored> competitors=buildCompetitionCandidates(reference,15.0,COMPETITOR_POOL,referenceYear,minYear,8.0,5.0,8.0,true);\n        double[] strictPriceFallback={20.0,25.0,30.0,40.0};\n        for(double priceLimit:strictPriceFallback){\n            if(distinctBrandCount(competitors)>=MIN_DISTINCT_BRANDS)break;\n            competitors=buildCompetitionCandidates(reference,priceLimit,COMPETITOR_POOL,referenceYear,minYear,8.0,5.0,8.0,true);\n        }\n        double[] crossSegmentPriceFallback={40.0,50.0,60.0};\n        for(double priceLimit:crossSegmentPriceFallback){\n            if(distinctBrandCount(competitors)>=MIN_DISTINCT_BRANDS)break;\n            competitors=buildCompetitionCandidates(reference,priceLimit,COMPETITOR_POOL,referenceYear,minYear,8.0,5.0,8.0,false);\n        }\n        double[] relaxedDimensionPriceFallback={50.0,60.0,70.0};\n        for(double priceLimit:relaxedDimensionPriceFallback){\n            if(distinctBrandCount(competitors)>=MIN_DISTINCT_BRANDS)break;\n            competitors=buildCompetitionCandidates(reference,priceLimit,COMPETITOR_POOL,referenceYear,minYear,12.0,8.0,12.0,false);\n        }\n        if(distinctBrandCount(competitors)<MIN_DISTINCT_BRANDS)competitors=buildCompetitionCandidates(reference,70.0,COMPETITOR_POOL,referenceYear,minYear,15.0,10.0,15.0,false);\n\n        // FASE 2: ordenar el universo competitivo exclusivamente por similitud técnica.\n        Collections.sort(competitors,(x,y)->{\n            int c=Double.compare(x.technicalScore,y.technicalScore);\n            if(c!=0)return c;\n            c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));\n            if(c!=0)return c;\n            return Integer.compare(y.v.year,x.v.year);\n        });\n\n        // FASE 3: una sola representación por marca y Top 10 final.\n        Map<String,Scored> bestByMake=new LinkedHashMap<>();\n        for(Scored s:competitors){\n            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);\n            if(make.isEmpty())continue;\n            if(!bestByMake.containsKey(make))bestByMake.put(make,s);\n            if(bestByMake.size()>=FINAL_TOP)break;\n        }\n        List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());\n        Collections.sort(uniqueBrands,(a,b)->Double.compare(a.technicalScore,b.technicalScore));\n        int n=Math.min(FINAL_TOP,uniqueBrands.size());\n        for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);\n        if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));\n\n    }\n\n    /** FASE 1: competencia pura. La similitud técnica no decide quién entra. */\n    private List<Scored> buildCompetitionCandidates(Vehicle reference,double maxPricePercent,int topPool,\n            int referenceYear,int minYear,double lengthTolerance,double widthTolerance,double heightTolerance,boolean requireSegment){\n        List<Scored> all=new ArrayList<>();\n        for(Vehicle v:vehicles){\n            if(v==reference)continue;\n            if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;\n            if(referenceYear>0&&(v.year>referenceYear||v.year<minYear))continue;\n            if(!sameBodyStyle(reference,v))continue;\n            if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;\n            if(requireSegment&&!sameSegmentCompatible(reference,v))continue;\n            if(!priceWithin(reference,v,maxPricePercent))continue;\n            double competition=competitionDistance(reference,v);\n            double technical=similarity(reference,v);\n            technical=Math.max(0,technical-dcChargingSimilarityBonus(reference,v));\n            if(Double.isFinite(competition)&&Double.isFinite(technical))all.add(new Scored(v,competition,technical));\n        }\n        Collections.sort(all,(x,y)->{\n            int c=Double.compare(x.competitionScore,y.competitionScore);\n            if(c!=0)return c;\n            c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));\n            if(c!=0)return c;\n            return Integer.compare(y.v.year,x.v.year);\n        });\n        return new ArrayList<>(all.subList(0,Math.min(topPool,all.size())));\n    }
+        // FASE 1: construir primero un universo de competidores reales.
+        final int COMPETITOR_POOL=30;
+        final int FINAL_TOP=10;
+        final int MIN_DISTINCT_BRANDS=FINAL_TOP;
+        int referenceYear=reference.year;
+        int minYear=referenceYear>0?referenceYear-5:0;
+
+        List<Scored> competitors=buildCompetitionCandidates(reference,15.0,COMPETITOR_POOL,referenceYear,minYear,8.0,5.0,8.0,true);
+        double[] strictPriceFallback={20.0,25.0,30.0,40.0};
+        for(double priceLimit:strictPriceFallback){
+            if(distinctBrandCount(competitors)>=MIN_DISTINCT_BRANDS)break;
+            competitors=buildCompetitionCandidates(reference,priceLimit,COMPETITOR_POOL,referenceYear,minYear,8.0,5.0,8.0,true);
+        }
+        double[] crossSegmentPriceFallback={40.0,50.0,60.0};
+        for(double priceLimit:crossSegmentPriceFallback){
+            if(distinctBrandCount(competitors)>=MIN_DISTINCT_BRANDS)break;
+            competitors=buildCompetitionCandidates(reference,priceLimit,COMPETITOR_POOL,referenceYear,minYear,8.0,5.0,8.0,false);
+        }
+        double[] relaxedDimensionPriceFallback={50.0,60.0,70.0};
+        for(double priceLimit:relaxedDimensionPriceFallback){
+            if(distinctBrandCount(competitors)>=MIN_DISTINCT_BRANDS)break;
+            competitors=buildCompetitionCandidates(reference,priceLimit,COMPETITOR_POOL,referenceYear,minYear,12.0,8.0,12.0,false);
+        }
+        if(distinctBrandCount(competitors)<MIN_DISTINCT_BRANDS)
+            competitors=buildCompetitionCandidates(reference,70.0,COMPETITOR_POOL,referenceYear,minYear,15.0,10.0,15.0,false);
+
+        // FASE 2: ordenar el universo competitivo exclusivamente por similitud técnica.
+        Collections.sort(competitors,(x,y)->{
+            int c=Double.compare(x.technicalScore,y.technicalScore);
+            if(c!=0)return c;
+            c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));
+            if(c!=0)return c;
+            return Integer.compare(y.v.year,x.v.year);
+        });
+
+        // FASE 3: una sola representación por marca y Top 10 final.
+        Map<String,Scored> bestByMake=new LinkedHashMap<>();
+        for(Scored s:competitors){
+            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
+            if(make.isEmpty())continue;
+            if(!bestByMake.containsKey(make))bestByMake.put(make,s);
+            if(bestByMake.size()>=FINAL_TOP)break;
+        }
+        List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
+        Collections.sort(uniqueBrands,(a,b)->Double.compare(a.technicalScore,b.technicalScore));
+        int n=Math.min(FINAL_TOP,uniqueBrands.size());
+        for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
+        if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
+    }\n\n    /** FASE 1: competencia pura. La similitud técnica no decide quién entra. */\n    private List<Scored> buildCompetitionCandidates(Vehicle reference,double maxPricePercent,int topPool,\n            int referenceYear,int minYear,double lengthTolerance,double widthTolerance,double heightTolerance,boolean requireSegment){\n        List<Scored> all=new ArrayList<>();\n        for(Vehicle v:vehicles){\n            if(v==reference)continue;\n            if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;\n            if(referenceYear>0&&(v.year>referenceYear||v.year<minYear))continue;\n            if(!sameBodyStyle(reference,v))continue;\n            if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;\n            if(requireSegment&&!sameSegmentCompatible(reference,v))continue;\n            if(!priceWithin(reference,v,maxPricePercent))continue;\n            double competition=competitionDistance(reference,v);\n            double technical=similarity(reference,v);\n            technical=Math.max(0,technical-dcChargingSimilarityBonus(reference,v));\n            if(Double.isFinite(competition)&&Double.isFinite(technical))all.add(new Scored(v,competition,technical));\n        }\n        Collections.sort(all,(x,y)->{\n            int c=Double.compare(x.competitionScore,y.competitionScore);\n            if(c!=0)return c;\n            c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));\n            if(c!=0)return c;\n            return Integer.compare(y.v.year,x.v.year);\n        });\n        return new ArrayList<>(all.subList(0,Math.min(topPool,all.size())));\n    }
     private int distinctBrandCount(List<Scored> scored){
         Set<String> brands=new HashSet<>();
         for(Scored s:scored){
@@ -460,7 +508,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
         // El ranking ya se ha calculado con el double completo; solo aquí se redondea para mostrarlo.
-        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
+        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.technicalScore*100)));
 
         LinearLayout card=card();
         card.setPadding(dp(16),dp(9),dp(16),dp(9));
