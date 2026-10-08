@@ -438,9 +438,17 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(distinctBrandCount(competitors)<MIN_DISTINCT_BRANDS)
             competitors=buildCompetitionCandidates(reference,70.0,COMPETITOR_POOL,referenceYear,minYear,15.0,10.0,15.0,false);
 
-        // FASE 2: ordenar el universo competitivo exclusivamente por similitud técnica.
+        // FASE 2: ordenar todo el universo por competencia + características.
+        // No se recorta por similitud técnica antes de eliminar marcas:
+        // un rival competitivo como Tesla debe poder llegar al Top 10.
         Collections.sort(competitors,(x,y)->{
-            int c=Double.compare(x.technicalScore,y.technicalScore);
+            double scoreX=x.competitionScore*0.70+x.technicalScore*0.30;
+            double scoreY=y.competitionScore*0.70+y.technicalScore*0.30;
+            int c=Double.compare(scoreX,scoreY);
+            if(c!=0)return c;
+            c=Double.compare(x.competitionScore,y.competitionScore);
+            if(c!=0)return c;
+            c=Double.compare(x.technicalScore,y.technicalScore);
             if(c!=0)return c;
             c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));
             if(c!=0)return c;
