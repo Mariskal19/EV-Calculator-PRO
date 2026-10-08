@@ -897,3 +897,18 @@ Cuando se retome EV Calculator PRO:
 - **17:00 — Búsqueda optimizada:** commit `9b5781da1d600cf36d135a6028d4dd3263495fec`.
 - **19:55 — Scroll final:** commit `e76b931f826b0d25c0e4f731ed9b534f0dbbe0bb`.
 - **19:55 — Actualización de MASTER:** commit `dd092d2bf95c10a098e14cd03f9457d032d0ddd9`.
+
+
+## 2026-10-08 — Cierre y validación final de coches similares
+
+- Se da por **cerrado y estable** el algoritmo actual de **Buscar coches similares**.
+- Se mantiene el reparto definitivo: **72 % competencia + 28 % características**.
+- El ranking utiliza siempre el `double` completo para ordenar; el porcentaje visible se redondea únicamente al final.
+- Pipeline definitivo: filtros de año/marca → carrocería/clase física → zona competitiva → cálculo de competencia y características → combinación 72/28 → ordenación por `Double.compare(score)` → TOP 20 → deduplicación por marca conservando el menor score → nueva ordenación → 8 primeras posiciones.
+- Se retiró del código de producción el **panel de diagnóstico temporal** y sus métodos de trazado, una vez confirmada la corrección del ranking.
+- Validación real con XPeng G6 como referencia:
+  - **Tesla Model Y #4:** competencia 83,66 %, características 59,69 %, total 76,95 %, score `0.23050165`.
+  - **Opel Grandland Electric #5:** competencia 81,39 %, características 65,10 %, total 76,83 %, score `0.23167884`.
+  - Tesla está correctamente por delante: diferencia interna `0.00117619` y diferencia visible de **0,12 puntos porcentuales**.
+- El puesto observado en pantalla coincide con el ranking calculado: **Tesla #4 y Opel #5**.
+- No modificar pesos ni ordenamiento por esta diferencia mínima salvo nueva incidencia real y reproducible.
