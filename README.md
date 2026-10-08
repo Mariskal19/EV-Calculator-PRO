@@ -123,3 +123,24 @@ GitHub Actions genera y comprueba:
 Los nombres de entrega se generan a partir de `versionName`.
 
 > Última verificación de build: refresco de configuración aplicado también a Charge Calculator y Electric Vs Combustion.
+
+
+## Coches similares — estado actual
+
+El ranking de **Buscar coches similares** prioriza la competencia real y usa precisión interna completa para ordenar los resultados.
+
+- **72 % competencia** + **28 % características técnicas**.
+- El orden se calcula con el valor interno completo (`double`), sin redondear.
+- El porcentaje mostrado se redondea únicamente después de ordenar.
+- Se eliminan vehículos de la misma marca que el referente.
+- Se aplica primero la compatibilidad de carrocería, clase física y zona competitiva.
+- SUV y crossover se consideran compatibles entre sí.
+- Se conservan hasta **8 marcas únicas**, tomando del TOP 20 la mejor versión de cada fabricante.
+- El algoritmo no utiliza reglas específicas para Tesla, Opel u otras marcas.
+
+Validación final realizada el **08/10/2026** con el XPeng G6 como referencia:
+
+- **Tesla Model Y:** competencia 83,66 %, características 59,69 %, total 76,95 %, score interno `0.23050165`.
+- **Opel Grandland Electric:** competencia 81,39 %, características 65,10 %, total 76,83 %, score interno `0.23167884`.
+
+Tesla queda correctamente por delante de Opel porque `0.23050165 < 0.23167884`. La diferencia visible es de solo **0,12 puntos porcentuales**, pero el orden utiliza los decimales completos.
