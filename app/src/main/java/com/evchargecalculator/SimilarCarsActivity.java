@@ -428,11 +428,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(v==reference)continue;
                 if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
                 if(referenceYear>0&&v.year!=targetYear)continue;
-                // Mantenemos los filtros físicos que definen un rival real:
-                // misma carrocería (SUV/crossover equivalentes) y dimensiones parecidas.
-                // No usamos inCompetitiveZone como filtro adicional, porque su límite
-                // de precio podía dejar sin candidatos a referencias poco comunes.
+                // Mantenemos los filtros físicos y económicos que definen un rival real:
+                // misma carrocería (SUV/crossover equivalentes), dimensiones parecidas
+                // y zona de precio competitiva.
                 if(!sameVehicleClass(reference,v))continue;
+                if(!inCompetitiveZone(reference,v))continue;
                 double technicalDistance=similarity(reference,v);
                 // Refuerzo pequeño de carga rápida DC: la capacidad de carga es relevante
                 // en viajes y debe favorecer al rival cuya potencia DC esté más cerca
