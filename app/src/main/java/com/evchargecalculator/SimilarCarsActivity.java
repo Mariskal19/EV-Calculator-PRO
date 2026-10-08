@@ -456,7 +456,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(bestByMake.size()>=FINAL_TOP)break;
         }
         List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
-        Collections.sort(uniqueBrands,(a,b)->Double.compare(a.technicalScore,b.technicalScore));
+        // FASE 2: combinar competencia y similitud técnica.
+// Ambas son distancias (0 = mejor), pero la competencia pesa más:
+// 70% competencia + 30% características.
+Collections.sort(uniqueBrands,(a,b)->{
+    double scoreA=a.competitionScore*0.70+a.technicalScore*0.30;
+    double scoreB=b.competitionScore*0.70+b.technicalScore*0.30;
+    int c=Double.compare(scoreA,scoreB);
+    if(c!=0)return c;
+    c=Double.compare(a.competitionScore,b.competitionScore);
+    if(c!=0)return c;
+    return Double.compare(a.technicalScore,b.technicalScore);
+});
         int n=Math.min(FINAL_TOP,uniqueBrands.size());
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
