@@ -447,7 +447,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(candidates.size()>=TOP_POOL)break;
         }
 
-        // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.\n        // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.\n        Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
+        // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.
+        // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.
+        Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
         int poolSize=Math.min(TOP_POOL,candidates.size());
         List<Scored> top20=new ArrayList<>(candidates.subList(0,poolSize));
 
