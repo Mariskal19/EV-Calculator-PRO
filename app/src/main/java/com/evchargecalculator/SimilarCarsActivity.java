@@ -396,7 +396,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         int minYear=referenceYear>0?referenceYear-5:0;
         int maxYear=referenceYear>0?referenceYear+1:Integer.MAX_VALUE;
 
-        // No recortamos por un pool global: con un catálogo de varios cientos de coches,\n        // un rival real de una marca concreta no debe desaparecer antes de la\n        // selección por marca simplemente porque otras marcas tengan más versiones.\n        List<Scored> competitors=buildCompetitionCandidates(reference,vehicles.size(),referenceYear,minYear,maxYear);
+        // No recortamos por un pool global: con un catálogo de varios cientos de coches,
+        // un rival real de una marca concreta no debe desaparecer antes de la
+        // selección por marca simplemente porque otras marcas tengan más versiones.\n        List<Scored> competitors=buildCompetitionCandidates(reference,vehicles.size(),referenceYear,minYear,maxYear);
 
         // Una marca no se representa por el primer coche que aparece en
         // competencia pura. Primero dejamos entrar un pool amplio por competencia
