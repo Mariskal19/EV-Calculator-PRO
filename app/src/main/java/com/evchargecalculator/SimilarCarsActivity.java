@@ -428,8 +428,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(v==reference)continue;
                 if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
                 if(referenceYear>0&&v.year!=targetYear)continue;
-                if(!sameVehicleClass(reference,v))continue;
-                if(!inCompetitiveZone(reference,v))continue;
+                // No bloqueamos aquí por clase física/precio: el ranking debe encontrar
+                // los rivales más parecidos incluso cuando la referencia sea poco común.
+                // La fórmula completa sigue penalizando las diferencias de características
+                // y competencia; estos filtros solo excluyen la propia marca.
                 double technicalDistance=similarity(reference,v);
                 // Refuerzo pequeño de carga rápida DC: la capacidad de carga es relevante
                 // en viajes y debe favorecer al rival cuya potencia DC esté más cerca
