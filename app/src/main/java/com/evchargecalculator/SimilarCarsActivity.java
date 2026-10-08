@@ -476,7 +476,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(!priceWithin(reference,v,maxPricePercent))continue;
             double competition=competitionDistance(reference,v);
             double technical=similarity(reference,v);
-            technical=Math.max(0,technical-dcChargingSimilarityBonus(reference,v));
+            // Segundo filtro: además de parecerse al referente, se premian
+            // las ventajas objetivas del rival frente al propio referente.
+            technical=Math.max(0,technical-dcChargingSimilarityBonus(reference,v)-referenceAdvantageBonus(reference,v));
             if(Double.isFinite(competition)&&Double.isFinite(technical))all.add(new Scored(v,competition,technical));
         }
         Collections.sort(all,(x,y)->{
@@ -742,6 +744,65 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * del referente, de forma que un rival con mejor DC que otro pueda quedar
      * ligeramente favorecido sin alterar el peso principal de competencia.
      */
+    /**
+     * Bonificación del segundo filtro: premia a un competidor cuando ofrece
+     * una ventaja objetiva sobre el coche de referencia.
+     *
+     * Solo se premia lo que es mejor para el comprador:
+     * autonomía, carga rápida, potencia, aceleración, consumo, maletero y precio.
+     * Las dimensiones no se consideran "mejores" por sí mismas.
+     *
+     * Máximo: 0,10 de distancia técnica = hasta 10 puntos porcentuales.
+     * Así una ventaja puede desempatar o mejorar posiciones, pero nunca convierte
+     * en competidor a un coche que no haya pasado la Fase 1.
+     */
+    private double referenceAdvantageBonus(Vehicle reference,Vehicle candidate){
+        if(reference==null||candidate==null)return 0;
+
+        double sum=0,weight=0,d;
+
+        d=directionalAdvantage(reference.wltpKm,candidate.wltpKm,.25,false);
+        if(d>=0){sum+=d*.25;weight+=.25;}
+
+        d=directionalAdvantage(reference.dcKw,candidate.dcKw,.50,false);
+        if(d>=0){sum+=d*.15;weight+=.15;}
+
+        d=directionalAdvantage(reference.chargeMin,candidate.chargeMin,.50,true);
+        if(d>=0){sum+=d*.15;weight+=.15;}
+
+        d=directionalAdvantage(reference.powerKw,candidate.powerKw,.30,false);
+        if(d>=0){sum+=d*.10;weight+=.10;}
+
+        d=directionalAdvantage(reference.acc,candidate.acc,.25,true);
+        if(d>=0){sum+=d*.10;weight+=.10;}
+
+        d=directionalAdvantage(reference.consumption,candidate.consumption,.25,true);
+        if(d>=0){sum+=d*.10;weight+=.10;}
+
+        d=directionalAdvantage(reference.trunk,candidate.trunk,.35,false);
+        if(d>=0){sum+=d*.05;weight+=.05;}
+
+        d=directionalAdvantage(reference.price,candidate.price,.20,true);
+        if(d>=0){sum+=d*.10;weight+=.10;}
+
+        return weight>0?0.10*Math.min(1,sum/weight):0;
+    }
+
+    /**
+     * Ventaja direccional normalizada: 0 si el candidato no es mejor,
+     * y un valor creciente si sí lo es.
+     */
+    private double directionalAdvantage(double reference,double candidate,double tolerance,boolean lowerIsBetter){
+        if(reference<=0||candidate<=0||tolerance<=0)return -1;
+        double advantage;
+        if(lowerIsBetter){
+            advantage=Math.max(0,reference-candidate)/reference;
+        }else{
+            advantage=Math.max(0,candidate-reference)/reference;
+        }
+        return Math.tanh(advantage/tolerance);
+    }
+
     private double dcChargingSimilarityBonus(Vehicle reference,Vehicle candidate){
         if(reference==null||candidate==null||reference.dcKw<=0||candidate.dcKw<=0)return 0;
         double max=Math.max(reference.dcKw,candidate.dcKw);
