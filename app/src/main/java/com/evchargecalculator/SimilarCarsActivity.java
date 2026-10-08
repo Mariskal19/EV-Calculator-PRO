@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.util.Log;
 import android.widget.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -452,6 +453,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.
         // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.
+        logTrackedScore("ANTES_ORDENAR", candidates);
+
         Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
         int poolSize=Math.min(TOP_POOL,candidates.size());
         List<Scored> top20=new ArrayList<>(candidates.subList(0,poolSize));
@@ -468,8 +471,36 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Collections.sort(uniqueBrands,(a,b)->Double.compare(a.score,b.score));
 
         int n=Math.min(8,uniqueBrands.size());
+        for(int i=0;i<n;i++)logTrackedScore("ANTES_PINTAR_RANK_"+(i+1), uniqueBrands.get(i));
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
+    }
+
+
+    private void logTrackedScore(String stage, List<Scored> list){
+        for(Scored s:list) logTrackedScore(stage,s);
+    }
+
+    private void logTrackedScore(String stage, Scored s){
+        if(s==null||s.v==null||!isTrackedVehicle(s.v))return;
+        double cd=competitionDistance(reference,s.v);
+        double td=Math.max(0, Math.min(1, similarity(reference,s.v)-dcChargingSimilarityBonus(reference,s.v)));
+        double total=cd*.72+td*.28;
+        double cp=(1-Math.max(0,Math.min(1,cd)))*100.0;
+        double tp=(1-Math.max(0,Math.min(1,td)))*100.0;
+        double totalp=(1-Math.max(0,Math.min(1,total)))*100.0;
+        Log.d("EV_SIM_DEBUG", stage+" | "+s.v.make+" "+s.v.model+
+            " | competencia="+String.format(Locale.US,"%.8f (%.4f%%)",cd,cp)+
+            " | caracteristicas="+String.format(Locale.US,"%.8f (%.4f%%)",td,tp)+
+            " | total="+String.format(Locale.US,"%.8f (%.4f%%)",total,totalp)+
+            " | s.score="+String.format(Locale.US,"%.8f",s.score)+
+            " | año="+s.v.year+" | version="+s.v.version);
+    }
+
+    private boolean isTrackedVehicle(Vehicle v){
+        if(v==null)return false;
+        String key=((v.make==null?"":v.make)+" "+(v.model==null?"":v.model)).toLowerCase(Locale.ROOT);
+        return key.contains("tesla model y") || key.contains("opel grandland");
     }
 
     private void addSimilarCard(Scored s,int rank){
