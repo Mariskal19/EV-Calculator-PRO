@@ -811,9 +811,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return weight>0?Math.min(1,sum/weight):-1;
     }
 
-     * El segmento y la carrocería son condiciones de entrada, no parte
-     * del porcentaje de similitud. SUV y crossover se consideran equivalentes.
-     */
     /**
      * Determina si dos vehículos pertenecen a una zona económica competitiva.
      *
