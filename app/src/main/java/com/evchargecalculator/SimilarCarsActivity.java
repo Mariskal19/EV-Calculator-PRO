@@ -478,29 +478,45 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             int referenceYear,int minYear,double lengthTolerance,double widthTolerance,
             double heightTolerance,boolean requireSegment){
         List<Scored> all=new ArrayList<>();
-        for(int targetYear=referenceYear;targetYear>=minYear;targetYear--){
-            List<Scored> batch=new ArrayList<>();
-            for(Vehicle v:vehicles){
-                if(v==reference)continue;
-                if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
-                if(referenceYear>0&&v.year!=targetYear)continue;
-                if(!sameBodyStyle(reference,v))continue;
-                if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;
-                if(requireSegment&&!sameSegmentCompatible(reference,v))continue;
-                if(!priceWithin(reference,v,maxPricePercent))continue;
+        /*
+         * El año NO es un bloque de selección. Todos los años disponibles dentro
+         * de la ventana del catálogo compiten entre sí y se ordenan por similitud.
+         *
+         * Antes se procesaba 2026, luego 2025, luego 2024 y se dejaba de añadir
+         * candidatos al alcanzar TOP_POOL. Eso podía llenar el pool con coches
+         * del año del referente y evitar que un rival directo de 2025 entrase
+         * siquiera en la comparación (p.ej. Deepal, Geely o Zeekr frente a un
+         * G6 2026).
+         *
+         * El año sigue limitando la ventana temporal (referenceYear -> minYear),
+         * pero ya no decide quién entra antes al Top 20. La puntuación técnica y
+         * competitiva es la que decide el ranking.
+         */
+        for(Vehicle v:vehicles){
+            if(v==reference)continue;
+            if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
+            if(referenceYear>0&&(v.year>referenceYear||v.year<minYear))continue;
+            if(!sameBodyStyle(reference,v))continue;
+            if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;
+            if(requireSegment&&!sameSegmentCompatible(reference,v))continue;
+            if(!priceWithin(reference,v,maxPricePercent))continue;
 
-                double technicalDistance=similarity(reference,v);
-                technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
-                double competitionDistance=competitionDistance(reference,v);
-                if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
-                    double score=competitionDistance*.72+technicalDistance*.28;
-                    batch.add(new Scored(v,score));
-                }
+            double technicalDistance=similarity(reference,v);
+            technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
+            double competitionDistance=competitionDistance(reference,v);
+            if(Double.isFinite(technicalDistance)&&Double.isFinite(competitionDistance)){
+                double score=competitionDistance*.72+technicalDistance*.28;
+                all.add(new Scored(v,score));
             }
-            all.addAll(batch);
-            if(all.size()>=topPool)break;
         }
-        Collections.sort(all,(x,y)->Double.compare(x.score,y.score));
+        Collections.sort(all,(x,y)->{
+            int c=Double.compare(x.score,y.score);
+            if(c!=0)return c;
+            // En igualdad real, preferimos el año más cercano al referente.
+            c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));
+            if(c!=0)return c;
+            return Integer.compare(y.v.year,x.v.year);
+        });
         return new ArrayList<>(all.subList(0,Math.min(topPool,all.size())));
     }
 
