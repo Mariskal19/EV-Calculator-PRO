@@ -394,6 +394,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
         resultsTitle.setVisibility(View.VISIBLE);
         results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+
         LinearLayout refCard=card();
         refCard.setPadding(dp(16),dp(10),dp(16),dp(10));
         referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
@@ -409,29 +410,48 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         TextView refInfo=tv(reference.version+"  ·  "+reference.year+"  ·  "+specLine(reference),12,sub());
         refInfo.setLineSpacing(0,1.05f);
         refCard.addView(refInfo,new LinearLayout.LayoutParams(-1,dp(42)));
-
         referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
 
-        // 1) Construimos el conjunto de candidatos respetando la regla temporal:
-        //    año de referencia primero y, solo si hace falta, años anteriores.
-        // 2) De todos esos candidatos obtenemos el TOP 20 por similitud.
-        // 3) Sobre ese TOP 20 eliminamos las repeticiones de marca, conservando
-        //    únicamente la versión más similar de cada fabricante.
-        // 4) Finalmente mostramos las 8 primeras marcas únicas.
-        final int TOP_POOL = 20;
-        final int MIN_DISTINCT_BRANDS = 8;
+        // Cribado escalonado:
+        // 1) carrocería + dimensiones estrictas + segmento + precio 15%.
+        // 2) si faltan 8 marcas, ampliamos solo precio (20/25/30/40%).
+        // 3) si siguen faltando, relajamos el segmento, pero mantenemos
+        //    carrocería y dimensiones estrictas.
+        // 4) si aún faltan, relajamos moderadamente las dimensiones.
+        // La carrocería nunca se relaja: sigue siendo el filtro principal.
+        final int TOP_POOL=20;
+        final int MIN_DISTINCT_BRANDS=8;
         int referenceYear=reference.year;
         int minYear=referenceYear>0?referenceYear-5:0;
 
-        // Primer cribado: criterio económico estricto (15%).
-        List<Scored> candidates=buildSimilarCandidates(reference,15.0,TOP_POOL,referenceYear,minYear);
+        List<Scored> candidates=buildSimilarCandidates(reference,15.0,TOP_POOL,referenceYear,minYear,8.0,5.0,8.0,true);
 
-        // Si no permite llegar a 8 marcas distintas, ampliamos SOLO el precio.
-        // Carrocería y dimensiones siguen siendo obligatorias.
-        double[] fallbackPriceLimits={20.0,25.0,30.0,40.0};
-        for(double priceLimit:fallbackPriceLimits){
+        double[] strictPriceFallback={20.0,25.0,30.0,40.0};
+        for(double priceLimit:strictPriceFallback){
             if(distinctBrandCount(candidates)>=MIN_DISTINCT_BRANDS)break;
-            candidates=buildSimilarCandidates(reference,priceLimit,TOP_POOL,referenceYear,minYear);
+            candidates=buildSimilarCandidates(reference,priceLimit,TOP_POOL,referenceYear,minYear,8.0,5.0,8.0,true);
+        }
+
+        // En esta fase el segmento deja de ser obligatorio. Esto permite
+        // encontrar rivales reales como EQE (E) frente a i4/Seal/Ioniq 6 (D).
+        double[] crossSegmentPriceFallback={40.0,50.0,60.0};
+        for(double priceLimit:crossSegmentPriceFallback){
+            if(distinctBrandCount(candidates)>=MIN_DISTINCT_BRANDS)break;
+            candidates=buildSimilarCandidates(reference,priceLimit,TOP_POOL,referenceYear,minYear,8.0,5.0,8.0,false);
+        }
+
+        // Último escalón: mantenemos carrocería obligatoria y ampliamos
+        // moderadamente las dimensiones para completar el abanico.
+        double[] relaxedDimensionPriceFallback={50.0,60.0,70.0};
+        for(double priceLimit:relaxedDimensionPriceFallback){
+            if(distinctBrandCount(candidates)>=MIN_DISTINCT_BRANDS)break;
+            candidates=buildSimilarCandidates(reference,priceLimit,TOP_POOL,referenceYear,minYear,12.0,8.0,12.0,false);
+        }
+
+        // Último recurso controlado: un poco más de margen físico, sin
+        // permitir nunca una carrocería diferente.
+        if(distinctBrandCount(candidates)<MIN_DISTINCT_BRANDS){
+            candidates=buildSimilarCandidates(reference,70.0,TOP_POOL,referenceYear,minYear,15.0,10.0,15.0,false);
         }
 
         Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
@@ -453,7 +473,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
-    private List<Scored> buildSimilarCandidates(Vehicle reference,double maxPricePercent,int topPool,int referenceYear,int minYear){
+
+    private List<Scored> buildSimilarCandidates(Vehicle reference,double maxPricePercent,int topPool,
+            int referenceYear,int minYear,double lengthTolerance,double widthTolerance,
+            double heightTolerance,boolean requireSegment){
         List<Scored> all=new ArrayList<>();
         for(int targetYear=referenceYear;targetYear>=minYear;targetYear--){
             List<Scored> batch=new ArrayList<>();
@@ -461,8 +484,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(v==reference)continue;
                 if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
                 if(referenceYear>0&&v.year!=targetYear)continue;
-                if(!sameVehicleClass(reference,v))continue;
-                if(!inCompetitiveZone(reference,v,maxPricePercent))continue;
+                if(!sameBodyStyle(reference,v))continue;
+                if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;
+                if(requireSegment&&!sameSegmentCompatible(reference,v))continue;
+                if(!priceWithin(reference,v,maxPricePercent))continue;
 
                 double technicalDistance=similarity(reference,v);
                 technicalDistance=Math.max(0,technicalDistance-dcChargingSimilarityBonus(reference,v));
@@ -489,8 +514,39 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return brands.size();
     }
 
+    private boolean sameBodyStyle(Vehicle a,Vehicle b){
+        if(a==null||b==null)return false;
+        String ba=normalizeBodyStyle(a.bodyStyle);
+        String bb=normalizeBodyStyle(b.bodyStyle);
+        if(ba.isEmpty()||bb.isEmpty())return false;
+        return ba.equals(bb)||(isSuvLike(ba)&&isSuvLike(bb));
+    }
 
+    private boolean sameSegmentCompatible(Vehicle a,Vehicle b){
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        if(sa.isEmpty()||sb.isEmpty())return false;
+        return sa.equals(sb)||(isSuvLike(a.bodyStyle)&&isSuvLike(b.bodyStyle));
+    }
 
+    private boolean samePhysicalClass(Vehicle a,Vehicle b,double lengthTolerance,double widthTolerance,double heightTolerance){
+        if(a==null||b==null||a.lengthMm<=0||b.lengthMm<=0||
+           a.widthMm<=0||b.widthMm<=0||a.heightMm<=0||b.heightMm<=0)return false;
+        double lengthDiff=Math.abs(a.lengthMm-b.lengthMm)/Math.max(a.lengthMm,b.lengthMm);
+        double widthDiff=Math.abs(a.widthMm-b.widthMm)/Math.max(a.widthMm,b.widthMm);
+        double heightDiff=Math.abs(a.heightMm-b.heightMm)/Math.max(a.heightMm,b.heightMm);
+        return lengthDiff<=lengthTolerance/100.0
+            &&widthDiff<=widthTolerance/100.0
+            &&heightDiff<=heightTolerance/100.0;
+    }
+
+    private boolean priceWithin(Vehicle a,Vehicle b,double maxPricePercent){
+        if(a==null||b==null)return false;
+        if(a.price<=0||b.price<=0)return true;
+        double referencePrice=Math.max(a.price,b.price);
+        double priceRatio=Math.abs(a.price-b.price)/referencePrice;
+        return priceRatio<=maxPricePercent/100.0;
+    }
 
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
@@ -819,42 +875,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return true;
     }
 
+    /**
+     * Compatibilidad histórica mantenida para cualquier llamada futura.
+     * La lógica activa de candidatos usa los filtros escalonados de showSimilar().
+     */
     private boolean sameVehicleClass(Vehicle a,Vehicle b){
-        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
-        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
-        String ba=normalizeBodyStyle(a.bodyStyle);
-        String bb=normalizeBodyStyle(b.bodyStyle);
-        if(sa.isEmpty()||sb.isEmpty()||ba.isEmpty()||bb.isEmpty())return false;
-
-        // 1) La carrocería es el primer filtro: SUV y crossover son equivalentes.
-        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb)))return false;
-
-        // 2) La clase física siempre debe ser compatible.
-        // Antes, dos coches con el mismo código de segmento podían saltarse
-        // este filtro aunque sus dimensiones fueran muy diferentes.
-        if(!samePhysicalClass(a,b))return false;
-
-        // 3) El segmento aporta contexto, pero no debe bloquear a rivales reales
-        // cuando Gaia utiliza códigos distintos para SUV/crossover.
-        if(sa.equals(sb))return true;
-        return isSuvLike(ba)&&isSuvLike(bb);
+        return sameBodyStyle(a,b)
+            &&samePhysicalClass(a,b,8.0,5.0,8.0)
+            &&sameSegmentCompatible(a,b);
     }
 
     private boolean samePhysicalClass(Vehicle a,Vehicle b){
-        if(a.lengthMm<=0||b.lengthMm<=0||
-           a.widthMm<=0||b.widthMm<=0||
-           a.heightMm<=0||b.heightMm<=0)return false;
-
-        // Este filtro define la clase física real del vehículo y no la
-        // similitud técnica. Por eso aquí usamos la diferencia relativa
-        // directa y no relativeDistance(), cuya curva tanh nunca supera 1.
-        double lengthDiff=Math.abs(a.lengthMm-b.lengthMm)/Math.max(a.lengthMm,b.lengthMm);
-        double widthDiff=Math.abs(a.widthMm-b.widthMm)/Math.max(a.widthMm,b.widthMm);
-        double heightDiff=Math.abs(a.heightMm-b.heightMm)/Math.max(a.heightMm,b.heightMm);
-
-        return lengthDiff<=0.08
-            &&widthDiff<=0.05
-            &&heightDiff<=0.08;
+        return samePhysicalClass(a,b,8.0,5.0,8.0);
     }
 
     private void loadVehicles(){
