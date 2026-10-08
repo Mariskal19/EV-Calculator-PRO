@@ -389,31 +389,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void showSimilar(){
         results.removeAllViews();
-        referenceResults.removeAllViews();
-        referenceResults.setVisibility(View.VISIBLE);
-        selectedTitle.setText(LanguageManager.t(this,"Coche de referencia"));
-        resultsTitle.setVisibility(View.VISIBLE);
-        results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
+        if(reference==null||vehicles==null||vehicles.isEmpty())return;
 
-        LinearLayout refCard=card();
-        refCard.setPadding(dp(16),dp(10),dp(16),dp(10));
-        referenceResults.addView(selectedTitle,new LinearLayout.LayoutParams(-1,dp(34)));
-
-        TextView refLabel=tv("Coche de referencia",12,blue);
-        refLabel.setTypeface(null,Typeface.BOLD);
-        refCard.addView(refLabel,new LinearLayout.LayoutParams(-1,dp(22)));
-
-        TextView refName=tv(reference.make+" "+reference.model,17,text());
-        refName.setTypeface(null,Typeface.BOLD);
-        refCard.addView(refName,new LinearLayout.LayoutParams(-1,dp(29)));
-
-        TextView refInfo=tv(reference.version+"  ·  "+reference.year+"  ·  "+specLine(reference),12,sub());
-        refInfo.setLineSpacing(0,1.05f);
-        refCard.addView(refInfo,new LinearLayout.LayoutParams(-1,dp(42)));
-        referenceResults.addView(refCard,marginLp(-1,-2,0,0,0,dp(10)));
-
-        // ALGORITMO DESDE CERO
-        // Universo amplio -> Top 100 por competencia -> una marca -> orden final 60/40.
         final int COMPETITOR_POOL=100;
         final int FINAL_TOP=10;
         int referenceYear=reference.year;
@@ -428,17 +405,15 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(!bestByMake.containsKey(make))bestByMake.put(make,s);
             if(bestByMake.size()>=FINAL_TOP)break;
         }
-        List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
 
+        List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
         Collections.sort(uniqueBrands,(a,b)->{
             double scoreA=a.competitionScore*.60+a.technicalScore*.40;
             double scoreB=b.competitionScore*.60+b.technicalScore*.40;
-            int c=Double.compare(scoreA,scoreB);
-            if(c!=0)return c;
-            c=Double.compare(a.competitionScore,b.competitionScore);
-            if(c!=0)return c;
-            c=Integer.compare(Math.abs(a.v.year-referenceYear),Math.abs(b.v.year-referenceYear));
-            if(c!=0)return c;
+            int cmp=Double.compare(scoreA,scoreB);
+            if(cmp!=0)return cmp;
+            cmp=Double.compare(a.competitionScore,b.competitionScore);
+            if(cmp!=0)return cmp;
             return Integer.compare(b.v.year,a.v.year);
         });
 
@@ -447,23 +422,27 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
     }
 
-    // Genera el universo de competencia sin filtros rígidos de precio, segmento o dimensiones.
-    private List<Scored> buildCompetitionCandidates(Vehicle reference,int topPool,
-            int referenceYear,int minYear){
+    /** FASE 1: competencia pura. La similitud técnica no decide quién entra. */
+    private List<Scored> buildCompetitionCandidates(Vehicle reference,double maxPricePercent,int topPool,
+            int referenceYear,int minYear,double lengthTolerance,double widthTolerance,double heightTolerance,boolean requireSegment){
         List<Scored> all=new ArrayList<>();
         for(Vehicle v:vehicles){
             if(v==reference)continue;
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
             if(referenceYear>0&&(v.year>referenceYear||v.year<minYear))continue;
+            if(!sameBodyStyle(reference,v))continue;
+            if(!samePhysicalClass(reference,v,lengthTolerance,widthTolerance,heightTolerance))continue;
+            if(requireSegment&&!sameSegmentCompatible(reference,v))continue;
+            if(!priceWithin(reference,v,maxPricePercent))continue;
             double competition=competitionDistance(reference,v);
             double technical=similarity(reference,v);
-            if(Double.isFinite(competition)&&Double.isFinite(technical))
-                all.add(new Scored(v,competition,technical));
+            // Segundo filtro: además de parecerse al referente, se premian
+            // las ventajas objetivas del rival frente al propio referente.
+            technical=Math.max(0,technical-dcChargingSimilarityBonus(reference,v)-referenceAdvantageBonus(reference,v));
+            if(Double.isFinite(competition)&&Double.isFinite(technical))all.add(new Scored(v,competition,technical));
         }
         Collections.sort(all,(x,y)->{
             int c=Double.compare(x.competitionScore,y.competitionScore);
-            if(c!=0)return c;
-            c=Double.compare(x.technicalScore,y.technicalScore);
             if(c!=0)return c;
             c=Integer.compare(Math.abs(x.v.year-referenceYear),Math.abs(y.v.year-referenceYear));
             if(c!=0)return c;
@@ -471,7 +450,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         });
         return new ArrayList<>(all.subList(0,Math.min(topPool,all.size())));
     }
-
     private int distinctBrandCount(List<Scored> scored){
         Set<String> brands=new HashSet<>();
         for(Scored s:scored){
@@ -518,8 +496,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
-        // El Top 10 ya está seleccionado por competencia pura.
-        // El orden y el porcentaje mostrado usan 60% competencia + 40% características.
+        // El Top 10 ya está seleccionado por competencia.
+        // El orden y el porcentaje mostrado usan 70% competencia + 30% características.
         double finalScore=s.competitionScore*.60+s.technicalScore*.40;
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
 
@@ -590,10 +568,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      *
      * Se basa únicamente en variables que definen si dos coches se disputan
      * realmente el mismo comprador:
-     * - precio: 30%
-     * - tamaño físico: 30%
-     * - carrocería: 20%
-     * - segmento: 20%
+     * - carrocería: 25%
+     * - tamaño físico: 35%
+     * - precio: 25%
+     * - segmento: 15%
      *
      * SUV y crossover son equivalentes. En SUV/crossover, una diferencia de
      * segmento del catálogo no elimina al rival, pero sí aporta una pequeña
@@ -602,27 +580,25 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     /**
      * Distancia competitiva normalizada: 0 = rival directo, 1 = poco competitivo.
      *
-     * La competencia pura mide únicamente si dos coches se disputan el mismo
-     * tipo de comprador. Por eso se basa en cuatro factores:
-     * - precio: 30%
-     * - tamaño físico: 30%
-     * - carrocería: 20%
-     * - segmento: 20%
+     * La competencia pesa más que la similitud técnica. Además de carrocería,
+     * tamaño, precio y segmento, incorporamos el posicionamiento de prestaciones.
      *
-     * Las prestaciones NO forman parte de la competencia pura. Se valoran
-     * posteriormente dentro del 40% de características del ranking final.
-     */
-    /**
-     * COMPETENCIA PURA: precio 35% · tamaño 30% · carrocería 20% · segmento 15%.
-     * Todo es continuo: no hay filtros rígidos que hagan desaparecer rivales naturales.
+     * Importante: el bloque de prestaciones es DIRECCIONAL:
+     * - si el candidato rinde peor que el referente, se penaliza;
+     * - si rinde igual o mejor, no se penaliza por esa variable.
+     *
+     * Esto evita el error de considerar al Model Y menos competidor del G6
+     * simplemente por tener más potencia, mejor aceleración o mayor autonomía.
      */
     private double competitionDistance(Vehicle a,Vehicle b){
         if(a==null||b==null)return Double.POSITIVE_INFINITY;
         double sum=0,weight=0,d;
+
         d=commercialPriceDistance(a.price,b.price); if(d>=0){sum+=d*.35;weight+=.35;}
         d=physicalCompetitionDistance(a,b); if(d>=0){sum+=d*.30;weight+=.30;}
         d=bodyCompetitionDistance(a.bodyStyle,b.bodyStyle); if(d>=0){sum+=d*.20;weight+=.20;}
         d=segmentCompetitionDistance(a.segment,b.segment,a.bodyStyle,b.bodyStyle); if(d>=0){sum+=d*.15;weight+=.15;}
+
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
     }
 
@@ -685,9 +661,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     /**
-     * Posicionamiento de prestaciones para la similitud técnica.
-     * Este bloque ya no participa en la competencia pura; se utiliza después,
-     * junto con el resto de características, en el ranking final 60/40.
+     * Posicionamiento de prestaciones dentro de la competencia.
+     *
+     * Se penaliza únicamente cuando el candidato queda por debajo del
+     * referente. Un rival superior en una variable no recibe castigo.
+     *
+     * Potencia 20%, 0-100 20%, WLTP 25%, consumo 15%, carga 10-80 20%. Total = 100%.
      */
     private double performanceCompetitionDistance(Vehicle reference,Vehicle candidate){
         double sum=0,weight=0,d;
@@ -731,10 +710,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return Math.tanh(worseRatio/tolerance);
     }
 
-    /**
-     * CARACTERÍSTICAS: autonomía 15% · batería 10% · consumo 10% · potencia 10% ·
-     * maletero 10% · dimensiones 15% · 0-100 8% · DC 7% · 10-80 10% · precio 5%.
-     */
     private double similarity(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
         d=relativeDistance(a.wltpKm,b.wltpKm,.25); if(d>=0){sum+=d*.15;weight+=.15;}
@@ -948,3 +923,103 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      */
     private boolean sameVehicleClass(Vehicle a,Vehicle b){
         return sameBodyStyle(a,b)
+            &&samePhysicalClass(a,b,8.0,5.0,8.0)
+            &&sameSegmentCompatible(a,b);
+    }
+
+    private boolean samePhysicalClass(Vehicle a,Vehicle b){
+        return samePhysicalClass(a,b,8.0,5.0,8.0);
+    }
+
+    private void loadVehicles(){
+        try(InputStream in=getAssets().open("catalog_es_2024_2026.json");BufferedReader r=new BufferedReader(new InputStreamReader(in))){
+            StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);
+            JSONArray a=new JSONObject(sb.toString()).optJSONArray("vehicles");if(a==null)throw new IllegalStateException("vehicles missing");
+            for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o,false));}
+        }catch(Exception e){throw new IllegalStateException("No se ha podido cargar el catálogo",e);}
+        Set<String> keys=new HashSet<>();for(Vehicle v:vehicles)keys.add(logicalKey(v));
+        JSONArray remote=RemoteCatalogManager.loadCached(this);
+        addRemote(remote,keys);
+        RemoteCatalogManager.refreshIfDue(this,additions->{if(additions==null)return;int before=vehicles.size();addRemote(additions,keys);if(vehicles.size()!=before)showReferenceCandidates();});
+        Collections.sort(vehicles,(a,b)->{int c=a.make.compareToIgnoreCase(b.make);if(c!=0)return c;return a.model.compareToIgnoreCase(b.model);});
+    }
+    private void addRemote(JSONArray a,Set<String> keys){
+        if(a==null)return;
+        for(int i=0;i<a.length();i++)try{
+            JSONObject o=a.optJSONObject(i);if(o==null)continue;Vehicle v=new Vehicle(o,true);
+            if(v.year<2024||v.year>2026||v.make.isEmpty()||v.model.isEmpty()||v.version.isEmpty()||v.batteryKwh<=0||v.wltpKm<=0||v.powerKw<=0||v.consumption<=0)continue;
+            if(v.consumption<8||v.consumption>35||v.wltpKm>1000||v.usableBatteryKwh>v.batteryKwh+.5)continue;
+            if(keys.add(logicalKey(v)))vehicles.add(v);
+        }catch(Exception ignored){}
+    }
+
+    private String effectiveBatteryKey(Vehicle v){
+        if(v.batteryKwh>0)return String.format(Locale.US,"%.1f",v.batteryKwh);
+        String s=v.version==null?"":v.version.trim();
+        java.util.regex.Matcher m=java.util.regex.Pattern.compile("^(\\d+(?:\\.\\d+)?)\\s*kwh\\b",java.util.regex.Pattern.CASE_INSENSITIVE).matcher(s);
+        return m.find()?m.group(1):"0";
+    }
+    private String normalizedVersion(Vehicle v){
+        String ver=v.version==null?"":v.version.trim().toLowerCase(Locale.ROOT);
+        ver=ver.replaceAll("^\\d+(?:\\.\\d+)?\\s*kwh\\s*","");
+        ver=ver.replaceAll("\\s+"," ").trim();
+        return ver;
+    }
+    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
+    private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
+    private String market(String s){return s==null||s.isEmpty()?"🌐":s;}
+    private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmtCv(v.powerKw*1.35962)+" CV":"—";return bat+"  ·  "+range+"  ·  "+p;}
+    private String cleanVersion(String version){String s=version==null?"":version.trim();s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kwh\\b","");s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kw\\b","");s=s.replaceAll("\\s{2,}"," ").replaceAll("\\s*[·-]\\s*$","").trim();return s;}
+    private String fmt(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(1);return f.format(n);} private String fmtCv(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(0);f.setRoundingMode(java.math.RoundingMode.HALF_UP);return f.format(n);}
+
+    private void addSimilarToComparison(Vehicle v){
+        if(v==null||reference==null)return;
+        SharedPreferences p=getSharedPreferences(PREFS,MODE_PRIVATE);
+        ArrayList<String> ids=new ArrayList<>();
+        ArrayList<String> keys=new ArrayList<>();
+        if(reference.id!=null&&!reference.id.trim().isEmpty())ids.add(reference.id.trim());
+        if(v.id!=null&&!v.id.trim().isEmpty()&&!ids.contains(v.id.trim()))ids.add(v.id.trim());
+        String refKey=logicalKey(reference);
+        String selectedKey=logicalKey(v);
+        if(!refKey.isEmpty())keys.add(refKey);
+        if(!selectedKey.isEmpty()&&!keys.contains(selectedKey))keys.add(selectedKey);
+        p.edit().putBoolean("compare_selection_initialized",true)
+            .putString("compare_vehicle_ids_ordered",android.text.TextUtils.join(",",ids))
+            .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))
+            .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
+        Intent back=new Intent(this,CompararCochesActivity.class);
+        back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(back);
+    }
+
+    private void openDetail(Vehicle v){
+        Intent i=new Intent(this,CarDetailActivity.class);
+        i.putExtra("vehicle_id",v.id);
+        i.putExtra("logical_key",logicalKey(v));
+        i.putExtra("similar_flow",true);
+        i.putExtra("reference_vehicle_id",reference==null?null:reference.id);
+        i.putExtra("reference_logical_key",reference==null?null:logicalKey(reference));
+        i.putExtra("make",v.make);i.putExtra("model",v.model);i.putExtra("version",v.version);i.putExtra("market",v.market);i.putExtra("year",String.valueOf(v.year));
+        i.putExtra("price",v.price);i.putExtra("batteryKwh",v.batteryKwh);i.putExtra("usableBatteryKwh",v.usableBatteryKwh);i.putExtra("batteryType",v.batteryType);i.putExtra("wltpKm",v.wltpKm);i.putExtra("consumption",v.consumption);i.putExtra("powerKw",v.powerKw);i.putExtra("drivetrain",v.drivetrain);i.putExtra("acKw",v.acKw);i.putExtra("dcKw",v.dcKw);i.putExtra("chargeMin",v.chargeMin);i.putExtra("acc",v.acc);i.putExtra("trunk",v.trunk);i.putExtra("weight",v.weight);i.putExtra("lengthMm",v.lengthMm);i.putExtra("widthMm",v.widthMm);i.putExtra("heightMm",v.heightMm);i.putExtra("remoteSource",v.remoteSource);
+        startActivity(i);
+    }
+
+    static class Scored{Vehicle v;double competitionScore;double technicalScore;Scored(Vehicle v,double competitionScore,double technicalScore){this.v=v;this.competitionScore=competitionScore;this.technicalScore=technicalScore;}}
+    static class Vehicle{
+        String id,make,model,version,batteryType,drivetrain,market,bodyStyle,segment;int year;boolean remoteSource;
+        double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
+        Vehicle(JSONObject o,boolean remote){
+            remoteSource=remote;make=o.optString("make",o.optString("brand",""));model=o.optString("model","");version=o.optString("version",o.optString("trim",""));
+            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);
+            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(Locale.ROOT);
+            segment=o.optString("segment","").trim().toUpperCase(Locale.ROOT);
+            year=o.optInt("year",o.optInt("modelYear",0));price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",o.optDouble("battery_capacity_kwh",0));usableBatteryKwh=o.optDouble("usableBatteryKwh",0);
+            wltpKm=o.optDouble("wltpKm",o.optDouble("rangeKm",0));consumption=o.optDouble("consumption",o.optDouble("consumptionKwh100",0));powerKw=o.optDouble("powerKw",o.optDouble("power_kW",0));
+            acKw=o.optDouble("acKw",o.optDouble("acChargeKw",0));dcKw=o.optDouble("dcKw",o.optDouble("dcChargeKw",0));chargeMin=o.optDouble("charge10to80Min",o.optDouble("chargeMin",0));
+            acc=o.optDouble("acceleration0to100Sec",o.optDouble("acc",0));trunk=o.optDouble("trunkLiters",o.optDouble("trunk",0));weight=o.optDouble("weightKg",o.optDouble("weight",0));
+            lengthMm=o.optDouble("lengthMm",o.optDouble("length",0));widthMm=o.optDouble("widthMm",o.optDouble("width",0));heightMm=o.optDouble("heightMm",o.optDouble("height",0));
+            id=o.optString("id","");if(id.isEmpty())id="catalog-"+Integer.toHexString(logicalHash());
+        }
+        private int logicalHash(){return(make+"|"+model+"|"+market+"|"+year+"|"+batteryKwh+"|"+version).toLowerCase(Locale.ROOT).hashCode();}
+    }
+}
