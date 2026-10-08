@@ -398,24 +398,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         List<Scored> competitors=buildCompetitionCandidates(reference,COMPETITOR_POOL,referenceYear,minYear);
 
+        // Una marca no se representa por el primer coche que aparece en
+        // competencia pura. Primero dejamos entrar un pool amplio por competencia
+        // y, dentro de cada marca, elegimos el modelo que mejor equilibra
+        // competencia (60%) y características (40%).
         Map<String,Scored> bestByMake=new LinkedHashMap<>();
         for(Scored s:competitors){
             String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
             if(make.isEmpty())continue;
-            if(!bestByMake.containsKey(make))bestByMake.put(make,s);
-            if(bestByMake.size()>=FINAL_TOP)break;
+
+            Scored current=bestByMake.get(make);
+            if(current==null||compareFinalScore(s,current)<0){
+                bestByMake.put(make,s);
+            }
         }
 
         List<Scored> uniqueBrands=new ArrayList<>(bestByMake.values());
-        Collections.sort(uniqueBrands,(a,b)->{
-            double scoreA=a.competitionScore*.60+a.technicalScore*.40;
-            double scoreB=b.competitionScore*.60+b.technicalScore*.40;
-            int cmp=Double.compare(scoreA,scoreB);
-            if(cmp!=0)return cmp;
-            cmp=Double.compare(a.competitionScore,b.competitionScore);
-            if(cmp!=0)return cmp;
-            return Integer.compare(b.v.year,a.v.year);
-        });
+        Collections.sort(uniqueBrands,(a,b)->compareFinalScore(a,b));
 
         int n=Math.min(FINAL_TOP,uniqueBrands.size());
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
@@ -492,6 +491,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         double referencePrice=Math.max(a.price,b.price);
         double priceRatio=Math.abs(a.price-b.price)/referencePrice;
         return priceRatio<=maxPricePercent/100.0;
+    }
+
+    private int compareFinalScore(Scored a,Scored b){
+        double scoreA=a.competitionScore*.60+a.technicalScore*.40;
+        double scoreB=b.competitionScore*.60+b.technicalScore*.40;
+        int cmp=Double.compare(scoreA,scoreB);
+        if(cmp!=0)return cmp;
+        cmp=Double.compare(a.competitionScore,b.competitionScore);
+        if(cmp!=0)return cmp;
+        cmp=Double.compare(a.technicalScore,b.technicalScore);
+        if(cmp!=0)return cmp;
+        return Integer.compare(b.v.year,a.v.year);
     }
 
     private void addSimilarCard(Scored s,int rank){
