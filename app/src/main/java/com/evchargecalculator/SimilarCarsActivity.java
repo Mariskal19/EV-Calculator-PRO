@@ -447,7 +447,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(candidates.size()>=TOP_POOL)break;
         }
 
-        Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
+        // El ranking SIEMPRE usa la puntuación interna completa (double), sin redondear.\n        // El redondeo se aplica únicamente al porcentaje que se muestra en pantalla.\n        Collections.sort(candidates,(x,y)->Double.compare(x.score,y.score));
         int poolSize=Math.min(TOP_POOL,candidates.size());
         List<Scored> top20=new ArrayList<>(candidates.subList(0,poolSize));
 
@@ -469,7 +469,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
-        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
+        // Solo para visualización: primero se ordena por s.score completo y después se redondea.\n        int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-s.score*100)));
 
         LinearLayout card=card();
         card.setPadding(dp(16),dp(9),dp(16),dp(9));
