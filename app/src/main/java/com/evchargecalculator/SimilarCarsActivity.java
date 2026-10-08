@@ -658,7 +658,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 if(gap==2)return .35;
                 return .50;
             }
-            if(dx<0||dy<0)return .20;
+            if(dx<0||dy<0)return -1;
         }
         return .70;
     }
