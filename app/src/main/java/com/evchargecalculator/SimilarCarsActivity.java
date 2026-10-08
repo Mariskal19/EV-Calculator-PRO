@@ -559,8 +559,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
-        // El Top 10 ya está seleccionado por competencia.
-        // El orden y el porcentaje mostrado usan 70% competencia + 30% características.
+        // El Top 10 ya está seleccionado por competencia pura.
+        // El orden y el porcentaje mostrado usan 60% competencia + 40% características.
         double finalScore=s.competitionScore*.60+s.technicalScore*.40;
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
 
@@ -631,10 +631,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      *
      * Se basa únicamente en variables que definen si dos coches se disputan
      * realmente el mismo comprador:
-     * - carrocería: 25%
-     * - tamaño físico: 35%
-     * - precio: 25%
-     * - segmento: 15%
+     * - precio: 30%
+     * - tamaño físico: 30%
+     * - carrocería: 20%
+     * - segmento: 20%
      *
      * SUV y crossover son equivalentes. En SUV/crossover, una diferencia de
      * segmento del catálogo no elimina al rival, pero sí aporta una pequeña
@@ -643,46 +643,40 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     /**
      * Distancia competitiva normalizada: 0 = rival directo, 1 = poco competitivo.
      *
-     * La competencia pesa más que la similitud técnica. Además de carrocería,
-     * tamaño, precio y segmento, incorporamos el posicionamiento de prestaciones.
+     * La competencia pura mide únicamente si dos coches se disputan el mismo
+     * tipo de comprador. Por eso se basa en cuatro factores:
+     * - precio: 30%
+     * - tamaño físico: 30%
+     * - carrocería: 20%
+     * - segmento: 20%
      *
-     * Importante: el bloque de prestaciones es DIRECCIONAL:
-     * - si el candidato rinde peor que el referente, se penaliza;
-     * - si rinde igual o mejor, no se penaliza por esa variable.
-     *
-     * Esto evita el error de considerar al Model Y menos competidor del G6
-     * simplemente por tener más potencia, mejor aceleración o mayor autonomía.
+     * Las prestaciones NO forman parte de la competencia pura. Se valoran
+     * posteriormente dentro del 40% de características del ranking final.
      */
     private double competitionDistance(Vehicle a,Vehicle b){
         if(a==null||b==null)return Double.POSITIVE_INFINITY;
 
         double sum=0,weight=0,d;
 
-        d=bodyStyleDistance(a,b);
-        if(d>=0){sum+=d*.20;weight+=.20;}
+        d=relativeDistance(a.price,b.price,.20);
+        if(d>=0){sum+=d*.30;weight+=.30;}
 
         d=dimensionDistance(a,b);
         if(d>=0){sum+=d*.30;weight+=.30;}
 
-        d=relativeDistance(a.price,b.price,.20);
+        d=bodyStyleDistance(a,b);
         if(d>=0){sum+=d*.20;weight+=.20;}
 
         d=segmentDistance(a,b);
-        if(d>=0){sum+=d*.10;weight+=.10;}
-
-        d=performanceCompetitionDistance(a,b);
         if(d>=0){sum+=d*.20;weight+=.20;}
 
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
     }
 
     /**
-     * Posicionamiento de prestaciones dentro de la competencia.
-     *
-     * Se penaliza únicamente cuando el candidato queda por debajo del
-     * referente. Un rival superior en una variable no recibe castigo.
-     *
-     * Potencia 20%, 0-100 20%, WLTP 25%, consumo 15%, carga 10-80 20%. Total = 100%.
+     * Posicionamiento de prestaciones para la similitud técnica.
+     * Este bloque ya no participa en la competencia pura; se utiliza después,
+     * junto con el resto de características, en el ranking final 60/40.
      */
     private double performanceCompetitionDistance(Vehicle reference,Vehicle candidate){
         double sum=0,weight=0,d;
