@@ -569,6 +569,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         TextView name=tv(v.make+" "+v.model,17,text());
         name.setTypeface(null,Typeface.BOLD);
         name.setPadding(dp(10),0,dp(6),0);
+        name.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
         name.setMaxLines(2);
         name.setEllipsize(android.text.TextUtils.TruncateAt.END);
         top.addView(name,new LinearLayout.LayoutParams(0,dp(42),1));
