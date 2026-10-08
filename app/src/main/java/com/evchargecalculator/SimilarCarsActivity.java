@@ -644,13 +644,21 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String y=b==null?"":b.trim().toUpperCase(Locale.ROOT);
         if(x.isEmpty()||y.isEmpty())return -1;
         if(x.equals(y))return 0;
+
+        // Algunos registros del catálogo usan códigos de segmento que no son
+        // comparables entre sí (por ejemplo C frente a J). En SUV/crossover no
+        // tratamos un código desconocido como una distancia enorme: el tamaño
+        // físico ya se mide por separado y es una señal mucho más fiable del
+        // espacio de mercado que pretende representar el coche.
         if(isSuvLike(bodyA)&&isSuvLike(bodyB)){
             int dx=segmentRank(x),dy=segmentRank(y);
             if(dx>=0&&dy>=0){
                 int gap=Math.abs(dx-dy);
                 if(gap==1)return .18;
                 if(gap==2)return .35;
+                return .50;
             }
+            if(dx<0||dy<0)return .20;
         }
         return .70;
     }
