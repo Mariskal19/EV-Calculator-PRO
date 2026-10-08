@@ -407,8 +407,15 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
             double competition=competitionDistance(reference,v);
             double technical=similarity(reference,v);
+
+            // Segundo filtro: la similitud técnica se mantiene como base,
+            // pero una ventaja objetiva frente al referente debe mejorar el
+            // orden. La bonificación nunca crea un competidor: solo ordena
+            // mejor a quien ofrece algo objetivamente superior.
             if(Double.isFinite(competition)&&Double.isFinite(technical)){
-                competitors.add(new Scored(v,competition,technical));
+                double advantage=referenceAdvantageBonus(reference,v);
+                double adjustedTechnical=Math.max(0,technical-advantage);
+                competitors.add(new Scored(v,competition,adjustedTechnical));
             }
         }
 
