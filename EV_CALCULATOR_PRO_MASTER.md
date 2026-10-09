@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 08/10/2026 (cierre y validación del algoritmo de coches similares y stable probado por el usuario).
+> Última actualización: 09/10/2026 (versión de desarrollo 1.0.5, correcciones de coches similares y limpieza de documentación).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -12,9 +12,9 @@
 - **Repositorio:** `Mariskal19/EV-Calculator-PRO`
 - **Rama de trabajo principal:** `main`
 - **Ramas stable:** no modificar sin autorización expresa.
-- **Versión publicada en Google Play:** 1.0.4 / versionCode 56.
-- **Versión candidata actual en `main`:** 1.0.4.1 / versionCode 58.
-- **Google Play:** 1.0.4 / versionCode 56 está publicada. La **1.0.4.1 / versionCode 58** ya fue cargada en Producción y se inició el lanzamiento completo; el envío 17 está **En revisión** junto con los cambios de ficha.
+- **Versión actual del código en `main`:** **1.0.5 / versionCode 59**, comprobado directamente en `app/build.gradle` el 09/10/2026.
+- **Parámetros Android actuales:** `applicationId` `com.evcalculatorpro`, `minSdk 23`, `targetSdk 36`, `compileSdk 36`; Java 17 y Gradle 9.6.0 en el workflow de build.
+- **Google Play:** último estado de publicación registrado en este documento: **1.0.4 / versionCode 56 publicada** el 02/10/2026. El envío posterior de 1.0.4.1 / 58 se documenta como histórico; comprobar Play Console antes de actualizar el estado público. La versión 1.0.5 de `main` no debe describirse como publicada sin esa comprobación.
 - **Catálogo:** objetivo operativo actual de **682 registros**.
 - **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
 - **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
@@ -25,10 +25,11 @@
 - **charge10to80Min:** **682/682 registros revisados**; **0 registros con dato DC 10–80% pendiente**. El único caso no aplicable queda documentado con charge10to80Applicable: false.
 - **dcKw:** auditoría global cerrada el **01/10/2026 21:48:32 +02:00**. Hay **681/681 registros aplicables** con `dcKw` informado; el único registro no aplicable es `MG MGS9 PHEV Comfort 2026`, que no dispone de carga rápida DC y mantiene `dcKw: null`. **0 pendientes aplicables**.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
-- **Objetivo histórico de 682:** sigue documentado como objetivo, pero el estado actual contiene 682 registros válidos y sin duplicados. No se deben eliminar 75 registros arbitrariamente: antes hay que identificar y aprobar qué subconjunto deja de formar parte del catálogo protegido/base.
+- **Estado del catálogo:** el último recuento auditado documentado es de 682 registros válidos, sin duplicados lógicos ni IDs duplicados. No reducir ni depurar registros del catálogo protegido sin identificar y aprobar previamente cada cambio.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
-- **Build publicado en Google Play:** **1.0.4 (versión 56)**. La versión 1.0.4.1/build 2062 fue verificada en APK como checkpoint técnico de catálogo, pero **no es la versión publicada en Producción**.
-- **APK/AAB:** build #2065 (run `37053413924`) terminó correctamente desde `main`; el endpoint de artefactos no devuelve artefactos, por lo que la descarga/verificación física del AAB aún queda pendiente.
+- **Último estado de Google Play registrado:** **1.0.4 (versionCode 56)** publicada; cualquier estado posterior debe confirmarse en Play Console.
+- **Build más reciente comprobado:** workflow Build EV Calculator PRO, run `37907456650`, resultado **success**, sobre el commit `fae8168e5c8b133d52f5ee58110c228cdaf5cfca` (09/10/2026). El código de ese estado declara `1.0.5 / versionCode 59`.
+- **Nota de artefactos:** el build correcto confirma compilación; no afirmar que se haya descargado o instalado manualmente el APK/AAB exacto si esa comprobación no se ha realizado.
 - **Stable:** no tocar.
 
 ---
@@ -265,9 +266,9 @@ SimilarCarsActivity ya contiene una primera versión de esta arquitectura:
 - sameVehicleClass() aplica carrocería y segmento/clase como **condiciones de entrada**, antes del ranking.
 - Los datos se cargan desde el catálogo protegido y posteriormente se incorporan las adiciones remotas mediante RemoteCatalogManager.
 
-La siguiente evolución pendiente no es volver a tocar pesos a ciegas, sino completar la **zona competitiva automática** (especialmente la relación precio/posicionamiento) sobre los candidatos que ya han pasado los filtros de carrocería y clase.
+El flujo activo ya aplica filtros obligatorios de carrocería, clase física y zona de precio antes del ranking. La puntuación final vigente combina **60 % competencia + 40 % características técnicas direccionales**. No reabrir el diseño de la zona competitiva ni cambiar los pesos sin una incidencia reproducible y una revisión de los valores internos.
 
-## Flujo definitivo de coches similares — 1.0.5
+## Flujo actual de coches similares — 1.0.5
 
 - **Coches** es ahora una sección independiente que ofrece dos funciones claramente separadas:
   1. **Comparar coches** → pantalla de comparación de hasta 3 vehículos.
@@ -513,7 +514,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Confirmar que el build validó el catálogo de `main` antes de compilar.
 - [ ] Verificación byte-level del catálogo dentro del APK/AAB (no expuesta por el endpoint de artefactos; el build sí pasó la validación del catálogo fuente).
 
-### Prioridad 3 — Release 1.0.4.1
+### Histórico — Release 1.0.4.1 (no es la versión actual de desarrollo)
 
 - [x] Confirmar `versionName = 1.0.4.1` en `app/build.gradle`.
 - [x] Confirmar `versionCode = 58` en `app/build.gradle`.
@@ -525,6 +526,14 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [x] Iniciar el lanzamiento completo de 1.0.4.1 en Producción.
 - [ ] Esperar la revisión/publicación de Google Play y verificar que 1.0.4.1 / 58 aparece disponible públicamente.
 - [x] Revisar Google Play: **Producción publicada con 1.0.4 / versionCode 56**.
+
+### Prioridad actual — coherencia de documentación y versión
+
+- [x] Confirmar `versionName = 1.0.5` y `versionCode = 59` en `app/build.gradle`.
+- [x] Actualizar README y MASTER para separar la versión de `main` del estado de Google Play.
+- [x] Corregir el estado de las incidencias del filtro de carrocería y de la etiqueta del coche de referencia.
+- [x] Confirmar build de `main` en success: run `37907456650`.
+- [ ] Confirmar en Play Console el estado actual de cualquier envío posterior a 1.0.4 / 56 antes de actualizar la sección de publicación.
 
 ---
 
@@ -885,7 +894,7 @@ Cuando se retome EV Calculator PRO:
 - **Rama activa de desarrollo:** `main`. Todo el trabajo activo de 1.0.5 debe continuar en `main`.
 - La rama histórica `develop/1.0.5` **ya no es la rama de desarrollo activa**. Se conserva temporalmente como referencia/backup histórico y no debe retomarse para continuar el desarrollo.
 - Ramas/checkpoints históricos `stable/pre-1.0.5-2026-10-05` y `stable/1.0.5-similar-cars`: no modificar salvo autorización expresa.
-- El trabajo de búsqueda, detalle y coches similares pertenece a **1.0.5**.
+- El trabajo de búsqueda, detalle y coches similares pertenece a **1.0.5**, que ya es la versión declarada por `main` (`versionCode 59`).
 - **Buscar coches similares → Detalle → Añadir a comparativa:** al pasar al comparador, el **coche de referencia siempre ocupa la primera posición** y el coche similar seleccionado ocupa la siguiente posición.
 - Al iniciar el flujo desde la búsqueda hacia el comparador, se limpia la selección previa y se reconstruye el comparador con **referencia primero + similar elegido después**.
 - **Búsqueda optimizada:** se mantienen cachés de campos normalizados por vehículo, normalización/tokenización única por consulta, cálculo único de puntuación por candidato, ordenación mediante puntuaciones cacheadas, debounce aproximado de 70 ms y cancelación de refrescos pendientes.
@@ -942,7 +951,7 @@ Cuando se retome EV Calculator PRO:
 
 - Se fija como **nuevo estado estable** el commit `5b5ed3c06fc6b359b1d549c7d8a5c0980f95f800` — `Refina ranking de rivales con distancia técnica direccional`.
 - El usuario ha probado la versión resultante en el dispositivo y confirma que **el resultado funciona muy bien**.
-- Este checkpoint sustituye como referencia algorítmica al estado anterior de 72/28: el **código activo actual usa 60 % competencia + 40 % características técnicas**.
+- Este checkpoint sustituyó el reparto experimental anterior de 72/28: el **código activo de la versión 1.0.5 usa 60 % competencia + 40 % características técnicas**.
 - La fase de competencia sigue determinando la proximidad comercial del rival; la segunda fase calcula una **distancia técnica direccional**.
 - La distancia técnica direccional **solo penaliza al candidato cuando es peor que el coche de referencia**. Si el candidato es mejor en una variable, esa variable no genera penalización.
 - Variables y pesos de la fase técnica actual:
@@ -981,10 +990,10 @@ Cuando se retome EV Calculator PRO:
 - Regla obligatoria: **si la referencia es SUV, solo se admiten SUV y crossover**; nunca berlinas, familiares, compactos, coupés ni monovolúmenes. SUV/crossover pueden ser compatibles entre sí. La carrocería/clase se filtra antes de competir por puntuación, por lo que ningún score técnico puede compensar una carrocería incompatible.
 - Se conserva el algoritmo de puntuación vigente; no se cambian pesos ni la fórmula técnica. El filtro existente también exige clase física compatible y aplica la zona de precio configurada.
 - Commit de código: `9036d2f1b4974b1fac9f390795e19fb3fcf737f2` — `fix: filtrar rivales por carrocería y clase antes del ranking`.
-- Estado: cambio enviado a `main`; pendiente de confirmar build automático y prueba en dispositivo. No declarar todavía la incidencia cerrada hasta verificar que el Model 3 desaparece y los SUV/crossover válidos ocupan los primeros puestos.
+- Estado: el usuario confirmó posteriormente que la incidencia quedó solucionada. El filtro obligatorio permanece aplicado antes del cálculo del ranking. Build de `main` comprobado en success el 09/10/2026; no se han modificado los pesos por esta corrección.
 
 
 ### 2026-10-09 — Unificar el formato del coche de referencia en Buscar coches similares
 - El selector mostraba cada coche con `pickerLabel()` (marca/modelo, año, versión normalizada y batería), pero al seleccionarlo reconstruía otra etiqueta con marca/modelo y versión sin normalizar, omitiendo año y batería.
 - La selección ahora reutiliza `pickerLabel()` y convierte el salto de línea en separadores, para que la referencia conserve los mismos datos y nombres que el resultado elegido en el buscador.
-- Commit de código: 7a3f955f437dc144eed904f0831a6e92d6c95a9d. Pendiente de compilación y prueba en dispositivo.
+- Commit de código: `7a3f955f437dc144eed904f0831a6e92d6c95a9d`. El usuario dio por solucionada la incidencia. El build posterior `37907456650` terminó en success sobre el commit de documentación `fae8168e5c8b133d52f5ee58110c228cdaf5cfca`.
