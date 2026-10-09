@@ -1005,3 +1005,13 @@ Cuando se retome EV Calculator PRO:
 - Se eliminó de `SimilarCarsActivity` el helper de bonificación DC no utilizado y su comentario obsoleto sobre el reparto 72/28; los comentarios activos describen ahora el reparto **60/40** como competencia + distancia técnica direccional.
 - Commits de documentación/código: `db169d8c327bcd7d2274b95e1d6787dbbe1d06e0`, `72e959f9a824a2996d62497a471cb4c28ca43174`, `4089e249f68cb6affeb241395bd5da74b7d0f6fb`, `e6d5f2f39c42d45328654fb644677de013766bdd`, `8206df73069106bbc3a684390c8a29fb964d7de6` y `8d872878b506eef0cf4eb28761b6d96605b5afef`.
 - Los builds disparados por estos commits deben revisarse en GitHub Actions antes de dar por validado el estado completo.
+
+
+## Checkpoint estable — 09/10/2026 a las 11:30
+
+- **Nombre de referencia:** `backup/stable-2026-10-09-1130`.
+- **Versión de código:** `1.0.5` / `versionCode 59`.
+- **Contenido incluido:** limpieza del README y MASTER, documentación del ranking de coches similares 60/40, filtros obligatorios de carrocería/clase y corrección de la etiqueta del coche de referencia; helper DC no utilizado eliminado.
+- **Último commit de documentación antes de registrar este checkpoint:** `3ed523ca5947399a621f443d56c1dba55808ddb2`.
+- **Validación:** las ejecuciones de build asociadas a las últimas modificaciones seguían en curso al registrar este checkpoint. El checkpoint guarda el estado del código y los documentos, pero no certifica un build final correcto ni una prueba en dispositivo.
+- **Protección:** esta rama es una referencia de recuperación; no modificarla ni sobrescribirla sin autorización expresa.
