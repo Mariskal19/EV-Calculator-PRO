@@ -27,12 +27,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     @Override protected int getBottomNavigationIndex(){ return 2; }
 
     private static final String PREFS="ev_charge_calculator";
+    private static final String KEY_LAST_REFERENCE="similar_cars_reference_logical";
+    private static final String KEY_LAST_MARKET="similar_cars_market";
     private boolean dark;
     private final List<Vehicle> vehicles=new ArrayList<>();
     private EditText search;
     private Spinner marketSpinner, yearSpinner, driveSpinner, batterySpinner;
     private LinearLayout results, referenceResults;
-    private TextView selectedTitle, resultsTitle;
+    private TextView selectedTitle, resultsTitle, referencePicker;
     private Vehicle reference;
 
     // Search optimization index.
@@ -68,6 +70,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         loadVehicles();
         build();
         EdgeToEdgeHelper.apply(this,dark);
+        restoreLastSearch();
     }
 
     private void build(){
@@ -119,6 +122,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         search.setVisibility(View.GONE);
 
         TextView picker=tv("🚗  Seleccionar coche del catálogo  ›",15,text());
+        referencePicker=picker;
         picker.setTypeface(null,Typeface.BOLD);
         picker.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
         picker.setPadding(dp(14),0,dp(14),0);
@@ -241,7 +245,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14));
         searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
 
-        final String defaultMarket=ms.contains("ES")?"ES":(ms.isEmpty()?"":ms.get(0));
+        SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);
+        String savedMarket=prefs.getString(KEY_LAST_MARKET,"ES");
+        final String defaultMarket=ms.contains(savedMarket)?savedMarket:(ms.contains("ES")?"ES":(ms.isEmpty()?"":ms.get(0)));
         int marketIndex=ms.indexOf(defaultMarket);
         if(marketIndex>=0)searchMarketSpinner.setSelection(marketIndex);
 
@@ -296,11 +302,15 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
             picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+            getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
             showSimilar();
         });
 
         searchMarketSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-            public void onItemSelected(AdapterView<?> p,View v,int a,long b){searchHandler.removeCallbacks(refresh);searchHandler.post(refresh);}
+            public void onItemSelected(AdapterView<?> p,View v,int position,long id){
+                if(position>=0&&position<ms.size())getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_LAST_MARKET,ms.get(position)).apply();
+                searchHandler.removeCallbacks(refresh);searchHandler.post(refresh);
+            }
             public void onNothingSelected(AdapterView<?> p){}
         });
 
@@ -379,6 +389,22 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(!ver.isEmpty()){if(second.length()>0)second.append(" · ");second.append(ver);}
         if(v.batteryKwh>0){if(second.length()>0)second.append(" · ");second.append(fmt(v.batteryKwh)).append(" kWh");}
         return first+"\n"+second;
+    }
+
+    private void restoreLastSearch(){
+        SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);
+        String savedKey=prefs.getString(KEY_LAST_REFERENCE,"");
+        if(savedKey==null||savedKey.trim().isEmpty())return;
+        for(Vehicle v:vehicles){
+            if(logicalKey(v).equals(savedKey)){
+                reference=v;
+                if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\\n"," · "));
+                showSimilar();
+                return;
+            }
+        }
+        // Si el coche ya no existe en el catálogo, olvidamos la selección obsoleta.
+        prefs.edit().remove(KEY_LAST_REFERENCE).apply();
     }
 
     private void showReferenceCandidates(){
@@ -1022,7 +1048,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Set<String> keys=new HashSet<>();for(Vehicle v:vehicles)keys.add(logicalKey(v));
         JSONArray remote=RemoteCatalogManager.loadCached(this);
         addRemote(remote,keys);
-        RemoteCatalogManager.refreshIfDue(this,additions->{if(additions==null)return;int before=vehicles.size();addRemote(additions,keys);if(vehicles.size()!=before)showReferenceCandidates();});
+        RemoteCatalogManager.refreshIfDue(this,additions->{if(additions==null)return;int before=vehicles.size();addRemote(additions,keys);if(vehicles.size()!=before){if(reference!=null)showSimilar();else showReferenceCandidates();}});
         Collections.sort(vehicles,(a,b)->{int c=a.make.compareToIgnoreCase(b.make);if(c!=0)return c;return a.model.compareToIgnoreCase(b.model);});
     }
     private void addRemote(JSONArray a,Set<String> keys){
