@@ -845,11 +845,19 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         }
 
         Collections.sort(all,(a,b)->{
-            // Prioriza primero las palabras que coinciden con marca+modelo.
-            // Así, al buscar "Model 3", sus versiones quedan agrupadas y el
-            // año se ordena de más reciente a más antiguo sin saltos causados
-            // por palabras coincidentes accidentalmente en la versión.
-            int c=Integer.compare(modelTokenMatchCount(b,nq),modelTokenMatchCount(a,nq));
+            // Si dos resultados pertenecen al mismo modelo exacto (misma marca
+            // y modelo normalizados), agruparlos por año descendente ANTES de
+            // puntuar versiones o coincidencias accesorias.
+            String modelA=searchIndex(a).makeModel;
+            String modelB=searchIndex(b).makeModel;
+            int c=0;
+            if(modelA.equals(modelB)){
+                c=Integer.compare(b.year,a.year);
+                if(c!=0)return c;
+            }
+            // Para modelos distintos, prioriza la coincidencia de términos
+            // con marca+modelo y después el año más reciente.
+            c=Integer.compare(modelTokenMatchCount(b,nq),modelTokenMatchCount(a,nq));
             if(c!=0)return c;
             c=Integer.compare(b.year,a.year);
             if(c!=0)return c;
