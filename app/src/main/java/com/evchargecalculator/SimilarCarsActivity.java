@@ -290,7 +290,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             Object tag=input.getTag();
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
-            picker.setText("✓  "+pickerLabel(v).replace("\\n"," · "));
+            picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
             showSimilar();
         });
 
