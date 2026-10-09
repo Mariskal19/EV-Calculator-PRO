@@ -43,7 +43,7 @@ public final class BottomNavigationHelper {
         activity.startActivity(i);
       }
     });
-    addItem(activity, bar, R.drawable.ic_nav_find_cars, "Buscar coches", 2, selected, dark, v -> {
+    addItem(activity, bar, R.drawable.ic_nav_find_cars, "Buscar", 2, selected, dark, v -> {
       if (selected != 2) {
         Intent i = new Intent(activity, SimilarCarsActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
