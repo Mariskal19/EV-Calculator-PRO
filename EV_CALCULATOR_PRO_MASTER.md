@@ -27,8 +27,7 @@
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
 - **Estado del catálogo:** el último recuento auditado documentado es de 682 registros válidos, sin duplicados lógicos ni IDs duplicados. No reducir ni depurar registros del catálogo protegido sin identificar y aprobar previamente cada cambio.
 - **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
-- **Último estado de Google Play registrado:** **1.0.4 (versionCode 56)** publicada; cualquier estado posterior debe confirmarse en Play Console.
-- **Build más reciente comprobado:** workflow Build EV Calculator PRO, run `37907456650`, resultado **success**, sobre el commit `fae8168e5c8b133d52f5ee58110c228cdaf5cfca` (09/10/2026). El código de ese estado declara `1.0.5 / versionCode 59`.
+- **Build más reciente comprobado antes de esta limpieza:** workflow Build EV Calculator PRO, run `37907456650`, resultado **success**, sobre el commit `fae8168e5c8b133d52f5ee58110c228cdaf5cfca` (09/10/2026). El código de ese estado declara `1.0.5 / versionCode 59`; los commits de esta limpieza disparan nuevas ejecuciones y deben revisarse por separado.
 - **Nota de artefactos:** el build correcto confirma compilación; no afirmar que se haya descargado o instalado manualmente el APK/AAB exacto si esa comprobación no se ha realizado.
 - **Stable:** no tocar.
 
@@ -235,19 +234,14 @@ La arquitectura acordada para el algoritmo es por capas:
 
 4. **Similitud técnica**
    - Sobre los candidatos elegibles se aplica el algoritmo técnico ponderado.
-   - Pesos actualmente acordados:
-     - Dimensiones: 23,64 %
-     - Autonomía WLTP: 12,90 %
-     - Maletero: 11,82 %
-     - Batería: 10,75 %
-     - Consumo: 9,67 %
-     - Potencia: 8,60 %
-     - Tiempo 10–80 %: 7,52 %
-     - Carga DC: 5,37 %
-     - Precio: 5,00 %
-     - 0–100 km/h: 3,22 %
-     - Tracción: 1,50 %
-     - Total: 100 %
+   - Pesos de la **fase técnica direccional activa**:
+     - Autonomía WLTP: **25 %**
+     - Potencia: **20 %**
+     - Aceleración 0–100 km/h: **20 %**
+     - Tiempo de carga 10–80 %: **20 %**
+     - Consumo: **15 %**
+     - Total: **100 %**
+   - Composición de la distancia de competencia: precio **35 %**, clase física/dimensiones **30 %**, carrocería **20 %** y segmento **15 %**. Los pesos se normalizan si algún dato no está disponible.
 
 **Comprobación real del catálogo en main (07/10/2026):**
 - 682 registros.
@@ -260,11 +254,14 @@ La comprobación confirma que el catálogo actual **sí dispone de los dos campo
 
 ## Estado actual de la implementación
 
-SimilarCarsActivity ya contiene una primera versión de esta arquitectura:
-- bodyStyleDistance() trata SUV/crossover como equivalentes.
-- segmentDistance() contempla el contexto de segmento.
-- sameVehicleClass() aplica carrocería y segmento/clase como **condiciones de entrada**, antes del ranking.
-- Los datos se cargan desde el catálogo protegido y posteriormente se incorporan las adiciones remotas mediante RemoteCatalogManager.
+Implementación activa en `SimilarCarsActivity`:
+- El flujo de candidatos aplica filtros obligatorios de año/marca, carrocería compatible, clase física y zona de precio antes de puntuar.
+- SUV y crossover se admiten como compatibles entre sí; una berlina no puede entrar como rival de un SUV por obtener buena puntuación técnica.
+- La distancia de competencia combina precio, dimensiones/clase física, carrocería y segmento.
+- La fase técnica es direccional: solo penaliza al candidato cuando queda por debajo del referente en potencia, aceleración, autonomía, consumo o tiempo 10–80 %.
+- La combinación final activa es **60 % competencia + 40 % técnica**, ordenada por el valor interno completo antes del redondeo visual.
+- Se conserva el mejor representante de cada marca y se presentan los primeros resultados elegibles.
+- Los datos proceden del catálogo protegido más las adiciones remotas validadas mediante `RemoteCatalogManager`.
 
 El flujo activo ya aplica filtros obligatorios de carrocería, clase física y zona de precio antes del ranking. La puntuación final vigente combina **60 % competencia + 40 % características técnicas direccionales**. No reabrir el diseño de la zona competitiva ni cambiar los pesos sin una incidencia reproducible y una revisión de los valores internos.
 
@@ -427,7 +424,7 @@ No modificar la ficha de Play como consecuencia de una suposición sobre el resu
 Checkpoints relevantes conocidos:
 
 - Alpha: `versionCode 54`, `versionName 1.0.3.2`.
-- Build 1.0.4: `versionCode 831` en el checkpoint documentado.
+- Release Google Play 1.0.4: `versionCode 56` (valor confirmado en el registro de publicación). Se descarta la anotación histórica `versionCode 831` por inconsistente con el versionado real.
 - Stable 23/09 alrededor de 20:00.
 - Stable de Comparar Coches alrededor de 23:40.
 - Stable de navegación inferior alrededor de 15:54.
@@ -524,7 +521,7 @@ Toda auditoría nueva debe usar fecha y hora reales de ejecución.
 - [ ] Instalar y probar en el Redmi Note 13 Pro el build final exacto.
 - [x] Subir 1.0.4.1 / versionCode 58 a Google Play Producción.
 - [x] Iniciar el lanzamiento completo de 1.0.4.1 en Producción.
-- [ ] Esperar la revisión/publicación de Google Play y verificar que 1.0.4.1 / 58 aparece disponible públicamente.
+- [ ] Verificar en Play Console el resultado final de aquel envío 1.0.4.1 / 58 (tarea histórica; no confundir con la versión de desarrollo actual 1.0.5 / 59).
 - [x] Revisar Google Play: **Producción publicada con 1.0.4 / versionCode 56**.
 
 ### Prioridad actual — coherencia de documentación y versión
@@ -563,7 +560,8 @@ Cuando se retome EV Calculator PRO:
 5. Revisar las tareas pendientes de la sección 15.
 6. Ejecutar primero las auditorías antes de hacer cambios destructivos.
 7. Actualizar este MASTER cuando una decisión quede confirmada.
-8. Crear un checkpoint después de cada bloque importante.
+8. Mantener sincronizados `README.md`, `app/build.gradle`, el workflow de build y los comentarios de código con la versión actual.
+9. Crear un checkpoint después de cada bloque importante.
 
 ---
 
@@ -747,7 +745,7 @@ Cuando se retome EV Calculator PRO:
 - **auditDateTime:** 682/682.
 - **Duplicados:** 0 IDs duplicados y 0 duplicados lógicos.
 - **Comparar coches:** estable y probado a las **21:30**; checkpoint visual `7938efff5788eda55feb214c346b9c016a595296`.
-- **Build:** existe un build correcto anterior, pero el ajuste visual de Comparar coches de 21:30 todavía debe pasar por un build de verificación antes de considerarlo candidato final.
+- **Build:** los estados históricos de build descritos en esta sección corresponden a versiones anteriores; para el estado actual de `main`, consultar el run más reciente de GitHub Actions y el versionado de `app/build.gradle`.
 - **Datos de carga:** `dcKw` queda cerrado: **681/681 registros aplicables completos**, con `MG MGS9 PHEV Comfort 2026` como único caso no aplicable por ausencia de carga DC. `batteryChemistry` y `charge10to80Min` también están cerrados.
 - **Detalle del coche:** aplazado a versión **1.0.5**.
 - **Buscador de coches:** aplazado a versión **1.0.5**.
@@ -766,7 +764,7 @@ Cuando se retome EV Calculator PRO:
 3. Build candidato desde `main` — **ya realizado: #2065 success**.
 4. Obtener/verificar el AAB final y confirmar el catálogo incluido.
 5. Prueba final en dispositivo.
-6. Subir **1.0.4.1 / versionCode 58** a Google Play Producción.
+6. Para una publicación futura, verificar el estado real de Play Console y usar un `versionCode` superior al último publicado; el código de desarrollo actual es **1.0.5 / 59**.
 7. Continuar ASO/ficha de Google Play sin necesidad de subir una nueva versión para cambios de texto.
 8. Mantener **Buscador** y **Detalle** para 1.0.5.
 
