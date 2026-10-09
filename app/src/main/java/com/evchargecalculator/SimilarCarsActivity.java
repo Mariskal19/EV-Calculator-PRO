@@ -265,9 +265,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 scores.put(v,pickerSearchScore(idx,nq,tokens));
             }
             Collections.sort(found,(a,b)->{
-                int c=Integer.compare(scores.get(b),scores.get(a));
+                // En este selector, la puntuación de versión no debe colocar
+                // un acabado 2025 por delante de otro 2026 del mismo modelo.
+                // Orden estable: coincidencia marca/modelo, año y luego versión.
+                int c=Integer.compare(pickerModelTokenMatchCount(b,nq),pickerModelTokenMatchCount(a,nq));
                 if(c!=0)return c;
                 c=Integer.compare(b.year,a.year);
+                if(c!=0)return c;
+                c=Integer.compare(scores.get(b),scores.get(a));
                 if(c!=0)return c;
                 c=a.make.compareToIgnoreCase(b.make);
                 if(c!=0)return c;
@@ -336,6 +341,16 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private int trimRank(Vehicle v){String k=v.version==null?"":v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
+
+    private int pickerModelTokenMatchCount(Vehicle v,String normalizedQuery){
+        if(v==null||normalizedQuery==null||normalizedQuery.isEmpty())return 0;
+        String model=searchIndex(v).makeModel;
+        int count=0;
+        for(String token:normalizedQuery.split("\\s+")){
+            if(!token.isEmpty()&&model.contains(token))count++;
+        }
+        return count;
+    }
 
     private int pickerSearchScore(SearchIndex idx,String q,String[] tokens){
         if(q.isEmpty())return 0;
