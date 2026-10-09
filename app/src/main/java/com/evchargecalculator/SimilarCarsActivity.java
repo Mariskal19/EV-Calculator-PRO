@@ -425,7 +425,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // Una marca no se representa por el primer coche que aparece en
         // competencia pura. Primero dejamos entrar un pool amplio por competencia
         // y, dentro de cada marca, elegimos el modelo que mejor equilibra
-        // competencia (60%) y características (40%).
+        // competencia (60%) y distancia técnica direccional (40%).
         Map<String,Scored> bestByMake=new LinkedHashMap<>();
         for(Scored s:competitors){
             String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
@@ -559,7 +559,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void addSimilarCard(Scored s,int rank){
         Vehicle v=s.v;
         // El Top 10 ya está seleccionado por competencia.
-        // El orden y el porcentaje mostrado usan 60% competencia + 40% características.
+        // El orden y el porcentaje mostrado usan 60% competencia + 40% distancia técnica direccional.
         double finalScore=s.competitionScore*.60+s.technicalScore*.40;
         int similarityScore=(int)Math.round(Math.max(0,Math.min(100,100-finalScore*100)));
 
