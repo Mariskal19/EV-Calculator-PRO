@@ -229,7 +229,7 @@ La arquitectura acordada para el algoritmo es por capas:
 
 3. **Zona competitiva**
    - Una vez superados carrocería y segmento/clase, se evaluará la proximidad de mercado: precio y características de uso/posicionamiento.
-   - El precio no debe dominar la similitud técnica; el peso de precio queda en **5 %**.
+   - Dentro de la distancia de competencia, el precio tiene un peso del **35 %**; esta fase representa el **60 %** de la puntuación final. No confundir este peso comercial con los pesos de la fase técnica.
    - Esta capa debe derivarse automáticamente de los datos del catálogo, sin listas manuales de rivales ni reglas específicas como «G6 → Model Y».
 
 4. **Similitud técnica**
@@ -995,3 +995,13 @@ Cuando se retome EV Calculator PRO:
 - El selector mostraba cada coche con `pickerLabel()` (marca/modelo, año, versión normalizada y batería), pero al seleccionarlo reconstruía otra etiqueta con marca/modelo y versión sin normalizar, omitiendo año y batería.
 - La selección ahora reutiliza `pickerLabel()` y convierte el salto de línea en separadores, para que la referencia conserve los mismos datos y nombres que el resultado elegido en el buscador.
 - Commit de código: `7a3f955f437dc144eed904f0831a6e92d6c95a9d`. El usuario dio por solucionada la incidencia. El build posterior `37907456650` terminó en success sobre el commit de documentación `fae8168e5c8b133d52f5ee58110c228cdaf5cfca`.
+
+
+## 2026-10-09 — Limpieza de versionado y documentación
+
+- README y MASTER alineados con la versión que declara `main`: **1.0.5 / versionCode 59**.
+- Se distingue la versión de desarrollo del último estado de Google Play registrado (**1.0.4 / versionCode 56 publicada**); no se da por publicada la 1.0.5 sin comprobar Play Console.
+- Se corrigen la descripción de la fase técnica, los pesos de competencia, el máximo de resultados (**10**) y las referencias históricas inconsistentes de versionado.
+- Se eliminó de `SimilarCarsActivity` el helper de bonificación DC no utilizado y su comentario obsoleto sobre el reparto 72/28; los comentarios activos describen ahora el reparto **60/40** como competencia + distancia técnica direccional.
+- Commits de documentación/código: `db169d8c327bcd7d2274b95e1d6787dbbe1d06e0`, `72e959f9a824a2996d62497a471cb4c28ca43174`, `4089e249f68cb6affeb241395bd5da74b7d0f6fb`, `e6d5f2f39c42d45328654fb644677de013766bdd`, `8206df73069106bbc3a684390c8a29fb964d7de6` y `8d872878b506eef0cf4eb28761b6d96605b5afef`.
+- Los builds disparados por estos commits deben revisarse en GitHub Actions antes de dar por validado el estado completo.
