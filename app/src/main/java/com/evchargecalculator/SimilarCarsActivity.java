@@ -404,6 +404,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(v==reference)continue;
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
             if(referenceYear>0&&(v.year>maxYear||v.year<minYear))continue;
+            // Filtro obligatorio de carrocería, clase física y zona competitiva.
+            // Nunca permitir que una berlina entre como similar de un SUV.
+            if(!inCompetitiveZone(reference,v))continue;
 
             double competition=competitionDistance(reference,v);
 
@@ -449,6 +452,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(v==reference)continue;
             if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
             if(referenceYear>0&&(v.year>maxYear||v.year<minYear))continue;
+            if(!inCompetitiveZone(reference,v))continue;
 
             double competition=competitionDistance(reference,v);
             double technical=similarity(reference,v);
