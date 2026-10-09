@@ -1045,3 +1045,12 @@ Cuando se retome EV Calculator PRO:
 - Tras observar que «Tesla Model 3» todavía podía alternar años, se endureció el comparador: cuando dos resultados tienen la misma marca+modelo normalizados, el criterio prioritario entre ellos es año descendente, antes de cualquier puntuación secundaria.
 - Commit de código: `cd6da5f4b1af2db49b098095b02ad264c6b5e5ca`.
 - Build y prueba en dispositivo pendientes. Verificar que todas las variantes de 2026 precedan a las de 2025 y 2024 al buscar «Model 3».
+
+
+## 2026-10-09 — Corrección del comparador de ordenación del buscador
+
+- El usuario confirmó que seguían apareciendo primero las versiones Premium Gran autonomía de 2025 y después el Performance de 2026, por lo que la corrección condicional anterior no bastaba.
+- Causa técnica probable: el comparador aplicaba reglas diferentes según si dos vehículos compartían modelo, lo que podía romper la transitividad exigida por la ordenación y permitir resultados inesperados.
+- Se reemplazó por una ordenación lexicográfica consistente: coincidencia de términos marca+modelo, puntuación de búsqueda, agrupación por marca+modelo normalizados y año descendente dentro del grupo; después se aplican criterios secundarios.
+- Commit de código: `c4b0261a2e14dd0a67136d896e337fd9dfa10883`.
+- Pendiente: compilar esta revisión concreta e instalar el APK recién generado. No dar el orden por solucionado hasta que el usuario confirme que Performance 2026 aparece antes que Premium Gran autonomía 2025 al buscar «Model 3».
