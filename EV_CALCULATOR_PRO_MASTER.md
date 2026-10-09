@@ -1063,3 +1063,16 @@ Cuando se retome EV Calculator PRO:
 - En `SimilarCarsActivity.java`, se ajustó el orden del selector para priorizar coincidencia de términos en marca/modelo, después año descendente y luego puntuación de versión. Esto evita que los Premium de 2025 se antepongan al Performance de 2026 para el mismo Tesla Model 3.
 - Commit de la corrección en la pantalla adecuada: `68f4927b11d415e575aff8a9fb0c58ffff58f544`.
 - Pendiente: build y prueba del APK con búsqueda «Model 3». No marcar como resuelto hasta validación del usuario.
+
+
+
+## 2026-10-09 — Búsqueda escalonada de rivales cuando el filtro estricto devuelve pocos resultados
+
+- Al revisar el catálogo de 683 vehículos para la referencia XPeng P7+ AWD Performance 2026 (54.400 €, segmento E), se comprobó que el filtro estricto devolvía solo dos marcas: Audi A6 Sportback e-tron y Zeekr 001. La causa era principalmente la exclusión absoluta de coches de segmento D aunque tuvieran carrocería y dimensiones próximas, además del límite económico estricto.
+- Se cambió `SimilarCarsActivity.showSimilar()` para recalcular los candidatos de forma escalonada:
+  1. Filtros estrictos existentes.
+  2. Si quedan menos de cinco marcas, permitir segmentos adyacentes (p. ej. D/E), manteniendo carrocería compatible, dimensiones y límite de precio del 20 %.
+  3. Si aún quedan menos de cinco marcas, ampliar el límite de precio al 30 %.
+- La búsqueda nunca mezcla berlinas con SUV/crossover; el segmento sigue penalizando en la puntuación competitiva, pero deja de ser una barrera absoluta cuando la lista necesita ampliarse.
+- Commit de código: `151609d2a9e015231a67bc94dc90e54ce11ecb6c`.
+- Build de GitHub Actions pendiente de verificación; falta comprobar el número y orden real de rivales en el APK generado.
