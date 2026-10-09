@@ -48,7 +48,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         if(cached!=null)return cached;
         SearchIndex created=new SearchIndex(norm(v.make),norm(v.model),norm(v.version),
             norm(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version),
-            norm(v.make+" "+v.model),market(v.market));
+            norm(v.make+" "+v.model),marketLabel(v.market));
         searchIndexCache.put(v,created);
         return created;
     }
