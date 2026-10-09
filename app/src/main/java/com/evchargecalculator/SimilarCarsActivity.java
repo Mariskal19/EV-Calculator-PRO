@@ -218,23 +218,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
         TextView marketTitle=tv("Mercado",12,sub());
         marketTitle.setTypeface(null,Typeface.BOLD);
+        marketTitle.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
         marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
 
         final Spinner searchMarketSpinner=new Spinner(this);
         List<String> ms=new ArrayList<>();
-        TreeSet<String> marketSet=new TreeSet<>();
-        for(Vehicle v:vehicles)if(v.market!=null&&!v.market.isEmpty())marketSet.add(v.market);
+        LinkedHashSet<String> marketSet=new LinkedHashSet<>();
+        for(Vehicle v:vehicles)if(v.market!=null&&!v.market.trim().isEmpty())marketSet.add(v.market.toUpperCase(Locale.ROOT));
         ms.addAll(marketSet);
+        Collections.sort(ms,(a,b)->marketName(a).compareToIgnoreCase(marketName(b)));
         List<String> labels=new ArrayList<>();
-        for(String m:ms)labels.add(market(m));
+        for(String m:ms)labels.add(marketLabel(m));
         ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,labels){
             @Override public View getView(int p,View c,android.view.ViewGroup parent){
                 TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;
             }
             @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){
-                TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);
-                v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));
-                v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;
+                TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;
             }
         };
         searchMarketSpinner.setAdapter(marketAdapter);
@@ -1024,7 +1024,31 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
     private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
     private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
-    private String market(String s){return s==null||s.isEmpty()?"🌐":s;}
+    private String marketName(String c) {
+        if (c == null || c.trim().isEmpty()) return "";
+        String code = c.equalsIgnoreCase("UK") ? "GB" : c.toUpperCase(Locale.ROOT);
+        if (code.matches("[A-Z]{2}")) {
+            Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this));
+            String name = new Locale.Builder().setRegion(code).build().getDisplayCountry(displayLocale);
+            if (name != null && !name.trim().isEmpty() && !name.equalsIgnoreCase(code)) return name;
+        }
+        return code;
+    }
+    private String marketFlag(String c) {
+        if ("ES".equalsIgnoreCase(c)) return "🇪🇸";
+        if ("FR".equalsIgnoreCase(c)) return "🇫🇷";
+        if ("DE".equalsIgnoreCase(c)) return "🇩🇪";
+        if ("IT".equalsIgnoreCase(c)) return "🇮🇹";
+        if ("PT".equalsIgnoreCase(c)) return "🇵🇹";
+        if ("GB".equalsIgnoreCase(c) || "UK".equalsIgnoreCase(c)) return "🇬🇧";
+        if (c != null && c.matches("[A-Za-z]{2}")) {
+            int a = Character.toUpperCase(c.charAt(0)) - 'A' + 127462;
+            int b = Character.toUpperCase(c.charAt(1)) - 'A' + 127462;
+            return new String(Character.toChars(a)) + new String(Character.toChars(b));
+        }
+        return "🌐";
+    }
+    private String marketLabel(String c) { return marketFlag(c) + "  " + marketName(c); }
     private String specLine(Vehicle v){String bat=v.batteryKwh>0?fmt(v.batteryKwh)+" kWh":"—";String range=v.wltpKm>0?fmt(v.wltpKm)+" km":"—";String p=v.powerKw>0?fmtCv(v.powerKw*1.35962)+" CV":"—";return bat+"  ·  "+range+"  ·  "+p;}
     private String cleanVersion(String version){String s=version==null?"":version.trim();s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kwh\\b","");s=s.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*kw\\b","");s=s.replaceAll("\\s{2,}"," ").replaceAll("\\s*[·-]\\s*$","").trim();return s;}
     private String fmt(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(1);return f.format(n);} private String fmtCv(double n){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(0);f.setRoundingMode(java.math.RoundingMode.HALF_UP);return f.format(n);}
