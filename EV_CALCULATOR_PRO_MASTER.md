@@ -1038,3 +1038,10 @@ Cuando se retome EV Calculator PRO:
 - El filtro de coincidencias no cambia y se mantiene la ordenación secundaria existente por marca, modelo, tipo de versión, batería y nombre de versión.
 - Commit de código: `b2f7f0d897ea7a8b699cc2e07ce720017db84117`.
 - Build y comprobación en dispositivo pendientes; no afirmar validación hasta que termine la acción y se pruebe una búsqueda como «Model 3».
+
+
+## 2026-10-09 — Corrección adicional de agrupación por modelo en el buscador
+
+- Tras observar que «Tesla Model 3» todavía podía alternar años, se endureció el comparador: cuando dos resultados tienen la misma marca+modelo normalizados, el criterio prioritario entre ellos es año descendente, antes de cualquier puntuación secundaria.
+- Commit de código: `cd6da5f4b1af2db49b098095b02ad264c6b5e5ca`.
+- Build y prueba en dispositivo pendientes. Verificar que todas las variantes de 2026 precedan a las de 2025 y 2024 al buscar «Model 3».
