@@ -398,7 +398,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         for(Vehicle v:vehicles){
             if(logicalKey(v).equals(savedKey)){
                 reference=v;
-                if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\\n"," · "));
+                if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
                 showSimilar();
                 return;
             }
