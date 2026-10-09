@@ -1104,3 +1104,6 @@ Cuando se retome EV Calculator PRO:
 
 - Se acorta la etiqueta de la tercera pestaña de **Buscar coches** a **Buscar**, manteniendo el icono de coche con lupa, el acceso directo a `SimilarCarsActivity` y el título interno de la pantalla.
 - Se añade la traducción de la etiqueta breve en los seis idiomas admitidos.
+
+
+- **Ajuste visual de navegación (09/10/2026):** la pestaña **Buscar** recupera el icono de coche anterior (`ic_nav_car_modern`) en lugar del coche con lupa. Se conserva la etiqueta breve y el acceso directo a coches similares.
