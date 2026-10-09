@@ -62,7 +62,7 @@ Destinos actuales:
 
 1. ⚡ **Cargar** → Charge Calculator
 2. 💰 **Coste** → Cost / cálculo de coste
-3. 🚗🔎 **Buscar** → búsqueda de coches similares
+3. 🚗 **Buscar** → búsqueda de coches similares
 4. ⚖️ **Comparar** → comparación directa de coches
 5. ⋮ **Más** → configuración y acciones secundarias
 
@@ -1091,19 +1091,19 @@ Cuando se retome EV Calculator PRO:
 
 ## Navegación inferior — cambio acordado 09/10/2026
 
-- Se conserva la barra inferior con cinco accesos: **Cargar**, **Coste**, **Buscar coches**, **Comparar** y **Más**.
+- Se conserva la barra inferior con cinco accesos: **Cargar**, **Coste**, **Buscar**, **Comparar** y **Más**.
 - **Buscar coches** abre directamente `SimilarCarsActivity`; dentro de esa pantalla se mantiene el título descriptivo «Buscar coches similares» y la búsqueda persistente.
 - **Comparar** abre directamente `CompararCochesActivity`.
 - El acceso anterior «Coches» (pantalla intermedia que agrupaba Comparar y Buscar coches similares) deja de aparecer en la barra. No se implementa ahora un catálogo independiente; queda aplazado.
-- Se añade iconografía propia para «Buscar coches» (coche con lupa) y «Comparar», y traducciones de las etiquetas en los seis idiomas soportados.
+- «Buscar» utiliza el icono de coche anterior (`ic_nav_car_modern`) y abre directamente la búsqueda de coches similares. «Comparar» abre la comparativa directa.
 - Respaldo previo al cambio: rama `backup/pre-navigation-change-2026-10-09`, apuntando al commit `6b36b6626656179b9da8ef0d3e118f586a7e72ab`.
 - Pendiente tras el commit: comprobar el workflow de compilación y validar visualmente en dispositivo la barra de cinco accesos, especialmente el ajuste de las etiquetas.
 
 
 ## Ajuste de etiqueta de navegación — 09/10/2026
 
-- Se acorta la etiqueta de la tercera pestaña de **Buscar coches** a **Buscar**, manteniendo el icono de coche con lupa, el acceso directo a `SimilarCarsActivity` y el título interno de la pantalla.
+- Se acorta la etiqueta de la tercera pestaña a **Buscar**, manteniendo el acceso directo a `SimilarCarsActivity` y el título interno de la pantalla.
 - Se añade la traducción de la etiqueta breve en los seis idiomas admitidos.
 
 
-- **Ajuste visual de navegación (09/10/2026):** la pestaña **Buscar** recupera el icono de coche anterior (`ic_nav_car_modern`) en lugar del coche con lupa. Se conserva la etiqueta breve y el acceso directo a coches similares.
+- **Ajuste visual de navegación (09/10/2026):** la pestaña **Buscar** utiliza el icono de coche anterior (`ic_nav_car_modern`) con su proporción horizontal restaurada. La pestaña **Comparar** utiliza un icono vectorial circular con dos coches vistos de frente, uno al lado del otro, para identificar visualmente la comparación de vehículos.
