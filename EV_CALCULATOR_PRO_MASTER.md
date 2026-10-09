@@ -987,4 +987,4 @@ Cuando se retome EV Calculator PRO:
 ### 2026-10-09 — Unificar el formato del coche de referencia en Buscar coches similares
 - El selector mostraba cada coche con `pickerLabel()` (marca/modelo, año, versión normalizada y batería), pero al seleccionarlo reconstruía otra etiqueta con marca/modelo y versión sin normalizar, omitiendo año y batería.
 - La selección ahora reutiliza `pickerLabel()` y convierte el salto de línea en separadores, para que la referencia conserve los mismos datos y nombres que el resultado elegido en el buscador.
-- Commit de código: bec34d3a5296010772bc9225b588fb9e8ef88198. Pendiente de compilación y prueba en dispositivo.
+- Commit de código: 7a3f955f437dc144eed904f0831a6e92d6c95a9d. Pendiente de compilación y prueba en dispositivo.
