@@ -1076,3 +1076,13 @@ Cuando se retome EV Calculator PRO:
 - La búsqueda nunca mezcla berlinas con SUV/crossover; el segmento sigue penalizando en la puntuación competitiva, pero deja de ser una barrera absoluta cuando la lista necesita ampliarse.
 - Commit de código: `151609d2a9e015231a67bc94dc90e54ce11ecb6c`.
 - Build de GitHub Actions pendiente de verificación; falta comprobar el número y orden real de rivales en el APK generado.
+
+
+## 2026-10-09 — Recordar la última búsqueda de coches similares
+
+- `SimilarCarsActivity` guarda en las preferencias compartidas la clave lógica del coche de referencia seleccionado y el mercado usado en el selector.
+- Al volver a abrir la pantalla, restaura el coche de referencia y reconstruye los resultados automáticamente; también recupera el último mercado al abrir el selector.
+- La clave lógica permite recuperar la versión aunque cambie el ID interno del catálogo. Si el vehículo ya no existe, se limpia la referencia obsoleta.
+- Si el catálogo remoto incorpora vehículos mientras la pantalla está abierta, los resultados se recalculan para la referencia actual.
+- Commits de código: `0e251740d49d552344192a223cc9393ef856db15` y `fab43b106c152c85aabaea1ce973fa1587fa0c64`.
+- Pendiente: verificar el build de GitHub Actions y probar que la búsqueda se restaura correctamente al salir y volver a entrar.
