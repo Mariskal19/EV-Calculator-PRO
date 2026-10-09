@@ -1,146 +1,79 @@
-# EV Calculator PRO v1.0.4
+# EV Calculator PRO
 
-Aplicación Android para calcular la carga de un vehículo eléctrico y comparar vehículos eléctricos mediante sus principales características.
+Aplicación Android para calcular tiempos, energía y costes de carga de vehículos eléctricos, consultar el catálogo y comparar coches.
 
-## Versión actual
+## Versión del código
 
-- Versión visible: **1.0.4**
-- `versionCode`: **55**
-- `applicationId`: `com.evcalculatorpro`
-- `minSdk`: 23
-- `targetSdk`: 35
-- `compileSdk`: 36
-- Release con R8 y reducción de recursos
-- Firma Release mediante GitHub Secrets
-- Java 17 + Gradle 8.9
+Estado de la rama `main` comprobado el **09/10/2026**:
 
-## Catálogo español definitivo
+- **Versión de desarrollo:** `1.0.5`
+- **versionCode:** `59`
+- **applicationId:** `com.evcalculatorpro`
+- **minSdk:** 23
+- **targetSdk / compileSdk:** 36 / 36
+- **Java:** 17
+- **Build Release:** APK y AAB, con R8 y reducción de recursos.
+- **CI:** GitHub Actions; Gradle 9.6.0 en el workflow de build.
 
-El proyecto utiliza un único catálogo maestro:
+La versión indicada aquí es la que declara el código de `main`. No significa que esa versión esté publicada en Google Play. El último estado de Play Console registrado en este repositorio era **1.0.4 / versionCode 56 publicada**; comprobar Play Console antes de afirmar el estado de una publicación posterior.
+
+## Funciones principales
+
+- Calculadora de carga y estimación de energía/tiempo.
+- Cálculo de costes.
+- Catálogo de vehículos eléctricos.
+- Comparativa de hasta tres vehículos.
+- Búsqueda de coches similares y acceso al detalle del vehículo.
+- Idiomas, monedas y tema claro/oscuro.
+- Catálogo local protegido y adiciones remotas validadas.
+
+La navegación principal es **Cargar → Coste → Coches → Más**.
+
+## Catálogo de vehículos
+
+Archivo base:
 
 `app/src/main/assets/catalog_es_2024_2026.json`
 
-Criterio: **MERCADO → MARCA → MODELO → AÑO DE LLEGADA → VERSIONES**.
+- Mercado principal: España (`ES`).
+- Años del conjunto base: 2024–2026.
+- Último estado auditado documentado: **682 configuraciones**, sin duplicados lógicos ni IDs duplicados.
+- Las adiciones remotas se guardan por separado en `app/src/main/assets/catalog_remote_additions.json`.
+- Los datos protegidos no se sobrescriben con información externa.
+- Las nuevas configuraciones se validan y se comparan por clave lógica antes de incorporarse.
 
-- Mercado: España (`ES`)
-- Años: 2024, 2025 y 2026
-- Catálogo cerrado el **10/09/2026**
-- 611 configuraciones en el catálogo cerrado
-- `consumptionKwh100` debe estar informado cuando existen batería y WLTP
-- El catálogo empaquetado es la base auditada y protegida: las actualizaciones remotas nunca modifican ni eliminan sus registros.
-- Un catálogo incremental remoto puede añadir únicamente configuraciones nuevas que superen la validación automática.
-- La app descarga ese incremento cuando tiene conexión y conserva una copia local para seguir funcionando sin conexión.
-- Las nuevas configuraciones remotas no requieren publicar una nueva versión en Google Play.
+## Buscar coches similares
 
-## Comparar coches
+El algoritmo vigente en `main` combina:
 
-La pantalla permite seleccionar 2 o 3 vehículos, buscar por marca/modelo/versión, conservar la selección y comparar batería/autonomía, prestaciones, carga, practicidad y precio. Los precios se muestran en la moneda seleccionada.
+- **60 % competencia comercial**.
+- **40 % distancia técnica direccional**.
 
-- Al volver desde Configuración, la pantalla refresca automáticamente idioma, moneda y tema si han cambiado.
+Antes del ranking se aplican filtros obligatorios de año, marca, carrocería, clase física y zona de precio. SUV y crossover son compatibles entre sí; una carrocería incompatible no puede compensarse con una puntuación técnica alta. La distancia técnica penaliza al candidato cuando es peor que el vehículo de referencia, y el ranking utiliza la precisión interna completa antes de redondear el porcentaje mostrado. Se conserva como máximo un representante por marca.
 
-## Configuración
+Los pesos y reglas se mantienen en el código de `SimilarCarsActivity.java`; no hay excepciones de ranking específicas para Tesla, XPeng, Opel ni otras marcas.
 
-- Idioma, moneda y tema se guardan de forma persistente.
-- Idiomas: español, inglés, francés, alemán, italiano y portugués.
-- Monedas: EUR, USD, GBP, CHF, CAD y AUD.
-- Los tipos de cambio se actualizan mediante referencias del BCE y se almacenan en caché para reutilización sin conexión.
+## Actualización automática del catálogo
 
-## Automatización del catálogo
+El workflow `.github/workflows/catalog-auto-update.yml` está programado para ejecutarse diariamente a las **15:00 (Europe/Madrid)** y también permite ejecución manual. Consulta las fuentes configuradas, valida posibles incorporaciones y solo crea un commit si hay cambios válidos. No necesita cron-job.org.
 
-El catálogo está automatizado mediante una combinación de **GitHub Actions + cron-job.org** porque el planificador nativo de GitHub Actions dejó de ejecutar de forma fiable los eventos `schedule`, aunque los lanzamientos manuales y por `push` seguían funcionando.
+## Build y entregas
 
-### Arquitectura actual
+El workflow **Build EV Calculator PRO** compila la versión Release y prepara:
 
-1. **07:00 Europe/Madrid — cron-job.org**
-   - Cron-job.org realiza una petición HTTP `POST` al endpoint de GitHub Actions:
-     `https://api.github.com/repos/Mariskal19/EV-Calculator-PRO/actions/workflows/catalog-auto-update.yml/dispatches`
-   - Envía `{"ref":"main"}`.
-   - La autenticación se realiza mediante un **Fine-grained GitHub PAT** almacenado únicamente en cron-job.org.
-   - El token está limitado al repositorio `Mariskal19/EV-Calculator-PRO` y a **Actions: Read and write**.
-   - El token **no** está guardado en el código ni en el repositorio.
+- APK Release.
+- AAB Release.
+- ZIP del proyecto.
 
-2. **GitHub Actions — `catalog-auto-update.yml`**
-   - Se ejecuta mediante `workflow_dispatch`.
-   - También conserva un disparador nativo `schedule` como mecanismo adicional:
-     - **08:18 Europe/Madrid todos los días**.
-   - El `schedule` nativo se mantiene configurado aunque actualmente no se considera el mecanismo principal debido a los problemas observados con el planificador de GitHub.
+Los nombres de los artefactos se generan a partir de `versionName`; las etiquetas de build incluyen la versión y el identificador de compilación.
 
-3. **Actualización del catálogo**
-   - El workflow ejecuta:
-     `python3 tools/update_protected_catalog.py`
-   - Fuente externa principal:
-     `https://gaia-charge.github.io/evdb/v1/vehicles.json`
-   - Puede existir una segunda fuente mediante la variable de repositorio `CATALOG_SOURCE_2_URL`.
-   - El catálogo protegido/base nunca se sobrescribe.
-   - Las configuraciones remotas se validan antes de incorporarse.
-   - La protección por clave lógica evita duplicados.
-   - Las exclusiones persistentes se conservan para no volver a incorporar configuraciones descartadas.
-   - Si no hay cambios, no se crea ningún commit.
-   - Si hay nuevas configuraciones válidas, se actualiza `app/src/main/assets/catalog_remote_additions.json` y GitHub Actions realiza el commit.
+## Privacidad
 
-### Resultado de la primera ejecución automática verificada
+Política de privacidad: https://mariskal19.github.io/EV-Calculator-PRO-Privacy/
 
-La ejecución de prueba mediante cron-job.org quedó confirmada con:
+## Desarrollo
 
-- GitHub Actions run: **36771311142**
-- Resultado: **éxito**
-- Catálogo protegido: **676 registros intactos**
-- Configuraciones remotas existentes: **36**
-- Reglas de exclusión persistentes: **37**
-- Nuevas configuraciones remotas validadas añadidas: **0**
-- Cambios en el catálogo: **ninguno**
-- Commit de catálogo: **no realizado**
-
-Esto significa que la automatización funcionó correctamente de principio a fin y que en esa ejecución no se añadieron duplicados ni nuevas configuraciones. Las **37 reglas de exclusión persistentes no deben interpretarse como 37 duplicados nuevos**: son reglas acumuladas para configuraciones que el sistema debe mantener fuera del catálogo remoto.
-
-### Horarios de mantenimiento
-
-- **07:00** — mecanismo principal y probado: cron-job.org → `workflow_dispatch`.
-- **08:18** — mecanismo nativo adicional de GitHub Actions, mantenido configurado.
-
-Si en el futuro se confirma que el planificador nativo vuelve a funcionar de forma estable, se podrá valorar eliminar uno de los dos mecanismos para evitar ejecuciones duplicadas.
-
-## Automatización y calidad
-
-La automatización de generación de catálogo anterior ha sido retirada de `main`. El catálogo definitivo se mantiene como dato versionado y las workflows actuales realizan únicamente validaciones.
-
-### Copia definitiva del proyecto
-
-La copia completa anterior a la auditoría final está preservada en la rama:
-
-`definitivo-2026-09-10-2150`
-
-Cierre de la copia: **10 de septiembre de 2026 · 21:50 (Europe/Madrid)**.
-
-## Entrega Release
-
-GitHub Actions genera y comprueba:
-
-- APK Release
-- AAB Release
-- ZIP completo del proyecto
-
-Los nombres de entrega se generan a partir de `versionName`.
-
-> Última verificación de build: refresco de configuración aplicado también a Charge Calculator y Electric Vs Combustion.
-
-
-## Coches similares — estado actual
-
-El ranking de **Buscar coches similares** prioriza la competencia real y usa precisión interna completa para ordenar los resultados.
-
-- **72 % competencia** + **28 % características técnicas**.
-- El orden se calcula con el valor interno completo (`double`), sin redondear.
-- El porcentaje mostrado se redondea únicamente después de ordenar.
-- Se eliminan vehículos de la misma marca que el referente.
-- Se aplica primero la compatibilidad de carrocería, clase física y zona competitiva.
-- SUV y crossover se consideran compatibles entre sí.
-- Se conservan hasta **8 marcas únicas**, tomando del TOP 20 la mejor versión de cada fabricante.
-- El algoritmo no utiliza reglas específicas para Tesla, Opel u otras marcas.
-
-Validación final realizada el **08/10/2026** con el XPeng G6 como referencia:
-
-- **Tesla Model Y:** competencia 83,66 %, características 59,69 %, total 76,95 %, score interno `0.23050165`.
-- **Opel Grandland Electric:** competencia 81,39 %, características 65,10 %, total 76,83 %, score interno `0.23167884`.
-
-Tesla queda correctamente por delante de Opel porque `0.23050165 < 0.23167884`. La diferencia visible es de solo **0,12 puntos porcentuales**, pero el orden utiliza los decimales completos.
+- Repositorio: https://github.com/Mariskal19/EV-Calculator-PRO
+- Rama activa: `main`.
+- Las ramas/checkpoints `stable` son puntos de recuperación y no deben modificarse sin autorización expresa.
+- El documento operativo con el historial, decisiones y checkpoints es [`EV_CALCULATOR_PRO_MASTER.md`](EV_CALCULATOR_PRO_MASTER.md).
