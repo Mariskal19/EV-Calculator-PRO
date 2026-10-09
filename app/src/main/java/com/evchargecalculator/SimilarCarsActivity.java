@@ -76,7 +76,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void build(){
         LinearLayout root=new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));
+        root.setBackgroundColor(dark?Color.rgb(16,28,42):Color.rgb(242,246,252));
 
         ScrollView scroll=new ScrollView(this);
         scroll.setFillViewport(true);
