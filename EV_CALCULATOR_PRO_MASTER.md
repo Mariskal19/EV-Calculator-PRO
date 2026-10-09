@@ -1106,4 +1106,4 @@ Cuando se retome EV Calculator PRO:
 - Se añade la traducción de la etiqueta breve en los seis idiomas admitidos.
 
 
-- **Ajuste visual de navegación (09/10/2026):** la pestaña **Buscar** utiliza el icono de coche anterior (`ic_nav_car_modern`) con su proporción horizontal restaurada. La pestaña **Comparar** utiliza un icono vectorial circular con dos coches vistos de frente, uno al lado del otro, para identificar visualmente la comparación de vehículos.
+- **Ajuste visual de navegación (09/10/2026):** la pestaña **Buscar** utiliza el icono de coche anterior (`ic_nav_car_modern`) con su proporción horizontal restaurada. Para **Comparar**, se descarta el dibujo de coches por resultar poco claro a tamaño pequeño y se usa `ic_nav_compare`: tres columnas verticales de distintas alturas sobre una base, una metáfora visual simple de comparación.
