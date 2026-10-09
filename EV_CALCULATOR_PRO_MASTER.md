@@ -1030,3 +1030,11 @@ Cuando se retome EV Calculator PRO:
 - Commit de código: `0b4345a35a08a1155deaaf53a77e4930a56b75b7`.
 - Commit de catálogo: `f4fe3175d5e25c185ea6f1ce168788ab04ddbdf4`.
 - Validación automática disparada: build `37913433681` y validación de catálogo `37913433684`. Pendiente de que ambos finalicen; no se declara aún el APK como validado.
+
+
+## 2026-10-09 — Orden de resultados del buscador de coches
+
+- Se modificó `CompararCochesActivity.orderedSearchVehicles()` para priorizar cuántos términos de búsqueda aparecen en la combinación marca+modelo; a continuación ordena por año descendente y usa la puntuación de coincidencia como criterio posterior. Esto evita que una palabra que aparece accidentalmente en la versión o en otros datos haga alternar años entre versiones del mismo modelo.
+- El filtro de coincidencias no cambia y se mantiene la ordenación secundaria existente por marca, modelo, tipo de versión, batería y nombre de versión.
+- Commit de código: `b2f7f0d897ea7a8b699cc2e07ce720017db84117`.
+- Build y comprobación en dispositivo pendientes; no afirmar validación hasta que termine la acción y se pruebe una búsqueda como «Model 3».
