@@ -19,7 +19,7 @@ public abstract class BaseNavigationActivity extends Activity {
   private boolean appliedDarkTheme;
   private String appliedCurrency;
 
-  /** 0 = Cargar, 1 = Coste, 2 = Coches, 3 = Más. */
+  /** 0 = Cargar, 1 = Coste, 2 = Buscar coches, 3 = Comparar, 4 = Más. */
   protected abstract int getBottomNavigationIndex();
 
   @Override

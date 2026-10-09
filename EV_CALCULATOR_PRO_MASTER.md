@@ -1086,3 +1086,14 @@ Cuando se retome EV Calculator PRO:
 - Si el catálogo remoto incorpora vehículos mientras la pantalla está abierta, los resultados se recalculan para la referencia actual.
 - Commits de código: `0e251740d49d552344192a223cc9393ef856db15` y `fab43b106c152c85aabaea1ce973fa1587fa0c64`.
 - Pendiente: verificar el build de GitHub Actions y probar que la búsqueda se restaura correctamente al salir y volver a entrar.
+
+
+## Navegación inferior — cambio acordado 09/10/2026
+
+- Se conserva la barra inferior con cinco accesos: **Cargar**, **Coste**, **Buscar coches**, **Comparar** y **Más**.
+- **Buscar coches** abre directamente `SimilarCarsActivity`; dentro de esa pantalla se mantiene el título descriptivo «Buscar coches similares» y la búsqueda persistente.
+- **Comparar** abre directamente `CompararCochesActivity`.
+- El acceso anterior «Coches» (pantalla intermedia que agrupaba Comparar y Buscar coches similares) deja de aparecer en la barra. No se implementa ahora un catálogo independiente; queda aplazado.
+- Se añade iconografía propia para «Buscar coches» (coche con lupa) y «Comparar», y traducciones de las etiquetas en los seis idiomas soportados.
+- Respaldo previo al cambio: rama `backup/pre-navigation-change-2026-10-09`, apuntando al commit `6b36b6626656179b9da8ef0d3e118f586a7e72ab`.
+- Pendiente tras el commit: comprobar el workflow de compilación y validar visualmente en dispositivo la barra de cinco accesos, especialmente el ajuste de las etiquetas.

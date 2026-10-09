@@ -139,6 +139,8 @@ public final class LanguageManager {
     add("Cargar", "Charge", "Recharger", "Laden", "Ricarica", "Carregar");
     add("Coste", "Cost", "Coût", "Kosten", "Costo", "Custo");
     add("Coches", "Cars", "Voitures", "Autos", "Auto", "Carros");
+    add("Buscar coches", "Find cars", "Rechercher des voitures", "Autos suchen", "Cerca auto", "Procurar carros");
+    add("Comparar", "Compare", "Comparer", "Vergleichen", "Confronta", "Comparar");
     add("Comparar coches", "Compare cars", "Comparer les voitures", "Autos vergleichen", "Confronta auto", "Comparar carros");
     add("Volver a coches", "Back to cars", "Retour aux voitures", "Zurück zu den Autos", "Torna alle auto", "Voltar aos carros");
     add("Añadir a comparativa", "Add to comparison", "Ajouter à la comparaison", "Zum Vergleich hinzufügen", "Aggiungi al confronto", "Adicionar à comparação");

@@ -38,7 +38,7 @@ import java.text.NumberFormat;
 public class CompararCochesActivity extends BaseNavigationActivity {
   @Override
   protected int getBottomNavigationIndex() {
-    return 2;
+    return 3;
   }
 
 
