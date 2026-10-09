@@ -816,6 +816,16 @@ public class CompararCochesActivity extends BaseNavigationActivity {
 
     private int trimRank(Vehicle v){String k=v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
     private String searchLabel(Vehicle v){String first=v.make+" "+v.model;StringBuilder second=new StringBuilder();if(v.year>0)second.append(v.year);String ver=v.version.trim().replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kwh\\b","").replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kw\\b","").replaceAll("\\s+"," ").trim();if(!ver.isEmpty()){if(second.length()>0)second.append(" · ");second.append(ver);}if(v.batteryKwh>0){if(second.length()>0)second.append(" · ");second.append(fmt(v.batteryKwh)).append(" kWh");}return first+"\n"+second;}
+    private int modelTokenMatchCount(Vehicle v,String normalizedQuery){
+        if(v==null||normalizedQuery==null||normalizedQuery.isEmpty())return 0;
+        String model=searchIndex(v).makeModel;
+        int count=0;
+        for(String token:normalizedQuery.split("\\s+")){
+            if(!token.isEmpty()&&model.contains(token))count++;
+        }
+        return count;
+    }
+
     private List<Vehicle> orderedSearchVehicles(String q){
         List<Vehicle> all=new ArrayList<>();
         String nq=normalizeSearch(q);
@@ -835,9 +845,15 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         }
 
         Collections.sort(all,(a,b)->{
-            int c=Integer.compare(scores.get(b),scores.get(a));
+            // Prioriza primero las palabras que coinciden con marca+modelo.
+            // Así, al buscar "Model 3", sus versiones quedan agrupadas y el
+            // año se ordena de más reciente a más antiguo sin saltos causados
+            // por palabras coincidentes accidentalmente en la versión.
+            int c=Integer.compare(modelTokenMatchCount(b,nq),modelTokenMatchCount(a,nq));
             if(c!=0)return c;
             c=Integer.compare(b.year,a.year);
+            if(c!=0)return c;
+            c=Integer.compare(scores.get(b),scores.get(a));
             if(c!=0)return c;
             c=a.make.compareToIgnoreCase(b.make);
             if(c!=0)return c;
