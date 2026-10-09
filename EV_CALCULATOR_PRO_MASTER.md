@@ -1054,3 +1054,12 @@ Cuando se retome EV Calculator PRO:
 - Se reemplazó por una ordenación lexicográfica consistente: coincidencia de términos marca+modelo, puntuación de búsqueda, agrupación por marca+modelo normalizados y año descendente dentro del grupo; después se aplican criterios secundarios.
 - Commit de código: `c4b0261a2e14dd0a67136d896e337fd9dfa10883`.
 - Pendiente: compilar esta revisión concreta e instalar el APK recién generado. No dar el orden por solucionado hasta que el usuario confirme que Performance 2026 aparece antes que Premium Gran autonomía 2025 al buscar «Model 3».
+
+
+## 2026-10-09 — Corrección aplicada al buscador correcto: Buscar coches similares
+
+- El usuario aclaró que el problema de orden afectaba al selector de la pantalla **Buscar coches similares**, no al selector de **Comparar coches**, cuyo comportamiento estaba correcto.
+- Se restauró en `CompararCochesActivity.java` el comparador previo a la intervención equivocada: commit `bceeea71125ea73ced4e5702af114700e4605856`.
+- En `SimilarCarsActivity.java`, se ajustó el orden del selector para priorizar coincidencia de términos en marca/modelo, después año descendente y luego puntuación de versión. Esto evita que los Premium de 2025 se antepongan al Performance de 2026 para el mismo Tesla Model 3.
+- Commit de la corrección en la pantalla adecuada: `68f4927b11d415e575aff8a9fb0c58ffff58f544`.
+- Pendiente: build y prueba del APK con búsqueda «Model 3». No marcar como resuelto hasta validación del usuario.
