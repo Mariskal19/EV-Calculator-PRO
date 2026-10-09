@@ -1107,3 +1107,4 @@ Cuando se retome EV Calculator PRO:
 
 
 - **Ajuste visual de navegación (09/10/2026):** la pestaña **Buscar** utiliza el icono de coche anterior (`ic_nav_car_modern`) con su proporción horizontal restaurada. Para **Comparar**, se descarta el dibujo de coches por resultar poco claro a tamaño pequeño y se usa `ic_nav_compare`: tres barras verticales ascendentes, más gruesas y más juntas, sin base, para mejorar su lectura a tamaño pequeño.
+- **Icono de Coste (09/10/2026):** sustituido el símbolo de euro por una cartera (`ic_nav_cost`) para que la pestaña represente costes sin asociarse a una moneda concreta; el texto «Coste» y la navegación permanecen igual.
