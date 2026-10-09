@@ -971,3 +971,14 @@ Cuando se retome EV Calculator PRO:
 - **Estado:** probado por el usuario y aceptado como estable.
 - **Rama:** `main`.
 - **Referencia anterior de interfaz:** `703c64e3ebc6b893a5b1d62fc702e51f7401489a` (Stable 13:20, nombre de tarjeta a -4 dp).
+
+
+## 2026-10-09 — Corrección del filtro obligatorio de carrocería
+
+- Incidencia reproducible reportada por el usuario: al seleccionar **XPeng G6 Standard RWD 2026** aparecía **Tesla Model 3** como primer similar, pese a ser una berlina.
+- Causa localizada en `SimilarCarsActivity.showSimilar()`: el bucle activo calculaba y puntuaba candidatos sin llamar a `inCompetitiveZone(reference, v)`. Existían métodos de filtro para carrocería/clase física/zona económica, pero no se aplicaban al flujo principal antes del ranking.
+- Corrección aplicada en `main`: el flujo activo descarta el candidato con `if(!inCompetitiveZone(reference,v)) continue;` antes de calcular sus puntuaciones. También se añade el filtro al método auxiliar `buildCompetitionCandidates()`.
+- Regla obligatoria: **si la referencia es SUV, solo se admiten SUV y crossover**; nunca berlinas, familiares, compactos, coupés ni monovolúmenes. SUV/crossover pueden ser compatibles entre sí. La carrocería/clase se filtra antes de competir por puntuación, por lo que ningún score técnico puede compensar una carrocería incompatible.
+- Se conserva el algoritmo de puntuación vigente; no se cambian pesos ni la fórmula técnica. El filtro existente también exige clase física compatible y aplica la zona de precio configurada.
+- Commit de código: `9036d2f1b4974b1fac9f390795e19fb3fcf737f2` — `fix: filtrar rivales por carrocería y clase antes del ranking`.
+- Estado: cambio enviado a `main`; pendiente de confirmar build automático y prueba en dispositivo. No declarar todavía la incidencia cerrada hasta verificar que el Model 3 desaparece y los SUV/crossover válidos ocupan los primeros puestos.
