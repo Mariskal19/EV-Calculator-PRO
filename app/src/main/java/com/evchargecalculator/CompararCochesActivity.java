@@ -845,23 +845,18 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         }
 
         Collections.sort(all,(a,b)->{
-            // Si dos resultados pertenecen al mismo modelo exacto (misma marca
-            // y modelo normalizados), agruparlos por año descendente ANTES de
-            // puntuar versiones o coincidencias accesorias.
-            String modelA=searchIndex(a).makeModel;
-            String modelB=searchIndex(b).makeModel;
-            int c=0;
-            if(modelA.equals(modelB)){
-                c=Integer.compare(b.year,a.year);
-                if(c!=0)return c;
-            }
-            // Para modelos distintos, prioriza la coincidencia de términos
-            // con marca+modelo y después el año más reciente.
-            c=Integer.compare(modelTokenMatchCount(b,nq),modelTokenMatchCount(a,nq));
-            if(c!=0)return c;
-            c=Integer.compare(b.year,a.year);
+            // Comparador lexicográfico consistente: no mezclar reglas distintas
+            // según que dos modelos coincidan o no, porque eso puede producir
+            // un orden no transitivo y dejar años intercalados.
+            int c=Integer.compare(modelTokenMatchCount(b,nq),modelTokenMatchCount(a,nq));
             if(c!=0)return c;
             c=Integer.compare(scores.get(b),scores.get(a));
+            if(c!=0)return c;
+            // Agrupar marca+modelo normalizados y, dentro de cada grupo,
+            // mostrar siempre el año más reciente primero.
+            c=searchIndex(a).makeModel.compareTo(searchIndex(b).makeModel);
+            if(c!=0)return c;
+            c=Integer.compare(b.year,a.year);
             if(c!=0)return c;
             c=a.make.compareToIgnoreCase(b.make);
             if(c!=0)return c;
