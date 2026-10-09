@@ -1015,3 +1015,14 @@ Cuando se retome EV Calculator PRO:
 - **Último commit de documentación antes de registrar este checkpoint:** `3ed523ca5947399a621f443d56c1dba55808ddb2`.
 - **Validación:** las ejecuciones de build asociadas a las últimas modificaciones seguían en curso al registrar este checkpoint. El checkpoint guarda el estado del código y los documentos, pero no certifica un build final correcto ni una prueba en dispositivo.
 - **Protección:** esta rama es una referencia de recuperación; no modificarla ni sobrescribirla sin autorización expresa.
+
+## 2026-10-09 — Rivales del Tesla Model 3: corrección de filtros y dimensiones
+
+- Se corrigieron las dimensiones del BYD Seal en las cinco variantes de catálogo de 2024–2026: **4.800 × 1.875 × 1.460 mm**, contrastadas con la ficha oficial de BYD. Antes figuraba una altura de 1.670 mm, que lo hacía fallar el filtro de clase física.
+- Se corrigieron las dimensiones oficiales del Polestar 2 Long Range Single Motor 2024 a **4.606 × 1.859 × 1.479 mm**. La clasificación de carrocería del catálogo sigue siendo `hatchback`, pero el algoritmo ahora permite que un hatchback/fastback/liftback compita con una berlina si ambos pertenecen al mismo segmento y pasan el filtro estricto de dimensiones. Se aplica una distancia de carrocería moderada, no una equivalencia total.
+- Se amplió el margen predeterminado de precio del **15 % al 20 %** para no excluir alternativas comerciales próximas como el Hyundai IONIQ 6 y el Polestar 2 únicamente por una diferencia moderada de PVP.
+- No se añadieron excepciones por marca/modelo y no se alteraron los pesos del ranking (60 % competencia / 40 % distancia técnica direccional).
+- Referencias oficiales consultadas: BYD Seal, https://media.byd.com/byd-seal-arrives-in-europe-setting-the-standard-in-breakthrough-technology-and-stunning-design/?lang=eng ; Polestar 2, https://www.polestar.com/es/polestar-2/specifications .
+- Commit de código: `0b4345a35a08a1155deaaf53a77e4930a56b75b7`.
+- Commit de catálogo: `f4fe3175d5e25c185ea6f1ce168788ab04ddbdf4`.
+- Validación automática disparada: build `37913433681` y validación de catálogo `37913433684`. Pendiente de que ambos finalicen; no se declara aún el APK como validado.
