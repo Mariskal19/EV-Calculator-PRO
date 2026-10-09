@@ -411,30 +411,16 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         int minYear=referenceYear>0?referenceYear-5:0;
         int maxYear=referenceYear>0?referenceYear+1:Integer.MAX_VALUE;
 
-        // No recortamos por un pool global: todos los candidatos válidos llegan
-        // a la selección por marca, evitando que una marca rival desaparezca
-        // porque otra tenga más versiones en el catálogo.
-        List<Scored> competitors=new ArrayList<>();
-        for(Vehicle v:vehicles){
-            if(v==reference)continue;
-            if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
-            if(referenceYear>0&&(v.year>maxYear||v.year<minYear))continue;
-            // Filtro obligatorio de carrocería, clase física y zona competitiva.
-            // Nunca permitir que una berlina entre como similar de un SUV.
-            if(!inCompetitiveZone(reference,v))continue;
-
-            double competition=competitionDistance(reference,v);
-
-            // FASE 2: distancia técnica direccional.
-            // Solo penalizamos al candidato cuando es peor que el referente.
-            // Una mejora objetiva (más autonomía/potencia, mejor aceleración,
-            // menor consumo o menor tiempo de carga) no genera una penalización.
-            // Así el orden emerge de los datos, sin una bonificación artificial.
-            double technical=directionalTechnicalDistance(reference,v);
-
-            if(Double.isFinite(competition)&&Double.isFinite(technical)){
-                competitors.add(new Scored(v,competition,technical));
-            }
+        // Primero aplicamos el filtro estricto. Si deja menos de cinco marcas,
+        // repetimos la búsqueda permitiendo segmentos adyacentes (p. ej. D/E)
+        // siempre que carrocería y dimensiones sigan encajando. Si aún hay pocas,
+        // ampliamos el margen económico al 30 %. Nunca mezclamos berlinas y SUV.
+        List<Scored> competitors=collectCompetitors(reference,20.0,false);
+        if(distinctBrandCount(competitors)<5){
+            competitors=collectCompetitors(reference,20.0,true);
+        }
+        if(distinctBrandCount(competitors)<5){
+            competitors=collectCompetitors(reference,30.0,true);
         }
 
         // Una marca no se representa por el primer coche que aparece en
@@ -458,6 +444,32 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         int n=Math.min(FINAL_TOP,uniqueBrands.size());
         for(int i=0;i<n;i++)addSimilarCard(uniqueBrands.get(i),i+1);
         if(n==0)results.addView(tv("No hay suficientes opciones similares con estos filtros.",13,sub()));
+    }
+
+    /**
+     * Recalcula el conjunto completo de candidatos con un nivel de apertura.
+     * El modo ampliado permite segmentos adyacentes, pero conserva los filtros
+     * de carrocería y tamaño. El precio solo se relaja si siguen faltando marcas.
+     */
+    private List<Scored> collectCompetitors(Vehicle reference,double maxPricePercent,boolean allowAdjacentSegment){
+        List<Scored> candidates=new ArrayList<>();
+        int referenceYear=reference.year;
+        int minYear=referenceYear>0?referenceYear-5:0;
+        int maxYear=referenceYear>0?referenceYear+1:Integer.MAX_VALUE;
+        for(Vehicle v:vehicles){
+            if(v==reference)continue;
+            if(reference.make!=null&&v.make!=null&&reference.make.trim().equalsIgnoreCase(v.make.trim()))continue;
+            if(referenceYear>0&&(v.year>maxYear||v.year<minYear))continue;
+            if(!inCompetitiveZone(reference,v,maxPricePercent,allowAdjacentSegment))continue;
+            double competition=competitionDistance(reference,v);
+            // La distancia técnica solo penaliza al candidato si queda por debajo
+            // del coche de referencia; las mejoras no reciben penalización.
+            double technical=directionalTechnicalDistance(reference,v);
+            if(Double.isFinite(competition)&&Double.isFinite(technical)){
+                candidates.add(new Scored(v,competition,technical));
+            }
+        }
+        return candidates;
     }
 
     /** FASE 1: competencia pura. La similitud técnica no decide quién entra. */
@@ -936,6 +948,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private boolean inCompetitiveZone(Vehicle a,Vehicle b,double maxPricePercent){
+        return inCompetitiveZone(a,b,maxPricePercent,false);
+    }
+
+    private boolean inCompetitiveZone(Vehicle a,Vehicle b,double maxPricePercent,boolean allowAdjacentSegment){
         if(a==null||b==null)return false;
 
         // Zona competitiva estricta: no basta con parecerse técnicamente.
@@ -960,7 +976,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
         String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
         if(!sa.isEmpty()&&!sb.isEmpty()&&!sa.equals(sb)){
-            if(!isSuvLike(ba)||!isSuvLike(bb))return false;
+            if(isSuvLike(ba)&&isSuvLike(bb)){
+                // En SUV/crossover, el tamaño físico prima sobre el código.
+            }else if(!allowAdjacentSegment||!areAdjacentSegments(sa,sb)){
+                return false;
+            }
         }
 
         // Finalmente, precio: filtro económico configurable (20% en la regla predeterminada).
@@ -978,6 +998,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * Compatibilidad histórica mantenida para cualquier llamada futura.
      * La lógica activa de candidatos usa los filtros escalonados de showSimilar().
      */
+    private boolean areAdjacentSegments(String a,String b){
+        int ra=segmentRank(a),rb=segmentRank(b);
+        return ra>=0&&rb>=0&&Math.abs(ra-rb)==1;
+    }
+
     private boolean sameVehicleClass(Vehicle a,Vehicle b){
         return sameBodyStyle(a,b)
             &&samePhysicalClass(a,b,8.0,5.0,8.0)
