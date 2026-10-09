@@ -700,11 +700,25 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         boolean sedanFastback=(x.equals("sedan")&&isFastbackLike(b))
                 ||(y.equals("sedan")&&isFastbackLike(a));
         if(!sedanFastback)return false;
+        return sameSegmentAndPhysicalClass(a,b);
+    }
+
+    /**
+     * Permite un familiar de silueta baja como alternativa de una berlina,
+     * pero solo si comparte segmento y dimensiones próximas. Esta excepción
+     * es exclusiva de sedan↔wagon: nunca admite SUV/crossover frente a berlina.
+     */
+    private boolean isSedanWagonCompatible(Vehicle a,Vehicle b){
+        if(a==null||b==null)return false;
+        String x=normalizeBodyStyle(a.bodyStyle),y=normalizeBodyStyle(b.bodyStyle);
+        if(!((x.equals("sedan")&&y.equals("wagon"))||(x.equals("wagon")&&y.equals("sedan"))))return false;
+        return sameSegmentAndPhysicalClass(a,b);
+    }
+
+    private boolean sameSegmentAndPhysicalClass(Vehicle a,Vehicle b){
         String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
         String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
         if(sa.isEmpty()||!sa.equals(sb))return false;
-        // No basta con que el catálogo diga "hatchback": exigimos silueta baja
-        // y longitud propia de un fastback grande, además de dimensiones próximas.
         return samePhysicalClass(a,b,8.0,5.0,8.0);
     }
 
@@ -914,7 +928,13 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ba=normalizeBodyStyle(a.bodyStyle);
         String bb=normalizeBodyStyle(b.bodyStyle);
         if(ba.isEmpty()||bb.isEmpty())return false;
-        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb))&&!isSedanFastbackCompatible(a,b))return false;
+        // No mezclar nunca SUV/crossover con berlinas. Las únicas excepciones
+        // de carrocería son berlina↔fastback/liftback y berlina↔familiar bajo
+        // comprobaciones estrictas de segmento y dimensiones.
+        if(!ba.equals(bb)
+                &&!(isSuvLike(ba)&&isSuvLike(bb))
+                &&!isSedanFastbackCompatible(a,b)
+                &&!isSedanWagonCompatible(a,b))return false;
 
         // El tamaño es una condición de entrada: evitamos que un SUV claramente
         // más pequeño o más grande entre solo por tener especificaciones parecidas.
