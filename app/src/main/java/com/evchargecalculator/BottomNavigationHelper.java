@@ -43,7 +43,7 @@ public final class BottomNavigationHelper {
         activity.startActivity(i);
       }
     });
-    addItem(activity, bar, R.drawable.ic_nav_find_cars, "Buscar", 2, selected, dark, v -> {
+    addItem(activity, bar, R.drawable.ic_nav_car_modern, "Buscar", 2, selected, dark, v -> {
       if (selected != 2) {
         Intent i = new Intent(activity, SimilarCarsActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -99,6 +99,10 @@ public final class BottomNavigationHelper {
     iconView.setImageResource(icon);
     iconView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
+    // Preserve the wider visual proportion of the original car icon.
+    if (index == 2) {
+      iconView.setScaleX(1.22f);
+    }
 
     int active = Color.rgb(0, 125, 255);
     int inactive = dark ? Color.rgb(180, 190, 205) : Color.rgb(75, 80, 88);
