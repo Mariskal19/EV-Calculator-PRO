@@ -658,7 +658,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         d=commercialPriceDistance(a.price,b.price); if(d>=0){sum+=d*.35;weight+=.35;}
         d=physicalCompetitionDistance(a,b); if(d>=0){sum+=d*.30;weight+=.30;}
-        d=bodyCompetitionDistance(a.bodyStyle,b.bodyStyle); if(d>=0){sum+=d*.20;weight+=.20;}
+        d=bodyCompetitionDistance(a,b); if(d>=0){sum+=d*.20;weight+=.20;}
         d=segmentCompetitionDistance(a.segment,b.segment,a.bodyStyle,b.bodyStyle); if(d>=0){sum+=d*.15;weight+=.15;}
 
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
@@ -682,12 +682,32 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return softDistance(Math.abs(a-b)/Math.max(a,b),scale);
     }
 
-    private double bodyCompetitionDistance(String a,String b){
-        String x=normalizeBodyStyle(a),y=normalizeBodyStyle(b);
+    private double bodyCompetitionDistance(Vehicle a,Vehicle b){
+        if(a==null||b==null)return -1;
+        String x=normalizeBodyStyle(a.bodyStyle),y=normalizeBodyStyle(b.bodyStyle);
         if(x.isEmpty()||y.isEmpty())return -1;
         if(x.equals(y))return 0;
         if(isSuvLike(x)&&isSuvLike(y))return .08;
+        // Fastback/liftback y hatchback del mismo segmento pueden ser
+        // alternativas comerciales a una berlina si el tamaño también encaja.
+        if(isSedanFastbackCompatible(a,b))return .20;
         return 1.0;
+    }
+
+    private boolean isSedanFastbackCompatible(Vehicle a,Vehicle b){
+        if(a==null||b==null)return false;
+        String x=normalizeBodyStyle(a.bodyStyle),y=normalizeBodyStyle(b.bodyStyle);
+        boolean sedanHatch=(x.equals("sedan")&&isFastbackLike(y))
+                ||(y.equals("sedan")&&isFastbackLike(x));
+        if(!sedanHatch)return false;
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        if(sa.isEmpty()||!sa.equals(sb))return false;
+        return samePhysicalClass(a,b,8.0,5.0,8.0);
+    }
+
+    private boolean isFastbackLike(String bodyStyle){
+        return "hatchback".equals(bodyStyle)||"fastback".equals(bodyStyle)||"liftback".equals(bodyStyle);
     }
 
     private double segmentCompetitionDistance(String a,String b,String bodyA,String bodyB){
@@ -875,7 +895,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
      * - Un SUV equivalente de 60.000 € -> 27,4% -> queda fuera.
      */
     private boolean inCompetitiveZone(Vehicle a,Vehicle b){
-        return inCompetitiveZone(a,b,15.0);
+        return inCompetitiveZone(a,b,20.0);
     }
 
     private boolean inCompetitiveZone(Vehicle a,Vehicle b,double maxPricePercent){
@@ -886,7 +906,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ba=normalizeBodyStyle(a.bodyStyle);
         String bb=normalizeBodyStyle(b.bodyStyle);
         if(ba.isEmpty()||bb.isEmpty())return false;
-        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb)))return false;
+        if(!ba.equals(bb)&&!(isSuvLike(ba)&&isSuvLike(bb))&&!isSedanFastbackCompatible(a,b))return false;
 
         // El tamaño es una condición de entrada: evitamos que un SUV claramente
         // más pequeño o más grande entre solo por tener especificaciones parecidas.
@@ -900,8 +920,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(!isSuvLike(ba)||!isSuvLike(bb))return false;
         }
 
-        // Finalmente, precio: filtro económico configurable.
-        // En el primer cribado es 15%; solo se amplía si faltan 8 marcas.
+        // Finalmente, precio: filtro económico configurable (20% en la regla predeterminada).
+        // Margen de precio del 20% para no excluir rivales comerciales por diferencias moderadas de PVP.
         if(a.price>0&&b.price>0){
             double reference=Math.max(a.price,b.price);
             double priceRatio=Math.abs(a.price-b.price)/reference;
