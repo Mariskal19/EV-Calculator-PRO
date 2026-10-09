@@ -61,9 +61,10 @@ No debe existir una portada inicial con tres tarjetas como navegación principal
 Destinos actuales:
 
 1. ⚡ **Cargar** → Charge Calculator
-2. 🔋 **Coste** → Cost / cálculo de coste
-3. 🚗 **Coches** → catálogo, búsqueda y funciones relacionadas
-4. ⋮ **Más** → configuración y acciones secundarias
+2. 💰 **Coste** → Cost / cálculo de coste
+3. 🚗🔎 **Buscar** → búsqueda de coches similares
+4. ⚖️ **Comparar** → comparación directa de coches
+5. ⋮ **Más** → configuración y acciones secundarias
 
 Reglas:
 
@@ -267,9 +268,9 @@ El flujo activo ya aplica filtros obligatorios de carrocería, clase física y z
 
 ## Flujo actual de coches similares — 1.0.5
 
-- **Coches** es ahora una sección independiente que ofrece dos funciones claramente separadas:
-  1. **Comparar coches** → pantalla de comparación de hasta 3 vehículos.
-  2. **Buscar coches similares** → pantalla independiente de búsqueda y similitud.
+- La barra inferior ofrece accesos directos e independientes:
+  1. **Buscar** → abre directamente la pantalla de búsqueda de coches similares, cuyo título interno sigue siendo **Buscar coches similares**.
+  2. **Comparar** → abre directamente la pantalla de comparación de hasta 3 vehículos.
 - **Comparar coches** no contiene la pantalla de búsqueda de similares: mantiene exclusivamente su función de comparación.
 - **Buscar coches similares** permite localizar un coche de referencia mediante buscador por marca/modelo/versión y filtros de mercado, año, tracción y rango de batería.
 - Al seleccionar el coche de referencia, la app calcula y muestra hasta **10 opciones similares** (constante `FINAL_TOP = 10` en el código activo).
@@ -277,7 +278,7 @@ El flujo activo ya aplica filtros obligatorios de carrocería, clase física y z
 - Al pulsar una de las 5 opciones se abre **CarDetailActivity**, la pantalla de detalle completa.
 - Desde el detalle, **Añadir a comparativa** incorpora el vehículo a la comparativa existente.
 - La fuente de datos es siempre **catálogo protegido + catálogo externo validado**, sin sobrescribir datos protegidos.
-- **CochesActivity** actúa como selector de estas dos funciones; las pantallas de comparación y similares permanecen como Activities independientes.
+- La navegación inferior no utiliza **CochesActivity** como selector: **Buscar** y **Comparar** son accesos directos independientes. El catálogo general queda aplazado.
 
 ---
 
@@ -1097,3 +1098,9 @@ Cuando se retome EV Calculator PRO:
 - Se añade iconografía propia para «Buscar coches» (coche con lupa) y «Comparar», y traducciones de las etiquetas en los seis idiomas soportados.
 - Respaldo previo al cambio: rama `backup/pre-navigation-change-2026-10-09`, apuntando al commit `6b36b6626656179b9da8ef0d3e118f586a7e72ab`.
 - Pendiente tras el commit: comprobar el workflow de compilación y validar visualmente en dispositivo la barra de cinco accesos, especialmente el ajuste de las etiquetas.
+
+
+## Ajuste de etiqueta de navegación — 09/10/2026
+
+- Se acorta la etiqueta de la tercera pestaña de **Buscar coches** a **Buscar**, manteniendo el icono de coche con lupa, el acceso directo a `SimilarCarsActivity` y el título interno de la pantalla.
+- Se añade la traducción de la etiqueta breve en los seis idiomas admitidos.
