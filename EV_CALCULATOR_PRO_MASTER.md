@@ -272,8 +272,8 @@ El flujo activo ya aplica filtros obligatorios de carrocería, clase física y z
   2. **Buscar coches similares** → pantalla independiente de búsqueda y similitud.
 - **Comparar coches** no contiene la pantalla de búsqueda de similares: mantiene exclusivamente su función de comparación.
 - **Buscar coches similares** permite localizar un coche de referencia mediante buscador por marca/modelo/versión y filtros de mercado, año, tracción y rango de batería.
-- Al seleccionar el coche de referencia, la app calcula y muestra **5 opciones similares**.
-- La similitud combina batería, autonomía WLTP, potencia, consumo, precio, dimensiones, maletero, aceleración, carga DC y tracción.
+- Al seleccionar el coche de referencia, la app calcula y muestra hasta **10 opciones similares** (constante `FINAL_TOP = 10` en el código activo).
+- El ranking combina una fase comercial (precio, dimensiones/clase física, carrocería y segmento) con una fase técnica direccional (potencia, aceleración 0–100, autonomía WLTP, consumo y tiempo de carga 10–80 %). La batería, el maletero, la tracción y la carga DC no son variables directas de la fase técnica direccional activa.
 - Al pulsar una de las 5 opciones se abre **CarDetailActivity**, la pantalla de detalle completa.
 - Desde el detalle, **Añadir a comparativa** incorpora el vehículo a la comparativa existente.
 - La fuente de datos es siempre **catálogo protegido + catálogo externo validado**, sin sobrescribir datos protegidos.
