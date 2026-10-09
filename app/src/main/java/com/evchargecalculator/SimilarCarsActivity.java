@@ -697,17 +697,25 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private boolean isSedanFastbackCompatible(Vehicle a,Vehicle b){
         if(a==null||b==null)return false;
         String x=normalizeBodyStyle(a.bodyStyle),y=normalizeBodyStyle(b.bodyStyle);
-        boolean sedanHatch=(x.equals("sedan")&&isFastbackLike(y))
-                ||(y.equals("sedan")&&isFastbackLike(x));
-        if(!sedanHatch)return false;
+        boolean sedanFastback=(x.equals("sedan")&&isFastbackLike(b))
+                ||(y.equals("sedan")&&isFastbackLike(a));
+        if(!sedanFastback)return false;
         String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
         String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
         if(sa.isEmpty()||!sa.equals(sb))return false;
+        // No basta con que el catálogo diga "hatchback": exigimos silueta baja
+        // y longitud propia de un fastback grande, además de dimensiones próximas.
         return samePhysicalClass(a,b,8.0,5.0,8.0);
     }
 
-    private boolean isFastbackLike(String bodyStyle){
-        return "hatchback".equals(bodyStyle)||"fastback".equals(bodyStyle)||"liftback".equals(bodyStyle);
+    private boolean isFastbackLike(Vehicle vehicle){
+        if(vehicle==null)return false;
+        String body=normalizeBodyStyle(vehicle.bodyStyle);
+        if("fastback".equals(body)||"liftback".equals(body))return true;
+        if(!"hatchback".equals(body))return false;
+        if(vehicle.lengthMm<4550||vehicle.lengthMm<=0||vehicle.heightMm<=0)return false;
+        double heightToLength=(double)vehicle.heightMm/vehicle.lengthMm;
+        return heightToLength<=0.325;
     }
 
     private double segmentCompetitionDistance(String a,String b,String bodyA,String bodyB){
