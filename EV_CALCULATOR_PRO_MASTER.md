@@ -982,3 +982,9 @@ Cuando se retome EV Calculator PRO:
 - Se conserva el algoritmo de puntuación vigente; no se cambian pesos ni la fórmula técnica. El filtro existente también exige clase física compatible y aplica la zona de precio configurada.
 - Commit de código: `9036d2f1b4974b1fac9f390795e19fb3fcf737f2` — `fix: filtrar rivales por carrocería y clase antes del ranking`.
 - Estado: cambio enviado a `main`; pendiente de confirmar build automático y prueba en dispositivo. No declarar todavía la incidencia cerrada hasta verificar que el Model 3 desaparece y los SUV/crossover válidos ocupan los primeros puestos.
+
+
+### 2026-10-09 — Unificar el formato del coche de referencia en Buscar coches similares
+- El selector mostraba cada coche con `pickerLabel()` (marca/modelo, año, versión normalizada y batería), pero al seleccionarlo reconstruía otra etiqueta con marca/modelo y versión sin normalizar, omitiendo año y batería.
+- La selección ahora reutiliza `pickerLabel()` y convierte el salto de línea en separadores, para que la referencia conserve los mismos datos y nombres que el resultado elegido en el buscador.
+- Commit de código: bec34d3a5296010772bc9225b588fb9e8ef88198. Pendiente de compilación y prueba en dispositivo.
