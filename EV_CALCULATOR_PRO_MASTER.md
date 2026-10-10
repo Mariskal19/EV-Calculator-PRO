@@ -1119,3 +1119,12 @@ Cuando se retome EV Calculator PRO:
 - No se ha cambiado arbitrariamente el comportamiento visual de los insets porque el helper central ya está implementado y había sido probado en el dispositivo del usuario. La recomendación de Play no demuestra por sí sola un fallo concreto. La validación final requiere instalar el APK de la versión 1.0.5 en el dispositivo Android 16 y comprobar navegación por gestos y por tres botones, especialmente la barra inferior, encabezados y contenido desplazable.
 - Estado: **reducción de bitmap corregida y compilación validada**; edge-to-edge implementado y revisado en código, pendiente de prueba visual de regresión y de comprobar si la recomendación de Play desaparece tras publicar una versión que incluya estos cambios. No marcar las recomendaciones como resueltas en Play Console hasta verificarlo.
 
+
+
+## 2026-10-10 — Auditoría conservadora de código obsoleto
+
+- Segunda revisión de referencias y navegación antes de eliminar código. Se confirma que la antigua `CochesActivity` era una pantalla intermedia sin uso en la navegación actual (la barra abre directamente `SimilarCarsActivity` y `CompararCochesActivity`). No tenía intent-filter propio ni otra ruta de entrada; `CarDetailActivity` sigue siendo necesaria y se conserva.
+- Eliminada la declaración `CochesActivity` del manifiesto y después su archivo `app/src/main/java/com/evchargecalculator/CochesActivity.java`.
+- Commits: manifiesto `70cbf8847bcdb60e179719495ac4237905eb1bbf`; eliminación de actividad `6754088b8d683250767ed948022b2b7addd31d75`.
+- No se borran todavía recursos gráficos candidatos ni `scripts/patch_search_virtualization.py`: aunque el workflow usa `.github/scripts/patch_search_virtualization.py`, los scripts difieren en el contenido generado y no se ha demostrado que el de raíz carezca de uso manual. Tampoco se modifica `AppMenuApplication` ni el tratamiento de insets hasta validar su interacción con `EdgeToEdgeHelper`.
+- Pendiente: comprobar que el workflow de compilación posterior a la limpieza termina correctamente antes de considerar cerrada esta retirada.
