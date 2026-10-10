@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ElectricVsCombustionActivity" android:exported="false" />
-        <activity android:name=".CochesActivity" android:exported="false" />
         <activity android:name=".CompararCochesActivity" android:exported="false" />
         <activity android:name=".CarDetailActivity" android:exported="false" />
         <activity android:name=".SimilarCarsActivity" android:exported="false" />
