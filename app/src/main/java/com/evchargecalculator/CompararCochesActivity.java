@@ -168,8 +168,26 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         HeaderBitmapView(android.content.Context context) {
             super(context);
             android.graphics.Bitmap decoded = null;
-            try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
-                decoded = android.graphics.BitmapFactory.decodeStream(in);
+            try {
+                // Primero leemos solo las dimensiones para evitar cargar la imagen
+                // original a resolución completa cuando se muestra en una cabecera.
+                android.graphics.BitmapFactory.Options bounds = new android.graphics.BitmapFactory.Options();
+                bounds.inJustDecodeBounds = true;
+                try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                    android.graphics.BitmapFactory.decodeStream(in, null, bounds);
+                }
+
+                int targetWidth = context.getResources().getDisplayMetrics().widthPixels;
+                int targetHeight = (int) (260 * context.getResources().getDisplayMetrics().density + 0.5f);
+                android.graphics.BitmapFactory.Options options = new android.graphics.BitmapFactory.Options();
+                options.inSampleSize = 1;
+                while (bounds.outWidth / (options.inSampleSize * 2) >= targetWidth
+                        && bounds.outHeight / (options.inSampleSize * 2) >= targetHeight) {
+                    options.inSampleSize *= 2;
+                }
+                try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                    decoded = android.graphics.BitmapFactory.decodeStream(in, null, options);
+                }
             } catch (Exception ignored) {
             }
             bitmap = decoded;
