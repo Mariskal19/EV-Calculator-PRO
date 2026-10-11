@@ -1130,11 +1130,10 @@ Cuando se retome EV Calculator PRO:
 - Pendiente: comprobar que el workflow de compilación posterior a la limpieza termina correctamente antes de considerar cerrada esta retirada.
 
 
-## 2026-10-11 — Cabecera de Buscar coches similares
+## 2026-10-11 — Cabecera propia de Buscar coches similares
 
-- Se sustituye la cabecera degradada con icono de lupa por la imagen existente `R.raw.cabecera_comparar_coches`, reutilizando el mismo recurso visual que la pantalla **Comparar coches**.
-- La imagen se dibuja a ancho completo y con recorte proporcional tipo `centerCrop`, con degradado superior para mantener legible el título blanco. Se conserva la tarjeta descriptiva bajo la imagen, el contenido de búsqueda y la navegación inferior.
-- La carga de la imagen usa muestreo de bitmap para evitar decodificar la imagen original a resolución completa; el tema oscuro no fuerza una transformación de la imagen.
-- Código actualizado en `app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java`.
-- Commit de código: `6213c7b54b8d5128fdf48affa732356345a1a145`.
-- Pendiente: validar la compilación Release de GitHub Actions y probar visualmente la cabecera en el dispositivo, en tema claro y oscuro.
+- Corregida la implementación inicial: la pantalla estaba reutilizando por error la imagen de **Comparar coches**. El usuario ha subido la imagen específica para esta pantalla, `app/src/main/res/raw/cabecera_coches_similares.jpg`.
+- `SimilarCarsActivity.java` ahora carga `R.raw.cabecera_coches_similares`, manteniendo el encuadre proporcional `centerCrop`, el degradado superior para la legibilidad del título blanco y el resto del diseño/navegación.
+- La carga mantiene el muestreo de bitmap para limitar el consumo de memoria. La imagen original del usuario no se modifica.
+- Commit de código corregido: `5ca2208f017512ad15afa176f91e07d8939219e4`.
+- Pendiente: comprobar el resultado de GitHub Actions y probar la cabecera en el dispositivo, en tema claro y oscuro.
