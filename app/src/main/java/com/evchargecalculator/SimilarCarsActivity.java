@@ -141,6 +141,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         heroImage.setTranslationY(-dp(10));
         hero.addView(heroImage,new FrameLayout.LayoutParams(-1,dp(260)));
 
+        // Mantener el título blanco superpuesto en la imagen, como en las demás pantallas.
+        View topFade=new View(this);
+        topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
+            new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));
+        hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
+
+        TextView imageTitle=tv("Buscar coches similares",22,Color.WHITE);
+        imageTitle.setTypeface(null,Typeface.BOLD);
+        imageTitle.setGravity(Gravity.CENTER);
+        imageTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        imageTitle.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
+        FrameLayout.LayoutParams imageTitleParams=new FrameLayout.LayoutParams(-1,dp(56),Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+        imageTitleParams.leftMargin=dp(40);
+        imageTitleParams.rightMargin=dp(40);
+        imageTitleParams.topMargin=dp(4);
+        hero.addView(imageTitle,imageTitleParams);
+
         // Una sola tarjeta reúne título, explicación y selector bajo la imagen.
         LinearLayout introCard=card();
         introCard.setPadding(dp(16),dp(16),dp(16),dp(16));
