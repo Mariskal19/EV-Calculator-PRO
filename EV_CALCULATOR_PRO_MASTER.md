@@ -1139,13 +1139,13 @@ Cuando se retome EV Calculator PRO:
 - Pendiente: comprobar el resultado de GitHub Actions y probar visualmente en el dispositivo, en tema claro y oscuro.
 
 
-## 2026-10-11 — Unificación de tarjeta en Buscar coches similares
+## 2026-10-11 — Unificación de tarjeta y traducciones en Buscar coches similares
 
-- Se unifican la tarjeta descriptiva y la tarjeta del selector en una sola tarjeta debajo de la imagen de cabecera.
-- Orden visual: **título «Buscar coches similares» en negrita**, explicación y después el selector «Seleccionar coche del catálogo» (con su etiqueta de búsqueda).
-- Se mantiene la imagen original, el ancho completo y la superposición ligera de la tarjeta sobre el borde inferior de la cabecera. Se elimina el título superpuesto sobre la imagen para evitar duplicidad y dar más jerarquía al contenido de la tarjeta.
-- Commit de código: `7b7622cb2de2c977209d7e56b04210d27537f761`.
-- Pendiente: validar el workflow de compilación y probar el aspecto en el dispositivo, en tema claro y oscuro.
-
-
-- **Ajuste adicional (11/10/2026):** se conserva el título «Buscar coches similares» también superpuesto sobre la imagen, en blanco y negrita con degradado oscuro, igual que en las demás pantallas. La tarjeta única inferior mantiene su propio título en negrita, seguido de la explicación y el selector, tal como se solicitó. Commit: `389f4c933e607186643203d7247f2bed9dda93d8`.
+- Se unifican el contenido descriptivo y el selector en una sola tarjeta debajo de la imagen de cabecera.
+- Se mantiene el título «Buscar coches similares» en blanco y negrita superpuesto a la imagen, con degradado oscuro, además del título en negrita dentro de la tarjeta.
+- Orden dentro de la tarjeta: título, explicación con **10 alternativas** y etiqueta «Busca tu coche de referencia», seguida del selector «Seleccionar coche del catálogo».
+- La pantalla usa la imagen original subida por el usuario, ancho completo, altura de 260 dp y superposición ligera de la tarjeta sobre el borde inferior. Se conserva `centerCrop` y la decodificación con muestreo.
+- Se completan las traducciones de los textos actuales de esta pantalla para los seis idiomas admitidos (español, inglés, francés, alemán, italiano y portugués). Se corrige también el texto de catálogo que todavía hablaba de 8 alternativas y se añaden traducciones exactas para la explicación, la etiqueta de búsqueda y la nota de ordenación.
+- Código de traducciones: commits `34ffa49ddcfa75dc483f5b9bed3ce19cda672143` y `e565feb27eaf821c9ec5c8012353dc0f9e74954a`.
+- Código de cabecera: commit `389f4c933e607186643203d7247f2bed9dda93d8`.
+- Pendiente: validar el workflow que se active con esta actualización y probar visualmente en el dispositivo, en tema claro y oscuro.
