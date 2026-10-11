@@ -1137,3 +1137,12 @@ Cuando se retome EV Calculator PRO:
 - Se conserva el recorte proporcional `centerCrop` y la decodificación con muestreo para limitar memoria. La imagen original no se modifica.
 - Commit de recurso/código: `5ca2208f017512ad15afa176f91e07d8939219e4`; ajuste de composición: `924512b3d5c7f51dd574dab7cf959421711579a0`.
 - Pendiente: comprobar el resultado de GitHub Actions y probar visualmente en el dispositivo, en tema claro y oscuro.
+
+
+## 2026-10-11 — Unificación de tarjeta en Buscar coches similares
+
+- Se unifican la tarjeta descriptiva y la tarjeta del selector en una sola tarjeta debajo de la imagen de cabecera.
+- Orden visual: **título «Buscar coches similares» en negrita**, explicación y después el selector «Seleccionar coche del catálogo» (con su etiqueta de búsqueda).
+- Se mantiene la imagen original, el ancho completo y la superposición ligera de la tarjeta sobre el borde inferior de la cabecera. Se elimina el título superpuesto sobre la imagen para evitar duplicidad y dar más jerarquía al contenido de la tarjeta.
+- Commit de código: `7b7622cb2de2c977209d7e56b04210d27537f761`.
+- Pendiente: validar el workflow de compilación y probar el aspecto en el dispositivo, en tema claro y oscuro.
