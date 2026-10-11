@@ -162,7 +162,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         LinearLayout introCard=card();
         introCard.setPadding(dp(16),dp(16),dp(16),dp(16));
 
-        TextView title=tv("Buscar coches similares",20,text());
+        TextView title=tv("Busca tu coche de referencia",20,text());
         title.setTypeface(null,Typeface.BOLD);
         title.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);
         introCard.addView(title,new LinearLayout.LayoutParams(-1,-2));
