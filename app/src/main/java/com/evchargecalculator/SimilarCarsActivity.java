@@ -131,6 +131,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         LinearLayout content=new LinearLayout(this);
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(14),0,dp(14),dp(18));
+        content.setClipChildren(false);
+        content.setClipToPadding(false);
 
         FrameLayout hero=new FrameLayout(this);
         hero.setClipChildren(false);
@@ -160,9 +162,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         TextView intro=tv("Elige un coche de referencia y descubre las 10 alternativas más similares del catálogo.",14,sub());
         intro.setLineSpacing(0,1.15f);
         introCard.addView(intro,new LinearLayout.LayoutParams(-1,-2));
-        LinearLayout.LayoutParams heroParams=marginLp(-1,dp(260),-dp(14),0,-dp(14),dp(10));
-        content.addView(hero,heroParams);
-        content.addView(introCard,marginLp(-1,-2,0,0,0,dp(10)));
+
+        // Match Comparar coches: full-width 260dp hero with the intro card overlapping its lower edge.
+        int stackHeight=dp(336);
+        FrameLayout heroStack=new FrameLayout(this);
+        heroStack.setClipChildren(false);
+        heroStack.setClipToPadding(false);
+        heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
+        FrameLayout.LayoutParams introParams=new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+        introParams.leftMargin=dp(14);
+        introParams.rightMargin=dp(14);
+        introParams.topMargin=dp(236);
+        heroStack.addView(introCard,introParams);
+        content.addView(heroStack,marginLp(-1,stackHeight,-dp(14),0,-dp(14),dp(10)));
 
         LinearLayout searchCard=card();
         searchCard.setPadding(dp(14),dp(14),dp(14),dp(14));
