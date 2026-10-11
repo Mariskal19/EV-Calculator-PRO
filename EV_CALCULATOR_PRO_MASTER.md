@@ -1146,3 +1146,6 @@ Cuando se retome EV Calculator PRO:
 - Se mantiene la imagen original, el ancho completo y la superposición ligera de la tarjeta sobre el borde inferior de la cabecera. Se elimina el título superpuesto sobre la imagen para evitar duplicidad y dar más jerarquía al contenido de la tarjeta.
 - Commit de código: `7b7622cb2de2c977209d7e56b04210d27537f761`.
 - Pendiente: validar el workflow de compilación y probar el aspecto en el dispositivo, en tema claro y oscuro.
+
+
+- **Ajuste adicional (11/10/2026):** se conserva el título «Buscar coches similares» también superpuesto sobre la imagen, en blanco y negrita con degradado oscuro, igual que en las demás pantallas. La tarjeta única inferior mantiene su propio título en negrita, seguido de la explicación y el selector, tal como se solicitó. Commit: `389f4c933e607186643203d7247f2bed9dda93d8`.
