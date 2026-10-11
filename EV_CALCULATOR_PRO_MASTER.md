@@ -1128,3 +1128,13 @@ Cuando se retome EV Calculator PRO:
 - Commits: manifiesto `70cbf8847bcdb60e179719495ac4237905eb1bbf`; eliminación de actividad `6754088b8d683250767ed948022b2b7addd31d75`.
 - No se borran todavía recursos gráficos candidatos ni `scripts/patch_search_virtualization.py`: aunque el workflow usa `.github/scripts/patch_search_virtualization.py`, los scripts difieren en el contenido generado y no se ha demostrado que el de raíz carezca de uso manual. Tampoco se modifica `AppMenuApplication` ni el tratamiento de insets hasta validar su interacción con `EdgeToEdgeHelper`.
 - Pendiente: comprobar que el workflow de compilación posterior a la limpieza termina correctamente antes de considerar cerrada esta retirada.
+
+
+## 2026-10-11 — Cabecera de Buscar coches similares
+
+- Se sustituye la cabecera degradada con icono de lupa por la imagen existente `R.raw.cabecera_comparar_coches`, reutilizando el mismo recurso visual que la pantalla **Comparar coches**.
+- La imagen se dibuja a ancho completo y con recorte proporcional tipo `centerCrop`, con degradado superior para mantener legible el título blanco. Se conserva la tarjeta descriptiva bajo la imagen, el contenido de búsqueda y la navegación inferior.
+- La carga de la imagen usa muestreo de bitmap para evitar decodificar la imagen original a resolución completa; el tema oscuro no fuerza una transformación de la imagen.
+- Código actualizado en `app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java`.
+- Commit de código: `6213c7b54b8d5128fdf48affa732356345a1a145`.
+- Pendiente: validar la compilación Release de GitHub Actions y probar visualmente la cabecera en el dispositivo, en tema claro y oscuro.
