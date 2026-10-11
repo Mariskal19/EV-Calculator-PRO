@@ -73,6 +73,51 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         restoreLastSearch();
     }
 
+    private static class SimilarHeaderBitmapView extends View {
+        private final android.graphics.Bitmap bitmap;
+        private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+
+        SimilarHeaderBitmapView(android.content.Context context) {
+            super(context);
+            android.graphics.Bitmap decoded = null;
+            try {
+                android.graphics.BitmapFactory.Options bounds = new android.graphics.BitmapFactory.Options();
+                bounds.inJustDecodeBounds = true;
+                try (InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                    android.graphics.BitmapFactory.decodeStream(in, null, bounds);
+                }
+                int targetWidth = context.getResources().getDisplayMetrics().widthPixels;
+                int targetHeight = (int) (260 * context.getResources().getDisplayMetrics().density + 0.5f);
+                android.graphics.BitmapFactory.Options options = new android.graphics.BitmapFactory.Options();
+                options.inSampleSize = 1;
+                while (bounds.outWidth / (options.inSampleSize * 2) >= targetWidth
+                        && bounds.outHeight / (options.inSampleSize * 2) >= targetHeight) {
+                    options.inSampleSize *= 2;
+                }
+                try (InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                    decoded = android.graphics.BitmapFactory.decodeStream(in, null, options);
+                }
+            } catch (Exception ignored) { }
+            bitmap = decoded;
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) setForceDarkAllowed(false);
+        }
+
+        @Override protected void onDraw(android.graphics.Canvas canvas) {
+            super.onDraw(canvas);
+            if (bitmap == null || bitmap.isRecycled()) {
+                canvas.drawColor(darkFallback());
+                return;
+            }
+            float viewW = getWidth(), viewH = getHeight();
+            float scale = Math.max(viewW / bitmap.getWidth(), viewH / bitmap.getHeight());
+            float drawW = bitmap.getWidth() * scale, drawH = bitmap.getHeight() * scale;
+            float left = (viewW - drawW) * 0.5f, top = (viewH - drawH) * 0.5f;
+            canvas.drawBitmap(bitmap, null, new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
+        }
+        private int darkFallback() { return Color.rgb(8, 34, 58); }
+    }
+
     private void build(){
         LinearLayout root=new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
@@ -87,29 +132,37 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         content.setOrientation(LinearLayout.VERTICAL);
         content.setPadding(dp(14),0,dp(14),dp(18));
 
-        LinearLayout hero=new LinearLayout(this);
-        hero.setOrientation(LinearLayout.VERTICAL);
-        hero.setPadding(dp(18),dp(16),dp(18),dp(16));
-        GradientDrawable heroBg=new GradientDrawable(
-            GradientDrawable.Orientation.TL_BR,
-            new int[]{dark?Color.rgb(12,42,66):Color.rgb(20,123,207),dark?Color.rgb(7,28,44):Color.rgb(46,107,255)}
-        );
-        heroBg.setCornerRadius(dp(22));
-        hero.setBackground(heroBg);
+        FrameLayout hero=new FrameLayout(this);
+        hero.setClipChildren(false);
+        hero.setBackgroundColor(Color.TRANSPARENT);
+        SimilarHeaderBitmapView heroImage=new SimilarHeaderBitmapView(this);
+        heroImage.setTranslationY(-dp(10));
+        hero.addView(heroImage,new FrameLayout.LayoutParams(-1,dp(260)));
 
-        TextView icon=tv("🔎",34,Color.WHITE);
-        hero.addView(icon,new LinearLayout.LayoutParams(-1,dp(38)));
+        View topFade=new View(this);
+        topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
+            new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));
+        hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
 
-        TextView title=tv("Buscar coches similares",25,Color.WHITE);
+        TextView title=tv("Buscar coches similares",22,Color.WHITE);
         title.setTypeface(null,Typeface.BOLD);
-        hero.addView(title,new LinearLayout.LayoutParams(-1,dp(36)));
+        title.setGravity(Gravity.CENTER);
+        title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
+        FrameLayout.LayoutParams titleParams=new FrameLayout.LayoutParams(-1,dp(56),Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+        titleParams.leftMargin=dp(40);
+        titleParams.rightMargin=dp(40);
+        titleParams.topMargin=dp(4);
+        hero.addView(title,titleParams);
 
-        TextView intro=tv("Elige un coche de referencia y descubre las 10 alternativas más similares del catálogo.",14,Color.WHITE);
-        intro.setAlpha(0.94f);
+        LinearLayout introCard=card();
+        introCard.setPadding(dp(16),dp(14),dp(16),dp(14));
+        TextView intro=tv("Elige un coche de referencia y descubre las 10 alternativas más similares del catálogo.",14,sub());
         intro.setLineSpacing(0,1.15f);
-        hero.addView(intro,new LinearLayout.LayoutParams(-1,dp(40)));
-
-        content.addView(hero,marginLp(-1,-2,0,dp(10),0,0));
+        introCard.addView(intro,new LinearLayout.LayoutParams(-1,-2));
+        LinearLayout.LayoutParams heroParams=marginLp(-1,dp(260),-dp(14),0,-dp(14),dp(10));
+        content.addView(hero,heroParams);
+        content.addView(introCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         LinearLayout searchCard=card();
         searchCard.setPadding(dp(14),dp(14),dp(14),dp(14));
