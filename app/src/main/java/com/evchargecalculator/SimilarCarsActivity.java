@@ -141,47 +141,27 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         heroImage.setTranslationY(-dp(10));
         hero.addView(heroImage,new FrameLayout.LayoutParams(-1,dp(260)));
 
-        View topFade=new View(this);
-        topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,
-            new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));
-        hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
-
-        TextView title=tv("Buscar coches similares",22,Color.WHITE);
-        title.setTypeface(null,Typeface.BOLD);
-        title.setGravity(Gravity.CENTER);
-        title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
-        FrameLayout.LayoutParams titleParams=new FrameLayout.LayoutParams(-1,dp(56),Gravity.TOP|Gravity.CENTER_HORIZONTAL);
-        titleParams.leftMargin=dp(40);
-        titleParams.rightMargin=dp(40);
-        titleParams.topMargin=dp(4);
-        hero.addView(title,titleParams);
-
+        // Una sola tarjeta reúne título, explicación y selector bajo la imagen.
         LinearLayout introCard=card();
-        introCard.setPadding(dp(16),dp(14),dp(16),dp(14));
+        introCard.setPadding(dp(16),dp(16),dp(16),dp(16));
+
+        TextView title=tv("Buscar coches similares",20,text());
+        title.setTypeface(null,Typeface.BOLD);
+        title.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);
+        introCard.addView(title,new LinearLayout.LayoutParams(-1,-2));
+
         TextView intro=tv("Elige un coche de referencia y descubre las 10 alternativas más similares del catálogo.",14,sub());
         intro.setLineSpacing(0,1.15f);
-        introCard.addView(intro,new LinearLayout.LayoutParams(-1,-2));
+        LinearLayout.LayoutParams introTextParams=new LinearLayout.LayoutParams(-1,-2);
+        introTextParams.topMargin=dp(6);
+        introCard.addView(intro,introTextParams);
 
-        // Match Comparar coches: full-width 260dp hero with the intro card overlapping its lower edge.
-        int stackHeight=dp(336);
-        FrameLayout heroStack=new FrameLayout(this);
-        heroStack.setClipChildren(false);
-        heroStack.setClipToPadding(false);
-        heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
-        FrameLayout.LayoutParams introParams=new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
-        introParams.leftMargin=dp(14);
-        introParams.rightMargin=dp(14);
-        introParams.topMargin=dp(236);
-        heroStack.addView(introCard,introParams);
-        content.addView(heroStack,marginLp(-1,stackHeight,-dp(14),0,-dp(14),dp(10)));
-
-        LinearLayout searchCard=card();
-        searchCard.setPadding(dp(14),dp(14),dp(14),dp(14));
-
-        TextView searchLabel=tv("Busca tu coche de referencia",16,text());
+        TextView searchLabel=tv("Busca tu coche de referencia",15,text());
         searchLabel.setTypeface(null,Typeface.BOLD);
-        searchCard.addView(searchLabel,new LinearLayout.LayoutParams(-1,dp(30)));
+        LinearLayout.LayoutParams searchLabelParams=new LinearLayout.LayoutParams(-1,-2);
+        searchLabelParams.topMargin=dp(14);
+        searchLabelParams.bottomMargin=dp(8);
+        introCard.addView(searchLabel,searchLabelParams);
 
         search=new EditText(this);
         search.setVisibility(View.GONE);
@@ -193,8 +173,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         picker.setPadding(dp(14),0,dp(14),0);
         picker.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),14));
         picker.setOnClickListener(v->showVehiclePicker(picker));
-        searchCard.addView(picker,new LinearLayout.LayoutParams(-1,dp(52)));
-        content.addView(searchCard,marginLp(-1,-2,0,0,0,dp(10)));
+        introCard.addView(picker,new LinearLayout.LayoutParams(-1,dp(52)));
+
+        // La tarjeta única se superpone ligeramente al borde inferior de la cabecera.
+        int stackHeight=dp(410);
+        FrameLayout heroStack=new FrameLayout(this);
+        heroStack.setClipChildren(false);
+        heroStack.setClipToPadding(false);
+        heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
+        FrameLayout.LayoutParams introParams=new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+        introParams.leftMargin=dp(14);
+        introParams.rightMargin=dp(14);
+        introParams.topMargin=dp(236);
+        heroStack.addView(introCard,introParams);
+        content.addView(heroStack,marginLp(-1,stackHeight,-dp(14),0,-dp(14),dp(10)));
 
 
         referenceResults=card();
