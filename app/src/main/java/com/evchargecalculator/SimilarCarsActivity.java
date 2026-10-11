@@ -83,7 +83,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             try {
                 android.graphics.BitmapFactory.Options bounds = new android.graphics.BitmapFactory.Options();
                 bounds.inJustDecodeBounds = true;
-                try (InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                try (InputStream in = context.getResources().openRawResource(R.raw.cabecera_coches_similares)) {
                     android.graphics.BitmapFactory.decodeStream(in, null, bounds);
                 }
                 int targetWidth = context.getResources().getDisplayMetrics().widthPixels;
@@ -94,7 +94,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                         && bounds.outHeight / (options.inSampleSize * 2) >= targetHeight) {
                     options.inSampleSize *= 2;
                 }
-                try (InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                try (InputStream in = context.getResources().openRawResource(R.raw.cabecera_coches_similares)) {
                     decoded = android.graphics.BitmapFactory.decodeStream(in, null, options);
                 }
             } catch (Exception ignored) { }
