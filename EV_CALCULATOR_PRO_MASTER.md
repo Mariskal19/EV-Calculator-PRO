@@ -1146,6 +1146,6 @@ Cuando se retome EV Calculator PRO:
 - Orden dentro de la tarjeta: título, explicación con **10 alternativas** y etiqueta «Busca tu coche de referencia», seguida del selector «Seleccionar coche del catálogo».
 - La pantalla usa la imagen original subida por el usuario, ancho completo, altura de 260 dp y superposición ligera de la tarjeta sobre el borde inferior. Se conserva `centerCrop` y la decodificación con muestreo.
 - Se completan las traducciones de los textos actuales de esta pantalla para los seis idiomas admitidos (español, inglés, francés, alemán, italiano y portugués). Se corrige también el texto de catálogo que todavía hablaba de 8 alternativas y se añaden traducciones exactas para la explicación, la etiqueta de búsqueda y la nota de ordenación.
-- Código de traducciones: commits `34ffa49ddcfa75dc483f5b9bed3ce19cda672143` y `e565feb27eaf821c9ec5c8012353dc0f9e74954a`.
+- Código de traducciones: commits `34ffa49ddcfa75dc483f5b9bed3ce19cda672143`, `e565feb27eaf821c9ec5c8012353dc0f9e74954a` y `706a57eb36f2df9e435c7aabe609faf375fd3a7d`.
 - Código de cabecera: commit `389f4c933e607186643203d7247f2bed9dda93d8`.
 - Pendiente: validar el workflow que se active con esta actualización y probar visualmente en el dispositivo, en tema claro y oscuro.
