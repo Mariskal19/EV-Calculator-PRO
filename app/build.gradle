@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId = 'com.evcalculatorpro'
-        minSdk = 23
+        minSdk = 24
         targetSdk = 36
-        versionCode = 59
-        versionName = '1.0.5'
+        versionCode = 60
+        versionName = '1.0.5.1'
     }
 
     signingConfigs {
