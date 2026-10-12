@@ -12,7 +12,7 @@
 - **Repositorio:** `Mariskal19/EV-Calculator-PRO`
 - **Rama de trabajo principal:** `main`
 - **Ramas stable:** no modificar sin autorización expresa.
-- **Versión actual del código en `main`:** **1.0.5 / versionCode 59**, comprobado directamente en `app/build.gradle` el 09/10/2026.
+- **Versión actual del código en `main`:** **1.0.5.1 / versionCode 60**, comprobada en `app/build.gradle` el 12/10/2026. Build y AAB de esta versión deben validarse antes de subirlos a Play.
 - **Parámetros Android actuales:** `applicationId` `com.evcalculatorpro`, `minSdk 23`, `targetSdk 36`, `compileSdk 36`; Java 17 y Gradle 9.6.0 en el workflow de build.
 - **Google Play:** último estado de publicación registrado en este documento: **1.0.4 / versionCode 56 publicada** el 02/10/2026. El envío posterior de 1.0.4.1 / 58 se documenta como histórico; comprobar Play Console antes de actualizar el estado público. La versión 1.0.5 de `main` no debe describirse como publicada sin esa comprobación.
 - **Catálogo:** objetivo operativo actual de **682 registros**.
@@ -33,13 +33,14 @@
 
 ---
 
-## 2026-10-12 — Preparación de publicación compatible con protección automática de Play
+## 2026-10-12 — Protección automática de Play y compatibilidad Android
 
-- Google Play Console ha advertido que la protección automática de Play requiere `minSdkVersion 24` o superior; el AAB enviado con `minSdk 23` no cumple ese requisito.
-- En `app/build.gradle` de `main` se ha cambiado `minSdk` de `23` a `24`, `versionCode` de `59` a `60` y `versionName` de `1.0.5` a `1.0.5.1`.
-- Este cambio excluye dispositivos que solo admitan Android 6.0/API 23. Antes de publicar, confirmar que esa pérdida de compatibilidad es aceptable.
-- Commit de configuración: `bbbc86e948d105e2e3e17dc2466c1f15fc604b9e`.
-- **Pendiente:** comprobar GitHub Actions y descargar/verificar el nuevo AAB antes de subirlo a Play Console. No dar por publicada la 1.0.5.1 hasta completar la revisión y el lanzamiento en Play Console.
+- Google Play Console rechazó el AAB con `minSdk 23` al estar activada la **Protección automática**, indicando que esa función requiere API 24 o superior.
+- El interruptor de Protección automática se ha desactivado desde Play Console por decisión del usuario, para evitar excluir dispositivos con Android 6.0/API 23.
+- Se restaura `minSdk = 23` en `app/build.gradle`, conservando `versionCode = 60` y `versionName = '1.0.5.1'`. El objetivo es mantener la compatibilidad con Android 6 y generar un AAB nuevo con la configuración corregida.
+- Commit provisional que elevó el mínimo a API 24: `bbbc86e948d105e2e3e17dc2466c1f15fc604b9e`. Commit que restaura API 23: `464c493ab3434e06b6b5b4ca862cb7e10d657bc5`.
+- La protección automática se ha desactivado; otros servicios de protección de Play que figuran activos en la consola no se han modificado por este cambio.
+- **Pendiente:** comprobar que GitHub Actions termina con éxito para la configuración restaurada, descargar/verificar el AAB de `1.0.5.1` y subir ese artefacto nuevo a Play Console. No utilizar el AAB anterior generado con `minSdk 24` ni dar por publicada la versión hasta comprobar el resultado en Play Console.
 
 # 1. PROPÓSITO DEL PROYECTO
 
