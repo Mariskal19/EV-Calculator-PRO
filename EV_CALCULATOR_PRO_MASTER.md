@@ -1169,3 +1169,10 @@ Cuando se retome EV Calculator PRO:
 - El usuario instaló y probó la app en su móvil e informa que, en general, todo parece funcionar correctamente. Se da por superada la prueba general inicial del build 2324, sin afirmar que se haya realizado una batería exhaustiva de pruebas de regresión.
 - La carpeta `capturas 1.0.5/` ya contiene ocho imágenes JPG y un `README.md`, como biblioteca visual de esta versión.
 - Pendiente de seguimiento externo al build: revisar en Google Play Console el estado de publicación y las recomendaciones vigentes, ya que no se pueden confirmar desde GitHub.
+
+
+## 2026-10-12 — Código de versión rechazado por estar usado
+
+- Google Play indicó que `versionCode 60` ya se había utilizado y no acepta reutilizarlo.
+- Se incrementa `versionCode` a **61** en `app/build.gradle`; se mantiene `versionName = '1.0.5.1'`, `minSdk = 23` y la compatibilidad con Android 6.
+- El AAB anterior de build 2330 con código 60 no debe volver a subirse. Esperar a que termine el nuevo build y utilizar únicamente el artefacto nuevo con `versionCode 61`.
