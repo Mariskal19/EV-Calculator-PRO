@@ -1149,3 +1149,14 @@ Cuando se retome EV Calculator PRO:
 - Código de traducciones: commits `34ffa49ddcfa75dc483f5b9bed3ce19cda672143`, `e565feb27eaf821c9ec5c8012353dc0f9e74954a`, `706a57eb36f2df9e435c7aabe609faf375fd3a7d` y `c285051595f7550fbd861d855da473b9dfe9d138`.
 - Código de cabecera: commit `389f4c933e607186643203d7247f2bed9dda93d8`.
 - Pendiente: validar el workflow que se active con esta actualización y probar visualmente en el dispositivo, en tema claro y oscuro.
+
+## 2026-10-12 — Validación de EV Calculator PRO 1.0.5 build 2324
+
+- GitHub Actions run `38232801394` terminó con **success** para el commit `3a4d9b12957432e38369ec29eaba07e70c74f30f`.
+- Se generaron y publicaron los artefactos:
+  - APK: `EV-Calculator-PRO-v1.0.5.apk`.
+  - AAB: `EV-Calculator-PRO-v1.0.5.aab`.
+- Release: [build-v1.0.5-2324](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.5-2324).
+- El usuario instaló y probó la app en su móvil e informa que, en general, todo parece funcionar correctamente. Se da por superada la prueba general inicial del build 2324, sin afirmar que se haya realizado una batería exhaustiva de pruebas de regresión.
+- La carpeta `capturas 1.0.5/` ya contiene ocho imágenes JPG y un `README.md`, como biblioteca visual de esta versión.
+- Pendiente de seguimiento externo al build: revisar en Google Play Console el estado de publicación y las recomendaciones vigentes, ya que no se pueden confirmar desde GitHub.
