@@ -33,6 +33,14 @@
 
 ---
 
+## 2026-10-12 — Preparación de publicación compatible con protección automática de Play
+
+- Google Play Console ha advertido que la protección automática de Play requiere `minSdkVersion 24` o superior; el AAB enviado con `minSdk 23` no cumple ese requisito.
+- En `app/build.gradle` de `main` se ha cambiado `minSdk` de `23` a `24`, `versionCode` de `59` a `60` y `versionName` de `1.0.5` a `1.0.5.1`.
+- Este cambio excluye dispositivos que solo admitan Android 6.0/API 23. Antes de publicar, confirmar que esa pérdida de compatibilidad es aceptable.
+- Commit de configuración: `bbbc86e948d105e2e3e17dc2466c1f15fc604b9e`.
+- **Pendiente:** comprobar GitHub Actions y descargar/verificar el nuevo AAB antes de subirlo a Play Console. No dar por publicada la 1.0.5.1 hasta completar la revisión y el lanzamiento en Play Console.
+
 # 1. PROPÓSITO DEL PROYECTO
 
 EV Calculator PRO es una aplicación Android orientada al cálculo de costes y energía de carga de vehículos eléctricos, con catálogo de vehículos y herramientas de búsqueda/comparación.
