@@ -12,7 +12,7 @@
 - **Repositorio:** `Mariskal19/EV-Calculator-PRO`
 - **Rama de trabajo principal:** `main`
 - **Ramas stable:** no modificar sin autorización expresa.
-- **Versión actual del código en `main`:** **1.0.5.1 / versionCode 60**, comprobada en `app/build.gradle` el 12/10/2026. Build y AAB de esta versión deben validarse antes de subirlos a Play.
+- **Versión actual del código en `main`:** **1.0.5.1 / versionCode 61**, comprobada en `app/build.gradle` el 12/10/2026. Build y AAB de esta versión deben validarse antes de subirlos a Play.
 - **Parámetros Android actuales:** `applicationId` `com.evcalculatorpro`, `minSdk 23`, `targetSdk 36`, `compileSdk 36`; Java 17 y Gradle 9.6.0 en el workflow de build.
 - **Google Play:** último estado de publicación registrado en este documento: **1.0.4 / versionCode 56 publicada** el 02/10/2026. El envío posterior de 1.0.4.1 / 58 se documenta como histórico; comprobar Play Console antes de actualizar el estado público. La versión 1.0.5 de `main` no debe describirse como publicada sin esa comprobación.
 - **Catálogo:** objetivo operativo actual de **682 registros**.
@@ -37,7 +37,7 @@
 
 - Google Play Console rechazó el AAB con `minSdk 23` al estar activada la **Protección automática**, indicando que esa función requiere API 24 o superior.
 - El interruptor de Protección automática se ha desactivado desde Play Console por decisión del usuario, para evitar excluir dispositivos con Android 6.0/API 23.
-- Se restaura `minSdk = 23` en `app/build.gradle`, conservando `versionCode = 60` y `versionName = '1.0.5.1'`. El objetivo es mantener la compatibilidad con Android 6 y generar un AAB nuevo con la configuración corregida.
+- Se restaura `minSdk = 23` en `app/build.gradle`, actualizando a `versionCode = 61` y manteniendo `versionName = '1.0.5.1'`. El objetivo es mantener la compatibilidad con Android 6 y generar un AAB nuevo con la configuración corregida.
 - Commit provisional que elevó el mínimo a API 24: `bbbc86e948d105e2e3e17dc2466c1f15fc604b9e`. Commit que restaura API 23: `464c493ab3434e06b6b5b4ca862cb7e10d657bc5`.
 - La protección automática se ha desactivado; otros servicios de protección de Play que figuran activos en la consola no se han modificado por este cambio.
 - **Pendiente:** comprobar que GitHub Actions termina con éxito para la configuración restaurada, descargar/verificar el AAB de `1.0.5.1` y subir ese artefacto nuevo a Play Console. No utilizar el AAB anterior generado con `minSdk 24` ni dar por publicada la versión hasta comprobar el resultado en Play Console.
