@@ -4,10 +4,10 @@ Aplicación Android para calcular tiempos, energía y costes de carga de vehícu
 
 ## Versión del código
 
-Estado de la rama `main` comprobado el **09/10/2026**:
+Estado de la rama `main` comprobado el **13/10/2026**:
 
-- **Versión de desarrollo:** `1.0.5`
-- **versionCode:** `59`
+- **Versión de desarrollo:** `1.0.5.1`
+- **versionCode:** `61`
 - **applicationId:** `com.evcalculatorpro`
 - **minSdk:** 23
 - **targetSdk / compileSdk:** 36 / 36
@@ -27,7 +27,15 @@ La versión indicada aquí es la que declara el código de `main`. No significa 
 - Idiomas, monedas y tema claro/oscuro.
 - Catálogo local protegido y adiciones remotas validadas.
 
-La navegación principal es **Cargar → Coste → Coches → Más**.
+La navegación principal dispone de cinco accesos: **Cargar → Coste → Buscar → Comparar → Más**.
+
+## Deslizador de batería
+
+Corrección validada por el usuario en dispositivo el **13/10/2026**:
+
+- Se conserva la animación de ampliación del pulgar al tocar y de retorno al soltar.
+- Al finalizar el gesto, se mantiene el último porcentaje calculado durante el arrastre; no se recalcula la posición en `ACTION_UP`, evitando un pequeño salto del valor.
+- Commit de la corrección: [ed59f75](https://github.com/Mariskal19/EV-Calculator-PRO/commit/ed59f75cdd1ee5d28c4b0ea203767bdff1c91f84).
 
 ## Catálogo de vehículos
 
