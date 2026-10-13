@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 09/10/2026 (versión de desarrollo 1.0.5, correcciones de coches similares y limpieza de documentación).
+> Última actualización: 13/10/2026 (versión de desarrollo 1.0.5.1, deslizador de batería validado en dispositivo).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -1176,3 +1176,12 @@ Cuando se retome EV Calculator PRO:
 - Google Play indicó que `versionCode 60` ya se había utilizado y no acepta reutilizarlo.
 - Se incrementa `versionCode` a **61** en `app/build.gradle`; se mantiene `versionName = '1.0.5.1'`, `minSdk = 23` y la compatibilidad con Android 6.
 - El AAB anterior de build 2330 con código 60 no debe volver a subirse. Esperar a que termine el nuevo build y utilizar únicamente el artefacto nuevo con `versionCode 61`.
+
+
+## 2026-10-13 — Deslizador de batería validado en dispositivo
+
+- El usuario ha probado la corrección del deslizador de porcentaje de batería y confirma que funciona correctamente.
+- Se conserva la animación del control: el pulgar aumenta de tamaño al tocar y vuelve a su tamaño normal al soltar. **No eliminar ni desactivar esta animación** como parte de la corrección.
+- Al soltar el dedo, no se vuelve a recalcular la posición con la coordenada final de `ACTION_UP`; se conserva el último valor establecido durante `ACTION_MOVE`. Esto evita el pequeño salto del porcentaje al terminar el gesto.
+- Commit de restauración de la animación junto con la corrección de liberación: `ed59f75cdd1ee5d28c4b0ea203767bdff1c91f84`.
+- Estado: **validado por el usuario en su dispositivo**. Mantener este comportamiento como base estable para los siguientes cambios.
