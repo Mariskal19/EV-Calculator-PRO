@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
 import android.view.Gravity;
@@ -31,6 +34,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
   private boolean dark;
   private SharedPreferences prefs;
   private ScrollView scroll;
+  private EditText activeEdit;
   private String lastLanguage;
   private String lastCurrency;
   private EditText distance, evConsumption, electricityPrice, fuelConsumption, fuelPrice;
@@ -180,6 +184,14 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     e.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
     e.setKeyListener(DigitsKeyListener.getInstance("0123456789,."));
     e.setImeOptions(EditorInfo.IME_ACTION_DONE);
+    e.setOnFocusChangeListener((v, hasFocus) -> {
+      if (hasFocus) {
+        activeEdit = e;
+        scheduleKeepFieldVisible(e);
+      } else if (activeEdit == e) {
+        activeEdit = null;
+      }
+    });
     e.addTextChangedListener(
         new android.text.TextWatcher() {
           public void beforeTextChanged(CharSequence s, int st, int c, int a) {}
@@ -202,6 +214,27 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
           return false;
         });
     return e;
+  }
+
+  private void scheduleKeepFieldVisible(EditText field) {
+    Handler handler = new Handler(Looper.getMainLooper());
+    Runnable task = () -> keepFieldVisible(field);
+    handler.postDelayed(task, 180);
+    handler.postDelayed(task, 400);
+    handler.postDelayed(task, 700);
+  }
+
+  private void keepFieldVisible(EditText field) {
+    if (field == null || scroll == null || !field.hasFocus()) return;
+    field.requestRectangleOnScreen(
+        new Rect(0, 0, field.getWidth(), field.getHeight()), true);
+    int[] location = new int[2];
+    field.getLocationOnScreen(location);
+    Rect visibleFrame = new Rect();
+    getWindow().getDecorView().getWindowVisibleDisplayFrame(visibleFrame);
+    int fieldBottom = location[1] + field.getHeight();
+    int delta = fieldBottom - (visibleFrame.bottom - dp(40));
+    if (delta > 0) scroll.smoothScrollBy(0, delta);
   }
 
   private void row(LinearLayout p, String label, EditText e, String unit) {
@@ -240,6 +273,23 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
     setContentView(frame);
+    // Keep the active input above the keyboard, including fields near the bottom of the form.
+    final int baseScrollBottomPadding = scroll.getPaddingBottom();
+    androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll, (view, insets) -> {
+      androidx.core.graphics.Insets imeInsets =
+          insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime());
+      int imeBottom =
+          insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime())
+              ? imeInsets.bottom : 0;
+      scroll.setPadding(
+          scroll.getPaddingLeft(), scroll.getPaddingTop(), scroll.getPaddingRight(),
+          baseScrollBottomPadding + imeBottom);
+      if (imeBottom > 0) {
+        EditText focused = activeEdit;
+        if (focused != null) focused.post(() -> keepFieldVisible(focused));
+      }
+      return insets;
+    });
     FrameLayout hero = new FrameLayout(this);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
     ImageView header = new ImageView(this);
