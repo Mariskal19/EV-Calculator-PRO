@@ -109,7 +109,7 @@ public class BatteryRangeView extends View {
       return true;
     }
     if (e.getAction() == MotionEvent.ACTION_UP || e.getAction() == MotionEvent.ACTION_CANCEL) {
-      updateThumb(x);
+      // Keep the last value from ACTION_MOVE; don't snap to a final release coordinate.
       activeThumb = -1;
       getParent().requestDisallowInterceptTouchEvent(false);
       performClick();
