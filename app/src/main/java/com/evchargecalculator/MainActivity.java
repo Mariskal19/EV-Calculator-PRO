@@ -34,12 +34,16 @@ public class MainActivity extends BaseNavigationActivity {
   void applyCurrency(){if(priceUnit!=null)priceUnit.setText(currencySymbol()+"/kWh");}
 
   void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
-    // BaseNavigationActivity adds 48dp of scroll range for its fixed bottom bar.\n    // Add the IME inset on top of that so the final fields can scroll above the keyboard.
+    // BaseNavigationActivity adds 48dp of scroll range for its fixed bottom bar.
+    // Add the IME inset on top of that so the final fields can scroll above the keyboard.
     final int baseScrollBottomPadding=scroll.getPaddingBottom();
-    androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll,(view,insets)->{\n      androidx.core.graphics.Insets imeInsets=insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime());
+    androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll,(view,insets)->{
+      androidx.core.graphics.Insets imeInsets=insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime());
       int imeBottom=insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime())?imeInsets.bottom:0;
       scroll.setPadding(scroll.getPaddingLeft(),scroll.getPaddingTop(),scroll.getPaddingRight(),baseScrollBottomPadding+imeBottom);
-      if(imeBottom>0){EditText focused=activeEdit; if(focused!=null)focused.post(()->keepFieldVisible(focused));}\n      return insets;\n    });
+      if(imeBottom>0){EditText focused=activeEdit; if(focused!=null)focused.post(()->keepFieldVisible(focused));}
+      return insets;
+    });
     FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(260)));ImageView sceneHeader=new ImageView(this);sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_charge_calculator);sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);sceneHeader.setAdjustViewBounds(false);sceneHeader.setTranslationY(-dp(10));hero.addView(sceneHeader,new FrameLayout.LayoutParams(-1,-1));
     View topFade=new View(this);topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));headerTitle=tv("EV Charge Calculator",22,Color.WHITE);headerTitle.setTypeface(null,1);headerTitle.setGravity(Gravity.CENTER);headerTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);headerTitle.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56));tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;tp.leftMargin=dp(40);tp.rightMargin=dp(40);tp.topMargin=dp(4);hero.addView(headerTitle,tp);root.addView(hero);
     LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null,1);c1.addView(h1);spaceIn(c1,12);battery=edit("80");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));LinearLayout.LayoutParams c1Lp=(LinearLayout.LayoutParams)c1.getLayoutParams();c1Lp.topMargin=-dp(26);c1.setLayoutParams(c1Lp);rangeSummary=tv("Cargar la batería desde 30% al 80%",15,text());rangeSummary.setGravity(Gravity.CENTER);rangeSummary.setTypeface(null,1);c1.addView(rangeSummary);range=new BatteryRangeView(this);c1.addView(range,new LinearLayout.LayoutParams(-1,dp(62)));chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(14);
