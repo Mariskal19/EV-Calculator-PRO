@@ -1224,3 +1224,11 @@ Cuando se retome EV Calculator PRO:
 - Se eliminó el tiempo de carga charge10to80Min de ambas entradas: Renault publica 30 minutos para **15–80 %**, que no se debe registrar como si fuese un tiempo oficial de **10–80 %**.
 - La versión de catálogo pasa a `catalog-es-2024-2026-1.8`. No se cambió el año 2025 ni se extrapolaron las cifras actualizadas de 2026 a las filas anteriores.
 - Fuentes oficiales: [ficha técnica Renault 4 España](https://www.renault.es/electricos/r4-e-tech-electrico/ficha-tecnica.html), [motores y batería Renault 4 España](https://www.renault.es/electricos/r4-e-tech-electrico/motores.html), [recarga Renault 4 España](https://www.renault.es/electricos/r4-e-tech-electrico/recarga.html) y [comunicado Renault del 8 de octubre de 2026 sobre mejoras de gama](https://media.renault.com/renault-4-e-tech-electric-continuous-improvements-for-customers/?lang=eng).
+
+### Auditoría Renault Mégane y Scénic: cargador AC de serie (18/10/2026)
+
+- Se corrigió `acKw` de 22 a **11 kW** en las entradas Mégane EV60 Iconic 2025, Mégane EV60 Techno 2025 y Scénic Long Range 87 kWh 2025. La cifra del catálogo representa la potencia de serie, no el máximo que se puede conseguir pagando una opción.
+- Renault España documenta 11 kW de serie y 22 kW opcional en las fichas consultadas. El cargador opcional de 22 kW no debe mostrarse como estándar en una ficha de acabado si el registro no indica que lleva esa opción.
+- La gama nueva de Mégane de 67 kWh y la gama Scénic actualizada de 89 kWh / futura 67 kWh LFP se mantienen como pendiente de cobertura: la gama comercial y fechas de disponibilidad deben confirmarse específicamente para España antes de añadir registros 2026.
+- Fuentes oficiales: [ficha Mégane E-Tech actual](https://www.renault.es/electricos/megane/ficha-tecnica.html), [ficha Mégane E-Tech anterior](https://www.renault.es/electricos/megane-electrico/datos-tecnicos.html), [ficha Scénic E-Tech](https://www.renault.es/electricos/scenic/datos-tecnicos.html) y [actualización global Scénic de septiembre de 2026](https://media.renault.com/scenic-e-tech-electric-upgraded-for-improved-comfort-connectivity-and-electric-performance?lang=eng).
+- La versión de catálogo pasa a `catalog-es-2024-2026-1.9` tras estas correcciones y la actualización del Renault 4 2026.
