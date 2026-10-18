@@ -1250,3 +1250,17 @@ Cuando se retome EV Calculator PRO:
   - [Configurador y ficha técnica del Nuevo Mégane E-Tech](https://www.renault.es/electricos/megane/configurador.html)
   - [Comunicado Renault España: Scénic E-Tech eléctrico 2026, 2/10/2026](https://prensa.renault.es/renault-scenic-e-tech-electrico-mejorado-para-ofrecer-mas-comodidad-conectividad-y-rendimiento-electrico-desde-30660eur/?lang=spa)
 
+### Cierre de auditoría Renault: Scénic 89 kWh y consumos Renault 4 (18/10/2026)
+
+- **Añadida la ficha española Scénic E-Tech 2026 Techno Gran Autonomía 89 kWh NMC, 220 CV**, porque Renault España ya publica la versión y su tarifa recomendada. Datos oficiales Renault: hasta 642 km WLTP, 160 kW, 150 kW DC, AC 11 kW de serie (22 kW opcional), 545 L de maletero, dimensiones 4470 × 1864 × 1571 mm y PVP recomendado de 45.085 €.
+- Para completar los campos técnicos que el comunicado español no publica, se han utilizado datos externos de EV Database para la versión MY27 de 89 kWh: capacidad nominal 93,5 kWh, capacidad útil 89 kWh, consumo WLTP 16,6 kWh/100 km, aceleración 0–100 km/h de 7,9 s y peso en vacío UE de 1.923 kg. Estos campos quedan explícitamente identificados como externos en la ficha; deben prevalecer los datos oficiales españoles si Renault publica una ficha técnica nacional específica.
+- El tiempo de carga oficial del Scénic nuevo es **15–80 % en 28 minutos**; no se ha copiado a `charge10to80Min`, porque el intervalo no es equivalente.
+- Se han corregido consumos del Renault 4 E-Tech de la ficha 2025: 40 kWh, de 13 a **14,7 kWh/100 km**; 52 kWh, de 12,7 a **14,4 kWh/100 km** en Evolution, Techno e Iconic. Los valores anteriores coincidían con una división simplificada de batería/autonomía y no con el consumo WLTP publicado por Renault.
+- Catálogo resultante: `catalog-es-2024-2026-1.11`, **686 vehículos y 21 registros Renault**, sin duplicados de combinación marca/modelo/año/versión ni identificadores disponibles.
+- **Scénic LFP 67 kWh:** el configurador español ya muestra datos técnicos para esa motorización, pero el comunicado de Renault del 2 de octubre todavía la describe como una versión que llegará más adelante. No se incluye aún en el catálogo de versiones disponibles hasta confirmar que ya se pueden formalizar pedidos/entregas en España y conseguir su peso específico. El configurador muestra 467 km WLTP, 17,0 kWh/100 km, 160 kW, 0–100 en 7,9 s, AC 11 kW y DC 165 kW; no basta para certificar disponibilidad comercial ni peso en vacío.
+- Fuentes:
+  - [Renault España: gama Scénic E-Tech 2026 y precios](https://prensa.renault.es/renault-scenic-e-tech-electrico-mejorado-para-ofrecer-mas-comodidad-conectividad-y-rendimiento-electrico-desde-30660eur/?lang=spa)
+  - [Renault España: configurador Scénic E-Tech](https://www.renault.es/electricos/scenic/configurador.html)
+  - [EV Database: Scénic E-Tech 89 kWh 220 hp MY27](https://ev-database.org/car/3787/Renault-Scenic-E-Tech-89-kWh-220hp)
+  - [Renault España: ficha técnica Renault 4 E-Tech](https://www.renault.es/electricos/r4-e-tech-electrico/ficha-tecnica.html)
+
