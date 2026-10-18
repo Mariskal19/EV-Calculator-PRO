@@ -1206,3 +1206,12 @@ Cuando se retome EV Calculator PRO:
 - El resto de las fichas Renault (Renault 4, Scenic y Mégane) se revisó en busca de discrepancias. No se cambiaron automáticamente los campos dudosos que pueden depender del año, acabado, homologación o equipamiento opcional; requieren una comprobación individual adicional antes de considerarlos certificados.
 - Fuentes oficiales: [ficha técnica Renault 5](https://www.renault.es/electricos/r5-e-tech-electrico/ficha-tecnica.html), [motores y baterías Renault 5](https://www.renault.es/electricos/r5-e-tech-electrico/motores.html), [recarga Renault 5](https://www.renault.es/electricos/r5-e-tech-electrico/recarga.html), [catálogo técnico Renault 5, noviembre de 2025](https://catalogo.renault.es/es/mobile/renault5/mobile/ct_renault5_es_november_2025.pdf).
 - Pendiente: validar la compilación y probar el APK resultante; revisar por separado las fichas Renault 4, Scenic y Mégane con fuentes oficiales específicas de cada año y acabado.
+
+### Ampliación de auditoría Renault: masas en orden de marcha
+
+- Se corrigieron las masas de Renault 4 y Renault 5 que no coincidían con los catálogos técnicos oficiales:
+  - **Renault 4:** EV40 1410 kg; EV52 Evolution 1462 kg; EV52 Techno/Iconic 1521 kg. En los registros genéricos EV52 se utiliza el mínimo oficial de 1462 kg.
+  - **Renault 5:** EV40 95 CV 1353 kg; EV40 120 CV 1372 kg; EV52 150 CV 1449 kg.
+- Son valores oficiales de masa en vacío en orden de marcha (mínimo/máximo homologado), no MMA. En acabados concretos puede haber variación por equipamiento; por eso los valores de acabado se han aproximado al mínimo o máximo publicado según el acabado, y los registros genéricos usan el mínimo.
+- Fuentes: [catálogo técnico Renault 4, mayo de 2025](https://catalogo.renault.es/es/mobile/renault4/mobile/ct_renault_4_es_may_2025.pdf) y [catálogo técnico Renault 5, noviembre de 2025](https://catalogo.renault.es/es/mobile/renault5/mobile/ct_renault5_es_november_2025.pdf).
+- La versión de catálogo sigue en `catalog-es-2024-2026-1.7`; no se añadieron ni eliminaron vehículos en esta ampliación.
