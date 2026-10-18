@@ -14816,8 +14816,8 @@
       "drive": "FWD",
       "wltpKm": 409,
       "consumptionKwh100": 14.8,
-      "auditDate": "2026-10-01",
-      "lastUpdated": "2026-09-29",
+      "auditDate": "2026-10-18",
+      "lastUpdated": "2026-10-18",
       "source": "Renault España; gama E-Tech eléctrico",
       "usableBatteryKwh": 52,
       "acKw": 11,
@@ -14825,7 +14825,7 @@
       "drivetrain": "FWD",
       "auditDateTime": "2026-10-01T18:00:00+02:00",
       "trunkLiters": 420,
-      "weightKg": 1410,
+      "weightKg": 1462,
       "charge10to80Min": 33,
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -14843,7 +14843,9 @@
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
       "priceSource": "Renault España",
       "bodyStyle": "suv",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 4 E-Tech, mayo de 2025 (masa en vacío en orden de marcha, mínimo oficial de la motorización)",
+      "weightAuditDateTime": "2026-10-18T14:20:00+02:00"
     },
     {
       "make": "Renault",
@@ -14864,11 +14866,11 @@
       "dcKw": 100,
       "acceleration0to100Sec": 8,
       "trunkLiters": 326,
-      "weightKg": 1500,
+      "weightKg": 1372,
       "source": "Renault España; gama E-Tech eléctrico; precio PVP España contrastado",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-10-18",
       "charge10to80Min": 30,
-      "auditDate": "2026-10-01",
+      "auditDate": "2026-10-18",
       "auditDateTime": "2026-10-01T15:00:00+02:00",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
       "consumptionAuditDateTime": "2026-09-29T16:05:00+02:00",
@@ -14883,7 +14885,9 @@
       "price": 27990,
       "currency": "EUR",
       "bodyStyle": "hatchback",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 5 E-Tech, noviembre de 2025 (masa en vacío en orden de marcha, mínimo oficial de la motorización)",
+      "weightAuditDateTime": "2026-10-18T14:20:00+02:00"
     },
     {
       "make": "Renault",
