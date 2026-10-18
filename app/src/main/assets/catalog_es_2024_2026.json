@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "datasetVersion": "catalog-es-2024-2026-1.6",
+  "datasetVersion": "catalog-es-2024-2026-1.7",
   "marketDefault": "ES",
   "catalogOrder": "market>make>model>year>trim>technical",
   "vehicles": [
@@ -14510,12 +14510,12 @@
       "market": "ES",
       "price": 29900,
       "currency": "EUR",
-      "weightKg": 1550,
+      "weightKg": 1410,
       "photo": null,
       "source": "Renault España; gama E-Tech eléctrico",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-10-18",
       "batteryChemistry": "li-ion",
-      "auditDate": "2026-10-01",
+      "auditDate": "2026-10-18",
       "auditDateTime": "2026-10-01T18:00:00+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -14531,7 +14531,9 @@
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
       "priceSource": "Renault España; precio de lanzamiento",
       "bodyStyle": "suv",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 4 E-Tech, mayo de 2025 (masa en vacío en orden de marcha, mínimo de versión; en acabados techno/iconic se usa el máximo oficial de gama)",
+      "weightAuditDateTime": "2026-10-18T14:15:00+02:00"
     },
     {
       "make": "Renault",
@@ -14555,12 +14557,12 @@
       "market": "ES",
       "price": 30500,
       "currency": "EUR",
-      "weightKg": 1550,
+      "weightKg": 1462,
       "photo": null,
       "source": "Renault España; gama E-Tech eléctrico; precio PVP España contrastado con Electrolitros",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-10-18",
       "batteryChemistry": "li-ion",
-      "auditDate": "2026-10-01",
+      "auditDate": "2026-10-18",
       "auditDateTime": "2026-10-01T15:00:00+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -14574,7 +14576,9 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "bodyStyle": "suv",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 4 E-Tech, mayo de 2025 (masa en vacío en orden de marcha, mínimo de versión; en acabados techno/iconic se usa el máximo oficial de gama)",
+      "weightAuditDateTime": "2026-10-18T14:15:00+02:00"
     },
     {
       "make": "Renault",
@@ -14598,12 +14602,12 @@
       "market": "ES",
       "price": 32900,
       "currency": "EUR",
-      "weightKg": 1550,
+      "weightKg": 1521,
       "photo": null,
       "source": "Renault España; gama E-Tech eléctrico",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-10-18",
       "batteryChemistry": "li-ion",
-      "auditDate": "2026-10-01",
+      "auditDate": "2026-10-18",
       "auditDateTime": "2026-10-01T18:00:00+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -14619,7 +14623,9 @@
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
       "priceSource": "Renault España; precio de lanzamiento",
       "bodyStyle": "suv",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 4 E-Tech, mayo de 2025 (masa en vacío en orden de marcha, mínimo de versión; en acabados techno/iconic se usa el máximo oficial de gama)",
+      "weightAuditDateTime": "2026-10-18T14:15:00+02:00"
     },
     {
       "make": "Renault",
@@ -14643,12 +14649,12 @@
       "market": "ES",
       "price": 32900,
       "currency": "EUR",
-      "weightKg": 1550,
+      "weightKg": 1521,
       "photo": null,
       "source": "Renault España; gama E-Tech eléctrico",
-      "lastUpdated": "2026-09-24",
+      "lastUpdated": "2026-10-18",
       "batteryChemistry": "li-ion",
-      "auditDate": "2026-10-01",
+      "auditDate": "2026-10-18",
       "auditDateTime": "2026-10-01T18:00:00+02:00",
       "drive": "FWD",
       "wltpAuditDateTime": "2026-09-29T15:51:38+02:00",
@@ -14664,7 +14670,9 @@
       "priceAuditDateTime": "2026-10-01T18:00:00+02:00",
       "priceSource": "Renault España; precio de lanzamiento",
       "bodyStyle": "suv",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 4 E-Tech, mayo de 2025 (masa en vacío en orden de marcha, mínimo de versión; en acabados techno/iconic se usa el máximo oficial de gama)",
+      "weightAuditDateTime": "2026-10-18T14:15:00+02:00"
     },
     {
       "make": "Renault",
@@ -14686,7 +14694,7 @@
       "market": "ES",
       "price": 27990,
       "currency": "EUR",
-      "weightKg": 1450,
+      "weightKg": 1353,
       "photo": null,
       "source": "Renault España, ficha técnica Renault 5 y motorizaciones; PVP conservado de la ficha previa y no revalidado en esta auditoría",
       "lastUpdated": "2026-10-18",
@@ -14706,7 +14714,9 @@
       "dimensionsAuditDate": "2026-09-30",
       "bodyStyle": "hatchback",
       "segment": "B",
-      "charge10to80Applicable": false
+      "charge10to80Applicable": false,
+      "weightSource": "Catálogo técnico oficial Renault 5 E-Tech, noviembre de 2025 (masa en vacío en orden de marcha, mínimo homologado para la motorización)",
+      "weightAuditDateTime": "2026-10-18T14:15:00+02:00"
     },
     {
       "make": "Renault",
@@ -14730,7 +14740,7 @@
       "market": "ES",
       "price": 32990,
       "currency": "EUR",
-      "weightKg": 1500,
+      "weightKg": 1449,
       "photo": null,
       "source": "Renault España, catálogo técnico Renault 5 E-Tech eléctrico; PVP conservado de la ficha previa y no revalidado en esta auditoría",
       "lastUpdated": "2026-10-18",
@@ -14749,7 +14759,9 @@
       "dimensionsSource": "Gaia EVDB; dimensiones auditadas",
       "dimensionsAuditDate": "2026-09-30",
       "bodyStyle": "hatchback",
-      "segment": "B"
+      "segment": "B",
+      "weightSource": "Catálogo técnico oficial Renault 5 E-Tech, noviembre de 2025 (masa en vacío en orden de marcha, mínimo homologado para la motorización)",
+      "weightAuditDateTime": "2026-10-18T14:15:00+02:00"
     },
     {
       "make": "Renault",
