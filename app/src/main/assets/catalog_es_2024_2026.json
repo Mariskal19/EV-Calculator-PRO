@@ -15077,7 +15077,7 @@
       "powerAuditDateTime": "2026-10-18T13:00:00+02:00",
       "accelerationAuditDateTime": "2026-10-18T13:00:00+02:00",
       "acceleration0to100Sec": 12.1,
-      "chargingAuditDateTime": "2026-09-29T18:20:00+02:00",
+      "chargingAuditDateTime": "2026-10-18T13:00:00+02:00",
       "batteryChemistry": "LFP",
       "lengthMm": 3790,
       "widthMm": 1740,
@@ -15091,7 +15091,8 @@
       "bodyStyle": "hatchback",
       "segment": "A",
       "priceAuditDateTime": "2026-10-18T13:00:00+02:00",
-      "priceSource": "Renault Group España: precio PVP de lanzamiento de Evolution, 19.500 €, sin ayudas ni descuentos"
+      "priceSource": "Renault Group España: precio PVP de lanzamiento de Evolution, 19.500 €, sin ayudas ni descuentos",
+      "charge10to80Applicable": false
     },
     {
       "make": "Renault",
@@ -15118,7 +15119,7 @@
       "powerAuditDateTime": "2026-10-18T13:00:00+02:00",
       "accelerationAuditDateTime": "2026-10-18T13:00:00+02:00",
       "acceleration0to100Sec": 12.1,
-      "chargingAuditDateTime": "2026-09-29T18:20:00+02:00",
+      "chargingAuditDateTime": "2026-10-18T13:00:00+02:00",
       "batteryChemistry": "LFP",
       "lengthMm": 3790,
       "widthMm": 1740,
@@ -15132,7 +15133,8 @@
       "bodyStyle": "hatchback",
       "segment": "A",
       "priceAuditDateTime": "2026-10-18T13:00:00+02:00",
-      "priceSource": "Renault Group España: precio PVP de lanzamiento de Techno, 21.100 €, sin ayudas ni descuentos"
+      "priceSource": "Renault Group España: precio PVP de lanzamiento de Techno, 21.100 €, sin ayudas ni descuentos",
+      "charge10to80Applicable": false
     },
     {
       "make": "Škoda",
