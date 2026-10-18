@@ -1232,3 +1232,21 @@ Cuando se retome EV Calculator PRO:
 - La gama nueva de Mégane de 67 kWh y la gama Scénic actualizada de 89 kWh / futura 67 kWh LFP se mantienen como pendiente de cobertura: la gama comercial y fechas de disponibilidad deben confirmarse específicamente para España antes de añadir registros 2026.
 - Fuentes oficiales: [ficha Mégane E-Tech actual](https://www.renault.es/electricos/megane/ficha-tecnica.html), [ficha Mégane E-Tech anterior](https://www.renault.es/electricos/megane-electrico/datos-tecnicos.html), [ficha Scénic E-Tech](https://www.renault.es/electricos/scenic/datos-tecnicos.html) y [actualización global Scénic de septiembre de 2026](https://media.renault.com/scenic-e-tech-electric-upgraded-for-improved-comfort-connectivity-and-electric-performance?lang=eng).
 - La versión de catálogo pasa a `catalog-es-2024-2026-1.9` tras estas correcciones y la actualización del Renault 4 2026.
+
+### Auditoría Renault Mégane E-Tech 67 kWh LFP y Scénic E-Tech 2026 (18/10/2026)
+
+- **Añadida una nueva ficha del Mégane E-Tech 2026, Techno 67 kWh LFP, mercado ES.** Datos contrastados con fuentes oficiales Renault España:
+  - Batería LFP de 67 kWh útiles; potencia 160 kW (220 CV); WLTP 501 km; consumo 15,7 kWh/100 km; 0–100 km/h en 7,6 s.
+  - Recarga AC de 11 kW de serie y DC de hasta 165 kW. Renault publica 24 minutos para **15–80 %**, por lo que no se ha registrado ese tiempo como 10–80 %.
+  - Masa en vacío en orden de marcha (MVODM): **1772 kg**. Dimensiones publicadas para la nueva versión: 4200 × 1782 × 1522 mm; maletero 440 L.
+  - Precio de tarifa desde **28.670 €** según el comunicado de apertura de pedidos del 1 de octubre de 2026. Se conserva el precio de tarifa de lanzamiento y no el precio promocional variable del configurador.
+- La nueva ficha eleva el catálogo a `catalog-es-2024-2026-1.10`, con **685 vehículos y 20 registros Renault**.
+- **Scénic E-Tech 2026:** Renault España confirmó el 2 de octubre de 2026 que la batería NMC de 89 kWh ya forma parte de la gama española, con hasta 642 km WLTP, DC hasta 150 kW y carga del 15 al 80 % en 28 minutos. El acabado Techno Gran Autonomía figura con tarifa recomendada de 45.085 €; Esprit Alpine Gran Autonomía, 47.685 €. El precio promocional «desde» 30.660 € corresponde a la versión de autonomía confort que llegará en unas semanas, no a una tarifa equivalente de la versión de 89 kWh.
+- No se añadió todavía una fila Scénic 89 kWh: el comunicado español consultado no especifica la masa en vacío ni el consumo homologado concreto de la nueva batería, y no se deben copiar automáticamente los datos de la anterior versión de 87 kWh. Se mantiene pendiente obtener ficha técnica española específica de la gama 2026 y validar masa, consumo, capacidad útil y precio de cada acabado.
+- La batería Scénic LFP de 67 kWh ofrece hasta 467 km y 15–80 % en 24 minutos, pero Renault España la describe como **disponible más adelante**; no se añade como variante disponible en el catálogo español hasta que se confirme su comercialización efectiva.
+- Fuentes oficiales:
+  - [Apertura de pedidos del Nuevo Mégane E-Tech, 1/10/2026](https://prensa.renault.es/nuevo-renault-megane-e-tech-electrico-mas-autonomia-equipamiento-y-tecnologia-desde-28670-eur/?lang=spa)
+  - [Ficha técnica del Nuevo Mégane E-Tech, Renault España](https://prensa.renault.es/nuevo-renault-megane-e-tech-electrico-mas-caracter-dinamismo-y-tecnologia/?lang=spa)
+  - [Configurador y ficha técnica del Nuevo Mégane E-Tech](https://www.renault.es/electricos/megane/configurador.html)
+  - [Comunicado Renault España: Scénic E-Tech eléctrico 2026, 2/10/2026](https://prensa.renault.es/renault-scenic-e-tech-electrico-mejorado-para-ofrecer-mas-comodidad-conectividad-y-rendimiento-electrico-desde-30660eur/?lang=spa)
+
