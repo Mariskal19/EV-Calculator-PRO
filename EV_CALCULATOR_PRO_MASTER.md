@@ -1215,3 +1215,12 @@ Cuando se retome EV Calculator PRO:
 - Son valores oficiales de masa en vacío en orden de marcha (mínimo/máximo homologado), no MMA. En acabados concretos puede haber variación por equipamiento; por eso los valores de acabado se han aproximado al mínimo o máximo publicado según el acabado, y los registros genéricos usan el mínimo.
 - Fuentes: [catálogo técnico Renault 4, mayo de 2025](https://catalogo.renault.es/es/mobile/renault4/mobile/ct_renault_4_es_may_2025.pdf) y [catálogo técnico Renault 5, noviembre de 2025](https://catalogo.renault.es/es/mobile/renault5/mobile/ct_renault5_es_november_2025.pdf).
 - La versión de catálogo sigue en `catalog-es-2024-2026-1.7`; no se añadieron ni eliminaron vehículos en esta ampliación.
+
+### Auditoría Renault 4 E-Tech 2026: corrección de prestaciones (18/10/2026)
+
+- Se corrigieron las dos entradas de Renault 4 E-Tech 2026 contra las fichas vigentes de Renault España y el comunicado oficial de actualización de gama de octubre de 2026:
+  - **40 kWh / 90 kW:** WLTP 310 km, consumo 14,7 kWh/100 km, 0–100 km/h en 9,2 s y carga rápida DC máxima de 80 kW.
+  - **52 kWh / 110 kW:** WLTP 415 km, consumo 14,4 kWh/100 km, 0–100 km/h en 8,5 s y carga rápida DC máxima de 100 kW.
+- Se eliminó el tiempo de carga charge10to80Min de ambas entradas: Renault publica 30 minutos para **15–80 %**, que no se debe registrar como si fuese un tiempo oficial de **10–80 %**.
+- La versión de catálogo pasa a `catalog-es-2024-2026-1.8`. No se cambió el año 2025 ni se extrapolaron las cifras actualizadas de 2026 a las filas anteriores.
+- Fuentes oficiales: [ficha técnica Renault 4 España](https://www.renault.es/electricos/r4-e-tech-electrico/ficha-tecnica.html), [motores y batería Renault 4 España](https://www.renault.es/electricos/r4-e-tech-electrico/motores.html), [recarga Renault 4 España](https://www.renault.es/electricos/r4-e-tech-electrico/recarga.html) y [comunicado Renault del 8 de octubre de 2026 sobre mejoras de gama](https://media.renault.com/renault-4-e-tech-electric-continuous-improvements-for-customers/?lang=eng).
