@@ -1264,3 +1264,9 @@ Cuando se retome EV Calculator PRO:
   - [EV Database: Scénic E-Tech 89 kWh 220 hp MY27](https://ev-database.org/car/3787/Renault-Scenic-E-Tech-89-kWh-220hp)
   - [Renault España: ficha técnica Renault 4 E-Tech](https://www.renault.es/electricos/r4-e-tech-electrico/ficha-tecnica.html)
 
+### Verificación de precios y acabados Renault 2026 (18/10/2026)
+
+- Precios de tarifa española verificados en el comunicado oficial de Renault para Scénic MY2026: **Techno Gran Autonomía: 45.085 €; Esprit Alpine Gran Autonomía: 47.685 €**. Son precios recomendados con IVA y transporte, no los precios promocionales «desde».
+- La ficha técnica pública consultada identifica 642 km WLTP como máximo de la batería NMC de 89 kWh, pero no desglosa en esa página el WLTP exacto de Esprit Alpine con llanta de 20 pulgadas. Por eso se ha incluido una sola ficha de comparación técnica, Techno, sin copiarle automáticamente la autonomía a Esprit Alpine.
+- Los precios de las fichas de años/modelos anteriores se conservan como precios asociados a esas versiones históricas cuando proceden de su fuente de catálogo; no deben interpretarse como oferta comercial actual de octubre de 2026. En las fichas donde el precio no se ha revalidado en esta auditoría, el campo `source` lo indica.
+
