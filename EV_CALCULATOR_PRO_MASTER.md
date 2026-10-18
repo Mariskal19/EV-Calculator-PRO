@@ -1185,3 +1185,14 @@ Cuando se retome EV Calculator PRO:
 - Al soltar el dedo, no se vuelve a recalcular la posición con la coordenada final de `ACTION_UP`; se conserva el último valor establecido durante `ACTION_MOVE`. Esto evita el pequeño salto del porcentaje al terminar el gesto.
 - Commit de restauración de la animación junto con la corrección de liberación: `ed59f75cdd1ee5d28c4b0ea203767bdff1c91f84`.
 - Estado: **validado por el usuario en su dispositivo**. Mantener este comportamiento como base estable para los siguientes cambios.
+
+
+## Auditoría Renault Twingo E-Tech eléctrico (18/10/2026)
+
+- Se revisó la ficha oficial española de Renault y se separaron las versiones **Evolution** y **techno** del año 2026 en `catalog_es_2024_2026.json`.
+- Datos comunes contrastados: batería 27,5 kWh, potencia 60 kW (80 CV), tracción trasera, autonomía WLTP hasta 263 km, consumo 12,2 kWh/100 km, maletero 360 l y longitud oficial 3.790 mm.
+- Aceleración corregida a **0–100 km/h en 12,1 s**; el valor anterior de 6 s era incorrecto.
+- Precios PVP sin ayudas/promociones: Evolution **19.500 €** y techno **21.100 €**, según comunicación oficial de Renault Group España. Se armonizaron `price` y `price_eur` para evitar discrepancias.
+- La carga de serie es AC de 6,6 kW. El cargador DC de 50 kW y la carga AC de 11 kW corresponden al paquete opcional Advanced Charge; por ello, en ambas fichas estándar se eliminan `dcKw` y `charge10to80Min` y se marca `charge10to80Applicable: false`. No se debe interpretar el dato opcional como equipamiento de serie.
+- Fuentes oficiales: [ficha técnica](https://www.renault.es/electricos/twingo-e-tech-electrico/ficha-tecnica.html), [recarga](https://www.renault.es/electricos/twingo-e-tech-electrico/recarga.html), [versiones y precios](https://www.renault.es/electricos/twingo-e-tech-electrico/precios-versiones.html) y [comunicación oficial de precios](https://prensa.renault.es/un-gran-programa-para-renault-twingo-e-tech-electrico-durante-todo-el-ano-2026/?lang=spa).
+- **Recuento:** el archivo consultado antes de esta intervención contenía 683 entradas, aunque el último estado global documentado aquí era 682. Con el acabado techno añadido, el archivo contiene 684 entradas. Esta modificación no certifica por sí sola el catálogo completo: antes de la siguiente release hay que reconciliar esa diferencia histórica y ejecutar las validaciones de duplicados, campos obligatorios y APK/AAB.
