@@ -15,13 +15,13 @@
 - **Versión actual del código en `main`:** **1.0.5.1 / versionCode 61**, comprobada en `app/build.gradle` el 12/10/2026. Build y AAB de esta versión deben validarse antes de subirlos a Play.
 - **Parámetros Android actuales:** `applicationId` `com.evcalculatorpro`, `minSdk 23`, `targetSdk 36`, `compileSdk 36`; Java 17 y Gradle 9.6.0 en el workflow de build.
 - **Google Play:** último estado de publicación registrado en este documento: **1.0.4 / versionCode 56 publicada** el 02/10/2026. El envío posterior de 1.0.4.1 / 58 se documenta como histórico; comprobar Play Console antes de actualizar el estado público. La versión 1.0.5 de `main` no debe describirse como publicada sin esa comprobación.
-- **Catálogo:** objetivo operativo actual de **682 registros**.
-- **Estado real verificado en `main` (01/10/2026): 682 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
-- **Duplicados verificados:** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
-- **Dimensiones:** 682/682 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
-- **Batería utilizable:** auditoría cerrada el 01/10/2026; **682/682 registros** tienen `usableBatteryKwh`; quedan **0 pendientes**.
-- **Precio:** **0 registros** siguen sin PVP tras la auditoría completada el 01/10/2026. Los 682 registros del catálogo tienen price informado.
-- **batteryChemistry:** **682/682 registros** auditados y completos; **0 pendientes**. Cierre de auditoría: 01/10/2026 21:38:37 +02:00.
+- **Catálogo:** estado real actual en `main`: **688 registros** (`catalog-es-2024-2026-1.12`), tras auditoría y actualización de Zeekr el 20/10/2026.
+- **Estado real verificado en `main` (20/10/2026): 688 registros** en `app/src/main/assets/catalog_es_2024_2026.json`.
+- **Duplicados verificados (20/10/2026):** 0 duplicados lógicos (`marca + modelo + año + versión`) y 0 IDs duplicados.
+- **Dimensiones:** comprobación de `main` el 20/10/2026: 688/688 registros tienen longitud, anchura y altura; no quedan registros sin dimensiones.
+- **Batería utilizable:** comprobación de `main` el 20/10/2026: 688/688 registros tienen `usableBatteryKwh`; quedan 0 campos vacíos.
+- **Precio:** comprobación de `main` el 20/10/2026: 688/688 registros tienen `price` informado. Los precios de tarifa no deben confundirse con ofertas temporales de contado/financiación.
+- **batteryChemistry:** comprobación de `main` el 20/10/2026: 688/688 registros tienen `batteryChemistry`; los cambios de química Zeekr se documentan en la auditoría específica.
 - **charge10to80Min:** **682/682 registros revisados**; **0 registros con dato DC 10–80% pendiente**. El único caso no aplicable queda documentado con charge10to80Applicable: false.
 - **dcKw:** auditoría global cerrada el **01/10/2026 21:48:32 +02:00**. Hay **681/681 registros aplicables** con `dcKw` informado; el único registro no aplicable es `MG MGS9 PHEV Comfort 2026`, que no dispone de carga rápida DC y mantiene `dcKw: null`. **0 pendientes aplicables**.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
@@ -32,6 +32,17 @@
 - **Stable:** no tocar.
 
 ---
+
+## 2026-10-20 — Auditoría y correcciones Zeekr
+
+- Revisada la gama eléctrica de Zeekr España y contrastados los datos del catálogo con las fichas oficiales. El Zeekr 9X no se incorpora porque es un híbrido enchufable, no un eléctrico puro.
+- Catálogo actualizado a `catalog-es-2024-2026-1.12`: **688 registros totales**, **13 registros Zeekr**, sin duplicados lógicos ni IDs duplicados tras los cambios.
+- Corregidas las dimensiones MY2026 del 001, X y 7X. Para anchura se conserva en `widthMm` la medida de carrocería sin retrovisores; la web oficial publica la medida con retrovisores, por lo que no se deben comparar ambas directamente.
+- Corregida la química del 7X Core RWD a LFP, coherente con su batería de 75 kWh; corregida la batería útil del X Long Range RWD a 60 kWh y mantenida su química LFP según la ficha técnica europea MY2026.
+- Corregida la aceleración del X Long Range RWD a 5,5 s y del X Privilege AWD a 3,7 s; la aceleración del 7GT Long Range RWD queda en 5,3 s y la del 7GT Privilege AWD en 3,3 s.
+- Añadidas las configuraciones 2026 **001 Privilege AWD** y **X Core RWD**, ausentes de la base previa. Datos que no aparecen completos en la ficha oficial española se identifican con su fuente secundaria en el registro; el precio de tarifa no debe confundirse con campañas temporales.
+- Validación posterior al cambio: dimensiones, batería utilizable, precio y química de batería informados en los 688 registros; 0 duplicados lógicos y 0 IDs duplicados.
+- Fuentes: [Zeekr 001 España](https://zeekr.es/zeekr-001), [Zeekr X España](https://zeekr.es/zeekr-x), [Zeekr 7X España](https://zeekr.es/zeekr-7x), [Zeekr 7GT España](https://zeekr.es/zeekr-7gt), [ficha técnica europea Zeekr X febrero 2026](https://www.datocms-assets.com/128969/1773048205-zeekr-x-a2-a4-product-leaflet-en-master.pdf), [km77: Zeekr X Core RWD](https://www.km77.com/coches/zeekr/x/2024/estandar/estandar/x-core-rwd/datos), [EV Database: X Long Range RWD MY26](https://ev-database.org/car/3585/Zeekr-X-Long-Range-RWD), [tarifas Zeekr 001 2026](https://www.motor.es/zeekr/001/).
 
 ## 2026-10-12 — Protección automática de Play y compatibilidad Android
 
