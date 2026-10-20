@@ -51,6 +51,18 @@ Archivo base:
 - Las nuevas configuraciones se validan y se comparan por clave lógica antes de incorporarse.
 - Auditoría Zeekr 20/10/2026: 13 registros; corregidas dimensiones, química de batería y aceleraciones; añadidas las versiones 2026 Zeekr 001 Privilege AWD y Zeekr X Core RWD. El detalle y las fuentes están en `EV_CALCULATOR_PRO_MASTER.md`.
 
+
+### Reconciliación histórica de recuentos (20/10/2026)
+
+El historial de `catalog_es_2024_2026.json` explica la evolución del catálogo:
+
+- **682 registros**: estado certificado el 01/10/2026.
+- **686 registros**: antes de la auditoría Zeekr. El aumento neto de cuatro corresponde a Renault Twingo E-Tech 2026 techno, XPeng G6 2026 RWD Standard Range, Renault Mégane E-Tech 2026 Techno LFP 67 kWh y Renault Scénic E-Tech 2026 Techno Gran Autonomía NMC 89 kWh.
+- En el mismo periodo se dieron de alta las fichas Renault 5 EV40 y EV52 de 2025 y se retiraron las equivalentes etiquetadas 2024; seis altas y dos bajas dan un neto de +4.
+- **688 registros**: estado actual de `main`, tras añadir Zeekr 001 Privilege AWD 2026 y Zeekr X Core RWD 2026. La auditoría registró 13 Zeekr, 0 duplicados lógicos y 0 IDs duplicados.
+
+No se deben eliminar las cuatro incorporaciones ni restaurar las fichas Renault 5 de 2024 para forzar el recuento histórico. El detalle, los commits comparados y las fuentes están en [EV_CALCULATOR_PRO_MASTER.md](EV_CALCULATOR_PRO_MASTER.md) y en el [historial del catálogo](https://github.com/Mariskal19/EV-Calculator-PRO/commits/main/app/src/main/assets/catalog_es_2024_2026.json).
+
 ## Buscar coches similares
 
 El algoritmo vigente en `main` combina:
