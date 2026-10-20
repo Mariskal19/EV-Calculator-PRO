@@ -28372,12 +28372,12 @@
       "heightMm": 1560,
       "bodyStyle": "wagon",
       "segment": "E",
-      "marketDefault": "ES",
       "source": "Zeekr España ficha oficial para autonomía, potencia, aceleración, carga y dimensiones; precio de tarifa 2026 contrastado con Motor.es y km77; batería utilizable estimada a partir de EV Database",
       "lastUpdated": "2026-10-20",
       "auditDate": "2026-10-20",
       "dimensionsSource": "Zeekr España: 4955 mm longitud, 2225 mm ancho incluidos espejos, 1560 mm altura con antena; widthMm del catálogo conserva anchura de carrocería sin espejos",
-      "dimensionsAuditDate": "2026-10-20"
+      "dimensionsAuditDate": "2026-10-20",
+      "priceSource": "Tarifa España 2026 contrastada con Motor.es; precio de lista, no oferta temporal"
     },
     {
       "make": "Zeekr",
@@ -28412,7 +28412,8 @@
       "lastUpdated": "2026-10-20",
       "auditDate": "2026-10-20",
       "dimensionsSource": "Zeekr España: 4432 mm longitud, 2029 mm ancho incluidos espejos y 1566 mm altura; widthMm del catálogo conserva anchura de carrocería sin espejos",
-      "dimensionsAuditDate": "2026-10-20"
+      "dimensionsAuditDate": "2026-10-20",
+      "priceSource": "Tarifa España 2026 contrastada con km77; precio de lista, no oferta temporal"
     }
   ],
   "updatedAt": "2026-10-20",
