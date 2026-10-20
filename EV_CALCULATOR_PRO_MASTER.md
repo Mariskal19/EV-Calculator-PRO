@@ -22,11 +22,11 @@
 - **Batería utilizable:** comprobación de `main` el 20/10/2026: 688/688 registros tienen `usableBatteryKwh`; quedan 0 campos vacíos.
 - **Precio:** comprobación de `main` el 20/10/2026: 688/688 registros tienen `price` informado. Los precios de tarifa no deben confundirse con ofertas temporales de contado/financiación.
 - **batteryChemistry:** comprobación de `main` el 20/10/2026: 688/688 registros tienen `batteryChemistry`; los cambios de química Zeekr se documentan en la auditoría específica.
-- **charge10to80Min:** **682/682 registros revisados**; **0 registros con dato DC 10–80% pendiente**. El único caso no aplicable queda documentado con charge10to80Applicable: false.
+- **charge10to80Min:** el estado previo de 682/682 se registró el 01/10/2026; las dos nuevas versiones Zeekr incorporadas el 20/10 tienen su tiempo de carga informado. Repetir validación global antes de release.
 - **dcKw:** auditoría global cerrada el **01/10/2026 21:48:32 +02:00**. Hay **681/681 registros aplicables** con `dcKw` informado; el único registro no aplicable es `MG MGS9 PHEV Comfort 2026`, que no dispone de carga rápida DC y mantiene `dcKw: null`. **0 pendientes aplicables**.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
-- **Estado del catálogo:** el último recuento auditado documentado es de 682 registros válidos, sin duplicados lógicos ni IDs duplicados. No reducir ni depurar registros del catálogo protegido sin identificar y aprobar previamente cada cambio.
-- **Auditoría final:** controles principales del catálogo completados para el estado auditado de 682 registros; antes de una certificación/release final debe repetirse la comprobación real y verificarse la integración en APK/AAB.
+- **Estado del catálogo:** el recuento inicial certificado fue de 682 registros; tras las cuatro incorporaciones históricas que explican la diferencia observada y las dos versiones Zeekr añadidas el 20/10, el archivo actual contiene 688. La reconciliación individual de las cuatro incorporaciones previas sigue pendiente; no borrar registros automáticamente.
+- **Auditoría final:** se han validado los campos obligatorios, dimensiones y duplicados del JSON actual de 688 registros; la reconciliación histórica de las cuatro entradas añadidas antes de esta revisión y la validación en APK/AAB siguen pendientes.
 - **Build más reciente comprobado antes de esta limpieza:** workflow Build EV Calculator PRO, run `37907456650`, resultado **success**, sobre el commit `fae8168e5c8b133d52f5ee58110c228cdaf5cfca` (09/10/2026). El código de ese estado declara `1.0.5 / versionCode 59`; los commits de esta limpieza disparan nuevas ejecuciones y deben revisarse por separado.
 - **Nota de artefactos:** el build correcto confirma compilación; no afirmar que se haya descargado o instalado manualmente el APK/AAB exacto si esa comprobación no se ha realizado.
 - **Stable:** no tocar.
@@ -161,7 +161,7 @@ No introducir fechas ficticias ni reutilizar una fecha antigua como si fuera una
 
 ## 4.5 Objetivo actual
 
-**Objetivo documentado y certificado: 682 registros, sin duplicados.**
+**Estado de referencia histórico: 682 registros (01/10/2026). Estado actual en main: 688 registros (20/10/2026), sin duplicados lógicos ni IDs duplicados.**
 
 La diferencia de 75 registros no se resolverá mediante borrado automático. Debe definirse primero si esos registros son parte del catálogo protegido o incorporaciones externas que deben quedar fuera del conjunto certificado.
 
@@ -181,7 +181,7 @@ Antes de dar el catálogo por terminado:
 
 ### Estado consolidado
 
-La comprobación real posterior confirmó **682 registros** en `main`. La cifra de 676 pertenece a un estado histórico y no debe utilizarse como estado actual.
+La comprobación real del 01/10/2026 confirmó 682 registros en `main`; esa cifra es histórica y ha sido superada. El JSON actual contiene 688 registros. La diferencia de cuatro registros observada antes de la auditoría Zeekr no se ha reconciliado individualmente y queda pendiente; no eliminar entradas para forzar una cifra objetivo.
 
 ---
 
