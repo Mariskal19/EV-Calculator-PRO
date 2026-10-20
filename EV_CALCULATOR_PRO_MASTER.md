@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 13/10/2026 (versión de desarrollo 1.0.5.1, deslizador de batería validado en dispositivo).
+> Última actualización: 20/10/2026 (catálogo 688 registros; reconciliación histórica 682→686 documentada; auditoría Zeekr).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -25,8 +25,8 @@
 - **charge10to80Min:** el estado previo de 682/682 se registró el 01/10/2026; las dos nuevas versiones Zeekr incorporadas el 20/10 tienen su tiempo de carga informado. Repetir validación global antes de release.
 - **dcKw:** auditoría global cerrada el **01/10/2026 21:48:32 +02:00**. Hay **681/681 registros aplicables** con `dcKw` informado; el único registro no aplicable es `MG MGS9 PHEV Comfort 2026`, que no dispone de carga rápida DC y mantiene `dcKw: null`. **0 pendientes aplicables**.
 - **Explorer 2024–2026:** auditoría aplicada; se eliminaron entradas antiguas duplicadas y se corrigió el conjunto de propulsiones. El último ajuste eliminó la entrada 2025 `79 kWh 150 kW RWD` duplicada.
-- **Estado del catálogo:** el recuento inicial certificado fue de 682 registros; tras las cuatro incorporaciones históricas que explican la diferencia observada y las dos versiones Zeekr añadidas el 20/10, el archivo actual contiene 688. La reconciliación individual de las cuatro incorporaciones previas sigue pendiente; no borrar registros automáticamente.
-- **Auditoría final:** se han validado los campos obligatorios, dimensiones y duplicados del JSON actual de 688 registros; la reconciliación histórica de las cuatro entradas añadidas antes de esta revisión y la validación en APK/AAB siguen pendientes.
+- **Estado del catálogo:** recuento histórico certificado de 682 (01/10/2026); 686 antes de la auditoría Zeekr; 688 en el estado actual (`catalog-es-2024-2026-1.12`, 20/10/2026). La diferencia neta de cuatro registros queda explicada por cuatro incorporaciones netas identificadas, más dos altas y dos bajas del Renault 5 por cambio de año de modelo. No borrar registros para forzar el recuento histórico.
+- **Auditoría final:** se han validado los campos obligatorios, dimensiones y duplicados del JSON actual de 688 registros. La reconciliación histórica 682→686 queda documentada en la sección del 20/10/2026; la comprobación final del APK/AAB exacto sigue pendiente.
 - **Build más reciente comprobado antes de esta limpieza:** workflow Build EV Calculator PRO, run `37907456650`, resultado **success**, sobre el commit `fae8168e5c8b133d52f5ee58110c228cdaf5cfca` (09/10/2026). El código de ese estado declara `1.0.5 / versionCode 59`; los commits de esta limpieza disparan nuevas ejecuciones y deben revisarse por separado.
 - **Nota de artefactos:** el build correcto confirma compilación; no afirmar que se haya descargado o instalado manualmente el APK/AAB exacto si esa comprobación no se ha realizado.
 - **Stable:** no tocar.
@@ -163,7 +163,7 @@ No introducir fechas ficticias ni reutilizar una fecha antigua como si fuera una
 
 **Estado de referencia histórico: 682 registros (01/10/2026). Estado actual en main: 688 registros (20/10/2026), sin duplicados lógicos ni IDs duplicados.**
 
-La diferencia de 75 registros no se resolverá mediante borrado automático. Debe definirse primero si esos registros son parte del catálogo protegido o incorporaciones externas que deben quedar fuera del conjunto certificado.
+La diferencia histórica se analiza por commits y por clave lógica; no se resolverá mediante borrado automático. Mantener como fuente de verdad el JSON de `main` y documentar cualquier variación con los registros concretos que la explican.
 
 Antes de dar el catálogo por terminado:
 
@@ -181,7 +181,7 @@ Antes de dar el catálogo por terminado:
 
 ### Estado consolidado
 
-La comprobación real del 01/10/2026 confirmó 682 registros en `main`; esa cifra es histórica y ha sido superada. El JSON actual contiene 688 registros. La diferencia de cuatro registros observada antes de la auditoría Zeekr no se ha reconciliado individualmente y queda pendiente; no eliminar entradas para forzar una cifra objetivo.
+La comprobación real del 01/10/2026 confirmó 682 registros en `main`; esa cifra es histórica y ha sido superada. El JSON actual contiene 688 registros. La diferencia neta de cuatro registros hasta 686 está reconciliada en el apartado «Reconciliación del recuento histórico del catálogo» del 20/10/2026; las dos fichas Zeekr nuevas elevan el total de 686 a 688.
 
 ---
 
@@ -1281,3 +1281,44 @@ Cuando se retome EV Calculator PRO:
 - La ficha técnica pública consultada identifica 642 km WLTP como máximo de la batería NMC de 89 kWh, pero no desglosa en esa página el WLTP exacto de Esprit Alpine con llanta de 20 pulgadas. Por eso se ha incluido una sola ficha de comparación técnica, Techno, sin copiarle automáticamente la autonomía a Esprit Alpine.
 - Los precios de las fichas de años/modelos anteriores se conservan como precios asociados a esas versiones históricas cuando proceden de su fuente de catálogo; no deben interpretarse como oferta comercial actual de octubre de 2026. En las fichas donde el precio no se ha revalidado en esta auditoría, el campo `source` lo indica.
 
+
+
+## 2026-10-20 — Reconciliación del recuento histórico del catálogo (682 → 686 → 688)
+
+### Resultado
+
+Se comparó el JSON del catálogo del commit `006fd7585d4a557cd7af42e89306dd9b14a3aa18` (01/10/2026, 682 registros) con el commit `7ea3295854104af62c4225508e01ce0c7b8d7052` (18/10/2026, 686 registros), usando el historial del archivo y la clave lógica `marca + modelo + año + versión`.
+
+Las cuatro incorporaciones netas que explican el paso de 682 a 686 son:
+
+1. **Renault Twingo E-Tech eléctrico 2026 techno**, 60 kW, tracción trasera, batería de 27,5 kWh, PVP registrado 21.100 €.
+2. **XPeng G6 2026 RWD Standard Range**, 185 kW, batería de 68,5 kWh, PVP registrado 43.083 €.
+3. **Renault Mégane E-Tech Electric 2026 Techno**, batería LFP de 67 kWh, 220 CV, PVP registrado 28.670 €.
+4. **Renault Scénic E-Tech Electric 2026 Techno Gran Autonomía**, batería NMC de 89 kWh, 220 CV, PVP registrado 45.085 €.
+
+### Cambios Renault 5 que no alteran el total neto
+
+El diff también muestra dos altas y dos bajas que se compensan:
+
+- **Altas:** Renault 5 E-Tech 2025 EV40 95 CV (27.990 €) y Renault 5 E-Tech 2025 EV52 150 CV (32.990 €).
+- **Bajas:** las fichas equivalentes etiquetadas como Renault 5 E-Tech 2024 de 40 kWh (27.990 €) y 52 kWh (32.990 €).
+
+La corrección trasladó esas dos variantes al año de modelo 2025, coherente con los identificadores y la auditoría técnica; por tanto, el historial refleja seis altas y dos bajas, es decir, un aumento neto de cuatro registros (682 → 686). No se deben reponer las fichas de 2024 ni borrar las de 2025 para hacer coincidir el catálogo con la cifra histórica.
+
+### Paso de 686 a 688
+
+El 20/10/2026 se añadieron dos configuraciones Zeekr nuevas: **Zeekr 001 Privilege AWD 2026** y **Zeekr X Core RWD 2026**. El catálogo quedó en 688 registros y 13 registros Zeekr. La auditoría posterior comprobó 0 IDs duplicados y 0 duplicados lógicos.
+
+### Referencias de auditoría
+
+- [Historial de cambios del catálogo](https://github.com/Mariskal19/EV-Calculator-PRO/commits/main/app/src/main/assets/catalog_es_2024_2026.json)
+- [Catálogo actual en main](https://github.com/Mariskal19/EV-Calculator-PRO/blob/main/app/src/main/assets/catalog_es_2024_2026.json)
+- La comparación histórica se hizo sobre el archivo JSON en los commits indicados; los precios son los valores registrados en esas fichas y no deben interpretarse necesariamente como ofertas vigentes.
+
+### Estado y criterio de mantenimiento
+
+- **682** = recuento certificado el 01/10/2026.
+- **686** = estado anterior a la auditoría Zeekr, tras la reconciliación Renault/XPeng descrita arriba.
+- **688** = estado de `main` tras añadir las dos configuraciones Zeekr el 20/10/2026.
+- No hay cuatro coches pendientes de añadir: son cuatro incorporaciones netas históricas ya presentes en el catálogo.
+- Mantener `stable` intacta. No modificar la rama ni los registros protegidos para forzar un total antiguo.
