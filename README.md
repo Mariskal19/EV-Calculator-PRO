@@ -45,10 +45,11 @@ Archivo base:
 
 - Mercado principal: España (`ES`).
 - Años del conjunto base: 2024–2026.
-- Último estado auditado documentado: **682 configuraciones**, sin duplicados lógicos ni IDs duplicados.
+- Estado actualizado en `main` el 20/10/2026: **688 configuraciones** (`catalog-es-2024-2026-1.12`), sin duplicados lógicos ni IDs duplicados.
 - Las adiciones remotas se guardan por separado en `app/src/main/assets/catalog_remote_additions.json`.
 - Los datos protegidos no se sobrescriben con información externa.
 - Las nuevas configuraciones se validan y se comparan por clave lógica antes de incorporarse.
+- Auditoría Zeekr 20/10/2026: 13 registros; corregidas dimensiones, química de batería y aceleraciones; añadidas las versiones 2026 Zeekr 001 Privilege AWD y Zeekr X Core RWD. El detalle y las fuentes están en `EV_CALCULATOR_PRO_MASTER.md`.
 
 ## Buscar coches similares
 
