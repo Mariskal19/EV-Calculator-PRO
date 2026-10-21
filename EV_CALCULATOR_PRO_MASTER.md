@@ -1322,3 +1322,29 @@ El 20/10/2026 se añadieron dos configuraciones Zeekr nuevas: **Zeekr 001 Privil
 - **688** = estado de `main` tras añadir las dos configuraciones Zeekr el 20/10/2026.
 - No hay cuatro coches pendientes de añadir: son cuatro incorporaciones netas históricas ya presentes en el catálogo.
 - Mantener `stable` intacta. No modificar la rama ni los registros protegidos para forzar un total antiguo.
+
+
+## 2026-10-21 — Auditoría Lynk & Co (solo eléctricos puros)
+
+### Alcance y criterio
+- Se ha revisado la gama oficial española de Lynk & Co y los tres registros Lynk & Co del catálogo protegido.
+- Solo se incluyen vehículos 100 % eléctricos. **Lynk & Co 01 y 08 quedan excluidos** porque son híbridos enchufables; no se añaden registros de esos modelos.
+- El único modelo 100 % eléctrico de la gama española revisada es el Lynk & Co 02. La web oficial distingue los acabados Core y More y publica 435 km y 445 km WLTP, respectivamente.
+
+### Correcciones realizadas en el catálogo protegido
+- **Batería utilizable:** corregida de 65 a **62 kWh** en los dos registros de 2024. EV Database indica 66 kWh nominales y 62 kWh utilizables para el 02 MY25; se mantiene la capacidad nominal de 66 kWh.
+- **Lynk & Co 02 Core 2025:** corregido el peso de 1895 a **1820 kg**, conforme a la masa en vacío publicada por la marca para el 02.
+- **Tiempo DC 10–80 % del registro Core 2025:** corregido de 27 a **30 minutos**. La página española actual del 02 indica 30 minutos; el valor de 27 minutos no se ha podido respaldar con la fuente oficial consultada.
+- **Tracción del registro Core 2025:** completada como **RWD**, coherente con la ficha oficial y con los otros registros del 02.
+- Se conserva el catálogo en **688 registros**. No se han añadido híbridos ni nuevos años/modelos en esta operación.
+- Los dos registros de 2024 mantienen los valores publicados para Core y More: 435/445 km WLTP, consumos de 17,6/17,1 kWh por 100 km y carga AC de 11/22 kW. La página oficial de características indica hasta 150 kW DC, mientras que la página general del modelo indica 85 kW DC y 30 minutos. Por esta discrepancia entre páginas oficiales, **no se ha cambiado la potencia DC de los registros existentes**; queda pendiente verificarla por año/modelo y ficha técnica PDF antes de introducir una variante MY27.
+- Los precios 2024 se conservan como precios históricos registrados, no como oferta necesariamente vigente. No se ha inventado un precio para una variante MY27.
+
+### Fuentes consultadas
+- Lynk & Co España, características oficiales del 02: https://www.lynkco.com/es-es/cars/02/features
+- Lynk & Co España, página general del 02: https://www.lynkco.com/es-es/cars/02
+- Lynk & Co España, comunicado oficial de actualización MY27 del 11/06/2026: https://press.lynkco.com/es-ES/266847-lynk-co-presenta-la-actualizacion-de-su-modelo-02-para-el-ano-2027/
+- EV Database, Lynk & Co 02 MY25 (batería nominal y utilizable): https://ev-database.org/car/3045/LynkCo-02
+
+### Resultado
+Auditoría de los tres registros existentes completada con las correcciones anteriores. **Pendiente separado:** comprobar la ficha técnica PDF MY27 y resolver la discrepancia oficial de potencia DC antes de crear o modificar registros para el año modelo 2027.
