@@ -1568,3 +1568,10 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 
 
 - Ajuste adicional antes de ejecutar la batería: se amplió el reconocimiento de unidades de volumen para aceptar expresiones españolas/portuguesas como `litros`, además de `L`, `liters` y `litres`. Commit: `d7680c56ac24c6259ccbb647431e45b0bed2bcbe`. La prueba de «450 litros» se conserva como caso de regresión.
+
+
+#### Comprobación solicitada — 22/10/2026
+
+- Revisión adicional del código y del arnés de pruebas: se detectó un error de escape en la expresión regular de la unidad de maletero. El patrón dinámico tenía una barra invertida de más, por lo que podía buscar literalmente `\\b` en vez de un límite de palabra; esto habría hecho fallar el caso «450 litros».
+- Corrección aplicada en `a164c053eeb7f78431e62db865db01cc4f6c40ef` en `feature/asesor-ia-fase-1`.
+- Estado de verificación: la inspección remota de commit no devuelve comprobaciones de CI registradas. En este entorno no se ha podido ejecutar `javac` contra los archivos descargados porque el contenedor no tiene resolución de red. **No afirmar que las pruebas han pasado** hasta comprobar la ejecución del workflow en la pestaña Actions de GitHub.
