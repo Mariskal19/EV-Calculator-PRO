@@ -25,6 +25,8 @@ public final class AdvisorCriteriaEngine {
     public static final class Criteria {
         public Double minPrice;
         public Double maxPrice;
+        /** True when maxPrice came from an explicit upper-limit operator, not a soft budget target. */
+        public boolean maxPriceIsCeiling;
         public Double minRangeKm;
         public Double maxRangeKm;
         public Double minTrunkLiters;
@@ -45,7 +47,7 @@ public final class AdvisorCriteriaEngine {
 
         public Criteria copy() {
             Criteria c = new Criteria();
-            c.minPrice=minPrice; c.maxPrice=maxPrice;
+            c.minPrice=minPrice; c.maxPrice=maxPrice; c.maxPriceIsCeiling=maxPriceIsCeiling;
             c.minRangeKm=minRangeKm; c.maxRangeKm=maxRangeKm;
             c.minTrunkLiters=minTrunkLiters; c.maxTrunkLiters=maxTrunkLiters; c.targetTrunkLiters=targetTrunkLiters;
             c.minBatteryKwh=minBatteryKwh; c.maxBatteryKwh=maxBatteryKwh;
@@ -59,7 +61,7 @@ public final class AdvisorCriteriaEngine {
 
         public void clear(Field field) {
             switch (field) {
-                case PRICE: minPrice=null; maxPrice=null; break;
+                case PRICE: minPrice=null; maxPrice=null; maxPriceIsCeiling=false; break;
                 case RANGE: minRangeKm=null; maxRangeKm=null; break;
                 case TRUNK: minTrunkLiters=null; maxTrunkLiters=null; targetTrunkLiters=null; preferLargeTrunk=false; break;
                 case BATTERY: minBatteryKwh=null; maxBatteryKwh=null; break;
@@ -133,8 +135,8 @@ public final class AdvisorCriteriaEngine {
         if (price != null) {
             if (price.ambiguous) clarification = "clarify_price";
             else {
-                if (price.lowerBound) criteria.minPrice=price.value;
-                else criteria.maxPrice=price.value;
+                if (price.lowerBound) { criteria.minPrice=price.value; criteria.maxPriceIsCeiling=false; }
+                else { criteria.maxPrice=price.value; criteria.maxPriceIsCeiling=price.priceCeiling; }
                 changed=true;
             }
         }
@@ -201,9 +203,12 @@ public final class AdvisorCriteriaEngine {
         final boolean lowerBound;
         final boolean ambiguous;
         final boolean target;
-        NumberMatch(double value, boolean lowerBound, boolean ambiguous) { this(value, lowerBound, ambiguous, false); }
-        NumberMatch(double value, boolean lowerBound, boolean ambiguous, boolean target) {
-            this.value=value; this.lowerBound=lowerBound; this.ambiguous=ambiguous; this.target=target;
+        final boolean priceCeiling;
+        NumberMatch(double value, boolean lowerBound, boolean ambiguous) { this(value, lowerBound, ambiguous, false, false); }
+        NumberMatch(double value, boolean lowerBound, boolean ambiguous, boolean target) { this(value, lowerBound, ambiguous, target, false); }
+        NumberMatch(double value, boolean lowerBound, boolean ambiguous, boolean target, boolean priceCeiling) {
+            this.value=value; this.lowerBound=lowerBound; this.ambiguous=ambiguous;
+            this.target=target; this.priceCeiling=priceCeiling;
         }
     }
 
@@ -259,7 +264,15 @@ public final class AdvisorCriteriaEngine {
             if (lower) return new NumberMatch(value, false, true);
             return new NumberMatch(value, false, false);
         }
-        return new NumberMatch(value, lower, false);
+        boolean priceCeiling = field == Field.PRICE && upper && !hasBudgetTargetOperator(prefix, lang);
+        return new NumberMatch(value, lower, false, false, priceCeiling);
+    }
+
+    private static boolean hasBudgetTargetOperator(String prefix, String lang) {
+        switch (lang) {
+            case "en": return has(prefix, "my budget is", "budget of");
+            default: return has(prefix, "mi presupuesto es");
+        }
     }
 
     private static Double parseNumber(String raw) {
