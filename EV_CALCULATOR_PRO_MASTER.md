@@ -1468,3 +1468,70 @@ Se inspeccionaron los constructores Vehicle(JSONObject) de SimilarCarsActivity y
 4. Mantener la primera versión completamente local para interpretar consultas: no enviar texto libre a GitHub ni a otro servicio; el tráfico ya existente de actualización del catálogo sigue siendo independiente.
 5. No implementar aún: terminar de acordar la arquitectura y revisar el plan con el usuario antes de cambiar código.
 
+
+### Diseño funcional propuesto del asesor conversacional (22/10/2026; aún sin código)
+
+#### Objetivo de la primera versión
+
+Implementar una búsqueda guiada en lenguaje natural dentro de SimilarCarsActivity, manteniendo visibles desde el inicio dos tarjetas verticales: «Buscar con IA» y «Elegir coche de referencia». La segunda conserva el flujo actual. El modo nuevo será un intérprete local de criterios con conversación de seguimiento; no debe presentarse como un modelo generativo remoto ni como comprensión ilimitada.
+
+#### Criterios iniciales a interpretar
+
+- Precio máximo y mínimo; no inferir precios desconocidos.
+- Carrocería cuando bodyStyle esté informado y se pueda normalizar de forma inequívoca.
+- Autonomía WLTP mínima/máxima.
+- Maletero mínimo/máximo cuando trunk sea conocido.
+- Capacidad de batería mínima/máxima.
+- Potencia mínima/máxima.
+- Consumo máximo y preferencia de menor consumo.
+- Tracción concreta cuando el dato exista y sus alias se hayan normalizado.
+- Marca/modelo explícitos para búsquedas por vehículo.
+- Preguntas comparativas sencillas sobre resultados actuales: mayor autonomía, mayor maletero, menor precio/consumo, siempre que existan datos comparables.
+- Seguimientos para añadir un criterio, modificar un límite, quitar un criterio, cambiar una preferencia o pedir una aclaración.
+
+#### Reglas de interpretación y ranking
+
+1. Mantener un estado conversacional en memoria de la instancia de la pantalla: filtros obligatorios, preferencias de ordenación, última lista de resultados y mensaje de aclaración pendiente. No escribirlo en SharedPreferences, base de datos, ficheros ni logs.
+2. Tratar frases con «máximo», «como mucho», «menos de», «mínimo», «al menos» como límites explícitos; frases como «me gustaría», «preferiría» o «si puede ser» son preferencias, salvo que la frase indique claramente una condición obligatoria.
+3. Una corrección explícita del usuario reemplaza el valor previo del mismo criterio (p. ej. cambiar 35.000 € por 40.000 €); añadir otro criterio conserva los anteriores. «Quita el límite de precio» debe borrar únicamente ese filtro.
+4. Los filtros obligatorios solo pueden evaluar campos conocidos. Si falta el dato necesario, no marcar el coche como cumplimiento confirmado; informar que se excluye de los resultados verificados por dato desconocido o mostrar una sección aparte de «datos insuficientes» solo si la UI lo permite sin inducir a error.
+5. Ordenar los resultados que cumplen los filtros según preferencias explícitas; sin preferencias, aplicar un orden estable y explicar los criterios. No reutilizar el algoritmo de similitud de rivales para esta búsqueda por requisitos.
+6. Resolver cada resultado al vehículo real de la lista de SimilarCarsActivity, usando la identidad lógica existente. La ficha debe abrirse con el objeto del catálogo, no reconstruirse a partir del texto.
+7. Si no se entiende el criterio, la unidad o el sentido del límite, preguntar antes de aplicar un filtro potencialmente incorrecto. Si no hay resultados, explicar qué restricciones impidieron encontrar coincidencias y ofrecer relajar una a elección del usuario.
+8. El modo de seguimiento y comparación se limita a los resultados de la sesión; al salir y volver a entrar, la conversación debe empezar vacía aunque el flujo clásico pueda seguir restaurando su coche de referencia guardado.
+
+#### Idiomas
+
+La aplicación dispone de español, inglés, francés, alemán, italiano y portugués. Las etiquetas de interfaz nuevas deben añadirse a LanguageManager en los seis idiomas. El intérprete debe limitarse a los idiomas que pueda reconocer de forma explícita y probarse por idioma; no debe fingir que entiende una frase no soportada. Definir patrones y sinónimos por idioma para criterios y operadores, y mostrar una explicación de los tipos de consulta aceptados.
+
+#### Arquitectura mínima recomendada
+
+- Integrar dos tarjetas en el diseño programático actual de SimilarCarsActivity, sin nueva Activity, nueva pantalla intermedia ni nueva pestaña de navegación.
+- Crear una clase auxiliar dedicada al intérprete/estado de criterios para mantener la lógica fuera de build() y no mezclarla con showSimilar()/collectCompetitors().
+- Reutilizar la lista de vehículos ya cargada y validada por SimilarCarsActivity, incluyendo la caché remota existente; no crear un tercer catálogo ni un tercer parser.
+- Antes de filtrar, normalizar las diferencias de alias necesarias para el asesor en una capa auxiliar de lectura. Evitar modificar constructores y validadores compartidos salvo que una prueba de regresión justifique el cambio.
+- Presentar resultados en tarjetas compactas y mantener el campo de texto, botón de envío y mensajes de seguimiento dentro de la tarjeta de «Buscar con IA». Cuidar teclado, desplazamiento y barra inferior fija.
+- Abrir ficha y comparativa mediante los flujos existentes. Reutilizar la clave lógica del vehículo y respetar el límite de tres coches de la comparativa.
+
+#### Alcance excluido de la primera versión
+
+- Ningún proveedor o API de IA de pago, ni envío del texto del usuario a GitHub u otro servidor.
+- Ningún historial persistente, analítica de consultas o almacenamiento de mensajes.
+- No alterar el catálogo protegido, el catálogo remoto, el refresco de 24 horas ni el algoritmo clásico de similares.
+- No generar especificaciones, precios, carrocerías ni respuestas numéricas no respaldadas por el catálogo.
+- No prometer comprensión abierta: se admiten los patrones definidos y se solicita aclaración cuando la consulta se salga de ellos.
+
+#### Matriz mínima de validación antes de dar la función por lista
+
+- Operadores y unidades: «menos de 40.000 €», «máximo 40.000», «al menos 450 litros», «más de 400 km».
+- Combinación de criterios, seguimiento que añade criterio, sustitución de un límite y eliminación de criterio.
+- Preferencias blandas frente a filtros obligatorios.
+- Campos nulos/ausentes y valores cero usados como desconocido.
+- Sin coincidencias, consulta ambigua y pregunta no soportada.
+- Preguntas comparativas con datos completos e incompletos.
+- Resolución de ficha y adición a comparativa con identidad lógica correcta.
+- Catálogo remoto/caché disponible, modo avión, salida y nueva entrada sin recuperar el chat.
+- Flujo clásico de selección y algoritmo de similares sin regresiones.
+- Revisión de cadenas de interfaz y patrones de interpretación en los seis idiomas soportados.
+
+Estado: diseño funcional preliminar. Aún falta acordar la arquitectura final y obtener aprobación del usuario antes de modificar archivos de código.
