@@ -1565,3 +1565,6 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Casos incluidos: carrocería SUV y precio máximo; maletero mínimo; dos criterios numéricos en una sola frase; añadir autonomía sin perder el presupuesto anterior; rechazo de un número sin unidad/contexto; eliminar solo el presupuesto; y un patrón básico en inglés.
 - Se añadió el workflow `.github/workflows/advisor-engine-test.yml`, que compila únicamente el motor aislado y ejecuta esas comprobaciones al cambiar los archivos de la fase 1.
 - Los archivos están en la rama de trabajo; el resultado de Actions debe revisarse en GitHub antes de afirmar que las pruebas han pasado. Este workflow no compila ni publica la aplicación Android completa.
+
+
+- Ajuste adicional antes de ejecutar la batería: se amplió el reconocimiento de unidades de volumen para aceptar expresiones españolas/portuguesas como `litros`, además de `L`, `liters` y `litres`. Commit: `d7680c56ac24c6259ccbb647431e45b0bed2bcbe`. La prueba de «450 litros» se conserva como caso de regresión.
