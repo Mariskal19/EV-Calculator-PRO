@@ -115,6 +115,7 @@ public final class AdvisorCriteriaEngine {
         if (original.isEmpty()) return result(false, "empty_query", null);
 
         String s = normalize(original);
+        Criteria before = criteria.copy();
         boolean changed = false;
         String clarification = null;
         String lang = language == null ? "es" : language.name().toLowerCase(Locale.ROOT);
@@ -178,6 +179,12 @@ public final class AdvisorCriteriaEngine {
 
         // The first version does not guess arbitrary model names. A query that names a
         // make/model without a supported criterion is returned as unsupported upstream.
+        // Treat each user turn transactionally: if any recognized part needs clarification,
+        // do not keep a partial update from the same sentence.
+        if (clarification != null) {
+            criteria = before;
+            changed = false;
+        }
         if (!changed && clarification == null) clarification = "unsupported_or_ambiguous";
         return result(changed, clarification, changed ? "criteria_updated" : null);
     }
@@ -222,7 +229,10 @@ public final class AdvisorCriteriaEngine {
         if (value == null || value <= 0) return new NumberMatch(0, false, true);
 
         int start = unit.start();
-        String prefix = s.substring(Math.max(0, start - 36), start);
+        String prefix = s.substring(Math.max(0, start - 60), start);
+        // Operators belong to the current clause, not a previous criterion.
+        int connector = lastConnectorIndex(prefix);
+        if (connector >= 0) prefix = prefix.substring(connector);
         int lowerAt = lastOperatorIndex(prefix, lang, true);
         int upperAt = lastOperatorIndex(prefix, lang, false);
         boolean lower = lowerAt >= 0 && lowerAt > upperAt;
@@ -248,6 +258,13 @@ public final class AdvisorCriteriaEngine {
             n = decimals==3 ? n.replace(",", "") : n.replace(',', '.');
         } else if (dot>=0 && n.length()-dot-1==3) n=n.replace(".", "");
         try { return Double.parseDouble(n); } catch (NumberFormatException ex) { return null; }
+    }
+
+    private static int lastConnectorIndex(String prefix) {
+        String[] connectors = {" y ", " and ", " et ", " und ", " e ", " mais ", " pero ", " but "};
+        int latest = -1;
+        for (String connector : connectors) latest = Math.max(latest, prefix.lastIndexOf(connector));
+        return latest < 0 ? -1 : latest + 1;
     }
 
     private static int lastOperatorIndex(String prefix, String lang, boolean lower) {
