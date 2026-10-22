@@ -1652,3 +1652,15 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - **Operadores explícitos siguen siendo límites:** «al menos 450 litros» / «mínimo 450 L» son un mínimo real; «máximo 450 litros» es un máximo real. Si falta el dato, el coche no se considera coincidencia verificada para ese criterio.
 - Cuando precio y maletero son objetivos, la clasificación considera la proximidad relativa a ambos.
 - Se añaden pruebas de regresión para distinguir el objetivo de maletero de un mínimo explícito y comprobar el ranking por cercanía.
+
+
+### Tolerancia para límites máximos del asesor conversacional (22/10/2026)
+
+- Decisión acordada: un criterio expresado como **«como máximo X»** admite una pequeña tolerancia para no descartar alternativas cercanas.
+- **Precio máximo:** tolerancia del **5 %** (por ejemplo, 30.000 € admite hasta 31.500 €; un vehículo de 31.000 € se admite).
+- **Autonomía, maletero, batería, potencia y consumo máximos:** tolerancia del **3 %** (por ejemplo, 450 km admite hasta 463,5 km).
+- **Límites inferiores** («al menos», «mínimo», «más de» según su operador): continúan aplicándose sin tolerancia por debajo del mínimo solicitado.
+- La tolerancia se aplica en el filtrado del matcher, no solo en la ordenación. Los objetivos aproximados, como «unos 450 litros», siguen usando su lógica separada de proximidad y no se convierten en límites máximos.
+- La tolerancia solo amplía el límite superior; los valores desconocidos/no positivos siguen sin poder satisfacer un filtro numérico.
+- Nota sobre precio: se conserva el comportamiento previo del matcher para presupuestos con máximo (80 %–105 % del presupuesto cuando no hay mínimo), por lo que el precio mantiene además su lógica histórica de búsqueda en torno al presupuesto. Esta lógica debe revisarse por separado si se quiere que todo precio inferior al máximo sea admisible sin suelo mínimo.
+- La batería de humo incluye casos límite para precio, autonomía, maletero, batería, potencia y consumo. La validación CI debe confirmarse tras estos cambios; todavía no es una prueba de dispositivo ni una publicación.
