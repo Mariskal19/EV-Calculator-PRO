@@ -43,8 +43,7 @@ jobs:
         run: |
           set -euo pipefail
           keystore="$RUNNER_TEMP/advisor-ci-only.jks"
-          keytool -genkeypair -noprompt -keystore "$keystore" -storepass advisor-ci-only -keypass advisor-ci-only \\
-            -alias advisor-ci-only -dname "CN=Advisor CI Only" -keyalg RSA -keysize 2048 -validity 2
+          keytool -genkeypair -noprompt -keystore "$keystore" -storepass advisor-ci-only -keypass advisor-ci-only -alias advisor-ci-only -dname "CN=Advisor CI Only" -keyalg RSA -keysize 2048 -validity 2
           {
             echo "EV_CALCULATOR_KEYSTORE_PATH=$keystore"
             echo "EV_CALCULATOR_KEYSTORE_PASSWORD=advisor-ci-only"
