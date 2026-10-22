@@ -117,5 +117,5 @@ Antes de cualquier cambio de código para el asesor se creó y verificó una ram
 
 - Aprobado el enfoque local y sin envío de consultas el 22/10/2026.
 - Rama aislada de trabajo: [feature/asesor-ia-fase-1](https://github.com/Mariskal19/EV-Calculator-PRO/tree/feature/asesor-ia-fase-1).
-- Se añadió el primer motor de criterios local, aún sin integración visual ni validación de compilación. Ver el registro de fase y los límites conocidos en [EV_CALCULATOR_PRO_MASTER.md](EV_CALCULATOR_PRO_MASTER.md).
+- El motor local de criterios tiene una ejecución de smoke tests anterior confirmada como correcta. Se añadió también un matcher aislado para candidatos de catálogo con pruebas de filtros AND y protección frente a datos desconocidos; la nueva ejecución de CI está pendiente de confirmación. Todavía no hay integración visual ni adaptación real de `Vehicle`. Ver el registro y los límites en [EV_CALCULATOR_PRO_MASTER.md](EV_CALCULATOR_PRO_MASTER.md).
 - El código no se ha integrado en `main`; la rama de respaldo previa se conserva sin cambios.
