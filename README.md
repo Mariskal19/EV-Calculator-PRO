@@ -117,5 +117,8 @@ Antes de cualquier cambio de código para el asesor se creó y verificó una ram
 
 - Aprobado el enfoque local y sin envío de consultas el 22/10/2026.
 - Rama aislada de trabajo: [feature/asesor-ia-fase-1](https://github.com/Mariskal19/EV-Calculator-PRO/tree/feature/asesor-ia-fase-1).
-- El motor local de criterios tiene una ejecución de smoke tests anterior confirmada como correcta. Se añadió también un matcher aislado para candidatos de catálogo con pruebas de filtros AND y protección frente a datos desconocidos; la nueva ejecución de CI está pendiente de confirmación. Todavía no hay integración visual ni adaptación real de `Vehicle`. Ver el registro y los límites en [EV_CALCULATOR_PRO_MASTER.md](EV_CALCULATOR_PRO_MASTER.md).
+- El motor local de criterios tiene una ejecución de smoke tests anterior confirmada como correcta. Se añadió también un matcher aislado para candidatos de catálogo con pruebas de filtros AND y protección frente a datos desconocidos; la batería ampliada pasó en GitHub Actions (ejecución [39808523386](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808523386)). Todavía no hay integración visual ni adaptación real de `Vehicle`. Ver el registro y los límites en [EV_CALCULATOR_PRO_MASTER.md](EV_CALCULATOR_PRO_MASTER.md).
 - El código no se ha integrado en `main`; la rama de respaldo previa se conserva sin cambios.
+
+
+- La batería aislada del matcher ya pasó; siguen pendientes la adaptación de `Vehicle`, las pruebas con el catálogo real y la compilación Android completa. No se ha integrado en `main`.
