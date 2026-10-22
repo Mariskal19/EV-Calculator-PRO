@@ -30,6 +30,10 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.minRangeKm != null && Math.abs(r.criteria.minRangeKm - 400d) < 0.01,
                 "follow-up updates range filter");
 
+        r = engine.interpret("berlina máximo 40000", AdvisorCriteriaEngine.Language.ES);
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 40000d) < 0.01,
+                "parses a price ceiling without currency when maximum operator is explicit");
+
         r = engine.interpret("450", AdvisorCriteriaEngine.Language.ES);
         check(r.needsClarification(), "does not guess a bare number");
 
