@@ -39,6 +39,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private final AdvisorCriteriaEngine advisorEngine=new AdvisorCriteriaEngine();
     private EditText advisorInput;
     private TextView advisorStatus;
+    private final android.os.Handler advisorSearchHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+    private final Runnable pendingAdvisorSearch=()->runAdvisorSearch();
     private LinearLayout advisorResults;
 
     // Search optimization index.
@@ -223,16 +225,6 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         advisorInput.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),12));
         advisorCard.addView(advisorInput,new LinearLayout.LayoutParams(-1,-2));
 
-        TextView advisorSubmit=tv("Buscar coches",14,Color.WHITE);
-        advisorSubmit.setTypeface(null,Typeface.BOLD);
-        advisorSubmit.setGravity(Gravity.CENTER);
-        advisorSubmit.setBackground(bg(blue,12));
-        advisorSubmit.setPadding(dp(14),dp(11),dp(14),dp(11));
-        LinearLayout.LayoutParams advisorSubmitParams=new LinearLayout.LayoutParams(-1,dp(44));
-        advisorSubmitParams.topMargin=dp(9);
-        advisorCard.addView(advisorSubmit,advisorSubmitParams);
-        advisorSubmit.setOnClickListener(v->runAdvisorSearch());
-
         TextView advisorReset=tv("Nueva búsqueda",13,blue);
         advisorReset.setGravity(Gravity.CENTER);
         advisorReset.setPadding(dp(10),dp(9),dp(10),dp(9));
@@ -240,9 +232,26 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         advisorResetParams.topMargin=dp(5);
         advisorCard.addView(advisorReset,advisorResetParams);
         advisorReset.setOnClickListener(v->resetAdvisorSearch());
+        // Ejecutar la búsqueda cuando el usuario deje de escribir durante 900 ms.
+        // El debounce evita recalcular por cada tecla y mantiene la búsqueda local.
+        advisorInput.addTextChangedListener(new TextWatcher(){
+            @Override public void beforeTextChanged(CharSequence s,int start,int count,int after){}
+            @Override public void onTextChanged(CharSequence s,int start,int before,int count){
+                advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
+                if(s==null||s.toString().trim().isEmpty()){
+                    advisorResults.removeAllViews();
+                    advisorStatus.setText("");
+                    return;
+                }
+                advisorStatus.setText(LanguageManager.t(SimilarCarsActivity.this,"Preparando búsqueda…"));
+                advisorSearchHandler.postDelayed(pendingAdvisorSearch,900);
+            }
+            @Override public void afterTextChanged(Editable e){}
+        });
         advisorInput.setOnEditorActionListener((v,actionId,event)->{
             if(actionId==android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
                     ||actionId==android.view.inputmethod.EditorInfo.IME_ACTION_DONE){
+                advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
                 runAdvisorSearch();
                 return true;
             }
@@ -290,6 +299,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private void resetAdvisorSearch(){
+        advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
         advisorEngine.reset();
         if(advisorInput!=null)advisorInput.setText("");
         if(advisorResults!=null)advisorResults.removeAllViews();
