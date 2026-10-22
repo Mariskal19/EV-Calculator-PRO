@@ -7,6 +7,9 @@ on:
       - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
       - '.github/tests/AdvisorCriteriaEngineSmokeTest.java'
+      - '.github/tests/AdvisorCatalogIntegrationSmokeTest.java'
+      - '.github/tests/project_protected_catalog.py'
+      - 'app/src/main/assets/catalog_es_2024_2026.json'
       - '.github/workflows/advisor-engine-test.yml'
   workflow_dispatch:
 
@@ -27,6 +30,9 @@ jobs:
       - name: Compile isolated interpreter and smoke tests
         run: |
           mkdir -p build/advisor-test
-          javac -d build/advisor-test app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java .github/tests/AdvisorCriteriaEngineSmokeTest.java
+          python3 .github/tests/project_protected_catalog.py app/src/main/assets/catalog_es_2024_2026.json build/advisor-test/catalog.tsv
+          javac -d build/advisor-test app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java .github/tests/AdvisorCriteriaEngineSmokeTest.java .github/tests/AdvisorCatalogIntegrationSmokeTest.java
       - name: Run smoke tests
-        run: java -cp build/advisor-test com.evchargecalculator.AdvisorCriteriaEngineSmokeTest
+        run: |
+          java -cp build/advisor-test com.evchargecalculator.AdvisorCriteriaEngineSmokeTest
+          java -cp build/advisor-test com.evchargecalculator.AdvisorCatalogIntegrationSmokeTest build/advisor-test/catalog.tsv
