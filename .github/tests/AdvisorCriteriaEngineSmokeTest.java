@@ -199,7 +199,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         // Body-style compatibility: berlina includes fastback/liftback, not a conventional hatchback.
         AdvisorCriteriaEngine.Criteria sedanFilter = new AdvisorCriteriaEngine.Criteria();
         sedanFilter.bodyStyle = "SEDAN";
-        List<AdvisorCatalogMatcher.Candidate> bodyCandidates = new java.util.ArrayList<>();
+        java.util.List<AdvisorCatalogMatcher.Candidate> bodyCandidates = new java.util.ArrayList<>();
         bodyCandidates.add(new AdvisorCatalogMatcher.Candidate("model3", "Tesla", "Model 3",
                 "sedan", "RWD", 39990, 513, 594, 60, 208, 14.4));
         bodyCandidates.add(new AdvisorCatalogMatcher.Candidate("ev4-fastback", "Kia", "EV4 Fastback",
