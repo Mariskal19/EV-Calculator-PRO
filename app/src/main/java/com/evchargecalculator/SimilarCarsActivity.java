@@ -343,8 +343,16 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Map<String,Vehicle> byKey=new HashMap<>();
         for(Vehicle vehicle:vehicles){
             String key=logicalKey(vehicle);
-            String advisorBodyStyle = "Alpine".equalsIgnoreCase(vehicle.make)
-                    && "A390".equalsIgnoreCase(vehicle.model) ? "suv" : vehicle.bodyStyle;
+            String advisorBodyStyle = vehicle.bodyStyle;
+            // The protected catalog previously mislabeled the EV4 Hatchback as a sedan.
+            // Keep the advisor body filter semantically correct without changing catalog data.
+            if ("Kia".equalsIgnoreCase(vehicle.make) && "EV4 Hatchback".equalsIgnoreCase(vehicle.model)) {
+                advisorBodyStyle = "hatchback";
+            }
+            // Catalog naming/shape exception retained for this crossover-style model.
+            if ("Alpine".equalsIgnoreCase(vehicle.make) && "A390".equalsIgnoreCase(vehicle.model)) {
+                advisorBodyStyle = "suv";
+            }
             AdvisorCatalogMatcher.Candidate candidate=new AdvisorCatalogMatcher.Candidate(key,vehicle.make,vehicle.model,
                     advisorBodyStyle,vehicle.drivetrain,vehicle.price,vehicle.wltpKm,vehicle.trunk,
                     vehicle.batteryKwh,vehicle.powerKw,vehicle.consumption);
