@@ -304,6 +304,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void runAdvisorSearch(){
         if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
         String query=advisorInput.getText()==null?"":advisorInput.getText().toString().trim();
+        advisorResults.removeAllViews();
         if(query.isEmpty()){
             advisorStatus.setText(LanguageManager.t(this,"Añade un criterio para iniciar la búsqueda."));
             return;
