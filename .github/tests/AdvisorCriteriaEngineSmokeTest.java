@@ -78,6 +78,12 @@ public final class AdvisorCriteriaEngineSmokeTest {
         matches = AdvisorCatalogMatcher.search(catalog, filters);
         check(matches.isEmpty(), "empty criteria does not trigger a catalog search");
 
+        engine.reset();
+        r = engine.interpret("hasta 35.000 € y 450 km", AdvisorCriteriaEngine.Language.ES);
+        check(r.needsClarification(), "does not borrow a price operator for a second criterion");
+        check(r.criteria.maxPrice == null && r.criteria.minRangeKm == null && r.criteria.maxRangeKm == null,
+                "ambiguous multi-criterion query does not partially mutate state");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
