@@ -1549,3 +1549,11 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - **Revisión pendiente:** probar los operadores, decimales y separadores de miles, expresiones por idioma, sustitución de límites y eliminación de criterios. Revisar especialmente la detección de unidades y los casos en los que una consulta contiene más de un criterio antes de conectar el motor al catálogo.
 - **Sin cambios:** no se ha editado `SimilarCarsActivity`, `LanguageManager`, los flujos de detalle/comparativa, los JSON del catálogo, el refresco remoto ni el algoritmo clásico. No se ha cambiado `main` ni la rama de respaldo.
 - Próximo paso: revisión estática y pruebas dirigidas del motor aislado; corregir defectos antes de pasar a la integración con vehículos reales.
+
+
+#### Revisión estática adicional — operadores numéricos
+
+- Commit de corrección: `bd5f6c67cd3dbf3d25d25d3aad8487c6aa9438d1`.
+- Se corrigió la selección del operador numérico para priorizar el operador reconocido más cercano al número. Esto evita que una consulta con varios criterios, como «menos de 35.000 € y más de 450 km», se marque como ambigua solo porque el operador del primer criterio queda dentro de la ventana de texto del segundo.
+- Se añadieron expresiones acotadas para límites de presupuesto habituales como «puedo llegar a…» y «mi presupuesto es…» en español, y algunos equivalentes en inglés/portugués.
+- **Importante:** esto es una corrección basada en revisión estática; no equivale a pruebas ejecutadas ni demuestra que todos los patrones funcionen. Compilación y pruebas reproducibles siguen pendientes antes de integrar el motor con el catálogo.
