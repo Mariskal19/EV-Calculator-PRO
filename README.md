@@ -111,3 +111,11 @@ Antes de cualquier cambio de código para el asesor se creó y verificó una ram
 - La auditoría del asesor hasta este punto ha sido de solo lectura. No se ha cambiado código, catálogo ni navegación.
 - Para recuperar el punto anterior, usar la rama de respaldo o el SHA indicado. No hacer force-push ni reset destructivo de `main`; preferir una reversión controlada tras revisar los commits posteriores.
 - Registro detallado, hallazgos, decisiones pendientes y casos de prueba: [`EV_CALCULATOR_PRO_MASTER.md`](EV_CALCULATOR_PRO_MASTER.md).
+
+
+## Asesor conversacional — fase 1 en desarrollo
+
+- Aprobado el enfoque local y sin envío de consultas el 22/10/2026.
+- Rama aislada de trabajo: [feature/asesor-ia-fase-1](https://github.com/Mariskal19/EV-Calculator-PRO/tree/feature/asesor-ia-fase-1).
+- Se añadió el primer motor de criterios local, aún sin integración visual ni validación de compilación. Ver el registro de fase y los límites conocidos en [EV_CALCULATOR_PRO_MASTER.md](EV_CALCULATOR_PRO_MASTER.md).
+- El código no se ha integrado en `main`; la rama de respaldo previa se conserva sin cambios.
