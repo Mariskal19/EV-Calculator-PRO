@@ -1,0 +1,31 @@
+name: Advisor engine smoke tests
+
+on:
+  push:
+    branches: [ "feature/asesor-ia-fase-1" ]
+    paths:
+      - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
+      - '.github/tests/AdvisorCriteriaEngineSmokeTest.java'
+      - '.github/workflows/advisor-engine-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Compile isolated interpreter and smoke tests
+        run: |
+          mkdir -p build/advisor-test
+          javac -d build/advisor-test app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java .github/tests/AdvisorCriteriaEngineSmokeTest.java
+      - name: Run smoke tests
+        run: java -cp build/advisor-test com.evchargecalculator.AdvisorCriteriaEngineSmokeTest
