@@ -121,4 +121,7 @@ Antes de cualquier cambio de código para el asesor se creó y verificó una ram
 - El código no se ha integrado en `main`; la rama de respaldo previa se conserva sin cambios.
 
 
-- La batería aislada del matcher ya pasó; siguen pendientes la adaptación de `Vehicle`, las pruebas con el catálogo real y la compilación Android completa. No se ha integrado en `main`.
+- La batería aislada y la prueba sobre el catálogo protegido real ya pasaron: 688 registros cargados desde el JSON, 98 coincidencias para precio ≤ 40.000 € y autonomía ≥ 400 km, y 589 para autonomía ≥ 400 km. Sigue pendiente adaptar directamente los objetos `Vehicle` y compilar la aplicación Android completa. No se ha integrado en `main`.
+
+
+- CI de la prueba con catálogo real: [ejecución 39808809409](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808809409). Este resultado valida el matcher sobre una proyección de prueba del JSON protegido; todavía no representa una integración con la pantalla ni con la caché remota.
