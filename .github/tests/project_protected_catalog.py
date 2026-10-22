@@ -12,7 +12,7 @@ if not isinstance(vehicles, list):
     raise SystemExit("Protected catalog has no vehicles array")
 
 def text(value):
-    return str(value or "").replace("\\t", " ").replace("\\r", " ").replace("\\n", " ").strip()
+    return str(value or "").replace("\t", " ").replace("\r", " ").replace("\n", " ").strip()
 
 def number(*values):
     for value in values:
@@ -46,7 +46,7 @@ for v in vehicles:
         number(v.get("powerKw"), v.get("power_kW")),
         number(v.get("consumption"), v.get("consumptionKwh100")),
     ]
-    rows.append("\\t".join(row))
+    rows.append("\t".join(row))
 
-destination.write_text("\\n".join(rows) + "\\n", encoding="utf-8")
+destination.write_text("\n".join(rows) + "\n", encoding="utf-8")
 print(f"Projected {len(rows)} protected catalog records to temporary TSV")
