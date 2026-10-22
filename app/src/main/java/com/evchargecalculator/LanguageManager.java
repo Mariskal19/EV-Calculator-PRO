@@ -144,6 +144,7 @@ public final class LanguageManager {
     add("Comparar", "Compare", "Comparer", "Vergleichen", "Confronta", "Comparar");
     add("Comparar coches", "Compare cars", "Comparer les voitures", "Autos vergleichen", "Confronta auto", "Comparar carros");
     add("Volver a coches", "Back to cars", "Retour aux voitures", "Zurück zu den Autos", "Torna alle auto", "Voltar aos carros");
+    add("Nueva búsqueda", "New search", "Nouvelle recherche", "Neue Suche", "Nuova ricerca", "Nova pesquisa");
     add("Añadir a comparativa", "Add to comparison", "Ajouter à la comparaison", "Zum Vergleich hinzufügen", "Aggiungi al confronto", "Adicionar à comparação");
     add("Batería y autonomía", "Battery & range", "Batterie et autonomie", "Batterie & Reichweite", "Batteria e autonomia", "Bateria e autonomia");
     add("Tipo batería", "Battery type", "Type de batterie", "Batterietyp", "Tipo di batteria", "Tipo de bateria");
