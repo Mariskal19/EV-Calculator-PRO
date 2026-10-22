@@ -1594,3 +1594,14 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 
 
 - **CI de la fase 2 confirmado:** [ejecución 39808523386](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808523386), job `119928151226`, commit `dfcfef3d193ecbf63e8ac23d91a3395f356312b0`, finalizó con `success` el 22/10/2026. El workflow compiló `AdvisorCriteriaEngine`, `AdvisorCatalogMatcher` y las pruebas con Java 17, y ejecutó correctamente la batería ampliada. Es validación de Java aislado con candidatos de prueba, no prueba todavía la carga/filtrado de los 688 registros del catálogo ni una compilación Android completa.
+
+
+### Asesor conversacional — fase 3: prueba con catálogo protegido real (22/10/2026)
+
+- Se añadieron `.github/tests/project_protected_catalog.py` y `.github/tests/AdvisorCatalogIntegrationSmokeTest.java`. El script proyecta los campos relevantes del JSON a un TSV temporal solo dentro del runner de CI; no escribe en el catálogo ni altera archivos versionados.
+- El workflow compila el intérprete, el matcher y ambas suites de pruebas; luego ejecuta las pruebas unitarias y el matcher contra los registros reales de `app/src/main/assets/catalog_es_2024_2026.json`.
+- **Resultado CI confirmado:** [ejecución 39808809409](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808809409), job `119929150983`, commit `310e3d55b88b17e74587ae94c568aa135dae840b`, terminó con `success`.
+- Salida observada: `Projected 688 protected catalog records`; smoke tests del motor/matcher: **16 comprobaciones**; prueba con catálogo: **688 registros**, **98 coincidencias** para precio máximo de 40.000 € + autonomía mínima de 400 km y **589 coincidencias** para autonomía mínima de 400 km.
+- La prueba confirma que el matcher aplica los límites combinados, no admite datos de autonomía desconocidos como cumplimiento de un mínimo y una preferencia blanda no elimina registros. Los recuentos son resultado de esa versión del catálogo en la rama de trabajo; no constituyen auditoría de la exactitud comercial de los datos.
+- **Límite importante:** el test carga los datos del JSON real a través de una proyección de prueba, pero todavía no está conectado a los objetos `Vehicle` en ejecución ni a la caché remota. Tampoco se ha compilado la aplicación Android completa en esta fase.
+- Siguiente paso recomendado: revisar el mapeo de campos de `Vehicle` al candidato, integrar la búsqueda conversacional sin tocar `showSimilar()` ni `collectCompetitors()`, añadir cadenas en los seis idiomas y ejecutar el build Android antes de considerar cualquier integración en `main`.
