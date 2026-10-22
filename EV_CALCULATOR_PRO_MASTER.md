@@ -1591,3 +1591,6 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se actualizó `.github/workflows/advisor-engine-test.yml` para compilar el motor y el matcher con Java 17 y ejecutar la batería ampliada.
 - **Estado de validación:** el código y las pruebas están en la rama, pero la ejecución de CI de esta fase debe finalizar con éxito antes de darla por validada. No equivale a una compilación Android completa ni a integración real en la interfaz.
 - **Siguiente paso:** confirmar CI; después diseñar la adaptación segura de los campos de `Vehicle` y probar una muestra del catálogo protegido y de la caché remota, sin modificar sus datos ni el algoritmo clásico.
+
+
+- **CI de la fase 2 confirmado:** [ejecución 39808523386](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808523386), job `119928151226`, commit `dfcfef3d193ecbf63e8ac23d91a3395f356312b0`, finalizó con `success` el 22/10/2026. El workflow compiló `AdvisorCriteriaEngine`, `AdvisorCatalogMatcher` y las pruebas con Java 17, y ejecutó correctamente la batería ampliada. Es validación de Java aislado con candidatos de prueba, no prueba todavía la carga/filtrado de los 688 registros del catálogo ni una compilación Android completa.
