@@ -328,8 +328,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         Map<String,Vehicle> byKey=new HashMap<>();
         for(Vehicle vehicle:vehicles){
             String key=logicalKey(vehicle);
+            String advisorBodyStyle = "Alpine".equalsIgnoreCase(vehicle.make)
+                    && "A390".equalsIgnoreCase(vehicle.model) ? "suv" : vehicle.bodyStyle;
             AdvisorCatalogMatcher.Candidate candidate=new AdvisorCatalogMatcher.Candidate(key,vehicle.make,vehicle.model,
-                    vehicle.bodyStyle,vehicle.drivetrain,vehicle.price,vehicle.wltpKm,vehicle.trunk,
+                    advisorBodyStyle,vehicle.drivetrain,vehicle.price,vehicle.wltpKm,vehicle.trunk,
                     vehicle.batteryKwh,vehicle.powerKw,vehicle.consumption);
             candidates.add(candidate);
             byKey.put(key,vehicle);
@@ -341,10 +343,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             return;
         }
         advisorStatus.setText(LanguageManager.t(this,"Resultados que cumplen tus criterios"));
-        int limit=Math.min(10,matches.size());
-        for(int i=0;i<limit;i++){
+        int shown=0;
+        Set<String> shownModels=new HashSet<>();
+        for(int i=0;i<matches.size()&&shown<10;i++){
             Vehicle vehicle=byKey.get(matches.get(i).candidate.logicalKey);
             if(vehicle==null)continue;
+            String modelKey=norm(vehicle.make+" "+vehicle.model);
+            if(!shownModels.add(modelKey))continue;
+            shown++;
             LinearLayout resultCard=card();
             resultCard.setPadding(dp(12),dp(9),dp(12),dp(9));
             TextView name=tv(vehicle.make+" "+vehicle.model,15,text());
