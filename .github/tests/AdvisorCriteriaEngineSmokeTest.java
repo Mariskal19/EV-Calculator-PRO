@@ -43,7 +43,42 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.minRangeKm != null && Math.abs(r.criteria.minRangeKm - 450d) < 0.01,
                 "supports English range pattern");
 
-        System.out.println("AdvisorCriteriaEngine smoke tests passed: " + checks);
+        // Catalog matching: AND filters, unknown numeric fields, and soft ranking.
+        java.util.List<AdvisorCatalogMatcher.Candidate> catalog = new java.util.ArrayList<>();
+        catalog.add(new AdvisorCatalogMatcher.Candidate("a", "Marca", "Conocido", "suv", "RWD",
+                32000, 480, 500, 70, 150, 16.0));
+        catalog.add(new AdvisorCatalogMatcher.Candidate("b", "Marca", "Precio alto", "suv", "RWD",
+                42000, 500, 600, 75, 180, 17.0));
+        catalog.add(new AdvisorCatalogMatcher.Candidate("c", "Marca", "Autonomia desconocida", "suv", "RWD",
+                30000, 0, 520, 70, 150, 15.0));
+        catalog.add(new AdvisorCatalogMatcher.Candidate("d", "Marca", "Carroceria distinta", "sedan", "RWD",
+                30000, 490, 520, 70, 150, 15.0));
+
+        AdvisorCriteriaEngine.Criteria filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxPrice = 40000d;
+        filters.minRangeKm = 450d;
+        filters.bodyStyle = "SUV";
+        java.util.List<AdvisorCatalogMatcher.Result> matches = AdvisorCatalogMatcher.search(catalog, filters);
+        check(matches.size() == 1 && "a".equals(matches.get(0).candidate.logicalKey),
+                "combines hard filters and excludes unknown range / incompatible body");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.minRangeKm = 450d;
+        matches = AdvisorCatalogMatcher.search(catalog, filters);
+        check(matches.size() == 3, "range filter excludes only candidate with unknown range");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.preferLowConsumption = true;
+        matches = AdvisorCatalogMatcher.search(catalog, filters);
+        check(matches.size() == 4, "soft preference ranks without filtering candidates");
+        check("c".equals(matches.get(0).candidate.logicalKey),
+                "low-consumption preference ranks lower known consumption first");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        matches = AdvisorCatalogMatcher.search(catalog, filters);
+        check(matches.isEmpty(), "empty criteria does not trigger a catalog search");
+
+        System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
     private static void check(boolean condition, String message) {
