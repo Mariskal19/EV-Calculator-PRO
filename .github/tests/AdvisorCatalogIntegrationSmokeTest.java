@@ -29,8 +29,8 @@ public final class AdvisorCatalogIntegrationSmokeTest {
         List<AdvisorCatalogMatcher.Result> matches = AdvisorCatalogMatcher.search(catalog, q);
         check(!matches.isEmpty(), "real catalog produces matches for price/range constraints");
         for (AdvisorCatalogMatcher.Result result : matches) {
-            check(result.candidate.price > 0 && result.candidate.price <= 40000d,
-                    "every real-catalog result satisfies known price ceiling");
+            check(result.candidate.price >= 32000d && result.candidate.price <= 42000d,
+                    "every real-catalog result stays near the requested budget");
             check(result.candidate.rangeKm >= 400d,
                     "every real-catalog result satisfies known range floor");
         }
