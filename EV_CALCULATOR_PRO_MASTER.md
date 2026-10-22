@@ -1664,3 +1664,13 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - La tolerancia solo amplía el límite superior; los valores desconocidos/no positivos siguen sin poder satisfacer un filtro numérico.
 - Nota sobre precio: se conserva el comportamiento previo del matcher para presupuestos con máximo (80 %–105 % del presupuesto cuando no hay mínimo), por lo que el precio mantiene además su lógica histórica de búsqueda en torno al presupuesto. Esta lógica debe revisarse por separado si se quiere que todo precio inferior al máximo sea admisible sin suelo mínimo.
 - La batería de humo incluye casos límite para precio, autonomía, maletero, batería, potencia y consumo. La validación CI debe confirmarse tras estos cambios; todavía no es una prueba de dispositivo ni una publicación.
+
+
+## 2026-10-22 — Asesor conversacional: criterio de precio incompleto
+
+- En la rama `feature/asesor-ia-fase-1`, el motor local reconoce una consulta que menciona un coche de referencia (`XPeng G6`) y termina con una petición de similitud de precio sin concretar la relación.
+- Ejemplo: «Quiero un coche similar al XPeng G6 de precio…». El resultado de interpretación es `clarify_reference_price_relation`: debe solicitar al usuario si quiere una alternativa más barata, más cara o de precio parecido.
+- Regla de seguridad semántica: no se inventa un presupuesto, no se añade un filtro numérico y no se modifica ningún criterio previo mientras la frase esté incompleta.
+- Se añaden pruebas smoke para la frase sin terminar y la variante con puntos suspensivos.
+- Esta modificación prepara el contrato del motor de interpretación. La frase de aclaración visible en la pantalla del asesor debe mapear `clarify_reference_price_relation` a una pregunta localizada; no debe mostrar la clave técnica.
+- La política de filtros máximos acordada sigue vigente: precio máximo explícito +5 %; otros máximos numéricos +3 %; mínimos exactos; «unos X litros» se interpreta como objetivo aproximado.
