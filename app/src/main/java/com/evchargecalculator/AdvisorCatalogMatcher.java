@@ -119,7 +119,8 @@ public final class AdvisorCatalogMatcher {
         if (w.isEmpty() || a.isEmpty()) return false;
         if (w.equals(a)) return true;
         return (isSuv(w) && isSuv(a))
-                || (isOneOf(w, "sedan", "berlina") && isOneOf(a, "sedan", "berlina"))
+                 || (isOneOf(w, "sedan", "berlina", "saloon")
+                    && isOneOf(a, "sedan", "berlina", "saloon", "fastback", "liftback", "notchback"))
                 || (isOneOf(w, "estate", "wagon", "familiar") && isOneOf(a, "estate", "wagon", "familiar"))
                 || (isOneOf(w, "hatchback", "compacto", "utilitario") && isOneOf(a, "hatchback", "compacto", "utilitario"));
     }
