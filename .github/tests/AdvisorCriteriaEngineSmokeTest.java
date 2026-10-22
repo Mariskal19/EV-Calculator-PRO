@@ -84,6 +84,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("price31", "Marca", "Precio 31000", "suv", "RWD", 31000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("price32", "Marca", "Precio 32000", "suv", "RWD", 32000, 450, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("range449", "Marca", "Autonomia 449", "suv", "RWD", 30000, 449, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("range463", "Marca", "Autonomia 463", "suv", "RWD", 30000, 463, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("range464", "Marca", "Autonomia 464", "suv", "RWD", 30000, 464, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("trunk463", "Marca", "Maletero 463", "suv", "RWD", 30000, 450, 463, 80, 200, 20));
@@ -141,7 +142,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters.minRangeKm = 450d;
         matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
         check(matches.stream().anyMatch(m -> "base".equals(m.candidate.logicalKey))
-                        && matches.stream().noneMatch(m -> "range464".equals(m.candidate.logicalKey)),
+                        && matches.stream().noneMatch(m -> "range449".equals(m.candidate.logicalKey)),
                 "minimum range remains exact and lower bounds are not relaxed");
 
         filters = new AdvisorCriteriaEngine.Criteria();
