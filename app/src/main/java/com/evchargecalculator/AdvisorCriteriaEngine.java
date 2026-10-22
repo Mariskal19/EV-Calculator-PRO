@@ -223,7 +223,9 @@ public final class AdvisorCriteriaEngine {
             unit = generic;
         }
 
-        String raw = unit.group(1);
+        String raw;
+        try { raw = unit.group(1); }
+        catch (IndexOutOfBoundsException ignored) { raw = unit.group(); }
         if (raw == null) raw = unit.group();
         Double value = parseNumber(raw);
         if (value == null || value <= 0) return new NumberMatch(0, false, true);
