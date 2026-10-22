@@ -4,7 +4,7 @@ Aplicación Android para calcular tiempos, energía y costes de carga de vehícu
 
 ## Versión del código
 
-Estado de la rama `main` comprobado el **13/10/2026**:
+Estado de la rama `main` comprobado el **22/10/2026**:
 
 - **Versión de desarrollo:** `1.0.5.1`
 - **versionCode:** `61`
@@ -49,7 +49,7 @@ Archivo base:
 - Las adiciones remotas se guardan por separado en `app/src/main/assets/catalog_remote_additions.json`.
 - Los datos protegidos no se sobrescriben con información externa.
 - Las nuevas configuraciones se validan y se comparan por clave lógica antes de incorporarse.
-- Auditoría Zeekr 20/10/2026: 13 registros; corregidas dimensiones, química de batería y aceleraciones; añadidas las versiones 2026 Zeekr 001 Privilege AWD y Zeekr X Core RWD. El detalle y las fuentes están en `EV_CALCULATOR_PRO_MASTER.md`.
+- Auditoría Zeekr 20/10/2026: 13 registros; corregidas dimensiones, química de batería y aceleraciones; añadidas las versiones 2026 Zeekr 001 Privilege AWD y Zeekr X Core RWD. Auditoría Lynk & Co 21/10/2026: revisados los tres registros del 02 eléctrico, corregidos batería utilizable, peso, carga DC 10–80 % y tracción donde estaba respaldado; no se añadieron híbridos. El detalle y las fuentes están en `EV_CALCULATOR_PRO_MASTER.md`.
 
 
 ### Reconciliación histórica de recuentos (20/10/2026)
@@ -98,3 +98,16 @@ Política de privacidad: https://mariskal19.github.io/EV-Calculator-PRO-Privacy/
 - Rama activa: `main`.
 - Las ramas/checkpoints `stable` son puntos de recuperación y no deben modificarse sin autorización expresa.
 - El documento operativo con el historial, decisiones y checkpoints es [`EV_CALCULATOR_PRO_MASTER.md`](EV_CALCULATOR_PRO_MASTER.md).
+
+
+## Checkpoint antes del asesor conversacional (22/10/2026)
+
+Antes de cualquier cambio de código para el asesor se creó y verificó una rama de respaldo completa del repositorio versionado:
+
+- **Rama de respaldo:** [`backup/pre-asesor-ia-2026-10-22`](https://github.com/Mariskal19/EV-Calculator-PRO/tree/backup/pre-asesor-ia-2026-10-22)
+- **Commit exacto del checkpoint:** [`a2021ffa2bae1846f4de7f777a2c937f6713434f`](https://github.com/Mariskal19/EV-Calculator-PRO/commit/a2021ffa2bae1846f4de7f777a2c937f6713434f)
+- La rama de respaldo se creó desde el HEAD de `main` y se verificó que apunta al mismo SHA. Conserva el árbol versionado completo de ese punto, incluidos código, recursos, catálogos y documentación.
+- La rama `main` estaba al día en el momento del checkpoint; su último commit entonces documentaba la auditoría Lynk & Co. La versión declarada por el código sigue siendo `1.0.5.1` / `versionCode 61`; esto no confirma su publicación en Google Play.
+- La auditoría del asesor hasta este punto ha sido de solo lectura. No se ha cambiado código, catálogo ni navegación.
+- Para recuperar el punto anterior, usar la rama de respaldo o el SHA indicado. No hacer force-push ni reset destructivo de `main`; preferir una reversión controlada tras revisar los commits posteriores.
+- Registro detallado, hallazgos, decisiones pendientes y casos de prueba: [`EV_CALCULATOR_PRO_MASTER.md`](EV_CALCULATOR_PRO_MASTER.md).
