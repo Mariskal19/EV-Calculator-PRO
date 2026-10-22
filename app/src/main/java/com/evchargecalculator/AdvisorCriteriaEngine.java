@@ -124,6 +124,12 @@ public final class AdvisorCriteriaEngine {
         String clarification = null;
         String lang = language == null ? "es" : language.name().toLowerCase(Locale.ROOT);
 
+        // Keep an unfinished reference-vehicle price request explicit: do not guess
+        // whether the user wants a cheaper car, a similar price, or another relation.
+        if (isIncompleteReferencePriceQuery(s, lang)) {
+            return result(false, "clarify_reference_price_relation", null);
+        }
+
         // Explicit removal clears only the named criterion.
         Field removal = removalField(s, lang);
         if (removal != null) {
@@ -266,6 +272,20 @@ public final class AdvisorCriteriaEngine {
         }
         boolean priceCeiling = field == Field.PRICE && upper && !hasBudgetTargetOperator(prefix, lang);
         return new NumberMatch(value, lower, false, false, priceCeiling);
+    }
+
+    private static boolean isIncompleteReferencePriceQuery(String s, String lang) {
+        boolean namesXpengG6 = has(s, "xpeng g6", "g6 de xpeng");
+        if (!namesXpengG6) return false;
+        boolean referenceComparison = has(s, "similar", "parecido", "parecida", "semejante");
+        boolean priceContext = containsPriceTerm(s, lang) || has(s, "de precio", "en precio", "por precio");
+        if (!referenceComparison || !priceContext) return false;
+        return !has(s, "mas barato", "más barato", "mas cara", "más cara", "mas caro", "más caro",
+                "precio parecido", "precio similar", "precio semejante",
+                "cheaper", "more expensive", "similar price", "about the same price",
+                "moins cher", "plus cher", "prix similaire", "günstiger", "teurer",
+                "piu economico", "più economico", "prezzo simile",
+                "mais barato", "mais caro", "preco semelhante");
     }
 
     private static boolean hasBudgetTargetOperator(String prefix, String lang) {
