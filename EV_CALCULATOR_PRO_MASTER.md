@@ -1674,3 +1674,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se añaden pruebas smoke para la frase sin terminar y la variante con puntos suspensivos.
 - Esta modificación prepara el contrato del motor de interpretación. La frase de aclaración visible en la pantalla del asesor debe mapear `clarify_reference_price_relation` a una pregunta localizada; no debe mostrar la clave técnica.
 - La política de filtros máximos acordada sigue vigente: precio máximo explícito +5 %; otros máximos numéricos +3 %; mínimos exactos; «unos X litros» se interpreta como objetivo aproximado.
+
+
+### Interfaz del asesor: búsqueda automática al terminar de escribir (22/10/2026)
+
+- En `SimilarCarsActivity`, se elimina el botón «Buscar coches» de la tarjeta del asesor conversacional.
+- La búsqueda se ejecuta automáticamente cuando el usuario deja de escribir durante **900 ms** (debounce), en vez de recalcular con cada pulsación. Si se pulsa Buscar/Hecho en el teclado, se ejecuta inmediatamente.
+- Al borrar el texto se limpian el estado y los resultados visibles; «Nueva búsqueda» también cancela cualquier ejecución pendiente antes de reiniciar los criterios.
+- Alcance limitado a la tarjeta «Buscar con IA». La selección clásica de coche de referencia, la búsqueda clásica y `CompararCochesActivity` permanecen intactas.
+- Commit: `5737975a9711c45b33113f6517fd24b71f6858b4` en `feature/asesor-ia-fase-1`. Pendiente comprobar la compilación Android y probar el comportamiento en dispositivo. No se ha fusionado con `main`.
