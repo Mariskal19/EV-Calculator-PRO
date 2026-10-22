@@ -18,6 +18,11 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses minimum trunk volume");
 
         engine.reset();
+        r = engine.interpret("quiero uno de 450 de maletero", AdvisorCriteriaEngine.Language.ES);
+        check(r.criteria.targetTrunkLiters != null && Math.abs(r.criteria.targetTrunkLiters - 450d) < 0.01,
+                "interprets an unqualified trunk value as an approximate target, not a minimum");
+
+        engine.reset();
         r = engine.interpret("menos de 35.000 € y más de 450 km", AdvisorCriteriaEngine.Language.ES);
         check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 35000d) < 0.01,
                 "parses price cap in multi-criteria query");
@@ -78,6 +83,12 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters.minRangeKm = 450d;
         matches = AdvisorCatalogMatcher.search(catalog, filters);
         check(matches.size() == 4, "range filter excludes only candidate with unknown range");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.targetTrunkLiters = 450d;
+        matches = AdvisorCatalogMatcher.search(catalog, filters);
+        check(matches.size() == 4, "trunk target returns nearby known trunk sizes rather than requiring 450 L minimum");
+        check("a".equals(matches.get(0).candidate.logicalKey), "trunk target ranks closest boot volume first");
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.preferLowConsumption = true;
