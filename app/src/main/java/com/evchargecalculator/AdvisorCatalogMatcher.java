@@ -66,7 +66,12 @@ public final class AdvisorCatalogMatcher {
         Collections.sort(results, new Comparator<Result>() {
             @Override public int compare(Result a, Result b) {
                 int byScore = Double.compare(b.preferenceScore, a.preferenceScore);
-                return byScore != 0 ? byScore : Integer.compare(a.catalogOrder, b.catalogOrder);
+                if (byScore != 0) return byScore;
+                if (criteria.maxPrice != null) {
+                    int byPrice = Double.compare(b.candidate.price, a.candidate.price);
+                    if (byPrice != 0) return byPrice;
+                }
+                return Integer.compare(a.catalogOrder, b.catalogOrder);
             }
         });
         return results;
