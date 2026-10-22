@@ -1408,3 +1408,23 @@ Hallazgos:
 - **Rama de recuperación:** [`backup/pre-asesor-ia-2026-10-22`](https://github.com/Mariskal19/EV-Calculator-PRO/tree/backup/pre-asesor-ia-2026-10-22).
 - Para inspeccionar/restaurar el estado completo en un entorno Git, hacer checkout de esa rama o del SHA anterior. Para volver a ese estado en `main`, preferir una reversión controlada mediante commits/PR tras revisar los cambios posteriores; no hacer `reset --hard` ni force-push de `main` sin autorización explícita.
 - Los cambios de documentación que registran este checkpoint se hacen después de crear y verificar la rama de respaldo; por tanto, el checkpoint sigue apuntando al estado previo a esos cambios.
+
+
+### Continuación de auditoría de navegación e interfaz (22/10/2026, solo lectura)
+
+- `AndroidManifest.xml` declara `SimilarCarsActivity`, `CarDetailActivity` y `CompararCochesActivity` como actividades internas no exportadas. La actividad de lanzamiento es `PersistentMainActivity`, que deriva de `MainActivity`.
+- `BottomNavigationHelper` ya dirige el acceso **Buscar** al `SimilarCarsActivity`; `SimilarCarsActivity` hereda de `BaseNavigationActivity` y devuelve el índice 2. Por tanto, el asesor encaja en la pantalla actual y no requiere una nueva entrada en la navegación.
+- La pantalla actual construye su interfaz programáticamente en `SimilarCarsActivity.build()` (no usa un layout XML para esta pantalla). Hay una cabecera visual y una tarjeta de selección de referencia; el bloque de resultados clásicos se muestra cuando se elige un coche. La integración visual deberá insertar la tarjeta conversacional dentro de este mismo árbol y preservar la tarjeta/selector existente.
+- `BaseNavigationActivity.setContentView()` envuelve la vista con la navegación inferior persistente y añade espacio de desplazamiento a los `ScrollView`. Debe tenerse en cuenta al integrar el nuevo bloque para no duplicar la navegación ni dejar los últimos resultados ocultos.
+- `CarDetailActivity` recibe las especificaciones por extras del `Intent` y muestra `—` cuando los valores numéricos no son positivos. El asesor puede abrir una ficha usando el flujo ya existente, pero habrá que asegurar que los extras se construyan desde el mismo objeto del catálogo y no desde datos reinterpretados o inventados.
+- Los JSON local y remoto comparten varios nombres de campo, pero no son totalmente uniformes: aparecen alias como `drive`/`drivetrain`, `consumptionKwh100`/`consumption`, `rangeKm`/`wltpKm`, y diferentes nombres de batería utilizable. El parser de `SimilarCarsActivity` ya maneja parte de estos alias; el parser de `CompararCochesActivity` maneja otros. La normalización compartida es una decisión de arquitectura pendiente y debe validarse contra los dos JSON antes de refactorizar.
+- El archivo remoto de adiciones incluye campos opcionales nulos, por ejemplo `drive`, `drivetrain` y `charge10to80Min`. El asesor debe tolerar campos ausentes/nulos y mantener la política de “dato desconocido”, sin convertirlos en ceros reales.
+- `AndroidManifest.xml` ya solicita permiso `INTERNET`, usado por funciones existentes como la actualización de catálogo y otros servicios. No se ha añadido permiso alguno ni se ha habilitado un servicio de IA externo.
+- Se comprobó el estado del respaldo tras crearlo: `backup/pre-asesor-ia-2026-10-22` sigue apuntando al commit de checkpoint `a2021ffa2bae1846f4de7f777a2c937f6713434f`. Las únicas modificaciones realizadas después del respaldo en `main` hasta este punto son documentación: el MASTER y el README. No se ha modificado código fuente, recursos ni archivos JSON de catálogo.
+
+### Commits documentales posteriores al checkpoint
+
+- `a6e74b6dff06a5bcd94753d854914c3e7a152fc2` — `docs: checkpoint before conversational EV advisor` (MASTER).
+- `fbc83910b31d83fe22911d1d134cb09ed61a1497` — `docs: record pre-advisor checkpoint and current audit status` (README).
+- **HEAD de `main` al cerrar esta actualización:** `fbc83910b31d83fe22911d1d134cb09ed61a1497`.
+- Estos commits son posteriores al respaldo deliberadamente; no mueven ni sustituyen el checkpoint. Si fuera necesario volver exactamente al estado anterior a la documentación, usar la rama de respaldo o el SHA de checkpoint indicado arriba.
