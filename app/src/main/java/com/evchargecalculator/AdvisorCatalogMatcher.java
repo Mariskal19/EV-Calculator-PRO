@@ -65,13 +65,14 @@ public final class AdvisorCatalogMatcher {
         }
         Collections.sort(results, new Comparator<Result>() {
             @Override public int compare(Result a, Result b) {
-                int byScore = Double.compare(b.preferenceScore, a.preferenceScore);
-                if (byScore != 0) return byScore;
                 if (criteria.maxPrice != null) {
-                    int byPrice = Double.compare(b.candidate.price, a.candidate.price);
-                    if (byPrice != 0) return byPrice;
+                    double da = Math.abs(criteria.maxPrice - a.candidate.price);
+                    double db = Math.abs(criteria.maxPrice - b.candidate.price);
+                    int byDistance = Double.compare(da, db);
+                    if (byDistance != 0) return byDistance;
                 }
-                return Integer.compare(a.catalogOrder, b.catalogOrder);
+                int byScore = Double.compare(b.preferenceScore, a.preferenceScore);
+                return byScore != 0 ? byScore : Integer.compare(a.catalogOrder, b.catalogOrder);
             }
         });
         return results;
