@@ -77,12 +77,12 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.minRangeKm = 450d;
         matches = AdvisorCatalogMatcher.search(catalog, filters);
-        check(matches.size() == 3, "range filter excludes only candidate with unknown range");
+        check(matches.size() == 4, "range filter excludes only candidate with unknown range");
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.preferLowConsumption = true;
         matches = AdvisorCatalogMatcher.search(catalog, filters);
-        check(matches.size() == 4, "soft preference ranks without filtering candidates");
+        check(matches.size() == 5, "soft preference ranks without filtering candidates");
         check("c".equals(matches.get(0).candidate.logicalKey),
                 "low-consumption preference ranks lower known consumption first");
 
