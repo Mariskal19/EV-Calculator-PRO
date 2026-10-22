@@ -220,6 +220,10 @@ public final class AdvisorCriteriaEngine {
             // A price term with a number but no currency is still understandable in context.
             Matcher generic = NUMBER.matcher(s);
             if (!generic.find()) return new NumberMatch(0, false, true);
+            String tail = s.substring(generic.end()).trim();
+            if (tail.startsWith("km") || tail.startsWith("kilometer") || tail.startsWith("kilometre")
+                    || tail.startsWith("litro") || tail.startsWith("liter") || tail.startsWith("litre")
+                    || tail.startsWith("kwh") || tail.startsWith("kw") || tail.startsWith("/")) return null;
             unit = generic;
         }
 
