@@ -200,7 +200,7 @@ public final class AdvisorCriteriaEngine {
         switch (field) {
             case PRICE: unitPattern="(?:€|eur|euros?|\\$|usd|£|gbp)"; break;
             case RANGE: unitPattern="(?:km|kilomet(?:er|re)s?)"; break;
-            case TRUNK: unitPattern="(?:l|litros?|liters?|litres?)\\\\b"; break;
+            case TRUNK: unitPattern="(?:l|litros?|liters?|litres?)\\b"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)"; break;
             case POWER: unitPattern="(?:kw|kilowatts?)"; break;
             case CONSUMPTION: unitPattern="(?:kwh\\s*/\\s*100\\s*km|kwh\\s*/\\s*100km)"; break;
