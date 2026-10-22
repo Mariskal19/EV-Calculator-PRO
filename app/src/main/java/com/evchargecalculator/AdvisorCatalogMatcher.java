@@ -85,15 +85,15 @@ public final class AdvisorCatalogMatcher {
 
     private static boolean matches(Candidate c, AdvisorCriteriaEngine.Criteria q) {
         if (!withinPrice(c.price, q.minPrice, q.maxPrice)) return false;
-        if (!within(c.rangeKm, q.minRangeKm, q.maxRangeKm)) return false;
-        if (!within(c.trunkLiters, q.minTrunkLiters, q.maxTrunkLiters)) return false;
+        if (!within(c.rangeKm, q.minRangeKm, q.maxRangeKm, 1.03)) return false;
+        if (!within(c.trunkLiters, q.minTrunkLiters, q.maxTrunkLiters, 1.03)) return false;
         // An unqualified trunk value is a target, not a hard minimum: retain nearby known values.
         if (q.targetTrunkLiters != null && (c.trunkLiters <= 0
                 || c.trunkLiters < q.targetTrunkLiters * 0.75
                 || c.trunkLiters > q.targetTrunkLiters * 1.25)) return false;
-        if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh)) return false;
-        if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw)) return false;
-        if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption)) return false;
+        if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh, 1.03)) return false;
+        if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw, 1.03)) return false;
+        if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption * 1.03)) return false;
         if (q.bodyStyle != null && !bodyMatches(q.bodyStyle, c.bodyStyle)) return false;
         if (q.drivetrain != null && !driveMatches(q.drivetrain, c.drivetrain)) return false;
         if (q.makeModel != null && !normalize(c.make + " " + c.model).contains(normalize(q.makeModel))) return false;
@@ -104,13 +104,14 @@ public final class AdvisorCatalogMatcher {
         if (min == null && max == null) return true;
         if (value <= 0) return false;
         if (min == null && max != null) return value >= max * 0.80 && value <= max * 1.05;
-        return (min == null || value >= min) && (max == null || value <= max);
+        return (min == null || value >= min) && (max == null || value <= max * 1.05);
     }
 
-    private static boolean within(double value, Double min, Double max) {
+    private static boolean within(double value, Double min, Double max, double upperTolerance) {
         if (min == null && max == null) return true;
         if (value <= 0) return false;
-        return (min == null || value >= min) && (max == null || value <= max);
+        // Lower bounds remain exact; only upper bounds get tolerance.
+        return (min == null || value >= min) && (max == null || value <= max * upperTolerance);
     }
 
     private static boolean bodyMatches(String wanted, String actual) {
