@@ -63,8 +63,16 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters.minRangeKm = 450d;
         filters.bodyStyle = "SUV";
         java.util.List<AdvisorCatalogMatcher.Result> matches = AdvisorCatalogMatcher.search(catalog, filters);
-        check(matches.size() == 1 && "a".equals(matches.get(0).candidate.logicalKey),
-                "combines hard filters and excludes unknown range / incompatible body");
+        check(matches.size() == 2 && "b".equals(matches.get(0).candidate.logicalKey),
+                "allows a small budget stretch and prioritizes the price nearest the budget");
+
+        catalog.add(new AdvisorCatalogMatcher.Candidate("e", "Marca", "Muy barato", "suv", "RWD",
+                20000, 500, 500, 70, 150, 16.0));
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxPrice = 40000d;
+        matches = AdvisorCatalogMatcher.search(catalog, filters);
+        check(matches.stream().noneMatch(m -> "e".equals(m.candidate.logicalKey)),
+                "maximum budget excludes vehicles far below the intended price area");
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.minRangeKm = 450d;
