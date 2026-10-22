@@ -1426,5 +1426,5 @@ Hallazgos:
 
 - `a6e74b6dff06a5bcd94753d854914c3e7a152fc2` — `docs: checkpoint before conversational EV advisor` (MASTER).
 - `fbc83910b31d83fe22911d1d134cb09ed61a1497` — `docs: record pre-advisor checkpoint and current audit status` (README).
-- **HEAD de `main` al cerrar esta actualización:** `fbc83910b31d83fe22911d1d134cb09ed61a1497`.
+- El HEAD de `main` antes de añadir estas últimas notas era `fbc83910b31d83fe22911d1d134cb09ed61a1497`; este commit documental pasa a ser el nuevo HEAD. Verificar el HEAD de GitHub al retomar el trabajo.
 - Estos commits son posteriores al respaldo deliberadamente; no mueven ni sustituyen el checkpoint. Si fuera necesario volver exactamente al estado anterior a la documentación, usar la rama de respaldo o el SHA de checkpoint indicado arriba.
