@@ -82,6 +82,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         // Upper-bound tolerance policy: price +5%; other numeric maxima +3%; minima exact.
         java.util.List<AdvisorCatalogMatcher.Candidate> toleranceCatalog = new java.util.ArrayList<>();
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("priceLow", "Marca", "Precio bajo", "suv", "RWD", 20000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("price31", "Marca", "Precio 31000", "suv", "RWD", 31000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("price32", "Marca", "Precio 32000", "suv", "RWD", 32000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("range449", "Marca", "Autonomia 449", "suv", "RWD", 30000, 449, 450, 80, 200, 20));
@@ -102,6 +103,15 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(matches.stream().anyMatch(m -> "price31".equals(m.candidate.logicalKey))
                         && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey)),
                 "price maximum permits up to 5% over the requested amount");
+
+        engine.reset();
+        r = engine.interpret("Busco un SUV hasta 30.000 €", AdvisorCriteriaEngine.Language.ES);
+        check(r.criteria.maxPriceIsCeiling, "explicit 'hasta' price operator is treated as a ceiling");
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, r.criteria);
+        check(matches.stream().anyMatch(m -> "priceLow".equals(m.candidate.logicalKey))
+                        && matches.stream().anyMatch(m -> "price31".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey)),
+                "explicit price ceiling accepts cheaper cars and allows up to 5% over budget");
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.maxRangeKm = 450d;
