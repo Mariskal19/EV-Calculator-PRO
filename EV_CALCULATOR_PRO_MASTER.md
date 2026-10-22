@@ -1557,3 +1557,11 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se corrigió la selección del operador numérico para priorizar el operador reconocido más cercano al número. Esto evita que una consulta con varios criterios, como «menos de 35.000 € y más de 450 km», se marque como ambigua solo porque el operador del primer criterio queda dentro de la ventana de texto del segundo.
 - Se añadieron expresiones acotadas para límites de presupuesto habituales como «puedo llegar a…» y «mi presupuesto es…» en español, y algunos equivalentes en inglés/portugués.
 - **Importante:** esto es una corrección basada en revisión estática; no equivale a pruebas ejecutadas ni demuestra que todos los patrones funcionen. Compilación y pruebas reproducibles siguen pendientes antes de integrar el motor con el catálogo.
+
+
+#### Pruebas aisladas preparadas
+
+- Se añadió `.github/tests/AdvisorCriteriaEngineSmokeTest.java`, una prueba sin dependencias externas para compilar y ejercitar el motor con Java 17.
+- Casos incluidos: carrocería SUV y precio máximo; maletero mínimo; dos criterios numéricos en una sola frase; añadir autonomía sin perder el presupuesto anterior; rechazo de un número sin unidad/contexto; eliminar solo el presupuesto; y un patrón básico en inglés.
+- Se añadió el workflow `.github/workflows/advisor-engine-test.yml`, que compila únicamente el motor aislado y ejecuta esas comprobaciones al cambiar los archivos de la fase 1.
+- Los archivos están en la rama de trabajo; el resultado de Actions debe revisarse en GitHub antes de afirmar que las pruebas han pasado. Este workflow no compila ni publica la aplicación Android completa.
