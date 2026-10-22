@@ -84,7 +84,7 @@ public final class AdvisorCatalogMatcher {
     }
 
     private static boolean matches(Candidate c, AdvisorCriteriaEngine.Criteria q) {
-        if (!withinPrice(c.price, q.minPrice, q.maxPrice)) return false;
+        if (!withinPrice(c.price, q.minPrice, q.maxPrice, q.maxPriceIsCeiling)) return false;
         if (!within(c.rangeKm, q.minRangeKm, q.maxRangeKm, 1.03)) return false;
         if (!within(c.trunkLiters, q.minTrunkLiters, q.maxTrunkLiters, 1.03)) return false;
         // An unqualified trunk value is a target, not a hard minimum: retain nearby known values.
@@ -100,10 +100,10 @@ public final class AdvisorCatalogMatcher {
         return true;
     }
 
-    private static boolean withinPrice(double value, Double min, Double max) {
+    private static boolean withinPrice(double value, Double min, Double max, boolean explicitCeiling) {
         if (min == null && max == null) return true;
         if (value <= 0) return false;
-        if (min == null && max != null) return value >= max * 0.80 && value <= max * 1.05;
+        if (min == null && max != null) return explicitCeiling ? value <= max * 1.05 : value >= max * 0.80 && value <= max * 1.05;
         return (min == null || value >= min) && (max == null || value <= max * 1.05);
     }
 
