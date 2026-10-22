@@ -1623,3 +1623,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se añadió `.github/workflows/advisor-android-compile.yml`, que crea una clave efímera solo para CI, ejecuta el parche de virtualización usado por la compilación y solicita únicamente `assembleDebug`; no genera ni publica un artefacto de release.
 - El workflow se ajustó para usar esa clave efímera sin sobrescribirla con una ruta ficticia. La ejecución posterior [39809681492](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809681492) está en curso en el momento de esta nota; **no declarar compilación Android correcta hasta que finalice con `success`**.
 - Pendiente de revisar tras el resultado: posibles errores reales de compilación, corrección de referencias de traducción, mapeo de `Vehicle`/clave lógica y pruebas manuales en Android. Todo sigue en `feature/asesor-ia-fase-1`; no fusionar con `main` todavía.
+
+
+#### Revisión funcional posterior y control de estado de búsqueda (22/10/2026)
+
+- La compilación Android de la integración inicial terminó con éxito en [CI 39809681492](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809681492), commit `28a032b4d61aaa57eb262ac1bef8add25bb73de0`. Es un `assembleDebug`; no equivale a build Release ni a prueba en dispositivo.
+- Revisión estática: `LanguageManager.getEffectiveLanguage` existe; el comparador usa las claves `compare_vehicle_ids`, `compare_vehicle_ids_ordered`, `compare_vehicle_logical_ordered` y `compare_selection_initialized` escritas por el asesor. El catálogo protegido no se ha modificado.
+- Se añadió la acción **Nueva búsqueda**, traducida en los seis idiomas, para limpiar el texto, los resultados y los criterios que el motor mantenía en memoria. Esto evita que un usuario empiece una búsqueda distinta arrastrando filtros anteriores sin darse cuenta.
+- Los commits de esta mejora son `16a0b8f` (reinicio de búsqueda) y `c32185e` (traducción). La nueva compilación Android de este último cambio está en curso: [CI 39813697512](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813697512). No registrar éxito hasta que concluya con `success`.
+- Sigue pendiente prueba funcional en dispositivo, en especial criterios multi-turno, consulta ambigua, resultados con datos ausentes, detalles y selección de comparativa. No fusionar con `main` antes de terminar estas comprobaciones.
