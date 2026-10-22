@@ -1613,3 +1613,13 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se ajustó la detección para limitar el operador a la cláusula actual y se hizo transaccional cada turno: si cualquier parte necesita aclaración, no se conserva ninguna actualización parcial de esa frase.
 - Se añadieron regresiones para `hasta 35.000 € y 450 km` (debe pedir aclaración sobre autonomía y no inferir un límite) y para verificar que el estado queda intacto.
 - **CI confirmado:** [ejecución 39809050708](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809050708), job `119929993028`, commit `55bf756f89400bbaf55fef143cf0c95f1e2783fb`, `success`. La batería del intérprete/matcher pasó **18 comprobaciones**; la prueba del catálogo real volvió a pasar con 688 registros, 98 coincidencias combinadas y 589 por autonomía.
+
+
+#### Integración de interfaz y diagnóstico de compilación Android (22/10/2026)
+
+- Se añadió en `SimilarCarsActivity` una tarjeta de búsqueda conversacional local y resultados limitados a diez coches, con acceso a detalles y a la comparativa existente (máximo tres). La selección clásica de coche de referencia permanece debajo y se conserva su ruta de búsqueda; no se añadió una pestaña de navegación.
+- Se añadieron cadenas de interfaz en los seis idiomas mediante `LanguageManager`. El intérprete y el matcher siguen siendo locales: la consulta no se envía a la red.
+- Primer workflow Android: [39809356092](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809356092) falló antes de compilar Java porque `app/build.gradle` exige variables de firma de release durante la evaluación del proyecto, incluso al ejecutar `assembleDebug`. No fue un error de compilación de la nueva interfaz.
+- Se añadió `.github/workflows/advisor-android-compile.yml`, que crea una clave efímera solo para CI, ejecuta el parche de virtualización usado por la compilación y solicita únicamente `assembleDebug`; no genera ni publica un artefacto de release.
+- El workflow se ajustó para usar esa clave efímera sin sobrescribirla con una ruta ficticia. La ejecución posterior [39809681492](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809681492) está en curso en el momento de esta nota; **no declarar compilación Android correcta hasta que finalice con `success`**.
+- Pendiente de revisar tras el resultado: posibles errores reales de compilación, corrección de referencias de traducción, mapeo de `Vehicle`/clave lógica y pruebas manuales en Android. Todo sigue en `feature/asesor-ia-fase-1`; no fusionar con `main` todavía.
