@@ -216,7 +216,7 @@ public final class AdvisorCriteriaEngine {
 
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
         if (!unit.find()) {
-            if (field != Field.PRICE || !containsPriceTerm(s, lang)) return null;
+            if (field != Field.PRICE || !(containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang))) return null;
             // A price term with a number but no currency is still understandable in context.
             Matcher generic = NUMBER.matcher(s);
             if (!generic.find()) return new NumberMatch(0, false, true);
@@ -320,6 +320,11 @@ public final class AdvisorCriteriaEngine {
             case "pt": return has(prefix,"ate","até","no maximo","máximo","menos de","no mais de");
             default: return has(prefix,"hasta","como mucho","máximo","maximo","menos de","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es");
         }
+    }
+
+    private static boolean hasPriceBoundOperator(String s, String lang) {
+        String prefix = s;
+        return lastOperatorIndex(prefix, lang, true) >= 0 || lastOperatorIndex(prefix, lang, false) >= 0;
     }
 
     private static boolean containsPriceTerm(String s, String lang) {
