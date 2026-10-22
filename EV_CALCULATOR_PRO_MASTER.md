@@ -1642,3 +1642,13 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - La función `runAdvisorSearch()` elimina los resultados anteriores al comienzo de cada intento; si la consulta nueva está vacía o necesita aclaración, no deja visibles resultados que pertenecían a la búsqueda previa.
 - Este resultado valida `assembleDebug`, no una compilación Release ni el comportamiento en un dispositivo físico. Quedan pendientes las pruebas manuales de criterios combinados, aclaraciones, acumulación de criterios entre turnos, reinicio, detalle, comparativa y búsqueda clásica.
 - Estado de ramas: los cambios continúan aislados en `feature/asesor-ia-fase-1`; no se ha fusionado nada en `main`. El catálogo protegido y su mecanismo de actualización permanecen sin cambios.
+
+
+### Decisión de interpretación de objetivos de precio y maletero (22/10/2026)
+
+- El asesor distingue **objetivos aproximados** de límites explícitos en ambos criterios.
+- **Precio/presupuesto:** conservar el comportamiento de presupuesto cercano ya implementado; ordenar por proximidad al importe objetivo y admitir una pequeña desviación, sin convertir un objetivo de precio en un máximo rígido.
+- **Maletero:** «quiero uno de 450 de maletero», «maletero de 450 litros» o «around 450 L of boot space» representan un **objetivo aproximado**. Se priorizan capacidades conocidas cercanas al valor, sin exigir que todos los coches superen 450 L.
+- **Operadores explícitos siguen siendo límites:** «al menos 450 litros» / «mínimo 450 L» son un mínimo real; «máximo 450 litros» es un máximo real. Si falta el dato, el coche no se considera coincidencia verificada para ese criterio.
+- Cuando precio y maletero son objetivos, la clasificación considera la proximidad relativa a ambos.
+- Se añaden pruebas de regresión para distinguir el objetivo de maletero de un mínimo explícito y comprobar el ranking por cercanía.
