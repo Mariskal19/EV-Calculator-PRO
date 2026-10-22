@@ -29,6 +29,8 @@ public final class AdvisorCriteriaEngine {
         public Double maxRangeKm;
         public Double minTrunkLiters;
         public Double maxTrunkLiters;
+        /** Approximate target; nearby values rank well without becoming a hard minimum. */
+        public Double targetTrunkLiters;
         public Double minBatteryKwh;
         public Double maxBatteryKwh;
         public Double minPowerKw;
@@ -45,7 +47,7 @@ public final class AdvisorCriteriaEngine {
             Criteria c = new Criteria();
             c.minPrice=minPrice; c.maxPrice=maxPrice;
             c.minRangeKm=minRangeKm; c.maxRangeKm=maxRangeKm;
-            c.minTrunkLiters=minTrunkLiters; c.maxTrunkLiters=maxTrunkLiters;
+            c.minTrunkLiters=minTrunkLiters; c.maxTrunkLiters=maxTrunkLiters; c.targetTrunkLiters=targetTrunkLiters;
             c.minBatteryKwh=minBatteryKwh; c.maxBatteryKwh=maxBatteryKwh;
             c.minPowerKw=minPowerKw; c.maxPowerKw=maxPowerKw;
             c.maxConsumption=maxConsumption;
@@ -59,7 +61,7 @@ public final class AdvisorCriteriaEngine {
             switch (field) {
                 case PRICE: minPrice=null; maxPrice=null; break;
                 case RANGE: minRangeKm=null; maxRangeKm=null; break;
-                case TRUNK: minTrunkLiters=null; maxTrunkLiters=null; break;
+                case TRUNK: minTrunkLiters=null; maxTrunkLiters=null; targetTrunkLiters=null; preferLargeTrunk=false; break;
                 case BATTERY: minBatteryKwh=null; maxBatteryKwh=null; break;
                 case POWER: minPowerKw=null; maxPowerKw=null; break;
                 case CONSUMPTION: maxConsumption=null; preferLowConsumption=false; break;
@@ -71,7 +73,7 @@ public final class AdvisorCriteriaEngine {
 
         public boolean hasHardFilters() {
             return minPrice!=null || maxPrice!=null || minRangeKm!=null || maxRangeKm!=null
-                    || minTrunkLiters!=null || maxTrunkLiters!=null
+                    || minTrunkLiters!=null || maxTrunkLiters!=null || targetTrunkLiters!=null
                     || minBatteryKwh!=null || maxBatteryKwh!=null
                     || minPowerKw!=null || maxPowerKw!=null || maxConsumption!=null
                     || bodyStyle!=null || drivetrain!=null || makeModel!=null;
@@ -146,7 +148,8 @@ public final class AdvisorCriteriaEngine {
         NumberMatch trunk = findNumeric(s, lang, Field.TRUNK);
         if (trunk != null) {
             if (trunk.ambiguous) clarification = "clarify_trunk";
-            else { if (trunk.lowerBound) criteria.minTrunkLiters=trunk.value; else criteria.maxTrunkLiters=trunk.value; changed=true; }
+            else if (trunk.target) { criteria.targetTrunkLiters=trunk.value; criteria.minTrunkLiters=null; criteria.maxTrunkLiters=null; changed=true; }
+            else { if (trunk.lowerBound) criteria.minTrunkLiters=trunk.value; else criteria.maxTrunkLiters=trunk.value; criteria.targetTrunkLiters=null; changed=true; }
         }
 
         NumberMatch battery = findNumeric(s, lang, Field.BATTERY);
@@ -197,8 +200,10 @@ public final class AdvisorCriteriaEngine {
         final double value;
         final boolean lowerBound;
         final boolean ambiguous;
-        NumberMatch(double value, boolean lowerBound, boolean ambiguous) {
-            this.value=value; this.lowerBound=lowerBound; this.ambiguous=ambiguous;
+        final boolean target;
+        NumberMatch(double value, boolean lowerBound, boolean ambiguous) { this(value, lowerBound, ambiguous, false); }
+        NumberMatch(double value, boolean lowerBound, boolean ambiguous, boolean target) {
+            this.value=value; this.lowerBound=lowerBound; this.ambiguous=ambiguous; this.target=target;
         }
     }
 
@@ -216,8 +221,10 @@ public final class AdvisorCriteriaEngine {
 
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
         if (!unit.find()) {
-            if (field != Field.PRICE || !(containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang))) return null;
-            // A price term with a number but no currency is still understandable in context.
+            boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang));
+            boolean trunkContext = field == Field.TRUNK && containsTrunkTerm(s, lang);
+            if (!priceContext && !trunkContext) return null;
+            // In-context numbers may omit units: "presupuesto hasta 35000" or "450 de maletero".
             Matcher generic = NUMBER.matcher(s);
             if (!generic.find()) return new NumberMatch(0, false, true);
             String tail = s.substring(generic.end()).trim();
@@ -243,7 +250,10 @@ public final class AdvisorCriteriaEngine {
         int upperAt = lastOperatorIndex(prefix, lang, false);
         boolean lower = lowerAt >= 0 && lowerAt > upperAt;
         boolean upper = upperAt >= 0 && upperAt > lowerAt;
-        if (!lower && !upper) return new NumberMatch(value, false, true);
+        if (!lower && !upper) {
+            if (field == Field.TRUNK && containsTrunkTerm(s, lang)) return new NumberMatch(value, false, false, true);
+            return new NumberMatch(value, false, true);
+        }
         if (field == Field.CONSUMPTION) {
             // Consumption is a maximum; "less than X" is a natural limit.
             if (lower) return new NumberMatch(value, false, true);
@@ -341,6 +351,17 @@ public final class AdvisorCriteriaEngine {
             case "it": return has(s,"prezzo","budget","costo");
             case "pt": return has(s,"preco","orçamento","orcamento","custo");
             default: return has(s,"precio","presupuesto","cuesta");
+        }
+    }
+
+    private static boolean containsTrunkTerm(String s, String lang) {
+        switch (lang) {
+            case "en": return has(s,"trunk","boot","cargo space","luggage space");
+            case "fr": return has(s,"coffre");
+            case "de": return has(s,"kofferraum");
+            case "it": return has(s,"bagagliaio");
+            case "pt": return has(s,"porta malas","bagageira");
+            default: return has(s,"maletero","capacidad de carga","espacio de carga");
         }
     }
 
