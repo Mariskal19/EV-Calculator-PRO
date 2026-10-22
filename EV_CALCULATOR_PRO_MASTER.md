@@ -1683,3 +1683,13 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Al borrar el texto se limpian el estado y los resultados visibles; «Nueva búsqueda» también cancela cualquier ejecución pendiente antes de reiniciar los criterios.
 - Alcance limitado a la tarjeta «Buscar con IA». La selección clásica de coche de referencia, la búsqueda clásica y `CompararCochesActivity` permanecen intactas.
 - Commit: `5737975a9711c45b33113f6517fd24b71f6858b4` en `feature/asesor-ia-fase-1`. Pendiente comprobar la compilación Android y probar el comportamiento en dispositivo. No se ha fusionado con `main`.
+
+
+### Corrección del filtro de carrocería «berlina» (22/10/2026)
+
+- Se amplía la equivalencia de berlina/sedán para incluir carrocerías fastback y liftback, habituales en coches de perfil berlina, evitando excluir el Peugeot E-408 por tener la etiqueta `liftback`.
+- Se corrige en la adaptación del asesor la clasificación de `Kia EV4 Hatchback`, que el catálogo tenía marcada como `sedan`. El ajuste queda aislado al asesor y no modifica el catálogo protegido ni su proceso de actualización.
+- Se conserva `Kia EV4 Fastback` como berlina y se evita que la búsqueda de berlina incluya el EV4 Hatchback.
+- Se añaden pruebas de regresión para incluir sedán/fastback/liftback y excluir hatchback.
+- La búsqueda sigue limitada a un máximo de 10 modelos únicos. La prueba nueva comprueba el filtrado de carrocería, no la cantidad comercial completa del mercado español.
+- Cambios en `feature/asesor-ia-fase-1`; no fusionar con `main` hasta validar CI y, si procede, una nueva prueba en móvil.
