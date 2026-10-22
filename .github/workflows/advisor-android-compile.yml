@@ -1,0 +1,40 @@
+name: Advisor Android compile check
+
+on:
+  push:
+    branches: [ "feature/asesor-ia-fase-1" ]
+    paths:
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/LanguageManager.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
+      - '.github/workflows/advisor-android-compile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android-compile:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle 9.6.0
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+          cache-disabled: true
+
+      - name: Apply the same local search-source patch as the release build
+        run: python3 .github/scripts/patch_search_virtualization.py
+
+      - name: Compile Android debug variant
+        run: gradle --no-daemon clean assembleDebug
