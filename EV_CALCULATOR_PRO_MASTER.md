@@ -1534,4 +1534,18 @@ La aplicación dispone de español, inglés, francés, alemán, italiano y portu
 - Flujo clásico de selección y algoritmo de similares sin regresiones.
 - Revisión de cadenas de interfaz y patrones de interpretación en los seis idiomas soportados.
 
-Estado: diseño funcional preliminar. Aún falta acordar la arquitectura final y obtener aprobación del usuario antes de modificar archivos de código.
+Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se inicia por fases en la rama `feature/asesor-ia-fase-1`; no se integra en `main` hasta revisar y validar los cambios.
+
+
+### Asesor conversacional — fase 1: intérprete local aislado (22/10/2026)
+
+- Rama de trabajo: `feature/asesor-ia-fase-1`.
+- Commit de código inicial: `2263e66491850103a7a5ae329ad2bb524bbdb62e`.
+- Archivo añadido: `app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java`.
+- Esta clase es Java puro, sin dependencias Android, red, catálogo ni persistencia. Mantiene los criterios en memoria, permite obtener una copia del estado y reiniciarlo explícitamente.
+- Criterios iniciales incluidos: límites de precio, autonomía WLTP, maletero, batería, potencia y consumo; carrocería y tracción; preferencias de menor consumo, mayor autonomía y mayor maletero; y eliminación explícita de algunos filtros.
+- El intérprete utiliza patrones locales acotados para español, inglés, francés, alemán, italiano y portugués. Devuelve una clave de aclaración cuando no reconoce una consulta o detecta un límite/unidad ambiguos. No intenta inferir nombres de modelos arbitrarios.
+- **Estado de validación:** todavía no se ha ejecutado compilación ni batería de pruebas. Este commit es una primera implementación aislada, no una función visible en la aplicación ni una versión lista para publicar.
+- **Revisión pendiente:** probar los operadores, decimales y separadores de miles, expresiones por idioma, sustitución de límites y eliminación de criterios. Revisar especialmente la detección de unidades y los casos en los que una consulta contiene más de un criterio antes de conectar el motor al catálogo.
+- **Sin cambios:** no se ha editado `SimilarCarsActivity`, `LanguageManager`, los flujos de detalle/comparativa, los JSON del catálogo, el refresco remoto ni el algoritmo clásico. No se ha cambiado `main` ni la rama de respaldo.
+- Próximo paso: revisión estática y pruebas dirigidas del motor aislado; corregir defectos antes de pasar a la integración con vehículos reales.
