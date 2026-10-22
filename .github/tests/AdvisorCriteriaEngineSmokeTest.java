@@ -79,6 +79,71 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(matches.stream().noneMatch(m -> "e".equals(m.candidate.logicalKey)),
                 "maximum budget excludes vehicles far below the intended price area");
 
+        // Upper-bound tolerance policy: price +5%; other numeric maxima +3%; minima exact.
+        java.util.List<AdvisorCatalogMatcher.Candidate> toleranceCatalog = new java.util.ArrayList<>();
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("price31", "Marca", "Precio 31000", "suv", "RWD", 31000, 450, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("price32", "Marca", "Precio 32000", "suv", "RWD", 32000, 450, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("range463", "Marca", "Autonomia 463", "suv", "RWD", 30000, 463, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("range464", "Marca", "Autonomia 464", "suv", "RWD", 30000, 464, 450, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("trunk463", "Marca", "Maletero 463", "suv", "RWD", 30000, 450, 463, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("trunk464", "Marca", "Maletero 464", "suv", "RWD", 30000, 450, 464, 80, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("battery82", "Marca", "Bateria 82", "suv", "RWD", 30000, 450, 450, 82, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("battery83", "Marca", "Bateria 83", "suv", "RWD", 30000, 450, 450, 83, 200, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("power206", "Marca", "Potencia 206", "suv", "RWD", 30000, 450, 450, 80, 206, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("power207", "Marca", "Potencia 207", "suv", "RWD", 30000, 450, 450, 80, 207, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("consumption20_5", "Marca", "Consumo 20.5", "suv", "RWD", 30000, 450, 450, 80, 200, 20.5));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("consumption21", "Marca", "Consumo 21", "suv", "RWD", 30000, 450, 450, 80, 200, 21));
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxPrice = 30000d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "price31".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey)),
+                "price maximum permits up to 5% over the requested amount");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxRangeKm = 450d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "range463".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "range464".equals(m.candidate.logicalKey)),
+                "range maximum permits 3% tolerance, not 4%");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxTrunkLiters = 450d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "trunk463".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "trunk464".equals(m.candidate.logicalKey)),
+                "trunk maximum permits 3% tolerance, not 4%");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxBatteryKwh = 80d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "battery82".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "battery83".equals(m.candidate.logicalKey)),
+                "battery maximum permits 3% tolerance, not 4%");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxPowerKw = 200d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "power206".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "power207".equals(m.candidate.logicalKey)),
+                "power maximum permits 3% tolerance, not 4%");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxConsumption = 20d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "consumption20_5".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "consumption21".equals(m.candidate.logicalKey)),
+                "consumption maximum permits 3% tolerance, not 4%");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.minRangeKm = 450d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "base".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "range464".equals(m.candidate.logicalKey)),
+                "minimum range remains exact and lower bounds are not relaxed");
+
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.minRangeKm = 450d;
         matches = AdvisorCatalogMatcher.search(catalog, filters);
