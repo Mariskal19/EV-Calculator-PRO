@@ -1428,3 +1428,43 @@ Hallazgos:
 - `fbc83910b31d83fe22911d1d134cb09ed61a1497` — `docs: record pre-advisor checkpoint and current audit status` (README).
 - El HEAD de `main` antes de añadir estas últimas notas era `fbc83910b31d83fe22911d1d134cb09ed61a1497`; este commit documental pasa a ser el nuevo HEAD. Verificar el HEAD de GitHub al retomar el trabajo.
 - Estos commits son posteriores al respaldo deliberadamente; no mueven ni sustituyen el checkpoint. Si fuera necesario volver exactamente al estado anterior a la documentación, usar la rama de respaldo o el SHA de checkpoint indicado arriba.
+
+
+### Continuación de auditoría: parsers, campos y flujos de selección (22/10/2026, solo lectura)
+
+#### Comparación de modelos y parsers
+
+Se inspeccionaron los constructores Vehicle(JSONObject) de SimilarCarsActivity y CompararCochesActivity, el cargador remoto, el flujo de detalle y el catálogo JSON protegido. No se modificó código.
+
+- Los dos parsers comparten la mayoría de campos técnicos, pero no tienen exactamente la misma normalización. Ambos aceptan alias para marca, versión, año, batería nominal, WLTP, consumo, potencia, tracción, carga, aceleración, maletero, peso y dimensiones.
+- **Diferencia confirmada en batería utilizable:** el parser de Comparar acepta usableBatteryKwh, netBatteryKwh y batteryNetKwh; el parser de Similar solo lee usableBatteryKwh. Si una entrada remota usa uno de los otros alias, Similar la tratará como si no tuviera capacidad útil.
+- **Diferencia confirmada en química de batería:** Comparar acepta batteryChemistry, batteryType y chemistry; Similar acepta batteryChemistry y batteryType, pero no chemistry.
+- **Diferencia confirmada en tracción:** Comparar también acepta drivetrainType; Similar solo acepta drivetrain y drive.
+- **Diferencia confirmada en tiempo de carga:** Comparar acepta charge10to80Min, chargeMin y chargeTime10to80Min; Similar acepta charge10to80Min y chargeMin.
+- Similar necesita además bodyStyle/alias body_style y segment para su algoritmo de rivales. Comparar no los mantiene en su modelo Vehicle, ya que no los usa en la tabla técnica.
+- Ambos convierten muchos valores ausentes o nulos a cero mediante optDouble(..., 0). Para la futura búsqueda conversacional, cero debe mantenerse como representación interna compatible con el catálogo actual, pero la capa de criterios debe distinguir «dato desconocido» de un valor medido real. No se debe presentar un precio cero como coche gratuito ni usar un campo desconocido para afirmar que cumple un requisito.
+- Los dos parsers tienen claves lógicas equivalentes basadas en marca, modelo, mercado, año, batería y versión normalizada. Se debe reutilizar esa identidad lógica para resolver resultados y evitar depender exclusivamente de IDs generados.
+- Comparar calcula un ID estable a partir de la clave lógica cuando lo necesita y puede completar campos ausentes al fusionar registros lógicamente idénticos. Similar crea su ID de reserva a partir de una cadena propia. Por tanto, el asesor debe conservar la clave lógica del objeto elegido y resolverlo contra la lista viva de vehículos, en vez de construir IDs por su cuenta.
+
+#### Catálogo protegido y remoto
+
+- El catálogo protegido tiene raíz JSON con schemaVersion, datasetVersion, marketDefault, catalogOrder y matriz vehicles. Los registros usan principalmente nombres como make, model, year, market, version, batteryKwh, drive, wltpKm, consumptionKwh100, price, acKw, dcKw, charge10to80Min, batteryChemistry, trunkLiters, weightKg, dimensiones, usableBatteryKwh, bodyStyle y segment.
+- El JSON remoto tiene raíz con version, updatedAt y vehicles; usa algunos alias adicionales y campos nulos. El cargador remoto descarga únicamente el archivo de catálogo, lo almacena en caché y limita la comprobación a una vez cada 24 horas. Esta descarga de catálogo es independiente de la consulta de texto del usuario.
+- Los validadores de adiciones remotas de Similar y Comparar se parecen, pero no son idénticos: Comparar también rechaza una entrada cuando se informan ambas potencias AC/DC y DC es menor que AC; Similar no tiene ese control. No cambiar estos validadores durante la implementación del asesor sin revisar el alcance y probar el impacto en los flujos clásicos.
+- La lista de Similar marca el origen remoto y filtra los años a 2024–2026, además de requerir marca, modelo, versión, batería, WLTP, potencia y consumo válidos. Los datos opcionales (precio, maletero, tiempo de carga, etc.) pueden faltar aunque la ficha siga siendo válida.
+
+#### Detalle y comparativa: integración recomendada
+
+- CarDetailActivity recibe sus campos por extras de Intent; la llamada existente desde Similar pasa las especificaciones del mismo objeto Vehicle, así como vehicle_id, logical_key y contexto del flujo de similares.
+- El botón «Añadir a comparativa» persiste selección e identidades lógicas y abre CompararCochesActivity. El flujo clásico de Similar también puede añadir la referencia y el resultado como pareja.
+- La futura búsqueda conversacional debe entregar al flujo de detalle/comparación el objeto real seleccionado del catálogo y reutilizar la clave lógica. No debe reconstruir una ficha desde el texto libre ni crear un vehículo artificial.
+- La integración propuesta sigue limitada a la pantalla actual de «Buscar coches similares». El modo conversacional tendrá su propio filtrado/ranking y no sustituirá el algoritmo de rivales ni modificará el selector clásico.
+
+#### Decisión técnica pendiente antes de programar
+
+1. Diseñar una capa de acceso/normalización mínima que pueda compartir campos entre las dos funciones sin alterar sus reglas de ranking, validación, identidad o selección.
+2. Decidir si el asesor usa directamente el modelo SimilarCarsActivity.Vehicle durante la primera fase o si conviene extraer un modelo común. Evitar crear un tercer parser duplicado.
+3. Añadir pruebas de regresión para alias, nulos, claves lógicas, resultados remotos y el flujo de añadir a comparativa.
+4. Mantener la primera versión completamente local para interpretar consultas: no enviar texto libre a GitHub ni a otro servicio; el tráfico ya existente de actualización del catálogo sigue siendo independiente.
+5. No implementar aún: terminar de acordar la arquitectura y revisar el plan con el usuario antes de cambiar código.
+
