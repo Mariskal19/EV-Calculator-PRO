@@ -195,6 +195,27 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.needsClarification() && "clarify_reference_price_relation".equals(r.clarificationKey),
                 "also asks for clarification when the unfinished price phrase ends with an ellipsis");
 
+
+        // Body-style compatibility: berlina includes fastback/liftback, not a conventional hatchback.
+        AdvisorCriteriaEngine.Criteria sedanFilter = new AdvisorCriteriaEngine.Criteria();
+        sedanFilter.bodyStyle = "SEDAN";
+        List<AdvisorCatalogMatcher.Candidate> bodyCandidates = new java.util.ArrayList<>();
+        bodyCandidates.add(new AdvisorCatalogMatcher.Candidate("model3", "Tesla", "Model 3",
+                "sedan", "RWD", 39990, 513, 594, 60, 208, 14.4));
+        bodyCandidates.add(new AdvisorCatalogMatcher.Candidate("ev4-fastback", "Kia", "EV4 Fastback",
+                "sedan", "FWD", 37953, 440, 490, 58.3, 150, 14.9));
+        bodyCandidates.add(new AdvisorCatalogMatcher.Candidate("e408", "Peugeot", "E-408",
+                "liftback", "FWD", 41290, 453, 536, 58.2, 157, 15.2));
+        bodyCandidates.add(new AdvisorCatalogMatcher.Candidate("ev4-hatchback", "Kia", "EV4 Hatchback",
+                "hatchback", "FWD", 37951, 440, 435, 58.3, 150, 14.9));
+        java.util.List<AdvisorCatalogMatcher.Result> sedanMatches =
+                AdvisorCatalogMatcher.search(bodyCandidates, sedanFilter);
+        check(sedanMatches.size() == 3, "berlina search includes sedan, fastback and liftback, not hatchback");
+        check(sedanMatches.stream().anyMatch(m -> "e408".equals(m.candidate.logicalKey)),
+                "berlina search includes Peugeot E-408 liftback");
+        check(sedanMatches.stream().noneMatch(m -> "ev4-hatchback".equals(m.candidate.logicalKey)),
+                "berlina search excludes Kia EV4 Hatchback");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
