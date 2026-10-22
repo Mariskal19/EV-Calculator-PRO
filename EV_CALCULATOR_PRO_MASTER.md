@@ -1605,3 +1605,11 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - La prueba confirma que el matcher aplica los límites combinados, no admite datos de autonomía desconocidos como cumplimiento de un mínimo y una preferencia blanda no elimina registros. Los recuentos son resultado de esa versión del catálogo en la rama de trabajo; no constituyen auditoría de la exactitud comercial de los datos.
 - **Límite importante:** el test carga los datos del JSON real a través de una proyección de prueba, pero todavía no está conectado a los objetos `Vehicle` en ejecución ni a la caché remota. Tampoco se ha compilado la aplicación Android completa en esta fase.
 - Siguiente paso recomendado: revisar el mapeo de campos de `Vehicle` al candidato, integrar la búsqueda conversacional sin tocar `showSimilar()` ni `collectCompetitors()`, añadir cadenas en los seis idiomas y ejecutar el build Android antes de considerar cualquier integración en `main`.
+
+
+#### Corrección de seguridad conversacional antes de integrar UI (22/10/2026)
+
+- En la revisión del matcher se detectó un riesgo en el intérprete: un operador de un criterio anterior podía afectar al siguiente número de una frase, y una consulta parcialmente ambigua podía conservar cambios de criterio hechos en la misma frase.
+- Se ajustó la detección para limitar el operador a la cláusula actual y se hizo transaccional cada turno: si cualquier parte necesita aclaración, no se conserva ninguna actualización parcial de esa frase.
+- Se añadieron regresiones para `hasta 35.000 € y 450 km` (debe pedir aclaración sobre autonomía y no inferir un límite) y para verificar que el estado queda intacto.
+- **CI confirmado:** [ejecución 39809050708](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809050708), job `119929993028`, commit `55bf756f89400bbaf55fef143cf0c95f1e2783fb`, `success`. La batería del intérprete/matcher pasó **18 comprobaciones**; la prueba del catálogo real volvió a pasar con 688 registros, 98 coincidencias combinadas y 589 por autonomía.
