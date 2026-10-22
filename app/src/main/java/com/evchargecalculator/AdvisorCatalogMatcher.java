@@ -65,12 +65,17 @@ public final class AdvisorCatalogMatcher {
         }
         Collections.sort(results, new Comparator<Result>() {
             @Override public int compare(Result a, Result b) {
-                if (criteria.maxPrice != null) {
-                    double da = Math.abs(criteria.maxPrice - a.candidate.price);
-                    double db = Math.abs(criteria.maxPrice - b.candidate.price);
-                    int byDistance = Double.compare(da, db);
-                    if (byDistance != 0) return byDistance;
+                double targetDistanceA = 0, targetDistanceB = 0;
+                if (criteria.maxPrice != null && a.candidate.price > 0 && b.candidate.price > 0) {
+                    targetDistanceA += Math.abs(criteria.maxPrice - a.candidate.price) / criteria.maxPrice;
+                    targetDistanceB += Math.abs(criteria.maxPrice - b.candidate.price) / criteria.maxPrice;
                 }
+                if (criteria.targetTrunkLiters != null && a.candidate.trunkLiters > 0 && b.candidate.trunkLiters > 0) {
+                    targetDistanceA += Math.abs(criteria.targetTrunkLiters - a.candidate.trunkLiters) / criteria.targetTrunkLiters;
+                    targetDistanceB += Math.abs(criteria.targetTrunkLiters - b.candidate.trunkLiters) / criteria.targetTrunkLiters;
+                }
+                int byDistance = Double.compare(targetDistanceA, targetDistanceB);
+                if (byDistance != 0) return byDistance;
                 int byScore = Double.compare(b.preferenceScore, a.preferenceScore);
                 return byScore != 0 ? byScore : Integer.compare(a.catalogOrder, b.catalogOrder);
             }
@@ -82,6 +87,10 @@ public final class AdvisorCatalogMatcher {
         if (!withinPrice(c.price, q.minPrice, q.maxPrice)) return false;
         if (!within(c.rangeKm, q.minRangeKm, q.maxRangeKm)) return false;
         if (!within(c.trunkLiters, q.minTrunkLiters, q.maxTrunkLiters)) return false;
+        // An unqualified trunk value is a target, not a hard minimum: retain nearby known values.
+        if (q.targetTrunkLiters != null && (c.trunkLiters <= 0
+                || c.trunkLiters < q.targetTrunkLiters * 0.75
+                || c.trunkLiters > q.targetTrunkLiters * 1.25)) return false;
         if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh)) return false;
         if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw)) return false;
         if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption)) return false;
