@@ -73,7 +73,7 @@ public final class AdvisorCatalogMatcher {
     }
 
     private static boolean matches(Candidate c, AdvisorCriteriaEngine.Criteria q) {
-        if (!within(c.price, q.minPrice, q.maxPrice)) return false;
+        if (!withinPrice(c.price, q.minPrice, q.maxPrice)) return false;
         if (!within(c.rangeKm, q.minRangeKm, q.maxRangeKm)) return false;
         if (!within(c.trunkLiters, q.minTrunkLiters, q.maxTrunkLiters)) return false;
         if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh)) return false;
@@ -83,6 +83,13 @@ public final class AdvisorCatalogMatcher {
         if (q.drivetrain != null && !driveMatches(q.drivetrain, c.drivetrain)) return false;
         if (q.makeModel != null && !normalize(c.make + " " + c.model).contains(normalize(q.makeModel))) return false;
         return true;
+    }
+
+    private static boolean withinPrice(double value, Double min, Double max) {
+        if (min == null && max == null) return true;
+        if (value <= 0) return false;
+        if (min == null && max != null) return value >= max * 0.80 && value <= max * 1.05;
+        return (min == null || value >= min) && (max == null || value <= max);
     }
 
     private static boolean within(double value, Double min, Double max) {
