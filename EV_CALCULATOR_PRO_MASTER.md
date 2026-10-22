@@ -1,7 +1,7 @@
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
-> Última actualización: 20/10/2026 (catálogo 688 registros; reconciliación histórica 682→686 documentada; auditoría Zeekr).
+> Última actualización: 22/10/2026 (checkpoint previo al asesor conversacional; auditoría de arquitectura solo lectura; respaldo de main).
 >
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
@@ -1348,3 +1348,63 @@ El 20/10/2026 se añadieron dos configuraciones Zeekr nuevas: **Zeekr 001 Privil
 
 ### Resultado
 Auditoría de los tres registros existentes completada con las correcciones anteriores. **Pendiente separado:** comprobar la ficha técnica PDF MY27 y resolver la discrepancia oficial de potencia DC antes de crear o modificar registros para el año modelo 2027.
+
+
+## 2026-10-22 — Checkpoint de seguridad previo al asesor conversacional
+
+### Respaldo verificado antes de modificar documentación o código
+- **Rama principal observada:** `main`.
+- **HEAD de `main` al crear el respaldo:** `a2021ffa2bae1846f4de7f777a2c937f6713434f`.
+- **Commit:** `Document Lynk & Co protected catalog audit`, fechado 2026-10-21 19:55:05 UTC.
+- **Rama de respaldo creada:** `backup/pre-asesor-ia-2026-10-22`.
+- **HEAD de la rama de respaldo comprobado:** coincide exactamente con `a2021ffa2bae1846f4de7f777a2c937f6713434f`.
+- El respaldo es una rama Git de checkpoint: conserva el árbol completo versionado del repositorio en ese commit (código, recursos, catálogos y documentación versionados). No se han modificado ni borrado ramas `stable`.
+- La rama `main` ya estaba al día con el commit más reciente visible en el repositorio en el momento de la comprobación. No había commits posteriores que incorporar antes del checkpoint.
+
+### Estado de la aplicación en el checkpoint
+Verificado en `app/build.gradle`:
+- `versionName = 1.0.5.1`; `versionCode = 61`.
+- `applicationId = com.evcalculatorpro`; `minSdk = 23`; `targetSdk/compileSdk = 36`.
+- Java 17 según el estado documentado; dependencia directa en el archivo Gradle revisado: AndroidX Core 1.16.0.
+- Catálogo protegido: `app/src/main/assets/catalog_es_2024_2026.json`; el MASTER registra 688 configuraciones al 20/10/2026.
+- No se ha ejecutado compilación ni prueba de dispositivo como parte de esta auditoría; no se afirma que el checkpoint se haya compilado en esta sesión.
+
+### Auditoría previa de la función «Buscar coches similares» (solo lectura)
+Archivos revisados:
+- `app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java`
+- `app/src/main/java/com/evchargecalculator/RemoteCatalogManager.java`
+- `app/src/main/java/com/evchargecalculator/CarDetailActivity.java`
+- `app/src/main/java/com/evchargecalculator/CompararCochesActivity.java`
+- `app/build.gradle`
+- `README.md`
+
+Hallazgos:
+1. `SimilarCarsActivity` carga el JSON protegido y añade registros de `RemoteCatalogManager.loadCached()`; llama a `refreshIfDue()` para actualizar adiciones remotas. La validación y deduplicación remota existente deben conservarse.
+2. El modelo `Vehicle` de la pantalla Similar contiene precio, batería nominal/utilizable, WLTP, consumo, potencia, carga AC/DC, tiempo de carga, aceleración, maletero, peso, dimensiones, carrocería, segmento, tracción, mercado y año.
+3. `CompararCochesActivity` tiene otra clase `Vehicle` independiente y su propio parser. Antes de implementar el asesor hay que comparar los campos y alias JSON de ambas clases para evitar divergencias; no introducir todavía un tercer parser duplicado sin una decisión explícita.
+4. Los campos numéricos ausentes se convierten generalmente a `0`; el asesor debe interpretar cero como desconocido cuando corresponda y no como un valor real (por ejemplo, precio cero).
+5. La navegación existente permite abrir `CarDetailActivity` y `CompararCochesActivity`; el asesor debe reutilizar los flujos existentes sin alterar la búsqueda clásica.
+6. `RemoteCatalogManager` usa una URL de GitHub, caché local y comprobación cada 24 horas. Esto no autoriza ni requiere transmitir las consultas del usuario: el asesor inicial debe procesar el texto localmente.
+7. El modelo conversacional no debe persistir consultas o historial en `SharedPreferences`, bases de datos, archivos ni logs. El contexto se limita a la sesión activa y se descarta al salir/reiniciar.
+8. El algoritmo clásico de similares está orientado a rivales de un vehículo de referencia. La búsqueda libre por preferencias debe implementarse separadamente y convivir en la misma pantalla, sin sustituir ni degradar el modo clásico.
+
+### Diseño acordado, aún no implementado
+- Mantener la pantalla actual «Buscar coches similares».
+- Mostrar desde el inicio dos opciones verticales: **Buscar con IA** (texto libre, acción de búsqueda y resultados/seguimientos temporales) y **Elegir coche de referencia** (flujo clásico actual).
+- No crear una pantalla de elección adicional ni añadir una nueva entrada a la navegación principal.
+- Primera fase sin API de IA en la nube ni coste por consulta: motor local de interpretación de criterios, filtrado y ranking sobre el catálogo existente. Modelo local descargable queda como posible fase futura, no aprobado para esta primera implementación.
+- No inventar modelos ni especificaciones. Si falta precio, maletero u otro dato necesario para una condición obligatoria, explicitar que no se puede confirmar el cumplimiento.
+- Casos de prueba previstos: carrocería y presupuesto; añadir/retirar criterios en un seguimiento; correcciones de preferencias; pregunta comparativa como «¿cuál tiene más maletero?»; campos desconocidos; cero resultados; salida/reentrada sin recuperar conversación; modo avión; conservación del flujo clásico.
+
+### Secuencia antes de programar
+1. Terminar auditoría de navegación, esquema de catálogo y diferencias entre parsers.
+2. Proponer una arquitectura mínima adaptada a las convenciones reales del proyecto.
+3. Revisar y aprobar el plan antes de cambiar código.
+4. Implementar por fases, validar compilación y pruebas, y revisar el diff.
+5. Mantener el catálogo protegido intacto y no tocar `stable` sin autorización expresa.
+
+### Recuperación del checkpoint
+- **Checkpoint inmutable de referencia:** commit `a2021ffa2bae1846f4de7f777a2c937f6713434f`.
+- **Rama de recuperación:** [`backup/pre-asesor-ia-2026-10-22`](https://github.com/Mariskal19/EV-Calculator-PRO/tree/backup/pre-asesor-ia-2026-10-22).
+- Para inspeccionar/restaurar el estado completo en un entorno Git, hacer checkout de esa rama o del SHA anterior. Para volver a ese estado en `main`, preferir una reversión controlada mediante commits/PR tras revisar los cambios posteriores; no hacer `reset --hard` ni force-push de `main` sin autorización explícita.
+- Los cambios de documentación que registran este checkpoint se hacen después de crear y verificar la rama de respaldo; por tanto, el checkpoint sigue apuntando al estado previo a esos cambios.
