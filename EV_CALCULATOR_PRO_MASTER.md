@@ -1632,3 +1632,13 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se añadió la acción **Nueva búsqueda**, traducida en los seis idiomas, para limpiar el texto, los resultados y los criterios que el motor mantenía en memoria. Esto evita que un usuario empiece una búsqueda distinta arrastrando filtros anteriores sin darse cuenta.
 - Los commits de esta mejora son `16a0b8f` (reinicio de búsqueda) y `c32185e` (traducción). La nueva compilación Android de este último cambio está en curso: [CI 39813697512](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813697512). No registrar éxito hasta que concluya con `success`.
 - Sigue pendiente prueba funcional en dispositivo, en especial criterios multi-turno, consulta ambigua, resultados con datos ausentes, detalles y selección de comparativa. No fusionar con `main` antes de terminar estas comprobaciones.
+
+
+#### Última compilación Android y limpieza de resultados obsoletos (22/10/2026)
+
+- Confirmada la compilación Android Debug tras los últimos cambios en la búsqueda conversacional: [GitHub Actions 39813987883](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813987883), commit `5bf7f2a820503181aea84f2a3799aa17aa3a54bf`, job `119947484503`, conclusión `success`.
+- El job completó correctamente la configuración de Java 17 y Gradle 9.6.0, el parche de búsqueda local, la configuración de firma efímera para evaluar Gradle y el paso **Compile Android debug variant**.
+- También terminó correctamente la compilación de la revisión con el botón **Nueva búsqueda** y sus traducciones, en [CI 39813697512](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813697512).
+- La función `runAdvisorSearch()` elimina los resultados anteriores al comienzo de cada intento; si la consulta nueva está vacía o necesita aclaración, no deja visibles resultados que pertenecían a la búsqueda previa.
+- Este resultado valida `assembleDebug`, no una compilación Release ni el comportamiento en un dispositivo físico. Quedan pendientes las pruebas manuales de criterios combinados, aclaraciones, acumulación de criterios entre turnos, reinicio, detalle, comparativa y búsqueda clásica.
+- Estado de ramas: los cambios continúan aislados en `feature/asesor-ia-fase-1`; no se ha fusionado nada en `main`. El catálogo protegido y su mecanismo de actualización permanecen sin cambios.
