@@ -232,6 +232,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         advisorSubmitParams.topMargin=dp(9);
         advisorCard.addView(advisorSubmit,advisorSubmitParams);
         advisorSubmit.setOnClickListener(v->runAdvisorSearch());
+
+        TextView advisorReset=tv("Nueva búsqueda",13,blue);
+        advisorReset.setGravity(Gravity.CENTER);
+        advisorReset.setPadding(dp(10),dp(9),dp(10),dp(9));
+        LinearLayout.LayoutParams advisorResetParams=new LinearLayout.LayoutParams(-1,dp(40));
+        advisorResetParams.topMargin=dp(5);
+        advisorCard.addView(advisorReset,advisorResetParams);
+        advisorReset.setOnClickListener(v->resetAdvisorSearch());
         advisorInput.setOnEditorActionListener((v,actionId,event)->{
             if(actionId==android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
                     ||actionId==android.view.inputmethod.EditorInfo.IME_ACTION_DONE){
@@ -279,6 +287,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         scroll.addView(content);
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
+    }
+
+    private void resetAdvisorSearch(){
+        advisorEngine.reset();
+        if(advisorInput!=null)advisorInput.setText("");
+        if(advisorResults!=null)advisorResults.removeAllViews();
+        if(advisorStatus!=null)advisorStatus.setText("");
+        if(advisorInput!=null){
+            advisorInput.clearFocus();
+            InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            if(imm!=null)imm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
+        }
     }
 
     private void runAdvisorSearch(){
