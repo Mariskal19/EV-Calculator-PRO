@@ -52,4 +52,12 @@ jobs:
           } >> "$GITHUB_ENV"
 
       - name: Compile Android debug variant
+        env:
+          # app/build.gradle validates release-signing configuration while evaluating the
+          # project, even for assembleDebug. Dummy values are sufficient for debug only;
+          # this workflow never builds or signs a release artifact.
+          EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/unused-keystore.jks
+          EV_CALCULATOR_KEYSTORE_PASSWORD: debug-only-placeholder
+          EV_CALCULATOR_KEY_ALIAS: debug-only-placeholder
+          EV_CALCULATOR_KEY_PASSWORD: debug-only-placeholder
         run: gradle --no-daemon clean assembleDebug
