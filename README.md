@@ -125,3 +125,5 @@ Antes de cualquier cambio de código para el asesor se creó y verificó una ram
 
 
 - CI de la prueba con catálogo real: [ejecución 39808809409](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808809409). Este resultado valida el matcher sobre una proyección de prueba del JSON protegido; todavía no representa una integración con la pantalla ni con la caché remota.
+
+- Se corrigió además el alcance de operadores entre criterios y se evitó conservar actualizaciones parciales cuando una consulta necesita aclaración. La batería ampliada pasó 18 comprobaciones en [CI 39809050708](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809050708).
