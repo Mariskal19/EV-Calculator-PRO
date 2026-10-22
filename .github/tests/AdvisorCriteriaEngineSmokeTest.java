@@ -39,18 +39,6 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 40000d) < 0.01,
                 "parses a price ceiling without currency when maximum operator is explicit");
 
-        engine.reset();
-        r = engine.interpret("Quiero un coche similar al XPeng G6 de precio", AdvisorCriteriaEngine.Language.ES);
-        check(r.needsClarification() && "clarify_reference_price_relation".equals(r.clarificationKey),
-                "asks how price should relate to XPeng G6 when the request ends at 'de precio'");
-        check(r.criteria.maxPrice == null && r.criteria.minPrice == null,
-                "incomplete reference-price request does not invent a numeric budget");
-
-        engine.reset();
-        r = engine.interpret("Quiero un coche similar al XPeng G6 de precio...", AdvisorCriteriaEngine.Language.ES);
-        check(r.needsClarification() && "clarify_reference_price_relation".equals(r.clarificationKey),
-                "also asks for clarification when the unfinished price phrase ends with an ellipsis");
-
         r = engine.interpret("450", AdvisorCriteriaEngine.Language.ES);
         check(r.needsClarification(), "does not guess a bare number");
 
@@ -194,6 +182,18 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.needsClarification(), "does not borrow a price operator for a second criterion");
         check(r.criteria.maxPrice == null && r.criteria.minRangeKm == null && r.criteria.maxRangeKm == null,
                 "ambiguous multi-criterion query does not partially mutate state");
+
+        engine.reset();
+        r = engine.interpret("Quiero un coche similar al XPeng G6 de precio", AdvisorCriteriaEngine.Language.ES);
+        check(r.needsClarification() && "clarify_reference_price_relation".equals(r.clarificationKey),
+                "asks how price should relate to XPeng G6 when the request ends at 'de precio'");
+        check(r.criteria.maxPrice == null && r.criteria.minPrice == null,
+                "incomplete reference-price request does not invent a numeric budget");
+
+        engine.reset();
+        r = engine.interpret("Quiero un coche similar al XPeng G6 de precio...", AdvisorCriteriaEngine.Language.ES);
+        check(r.needsClarification() && "clarify_reference_price_relation".equals(r.clarificationKey),
+                "also asks for clarification when the unfinished price phrase ends with an ellipsis");
 
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
