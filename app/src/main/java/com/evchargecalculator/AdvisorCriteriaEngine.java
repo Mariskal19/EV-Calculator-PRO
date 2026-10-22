@@ -98,7 +98,7 @@ public final class AdvisorCriteriaEngine {
     private static final Pattern PRICE = Pattern.compile(
             "(?:€|eur|euros?|euros?|\\$|usd|£|gbp)");
     private static final Pattern RANGE_UNIT = Pattern.compile("(?:km|kilomet(?:er|re)s?)");
-    private static final Pattern TRUNK_UNIT = Pattern.compile("(?:l|lit(?:er|re)s?)");
+    private static final Pattern TRUNK_UNIT = Pattern.compile("(?:l|litros?|liters?|litres?)\\b");
     private static final Pattern BATTERY_UNIT = Pattern.compile("(?:kwh|kw\\s*h)");
     private static final Pattern POWER_UNIT = Pattern.compile("(?:kw|kilowatts?)");
     private static final Pattern CONSUMPTION_UNIT = Pattern.compile("(?:kwh\\s*/\\s*100\\s*km|kwh\\s*/\\s*100km)");
@@ -200,7 +200,7 @@ public final class AdvisorCriteriaEngine {
         switch (field) {
             case PRICE: unitPattern="(?:€|eur|euros?|\\$|usd|£|gbp)"; break;
             case RANGE: unitPattern="(?:km|kilomet(?:er|re)s?)"; break;
-            case TRUNK: unitPattern="(?:l|lit(?:er|re)s?)"; break;
+            case TRUNK: unitPattern="(?:l|litros?|liters?|litres?)\\\\b"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)"; break;
             case POWER: unitPattern="(?:kw|kilowatts?)"; break;
             case CONSUMPTION: unitPattern="(?:kwh\\s*/\\s*100\\s*km|kwh\\s*/\\s*100km)"; break;
