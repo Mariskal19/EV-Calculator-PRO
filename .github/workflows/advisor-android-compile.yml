@@ -36,5 +36,21 @@ jobs:
       - name: Apply the same local search-source patch as the release build
         run: python3 .github/scripts/patch_search_virtualization.py
 
+      # app/build.gradle validates release-signing environment during project configuration,
+      # even for assembleDebug. Use an ephemeral CI-only key; never build or publish a release here.
+      - name: Configure ephemeral signing values for Gradle configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          keystore="$RUNNER_TEMP/advisor-ci-only.jks"
+          keytool -genkeypair -noprompt -keystore "$keystore" -storepass advisor-ci-only -keypass advisor-ci-only \\
+            -alias advisor-ci-only -dname "CN=Advisor CI Only" -keyalg RSA -keysize 2048 -validity 2
+          {
+            echo "EV_CALCULATOR_KEYSTORE_PATH=$keystore"
+            echo "EV_CALCULATOR_KEYSTORE_PASSWORD=advisor-ci-only"
+            echo "EV_CALCULATOR_KEY_ALIAS=advisor-ci-only"
+            echo "EV_CALCULATOR_KEY_PASSWORD=advisor-ci-only"
+          } >> "$GITHUB_ENV"
+
       - name: Compile Android debug variant
         run: gradle --no-daemon clean assembleDebug
