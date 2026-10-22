@@ -223,12 +223,13 @@ public final class AdvisorCriteriaEngine {
 
         int start = unit.start();
         String prefix = s.substring(Math.max(0, start - 36), start);
-        boolean lower = hasLowerOperator(prefix, lang);
-        boolean upper = hasUpperOperator(prefix, lang);
-        if (lower && upper) return new NumberMatch(value, false, true);
-        // Bare numeric constraints are not inferred; ask the user what they mean.
+        int lowerAt = lastOperatorIndex(prefix, lang, true);
+        int upperAt = lastOperatorIndex(prefix, lang, false);
+        boolean lower = lowerAt >= 0 && lowerAt > upperAt;
+        boolean upper = upperAt >= 0 && upperAt > lowerAt;
         if (!lower && !upper) return new NumberMatch(value, false, true);
         if (field == Field.CONSUMPTION) {
+            // Consumption is a maximum; "less than X" is a natural limit.
             if (lower) return new NumberMatch(value, false, true);
             return new NumberMatch(value, false, false);
         }
@@ -249,6 +250,38 @@ public final class AdvisorCriteriaEngine {
         try { return Double.parseDouble(n); } catch (NumberFormatException ex) { return null; }
     }
 
+    private static int lastOperatorIndex(String prefix, String lang, boolean lower) {
+        String[] terms;
+        switch (lang) {
+            case "en":
+                terms = lower ? new String[]{"at least","more than","over","minimum","from"}
+                        : new String[]{"up to","at most","no more than","less than","under","maximum","below","my budget is","budget of"};
+                break;
+            case "fr":
+                terms = lower ? new String[]{"au moins","plus de","minimum","superieur a"}
+                        : new String[]{"jusqu a","au maximum","maximum","moins de","pas plus de"};
+                break;
+            case "de":
+                terms = lower ? new String[]{"mindestens","mehr als","uber","ab"}
+                        : new String[]{"bis zu","höchstens","maximal","weniger als","unter"};
+                break;
+            case "it":
+                terms = lower ? new String[]{"almeno","piu di","oltre","minimo"}
+                        : new String[]{"fino a","al massimo","massimo","meno di","non oltre"};
+                break;
+            case "pt":
+                terms = lower ? new String[]{"pelo menos","mais de","acima de","minimo"}
+                        : new String[]{"ate","no maximo","máximo","menos de","no mais de","posso chegar a"};
+                break;
+            default:
+                terms = lower ? new String[]{"al menos","más de","mas de","por encima de","mínimo","minimo","desde"}
+                        : new String[]{"hasta","como mucho","máximo","maximo","menos de","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es"};
+        }
+        int latest=-1;
+        for (String term : terms) latest=Math.max(latest,prefix.lastIndexOf(normalize(term)));
+        return latest;
+    }
+
     private static boolean hasLowerOperator(String prefix, String lang) {
         String p = prefix;
         switch (lang) {
@@ -263,12 +296,12 @@ public final class AdvisorCriteriaEngine {
 
     private static boolean hasUpperOperator(String prefix, String lang) {
         switch (lang) {
-            case "en": return has(prefix,"up to","at most","no more than","less than","under","maximum","below");
+            case "en": return has(prefix,"up to","at most","no more than","less than","under","maximum","below","my budget is","budget of");
             case "fr": return has(prefix,"jusqu a","au maximum","maximum","moins de","pas plus de");
             case "de": return has(prefix,"bis zu","höchstens","maximal","weniger als","unter");
             case "it": return has(prefix,"fino a","al massimo","massimo","meno di","non oltre");
             case "pt": return has(prefix,"ate","até","no maximo","máximo","menos de","no mais de");
-            default: return has(prefix,"hasta","como mucho","máximo","maximo","menos de","por debajo de","no más de","no mas de");
+            default: return has(prefix,"hasta","como mucho","máximo","maximo","menos de","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es");
         }
     }
 
