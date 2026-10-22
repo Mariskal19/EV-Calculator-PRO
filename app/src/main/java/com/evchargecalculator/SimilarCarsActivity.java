@@ -315,7 +315,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         catch(Exception ignored){selectedLanguage=AdvisorCriteriaEngine.Language.EN;}
         AdvisorCriteriaEngine.ParseResult parsed=advisorEngine.interpret(query,selectedLanguage);
         if(parsed.needsClarification()){
-            advisorStatus.setText(LanguageManager.t(this,"No he entendido algún límite. Aclara la unidad o si es mínimo o máximo."));
+            if("clarify_reference_price_relation".equals(parsed.clarificationKey)){
+                advisorStatus.setText(LanguageManager.t(this,
+                        "¿Quieres una alternativa más barata, de precio parecido o más cara que el XPeng G6?"));
+            }else{
+                advisorStatus.setText(LanguageManager.t(this,"No he entendido algún límite. Aclara la unidad o si es mínimo o máximo."));
+            }
             return;
         }
         AdvisorCriteriaEngine.Criteria criteria=parsed.criteria;
