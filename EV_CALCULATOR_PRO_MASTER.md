@@ -1578,3 +1578,16 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 
 
 - **Resultado confirmado de CI:** workflow [Advisor engine smoke tests, ejecución 39807809446](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39807809446), commit `31b9f52d9a4d17c6e607ccde980d951b173e8f9b`, finalizó con `success` el 22/10/2026. Tanto la compilación Java aislada como el paso de smoke tests terminaron correctamente. Esto valida los casos de humo incluidos, pero no sustituye las pruebas de integración con el catálogo ni la compilación completa de Android.
+
+
+### Asesor conversacional — fase 2: filtro aislado contra candidatos de catálogo (22/10/2026)
+
+- Rama de trabajo: `feature/asesor-ia-fase-1`; la rama `main` y el respaldo `backup/pre-asesor-ia-2026-10-22` no se han modificado por esta fase.
+- Nuevo archivo: `app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java`.
+- La clase recibe una lista de candidatos adaptados desde los objetos `Vehicle` ya cargados por `SimilarCarsActivity`. No lee archivos, no solicita datos a la red, no refresca el catálogo y no modifica la búsqueda clásica. La adaptación desde `Vehicle` y la integración en pantalla quedan deliberadamente pendientes.
+- Los filtros obligatorios se combinan con AND. Si se solicita un límite numérico, un valor ausente o no positivo no se interpreta como cero real ni puede superar el filtro. Se cubren precio, autonomía, maletero, batería, potencia y consumo; carrocería, tracción y marca/modelo requieren coincidencia normalizada explícita.
+- Las preferencias de menor consumo, mayor autonomía y mayor maletero solo ordenan los candidatos que cumplen los filtros; por sí solas no eliminan candidatos. Los empates mantienen el orden de catálogo.
+- Se ampliaron las pruebas aisladas para comprobar filtros combinados, campos desconocidos, carrocería incompatible, preferencias blandas y consulta sin criterios.
+- Se actualizó `.github/workflows/advisor-engine-test.yml` para compilar el motor y el matcher con Java 17 y ejecutar la batería ampliada.
+- **Estado de validación:** el código y las pruebas están en la rama, pero la ejecución de CI de esta fase debe finalizar con éxito antes de darla por validada. No equivale a una compilación Android completa ni a integración real en la interfaz.
+- **Siguiente paso:** confirmar CI; después diseñar la adaptación segura de los campos de `Vehicle` y probar una muestra del catálogo protegido y de la caché remota, sin modificar sus datos ni el algoritmo clásico.
