@@ -14,7 +14,7 @@ public final class AdvisorCatalogIntegrationSmokeTest {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] f = line.split("\\t", -1);
-                if (f.length != 12) throw new AssertionError("Unexpected catalog row shape: " + f.length);
+                if (f.length != 11) throw new AssertionError("Unexpected catalog row shape: " + f.length);
                 catalog.add(new AdvisorCatalogMatcher.Candidate(f[0], f[1], f[2], f[3], f[4],
                         number(f[5]), number(f[6]), number(f[7]), number(f[8]), number(f[9]), number(f[10])));
             }
