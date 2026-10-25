@@ -317,15 +317,13 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private boolean tryRunNaturalSimilarityQuery(String query) {
         String normalized=norm(query).trim();
-        boolean asksForSimilar=normalized.contains("parecido") || normalized.contains("parecida")
-                || normalized.contains("similares") || normalized.contains("similar")
-                || normalized.contains("semejante") || normalized.contains("similar to")
-                || normalized.contains("like the") || normalized.contains("alternativa a")
-                || normalized.contains("alternativas a") || normalized.contains("rival de")
-                || normalized.contains("competidor de") || normalized.contains(" como ")
-                || normalized.startsWith("como ") || normalized.contains("look like")
-                || normalized.contains("something like");
-        if(!asksForSimilar) return false;
+        List<String> catalogVehicleNames=new ArrayList<>();
+        for(Vehicle vehicle:vehicles){
+            catalogVehicleNames.add(vehicle.make+" "+vehicle.model);
+        }
+        // A generic car request naming a catalog model (e.g. "Quiero un coche el XPeng G6")
+        // uses the existing similar-cars engine even without an explicit word like "similar".
+        if(!AdvisorSimilarityIntent.shouldRoute(query,catalogVehicleNames)) return false;
 
         // First try the complete make + model, preferring the longest exact catalog
         // name so a shorter model cannot win when names overlap.
