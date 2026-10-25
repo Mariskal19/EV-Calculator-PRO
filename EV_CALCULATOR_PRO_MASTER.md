@@ -1878,3 +1878,12 @@ No se modifica `main` ni el catálogo protegido.
 - Las pruebas cubren la frase exacta y verifican que se excluyan Dolphin Surf por carrocería, Fiat Grande Panda por quedar muy por debajo del rango de precio aproximado y SUVs por encima del rango; se mantiene el SUV cercano a 40000.
 - Se añadieron pruebas de regresión para «Quiero un SUV de unos 40000»: el filtro debe conservar SUVs que se ajustan al precio y excluir carrocerías y precios fuera del rango.
 - Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente verificar GitHub Actions y probar el APK actualizado en el móvil.
+
+
+## 2026-10-25 — Margen simétrico para presupuestos aproximados del Asesor IA
+
+- Aprobado por el usuario: reducir el margen de precio aproximado de −30 % / +15 % a **±15 %**.
+- El matcher local usa ahora una banda del 85 % al 115 % del precio objetivo. Ejemplo: «SUV de unos 40.000» permite precios de **34.000 a 46.000 €**, ambos límites incluidos.
+- Los límites explícitos como «hasta 40.000 €» mantienen su regla independiente: precio inferior sin mínimo y hasta un 5 % de tolerancia por encima (42.000 €).
+- Se actualizan las pruebas de regresión para comprobar los límites 34.000/46.000 €, excluir precios fuera de la banda y mantener la tolerancia de los límites explícitos.
+- Cambios en `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente validar smoke tests, compilación Android y APK antes de pedir prueba en el móvil.
