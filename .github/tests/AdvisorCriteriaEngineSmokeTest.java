@@ -46,7 +46,6 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(!r.criteria.maxPriceIsCeiling,
                 "approximate price target is not misclassified as a strict ceiling");
 
-        engine.reset();
         r = engine.interpret("Búscame una berlina de 40 mil", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && "SEDAN".equals(r.criteria.bodyStyle),
                 "parses sedan body style with colloquial price wording without currency");
