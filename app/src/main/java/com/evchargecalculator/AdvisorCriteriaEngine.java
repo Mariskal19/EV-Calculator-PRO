@@ -255,7 +255,7 @@ public final class AdvisorCriteriaEngine {
         // not 47. Keep the multiplier local to price parsing so other fields are unchanged.
         if (field == Field.PRICE) {
             String matchedPrice = unit.group().toLowerCase(Locale.ROOT);
-            if (matchedPrice.contains("mil") || Pattern.compile("\\\\d\\\\s*k\\\\b").matcher(matchedPrice).find()) {
+            if (matchedPrice.contains("mil") || matchedPrice.contains("k")) {
                 value *= 1000.0;
             }
         }
