@@ -35,6 +35,14 @@ public final class AdvisorCatalogIntegrationSmokeTest {
                     "every real-catalog result satisfies known range floor");
         }
 
+        AdvisorCriteriaEngine engine = new AdvisorCriteriaEngine();
+        AdvisorCriteriaEngine.ParseResult sedanQuery = engine.interpret(
+                "Búscame una berlina de 40 mil", AdvisorCriteriaEngine.Language.ES);
+        check(!sedanQuery.needsClarification(), "parses real-catalog colloquial sedan target query");
+        List<AdvisorCatalogMatcher.Result> sedanTargetMatches =
+                AdvisorCatalogMatcher.search(catalog, sedanQuery.criteria);
+        System.out.println("Real catalog results for 'berlina de 40 mil': " + sedanTargetMatches.size());
+
         q = new AdvisorCriteriaEngine.Criteria();
         q.minRangeKm = 400d;
         List<AdvisorCatalogMatcher.Result> rangeMatches = AdvisorCatalogMatcher.search(catalog, q);
@@ -47,7 +55,7 @@ public final class AdvisorCatalogIntegrationSmokeTest {
         check(AdvisorCatalogMatcher.search(catalog, q).size() == catalog.size(),
                 "preference alone ranks rather than filters real catalog candidates");
         System.out.println("Advisor catalog integration smoke tests passed: " + catalog.size()
-                + " catalog rows, " + matches.size() + " price/range matches, " + rangeMatches.size()
+                + " catalog rows, " + matches.size() + " price/range matches, " + sedanTargetMatches.size() + " real sedan target matches, " + rangeMatches.size()
                 + " range matches.");
     }
 
