@@ -1693,3 +1693,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se añaden pruebas de regresión para incluir sedán/fastback/liftback y excluir hatchback.
 - La búsqueda sigue limitada a un máximo de 10 modelos únicos. La prueba nueva comprueba el filtrado de carrocería, no la cantidad comercial completa del mercado español.
 - Cambios en `feature/asesor-ia-fase-1`; no fusionar con `main` hasta validar CI y, si procede, una nueva prueba en móvil.
+
+
+### Interpretación de presupuesto aproximado (25/10/2026)
+
+- Se detectó en prueba de dispositivo que la frase «Búscame un coche de unos 40000 euros» se trataba como ambigua porque el motor reconocía el importe, pero no la expresión aproximativa «unos».
+- `unos`, `alrededor de`, `aproximadamente`, `sobre`, `cerca de`, `en torno a` y `más o menos` se interpretan como presupuesto objetivo aproximado, no como límite máximo estricto. Se añade soporte equivalente para expresiones frecuentes en inglés, francés, alemán, italiano y portugués.
+- El criterio conserva el precio como objetivo para ordenar/filtrar coches de esa zona económica; expresiones explícitas como «hasta 40.000 €» siguen siendo un techo presupuestario.
+- Se añadió una prueba de regresión para la frase exacta del usuario y para comprobar que no se marca como techo estricto.
+- Cambios en `feature/asesor-ia-fase-1`; validar las pruebas automáticas y compilar APK antes de volver a instalar. No fusionar con `main`.
