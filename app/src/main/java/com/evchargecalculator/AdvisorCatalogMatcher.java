@@ -103,7 +103,7 @@ public final class AdvisorCatalogMatcher {
     private static boolean withinPrice(double value, Double min, Double max, boolean explicitCeiling) {
         if (min == null && max == null) return true;
         if (value <= 0) return false;
-        if (min == null && max != null) return explicitCeiling ? value <= max * 1.05 : value >= max * 0.80 && value <= max * 1.05;
+        if (min == null && max != null) return explicitCeiling ? value <= max * 1.05 : value >= max * 0.70 && value <= max * 1.15;
         return (min == null || value >= min) && (max == null || value <= max * 1.05);
     }
 
