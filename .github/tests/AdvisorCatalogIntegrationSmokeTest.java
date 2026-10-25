@@ -43,6 +43,30 @@ public final class AdvisorCatalogIntegrationSmokeTest {
                 AdvisorCatalogMatcher.search(catalog, sedanQuery.criteria);
         System.out.println("Real catalog results for 'berlina de 40 mil': " + sedanTargetMatches.size());
 
+        // Mirror the app-only body-style correction and display de-duplication:
+        // Kia EV4 Hatchback is mislabeled as sedan in the protected catalog, and
+        // only one version per normalized make/model should be shown to the user.
+        List<AdvisorCatalogMatcher.Result> visibleSedans = new ArrayList<>();
+        java.util.Set<String> visibleModelKeys = new java.util.HashSet<>();
+        for (AdvisorCatalogMatcher.Result match : sedanTargetMatches) {
+            AdvisorCatalogMatcher.Candidate c = match.candidate;
+            if ("Kia".equalsIgnoreCase(c.make) && "EV4 Hatchback".equalsIgnoreCase(c.model)) continue;
+            String key = (c.make + " " + c.model).trim().toLowerCase(java.util.Locale.ROOT)
+                    .replaceAll("\\s+", " ");
+            if (visibleModelKeys.add(key)) visibleSedans.add(match);
+        }
+        check(visibleSedans.size() == 7,
+                "real sedan query yields seven user-visible unique models after app body-style correction");
+        String[] expectedModelOrder = {
+                "Tesla Model 3", "Peugeot E-408", "Kia EV4 Fastback",
+                "Mazda Mazda6e", "XPeng P7+", "Hyundai IONIQ 6", "BYD Seal"
+        };
+        for (int i = 0; i < expectedModelOrder.length; i++) {
+            AdvisorCatalogMatcher.Candidate actual = visibleSedans.get(i).candidate;
+            check(expectedModelOrder[i].equals(actual.make + " " + actual.model),
+                    "visible sedan results are deduplicated and ordered by proximity to 40,000 euros at position " + (i + 1));
+        }
+
         q = new AdvisorCriteriaEngine.Criteria();
         q.minRangeKm = 400d;
         List<AdvisorCatalogMatcher.Result> rangeMatches = AdvisorCatalogMatcher.search(catalog, q);
