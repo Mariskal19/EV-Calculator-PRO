@@ -1766,3 +1766,10 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Los vehículos sin precio válido se colocan al final; en empates se ordena por marca y modelo.
 - Cambio de código: `3bd55bcaaa47c19156f0b49339782999e4461e5d` en `feature/asesor-ia-fase-1`.
 - Pendiente: validar la compilación CI y probar en dispositivo con búsquedas como «Búscame una berlina de 40 mil».
+
+
+## Asesor IA: ocultar teclado al enviar búsqueda (2026-10-25)
+- Al confirmar la búsqueda desde la acción Buscar/Listo del teclado Android, la app oculta el teclado y quita el foco del campo antes de ejecutar la búsqueda.
+- La búsqueda automática mientras se escribe se mantiene, evitando que el teclado se cierre mientras el usuario redacta.
+- Cambio de código: `b5b94a9f5f00a8a720f462519a58d3c957d5131a` en `feature/asesor-ia-fase-1`.
+- Pendiente de compilación CI y prueba en dispositivo.
