@@ -232,7 +232,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         advisorResetParams.topMargin=dp(5);
         advisorCard.addView(advisorReset,advisorResetParams);
         advisorReset.setOnClickListener(v->resetAdvisorSearch());
-        // Ejecutar la búsqueda cuando el usuario deje de escribir durante 1 segundo.
+        // Ejecutar la búsqueda automática y ocultar el teclado tras 1100 ms sin escribir.
         // El debounce evita recalcular por cada tecla y mantiene la búsqueda local.
         advisorInput.addTextChangedListener(new TextWatcher(){
             @Override public void beforeTextChanged(CharSequence s,int start,int count,int after){}
@@ -244,7 +244,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                     return;
                 }
                 advisorStatus.setText(LanguageManager.t(SimilarCarsActivity.this,"Preparando búsqueda…"));
-                advisorSearchHandler.postDelayed(pendingAdvisorSearch,1000);
+                advisorSearchHandler.postDelayed(pendingAdvisorSearch,1100);
             }
             @Override public void afterTextChanged(Editable e){}
         });
