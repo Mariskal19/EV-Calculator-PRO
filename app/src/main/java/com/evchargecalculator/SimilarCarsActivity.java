@@ -261,7 +261,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             return false;
         });
 
-        advisorStatus=tv("",12,sub());
+        advisorStatus=tv("",15,blue);
+        advisorStatus.setTypeface(null,Typeface.BOLD);
         advisorStatus.setLineSpacing(0,1.1f);
         advisorStatus.setPadding(0,dp(8),0,0);
         advisorCard.addView(advisorStatus,new LinearLayout.LayoutParams(-1,-2));
@@ -547,7 +548,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             shown++;
             LinearLayout resultCard=card();
             resultCard.setPadding(dp(12),dp(9),dp(12),dp(9));
-            TextView name=tv(vehicle.make+" "+vehicle.model,15,text());
+            TextView name=tv(vehicle.make+" "+vehicle.model,16,blue);
             name.setTypeface(null,Typeface.BOLD);
             resultCard.addView(name,new LinearLayout.LayoutParams(-1,-2));
             StringBuilder specs=new StringBuilder();
