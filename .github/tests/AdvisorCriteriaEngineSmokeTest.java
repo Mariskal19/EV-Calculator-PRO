@@ -64,11 +64,17 @@ public final class AdvisorCriteriaEngineSmokeTest {
         java.util.List<AdvisorCatalogMatcher.Candidate> priceTargetCandidates = new java.util.ArrayList<>();
         priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan40", "Marca", "Berlina 40k",
                 "sedan", "RWD", 39900, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan30", "Marca", "Berlina 30k",
+                "sedan", "RWD", 30000, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan45", "Marca", "Berlina 45k",
+                "sedan", "RWD", 45000, 450, 450, 70, 150, 16));
         priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan66", "Marca", "Berlina 66k",
                 "sedan", "RWD", 66000, 450, 450, 70, 150, 16));
         java.util.List<AdvisorCatalogMatcher.Result> priceTargetMatches =
                 AdvisorCatalogMatcher.search(priceTargetCandidates, r.criteria);
-        check(priceTargetMatches.size() == 1 && "sedan40".equals(priceTargetMatches.get(0).candidate.logicalKey),
+        check(priceTargetMatches.size() == 3,
+                "approximate 40,000 euro target returns options between 70% and 115% of target");
+        check(priceTargetMatches.stream().noneMatch(match -> "sedan66".equals(match.candidate.logicalKey)),
                 "approximate 40,000 euro sedan query excludes a 66,000 euro vehicle");
 
         r = engine.interpret("450", AdvisorCriteriaEngine.Language.ES);
