@@ -118,7 +118,7 @@ public final class AdvisorCriteriaEngine {
         String original = userText == null ? "" : userText.trim();
         if (original.isEmpty()) return result(false, "empty_query", null);
 
-        String s = normalize(original).replaceAll("(\\d+)\\s+mil\\b", "$1000 euros");
+        String s = normalize(original).replaceAll("(\\d+)\\s+mil\\b", "${1}000 euros");
         Criteria before = criteria.copy();
         boolean changed = false;
         String clarification = null;
