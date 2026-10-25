@@ -1702,3 +1702,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - El criterio conserva el precio como objetivo para ordenar/filtrar coches de esa zona económica; expresiones explícitas como «hasta 40.000 €» siguen siendo un techo presupuestario.
 - Se añadió una prueba de regresión para la frase exacta del usuario y para comprobar que no se marca como techo estricto.
 - Cambios en `feature/asesor-ia-fase-1`; validar las pruebas automáticas y compilar APK antes de volver a instalar. No fusionar con `main`.
+
+
+## 2026-10-25 — Precio aproximado en búsquedas de carrocería
+
+- Se ha detectado durante la prueba manual que la consulta «Búscame una berlina de 40 mil euros» podía devolver vehículos muy por encima del precio solicitado.
+- Causa identificada en el intérprete local: no normalizaba la forma coloquial española «40 mil euros» y no trataba la construcción «berlina de 40.000 euros» como un precio objetivo aproximado.
+- Corrección en la rama `feature/asesor-ia-fase-1`: convertir expresiones numéricas «N mil euros» a su valor numérico y tratar un importe precedido por «de» como objetivo aproximado cuando no hay operador explícito de límite.
+- Se añaden pruebas para comprobar que la consulta se interpreta como carrocería berlina + objetivo de 40.000 €, y que un vehículo de 66.000 € queda excluido del resultado.
+- Pendiente de validar: ejecución de smoke tests, compilación Android y nueva prueba manual con la APK resultante. No fusionar con `main` ni publicar sin autorización expresa.
