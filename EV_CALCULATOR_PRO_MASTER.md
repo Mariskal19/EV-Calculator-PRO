@@ -1718,3 +1718,14 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se amplía la normalización de expresiones como «40 mil» para interpretarlas como 40.000 euros en consultas de búsqueda de vehículos, aunque el usuario omita «euros».
 - Se añade una prueba para «Búscame una berlina de 40 mil» que comprueba carrocería berlina y objetivo aproximado de 40.000 €.
 - Pendiente: validar CI y compilación Android antes de entregar una nueva APK. Sigue todo en `feature/asesor-ia-fase-1`; no fusionar en `main` sin autorización.
+
+
+## 2026-10-25 — Validación de resultados visibles del asesor
+
+- Prueba en dispositivo confirmada por el usuario: «Búscame una berlina de 40 mil» y «Búscame una berlina de 40 mil euros» muestran ambas 7 resultados.
+- La prueba de integración encuentra 17 registros de catálogo dentro del rango aproximado de 28.000–46.000 € y compatibles con la equivalencia de carrocería sedán/fastback/liftback. Esos registros incluyen varias versiones/años de los mismos modelos; no son 17 tarjetas distintas.
+- La pantalla elimina duplicados por marca + modelo y no muestra el Kia EV4 Hatchback como berlina, porque la etiqueta `sedan` del catálogo está corregida a `hatchback` exclusivamente en el adaptador del asesor.
+- Con estas reglas, el conjunto esperado de siete modelos únicos es: Tesla Model 3, Peugeot E-408, Kia EV4 Fastback, Mazda Mazda6e, XPeng P7+, Hyundai IONIQ 6 y BYD Seal.
+- El matcher ordena por proximidad al presupuesto objetivo de 40.000 €. Se añade una prueba de integración para comprobar los siete modelos visibles, la eliminación de versiones repetidas y su orden esperado.
+- Cambio de prueba en la rama `feature/asesor-ia-fase-1`; commit `545549e61e784cec0b9cd9b5bab875dc42b1fbec`. Pendiente confirmar que GitHub Actions ejecuta la prueba nueva correctamente.
+- No se modifica el catálogo protegido ni la lógica de producción en este paso. No fusionar con `main` ni publicar sin autorización expresa.
