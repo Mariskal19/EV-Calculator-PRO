@@ -1845,3 +1845,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se aumentan los nombres de los coches de los resultados de 15 a 16 sp y se muestran en azul y negrita para facilitar la lectura visual de los resultados.
 - Cambio visual limitado al Asesor IA; no altera la lógica de búsqueda, el catálogo protegido ni `main`.
 - Código: commit `4c73188fbfc6373d2afc1d13c5ebf562fa46bf52` en `feature/asesor-ia-fase-1`. Pendiente comprobar compilación CI y validar visualmente el APK nuevo en el móvil.
+
+
+### Asesor IA — petición genérica con un modelo de referencia (25/10/2026)
+
+- Incidencia reportada en dispositivo: «Quiero un coche el XPeng G6» se interpretaba como un límite ambiguo porque no incluía las palabras «parecido» o «similar».
+- Se amplía el enrutamiento: una petición genérica de coche que mencione un modelo completo existente en el catálogo se entiende como solicitud de alternativas a ese modelo y utiliza el motor existente de coches similares. Las peticiones genéricas sin modelo de referencia siguen pidiendo criterios; las búsquedas por presupuesto como «Quiero un SUV de 47 mil euros» no se desvían al motor de similitud.
+- Se extrae la decisión a `AdvisorSimilarityIntent`, una clase Java independiente de Android, y se añaden pruebas de regresión para la frase exacta del usuario, la frase explícita de similitud y dos casos negativos.
+- Se amplía el workflow de pruebas para compilar el nuevo helper y se incluye `SimilarCarsActivity.java` en los cambios que disparan la compilación Android.
+- Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. La compilación y las pruebas de GitHub Actions deben confirmarse antes de instalar una APK nueva.
