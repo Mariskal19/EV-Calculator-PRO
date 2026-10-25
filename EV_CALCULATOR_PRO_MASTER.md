@@ -1729,3 +1729,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - El matcher ordena por proximidad al presupuesto objetivo de 40.000 €. Se añade una prueba de integración para comprobar los siete modelos visibles, la eliminación de versiones repetidas y su orden esperado.
 - Cambio de prueba en la rama `feature/asesor-ia-fase-1`; commit `545549e61e784cec0b9cd9b5bab875dc42b1fbec`. Pendiente confirmar que GitHub Actions ejecuta la prueba nueva correctamente.
 - No se modifica el catálogo protegido ni la lógica de producción en este paso. No fusionar con `main` ni publicar sin autorización expresa.
+
+
+### Prueba de filtros combinados con catálogo real (25/10/2026)
+
+- Se amplía la integración para ejecutar contra los 688 registros la consulta de ejemplo: «SUV hasta 35.000 €, más de 450 km y maletero de al menos 450 litros».
+- Resultado: **3 candidatos**. La prueba comprueba para cada uno carrocería SUV/crossover, precio no superior a 36.750 € (techo explícito con tolerancia documentada del 5 %), autonomía WLTP mínima de 450 km y maletero mínimo de 450 litros.
+- Smoke tests: **47 comprobaciones del motor** y prueba de integración de catálogo completadas correctamente.
+- Workflow correcto: [Advisor engine smoke tests, run 40204847979](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40204847979).
+- El cambio solo afecta a pruebas y documentación en `feature/asesor-ia-fase-1`; no se ha generado una APK nueva porque no se ha modificado código de la aplicación.
