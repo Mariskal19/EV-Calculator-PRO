@@ -569,6 +569,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if ("Kia".equalsIgnoreCase(vehicle.make) && "EV4 Hatchback".equalsIgnoreCase(vehicle.model)) {
                 advisorBodyStyle = "hatchback";
             }
+            // The protected catalog incorrectly labels BYD Dolphin Surf as an SUV;
+            // BYD classifies it as an urban Segment A five-door hatchback.
+            if ("BYD".equalsIgnoreCase(vehicle.make) && "Dolphin Surf".equalsIgnoreCase(vehicle.model)) {
+                advisorBodyStyle = "hatchback";
+            }
             // Catalog naming/shape exception retained for this crossover-style model.
             if ("Alpine".equalsIgnoreCase(vehicle.make) && "A390".equalsIgnoreCase(vehicle.model)) {
                 advisorBodyStyle = "suv";
