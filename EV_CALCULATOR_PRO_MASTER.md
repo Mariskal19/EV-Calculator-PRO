@@ -1738,3 +1738,7 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Smoke tests: **47 comprobaciones del motor** y prueba de integración de catálogo completadas correctamente.
 - Workflow correcto: [Advisor engine smoke tests, run 40204847979](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40204847979).
 - El cambio solo afecta a pruebas y documentación en `feature/asesor-ia-fase-1`; no se ha generado una APK nueva porque no se ha modificado código de la aplicación.
+
+
+- Se añadió además una comprobación de resultados visibles (no solo versiones de catálogo): las 3 versiones que cumplen se agrupan en **2 modelos únicos**, ordenados por proximidad al límite de 35.000 €: KGM Torres EVX y MG MGS5 EV. La aserción inicial de orden se corrigió para reflejar el comparador real; la ejecución final pasó.
+- Último workflow correcto: [Advisor engine smoke tests, run 40204994536](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40204994536). Resultado: 47 pruebas del motor; 17 coincidencias brutas de berlina, 7 modelos únicos visibles; SUV combinado: 3 versiones, 2 modelos únicos.
