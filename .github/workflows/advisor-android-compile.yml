@@ -5,6 +5,7 @@ on:
     branches: [ "feature/asesor-ia-fase-1" ]
     paths:
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - 'app/src/main/java/com/evchargecalculator/LanguageManager.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
