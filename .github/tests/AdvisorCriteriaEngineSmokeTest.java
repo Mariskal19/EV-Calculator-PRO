@@ -227,6 +227,17 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.maxPrice == null && r.criteria.minRangeKm == null && r.criteria.maxRangeKm == null,
                 "ambiguous multi-criterion query does not partially mutate state");
 
+        java.util.List<String> similarityCatalogNames = java.util.Arrays.asList(
+                "XPeng G6", "Tesla Model Y", "Zeekr 7GT");
+        check(AdvisorSimilarityIntent.shouldRoute("Quiero un coche el XPeng G6", similarityCatalogNames),
+                "routes a generic car request naming a known model to similar-car search");
+        check(AdvisorSimilarityIntent.shouldRoute("Quiero un coche parecido al XPeng G6", similarityCatalogNames),
+                "keeps explicit similar-car phrasing working");
+        check(!AdvisorSimilarityIntent.shouldRoute("Quiero un coche", similarityCatalogNames),
+                "does not route a generic request without a named reference model");
+        check(!AdvisorSimilarityIntent.shouldRoute("Quiero un SUV de 47 mil euros", similarityCatalogNames),
+                "does not route a budget/body-style query as a similar-car request");
+
         engine.reset();
         r = engine.interpret("Quiero un coche similar al XPeng G6 de precio", AdvisorCriteriaEngine.Language.ES);
         check(r.needsClarification() && "clarify_reference_price_relation".equals(r.clarificationKey),
