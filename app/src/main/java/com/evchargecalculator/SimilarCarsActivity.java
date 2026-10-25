@@ -315,17 +315,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private boolean tryRunNaturalSimilarityQuery(String query) {
-        String normalized=norm(query);
+        String normalized=norm(query).trim();
         boolean asksForSimilar=normalized.contains("parecido") || normalized.contains("parecida")
                 || normalized.contains("similares") || normalized.contains("similar")
                 || normalized.contains("semejante") || normalized.contains("similar to")
                 || normalized.contains("like the") || normalized.contains("alternativa a")
                 || normalized.contains("alternativas a") || normalized.contains("rival de")
-                || normalized.contains("competidor de");
+                || normalized.contains("competidor de") || normalized.contains(" como ")
+                || normalized.startsWith("como ") || normalized.contains("look like")
+                || normalized.contains("something like");
         if(!asksForSimilar) return false;
 
-        // Match any make/model present in the loaded catalog. Compact comparison
-        // also accepts harmless spacing differences such as "7 GT" vs "7GT".
+        // First try the complete make + model, preferring the longest exact catalog
+        // name so a shorter model cannot win when names overlap.
         String compactQuery=normalized.replaceAll("[^a-z0-9]","");
         Vehicle chosen=null;
         int bestNameLength=-1;
@@ -333,12 +335,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             String make=norm(vehicle.make);
             String model=norm(vehicle.model);
             if(make.isEmpty()||model.isEmpty())continue;
-            String fullName=(make+" "+model).trim();
-            String compactName=fullName.replaceAll("[^a-z0-9]","");
+            String compactName=(make+" "+model).replaceAll("[^a-z0-9]","");
             if(compactName.length()<4||!compactQuery.contains(compactName))continue;
-
-            // Prefer the longest matching catalog name to avoid a shorter model
-            // accidentally winning when names overlap.
             if(compactName.length()>bestNameLength){
                 chosen=vehicle;
                 bestNameLength=compactName.length();
@@ -350,14 +348,51 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 chosen=vehicle;
             }
         }
+
+        // If the brand was omitted (e.g. "un coche como el G6"), match a model
+        // name as a whole phrase. Only accept it when it identifies one make/model
+        // in the catalog; never guess between different brands sharing a model name.
+        if(chosen==null){
+            String queryPadded=" "+normalized+" ";
+            String matchedKey=null;
+            boolean ambiguous=false;
+            for(Vehicle vehicle:vehicles){
+                String model=norm(vehicle.model).trim();
+                if(model.length()<2)continue;
+                String modelPattern=" "+model+" ";
+                if(!queryPadded.contains(modelPattern))continue;
+                String key=norm(vehicle.make+" "+vehicle.model).replaceAll("[^a-z0-9]","");
+                if(matchedKey==null){
+                    matchedKey=key;
+                    chosen=vehicle;
+                }else if(!matchedKey.equals(key)){
+                    // Prefer a longer model phrase when it is also present, but
+                    // flag same-length competing names as ambiguous.
+                    String previousModel=chosen==null?"":norm(chosen.model);
+                    if(model.length()>previousModel.length()){
+                        matchedKey=key;
+                        chosen=vehicle;
+                        ambiguous=false;
+                    }else if(model.length()==previousModel.length()){
+                        ambiguous=true;
+                    }
+                }
+            }
+            if(ambiguous){
+                advisorStatus.setText(LanguageManager.t(this,
+                        "El nombre del modelo puede referirse a varios coches del catálogo. Escribe también la marca, por ejemplo «XPeng G6»."));
+                return true;
+            }
+        }
+
         if(chosen==null){
             advisorStatus.setText(LanguageManager.t(this,
                     "He detectado que buscas un coche similar, pero no encuentro el modelo indicado en el catálogo. Prueba a escribir la marca y el modelo como aparecen en la lista de coches."));
             return true;
         }
 
-        // If several trims/years exist, select the newest catalog year and then
-        // the best-ranked trim, keeping this behavior consistent with the G6 fix.
+        // Choose the newest year and best-ranked trim among entries for the same
+        // make/model, independent of which catalog variant matched the query.
         String chosenName=norm(chosen.make+" "+chosen.model).replaceAll("[^a-z0-9]","");
         for(Vehicle vehicle:vehicles){
             String candidateName=norm(vehicle.make+" "+vehicle.model).replaceAll("[^a-z0-9]","");
