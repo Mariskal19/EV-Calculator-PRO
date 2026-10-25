@@ -1773,3 +1773,8 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - La búsqueda automática mientras se escribe se mantiene, evitando que el teclado se cierre mientras el usuario redacta.
 - Cambio de código: `b5b94a9f5f00a8a720f462519a58d3c957d5131a` en `feature/asesor-ia-fase-1`.
 - Pendiente de compilación CI y prueba en dispositivo.
+
+### Ocultar teclado al comenzar la búsqueda automática del Asesor IA (2026-10-25)
+- Prueba en dispositivo: la búsqueda automática se iniciaba tras la pausa de escritura, pero el teclado seguía visible.
+- Corrección: `runAdvisorSearch()` ahora oculta el teclado y quita el foco del campo al comenzar la búsqueda. Esto cubre tanto la búsqueda automática por debounce (900 ms sin escribir) como el envío desde el teclado.
+- Rama: `feature/asesor-ia-fase-1`. Pendiente de compilar y probar en dispositivo.
