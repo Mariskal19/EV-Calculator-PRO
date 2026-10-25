@@ -1778,3 +1778,8 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Prueba en dispositivo: la búsqueda automática se iniciaba tras la pausa de escritura, pero el teclado seguía visible.
 - Corrección: `runAdvisorSearch()` ahora oculta el teclado y quita el foco del campo al comenzar la búsqueda. Esto cubre tanto la búsqueda automática por debounce (900 ms sin escribir) como el envío desde el teclado.
 - Rama: `feature/asesor-ia-fase-1`. Pendiente de compilar y probar en dispositivo.
+
+### Selección de resultados cerca del precio objetivo del Asesor IA (2026-10-25)
+- Incidencia detectada: una consulta como `Búscame un SUV de 50 mil euros` podía mostrar solo los 10 modelos más baratos del intervalo aproximado (35.000–57.500 €), con un máximo visible cercano a 36.900 €, aunque el catálogo contiene SUV más próximos a 50.000 €.
+- Corrección en `SimilarCarsActivity.java`: para un precio objetivo aproximado, seleccionar primero hasta 10 modelos únicos con menor diferencia absoluta respecto al objetivo y después mostrar esa selección ordenada de menor a mayor precio. Los límites explícitos como `hasta 50.000 €` conservan el comportamiento de listar los más baratos primero.
+- Rama: `feature/asesor-ia-fase-1`. Pendiente de CI y prueba con consultas aproximadas de 40.000 € y 50.000 €, además de límites explícitos.
