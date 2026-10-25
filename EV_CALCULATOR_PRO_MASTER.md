@@ -1854,3 +1854,16 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Se extrae la decisión a `AdvisorSimilarityIntent`, una clase Java independiente de Android, y se añaden pruebas de regresión para la frase exacta del usuario, la frase explícita de similitud y dos casos negativos.
 - Se amplía el workflow de pruebas para compilar el nuevo helper y se incluye `SimilarCarsActivity.java` en los cambios que disparan la compilación Android.
 - Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. La compilación y las pruebas de GitHub Actions deben confirmarse antes de instalar una APK nueva.
+
+
+## Asesor IA — distinguir modelo concreto de coches similares (25/10/2026)
+
+En la rama `feature/asesor-ia-fase-1`, el enrutamiento de consultas se generaliza para todo el catálogo, sin reglas específicas para XPeng:
+
+- Peticiones directas como «Búscame el XPeng G6», «Muéstrame el Tesla Model Y» o equivalentes deben mostrar el modelo solicitado y sus versiones disponibles en el catálogo.
+- Las expresiones de similitud («parecido», «similar», «alternativas», «rival», «como…») siguen activando la búsqueda de coches similares, incluso si también se pide mostrar/buscar.
+- Las peticiones por criterios (por ejemplo, tipo de carrocería y presupuesto) continúan en el intérprete de filtros.
+- Si un nombre corto identifica varios modelos, se solicita marca/modelo para evitar una selección arbitraria.
+- Se añadieron pruebas automáticas para búsquedas directas de más de una marca, precedencia de similitud y exclusión de consultas genéricas por criterios.
+
+No se modifica `main` ni el catálogo protegido.
