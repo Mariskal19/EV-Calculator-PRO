@@ -1711,3 +1711,10 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Corrección en la rama `feature/asesor-ia-fase-1`: convertir expresiones numéricas «N mil euros» a su valor numérico y tratar un importe precedido por «de» como objetivo aproximado cuando no hay operador explícito de límite.
 - Se añaden pruebas para comprobar que la consulta se interpreta como carrocería berlina + objetivo de 40.000 €, y que un vehículo de 66.000 € queda excluido del resultado.
 - Pendiente de validar: ejecución de smoke tests, compilación Android y nueva prueba manual con la APK resultante. No fusionar con `main` ni publicar sin autorización expresa.
+
+
+### Complemento — importe coloquial sin unidad
+
+- Se amplía la normalización de expresiones como «40 mil» para interpretarlas como 40.000 euros en consultas de búsqueda de vehículos, aunque el usuario omita «euros».
+- Se añade una prueba para «Búscame una berlina de 40 mil» que comprueba carrocería berlina y objetivo aproximado de 40.000 €.
+- Pendiente: validar CI y compilación Android antes de entregar una nueva APK. Sigue todo en `feature/asesor-ia-fase-1`; no fusionar en `main` sin autorización.
