@@ -376,6 +376,21 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             byKey.put(key,vehicle);
         }
         List<AdvisorCatalogMatcher.Result> matches=AdvisorCatalogMatcher.search(candidates,criteria);
+        // The advisor request is a budget/filter search, so present matching models
+        // from lowest to highest catalog price (unknown/non-positive prices last).
+        matches.sort((a,b)->{
+            Vehicle va=byKey.get(a.candidate.logicalKey);
+            Vehicle vb=byKey.get(b.candidate.logicalKey);
+            double pa=va==null?0:va.price;
+            double pb=vb==null?0:vb.price;
+            boolean ua=pa<=0, ub=pb<=0;
+            if(ua!=ub)return ua?1:-1;
+            int priceOrder=Double.compare(pa,pb);
+            if(priceOrder!=0)return priceOrder;
+            int makeOrder=(va==null?"":va.make).compareToIgnoreCase(vb==null?"":vb.make);
+            if(makeOrder!=0)return makeOrder;
+            return (va==null?"":va.model).compareToIgnoreCase(vb==null?"":vb.model);
+        });
         advisorResults.removeAllViews();
         if(matches.isEmpty()){
             advisorStatus.setText(LanguageManager.t(this,"No hay coches que cumplan todos los criterios. Prueba a relajar alguno."));
