@@ -263,6 +263,12 @@ public final class AdvisorCriteriaEngine {
         boolean upper = upperAt >= 0 && upperAt > lowerAt;
         if (!lower && !upper) {
             if (field == Field.TRUNK && containsTrunkTerm(s, lang)) return new NumberMatch(value, false, false, true);
+            // Approximate price expressions ("unos 40.000 euros", "alrededor de 40.000 €")
+            // are target budgets: rank vehicles around that price instead of treating the
+            // amount as an ambiguous bare number or as a strict upper limit.
+            if (field == Field.PRICE && hasApproximatePriceTarget(prefix, lang)) {
+                return new NumberMatch(value, false, false, false, false);
+            }
             return new NumberMatch(value, false, true);
         }
         if (field == Field.CONSUMPTION) {
@@ -286,6 +292,18 @@ public final class AdvisorCriteriaEngine {
                 "moins cher", "plus cher", "prix similaire", "günstiger", "teurer",
                 "piu economico", "più economico", "prezzo simile",
                 "mais barato", "mais caro", "preco semelhante");
+    }
+
+    private static boolean hasApproximatePriceTarget(String prefix, String lang) {
+        switch (lang) {
+            case "en": return has(prefix, "about", "around", "approximately", "roughly", "near", "in the region of");
+            case "fr": return has(prefix, "environ", "autour de", "approximativement", "a peu pres");
+            case "de": return has(prefix, "ungefähr", "ungefahr", "etwa", "rund", "circa");
+            case "it": return has(prefix, "circa", "intorno a", "all'incirca", "approssimativamente");
+            case "pt": return has(prefix, "cerca de", "por volta de", "aproximadamente", "uns", "umas");
+            default: return has(prefix, "unos", "unas", "alrededor de", "aproximadamente",
+                    "aproximado", "aproximada", "sobre", "cerca de", "en torno a", "mas o menos", "más o menos");
+        }
     }
 
     private static boolean hasBudgetTargetOperator(String prefix, String lang) {
