@@ -233,6 +233,12 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "direct lookup displays the exact requested catalog model");
         check(AdvisorSimilarityIntent.isDirectModelLookup("Muéstrame el Tesla Model Y", similarityCatalogNames),
                 "direct lookup works globally for another make/model");
+        check(AdvisorSimilarityIntent.isDirectModelLookup("Model Y", similarityCatalogNames),
+                "bare Tesla Model Y name resolves to the exact catalog model");
+        check(AdvisorSimilarityIntent.isDirectModelLookup("XPeng G6", similarityCatalogNames),
+                "bare XPeng G6 name resolves to the exact catalog model");
+        check(AdvisorSimilarityIntent.isDirectModelLookup("Zeekr 7GT", similarityCatalogNames),
+                "bare Zeekr 7GT name resolves to the exact catalog model");
         check(!AdvisorSimilarityIntent.isDirectModelLookup("Muéstrame un coche parecido al XPeng G6", similarityCatalogNames),
                 "similarity wording takes precedence over direct lookup");
         check(!AdvisorSimilarityIntent.isDirectModelLookup("Búscame un SUV de 47 mil euros", similarityCatalogNames),
