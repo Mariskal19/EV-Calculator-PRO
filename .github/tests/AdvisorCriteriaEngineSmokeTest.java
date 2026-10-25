@@ -122,7 +122,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(matches.stream().noneMatch(m -> "e".equals(m.candidate.logicalKey)),
                 "maximum budget excludes vehicles far below the intended price area");
 
-        // Upper-bound tolerance policy: price +5%; other numeric maxima +3%; minima exact.
+        // Explicit price ceilings allow +5%; approximate price targets use a broader band; other maxima +3%.
         java.util.List<AdvisorCatalogMatcher.Candidate> toleranceCatalog = new java.util.ArrayList<>();
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("priceLow", "Marca", "Precio bajo", "suv", "RWD", 20000, 450, 450, 80, 200, 20));
@@ -142,6 +142,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.maxPrice = 30000d;
+        filters.maxPriceIsCeiling = true;
         matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
         check(matches.stream().anyMatch(m -> "price31".equals(m.candidate.logicalKey))
                         && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey)),
