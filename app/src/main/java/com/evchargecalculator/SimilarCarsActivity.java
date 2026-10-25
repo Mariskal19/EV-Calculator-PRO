@@ -384,8 +384,35 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             byKey.put(key,vehicle);
         }
         List<AdvisorCatalogMatcher.Result> matches=AdvisorCatalogMatcher.search(candidates,criteria);
-        // The advisor request is a budget/filter search, so present matching models
-        // from lowest to highest catalog price (unknown/non-positive prices last).
+        // For an approximate target ("SUV de 50 mil"), choose the 10 distinct models
+        // closest to the target first; otherwise the ascending list can be truncated to
+        // only the cheapest cars in the broad 70%-115% band. Then display that shortlist
+        // in ascending price order. Explicit ceilings ("hasta 50.000 €") remain cheapest-first.
+        if(criteria.minPrice==null&&criteria.maxPrice!=null&&!criteria.maxPriceIsCeiling){
+            matches.sort((a,b)->{
+                Vehicle va=byKey.get(a.candidate.logicalKey);
+                Vehicle vb=byKey.get(b.candidate.logicalKey);
+                double pa=va==null?0:va.price;
+                double pb=vb==null?0:vb.price;
+                boolean ua=pa<=0, ub=pb<=0;
+                if(ua!=ub)return ua?1:-1;
+                int distanceOrder=Double.compare(Math.abs(pa-criteria.maxPrice),Math.abs(pb-criteria.maxPrice));
+                if(distanceOrder!=0)return distanceOrder;
+                return Double.compare(pa,pb);
+            });
+            List<AdvisorCatalogMatcher.Result> nearestMatches=new ArrayList<>();
+            Set<String> nearestModels=new HashSet<>();
+            for(AdvisorCatalogMatcher.Result match:matches){
+                Vehicle vehicle=byKey.get(match.candidate.logicalKey);
+                if(vehicle==null)continue;
+                if(!nearestModels.add(norm(vehicle.make+" "+vehicle.model)))continue;
+                nearestMatches.add(match);
+                if(nearestMatches.size()>=10)break;
+            }
+            matches=nearestMatches;
+        }
+        // Present the chosen shortlist from lowest to highest catalog price
+        // (unknown/non-positive prices last).
         matches.sort((a,b)->{
             Vehicle va=byKey.get(a.candidate.logicalKey);
             Vehicle vb=byKey.get(b.candidate.logicalKey);
