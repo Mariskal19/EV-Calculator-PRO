@@ -252,6 +252,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             if(actionId==android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
                     ||actionId==android.view.inputmethod.EditorInfo.IME_ACTION_DONE){
                 advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
+                InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                if(imm!=null)imm.hideSoftInputFromWindow(v.getWindowToken(),0);
+                v.clearFocus();
                 runAdvisorSearch();
                 return true;
             }
