@@ -229,6 +229,14 @@ public final class AdvisorCriteriaEngineSmokeTest {
 
         java.util.List<String> similarityCatalogNames = java.util.Arrays.asList(
                 "XPeng G6", "Tesla Model Y", "Zeekr 7GT");
+        check(AdvisorSimilarityIntent.isDirectModelLookup("Búscame el XPeng G6", similarityCatalogNames),
+                "direct lookup displays the exact requested catalog model");
+        check(AdvisorSimilarityIntent.isDirectModelLookup("Muéstrame el Tesla Model Y", similarityCatalogNames),
+                "direct lookup works globally for another make/model");
+        check(!AdvisorSimilarityIntent.isDirectModelLookup("Muéstrame un coche parecido al XPeng G6", similarityCatalogNames),
+                "similarity wording takes precedence over direct lookup");
+        check(!AdvisorSimilarityIntent.isDirectModelLookup("Búscame un SUV de 47 mil euros", similarityCatalogNames),
+                "generic criteria requests are not treated as exact model lookup");
         check(AdvisorSimilarityIntent.shouldRoute("Quiero un coche el XPeng G6", similarityCatalogNames),
                 "routes a generic car request naming a known model to similar-car search");
         check(AdvisorSimilarityIntent.shouldRoute("Quiero un coche parecido al XPeng G6", similarityCatalogNames),
