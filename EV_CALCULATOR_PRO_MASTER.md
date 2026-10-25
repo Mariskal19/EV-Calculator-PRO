@@ -1792,3 +1792,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Corrección en la rama `feature/asesor-ia-fase-1`: el asesor evalúa primero todas las versiones disponibles en el catálogo y después selecciona una versión representativa por modelo. Para un precio aproximado, selecciona la versión más cercana al objetivo antes de ordenar los resultados por precio; para «hasta X €», se mantiene la lógica de precio ascendente.
 - Caso de regresión que debe verificarse en la compilación: consulta «SUV de 47 mil euros» debe poder seleccionar XPeng G6 RWD Long Range de 2025 (47.083 €) en lugar de descartarlo únicamente porque existe un G6 Standard Range de 2026 (43.083 €). El catálogo permanece intacto.
 - Commit de código: `c8a18bb202e9bfac72b05579de7abd484db0aa10`. Pendiente: validar CI y probar el APK generado antes de dar la incidencia por cerrada.
+
+
+## 2026-10-25 — Asesor IA: versión más reciente por acabado equivalente
+
+- Criterio confirmado con el usuario: no se filtra por el año más reciente del modelo completo, ni se recuperan versiones antiguas de un acabado solo porque tengan mejor precio.
+- El asesor agrupa versiones equivalentes por marca, modelo, mercado, tracción y nombre normalizado del acabado. Al normalizar, ignora cifras técnicas (kW, kWh, CV, autonomía, etc.) y etiquetas de tracción repetidas dentro del texto; la tracción sigue formando parte de la clave independiente.
+- Dentro de cada acabado equivalente, solo se evalúa el año más reciente disponible en el catálogo. Si ese acabado no cumple el presupuesto u otros criterios, no se ofrece un año anterior como sustituto. Los acabados distintos del mismo modelo siguen compitiendo por separado.
+- Caso XPeng G6: Long Range 2025 (47.083 €) se conserva; Long Range 2024 (49.990 €) se descarta por ser anterior. Standard Range 2026 se conserva como acabado distinto; Standard Range 2024 se descarta. Performance AWD también se compara solo con su año más reciente disponible.
+- El catálogo protegido y `main` permanecen sin cambios. Implementación en `feature/asesor-ia-fase-1`, commit `bb7c2c6798d2f58d533ea2295db396b8f6e49b35`. Pendiente CI y prueba de regresión con «SUV de 47 mil euros».
