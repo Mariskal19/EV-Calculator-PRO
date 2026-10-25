@@ -1867,3 +1867,12 @@ En la rama `feature/asesor-ia-fase-1`, el enrutamiento de consultas se generaliz
 - Se añadieron pruebas automáticas para búsquedas directas de más de una marca, precedencia de similitud y exclusión de consultas genéricas por criterios.
 
 No se modifica `main` ni el catálogo protegido.
+
+
+## Asesor IA — corrección de SUV frente a BYD Dolphin Surf (25/10/2026)
+
+- Incidencia observada en el móvil: la consulta «Quiero un SUV de unos 40000» devolvía BYD Dolphin Surf, pese a que el usuario pidió carrocería SUV.
+- Causa confirmada: el catálogo protegido etiqueta incorrectamente el Dolphin Surf como `suv`. La web oficial de BYD lo describe como hatchback de cinco puertas y segmento A.
+- Corrección acotada en el adaptador del Asesor IA: BYD Dolphin Surf se interpreta como `hatchback` para el filtrado de carrocería, sin editar el catálogo protegido ni alterar otras pantallas.
+- Se añadieron pruebas de regresión para «Quiero un SUV de unos 40000»: el filtro debe conservar SUVs que se ajustan al precio y excluir hatchbacks como Dolphin Surf.
+- Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente verificar GitHub Actions y probar el APK actualizado en el móvil.
