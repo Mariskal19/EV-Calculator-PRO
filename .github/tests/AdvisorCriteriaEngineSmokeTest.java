@@ -278,10 +278,14 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "hatchback", "FWD", 26490, 322, 308, 43.2, 115, 16.0));
         suvCandidates.add(new AdvisorCatalogMatcher.Candidate("atto-3", "BYD", "Atto 3",
                 "suv", "FWD", 39990, 420, 490, 60, 150, 16.0));
+        suvCandidates.add(new AdvisorCatalogMatcher.Candidate("fiat-grande-panda", "Fiat", "Grande Panda",
+                "crossover", "FWD", 24412, 320, 361, 44, 83, 14.0));
+        suvCandidates.add(new AdvisorCatalogMatcher.Candidate("suv-over-budget", "Marca", "SUV 47000",
+                "suv", "FWD", 47000, 420, 490, 60, 150, 16.0));
         java.util.List<AdvisorCatalogMatcher.Result> suvMatches =
                 AdvisorCatalogMatcher.search(suvCandidates, r.criteria);
         check(suvMatches.size() == 1 && "atto-3".equals(suvMatches.get(0).candidate.logicalKey),
-                "SUV search excludes hatchbacks such as Dolphin Surf and retains matching SUVs");
+                "SUV search excludes hatchbacks, cheaper crossovers such as Grande Panda, and SUVs outside the approximate budget");
 
         // Body-style compatibility: berlina includes fastback/liftback, not a conventional hatchback.
         AdvisorCriteriaEngine.Criteria sedanFilter = new AdvisorCriteriaEngine.Criteria();
