@@ -1679,7 +1679,7 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 ### Interfaz del asesor: búsqueda automática al terminar de escribir (22/10/2026)
 
 - En `SimilarCarsActivity`, se elimina el botón «Buscar coches» de la tarjeta del asesor conversacional.
-- La búsqueda se ejecuta automáticamente cuando el usuario deja de escribir durante **900 ms** (debounce), en vez de recalcular con cada pulsación. Si se pulsa Buscar/Hecho en el teclado, se ejecuta inmediatamente.
+- La búsqueda se ejecuta automáticamente cuando el usuario deja de escribir durante **1100 ms** (debounce), en vez de recalcular con cada pulsación. Si se pulsa Buscar/Hecho en el teclado, se ejecuta inmediatamente.
 - Al borrar el texto se limpian el estado y los resultados visibles; «Nueva búsqueda» también cancela cualquier ejecución pendiente antes de reiniciar los criterios.
 - Alcance limitado a la tarjeta «Buscar con IA». La selección clásica de coche de referencia, la búsqueda clásica y `CompararCochesActivity` permanecen intactas.
 - Commit: `5737975a9711c45b33113f6517fd24b71f6858b4` en `feature/asesor-ia-fase-1`. Pendiente comprobar la compilación Android y probar el comportamiento en dispositivo. No se ha fusionado con `main`.
@@ -1776,8 +1776,13 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 
 ### Ocultar teclado al comenzar la búsqueda automática del Asesor IA (2026-10-25)
 - Prueba en dispositivo: la búsqueda automática se iniciaba tras la pausa de escritura, pero el teclado seguía visible.
-- Corrección: `runAdvisorSearch()` ahora oculta el teclado y quita el foco del campo al comenzar la búsqueda. Esto cubre tanto la búsqueda automática por debounce (900 ms sin escribir) como el envío desde el teclado.
-- Rama: `feature/asesor-ia-fase-1`. Pendiente de compilar y probar en dispositivo.
+- Corrección: `runAdvisorSearch()` ahora oculta el teclado y quita el foco del campo al comenzar la búsqueda. Esto cubre tanto la búsqueda automática por debounce (1100 ms sin escribir) como el envío desde el teclado.
+- Rama: `feature/asesor-ia-fase-1`.
+
+### Ajuste del retraso de búsqueda/ocultación del teclado a 1100 ms (2026-10-25)
+- Se aumenta el debounce de la búsqueda automática de 1000 a **1100 ms** desde la última pulsación. Al iniciarse la búsqueda, `runAdvisorSearch()` oculta el teclado y quita el foco del campo.
+- La acción Buscar/Hecho del teclado sigue ejecutando la búsqueda inmediatamente.
+- Cambio en `SimilarCarsActivity.java`, rama `feature/asesor-ia-fase-1`. Pendiente de CI y prueba en dispositivo.
 
 ### Selección de resultados cerca del precio objetivo del Asesor IA (2026-10-25)
 - Incidencia detectada: una consulta como `Búscame un SUV de 50 mil euros` podía mostrar solo los 10 modelos más baratos del intervalo aproximado (35.000–57.500 €), con un máximo visible cercano a 36.900 €, aunque el catálogo contiene SUV más próximos a 50.000 €.
