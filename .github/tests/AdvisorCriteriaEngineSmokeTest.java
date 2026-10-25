@@ -54,6 +54,13 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses '40 mil' without currency as an approximate 40,000 euro target");
 
         engine.reset();
+        r = engine.interpret("Búscame una berlina de 62800", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SEDAN".equals(r.criteria.bodyStyle),
+                "parses sedan body style with a five-digit implicit price and no currency");
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 62800d) < 0.01
+                        && !r.criteria.maxPriceIsCeiling,
+                "parses berlina de 62800 as an approximate 62,800 euro target, not a hard ceiling");
+
         r = engine.interpret("Búscame una berlina de 40 mil euros", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && "SEDAN".equals(r.criteria.bodyStyle),
                 "parses sedan body style with colloquial price wording");
