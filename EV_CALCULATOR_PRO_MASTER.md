@@ -1759,3 +1759,10 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Esto evita que una versión antigua gane solo por quedar más cerca del precio objetivo. Si ninguna variante del año más reciente cumple los criterios, el modelo no se ofrece mediante una versión antigua como sustituto silencioso.
 - Alcance y limitación: el año más reciente del catálogo no prueba por sí solo que el acabado siga actualmente a la venta; para afirmarlo hace falta una auditoría comercial de fuentes oficiales. La lógica usa el año declarado por cada registro y no modifica el catálogo protegido ni `main`.
 - Commit de implementación en `feature/asesor-ia-fase-1`: `93f46c16f619c11ab47e0f00341417ba324e04e7`. Compilación Android pendiente de resultado de GitHub Actions antes de entregar APK para prueba.
+
+
+## Asesor IA: orden de resultados por precio (2026-10-25)
+- Tras filtrar los años anteriores y priorizar el año más reciente disponible por marca/modelo, los resultados del Asesor IA se ordenan por precio de catálogo ascendente.
+- Los vehículos sin precio válido se colocan al final; en empates se ordena por marca y modelo.
+- Cambio de código: `3bd55bcaaa47c19156f0b49339782999e4461e5d` en `feature/asesor-ia-fase-1`.
+- Pendiente: validar la compilación CI y probar en dispositivo con búsquedas como «Búscame una berlina de 40 mil».
