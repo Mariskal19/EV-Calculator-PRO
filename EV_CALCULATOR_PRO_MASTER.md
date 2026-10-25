@@ -1892,3 +1892,11 @@ No se modifica `main` ni el catálogo protegido.
 - Los límites explícitos como «hasta 40.000 €» mantienen su regla independiente: precio inferior sin mínimo y hasta un 5 % de tolerancia por encima (42.000 €).
 - Se actualizan las pruebas de regresión para comprobar los límites 34.000/46.000 €, excluir precios fuera de la banda y mantener la tolerancia de los límites explícitos.
 - Cambios en `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente validar smoke tests, compilación Android y APK antes de pedir prueba en el móvil.
+
+
+## Corrección de precio implícito en búsquedas por carrocería (2026-10-25)
+
+- Se corrige el caso `Búscame una berlina de 62800`: si una búsqueda menciona una carrocería reconocida y una cifra plausible de precio (10.000–250.000), se admite esa cifra como objetivo de precio aunque no incluya `€`, `precio` o `presupuesto`.
+- El número se interpreta como objetivo aproximado y mantiene la banda económica existente (±15 %), no como precio máximo.
+- Se limita la detección a cifras de cinco dígitos o más para no confundir expresiones como `berlina de 5 puertas` con un precio.
+- Cambios en `AdvisorCriteriaEngine.java`, únicamente en `feature/asesor-ia-fase-1`; no se modifica el catálogo protegido ni `main`.
