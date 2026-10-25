@@ -1810,3 +1810,14 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Corrección aplicada para reconocer importes de precio con «mil» o «k» (por ejemplo, «47 mil euros» y «47k €») y multiplicarlos por 1.000. El ajuste está limitado al criterio de precio.
 - Código: commit `e2b48382eb6f56240a706bc1b6dfb2dc9129f06a` en `feature/asesor-ia-fase-1`.
 - Pendiente: compilación CI y nueva prueba del APK con «SUV de 47 mil euros». No se modifica el catálogo protegido ni `main`.
+
+
+## 2026-10-25 — Asesor IA: consultas de coches parecidos a un modelo
+
+- Incidencia reproducida por el usuario: «Quiero un coche parecido al XPeng G6» no devolvía resultados.
+- Causa: el intérprete de criterios del Asesor IA estaba pensado para filtros numéricos y atributos; no derivaba una petición de similitud con un modelo concreto al motor dedicado de coches similares.
+- Corrección en `SimilarCarsActivity.java`: detectar peticiones de similitud en lenguaje natural que mencionen XPeng G6, seleccionar una referencia G6 existente en el catálogo, guardar esa referencia y ejecutar el motor de competidores/similitud existente. Se muestra explícitamente qué año y versión se ha usado como referencia.
+- Se hace visible el encabezado de resultados al ejecutar el motor de similitud.
+- Commit: `529955aebb4d2d5094db16d3ab30ce31b3d2d1b1`.
+- Pendiente: confirmar compilación CI y probar en el APK frases como «Quiero un coche parecido al XPeng G6» y «Busca alternativas similares al XPeng G6».
+- Se mantiene el trabajo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
