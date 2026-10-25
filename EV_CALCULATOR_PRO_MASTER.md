@@ -1821,3 +1821,11 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Commit: `529955aebb4d2d5094db16d3ab30ce31b3d2d1b1`.
 - Pendiente: confirmar compilación CI y probar en el APK frases como «Quiero un coche parecido al XPeng G6» y «Busca alternativas similares al XPeng G6».
 - Se mantiene el trabajo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+
+### Asesor IA — detección genérica de consultas de coches similares (25/10/2026)
+- Se generalizó `tryRunNaturalSimilarityQuery()` en `SimilarCarsActivity.java`: las frases de similitud ya no están limitadas al XPeng G6; buscan la marca y el modelo mencionados entre los vehículos cargados del catálogo.
+- La comparación compacta tolera diferencias de espacios, por ejemplo `Zeekr 7GT` aunque el usuario escriba `Zeekr 7 GT`.
+- Si el modelo existe, se elige la versión/año más reciente siguiendo el criterio de selección ya usado y se abre el motor existente de 10 alternativas similares. Si no se localiza, ahora se informa al usuario en lugar de dejar la consulta sin respuesta.
+- Verificación de catálogo en la rama de trabajo: hay tres variantes del `Zeekr 7GT` de 2026 (Core RWD, Long Range RWD y Privilege AWD). El catálogo protegido no se ha modificado.
+- Cambio de código: commit `4a8391f5eae7aaeac6b7fb4d2b9da94f6b644f3c` en `feature/asesor-ia-fase-1`. Pendiente validar compilación CI y probar en el teléfono con `Quiero un coche parecido al zeekr 7gt`; no reutilizar APKs antiguos.
