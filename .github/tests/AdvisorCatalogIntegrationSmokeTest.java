@@ -84,7 +84,22 @@ public final class AdvisorCatalogIntegrationSmokeTest {
             check(c.rangeKm >= 450, "combined query enforces the 450 km minimum");
             check(c.trunkLiters >= 450, "combined query enforces the 450 litre minimum");
         }
-        System.out.println("Real catalog combined SUV query results: " + suvMatches.size());
+        List<AdvisorCatalogMatcher.Result> visibleSuvs = new ArrayList<>();
+        java.util.Set<String> visibleSuvModelKeys = new java.util.HashSet<>();
+        for (AdvisorCatalogMatcher.Result match : suvMatches) {
+            AdvisorCatalogMatcher.Candidate candidate = match.candidate;
+            String key = (candidate.make + " " + candidate.model).trim().toLowerCase(java.util.Locale.ROOT)
+                    .replaceAll("\\s+", " ");
+            if (visibleSuvModelKeys.add(key)) visibleSuvs.add(match);
+        }
+        check(visibleSuvs.size() == 2,
+                "combined SUV query displays two unique models after removing repeated KGM Torres EVX versions");
+        check("MG MGS5 EV".equals(visibleSuvs.get(0).candidate.make + " " + visibleSuvs.get(0).candidate.model),
+                "combined SUV results rank the closest-to-ceiling model first");
+        check("KGM Torres EVX".equals(visibleSuvs.get(1).candidate.make + " " + visibleSuvs.get(1).candidate.model),
+                "combined SUV results show one Torres EVX model rather than duplicate model years");
+        System.out.println("Real catalog combined SUV query results: " + suvMatches.size()
+                + " catalog versions, " + visibleSuvs.size() + " visible unique models");
 
         q = new AdvisorCriteriaEngine.Criteria();
         q.minRangeKm = 400d;
