@@ -1838,3 +1838,10 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Al resolver la referencia, se reutiliza el motor existente de coches similares; no se altera el catálogo ni se crea un motor paralelo.
 - Ejemplos previstos: «Búscame un coche como el G6», «Quiero algo parecido al XPeng G6», «Busca alternativas al Zeekr 7GT» y «Un coche similar al Model Y».
 - Código: commit `2598eed450a8e5364bc9ae636f59fa13073e2205` en `feature/asesor-ia-fase-1`. Pendiente confirmar compilación CI y probar estas consultas en el APK nuevo; no reutilizar APKs anteriores. `main` y el catálogo protegido siguen intactos.
+
+
+### Asesor IA — mayor visibilidad del estado y los resultados (25/10/2026)
+- Se aumenta el texto del estado de búsqueda de 12 a 15 sp, en azul y negrita, para que mensajes como «Preparando búsqueda…», avisos y encabezados de resultados destaquen mejor.
+- Se aumentan los nombres de los coches de los resultados de 15 a 16 sp y se muestran en azul y negrita para facilitar la lectura visual de los resultados.
+- Cambio visual limitado al Asesor IA; no altera la lógica de búsqueda, el catálogo protegido ni `main`.
+- Código: commit `4c73188fbfc6373d2afc1d13c5ebf562fa46bf52` en `feature/asesor-ia-fase-1`. Pendiente comprobar compilación CI y validar visualmente el APK nuevo en el móvil.
