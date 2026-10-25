@@ -317,29 +317,57 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private boolean tryRunNaturalSimilarityQuery(String query) {
         String normalized=norm(query);
         boolean asksForSimilar=normalized.contains("parecido") || normalized.contains("parecida")
-                || normalized.contains("similar") || normalized.contains("semejante")
-                || normalized.contains("similar to") || normalized.contains("like the")
-                || normalized.contains("alternativa a") || normalized.contains("alternativas a")
-                || normalized.contains("rival de") || normalized.contains("competidor de");
+                || normalized.contains("similares") || normalized.contains("similar")
+                || normalized.contains("semejante") || normalized.contains("similar to")
+                || normalized.contains("like the") || normalized.contains("alternativa a")
+                || normalized.contains("alternativas a") || normalized.contains("rival de")
+                || normalized.contains("competidor de");
         if(!asksForSimilar) return false;
-        boolean namesXpengG6=normalized.contains("xpeng g6") || normalized.contains("g6 de xpeng");
-        if(!namesXpengG6) return false;
 
+        // Match any make/model present in the loaded catalog. Compact comparison
+        // also accepts harmless spacing differences such as "7 GT" vs "7GT".
+        String compactQuery=normalized.replaceAll("[^a-z0-9]","");
         Vehicle chosen=null;
+        int bestNameLength=-1;
         for(Vehicle vehicle:vehicles){
-            if(!"xpeng".equalsIgnoreCase(vehicle.make.trim())
-                    || !norm(vehicle.model).equals("g6")) continue;
-            if(chosen==null
-                    || vehicle.year>chosen.year
-                    || (vehicle.year==chosen.year && trimRank(vehicle)>trimRank(chosen))
-                    || (vehicle.year==chosen.year && trimRank(vehicle)==trimRank(chosen)
-                        && vehicle.price>chosen.price)){
+            String make=norm(vehicle.make);
+            String model=norm(vehicle.model);
+            if(make.isEmpty()||model.isEmpty())continue;
+            String fullName=(make+" "+model).trim();
+            String compactName=fullName.replaceAll("[^a-z0-9]","");
+            if(compactName.length()<4||!compactQuery.contains(compactName))continue;
+
+            // Prefer the longest matching catalog name to avoid a shorter model
+            // accidentally winning when names overlap.
+            if(compactName.length()>bestNameLength){
+                chosen=vehicle;
+                bestNameLength=compactName.length();
+            }else if(compactName.length()==bestNameLength&&chosen!=null
+                    &&(vehicle.year>chosen.year
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)>trimRank(chosen))
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)==trimRank(chosen)
+                        &&vehicle.price>chosen.price))){
                 chosen=vehicle;
             }
         }
         if(chosen==null){
-            advisorStatus.setText(LanguageManager.t(this,"No encuentro el XPeng G6 en el catálogo para buscar alternativas."));
+            advisorStatus.setText(LanguageManager.t(this,
+                    "He detectado que buscas un coche similar, pero no encuentro el modelo indicado en el catálogo. Prueba a escribir la marca y el modelo como aparecen en la lista de coches."));
             return true;
+        }
+
+        // If several trims/years exist, select the newest catalog year and then
+        // the best-ranked trim, keeping this behavior consistent with the G6 fix.
+        String chosenName=norm(chosen.make+" "+chosen.model).replaceAll("[^a-z0-9]","");
+        for(Vehicle vehicle:vehicles){
+            String candidateName=norm(vehicle.make+" "+vehicle.model).replaceAll("[^a-z0-9]","");
+            if(!candidateName.equals(chosenName))continue;
+            if(vehicle.year>chosen.year
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)>trimRank(chosen))
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)==trimRank(chosen)
+                        &&vehicle.price>chosen.price)){
+                chosen=vehicle;
+            }
         }
 
         reference=chosen;
