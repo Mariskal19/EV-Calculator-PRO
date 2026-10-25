@@ -232,7 +232,8 @@ public final class AdvisorCriteriaEngine {
 
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
         if (!unit.find()) {
-            boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang));
+            boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang)
+                    || hasApproximatePriceTarget(s, lang));
             boolean trunkContext = field == Field.TRUNK && containsTrunkTerm(s, lang);
             if (!priceContext && !trunkContext) return null;
             // In-context numbers may omit units: "presupuesto hasta 35000" or "450 de maletero".
