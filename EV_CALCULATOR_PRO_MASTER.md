@@ -1750,3 +1750,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - En la prueba 2, la búsqueda combinada de SUV hasta 35.000 €, autonomía superior a 450 km y maletero mínimo de 450 litros muestra dos coches.
 - Esto concuerda con la prueba de integración sobre el catálogo protegido: hay tres versiones coincidentes que se agrupan en dos modelos únicos (KGM Torres EVX y MG MGS5 EV).
 - No se cambia lógica de producción ni se publica una APK en este paso.
+
+
+## 2026-10-25 — Prioridad de versiones recientes en el Asesor IA
+
+- Se corrige `SimilarCarsActivity.runAdvisorSearch()` para determinar primero el año más reciente presente en el catálogo para cada combinación normalizada de marca y modelo.
+- El Asesor IA solo evalúa versiones del año más reciente de ese modelo antes de aplicar filtros y ordenar resultados. Conserva todas las variantes/acabados de ese año para que presupuesto, autonomía, carrocería y demás criterios puedan seleccionar entre ellas.
+- Esto evita que una versión antigua gane solo por quedar más cerca del precio objetivo. Si ninguna variante del año más reciente cumple los criterios, el modelo no se ofrece mediante una versión antigua como sustituto silencioso.
+- Alcance y limitación: el año más reciente del catálogo no prueba por sí solo que el acabado siga actualmente a la venta; para afirmarlo hace falta una auditoría comercial de fuentes oficiales. La lógica usa el año declarado por cada registro y no modifica el catálogo protegido ni `main`.
+- Commit de implementación en `feature/asesor-ia-fase-1`: `93f46c16f619c11ab47e0f00341417ba324e04e7`. Compilación Android pendiente de resultado de GitHub Actions antes de entregar APK para prueba.
