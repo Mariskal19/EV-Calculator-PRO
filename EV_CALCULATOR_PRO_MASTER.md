@@ -1874,5 +1874,7 @@ No se modifica `main` ni el catálogo protegido.
 - Incidencia observada en el móvil: la consulta «Quiero un SUV de unos 40000» devolvía BYD Dolphin Surf, pese a que el usuario pidió carrocería SUV.
 - Causa confirmada: el catálogo protegido etiqueta incorrectamente el Dolphin Surf como `suv`. La web oficial de BYD lo describe como hatchback de cinco puertas y segmento A.
 - Corrección acotada en el adaptador del Asesor IA: BYD Dolphin Surf se interpreta como `hatchback` para el filtrado de carrocería, sin editar el catálogo protegido ni alterar otras pantallas.
-- Se añadieron pruebas de regresión para «Quiero un SUV de unos 40000»: el filtro debe conservar SUVs que se ajustan al precio y excluir hatchbacks como Dolphin Surf.
+- Se detectó una segunda causa: «Quiero un SUV de unos 40000» no incluye moneda ni la palabra «presupuesto/precio», por lo que el intérprete podía ignorar los 40000 y aplicar solo la carrocería. Ahora una expresión de precio aproximado («unos», «alrededor de», etc.) también activa la lectura del número sin unidad.
+- Las pruebas cubren la frase exacta y verifican que se excluyan Dolphin Surf por carrocería, Fiat Grande Panda por quedar muy por debajo del rango de precio aproximado y SUVs por encima del rango; se mantiene el SUV cercano a 40000.
+- Se añadieron pruebas de regresión para «Quiero un SUV de unos 40000»: el filtro debe conservar SUVs que se ajustan al precio y excluir carrocerías y precios fuera del rango.
 - Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente verificar GitHub Actions y probar el APK actualizado en el móvil.
