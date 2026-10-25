@@ -102,8 +102,8 @@ public final class AdvisorCatalogMatcher {
 
     /**
      * An approximate target price (e.g. "berlina de 40 mil") searches a symmetric
-     * 85%-115% band; an explicit ceiling (e.g. "hasta 40.000 €") remains a ceiling
-     * with only the existing 5% tolerance.
+     * inclusive 85%-115% band (±15%); an explicit ceiling (e.g. "hasta 40.000 €")
+     * remains a ceiling with only the existing 5% tolerance.
      */
     private static boolean withinPrice(double value, Double min, Double max, boolean explicitCeiling) {
         if (min == null && max == null) return true;
