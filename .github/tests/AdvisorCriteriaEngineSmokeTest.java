@@ -125,8 +125,8 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters.minRangeKm = 450d;
         filters.bodyStyle = "SUV";
         java.util.List<AdvisorCatalogMatcher.Result> matches = AdvisorCatalogMatcher.search(catalog, filters);
-        check(matches.size() == 2 && "b".equals(matches.get(0).candidate.logicalKey),
-                "allows a small budget stretch and prioritizes the price nearest the budget");
+        check(matches.size() == 1 && "b".equals(matches.get(0).candidate.logicalKey),
+                "approximate budget excludes vehicles more than 15% below target and keeps the closest qualifying price");
 
         catalog.add(new AdvisorCatalogMatcher.Candidate("e", "Marca", "Muy barato", "suv", "RWD",
                 20000, 500, 500, 70, 150, 16.0));
@@ -136,7 +136,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(matches.stream().noneMatch(m -> "e".equals(m.candidate.logicalKey)),
                 "maximum budget excludes vehicles far below the intended price area");
 
-        // Explicit price ceilings allow +5%; approximate price targets use a broader band; other maxima +3%.
+        // Explicit price ceilings allow +5%; approximate price targets use ±15%; other maxima +3%.
         java.util.List<AdvisorCatalogMatcher.Candidate> toleranceCatalog = new java.util.ArrayList<>();
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("priceLow", "Marca", "Precio bajo", "suv", "RWD", 20000, 450, 450, 80, 200, 20));
