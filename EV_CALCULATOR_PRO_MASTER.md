@@ -1801,3 +1801,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Dentro de cada acabado equivalente, solo se evalúa el año más reciente disponible en el catálogo. Si ese acabado no cumple el presupuesto u otros criterios, no se ofrece un año anterior como sustituto. Los acabados distintos del mismo modelo siguen compitiendo por separado.
 - Caso XPeng G6: Long Range 2025 (47.083 €) se conserva; Long Range 2024 (49.990 €) se descarta por ser anterior. Standard Range 2026 se conserva como acabado distinto; Standard Range 2024 se descarta. Performance AWD también se compara solo con su año más reciente disponible.
 - El catálogo protegido y `main` permanecen sin cambios. Implementación en `feature/asesor-ia-fase-1`, commit `bb7c2c6798d2f58d533ea2295db396b8f6e49b35`. Pendiente CI y prueba de regresión con «SUV de 47 mil euros».
+
+
+## 2026-10-25 — Asesor IA: importes expresados en miles
+
+- En la prueba real del APK, la consulta «SUV de 47 mil euros» no devolvía ningún XPeng G6.
+- Causa localizada en `AdvisorCriteriaEngine`: la extracción numérica no admitía el multiplicador «mil» entre la cifra y la moneda, de modo que la expresión no se convertía en un objetivo de 47.000 €.
+- Corrección aplicada para reconocer importes de precio con «mil» o «k» (por ejemplo, «47 mil euros» y «47k €») y multiplicarlos por 1.000. El ajuste está limitado al criterio de precio.
+- Código: commit `e2b48382eb6f56240a706bc1b6dfb2dc9129f06a` en `feature/asesor-ia-fase-1`.
+- Pendiente: compilación CI y nueva prueba del APK con «SUV de 47 mil euros». No se modifica el catálogo protegido ni `main`.
