@@ -74,9 +74,10 @@ public final class AdvisorCriteriaEngineSmokeTest {
         r = engine.interpret("450", AdvisorCriteriaEngine.Language.ES);
         check(r.needsClarification(), "does not guess a bare number");
 
-        r = engine.interpret("al menos 400 km", AdvisorCriteriaEngine.Language.ES);
-        check(r.criteria.minRangeKm != null && Math.abs(r.criteria.minRangeKm - 400d) < 0.01,
-                "sets range filter before removing price");
+        r = engine.interpret("menos de 35.000 € y más de 400 km", AdvisorCriteriaEngine.Language.ES);
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 35000d) < 0.01
+                        && r.criteria.minRangeKm != null && Math.abs(r.criteria.minRangeKm - 400d) < 0.01,
+                "sets price and range filters before removing price");
 
         r = engine.interpret("quitar presupuesto", AdvisorCriteriaEngine.Language.ES);
         check(r.criteria.maxPrice == null && r.criteria.minPrice == null,
