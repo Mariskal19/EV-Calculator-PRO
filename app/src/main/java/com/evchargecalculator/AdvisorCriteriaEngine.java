@@ -221,7 +221,7 @@ public final class AdvisorCriteriaEngine {
     private static NumberMatch findNumeric(String s, String lang, Field field) {
         String unitPattern;
         switch (field) {
-            case PRICE: unitPattern="(?:€|eur|euros?|\\$|usd|£|gbp)"; break;
+            case PRICE: unitPattern="(?:(?:mil|k)\\s*)?(?:€|eur|euros?|\\$|usd|£|gbp)"; break;
             case RANGE: unitPattern="(?:km|kilomet(?:er|re)s?)"; break;
             case TRUNK: unitPattern="(?:litros?|liters?|litres?|l)"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)"; break;
@@ -251,6 +251,14 @@ public final class AdvisorCriteriaEngine {
         if (raw == null) raw = unit.group();
         Double value = parseNumber(raw);
         if (value == null || value <= 0) return new NumberMatch(0, false, true);
+        // Common spoken budgets such as "47 mil euros" and "47k €" mean 47,000,
+        // not 47. Keep the multiplier local to price parsing so other fields are unchanged.
+        if (field == Field.PRICE) {
+            String matchedPrice = unit.group().toLowerCase(Locale.ROOT);
+            if (matchedPrice.contains("mil") || Pattern.compile("\\\\d\\\\s*k\\\\b").matcher(matchedPrice).find()) {
+                value *= 1000.0;
+            }
+        }
 
         int start = unit.start();
         String prefix = s.substring(Math.max(0, start - 60), start);
