@@ -233,7 +233,7 @@ public final class AdvisorCriteriaEngine {
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
         if (!unit.find()) {
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang)
-                    || hasApproximatePriceTarget(s, lang));
+                    || hasApproximatePriceTarget(s, lang) || hasImplicitBodyPriceTarget(s));
             boolean trunkContext = field == Field.TRUNK && containsTrunkTerm(s, lang);
             if (!priceContext && !trunkContext) return null;
             // In-context numbers may omit units: "presupuesto hasta 35000" or "450 de maletero".
@@ -402,6 +402,21 @@ public final class AdvisorCriteriaEngine {
     private static boolean hasPriceBoundOperator(String s, String lang) {
         String prefix = s;
         return lastOperatorIndex(prefix, lang, true) >= 0 || lastOperatorIndex(prefix, lang, false) >= 0;
+    }
+
+    /**
+     * In a car-search request, "berlina de 62800" is an implicit price target.
+     * Require a recognized body style and a plausible five-digit vehicle price so
+     * phrases such as "berlina de 5 puertas" are not mistaken for a budget.
+     */
+    private static boolean hasImplicitBodyPriceTarget(String s) {
+        if (!has(s, "berlina", "sedan", "saloon", "saloon car", "suv", "crossover",
+                "todocamino", "familiar", "wagon", "estate", "hatchback", "compacto",
+                "coupe", "coupé", "monovolumen", "minivan", "roadster")) return false;
+        Matcher number = NUMBER.matcher(s);
+        if (!number.find()) return false;
+        Double value = parseNumber(number.group());
+        return value != null && value >= 10000 && value <= 250000;
     }
 
     private static boolean containsPriceTerm(String s, String lang) {
