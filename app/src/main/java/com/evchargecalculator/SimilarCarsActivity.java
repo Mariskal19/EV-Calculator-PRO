@@ -347,25 +347,16 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             return;
         }
 
-        // Prefer the newest catalog model year for each make/model before matching.
-        // This prevents an older year from winning merely because its price is closer
-        // to the target. Keep all trims from that newest year so the user's criteria
-        // (budget, range, body style, etc.) can still choose between current variants.
-        Map<String,Integer> latestYearByModel=new HashMap<>();
-        for(Vehicle vehicle:vehicles){
-            String modelKey=norm(vehicle.make+" "+vehicle.model);
-            Integer knownYear=latestYearByModel.get(modelKey);
-            if(vehicle.year>0&&(knownYear==null||vehicle.year>knownYear)){
-                latestYearByModel.put(modelKey,vehicle.year);
-            }
-        }
-
+        // Match every catalog version before deduplicating the visible result list.
+        // A newer model year may contain only one trim (e.g. G6 Standard Range),
+        // so filtering older years at make/model level incorrectly hides other
+        // currently relevant variants such as Long Range and Performance AWD.
+        // Approximate-price searches rank versions by closeness to the requested price;
+        // explicit ceilings rank qualifying versions by price. The UI still shows one
+        // best-matching version per make/model, without mutating the protected catalog.
         List<AdvisorCatalogMatcher.Candidate> candidates=new ArrayList<>();
         Map<String,Vehicle> byKey=new HashMap<>();
         for(Vehicle vehicle:vehicles){
-            String modelKey=norm(vehicle.make+" "+vehicle.model);
-            Integer latestYear=latestYearByModel.get(modelKey);
-            if(latestYear!=null&&vehicle.year>0&&vehicle.year<latestYear)continue;
             String key=logicalKey(vehicle);
             String advisorBodyStyle = vehicle.bodyStyle;
             // The protected catalog previously mislabeled the EV4 Hatchback as a sedan.
