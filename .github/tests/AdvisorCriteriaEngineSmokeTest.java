@@ -66,16 +66,30 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "sedan", "RWD", 39900, 450, 450, 70, 150, 16));
         priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan30", "Marca", "Berlina 30k",
                 "sedan", "RWD", 30000, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan34", "Marca", "Berlina 34k",
+                "sedan", "RWD", 34000, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan46", "Marca", "Berlina 46k",
+                "sedan", "RWD", 46000, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan33", "Marca", "Berlina 33k",
+                "sedan", "RWD", 33000, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan47", "Marca", "Berlina 47k",
+                "sedan", "RWD", 47000, 450, 450, 70, 150, 16));
         priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan45", "Marca", "Berlina 45k",
                 "sedan", "RWD", 45000, 450, 450, 70, 150, 16));
         priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan66", "Marca", "Berlina 66k",
                 "sedan", "RWD", 66000, 450, 450, 70, 150, 16));
         java.util.List<AdvisorCatalogMatcher.Result> priceTargetMatches =
                 AdvisorCatalogMatcher.search(priceTargetCandidates, r.criteria);
-        check(priceTargetMatches.size() == 3,
-                "approximate 40,000 euro target returns options between 70% and 115% of target");
-        check(priceTargetMatches.stream().noneMatch(match -> "sedan66".equals(match.candidate.logicalKey)),
-                "approximate 40,000 euro sedan query excludes a 66,000 euro vehicle");
+        check(priceTargetMatches.size() == 2,
+                "approximate 40,000 euro target returns options between 85% and 115% of target");
+        check(priceTargetMatches.stream().noneMatch(match -> "sedan66".equals(match.candidate.logicalKey)
+                        || "sedan30".equals(match.candidate.logicalKey)
+                        || "sedan33".equals(match.candidate.logicalKey)
+                        || "sedan47".equals(match.candidate.logicalKey)),
+                "approximate 40,000 euro sedan query excludes prices outside the 34,000–46,000 euro band");
+        check(priceTargetMatches.stream().anyMatch(match -> "sedan34".equals(match.candidate.logicalKey))
+                        && priceTargetMatches.stream().anyMatch(match -> "sedan46".equals(match.candidate.logicalKey)),
+                "approximate 40,000 euro sedan query includes both ±15% band boundaries");
 
         r = engine.interpret("450", AdvisorCriteriaEngine.Language.ES);
         check(r.needsClarification(), "does not guess a bare number");
