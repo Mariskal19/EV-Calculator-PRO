@@ -265,6 +265,24 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "also asks for clarification when the unfinished price phrase ends with an ellipsis");
 
 
+        // SUV + approximate price must exclude the BYD Dolphin Surf, which is a hatchback.
+        engine.reset();
+        r = engine.interpret("Quiero un SUV de unos 40000", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle),
+                "parses SUV as a required body style in an approximate-price query");
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 40000d) < 0.01
+                        && !r.criteria.maxPriceIsCeiling,
+                "parses approximate SUV budget as a target around 40,000 euros");
+        java.util.List<AdvisorCatalogMatcher.Candidate> suvCandidates = new java.util.ArrayList<>();
+        suvCandidates.add(new AdvisorCatalogMatcher.Candidate("dolphin-surf", "BYD", "Dolphin Surf",
+                "hatchback", "FWD", 26490, 322, 308, 43.2, 115, 16.0));
+        suvCandidates.add(new AdvisorCatalogMatcher.Candidate("atto-3", "BYD", "Atto 3",
+                "suv", "FWD", 39990, 420, 490, 60, 150, 16.0));
+        java.util.List<AdvisorCatalogMatcher.Result> suvMatches =
+                AdvisorCatalogMatcher.search(suvCandidates, r.criteria);
+        check(suvMatches.size() == 1 && "atto-3".equals(suvMatches.get(0).candidate.logicalKey),
+                "SUV search excludes hatchbacks such as Dolphin Surf and retains matching SUVs");
+
         // Body-style compatibility: berlina includes fastback/liftback, not a conventional hatchback.
         AdvisorCriteriaEngine.Criteria sedanFilter = new AdvisorCriteriaEngine.Criteria();
         sedanFilter.bodyStyle = "SEDAN";
