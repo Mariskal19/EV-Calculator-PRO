@@ -1829,3 +1829,12 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 - Si el modelo existe, se elige la versión/año más reciente siguiendo el criterio de selección ya usado y se abre el motor existente de 10 alternativas similares. Si no se localiza, ahora se informa al usuario en lugar de dejar la consulta sin respuesta.
 - Verificación de catálogo en la rama de trabajo: hay tres variantes del `Zeekr 7GT` de 2026 (Core RWD, Long Range RWD y Privilege AWD). El catálogo protegido no se ha modificado.
 - Cambio de código: commit `4a8391f5eae7aaeac6b7fb4d2b9da94f6b644f3c` en `feature/asesor-ia-fase-1`. Pendiente validar compilación CI y probar en el teléfono con `Quiero un coche parecido al zeekr 7gt`; no reutilizar APKs antiguos.
+
+
+### Asesor IA — ampliación de frases de similitud y nombres cortos (25/10/2026)
+- Se amplió la detección de lenguaje natural para incluir expresiones con «como», además de «parecido», «similar», «semejante», «alternativa», «rival» y «competidor», y equivalentes habituales en inglés.
+- Primero se intenta identificar la marca y el modelo completos en el catálogo. Si el usuario omite la marca (por ejemplo, «Búscame un coche como el G6»), se busca el nombre del modelo como frase completa y se acepta solo cuando no hay ambigüedad entre marcas/modelos.
+- Si el nombre corto puede referirse a varios modelos, el asesor solicita que se añada la marca en vez de escoger uno arbitrariamente.
+- Al resolver la referencia, se reutiliza el motor existente de coches similares; no se altera el catálogo ni se crea un motor paralelo.
+- Ejemplos previstos: «Búscame un coche como el G6», «Quiero algo parecido al XPeng G6», «Busca alternativas al Zeekr 7GT» y «Un coche similar al Model Y».
+- Código: commit `2598eed450a8e5364bc9ae636f59fa13073e2205` en `feature/asesor-ia-fase-1`. Pendiente confirmar compilación CI y probar estas consultas en el APK nuevo; no reutilizar APKs anteriores. `main` y el catálogo protegido siguen intactos.
