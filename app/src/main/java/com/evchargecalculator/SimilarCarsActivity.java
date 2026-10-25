@@ -315,6 +315,96 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         }
     }
 
+
+    private boolean tryRunDirectModelLookupQuery(String query) {
+        List<String> catalogNames = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) catalogNames.add(vehicle.make + " " + vehicle.model);
+        if (!AdvisorSimilarityIntent.isDirectModelLookup(query, catalogNames)) return false;
+
+        String normalized = norm(query).trim();
+        String compactQuery = normalized.replaceAll("[^a-z0-9]", "");
+        Vehicle chosen = null;
+        int bestNameLength = -1;
+        for (Vehicle vehicle : vehicles) {
+            String makeModel = norm(vehicle.make + " " + vehicle.model);
+            String compactName = makeModel.replaceAll("[^a-z0-9]", "");
+            if (compactName.length() >= 4 && compactQuery.contains(compactName)
+                    && compactName.length() > bestNameLength) {
+                chosen = vehicle;
+                bestNameLength = compactName.length();
+            }
+        }
+        if (chosen == null) {
+            String paddedQuery = " " + normalized + " ";
+            Set<String> matchedModels = new HashSet<>();
+            for (Vehicle vehicle : vehicles) {
+                String model = norm(vehicle.model).trim();
+                if (model.length() < 2 || !paddedQuery.contains(" " + model + " ")) continue;
+                matchedModels.add(norm(vehicle.make + " " + vehicle.model));
+                if (chosen == null || model.length() > norm(chosen.model).length()) chosen = vehicle;
+            }
+            if (matchedModels.size() != 1) {
+                advisorStatus.setText(LanguageManager.t(this,
+                        "El nombre puede corresponder a varios modelos. Escribe también la marca para concretar la búsqueda."));
+                return true;
+            }
+        }
+        if (chosen == null) {
+            advisorStatus.setText(LanguageManager.t(this,
+                    "No encuentro ese modelo en el catálogo. Comprueba la marca y el nombre del coche."));
+            return true;
+        }
+
+        String target = norm(chosen.make + " " + chosen.model);
+        List<Vehicle> variants = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (norm(vehicle.make + " " + vehicle.model).equals(target)) variants.add(vehicle);
+        }
+        variants.sort((left, right) -> {
+            int yearOrder = Integer.compare(right.year, left.year);
+            if (yearOrder != 0) return yearOrder;
+            int trimOrder = Integer.compare(trimRank(right), trimRank(left));
+            if (trimOrder != 0) return trimOrder;
+            return Double.compare(right.price, left.price);
+        });
+
+        advisorResults.removeAllViews();
+        advisorStatus.setText(LanguageManager.t(this, "Modelo encontrado en el catálogo"));
+        int shown = 0;
+        for (Vehicle vehicle : variants) {
+            if (shown++ >= 10) break;
+            LinearLayout resultCard = card();
+            resultCard.setPadding(dp(12), dp(9), dp(12), dp(9));
+            TextView name = tv(vehicle.make + " " + vehicle.model, 16, blue);
+            name.setTypeface(null, Typeface.BOLD);
+            resultCard.addView(name, new LinearLayout.LayoutParams(-1, -2));
+            StringBuilder specs = new StringBuilder();
+            if (!cleanVersion(vehicle.version).trim().isEmpty()) specs.append(cleanVersion(vehicle.version));
+            if (vehicle.year > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(vehicle.year); }
+            if (vehicle.price > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.price)).append(" €"); }
+            if (vehicle.wltpKm > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.wltpKm)).append(" km WLTP"); }
+            TextView details = tv(specs.toString(), 12, sub());
+            details.setPadding(0, dp(3), 0, dp(6));
+            resultCard.addView(details, new LinearLayout.LayoutParams(-1, -2));
+            LinearLayout actions = new LinearLayout(this);
+            actions.setOrientation(LinearLayout.HORIZONTAL);
+            TextView detailAction = tv("Ver detalles  ›", 12, blue);
+            detailAction.setTypeface(null, Typeface.BOLD);
+            detailAction.setOnClickListener(v -> openDetail(vehicle));
+            actions.addView(detailAction, new LinearLayout.LayoutParams(0, -2, 1));
+            TextView compareAction = tv("Añadir a comparativa", 12, blue);
+            compareAction.setTypeface(null, Typeface.BOLD);
+            compareAction.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            compareAction.setOnClickListener(v -> addAdvisorToComparison(vehicle));
+            actions.addView(compareAction, new LinearLayout.LayoutParams(-2, -2));
+            resultCard.addView(actions, new LinearLayout.LayoutParams(-1, -2));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
+            params.topMargin = dp(6);
+            advisorResults.addView(resultCard, params);
+        }
+        return true;
+    }
+
     private boolean tryRunNaturalSimilarityQuery(String query) {
         String normalized=norm(query).trim();
         List<String> catalogVehicleNames=new ArrayList<>();
@@ -434,8 +524,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         AdvisorCriteriaEngine.Language selectedLanguage;
         try{selectedLanguage=AdvisorCriteriaEngine.Language.valueOf(language.toUpperCase(Locale.ROOT));}
         catch(Exception ignored){selectedLanguage=AdvisorCriteriaEngine.Language.EN;}
-        // A natural-language request for alternatives to a named model belongs to
-        // the dedicated similarity engine, not to the numeric-filter interpreter.
+        // Direct requests for a named catalog model must show that model first.
+        // Similarity wording is excluded by the intent classifier, so alternatives
+        // continue through the dedicated similar-cars engine.
+        if (tryRunDirectModelLookupQuery(query)) return;
+        // Natural-language requests for alternatives use the dedicated similarity engine.
         if (tryRunNaturalSimilarityQuery(query)) return;
         AdvisorCriteriaEngine.ParseResult parsed=advisorEngine.interpret(query,selectedLanguage);
         if(parsed.needsClarification()){
