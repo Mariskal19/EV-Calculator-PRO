@@ -1742,3 +1742,11 @@ Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se
 
 - Se añadió además una comprobación de resultados visibles (no solo versiones de catálogo): las 3 versiones que cumplen se agrupan en **2 modelos únicos**, ordenados por proximidad al límite de 35.000 €: KGM Torres EVX y MG MGS5 EV. La aserción inicial de orden se corrigió para reflejar el comparador real; la ejecución final pasó.
 - Último workflow correcto: [Advisor engine smoke tests, run 40204994536](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40204994536). Resultado: 47 pruebas del motor; 17 coincidencias brutas de berlina, 7 modelos únicos visibles; SUV combinado: 3 versiones, 2 modelos únicos.
+
+
+## 2026-10-25 — Confirmación manual de pruebas del Asesor IA
+
+- El usuario confirma que la prueba 1 funciona correctamente.
+- En la prueba 2, la búsqueda combinada de SUV hasta 35.000 €, autonomía superior a 450 km y maletero mínimo de 450 litros muestra dos coches.
+- Esto concuerda con la prueba de integración sobre el catálogo protegido: hay tres versiones coincidentes que se agrupan en dos modelos únicos (KGM Torres EVX y MG MGS5 EV).
+- No se cambia lógica de producción ni se publica una APK en este paso.
