@@ -100,6 +100,11 @@ public final class AdvisorCatalogMatcher {
         return true;
     }
 
+    /**
+     * An approximate target price (e.g. "berlina de 40 mil") intentionally searches
+     * a broad 70%-115% band; an explicit ceiling (e.g. "hasta 40.000 €") remains
+     * a ceiling with only the existing 5% tolerance.
+     */
     private static boolean withinPrice(double value, Double min, Double max, boolean explicitCeiling) {
         if (min == null && max == null) return true;
         if (value <= 0) return false;
