@@ -509,11 +509,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void runAdvisorSearch(){
         if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
-        // La búsqueda automática se ejecuta al terminar la pausa de escritura;
-        // ocultamos aquí el teclado para cubrir también ese flujo, no solo IME_SEARCH/DONE.
-        InputMethodManager searchImm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-        if(searchImm!=null)searchImm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
-        advisorInput.clearFocus();
+        // La búsqueda automática no debe cerrar el teclado ni quitar el foco:
+        // el usuario puede seguir editando la consulta después de ver resultados.
         String query=advisorInput.getText()==null?"":advisorInput.getText().toString().trim();
         advisorResults.removeAllViews();
         if(query.isEmpty()){
