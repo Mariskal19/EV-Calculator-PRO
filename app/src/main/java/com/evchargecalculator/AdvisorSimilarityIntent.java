@@ -35,6 +35,52 @@ public final class AdvisorSimilarityIntent {
         return false;
     }
 
+
+    /**
+     * Detects a request to display a named catalog model itself, not alternatives.
+     * This is catalog-driven and therefore applies to every make/model, not a
+     * hard-coded brand. Similarity language always takes precedence.
+     */
+    public static boolean isDirectModelLookup(String query, List<String> catalogVehicleNames) {
+        String normalized = normalize(query);
+        if (normalized.isEmpty() || catalogVehicleNames == null || catalogVehicleNames.isEmpty()) return false;
+
+        boolean similarityIntent = containsAny(normalized,
+                "parecido", "parecida", "similares", "similar", "semejante",
+                "alternativa", "alternativas", "rival", "competidor", "competidores",
+                "como el ", "como la ", "como un ", "similar to", "like the",
+                "look like", "something like");
+        if (similarityIntent) return false;
+
+        boolean directIntent = containsAny(normalized,
+                "buscame", "busca ", "busco ", "encuentrame", "muestrame",
+                "muestra ", "mostrar ", "quiero ver", "ensename", "ver el ",
+                "ver la ", "show me", "find me", "look up", "display ");
+        if (!directIntent) return false;
+
+        String compactQuery = compact(normalized);
+        for (String catalogName : catalogVehicleNames) {
+            String compactName = compact(normalize(catalogName));
+            if (compactName.length() >= 4 && compactQuery.contains(compactName)) return true;
+        }
+
+        // Permit model-only requests (e.g. "Muéstrame el G6") only when the
+        // model name resolves to one make/model in the catalog.
+        String paddedQuery = " " + normalized + " ";
+        String matchedModelKey = null;
+        for (String catalogName : catalogVehicleNames) {
+            if (catalogName == null) continue;
+            String[] parts = catalogName.trim().split("\\s+", 2);
+            if (parts.length < 2) continue;
+            String model = normalize(parts[1]).trim();
+            if (model.length() < 2 || !paddedQuery.contains(" " + model + " ")) continue;
+            String key = compact(normalize(catalogName));
+            if (matchedModelKey == null) matchedModelKey = key;
+            else if (!matchedModelKey.equals(key)) return false;
+        }
+        return matchedModelKey != null;
+    }
+
     private static boolean containsAny(String text, String... patterns) {
         for (String pattern : patterns) if (text.contains(pattern)) return true;
         return false;
