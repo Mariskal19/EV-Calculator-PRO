@@ -56,7 +56,27 @@ public final class AdvisorSimilarityIntent {
                 "buscame", "busca ", "busco ", "encuentrame", "muestrame",
                 "muestra ", "mostrar ", "quiero ver", "ensename", "ver el ",
                 "ver la ", "show me", "find me", "look up", "display ");
-        if (!directIntent) return false;
+
+        // A bare model name is also a direct lookup, but only when it resolves
+        // uniquely in the catalog. This avoids requiring verbs such as "show me".
+        if (!directIntent) {
+            String bareQuery = normalized.trim();
+            String matchedBareModel = null;
+            for (String catalogName : catalogVehicleNames) {
+                if (catalogName == null) continue;
+                String normalizedName = normalize(catalogName).trim();
+                if (bareQuery.equals(normalizedName)) return true;
+
+                String[] parts = catalogName.trim().split("\\s+", 2);
+                if (parts.length < 2) continue;
+                String model = normalize(parts[1]).trim();
+                if (!bareQuery.equals(model)) continue;
+                String key = compact(normalize(catalogName));
+                if (matchedBareModel == null) matchedBareModel = key;
+                else if (!matchedBareModel.equals(key)) return false;
+            }
+            return matchedBareModel != null;
+        }
 
         String compactQuery = compact(normalized);
         for (String catalogName : catalogVehicleNames) {
