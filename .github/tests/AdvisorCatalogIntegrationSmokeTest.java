@@ -94,9 +94,9 @@ public final class AdvisorCatalogIntegrationSmokeTest {
         }
         check(visibleSuvs.size() == 2,
                 "combined SUV query displays two unique models after removing repeated KGM Torres EVX versions");
-        check("MG MGS5 EV".equals(visibleSuvs.get(0).candidate.make + " " + visibleSuvs.get(0).candidate.model),
-                "combined SUV results rank the closest-to-ceiling model first");
-        check("KGM Torres EVX".equals(visibleSuvs.get(1).candidate.make + " " + visibleSuvs.get(1).candidate.model),
+        check("KGM Torres EVX".equals(visibleSuvs.get(0).candidate.make + " " + visibleSuvs.get(0).candidate.model),
+                "combined SUV results rank the model closest to the 35,000 euro ceiling first");
+        check("MG MGS5 EV".equals(visibleSuvs.get(1).candidate.make + " " + visibleSuvs.get(1).candidate.model),
                 "combined SUV results show one Torres EVX model rather than duplicate model years");
         System.out.println("Real catalog combined SUV query results: " + suvMatches.size()
                 + " catalog versions, " + visibleSuvs.size() + " visible unique models");
