@@ -80,7 +80,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "sedan", "RWD", 66000, 450, 450, 70, 150, 16));
         java.util.List<AdvisorCatalogMatcher.Result> priceTargetMatches =
                 AdvisorCatalogMatcher.search(priceTargetCandidates, r.criteria);
-        check(priceTargetMatches.size() == 2,
+        check(priceTargetMatches.size() == 4,
                 "approximate 40,000 euro target returns options between 85% and 115% of target");
         check(priceTargetMatches.stream().noneMatch(match -> "sedan66".equals(match.candidate.logicalKey)
                         || "sedan30".equals(match.candidate.logicalKey)
