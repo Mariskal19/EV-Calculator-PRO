@@ -46,6 +46,24 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(!r.criteria.maxPriceIsCeiling,
                 "approximate price target is not misclassified as a strict ceiling");
 
+        engine.reset();
+        r = engine.interpret("Búscame una berlina de 40 mil euros", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SEDAN".equals(r.criteria.bodyStyle),
+                "parses sedan body style with colloquial price wording");
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 40000d) < 0.01
+                        && !r.criteria.maxPriceIsCeiling,
+                "parses '40 mil euros' as an approximate price target, not a hard ceiling");
+
+        java.util.List<AdvisorCatalogMatcher.Candidate> priceTargetCandidates = new java.util.ArrayList<>();
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan40", "Marca", "Berlina 40k",
+                "sedan", "RWD", 39900, 450, 450, 70, 150, 16));
+        priceTargetCandidates.add(new AdvisorCatalogMatcher.Candidate("sedan66", "Marca", "Berlina 66k",
+                "sedan", "RWD", 66000, 450, 450, 70, 150, 16));
+        java.util.List<AdvisorCatalogMatcher.Result> priceTargetMatches =
+                AdvisorCatalogMatcher.search(priceTargetCandidates, r.criteria);
+        check(priceTargetMatches.size() == 1 && "sedan40".equals(priceTargetMatches.get(0).candidate.logicalKey),
+                "approximate 40,000 euro sedan query excludes a 66,000 euro vehicle");
+
         r = engine.interpret("450", AdvisorCriteriaEngine.Language.ES);
         check(r.needsClarification(), "does not guess a bare number");
 
