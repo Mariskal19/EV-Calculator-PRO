@@ -67,6 +67,25 @@ public final class AdvisorCatalogIntegrationSmokeTest {
                     "visible sedan results are deduplicated and ordered by proximity to 40,000 euros at position " + (i + 1));
         }
 
+        // Exercise the app's multi-criterion example against the full protected catalog.
+        AdvisorCriteriaEngine.ParseResult suvQuery = new AdvisorCriteriaEngine().interpret(
+                "SUV hasta 35.000 €, más de 450 km y maletero de al menos 450 litros",
+                AdvisorCriteriaEngine.Language.ES);
+        check(!suvQuery.needsClarification() && "SUV".equals(suvQuery.criteria.bodyStyle),
+                "parses the full Spanish SUV advisor example");
+        List<AdvisorCatalogMatcher.Result> suvMatches = AdvisorCatalogMatcher.search(catalog, suvQuery.criteria);
+        check(!suvMatches.isEmpty(), "real catalog returns candidates for the combined SUV query");
+        for (AdvisorCatalogMatcher.Result match : suvMatches) {
+            AdvisorCatalogMatcher.Candidate c = match.candidate;
+            check("suv".equalsIgnoreCase(c.bodyStyle) || "crossover".equalsIgnoreCase(c.bodyStyle),
+                    "combined query never mixes sedans into SUV results");
+            check(c.price > 0 && c.price <= 36750,
+                    "combined query respects explicit 35,000 euro ceiling with the documented 5% tolerance");
+            check(c.rangeKm >= 450, "combined query enforces the 450 km minimum");
+            check(c.trunkLiters >= 450, "combined query enforces the 450 litre minimum");
+        }
+        System.out.println("Real catalog combined SUV query results: " + suvMatches.size());
+
         q = new AdvisorCriteriaEngine.Criteria();
         q.minRangeKm = 400d;
         List<AdvisorCatalogMatcher.Result> rangeMatches = AdvisorCatalogMatcher.search(catalog, q);
