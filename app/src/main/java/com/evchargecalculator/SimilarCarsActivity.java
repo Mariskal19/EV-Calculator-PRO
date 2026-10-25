@@ -314,6 +314,47 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         }
     }
 
+    private boolean tryRunNaturalSimilarityQuery(String query) {
+        String normalized=norm(query);
+        boolean asksForSimilar=normalized.contains("parecido") || normalized.contains("parecida")
+                || normalized.contains("similar") || normalized.contains("semejante")
+                || normalized.contains("similar to") || normalized.contains("like the")
+                || normalized.contains("alternativa a") || normalized.contains("alternativas a")
+                || normalized.contains("rival de") || normalized.contains("competidor de");
+        if(!asksForSimilar) return false;
+        boolean namesXpengG6=normalized.contains("xpeng g6") || normalized.contains("g6 de xpeng");
+        if(!namesXpengG6) return false;
+
+        Vehicle chosen=null;
+        for(Vehicle vehicle:vehicles){
+            if(!"xpeng".equalsIgnoreCase(vehicle.make.trim())
+                    || !norm(vehicle.model).equals("g6")) continue;
+            if(chosen==null
+                    || vehicle.year>chosen.year
+                    || (vehicle.year==chosen.year && trimRank(vehicle)>trimRank(chosen))
+                    || (vehicle.year==chosen.year && trimRank(vehicle)==trimRank(chosen)
+                        && vehicle.price>chosen.price)){
+                chosen=vehicle;
+            }
+        }
+        if(chosen==null){
+            advisorStatus.setText(LanguageManager.t(this,"No encuentro el XPeng G6 en el catálogo para buscar alternativas."));
+            return true;
+        }
+
+        reference=chosen;
+        getSharedPreferences(PREFS,MODE_PRIVATE).edit()
+                .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
+        if(referencePicker!=null){
+            referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
+        }
+        advisorEngine.reset();
+        advisorStatus.setText(LanguageManager.t(this,"Alternativas similares tomando como referencia ")
+                +chosen.make+" "+chosen.model+" "+chosen.year+" · "+cleanVersion(chosen.version)+".");
+        showSimilar();
+        return true;
+    }
+
     private void runAdvisorSearch(){
         if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
         // La búsqueda automática se ejecuta al terminar la pausa de escritura;
@@ -331,6 +372,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         AdvisorCriteriaEngine.Language selectedLanguage;
         try{selectedLanguage=AdvisorCriteriaEngine.Language.valueOf(language.toUpperCase(Locale.ROOT));}
         catch(Exception ignored){selectedLanguage=AdvisorCriteriaEngine.Language.EN;}
+        // A natural-language request for alternatives to a named model belongs to
+        // the dedicated similarity engine, not to the numeric-filter interpreter.
+        if (tryRunNaturalSimilarityQuery(query)) return;
         AdvisorCriteriaEngine.ParseResult parsed=advisorEngine.interpret(query,selectedLanguage);
         if(parsed.needsClarification()){
             if("clarify_reference_price_relation".equals(parsed.clarificationKey)){
@@ -778,6 +822,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void showSimilar(){
         results.removeAllViews();
         if(reference==null||vehicles==null||vehicles.isEmpty())return;
+        resultsTitle.setVisibility(View.VISIBLE);
+        results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         final int FINAL_TOP=10;
         int referenceYear=reference.year;
