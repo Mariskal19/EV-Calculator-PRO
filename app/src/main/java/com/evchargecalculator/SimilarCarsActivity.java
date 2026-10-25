@@ -347,16 +347,23 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             return;
         }
 
-        // Match every catalog version before deduplicating the visible result list.
-        // A newer model year may contain only one trim (e.g. G6 Standard Range),
-        // so filtering older years at make/model level incorrectly hides other
-        // currently relevant variants such as Long Range and Performance AWD.
-        // Approximate-price searches rank versions by closeness to the requested price;
-        // explicit ceilings rank qualifying versions by price. The UI still shows one
-        // best-matching version per make/model, without mutating the protected catalog.
+        // Keep only the newest catalog year for each equivalent trim, not for the
+        // whole make/model. A newer Standard Range must not hide a Long Range, but an
+        // older Long Range must not return if a newer Long Range exists and fails budget.
+        Map<String,Integer> newestYearByTrim=new HashMap<>();
+        for(Vehicle vehicle:vehicles){
+            String trimKey=advisorTrimKey(vehicle);
+            Integer knownYear=newestYearByTrim.get(trimKey);
+            if(knownYear==null||vehicle.year>knownYear)newestYearByTrim.put(trimKey,vehicle.year);
+        }
+        // Approximate-price searches rank eligible current trim versions by closeness
+        // to the requested price; explicit ceilings rank qualifying versions by price.
+        // The protected catalog itself is never changed.
         List<AdvisorCatalogMatcher.Candidate> candidates=new ArrayList<>();
         Map<String,Vehicle> byKey=new HashMap<>();
         for(Vehicle vehicle:vehicles){
+            Integer newestYear=newestYearByTrim.get(advisorTrimKey(vehicle));
+            if(newestYear!=null&&vehicle.year<newestYear)continue;
             String key=logicalKey(vehicle);
             String advisorBodyStyle = vehicle.bodyStyle;
             // The protected catalog previously mislabeled the EV4 Hatchback as a sedan.
@@ -1412,6 +1419,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         ver=ver.replaceAll("^\\d+(?:\\.\\d+)?\\s*kwh\\s*","");
         ver=ver.replaceAll("\\s+"," ").trim();
         return ver;
+    }
+    /**
+     * Identifies equivalent trim names across model years. Technical figures and
+     * repeated drive-layout labels are removed from the version text; drivetrain
+     * remains a separate key so, for example, Long Range RWD and Long Range AWD
+     * are not treated as the same trim.
+     */
+    private String advisorTrimKey(Vehicle v){
+        String trim=normalizedVersion(v);
+        trim=trim.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*(?:kw|kwh|cv|hp|km|wh)\\b"," ");
+        trim=trim.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\b"," ");
+        trim=trim.replaceAll("(?i)\\b(rwd|fwd|awd|4wd|4x4|4x2)\\b"," ");
+        trim=norm(trim).replaceAll("[^a-z0-9]+"," ").trim().replaceAll("\\s+"," ");
+        return norm(v.make)+"|"+norm(v.model)+"|"+norm(v.market)+"|"+norm(v.drivetrain)+"|"+trim;
     }
     private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
     private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
