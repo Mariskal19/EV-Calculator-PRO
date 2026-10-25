@@ -97,7 +97,7 @@ public final class AdvisorCatalogIntegrationSmokeTest {
         check("KGM Torres EVX".equals(visibleSuvs.get(0).candidate.make + " " + visibleSuvs.get(0).candidate.model),
                 "combined SUV results rank the model closest to the 35,000 euro ceiling first");
         check("MG MGS5 EV".equals(visibleSuvs.get(1).candidate.make + " " + visibleSuvs.get(1).candidate.model),
-                "combined SUV results show one Torres EVX model rather than duplicate model years");
+                "combined SUV results include the next unique model after de-duplication");
         System.out.println("Real catalog combined SUV query results: " + suvMatches.size()
                 + " catalog versions, " + visibleSuvs.size() + " visible unique models");
 
