@@ -232,7 +232,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         advisorResetParams.topMargin=dp(5);
         advisorCard.addView(advisorReset,advisorResetParams);
         advisorReset.setOnClickListener(v->resetAdvisorSearch());
-        // Ejecutar la búsqueda cuando el usuario deje de escribir durante 900 ms.
+        // Ejecutar la búsqueda cuando el usuario deje de escribir durante 1 segundo.
         // El debounce evita recalcular por cada tecla y mantiene la búsqueda local.
         advisorInput.addTextChangedListener(new TextWatcher(){
             @Override public void beforeTextChanged(CharSequence s,int start,int count,int after){}
@@ -244,7 +244,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                     return;
                 }
                 advisorStatus.setText(LanguageManager.t(SimilarCarsActivity.this,"Preparando búsqueda…"));
-                advisorSearchHandler.postDelayed(pendingAdvisorSearch,900);
+                advisorSearchHandler.postDelayed(pendingAdvisorSearch,1000);
             }
             @Override public void afterTextChanged(Editable e){}
         });
@@ -509,8 +509,10 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
     private void runAdvisorSearch(){
         if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
-        // La búsqueda automática no debe cerrar el teclado ni quitar el foco:
-        // el usuario puede seguir editando la consulta después de ver resultados.
+        // Ocultar el teclado cuando se ejecute la búsqueda automática, como antes.
+        InputMethodManager searchImm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        if(searchImm!=null)searchImm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
+        advisorInput.clearFocus();
         String query=advisorInput.getText()==null?"":advisorInput.getText().toString().trim();
         advisorResults.removeAllViews();
         if(query.isEmpty()){
