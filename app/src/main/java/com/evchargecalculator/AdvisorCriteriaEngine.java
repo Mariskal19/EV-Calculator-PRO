@@ -118,7 +118,7 @@ public final class AdvisorCriteriaEngine {
         String original = userText == null ? "" : userText.trim();
         if (original.isEmpty()) return result(false, "empty_query", null);
 
-        String s = normalize(original);
+        String s = normalize(original).replaceAll("(\\d+)\\s+mil(?=\\s*(?:€|eur|euros?))", "$1.000");
         Criteria before = criteria.copy();
         boolean changed = false;
         String clarification = null;
@@ -266,7 +266,8 @@ public final class AdvisorCriteriaEngine {
             // Approximate price expressions ("unos 40.000 euros", "alrededor de 40.000 €")
             // are target budgets: rank vehicles around that price instead of treating the
             // amount as an ambiguous bare number or as a strict upper limit.
-            if (field == Field.PRICE && hasApproximatePriceTarget(prefix, lang)) {
+            if (field == Field.PRICE && (hasApproximatePriceTarget(prefix, lang)
+                    || prefix.trim().endsWith(" de"))) {
                 return new NumberMatch(value, false, false, false, false);
             }
             return new NumberMatch(value, false, true);
