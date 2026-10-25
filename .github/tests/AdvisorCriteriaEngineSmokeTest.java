@@ -39,7 +39,6 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 40000d) < 0.01,
                 "parses a price ceiling without currency when maximum operator is explicit");
 
-        engine.reset();
         r = engine.interpret("Búscame un coche de unos 40000 euros", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && r.criteria.maxPrice != null
                         && Math.abs(r.criteria.maxPrice - 40000d) < 0.01,
