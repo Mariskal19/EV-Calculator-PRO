@@ -1999,3 +1999,5 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - El usuario confirma que la aplicación devuelve 3 resultados para «Búscame un coche familiar de hasta 50.000 €».
 - Con tolerancia del 5 %, el límite efectivo es 52.500 €. En el catálogo protegido, los tres modelos wagon actuales que entran en ese límite son Subaru E-Outback (44.000 €), Zeekr 7GT Core RWD (45.990 €) y Mercedes-Benz CLA Shooting Brake Eléctrico CLA 200 (49.686,30 €).
 - El recuento de 3 resultados coincide con los modelos elegibles del catálogo. No se modifica el filtro ni se fuerza un mínimo artificial de resultados.
+
+- **Control de repetición:** dar por cerradas y no volver a ejecutar estas dos consultas (`hasta 45.000 €` y `hasta 50.000 €`) mientras no cambien el motor de filtros/ranking, la tolerancia del 5 % o los modelos/precios del catálogo. Si alguno cambia, repetir únicamente la prueba afectada.
