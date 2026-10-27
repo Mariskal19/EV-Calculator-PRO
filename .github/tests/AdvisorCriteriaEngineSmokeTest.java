@@ -373,6 +373,23 @@ public final class AdvisorCriteriaEngineSmokeTest {
                         && peaqMatches.stream().noneMatch(m -> "peaq".equals(m.candidate.logicalKey)),
                 "4.658 m Škoda Peaq is excluded by a 4.5 m maximum while exact-boundary and shorter cars remain");
 
+        // All constraints entered in a single message: the last, strictest length
+        // ceiling (4.5 m) must win over the earlier 4.7 m ceiling.
+        engine.reset();
+        r = engine.interpret("Búscame un SUV de hasta 45.000 € Y además, sin coches de más de 4,7 metros Y además, sin coches de más de 4,5 metros",
+                AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.maxLengthM != null
+                        && Math.abs(r.criteria.maxLengthM - 4.5d) < 0.001,
+                "combined query uses the strictest of repeated length constraints");
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 45000d) < 0.01
+                        && "SUV".equals(r.criteria.bodyStyle),
+                "combined repeated length constraints preserve SUV and budget filters");
+        java.util.List<AdvisorCatalogMatcher.Result> combinedMatches =
+                AdvisorCatalogMatcher.search(peaqCandidates, r.criteria);
+        check(combinedMatches.size() == 2
+                        && combinedMatches.stream().noneMatch(m -> "peaq".equals(m.candidate.logicalKey)),
+                "combined query excludes 4.658 m Peaq under the final 4.5 m ceiling");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
