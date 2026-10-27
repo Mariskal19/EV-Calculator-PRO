@@ -2106,3 +2106,11 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Resultado comunicado: **el Skywell BE11 ya no aparece**.
 - Conclusión: la incidencia original queda validada manualmente para el caso de regresión de 4,72 m; junto con los smoke tests y la compilación Android correctos, la corrección queda confirmada para este escenario.
 - Rama de trabajo: `feature/asesor-ia-fase-1`. Sin cambios en `main` ni en el catálogo protegido.
+
+
+## 2026-10-27 — Regresión manual: Škoda Peaq supera el límite de longitud
+
+- Tras la prueba previa con `Y además, sin coches de más de 4,5 metros`, el usuario observó 9 resultados, incluido el **Škoda Peaq**, cuya ficha muestra **4,66 m**.
+- El catálogo de la rama registra `lengthMm = 4658` para Škoda Peaq 60 (4,658 m), coherente con el valor mostrado. Un límite máximo de 4,5 m debe excluirlo.
+- La prueba manual **falla**. Se añadió una regresión automática al smoke test para reproducir el seguimiento acumulativo con un candidato Škoda Peaq de 4,658 m y confirmar que se excluye, mientras se conservan vehículos de 4,50 m y 4,40 m.
+- Pendiente: revisar resultado de CI y determinar por qué el APK instalado permitió que Peaq apareciera. No se modifica `main` ni el catálogo protegido.
