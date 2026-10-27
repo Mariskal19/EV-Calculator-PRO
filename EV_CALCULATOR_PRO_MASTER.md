@@ -1900,3 +1900,23 @@ No se modifica `main` ni el catálogo protegido.
 - El número se interpreta como objetivo aproximado y mantiene la banda económica existente (±15 %), no como precio máximo.
 - Se limita la detección a cifras de cinco dígitos o más para no confundir expresiones como `berlina de 5 puertas` con un precio.
 - Cambios en `AdvisorCriteriaEngine.java`, únicamente en `feature/asesor-ia-fase-1`; no se modifica el catálogo protegido ni `main`.
+
+## 2026-10-27 — Pruebas manuales del Asesor IA: berlinas y presupuesto aproximado
+
+Pruebas realizadas por el usuario en el APK instalado en su Redmi Note 13 Pro. **No repetir estas dos pruebas salvo que cambie el motor de búsqueda, el catálogo relevante o una corrección afecte a la extracción de carrocería/precio.**
+
+1. Consulta exacta: `Búscame una berlina de 40.000 €`
+   - Resultado observado: **7 coches**.
+   - El usuario confirma que esta búsqueda devuelve resultados; queda registrada como prueba manual satisfactoria.
+
+2. Consulta exacta: `Búscame una berlina de 62800`
+   - Resultado observado: **9 coches**.
+   - El usuario confirma que los 9 resultados son correctos: carrocería y precios adecuados.
+   - Esta prueba cubre la incidencia previa en la que una cifra de 62.800 podía devolver coches de alrededor de 38.000 €.
+
+Criterio de precio aproximado vigente: **±15 %** sobre el objetivo. Por tanto:
+- 40.000 € → banda esperada de **34.000–46.000 €**.
+- 62.800 € → banda esperada de **53.380–72.220 €**.
+
+Estado: **ambas pruebas manuales superadas según confirmación del usuario**. Es una validación en dispositivo, no una prueba automatizada nueva. No se modifica `main` ni el catálogo protegido; esta anotación se añade únicamente a `feature/asesor-ia-fase-1`.
+
