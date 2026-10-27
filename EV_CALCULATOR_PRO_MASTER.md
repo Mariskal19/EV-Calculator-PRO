@@ -2001,3 +2001,14 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - El recuento de 3 resultados coincide con los modelos elegibles del catálogo. No se modifica el filtro ni se fuerza un mínimo artificial de resultados.
 
 - **Control de repetición:** dar por cerradas y no volver a ejecutar estas dos consultas (`hasta 45.000 €` y `hasta 50.000 €`) mientras no cambien el motor de filtros/ranking, la tolerancia del 5 % o los modelos/precios del catálogo. Si alguno cambia, repetir únicamente la prueba afectada.
+
+## 2026-10-27 — Prueba manual: SUV hasta 45.000 €, autonomía y maletero
+
+- Consulta exacta introducida en el APK de la rama `feature/asesor-ia-fase-1`: `Búscame un SUV de hasta 45.000 €, con más de 400 km de autonomía y al menos 500 litros de maletero`.
+- Resultado observado por el usuario: **10 coches**.
+- Rango de precios observado: **43.000–46.900 €**.
+- El usuario confirma que los 10 resultados superan los **400 km de autonomía** y que todos tienen **más de 500 litros de maletero**.
+- Regla de precio vigente: un límite explícito permite hasta un 5 % de tolerancia; para 45.000 €, el techo efectivo es **47.250 €**. Todos los precios comunicados están dentro del rango.
+- Conclusión: **prueba manual satisfactoria según confirmación del usuario**; la búsqueda combina carrocería SUV, precio máximo, autonomía mínima y volumen mínimo de maletero.
+- No repetir esta consulta salvo cambios en el motor de extracción/filtros, la tolerancia de precio o los datos relevantes del catálogo.
+- Documentado solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
