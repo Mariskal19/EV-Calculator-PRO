@@ -1992,3 +1992,10 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Otros familiares del catálogo quedan fuera del techo: Mercedes-Benz CLA Shooting Brake Eléctrico (49.686,30 €), Volkswagen ID.7 Tourer y Zeekr 001 (versiones aplicables por encima del límite).
 - Conclusión: no se detecta un fallo del filtro en este caso. Una prueba útil de contraste es «Búscame un coche familiar de hasta 50.000 €», cuyo techo efectivo es 52.500 € y debería incorporar el Mercedes-Benz CLA Shooting Brake Eléctrico si el filtro de carrocería sigue funcionando.
 - Este resultado corresponde al catálogo de la rama de trabajo; no implica publicación en Google Play.
+
+
+### Resultado de contraste — familiar hasta 50.000 € (2026-10-27)
+
+- El usuario confirma que la aplicación devuelve 3 resultados para «Búscame un coche familiar de hasta 50.000 €».
+- Con tolerancia del 5 %, el límite efectivo es 52.500 €. En el catálogo protegido, los tres modelos wagon actuales que entran en ese límite son Subaru E-Outback (44.000 €), Zeekr 7GT Core RWD (45.990 €) y Mercedes-Benz CLA Shooting Brake Eléctrico CLA 200 (49.686,30 €).
+- El recuento de 3 resultados coincide con los modelos elegibles del catálogo. No se modifica el filtro ni se fuerza un mínimo artificial de resultados.
