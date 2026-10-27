@@ -1929,3 +1929,12 @@ Estado: **ambas pruebas manuales superadas según confirmación del usuario**. E
 - No repetir esta prueba salvo que cambie el enrutamiento de consultas directas/similitud o el catálogo del XPeng G6.
 - La anotación se realiza únicamente en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
 
+## 2026-10-27 — Prueba manual: alternativas similares al XPeng G6
+
+- Consulta exacta en el APK: `Quiero un coche parecido al XPeng G6`.
+- Resultado observado por el usuario: **10 coches en la sección de similares**.
+- Interpretación: la petición de similitud activa el motor de coches similares y muestra alternativas, no las versiones del XPeng G6.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+- No repetir esta prueba salvo que cambie el enrutamiento de similitud, el ranking de coches similares o los datos relevantes del catálogo.
+- Anotación realizada solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
