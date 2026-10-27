@@ -351,6 +351,28 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(lengthMatches.size() == 1 && "short".equals(lengthMatches.get(0).candidate.logicalKey),
                 "4.70 m is included while 4.72 m Skywell BE11 and unknown-length vehicles are excluded");
 
+
+        // Regression for the user's device report: Škoda Peaq is 4.658 m and must
+        // not survive a cumulative maximum-length follow-up of 4.5 m.
+        engine.reset();
+        engine.interpret("Búscame un SUV de hasta 45.000 €", AdvisorCriteriaEngine.Language.ES);
+        r = engine.interpret("Y además, sin coches de más de 4,5 metros", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.maxLengthM != null
+                        && Math.abs(r.criteria.maxLengthM - 4.5d) < 0.001,
+                "parses 4,5 m negative length follow-up as an exact ceiling");
+        java.util.List<AdvisorCatalogMatcher.Candidate> peaqCandidates = new java.util.ArrayList<>();
+        peaqCandidates.add(new AdvisorCatalogMatcher.Candidate("peaq", "Škoda", "Peaq", "suv", "RWD",
+                45000, 440, 935, 63, 150, 14.3, 4.658));
+        peaqCandidates.add(new AdvisorCatalogMatcher.Candidate("exact45", "Marca", "Coche 4.50", "suv", "RWD",
+                40000, 440, 600, 63, 150, 14.3, 4.5));
+        peaqCandidates.add(new AdvisorCatalogMatcher.Candidate("short45", "Marca", "Coche 4.40", "suv", "RWD",
+                40000, 440, 600, 63, 150, 14.3, 4.4));
+        java.util.List<AdvisorCatalogMatcher.Result> peaqMatches =
+                AdvisorCatalogMatcher.search(peaqCandidates, r.criteria);
+        check(peaqMatches.size() == 2
+                        && peaqMatches.stream().noneMatch(m -> "peaq".equals(m.candidate.logicalKey)),
+                "4.658 m Škoda Peaq is excluded by a 4.5 m maximum while exact-boundary and shorter cars remain");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
