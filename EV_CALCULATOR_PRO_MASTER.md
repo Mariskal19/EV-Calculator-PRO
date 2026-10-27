@@ -2070,3 +2070,13 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Comprobación adicional de presupuesto de los 5 resultados finales: el usuario indica un rango de precios de **37.500–45.990 €**. Con el margen vigente del 5 % sobre el límite de 45.000 € (techo efectivo **47.250 €**), todos los precios comunicados están dentro del máximo admitido. Esto confirma el presupuesto para esos resultados; la autonomía estricta >500 km queda pendiente de comprobación individual, ya que el mínimo observado previamente era exactamente 500 km.
 
 - Verificación final de autonomía de los 5 resultados: el usuario confirma que **ninguno marca 500 km exactos**; por tanto, todos superan estrictamente los 500 km solicitados. Junto con la comprobación previa de que los cinco tienen al menos 600 litros de maletero y el rango de precios 37.500–45.990 € (por debajo del techo efectivo de 47.250 €), queda validada según los datos observados la acumulación de carrocería SUV, presupuesto, autonomía y maletero en esta prueba manual.
+
+
+## 2026-10-27 — Incidencia en seguimiento negativo: exclusión por longitud
+
+- Consulta inicial en el APK: `Búscame un SUV de hasta 45.000 €` → 10 resultados.
+- Seguimiento, sin pulsar «Nueva búsqueda»: `Y además, sin coches de más de 4,7 metros` → 10 resultados.
+- El usuario identifica entre los resultados el **Skywell BE11**, cuya ficha en la app muestra **4,72 m** de longitud. Este vehículo supera el máximo de 4,7 m, por lo que no debería aparecer tras aplicar la exclusión.
+- Resultado: **fallo reproducido en la prueba manual**; la condición negativa de longitud no se está aplicando correctamente o no se está interpretando como criterio acumulativo.
+- Acción recomendada: revisar extracción/normalización de expresiones negativas (`sin coches de más de X metros`) y la aplicación del filtro de longitud en el motor del Asesor IA. Añadir prueba de regresión que compruebe que 4,72 m queda excluido con un máximo de 4,7 m.
+- Solo se registra la incidencia en `feature/asesor-ia-fase-1`. No se modifica el código, `main` ni el catálogo protegido en esta acción.
