@@ -2094,3 +2094,7 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Commits de código/pruebas: `6a5c83ea6f49d5c2413904a7dde9540b1a380169`, `5f6c0c2d9b7a60c8b6128cb806c282dff10fbf8b`, `7f46bf7f3cdebc9d930bd5c6af031300b6c2f87b`, `e1ff5b33804b315c24288f102d0c3f1e8e4a4d87`, `903141abf82a0d6f456b94124df33ce958301719`.
 - Estado de validación al documentar: código y prueba de regresión añadidos; aún no se ha confirmado el resultado de los workflows de GitHub Actions ni una compilación Android exitosa. Descargar y probar el APK de debug cuando el workflow de compilación termine.
 - No se modifica `main` ni el catálogo protegido.
+
+- Resultado CI actualizado: **Advisor engine smoke tests: SUCCESS** (ejecución `40578018461`, commit `903141abf82a0d6f456b94124df33ce958301719`) y **Advisor Android compile check: SUCCESS** (ejecución `40577944827`, commit `e1ff5b33804b315c24288f102d0c3f1e8e4a4d87`).
+- APK debug generado para prueba en dispositivo: artefacto `EV-Calculator-PRO-advisor-debug`, disponible hasta el 3 de noviembre de 2026: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40577944827
+- Próxima validación manual: instalar ese APK y repetir las dos consultas seguidas. Esperado: después de `Y además, sin coches de más de 4,7 metros`, el Skywell BE11 de 4,72 m no debe aparecer. La longitud desconocida tampoco debe superar un filtro de longitud activo.
