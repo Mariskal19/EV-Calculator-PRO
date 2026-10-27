@@ -1981,3 +1981,14 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Commits de la corrección: `5afb27c8ae01e52c97299336db7705d1d2167d26` (reset de búsquedas nuevas) y `937c2619f83cf566ed588c997dfa169cf4d152e2` (normalización de expresiones de seguimiento).
 - Validación pendiente tras el push: revisar los workflows **Advisor engine smoke tests** y **Advisor Android compile check**; comprobar que pasan las pruebas automáticas y descargar el APK debug generado para pruebas manuales.
 - Prueba manual de regresión recomendada en dispositivo: ejecutar primero `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` y después `Búscame una berlina de hasta 35.000 €`. La segunda consulta debe ser independiente de los criterios de autonomía y maletero de la primera.
+
+
+## 2026-10-27 — Prueba del asesor: familiar hasta 45.000 €
+
+- Prueba manual en el APK de la rama `feature/asesor-ia-fase-1`: consulta «Búscame un coche familiar de hasta 45.000 €».
+- Resultado observado en el teléfono: 2 modelos, con precios de aproximadamente 44.000 € y 45.900 €.
+- Auditoría del catálogo protegido de esa rama: 24 registros con `bodyStyle: wagon`, correspondientes a 7 modelos distintos. Aplicando el margen actual del 5 % al límite explícito, el techo efectivo es 47.250 €.
+- Solo hay 2 modelos wagon distintos dentro de ese techo: Subaru E-Outback (44.000 €) y Zeekr 7GT Core RWD (45.990 €). Por tanto, los dos resultados observados son coherentes con el catálogo y con los filtros actuales; no se cambia el margen ni se amplía artificialmente la carrocería para llenar 10 resultados.
+- Otros familiares del catálogo quedan fuera del techo: Mercedes-Benz CLA Shooting Brake Eléctrico (49.686,30 €), Volkswagen ID.7 Tourer y Zeekr 001 (versiones aplicables por encima del límite).
+- Conclusión: no se detecta un fallo del filtro en este caso. Una prueba útil de contraste es «Búscame un coche familiar de hasta 50.000 €», cuyo techo efectivo es 52.500 € y debería incorporar el Mercedes-Benz CLA Shooting Brake Eléctrico si el filtro de carrocería sigue funcionando.
+- Este resultado corresponde al catálogo de la rama de trabajo; no implica publicación en Google Play.
