@@ -1947,3 +1947,26 @@ Estado: **ambas pruebas manuales superadas según confirmación del usuario**. E
 - No repetir salvo cambios en la resolución de nombres cortos, en el enrutamiento de similitud o en el catálogo que introduzcan ambigüedad.
 - Anotación solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
 
+
+
+## 2026-10-27 — Pruebas manuales del Asesor IA: presupuesto aproximado y límite máximo
+
+Pruebas realizadas por el usuario en el APK instalado. Registrar como validaciones manuales del comportamiento visible; no equivalen a una prueba automatizada.
+
+### Precio aproximado: SUV de unos 50.000 €
+
+- Consulta: `Búscame un SUV de unos 50.000 €`.
+- Resultado observado: **10 SUV**.
+- El usuario confirma que los precios de los resultados son correctos y cercanos al objetivo.
+- Criterio esperado: precio aproximado con margen simétrico de ±15 % (42.500–57.500 €); los resultados se seleccionan por proximidad al objetivo y luego se muestran en orden ascendente de precio.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+
+### Límite máximo: SUV de hasta 30.000 €
+
+- Consulta: `Búscame un SUV de hasta 30.000 €`.
+- Resultado observado: **10 SUV**.
+- Precios observados por el usuario: desde **22.800 € hasta 29.350 €**.
+- Todos los resultados observados están por debajo del límite de 30.000 €, por lo que no fue necesario utilizar la tolerancia máxima del 5 % (hasta 31.500 €).
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+
+No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de precio, el ranking de precio aproximado o los datos relevantes del catálogo. Las anotaciones corresponden únicamente a `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
