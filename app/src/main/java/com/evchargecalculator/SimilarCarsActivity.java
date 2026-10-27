@@ -507,6 +507,22 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return true;
     }
 
+    private boolean isAdvisorFollowUpQuery(String query) {
+        String normalized = AdvisorCriteriaEngine.normalize(query).trim();
+        String[] prefixes = {
+                "y ", "y ademas ", "tambien ", "tambien quiero ", "ademas ",
+                "anade ", "agrega ", "quita ", "elimina ", "sin ",
+                "mas de ", "menos de ", "al menos ", "como minimo ",
+                "como maximo ", "por encima de ", "por debajo de ",
+                "que tenga ", "con mas de ", "con menos de ",
+                "con al menos ", "hasta "
+        };
+        for (String prefix : prefixes) {
+            if (normalized.startsWith(prefix)) return true;
+        }
+        return false;
+    }
+
     private void runAdvisorSearch(){
         if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
         // Ocultar el teclado cuando se ejecute la búsqueda automática, como antes.
@@ -519,6 +535,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             advisorStatus.setText(LanguageManager.t(this,"Añade un criterio para iniciar la búsqueda."));
             return;
         }
+        // A complete new search must not inherit filters from the previous search.
+        // Keep criteria only for short, explicit follow-ups such as "más de 400 km"
+        // or "al menos 450 litros".
+        if (!isAdvisorFollowUpQuery(query)) advisorEngine.reset();
+
         String language=LanguageManager.getEffectiveLanguage(this);
         AdvisorCriteriaEngine.Language selectedLanguage;
         try{selectedLanguage=AdvisorCriteriaEngine.Language.valueOf(language.toUpperCase(Locale.ROOT));}
