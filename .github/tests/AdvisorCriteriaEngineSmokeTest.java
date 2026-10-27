@@ -328,6 +328,29 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(sedanMatches.stream().noneMatch(m -> "ev4-hatchback".equals(m.candidate.logicalKey)),
                 "berlina search excludes Kia EV4 Hatchback");
 
+        // Negative length follow-up: keep prior SUV/budget filters and exclude lengths > 4.7 m.
+        engine.reset();
+        r = engine.interpret("Búscame un SUV de hasta 45.000 €", AdvisorCriteriaEngine.Language.ES);
+        r = engine.interpret("Y además, sin coches de más de 4,7 metros", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.maxLengthM != null
+                        && Math.abs(r.criteria.maxLengthM - 4.7d) < 0.001,
+                "parses negative maximum-length follow-up as an exact 4.7 m ceiling");
+        check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 45000d) < 0.01
+                        && "SUV".equals(r.criteria.bodyStyle),
+                "negative length follow-up preserves previous SUV and budget criteria");
+
+        java.util.List<AdvisorCatalogMatcher.Candidate> lengthCandidates = new java.util.ArrayList<>();
+        lengthCandidates.add(new AdvisorCatalogMatcher.Candidate("short", "Marca", "Coche 4.70", "suv", "RWD",
+                40000, 500, 600, 80, 200, 18, 4.70));
+        lengthCandidates.add(new AdvisorCatalogMatcher.Candidate("long", "Skywell", "BE11", "suv", "RWD",
+                40000, 500, 600, 80, 200, 18, 4.72));
+        lengthCandidates.add(new AdvisorCatalogMatcher.Candidate("unknown", "Marca", "Longitud desconocida", "suv", "RWD",
+                40000, 500, 600, 80, 200, 18, 0));
+        java.util.List<AdvisorCatalogMatcher.Result> lengthMatches =
+                AdvisorCatalogMatcher.search(lengthCandidates, r.criteria);
+        check(lengthMatches.size() == 1 && "short".equals(lengthMatches.get(0).candidate.logicalKey),
+                "4.70 m is included while 4.72 m Skywell BE11 and unknown-length vehicles are excluded");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
