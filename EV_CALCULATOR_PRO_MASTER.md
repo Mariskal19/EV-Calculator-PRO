@@ -2033,3 +2033,14 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
   2. `Búscame una berlina de hasta 40.000 €` → **3 coches**.
 - Resultado: la segunda consulta obtiene más resultados al retirar las condiciones de autonomía y maletero. Esto es coherente con que los filtros de la primera búsqueda no se hayan heredado. La corrección del reinicio de criterios queda **validada en esta prueba manual básica**.
 - Alcance: la prueba confirma este caso concreto, no todas las combinaciones ni todos los tipos de seguimiento. No se cambia el código ni el catálogo protegido a raíz de este resultado.
+
+
+## 2026-10-27 — Prueba manual de regresión: cambio de carrocería y presupuesto
+
+- En el APK instalado, el usuario ejecutó dos consultas seguidas, sin pulsar «Nueva búsqueda» ni cambiar manualmente los filtros entre ellas:
+  1. `Búscame un SUV de hasta 45.000 €, con más de 400 km de autonomía y al menos 500 litros de maletero` → **10 coches**.
+  2. `Búscame una berlina de hasta 40.000 €` → **3 coches**.
+- Resultado: la segunda búsqueda cambia tanto la carrocería como el presupuesto y devuelve 3 resultados. Esto es coherente con que la búsqueda nueva se procese de forma independiente y no herede los criterios de autonomía y maletero de la consulta anterior.
+- Conclusión: **prueba manual satisfactoria** para el cambio de tipo de carrocería y presupuesto. Junto con la prueba anterior de berlina, aporta una segunda comprobación del reinicio de criterios.
+- Alcance: confirma únicamente estas consultas y resultados observados; no equivale a una cobertura exhaustiva de todas las combinaciones.
+- No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
