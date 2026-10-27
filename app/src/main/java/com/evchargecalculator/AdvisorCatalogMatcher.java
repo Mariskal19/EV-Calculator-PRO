@@ -19,11 +19,17 @@ public final class AdvisorCatalogMatcher {
     /** Immutable view of the fields needed by advisor filtering/ranking. Unknown numeric values <= 0 stay unknown. */
     public static final class Candidate {
         public final String logicalKey, make, model, bodyStyle, drivetrain;
-        public final double price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption;
+        public final double price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption, lengthM;
 
         public Candidate(String logicalKey, String make, String model, String bodyStyle, String drivetrain,
                          double price, double rangeKm, double trunkLiters, double batteryKwh,
                          double powerKw, double consumption) {
+            this(logicalKey, make, model, bodyStyle, drivetrain, price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption, 0);
+        }
+
+        public Candidate(String logicalKey, String make, String model, String bodyStyle, String drivetrain,
+                         double price, double rangeKm, double trunkLiters, double batteryKwh,
+                         double powerKw, double consumption, double lengthM) {
             this.logicalKey = safe(logicalKey);
             this.make = safe(make);
             this.model = safe(model);
@@ -35,7 +41,9 @@ public final class AdvisorCatalogMatcher {
             this.batteryKwh = known(batteryKwh);
             this.powerKw = known(powerKw);
             this.consumption = known(consumption);
+            this.lengthM = known(lengthM);
         }
+    }
     }
 
     public static final class Result {
@@ -94,6 +102,8 @@ public final class AdvisorCatalogMatcher {
         if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh, 1.03)) return false;
         if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw, 1.03)) return false;
         if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption * 1.03)) return false;
+        // Exact upper bound: 4.72 m must fail a maximum of 4.7 m.
+        if (q.maxLengthM != null && (c.lengthM <= 0 || c.lengthM > q.maxLengthM)) return false;
         if (q.bodyStyle != null && !bodyMatches(q.bodyStyle, c.bodyStyle)) return false;
         if (q.drivetrain != null && !driveMatches(q.drivetrain, c.drivetrain)) return false;
         if (q.makeModel != null && !normalize(c.make + " " + c.model).contains(normalize(q.makeModel))) return false;
