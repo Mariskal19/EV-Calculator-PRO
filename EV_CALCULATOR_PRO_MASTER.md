@@ -2055,3 +2055,5 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - La cantidad de 10 resultados por sí sola no permite comprobar los precios ni la elegibilidad de cada vehículo; queda pendiente contrastar el rango de precios mostrado por el usuario si se necesita validar también el límite presupuestario en esta prueba.
 - Conclusión provisional: **prueba satisfactoria para comprobar que se puede pasar de una búsqueda por modelo concreto a una búsqueda nueva**, con validación limitada a los recuentos comunicados.
 - No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
+
+- Verificación adicional del presupuesto en la segunda consulta: el usuario informa que los precios de los 10 SUV mostrados van de **29.264 € a 30.990 €**. Con el margen vigente del 5 % sobre 30.000 € (techo efectivo **31.500 €**), todos los precios indicados están dentro del límite permitido. La validación de precios queda satisfactoria según el rango comunicado.
