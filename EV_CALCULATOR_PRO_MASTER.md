@@ -2098,3 +2098,11 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Resultado CI actualizado: **Advisor engine smoke tests: SUCCESS** (ejecución `40578018461`, commit `903141abf82a0d6f456b94124df33ce958301719`) y **Advisor Android compile check: SUCCESS** (ejecución `40577944827`, commit `e1ff5b33804b315c24288f102d0c3f1e8e4a4d87`).
 - APK debug generado para prueba en dispositivo: artefacto `EV-Calculator-PRO-advisor-debug`, disponible hasta el 3 de noviembre de 2026: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40577944827
 - Próxima validación manual: instalar ese APK y repetir las dos consultas seguidas. Esperado: después de `Y además, sin coches de más de 4,7 metros`, el Skywell BE11 de 4,72 m no debe aparecer. La longitud desconocida tampoco debe superar un filtro de longitud activo.
+
+
+## 2026-10-27 — Validación manual en dispositivo de la corrección de longitud
+
+- El usuario instala el APK debug de la ejecución de compilación y repite la búsqueda de SUV de hasta 45.000 € seguida, sin nueva búsqueda, de `Y además, sin coches de más de 4,7 metros`.
+- Resultado comunicado: **el Skywell BE11 ya no aparece**.
+- Conclusión: la incidencia original queda validada manualmente para el caso de regresión de 4,72 m; junto con los smoke tests y la compilación Android correctos, la corrección queda confirmada para este escenario.
+- Rama de trabajo: `feature/asesor-ia-fase-1`. Sin cambios en `main` ni en el catálogo protegido.
