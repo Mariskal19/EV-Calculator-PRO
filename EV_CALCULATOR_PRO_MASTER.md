@@ -2066,3 +2066,5 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Se añadió después el requisito de maletero de al menos 600 litros: 5 resultados. El usuario confirma que los cinco cumplen ese volumen.
 - Evaluación: evidencia favorable de que se acumulan los criterios y se reducen resultados al añadir el requisito de maletero. Validación parcial: aún falta confirmar que los cinco mantienen el presupuesto, la carrocería SUV y la autonomía requerida.
 - Registro únicamente en esta rama de trabajo. Sin cambios de código, `main` ni catálogo protegido.
+
+- Comprobación adicional de presupuesto de los 5 resultados finales: el usuario indica un rango de precios de **37.500–45.990 €**. Con el margen vigente del 5 % sobre el límite de 45.000 € (techo efectivo **47.250 €**), todos los precios comunicados están dentro del máximo admitido. Esto confirma el presupuesto para esos resultados; la autonomía estricta >500 km queda pendiente de comprobación individual, ya que el mínimo observado previamente era exactamente 500 km.
