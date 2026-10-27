@@ -2044,3 +2044,14 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Conclusión: **prueba manual satisfactoria** para el cambio de tipo de carrocería y presupuesto. Junto con la prueba anterior de berlina, aporta una segunda comprobación del reinicio de criterios.
 - Alcance: confirma únicamente estas consultas y resultados observados; no equivale a una cobertura exhaustiva de todas las combinaciones.
 - No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
+
+
+## 2026-10-27 — Prueba manual de regresión: modelo concreto seguido de búsqueda nueva
+
+- En el APK instalado, el usuario ejecutó dos consultas seguidas, sin pulsar «Nueva búsqueda» entre ellas:
+  1. `Búscame el XPeng G6` → **6 versiones**.
+  2. `Búscame un SUV de hasta 30.000 €` → **10 coches**.
+- Resultado observado: la segunda consulta devuelve resultados para una carrocería y un presupuesto distintos de la búsqueda por modelo concreto. Esto es coherente con que se haya iniciado una búsqueda nueva y no se hayan conservado los criterios de la consulta anterior.
+- La cantidad de 10 resultados por sí sola no permite comprobar los precios ni la elegibilidad de cada vehículo; queda pendiente contrastar el rango de precios mostrado por el usuario si se necesita validar también el límite presupuestario en esta prueba.
+- Conclusión provisional: **prueba satisfactoria para comprobar que se puede pasar de una búsqueda por modelo concreto a una búsqueda nueva**, con validación limitada a los recuentos comunicados.
+- No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
