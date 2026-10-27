@@ -1938,3 +1938,12 @@ Estado: **ambas pruebas manuales superadas según confirmación del usuario**. E
 - No repetir esta prueba salvo que cambie el enrutamiento de similitud, el ranking de coches similares o los datos relevantes del catálogo.
 - Anotación realizada solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
 
+## 2026-10-27 — Prueba manual: similitud con nombre corto «G6»
+
+- Consulta exacta en el APK: `Búscame un coche como el G6`.
+- Resultado observado por el usuario: **10 coches similares**.
+- Interpretación: el asesor reconoce el nombre corto «G6» como referencia no ambigua del XPeng G6 y ejecuta la búsqueda de alternativas.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+- No repetir salvo cambios en la resolución de nombres cortos, en el enrutamiento de similitud o en el catálogo que introduzcan ambigüedad.
+- Anotación solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
