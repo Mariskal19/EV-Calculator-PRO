@@ -2025,3 +2025,11 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
   2. `Búscame una berlina de hasta 40.000 €`.
   La primera puede devolver cero resultados si no hay modelos que cumplan los tres filtros; la segunda debería devolver las berlinas elegibles según el catálogo y el techo efectivo de 42.000 €, independientemente de autonomía y maletero. Confirmar los resultados reales en el APK antes de declarar validada la corrección.
 - No modificar `main` ni el catálogo protegido. Registrar esta aclaración solo en `feature/asesor-ia-fase-1`.
+
+## 2026-10-27 — Prueba manual de regresión: reinicio de criterios validado
+
+- En el APK instalado, el usuario ejecutó ambas consultas seguidas, sin pulsar «Nueva búsqueda» entre ellas:
+  1. `Búscame una berlina de hasta 40.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` → **2 coches**.
+  2. `Búscame una berlina de hasta 40.000 €` → **3 coches**.
+- Resultado: la segunda consulta obtiene más resultados al retirar las condiciones de autonomía y maletero. Esto es coherente con que los filtros de la primera búsqueda no se hayan heredado. La corrección del reinicio de criterios queda **validada en esta prueba manual básica**.
+- Alcance: la prueba confirma este caso concreto, no todas las combinaciones ni todos los tipos de seguimiento. No se cambia el código ni el catálogo protegido a raíz de este resultado.
