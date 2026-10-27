@@ -2012,3 +2012,14 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Conclusión: **prueba manual satisfactoria según confirmación del usuario**; la búsqueda combina carrocería SUV, precio máximo, autonomía mínima y volumen mínimo de maletero.
 - No repetir esta consulta salvo cambios en el motor de extracción/filtros, la tolerancia de precio o los datos relevantes del catálogo.
 - Documentado solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+## 2026-10-27 — Regresión detectada: segunda búsqueda independiente devuelve cero resultados
+
+- Prueba manual de regresión en el APK instalado, tras la corrección de reinicio de criterios:
+  1. Consulta inicial: `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero`.
+  2. Resultado de la primera consulta: **0 coches**. Este resultado podría ser legítimo según los modelos disponibles en el catálogo que cumplan simultáneamente todos los criterios.
+  3. Sin pulsar «Nueva búsqueda», el usuario introduce `Búscame una berlina de hasta 35.000 €`.
+  4. Resultado de la segunda consulta: **0 coches**.
+- Interpretación: la segunda búsqueda no se comporta como una búsqueda independiente y la corrección de reinicio de criterios no ha quedado validada; podría persistir un estado/filtro anterior o existir otro fallo en la interpretación o filtrado. Aún no se atribuye la causa concreta.
+- Estado: **prueba manual fallida; investigar el flujo de nueva consulta y añadir/ajustar una prueba de regresión antes de pedir al usuario que vuelva a probar**.
+- No modificar `main` ni el catálogo protegido. Registrar los cambios solo en `feature/asesor-ia-fase-1`.
