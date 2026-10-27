@@ -44,7 +44,6 @@ public final class AdvisorCatalogMatcher {
             this.lengthM = known(lengthM);
         }
     }
-    }
 
     public static final class Result {
         public final Candidate candidate;
