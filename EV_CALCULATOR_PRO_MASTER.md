@@ -2057,3 +2057,12 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
 
 - Verificación adicional del presupuesto en la segunda consulta: el usuario informa que los precios de los 10 SUV mostrados van de **29.264 € a 30.990 €**. Con el margen vigente del 5 % sobre 30.000 € (techo efectivo **31.500 €**), todos los precios indicados están dentro del límite permitido. La validación de precios queda satisfactoria según el rango comunicado.
+
+
+## Prueba manual de seguimiento acumulativo (2026-10-27)
+
+- Consulta inicial de SUV hasta 45.000 euros: 10 resultados.
+- Se añadió el criterio de autonomía superior a 500 km: 10 resultados. El usuario comprobó que ninguno bajaba de 500 km; el mínimo observado fue exactamente 500 km, por lo que queda pendiente confirmar el comportamiento del límite estricto.
+- Se añadió después el requisito de maletero de al menos 600 litros: 5 resultados. El usuario confirma que los cinco cumplen ese volumen.
+- Evaluación: evidencia favorable de que se acumulan los criterios y se reducen resultados al añadir el requisito de maletero. Validación parcial: aún falta confirmar que los cinco mantienen el presupuesto, la carrocería SUV y la autonomía requerida.
+- Registro únicamente en esta rama de trabajo. Sin cambios de código, `main` ni catálogo protegido.
