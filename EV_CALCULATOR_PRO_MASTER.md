@@ -1970,3 +1970,14 @@ Pruebas realizadas por el usuario en el APK instalado. Registrar como validacion
 - Estado: **prueba manual satisfactoria según confirmación del usuario**.
 
 No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de precio, el ranking de precio aproximado o los datos relevantes del catálogo. Las anotaciones corresponden únicamente a `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+
+## 2026-10-27 — Corrección: las búsquedas nuevas no heredan filtros antiguos
+
+- Incidencia detectada: `SimilarCarsActivity` reutilizaba la instancia de `AdvisorCriteriaEngine` y llamaba a `interpret()` sin limpiar los criterios al iniciar una consulta nueva. Los filtros de autonomía, maletero o precio de una consulta previa podían contaminar la siguiente búsqueda y provocar resultados incorrectos o cero resultados.
+- Corrección aplicada únicamente en `feature/asesor-ia-fase-1`: antes de interpretar una búsqueda nueva, se reinicia el motor. Se conservan los criterios solo para expresiones de seguimiento reconocibles, por ejemplo `más de 400 km`, `al menos 450 litros`, `y además...` o `sin...`.
+- El botón «Nueva búsqueda» mantiene su función de limpiar el estado y el campo de texto.
+- No se modificó `main`, ninguna rama stable ni el catálogo protegido.
+- Commits de la corrección: `5afb27c8ae01e52c97299336db7705d1d2167d26` (reset de búsquedas nuevas) y `937c2619f83cf566ed588c997dfa169cf4d152e2` (normalización de expresiones de seguimiento).
+- Validación pendiente tras el push: revisar los workflows **Advisor engine smoke tests** y **Advisor Android compile check**; comprobar que pasan las pruebas automáticas y descargar el APK debug generado para pruebas manuales.
+- Prueba manual de regresión recomendada en dispositivo: ejecutar primero `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` y después `Búscame una berlina de hasta 35.000 €`. La segunda consulta debe ser independiente de los criterios de autonomía y maletero de la primera.
