@@ -19,7 +19,7 @@ public final class AdvisorCriteriaEngine {
     public enum Language { ES, EN, FR, DE, IT, PT }
 
     public enum Field {
-        PRICE, RANGE, TRUNK, BATTERY, POWER, CONSUMPTION, BODY, DRIVETRAIN, MAKE_MODEL
+        PRICE, RANGE, TRUNK, BATTERY, POWER, CONSUMPTION, LENGTH, BODY, DRIVETRAIN, MAKE_MODEL
     }
 
     public static final class Criteria {
@@ -38,6 +38,8 @@ public final class AdvisorCriteriaEngine {
         public Double minPowerKw;
         public Double maxPowerKw;
         public Double maxConsumption;
+        /** Maximum vehicle length in metres; used by negative length constraints. */
+        public Double maxLengthM;
         public String bodyStyle;
         public String drivetrain;
         public String makeModel;
@@ -52,7 +54,7 @@ public final class AdvisorCriteriaEngine {
             c.minTrunkLiters=minTrunkLiters; c.maxTrunkLiters=maxTrunkLiters; c.targetTrunkLiters=targetTrunkLiters;
             c.minBatteryKwh=minBatteryKwh; c.maxBatteryKwh=maxBatteryKwh;
             c.minPowerKw=minPowerKw; c.maxPowerKw=maxPowerKw;
-            c.maxConsumption=maxConsumption;
+            c.maxConsumption=maxConsumption; c.maxLengthM=maxLengthM;
             c.bodyStyle=bodyStyle; c.drivetrain=drivetrain; c.makeModel=makeModel;
             c.preferLowConsumption=preferLowConsumption;
             c.preferHighRange=preferHighRange; c.preferLargeTrunk=preferLargeTrunk;
@@ -67,6 +69,7 @@ public final class AdvisorCriteriaEngine {
                 case BATTERY: minBatteryKwh=null; maxBatteryKwh=null; break;
                 case POWER: minPowerKw=null; maxPowerKw=null; break;
                 case CONSUMPTION: maxConsumption=null; preferLowConsumption=false; break;
+                case LENGTH: maxLengthM=null; break;
                 case BODY: bodyStyle=null; break;
                 case DRIVETRAIN: drivetrain=null; break;
                 case MAKE_MODEL: makeModel=null; break;
@@ -77,7 +80,7 @@ public final class AdvisorCriteriaEngine {
             return minPrice!=null || maxPrice!=null || minRangeKm!=null || maxRangeKm!=null
                     || minTrunkLiters!=null || maxTrunkLiters!=null || targetTrunkLiters!=null
                     || minBatteryKwh!=null || maxBatteryKwh!=null
-                    || minPowerKw!=null || maxPowerKw!=null || maxConsumption!=null
+                    || minPowerKw!=null || maxPowerKw!=null || maxConsumption!=null || maxLengthM!=null
                     || bodyStyle!=null || drivetrain!=null || makeModel!=null;
         }
     }
@@ -135,6 +138,21 @@ public final class AdvisorCriteriaEngine {
         if (removal != null) {
             criteria.clear(removal);
             return result(true, null, "criterion_removed");
+        }
+
+        // Negative length constraints are hard filters, not generic removal commands.
+        // Example: "sin coches de más de 4,7 metros" means length <= 4.7 m.
+        Matcher excludedLength = Pattern.compile(
+                "(?:sin|no quiero|excluye|excluir|evita)\\s+(?:los?\\s+)?(?:coches?\\s+)?(?:de\\s+)?(?:mas\\s+de|superior\\s+a|mayor\\s+que)\\s*(\\d[\\d.,]*)\\s*(?:metros?|m\\b)")
+                .matcher(s);
+        if (excludedLength.find()) {
+            Double maxLength = parseNumber(excludedLength.group(1));
+            if (maxLength == null || maxLength <= 0 || maxLength > 10) {
+                clarification = "clarify_length";
+            } else {
+                criteria.maxLengthM = maxLength;
+                changed = true;
+            }
         }
 
         NumberMatch price = findNumeric(s, lang, Field.PRICE);
