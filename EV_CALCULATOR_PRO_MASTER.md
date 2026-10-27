@@ -2080,3 +2080,17 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Resultado: **fallo reproducido en la prueba manual**; la condición negativa de longitud no se está aplicando correctamente o no se está interpretando como criterio acumulativo.
 - Acción recomendada: revisar extracción/normalización de expresiones negativas (`sin coches de más de X metros`) y la aplicación del filtro de longitud en el motor del Asesor IA. Añadir prueba de regresión que compruebe que 4,72 m queda excluido con un máximo de 4,7 m.
 - Solo se registra la incidencia en `feature/asesor-ia-fase-1`. No se modifica el código, `main` ni el catálogo protegido en esta acción.
+
+
+## 2026-10-27 — Corrección del filtro negativo de longitud
+
+- Incidencia reproducida manualmente: consulta inicial `Búscame un SUV de hasta 45.000 €` → 10 resultados; seguimiento `Y además, sin coches de más de 4,7 metros` → 10 resultados, incluyendo Skywell BE11 con longitud mostrada de 4,72 m.
+- Causa técnica identificada: el intérprete no tenía un criterio de longitud y el adaptador del catálogo no pasaba `lengthMm` al matcher; por tanto, la frase negativa no podía filtrar por ese dato.
+- Corrección aplicada en `feature/asesor-ia-fase-1`:
+  - `AdvisorCriteriaEngine`: reconoce expresiones negativas como `sin coches de más de 4,7 metros` y guarda un máximo de longitud de 4,7 m, manteniendo los criterios de seguimiento previos.
+  - `AdvisorCatalogMatcher`: aplica un límite estricto; 4,72 m queda excluido de un máximo de 4,7 m. Si hay un límite activo y la longitud no está disponible, el vehículo se excluye para no dar por cumplido un dato desconocido.
+  - `SimilarCarsActivity`: pasa la longitud del catálogo (`lengthMm`) al matcher en metros.
+  - `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: añade regresión para parseo del seguimiento, conservación de SUV/presupuesto y exclusión de Skywell BE11 a 4,72 m, conservando un coche de 4,70 m.
+- Commits de código/pruebas: `6a5c83ea6f49d5c2413904a7dde9540b1a380169`, `5f6c0c2d9b7a60c8b6128cb806c282dff10fbf8b`, `7f46bf7f3cdebc9d930bd5c6af031300b6c2f87b`, `e1ff5b33804b315c24288f102d0c3f1e8e4a4d87`, `903141abf82a0d6f456b94124df33ce958301719`.
+- Estado de validación al documentar: código y prueba de regresión añadidos; aún no se ha confirmado el resultado de los workflows de GitHub Actions ni una compilación Android exitosa. Descargar y probar el APK de debug cuando el workflow de compilación termine.
+- No se modifica `main` ni el catálogo protegido.
