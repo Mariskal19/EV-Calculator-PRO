@@ -2013,13 +2013,15 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - No repetir esta consulta salvo cambios en el motor de extracción/filtros, la tolerancia de precio o los datos relevantes del catálogo.
 - Documentado solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
 
-## 2026-10-27 — Regresión detectada: segunda búsqueda independiente devuelve cero resultados
+## 2026-10-27 — Revisión de la prueba de regresión: presupuesto demasiado bajo para validar el reinicio
 
-- Prueba manual de regresión en el APK instalado, tras la corrección de reinicio de criterios:
-  1. Consulta inicial: `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero`.
-  2. Resultado de la primera consulta: **0 coches**. Este resultado podría ser legítimo según los modelos disponibles en el catálogo que cumplan simultáneamente todos los criterios.
-  3. Sin pulsar «Nueva búsqueda», el usuario introduce `Búscame una berlina de hasta 35.000 €`.
-  4. Resultado de la segunda consulta: **0 coches**.
-- Interpretación: la segunda búsqueda no se comporta como una búsqueda independiente y la corrección de reinicio de criterios no ha quedado validada; podría persistir un estado/filtro anterior o existir otro fallo en la interpretación o filtrado. Aún no se atribuye la causa concreta.
-- Estado: **prueba manual fallida; investigar el flujo de nueva consulta y añadir/ajustar una prueba de regresión antes de pedir al usuario que vuelva a probar**.
-- No modificar `main` ni el catálogo protegido. Registrar los cambios solo en `feature/asesor-ia-fase-1`.
+- Prueba manual en el APK instalado:
+  1. Consulta inicial: `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` → **0 coches**.
+  2. Sin pulsar «Nueva búsqueda», consulta: `Búscame una berlina de hasta 35.000 €` → **0 coches**.
+- Revisión del catálogo protegido de `feature/asesor-ia-fase-1`: la berlina eléctrica más barata registrada con precio positivo es el Tesla Model 3 (36.990 €). Con la tolerancia actual del 5 %, «hasta 35.000 €» admite como máximo 36.750 €, así que el Model 3 también queda fuera. Por tanto, el segundo resultado de cero coches es coherente con el catálogo y **no demuestra que los filtros anteriores se hayan heredado**.
+- Conclusión: esta prueba es **inconclusa para validar el reinicio de criterios**, no evidencia suficiente de un fallo. No cambiar el código ni ampliar el límite de precio para forzar resultados.
+- Siguiente prueba de regresión válida, sin pulsar «Nueva búsqueda» entre consultas:
+  1. `Búscame una berlina de hasta 40.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero`.
+  2. `Búscame una berlina de hasta 40.000 €`.
+  La primera puede devolver cero resultados si no hay modelos que cumplan los tres filtros; la segunda debería devolver las berlinas elegibles según el catálogo y el techo efectivo de 42.000 €, independientemente de autonomía y maletero. Confirmar los resultados reales en el APK antes de declarar validada la corrección.
+- No modificar `main` ni el catálogo protegido. Registrar esta aclaración solo en `feature/asesor-ia-fase-1`.
