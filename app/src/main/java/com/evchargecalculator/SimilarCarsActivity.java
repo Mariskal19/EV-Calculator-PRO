@@ -508,7 +508,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     }
 
     private boolean isAdvisorFollowUpQuery(String query) {
-        String normalized = AdvisorCriteriaEngine.normalize(query).trim();
+        String normalized = java.text.Normalizer.normalize(query, java.text.Normalizer.Form.NFD)
+                .replaceAll("\\p{M}+", "").toLowerCase(Locale.ROOT).trim();
         String[] prefixes = {
                 "y ", "y ademas ", "tambien ", "tambien quiero ", "ademas ",
                 "anade ", "agrega ", "quita ", "elimina ", "sin ",
