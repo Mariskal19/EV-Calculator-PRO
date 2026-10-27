@@ -145,12 +145,16 @@ public final class AdvisorCriteriaEngine {
         Matcher excludedLength = Pattern.compile(
                 "(?:sin|no quiero|excluye|excluir|evita)\\s+(?:los?\\s+)?(?:coches?\\s+)?(?:de\\s+)?(?:mas\\s+de|superior\\s+a|mayor\\s+que)\\s*(\\d[\\d.,]*)\\s*(?:metros?|m\\b)")
                 .matcher(s);
-        if (excludedLength.find()) {
+        while (excludedLength.find()) {
             Double maxLength = parseNumber(excludedLength.group(1));
             if (maxLength == null || maxLength <= 0 || maxLength > 10) {
                 clarification = "clarify_length";
+                break;
             } else {
-                criteria.maxLengthM = maxLength;
+                // Multiple length constraints in one message are cumulative: keep
+                // the strictest ceiling, regardless of the order in which they appear.
+                criteria.maxLengthM = criteria.maxLengthM == null
+                        ? maxLength : Math.min(criteria.maxLengthM, maxLength);
                 changed = true;
             }
         }
