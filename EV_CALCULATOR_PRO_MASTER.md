@@ -1920,3 +1920,12 @@ Criterio de precio aproximado vigente: **±15 %** sobre el objetivo. Por tanto:
 
 Estado: **ambas pruebas manuales superadas según confirmación del usuario**. Es una validación en dispositivo, no una prueba automatizada nueva. No se modifica `main` ni el catálogo protegido; esta anotación se añade únicamente a `feature/asesor-ia-fase-1`.
 
+## 2026-10-27 — Prueba manual: búsqueda directa de un modelo
+
+- Consulta exacta en el APK: `Búscame el XPeng G6`.
+- Resultado observado por el usuario: **6 versiones del XPeng G6**.
+- Interpretación: la consulta directa devuelve el modelo solicitado y sus versiones disponibles, en lugar de desviar la petición a la búsqueda de coches similares.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+- No repetir esta prueba salvo que cambie el enrutamiento de consultas directas/similitud o el catálogo del XPeng G6.
+- La anotación se realiza únicamente en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
