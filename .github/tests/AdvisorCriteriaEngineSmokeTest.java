@@ -390,6 +390,22 @@ public final class AdvisorCriteriaEngineSmokeTest {
                         && combinedMatches.stream().noneMatch(m -> "peaq".equals(m.candidate.logicalKey)),
                 "combined query excludes 4.658 m Peaq under the final 4.5 m ceiling");
 
+        // Regression for a fresh search after an earlier restrictive query.
+        // The Activity must reset the engine before interpreting a new full request.
+        engine.reset();
+        r = engine.interpret("Búscame un SUV de hasta 45.000 €", AdvisorCriteriaEngine.Language.ES);
+        r = engine.interpret("Y además, sin coches de más de 4,5 metros", AdvisorCriteriaEngine.Language.ES);
+        check(r.criteria.maxLengthM != null && Math.abs(r.criteria.maxLengthM - 4.5d) < 0.001,
+                "setup prior restrictive query for new-search reset regression");
+        engine.reset(); // mirrors SimilarCarsActivity.runAdvisorSearch() for a complete new request
+        r = engine.interpret("Búscame un SUV de hasta 20.000 €", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.maxPrice != null
+                        && Math.abs(r.criteria.maxPrice - 20000d) < 0.01
+                        && "SUV".equals(r.criteria.bodyStyle),
+                "fresh SUV search parses its own body style and 20,000 euro ceiling");
+        check(r.criteria.maxLengthM == null,
+                "fresh SUV search does not inherit the previous 4.5 m length ceiling");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
