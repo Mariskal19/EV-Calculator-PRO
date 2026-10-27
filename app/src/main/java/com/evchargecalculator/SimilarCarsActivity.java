@@ -607,11 +607,11 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             byKey.put(key,vehicle);
         }
         List<AdvisorCatalogMatcher.Result> matches=AdvisorCatalogMatcher.search(candidates,criteria);
-        // For an approximate target ("SUV de 50 mil"), choose the 10 distinct models
-        // closest to the target first; otherwise the ascending list can be truncated to
-        // only the cheapest cars in the broad 70%-115% band. Then display that shortlist
-        // in ascending price order. Explicit ceilings ("hasta 50.000 €") remain cheapest-first.
-        if(criteria.minPrice==null&&criteria.maxPrice!=null&&!criteria.maxPriceIsCeiling){
+        // For both approximate price targets and explicit ceilings, choose the 10 distinct
+        // models closest to the requested amount before presenting the shortlist in ascending
+        // price order. For an explicit ceiling, the matcher has already applied the 5% tolerance,
+        // so no vehicle above that effective limit can enter this ranking.
+        if(criteria.minPrice==null&&criteria.maxPrice!=null){
             matches.sort((a,b)->{
                 Vehicle va=byKey.get(a.candidate.logicalKey);
                 Vehicle vb=byKey.get(b.candidate.logicalKey);
