@@ -2068,3 +2068,5 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - Registro únicamente en esta rama de trabajo. Sin cambios de código, `main` ni catálogo protegido.
 
 - Comprobación adicional de presupuesto de los 5 resultados finales: el usuario indica un rango de precios de **37.500–45.990 €**. Con el margen vigente del 5 % sobre el límite de 45.000 € (techo efectivo **47.250 €**), todos los precios comunicados están dentro del máximo admitido. Esto confirma el presupuesto para esos resultados; la autonomía estricta >500 km queda pendiente de comprobación individual, ya que el mínimo observado previamente era exactamente 500 km.
+
+- Verificación final de autonomía de los 5 resultados: el usuario confirma que **ninguno marca 500 km exactos**; por tanto, todos superan estrictamente los 500 km solicitados. Junto con la comprobación previa de que los cinco tienen al menos 600 litros de maletero y el rango de precios 37.500–45.990 € (por debajo del techo efectivo de 47.250 €), queda validada según los datos observados la acumulación de carrocería SUV, presupuesto, autonomía y maletero en esta prueba manual.
