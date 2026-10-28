@@ -100,7 +100,8 @@ public final class AdvisorCatalogMatcher {
                 || c.trunkLiters > q.targetTrunkLiters * 1.25)) return false;
         if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh, 1.03)) return false;
         if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw, 1.03)) return false;
-        if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption * 1.03)) return false;
+        // Explicit consumption ceilings are exact: "under 15 kWh/100 km" must not include 15.1.
+        if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption)) return false;
         // Exact upper bound: 4.72 m must fail a maximum of 4.7 m.
         if (q.maxLengthM != null && (c.lengthM <= 0 || (q.maxLengthExclusive ? c.lengthM >= q.maxLengthM : c.lengthM > q.maxLengthM))) return false;
         if (q.bodyStyle != null && !bodyMatches(q.bodyStyle, c.bodyStyle)) return false;
