@@ -2142,3 +2142,16 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: la lista respeta el mínimo de 500 km en esta prueba manual.
 - No repetir esta consulta salvo cambios en el intérprete, filtros, matcher, ranking o datos relevantes del catálogo.
 - Documentación únicamente en `feature/asesor-ia-fase-1`; sin cambios en `main` ni en el catálogo protegido.
+
+## 2026-10-28 — Corrección de búsqueda nueva por longitud máxima estricta
+
+- Incidencia comunicada por el usuario: `Búscame un SUV que mida menos de 4,5 metros` devolvía cero coches, aunque el catálogo contiene SUVs que deberían cumplir.
+- Causa detectada en el intérprete: se reconocían límites negativos en frases como `sin coches de más de 4,5 metros`, pero no un límite positivo de longitud en una búsqueda nueva formulada como `que mida menos de X metros`.
+- Cambios en `feature/asesor-ia-fase-1`:
+  - `AdvisorCriteriaEngine` reconoce expresiones de longitud como `mida menos de`, `mide menos de`, `inferior a` y `por debajo de`, cuando incluyen una longitud en metros.
+  - Se añade `maxLengthExclusive` para distinguir un límite estricto (`< 4,5 m`) de la exclusión inclusiva existente (`sin coches de más de 4,5 m`, que permite 4,50 m).
+  - `AdvisorCatalogMatcher` aplica el límite estricto excluyendo los vehículos de longitud desconocida y los de 4,50 m o más.
+  - Se añade prueba de regresión con un SUV de 4,49 m, otro de 4,50 m, un Škoda Peaq de 4,658 m y longitud desconocida. Solo el de 4,49 m debe pasar.
+- Commits de código/prueba: `135c64aeca0e2cc1ff52702b4e86067db3a48429`, `c4c911ed6d1277af315328641f4fd745087036a6`, `0c3f1b7a8cb22ddde852745033e8f542a8596492`, `9b597771dd36bb2d3aa3caa5dbc6b1a4317be6b8`.
+- Pendiente: confirmar CI (prueba smoke y compilación Android), y probar el APK resultante en el dispositivo.
+- Sin cambios en `main` ni en el catálogo protegido.
