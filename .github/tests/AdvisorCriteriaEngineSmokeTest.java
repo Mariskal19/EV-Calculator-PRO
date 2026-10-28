@@ -62,6 +62,13 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(!r.needsClarification() && r.criteria.maxConsumption != null
                         && Math.abs(r.criteria.maxConsumption - 20d) < 0.01,
                 "parses a unitless consumption ceiling");
+
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con batería de 80 y consumo menor de 20", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.minBatteryKwh != null && Math.abs(r.criteria.minBatteryKwh - 80d) < 0.01
+                        && r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 20d) < 0.01,
+                "keeps unitless battery and consumption numbers attached to their own criteria");
         check(r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 20d) < 0.01,
                 "parses the explicit kWh/100 km consumption ceiling for an SUV");
 
