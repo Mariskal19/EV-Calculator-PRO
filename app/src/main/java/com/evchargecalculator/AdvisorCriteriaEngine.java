@@ -414,7 +414,7 @@ public final class AdvisorCriteriaEngine {
                 break;
             default:
                 terms = lower ? new String[]{"al menos","más de","mas de","por encima de","mínimo","minimo","desde"}
-                        : new String[]{"hasta","como mucho","máximo","maximo","menos de","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es"};
+                        : new String[]{"hasta","como mucho","máximo","maximo","menos de","menor de","menor que","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es"};
         }
         int latest=-1;
         for (String term : terms) latest=Math.max(latest,prefix.lastIndexOf(normalize(term)));
