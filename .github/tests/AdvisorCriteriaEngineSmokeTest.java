@@ -7,6 +7,15 @@ public final class AdvisorCriteriaEngineSmokeTest {
     public static void main(String[] args) {
         AdvisorCriteriaEngine engine = new AdvisorCriteriaEngine();
 
+        check(!AdvisorQueryClassifier.isFollowUp("Búscame un SUV de hasta 20.000 €"),
+                "a complete new request resets previous criteria even when it contains 'hasta'");
+        check(AdvisorQueryClassifier.isFollowUp("Y además, sin coches de más de 4,5 metros"),
+                "an explicit conversational addition is classified as a follow-up");
+        check(AdvisorQueryClassifier.isFollowUp("hasta 20.000 €"),
+                "a short standalone limit is classified as a follow-up");
+        check(!AdvisorQueryClassifier.isFollowUp("SUV hasta 20.000 €"),
+                "a body-style query with a price ceiling is a fresh search");
+
         AdvisorCriteriaEngine.ParseResult r = engine.interpret(
                 "Busco un SUV hasta 35.000 €", AdvisorCriteriaEngine.Language.ES);
         check("SUV".equals(r.criteria.bodyStyle), "recognizes SUV body style");
