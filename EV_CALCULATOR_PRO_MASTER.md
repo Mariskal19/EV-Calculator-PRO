@@ -2133,3 +2133,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - No volver a pedir al usuario que repita estas cinco consultas mientras no haya cambios que puedan afectar a su comportamiento. Si una modificación futura afecta solo a una de estas capacidades, repetir únicamente la prueba relevante.
 - Los resultados de estas pruebas son validación manual comunicada por el usuario en su dispositivo; no deben describirse como una prueba automatizada exhaustiva de todas las variantes lingüísticas.
 - Documentación añadida únicamente a `feature/asesor-ia-fase-1`. No modificar `main` ni el catálogo protegido.
+
+## 2026-10-28 — Validación de autonomía mínima en lenguaje natural
+
+- Consulta exacta probada en el APK por el usuario: `Búscame un coche con al menos 500 km de autonomía`.
+- Resultado observado: **10 coches**.
+- El usuario comprobó la autonomía más baja de la lista: **501 km**.
+- Conclusión: la lista respeta el mínimo de 500 km en esta prueba manual.
+- No repetir esta consulta salvo cambios en el intérprete, filtros, matcher, ranking o datos relevantes del catálogo.
+- Documentación únicamente en `feature/asesor-ia-fase-1`; sin cambios en `main` ni en el catálogo protegido.
