@@ -164,7 +164,7 @@ public final class AdvisorCriteriaEngine {
         // Positive length ceilings in fresh searches, e.g. "un SUV que mida menos de 4,5 metros".
         // Unlike "sin coches de más de 4,5 metros", "menos de" is strict: 4.50 m itself is excluded.
         Matcher positiveLength = Pattern.compile(
-                "(?:mida|mide|midan|miden|medir|longitud\\\\s+(?:inferior|menor)|largo)\\\\s+(?:menos\\\\s+de|inferior\\\\s+a|por\\\\s+debajo\\\\s+de)\\\\s*(\\\\d[\\\\d.,]*)\\\\s*(?:metros?|m\\\\b)")
+                "(?:mida|mide|midan|miden|medir|longitud\\s+(?:inferior|menor)|largo)\\s+(?:menos\\s+de|inferior\\s+a|por\\s+debajo\\s+de)\\s*(\\d[\\d.,]*)\\s*(?:metros?|m\\b)")
                 .matcher(s);
         while (positiveLength.find()) {
             Double maxLength = parseNumber(positiveLength.group(1));
