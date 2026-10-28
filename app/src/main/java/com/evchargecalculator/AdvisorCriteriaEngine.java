@@ -257,7 +257,9 @@ public final class AdvisorCriteriaEngine {
             boolean describesConsumption = has(s,
                     "consuma", "consumo", "consumir", "consume", "consumiendo",
                     "gaste", "gastar", "gasta", "eficiencia", "consumption");
+            boolean describesBattery = has(s, "bateria", "battery", "batterie", "batteria");
             boolean consumptionContext = field == Field.CONSUMPTION && describesConsumption;
+            boolean batteryContext = field == Field.BATTERY && describesBattery;
             // Do not interpret a bare number as a price just because "menos de" or
             // another bound operator appears in a consumption-only query.
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang)
@@ -267,7 +269,7 @@ public final class AdvisorCriteriaEngine {
             // Spanish users often omit the unit when they clearly describe consumption:
             // "que consuma menos de 20". Treat that number as kWh/100 km, while still
             // requiring an explicit consumption-related word to avoid guessing bare numbers.
-            if (!priceContext && !trunkContext && !consumptionContext) return null;
+            if (!priceContext && !trunkContext && !consumptionContext && !batteryContext) return null;
             // In-context numbers may omit units: "presupuesto hasta 35000", "450 de maletero",
             // or "que consuma menos de 20".
             Matcher generic = NUMBER.matcher(s);
