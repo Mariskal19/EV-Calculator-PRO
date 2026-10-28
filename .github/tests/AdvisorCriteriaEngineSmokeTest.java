@@ -52,6 +52,8 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses 'consumo inferior a 18 kWh/100 km' as a strict consumption ceiling");
         check(r.criteria.maxBatteryKwh == null,
                 "does not interpret the consumption unit as a battery filter");
+        check(r.criteria.maxPowerKw == null,
+                "does not interpret the kW prefix in kWh/100 km as a motor-power limit");
         check(r.criteria.minRangeKm == null && r.criteria.maxRangeKm == null,
                 "does not mistake the 100 km denominator in kWh/100 km for a vehicle-range filter");
 
