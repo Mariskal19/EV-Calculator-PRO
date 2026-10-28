@@ -29,6 +29,8 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses a consumption ceiling when the unit is omitted but consumption is explicit");
         check(r.criteria.bodyStyle == null,
                 "generic car consumption query does not add an unintended body-style filter");
+        check(r.criteria.maxPrice == null,
+                "consumption-only query does not misread its consumption limit as a price ceiling");
 
         engine.reset();
         r = engine.interpret("Búscame un SUV que consuma menos de 20 kWh/100 km", AdvisorCriteriaEngine.Language.ES);
