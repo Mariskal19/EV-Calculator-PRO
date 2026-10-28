@@ -441,7 +441,7 @@ public final class AdvisorCriteriaEngine {
                 break;
             default:
                 terms = lower ? new String[]{"al menos","más de","mas de","por encima de","mínimo","minimo","desde"}
-                        : new String[]{"hasta","como mucho","máximo","maximo","menos de","menor de","menor que","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es"};
+                        : new String[]{"hasta","como mucho","máximo","maximo","menos de","menor de","menor que","inferior a","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es"};
         }
         int latest=-1;
         for (String term : terms) latest=Math.max(latest,prefix.lastIndexOf(normalize(term)));
@@ -467,7 +467,7 @@ public final class AdvisorCriteriaEngine {
             case "de": return has(prefix,"bis zu","höchstens","maximal","weniger als","unter");
             case "it": return has(prefix,"fino a","al massimo","massimo","meno di","non oltre");
             case "pt": return has(prefix,"ate","até","no maximo","máximo","menos de","no mais de");
-            default: return has(prefix,"hasta","como mucho","máximo","maximo","menos de","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es");
+            default: return has(prefix,"hasta","como mucho","máximo","maximo","menos de","inferior a","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es");
         }
     }
 
