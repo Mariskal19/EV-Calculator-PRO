@@ -313,6 +313,9 @@ public final class AdvisorCriteriaEngine {
         boolean lower = lowerAt >= 0 && lowerAt > upperAt;
         boolean upper = upperAt >= 0 && upperAt > lowerAt;
         if (!lower && !upper) {
+            if (field == Field.BATTERY && has(s, "bateria", "battery", "batterie", "batteria")) {
+                return new NumberMatch(value, true, false);
+            }
             if (field == Field.TRUNK && containsTrunkTerm(s, lang)) return new NumberMatch(value, false, false, true);
             // Approximate price expressions ("unos 40.000 euros", "alrededor de 40.000 €")
             // are target budgets: rank vehicles around that price instead of treating the
