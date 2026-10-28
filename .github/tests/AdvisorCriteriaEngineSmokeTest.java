@@ -232,7 +232,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(matches.stream().noneMatch(m -> "e".equals(m.candidate.logicalKey)),
                 "maximum budget excludes vehicles far below the intended price area");
 
-        // Explicit price ceilings allow +5%; approximate price targets use ±15%; range/trunk/battery/power maxima allow +3%, consumption ceilings are exact.
+        // Explicit price ceilings are strict; approximate price targets use ±15%; range/trunk/battery/power maxima allow +3%, consumption ceilings are exact.
         java.util.List<AdvisorCatalogMatcher.Candidate> toleranceCatalog = new java.util.ArrayList<>();
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("priceLow", "Marca", "Precio bajo", "suv", "RWD", 20000, 450, 450, 80, 200, 20));
@@ -256,18 +256,19 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters.maxPrice = 30000d;
         filters.maxPriceIsCeiling = true;
         matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
-        check(matches.stream().anyMatch(m -> "price31".equals(m.candidate.logicalKey))
-                        && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey)),
-                "price maximum permits up to 5% over the requested amount");
+        check(matches.stream().noneMatch(m -> "price31".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey))
+                        && matches.stream().anyMatch(m -> "base".equals(m.candidate.logicalKey)),
+                "explicit price maximum excludes every vehicle above the requested amount");
 
         engine.reset();
         r = engine.interpret("Busco un SUV hasta 30.000 €", AdvisorCriteriaEngine.Language.ES);
         check(r.criteria.maxPriceIsCeiling, "explicit 'hasta' price operator is treated as a ceiling");
         matches = AdvisorCatalogMatcher.search(toleranceCatalog, r.criteria);
         check(matches.stream().anyMatch(m -> "priceLow".equals(m.candidate.logicalKey))
-                        && matches.stream().anyMatch(m -> "price31".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "price31".equals(m.candidate.logicalKey))
                         && matches.stream().noneMatch(m -> "price32".equals(m.candidate.logicalKey)),
-                "explicit price ceiling accepts cheaper cars and allows up to 5% over budget");
+                "explicit price ceiling accepts cheaper cars but excludes every car above budget");
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.maxRangeKm = 450d;
