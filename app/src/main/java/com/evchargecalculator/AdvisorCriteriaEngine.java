@@ -110,7 +110,7 @@ public final class AdvisorCriteriaEngine {
     private static final Pattern TRUNK_UNIT = Pattern.compile("(?:litros?|liters?|litres?|l)");
     private static final Pattern BATTERY_UNIT = Pattern.compile("(?:kwh|kw\\s*h)");
     private static final Pattern POWER_UNIT = Pattern.compile("(?:kw|kilowatts?)");
-    private static final Pattern CONSUMPTION_UNIT = Pattern.compile("(?:kwh\\s*/\\s*100\\s*km|kwh\\s*/\\s*100km)");
+    private static final Pattern CONSUMPTION_UNIT = Pattern.compile("kwh\\s*/\\s*100(?:\\s*km)?(?![a-z])");
 
     private Criteria criteria = new Criteria();
 
@@ -267,7 +267,7 @@ public final class AdvisorCriteriaEngine {
             case TRUNK: unitPattern="(?:litros?|liters?|litres?|l)"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)(?!\\s*/\\s*100\\s*km)"; break;
             case POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
-            case CONSUMPTION: unitPattern="(?:kwh\\s*/\\s*100\\s*km|kwh\\s*/\\s*100km)"; break;
+            case CONSUMPTION: unitPattern="kwh\\s*/\\s*100(?:\\s*km)?(?![a-z])"; break;
             default: return null;
         }
 
