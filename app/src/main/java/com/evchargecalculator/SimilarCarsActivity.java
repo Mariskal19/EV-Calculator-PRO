@@ -519,10 +519,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             advisorStatus.setText(LanguageManager.t(this,"Añade un criterio para iniciar la búsqueda."));
             return;
         }
-        // A complete new search must not inherit filters from the previous search.
-        // Keep criteria only for short, explicit follow-ups such as "más de 400 km"
-        // or "al menos 450 litros".
-        if (!AdvisorQueryClassifier.isFollowUp(query)) advisorEngine.reset();
+        // Cada ejecución es independiente: interpretar únicamente el texto actual,
+        // sin heredar filtros ni criterios de búsquedas anteriores.
+        advisorEngine.reset();
 
         String language=LanguageManager.getEffectiveLanguage(this);
         AdvisorCriteriaEngine.Language selectedLanguage;
