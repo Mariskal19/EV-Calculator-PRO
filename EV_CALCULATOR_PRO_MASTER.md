@@ -2155,3 +2155,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Commits de código/prueba: `135c64aeca0e2cc1ff52702b4e86067db3a48429`, `c4c911ed6d1277af315328641f4fd745087036a6`, `0c3f1b7a8cb22ddde852745033e8f542a8596492`, `9b597771dd36bb2d3aa3caa5dbc6b1a4317be6b8`.
 - Pendiente: confirmar CI (prueba smoke y compilación Android), y probar el APK resultante en el dispositivo.
 - Sin cambios en `main` ni en el catálogo protegido.
+
+
+## 2026-10-28 — Corrección del límite máximo explícito de precio
+
+- Incidencia reproducida manualmente en el APK: la consulta `Búscame una berlina que cueste menos de 36.000 euros` devolvía el Tesla Model 3 con precio de **36.990 €**, 990 € por encima del límite.
+- Causa: `AdvisorCatalogMatcher.withinPrice()` aplicaba una tolerancia de +5 % a los máximos explícitos de precio (el techo efectivo era 37.800 € para un máximo de 36.000 €).
+- Corrección aplicada únicamente en `feature/asesor-ia-fase-1`: los límites explícitos de precio (`menos de`, `hasta`, `máximo`, etc.) ya no permiten superar la cantidad indicada. Los objetivos aproximados (`unos 35.000 €`) conservan su banda de ±15 %. Los márgenes de otros filtros no cambian.
+- Pruebas de regresión actualizadas en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: el máximo de 30.000 € debe conservar el coche de 30.000 € o menos y excluir vehículos a 31.000 € y 32.000 €; el objetivo aproximado sigue utilizando su banda independiente.
+- Pendiente: confirmar el resultado de los workflows de smoke tests y compilación Android, y descargar el APK debug para probar de nuevo en el teléfono.
+- No se modifica `main` ni el catálogo protegido.
