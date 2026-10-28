@@ -277,12 +277,14 @@ public final class AdvisorCriteriaEngine {
                     "consuma", "consumo", "consumir", "consume", "consumiendo",
                     "gaste", "gastar", "gasta", "eficiencia", "consumption");
             boolean describesBattery = has(s, "bateria", "battery", "batterie", "batteria");
+            boolean describesLength = has(s, "metros", "metro", "mida", "mide", "midan", "miden",
+                    "medir", "longitud", "largo", "long");
             boolean consumptionContext = field == Field.CONSUMPTION && describesConsumption;
             boolean batteryContext = field == Field.BATTERY && describesBattery;
-            // Do not interpret a bare number as a price just because "menos de" or
-            // another bound operator appears in a consumption-only query.
+            // Do not reinterpret a length value as a price merely because "menos de"
+            // is also a valid budget operator in other contexts.
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang)
-                    || (hasPriceBoundOperator(s, lang) && !describesConsumption)
+                    || (hasPriceBoundOperator(s, lang) && !describesConsumption && !describesLength)
                     || hasApproximatePriceTarget(s, lang) || hasImplicitBodyPriceTarget(s));
             boolean trunkContext = field == Field.TRUNK && containsTrunkTerm(s, lang);
             // Spanish users often omit the unit when they clearly describe consumption:
