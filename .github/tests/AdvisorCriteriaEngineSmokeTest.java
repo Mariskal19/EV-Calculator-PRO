@@ -22,6 +22,21 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 35000d) < 0.01,
                 "parses Spanish price ceiling");
 
+        engine.reset();
+        r = engine.interpret("Búscame un coche que consuma menos de 20", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.maxConsumption != null
+                        && Math.abs(r.criteria.maxConsumption - 20d) < 0.01,
+                "parses a consumption ceiling when the unit is omitted but consumption is explicit");
+        check(r.criteria.bodyStyle == null,
+                "generic car consumption query does not add an unintended body-style filter");
+
+        engine.reset();
+        r = engine.interpret("Búscame un SUV que consuma menos de 20 kWh/100 km", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle),
+                "parses SUV body style alongside an explicit consumption limit");
+        check(r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 20d) < 0.01,
+                "parses the explicit kWh/100 km consumption ceiling for an SUV");
+
         r = engine.interpret("al menos 450 litros", AdvisorCriteriaEngine.Language.ES);
         check(r.criteria.minTrunkLiters != null && Math.abs(r.criteria.minTrunkLiters - 450d) < 0.01,
                 "parses minimum trunk volume");
