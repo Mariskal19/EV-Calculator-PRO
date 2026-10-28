@@ -276,7 +276,14 @@ public final class AdvisorCriteriaEngine {
             if (consumptionContext) {
                 generic = Pattern.compile("(?:consuma|consumo|consumir|consume|consumiendo|gaste|gastar|gasta|eficiencia|consumption)[^0-9]{0,50}(\\d[\\d\\s.,]*)").matcher(s);
             } else if (batteryContext) {
+                // Accept both natural Spanish orders: "batería de 80" and "80 de batería".
                 generic = Pattern.compile("(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\d[\\d\\s.,]*)").matcher(s);
+                if (!generic.find()) {
+                    generic = Pattern.compile("(\\d[\\d\\s.,]*)\\s+(?:de\\s+)?(?:bateria|battery|batterie|batteria)").matcher(s);
+                } else {
+                    // The common "batería de 80" order has already matched.
+                    generic.reset();
+                }
             } else {
                 generic = NUMBER.matcher(s);
             }
