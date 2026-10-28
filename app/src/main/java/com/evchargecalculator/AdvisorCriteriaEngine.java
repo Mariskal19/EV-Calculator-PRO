@@ -40,6 +40,8 @@ public final class AdvisorCriteriaEngine {
         public Double maxConsumption;
         /** Maximum vehicle length in metres; used by negative length constraints. */
         public Double maxLengthM;
+        /** True when the length ceiling is strict (<), rather than inclusive (<=). */
+        public boolean maxLengthExclusive;
         public String bodyStyle;
         public String drivetrain;
         public String makeModel;
@@ -54,7 +56,7 @@ public final class AdvisorCriteriaEngine {
             c.minTrunkLiters=minTrunkLiters; c.maxTrunkLiters=maxTrunkLiters; c.targetTrunkLiters=targetTrunkLiters;
             c.minBatteryKwh=minBatteryKwh; c.maxBatteryKwh=maxBatteryKwh;
             c.minPowerKw=minPowerKw; c.maxPowerKw=maxPowerKw;
-            c.maxConsumption=maxConsumption; c.maxLengthM=maxLengthM;
+            c.maxConsumption=maxConsumption; c.maxLengthM=maxLengthM; c.maxLengthExclusive=maxLengthExclusive;
             c.bodyStyle=bodyStyle; c.drivetrain=drivetrain; c.makeModel=makeModel;
             c.preferLowConsumption=preferLowConsumption;
             c.preferHighRange=preferHighRange; c.preferLargeTrunk=preferLargeTrunk;
@@ -69,7 +71,7 @@ public final class AdvisorCriteriaEngine {
                 case BATTERY: minBatteryKwh=null; maxBatteryKwh=null; break;
                 case POWER: minPowerKw=null; maxPowerKw=null; break;
                 case CONSUMPTION: maxConsumption=null; preferLowConsumption=false; break;
-                case LENGTH: maxLengthM=null; break;
+                case LENGTH: maxLengthM=null; maxLengthExclusive=false; break;
                 case BODY: bodyStyle=null; break;
                 case DRIVETRAIN: drivetrain=null; break;
                 case MAKE_MODEL: makeModel=null; break;
@@ -157,6 +159,23 @@ public final class AdvisorCriteriaEngine {
                         ? maxLength : Math.min(criteria.maxLengthM, maxLength);
                 changed = true;
             }
+        }
+
+        // Positive length ceilings in fresh searches, e.g. "un SUV que mida menos de 4,5 metros".
+        // Unlike "sin coches de más de 4,5 metros", "menos de" is strict: 4.50 m itself is excluded.
+        Matcher positiveLength = Pattern.compile(
+                "(?:mida|mide|midan|miden|medir|longitud\\\\s+(?:inferior|menor)|largo)\\\\s+(?:menos\\\\s+de|inferior\\\\s+a|por\\\\s+debajo\\\\s+de)\\\\s*(\\\\d[\\\\d.,]*)\\\\s*(?:metros?|m\\\\b)")
+                .matcher(s);
+        while (positiveLength.find()) {
+            Double maxLength = parseNumber(positiveLength.group(1));
+            if (maxLength == null || maxLength <= 0 || maxLength > 10) {
+                clarification = "clarify_length";
+                break;
+            }
+            criteria.maxLengthM = criteria.maxLengthM == null
+                    ? maxLength : Math.min(criteria.maxLengthM, maxLength);
+            criteria.maxLengthExclusive = true;
+            changed = true;
         }
 
         NumberMatch price = findNumeric(s, lang, Field.PRICE);
