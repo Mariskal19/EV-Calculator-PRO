@@ -2114,3 +2114,22 @@ No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de pr
 - El catálogo de la rama registra `lengthMm = 4658` para Škoda Peaq 60 (4,658 m), coherente con el valor mostrado. Un límite máximo de 4,5 m debe excluirlo.
 - La prueba manual **falla**. Se añadió una regresión automática al smoke test para reproducir el seguimiento acumulativo con un candidato Škoda Peaq de 4,658 m y confirmar que se excluye, mientras se conservan vehículos de 4,50 m y 4,40 m.
 - Pendiente: revisar resultado de CI y determinar por qué el APK instalado permitió que Peaq apareciera. No se modifica `main` ni el catálogo protegido.
+
+## 2026-10-28 — Validación manual de consultas naturales del Asesor IA
+
+Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1`. Registrar como completadas para no repetirlas en futuras sesiones, salvo que cambie el intérprete, el matcher/filtros, el ranking o los datos relevantes del catálogo.
+
+| Consulta exacta | Resultado observado | Comprobación del usuario | Estado |
+|---|---:|---|---|
+| `Búscame un coche de 80 de batería` | 10 coches | Se comprobó la condición de batería en los resultados; el usuario confirmó que la lista era correcta. | Aprobada |
+| `Búscame un coche que consuma menos de 20` | 10 coches | Consumo máximo observado: **14,1 kWh/100 km**; todos cumplen el límite inferior a 20. | Aprobada |
+| `Búscame un SUV con batería de 80 y consumo menor de 20` | 10 coches | El usuario confirmó que todos cumplen los tres criterios: SUV, batería de al menos 80 kWh y consumo inferior a 20 kWh/100 km. | Aprobada |
+| `Búscame una berlina de 62800` | 10 coches | Todos son berlinas; precios entre **54.409 € y 71.250 €**, dentro del margen del 15 % acordado (**53.380–72.220 €**). | Aprobada |
+| `Búscame un coche que gaste menos de 18` | 10 coches | El usuario confirmó que todos los resultados son correctos para la consulta; queda registrada como interpretación válida de «gaste» como consumo. | Aprobada |
+
+### Conclusión y control de repetición
+
+- La prueba manual confirma que el Asesor IA interpreta correctamente estas expresiones de batería, consumo («consuma» y «gaste»), combinación de filtros y carrocería/precio en los escenarios probados.
+- No volver a pedir al usuario que repita estas cinco consultas mientras no haya cambios que puedan afectar a su comportamiento. Si una modificación futura afecta solo a una de estas capacidades, repetir únicamente la prueba relevante.
+- Los resultados de estas pruebas son validación manual comunicada por el usuario en su dispositivo; no deben describirse como una prueba automatizada exhaustiva de todas las variantes lingüísticas.
+- Documentación añadida únicamente a `feature/asesor-ia-fase-1`. No modificar `main` ni el catálogo protegido.
