@@ -257,8 +257,15 @@ public final class AdvisorCriteriaEngine {
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang) || hasPriceBoundOperator(s, lang)
                     || hasApproximatePriceTarget(s, lang) || hasImplicitBodyPriceTarget(s));
             boolean trunkContext = field == Field.TRUNK && containsTrunkTerm(s, lang);
-            if (!priceContext && !trunkContext) return null;
-            // In-context numbers may omit units: "presupuesto hasta 35000" or "450 de maletero".
+            // Spanish users often omit the unit when they clearly describe consumption:
+            // "que consuma menos de 20". Treat that number as kWh/100 km, while still
+            // requiring an explicit consumption-related word to avoid guessing bare numbers.
+            boolean consumptionContext = field == Field.CONSUMPTION && has(s,
+                    "consuma", "consumo", "consumir", "consume", "consumiendo",
+                    "gaste", "gastar", "gasta", "eficiencia", "consumption");
+            if (!priceContext && !trunkContext && !consumptionContext) return null;
+            // In-context numbers may omit units: "presupuesto hasta 35000", "450 de maletero",
+            // or "que consuma menos de 20".
             Matcher generic = NUMBER.matcher(s);
             if (!generic.find()) return new NumberMatch(0, false, true);
             String tail = s.substring(generic.end()).trim();
