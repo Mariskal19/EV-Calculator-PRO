@@ -214,7 +214,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(matches.stream().noneMatch(m -> "e".equals(m.candidate.logicalKey)),
                 "maximum budget excludes vehicles far below the intended price area");
 
-        // Explicit price ceilings allow +5%; approximate price targets use ±15%; other maxima +3%.
+        // Explicit price ceilings allow +5%; approximate price targets use ±15%; range/trunk/battery/power maxima allow +3%, consumption ceilings are exact.
         java.util.List<AdvisorCatalogMatcher.Candidate> toleranceCatalog = new java.util.ArrayList<>();
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("base", "Marca", "Base", "suv", "RWD", 30000, 450, 450, 80, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("priceLow", "Marca", "Precio bajo", "suv", "RWD", 20000, 450, 450, 80, 200, 20));
@@ -229,6 +229,8 @@ public final class AdvisorCriteriaEngineSmokeTest {
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("battery83", "Marca", "Bateria 83", "suv", "RWD", 30000, 450, 450, 83, 200, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("power206", "Marca", "Potencia 206", "suv", "RWD", 30000, 450, 450, 80, 206, 20));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("power207", "Marca", "Potencia 207", "suv", "RWD", 30000, 450, 450, 80, 207, 20));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("consumption15", "Marca", "Consumo 15", "suv", "RWD", 30000, 450, 450, 80, 200, 15.0));
+        toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("consumption15_1", "Škoda", "Enyaq 15.1", "suv", "RWD", 30000, 450, 450, 80, 200, 15.1));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("consumption20_5", "Marca", "Consumo 20.5", "suv", "RWD", 30000, 450, 450, 80, 200, 20.5));
         toleranceCatalog.add(new AdvisorCatalogMatcher.Candidate("consumption21", "Marca", "Consumo 21", "suv", "RWD", 30000, 450, 450, 80, 200, 21));
 
@@ -280,9 +282,16 @@ public final class AdvisorCriteriaEngineSmokeTest {
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.maxConsumption = 20d;
         matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
-        check(matches.stream().anyMatch(m -> "consumption20_5".equals(m.candidate.logicalKey))
+        check(matches.stream().noneMatch(m -> "consumption20_5".equals(m.candidate.logicalKey))
                         && matches.stream().noneMatch(m -> "consumption21".equals(m.candidate.logicalKey)),
-                "consumption maximum permits 3% tolerance, not 4%");
+                "consumption ceiling excludes all values above the exact requested limit");
+
+        filters = new AdvisorCriteriaEngine.Criteria();
+        filters.maxConsumption = 15d;
+        matches = AdvisorCatalogMatcher.search(toleranceCatalog, filters);
+        check(matches.stream().anyMatch(m -> "consumption15".equals(m.candidate.logicalKey))
+                        && matches.stream().noneMatch(m -> "consumption15_1".equals(m.candidate.logicalKey)),
+                "a 15 kWh/100 km ceiling excludes the Škoda Enyaq at 15.1");
 
         filters = new AdvisorCriteriaEngine.Criteria();
         filters.minRangeKm = 450d;
