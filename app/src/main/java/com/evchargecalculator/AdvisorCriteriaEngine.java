@@ -267,12 +267,20 @@ public final class AdvisorCriteriaEngine {
             case TRUNK: unitPattern="(?:litros?|liters?|litres?|l)"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)(?!\\s*/\\s*100(?:\\s*km)?\\b)"; break;
             case POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
-            case CONSUMPTION: unitPattern="kwh\\s*/\\s*100(?:\\s*km)?(?![a-z])"; break;
+            case CONSUMPTION: unitPattern="kwh(?:\\s*/\\s*100(?:\\s*km)?(?![a-z]))?"; break;
             default: return null;
         }
 
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
         boolean unitFound = unit.find();
+        boolean describesConsumption = has(s,
+                "consuma", "consumo", "consumir", "consume", "consumiendo",
+                "gaste", "gastar", "gasta", "eficiencia", "consumption");
+        boolean describesBattery = has(s, "bateria", "battery", "batterie", "batteria");
+        // A bare "kWh" can mean consumption only when the query explicitly describes consumption.
+        if (field == Field.CONSUMPTION && unitFound && !describesConsumption) unitFound = false;
+        // Do not interpret "15 kWh" in a consumption query as a battery capacity.
+        if (field == Field.BATTERY && unitFound && describesConsumption && !describesBattery) unitFound = false;
         // The denominator in "18 kWh/100 km" is not a vehicle-range criterion.
         // Skip that km match so it cannot accidentally create a 100 km range ceiling.
         if (field == Field.RANGE) {
@@ -283,10 +291,6 @@ public final class AdvisorCriteriaEngine {
             }
         }
         if (!unitFound) {
-            boolean describesConsumption = has(s,
-                    "consuma", "consumo", "consumir", "consume", "consumiendo",
-                    "gaste", "gastar", "gasta", "eficiencia", "consumption");
-            boolean describesBattery = has(s, "bateria", "battery", "batterie", "batteria");
             boolean describesLength = has(s, "metros", "metro", "mida", "mide", "midan", "miden",
                     "medir", "longitud", "largo", "long");
             boolean consumptionContext = field == Field.CONSUMPTION && describesConsumption;
