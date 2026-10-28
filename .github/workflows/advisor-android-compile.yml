@@ -9,6 +9,7 @@ on:
       - 'app/src/main/java/com/evchargecalculator/LanguageManager.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
+      - '.github/tests/AdvisorCatalogIntegrationSmokeTest.java'
       - '.github/workflows/advisor-android-compile.yml'
   workflow_dispatch:
 
