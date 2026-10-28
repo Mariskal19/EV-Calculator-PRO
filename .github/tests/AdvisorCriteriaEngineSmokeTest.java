@@ -58,6 +58,15 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "does not mistake the 100 km denominator in kWh/100 km for a vehicle-range filter");
 
         engine.reset();
+        r = engine.interpret("Búscame un SUV con consumo inferior a 15 kWh/100", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 15d) < 0.01,
+                "parses a shortened kWh/100 consumption unit without requiring the trailing km");
+        check(r.criteria.maxBatteryKwh == null && r.criteria.maxPowerKw == null
+                        && r.criteria.minRangeKm == null && r.criteria.maxRangeKm == null,
+                "shortened kWh/100 unit does not create battery, power, or range filters");
+
+        engine.reset();
         r = engine.interpret("Búscame un coche con batería de 80", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && r.criteria.minBatteryKwh != null
                         && Math.abs(r.criteria.minBatteryKwh - 80d) < 0.01,
