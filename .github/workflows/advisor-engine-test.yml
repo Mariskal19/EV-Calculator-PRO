@@ -4,7 +4,8 @@ on:
   push:
     branches: [ "feature/asesor-ia-fase-1" ]
     paths:
-      - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'\n      - 'app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
