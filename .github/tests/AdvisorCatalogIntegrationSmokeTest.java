@@ -67,7 +67,9 @@ public final class AdvisorCatalogIntegrationSmokeTest {
                     "visible sedan results are deduplicated and ordered by proximity to 40,000 euros at position " + (i + 1));
         }
 
-        // Exercise the app's multi-criterion example against the full protected catalog.
+        // Explicit "hasta 35.000 €" is a strict ceiling (not the old +5% tolerance).
+        // The catalog currently has multiple KGM Torres EVX trims under that ceiling,
+        // but the next previously expected model is over budget and must be excluded.
         AdvisorCriteriaEngine.ParseResult suvQuery = new AdvisorCriteriaEngine().interpret(
                 "SUV hasta 35.000 €, más de 450 km y maletero de al menos 450 litros",
                 AdvisorCriteriaEngine.Language.ES);
@@ -79,8 +81,8 @@ public final class AdvisorCatalogIntegrationSmokeTest {
             AdvisorCatalogMatcher.Candidate c = match.candidate;
             check("suv".equalsIgnoreCase(c.bodyStyle) || "crossover".equalsIgnoreCase(c.bodyStyle),
                     "combined query never mixes sedans into SUV results");
-            check(c.price > 0 && c.price <= 36750,
-                    "combined query respects explicit 35,000 euro ceiling with the documented 5% tolerance");
+            check(c.price > 0 && c.price <= 35000,
+                    "combined query respects the strict explicit 35,000 euro ceiling");
             check(c.rangeKm >= 450, "combined query enforces the 450 km minimum");
             check(c.trunkLiters >= 450, "combined query enforces the 450 litre minimum");
         }
@@ -92,12 +94,10 @@ public final class AdvisorCatalogIntegrationSmokeTest {
                     .replaceAll("\\s+", " ");
             if (visibleSuvModelKeys.add(key)) visibleSuvs.add(match);
         }
-        check(visibleSuvs.size() == 2,
-                "combined SUV query displays two unique models after removing repeated KGM Torres EVX versions");
+        check(visibleSuvs.size() == 1,
+                "strict 35,000 euro ceiling leaves one unique SUV model after de-duplicating KGM Torres EVX versions");
         check("KGM Torres EVX".equals(visibleSuvs.get(0).candidate.make + " " + visibleSuvs.get(0).candidate.model),
-                "combined SUV results rank the model closest to the 35,000 euro ceiling first");
-        check("MG MGS5 EV".equals(visibleSuvs.get(1).candidate.make + " " + visibleSuvs.get(1).candidate.model),
-                "combined SUV results include the next unique model after de-duplication");
+                "the qualifying KGM Torres EVX is displayed once after de-duplication");
         System.out.println("Real catalog combined SUV query results: " + suvMatches.size()
                 + " catalog versions, " + visibleSuvs.size() + " visible unique models");
 
