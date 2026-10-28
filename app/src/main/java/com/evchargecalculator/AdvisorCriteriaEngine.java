@@ -272,7 +272,17 @@ public final class AdvisorCriteriaEngine {
         }
 
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
-        if (!unit.find()) {
+        boolean unitFound = unit.find();
+        // The denominator in "18 kWh/100 km" is not a vehicle-range criterion.
+        // Skip that km match so it cannot accidentally create a 100 km range ceiling.
+        if (field == Field.RANGE) {
+            while (unitFound) {
+                String beforeNumber = s.substring(Math.max(0, unit.start(1) - 16), unit.start(1));
+                if (!beforeNumber.matches("(?s).*kwh\\s*/\\s*$")) break;
+                unitFound = unit.find();
+            }
+        }
+        if (!unitFound) {
             boolean describesConsumption = has(s,
                     "consuma", "consumo", "consumir", "consume", "consumiendo",
                     "gaste", "gastar", "gasta", "eficiencia", "consumption");
