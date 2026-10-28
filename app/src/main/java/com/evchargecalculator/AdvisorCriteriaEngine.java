@@ -280,10 +280,9 @@ public final class AdvisorCriteriaEngine {
                 generic = Pattern.compile("(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\d[\\d\\s.,]*)").matcher(s);
                 if (!generic.find()) {
                     generic = Pattern.compile("(\\d[\\d\\s.,]*)\\s+(?:de\\s+)?(?:bateria|battery|batterie|batteria)").matcher(s);
-                } else {
-                    // The common "batería de 80" order has already matched.
-                    generic.reset();
                 }
+                // Leave the matcher at the start so the shared parsing path can find it.
+                generic.reset();
             } else {
                 generic = NUMBER.matcher(s);
             }
