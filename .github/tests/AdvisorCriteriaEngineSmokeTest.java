@@ -465,6 +465,28 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.maxLengthM == null,
                 "fresh SUV search does not inherit the previous 4.5 m length ceiling");
 
+        // Fresh search with a positive strict length bound.
+        engine.reset();
+        r = engine.interpret("Búscame un SUV que mida menos de 4,5 metros", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.maxLengthM != null && Math.abs(r.criteria.maxLengthM - 4.5d) < 0.001
+                        && r.criteria.maxLengthExclusive,
+                "parses a fresh SUV search with a strict length ceiling from 'mida menos de 4,5 metros'");
+        java.util.List<AdvisorCatalogMatcher.Candidate> strictLengthCandidates = new java.util.ArrayList<>();
+        strictLengthCandidates.add(new AdvisorCatalogMatcher.Candidate("short449", "Marca", "SUV 4.49", "suv", "RWD",
+                40000, 450, 500, 80, 150, 16, 4.49));
+        strictLengthCandidates.add(new AdvisorCatalogMatcher.Candidate("boundary450", "Marca", "SUV 4.50", "suv", "RWD",
+                40000, 450, 500, 80, 150, 16, 4.50));
+        strictLengthCandidates.add(new AdvisorCatalogMatcher.Candidate("long465", "Škoda", "Peaq", "suv", "RWD",
+                40000, 450, 500, 80, 150, 16, 4.658));
+        strictLengthCandidates.add(new AdvisorCatalogMatcher.Candidate("unknownLength", "Marca", "SUV sin longitud", "suv", "RWD",
+                40000, 450, 500, 80, 150, 16, 0));
+        java.util.List<AdvisorCatalogMatcher.Result> strictLengthMatches =
+                AdvisorCatalogMatcher.search(strictLengthCandidates, r.criteria);
+        check(strictLengthMatches.size() == 1
+                        && "short449".equals(strictLengthMatches.get(0).candidate.logicalKey),
+                "strict 4.5 m ceiling includes 4.49 m only, excluding boundary, longer and unknown-length SUVs");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
