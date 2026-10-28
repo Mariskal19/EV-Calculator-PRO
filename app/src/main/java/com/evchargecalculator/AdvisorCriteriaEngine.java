@@ -266,7 +266,7 @@ public final class AdvisorCriteriaEngine {
             case RANGE: unitPattern="(?:km|kilomet(?:er|re)s?)"; break;
             case TRUNK: unitPattern="(?:litros?|liters?|litres?|l)"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)(?!\\s*/\\s*100\\s*km)"; break;
-            case POWER: unitPattern="(?:kw|kilowatts?)"; break;
+            case POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
             case CONSUMPTION: unitPattern="(?:kwh\\s*/\\s*100\\s*km|kwh\\s*/\\s*100km)"; break;
             default: return null;
         }
