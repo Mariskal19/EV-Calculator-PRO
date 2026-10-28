@@ -470,8 +470,8 @@ public final class AdvisorCriteriaEngineSmokeTest {
         r = engine.interpret("Búscame un SUV que mida menos de 4,5 metros", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
                         && r.criteria.maxLengthM != null && Math.abs(r.criteria.maxLengthM - 4.5d) < 0.001
-                        && r.criteria.maxLengthExclusive,
-                "parses a fresh SUV search with a strict length ceiling from 'mida menos de 4,5 metros'");
+                        && r.criteria.maxLengthExclusive && r.criteria.maxPrice == null,
+                "parses a fresh SUV search with a strict length ceiling without misreading length as price");
         java.util.List<AdvisorCatalogMatcher.Candidate> strictLengthCandidates = new java.util.ArrayList<>();
         strictLengthCandidates.add(new AdvisorCatalogMatcher.Candidate("short449", "Marca", "SUV 4.49", "suv", "RWD",
                 40000, 450, 500, 80, 150, 16, 4.49));
