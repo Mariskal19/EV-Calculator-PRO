@@ -46,6 +46,14 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses SUV body style alongside an explicit consumption limit");
 
         engine.reset();
+        r = engine.interpret("Búscame un SUV con consumo inferior a 18 kWh/100 km", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 18d) < 0.01,
+                "parses 'consumo inferior a 18 kWh/100 km' as a strict consumption ceiling");
+        check(r.criteria.maxBatteryKwh == null,
+                "does not interpret the consumption unit as a battery filter");
+
+        engine.reset();
         r = engine.interpret("Búscame un coche con batería de 80", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && r.criteria.minBatteryKwh != null
                         && Math.abs(r.criteria.minBatteryKwh - 80d) < 0.01,
