@@ -254,13 +254,14 @@ public final class AdvisorCriteriaEngine {
 
         Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
         if (!unit.find()) {
-            boolean consumptionContext = field == Field.CONSUMPTION && has(s,
+            boolean describesConsumption = has(s,
                     "consuma", "consumo", "consumir", "consume", "consumiendo",
                     "gaste", "gastar", "gasta", "eficiencia", "consumption");
+            boolean consumptionContext = field == Field.CONSUMPTION && describesConsumption;
             // Do not interpret a bare number as a price just because "menos de" or
             // another bound operator appears in a consumption-only query.
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang)
-                    || (hasPriceBoundOperator(s, lang) && !consumptionContext)
+                    || (hasPriceBoundOperator(s, lang) && !describesConsumption)
                     || hasApproximatePriceTarget(s, lang) || hasImplicitBodyPriceTarget(s));
             boolean trunkContext = field == Field.TRUNK && containsTrunkTerm(s, lang);
             // Spanish users often omit the unit when they clearly describe consumption:
