@@ -102,7 +102,7 @@ public final class AdvisorCatalogMatcher {
         if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw, 1.03)) return false;
         if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption * 1.03)) return false;
         // Exact upper bound: 4.72 m must fail a maximum of 4.7 m.
-        if (q.maxLengthM != null && (c.lengthM <= 0 || c.lengthM > q.maxLengthM)) return false;
+        if (q.maxLengthM != null && (c.lengthM <= 0 || (q.maxLengthExclusive ? c.lengthM >= q.maxLengthM : c.lengthM > q.maxLengthM))) return false;
         if (q.bodyStyle != null && !bodyMatches(q.bodyStyle, c.bodyStyle)) return false;
         if (q.drivetrain != null && !driveMatches(q.drivetrain, c.drivetrain)) return false;
         if (q.makeModel != null && !normalize(c.make + " " + c.model).contains(normalize(q.makeModel))) return false;
