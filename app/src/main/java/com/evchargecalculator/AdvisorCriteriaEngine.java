@@ -272,9 +272,16 @@ public final class AdvisorCriteriaEngine {
             if (!priceContext && !trunkContext && !consumptionContext && !batteryContext) return null;
             // In-context numbers may omit units: "presupuesto hasta 35000", "450 de maletero",
             // or "que consuma menos de 20".
-            Matcher generic = NUMBER.matcher(s);
+            Matcher generic;
+            if (consumptionContext) {
+                generic = Pattern.compile("(?:consuma|consumo|consumir|consume|consumiendo|gaste|gastar|gasta|eficiencia|consumption)[^0-9]{0,50}(\\d[\\d\\s.,]*)").matcher(s);
+            } else if (batteryContext) {
+                generic = Pattern.compile("(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\d[\\d\\s.,]*)").matcher(s);
+            } else {
+                generic = NUMBER.matcher(s);
+            }
             if (!generic.find()) return new NumberMatch(0, false, true);
-            String tail = s.substring(generic.end()).trim();
+            String tail = s.substring(generic.end(1)).trim();
             if (tail.startsWith("km") || tail.startsWith("kilometer") || tail.startsWith("kilometre")
                     || tail.startsWith("litro") || tail.startsWith("liter") || tail.startsWith("litre")
                     || tail.startsWith("kwh") || tail.startsWith("kw") || tail.startsWith("/")) return null;
@@ -296,7 +303,7 @@ public final class AdvisorCriteriaEngine {
             }
         }
 
-        int start = unit.start();
+        int start = unit.start(1);
         String prefix = s.substring(Math.max(0, start - 60), start);
         // Operators belong to the current clause, not a previous criterion.
         int connector = lastConnectorIndex(prefix);
