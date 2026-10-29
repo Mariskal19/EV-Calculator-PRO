@@ -527,6 +527,23 @@ public final class AdvisorCriteriaEngineSmokeTest {
                         && "short449".equals(strictLengthMatches.get(0).candidate.logicalKey),
                 "strict 4.5 m ceiling includes 4.49 m only, excluding boundary, longer and unknown-length SUVs");
 
+        // Regression: explicit kWh must not break a battery lower bound when
+        // the same query also contains a kWh/100 km consumption ceiling.
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km",
+                AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.minBatteryKwh != null && Math.abs(r.criteria.minBatteryKwh - 70d) < 0.01
+                        && r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 18d) < 0.01,
+                "parses explicit battery kWh and consumption kWh/100 km together");
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con batería de al menos 70 y consumo inferior a 18 kWh/100 km",
+                AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.minBatteryKwh != null
+                        && Math.abs(r.criteria.minBatteryKwh - 70d) < 0.01
+                        && r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 18d) < 0.01,
+                "keeps unitless battery lower bound working with explicit consumption unit");
+
         System.out.println("Advisor engine and catalog matcher smoke tests passed: " + checks);
     }
 
