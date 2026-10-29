@@ -2165,3 +2165,16 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Pruebas de regresión actualizadas en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: el máximo de 30.000 € debe conservar el coche de 30.000 € o menos y excluir vehículos a 31.000 € y 32.000 €; el objetivo aproximado sigue utilizando su banda independiente.
 - Pendiente: confirmar el resultado de los workflows de smoke tests y compilación Android, y descargar el APK debug para probar de nuevo en el teléfono.
 - No se modifica `main` ni el catálogo protegido.
+
+## 2026-10-29 — Corrección y prueba manual: batería + consumo en una misma consulta
+
+- Incidencia original: la consulta `Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km` no interpretaba correctamente la batería al combinar ambos filtros. La variante sin unidad explícita para batería sí parecía funcionar, por lo que se investigó una interferencia entre la extracción de batería y la de consumo.
+- Causa identificada en `AdvisorCriteriaEngine`: el analizador de consumo podía interpretar el primer valor `70 kWh` (capacidad de batería) como si fuera consumo y solicitar aclaración, descartando los criterios combinados.
+- Corrección aplicada en `feature/asesor-ia-fase-1`: al analizar consumo, se ignora la coincidencia de `kWh` que pertenece a la batería cuando aparece antes del criterio de consumo y se continúa buscando la unidad de consumo correspondiente (`kWh/100 km`). Se añade reconocimiento explícito de la capacidad después de «batería», tanto con `kWh` como sin unidad.
+- Se añadieron pruebas de regresión para ambas consultas exactas:
+  1. `Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km`.
+  2. `Búscame un SUV con batería de al menos 70 y consumo inferior a 18 kWh/100 km`.
+  Las pruebas automáticas verifican que no se solicite aclaración, que se extraiga carrocería SUV, batería mínima de 70 kWh y consumo máximo de 18 kWh/100 km.
+- Validación CI: **Advisor engine smoke tests: SUCCESS**, ejecución [40950580372](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40950580372); **Advisor Android compile check: SUCCESS**, ejecución [40950580773](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40950580773). El artefacto debug `EV-Calculator-PRO-advisor-debug` se generó correctamente.
+- Prueba manual en el teléfono: el usuario confirma que ambas consultas devuelven **los mismos coches**. Esto valida que ambas formas de escribir la capacidad son tratadas de manera equivalente. Queda pendiente revisar los datos de cada resultado para confirmar individualmente que todos cumplen **batería ≥70 kWh** y **consumo <18 kWh/100 km**; la igualdad entre listas por sí sola no demuestra que cada coche cumpla ambos límites.
+- No modificar `main`, las ramas stable ni el catálogo protegido. La corrección y esta documentación permanecen únicamente en `feature/asesor-ia-fase-1`.
