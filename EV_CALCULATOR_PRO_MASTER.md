@@ -2178,3 +2178,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Validación CI: **Advisor engine smoke tests: SUCCESS**, ejecución [40950580372](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40950580372); **Advisor Android compile check: SUCCESS**, ejecución [40950580773](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40950580773). El artefacto debug `EV-Calculator-PRO-advisor-debug` se generó correctamente.
 - Prueba manual en el teléfono: el usuario confirma que ambas consultas devuelven **los mismos coches**. Esto valida que ambas formas de escribir la capacidad son tratadas de manera equivalente. Queda pendiente revisar los datos de cada resultado para confirmar individualmente que todos cumplen **batería ≥70 kWh** y **consumo <18 kWh/100 km**; la igualdad entre listas por sí sola no demuestra que cada coche cumpla ambos límites.
 - No modificar `main`, las ramas stable ni el catálogo protegido. La corrección y esta documentación permanecen únicamente en `feature/asesor-ia-fase-1`.
+
+
+## 2026-10-29 — Prueba manual: SUV con batería ≥80 kWh y consumo <16 kWh/100 km
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con batería de al menos 80 kWh y consumo inferior a 16 kWh/100 km`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen ambos requisitos**.
+- Conclusión: prueba manual satisfactoria de interpretación y aplicación conjunta de carrocería SUV, batería mínima de 80 kWh y consumo estrictamente inferior a 16 kWh/100 km, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
