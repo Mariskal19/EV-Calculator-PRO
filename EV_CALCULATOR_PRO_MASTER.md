@@ -2187,3 +2187,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: prueba manual satisfactoria de interpretación y aplicación conjunta de carrocería SUV, batería mínima de 80 kWh y consumo estrictamente inferior a 16 kWh/100 km, según la comprobación del usuario.
 - Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: presupuesto máximo + batería mínima
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV de hasta 40.000 euros con batería de al menos 70 kWh`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen ambos límites**.
+- Conclusión: prueba manual satisfactoria de la combinación de carrocería SUV, precio máximo de 40.000 € y batería mínima de 70 kWh, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
