@@ -2196,3 +2196,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: prueba manual satisfactoria de la combinación de carrocería SUV, precio máximo de 40.000 € y batería mínima de 70 kWh, según la comprobación del usuario.
 - Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: nueva consulta sin conservar filtros anteriores
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV de hasta 30.000 euros`.
+- Resultado comunicado: **10 coches; el más caro cuesta 29.990 €**.
+- Conclusión: prueba manual satisfactoria del presupuesto máximo de 30.000 € y, con el resultado comunicado, indicio de que no se conserva el filtro previo de batería mínima de 70 kWh. La verificación directa de que ningún filtro anterior permanece requiere revisar también los criterios/características de los resultados.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
