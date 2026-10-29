@@ -2241,3 +2241,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: prueba manual satisfactoria de interpretación de la carrocería utilitario y aplicación del límite de precio de 25.000 €, según la comprobación del usuario.
 - Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: SUV con autonomía mínima
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con autonomía de al menos 500 km`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen el mínimo de autonomía**.
+- Conclusión: prueba manual satisfactoria de interpretación de carrocería SUV y autonomía mínima de 500 km, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
