@@ -2232,3 +2232,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: el límite de precio se respeta en los dos resultados, pero la prueba devuelve solo dos berlinas. Esto no demuestra por sí solo un fallo: la cantidad depende de los vehículos que cumplan los criterios en el catálogo y de la interpretación de carrocería. Conviene revisar si la cobertura de berlinas es la esperada antes de ajustar el motor.
 - Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: carrocería utilitario + presupuesto máximo
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un utilitario de hasta 25.000 euros`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen el presupuesto máximo**.
+- Conclusión: prueba manual satisfactoria de interpretación de la carrocería utilitario y aplicación del límite de precio de 25.000 €, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
