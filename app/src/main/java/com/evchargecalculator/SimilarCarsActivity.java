@@ -584,7 +584,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             }
             AdvisorCatalogMatcher.Candidate candidate=new AdvisorCatalogMatcher.Candidate(key,vehicle.make,vehicle.model,
                     advisorBodyStyle,vehicle.drivetrain,vehicle.price,vehicle.wltpKm,vehicle.trunk,
-                    vehicle.batteryKwh,vehicle.powerKw,vehicle.consumption,vehicle.lengthMm > 0 ? vehicle.lengthMm / 1000.0 : 0);
+                    vehicle.batteryKwh,vehicle.powerKw,vehicle.consumption,vehicle.lengthMm > 0 ? vehicle.lengthMm / 1000.0 : 0,vehicle.dcKw);
             candidates.add(candidate);
             byKey.put(key,vehicle);
         }
