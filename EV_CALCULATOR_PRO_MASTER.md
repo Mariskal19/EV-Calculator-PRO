@@ -2283,3 +2283,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Smoke tests tras el ajuste: **correctos**, ejecución [40958168012](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958168012).
 - Compilación Android para el APK actualizado: ejecución [40958130467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958130467), estado en revisión al redactar esta nota.
 - Cambios únicamente en `feature/asesor-ia-fase-1`; `main`, ramas stable y catálogo protegido permanecen intactos.
+
+
+## 2026-10-29 — Validación manual superada: potencia de carga rápida estrictamente superior a 150 kW
+
+- Consulta exacta repetida por el usuario en el APK actualizado: `Búscame un SUV con potencia de carga rápida superior a 150 kW`.
+- Resultado comunicado por el usuario: **ahora sí, todos los resultados son correctos**.
+- Conclusión: prueba manual satisfactoria tras corregir el límite estricto. Se considera validado en el dispositivo que el filtro utiliza la potencia de carga rápida DC y excluye los resultados que no cumplen `>150 kW`, incluidos los valores de 150 kW exactos.
+- CI: smoke tests correctos, ejecución [40958168012](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958168012); compilación Android correcta y artefacto debug generado, ejecución [40958130467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958130467).
+- La corrección y esta validación quedan documentadas únicamente en `feature/asesor-ia-fase-1`. No se modifican `main`, ramas stable ni el catálogo protegido.
