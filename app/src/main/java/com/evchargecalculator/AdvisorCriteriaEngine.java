@@ -507,7 +507,7 @@ public final class AdvisorCriteriaEngine {
                         : new String[]{"ate","no maximo","máximo","menos de","no mais de","posso chegar a"};
                 break;
             default:
-                terms = lower ? new String[]{"al menos","más de","mas de","por encima de","mínimo","minimo","desde"}
+                terms = lower ? new String[]{"al menos","más de","mas de","por encima de","superior a","mayor que","mínimo","minimo","desde"}
                         : new String[]{"hasta","como mucho","máximo","maximo","menos de","menor de","menor que","inferior a","por debajo de","no más de","no mas de","puedo llegar a","puedo gastar hasta","mi presupuesto es"};
         }
         int latest=-1;
