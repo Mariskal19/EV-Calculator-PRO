@@ -2250,3 +2250,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: prueba manual satisfactoria de interpretación de carrocería SUV y autonomía mínima de 500 km, según la comprobación del usuario.
 - Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba fallida: filtro de potencia de carga rápida CC/DC
+
+- Consulta probada por el usuario en el APK: `Búscame un SUV con potencia de carga rápida superior a 150 kW`.
+- Resultado observado: aparece el Leapmotor C10, cuya potencia máxima de carga rápida DC indicada por el usuario es de 84 kW.
+- Estado: **fallo confirmado**; un vehículo por debajo del umbral de 150 kW no debe aparecer en los resultados de una consulta que exige una potencia superior a 150 kW.
+- Acción pendiente: revisar en la rama `feature/asesor-ia-fase-1` la extracción del criterio de potencia de carga rápida y el campo del catálogo utilizado para filtrar. Añadir una prueba de regresión y ejecutar las comprobaciones/compilación antes de pedir al usuario que vuelva a probar el APK.
+- No se considera superada la prueba. No modificar `main`, ramas stable ni el catálogo protegido.
