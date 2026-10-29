@@ -532,6 +532,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
         engine.reset();
         r = engine.interpret("Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km",
                 AdvisorCriteriaEngine.Language.ES);
+        System.out.println("DEBUG explicit battery+consumption: clarification=" + r.clarificationKey + ", body=" + r.criteria.bodyStyle + ", minBattery=" + r.criteria.minBatteryKwh + ", maxConsumption=" + r.criteria.maxConsumption);
         check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
                         && r.criteria.minBatteryKwh != null && Math.abs(r.criteria.minBatteryKwh - 70d) < 0.01
                         && r.criteria.maxConsumption != null && Math.abs(r.criteria.maxConsumption - 18d) < 0.01,
