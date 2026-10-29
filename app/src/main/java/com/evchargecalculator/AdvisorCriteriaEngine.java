@@ -282,7 +282,7 @@ public final class AdvisorCriteriaEngine {
             // ("batería de al menos 70 kWh") and prevents the later consumption unit
             // ("18 kWh/100 km") from stealing the battery criterion in a combined query.
             unit = Pattern.compile(
-                    "(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\d[\\d\\s.,]*?)(?:\\s*(?:kwh|kw\\s*h))?(?![a-z])")
+                    "(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\d[\\d\\s.,]*)(?:\\s*(?:kwh|kw\\s*h))?(?![a-z])")
                     .matcher(s);
             unitFound = unit.find();
             if (!unitFound) {
