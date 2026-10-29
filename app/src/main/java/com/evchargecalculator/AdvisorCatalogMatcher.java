@@ -19,17 +19,23 @@ public final class AdvisorCatalogMatcher {
     /** Immutable view of the fields needed by advisor filtering/ranking. Unknown numeric values <= 0 stay unknown. */
     public static final class Candidate {
         public final String logicalKey, make, model, bodyStyle, drivetrain;
-        public final double price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption, lengthM;
+        public final double price, rangeKm, trunkLiters, batteryKwh, powerKw, chargePowerDcKw, consumption, lengthM;
 
         public Candidate(String logicalKey, String make, String model, String bodyStyle, String drivetrain,
                          double price, double rangeKm, double trunkLiters, double batteryKwh,
                          double powerKw, double consumption) {
-            this(logicalKey, make, model, bodyStyle, drivetrain, price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption, 0);
+            this(logicalKey, make, model, bodyStyle, drivetrain, price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption, 0, 0);
         }
 
         public Candidate(String logicalKey, String make, String model, String bodyStyle, String drivetrain,
                          double price, double rangeKm, double trunkLiters, double batteryKwh,
                          double powerKw, double consumption, double lengthM) {
+            this(logicalKey, make, model, bodyStyle, drivetrain, price, rangeKm, trunkLiters, batteryKwh, powerKw, consumption, lengthM, 0);
+        }
+
+        public Candidate(String logicalKey, String make, String model, String bodyStyle, String drivetrain,
+                         double price, double rangeKm, double trunkLiters, double batteryKwh,
+                         double powerKw, double consumption, double lengthM, double chargePowerDcKw) {
             this.logicalKey = safe(logicalKey);
             this.make = safe(make);
             this.model = safe(model);
@@ -40,6 +46,7 @@ public final class AdvisorCatalogMatcher {
             this.trunkLiters = known(trunkLiters);
             this.batteryKwh = known(batteryKwh);
             this.powerKw = known(powerKw);
+            this.chargePowerDcKw = known(chargePowerDcKw);
             this.consumption = known(consumption);
             this.lengthM = known(lengthM);
         }
@@ -100,6 +107,8 @@ public final class AdvisorCatalogMatcher {
                 || c.trunkLiters > q.targetTrunkLiters * 1.25)) return false;
         if (!within(c.batteryKwh, q.minBatteryKwh, q.maxBatteryKwh, 1.03)) return false;
         if (!within(c.powerKw, q.minPowerKw, q.maxPowerKw, 1.03)) return false;
+        // DC fast-charge power is a distinct spec from motor output power and must satisfy exact limits.
+        if (!within(c.chargePowerDcKw, q.minChargePowerKw, q.maxChargePowerKw, 1.0)) return false;
         // Explicit consumption ceilings are exact: "under 15 kWh/100 km" must not include 15.1.
         if (q.maxConsumption != null && (c.consumption <= 0 || c.consumption > q.maxConsumption)) return false;
         // Exact upper bound: 4.72 m must fail a maximum of 4.7 m.
