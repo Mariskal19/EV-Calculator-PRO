@@ -2259,3 +2259,17 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Estado: **fallo confirmado**; un vehículo por debajo del umbral de 150 kW no debe aparecer en los resultados de una consulta que exige una potencia superior a 150 kW.
 - Acción pendiente: revisar en la rama `feature/asesor-ia-fase-1` la extracción del criterio de potencia de carga rápida y el campo del catálogo utilizado para filtrar. Añadir una prueba de regresión y ejecutar las comprobaciones/compilación antes de pedir al usuario que vuelva a probar el APK.
 - No se considera superada la prueba. No modificar `main`, ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Corrección: filtro de potencia de carga rápida CC/DC
+
+- Incidencia reproducida manualmente por el usuario: la consulta `Búscame un SUV con potencia de carga rápida superior a 150 kW` devolvía el Leapmotor C10, que tiene 84 kW de potencia máxima DC según el dato observado en la app.
+- Causa corregida en el motor del asesor: la consulta de potencia de carga se confundía con la potencia del motor y no existía un criterio separado para la potencia de carga rápida DC.
+- Cambios en `AdvisorCriteriaEngine.java`: se añade el criterio independiente de potencia de carga rápida; las consultas con contexto de carga ya no se interpretan como potencia del motor; se reconoce `superior a` como operador de mínimo estricto.
+- Cambios en `AdvisorCatalogMatcher.java` y `SimilarCarsActivity.java`: el filtro compara el límite solicitado con el campo de potencia de carga DC del vehículo (`dcKw`), no con la potencia del motor. Los límites de carga se aplican exactamente, sin tolerancia positiva.
+- Regresión añadida en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: verifica que una consulta de más de 150 kW se interpreta como potencia de carga DC y que el Leapmotor C10 de 84 kW queda excluido frente a un candidato de 180 kW.
+- Validación automática: **smoke tests correctos**, ejecución [40957107980](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40957107980).
+- Compilación Android: **correcta**; APK debug generado como artefacto `EV-Calculator-PRO-advisor-debug`, ejecución [40957107848](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40957107848). Descarga desde la sección **Artifacts** de esa ejecución.
+- Commits de código/prueba: `58f983e3`, `6fc83e41`, `bba0f0d8`, `39a08712`, `6058f181`.
+- Estado pendiente: instalar este APK y repetir la consulta en el dispositivo para confirmar el comportamiento real con el catálogo cargado.
+- Todo permanece en `feature/asesor-ia-fase-1`. No se modifican `main`, las ramas stable ni el catálogo protegido.
