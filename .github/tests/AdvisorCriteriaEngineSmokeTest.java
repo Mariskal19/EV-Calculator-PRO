@@ -205,6 +205,24 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(r.criteria.minRangeKm != null && Math.abs(r.criteria.minRangeKm - 450d) < 0.01,
                 "supports English range pattern");
 
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con potencia de carga rápida superior a 150 kW", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.minChargePowerKw != null && Math.abs(r.criteria.minChargePowerKw - 150d) < 0.01,
+                "parses DC fast-charging power as its own criterion");
+        check(r.criteria.minPowerKw == null && r.criteria.maxPowerKw == null,
+                "DC fast-charging query does not get misinterpreted as motor output power");
+
+        java.util.List<AdvisorCatalogMatcher.Candidate> dcChargeCatalog = new java.util.ArrayList<>();
+        dcChargeCatalog.add(new AdvisorCatalogMatcher.Candidate("c10", "Leapmotor", "C10", "suv", "RWD",
+                35000, 420, 500, 69, 160, 18, 0, 84));
+        dcChargeCatalog.add(new AdvisorCatalogMatcher.Candidate("fast", "Marca", "Carga rápida", "suv", "RWD",
+                35000, 420, 500, 69, 160, 18, 0, 180));
+        java.util.List<AdvisorCatalogMatcher.Result> dcChargeMatches =
+                AdvisorCatalogMatcher.search(dcChargeCatalog, r.criteria);
+        check(dcChargeMatches.size() == 1 && "fast".equals(dcChargeMatches.get(0).candidate.logicalKey),
+                "DC fast-charge minimum excludes the Leapmotor C10 at 84 kW when the threshold is above 150 kW");
+
         // Catalog matching: AND filters, unknown numeric fields, and soft ranking.
         java.util.List<AdvisorCatalogMatcher.Candidate> catalog = new java.util.ArrayList<>();
         catalog.add(new AdvisorCatalogMatcher.Candidate("a", "Marca", "Conocido", "suv", "RWD",
