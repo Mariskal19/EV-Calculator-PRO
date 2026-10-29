@@ -271,12 +271,28 @@ public final class AdvisorCriteriaEngine {
             default: return null;
         }
 
-        Matcher unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
-        boolean unitFound = unit.find();
         boolean describesConsumption = has(s,
                 "consuma", "consumo", "consumir", "consume", "consumiendo",
                 "gaste", "gastar", "gasta", "eficiencia", "consumption");
         boolean describesBattery = has(s, "bateria", "battery", "batterie", "batteria");
+        Matcher unit;
+        boolean unitFound;
+        if (field == Field.BATTERY && describesBattery) {
+            // Prefer the number attached to the battery phrase. This handles explicit units
+            // ("batería de al menos 70 kWh") and prevents the later consumption unit
+            // ("18 kWh/100 km") from stealing the battery criterion in a combined query.
+            unit = Pattern.compile(
+                    "(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\\\d[\\\\d\\\\s.,]*?)(?:\\\\s*(?:kwh|kw\\\\s*h))?(?![a-z])")
+                    .matcher(s);
+            unitFound = unit.find();
+            if (!unitFound) {
+                unit = Pattern.compile("(" + NUMBER.pattern() + ")\\\\s*" + unitPattern).matcher(s);
+                unitFound = unit.find();
+            }
+        } else {
+            unit = Pattern.compile("(" + NUMBER.pattern() + ")\\\\s*" + unitPattern).matcher(s);
+            unitFound = unit.find();
+        }
         // A bare "kWh" can mean consumption only when the query explicitly describes consumption.
         if (field == Field.CONSUMPTION && unitFound && !describesConsumption) unitFound = false;
         // Do not interpret "15 kWh" in a consumption query as a battery capacity.
