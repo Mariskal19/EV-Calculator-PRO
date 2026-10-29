@@ -19,7 +19,7 @@ public final class AdvisorCriteriaEngine {
     public enum Language { ES, EN, FR, DE, IT, PT }
 
     public enum Field {
-        PRICE, RANGE, TRUNK, BATTERY, POWER, CONSUMPTION, LENGTH, BODY, DRIVETRAIN, MAKE_MODEL
+        PRICE, RANGE, TRUNK, BATTERY, POWER, CHARGE_POWER, CONSUMPTION, LENGTH, BODY, DRIVETRAIN, MAKE_MODEL
     }
 
     public static final class Criteria {
@@ -37,6 +37,9 @@ public final class AdvisorCriteriaEngine {
         public Double maxBatteryKwh;
         public Double minPowerKw;
         public Double maxPowerKw;
+        /** Maximum DC fast-charging power, separate from motor output power. */
+        public Double minChargePowerKw;
+        public Double maxChargePowerKw;
         public Double maxConsumption;
         /** Maximum vehicle length in metres; used by negative length constraints. */
         public Double maxLengthM;
@@ -56,6 +59,7 @@ public final class AdvisorCriteriaEngine {
             c.minTrunkLiters=minTrunkLiters; c.maxTrunkLiters=maxTrunkLiters; c.targetTrunkLiters=targetTrunkLiters;
             c.minBatteryKwh=minBatteryKwh; c.maxBatteryKwh=maxBatteryKwh;
             c.minPowerKw=minPowerKw; c.maxPowerKw=maxPowerKw;
+            c.minChargePowerKw=minChargePowerKw; c.maxChargePowerKw=maxChargePowerKw;
             c.maxConsumption=maxConsumption; c.maxLengthM=maxLengthM; c.maxLengthExclusive=maxLengthExclusive;
             c.bodyStyle=bodyStyle; c.drivetrain=drivetrain; c.makeModel=makeModel;
             c.preferLowConsumption=preferLowConsumption;
@@ -70,6 +74,7 @@ public final class AdvisorCriteriaEngine {
                 case TRUNK: minTrunkLiters=null; maxTrunkLiters=null; targetTrunkLiters=null; preferLargeTrunk=false; break;
                 case BATTERY: minBatteryKwh=null; maxBatteryKwh=null; break;
                 case POWER: minPowerKw=null; maxPowerKw=null; break;
+                case CHARGE_POWER: minChargePowerKw=null; maxChargePowerKw=null; break;
                 case CONSUMPTION: maxConsumption=null; preferLowConsumption=false; break;
                 case LENGTH: maxLengthM=null; maxLengthExclusive=false; break;
                 case BODY: bodyStyle=null; break;
@@ -82,7 +87,7 @@ public final class AdvisorCriteriaEngine {
             return minPrice!=null || maxPrice!=null || minRangeKm!=null || maxRangeKm!=null
                     || minTrunkLiters!=null || maxTrunkLiters!=null || targetTrunkLiters!=null
                     || minBatteryKwh!=null || maxBatteryKwh!=null
-                    || minPowerKw!=null || maxPowerKw!=null || maxConsumption!=null || maxLengthM!=null
+                    || minPowerKw!=null || maxPowerKw!=null || minChargePowerKw!=null || maxChargePowerKw!=null || maxConsumption!=null || maxLengthM!=null
                     || bodyStyle!=null || drivetrain!=null || makeModel!=null;
         }
     }
@@ -213,6 +218,12 @@ public final class AdvisorCriteriaEngine {
             else { if (power.lowerBound) criteria.minPowerKw=power.value; else criteria.maxPowerKw=power.value; changed=true; }
         }
 
+        NumberMatch chargePower = findNumeric(s, lang, Field.CHARGE_POWER);
+        if (chargePower != null) {
+            if (chargePower.ambiguous) clarification = "clarify_charge_power";
+            else { if (chargePower.lowerBound) criteria.minChargePowerKw=chargePower.value; else criteria.maxChargePowerKw=chargePower.value; changed=true; }
+        }
+
         NumberMatch consumption = findNumeric(s, lang, Field.CONSUMPTION);
         if (consumption != null) {
             if (consumption.ambiguous) clarification = "clarify_consumption";
@@ -267,10 +278,14 @@ public final class AdvisorCriteriaEngine {
             case TRUNK: unitPattern="(?:litros?|liters?|litres?|l)"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)(?!\\s*/\\s*100(?:\\s*km)?\\b)"; break;
             case POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
+            case CHARGE_POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
             case CONSUMPTION: unitPattern="kwh(?:\\s*/\\s*100(?:\\s*km)?(?![a-z]))?"; break;
             default: return null;
         }
 
+        boolean describesChargePower = has(s, "carga", "cargar", "carga rapida", "carga en continua", "corriente continua", "dc charging", "fast charging", "charge power", "charging power");
+        if (field == Field.POWER && describesChargePower) return null;
+        if (field == Field.CHARGE_POWER && !describesChargePower) return null;
         boolean describesConsumption = has(s,
                 "consuma", "consumo", "consumir", "consume", "consumiendo",
                 "gaste", "gastar", "gasta", "eficiencia", "consumption");
@@ -328,6 +343,7 @@ public final class AdvisorCriteriaEngine {
                     "medir", "longitud", "largo", "long");
             boolean consumptionContext = field == Field.CONSUMPTION && describesConsumption;
             boolean batteryContext = field == Field.BATTERY && describesBattery;
+            boolean chargePowerContext = field == Field.CHARGE_POWER && describesChargePower;
             // Do not reinterpret a length value as a price merely because "menos de"
             // is also a valid budget operator in other contexts.
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang)
@@ -337,12 +353,16 @@ public final class AdvisorCriteriaEngine {
             // Spanish users often omit the unit when they clearly describe consumption:
             // "que consuma menos de 20". Treat that number as kWh/100 km, while still
             // requiring an explicit consumption-related word to avoid guessing bare numbers.
-            if (!priceContext && !trunkContext && !consumptionContext && !batteryContext) return null;
+            if (!priceContext && !trunkContext && !consumptionContext && !batteryContext && !chargePowerContext) return null;
             // In-context numbers may omit units: "presupuesto hasta 35000", "450 de maletero",
             // or "que consuma menos de 20".
             Matcher generic;
             if (consumptionContext) {
                 generic = Pattern.compile("(?:consuma|consumo|consumir|consume|consumiendo|gaste|gastar|gasta|eficiencia|consumption)[^0-9]{0,50}(\\d[\\d\\s.,]*)").matcher(s);
+            } else if (chargePowerContext) {
+                generic = Pattern.compile("(?:potencia[^0-9]{0,35}(?:de\\\\s+)?(?:carga|cargar)[^0-9]{0,35}|(?:carga|cargar)[^0-9]{0,35}potencia[^0-9]{0,20}|dc[^0-9]{0,20}|fast charging[^0-9]{0,20})(\\\\d[\\\\d\\\\s.,]*)").matcher(s);
+                if (!generic.find()) generic = NUMBER.matcher(s);
+                generic.reset();
             } else if (batteryContext) {
                 // Accept both natural Spanish orders: "batería de 80" and "80 de batería".
                 generic = Pattern.compile("(?:bateria|battery|batterie|batteria)[^0-9]{0,40}(\\d[\\d\\s.,]*)").matcher(s);
