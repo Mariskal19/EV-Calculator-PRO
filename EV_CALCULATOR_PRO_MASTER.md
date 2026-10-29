@@ -2223,3 +2223,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: prueba manual satisfactoria de la combinación de carrocería SUV, precio máximo de 35.000 € y consumo estrictamente inferior a 16 kWh/100 km, según la comprobación del usuario.
 - Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: cambio de carrocería a berlina
+
+- Consulta exacta probada por el usuario en el APK: `Búscame una berlina de hasta 40.000 euros`.
+- Resultado comunicado: **2 coches**; el usuario confirma que ambos cuestan 40.000 € o menos.
+- Conclusión: el límite de precio se respeta en los dos resultados, pero la prueba devuelve solo dos berlinas. Esto no demuestra por sí solo un fallo: la cantidad depende de los vehículos que cumplan los criterios en el catálogo y de la interpretación de carrocería. Conviene revisar si la cobertura de berlinas es la esperada antes de ajustar el motor.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
