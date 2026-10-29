@@ -293,6 +293,23 @@ public final class AdvisorCriteriaEngine {
             unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
             unitFound = unit.find();
         }
+        // In a combined battery + consumption query, the first bare "kWh" may
+        // belong to the battery value. Skip that match and keep looking for the
+        // consumption number instead of interpreting the battery capacity as consumption.
+        if (field == Field.CONSUMPTION && unitFound && describesBattery) {
+            while (unitFound) {
+                String beforeNumber = s.substring(0, unit.start(1));
+                int batteryAt = Math.max(beforeNumber.lastIndexOf("bateria"),
+                        Math.max(beforeNumber.lastIndexOf("battery"),
+                                Math.max(beforeNumber.lastIndexOf("batterie"), beforeNumber.lastIndexOf("batteria"))));
+                int consumptionAt = Math.max(beforeNumber.lastIndexOf("consumo"),
+                        Math.max(beforeNumber.lastIndexOf("consuma"),
+                                Math.max(beforeNumber.lastIndexOf("gaste"), beforeNumber.lastIndexOf("gasta"))));
+                boolean bareKwh = unit.group().matches("(?s).*kwh\\\\s*$");
+                if (bareKwh && batteryAt > consumptionAt) unitFound = unit.find();
+                else break;
+            }
+        }
         // A bare "kWh" can mean consumption only when the query explicitly describes consumption.
         if (field == Field.CONSUMPTION && unitFound && !describesConsumption) unitFound = false;
         // Do not interpret "15 kWh" in a consumption query as a battery capacity.
