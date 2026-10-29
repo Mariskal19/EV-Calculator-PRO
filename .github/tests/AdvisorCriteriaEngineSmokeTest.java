@@ -218,10 +218,12 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 35000, 420, 500, 69, 160, 18, 0, 84));
         dcChargeCatalog.add(new AdvisorCatalogMatcher.Candidate("fast", "Marca", "Carga rápida", "suv", "RWD",
                 35000, 420, 500, 69, 160, 18, 0, 180));
+        dcChargeCatalog.add(new AdvisorCatalogMatcher.Candidate("boundary", "Marca", "Límite exacto", "suv", "RWD",
+                35000, 420, 500, 69, 160, 18, 0, 150));
         java.util.List<AdvisorCatalogMatcher.Result> dcChargeMatches =
                 AdvisorCatalogMatcher.search(dcChargeCatalog, r.criteria);
         check(dcChargeMatches.size() == 1 && "fast".equals(dcChargeMatches.get(0).candidate.logicalKey),
-                "DC fast-charge minimum excludes the Leapmotor C10 at 84 kW when the threshold is above 150 kW");
+                "strict DC fast-charge threshold excludes both the Leapmotor C10 at 84 kW and a vehicle exactly at 150 kW");
 
         // Catalog matching: AND filters, unknown numeric fields, and soft ranking.
         java.util.List<AdvisorCatalogMatcher.Candidate> catalog = new java.util.ArrayList<>();
