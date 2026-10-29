@@ -305,7 +305,7 @@ public final class AdvisorCriteriaEngine {
                 int consumptionAt = Math.max(beforeNumber.lastIndexOf("consumo"),
                         Math.max(beforeNumber.lastIndexOf("consuma"),
                                 Math.max(beforeNumber.lastIndexOf("gaste"), beforeNumber.lastIndexOf("gasta"))));
-                boolean bareKwh = unit.group().matches("(?s).*kwh\\\\s*$");
+                boolean bareKwh = unit.group().matches("(?s).*kwh\\s*$");
                 if (bareKwh && batteryAt > consumptionAt) unitFound = unit.find();
                 else break;
             }
