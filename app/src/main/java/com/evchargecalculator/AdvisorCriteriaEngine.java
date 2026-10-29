@@ -286,11 +286,11 @@ public final class AdvisorCriteriaEngine {
                     .matcher(s);
             unitFound = unit.find();
             if (!unitFound) {
-                unit = Pattern.compile("(" + NUMBER.pattern() + ")\\\\s*" + unitPattern).matcher(s);
+                unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
                 unitFound = unit.find();
             }
         } else {
-            unit = Pattern.compile("(" + NUMBER.pattern() + ")\\\\s*" + unitPattern).matcher(s);
+            unit = Pattern.compile("(" + NUMBER.pattern() + ")\\s*" + unitPattern).matcher(s);
             unitFound = unit.find();
         }
         // A bare "kWh" can mean consumption only when the query explicitly describes consumption.
