@@ -2273,3 +2273,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Commits de código/prueba: `58f983e3`, `6fc83e41`, `bba0f0d8`, `39a08712`, `6058f181`.
 - Estado pendiente: instalar este APK y repetir la consulta en el dispositivo para confirmar el comportamiento real con el catálogo cargado.
 - Todo permanece en `feature/asesor-ia-fase-1`. No se modifican `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Ajuste adicional: límite estricto «superior a 150 kW»
+
+- En la segunda prueba del APK, la consulta `Búscame un SUV con potencia de carga rápida superior a 150 kW` devolvió 10 coches, pero algunos indicaban exactamente 150 kW. Eso no cumple el operador estricto «superior a».
+- Ajuste en `AdvisorCriteriaEngine.java`: para los operadores estrictos de mínimo aplicados a potencia de carga DC (`más de`, `superior a`, `mayor que`, `por encima de`), el umbral se convierte al siguiente valor representable de `double`; «al menos» conserva el límite inclusivo.
+- Regresión añadida en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: además del C10 de 84 kW, añade un candidato de exactamente 150 kW y verifica que ambos se excluyen de la búsqueda estricta superior a 150 kW.
+- Smoke tests tras el ajuste: **correctos**, ejecución [40958168012](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958168012).
+- Compilación Android para el APK actualizado: ejecución [40958130467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958130467), estado en revisión al redactar esta nota.
+- Cambios únicamente en `feature/asesor-ia-fase-1`; `main`, ramas stable y catálogo protegido permanecen intactos.
