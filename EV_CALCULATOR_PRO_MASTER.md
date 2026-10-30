@@ -2292,3 +2292,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Conclusión: prueba manual satisfactoria tras corregir el límite estricto. Se considera validado en el dispositivo que el filtro utiliza la potencia de carga rápida DC y excluye los resultados que no cumplen `>150 kW`, incluidos los valores de 150 kW exactos.
 - CI: smoke tests correctos, ejecución [40958168012](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958168012); compilación Android correcta y artefacto debug generado, ejecución [40958130467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958130467).
 - La corrección y esta validación quedan documentadas únicamente en `feature/asesor-ia-fase-1`. No se modifican `main`, ramas stable ni el catálogo protegido.
+
+
+## 2026-10-30 — Control de pruebas manuales del Asesor IA y siguiente caso
+
+- **No repetir:** el usuario ya validó en el dispositivo la consulta `Búscame un SUV con batería de al menos 80 kWh y consumo inferior a 16 kWh/100 km`: obtuvo 10 resultados y confirmó que todos cumplían batería y consumo.
+- **Probada, con verificación individual pendiente:** `Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km`. El usuario confirmó que las dos formulaciones (con y sin unidad explícita tras «batería») devolvían la misma lista, pero el registro no confirma que se revisaran las fichas de cada coche para comprobar ambos límites. No volver a proponerla como prueba nueva; solo retomarla si se quiere cerrar expresamente esa comprobación de datos.
+- **Siguiente prueba manual propuesta, aún no ejecutada:** `Búscame un SUV con tracción AWD`. Objetivo: validar en el dispositivo la interpretación y aplicación del criterio de tracción. Revisar la tracción indicada en las fichas de todos los resultados; no considerar suficiente el mero número de coches.
+- Regla de trabajo: consultar este apartado y el historial antes de proponer una prueba; distinguir entre prueba superada, parcial/inconclusa y pendiente. No repetir pruebas superadas salvo cambios relevantes en motor, catálogo o requisito.
+- Todo este registro se añade únicamente a `feature/asesor-ia-fase-1`; no modificar `main`, ramas stable ni el catálogo protegido.
