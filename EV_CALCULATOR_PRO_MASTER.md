@@ -12,7 +12,10 @@
 - Ampliado el parser para reconocer expresiones habituales en español como «Muéstrame coche de más de 290 caballos», además de «290 CV» y valores sin unidad cuando se habla explícitamente de potencia del motor.
 - «caballos»/«CV» y valores implícitos se interpretan como CV y se convierten a kW internamente; «kW» explícito sigue interpretándose como kW.
 - Añadida prueba de regresión para «más de 290 caballos», con umbral estricto.
-- Pendiente de CI y validación manual en el móvil.
+- CI: smoke tests y compilación Android superados (run 41043262889).
+- Validación manual en Redmi Note 13 Pro: el usuario probó «Muéstrame coche de más de 290 caballos»; devuelve 10 resultados y confirma que todos son correctos.
+- Estado: comportamiento validado por CI y prueba manual.
+
 
 ## 2026-10-30 — Potencia del motor sin unidad
 
