@@ -23,6 +23,17 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses Spanish price ceiling");
 
         engine.reset();
+        r = engine.interpret("Búscame un SUV eléctrico de menos de 4,7 metros, con más de 250 CV y que cueste menos de 45.000",
+                AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.maxLengthM != null && Math.abs(r.criteria.maxLengthM - 4.7d) < 0.001
+                        && r.criteria.maxLengthExclusive
+                        && r.criteria.minPowerKw != null && r.criteria.minPowerKw > 250d * 0.73549875d
+                        && r.criteria.maxPrice != null && Math.abs(r.criteria.maxPrice - 45000d) < 0.01
+                        && r.criteria.maxPriceIsCeiling,
+                "combined SUV, strict length, CV and unitless euro ceiling binds each number to its own criterion");
+
+        engine.reset();
         r = engine.interpret("Búscame un SUV con potencia de motor superior a 200", AdvisorCriteriaEngine.Language.ES);
         double twoHundredCvInKw = 200d * 0.73549875d;
         check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
