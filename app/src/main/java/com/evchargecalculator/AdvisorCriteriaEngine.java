@@ -277,7 +277,7 @@ public final class AdvisorCriteriaEngine {
             case RANGE: unitPattern="(?:km|kilomet(?:er|re)s?)"; break;
             case TRUNK: unitPattern="(?:litros?|liters?|litres?|l)"; break;
             case BATTERY: unitPattern="(?:kwh|kw\\s*h)(?!\\s*/\\s*100(?:\\s*km)?\\b)"; break;
-            case POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
+            case POWER: unitPattern="(?:kw(?!h)|kilowatts?|cv|caballos?(?:\\s+de\\s+fuerza)?|hp|bhp)"; break;
             case CHARGE_POWER: unitPattern="(?:kw(?!h)|kilowatts?)"; break;
             case CONSUMPTION: unitPattern="kwh(?:\\s*/\\s*100(?:\\s*km)?(?![a-z]))?"; break;
             default: return null;
@@ -397,9 +397,11 @@ public final class AdvisorCriteriaEngine {
         if (value == null || value <= 0) return new NumberMatch(0, false, true);
         // Common spoken budgets such as "47 mil euros" and "47k €" mean 47,000,
         // not 47. Keep the multiplier local to price parsing so other fields are unchanged.
-        if (field == Field.POWER && implicitMotorPowerCv) {
-            // In Spain, an unqualified motor-power figure is conventionally expressed
-            // in CV. The catalog stores motor output in kW, so normalize before filtering.
+        boolean explicitCvUnit = field == Field.POWER
+                && unit.group().matches("(?s).*(?:\\\\bcv\\\\b|caballos?(?:\\\\s+de\\\\s+fuerza)?|hp|bhp).*");
+        if (field == Field.POWER && (implicitMotorPowerCv || explicitCvUnit)) {
+            // In Spain, an unqualified motor-power figure and explicit CV/caballos
+            // are conventionally expressed in CV. Normalize to catalog kW for filtering.
             value *= 0.73549875d;
         }
         if (field == Field.PRICE) {
