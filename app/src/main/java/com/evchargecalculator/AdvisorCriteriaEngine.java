@@ -292,6 +292,7 @@ public final class AdvisorCriteriaEngine {
         boolean describesBattery = has(s, "bateria", "battery", "batterie", "batteria");
         Matcher unit;
         boolean unitFound;
+        boolean implicitMotorPowerCv = false;
         if (field == Field.BATTERY && describesBattery) {
             // Prefer the number attached to the battery phrase. This handles explicit units
             // ("batería de al menos 70 kWh") and prevents the later consumption unit
@@ -346,6 +347,7 @@ public final class AdvisorCriteriaEngine {
             boolean chargePowerContext = field == Field.CHARGE_POWER && describesChargePower;
             boolean motorPowerContext = field == Field.POWER
                     && has(s, "potencia", "power", "puissance", "leistung", "potenza");
+            implicitMotorPowerCv = motorPowerContext;
             // Do not reinterpret a length value as a price merely because "menos de"
             // is also a valid budget operator in other contexts.
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang)
@@ -395,6 +397,11 @@ public final class AdvisorCriteriaEngine {
         if (value == null || value <= 0) return new NumberMatch(0, false, true);
         // Common spoken budgets such as "47 mil euros" and "47k €" mean 47,000,
         // not 47. Keep the multiplier local to price parsing so other fields are unchanged.
+        if (field == Field.POWER && implicitMotorPowerCv) {
+            // In Spain, an unqualified motor-power figure is conventionally expressed
+            // in CV. The catalog stores motor output in kW, so normalize before filtering.
+            value *= 0.73549875d;
+        }
         if (field == Field.PRICE) {
             String matchedPrice = unit.group().toLowerCase(Locale.ROOT);
             if (matchedPrice.contains("mil") || matchedPrice.contains("k")) {
