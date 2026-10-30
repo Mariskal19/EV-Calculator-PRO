@@ -383,7 +383,7 @@ public final class AdvisorCriteriaEngine {
                 // Select the final bound amount so earlier filters (length or power)
                 // cannot be mistaken for the price in a combined query.
                 Pattern priceBound = Pattern.compile(
-                        "(?:hasta|como\\\\s+mucho|maximo|menos\\\\s+de|menor\\\\s+de|menor\\\\s+que|inferior\\\\s+a|por\\\\s+debajo\\\\s+de|no\\\\s+mas\\\\s+de|al\\\\s+menos|mas\\\\s+de|superior\\\\s+a|mayor\\\\s+que|por\\\\s+encima\\\\s+de|presupuesto(?:\\\\s+de)?|precio(?:\\\\s+de)?|cuesta|cueste|coste|costar)[^0-9]{0,35}(\\\\d[\\\\d\\\\s.,]*)");
+                        "(?:hasta|como\\s+mucho|maximo|menos\\s+de|menor\\s+de|menor\\s+que|inferior\\s+a|por\\s+debajo\\s+de|no\\s+mas\\s+de|al\\s+menos|mas\\s+de|superior\\s+a|mayor\\s+que|por\\s+encima\\s+de|presupuesto(?:\\s+de)?|precio(?:\\s+de)?|cuesta|cueste|coste|costar)[^0-9]{0,35}(\\d[\\d\\s.,]*)");
                 Matcher priceMatch = priceBound.matcher(s);
                 int amountStart = -1;
                 int amountEnd = -1;
