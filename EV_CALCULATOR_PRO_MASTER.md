@@ -2301,3 +2301,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - **Siguiente prueba manual propuesta, aún no ejecutada:** `Búscame un SUV con tracción AWD`. Objetivo: validar en el dispositivo la interpretación y aplicación del criterio de tracción. Revisar la tracción indicada en las fichas de todos los resultados; no considerar suficiente el mero número de coches.
 - Regla de trabajo: consultar este apartado y el historial antes de proponer una prueba; distinguir entre prueba superada, parcial/inconclusa y pendiente. No repetir pruebas superadas salvo cambios relevantes en motor, catálogo o requisito.
 - Todo este registro se añade únicamente a `feature/asesor-ia-fase-1`; no modificar `main`, ramas stable ni el catálogo protegido.
+
+
+## 2026-10-30 — Prueba manual superada: tracción integral AWD
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con tracción AWD`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos son correctos**.
+- Conclusión: prueba manual satisfactoria de interpretación y aplicación del filtro de tracción integral AWD en búsquedas de SUV.
+- Alcance: validación manual de esta consulta concreta; no equivale a probar todas las variantes lingüísticas ni otros tipos de tracción.
+- Estado: **superada; no repetir** salvo cambios relevantes en el motor o catálogo.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
