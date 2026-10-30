@@ -1,3 +1,10 @@
+## 2026-10-30 — Distancia predeterminada en «Eléctrico vs combustión»
+
+- Cambiado el valor inicial del campo Distancia de 350 km a 100 km en `ElectricVsCombustionActivity.java`.
+- También actualizado el valor alternativo usado al reconstruir la pantalla al cambiar el idioma.
+- Los valores que el usuario ya tenga guardados en preferencias se conservan; el nuevo valor de 100 km se aplica cuando no hay una distancia guardada.
+- Pendiente de compilación Android y validación manual.
+
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
