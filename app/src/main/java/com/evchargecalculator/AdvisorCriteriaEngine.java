@@ -398,7 +398,7 @@ public final class AdvisorCriteriaEngine {
         // Common spoken budgets such as "47 mil euros" and "47k €" mean 47,000,
         // not 47. Keep the multiplier local to price parsing so other fields are unchanged.
         boolean explicitCvUnit = field == Field.POWER
-                && unit.group().matches("(?s).*(?:\\\\bcv\\\\b|caballos?(?:\\\\s+de\\\\s+fuerza)?|hp|bhp).*");
+                && unit.group().matches("(?s).*(?:\\bcv\\b|caballos?(?:\\s+de\\s+fuerza)?|hp|bhp).*");
         if (field == Field.POWER && (implicitMotorPowerCv || explicitCvUnit)) {
             // In Spain, an unqualified motor-power figure and explicit CV/caballos
             // are conventionally expressed in CV. Normalize to catalog kW for filtering.
