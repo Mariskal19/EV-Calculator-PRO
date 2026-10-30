@@ -32,7 +32,7 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "suv", "RWD", 40000, 450, 450, 80, 200, 16));
         unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power201", "Marca", "SUV 201 kW",
                 "suv", "RWD", 40000, 450, 450, 80, 201, 16));
-        java.util.List<AdvisorCatalogMatcher.Candidate> unitlessPowerMatches =
+        java.util.List<AdvisorCatalogMatcher.Result> unitlessPowerMatches =
                 AdvisorCatalogMatcher.search(unitlessPowerCandidates, r.criteria);
         check(unitlessPowerMatches.size() == 1 && "power201".equals(unitlessPowerMatches.get(0).candidate.logicalKey),
                 "unitless 'superior a 200' excludes 200 kW and accepts 201 kW");
