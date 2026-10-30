@@ -329,7 +329,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     h.setTypeface(null, 1);
     trip.addView(h);
     space(trip, 12);
-    distance = edit("350");
+    distance = edit("100");
     row(trip, "Distancia", distance, "km");
     root.addView(trip);
     space(root, 14);
@@ -425,7 +425,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
 
   public void refreshLanguage() {
     if (isFinishing()) return;
-    String currentDistance = distance != null ? distance.getText().toString() : "350";
+    String currentDistance = distance != null ? distance.getText().toString() : "100";
     String currentEv = evConsumption != null ? evConsumption.getText().toString() : "17,0";
     String currentElec = electricityPrice != null ? electricityPrice.getText().toString() : "0,15";
     String currentFuel = fuelConsumption != null ? fuelConsumption.getText().toString() : "6,0";
