@@ -215,7 +215,7 @@ public final class AdvisorCriteriaEngine {
         NumberMatch power = findNumeric(s, lang, Field.POWER);
         if (power != null) {
             if (power.ambiguous) clarification = "clarify_power";
-            else { if (power.lowerBound) criteria.minPowerKw=power.value; else criteria.maxPowerKw=power.value; changed=true; }
+            else { if (power.lowerBound) { boolean strict = has(s, "más de", "mas de", "superior a", "mayor que", "por encima de"); criteria.minPowerKw = strict ? Math.nextUp(power.value) : power.value; } else criteria.maxPowerKw=power.value; changed=true; }
         }
 
         NumberMatch chargePower = findNumeric(s, lang, Field.CHARGE_POWER);
