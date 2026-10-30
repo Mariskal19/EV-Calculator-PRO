@@ -7,6 +7,13 @@
 
 ---
 
+## 2026-10-30 — Reconocimiento de «caballos» en potencia
+
+- Ampliado el parser para reconocer expresiones habituales en español como «Muéstrame coche de más de 290 caballos», además de «290 CV» y valores sin unidad cuando se habla explícitamente de potencia del motor.
+- «caballos»/«CV» y valores implícitos se interpretan como CV y se convierten a kW internamente; «kW» explícito sigue interpretándose como kW.
+- Añadida prueba de regresión para «más de 290 caballos», con umbral estricto.
+- Pendiente de CI y validación manual en el móvil.
+
 ## 2026-10-30 — Potencia del motor sin unidad
 
 - El usuario confirmó que la búsqueda con unidad (superior a 200 kW) devuelve 10 resultados correctos, pero al omitir la unidad (superior a 200) el filtro no se aplicaba correctamente.
