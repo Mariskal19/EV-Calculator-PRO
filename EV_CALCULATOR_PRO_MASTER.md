@@ -7,7 +7,9 @@
   - Cuando se omite «euros/€», asociar el importe al operador de precio y seleccionar la cantidad de la cláusula correspondiente, sin reutilizar los números de longitud o potencia.
   - Reconocer la formulación «de menos de X metros» como límite estricto de longitud.
 - Añadida regresión automática con la consulta exacta de la incidencia; comprueba SUV, longitud estricta <4,7 m, potencia >250 CV y precio máximo estricto de 45.000 €.
-- Estado: cambios y prueba añadida; pendiente de ejecutar smoke tests y compilación Android. La prueba manual del usuario queda pendiente con el APK resultante.
+- Validación CI: smoke tests **SUCCESS**, ejecución [41046631427](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41046631427); compilación Android **SUCCESS**, ejecución [41046613200](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41046613200).
+- APK debug generado como artefacto `EV-Calculator-PRO-advisor-debug` (ID `12972283851`); descarga desde **Artifacts** en la ejecución de compilación. La prueba manual del usuario queda pendiente.
+
 - Sin cambios en `main`, ramas stable ni catálogo protegido.
 
 ## 2026-10-30 — Distancia predeterminada en «Eléctrico vs combustión»
