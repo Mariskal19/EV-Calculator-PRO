@@ -579,7 +579,7 @@ public final class AdvisorCriteriaEngine {
             case "de": return has(s,"preis","budget","kosten");
             case "it": return has(s,"prezzo","budget","costo");
             case "pt": return has(s,"preco","orçamento","orcamento","custo");
-            default: return has(s,"precio","presupuesto","cuesta");
+            default: return has(s,"precio","presupuesto","cuesta","cueste","coste","costar","vale","valga");
         }
     }
 
