@@ -23,6 +23,21 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "parses Spanish price ceiling");
 
         engine.reset();
+        r = engine.interpret("Búscame un SUV con potencia de motor superior a 200", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
+                        && r.criteria.minPowerKw != null && r.criteria.minPowerKw > 200d,
+                "parses unitless motor power with a strict lower bound");
+        java.util.List<AdvisorCatalogMatcher.Candidate> unitlessPowerCandidates = new java.util.ArrayList<>();
+        unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power200", "Marca", "SUV 200 kW",
+                "suv", "RWD", 40000, 450, 450, 80, 200, 16));
+        unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power201", "Marca", "SUV 201 kW",
+                "suv", "RWD", 40000, 450, 450, 80, 201, 16));
+        java.util.List<AdvisorCatalogMatcher.Candidate> unitlessPowerMatches =
+                AdvisorCatalogMatcher.filter(unitlessPowerCandidates, r.criteria);
+        check(unitlessPowerMatches.size() == 1 && "power201".equals(unitlessPowerMatches.get(0).id),
+                "unitless 'superior a 200' excludes 200 kW and accepts 201 kW");
+
+        engine.reset();
         r = engine.interpret("Búscame un coche que consuma menos de 20", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && r.criteria.maxConsumption != null
                         && Math.abs(r.criteria.maxConsumption - 20d) < 0.01,
