@@ -225,6 +225,25 @@ public final class AdvisorCriteriaEngineSmokeTest {
         check(dcChargeMatches.size() == 1 && "fast".equals(dcChargeMatches.get(0).candidate.logicalKey),
                 "strict DC fast-charge threshold excludes both the Leapmotor C10 at 84 kW and a vehicle exactly at 150 kW");
 
+        // Regression: strict motor-power lower bounds exclude the exact boundary,
+        // while inclusive "at least" wording keeps the boundary.
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con potencia de motor superior a 200 kW", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.minPowerKw != null && r.criteria.minPowerKw > 200d,
+                "strict motor-power wording advances the lower bound beyond the exact threshold");
+        java.util.List<AdvisorCatalogMatcher.Candidate> strictMotorPowerCatalog = new java.util.ArrayList<>();
+        strictMotorPowerCatalog.add(new AdvisorCatalogMatcher.Candidate("power200", "Marca", "Motor 200", "suv", "RWD", 30000, 450, 450, 80, 200, 16));
+        strictMotorPowerCatalog.add(new AdvisorCatalogMatcher.Candidate("power201", "Marca", "Motor 201", "suv", "RWD", 30000, 450, 450, 80, 201, 16));
+        java.util.List<AdvisorCatalogMatcher.Result> strictMotorPowerMatches =
+                AdvisorCatalogMatcher.search(strictMotorPowerCatalog, r.criteria);
+        check(strictMotorPowerMatches.size() == 1
+                        && "power201".equals(strictMotorPowerMatches.get(0).candidate.logicalKey),
+                "strict motor-power threshold excludes exactly 200 kW and accepts 201 kW");
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con potencia de motor de al menos 200 kW", AdvisorCriteriaEngine.Language.ES);
+        check(r.criteria.minPowerKw != null && Math.abs(r.criteria.minPowerKw - 200d) < 0.0001,
+                "inclusive motor-power wording still accepts the exact 200 kW boundary");
+
         // Catalog matching: AND filters, unknown numeric fields, and soft ranking.
         java.util.List<AdvisorCatalogMatcher.Candidate> catalog = new java.util.ArrayList<>();
         catalog.add(new AdvisorCatalogMatcher.Candidate("a", "Marca", "Conocido", "suv", "RWD",
