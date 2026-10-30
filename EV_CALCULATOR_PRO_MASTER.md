@@ -13,7 +13,8 @@
 - Corregido en AdvisorCriteriaEngine.java: cuando la consulta menciona explícitamente potencia/potencia de motor, se acepta el número sin unidad como kW. Se conserva el operador estricto: superior a 200 excluye exactamente 200 kW.
 - Añadida regresión a .github/tests/AdvisorCriteriaEngineSmokeTest.java: comprueba que un SUV de 200 kW queda excluido y uno de 201 kW se acepta.
 - Alcance: solo rama feature/asesor-ia-fase-1; sin cambios en main, ramas stable ni catálogo protegido.
-- Pendiente: ejecutar smoke tests y compilación Android; después, probar en el móvil las consultas con y sin unidad.
+- Validación CI: smoke tests correctos, run 41042872304 (https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41042872304). Compilación Android correcta, run 41042689310 (https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41042689310). Artefacto APK debug generado: EV-Calculator-PRO-advisor-debug, artifact ID 12971560291 (caduca el 06/11/2026). El build corresponde al commit del cambio del intérprete; la corrección posterior del tipo de dato solo afecta al test smoke.
+- Pendiente: instalar el APK y validar en el móvil las consultas con y sin unidad.
 
 ## 0. CURRENT STATE
 
