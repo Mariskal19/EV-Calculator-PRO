@@ -1,3 +1,15 @@
+## 2026-10-30 — Corrección de precio sin moneda en consultas combinadas del Asesor IA
+
+- Incidencia comunicada en prueba manual: la consulta `Búscame un SUV eléctrico de menos de 4,7 metros, con más de 250 CV y que cueste menos de 45.000` devolvía una selección distinta al añadir «euros».
+- Causa identificada: el parser no reconocía «cueste» como contexto de precio y, al faltar la moneda, podía confundir el número de otro criterio con el presupuesto. Además, la formulación «de menos de 4,7 metros» no estaba cubierta por el patrón de longitud.
+- Corrección en `feature/asesor-ia-fase-1`:
+  - Reconocer «cueste», «coste», «costar», «vale» y «valga» como contexto de precio.
+  - Cuando se omite «euros/€», asociar el importe al operador de precio y seleccionar la cantidad de la cláusula correspondiente, sin reutilizar los números de longitud o potencia.
+  - Reconocer la formulación «de menos de X metros» como límite estricto de longitud.
+- Añadida regresión automática con la consulta exacta de la incidencia; comprueba SUV, longitud estricta <4,7 m, potencia >250 CV y precio máximo estricto de 45.000 €.
+- Estado: cambios y prueba añadida; pendiente de ejecutar smoke tests y compilación Android. La prueba manual del usuario queda pendiente con el APK resultante.
+- Sin cambios en `main`, ramas stable ni catálogo protegido.
+
 ## 2026-10-30 — Distancia predeterminada en «Eléctrico vs combustión»
 
 - Cambiado el valor inicial del campo Distancia de 350 km a 100 km en `ElectricVsCombustionActivity.java`.
