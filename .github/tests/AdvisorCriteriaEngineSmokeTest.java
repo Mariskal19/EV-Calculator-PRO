@@ -40,6 +40,14 @@ public final class AdvisorCriteriaEngineSmokeTest {
                 "unitless 'superior a 200' treats threshold as CV and excludes exactly 200 CV");
         
         engine.reset();
+        r = engine.interpret("Muéstrame coche de más de 290 caballos", AdvisorCriteriaEngine.Language.ES);
+        double twoHundredNinetyCvInKw = 290d * 0.73549875d;
+        check(!r.needsClarification() && r.criteria.minPowerKw != null
+                        && r.criteria.minPowerKw > twoHundredNinetyCvInKw
+                        && r.criteria.minPowerKw < 214d,
+                "parses 'más de 290 caballos' as a strict CV threshold");
+
+        engine.reset();
         r = engine.interpret("Búscame un SUV con potencia de motor superior a 200 kW", AdvisorCriteriaEngine.Language.ES);
         check(!r.needsClarification() && r.criteria.minPowerKw != null && r.criteria.minPowerKw > 200d,
                 "explicit kW motor power remains interpreted as kW");
