@@ -344,6 +344,8 @@ public final class AdvisorCriteriaEngine {
             boolean consumptionContext = field == Field.CONSUMPTION && describesConsumption;
             boolean batteryContext = field == Field.BATTERY && describesBattery;
             boolean chargePowerContext = field == Field.CHARGE_POWER && describesChargePower;
+            boolean motorPowerContext = field == Field.POWER
+                    && has(s, "potencia", "power", "puissance", "leistung", "potenza");
             // Do not reinterpret a length value as a price merely because "menos de"
             // is also a valid budget operator in other contexts.
             boolean priceContext = field == Field.PRICE && (containsPriceTerm(s, lang)
@@ -353,11 +355,14 @@ public final class AdvisorCriteriaEngine {
             // Spanish users often omit the unit when they clearly describe consumption:
             // "que consuma menos de 20". Treat that number as kWh/100 km, while still
             // requiring an explicit consumption-related word to avoid guessing bare numbers.
-            if (!priceContext && !trunkContext && !consumptionContext && !batteryContext && !chargePowerContext) return null;
+            if (!priceContext && !trunkContext && !consumptionContext && !batteryContext
+                    && !chargePowerContext && !motorPowerContext) return null;
             // In-context numbers may omit units: "presupuesto hasta 35000", "450 de maletero",
-            // or "que consuma menos de 20".
+            // "potencia de motor superior a 200", or "que consuma menos de 20".
             Matcher generic;
-            if (consumptionContext) {
+            if (motorPowerContext) {
+                generic = Pattern.compile("(?:potencia|power|puissance|leistung|potenza)[^0-9]{0,50}(\\d[\\d\\s.,]*)").matcher(s);
+            } else if (consumptionContext) {
                 generic = Pattern.compile("(?:consuma|consumo|consumir|consume|consumiendo|gaste|gastar|gasta|eficiencia|consumption)[^0-9]{0,50}(\\d[\\d\\s.,]*)").matcher(s);
             } else if (chargePowerContext) {
                 generic = Pattern.compile("(?:potencia[^0-9]{0,35}(?:de\\\\s+)?(?:carga|cargar)[^0-9]{0,35}|(?:carga|cargar)[^0-9]{0,35}potencia[^0-9]{0,20}|dc[^0-9]{0,20}|fast charging[^0-9]{0,20})(\\\\d[\\\\d\\\\s.,]*)").matcher(s);
