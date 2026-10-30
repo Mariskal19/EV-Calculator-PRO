@@ -7,6 +7,14 @@
 
 ---
 
+## 2026-10-30 — Potencia del motor sin unidad
+
+- El usuario confirmó que la búsqueda con unidad (superior a 200 kW) devuelve 10 resultados correctos, pero al omitir la unidad (superior a 200) el filtro no se aplicaba correctamente.
+- Corregido en AdvisorCriteriaEngine.java: cuando la consulta menciona explícitamente potencia/potencia de motor, se acepta el número sin unidad como kW. Se conserva el operador estricto: superior a 200 excluye exactamente 200 kW.
+- Añadida regresión a .github/tests/AdvisorCriteriaEngineSmokeTest.java: comprueba que un SUV de 200 kW queda excluido y uno de 201 kW se acepta.
+- Alcance: solo rama feature/asesor-ia-fase-1; sin cambios en main, ramas stable ni catálogo protegido.
+- Pendiente: ejecutar smoke tests y compilación Android; después, probar en el móvil las consultas con y sin unidad.
+
 ## 0. CURRENT STATE
 
 - **Repositorio:** `Mariskal19/EV-Calculator-PRO`
