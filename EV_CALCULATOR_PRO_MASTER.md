@@ -8,6 +8,11 @@
 ---
 
 ## 2026-10-30 — Reconocimiento de «caballos» en potencia
+**Registro de pruebas ya completadas — no repetir en futuras sesiones salvo que cambie el parser de potencia, la conversión CV/kW o el filtrado del catálogo:**
+- Prueba manual confirmada: `Muéstrame coche de más de 290 caballos` → 10 resultados, todos correctos.
+- Pruebas automáticas: consulta sin unidad interpretada como CV, límite estricto (200 CV excluido y 201 CV aceptado) y consulta explícita en kW conservada en kW.
+- Compilación Android y smoke tests superados. Considerar este bloque como validado y cerrado; no volver a proponer estas mismas consultas como pruebas rutinarias.
+
 
 - Ampliado el parser para reconocer expresiones habituales en español como «Muéstrame coche de más de 290 caballos», además de «290 CV» y valores sin unidad cuando se habla explícitamente de potencia del motor.
 - «caballos»/«CV» y valores implícitos se interpretan como CV y se convierten a kW internamente; «kW» explícito sigue interpretándose como kW.
