@@ -2311,3 +2311,14 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Alcance: validación manual de esta consulta concreta; no equivale a probar todas las variantes lingüísticas ni otros tipos de tracción.
 - Estado: **superada; no repetir** salvo cambios relevantes en el motor o catálogo.
 - Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-30 — Prueba manual fallida: potencia del motor estrictamente superior a 200 kW
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con potencia de motor superior a 200 kW`.
+- Resultado comunicado: **10 coches**, pero aparece al menos un vehículo con **exactamente 200 kW**.
+- Conclusión: fallo confirmado del límite estricto; «superior a 200 kW» debe excluir los vehículos con 200 kW exactos. No considerar superada la prueba.
+- Acción pendiente: revisar la extracción del operador estricto para potencia del motor y su aplicación en el matcher. Comparar con la corrección ya aplicada al criterio independiente de potencia de carga rápida DC, sin asumir que ambos criterios comparten el mismo código.
+- Añadir una regresión que compruebe que 200 kW queda excluido de `>200 kW`, mientras un valor superior (por ejemplo, 201 kW) sí pasa. Después ejecutar smoke tests, compilar el APK y pedir al usuario que repita esta misma consulta.
+- Estado: **incidencia pendiente de corrección y validación en dispositivo**. No repetir otras pruebas ya superadas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
