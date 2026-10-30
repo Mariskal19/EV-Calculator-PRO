@@ -24,18 +24,25 @@ public final class AdvisorCriteriaEngineSmokeTest {
 
         engine.reset();
         r = engine.interpret("Búscame un SUV con potencia de motor superior a 200", AdvisorCriteriaEngine.Language.ES);
+        double twoHundredCvInKw = 200d * 0.73549875d;
         check(!r.needsClarification() && "SUV".equals(r.criteria.bodyStyle)
-                        && r.criteria.minPowerKw != null && r.criteria.minPowerKw > 200d,
-                "parses unitless motor power with a strict lower bound");
+                        && r.criteria.minPowerKw != null && r.criteria.minPowerKw > twoHundredCvInKw
+                        && r.criteria.minPowerKw < 148d,
+                "interprets unitless motor power as CV and converts to kW");
         java.util.List<AdvisorCatalogMatcher.Candidate> unitlessPowerCandidates = new java.util.ArrayList<>();
-        unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power200", "Marca", "SUV 200 kW",
-                "suv", "RWD", 40000, 450, 450, 80, 200, 16));
-        unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power201", "Marca", "SUV 201 kW",
-                "suv", "RWD", 40000, 450, 450, 80, 201, 16));
+        unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power200cv", "Marca", "SUV 200 CV",
+                "suv", "RWD", 40000, 450, 450, 80, twoHundredCvInKw, 16));
+        unitlessPowerCandidates.add(new AdvisorCatalogMatcher.Candidate("power201cv", "Marca", "SUV 201 CV",
+                "suv", "RWD", 40000, 450, 450, 80, 201d * 0.73549875d, 16));
         java.util.List<AdvisorCatalogMatcher.Result> unitlessPowerMatches =
                 AdvisorCatalogMatcher.search(unitlessPowerCandidates, r.criteria);
-        check(unitlessPowerMatches.size() == 1 && "power201".equals(unitlessPowerMatches.get(0).candidate.logicalKey),
-                "unitless 'superior a 200' excludes 200 kW and accepts 201 kW");
+        check(unitlessPowerMatches.size() == 1 && "power201cv".equals(unitlessPowerMatches.get(0).candidate.logicalKey),
+                "unitless 'superior a 200' treats threshold as CV and excludes exactly 200 CV");
+        
+        engine.reset();
+        r = engine.interpret("Búscame un SUV con potencia de motor superior a 200 kW", AdvisorCriteriaEngine.Language.ES);
+        check(!r.needsClarification() && r.criteria.minPowerKw != null && r.criteria.minPowerKw > 200d,
+                "explicit kW motor power remains interpreted as kW");
 
         engine.reset();
         r = engine.interpret("Búscame un coche que consuma menos de 20", AdvisorCriteriaEngine.Language.ES);
