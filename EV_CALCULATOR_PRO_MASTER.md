@@ -1,3 +1,14 @@
+## 2026-11-01 — Cierre de pruebas manuales: identificación de modelos y límite de precio en berlinas
+
+- **Identificación directa de modelos — validada en el dispositivo:** consultas exactas `Model Y` → 10 resultados; `XPeng G6` → 6 resultados; `Zeekr 7GT` → 3 resultados. El usuario confirmó que las listas corresponden a los modelos solicitados. Las cantidades distintas se consideran correctas según las versiones disponibles en el catálogo; no se exige rellenar hasta 10 cuando no hay más versiones.
+- **Consulta de berlina por debajo de 36.000 €:** `Búscame una berlina eléctrica que cueste menos de 36.000 euros` → «No hay coches que cumplan». Se comprobó el catálogo de la rama: 688 vehículos; no hay versiones clasificadas como berlina/compatible (sedan, fastback o liftback) con precio ≤36.000 €. La versión más barata identificada es el Tesla Model 3 de 36.990 €.
+- **Comprobación de frontera:** el usuario probó `Búscame una berlina eléctrica que cueste menos de 37.000 euros` y confirmó que aparece el Tesla Model 3. Esto valida en el dispositivo el reconocimiento de berlina y la aplicación del límite máximo explícito: 36.990 € queda excluido con un techo de 36.000 € y aceptado con un techo de 37.000 €.
+- **Conclusión:** comportamiento correcto; la ausencia de resultados con el límite de 36.000 € se debe a que no hay vehículos que cumplan en el catálogo, no a un fallo del Asesor IA. No relajar límites, no modificar el parser/matcher y no alterar el catálogo por este caso.
+- **Alcance:** validación manual en el APK instalado y contraste de datos con el JSON de catálogo de `feature/asesor-ia-fase-1`. No se ha generado una compilación nueva ni se han ejecutado nuevos workflows como parte de estas pruebas.
+- **Sin cambios de código ni catálogo.** Esta actualización documental se realiza únicamente en `feature/asesor-ia-fase-1`; no modificar `main` ni ramas stable.
+
+---
+
 ## 2026-10-30 — Corrección de precio sin moneda en consultas combinadas del Asesor IA
 
 - Incidencia comunicada en prueba manual: la consulta `Búscame un SUV eléctrico de menos de 4,7 metros, con más de 250 CV y que cueste menos de 45.000` devolvía una selección distinta al añadir «euros».
