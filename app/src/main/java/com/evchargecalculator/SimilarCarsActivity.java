@@ -244,7 +244,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                     return;
                 }
                 advisorStatus.setText(LanguageManager.t(SimilarCarsActivity.this,"Preparando búsqueda…"));
-                advisorSearchHandler.postDelayed(pendingAdvisorSearch,1100);
+                advisorSearchHandler.postDelayed(pendingAdvisorSearch,2000);
             }
             @Override public void afterTextChanged(Editable e){}
         });
