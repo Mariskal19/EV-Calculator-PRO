@@ -1,3 +1,46 @@
+## 2026-11-01 — Ajuste final del retardo de búsqueda automática del Asesor IA
+
+- El usuario probó el comportamiento anterior y pidió más tiempo para terminar de escribir consultas largas.
+- Aumentado el debounce de la búsqueda automática de **1.100 ms a 2.000 ms** desde la última pulsación en `SimilarCarsActivity.java`.
+- Commit: `9f2e9784e003f5aef3c66ada180c0def13cdcddc` (`Aumentar debounce del Asesor IA a 2 segundos`).
+- Compilación Android debug y smoke tests: ambos workflows completados con **SUCCESS** (runs `41322423618` y `41322423625`).
+- Prueba manual del usuario en el APK instalado: **el usuario confirma que ahora va mejor**. Se conserva el retardo de 2 segundos.
+- No se modifica el catálogo protegido.
+
+---
+
+## 2026-11-01 — Cierre de pruebas manuales: identificación de modelos y límite de precio en berlinas
+
+- **Identificación directa de modelos — validada en el dispositivo:** consultas exactas `Model Y` → 10 resultados; `XPeng G6` → 6 resultados; `Zeekr 7GT` → 3 resultados. El usuario confirmó que las listas corresponden a los modelos solicitados. Las cantidades distintas se consideran correctas según las versiones disponibles en el catálogo; no se exige rellenar hasta 10 cuando no hay más versiones.
+- **Consulta de berlina por debajo de 36.000 €:** `Búscame una berlina eléctrica que cueste menos de 36.000 euros` → «No hay coches que cumplan». Se comprobó el catálogo de la rama: 688 vehículos; no hay versiones clasificadas como berlina/compatible (sedan, fastback o liftback) con precio ≤36.000 €. La versión más barata identificada es el Tesla Model 3 de 36.990 €.
+- **Comprobación de frontera:** el usuario probó `Búscame una berlina eléctrica que cueste menos de 37.000 euros` y confirmó que aparece el Tesla Model 3. Esto valida en el dispositivo el reconocimiento de berlina y la aplicación del límite máximo explícito: 36.990 € queda excluido con un techo de 36.000 € y aceptado con un techo de 37.000 €.
+- **Conclusión:** comportamiento correcto; la ausencia de resultados con el límite de 36.000 € se debe a que no hay vehículos que cumplan en el catálogo, no a un fallo del Asesor IA. No relajar límites, no modificar el parser/matcher y no alterar el catálogo por este caso.
+- **Alcance:** validación manual en el APK instalado y contraste de datos con el JSON de catálogo de `feature/asesor-ia-fase-1`. No se ha generado una compilación nueva ni se han ejecutado nuevos workflows como parte de estas pruebas.
+- **Sin cambios de código ni catálogo.** Esta actualización documental se realiza únicamente en `feature/asesor-ia-fase-1`; no modificar `main` ni ramas stable.
+
+---
+
+## 2026-10-30 — Corrección de precio sin moneda en consultas combinadas del Asesor IA
+
+- Incidencia comunicada en prueba manual: la consulta `Búscame un SUV eléctrico de menos de 4,7 metros, con más de 250 CV y que cueste menos de 45.000` devolvía una selección distinta al añadir «euros».
+- Causa identificada: el parser no reconocía «cueste» como contexto de precio y, al faltar la moneda, podía confundir el número de otro criterio con el presupuesto. Además, la formulación «de menos de 4,7 metros» no estaba cubierta por el patrón de longitud.
+- Corrección en `feature/asesor-ia-fase-1`:
+  - Reconocer «cueste», «coste», «costar», «vale» y «valga» como contexto de precio.
+  - Cuando se omite «euros/€», asociar el importe al operador de precio y seleccionar la cantidad de la cláusula correspondiente, sin reutilizar los números de longitud o potencia.
+  - Reconocer la formulación «de menos de X metros» como límite estricto de longitud.
+- Añadida regresión automática con la consulta exacta de la incidencia; comprueba SUV, longitud estricta <4,7 m, potencia >250 CV y precio máximo estricto de 45.000 €.
+- Validación CI: smoke tests **SUCCESS**, ejecución [41046631427](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41046631427); compilación Android **SUCCESS**, ejecución [41046613200](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41046613200).
+- APK debug generado como artefacto `EV-Calculator-PRO-advisor-debug` (ID `12972283851`); descarga desde **Artifacts** en la ejecución de compilación. La prueba manual del usuario queda pendiente.
+
+- Sin cambios en `main`, ramas stable ni catálogo protegido.
+
+## 2026-10-30 — Distancia predeterminada en «Eléctrico vs combustión»
+
+- Cambiado el valor inicial del campo Distancia de 350 km a 100 km en `ElectricVsCombustionActivity.java`.
+- También actualizado el valor alternativo usado al reconstruir la pantalla al cambiar el idioma.
+- Los valores que el usuario ya tenga guardados en preferencias se conservan; el nuevo valor de 100 km se aplica cuando no hay una distancia guardada.
+- Pendiente de compilación Android y validación manual.
+
 # EV Calculator PRO — MASTER
 
 > Documento maestro del proyecto.  
@@ -6,6 +49,30 @@
 > **Regla principal:** este archivo recoge el estado, decisiones y reglas de trabajo que deben conservarse al retomar el proyecto. No sustituye al código ni al catálogo; documenta cuál es la fuente de verdad de cada parte.
 
 ---
+
+## 2026-10-30 — Reconocimiento de «caballos» en potencia
+**Registro de pruebas ya completadas — no repetir en futuras sesiones salvo que cambie el parser de potencia, la conversión CV/kW o el filtrado del catálogo:**
+- Prueba manual confirmada: `Muéstrame coche de más de 290 caballos` → 10 resultados, todos correctos.
+- Pruebas automáticas: consulta sin unidad interpretada como CV, límite estricto (200 CV excluido y 201 CV aceptado) y consulta explícita en kW conservada en kW.
+- Compilación Android y smoke tests superados. Considerar este bloque como validado y cerrado; no volver a proponer estas mismas consultas como pruebas rutinarias.
+
+
+- Ampliado el parser para reconocer expresiones habituales en español como «Muéstrame coche de más de 290 caballos», además de «290 CV» y valores sin unidad cuando se habla explícitamente de potencia del motor.
+- «caballos»/«CV» y valores implícitos se interpretan como CV y se convierten a kW internamente; «kW» explícito sigue interpretándose como kW.
+- Añadida prueba de regresión para «más de 290 caballos», con umbral estricto.
+- CI: smoke tests y compilación Android superados (run 41043262889).
+- Validación manual en Redmi Note 13 Pro: el usuario probó «Muéstrame coche de más de 290 caballos»; devuelve 10 resultados y confirma que todos son correctos.
+- Estado: comportamiento validado por CI y prueba manual.
+
+
+## 2026-10-30 — Potencia del motor sin unidad
+
+- El usuario confirmó que la búsqueda con unidad (superior a 200 kW) devuelve 10 resultados correctos, pero al omitir la unidad (superior a 200) el filtro no se aplicaba correctamente.
+- Corregido en AdvisorCriteriaEngine.java: en España, si se indica potencia del motor sin unidad, el valor se interpreta por defecto en CV y se convierte a kW para compararlo con el catálogo. Si se escribe kW explícitamente, se mantiene kW. Se conserva el operador estricto: superior a 200 excluye exactamente 200 CV cuando no hay unidad, y 200 kW cuando se indica kW.
+- Añadida regresión a .github/tests/AdvisorCriteriaEngineSmokeTest.java: comprueba que un SUV de 200 CV queda excluido y uno de 201 CV se acepta, y que una consulta con kW explícitos mantiene esa unidad.
+- Alcance: solo rama feature/asesor-ia-fase-1; sin cambios en main, ramas stable ni catálogo protegido.
+- Validación CI: smoke tests correctos, run 41042872304 (https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41042872304). Compilación Android correcta, run 41042689310 (https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41042689310). Artefacto APK debug generado: EV-Calculator-PRO-advisor-debug, artifact ID 12971560291 (caduca el 06/11/2026). El build corresponde al commit del cambio del intérprete; la corrección posterior del tipo de dato solo afecta al test smoke.
+- Pendiente: instalar el APK y validar en el móvil las consultas con y sin unidad.
 
 ## 0. CURRENT STATE
 
@@ -1534,7 +1601,793 @@ La aplicación dispone de español, inglés, francés, alemán, italiano y portu
 - Flujo clásico de selección y algoritmo de similares sin regresiones.
 - Revisión de cadenas de interfaz y patrones de interpretación en los seis idiomas soportados.
 
-Estado: diseño funcional preliminar. Aún falta acordar la arquitectura final y obtener aprobación del usuario antes de modificar archivos de código.
+Estado del diseño: aprobado por el usuario el 22/10/2026. La implementación se inicia por fases en la rama `feature/asesor-ia-fase-1`; no se integra en `main` hasta revisar y validar los cambios.
+
+
+### Asesor conversacional — fase 1: intérprete local aislado (22/10/2026)
+
+- Rama de trabajo: `feature/asesor-ia-fase-1`.
+- Commit de código inicial: `2263e66491850103a7a5ae329ad2bb524bbdb62e`.
+- Archivo añadido: `app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java`.
+- Esta clase es Java puro, sin dependencias Android, red, catálogo ni persistencia. Mantiene los criterios en memoria, permite obtener una copia del estado y reiniciarlo explícitamente.
+- Criterios iniciales incluidos: límites de precio, autonomía WLTP, maletero, batería, potencia y consumo; carrocería y tracción; preferencias de menor consumo, mayor autonomía y mayor maletero; y eliminación explícita de algunos filtros.
+- El intérprete utiliza patrones locales acotados para español, inglés, francés, alemán, italiano y portugués. Devuelve una clave de aclaración cuando no reconoce una consulta o detecta un límite/unidad ambiguos. No intenta inferir nombres de modelos arbitrarios.
+- **Estado de validación:** todavía no se ha ejecutado compilación ni batería de pruebas. Este commit es una primera implementación aislada, no una función visible en la aplicación ni una versión lista para publicar.
+- **Revisión pendiente:** probar los operadores, decimales y separadores de miles, expresiones por idioma, sustitución de límites y eliminación de criterios. Revisar especialmente la detección de unidades y los casos en los que una consulta contiene más de un criterio antes de conectar el motor al catálogo.
+- **Sin cambios:** no se ha editado `SimilarCarsActivity`, `LanguageManager`, los flujos de detalle/comparativa, los JSON del catálogo, el refresco remoto ni el algoritmo clásico. No se ha cambiado `main` ni la rama de respaldo.
+- Próximo paso: revisión estática y pruebas dirigidas del motor aislado; corregir defectos antes de pasar a la integración con vehículos reales.
+
+
+#### Revisión estática adicional — operadores numéricos
+
+- Commit de corrección: `bd5f6c67cd3dbf3d25d25d3aad8487c6aa9438d1`.
+- Se corrigió la selección del operador numérico para priorizar el operador reconocido más cercano al número. Esto evita que una consulta con varios criterios, como «menos de 35.000 € y más de 450 km», se marque como ambigua solo porque el operador del primer criterio queda dentro de la ventana de texto del segundo.
+- Se añadieron expresiones acotadas para límites de presupuesto habituales como «puedo llegar a…» y «mi presupuesto es…» en español, y algunos equivalentes en inglés/portugués.
+- **Importante:** esto es una corrección basada en revisión estática; no equivale a pruebas ejecutadas ni demuestra que todos los patrones funcionen. Compilación y pruebas reproducibles siguen pendientes antes de integrar el motor con el catálogo.
+
+
+#### Pruebas aisladas preparadas
+
+- Se añadió `.github/tests/AdvisorCriteriaEngineSmokeTest.java`, una prueba sin dependencias externas para compilar y ejercitar el motor con Java 17.
+- Casos incluidos: carrocería SUV y precio máximo; maletero mínimo; dos criterios numéricos en una sola frase; añadir autonomía sin perder el presupuesto anterior; rechazo de un número sin unidad/contexto; eliminar solo el presupuesto; y un patrón básico en inglés.
+- Se añadió el workflow `.github/workflows/advisor-engine-test.yml`, que compila únicamente el motor aislado y ejecuta esas comprobaciones al cambiar los archivos de la fase 1.
+- Los archivos están en la rama de trabajo; el resultado de Actions debe revisarse en GitHub antes de afirmar que las pruebas han pasado. Este workflow no compila ni publica la aplicación Android completa.
+
+
+- Ajuste adicional antes de ejecutar la batería: se amplió el reconocimiento de unidades de volumen para aceptar expresiones españolas/portuguesas como `litros`, además de `L`, `liters` y `litres`. Commit: `d7680c56ac24c6259ccbb647431e45b0bed2bcbe`. La prueba de «450 litros» se conserva como caso de regresión.
+
+
+#### Comprobación solicitada — 22/10/2026
+
+- Revisión adicional del código y del arnés de pruebas: se detectó un error de escape en la expresión regular de la unidad de maletero. El patrón dinámico tenía una barra invertida de más, por lo que podía buscar literalmente `\\b` en vez de un límite de palabra; esto habría hecho fallar el caso «450 litros».
+- Corrección aplicada en `a164c053eeb7f78431e62db865db01cc4f6c40ef` en `feature/asesor-ia-fase-1`.
+- Estado de verificación: la inspección remota de commit no devuelve comprobaciones de CI registradas. En este entorno no se ha podido ejecutar `javac` contra los archivos descargados porque el contenedor no tiene resolución de red. **No afirmar que las pruebas han pasado** hasta comprobar la ejecución del workflow en la pestaña Actions de GitHub.
+
+
+- **Resultado confirmado de CI:** workflow [Advisor engine smoke tests, ejecución 39807809446](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39807809446), commit `31b9f52d9a4d17c6e607ccde980d951b173e8f9b`, finalizó con `success` el 22/10/2026. Tanto la compilación Java aislada como el paso de smoke tests terminaron correctamente. Esto valida los casos de humo incluidos, pero no sustituye las pruebas de integración con el catálogo ni la compilación completa de Android.
+
+
+### Asesor conversacional — fase 2: filtro aislado contra candidatos de catálogo (22/10/2026)
+
+- Rama de trabajo: `feature/asesor-ia-fase-1`; la rama `main` y el respaldo `backup/pre-asesor-ia-2026-10-22` no se han modificado por esta fase.
+- Nuevo archivo: `app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java`.
+- La clase recibe una lista de candidatos adaptados desde los objetos `Vehicle` ya cargados por `SimilarCarsActivity`. No lee archivos, no solicita datos a la red, no refresca el catálogo y no modifica la búsqueda clásica. La adaptación desde `Vehicle` y la integración en pantalla quedan deliberadamente pendientes.
+- Los filtros obligatorios se combinan con AND. Si se solicita un límite numérico, un valor ausente o no positivo no se interpreta como cero real ni puede superar el filtro. Se cubren precio, autonomía, maletero, batería, potencia y consumo; carrocería, tracción y marca/modelo requieren coincidencia normalizada explícita.
+- Las preferencias de menor consumo, mayor autonomía y mayor maletero solo ordenan los candidatos que cumplen los filtros; por sí solas no eliminan candidatos. Los empates mantienen el orden de catálogo.
+- Se ampliaron las pruebas aisladas para comprobar filtros combinados, campos desconocidos, carrocería incompatible, preferencias blandas y consulta sin criterios.
+- Se actualizó `.github/workflows/advisor-engine-test.yml` para compilar el motor y el matcher con Java 17 y ejecutar la batería ampliada.
+- **Estado de validación:** el código y las pruebas están en la rama, pero la ejecución de CI de esta fase debe finalizar con éxito antes de darla por validada. No equivale a una compilación Android completa ni a integración real en la interfaz.
+- **Siguiente paso:** confirmar CI; después diseñar la adaptación segura de los campos de `Vehicle` y probar una muestra del catálogo protegido y de la caché remota, sin modificar sus datos ni el algoritmo clásico.
+
+
+- **CI de la fase 2 confirmado:** [ejecución 39808523386](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808523386), job `119928151226`, commit `dfcfef3d193ecbf63e8ac23d91a3395f356312b0`, finalizó con `success` el 22/10/2026. El workflow compiló `AdvisorCriteriaEngine`, `AdvisorCatalogMatcher` y las pruebas con Java 17, y ejecutó correctamente la batería ampliada. Es validación de Java aislado con candidatos de prueba, no prueba todavía la carga/filtrado de los 688 registros del catálogo ni una compilación Android completa.
+
+
+### Asesor conversacional — fase 3: prueba con catálogo protegido real (22/10/2026)
+
+- Se añadieron `.github/tests/project_protected_catalog.py` y `.github/tests/AdvisorCatalogIntegrationSmokeTest.java`. El script proyecta los campos relevantes del JSON a un TSV temporal solo dentro del runner de CI; no escribe en el catálogo ni altera archivos versionados.
+- El workflow compila el intérprete, el matcher y ambas suites de pruebas; luego ejecuta las pruebas unitarias y el matcher contra los registros reales de `app/src/main/assets/catalog_es_2024_2026.json`.
+- **Resultado CI confirmado:** [ejecución 39808809409](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39808809409), job `119929150983`, commit `310e3d55b88b17e74587ae94c568aa135dae840b`, terminó con `success`.
+- Salida observada: `Projected 688 protected catalog records`; smoke tests del motor/matcher: **16 comprobaciones**; prueba con catálogo: **688 registros**, **98 coincidencias** para precio máximo de 40.000 € + autonomía mínima de 400 km y **589 coincidencias** para autonomía mínima de 400 km.
+- La prueba confirma que el matcher aplica los límites combinados, no admite datos de autonomía desconocidos como cumplimiento de un mínimo y una preferencia blanda no elimina registros. Los recuentos son resultado de esa versión del catálogo en la rama de trabajo; no constituyen auditoría de la exactitud comercial de los datos.
+- **Límite importante:** el test carga los datos del JSON real a través de una proyección de prueba, pero todavía no está conectado a los objetos `Vehicle` en ejecución ni a la caché remota. Tampoco se ha compilado la aplicación Android completa en esta fase.
+- Siguiente paso recomendado: revisar el mapeo de campos de `Vehicle` al candidato, integrar la búsqueda conversacional sin tocar `showSimilar()` ni `collectCompetitors()`, añadir cadenas en los seis idiomas y ejecutar el build Android antes de considerar cualquier integración en `main`.
+
+
+#### Corrección de seguridad conversacional antes de integrar UI (22/10/2026)
+
+- En la revisión del matcher se detectó un riesgo en el intérprete: un operador de un criterio anterior podía afectar al siguiente número de una frase, y una consulta parcialmente ambigua podía conservar cambios de criterio hechos en la misma frase.
+- Se ajustó la detección para limitar el operador a la cláusula actual y se hizo transaccional cada turno: si cualquier parte necesita aclaración, no se conserva ninguna actualización parcial de esa frase.
+- Se añadieron regresiones para `hasta 35.000 € y 450 km` (debe pedir aclaración sobre autonomía y no inferir un límite) y para verificar que el estado queda intacto.
+- **CI confirmado:** [ejecución 39809050708](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809050708), job `119929993028`, commit `55bf756f89400bbaf55fef143cf0c95f1e2783fb`, `success`. La batería del intérprete/matcher pasó **18 comprobaciones**; la prueba del catálogo real volvió a pasar con 688 registros, 98 coincidencias combinadas y 589 por autonomía.
+
+
+#### Integración de interfaz y diagnóstico de compilación Android (22/10/2026)
+
+- Se añadió en `SimilarCarsActivity` una tarjeta de búsqueda conversacional local y resultados limitados a diez coches, con acceso a detalles y a la comparativa existente (máximo tres). La selección clásica de coche de referencia permanece debajo y se conserva su ruta de búsqueda; no se añadió una pestaña de navegación.
+- Se añadieron cadenas de interfaz en los seis idiomas mediante `LanguageManager`. El intérprete y el matcher siguen siendo locales: la consulta no se envía a la red.
+- Primer workflow Android: [39809356092](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809356092) falló antes de compilar Java porque `app/build.gradle` exige variables de firma de release durante la evaluación del proyecto, incluso al ejecutar `assembleDebug`. No fue un error de compilación de la nueva interfaz.
+- Se añadió `.github/workflows/advisor-android-compile.yml`, que crea una clave efímera solo para CI, ejecuta el parche de virtualización usado por la compilación y solicita únicamente `assembleDebug`; no genera ni publica un artefacto de release.
+- El workflow se ajustó para usar esa clave efímera sin sobrescribirla con una ruta ficticia. La ejecución posterior [39809681492](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809681492) está en curso en el momento de esta nota; **no declarar compilación Android correcta hasta que finalice con `success`**.
+- Pendiente de revisar tras el resultado: posibles errores reales de compilación, corrección de referencias de traducción, mapeo de `Vehicle`/clave lógica y pruebas manuales en Android. Todo sigue en `feature/asesor-ia-fase-1`; no fusionar con `main` todavía.
+
+
+#### Revisión funcional posterior y control de estado de búsqueda (22/10/2026)
+
+- La compilación Android de la integración inicial terminó con éxito en [CI 39809681492](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39809681492), commit `28a032b4d61aaa57eb262ac1bef8add25bb73de0`. Es un `assembleDebug`; no equivale a build Release ni a prueba en dispositivo.
+- Revisión estática: `LanguageManager.getEffectiveLanguage` existe; el comparador usa las claves `compare_vehicle_ids`, `compare_vehicle_ids_ordered`, `compare_vehicle_logical_ordered` y `compare_selection_initialized` escritas por el asesor. El catálogo protegido no se ha modificado.
+- Se añadió la acción **Nueva búsqueda**, traducida en los seis idiomas, para limpiar el texto, los resultados y los criterios que el motor mantenía en memoria. Esto evita que un usuario empiece una búsqueda distinta arrastrando filtros anteriores sin darse cuenta.
+- Los commits de esta mejora son `16a0b8f` (reinicio de búsqueda) y `c32185e` (traducción). La nueva compilación Android de este último cambio está en curso: [CI 39813697512](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813697512). No registrar éxito hasta que concluya con `success`.
+- Sigue pendiente prueba funcional en dispositivo, en especial criterios multi-turno, consulta ambigua, resultados con datos ausentes, detalles y selección de comparativa. No fusionar con `main` antes de terminar estas comprobaciones.
+
+
+#### Última compilación Android y limpieza de resultados obsoletos (22/10/2026)
+
+- Confirmada la compilación Android Debug tras los últimos cambios en la búsqueda conversacional: [GitHub Actions 39813987883](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813987883), commit `5bf7f2a820503181aea84f2a3799aa17aa3a54bf`, job `119947484503`, conclusión `success`.
+- El job completó correctamente la configuración de Java 17 y Gradle 9.6.0, el parche de búsqueda local, la configuración de firma efímera para evaluar Gradle y el paso **Compile Android debug variant**.
+- También terminó correctamente la compilación de la revisión con el botón **Nueva búsqueda** y sus traducciones, en [CI 39813697512](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/39813697512).
+- La función `runAdvisorSearch()` elimina los resultados anteriores al comienzo de cada intento; si la consulta nueva está vacía o necesita aclaración, no deja visibles resultados que pertenecían a la búsqueda previa.
+- Este resultado valida `assembleDebug`, no una compilación Release ni el comportamiento en un dispositivo físico. Quedan pendientes las pruebas manuales de criterios combinados, aclaraciones, acumulación de criterios entre turnos, reinicio, detalle, comparativa y búsqueda clásica.
+- Estado de ramas: los cambios continúan aislados en `feature/asesor-ia-fase-1`; no se ha fusionado nada en `main`. El catálogo protegido y su mecanismo de actualización permanecen sin cambios.
+
+
+### Decisión de interpretación de objetivos de precio y maletero (22/10/2026)
+
+- El asesor distingue **objetivos aproximados** de límites explícitos en ambos criterios.
+- **Precio/presupuesto:** conservar el comportamiento de presupuesto cercano ya implementado; ordenar por proximidad al importe objetivo y admitir una pequeña desviación, sin convertir un objetivo de precio en un máximo rígido.
+- **Maletero:** «quiero uno de 450 de maletero», «maletero de 450 litros» o «around 450 L of boot space» representan un **objetivo aproximado**. Se priorizan capacidades conocidas cercanas al valor, sin exigir que todos los coches superen 450 L.
+- **Operadores explícitos siguen siendo límites:** «al menos 450 litros» / «mínimo 450 L» son un mínimo real; «máximo 450 litros» es un máximo real. Si falta el dato, el coche no se considera coincidencia verificada para ese criterio.
+- Cuando precio y maletero son objetivos, la clasificación considera la proximidad relativa a ambos.
+- Se añaden pruebas de regresión para distinguir el objetivo de maletero de un mínimo explícito y comprobar el ranking por cercanía.
+
+
+### Tolerancia para límites máximos del asesor conversacional (22/10/2026)
+
+- Decisión acordada: un criterio expresado como **«como máximo X»** admite una pequeña tolerancia para no descartar alternativas cercanas.
+- **Precio máximo:** tolerancia del **5 %** (por ejemplo, 30.000 € admite hasta 31.500 €; un vehículo de 31.000 € se admite).
+- **Autonomía, maletero, batería, potencia y consumo máximos:** tolerancia del **3 %** (por ejemplo, 450 km admite hasta 463,5 km).
+- **Límites inferiores** («al menos», «mínimo», «más de» según su operador): continúan aplicándose sin tolerancia por debajo del mínimo solicitado.
+- La tolerancia se aplica en el filtrado del matcher, no solo en la ordenación. Los objetivos aproximados, como «unos 450 litros», siguen usando su lógica separada de proximidad y no se convierten en límites máximos.
+- La tolerancia solo amplía el límite superior; los valores desconocidos/no positivos siguen sin poder satisfacer un filtro numérico.
+- Nota sobre precio: se conserva el comportamiento previo del matcher para presupuestos con máximo (80 %–105 % del presupuesto cuando no hay mínimo), por lo que el precio mantiene además su lógica histórica de búsqueda en torno al presupuesto. Esta lógica debe revisarse por separado si se quiere que todo precio inferior al máximo sea admisible sin suelo mínimo.
+- La batería de humo incluye casos límite para precio, autonomía, maletero, batería, potencia y consumo. La validación CI debe confirmarse tras estos cambios; todavía no es una prueba de dispositivo ni una publicación.
+
+
+## 2026-10-22 — Asesor conversacional: criterio de precio incompleto
+
+- En la rama `feature/asesor-ia-fase-1`, el motor local reconoce una consulta que menciona un coche de referencia (`XPeng G6`) y termina con una petición de similitud de precio sin concretar la relación.
+- Ejemplo: «Quiero un coche similar al XPeng G6 de precio…». El resultado de interpretación es `clarify_reference_price_relation`: debe solicitar al usuario si quiere una alternativa más barata, más cara o de precio parecido.
+- Regla de seguridad semántica: no se inventa un presupuesto, no se añade un filtro numérico y no se modifica ningún criterio previo mientras la frase esté incompleta.
+- Se añaden pruebas smoke para la frase sin terminar y la variante con puntos suspensivos.
+- Esta modificación prepara el contrato del motor de interpretación. La frase de aclaración visible en la pantalla del asesor debe mapear `clarify_reference_price_relation` a una pregunta localizada; no debe mostrar la clave técnica.
+- La política de filtros máximos acordada sigue vigente: precio máximo explícito +5 %; otros máximos numéricos +3 %; mínimos exactos; «unos X litros» se interpreta como objetivo aproximado.
+
+
+### Interfaz del asesor: búsqueda automática al terminar de escribir (22/10/2026)
+
+- En `SimilarCarsActivity`, se elimina el botón «Buscar coches» de la tarjeta del asesor conversacional.
+- La búsqueda se ejecuta automáticamente cuando el usuario deja de escribir durante **1100 ms** (debounce), en vez de recalcular con cada pulsación. Si se pulsa Buscar/Hecho en el teclado, se ejecuta inmediatamente.
+- Al borrar el texto se limpian el estado y los resultados visibles; «Nueva búsqueda» también cancela cualquier ejecución pendiente antes de reiniciar los criterios.
+- Alcance limitado a la tarjeta «Buscar con IA». La selección clásica de coche de referencia, la búsqueda clásica y `CompararCochesActivity` permanecen intactas.
+- Commit: `5737975a9711c45b33113f6517fd24b71f6858b4` en `feature/asesor-ia-fase-1`. Pendiente comprobar la compilación Android y probar el comportamiento en dispositivo. No se ha fusionado con `main`.
+
+
+### Corrección del filtro de carrocería «berlina» (22/10/2026)
+
+- Se amplía la equivalencia de berlina/sedán para incluir carrocerías fastback y liftback, habituales en coches de perfil berlina, evitando excluir el Peugeot E-408 por tener la etiqueta `liftback`.
+- Se corrige en la adaptación del asesor la clasificación de `Kia EV4 Hatchback`, que el catálogo tenía marcada como `sedan`. El ajuste queda aislado al asesor y no modifica el catálogo protegido ni su proceso de actualización.
+- Se conserva `Kia EV4 Fastback` como berlina y se evita que la búsqueda de berlina incluya el EV4 Hatchback.
+- Se añaden pruebas de regresión para incluir sedán/fastback/liftback y excluir hatchback.
+- La búsqueda sigue limitada a un máximo de 10 modelos únicos. La prueba nueva comprueba el filtrado de carrocería, no la cantidad comercial completa del mercado español.
+- Cambios en `feature/asesor-ia-fase-1`; no fusionar con `main` hasta validar CI y, si procede, una nueva prueba en móvil.
+
+
+### Interpretación de presupuesto aproximado (25/10/2026)
+
+- Se detectó en prueba de dispositivo que la frase «Búscame un coche de unos 40000 euros» se trataba como ambigua porque el motor reconocía el importe, pero no la expresión aproximativa «unos».
+- `unos`, `alrededor de`, `aproximadamente`, `sobre`, `cerca de`, `en torno a` y `más o menos` se interpretan como presupuesto objetivo aproximado, no como límite máximo estricto. Se añade soporte equivalente para expresiones frecuentes en inglés, francés, alemán, italiano y portugués.
+- El criterio conserva el precio como objetivo para ordenar/filtrar coches de esa zona económica; expresiones explícitas como «hasta 40.000 €» siguen siendo un techo presupuestario.
+- Se añadió una prueba de regresión para la frase exacta del usuario y para comprobar que no se marca como techo estricto.
+- Cambios en `feature/asesor-ia-fase-1`; validar las pruebas automáticas y compilar APK antes de volver a instalar. No fusionar con `main`.
+
+
+## 2026-10-25 — Precio aproximado en búsquedas de carrocería
+
+- Se ha detectado durante la prueba manual que la consulta «Búscame una berlina de 40 mil euros» podía devolver vehículos muy por encima del precio solicitado.
+- Causa identificada en el intérprete local: no normalizaba la forma coloquial española «40 mil euros» y no trataba la construcción «berlina de 40.000 euros» como un precio objetivo aproximado.
+- Corrección en la rama `feature/asesor-ia-fase-1`: convertir expresiones numéricas «N mil euros» a su valor numérico y tratar un importe precedido por «de» como objetivo aproximado cuando no hay operador explícito de límite.
+- Se añaden pruebas para comprobar que la consulta se interpreta como carrocería berlina + objetivo de 40.000 €, y que un vehículo de 66.000 € queda excluido del resultado.
+- Pendiente de validar: ejecución de smoke tests, compilación Android y nueva prueba manual con la APK resultante. No fusionar con `main` ni publicar sin autorización expresa.
+
+
+### Complemento — importe coloquial sin unidad
+
+- Se amplía la normalización de expresiones como «40 mil» para interpretarlas como 40.000 euros en consultas de búsqueda de vehículos, aunque el usuario omita «euros».
+- Se añade una prueba para «Búscame una berlina de 40 mil» que comprueba carrocería berlina y objetivo aproximado de 40.000 €.
+- Pendiente: validar CI y compilación Android antes de entregar una nueva APK. Sigue todo en `feature/asesor-ia-fase-1`; no fusionar en `main` sin autorización.
+
+
+## 2026-10-25 — Validación de resultados visibles del asesor
+
+- Prueba en dispositivo confirmada por el usuario: «Búscame una berlina de 40 mil» y «Búscame una berlina de 40 mil euros» muestran ambas 7 resultados.
+- La prueba de integración encuentra 17 registros de catálogo dentro del rango aproximado de 28.000–46.000 € y compatibles con la equivalencia de carrocería sedán/fastback/liftback. Esos registros incluyen varias versiones/años de los mismos modelos; no son 17 tarjetas distintas.
+- La pantalla elimina duplicados por marca + modelo y no muestra el Kia EV4 Hatchback como berlina, porque la etiqueta `sedan` del catálogo está corregida a `hatchback` exclusivamente en el adaptador del asesor.
+- Con estas reglas, el conjunto esperado de siete modelos únicos es: Tesla Model 3, Peugeot E-408, Kia EV4 Fastback, Mazda Mazda6e, XPeng P7+, Hyundai IONIQ 6 y BYD Seal.
+- El matcher ordena por proximidad al presupuesto objetivo de 40.000 €. Se añade una prueba de integración para comprobar los siete modelos visibles, la eliminación de versiones repetidas y su orden esperado.
+- Cambio de prueba en la rama `feature/asesor-ia-fase-1`; commit `545549e61e784cec0b9cd9b5bab875dc42b1fbec`. Pendiente confirmar que GitHub Actions ejecuta la prueba nueva correctamente.
+- No se modifica el catálogo protegido ni la lógica de producción en este paso. No fusionar con `main` ni publicar sin autorización expresa.
+
+
+### Prueba de filtros combinados con catálogo real (25/10/2026)
+
+- Se amplía la integración para ejecutar contra los 688 registros la consulta de ejemplo: «SUV hasta 35.000 €, más de 450 km y maletero de al menos 450 litros».
+- Resultado: **3 candidatos**. La prueba comprueba para cada uno carrocería SUV/crossover, precio no superior a 36.750 € (techo explícito con tolerancia documentada del 5 %), autonomía WLTP mínima de 450 km y maletero mínimo de 450 litros.
+- Smoke tests: **47 comprobaciones del motor** y prueba de integración de catálogo completadas correctamente.
+- Workflow correcto: [Advisor engine smoke tests, run 40204847979](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40204847979).
+- El cambio solo afecta a pruebas y documentación en `feature/asesor-ia-fase-1`; no se ha generado una APK nueva porque no se ha modificado código de la aplicación.
+
+
+- Se añadió además una comprobación de resultados visibles (no solo versiones de catálogo): las 3 versiones que cumplen se agrupan en **2 modelos únicos**, ordenados por proximidad al límite de 35.000 €: KGM Torres EVX y MG MGS5 EV. La aserción inicial de orden se corrigió para reflejar el comparador real; la ejecución final pasó.
+- Último workflow correcto: [Advisor engine smoke tests, run 40204994536](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40204994536). Resultado: 47 pruebas del motor; 17 coincidencias brutas de berlina, 7 modelos únicos visibles; SUV combinado: 3 versiones, 2 modelos únicos.
+
+
+## 2026-10-25 — Confirmación manual de pruebas del Asesor IA
+
+- El usuario confirma que la prueba 1 funciona correctamente.
+- En la prueba 2, la búsqueda combinada de SUV hasta 35.000 €, autonomía superior a 450 km y maletero mínimo de 450 litros muestra dos coches.
+- Esto concuerda con la prueba de integración sobre el catálogo protegido: hay tres versiones coincidentes que se agrupan en dos modelos únicos (KGM Torres EVX y MG MGS5 EV).
+- No se cambia lógica de producción ni se publica una APK en este paso.
+
+
+## 2026-10-25 — Prioridad de versiones recientes en el Asesor IA
+
+- Se corrige `SimilarCarsActivity.runAdvisorSearch()` para determinar primero el año más reciente presente en el catálogo para cada combinación normalizada de marca y modelo.
+- El Asesor IA solo evalúa versiones del año más reciente de ese modelo antes de aplicar filtros y ordenar resultados. Conserva todas las variantes/acabados de ese año para que presupuesto, autonomía, carrocería y demás criterios puedan seleccionar entre ellas.
+- Esto evita que una versión antigua gane solo por quedar más cerca del precio objetivo. Si ninguna variante del año más reciente cumple los criterios, el modelo no se ofrece mediante una versión antigua como sustituto silencioso.
+- Alcance y limitación: el año más reciente del catálogo no prueba por sí solo que el acabado siga actualmente a la venta; para afirmarlo hace falta una auditoría comercial de fuentes oficiales. La lógica usa el año declarado por cada registro y no modifica el catálogo protegido ni `main`.
+- Commit de implementación en `feature/asesor-ia-fase-1`: `93f46c16f619c11ab47e0f00341417ba324e04e7`. Compilación Android pendiente de resultado de GitHub Actions antes de entregar APK para prueba.
+
+
+## Asesor IA: orden de resultados por precio (2026-10-25)
+- Tras filtrar los años anteriores y priorizar el año más reciente disponible por marca/modelo, los resultados del Asesor IA se ordenan por precio de catálogo ascendente.
+- Los vehículos sin precio válido se colocan al final; en empates se ordena por marca y modelo.
+- Cambio de código: `3bd55bcaaa47c19156f0b49339782999e4461e5d` en `feature/asesor-ia-fase-1`.
+- Pendiente: validar la compilación CI y probar en dispositivo con búsquedas como «Búscame una berlina de 40 mil».
+
+
+## Asesor IA: ocultar teclado al enviar búsqueda (2026-10-25)
+- Al confirmar la búsqueda desde la acción Buscar/Listo del teclado Android, la app oculta el teclado y quita el foco del campo antes de ejecutar la búsqueda.
+- La búsqueda automática mientras se escribe se mantiene, evitando que el teclado se cierre mientras el usuario redacta.
+- Cambio de código: `b5b94a9f5f00a8a720f462519a58d3c957d5131a` en `feature/asesor-ia-fase-1`.
+- Pendiente de compilación CI y prueba en dispositivo.
+
+### Ocultar teclado al comenzar la búsqueda automática del Asesor IA (2026-10-25)
+- Prueba en dispositivo: la búsqueda automática se iniciaba tras la pausa de escritura, pero el teclado seguía visible.
+- Corrección: `runAdvisorSearch()` ahora oculta el teclado y quita el foco del campo al comenzar la búsqueda. Esto cubre tanto la búsqueda automática por debounce (1100 ms sin escribir) como el envío desde el teclado.
+- Rama: `feature/asesor-ia-fase-1`.
+
+### Ajuste del retraso de búsqueda/ocultación del teclado a 1100 ms (2026-10-25)
+- Se aumenta el debounce de la búsqueda automática de 1000 a **1100 ms** desde la última pulsación. Al iniciarse la búsqueda, `runAdvisorSearch()` oculta el teclado y quita el foco del campo.
+- La acción Buscar/Hecho del teclado sigue ejecutando la búsqueda inmediatamente.
+- Cambio en `SimilarCarsActivity.java`, rama `feature/asesor-ia-fase-1`. Pendiente de CI y prueba en dispositivo.
+
+### Selección de resultados cerca del precio objetivo del Asesor IA (2026-10-25)
+- Incidencia detectada: una consulta como `Búscame un SUV de 50 mil euros` podía mostrar solo los 10 modelos más baratos del intervalo aproximado (35.000–57.500 €), con un máximo visible cercano a 36.900 €, aunque el catálogo contiene SUV más próximos a 50.000 €.
+- Corrección en `SimilarCarsActivity.java`: para un precio objetivo aproximado, seleccionar primero hasta 10 modelos únicos con menor diferencia absoluta respecto al objetivo y después mostrar esa selección ordenada de menor a mayor precio. Los límites explícitos como `hasta 50.000 €` conservan el comportamiento de listar los más baratos primero.
+- Rama: `feature/asesor-ia-fase-1`. Pendiente de CI y prueba con consultas aproximadas de 40.000 € y 50.000 €, además de límites explícitos.
+
+
+## 2026-10-25 — Asesor IA: conservar variantes de un modelo al filtrar por año
+
+- Incidencia detectada con la consulta «Búscame un SUV de 47 mil euros»: el asesor descartaba todas las versiones XPeng G6 de 2024/2025 porque el catálogo contiene una versión Standard Range de 2026.
+- **No se modifica el catálogo protegido.** El problema estaba en el filtro previo de `SimilarCarsActivity`, que elegía el año más reciente por marca/modelo completo antes de aplicar los criterios.
+- Corrección en la rama `feature/asesor-ia-fase-1`: el asesor evalúa primero todas las versiones disponibles en el catálogo y después selecciona una versión representativa por modelo. Para un precio aproximado, selecciona la versión más cercana al objetivo antes de ordenar los resultados por precio; para «hasta X €», se mantiene la lógica de precio ascendente.
+- Caso de regresión que debe verificarse en la compilación: consulta «SUV de 47 mil euros» debe poder seleccionar XPeng G6 RWD Long Range de 2025 (47.083 €) en lugar de descartarlo únicamente porque existe un G6 Standard Range de 2026 (43.083 €). El catálogo permanece intacto.
+- Commit de código: `c8a18bb202e9bfac72b05579de7abd484db0aa10`. Pendiente: validar CI y probar el APK generado antes de dar la incidencia por cerrada.
+
+
+## 2026-10-25 — Asesor IA: versión más reciente por acabado equivalente
+
+- Criterio confirmado con el usuario: no se filtra por el año más reciente del modelo completo, ni se recuperan versiones antiguas de un acabado solo porque tengan mejor precio.
+- El asesor agrupa versiones equivalentes por marca, modelo, mercado, tracción y nombre normalizado del acabado. Al normalizar, ignora cifras técnicas (kW, kWh, CV, autonomía, etc.) y etiquetas de tracción repetidas dentro del texto; la tracción sigue formando parte de la clave independiente.
+- Dentro de cada acabado equivalente, solo se evalúa el año más reciente disponible en el catálogo. Si ese acabado no cumple el presupuesto u otros criterios, no se ofrece un año anterior como sustituto. Los acabados distintos del mismo modelo siguen compitiendo por separado.
+- Caso XPeng G6: Long Range 2025 (47.083 €) se conserva; Long Range 2024 (49.990 €) se descarta por ser anterior. Standard Range 2026 se conserva como acabado distinto; Standard Range 2024 se descarta. Performance AWD también se compara solo con su año más reciente disponible.
+- El catálogo protegido y `main` permanecen sin cambios. Implementación en `feature/asesor-ia-fase-1`, commit `bb7c2c6798d2f58d533ea2295db396b8f6e49b35`. Pendiente CI y prueba de regresión con «SUV de 47 mil euros».
+
+
+## 2026-10-25 — Asesor IA: importes expresados en miles
+
+- En la prueba real del APK, la consulta «SUV de 47 mil euros» no devolvía ningún XPeng G6.
+- Causa localizada en `AdvisorCriteriaEngine`: la extracción numérica no admitía el multiplicador «mil» entre la cifra y la moneda, de modo que la expresión no se convertía en un objetivo de 47.000 €.
+- Corrección aplicada para reconocer importes de precio con «mil» o «k» (por ejemplo, «47 mil euros» y «47k €») y multiplicarlos por 1.000. El ajuste está limitado al criterio de precio.
+- Código: commit `e2b48382eb6f56240a706bc1b6dfb2dc9129f06a` en `feature/asesor-ia-fase-1`.
+- Pendiente: compilación CI y nueva prueba del APK con «SUV de 47 mil euros». No se modifica el catálogo protegido ni `main`.
+
+
+## 2026-10-25 — Asesor IA: consultas de coches parecidos a un modelo
+
+- Incidencia reproducida por el usuario: «Quiero un coche parecido al XPeng G6» no devolvía resultados.
+- Causa: el intérprete de criterios del Asesor IA estaba pensado para filtros numéricos y atributos; no derivaba una petición de similitud con un modelo concreto al motor dedicado de coches similares.
+- Corrección en `SimilarCarsActivity.java`: detectar peticiones de similitud en lenguaje natural que mencionen XPeng G6, seleccionar una referencia G6 existente en el catálogo, guardar esa referencia y ejecutar el motor de competidores/similitud existente. Se muestra explícitamente qué año y versión se ha usado como referencia.
+- Se hace visible el encabezado de resultados al ejecutar el motor de similitud.
+- Commit: `529955aebb4d2d5094db16d3ab30ce31b3d2d1b1`.
+- Pendiente: confirmar compilación CI y probar en el APK frases como «Quiero un coche parecido al XPeng G6» y «Busca alternativas similares al XPeng G6».
+- Se mantiene el trabajo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+
+### Asesor IA — detección genérica de consultas de coches similares (25/10/2026)
+- Se generalizó `tryRunNaturalSimilarityQuery()` en `SimilarCarsActivity.java`: las frases de similitud ya no están limitadas al XPeng G6; buscan la marca y el modelo mencionados entre los vehículos cargados del catálogo.
+- La comparación compacta tolera diferencias de espacios, por ejemplo `Zeekr 7GT` aunque el usuario escriba `Zeekr 7 GT`.
+- Si el modelo existe, se elige la versión/año más reciente siguiendo el criterio de selección ya usado y se abre el motor existente de 10 alternativas similares. Si no se localiza, ahora se informa al usuario en lugar de dejar la consulta sin respuesta.
+- Verificación de catálogo en la rama de trabajo: hay tres variantes del `Zeekr 7GT` de 2026 (Core RWD, Long Range RWD y Privilege AWD). El catálogo protegido no se ha modificado.
+- Cambio de código: commit `4a8391f5eae7aaeac6b7fb4d2b9da94f6b644f3c` en `feature/asesor-ia-fase-1`. Pendiente validar compilación CI y probar en el teléfono con `Quiero un coche parecido al zeekr 7gt`; no reutilizar APKs antiguos.
+
+
+### Asesor IA — ampliación de frases de similitud y nombres cortos (25/10/2026)
+- Se amplió la detección de lenguaje natural para incluir expresiones con «como», además de «parecido», «similar», «semejante», «alternativa», «rival» y «competidor», y equivalentes habituales en inglés.
+- Primero se intenta identificar la marca y el modelo completos en el catálogo. Si el usuario omite la marca (por ejemplo, «Búscame un coche como el G6»), se busca el nombre del modelo como frase completa y se acepta solo cuando no hay ambigüedad entre marcas/modelos.
+- Si el nombre corto puede referirse a varios modelos, el asesor solicita que se añada la marca en vez de escoger uno arbitrariamente.
+- Al resolver la referencia, se reutiliza el motor existente de coches similares; no se altera el catálogo ni se crea un motor paralelo.
+- Ejemplos previstos: «Búscame un coche como el G6», «Quiero algo parecido al XPeng G6», «Busca alternativas al Zeekr 7GT» y «Un coche similar al Model Y».
+- Código: commit `2598eed450a8e5364bc9ae636f59fa13073e2205` en `feature/asesor-ia-fase-1`. Pendiente confirmar compilación CI y probar estas consultas en el APK nuevo; no reutilizar APKs anteriores. `main` y el catálogo protegido siguen intactos.
+
+
+### Asesor IA — mayor visibilidad del estado y los resultados (25/10/2026)
+- Se aumenta el texto del estado de búsqueda de 12 a 15 sp, en azul y negrita, para que mensajes como «Preparando búsqueda…», avisos y encabezados de resultados destaquen mejor.
+- Se aumentan los nombres de los coches de los resultados de 15 a 16 sp y se muestran en azul y negrita para facilitar la lectura visual de los resultados.
+- Cambio visual limitado al Asesor IA; no altera la lógica de búsqueda, el catálogo protegido ni `main`.
+- Código: commit `4c73188fbfc6373d2afc1d13c5ebf562fa46bf52` en `feature/asesor-ia-fase-1`. Pendiente comprobar compilación CI y validar visualmente el APK nuevo en el móvil.
+
+
+### Asesor IA — petición genérica con un modelo de referencia (25/10/2026)
+
+- Incidencia reportada en dispositivo: «Quiero un coche el XPeng G6» se interpretaba como un límite ambiguo porque no incluía las palabras «parecido» o «similar».
+- Se amplía el enrutamiento: una petición genérica de coche que mencione un modelo completo existente en el catálogo se entiende como solicitud de alternativas a ese modelo y utiliza el motor existente de coches similares. Las peticiones genéricas sin modelo de referencia siguen pidiendo criterios; las búsquedas por presupuesto como «Quiero un SUV de 47 mil euros» no se desvían al motor de similitud.
+- Se extrae la decisión a `AdvisorSimilarityIntent`, una clase Java independiente de Android, y se añaden pruebas de regresión para la frase exacta del usuario, la frase explícita de similitud y dos casos negativos.
+- Se amplía el workflow de pruebas para compilar el nuevo helper y se incluye `SimilarCarsActivity.java` en los cambios que disparan la compilación Android.
+- Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. La compilación y las pruebas de GitHub Actions deben confirmarse antes de instalar una APK nueva.
+
+
+## Asesor IA — distinguir modelo concreto de coches similares (25/10/2026)
+
+En la rama `feature/asesor-ia-fase-1`, el enrutamiento de consultas se generaliza para todo el catálogo, sin reglas específicas para XPeng:
+
+- Peticiones directas como «Búscame el XPeng G6», «Muéstrame el Tesla Model Y» o equivalentes deben mostrar el modelo solicitado y sus versiones disponibles en el catálogo.
+- Las expresiones de similitud («parecido», «similar», «alternativas», «rival», «como…») siguen activando la búsqueda de coches similares, incluso si también se pide mostrar/buscar.
+- Las peticiones por criterios (por ejemplo, tipo de carrocería y presupuesto) continúan en el intérprete de filtros.
+- Si un nombre corto identifica varios modelos, se solicita marca/modelo para evitar una selección arbitraria.
+- Se añadieron pruebas automáticas para búsquedas directas de más de una marca, precedencia de similitud y exclusión de consultas genéricas por criterios.
+
+No se modifica `main` ni el catálogo protegido.
+
+
+## Asesor IA — corrección de SUV frente a BYD Dolphin Surf (25/10/2026)
+
+- Incidencia observada en el móvil: la consulta «Quiero un SUV de unos 40000» devolvía BYD Dolphin Surf, pese a que el usuario pidió carrocería SUV.
+- Causa confirmada: el catálogo protegido etiqueta incorrectamente el Dolphin Surf como `suv`. La web oficial de BYD lo describe como hatchback de cinco puertas y segmento A.
+- Corrección acotada en el adaptador del Asesor IA: BYD Dolphin Surf se interpreta como `hatchback` para el filtrado de carrocería, sin editar el catálogo protegido ni alterar otras pantallas.
+- Se detectó una segunda causa: «Quiero un SUV de unos 40000» no incluye moneda ni la palabra «presupuesto/precio», por lo que el intérprete podía ignorar los 40000 y aplicar solo la carrocería. Ahora una expresión de precio aproximado («unos», «alrededor de», etc.) también activa la lectura del número sin unidad.
+- Las pruebas cubren la frase exacta y verifican que se excluyan Dolphin Surf por carrocería, Fiat Grande Panda por quedar muy por debajo del rango de precio aproximado y SUVs por encima del rango; se mantiene el SUV cercano a 40000.
+- Se añadieron pruebas de regresión para «Quiero un SUV de unos 40000»: el filtro debe conservar SUVs que se ajustan al precio y excluir carrocerías y precios fuera del rango.
+- Rama: `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente verificar GitHub Actions y probar el APK actualizado en el móvil.
+
+
+## 2026-10-25 — Margen simétrico para presupuestos aproximados del Asesor IA
+
+- Aprobado por el usuario: reducir el margen de precio aproximado de −30 % / +15 % a **±15 %**.
+- El matcher local usa ahora una banda del 85 % al 115 % del precio objetivo. Ejemplo: «SUV de unos 40.000» permite precios de **34.000 a 46.000 €**, ambos límites incluidos.
+- Los límites explícitos como «hasta 40.000 €» mantienen su regla independiente: precio inferior sin mínimo y hasta un 5 % de tolerancia por encima (42.000 €).
+- Se actualizan las pruebas de regresión para comprobar los límites 34.000/46.000 €, excluir precios fuera de la banda y mantener la tolerancia de los límites explícitos.
+- Cambios en `feature/asesor-ia-fase-1`. No se modifica `main` ni el catálogo protegido. Pendiente validar smoke tests, compilación Android y APK antes de pedir prueba en el móvil.
+
+
+## Corrección de precio implícito en búsquedas por carrocería (2026-10-25)
+
+- Se corrige el caso `Búscame una berlina de 62800`: si una búsqueda menciona una carrocería reconocida y una cifra plausible de precio (10.000–250.000), se admite esa cifra como objetivo de precio aunque no incluya `€`, `precio` o `presupuesto`.
+- El número se interpreta como objetivo aproximado y mantiene la banda económica existente (±15 %), no como precio máximo.
+- Se limita la detección a cifras de cinco dígitos o más para no confundir expresiones como `berlina de 5 puertas` con un precio.
+- Cambios en `AdvisorCriteriaEngine.java`, únicamente en `feature/asesor-ia-fase-1`; no se modifica el catálogo protegido ni `main`.
+
+## 2026-10-27 — Pruebas manuales del Asesor IA: berlinas y presupuesto aproximado
+
+Pruebas realizadas por el usuario en el APK instalado en su Redmi Note 13 Pro. **No repetir estas dos pruebas salvo que cambie el motor de búsqueda, el catálogo relevante o una corrección afecte a la extracción de carrocería/precio.**
+
+1. Consulta exacta: `Búscame una berlina de 40.000 €`
+   - Resultado observado: **7 coches**.
+   - El usuario confirma que esta búsqueda devuelve resultados; queda registrada como prueba manual satisfactoria.
+
+2. Consulta exacta: `Búscame una berlina de 62800`
+   - Resultado observado: **9 coches**.
+   - El usuario confirma que los 9 resultados son correctos: carrocería y precios adecuados.
+   - Esta prueba cubre la incidencia previa en la que una cifra de 62.800 podía devolver coches de alrededor de 38.000 €.
+
+Criterio de precio aproximado vigente: **±15 %** sobre el objetivo. Por tanto:
+- 40.000 € → banda esperada de **34.000–46.000 €**.
+- 62.800 € → banda esperada de **53.380–72.220 €**.
+
+Estado: **ambas pruebas manuales superadas según confirmación del usuario**. Es una validación en dispositivo, no una prueba automatizada nueva. No se modifica `main` ni el catálogo protegido; esta anotación se añade únicamente a `feature/asesor-ia-fase-1`.
+
+## 2026-10-27 — Prueba manual: búsqueda directa de un modelo
+
+- Consulta exacta en el APK: `Búscame el XPeng G6`.
+- Resultado observado por el usuario: **6 versiones del XPeng G6**.
+- Interpretación: la consulta directa devuelve el modelo solicitado y sus versiones disponibles, en lugar de desviar la petición a la búsqueda de coches similares.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+- No repetir esta prueba salvo que cambie el enrutamiento de consultas directas/similitud o el catálogo del XPeng G6.
+- La anotación se realiza únicamente en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+## 2026-10-27 — Prueba manual: alternativas similares al XPeng G6
+
+- Consulta exacta en el APK: `Quiero un coche parecido al XPeng G6`.
+- Resultado observado por el usuario: **10 coches en la sección de similares**.
+- Interpretación: la petición de similitud activa el motor de coches similares y muestra alternativas, no las versiones del XPeng G6.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+- No repetir esta prueba salvo que cambie el enrutamiento de similitud, el ranking de coches similares o los datos relevantes del catálogo.
+- Anotación realizada solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+## 2026-10-27 — Prueba manual: similitud con nombre corto «G6»
+
+- Consulta exacta en el APK: `Búscame un coche como el G6`.
+- Resultado observado por el usuario: **10 coches similares**.
+- Interpretación: el asesor reconoce el nombre corto «G6» como referencia no ambigua del XPeng G6 y ejecuta la búsqueda de alternativas.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+- No repetir salvo cambios en la resolución de nombres cortos, en el enrutamiento de similitud o en el catálogo que introduzcan ambigüedad.
+- Anotación solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+
+
+## 2026-10-27 — Pruebas manuales del Asesor IA: presupuesto aproximado y límite máximo
+
+Pruebas realizadas por el usuario en el APK instalado. Registrar como validaciones manuales del comportamiento visible; no equivalen a una prueba automatizada.
+
+### Precio aproximado: SUV de unos 50.000 €
+
+- Consulta: `Búscame un SUV de unos 50.000 €`.
+- Resultado observado: **10 SUV**.
+- El usuario confirma que los precios de los resultados son correctos y cercanos al objetivo.
+- Criterio esperado: precio aproximado con margen simétrico de ±15 % (42.500–57.500 €); los resultados se seleccionan por proximidad al objetivo y luego se muestran en orden ascendente de precio.
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+
+### Límite máximo: SUV de hasta 30.000 €
+
+- Consulta: `Búscame un SUV de hasta 30.000 €`.
+- Resultado observado: **10 SUV**.
+- Precios observados por el usuario: desde **22.800 € hasta 29.350 €**.
+- Todos los resultados observados están por debajo del límite de 30.000 €, por lo que no fue necesario utilizar la tolerancia máxima del 5 % (hasta 31.500 €).
+- Estado: **prueba manual satisfactoria según confirmación del usuario**.
+
+No repetir estas pruebas salvo que cambie el motor de extracción/filtrado de precio, el ranking de precio aproximado o los datos relevantes del catálogo. Las anotaciones corresponden únicamente a `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+
+## 2026-10-27 — Corrección: las búsquedas nuevas no heredan filtros antiguos
+
+- Incidencia detectada: `SimilarCarsActivity` reutilizaba la instancia de `AdvisorCriteriaEngine` y llamaba a `interpret()` sin limpiar los criterios al iniciar una consulta nueva. Los filtros de autonomía, maletero o precio de una consulta previa podían contaminar la siguiente búsqueda y provocar resultados incorrectos o cero resultados.
+- Corrección aplicada únicamente en `feature/asesor-ia-fase-1`: antes de interpretar una búsqueda nueva, se reinicia el motor. Se conservan los criterios solo para expresiones de seguimiento reconocibles, por ejemplo `más de 400 km`, `al menos 450 litros`, `y además...` o `sin...`.
+- El botón «Nueva búsqueda» mantiene su función de limpiar el estado y el campo de texto.
+- No se modificó `main`, ninguna rama stable ni el catálogo protegido.
+- Commits de la corrección: `5afb27c8ae01e52c97299336db7705d1d2167d26` (reset de búsquedas nuevas) y `937c2619f83cf566ed588c997dfa169cf4d152e2` (normalización de expresiones de seguimiento).
+- Validación pendiente tras el push: revisar los workflows **Advisor engine smoke tests** y **Advisor Android compile check**; comprobar que pasan las pruebas automáticas y descargar el APK debug generado para pruebas manuales.
+- Prueba manual de regresión recomendada en dispositivo: ejecutar primero `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` y después `Búscame una berlina de hasta 35.000 €`. La segunda consulta debe ser independiente de los criterios de autonomía y maletero de la primera.
+
+
+## 2026-10-27 — Prueba del asesor: familiar hasta 45.000 €
+
+- Prueba manual en el APK de la rama `feature/asesor-ia-fase-1`: consulta «Búscame un coche familiar de hasta 45.000 €».
+- Resultado observado en el teléfono: 2 modelos, con precios de aproximadamente 44.000 € y 45.900 €.
+- Auditoría del catálogo protegido de esa rama: 24 registros con `bodyStyle: wagon`, correspondientes a 7 modelos distintos. Aplicando el margen actual del 5 % al límite explícito, el techo efectivo es 47.250 €.
+- Solo hay 2 modelos wagon distintos dentro de ese techo: Subaru E-Outback (44.000 €) y Zeekr 7GT Core RWD (45.990 €). Por tanto, los dos resultados observados son coherentes con el catálogo y con los filtros actuales; no se cambia el margen ni se amplía artificialmente la carrocería para llenar 10 resultados.
+- Otros familiares del catálogo quedan fuera del techo: Mercedes-Benz CLA Shooting Brake Eléctrico (49.686,30 €), Volkswagen ID.7 Tourer y Zeekr 001 (versiones aplicables por encima del límite).
+- Conclusión: no se detecta un fallo del filtro en este caso. Una prueba útil de contraste es «Búscame un coche familiar de hasta 50.000 €», cuyo techo efectivo es 52.500 € y debería incorporar el Mercedes-Benz CLA Shooting Brake Eléctrico si el filtro de carrocería sigue funcionando.
+- Este resultado corresponde al catálogo de la rama de trabajo; no implica publicación en Google Play.
+
+
+### Resultado de contraste — familiar hasta 50.000 € (2026-10-27)
+
+- El usuario confirma que la aplicación devuelve 3 resultados para «Búscame un coche familiar de hasta 50.000 €».
+- Con tolerancia del 5 %, el límite efectivo es 52.500 €. En el catálogo protegido, los tres modelos wagon actuales que entran en ese límite son Subaru E-Outback (44.000 €), Zeekr 7GT Core RWD (45.990 €) y Mercedes-Benz CLA Shooting Brake Eléctrico CLA 200 (49.686,30 €).
+- El recuento de 3 resultados coincide con los modelos elegibles del catálogo. No se modifica el filtro ni se fuerza un mínimo artificial de resultados.
+
+- **Control de repetición:** dar por cerradas y no volver a ejecutar estas dos consultas (`hasta 45.000 €` y `hasta 50.000 €`) mientras no cambien el motor de filtros/ranking, la tolerancia del 5 % o los modelos/precios del catálogo. Si alguno cambia, repetir únicamente la prueba afectada.
+
+## 2026-10-27 — Prueba manual: SUV hasta 45.000 €, autonomía y maletero
+
+- Consulta exacta introducida en el APK de la rama `feature/asesor-ia-fase-1`: `Búscame un SUV de hasta 45.000 €, con más de 400 km de autonomía y al menos 500 litros de maletero`.
+- Resultado observado por el usuario: **10 coches**.
+- Rango de precios observado: **43.000–46.900 €**.
+- El usuario confirma que los 10 resultados superan los **400 km de autonomía** y que todos tienen **más de 500 litros de maletero**.
+- Regla de precio vigente: un límite explícito permite hasta un 5 % de tolerancia; para 45.000 €, el techo efectivo es **47.250 €**. Todos los precios comunicados están dentro del rango.
+- Conclusión: **prueba manual satisfactoria según confirmación del usuario**; la búsqueda combina carrocería SUV, precio máximo, autonomía mínima y volumen mínimo de maletero.
+- No repetir esta consulta salvo cambios en el motor de extracción/filtros, la tolerancia de precio o los datos relevantes del catálogo.
+- Documentado solo en `feature/asesor-ia-fase-1`; no se modifica `main` ni el catálogo protegido.
+
+## 2026-10-27 — Revisión de la prueba de regresión: presupuesto demasiado bajo para validar el reinicio
+
+- Prueba manual en el APK instalado:
+  1. Consulta inicial: `Búscame una berlina de hasta 35.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` → **0 coches**.
+  2. Sin pulsar «Nueva búsqueda», consulta: `Búscame una berlina de hasta 35.000 €` → **0 coches**.
+- Revisión del catálogo protegido de `feature/asesor-ia-fase-1`: la berlina eléctrica más barata registrada con precio positivo es el Tesla Model 3 (36.990 €). Con la tolerancia actual del 5 %, «hasta 35.000 €» admite como máximo 36.750 €, así que el Model 3 también queda fuera. Por tanto, el segundo resultado de cero coches es coherente con el catálogo y **no demuestra que los filtros anteriores se hayan heredado**.
+- Conclusión: esta prueba es **inconclusa para validar el reinicio de criterios**, no evidencia suficiente de un fallo. No cambiar el código ni ampliar el límite de precio para forzar resultados.
+- Siguiente prueba de regresión válida, sin pulsar «Nueva búsqueda» entre consultas:
+  1. `Búscame una berlina de hasta 40.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero`.
+  2. `Búscame una berlina de hasta 40.000 €`.
+  La primera puede devolver cero resultados si no hay modelos que cumplan los tres filtros; la segunda debería devolver las berlinas elegibles según el catálogo y el techo efectivo de 42.000 €, independientemente de autonomía y maletero. Confirmar los resultados reales en el APK antes de declarar validada la corrección.
+- No modificar `main` ni el catálogo protegido. Registrar esta aclaración solo en `feature/asesor-ia-fase-1`.
+
+## 2026-10-27 — Prueba manual de regresión: reinicio de criterios validado
+
+- En el APK instalado, el usuario ejecutó ambas consultas seguidas, sin pulsar «Nueva búsqueda» entre ellas:
+  1. `Búscame una berlina de hasta 40.000 €, con más de 400 km de autonomía y al menos 450 litros de maletero` → **2 coches**.
+  2. `Búscame una berlina de hasta 40.000 €` → **3 coches**.
+- Resultado: la segunda consulta obtiene más resultados al retirar las condiciones de autonomía y maletero. Esto es coherente con que los filtros de la primera búsqueda no se hayan heredado. La corrección del reinicio de criterios queda **validada en esta prueba manual básica**.
+- Alcance: la prueba confirma este caso concreto, no todas las combinaciones ni todos los tipos de seguimiento. No se cambia el código ni el catálogo protegido a raíz de este resultado.
+
+
+## 2026-10-27 — Prueba manual de regresión: cambio de carrocería y presupuesto
+
+- En el APK instalado, el usuario ejecutó dos consultas seguidas, sin pulsar «Nueva búsqueda» ni cambiar manualmente los filtros entre ellas:
+  1. `Búscame un SUV de hasta 45.000 €, con más de 400 km de autonomía y al menos 500 litros de maletero` → **10 coches**.
+  2. `Búscame una berlina de hasta 40.000 €` → **3 coches**.
+- Resultado: la segunda búsqueda cambia tanto la carrocería como el presupuesto y devuelve 3 resultados. Esto es coherente con que la búsqueda nueva se procese de forma independiente y no herede los criterios de autonomía y maletero de la consulta anterior.
+- Conclusión: **prueba manual satisfactoria** para el cambio de tipo de carrocería y presupuesto. Junto con la prueba anterior de berlina, aporta una segunda comprobación del reinicio de criterios.
+- Alcance: confirma únicamente estas consultas y resultados observados; no equivale a una cobertura exhaustiva de todas las combinaciones.
+- No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
+
+
+## 2026-10-27 — Prueba manual de regresión: modelo concreto seguido de búsqueda nueva
+
+- En el APK instalado, el usuario ejecutó dos consultas seguidas, sin pulsar «Nueva búsqueda» entre ellas:
+  1. `Búscame el XPeng G6` → **6 versiones**.
+  2. `Búscame un SUV de hasta 30.000 €` → **10 coches**.
+- Resultado observado: la segunda consulta devuelve resultados para una carrocería y un presupuesto distintos de la búsqueda por modelo concreto. Esto es coherente con que se haya iniciado una búsqueda nueva y no se hayan conservado los criterios de la consulta anterior.
+- La cantidad de 10 resultados por sí sola no permite comprobar los precios ni la elegibilidad de cada vehículo; queda pendiente contrastar el rango de precios mostrado por el usuario si se necesita validar también el límite presupuestario en esta prueba.
+- Conclusión provisional: **prueba satisfactoria para comprobar que se puede pasar de una búsqueda por modelo concreto a una búsqueda nueva**, con validación limitada a los recuentos comunicados.
+- No se modifica el código, `main` ni el catálogo protegido; solo se registra el resultado en `feature/asesor-ia-fase-1`.
+
+- Verificación adicional del presupuesto en la segunda consulta: el usuario informa que los precios de los 10 SUV mostrados van de **29.264 € a 30.990 €**. Con el margen vigente del 5 % sobre 30.000 € (techo efectivo **31.500 €**), todos los precios indicados están dentro del límite permitido. La validación de precios queda satisfactoria según el rango comunicado.
+
+
+## Prueba manual de seguimiento acumulativo (2026-10-27)
+
+- Consulta inicial de SUV hasta 45.000 euros: 10 resultados.
+- Se añadió el criterio de autonomía superior a 500 km: 10 resultados. El usuario comprobó que ninguno bajaba de 500 km; el mínimo observado fue exactamente 500 km, por lo que queda pendiente confirmar el comportamiento del límite estricto.
+- Se añadió después el requisito de maletero de al menos 600 litros: 5 resultados. El usuario confirma que los cinco cumplen ese volumen.
+- Evaluación: evidencia favorable de que se acumulan los criterios y se reducen resultados al añadir el requisito de maletero. Validación parcial: aún falta confirmar que los cinco mantienen el presupuesto, la carrocería SUV y la autonomía requerida.
+- Registro únicamente en esta rama de trabajo. Sin cambios de código, `main` ni catálogo protegido.
+
+- Comprobación adicional de presupuesto de los 5 resultados finales: el usuario indica un rango de precios de **37.500–45.990 €**. Con el margen vigente del 5 % sobre el límite de 45.000 € (techo efectivo **47.250 €**), todos los precios comunicados están dentro del máximo admitido. Esto confirma el presupuesto para esos resultados; la autonomía estricta >500 km queda pendiente de comprobación individual, ya que el mínimo observado previamente era exactamente 500 km.
+
+- Verificación final de autonomía de los 5 resultados: el usuario confirma que **ninguno marca 500 km exactos**; por tanto, todos superan estrictamente los 500 km solicitados. Junto con la comprobación previa de que los cinco tienen al menos 600 litros de maletero y el rango de precios 37.500–45.990 € (por debajo del techo efectivo de 47.250 €), queda validada según los datos observados la acumulación de carrocería SUV, presupuesto, autonomía y maletero en esta prueba manual.
+
+
+## 2026-10-27 — Incidencia en seguimiento negativo: exclusión por longitud
+
+- Consulta inicial en el APK: `Búscame un SUV de hasta 45.000 €` → 10 resultados.
+- Seguimiento, sin pulsar «Nueva búsqueda»: `Y además, sin coches de más de 4,7 metros` → 10 resultados.
+- El usuario identifica entre los resultados el **Skywell BE11**, cuya ficha en la app muestra **4,72 m** de longitud. Este vehículo supera el máximo de 4,7 m, por lo que no debería aparecer tras aplicar la exclusión.
+- Resultado: **fallo reproducido en la prueba manual**; la condición negativa de longitud no se está aplicando correctamente o no se está interpretando como criterio acumulativo.
+- Acción recomendada: revisar extracción/normalización de expresiones negativas (`sin coches de más de X metros`) y la aplicación del filtro de longitud en el motor del Asesor IA. Añadir prueba de regresión que compruebe que 4,72 m queda excluido con un máximo de 4,7 m.
+- Solo se registra la incidencia en `feature/asesor-ia-fase-1`. No se modifica el código, `main` ni el catálogo protegido en esta acción.
+
+
+## 2026-10-27 — Corrección del filtro negativo de longitud
+
+- Incidencia reproducida manualmente: consulta inicial `Búscame un SUV de hasta 45.000 €` → 10 resultados; seguimiento `Y además, sin coches de más de 4,7 metros` → 10 resultados, incluyendo Skywell BE11 con longitud mostrada de 4,72 m.
+- Causa técnica identificada: el intérprete no tenía un criterio de longitud y el adaptador del catálogo no pasaba `lengthMm` al matcher; por tanto, la frase negativa no podía filtrar por ese dato.
+- Corrección aplicada en `feature/asesor-ia-fase-1`:
+  - `AdvisorCriteriaEngine`: reconoce expresiones negativas como `sin coches de más de 4,7 metros` y guarda un máximo de longitud de 4,7 m, manteniendo los criterios de seguimiento previos.
+  - `AdvisorCatalogMatcher`: aplica un límite estricto; 4,72 m queda excluido de un máximo de 4,7 m. Si hay un límite activo y la longitud no está disponible, el vehículo se excluye para no dar por cumplido un dato desconocido.
+  - `SimilarCarsActivity`: pasa la longitud del catálogo (`lengthMm`) al matcher en metros.
+  - `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: añade regresión para parseo del seguimiento, conservación de SUV/presupuesto y exclusión de Skywell BE11 a 4,72 m, conservando un coche de 4,70 m.
+- Commits de código/pruebas: `6a5c83ea6f49d5c2413904a7dde9540b1a380169`, `5f6c0c2d9b7a60c8b6128cb806c282dff10fbf8b`, `7f46bf7f3cdebc9d930bd5c6af031300b6c2f87b`, `e1ff5b33804b315c24288f102d0c3f1e8e4a4d87`, `903141abf82a0d6f456b94124df33ce958301719`.
+- Estado de validación al documentar: código y prueba de regresión añadidos; aún no se ha confirmado el resultado de los workflows de GitHub Actions ni una compilación Android exitosa. Descargar y probar el APK de debug cuando el workflow de compilación termine.
+- No se modifica `main` ni el catálogo protegido.
+
+- Resultado CI actualizado: **Advisor engine smoke tests: SUCCESS** (ejecución `40578018461`, commit `903141abf82a0d6f456b94124df33ce958301719`) y **Advisor Android compile check: SUCCESS** (ejecución `40577944827`, commit `e1ff5b33804b315c24288f102d0c3f1e8e4a4d87`).
+- APK debug generado para prueba en dispositivo: artefacto `EV-Calculator-PRO-advisor-debug`, disponible hasta el 3 de noviembre de 2026: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40577944827
+- Próxima validación manual: instalar ese APK y repetir las dos consultas seguidas. Esperado: después de `Y además, sin coches de más de 4,7 metros`, el Skywell BE11 de 4,72 m no debe aparecer. La longitud desconocida tampoco debe superar un filtro de longitud activo.
+
+
+## 2026-10-27 — Validación manual en dispositivo de la corrección de longitud
+
+- El usuario instala el APK debug de la ejecución de compilación y repite la búsqueda de SUV de hasta 45.000 € seguida, sin nueva búsqueda, de `Y además, sin coches de más de 4,7 metros`.
+- Resultado comunicado: **el Skywell BE11 ya no aparece**.
+- Conclusión: la incidencia original queda validada manualmente para el caso de regresión de 4,72 m; junto con los smoke tests y la compilación Android correctos, la corrección queda confirmada para este escenario.
+- Rama de trabajo: `feature/asesor-ia-fase-1`. Sin cambios en `main` ni en el catálogo protegido.
+
+
+## 2026-10-27 — Regresión manual: Škoda Peaq supera el límite de longitud
+
+- Tras la prueba previa con `Y además, sin coches de más de 4,5 metros`, el usuario observó 9 resultados, incluido el **Škoda Peaq**, cuya ficha muestra **4,66 m**.
+- El catálogo de la rama registra `lengthMm = 4658` para Škoda Peaq 60 (4,658 m), coherente con el valor mostrado. Un límite máximo de 4,5 m debe excluirlo.
+- La prueba manual **falla**. Se añadió una regresión automática al smoke test para reproducir el seguimiento acumulativo con un candidato Škoda Peaq de 4,658 m y confirmar que se excluye, mientras se conservan vehículos de 4,50 m y 4,40 m.
+- Pendiente: revisar resultado de CI y determinar por qué el APK instalado permitió que Peaq apareciera. No se modifica `main` ni el catálogo protegido.
+
+## 2026-10-28 — Validación manual de consultas naturales del Asesor IA
+
+Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1`. Registrar como completadas para no repetirlas en futuras sesiones, salvo que cambie el intérprete, el matcher/filtros, el ranking o los datos relevantes del catálogo.
+
+| Consulta exacta | Resultado observado | Comprobación del usuario | Estado |
+|---|---:|---|---|
+| `Búscame un coche de 80 de batería` | 10 coches | Se comprobó la condición de batería en los resultados; el usuario confirmó que la lista era correcta. | Aprobada |
+| `Búscame un coche que consuma menos de 20` | 10 coches | Consumo máximo observado: **14,1 kWh/100 km**; todos cumplen el límite inferior a 20. | Aprobada |
+| `Búscame un SUV con batería de 80 y consumo menor de 20` | 10 coches | El usuario confirmó que todos cumplen los tres criterios: SUV, batería de al menos 80 kWh y consumo inferior a 20 kWh/100 km. | Aprobada |
+| `Búscame una berlina de 62800` | 10 coches | Todos son berlinas; precios entre **54.409 € y 71.250 €**, dentro del margen del 15 % acordado (**53.380–72.220 €**). | Aprobada |
+| `Búscame un coche que gaste menos de 18` | 10 coches | El usuario confirmó que todos los resultados son correctos para la consulta; queda registrada como interpretación válida de «gaste» como consumo. | Aprobada |
+
+### Conclusión y control de repetición
+
+- La prueba manual confirma que el Asesor IA interpreta correctamente estas expresiones de batería, consumo («consuma» y «gaste»), combinación de filtros y carrocería/precio en los escenarios probados.
+- No volver a pedir al usuario que repita estas cinco consultas mientras no haya cambios que puedan afectar a su comportamiento. Si una modificación futura afecta solo a una de estas capacidades, repetir únicamente la prueba relevante.
+- Los resultados de estas pruebas son validación manual comunicada por el usuario en su dispositivo; no deben describirse como una prueba automatizada exhaustiva de todas las variantes lingüísticas.
+- Documentación añadida únicamente a `feature/asesor-ia-fase-1`. No modificar `main` ni el catálogo protegido.
+
+## 2026-10-28 — Validación de autonomía mínima en lenguaje natural
+
+- Consulta exacta probada en el APK por el usuario: `Búscame un coche con al menos 500 km de autonomía`.
+- Resultado observado: **10 coches**.
+- El usuario comprobó la autonomía más baja de la lista: **501 km**.
+- Conclusión: la lista respeta el mínimo de 500 km en esta prueba manual.
+- No repetir esta consulta salvo cambios en el intérprete, filtros, matcher, ranking o datos relevantes del catálogo.
+- Documentación únicamente en `feature/asesor-ia-fase-1`; sin cambios en `main` ni en el catálogo protegido.
+
+## 2026-10-28 — Corrección de búsqueda nueva por longitud máxima estricta
+
+- Incidencia comunicada por el usuario: `Búscame un SUV que mida menos de 4,5 metros` devolvía cero coches, aunque el catálogo contiene SUVs que deberían cumplir.
+- Causa detectada en el intérprete: se reconocían límites negativos en frases como `sin coches de más de 4,5 metros`, pero no un límite positivo de longitud en una búsqueda nueva formulada como `que mida menos de X metros`.
+- Cambios en `feature/asesor-ia-fase-1`:
+  - `AdvisorCriteriaEngine` reconoce expresiones de longitud como `mida menos de`, `mide menos de`, `inferior a` y `por debajo de`, cuando incluyen una longitud en metros.
+  - Se añade `maxLengthExclusive` para distinguir un límite estricto (`< 4,5 m`) de la exclusión inclusiva existente (`sin coches de más de 4,5 m`, que permite 4,50 m).
+  - `AdvisorCatalogMatcher` aplica el límite estricto excluyendo los vehículos de longitud desconocida y los de 4,50 m o más.
+  - Se añade prueba de regresión con un SUV de 4,49 m, otro de 4,50 m, un Škoda Peaq de 4,658 m y longitud desconocida. Solo el de 4,49 m debe pasar.
+- Commits de código/prueba: `135c64aeca0e2cc1ff52702b4e86067db3a48429`, `c4c911ed6d1277af315328641f4fd745087036a6`, `0c3f1b7a8cb22ddde852745033e8f542a8596492`, `9b597771dd36bb2d3aa3caa5dbc6b1a4317be6b8`.
+- Pendiente: confirmar CI (prueba smoke y compilación Android), y probar el APK resultante en el dispositivo.
+- Sin cambios en `main` ni en el catálogo protegido.
+
+
+## 2026-10-28 — Corrección del límite máximo explícito de precio
+
+- Incidencia reproducida manualmente en el APK: la consulta `Búscame una berlina que cueste menos de 36.000 euros` devolvía el Tesla Model 3 con precio de **36.990 €**, 990 € por encima del límite.
+- Causa: `AdvisorCatalogMatcher.withinPrice()` aplicaba una tolerancia de +5 % a los máximos explícitos de precio (el techo efectivo era 37.800 € para un máximo de 36.000 €).
+- Corrección aplicada únicamente en `feature/asesor-ia-fase-1`: los límites explícitos de precio (`menos de`, `hasta`, `máximo`, etc.) ya no permiten superar la cantidad indicada. Los objetivos aproximados (`unos 35.000 €`) conservan su banda de ±15 %. Los márgenes de otros filtros no cambian.
+- Pruebas de regresión actualizadas en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: el máximo de 30.000 € debe conservar el coche de 30.000 € o menos y excluir vehículos a 31.000 € y 32.000 €; el objetivo aproximado sigue utilizando su banda independiente.
+- Pendiente: confirmar el resultado de los workflows de smoke tests y compilación Android, y descargar el APK debug para probar de nuevo en el teléfono.
+- No se modifica `main` ni el catálogo protegido.
+
+## 2026-10-29 — Corrección y prueba manual: batería + consumo en una misma consulta
+
+- Incidencia original: la consulta `Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km` no interpretaba correctamente la batería al combinar ambos filtros. La variante sin unidad explícita para batería sí parecía funcionar, por lo que se investigó una interferencia entre la extracción de batería y la de consumo.
+- Causa identificada en `AdvisorCriteriaEngine`: el analizador de consumo podía interpretar el primer valor `70 kWh` (capacidad de batería) como si fuera consumo y solicitar aclaración, descartando los criterios combinados.
+- Corrección aplicada en `feature/asesor-ia-fase-1`: al analizar consumo, se ignora la coincidencia de `kWh` que pertenece a la batería cuando aparece antes del criterio de consumo y se continúa buscando la unidad de consumo correspondiente (`kWh/100 km`). Se añade reconocimiento explícito de la capacidad después de «batería», tanto con `kWh` como sin unidad.
+- Se añadieron pruebas de regresión para ambas consultas exactas:
+  1. `Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km`.
+  2. `Búscame un SUV con batería de al menos 70 y consumo inferior a 18 kWh/100 km`.
+  Las pruebas automáticas verifican que no se solicite aclaración, que se extraiga carrocería SUV, batería mínima de 70 kWh y consumo máximo de 18 kWh/100 km.
+- Validación CI: **Advisor engine smoke tests: SUCCESS**, ejecución [40950580372](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40950580372); **Advisor Android compile check: SUCCESS**, ejecución [40950580773](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40950580773). El artefacto debug `EV-Calculator-PRO-advisor-debug` se generó correctamente.
+- Prueba manual en el teléfono: el usuario confirma que ambas consultas devuelven **los mismos coches**. Esto valida que ambas formas de escribir la capacidad son tratadas de manera equivalente. Queda pendiente revisar los datos de cada resultado para confirmar individualmente que todos cumplen **batería ≥70 kWh** y **consumo <18 kWh/100 km**; la igualdad entre listas por sí sola no demuestra que cada coche cumpla ambos límites.
+- No modificar `main`, las ramas stable ni el catálogo protegido. La corrección y esta documentación permanecen únicamente en `feature/asesor-ia-fase-1`.
+
+
+## 2026-10-29 — Prueba manual: SUV con batería ≥80 kWh y consumo <16 kWh/100 km
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con batería de al menos 80 kWh y consumo inferior a 16 kWh/100 km`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen ambos requisitos**.
+- Conclusión: prueba manual satisfactoria de interpretación y aplicación conjunta de carrocería SUV, batería mínima de 80 kWh y consumo estrictamente inferior a 16 kWh/100 km, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: presupuesto máximo + batería mínima
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV de hasta 40.000 euros con batería de al menos 70 kWh`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen ambos límites**.
+- Conclusión: prueba manual satisfactoria de la combinación de carrocería SUV, precio máximo de 40.000 € y batería mínima de 70 kWh, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: nueva consulta sin conservar filtros anteriores
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV de hasta 30.000 euros`.
+- Resultado comunicado: **10 coches; el más caro cuesta 29.990 €**.
+- Conclusión: prueba manual satisfactoria del presupuesto máximo de 30.000 € y, con el resultado comunicado, indicio de que no se conserva el filtro previo de batería mínima de 70 kWh. La verificación directa de que ningún filtro anterior permanece requiere revisar también los criterios/características de los resultados.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: presupuesto máximo + batería mínima (segunda combinación)
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV de hasta 35.000 euros con batería de al menos 60 kWh`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen ambos requisitos**.
+- Conclusión: prueba manual satisfactoria de la combinación de carrocería SUV, precio máximo de 35.000 € y batería mínima de 60 kWh, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: presupuesto máximo + consumo máximo
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV de hasta 35.000 euros que consuma menos de 16 kWh/100 km`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen ambos requisitos**.
+- Conclusión: prueba manual satisfactoria de la combinación de carrocería SUV, precio máximo de 35.000 € y consumo estrictamente inferior a 16 kWh/100 km, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: cambio de carrocería a berlina
+
+- Consulta exacta probada por el usuario en el APK: `Búscame una berlina de hasta 40.000 euros`.
+- Resultado comunicado: **2 coches**; el usuario confirma que ambos cuestan 40.000 € o menos.
+- Conclusión: el límite de precio se respeta en los dos resultados, pero la prueba devuelve solo dos berlinas. Esto no demuestra por sí solo un fallo: la cantidad depende de los vehículos que cumplan los criterios en el catálogo y de la interpretación de carrocería. Conviene revisar si la cobertura de berlinas es la esperada antes de ajustar el motor.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: carrocería utilitario + presupuesto máximo
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un utilitario de hasta 25.000 euros`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen el presupuesto máximo**.
+- Conclusión: prueba manual satisfactoria de interpretación de la carrocería utilitario y aplicación del límite de precio de 25.000 €, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba manual: SUV con autonomía mínima
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con autonomía de al menos 500 km`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos cumplen el mínimo de autonomía**.
+- Conclusión: prueba manual satisfactoria de interpretación de carrocería SUV y autonomía mínima de 500 km, según la comprobación del usuario.
+- Alcance: validación manual de esta consulta concreta; no equivale a una prueba exhaustiva de todas las variantes lingüísticas.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Prueba fallida: filtro de potencia de carga rápida CC/DC
+
+- Consulta probada por el usuario en el APK: `Búscame un SUV con potencia de carga rápida superior a 150 kW`.
+- Resultado observado: aparece el Leapmotor C10, cuya potencia máxima de carga rápida DC indicada por el usuario es de 84 kW.
+- Estado: **fallo confirmado**; un vehículo por debajo del umbral de 150 kW no debe aparecer en los resultados de una consulta que exige una potencia superior a 150 kW.
+- Acción pendiente: revisar en la rama `feature/asesor-ia-fase-1` la extracción del criterio de potencia de carga rápida y el campo del catálogo utilizado para filtrar. Añadir una prueba de regresión y ejecutar las comprobaciones/compilación antes de pedir al usuario que vuelva a probar el APK.
+- No se considera superada la prueba. No modificar `main`, ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Corrección: filtro de potencia de carga rápida CC/DC
+
+- Incidencia reproducida manualmente por el usuario: la consulta `Búscame un SUV con potencia de carga rápida superior a 150 kW` devolvía el Leapmotor C10, que tiene 84 kW de potencia máxima DC según el dato observado en la app.
+- Causa corregida en el motor del asesor: la consulta de potencia de carga se confundía con la potencia del motor y no existía un criterio separado para la potencia de carga rápida DC.
+- Cambios en `AdvisorCriteriaEngine.java`: se añade el criterio independiente de potencia de carga rápida; las consultas con contexto de carga ya no se interpretan como potencia del motor; se reconoce `superior a` como operador de mínimo estricto.
+- Cambios en `AdvisorCatalogMatcher.java` y `SimilarCarsActivity.java`: el filtro compara el límite solicitado con el campo de potencia de carga DC del vehículo (`dcKw`), no con la potencia del motor. Los límites de carga se aplican exactamente, sin tolerancia positiva.
+- Regresión añadida en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: verifica que una consulta de más de 150 kW se interpreta como potencia de carga DC y que el Leapmotor C10 de 84 kW queda excluido frente a un candidato de 180 kW.
+- Validación automática: **smoke tests correctos**, ejecución [40957107980](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40957107980).
+- Compilación Android: **correcta**; APK debug generado como artefacto `EV-Calculator-PRO-advisor-debug`, ejecución [40957107848](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40957107848). Descarga desde la sección **Artifacts** de esa ejecución.
+- Commits de código/prueba: `58f983e3`, `6fc83e41`, `bba0f0d8`, `39a08712`, `6058f181`.
+- Estado pendiente: instalar este APK y repetir la consulta en el dispositivo para confirmar el comportamiento real con el catálogo cargado.
+- Todo permanece en `feature/asesor-ia-fase-1`. No se modifican `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-29 — Ajuste adicional: límite estricto «superior a 150 kW»
+
+- En la segunda prueba del APK, la consulta `Búscame un SUV con potencia de carga rápida superior a 150 kW` devolvió 10 coches, pero algunos indicaban exactamente 150 kW. Eso no cumple el operador estricto «superior a».
+- Ajuste en `AdvisorCriteriaEngine.java`: para los operadores estrictos de mínimo aplicados a potencia de carga DC (`más de`, `superior a`, `mayor que`, `por encima de`), el umbral se convierte al siguiente valor representable de `double`; «al menos» conserva el límite inclusivo.
+- Regresión añadida en `.github/tests/AdvisorCriteriaEngineSmokeTest.java`: además del C10 de 84 kW, añade un candidato de exactamente 150 kW y verifica que ambos se excluyen de la búsqueda estricta superior a 150 kW.
+- Smoke tests tras el ajuste: **correctos**, ejecución [40958168012](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958168012).
+- Compilación Android para el APK actualizado: ejecución [40958130467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958130467), estado en revisión al redactar esta nota.
+- Cambios únicamente en `feature/asesor-ia-fase-1`; `main`, ramas stable y catálogo protegido permanecen intactos.
+
+
+## 2026-10-29 — Validación manual superada: potencia de carga rápida estrictamente superior a 150 kW
+
+- Consulta exacta repetida por el usuario en el APK actualizado: `Búscame un SUV con potencia de carga rápida superior a 150 kW`.
+- Resultado comunicado por el usuario: **ahora sí, todos los resultados son correctos**.
+- Conclusión: prueba manual satisfactoria tras corregir el límite estricto. Se considera validado en el dispositivo que el filtro utiliza la potencia de carga rápida DC y excluye los resultados que no cumplen `>150 kW`, incluidos los valores de 150 kW exactos.
+- CI: smoke tests correctos, ejecución [40958168012](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958168012); compilación Android correcta y artefacto debug generado, ejecución [40958130467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/40958130467).
+- La corrección y esta validación quedan documentadas únicamente en `feature/asesor-ia-fase-1`. No se modifican `main`, ramas stable ni el catálogo protegido.
+
+
+## 2026-10-30 — Control de pruebas manuales del Asesor IA y siguiente caso
+
+- **No repetir:** el usuario ya validó en el dispositivo la consulta `Búscame un SUV con batería de al menos 80 kWh y consumo inferior a 16 kWh/100 km`: obtuvo 10 resultados y confirmó que todos cumplían batería y consumo.
+- **Probada, con verificación individual pendiente:** `Búscame un SUV con batería de al menos 70 kWh y consumo inferior a 18 kWh/100 km`. El usuario confirmó que las dos formulaciones (con y sin unidad explícita tras «batería») devolvían la misma lista, pero el registro no confirma que se revisaran las fichas de cada coche para comprobar ambos límites. No volver a proponerla como prueba nueva; solo retomarla si se quiere cerrar expresamente esa comprobación de datos.
+- **Siguiente prueba manual propuesta, aún no ejecutada:** `Búscame un SUV con tracción AWD`. Objetivo: validar en el dispositivo la interpretación y aplicación del criterio de tracción. Revisar la tracción indicada en las fichas de todos los resultados; no considerar suficiente el mero número de coches.
+- Regla de trabajo: consultar este apartado y el historial antes de proponer una prueba; distinguir entre prueba superada, parcial/inconclusa y pendiente. No repetir pruebas superadas salvo cambios relevantes en motor, catálogo o requisito.
+- Todo este registro se añade únicamente a `feature/asesor-ia-fase-1`; no modificar `main`, ramas stable ni el catálogo protegido.
+
+
+## 2026-10-30 — Prueba manual superada: tracción integral AWD
+
+- Consulta exacta probada por el usuario en el APK: `Búscame un SUV con tracción AWD`.
+- Resultado comunicado: **10 coches; el usuario confirma que todos son correctos**.
+- Conclusión: prueba manual satisfactoria de interpretación y aplicación del filtro de tracción integral AWD en búsquedas de SUV.
+- Alcance: validación manual de esta consulta concreta; no equivale a probar todas las variantes lingüísticas ni otros tipos de tracción.
+- Estado: **superada; no repetir** salvo cambios relevantes en el motor o catálogo.
+- Documentación únicamente en `feature/asesor-ia-fase-1`. No se modifica `main`, las ramas stable ni el catálogo protegido.
+
+
+## 2026-10-30 — Corrección implementada: límite estricto de potencia del motor
+
+- Incidencia original: `Búscame un SUV con potencia de motor superior a 200 kW` incluía al menos un vehículo con exactamente 200 kW.
+- Causa: el intérprete guardaba el límite inferior de potencia del motor como inclusivo, aunque la expresión «superior a» es estricta.
+- Corrección: con «más de», «superior a», «mayor que» o «por encima de», el intérprete desplaza el umbral al siguiente valor representable (`Math.nextUp`). Las expresiones inclusivas como «al menos» mantienen el umbral original.
+- Regresión añadida: `>200 kW` excluye 200 kW y acepta 201 kW; «al menos 200 kW» conserva 200 kW.
+- Alcance: cambio limitado al intérprete y sus pruebas. No se modifica el matcher, el catálogo protegido, `main` ni ramas stable.
+- Estado: **corrección y regresión implementadas; pendiente de CI y validación en dispositivo**.
 
 ## 2026-10-25 — Pendiente para la próxima publicación de Google Play: novedades traducidas
 
