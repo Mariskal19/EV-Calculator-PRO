@@ -2389,14 +2389,6 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Alcance: cambio limitado al intérprete y sus pruebas. No se modifica el matcher, el catálogo protegido, `main` ni ramas stable.
 - Estado: **corrección y regresión implementadas; pendiente de CI y validación en dispositivo**.
 
-## 2026-10-25 — Pendiente para la próxima publicación: revisar el icono de Google Play
-
-- **Pendiente junto con las traducciones de «Novedades de esta versión»:** revisar el icono de EV Calculator PRO que se muestra públicamente en Google Play, donde se observa un **borde blanco alrededor del icono**.
-- Comprobar el archivo fuente y cómo se adapta/renderiza el icono en la ficha de Play Store para identificar de dónde procede el borde.
-- Si el borde blanco es involuntario, corregirlo y validar el resultado a 512×512 antes de subirlo. **Conservar el diseño actual del icono; no crear uno nuevo ni rediseñarlo.**
-- Verificar el icono final en la ficha pública después de publicar. No dar por resuelto el problema solo por comprobar el PNG fuente: revisar también el resultado visible en Google Play.
-- Realizar esta revisión durante la preparación de la próxima actualización; no publicar una versión aparte únicamente por este ajuste.
-
 ## 2026-10-25 — Pendiente para la próxima publicación de Google Play: novedades traducidas
 
 - **Pendiente obligatorio para la próxima versión publicada:** preparar y añadir el texto de «Novedades de esta versión» / «What's new» en todos los idiomas y variantes de ficha localizados en Google Play, en lugar de dejarlo únicamente en español.
@@ -2404,3 +2396,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Redactar traducciones naturales y coherentes con los cambios reales incluidos en esa versión; no reutilizar novedades antiguas si no describen el contenido del nuevo lanzamiento. Respetar el límite de caracteres que indique Play Console para cada idioma.
 - Antes de finalizar el lanzamiento, revisar en Play Console que cada traducción esté guardada en el idioma/local correspondiente y, tras la publicación, comprobar la ficha pública con los selectores de idioma/región.
 - **No es necesario publicar otra versión solo para corregir las novedades actuales.** Hacer esta tarea durante la preparación de la próxima actualización. Las descripciones localizadas ya comprobadas no se deben cambiar como parte de esta tarea.
+
+## 2026-10-25 — Pendiente para la próxima publicación: revisar el icono de Google Play
+
+- **Pendiente junto con las traducciones de «Novedades de esta versión»:** revisar el icono de EV Calculator PRO que se muestra públicamente en Google Play, donde se observa un **borde blanco alrededor del icono**.
+- Comprobar el archivo fuente y cómo se adapta/renderiza el icono en la ficha de Play Store para identificar de dónde procede el borde.
+- Si el borde blanco es involuntario, corregirlo y validar el resultado a 512×512 antes de subirlo. **Conservar el diseño actual del icono; no crear uno nuevo ni rediseñarlo.**
+- Verificar el icono final en la ficha pública después de publicar. No dar por resuelto el problema solo por comprobar el PNG fuente: revisar también el resultado visible en Google Play.
+- Realizar esta revisión durante la preparación de la próxima actualización; no publicar una versión aparte únicamente por este ajuste.
