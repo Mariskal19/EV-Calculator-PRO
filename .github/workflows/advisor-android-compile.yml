@@ -1,0 +1,66 @@
+name: Advisor Android compile check
+
+on:
+  push:
+    branches: [ "feature/asesor-ia-fase-1" ]
+    paths:
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
+      - 'app/src/main/java/com/evchargecalculator/LanguageManager.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
+      - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java'
+      - '.github/tests/AdvisorCatalogIntegrationSmokeTest.java'
+      - '.github/workflows/advisor-android-compile.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android-compile:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle 9.6.0
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+          cache-disabled: true
+
+      - name: Apply the same local search-source patch as the release build
+        run: python3 .github/scripts/patch_search_virtualization.py
+
+      # app/build.gradle validates release-signing environment during project configuration,
+      # even for assembleDebug. Use an ephemeral CI-only key; never build or publish a release here.
+      - name: Configure ephemeral signing values for Gradle configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          keystore="$RUNNER_TEMP/advisor-ci-only.jks"
+          keytool -genkeypair -noprompt -keystore "$keystore" -storepass advisor-ci-only -keypass advisor-ci-only -alias advisor-ci-only -dname "CN=Advisor CI Only" -keyalg RSA -keysize 2048 -validity 2
+          {
+            echo "EV_CALCULATOR_KEYSTORE_PATH=$keystore"
+            echo "EV_CALCULATOR_KEYSTORE_PASSWORD=advisor-ci-only"
+            echo "EV_CALCULATOR_KEY_ALIAS=advisor-ci-only"
+            echo "EV_CALCULATOR_KEY_PASSWORD=advisor-ci-only"
+          } >> "$GITHUB_ENV"
+
+      - name: Compile Android debug variant
+        run: gradle --no-daemon clean assembleDebug
+
+      - name: Upload debug APK for device testing
+        uses: actions/upload-artifact@v6
+        with:
+          name: EV-Calculator-PRO-advisor-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 7
