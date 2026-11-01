@@ -1,3 +1,16 @@
+## 2026-11-01 — Integración en main y preparación de EV Calculator PRO 1.0.6
+
+- Integrado el trabajo validado de `feature/asesor-ia-fase-1` en `main` mediante PR #6, fusionado con squash. Commit resultante: `683cfa72858ee03558748a88783bc0a3c7e13457`.
+- Versión preparada en `app/build.gradle`: `versionName = '1.0.6'`, `versionCode = 62`; se mantienen `minSdk 23`, `targetSdk 36` y `compileSdk 36`.
+- Incluye el Asesor IA y sus pruebas de regresión, el retardo automático de 2 segundos validado por el usuario y el valor inicial de 100 km en «Eléctrico vs combustión».
+- Catálogo protegido: sin cambios respecto al estado de `main`; ramas `stable` sin modificar.
+- Respaldos creados antes de integrar: `backup-main-pre-1.0.6-2026-11-01` y `backup-advisor-pre-1.0.6-2026-11-01`.
+- El PR #5 directo desde la rama histórica no se pudo fusionar por conflictos; se cerró sin fusionar. Se reconstruyó el contenido sobre `main` en `release/1.0.6-integration` y se integró mediante PR #6.
+- **Pendiente antes de subir a Google Play:** comprobar que el workflow «Build EV Calculator PRO» termina correctamente sobre el commit de `main`, descargar e inspeccionar el AAB firmado de 1.0.6 y confirmar que es el artefacto correcto. No dar la versión por lista para publicación hasta completar esa comprobación.
+- Mantener pendientes para esta publicación: preparar «Novedades de esta versión» en todos los idiomas/locales anotados y revisar el borde blanco del icono en la ficha pública de Play Store.
+
+---
+
 ## 2026-11-01 — Ajuste final del retardo de búsqueda automática del Asesor IA
 
 - El usuario probó el comportamiento anterior y pidió más tiempo para terminar de escribir consultas largas.
@@ -79,7 +92,7 @@
 - **Repositorio:** `Mariskal19/EV-Calculator-PRO`
 - **Rama de trabajo principal:** `main`
 - **Ramas stable:** no modificar sin autorización expresa.
-- **Versión actual del código en `main`:** **1.0.5.1 / versionCode 61**, comprobada en `app/build.gradle` el 12/10/2026. Build y AAB de esta versión deben validarse antes de subirlos a Play.
+- **Versión actual del código en `main`:** **1.0.6 / versionCode 62**, preparada el 01/11/2026. La compilación release y la generación/validación del AAB firmado de esta versión deben comprobarse antes de subirla a Play.
 - **Parámetros Android actuales:** `applicationId` `com.evcalculatorpro`, `minSdk 23`, `targetSdk 36`, `compileSdk 36`; Java 17 y Gradle 9.6.0 en el workflow de build.
 - **Google Play:** último estado de publicación registrado en este documento: **1.0.4 / versionCode 56 publicada** el 02/10/2026. El envío posterior de 1.0.4.1 / 58 se documenta como histórico; comprobar Play Console antes de actualizar el estado público. La versión 1.0.5 de `main` no debe describirse como publicada sin esa comprobación.
 - **Catálogo:** estado real actual en `main`: **688 registros** (`catalog-es-2024-2026-1.12`), tras auditoría y actualización de Zeekr el 20/10/2026.
