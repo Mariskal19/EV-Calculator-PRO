@@ -1,3 +1,14 @@
+## 2026-11-01 — Ajuste final del retardo de búsqueda automática del Asesor IA
+
+- El usuario probó el comportamiento anterior y pidió más tiempo para terminar de escribir consultas largas.
+- Aumentado el debounce de la búsqueda automática de **1.100 ms a 2.000 ms** desde la última pulsación en `SimilarCarsActivity.java`.
+- Commit: `9f2e9784e003f5aef3c66ada180c0def13cdcddc` (`Aumentar debounce del Asesor IA a 2 segundos`).
+- Compilación Android debug y smoke tests: ambos workflows completados con **SUCCESS** (runs `41322423618` y `41322423625`).
+- Prueba manual del usuario en el APK instalado: **el usuario confirma que ahora va mejor**. Se conserva el retardo de 2 segundos.
+- No se modifica el catálogo protegido.
+
+---
+
 ## 2026-11-01 — Cierre de pruebas manuales: identificación de modelos y límite de precio en berlinas
 
 - **Identificación directa de modelos — validada en el dispositivo:** consultas exactas `Model Y` → 10 resultados; `XPeng G6` → 6 resultados; `Zeekr 7GT` → 3 resultados. El usuario confirmó que las listas corresponden a los modelos solicitados. Las cantidades distintas se consideran correctas según las versiones disponibles en el catálogo; no se exige rellenar hasta 10 cuando no hay más versiones.
@@ -2378,3 +2389,10 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Alcance: cambio limitado al intérprete y sus pruebas. No se modifica el matcher, el catálogo protegido, `main` ni ramas stable.
 - Estado: **corrección y regresión implementadas; pendiente de CI y validación en dispositivo**.
 
+## 2026-10-25 — Pendiente para la próxima publicación: revisar el icono de Google Play
+
+- **Pendiente junto con las traducciones de «Novedades de esta versión»:** revisar el icono de EV Calculator PRO que se muestra públicamente en Google Play, donde se observa un **borde blanco alrededor del icono**.
+- Comprobar el archivo fuente y cómo se adapta/renderiza el icono en la ficha de Play Store para identificar de dónde procede el borde.
+- Si el borde blanco es involuntario, corregirlo y validar el resultado a 512×512 antes de subirlo. **Conservar el diseño actual del icono; no crear uno nuevo ni rediseñarlo.**
+- Verificar el icono final en la ficha pública después de publicar. No dar por resuelto el problema solo por comprobar el PNG fuente: revisar también el resultado visible en Google Play.
+- Realizar esta revisión durante la preparación de la próxima actualización; no publicar una versión aparte únicamente por este ajuste.
