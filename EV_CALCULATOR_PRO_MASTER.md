@@ -1,3 +1,50 @@
+## 2026-11-01 — Validación manual de EV Calculator PRO 1.0.6 y preparación de notas de versión
+
+- El usuario ha instalado el APK firmado de 1.0.6 y ha completado satisfactoriamente las comprobaciones funcionales comunicadas:
+  1. Arranque y pantalla principal.
+  2. Asesor IA: consulta combinada de SUV eléctrico, longitud <4,7 m, potencia >250 CV y precio <45.000 €; comportamiento de espera de 2 segundos confirmado como mejor.
+  3. «Eléctrico vs combustión»: distancia inicial 100 km.
+  4. Navegación por las secciones principales.
+  5. Búsqueda Tesla Model Y y apertura de ficha.
+  6. Cálculo de carga con batería 80 kWh, 20–80 % y potencia 3,3 kW.
+  7. Cálculo de coste: 18 kWh/100 km, 100 km y 0,15 €/kWh; resultado esperado 18 kWh y 2,70 €, confirmado por el usuario.
+  8. Catálogo: carga y filtros/categorías, confirmado de forma general por el usuario.
+- Estado: pruebas manuales comunicadas como satisfactorias. La comprobación del catálogo/filtros fue una confirmación general, sin registrar una lista detallada de filtros individuales.
+- Preparadas las siguientes propuestas de «Novedades de esta versión» para los nueve locales anotados. Son textos para introducir en Play Console; todavía NO se han guardado ni publicado en Play Console:
+
+### es-ES (predeterminado)
+Nuevo Asesor IA para encontrar coches eléctricos mediante consultas en lenguaje natural. Mejoras en la búsqueda de vehículos y en la experiencia de uso. La comparación entre eléctrico y combustión parte ahora de 100 km.
+
+### en-US
+Meet the new AI Advisor: find electric cars using natural-language searches. Improvements to vehicle search and the overall experience. The electric vs. combustion comparison now starts at 100 km.
+
+### en-GB
+Meet the new AI Adviser: find electric cars using natural-language searches. Improvements to vehicle search and the overall experience. The electric vs. combustion comparison now starts at 100 km.
+
+### en-AU
+Meet the new AI Adviser: find electric cars using natural-language searches. Improvements to vehicle search and the overall experience. The electric vs. combustion comparison now starts at 100 km.
+
+### fr-FR
+Découvrez le nouvel assistant IA : trouvez des voitures électriques en formulant vos recherches en langage naturel. La recherche de véhicules et l’expérience utilisateur ont été améliorées. La comparaison électrique/thermique démarre désormais à 100 km.
+
+### de-DE
+Neu: der KI-Assistent. Finden Sie Elektroautos mit Suchanfragen in natürlicher Sprache. Außerdem wurden die Fahrzeugsuche und die Benutzerfreundlichkeit verbessert. Der Vergleich zwischen Elektro- und Verbrennerfahrzeugen startet jetzt bei 100 km.
+
+### it-IT
+Scopri il nuovo Assistente IA: trova auto elettriche usando richieste in linguaggio naturale. Migliorate la ricerca dei veicoli e l’esperienza d’uso. Il confronto tra elettrico e termico parte ora da 100 km.
+
+### pt-BR
+Conheça o novo Assistente de IA: encontre carros elétricos usando pesquisas em linguagem natural. Melhorias na busca de veículos e na experiência de uso. A comparação entre elétricos e veículos a combustão agora começa em 100 km.
+
+### pt-PT
+Conheça o novo Assistente de IA: encontre carros elétricos através de pesquisas em linguagem natural. Melhorias na pesquisa de veículos e na experiência de utilização. A comparação entre elétricos e veículos a combustão começa agora nos 100 km.
+
+- Próximo passo de publicação: introduzir/rever estes textos nos campos «Novedades» de cada idioma/local em Play Console, respeitando el límite que muestre la consola. No se ha accedido ni modificado Play Console en esta tarea.
+- Sigue pendiente revisar el borde blanco visible alrededor del icono en la ficha pública. No cambiar el diseño original.
+- No se han modificado el código, el catálogo protegido ni las ramas stable.
+
+---
+
 ## 2026-11-01 — Integración en main y preparación de EV Calculator PRO 1.0.6
 
 - Integrado el trabajo validado de `feature/asesor-ia-fase-1` en `main` mediante PR #6, fusionado con squash. Commit resultante: `683cfa72858ee03558748a88783bc0a3c7e13457`.
