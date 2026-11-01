@@ -36,6 +36,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private LinearLayout results, referenceResults;
     private TextView selectedTitle, resultsTitle, referencePicker;
     private Vehicle reference;
+    private final AdvisorCriteriaEngine advisorEngine=new AdvisorCriteriaEngine();
+    private EditText advisorInput;
+    private TextView advisorStatus;
+    private final android.os.Handler advisorSearchHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+    private final Runnable pendingAdvisorSearch=()->runAdvisorSearch();
+    private LinearLayout advisorResults;
 
     // Search optimization index.
     private final IdentityHashMap<Vehicle, SearchIndex> searchIndexCache = new IdentityHashMap<>();
@@ -185,19 +191,89 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         picker.setOnClickListener(v->showVehiclePicker(picker));
         introCard.addView(picker,new LinearLayout.LayoutParams(-1,dp(52)));
 
-        // La tarjeta única se superpone ligeramente al borde inferior de la cabecera.
-        int stackHeight=dp(410);
-        FrameLayout heroStack=new FrameLayout(this);
-        heroStack.setClipChildren(false);
-        heroStack.setClipToPadding(false);
-        heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
-        FrameLayout.LayoutParams introParams=new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
-        introParams.leftMargin=dp(14);
-        introParams.rightMargin=dp(14);
-        introParams.topMargin=dp(236);
-        heroStack.addView(introCard,introParams);
-        content.addView(heroStack,marginLp(-1,stackHeight,-dp(14),0,-dp(14),dp(10)));
+        content.addView(hero,marginLp(-1,dp(260),-dp(14),0,-dp(14),dp(8)));
 
+        // Conversational local search; classic reference-car selection remains below it.
+        LinearLayout advisorCard=card();
+        advisorCard.setPadding(dp(16),dp(15),dp(16),dp(15));
+        TextView advisorTitle=tv("Buscar con IA",19,text());
+        advisorTitle.setTypeface(null,Typeface.BOLD);
+        advisorCard.addView(advisorTitle,new LinearLayout.LayoutParams(-1,-2));
+
+        TextView advisorDescription=tv("Describe el coche eléctrico que buscas y te mostraré opciones del catálogo.",13,sub());
+        advisorDescription.setPadding(0,dp(4),0,dp(7));
+        advisorDescription.setLineSpacing(0,1.1f);
+        advisorCard.addView(advisorDescription,new LinearLayout.LayoutParams(-1,-2));
+
+        TextView advisorExample=tv("Ejemplo: SUV hasta 35.000 €, más de 450 km y maletero de al menos 450 litros.",12,sub());
+        advisorExample.setLineSpacing(0,1.1f);
+        advisorExample.setPadding(0,0,0,dp(9));
+        advisorCard.addView(advisorExample,new LinearLayout.LayoutParams(-1,-2));
+
+        advisorInput=new EditText(this);
+        advisorInput.setTextColor(text());
+        advisorInput.setHintTextColor(sub());
+        advisorInput.setTextSize(15);
+        advisorInput.setHint(LanguageManager.t(this,"Escribe tu búsqueda aquí…"));
+        advisorInput.setSingleLine(false);
+        advisorInput.setMinLines(1);
+        advisorInput.setMaxLines(3);
+        advisorInput.setInputType(android.text.InputType.TYPE_CLASS_TEXT
+                |android.text.InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
+                |android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        advisorInput.setPadding(dp(12),dp(9),dp(12),dp(9));
+        advisorInput.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),12));
+        advisorCard.addView(advisorInput,new LinearLayout.LayoutParams(-1,-2));
+
+        TextView advisorReset=tv("Nueva búsqueda",13,blue);
+        advisorReset.setGravity(Gravity.CENTER);
+        advisorReset.setPadding(dp(10),dp(9),dp(10),dp(9));
+        LinearLayout.LayoutParams advisorResetParams=new LinearLayout.LayoutParams(-1,dp(40));
+        advisorResetParams.topMargin=dp(5);
+        advisorCard.addView(advisorReset,advisorResetParams);
+        advisorReset.setOnClickListener(v->resetAdvisorSearch());
+        // Ejecutar la búsqueda automática y ocultar el teclado tras 1100 ms sin escribir.
+        // El debounce evita recalcular por cada tecla y mantiene la búsqueda local.
+        advisorInput.addTextChangedListener(new TextWatcher(){
+            @Override public void beforeTextChanged(CharSequence s,int start,int count,int after){}
+            @Override public void onTextChanged(CharSequence s,int start,int before,int count){
+                advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
+                if(s==null||s.toString().trim().isEmpty()){
+                    advisorResults.removeAllViews();
+                    advisorStatus.setText("");
+                    return;
+                }
+                advisorStatus.setText(LanguageManager.t(SimilarCarsActivity.this,"Preparando búsqueda…"));
+                advisorSearchHandler.postDelayed(pendingAdvisorSearch,2000);
+            }
+            @Override public void afterTextChanged(Editable e){}
+        });
+        advisorInput.setOnEditorActionListener((v,actionId,event)->{
+            if(actionId==android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
+                    ||actionId==android.view.inputmethod.EditorInfo.IME_ACTION_DONE){
+                advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
+                InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                if(imm!=null)imm.hideSoftInputFromWindow(v.getWindowToken(),0);
+                v.clearFocus();
+                runAdvisorSearch();
+                return true;
+            }
+            return false;
+        });
+
+        advisorStatus=tv("",15,blue);
+        advisorStatus.setTypeface(null,Typeface.BOLD);
+        advisorStatus.setLineSpacing(0,1.1f);
+        advisorStatus.setPadding(0,dp(8),0,0);
+        advisorCard.addView(advisorStatus,new LinearLayout.LayoutParams(-1,-2));
+        advisorResults=new LinearLayout(this);
+        advisorResults.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams advisorResultsParams=new LinearLayout.LayoutParams(-1,-2);
+        advisorResultsParams.topMargin=dp(5);
+        advisorCard.addView(advisorResults,advisorResultsParams);
+        content.addView(advisorCard,marginLp(-1,-2,0,0,0,dp(10)));
+
+        content.addView(introCard,marginLp(-1,-2,0,0,0,dp(10)));
 
         referenceResults=card();
         referenceResults.setPadding(dp(14),dp(10),dp(14),dp(10));
@@ -224,6 +300,417 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         scroll.addView(content);
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
+    }
+
+    private void resetAdvisorSearch(){
+        advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
+        advisorEngine.reset();
+        if(advisorInput!=null)advisorInput.setText("");
+        if(advisorResults!=null)advisorResults.removeAllViews();
+        if(advisorStatus!=null)advisorStatus.setText("");
+        if(advisorInput!=null){
+            advisorInput.clearFocus();
+            InputMethodManager imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            if(imm!=null)imm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
+        }
+    }
+
+
+    private boolean tryRunDirectModelLookupQuery(String query) {
+        List<String> catalogNames = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) catalogNames.add(vehicle.make + " " + vehicle.model);
+        if (!AdvisorSimilarityIntent.isDirectModelLookup(query, catalogNames)) return false;
+
+        String normalized = norm(query).trim();
+        String compactQuery = normalized.replaceAll("[^a-z0-9]", "");
+        Vehicle chosen = null;
+        int bestNameLength = -1;
+        for (Vehicle vehicle : vehicles) {
+            String makeModel = norm(vehicle.make + " " + vehicle.model);
+            String compactName = makeModel.replaceAll("[^a-z0-9]", "");
+            if (compactName.length() >= 4 && compactQuery.contains(compactName)
+                    && compactName.length() > bestNameLength) {
+                chosen = vehicle;
+                bestNameLength = compactName.length();
+            }
+        }
+        if (chosen == null) {
+            String paddedQuery = " " + normalized + " ";
+            Set<String> matchedModels = new HashSet<>();
+            for (Vehicle vehicle : vehicles) {
+                String model = norm(vehicle.model).trim();
+                if (model.length() < 2 || !paddedQuery.contains(" " + model + " ")) continue;
+                matchedModels.add(norm(vehicle.make + " " + vehicle.model));
+                if (chosen == null || model.length() > norm(chosen.model).length()) chosen = vehicle;
+            }
+            if (matchedModels.size() != 1) {
+                advisorStatus.setText(LanguageManager.t(this,
+                        "El nombre puede corresponder a varios modelos. Escribe también la marca para concretar la búsqueda."));
+                return true;
+            }
+        }
+        if (chosen == null) {
+            advisorStatus.setText(LanguageManager.t(this,
+                    "No encuentro ese modelo en el catálogo. Comprueba la marca y el nombre del coche."));
+            return true;
+        }
+
+        String target = norm(chosen.make + " " + chosen.model);
+        List<Vehicle> variants = new ArrayList<>();
+        for (Vehicle vehicle : vehicles) {
+            if (norm(vehicle.make + " " + vehicle.model).equals(target)) variants.add(vehicle);
+        }
+        variants.sort((left, right) -> {
+            int yearOrder = Integer.compare(right.year, left.year);
+            if (yearOrder != 0) return yearOrder;
+            int trimOrder = Integer.compare(trimRank(right), trimRank(left));
+            if (trimOrder != 0) return trimOrder;
+            return Double.compare(right.price, left.price);
+        });
+
+        advisorResults.removeAllViews();
+        advisorStatus.setText(LanguageManager.t(this, "Modelo encontrado en el catálogo"));
+        int shown = 0;
+        for (Vehicle vehicle : variants) {
+            if (shown++ >= 10) break;
+            LinearLayout resultCard = card();
+            resultCard.setPadding(dp(12), dp(9), dp(12), dp(9));
+            TextView name = tv(vehicle.make + " " + vehicle.model, 16, blue);
+            name.setTypeface(null, Typeface.BOLD);
+            resultCard.addView(name, new LinearLayout.LayoutParams(-1, -2));
+            StringBuilder specs = new StringBuilder();
+            if (!cleanVersion(vehicle.version).trim().isEmpty()) specs.append(cleanVersion(vehicle.version));
+            if (vehicle.year > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(vehicle.year); }
+            if (vehicle.price > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.price)).append(" €"); }
+            if (vehicle.wltpKm > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.wltpKm)).append(" km WLTP"); }
+            TextView details = tv(specs.toString(), 12, sub());
+            details.setPadding(0, dp(3), 0, dp(6));
+            resultCard.addView(details, new LinearLayout.LayoutParams(-1, -2));
+            LinearLayout actions = new LinearLayout(this);
+            actions.setOrientation(LinearLayout.HORIZONTAL);
+            TextView detailAction = tv("Ver detalles  ›", 12, blue);
+            detailAction.setTypeface(null, Typeface.BOLD);
+            detailAction.setOnClickListener(v -> openDetail(vehicle));
+            actions.addView(detailAction, new LinearLayout.LayoutParams(0, -2, 1));
+            TextView compareAction = tv("Añadir a comparativa", 12, blue);
+            compareAction.setTypeface(null, Typeface.BOLD);
+            compareAction.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            compareAction.setOnClickListener(v -> addAdvisorToComparison(vehicle));
+            actions.addView(compareAction, new LinearLayout.LayoutParams(-2, -2));
+            resultCard.addView(actions, new LinearLayout.LayoutParams(-1, -2));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
+            params.topMargin = dp(6);
+            advisorResults.addView(resultCard, params);
+        }
+        return true;
+    }
+
+    private boolean tryRunNaturalSimilarityQuery(String query) {
+        String normalized=norm(query).trim();
+        List<String> catalogVehicleNames=new ArrayList<>();
+        for(Vehicle vehicle:vehicles){
+            catalogVehicleNames.add(vehicle.make+" "+vehicle.model);
+        }
+        // A generic car request naming a catalog model (e.g. "Quiero un coche el XPeng G6")
+        // uses the existing similar-cars engine even without an explicit word like "similar".
+        if(!AdvisorSimilarityIntent.shouldRoute(query,catalogVehicleNames)) return false;
+
+        // First try the complete make + model, preferring the longest exact catalog
+        // name so a shorter model cannot win when names overlap.
+        String compactQuery=normalized.replaceAll("[^a-z0-9]","");
+        Vehicle chosen=null;
+        int bestNameLength=-1;
+        for(Vehicle vehicle:vehicles){
+            String make=norm(vehicle.make);
+            String model=norm(vehicle.model);
+            if(make.isEmpty()||model.isEmpty())continue;
+            String compactName=(make+" "+model).replaceAll("[^a-z0-9]","");
+            if(compactName.length()<4||!compactQuery.contains(compactName))continue;
+            if(compactName.length()>bestNameLength){
+                chosen=vehicle;
+                bestNameLength=compactName.length();
+            }else if(compactName.length()==bestNameLength&&chosen!=null
+                    &&(vehicle.year>chosen.year
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)>trimRank(chosen))
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)==trimRank(chosen)
+                        &&vehicle.price>chosen.price))){
+                chosen=vehicle;
+            }
+        }
+
+        // If the brand was omitted (e.g. "un coche como el G6"), match a model
+        // name as a whole phrase. Only accept it when it identifies one make/model
+        // in the catalog; never guess between different brands sharing a model name.
+        if(chosen==null){
+            String queryPadded=" "+normalized+" ";
+            String matchedKey=null;
+            boolean ambiguous=false;
+            for(Vehicle vehicle:vehicles){
+                String model=norm(vehicle.model).trim();
+                if(model.length()<2)continue;
+                String modelPattern=" "+model+" ";
+                if(!queryPadded.contains(modelPattern))continue;
+                String key=norm(vehicle.make+" "+vehicle.model).replaceAll("[^a-z0-9]","");
+                if(matchedKey==null){
+                    matchedKey=key;
+                    chosen=vehicle;
+                }else if(!matchedKey.equals(key)){
+                    // Prefer a longer model phrase when it is also present, but
+                    // flag same-length competing names as ambiguous.
+                    String previousModel=chosen==null?"":norm(chosen.model);
+                    if(model.length()>previousModel.length()){
+                        matchedKey=key;
+                        chosen=vehicle;
+                        ambiguous=false;
+                    }else if(model.length()==previousModel.length()){
+                        ambiguous=true;
+                    }
+                }
+            }
+            if(ambiguous){
+                advisorStatus.setText(LanguageManager.t(this,
+                        "El nombre del modelo puede referirse a varios coches del catálogo. Escribe también la marca, por ejemplo «XPeng G6»."));
+                return true;
+            }
+        }
+
+        if(chosen==null){
+            advisorStatus.setText(LanguageManager.t(this,
+                    "He detectado que buscas un coche similar, pero no encuentro el modelo indicado en el catálogo. Prueba a escribir la marca y el modelo como aparecen en la lista de coches."));
+            return true;
+        }
+
+        // Choose the newest year and best-ranked trim among entries for the same
+        // make/model, independent of which catalog variant matched the query.
+        String chosenName=norm(chosen.make+" "+chosen.model).replaceAll("[^a-z0-9]","");
+        for(Vehicle vehicle:vehicles){
+            String candidateName=norm(vehicle.make+" "+vehicle.model).replaceAll("[^a-z0-9]","");
+            if(!candidateName.equals(chosenName))continue;
+            if(vehicle.year>chosen.year
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)>trimRank(chosen))
+                    ||(vehicle.year==chosen.year&&trimRank(vehicle)==trimRank(chosen)
+                        &&vehicle.price>chosen.price)){
+                chosen=vehicle;
+            }
+        }
+
+        reference=chosen;
+        getSharedPreferences(PREFS,MODE_PRIVATE).edit()
+                .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
+        if(referencePicker!=null){
+            referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
+        }
+        advisorEngine.reset();
+        advisorStatus.setText(LanguageManager.t(this,"Alternativas similares tomando como referencia ")
+                +chosen.make+" "+chosen.model+" "+chosen.year+" · "+cleanVersion(chosen.version)+".");
+        showSimilar();
+        return true;
+    }
+
+    private void runAdvisorSearch(){
+        if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
+        // Ocultar el teclado cuando se ejecute la búsqueda automática, como antes.
+        InputMethodManager searchImm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+        if(searchImm!=null)searchImm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
+        advisorInput.clearFocus();
+        String query=advisorInput.getText()==null?"":advisorInput.getText().toString().trim();
+        advisorResults.removeAllViews();
+        if(query.isEmpty()){
+            advisorStatus.setText(LanguageManager.t(this,"Añade un criterio para iniciar la búsqueda."));
+            return;
+        }
+        // Cada ejecución es independiente: interpretar únicamente el texto actual,
+        // sin heredar filtros ni criterios de búsquedas anteriores.
+        advisorEngine.reset();
+
+        String language=LanguageManager.getEffectiveLanguage(this);
+        AdvisorCriteriaEngine.Language selectedLanguage;
+        try{selectedLanguage=AdvisorCriteriaEngine.Language.valueOf(language.toUpperCase(Locale.ROOT));}
+        catch(Exception ignored){selectedLanguage=AdvisorCriteriaEngine.Language.EN;}
+        // Direct requests for a named catalog model must show that model first.
+        // Similarity wording is excluded by the intent classifier, so alternatives
+        // continue through the dedicated similar-cars engine.
+        if (tryRunDirectModelLookupQuery(query)) return;
+        // Natural-language requests for alternatives use the dedicated similarity engine.
+        if (tryRunNaturalSimilarityQuery(query)) return;
+        AdvisorCriteriaEngine.ParseResult parsed=advisorEngine.interpret(query,selectedLanguage);
+        if(parsed.needsClarification()){
+            if("clarify_reference_price_relation".equals(parsed.clarificationKey)){
+                advisorStatus.setText(LanguageManager.t(this,
+                        "¿Quieres una alternativa más barata, de precio parecido o más cara que el XPeng G6?"));
+            }else{
+                advisorStatus.setText(LanguageManager.t(this,"No he entendido algún límite. Aclara la unidad o si es mínimo o máximo."));
+            }
+            return;
+        }
+        AdvisorCriteriaEngine.Criteria criteria=parsed.criteria;
+        if(!criteria.hasHardFilters()&&!criteria.preferLowConsumption&&!criteria.preferHighRange&&!criteria.preferLargeTrunk){
+            advisorStatus.setText(LanguageManager.t(this,"Añade un criterio para iniciar la búsqueda."));
+            return;
+        }
+
+        // Keep only the newest catalog year for each equivalent trim, not for the
+        // whole make/model. A newer Standard Range must not hide a Long Range, but an
+        // older Long Range must not return if a newer Long Range exists and fails budget.
+        Map<String,Integer> newestYearByTrim=new HashMap<>();
+        for(Vehicle vehicle:vehicles){
+            String trimKey=advisorTrimKey(vehicle);
+            Integer knownYear=newestYearByTrim.get(trimKey);
+            if(knownYear==null||vehicle.year>knownYear)newestYearByTrim.put(trimKey,vehicle.year);
+        }
+        // Approximate-price searches rank eligible current trim versions by closeness
+        // to the requested price; explicit ceilings rank qualifying versions by price.
+        // The protected catalog itself is never changed.
+        List<AdvisorCatalogMatcher.Candidate> candidates=new ArrayList<>();
+        Map<String,Vehicle> byKey=new HashMap<>();
+        for(Vehicle vehicle:vehicles){
+            Integer newestYear=newestYearByTrim.get(advisorTrimKey(vehicle));
+            if(newestYear!=null&&vehicle.year<newestYear)continue;
+            String key=logicalKey(vehicle);
+            String advisorBodyStyle = vehicle.bodyStyle;
+            // The protected catalog previously mislabeled the EV4 Hatchback as a sedan.
+            // Keep the advisor body filter semantically correct without changing catalog data.
+            if ("Kia".equalsIgnoreCase(vehicle.make) && "EV4 Hatchback".equalsIgnoreCase(vehicle.model)) {
+                advisorBodyStyle = "hatchback";
+            }
+            // The protected catalog incorrectly labels BYD Dolphin Surf as an SUV;
+            // BYD classifies it as an urban Segment A five-door hatchback.
+            if ("BYD".equalsIgnoreCase(vehicle.make) && "Dolphin Surf".equalsIgnoreCase(vehicle.model)) {
+                advisorBodyStyle = "hatchback";
+            }
+            // Catalog naming/shape exception retained for this crossover-style model.
+            if ("Alpine".equalsIgnoreCase(vehicle.make) && "A390".equalsIgnoreCase(vehicle.model)) {
+                advisorBodyStyle = "suv";
+            }
+            AdvisorCatalogMatcher.Candidate candidate=new AdvisorCatalogMatcher.Candidate(key,vehicle.make,vehicle.model,
+                    advisorBodyStyle,vehicle.drivetrain,vehicle.price,vehicle.wltpKm,vehicle.trunk,
+                    vehicle.batteryKwh,vehicle.powerKw,vehicle.consumption,vehicle.lengthMm > 0 ? vehicle.lengthMm / 1000.0 : 0,vehicle.dcKw);
+            candidates.add(candidate);
+            byKey.put(key,vehicle);
+        }
+        List<AdvisorCatalogMatcher.Result> matches=AdvisorCatalogMatcher.search(candidates,criteria);
+        // For both approximate price targets and explicit ceilings, choose the 10 distinct
+        // models closest to the requested amount before presenting the shortlist in ascending
+        // price order. For an explicit ceiling, the matcher has already applied the 5% tolerance,
+        // so no vehicle above that effective limit can enter this ranking.
+        if(criteria.minPrice==null&&criteria.maxPrice!=null){
+            matches.sort((a,b)->{
+                Vehicle va=byKey.get(a.candidate.logicalKey);
+                Vehicle vb=byKey.get(b.candidate.logicalKey);
+                double pa=va==null?0:va.price;
+                double pb=vb==null?0:vb.price;
+                boolean ua=pa<=0, ub=pb<=0;
+                if(ua!=ub)return ua?1:-1;
+                int distanceOrder=Double.compare(Math.abs(pa-criteria.maxPrice),Math.abs(pb-criteria.maxPrice));
+                if(distanceOrder!=0)return distanceOrder;
+                return Double.compare(pa,pb);
+            });
+            List<AdvisorCatalogMatcher.Result> nearestMatches=new ArrayList<>();
+            Set<String> nearestModels=new HashSet<>();
+            for(AdvisorCatalogMatcher.Result match:matches){
+                Vehicle vehicle=byKey.get(match.candidate.logicalKey);
+                if(vehicle==null)continue;
+                if(!nearestModels.add(norm(vehicle.make+" "+vehicle.model)))continue;
+                nearestMatches.add(match);
+                if(nearestMatches.size()>=10)break;
+            }
+            matches=nearestMatches;
+        }
+        // Present the chosen shortlist from lowest to highest catalog price
+        // (unknown/non-positive prices last).
+        matches.sort((a,b)->{
+            Vehicle va=byKey.get(a.candidate.logicalKey);
+            Vehicle vb=byKey.get(b.candidate.logicalKey);
+            double pa=va==null?0:va.price;
+            double pb=vb==null?0:vb.price;
+            boolean ua=pa<=0, ub=pb<=0;
+            if(ua!=ub)return ua?1:-1;
+            int priceOrder=Double.compare(pa,pb);
+            if(priceOrder!=0)return priceOrder;
+            int makeOrder=(va==null?"":va.make).compareToIgnoreCase(vb==null?"":vb.make);
+            if(makeOrder!=0)return makeOrder;
+            return (va==null?"":va.model).compareToIgnoreCase(vb==null?"":vb.model);
+        });
+        advisorResults.removeAllViews();
+        if(matches.isEmpty()){
+            advisorStatus.setText(LanguageManager.t(this,"No hay coches que cumplan todos los criterios. Prueba a relajar alguno."));
+            return;
+        }
+        advisorStatus.setText(LanguageManager.t(this,"Resultados que cumplen tus criterios"));
+        int shown=0;
+        Set<String> shownModels=new HashSet<>();
+        for(int i=0;i<matches.size()&&shown<10;i++){
+            Vehicle vehicle=byKey.get(matches.get(i).candidate.logicalKey);
+            if(vehicle==null)continue;
+            String modelKey=norm(vehicle.make+" "+vehicle.model);
+            if(!shownModels.add(modelKey))continue;
+            shown++;
+            LinearLayout resultCard=card();
+            resultCard.setPadding(dp(12),dp(9),dp(12),dp(9));
+            TextView name=tv(vehicle.make+" "+vehicle.model,16,blue);
+            name.setTypeface(null,Typeface.BOLD);
+            resultCard.addView(name,new LinearLayout.LayoutParams(-1,-2));
+            StringBuilder specs=new StringBuilder();
+            if(vehicle.price>0)specs.append(fmt(vehicle.price)).append(" €");
+            if(vehicle.wltpKm>0){if(specs.length()>0)specs.append("  ·  ");specs.append(fmt(vehicle.wltpKm)).append(" km WLTP");}
+            if(vehicle.trunk>0){if(specs.length()>0)specs.append("  ·  ");specs.append(fmt(vehicle.trunk)).append(" L");}
+            if(specs.length()==0)specs.append(cleanVersion(vehicle.version));
+            TextView details=tv(specs.toString(),12,sub());
+            details.setPadding(0,dp(3),0,dp(6));
+            resultCard.addView(details,new LinearLayout.LayoutParams(-1,-2));
+
+            LinearLayout actions=new LinearLayout(this);
+            actions.setOrientation(LinearLayout.HORIZONTAL);
+            actions.setGravity(Gravity.CENTER_VERTICAL);
+            TextView detailAction=tv("Ver detalles  ›",12,blue);
+            detailAction.setTypeface(null,Typeface.BOLD);
+            detailAction.setPadding(0,dp(5),dp(12),dp(5));
+            detailAction.setOnClickListener(v->openDetail(vehicle));
+            actions.addView(detailAction,new LinearLayout.LayoutParams(0,-2,1));
+            TextView compareAction=tv("Añadir a comparativa",12,blue);
+            compareAction.setTypeface(null,Typeface.BOLD);
+            compareAction.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+            compareAction.setPadding(dp(4),dp(5),0,dp(5));
+            compareAction.setOnClickListener(v->addAdvisorToComparison(vehicle));
+            actions.addView(compareAction,new LinearLayout.LayoutParams(-2,-2));
+            resultCard.addView(actions,new LinearLayout.LayoutParams(-1,-2));
+            LinearLayout.LayoutParams resultParams=new LinearLayout.LayoutParams(-1,-2);
+            resultParams.topMargin=dp(6);
+            advisorResults.addView(resultCard,resultParams);
+        }
+    }
+
+    private void addAdvisorToComparison(Vehicle vehicle){
+        if(vehicle==null)return;
+        SharedPreferences prefs=getSharedPreferences(PREFS,MODE_PRIVATE);
+        boolean initialized=prefs.getBoolean("compare_selection_initialized",false);
+        List<String> keys=new ArrayList<>();
+        List<String> ids=new ArrayList<>();
+        if(initialized){
+            String rawKeys=prefs.getString("compare_vehicle_logical_ordered","");
+            if(!rawKeys.trim().isEmpty())keys.addAll(Arrays.asList(rawKeys.split("\\|\\|")));
+            String rawIds=prefs.getString("compare_vehicle_ids_ordered","");
+            if(!rawIds.trim().isEmpty())ids.addAll(Arrays.asList(rawIds.split(",")));
+        }
+        String key=logicalKey(vehicle);
+        if(keys.contains(key)){
+            Toast.makeText(this,LanguageManager.t(this,"Ya está en la comparativa."),Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(keys.size()>=3){
+            Toast.makeText(this,LanguageManager.t(this,"La comparativa admite hasta 3 coches."),Toast.LENGTH_SHORT).show();
+            return;
+        }
+        keys.add(key);
+        if(vehicle.id!=null&&!vehicle.id.trim().isEmpty()&&!ids.contains(vehicle.id.trim()))ids.add(vehicle.id.trim());
+        prefs.edit().putBoolean("compare_selection_initialized",true)
+                .putString("compare_vehicle_ids_ordered",android.text.TextUtils.join(",",ids))
+                .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))
+                .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
+        Toast.makeText(this,LanguageManager.t(this,"Se ha añadido el coche a la comparativa."),Toast.LENGTH_SHORT).show();
+        Intent intent=new Intent(this,CompararCochesActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
     }
 
     private LinearLayout.LayoutParams marginLp(int w,int h,int l,int t,int r,int b){
@@ -498,6 +985,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private void showSimilar(){
         results.removeAllViews();
         if(reference==null||vehicles==null||vehicles.isEmpty())return;
+        resultsTitle.setVisibility(View.VISIBLE);
+        results.addView(resultsTitle,new LinearLayout.LayoutParams(-1,dp(34)));
 
         final int FINAL_TOP=10;
         int referenceYear=reference.year;
@@ -1139,6 +1628,20 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         ver=ver.replaceAll("^\\d+(?:\\.\\d+)?\\s*kwh\\s*","");
         ver=ver.replaceAll("\\s+"," ").trim();
         return ver;
+    }
+    /**
+     * Identifies equivalent trim names across model years. Technical figures and
+     * repeated drive-layout labels are removed from the version text; drivetrain
+     * remains a separate key so, for example, Long Range RWD and Long Range AWD
+     * are not treated as the same trim.
+     */
+    private String advisorTrimKey(Vehicle v){
+        String trim=normalizedVersion(v);
+        trim=trim.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\s*(?:kw|kwh|cv|hp|km|wh)\\b"," ");
+        trim=trim.replaceAll("(?i)\\b\\d+(?:[.,]\\d+)?\\b"," ");
+        trim=trim.replaceAll("(?i)\\b(rwd|fwd|awd|4wd|4x4|4x2)\\b"," ");
+        trim=norm(trim).replaceAll("[^a-z0-9]+"," ").trim().replaceAll("\\s+"," ");
+        return norm(v.make)+"|"+norm(v.model)+"|"+norm(v.market)+"|"+norm(v.drivetrain)+"|"+trim;
     }
     private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
     private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
