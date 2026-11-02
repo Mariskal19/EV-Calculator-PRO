@@ -73,7 +73,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
   @Override
   public void onCreate(Bundle b) {
     super.onCreate(b);
-    prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+    prefs = host.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     dark =
         prefs.contains(KEY_DARK_THEME)
             ? prefs.getBoolean(KEY_DARK_THEME, false)
@@ -93,7 +93,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     if (prefs == null) prefs = host.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     if (distance != null) {
       LanguageManager.applyStored(host);
-      String currentLanguage = LanguageManager.getSelectedLanguage(this);
+      String currentLanguage = LanguageManager.getSelectedLanguage(host);
       String currentCurrency = prefs.getString(KEY_CURRENCY, "EUR");
       boolean languageChanged = lastLanguage == null || !currentLanguage.equals(lastLanguage);
       boolean currencyChanged = lastCurrency == null || !currentCurrency.equals(lastCurrency);
@@ -107,7 +107,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
         load();
         applyCurrency();
         calculate();
-        EdgeToEdgeHelper.apply(this, dark, true);
+        EdgeToEdgeHelper.apply(host, dark, true);
         return;
       }
       applyCurrency();
@@ -116,6 +116,8 @@ public class ElectricVsCombustionScreen extends FrameLayout {
   }
 
   public void onHostPause() { save(); }
+
+  public boolean isDarkTheme() { return dark; }
 
   private int text() {
     return dark ? Color.rgb(245, 248, 255) : white;
@@ -244,7 +246,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
   }
 
   private void row(LinearLayout p, String label, EditText e, String unit) {
-    LinearLayout r = new LinearLayout(this);
+    LinearLayout r = new LinearLayout(host);
     r.setGravity(Gravity.CENTER_VERTICAL);
     TextView l = tv(label, 14, sub());
     r.addView(l, new LinearLayout.LayoutParams(0, 54, 1));
@@ -303,7 +305,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
       }
       return insets;
     });
-    FrameLayout hero = new FrameLayout(this);
+    FrameLayout hero = new FrameLayout(host);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
     ImageView header = new ImageView(host);
     header.setImageResource(R.drawable.cabecera_electric_vs_combustion);
@@ -497,7 +499,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     fuelCost.setText(money(fCost));
     saving.setText(
         (diff >= 0
-                ? LanguageManager.t(this, "Ahorro con el eléctrico:")
+                ? LanguageManager.t(host, "Ahorro con el eléctrico:")
                 : LanguageManager.t(this, "Diferencia:"))
             + " "
             + money(Math.abs(diff)));
