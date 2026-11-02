@@ -67,6 +67,10 @@ public abstract class BaseNavigationActivity extends Activity {
      */
     addBottomScrollSpace(view, dp(48));
 
+    if (view.getParent() instanceof ViewGroup) {
+      ((ViewGroup) view.getParent()).removeView(view);
+    }
+
     FrameLayout.LayoutParams contentParams =
         new FrameLayout.LayoutParams(-1, -1);
     host.addView(view, contentParams);
