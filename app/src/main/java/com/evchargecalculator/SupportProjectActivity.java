@@ -18,7 +18,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
   private static final String STRIPE_PAYMENT_LINK = "";
   private static final String PAYPAL_PAYMENT_LINK = "";
 
-  @Override protected int getBottomNavigationIndex() { return 3; }
+  @Override protected int getBottomNavigationIndex() { return 4; }
 
   private int dp(int n) {
     return (int) (n * getResources().getDisplayMetrics().density + .5f);
