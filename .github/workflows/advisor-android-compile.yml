@@ -9,6 +9,7 @@ on:
       - 'app/src/main/java/com/evchargecalculator/BaseNavigationActivity.java'
       - 'app/src/main/java/com/evchargecalculator/BottomNavigationHelper.java'
       - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionScreen.java'
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
       - 'app/src/main/java/com/evchargecalculator/CompararCochesActivity.java'
       - 'app/src/main/java/com/evchargecalculator/CarDetailActivity.java'
