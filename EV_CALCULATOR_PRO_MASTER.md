@@ -2637,3 +2637,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
   - El manifiesto declara actualmente cada sección como Activity independiente; el host único requerirá revisar las declaraciones y el destino launcher sin eliminar los destinos secundarios.
 - Conclusión de implementación: no es seguro convertir estas clases mediante sustituciones globales de `this`, `onCreate` o `setContentView`. La migración debe extraer cada pantalla como contenido/controlador y pasarle un contexto de host explícito, separar el estado de la vista y coordinar el Back/resultado de Ficha. El piloto debe comprobar restauración tras rotación y al cambiar de pestaña, además de Android 10/API 29 y Android 16.
 - Estado: segunda pasada de auditoría completada; todavía no se ha modificado código de producción ni se ha generado un APK de migración. Catálogo protegido sin cambios.
+
+
+### 2026-11-02 — Inventario de acoplamiento para la primera migración
+
+- Se ha medido el acoplamiento de las cuatro pantallas leyendo el código completo de cada clase (no solo el número de líneas):
+  - `MainActivity` ocupa 78 líneas físicas, pero contiene métodos largos/minificados y construye toda la calculadora. Su UI y lógica usan directamente la Activity como `Context`, además de `getSystemService`, diálogos, preferencias, recursos, teclado, `Handler` y callbacks de vistas. La cifra de líneas no debe interpretarse como una migración trivial.
+  - `ElectricVsCombustionActivity` tiene 532 líneas, gestiona sus campos de edición, teclado/insets, guardado al pausar y reconstrucción al cambiar idioma/moneda/tema.
+  - `SimilarCarsActivity` tiene 1.739 líneas, 3 aperturas de Activity y 4 referencias a `Handler`; usa tareas diferidas del asesor, preferencias, catálogo y navegación a ficha/comparativa.
+  - `CompararCochesActivity` tiene 1.027 líneas, abre ficha mediante Activity, mantiene selección/cache/índices y reconstruye al volver de otras pantallas.
+- Riesgo principal confirmado: las clases crean sus vistas con `new View(this)`, crean diálogos con la Activity, consultan preferencias/recursos desde ella y dependen de métodos de ciclo de vida. Un Fragment no puede alojar sin más la vista raíz de una Activity; reutilizar el objeto Activity como si fuera una vista tampoco es una arquitectura Android válida.
+- Por tanto, la primera migración no debe consistir en añadir una dependencia de Fragment y cambiar la superclase. Hay que extraer un componente de pantalla con `Context`/host explícito, mover el estado persistente fuera de los callbacks de Activity y separar la creación/destrucción de la vista de la lógica de negocio. La conversión de Cargar será el piloto solo después de definir ese contrato, porque su implementación compacta contiene mucho código en líneas extensas.
+- No se ha añadido todavía la dependencia Fragment ni se han modificado Activities/manifest: hacerlo sin el contrato de extracción dejaría una arquitectura híbrida que no mantendría la barra en los flujos a otras secciones. No se genera APK de prueba hasta que la barra esté realmente fuera de las pantallas y la navegación principal cambie solo el contenido.
