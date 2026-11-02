@@ -1,3 +1,13 @@
+## 2026-11-02 — Segundo prototipo de barra inferior: prueba no superada
+
+- El usuario confirma que la barra sigue desplazándose al cambiar de sección y que ahora se aprecia más un movimiento horizontal de derecha a izquierda en toda la pantalla.
+- Conclusión: la transición compartida entre Activities no resuelve el requisito y puede acentuar la animación de ventana. Se descarta este enfoque; no debe integrarse en `main`.
+- En esta rama se retira el `transitionName`, la llamada a `ActivityOptions.makeSceneTransitionAnimation()` y la activación de `windowContentTransitions`; se restaura la navegación normal entre Activities para no introducir el desplazamiento adicional.
+- La solución que cumple el requisito es una sola Activity contenedora que mantenga una única barra inferior y cambie únicamente el contenido central. Antes de implementarla se debe auditar el ciclo de vida, estado, teclado, scroll y resultados de las cuatro secciones (`PersistentMainActivity`, `ElectricVsCombustionActivity`, `SimilarCarsActivity`, `CompararCochesActivity`) y diseñar una migración incremental con pruebas por pantalla.
+- La rama sigue aislada. No se modifica `main`, el catálogo protegido ni la publicación de Google Play.
+
+---
+
 ### Seguimiento tras primera prueba en dispositivo
 
 - El usuario instaló el primer APK y observó que la barra seguía moviéndose.
