@@ -16,7 +16,7 @@ import android.widget.*;
 public class ConfigurationActivity extends BaseNavigationActivity {
   @Override
   protected int getBottomNavigationIndex() {
-    return 3;
+    return 4;
   }
 
   private static final String PREFS = "ev_charge_calculator";
