@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ScrollView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -25,8 +26,21 @@ public final class EdgeToEdgeHelper {
   // Stores the padding defined by each activity before system-bar insets are applied.
   // This prevents repeated apply() calls from accumulating the same bottom inset.
   private static final Map<View, int[]> BASE_PADDING = new WeakHashMap<>();
+  private static final Map<View, Integer> BASE_SCROLL_TOP_PADDING = new WeakHashMap<>();
 
   private EdgeToEdgeHelper() {}
+
+  private static ScrollView findScrollView(View view) {
+    if (view instanceof ScrollView) return (ScrollView) view;
+    if (view instanceof ViewGroup) {
+      ViewGroup group = (ViewGroup) view;
+      for (int i = 0; i < group.getChildCount(); i++) {
+        ScrollView found = findScrollView(group.getChildAt(i));
+        if (found != null) return found;
+      }
+    }
+    return null;
+  }
 
   public static void apply(Activity activity, boolean dark) {
     apply(activity, dark, false);
@@ -97,13 +111,32 @@ public final class EdgeToEdgeHelper {
           Insets bars =
               insets.getInsets(WindowInsetsCompat.Type.systemBars()
                   | WindowInsetsCompat.Type.displayCutout());
-          // Settings can opt into a top inset so its title is not drawn beneath
-          // the status bar on older Android versions such as Android 10.
+          // Keep the outer screen (including its full-bleed background) behind
+          // the status bar. Apply the top inset to the scrollable foreground
+          // instead, so the status-bar area shows the screen background rather
+          // than the host window's light background. This is platform-neutral:
+          // WindowInsetsCompat supplies the correct inset on each Android version.
           view.setPadding(
               left + bars.left,
-              includeTopInset ? bars.top : 0,
+              basePadding[1],
               right + bars.right,
               bottom + bars.bottom);
+
+          if (includeTopInset) {
+            ScrollView scroll = findScrollView(view);
+            if (scroll != null) {
+              Integer baseTop = BASE_SCROLL_TOP_PADDING.get(scroll);
+              if (baseTop == null) {
+                baseTop = scroll.getPaddingTop();
+                BASE_SCROLL_TOP_PADDING.put(scroll, baseTop);
+              }
+              scroll.setPadding(
+                  scroll.getPaddingLeft(),
+                  baseTop + bars.top,
+                  scroll.getPaddingRight(),
+                  scroll.getPaddingBottom());
+            }
+          }
           return insets;
         });
     ViewCompat.requestApplyInsets(root);
