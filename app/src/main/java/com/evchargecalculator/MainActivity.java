@@ -20,6 +20,7 @@ public class MainActivity extends BaseNavigationActivity {
   private View mainContent;
   private ElectricVsCombustionScreen costScreen;
   private SimilarCarsScreen similarCarsScreen;
+  private CompararCochesScreen compareScreen;
 
   @Override protected int getBottomNavigationIndex() { return selectedPrimaryTab; }
   @Override protected boolean handlesBottomNavigationInternally() { return true; }
@@ -30,6 +31,7 @@ public class MainActivity extends BaseNavigationActivity {
     if (selectedPrimaryTab == 0) savePreferences();
     if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
     if (selectedPrimaryTab == 2 && similarCarsScreen != null) similarCarsScreen.onHostPause();
+    if (selectedPrimaryTab == 3 && compareScreen != null) compareScreen.onHostPause();
     selectedPrimaryTab = destination;
     if (destination == 0) {
       if (mainContent != null) {
@@ -50,12 +52,15 @@ public class MainActivity extends BaseNavigationActivity {
       setContentView(similarCarsScreen);
       similarCarsScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true);
-    } else {
-      // Comparar remains on its legacy Activity until its screen extraction is complete.
-      selectedPrimaryTab = 0;
-      startActivity(new Intent(this, CompararCochesActivity.class));
+    } else if (destination == 3) {
+      if (compareScreen == null) compareScreen = new CompararCochesScreen(this);
+      setContentView(compareScreen);
+      compareScreen.onHostResume();
+      EdgeToEdgeHelper.apply(this, dark, true);
     }
   }
+  void selectPrimaryTab(int destination) { onBottomNavigationSelected(destination); }
+
   ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText activeEdit;
   EditText battery, power, price, departure, xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch;
   TextView timeR, energyR, costR, statusR, statusTimeR, statusIcon, themeButton, rangeSummary, chargeAmount, lossInfo, priceUnit, headerTitle;
@@ -64,12 +69,12 @@ public class MainActivity extends BaseNavigationActivity {
   private static final String KEY_DARK_THEME="dark_theme", KEY_CURRENCY="app_currency";
 
   @Override public void onCreate(Bundle b){super.onCreate(b); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR");}
-  @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
-  @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else savePreferences();super.onPause();}
+  @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
+  @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else if(selectedPrimaryTab==3&&compareScreen!=null)compareScreen.onHostPause();else savePreferences();super.onPause();}
 
   @Override
   public void onBackPressed() {
-    if (selectedPrimaryTab == 1 || selectedPrimaryTab == 2) {
+    if (selectedPrimaryTab == 1 || selectedPrimaryTab == 2 || selectedPrimaryTab == 3) {
       onBottomNavigationSelected(0);
       return;
     }

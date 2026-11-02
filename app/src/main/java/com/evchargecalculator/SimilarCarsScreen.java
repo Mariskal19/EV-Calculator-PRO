@@ -735,9 +735,13 @@ public class SimilarCarsScreen extends FrameLayout {
                 .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))
                 .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
         Toast.makeText(host,LanguageManager.t(host,"Se ha añadido el coche a la comparativa."),Toast.LENGTH_SHORT).show();
-        Intent intent=new Intent(host,CompararCochesActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        host.startActivity(intent);
+        if (host instanceof MainActivity) {
+            ((MainActivity) host).selectPrimaryTab(3);
+        } else {
+            Intent intent=new Intent(host,CompararCochesActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            host.startActivity(intent);
+        }
     }
 
     private LinearLayout.LayoutParams marginLp(int w,int h,int l,int t,int r,int b){
@@ -1716,9 +1720,13 @@ public class SimilarCarsScreen extends FrameLayout {
             .putString("compare_vehicle_ids_ordered",android.text.TextUtils.join(",",ids))
             .putStringSet("compare_vehicle_ids",new LinkedHashSet<>(ids))
             .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
-        Intent back=new Intent(host,CompararCochesActivity.class);
-        back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        host.startActivity(back);
+        if (host instanceof MainActivity) {
+            ((MainActivity) host).selectPrimaryTab(3);
+        } else {
+            Intent back=new Intent(host,CompararCochesActivity.class);
+            back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            host.startActivity(back);
+        }
     }
 
     private void openDetail(Vehicle v){
