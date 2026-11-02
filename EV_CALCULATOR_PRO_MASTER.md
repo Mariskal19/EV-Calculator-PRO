@@ -2675,3 +2675,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Se conserva la sobrecarga anterior `create(Activity, dark, selected)` y su comportamiento actual, para no alterar las pantallas existentes mientras se realiza la migración por etapas.
 - Este cambio introduce el punto de conexión necesario para que la futura Activity única cambie el contenido central. **No activa todavía la navegación persistente**: ninguna Activity existente utiliza aún el listener y las pestañas siguen usando el flujo heredado.
 - No se modifica el manifiesto, las pantallas, el catálogo ni `main`. Pendiente: conectar un host real y migrar el contenido de las cuatro secciones antes de considerar cumplido el requisito.
+
+
+### 2026-11-02 — Prueba manual del APK de auditoría en Redmi Note 13 Pro
+
+- Se instaló el artefacto Debug del run `41526271955` (commit `49a6f46ba468d4c96257b8df9b204201dcff23eb`).
+- El usuario confirmó que la interfaz se ve igual que antes y que al pulsar Coste, Buscar y Comparar la transición sigue desplazándose de derecha a izquierda; la barra aparece en todas las pantallas como antes.
+- Resultado: instalación correcta y regresión visual aparente no detectada en esta comprobación básica, pero **no se ha validado navegación persistente**. La barra sigue perteneciendo al modelo Activity-por-pantalla; este APK no debe considerarse una implementación de la barra fija.
+- Próximo trabajo: extraer realmente el contenido de las cuatro secciones a componentes de pantalla reutilizables dentro de una única Activity host. No ocultar la animación ni mantener Activities independientes como sustituto de la migración. Mantener intactos catálogo y `main`; generar únicamente APK Debug cuando el cambio funcional esté completo.
