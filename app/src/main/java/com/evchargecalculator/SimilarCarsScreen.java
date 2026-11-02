@@ -67,15 +67,15 @@ public class SimilarCarsScreen extends FrameLayout {
     private int blue=Color.rgb(46,107,255);
     private int text(){return dark?Color.rgb(245,248,255):Color.rgb(22,42,63);}
     private int sub(){return dark?Color.rgb(170,183,204):Color.rgb(90,111,137);}
-    private int dp(int n){return(int)(n*getResources().getDisplayMetrics().density+.5f);}
+    private int dp(int n){return(int)(n*host.getResources().getDisplayMetrics().density+.5f);}
     private TextView tv(String s,float z,int c){TextView t=new TextView(host);t.setText(LanguageManager.t(host,s));t.setTextSize(z);t.setTextColor(c);return t;}
     private GradientDrawable bg(int c,float r){GradientDrawable g=new GradientDrawable();g.setColor(c);g.setCornerRadius(dp((int)r));return g;}
     private GradientDrawable strokeBg(int fill,int stroke,float r){GradientDrawable g=bg(fill,r);g.setStroke(dp(1),stroke);return g;}
 
     public SimilarCarsScreen(Activity host) {
         super(host);
-        host.host = host;
-        dark = host.getSharedPreferences(PREFS, Activity.Activity.MODE_PRIVATE).getBoolean("dark_theme", false);
+        this.host = host;
+        dark = host.host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE).getBoolean("dark_theme", false);
         loadVehicles();
         build();
         EdgeToEdgeHelper.apply(host, dark, true);
@@ -255,7 +255,7 @@ public class SimilarCarsScreen extends FrameLayout {
             if(actionId==android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH
                     ||actionId==android.view.inputmethod.EditorInfo.IME_ACTION_DONE){
                 advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
-                InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm=(InputMethodManager)host.getSystemService(Context.INPUT_METHOD_SERVICE);
                 if(imm!=null)imm.hideSoftInputFromWindow(v.getWindowToken(),0);
                 v.clearFocus();
                 runAdvisorSearch();
@@ -725,7 +725,7 @@ public class SimilarCarsScreen extends FrameLayout {
         Toast.makeText(host,LanguageManager.t(host,"Se ha añadido el coche a la comparativa."),Toast.LENGTH_SHORT).show();
         Intent intent=new Intent(host,CompararCochesActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
+        host.startActivity(intent);
     }
 
     private LinearLayout.LayoutParams marginLp(int w,int h,int l,int t,int r,int b){
@@ -1611,7 +1611,7 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private void loadVehicles(){
-        try(InputStream in=getAssets().open("catalog_es_2024_2026.json");BufferedReader r=new BufferedReader(new InputStreamReader(in))){
+        try(InputStream in=host.getAssets().open("catalog_es_2024_2026.json");BufferedReader r=new BufferedReader(new InputStreamReader(in))){
             StringBuilder sb=new StringBuilder();String line;while((line=r.readLine())!=null)sb.append(line);
             JSONArray a=new JSONObject(sb.toString()).optJSONArray("vehicles");if(a==null)throw new IllegalStateException("vehicles missing");
             for(int i=0;i<a.length();i++){JSONObject o=a.optJSONObject(i);if(o!=null)vehicles.add(new Vehicle(o,false));}
