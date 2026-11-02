@@ -1,3 +1,14 @@
+## 2026-11-02 — Ajuste del indicador de navegación «Más» (pendiente de compilación y prueba)
+
+- Se cambia `getBottomNavigationIndex()` de `3` a `4` en `ConfigurationActivity.java` y `SupportProjectActivity.java`.
+- Al abrir estas pantallas desde el menú «Más», la barra inferior mantiene resaltada la sección «Más» en lugar de marcar incorrectamente «Comparar».
+- Las cuatro acciones del menú (Configuración, Compartir app, Calificar app y Apoyar el proyecto) mantienen su comportamiento.
+- Sin cambios en insets, contenido, preferencias ni catálogo.
+- Commits de código: `2d9b657bec58652da2a706cc9f1ef5f0cbc133c8`, `1a08b3afdb7af8d49ceab08030f8be0c56cfc89c`.
+- **Estado:** pendiente de compilación y prueba manual en Android 10 y Android 16.
+
+---
+
 ## 2026-11-02 — «Apoyar el proyecto» validada en Android 10 y Android 16
 
 - El usuario confirma que la pantalla funciona correctamente en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
