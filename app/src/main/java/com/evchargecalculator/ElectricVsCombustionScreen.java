@@ -79,12 +79,15 @@ public class ElectricVsCombustionScreen extends FrameLayout {
                 == Configuration.UI_MODE_NIGHT_YES;
     
     build();
-    EdgeToEdgeHelper.apply(host, dark, true);
     load();
     applyCurrency();
     calculate();
     lastLanguage = LanguageManager.getSelectedLanguage(host);
     lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+  }
+
+  public void onHostDisplayed() {
+    EdgeToEdgeHelper.apply(host, dark, true);
   }
 
   public void onHostResume() {
