@@ -239,7 +239,7 @@ public class CompararCochesScreen extends FrameLayout {
         applyRemoteAdditions(RemoteCatalogManager.loadCached(host));
         rebuildVehicleIndex();
         RemoteCatalogManager.refreshIfDue(host, additions -> {
-            if (additions == null || additions.length() == 0 || isFinishing() || host.isDestroyed()) return;
+            if (additions == null || additions.length() == 0 || host.isFinishing() || host.isDestroyed()) return;
             int before = vehicles.size();
             applyRemoteAdditions(additions);
             if (vehicles.size() != before) {
