@@ -36,11 +36,19 @@ public class MainActivity extends BaseNavigationActivity {
   void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
     // BaseNavigationActivity adds 48dp of scroll range for its fixed bottom bar.
     // Add the IME inset on top of that so the final fields can scroll above the keyboard.
+    // Keep the original scroll padding and combine status-bar and keyboard
+    // insets here. Android 10 needs the top inset applied directly to this
+    // ScrollView; applying it through the outer activity root is not reliable.
+    final int baseScrollTopPadding=scroll.getPaddingTop();
     final int baseScrollBottomPadding=scroll.getPaddingBottom();
     androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll,(view,insets)->{
+      androidx.core.graphics.Insets bars=insets.getInsets(
+          androidx.core.view.WindowInsetsCompat.Type.systemBars()
+              | androidx.core.view.WindowInsetsCompat.Type.displayCutout());
       androidx.core.graphics.Insets imeInsets=insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime());
       int imeBottom=insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime())?imeInsets.bottom:0;
-      scroll.setPadding(scroll.getPaddingLeft(),scroll.getPaddingTop(),scroll.getPaddingRight(),baseScrollBottomPadding+imeBottom);
+      scroll.setPadding(scroll.getPaddingLeft(),baseScrollTopPadding+bars.top,
+          scroll.getPaddingRight(),baseScrollBottomPadding+imeBottom);
       if(imeBottom>0){EditText focused=activeEdit; if(focused!=null)focused.post(()->keepFieldVisible(focused));}
       return insets;
     });
