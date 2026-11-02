@@ -2666,3 +2666,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - La barra será hija fija del host, fuera del contenedor intercambiable. El contenedor central tendrá altura restante y gestionará insets/teclado sin añadir padding duplicado. El botón Más no se convierte en una pestaña de contenido principal.
 - Criterios de aceptación antes de entregar APK: cambiar repetidamente entre las cuatro pestañas sin animación/desplazamiento de ventana ni recreación de la barra; conservar entrada/selección; probar Back y apertura/retorno de Ficha; probar tema, idioma y moneda; validar teclado y scroll; compilar y ejecutar en API 29 (Android 10) y API 36 (Android 16).
 - Restricciones: no migrar mediante sustituciones globales de `this`, no incrustar Activities en vistas/Fragments, no añadir dependencias sin necesidad demostrada, no modificar catálogo ni `main`. El estado sigue siendo auditoría/contrato definido; no se declara migración implementada ni APK disponible hasta superar compilación y pruebas.
+
+
+
+### 2026-11-02 — Primer cambio de código: desacoplar la selección de pestaña
+
+- Se amplía `BottomNavigationHelper` con una interfaz `DestinationListener` y una sobrecarga de `create(..., listener)`. Cuando el host proporciona el listener, los cuatro destinos principales notifican el índice seleccionado en vez de lanzar otra Activity.
+- Se conserva la sobrecarga anterior `create(Activity, dark, selected)` y su comportamiento actual, para no alterar las pantallas existentes mientras se realiza la migración por etapas.
+- Este cambio introduce el punto de conexión necesario para que la futura Activity única cambie el contenido central. **No activa todavía la navegación persistente**: ninguna Activity existente utiliza aún el listener y las pestañas siguen usando el flujo heredado.
+- No se modifica el manifiesto, las pantallas, el catálogo ni `main`. Pendiente: conectar un host real y migrar el contenido de las cuatro secciones antes de considerar cumplido el requisito.
