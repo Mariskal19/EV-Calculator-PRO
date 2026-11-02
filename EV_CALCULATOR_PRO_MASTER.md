@@ -1,3 +1,15 @@
+## 2026-11-02 — Correcciones de insets en «Eléctrico vs combustión» (pendiente de compilación y prueba)
+
+- Se aplica a `ElectricVsCombustionActivity.java` el mismo enfoque validado previamente en Configuración y Cargar:
+  - **Recorte superior:** `EdgeToEdgeHelper.apply(this, dark, true)` y listener propio del `ScrollView` que suma el inset superior de `systemBars/displayCutout` al padding base. Así el contenido, incluido el encabezado, queda debajo de la barra de estado también en Android 10.
+  - **Franja sobre el teclado:** no se suma el inset IME al padding inferior, porque `adjustResize` ya reduce el área disponible. Se conserva el padding inferior base y se usa la visibilidad del teclado para desplazar el campo enfocado y mantenerlo visible.
+- Se mantiene el comportamiento de cálculo, valores iniciales (distancia 100 km), campos, preferencias y catálogo sin cambios.
+- Commit de implementación: `3bfb4541c4ede6152e4472927f015b51a8204a9c`.
+- **Estado:** código actualizado en `fix/electric-vs-combustion-insets`; pendiente ejecutar el workflow «Advisor Android compile check» (compilación debug) y, si compila, prueba manual en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16), especialmente encabezado y campos con teclado.
+- No se ha modificado `main`, no se ha creado publicación y el catálogo protegido permanece intacto.
+
+---
+
 ## 2026-11-02 — Correcciones de recortes e insets en Android 10 y Android 16
 
 - Incidencia: en las pantallas de la app se cortaba contenido por la parte superior, observado en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
