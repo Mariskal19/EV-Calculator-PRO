@@ -48,7 +48,7 @@ public class MainActivity extends BaseNavigationActivity {
     selectedPrimaryTab = destination;
     if (destination == 0) {
       if (mainContent != null) {
-        setContentView(mainContent);
+        setContentViewWithFade(mainContent, 130);
         loadPreferences();
         applyTheme();
         applyCurrency();
@@ -57,17 +57,17 @@ public class MainActivity extends BaseNavigationActivity {
       }
     } else if (destination == 1) {
       if (costScreen == null) costScreen = new ElectricVsCombustionScreen(this);
-      setContentView(costScreen);
+      setContentViewWithFade(costScreen, 130);
       costScreen.onHostDisplayed();
       costScreen.onHostResume();
     } else if (destination == 2) {
       if (similarCarsScreen == null) similarCarsScreen = new SimilarCarsScreen(this);
-      setContentView(similarCarsScreen);
+      setContentViewWithFade(similarCarsScreen, 130);
       similarCarsScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true);
     } else if (destination == 3) {
       if (compareScreen == null) compareScreen = new CompararCochesScreen(this);
-      setContentView(compareScreen);
+      setContentViewWithFade(compareScreen, 130);
       compareScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true);
     }

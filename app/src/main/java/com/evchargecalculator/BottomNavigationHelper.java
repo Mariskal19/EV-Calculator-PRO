@@ -105,7 +105,7 @@ public final class BottomNavigationHelper {
     intent.putExtra("open_primary_tab", destination);
     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     activity.startActivity(intent);
-    activity.overridePendingTransition(0, 0);
+    activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
   }
 
   private static void addItem(

@@ -1,0 +1,57 @@
+name: Build transition test APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/transiciones-pantallas
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    env:
+      EV_CALCULATOR_KEYSTORE_BASE64: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 }}
+      EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
+      EV_CALCULATOR_KEY_ALIAS: ${{ secrets.EV_CALCULATOR_KEY_ALIAS }}
+      EV_CALCULATOR_KEY_PASSWORD: ${{ secrets.EV_CALCULATOR_KEY_PASSWORD }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle 9.6.0
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+          cache-disabled: true
+
+      - name: Configure release signing
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}" || { echo "Missing release keystore secret"; exit 1; }
+          test -n "${EV_CALCULATOR_KEYSTORE_PASSWORD:-}" || { echo "Missing keystore password secret"; exit 1; }
+          test -n "${EV_CALCULATOR_KEY_ALIAS:-}" || { echo "Missing key alias secret"; exit 1; }
+          test -n "${EV_CALCULATOR_KEY_PASSWORD:-}" || { echo "Missing key password secret"; exit 1; }
+          echo "$EV_CALCULATOR_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/evcalculator-upload.jks"
+          echo "EV_CALCULATOR_KEYSTORE_PATH=$RUNNER_TEMP/evcalculator-upload.jks" >> "$GITHUB_ENV"
+
+      - name: Build signed release APK
+        run: gradle --no-daemon clean assembleRelease
+
+      - name: Upload test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: EV-Calculator-PRO-transiciones-test
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 14
