@@ -75,7 +75,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         dark=isDarkTheme();
         loadVehicles();
         build();
-        EdgeToEdgeHelper.apply(this,dark);
+        EdgeToEdgeHelper.apply(this,dark,true);
         restoreLastSearch();
     }
 
@@ -300,6 +300,18 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         scroll.addView(content);
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
+
+        // Do not add IME height as bottom padding: adjustResize already reduces
+        // the viewport. Ask the ScrollView to reveal the advisor field instead.
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll, (view, insets) -> {
+            if (insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime())) {
+                advisorInput.post(() -> advisorInput.requestRectangleOnScreen(
+                    new android.graphics.Rect(0, 0, advisorInput.getWidth(), advisorInput.getHeight()),
+                    false));
+            }
+            return insets;
+        });
+        androidx.core.view.ViewCompat.requestApplyInsets(scroll);
     }
 
     private void resetAdvisorSearch(){
