@@ -55,6 +55,15 @@ public class MainActivity extends BaseNavigationActivity {
   @Override public void onCreate(Bundle b){super.onCreate(b); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR");}
   @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
   @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else savePreferences();super.onPause();}
+
+  @Override
+  public void onBackPressed() {
+    if (selectedPrimaryTab == 1) {
+      onBottomNavigationSelected(0);
+      return;
+    }
+    super.onBackPressed();
+  }
   void savePreferences(){if(battery==null||range==null)return;prefs.edit().putString("battery",battery.getText().toString()).putString("power",power.getText().toString()).putString("price",price.getText().toString()).putString("departure",departure.getText().toString()).putString("xguard",xguard.getText().toString()).putInt("current",range.getCurrent()).putInt("target",range.getTarget()).putBoolean("xguard_enabled",xSwitch.isChecked()).apply();}
   void loadPreferences(){if(prefs==null)return;busy=true;String sb=prefs.getString("battery",null);battery.setText((sb==null||sb.equals("130"))?"80":sb);power.setText(prefs.getString("power",power.getText().toString()));price.setText(prefs.getString("price",price.getText().toString()));departure.setText(prefs.getString("departure",departure.getText().toString()));xguard.setText(prefs.getString("xguard",xguard.getText().toString()));range.setValues(prefs.getInt("current",range.getCurrent()),prefs.getInt("target",range.getTarget()));xSwitch.setChecked(prefs.getBoolean("xguard_enabled",xSwitch.isChecked()));xguard.setEnabled(xSwitch.isChecked());busy=false;}
   int text(){return dark?Color.rgb(245,248,255):white;} int sub(){return dark?Color.rgb(170,183,204):secondary;}
