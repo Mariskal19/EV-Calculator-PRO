@@ -34,14 +34,21 @@ public class MainActivity extends BaseNavigationActivity {
   void applyCurrency(){if(priceUnit!=null)priceUnit.setText(currencySymbol()+"/kWh");}
 
   void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
-    // BaseNavigationActivity adds 48dp of scroll range for its fixed bottom bar.
-    // Add the IME inset on top of that so the final fields can scroll above the keyboard.
+    // BaseNavigationActivity already reserves scroll range for the fixed bottom bar.
+    // With adjustResize, Android resizes this ScrollView when the keyboard opens;
+    // adding the full IME inset as padding as well creates a visible background
+    // band above the keyboard. Keep the base bottom padding and use IME insets
+    // only to bring the focused field into view.
+    final int baseScrollTopPadding=scroll.getPaddingTop();
     final int baseScrollBottomPadding=scroll.getPaddingBottom();
     androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll,(view,insets)->{
-      androidx.core.graphics.Insets imeInsets=insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime());
-      int imeBottom=insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime())?imeInsets.bottom:0;
-      scroll.setPadding(scroll.getPaddingLeft(),scroll.getPaddingTop(),scroll.getPaddingRight(),baseScrollBottomPadding+imeBottom);
-      if(imeBottom>0){EditText focused=activeEdit; if(focused!=null)focused.post(()->keepFieldVisible(focused));}
+      androidx.core.graphics.Insets bars=insets.getInsets(
+          androidx.core.view.WindowInsetsCompat.Type.systemBars()
+              | androidx.core.view.WindowInsetsCompat.Type.displayCutout());
+      boolean imeVisible=insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime());
+      scroll.setPadding(scroll.getPaddingLeft(),baseScrollTopPadding+bars.top,
+          scroll.getPaddingRight(),baseScrollBottomPadding);
+      if(imeVisible){EditText focused=activeEdit; if(focused!=null)focused.post(()->keepFieldVisible(focused));}
       return insets;
     });
     FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(260)));ImageView sceneHeader=new ImageView(this);sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_charge_calculator);sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);sceneHeader.setAdjustViewBounds(false);sceneHeader.setTranslationY(-dp(10));hero.addView(sceneHeader,new FrameLayout.LayoutParams(-1,-1));

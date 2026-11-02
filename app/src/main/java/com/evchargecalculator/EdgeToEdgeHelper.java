@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ScrollView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -25,10 +26,31 @@ public final class EdgeToEdgeHelper {
   // Stores the padding defined by each activity before system-bar insets are applied.
   // This prevents repeated apply() calls from accumulating the same bottom inset.
   private static final Map<View, int[]> BASE_PADDING = new WeakHashMap<>();
+  private static final Map<View, Integer> BASE_SCROLL_TOP_PADDING = new WeakHashMap<>();
 
   private EdgeToEdgeHelper() {}
 
+  private static ScrollView findScrollView(View view) {
+    if (view instanceof ScrollView) return (ScrollView) view;
+    if (view instanceof ViewGroup) {
+      ViewGroup group = (ViewGroup) view;
+      for (int i = 0; i < group.getChildCount(); i++) {
+        ScrollView found = findScrollView(group.getChildAt(i));
+        if (found != null) return found;
+      }
+    }
+    return null;
+  }
+
   public static void apply(Activity activity, boolean dark) {
+    apply(activity, dark, false);
+  }
+
+  /**
+   * @param includeTopInset true for screens whose content must start below the status bar.
+   *                        Existing screens retain their current edge-to-edge layout by default.
+   */
+  public static void apply(Activity activity, boolean dark, boolean includeTopInset) {
     Window window = activity.getWindow();
 
     // Keep Android's automatic darkening disabled for this activity. The app
@@ -80,6 +102,7 @@ public final class EdgeToEdgeHelper {
       BASE_PADDING.put(root, basePadding);
     }
     final int left = basePadding[0];
+    final int top = basePadding[1];
     final int right = basePadding[2];
     final int bottom = basePadding[3];
 
@@ -89,13 +112,32 @@ public final class EdgeToEdgeHelper {
           Insets bars =
               insets.getInsets(WindowInsetsCompat.Type.systemBars()
                   | WindowInsetsCompat.Type.displayCutout());
-          // Keep the top edge-to-edge so the header/background reaches the
-          // status bar. Protect the sides and bottom from system UI instead.
+          // Keep the outer screen (including its full-bleed background) behind
+          // the status bar. Apply the top inset to the scrollable foreground
+          // instead, so the status-bar area shows the screen background rather
+          // than the host window's light background. This is platform-neutral:
+          // WindowInsetsCompat supplies the correct inset on each Android version.
           view.setPadding(
               left + bars.left,
-              0,
+              top,
               right + bars.right,
               bottom + bars.bottom);
+
+          if (includeTopInset) {
+            ScrollView scroll = findScrollView(view);
+            if (scroll != null) {
+              Integer baseTop = BASE_SCROLL_TOP_PADDING.get(scroll);
+              if (baseTop == null) {
+                baseTop = scroll.getPaddingTop();
+                BASE_SCROLL_TOP_PADDING.put(scroll, baseTop);
+              }
+              scroll.setPadding(
+                  scroll.getPaddingLeft(),
+                  baseTop + bars.top,
+                  scroll.getPaddingRight(),
+                  scroll.getPaddingBottom());
+            }
+          }
           return insets;
         });
     ViewCompat.requestApplyInsets(root);
