@@ -2683,3 +2683,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - El usuario confirmó que la interfaz se ve igual que antes y que al pulsar Coste, Buscar y Comparar la transición sigue desplazándose de derecha a izquierda; la barra aparece en todas las pantallas como antes.
 - Resultado: instalación correcta y regresión visual aparente no detectada en esta comprobación básica, pero **no se ha validado navegación persistente**. La barra sigue perteneciendo al modelo Activity-por-pantalla; este APK no debe considerarse una implementación de la barra fija.
 - Próximo trabajo: extraer realmente el contenido de las cuatro secciones a componentes de pantalla reutilizables dentro de una única Activity host. No ocultar la animación ni mantener Activities independientes como sustituto de la migración. Mantener intactos catálogo y `main`; generar únicamente APK Debug cuando el cambio funcional esté completo.
+
+
+### 2026-11-02 — Primer paso real de extracción de pantallas
+
+- Se ha extraído la interfaz y lógica de **Coste (Eléctrico vs Combustión)** desde su Activity a `ElectricVsCombustionScreen`, una clase reutilizable basada en `FrameLayout` que recibe la Activity anfitriona y gestiona su contenido como una View.
+- `ElectricVsCombustionActivity` queda como envoltorio de compatibilidad que instancia la nueva pantalla y delega los callbacks de ciclo de vida y actualización de idioma. Se conserva la navegación actual mientras se prepara la integración en la Activity anfitriona única.
+- El workflow de compilación Debug se amplía para vigilar el nuevo archivo de pantalla.
+- Este es un primer paso de extracción, **todavía no activa la navegación persistente**: Coste sigue abriéndose mediante su Activity antigua hasta integrar el host. No instalar ni publicar como versión final de la navegación.
+- Siguiente: compilar y corregir cualquier incidencia; después integrar la View en el host común y continuar extrayendo Buscar y Comparar sin modificar el catálogo de 682 vehículos.
