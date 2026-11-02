@@ -56,6 +56,15 @@ public abstract class BaseNavigationActivity extends Activity {
 
   @Override
   public void setContentView(View view) {
+    installContent(view, 0);
+  }
+
+  /** Replaces only the central screen and fades it in without moving the fixed bar. */
+  protected void setContentViewWithFade(View view, long durationMs) {
+    installContent(view, durationMs);
+  }
+
+  private void installContent(View view, long fadeDurationMs) {
     if (view == null) {
       throw new IllegalArgumentException("Content view must not be null");
     }
@@ -69,8 +78,13 @@ public abstract class BaseNavigationActivity extends Activity {
     }
     contentContainer.removeAllViews();
     addBottomScrollSpace(view, dp(48));
+    if (fadeDurationMs > 0) view.setAlpha(0f);
     contentContainer.addView(
         view, new FrameLayout.LayoutParams(-1, -1));
+    if (fadeDurationMs > 0) {
+      view.animate().cancel();
+      view.animate().alpha(1f).setDuration(fadeDurationMs).start();
+    }
 
     // Keep the navigation slot fixed in the root. Refresh its selected state
     // without replacing the Activity root or triggering a window transition.
