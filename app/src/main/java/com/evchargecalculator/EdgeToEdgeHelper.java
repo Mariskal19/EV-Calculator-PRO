@@ -102,6 +102,7 @@ public final class EdgeToEdgeHelper {
       BASE_PADDING.put(root, basePadding);
     }
     final int left = basePadding[0];
+    final int top = basePadding[1];
     final int right = basePadding[2];
     final int bottom = basePadding[3];
 
@@ -118,7 +119,7 @@ public final class EdgeToEdgeHelper {
           // WindowInsetsCompat supplies the correct inset on each Android version.
           view.setPadding(
               left + bars.left,
-              basePadding[1],
+              top,
               right + bars.right,
               bottom + bars.bottom);
 
