@@ -2703,3 +2703,14 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Buscar y Comparar continúan temporalmente usando sus Activities anteriores; su migración será la siguiente fase. Configuración, Apoyar y Ficha siguen siendo pantallas secundarias.
 - La compilación Debug de la extracción previa de Coste terminó correctamente (run `41528986877`, artefacto generado). Esta integración posterior aún debe compilarse y probarse; no considerar terminada la navegación persistente hasta verificarla en dispositivo.
 - Se mantiene la rama `feature/bottom-navigation-fixed`; no integrar en `main` ni publicar en Google Play sin autorización. Catálogo protegido sin cambios.
+
+
+### 2026-11-02 — Corrección del contenedor raíz de navegación
+
+- Tras la prueba en dispositivo, el usuario confirmó que al cambiar de Cargar a Coste seguía apreciando la transición lateral de la navegación antigua.
+- Auditoría: el host ya delegaba el toque a la selección interna para Cargar/Coste, pero `BaseNavigationActivity.setContentView(View)` creaba un FrameLayout raíz nuevo y reconstruía también la barra inferior cada vez que se cambiaba el contenido. Aunque no debía lanzar otra Activity, esta estructura no mantenía una raíz ni un slot de navegación estables.
+- Corrección aplicada en `BaseNavigationActivity`: la raíz de la Activity, el contenedor central y el contenedor inferior se crean una sola vez. Las llamadas posteriores a `setContentView(View)` sustituyen únicamente la pantalla central y actualizan el contenido del slot de navegación, sin volver a instalar la raíz de la Activity.
+- Commit: `548e38c164b7c3493f62d87ad14f61923c16ec23` en `feature/bottom-navigation-fixed`.
+- Compilación aislada Debug: run `41531516439`; pasos de compilación, verificación del APK y subida del artefacto completados correctamente. No se genera Release/AAB ni se publica nada.
+- Pendiente de validación manual en el Redmi Note 13 Pro: confirmar que Cargar ↔ Coste ya no produce desplazamiento lateral y que la barra permanece fija. No considerar la incidencia cerrada hasta esa prueba.
+- No se modifica `main`, el manifiesto, ni el catálogo protegido de 682 vehículos.
