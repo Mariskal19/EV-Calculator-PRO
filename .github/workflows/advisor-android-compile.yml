@@ -11,6 +11,7 @@ on:
       - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java'
       - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionScreen.java'
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsScreen.java'
       - 'app/src/main/java/com/evchargecalculator/CompararCochesActivity.java'
       - 'app/src/main/java/com/evchargecalculator/CarDetailActivity.java'
       - 'app/src/main/java/com/evchargecalculator/ConfigurationActivity.java'
