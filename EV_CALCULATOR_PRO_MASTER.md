@@ -2714,3 +2714,14 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Compilación aislada Debug: run `41531516439`; pasos de compilación, verificación del APK y subida del artefacto completados correctamente. No se genera Release/AAB ni se publica nada.
 - Pendiente de validación manual en el Redmi Note 13 Pro: confirmar que Cargar ↔ Coste ya no produce desplazamiento lateral y que la barra permanece fija. No considerar la incidencia cerrada hasta esa prueba.
 - No se modifica `main`, el manifiesto, ni el catálogo protegido de 682 vehículos.
+
+
+### 2026-11-02 — Primera migración funcional de «Buscar» al host persistente (pendiente de validación)
+- Se ha extraído el contenido de «Buscar coches» a `SimilarCarsScreen`, una View reutilizable que recibe la Activity anfitriona. La pantalla conserva su buscador clásico, selector de referencia, Asesor IA, criterios, resultados, catálogo local/remoto y preferencias.
+- Se han delegado al host los recursos, preferencias, servicios del sistema y aperturas de pantallas secundarias. Se añaden callbacks de pausa/reanudación para cancelar la búsqueda automática y ocultar el teclado al abandonar la pestaña.
+- `MainActivity` incorpora la instancia de `SimilarCarsScreen` y la muestra dentro del mismo contenedor central que Cargar y Coste. La barra inferior y la ventana host permanecen en la misma Activity al seleccionar Buscar.
+- Se conserva temporalmente la Activity `SimilarCarsActivity` como ruta heredada/compatibilidad; el host principal ya utiliza la nueva View.
+- Commits de esta fase: `9cb3c56329cc9c4b707f798fad7f5bb70f307379` (extracción inicial), `e74670cbefb3aa0dd7eefc9f64c484248245b3c6` y `800627d180393a585ebd6b2726c8098581a7ed7a` (delegación y lifecycle), `d0db67834bf6474c37675721d431565fa0e8fcd5` (integración en MainActivity y workflow), `90fdea81939cbde5e97917a9937d703fc3daf001` (corrección de delegación al host).
+- Workflow Debug de esta integración: [run 41533228584](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41533228584), en curso al documentar esta nota. No pedir todavía instalar APK.
+- **Pendiente:** comprobar compilación; después validar en el dispositivo búsqueda de referencia, consultas del Asesor IA, apertura de ficha y estado al cambiar de pestaña. «Comparar» continúa en Activity independiente y será la siguiente migración.
+- Rama `feature/bottom-navigation-fixed`; no se modifica `main`, no se modifica el catálogo protegido de 682 vehículos y no se publica en Google Play.
