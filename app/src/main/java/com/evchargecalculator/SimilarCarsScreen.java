@@ -75,7 +75,7 @@ public class SimilarCarsScreen extends FrameLayout {
     public SimilarCarsScreen(Activity host) {
         super(host);
         this.host = host;
-        dark = host.host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE).getBoolean("dark_theme", false);
+        dark = host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE).getBoolean("dark_theme", false);
         loadVehicles();
         build();
         EdgeToEdgeHelper.apply(host, dark, true);
@@ -337,7 +337,7 @@ public class SimilarCarsScreen extends FrameLayout {
         if(advisorStatus!=null)advisorStatus.setText("");
         if(advisorInput!=null){
             advisorInput.clearFocus();
-            InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm=(InputMethodManager)host.getSystemService(Context.INPUT_METHOD_SERVICE);
             if(imm!=null)imm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
         }
     }
@@ -522,7 +522,7 @@ public class SimilarCarsScreen extends FrameLayout {
         }
 
         reference=chosen;
-        getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit()
+        host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit()
                 .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
         if(referencePicker!=null){
             referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
@@ -537,7 +537,7 @@ public class SimilarCarsScreen extends FrameLayout {
     private void runAdvisorSearch(){
         if(advisorInput==null||advisorStatus==null||advisorResults==null)return;
         // Ocultar el teclado cuando se ejecute la búsqueda automática, como antes.
-        InputMethodManager searchImm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager searchImm=(InputMethodManager)host.getSystemService(Context.INPUT_METHOD_SERVICE);
         if(searchImm!=null)searchImm.hideSoftInputFromWindow(advisorInput.getWindowToken(),0);
         advisorInput.clearFocus();
         String query=advisorInput.getText()==null?"":advisorInput.getText().toString().trim();
@@ -709,7 +709,7 @@ public class SimilarCarsScreen extends FrameLayout {
 
     private void addAdvisorToComparison(Vehicle vehicle){
         if(vehicle==null)return;
-        SharedPreferences prefs=getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
+        SharedPreferences prefs=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
         boolean initialized=prefs.getBoolean("compare_selection_initialized",false);
         List<String> keys=new ArrayList<>();
         List<String> ids=new ArrayList<>();
@@ -826,7 +826,7 @@ public class SimilarCarsScreen extends FrameLayout {
         searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14));
         searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
 
-        SharedPreferences prefs=getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
+        SharedPreferences prefs=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
         String savedMarket=prefs.getString(KEY_LAST_MARKET,"ES");
         final String defaultMarket=ms.contains(savedMarket)?savedMarket:(ms.contains("ES")?"ES":(ms.isEmpty()?"":ms.get(0)));
         int marketIndex=ms.indexOf(defaultMarket);
@@ -883,13 +883,13 @@ public class SimilarCarsScreen extends FrameLayout {
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
             picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
-            getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
+            host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
             showSimilar();
         });
 
         searchMarketSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             public void onItemSelected(AdapterView<?> p,View v,int position,long id){
-                if(position>=0&&position<ms.size())getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_LAST_MARKET,ms.get(position)).apply();
+                if(position>=0&&position<ms.size())host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_LAST_MARKET,ms.get(position)).apply();
                 searchHandler.removeCallbacks(refresh);searchHandler.post(refresh);
             }
             public void onNothingSelected(AdapterView<?> p){}
@@ -916,7 +916,7 @@ public class SimilarCarsScreen extends FrameLayout {
             d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));
             input.requestFocus();
             input.post(()->{
-                InputMethodManager imm=(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm=(InputMethodManager)host.getSystemService(Context.INPUT_METHOD_SERVICE);
                 if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);
                 searchHandler.removeCallbacks(refresh);searchHandler.post(refresh);
             });
@@ -973,7 +973,7 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private void restoreLastSearch(){
-        SharedPreferences prefs=getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
+        SharedPreferences prefs=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
         String savedKey=prefs.getString(KEY_LAST_REFERENCE,"");
         if(savedKey==null||savedKey.trim().isEmpty())return;
         for(Vehicle v:vehicles){
@@ -1703,7 +1703,7 @@ public class SimilarCarsScreen extends FrameLayout {
 
     private void addSimilarToComparison(Vehicle v){
         if(v==null||reference==null)return;
-        SharedPreferences p=getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
+        SharedPreferences p=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
         ArrayList<String> ids=new ArrayList<>();
         ArrayList<String> keys=new ArrayList<>();
         if(reference.id!=null&&!reference.id.trim().isEmpty())ids.add(reference.id.trim());
@@ -1718,7 +1718,7 @@ public class SimilarCarsScreen extends FrameLayout {
             .putString("compare_vehicle_logical_ordered",android.text.TextUtils.join("||",keys)).apply();
         Intent back=new Intent(host,CompararCochesActivity.class);
         back.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(back);
+        host.startActivity(back);
     }
 
     private void openDetail(Vehicle v){
@@ -1730,7 +1730,7 @@ public class SimilarCarsScreen extends FrameLayout {
         i.putExtra("reference_logical_key",reference==null?null:logicalKey(reference));
         i.putExtra("make",v.make);i.putExtra("model",v.model);i.putExtra("version",v.version);i.putExtra("market",v.market);i.putExtra("year",String.valueOf(v.year));
         i.putExtra("price",v.price);i.putExtra("batteryKwh",v.batteryKwh);i.putExtra("usableBatteryKwh",v.usableBatteryKwh);i.putExtra("batteryType",v.batteryType);i.putExtra("wltpKm",v.wltpKm);i.putExtra("consumption",v.consumption);i.putExtra("powerKw",v.powerKw);i.putExtra("drivetrain",v.drivetrain);i.putExtra("acKw",v.acKw);i.putExtra("dcKw",v.dcKw);i.putExtra("chargeMin",v.chargeMin);i.putExtra("acc",v.acc);i.putExtra("trunk",v.trunk);i.putExtra("weight",v.weight);i.putExtra("lengthMm",v.lengthMm);i.putExtra("widthMm",v.widthMm);i.putExtra("heightMm",v.heightMm);i.putExtra("remoteSource",v.remoteSource);
-        startActivity(i);
+        host.startActivity(i);
     }
 
     static class Scored{Vehicle v;double competitionScore;double technicalScore;Scored(Vehicle v,double competitionScore,double technicalScore){host.v=v;host.competitionScore=competitionScore;host.technicalScore=technicalScore;}}
