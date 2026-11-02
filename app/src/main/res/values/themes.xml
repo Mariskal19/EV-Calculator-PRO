@@ -6,7 +6,6 @@
         <item name="android:navigationBarColor">#F4F8FF</item>
         <item name="android:colorAccent">#2E6BFF</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
-        <item name="android:windowContentTransitions">true</item>
         <item name="android:forceDarkAllowed">false</item>
     </style>
 </resources>
