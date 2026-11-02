@@ -2692,3 +2692,14 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - El workflow de compilación Debug se amplía para vigilar el nuevo archivo de pantalla.
 - Este es un primer paso de extracción, **todavía no activa la navegación persistente**: Coste sigue abriéndose mediante su Activity antigua hasta integrar el host. No instalar ni publicar como versión final de la navegación.
 - Siguiente: compilar y corregir cualquier incidencia; después integrar la View en el host común y continuar extrayendo Buscar y Comparar sin modificar el catálogo de 682 vehículos.
+
+
+### 2026-11-02 — Integración inicial de Coste en la Activity anfitriona
+
+- `BaseNavigationActivity` incorpora un modo opt-in de navegación interna: las pestañas delegan en el host en lugar de lanzar Activities cuando `handlesBottomNavigationInternally()` está activo.
+- `MainActivity` activa ese modo para las pestañas Cargar y Coste. La pantalla Cargar conserva su View raíz y Coste se instancia como `ElectricVsCombustionScreen`; el cambio entre ambas sustituye el contenido dentro de la misma Activity y conserva la barra inferior.
+- Se añadió la retirada segura de una View de su contenedor anterior al cambiar el contenido, la actualización del estado seleccionado de la barra y el retorno a Cargar al pulsar Atrás desde Coste.
+- Se delegan explícitamente los callbacks de pausa/reanudación y guardado de Coste, ya que el cambio de pestaña no cambia el lifecycle de la Activity anfitriona.
+- Buscar y Comparar continúan temporalmente usando sus Activities anteriores; su migración será la siguiente fase. Configuración, Apoyar y Ficha siguen siendo pantallas secundarias.
+- La compilación Debug de la extracción previa de Coste terminó correctamente (run `41528986877`, artefacto generado). Esta integración posterior aún debe compilarse y probarse; no considerar terminada la navegación persistente hasta verificarla en dispositivo.
+- Se mantiene la rama `feature/bottom-navigation-fixed`; no integrar en `main` ni publicar en Google Play sin autorización. Catálogo protegido sin cambios.
