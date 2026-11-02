@@ -1,0 +1,1040 @@
+package com.evchargecalculator;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.FrameLayout;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Build;
+import android.text.Editable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextWatcher;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
+import androidx.core.widget.NestedScrollView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.util.*;
+import java.text.NumberFormat;
+
+public class CompararCochesScreen extends FrameLayout {
+    private final Activity host;
+    private static final String PREFS = "ev_charge_calculator";
+    private static final String KEY_SELECTED = "compare_vehicle_ids";
+    private static final String KEY_SELECTED_ORDERED = "compare_vehicle_ids_ordered";
+    private static final String KEY_SELECTED_LOGICAL = "compare_vehicle_logical_ordered";
+    private static final String KEY_CURRENCY = "app_currency";
+    private static final String KEY_MARKET = "compare_market";
+    private static final String KEY_SEARCH_COUNT_PREFIX = "compare_search_count_";
+    private static final String KEY_SELECTION_INITIALIZED = "compare_selection_initialized";
+
+    private final int blue = Color.rgb(46, 107, 255);
+    private final int white = Color.rgb(22, 42, 63);
+    private final int secondary = Color.rgb(90, 111, 137);
+
+    private boolean dark;
+    private String lastLanguage = "";
+    private String lastCurrency = "";
+    private LinearLayout carsRow, table, tableLabels, summary;
+    private TextView emptyMessage, characteristicsSection;
+    private HorizontalScrollView tableScroll;
+    private FrameLayout tableDataHost;
+    private Spinner marketSpinner;
+
+    private final List<Vehicle> vehicles = new ArrayList<>();
+    private final List<String> selectedIds = new ArrayList<>();
+    // Caché de los vehículos seleccionados para evitar repetir búsquedas en cada fila.
+    private final List<Vehicle> selectedVehiclesCache = new ArrayList<>();
+    // Índice por ID para resolver rápidamente las selecciones guardadas.
+    private final Map<String, Vehicle> vehicleById = new HashMap<>();
+    private String selectedMarket = "ES";
+
+    // Índice de búsqueda: normalizamos una sola vez por vehículo y reutilizamos
+    // esos datos durante todas las pulsaciones del buscador.
+    private final IdentityHashMap<Vehicle, SearchIndex> searchIndexCache = new IdentityHashMap<>();
+
+    private static class SearchIndex {
+        final String make, model, version, all, makeModel;
+        SearchIndex(String make, String model, String version, String all, String makeModel) {
+            this.make=make; this.model=model; this.version=version; this.all=all; this.makeModel=makeModel;
+        }
+    }
+
+    private SearchIndex searchIndex(Vehicle v) {
+        SearchIndex cached=searchIndexCache.get(v);
+        if(cached!=null)return cached;
+        SearchIndex created=new SearchIndex(
+            normalizeSearch(v.make), normalizeSearch(v.model), normalizeSearch(v.version),
+            normalizeSearch(v.make+" "+v.model+" "+v.year+" "+v.batteryKwh+" "+v.batteryType+" "+v.drivetrain+" "+v.version),
+            normalizeSearch(v.make+" "+v.model)
+        );
+        searchIndexCache.put(v,created);
+        return created;
+    }
+
+    @Override
+    protected void onCreate(Bundle b) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        super.onCreate(b);
+        if (getActionBar() != null) getActionBar().hide();
+        LanguageManager.applyStored(host);
+        try {
+            SharedPreferences p = host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE);
+            lastLanguage = LanguageManager.getSelectedLanguage(host);
+            lastCurrency = p.getString(KEY_CURRENCY, "EUR");
+            dark = p.contains("dark_theme")
+                    ? p.getBoolean("dark_theme", false)
+                    : (host.getResources().getConfiguration().uiMode & 0x30) == 0x20;
+            selectedMarket = p.getString(KEY_MARKET, "ES");
+            build();
+            EdgeToEdgeHelper.apply(host, dark, true);
+            loadVehicles();
+            if (!hasMarket(selectedMarket)) selectedMarket = defaultMarket();
+            loadSelection();
+            rebuild();
+        } catch (Throwable t) {
+            TextView e = tv("Error al abrir Comparar coches\n\n" + t.getClass().getSimpleName(), 16, Color.WHITE);
+            e.setGravity(Gravity.CENTER);
+            e.setPadding(dp(24), dp(24), dp(24), dp(24));
+            e.setBackgroundColor(Color.rgb(8, 34, 58));
+            removeAllViews(); addView(e, new FrameLayout.LayoutParams(-1, -1));
+        }
+    }
+
+    public CompararCochesScreen(Activity host) {
+        super(host);
+        this.host = host;
+        LanguageManager.applyStored(host);
+        try {
+            SharedPreferences p = host.getSharedPreferences(PREFS, Activity.Activity.MODE_PRIVATE);
+            lastLanguage = LanguageManager.getSelectedLanguage(host);
+            lastCurrency = p.getString(KEY_CURRENCY, "EUR");
+            dark = p.contains("dark_theme")
+                    ? p.getBoolean("dark_theme", false)
+                    : (host.getResources().getConfiguration().uiMode & 0x30) == 0x20;
+            selectedMarket = p.getString(KEY_MARKET, "ES");
+            build();
+            EdgeToEdgeHelper.apply(host, dark, true);
+            loadVehicles();
+            if (!hasMarket(selectedMarket)) selectedMarket = defaultMarket();
+            loadSelection();
+            rebuild();
+        } catch (Throwable t) {
+            TextView e = tv("Error al abrir Comparar coches\n\n" + t.getClass().getSimpleName(), 16, Color.WHITE);
+            e.setGravity(Gravity.CENTER);
+            e.setPadding(dp(24), dp(24), dp(24), dp(24));
+            e.setBackgroundColor(Color.rgb(8, 34, 58));
+            addView(e, new FrameLayout.LayoutParams(-1, -1));
+        }
+    }
+
+    public void onHostResume() {LanguageManager.applyStored(host);
+        SharedPreferences p = host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE);
+        String newLanguage = LanguageManager.getSelectedLanguage(host);
+        String newCurrency = p.getString(KEY_CURRENCY, "EUR");
+        boolean languageChanged = !newLanguage.equals(lastLanguage);
+        boolean currencyChanged = !newCurrency.equals(lastCurrency);
+        boolean newDark = p.contains("dark_theme") ? p.getBoolean("dark_theme", false) : (host.getResources().getConfiguration().uiMode & 0x30) == 0x20;
+        boolean themeChanged = dark != newDark;
+        dark = newDark;
+        lastLanguage = newLanguage;
+        lastCurrency = newCurrency;
+        if (!vehicles.isEmpty()) {
+            loadSelection();
+            if (themeChanged || languageChanged || currencyChanged) {
+                build();
+                EdgeToEdgeHelper.apply(host, dark, true);
+            }
+            rebuild();
+        }
+    
+    }
+
+    public void onHostPause() {
+        // A search dialog owns its own lifecycle; cancel any pending refresh when leaving the tab.
+    }
+
+    private static class HeaderBitmapView extends View {
+        private final android.graphics.Bitmap bitmap;
+        private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+
+        HeaderBitmapView(android.content.Context context) {
+            super(context);
+            android.graphics.Bitmap decoded = null;
+            try {
+                // Primero leemos solo las dimensiones para evitar cargar la imagen
+                // original a resolución completa cuando se muestra en una cabecera.
+                android.graphics.BitmapFactory.Options bounds = new android.graphics.BitmapFactory.Options();
+                bounds.inJustDecodeBounds = true;
+                try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                    android.graphics.BitmapFactory.decodeStream(in, null, bounds);
+                }
+
+                int targetWidth = context.getResources().getDisplayMetrics().widthPixels;
+                int targetHeight = (int) (260 * context.getResources().getDisplayMetrics().density + 0.5f);
+                android.graphics.BitmapFactory.Options options = new android.graphics.BitmapFactory.Options();
+                options.inSampleSize = 1;
+                while (bounds.outWidth / (options.inSampleSize * 2) >= targetWidth
+                        && bounds.outHeight / (options.inSampleSize * 2) >= targetHeight) {
+                    options.inSampleSize *= 2;
+                }
+                try (java.io.InputStream in = context.getResources().openRawResource(R.raw.cabecera_comparar_coches)) {
+                    decoded = android.graphics.BitmapFactory.decodeStream(in, null, options);
+                }
+            } catch (Exception ignored) {
+            }
+            bitmap = decoded;
+            setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                setForceDarkAllowed(false);
+            }
+        }
+
+        @Override protected void onDraw(android.graphics.Canvas canvas) {
+            super.onDraw(canvas);
+            if (bitmap == null || bitmap.isRecycled()) {
+                canvas.drawColor(android.graphics.Color.WHITE);
+                return;
+            }
+
+            // Dibujamos el bitmap directamente en Canvas para evitar cualquier
+            // transformación de imagen asociada al tema oscuro del sistema.
+            float viewW = getWidth();
+            float viewH = getHeight();
+            float scale = Math.max(viewW / bitmap.getWidth(), viewH / bitmap.getHeight());
+            float drawW = bitmap.getWidth() * scale;
+            float drawH = bitmap.getHeight() * scale;
+            float left = (viewW - drawW) * 0.5f;
+            float top = (viewH - drawH) * 0.5f;
+            canvas.drawBitmap(bitmap, null,
+                    new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
+        }
+    }
+
+    private int dp(int n) { return (int) (n * host.getResources().getDisplayMetrics().density + 0.5f); }
+    private int text() { return dark ? Color.rgb(245, 248, 255) : white; }
+    private int sub() { return dark ? Color.rgb(170, 183, 204) : secondary; }
+    private int rowAlt() { return dark ? Color.rgb(14, 25, 36) : Color.rgb(248, 251, 255); }
+    private int bestBg() { return dark ? Color.rgb(13, 36, 58) : Color.rgb(235, 243, 255); }
+    private GradientDrawable bg(int c, float r) { GradientDrawable g = new GradientDrawable(); g.setColor(c); g.setCornerRadius(dp((int) r)); return g; }
+    private GradientDrawable strokeBg(int fill, int stroke, float r) { GradientDrawable g = bg(fill, r); g.setStroke(dp(1), stroke); return g; }
+
+    private TextView tv(String s, float size, int color) {
+        TextView t = new TextView(host);
+        t.setText(LanguageManager.t(host, s));
+        t.setTextSize(size);
+        t.setTextColor(color);
+        return t;
+    }
+
+    private void loadVehicles() {
+        vehicles.clear();
+        try (InputStream in = host.getAssets().open("catalog_es_2024_2026.json"); BufferedReader r = new BufferedReader(new InputStreamReader(in))) {
+            StringBuilder sb = new StringBuilder(); String line;
+            while ((line = r.readLine()) != null) sb.append(line);
+            JSONArray a = new JSONObject(sb.toString()).optJSONArray("vehicles");
+            if (a == null) throw new IllegalStateException("catalog_es_2024_2026.json: vehicles array missing");
+            for (int i = 0; i < a.length(); i++) {
+                JSONObject o = a.optJSONObject(i);
+                if (o != null) vehicles.add(new Vehicle(o));
+            }
+        } catch (Exception e) {
+            throw new IllegalStateException("No se ha podido cargar el catálogo español", e);
+        }
+        if (vehicles.isEmpty()) throw new IllegalStateException("El catálogo español está vacío");
+
+        // El catálogo empaquetado es la base protegida. El remoto solo puede añadir
+        // configuraciones cuya clave lógica todavía no exista.
+        applyRemoteAdditions(RemoteCatalogManager.loadCached(host));
+        rebuildVehicleIndex();
+        RemoteCatalogManager.refreshIfDue(host, additions -> {
+            if (additions == null || additions.length() == 0 || isFinishing() || isDestroyed()) return;
+            int before = vehicles.size();
+            applyRemoteAdditions(additions);
+            if (vehicles.size() != before) {
+                normalizeVehicleList();
+                rebuildVehicleIndex();
+                rebuild();
+            }
+        });
+    }
+
+    private void applyRemoteAdditions(JSONArray additions) {
+        if (additions == null) return;
+        Set<String> existingKeys = new HashSet<>();
+        for (Vehicle v : vehicles) existingKeys.add(logicalKey(v));
+
+        for (int i = 0; i < additions.length(); i++) {
+            JSONObject o = additions.optJSONObject(i);
+            if (o == null) continue;
+            try {
+                Vehicle incoming = new Vehicle(o);
+                incoming.remoteSource = true;
+                if (incoming.year < 2024 || incoming.year > 2026) continue;
+                if (incoming.make.trim().isEmpty() || incoming.model.trim().isEmpty() || incoming.version.trim().isEmpty()) continue;
+                if (incoming.batteryKwh <= 0 || incoming.wltpKm <= 0 || incoming.powerKw <= 0 || incoming.consumption <= 0) continue;
+                if (incoming.consumption < 8 || incoming.consumption > 35 || incoming.wltpKm > 1000) continue;
+                if (incoming.usableBatteryKwh > incoming.batteryKwh + 0.5) continue;
+                if (incoming.acKw > 0 && incoming.dcKw > 0 && incoming.dcKw < incoming.acKw) continue;
+
+                String key = logicalKey(incoming);
+                if (existingKeys.add(key)) vehicles.add(incoming);
+            } catch (Exception ignored) {
+                // A malformed remote entry is ignored; the protected base remains untouched.
+            }
+        }
+    }
+
+    private String effectiveBatteryKey(Vehicle v) {
+        if (v.batteryKwh > 0) return String.format(Locale.US, "%.1f", v.batteryKwh);
+        String s = v.version == null ? "" : v.version.trim();
+        java.util.regex.Matcher m = java.util.regex.Pattern.compile("^(\\d+(?:\\.\\d+)?)\\s*kwh\\b", java.util.regex.Pattern.CASE_INSENSITIVE).matcher(s);
+        return m.find() ? m.group(1) : "0";
+    }
+
+    private String normalizedVersion(Vehicle v) {
+        String ver = v.version == null ? "" : v.version.trim().toLowerCase(Locale.ROOT);
+        ver = ver.replaceAll("^\\d+(?:\\.\\d+)?\\s*kwh\\s*", "");
+        ver = ver.replaceAll("\\s+", " ").trim();
+        return ver;
+    }
+
+    private String logicalKey(Vehicle v) { return (v.make + "|" + v.model + "|" + v.market + "|" + v.year + "|" + effectiveBatteryKey(v) + "|" + normalizedVersion(v)).trim().toLowerCase(Locale.ROOT); }
+    private String stableId(Vehicle v) {
+        String key = logicalKey(v);
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(key.getBytes(StandardCharsets.UTF_8));
+            StringBuilder s = new StringBuilder("catalog-");
+            for (int i = 0; i < 8; i++) s.append(String.format(Locale.US, "%02x", hash[i]));
+            return s.toString();
+        } catch (Exception e) { return "catalog-" + Integer.toHexString(key.hashCode()); }
+    }
+
+    private void addOrMergeVehicle(Vehicle incoming) {
+        String key = logicalKey(incoming);
+        for (Vehicle existing : vehicles) {
+            if (!logicalKey(existing).equals(key)) continue;
+            if (existing.price <= 0) existing.price = incoming.price;
+            if (existing.batteryKwh <= 0) existing.batteryKwh = incoming.batteryKwh;
+            if (existing.usableBatteryKwh <= 0) existing.usableBatteryKwh = incoming.usableBatteryKwh;
+            if (existing.batteryType.isEmpty()) existing.batteryType = incoming.batteryType;
+            if (existing.wltpKm <= 0) existing.wltpKm = incoming.wltpKm;
+            if (existing.consumption <= 0) existing.consumption = incoming.consumption;
+            if (existing.powerKw <= 0) existing.powerKw = incoming.powerKw;
+            if (existing.drivetrain.isEmpty()) existing.drivetrain = incoming.drivetrain;
+            if (existing.acKw <= 0) existing.acKw = incoming.acKw;
+            if (existing.dcKw <= 0) existing.dcKw = incoming.dcKw;
+            if (existing.chargeMin <= 0) existing.chargeMin = incoming.chargeMin;
+            if (existing.acc <= 0) existing.acc = incoming.acc;
+            if (existing.trunk <= 0) existing.trunk = incoming.trunk;
+            if (existing.weight <= 0) existing.weight = incoming.weight;
+            return;
+        }
+        vehicles.add(incoming);
+    }
+
+    private void normalizeVehicleList() {
+        Iterator<Vehicle> it = vehicles.iterator();
+        while (it.hasNext()) {
+            Vehicle v = it.next();
+            if (v.version == null || !v.version.contains("/")) continue;
+            boolean allPresent = true;
+            for (String part : v.version.split("/")) {
+                boolean found = false; String wanted = part.trim();
+                for (Vehicle other : vehicles) {
+                    if (other != v && other.make.equalsIgnoreCase(v.make) && other.model.equalsIgnoreCase(v.model) && other.market.equalsIgnoreCase(v.market) && other.year == v.year && other.version.trim().equalsIgnoreCase(wanted)) { found = true; break; }
+                }
+                if (!found) { allPresent = false; break; }
+            }
+            if (allPresent) it.remove();
+        }
+        Collections.sort(vehicles, (a, b) -> { int c = a.make.compareToIgnoreCase(b.make); if (c != 0) return c; c = a.model.compareToIgnoreCase(b.model); if (c != 0) return c; c = Integer.compare(b.year, a.year); if (c != 0) return c; c = Double.compare(a.batteryKwh, b.batteryKwh); if (c != 0) return c; return a.version.compareToIgnoreCase(b.version); });
+    }
+
+    private String defaultMarket() { for (Vehicle v : vehicles) if (v.market.equalsIgnoreCase("ES")) return "ES"; return vehicles.get(0).market; }
+    private boolean hasMarket(String m) { for (Vehicle v : vehicles) if (v.market.equalsIgnoreCase(m)) return true; return false; }
+    private List<String> markets() { LinkedHashSet<String> s = new LinkedHashSet<>(); for (Vehicle v : vehicles) if (v.market != null && !v.market.trim().isEmpty()) s.add(v.market.toUpperCase(Locale.ROOT)); List<String> o = new ArrayList<>(s); Collections.sort(o, (a,b)->marketName(a).compareToIgnoreCase(marketName(b))); return o; }
+
+    private String marketName(String c) {
+        if (c == null || c.trim().isEmpty()) return ""; String code = c.equalsIgnoreCase("UK") ? "GB" : c.toUpperCase(Locale.ROOT);
+        if (code.matches("[A-Z]{2}")) { Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(host)); String name = new Locale.Builder().setRegion(code).build().getDisplayCountry(displayLocale); if (name != null && !name.trim().isEmpty() && !name.equalsIgnoreCase(code)) return name; }
+        return code;
+    }
+    private String marketFlag(String c) { if ("ES".equalsIgnoreCase(c)) return "🇪🇸"; if ("FR".equalsIgnoreCase(c)) return "🇫🇷"; if ("DE".equalsIgnoreCase(c)) return "🇩🇪"; if ("IT".equalsIgnoreCase(c)) return "🇮🇹"; if ("PT".equalsIgnoreCase(c)) return "🇵🇹"; if ("GB".equalsIgnoreCase(c) || "UK".equalsIgnoreCase(c)) return "🇬🇧"; if (c != null && c.matches("[A-Za-z]{2}")) { int a = Character.toUpperCase(c.charAt(0)) - 'A' + 127462; int b = Character.toUpperCase(c.charAt(1)) - 'A' + 127462; return new String(Character.toChars(a)) + new String(Character.toChars(b)); } return "🌐"; }
+    private String marketLabel(String c) { return marketFlag(c) + "  " + marketName(c); }
+
+    private void build() {
+        LinearLayout root = new LinearLayout(host);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(0,0,0,0);
+        root.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
+
+        FrameLayout hero = new FrameLayout(host);
+        hero.setClipChildren(false);
+        hero.setBackgroundColor(Color.TRANSPARENT);
+
+        HeaderBitmapView heroImage = new HeaderBitmapView(host);
+        heroImage.setTranslationY(-dp(10));
+
+        hero.addView(heroImage, new FrameLayout.LayoutParams(-1, dp(260)));
+
+        View topFade = new View(host);
+        topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));
+        hero.addView(topFade, new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));
+
+        TextView title = tv("Comparar coches",22,Color.WHITE);
+        title.setTypeface(null,Typeface.BOLD);
+        title.setGravity(Gravity.CENTER);
+        title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        title.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));
+        FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56));
+        tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;
+        tp.leftMargin=dp(40);
+        tp.rightMargin=dp(40);
+        tp.topMargin=dp(4);
+        hero.addView(title,tp);
+
+        LinearLayout intro=new LinearLayout(host);
+        intro.setOrientation(LinearLayout.VERTICAL);
+        intro.setPadding(dp(16),dp(14),dp(16),dp(14));
+        intro.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));
+        TextView introTitle=tv("Elige tus vehículos",17,text());
+        introTitle.setTypeface(null,Typeface.BOLD);
+        intro.addView(introTitle,new LinearLayout.LayoutParams(-1,dp(26)));
+        TextView hint=tv("Añade hasta 3 coches para ver sus características y compararlos.",13,sub());
+        hint.setPadding(0,dp(2),0,0);
+        intro.addView(hint,new LinearLayout.LayoutParams(-1,dp(36)));
+
+        // The card is deliberately laid over the bottom of the hero image.
+        // Keep a little more room below it so moving it down does not clip it.
+        int cardTop = dp(236);
+        int stackHeight = dp(336);
+        FrameLayout heroStack = new FrameLayout(host);
+        heroStack.setClipChildren(false);
+        heroStack.setClipToPadding(false);
+        heroStack.setLayoutParams(new LinearLayout.LayoutParams(-1,stackHeight));
+        heroStack.addView(hero,new FrameLayout.LayoutParams(-1,dp(260),Gravity.TOP));
+        FrameLayout.LayoutParams introFp = new FrameLayout.LayoutParams(-1,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
+        introFp.leftMargin=dp(14);
+        introFp.rightMargin=dp(14);
+        introFp.topMargin=cardTop;
+        heroStack.addView(intro,introFp);
+
+        ScrollView scroll=new ScrollView(host);
+        scroll.setVerticalScrollBarEnabled(false);
+        scroll.setHorizontalScrollBarEnabled(false);
+        scroll.setScrollbarFadingEnabled(false);
+        scroll.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        scroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        scroll.setFillViewport(true);
+        LinearLayout scrollContent=new LinearLayout(host);
+        scrollContent.setOrientation(LinearLayout.VERTICAL);
+        scrollContent.setClipChildren(false);
+        scrollContent.setClipToPadding(false);
+        scrollContent.addView(heroStack,new LinearLayout.LayoutParams(-1,stackHeight));
+
+        LinearLayout content=new LinearLayout(host);
+        content.setOrientation(LinearLayout.VERTICAL);
+        content.setPadding(dp(14),dp(0),dp(14),dp(12));
+        content.setClipChildren(false);
+
+        HorizontalScrollView carsScroll=new HorizontalScrollView(host);
+        carsScroll.setHorizontalScrollBarEnabled(false);
+        carsScroll.setVerticalScrollBarEnabled(false);
+        carsScroll.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        carsScroll.setPadding(0,dp(12),0,dp(4));
+        carsRow=new LinearLayout(host);
+        carsRow.setOrientation(LinearLayout.HORIZONTAL);
+        carsRow.setGravity(Gravity.TOP);
+        carsScroll.addView(carsRow,new HorizontalScrollView.LayoutParams(-2,-2));
+        content.addView(carsScroll,new LinearLayout.LayoutParams(-1,-2));
+
+        emptyMessage=tv("Selecciona un coche para mostrar sus características.",14,sub());
+        emptyMessage.setGravity(Gravity.CENTER);
+        emptyMessage.setPadding(dp(12),dp(10),dp(12),dp(10));
+        emptyMessage.setVisibility(View.GONE);
+        content.addView(emptyMessage,new LinearLayout.LayoutParams(-1,dp(52)));
+
+        characteristicsSection=tv("Características",19,text());
+        characteristicsSection.setTypeface(null,Typeface.BOLD);
+        characteristicsSection.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
+        content.addView(characteristicsSection,new LinearLayout.LayoutParams(-1,dp(42)));
+        TextView legend=tv("✦  Mejor valor",12,blue);
+        legend.setGravity(Gravity.CENTER_VERTICAL);
+        legend.setPadding(dp(4),0,0,dp(4));
+        if(selectedIds.size()>=2)content.addView(legend,new LinearLayout.LayoutParams(-1,dp(28)));
+
+        // La columna de características queda fija; los datos se desplazan por debajo.
+        FrameLayout compareTable=new FrameLayout(host);
+        compareTable.setClipChildren(true);
+        compareTable.setClipToPadding(false);
+
+        tableDataHost=new FrameLayout(host);
+        tableDataHost.setClipChildren(true);
+        tableDataHost.setClipToPadding(true);
+        FrameLayout.LayoutParams dataHostLp=new FrameLayout.LayoutParams(-1,-2);
+        dataHostLp.leftMargin=dp(112);
+        compareTable.addView(tableDataHost,dataHostLp);
+
+        tableLabels=new LinearLayout(host);
+        tableLabels.setOrientation(LinearLayout.VERTICAL);
+        tableLabels.setPadding(0,dp(2),0,0);
+        tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
+
+        table=new LinearLayout(host);
+        table.setOrientation(LinearLayout.VERTICAL);
+        table.setPadding(0,dp(2),0,0);
+
+        content.addView(compareTable,new LinearLayout.LayoutParams(-1,-2));
+
+        summary=new LinearLayout(host);
+        summary.setOrientation(LinearLayout.VERTICAL);
+        summary.setPadding(0,dp(18),0,dp(8));
+        content.addView(summary,new LinearLayout.LayoutParams(-1,-2));
+
+        Space footerSpacer=new Space(host);
+        content.addView(footerSpacer,new LinearLayout.LayoutParams(-1,0,1));
+        scrollContent.addView(content,new LinearLayout.LayoutParams(-1,-2));
+        scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
+        root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
+        removeAllViews(); addView(root, new FrameLayout.LayoutParams(-1, -1));
+        EdgeToEdgeHelper.apply(host, dark, true);
+    }
+
+    private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
+    private int availableCompareWidthPx(){
+        int screen=host.getResources().getDisplayMetrics().widthPixels;
+        return Math.max(dp(120), screen-dp(104));
+    }
+    private int tableWidth(){
+        int count=Math.max(1,selectedIds.size());
+        if(count<=2){
+            return Math.max(dp(120), Math.min(availableCompareWidthPx(), dp(256)));
+        }
+        return dp(145*count);
+    }
+    private int carColumnWidth(){
+        int count=Math.max(1,selectedIds.size());
+        if(count<=2){
+            return Math.max(dp(120), Math.min(availableCompareWidthPx()/count, dp(128)));
+        }
+        return dp(145);
+    }
+
+    private void rebuildVehicleIndex(){
+        vehicleById.clear();
+        for(Vehicle v:vehicles) if(v.id!=null&&!v.id.isEmpty()) vehicleById.put(v.id,v);
+    }
+    // El índice se reconstruye cada vez que cambia el catálogo; las búsquedas por ID
+    // no necesitan volver a recorrer linealmente toda la lista.
+    private Vehicle find(String id){
+        return id==null?null:vehicleById.get(id);
+    }
+    private Vehicle findByLogicalKey(String key){for(Vehicle v:vehicles)if(logicalKey(v).equals(key))return v;return null;}
+    private void loadSelection(){
+        selectedIds.clear();
+        SharedPreferences p=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE);
+
+        // Android puede restaurar SharedPreferences desde una copia de seguridad
+        // incluso después de desinstalar/reinstalar. Usamos un marcador en
+        // noBackupFilesDir para distinguir una instalación realmente nueva.
+        java.io.File installMarker=new java.io.File(getNoBackupFilesDir(),"compare_selection_install.marker");
+        boolean freshInstall=!installMarker.exists();
+        if(freshInstall){
+            // No borrar una selección recién creada desde Buscar similares/Detalle.
+            // En una instalación nueva, esa selección puede haber sido guardada justo
+            // antes de abrir Comparar coches por primera vez.
+            if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
+                p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
+                        .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
+            }
+            try{installMarker.createNewFile();}catch(Exception ignored){}
+        }
+
+        if(!p.getBoolean(KEY_SELECTION_INITIALIZED,false)){
+            p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED)
+                    .putBoolean(KEY_SELECTION_INITIALIZED,true).apply();
+            return;
+        }
+
+        // Una selección vacía es un estado válido: no hay que recuperar claves
+        // antiguas ni reconstruir una selección desde formatos anteriores.
+        String logical=p.getString(KEY_SELECTED_LOGICAL,"");
+        if(!logical.trim().isEmpty()){
+            for(String key:logical.split("\\Q||\\E")){
+                key=key.trim();
+                Vehicle v=findByLogicalKey(key);
+                if(v!=null&&!selectedIds.contains(v.id)&&selectedIds.size()<3)selectedIds.add(v.id);
+            }
+        }
+        if(selectedIds.isEmpty() && !logical.trim().isEmpty()){
+            p.edit().remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED).apply();
+        }
+    }
+    private void saveSelection(){
+        SharedPreferences.Editor e=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit();
+        e.putBoolean(KEY_SELECTION_INITIALIZED,true);
+        if(selectedIds.isEmpty()){
+            // Al quitar el último coche, borrar completamente la selección persistida.
+            // Así una selección antigua no puede reaparecer al volver a entrar.
+            e.remove(KEY_SELECTED_ORDERED).remove(KEY_SELECTED_LOGICAL).remove(KEY_SELECTED);
+        }else{
+            e.putString(KEY_SELECTED_ORDERED,joinSelection());
+            e.putString(KEY_SELECTED_LOGICAL,joinLogicalSelection());
+            e.putStringSet(KEY_SELECTED,new LinkedHashSet<>(selectedIds));
+        }
+        e.apply();
+    }
+    private String joinSelection(){StringBuilder s=new StringBuilder();for(String id:selectedIds){if(s.length()>0)s.append(',');s.append(id);}return s.toString();}
+    private String joinLogicalSelection(){StringBuilder s=new StringBuilder();for(String id:selectedIds){Vehicle v=find(id);if(v==null)continue;if(s.length()>0)s.append("||");s.append(logicalKey(v));}return s.toString();}
+
+    private void rebuild(){
+        if(carsRow==null||table==null||summary==null)return;
+
+        // Resolver los IDs una sola vez. Antes cada fila volvía a recorrer el catálogo.
+        selectedVehiclesCache.clear();
+        for(String id:selectedIds){
+            Vehicle v=find(id);
+            if(v!=null) selectedVehiclesCache.add(v);
+        }
+
+        if(tableDataHost!=null){
+            // La tabla puede seguir siendo hija del HorizontalScrollView anterior
+            // cuando pasamos de 3 coches a 2. Hay que desacoplarla antes de
+            // reconstruir el contenedor para evitar "The specified child already has a parent".
+            if(table!=null && table.getParent()!=null){
+                ((android.view.ViewGroup)table.getParent()).removeView(table);
+            }
+            tableDataHost.removeAllViews();
+            if(selectedIds.size()>=3){
+                tableScroll=new HorizontalScrollView(host);
+                tableScroll.setHorizontalScrollBarEnabled(false);
+                tableScroll.setVerticalScrollBarEnabled(false);
+                tableScroll.setOverScrollMode(View.OVER_SCROLL_IF_CONTENT_SCROLLS);
+                tableScroll.setFillViewport(false);
+                tableScroll.setClipChildren(false);
+                tableScroll.setClipToPadding(false);
+                tableDataHost.addView(tableScroll,new FrameLayout.LayoutParams(-1,-2));
+                tableScroll.addView(table,new HorizontalScrollView.LayoutParams(tableWidth(),-2));
+            }else{
+                tableScroll=null;
+                tableDataHost.addView(table,new FrameLayout.LayoutParams(tableWidth(),-2));
+            }
+        }
+
+        // La anchura real de la tabla depende del número de coches.
+        // Actualizarla aquí garantiza que el HorizontalScrollView tenga
+        // contenido desplazable también al pasar de 2 a 3 coches.
+        if(table!=null && table.getLayoutParams()!=null){
+            android.view.ViewGroup.LayoutParams tableLp=table.getLayoutParams();
+            tableLp.width=tableWidth();
+            table.setLayoutParams(tableLp);
+        }
+        if(tableScroll!=null) tableScroll.scrollTo(0,0);
+
+        carsRow.removeAllViews();
+        table.removeAllViews();
+        if(tableLabels!=null) tableLabels.removeAllViews();
+        summary.removeAllViews();
+
+        // El estado vacío se crea y controla dinámicamente desde rebuild().
+        // No lo mezclamos con la columna/tabla de características.
+        boolean emptyState=selectedVehiclesCache.isEmpty();
+        if(characteristicsSection!=null){
+            characteristicsSection.setText("Características");
+            characteristicsSection.setTextSize(19);
+            characteristicsSection.setTextColor(text());
+            characteristicsSection.setTypeface(null,Typeface.BOLD);
+            characteristicsSection.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+            characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
+        }
+        if(emptyMessage!=null){
+            emptyMessage.setText("Selecciona un coche para mostrar sus características.");
+            emptyMessage.setTextSize(14);
+            emptyMessage.setTextColor(sub());
+            emptyMessage.setGravity(Gravity.CENTER);
+            emptyMessage.setVisibility(emptyState ? View.VISIBLE : View.GONE);
+        }
+
+        int cardWidth = Math.max(dp(96), (host.getResources().getDisplayMetrics().widthPixels - dp(46)) / 3);
+        for(Vehicle v:selectedVehiclesCache){
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(cardWidth,-2);
+            lp.setMargins(dp(3),0,dp(3),0);
+            carsRow.addView(carCard(v),lp);
+        }
+        if(selectedVehiclesCache.size()<3){
+            LinearLayout empty=new LinearLayout(host);
+            empty.setOrientation(LinearLayout.VERTICAL);
+            empty.setGravity(Gravity.CENTER);
+            empty.setPadding(dp(8),dp(10),dp(8),dp(10));
+            empty.setBackground(strokeBg(dark?Color.rgb(14,26,38):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(220,229,240),16));
+            TextView plus=tv("＋",28,blue);
+            plus.setGravity(Gravity.CENTER);
+            empty.addView(plus,new LinearLayout.LayoutParams(-1,dp(34)));
+            TextView n=tv("Añadir coche",12,sub());
+            n.setGravity(Gravity.CENTER);
+            empty.addView(n,new LinearLayout.LayoutParams(-1,dp(24)));
+            empty.setOnClickListener(v->showSearch());
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(cardWidth,dp(132));
+            lp.setMargins(dp(3),0,dp(3),0);
+            carsRow.addView(empty,lp);
+        }
+        if(!selectedVehiclesCache.isEmpty()){
+            addSection("Batería y autonomía");
+            addRow("Batería","battery",false,selectedVehiclesCache);
+            addRow("Tipo batería","type",false,selectedVehiclesCache);
+            addRow("Autonomía WLTP","range",true,selectedVehiclesCache);
+            addRow("Consumo","cons",true,selectedVehiclesCache);
+            addSection("Prestaciones");
+            addRow("Potencia","power",true,selectedVehiclesCache);
+            addRow("Tracción","drive",false,selectedVehiclesCache);
+            addRow("0–100 km/h","acc",true,selectedVehiclesCache);
+            addSection("Carga");
+            addRow("Carga AC","ac",true,selectedVehiclesCache);
+            addRow("Carga DC","dc",true,selectedVehiclesCache);
+            addRow("10–80 %","charge",true,selectedVehiclesCache);
+            addSection("Practicidad");
+            addRow("Maletero","trunk",true,selectedVehiclesCache);
+            addRow("Peso","weight",false,selectedVehiclesCache);
+            addSection("Dimensiones");
+            addRow("Largo","length",false,selectedVehiclesCache);
+            addRow("Ancho","width",false,selectedVehiclesCache);
+            addRow("Alto","height",false,selectedVehiclesCache);
+            addSection("Precio");
+            addRow("Precio","price",false,selectedVehiclesCache);
+            if(selectedVehiclesCache.size()>=2)buildSummary(selectedVehiclesCache);
+        }
+    }
+
+    private void addSection(String title){
+        TextView fixed=tv(title,14,blue);
+        fixed.setTypeface(null,Typeface.BOLD);
+        fixed.setGravity(Gravity.CENTER_VERTICAL);
+        fixed.setSingleLine(false);
+        fixed.setMaxLines(2);
+        fixed.setEllipsize(null);
+        fixed.setPadding(dp(4),dp(4),dp(4),dp(4));
+        tableLabels.addView(fixed,new LinearLayout.LayoutParams(-1,dp(52)));
+
+        Space data= new Space(host);
+        table.addView(data,new LinearLayout.LayoutParams(tableWidth(),dp(52)));
+    }
+    private TextView chip(String label){TextView t=tv(label,10.5f,sub());t.setGravity(Gravity.CENTER);t.setIncludeFontPadding(false);t.setPadding(dp(6),dp(4),dp(6),dp(4));t.setBackground(strokeBg(dark?Color.rgb(13,28,41):Color.rgb(244,248,253),dark?Color.rgb(43,65,84):Color.rgb(222,231,240),10));return t;}
+    private View carCard(Vehicle v){LinearLayout c=new LinearLayout(host);c.setOrientation(LinearLayout.VERTICAL);c.setGravity(Gravity.CENTER_HORIZONTAL);c.setPadding(dp(8),dp(6),dp(8),dp(6));c.setBackground(strokeBg(dark?Color.rgb(18,32,45):Color.WHITE,dark?Color.rgb(49,72,91):Color.rgb(214,225,237),18));TextView make=tv(v.make.toUpperCase(Locale.ROOT),11,blue);make.setTypeface(null,Typeface.BOLD);make.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);make.setIncludeFontPadding(false);c.addView(make,new LinearLayout.LayoutParams(-1,dp(18)));TextView model=tv(v.model,17,text());model.setTypeface(null,Typeface.BOLD);model.setGravity(Gravity.START|Gravity.CENTER_VERTICAL);model.setIncludeFontPadding(false);model.setMaxLines(2);c.addView(model,new LinearLayout.LayoutParams(-1,dp(38)));TextView ver=tv(v.version==null||v.version.trim().isEmpty()?"—":v.version.trim(),11,sub());ver.setGravity(Gravity.START|Gravity.TOP);ver.setIncludeFontPadding(false);ver.setMaxLines(3);ver.setEllipsize(android.text.TextUtils.TruncateAt.END);ver.setPadding(dp(2),dp(4),dp(2),0);c.addView(ver,new LinearLayout.LayoutParams(-1,dp(45)));TextView rem=tv(LanguageManager.t(host,"Quitar"),11,Color.rgb(210,70,70));rem.setGravity(Gravity.CENTER);rem.setTypeface(null,Typeface.BOLD);rem.setIncludeFontPadding(false);rem.setPadding(0,dp(2),0,0);rem.setOnClickListener(x->remove(v.id));c.addView(rem,new LinearLayout.LayoutParams(-1,dp(19)));return c;}
+    private void remove(String id){selectedIds.remove(id);saveSelection();rebuild();}
+
+    private void showSearch(){
+        final EditText input=new EditText(host);
+        input.setSingleLine(true);
+        input.setHint(LanguageManager.t(host,"Marca, modelo, año, batería o versión"));
+        input.setTextColor(text()); input.setHintTextColor(sub()); input.setTextSize(15);
+        input.setPadding(dp(14),0,dp(14),0);
+        input.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),16));
+        final ListView list=new ListView(host);
+        list.setDivider(null); list.setVerticalScrollBarEnabled(false); list.setPadding(0,dp(2),0,0); list.setClipToPadding(false);
+        final TextView header=tv("Todos los vehículos",13,blue);
+        header.setTypeface(null,Typeface.BOLD); header.setPadding(dp(18),dp(16),dp(18),dp(7)); header.setBackgroundColor(Color.TRANSPARENT);
+        list.addHeaderView(header,null,false);
+        final List<Vehicle> results=new ArrayList<>();
+        final BaseAdapter adapter=new BaseAdapter(){
+            @Override public int getCount(){return results.size();}
+            @Override public Object getItem(int position){return results.get(position);}
+            @Override public long getItemId(int position){return position;}
+            @Override public View getView(int position,View convertView,android.view.ViewGroup parent){
+                TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(host);
+                item.setLayoutParams(new android.widget.AbsListView.LayoutParams(-1, dp(60)));
+                item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); item.setPadding(dp(16),dp(6),dp(42),dp(6)); item.setLineSpacing(0,1.05f);
+                Vehicle v=results.get(position);
+                SpannableString styled=new SpannableString(searchLabel(v)); int nl=styled.toString().indexOf('\n');
+                if(nl>0){styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);}
+                item.setCompoundDrawablePadding(dp(8));
+                item.setText(styled); item.setTextSize(14); item.setTextColor(text());
+                item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));
+                
+                return item;
+            }
+        };
+        list.setAdapter(adapter);
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            int headerCount = list.getHeaderViewsCount();
+            int resultPosition = position - headerCount;
+            if (resultPosition < 0 || resultPosition >= results.size()) return;
+            Vehicle v = results.get(resultPosition);
+            Object tag = input.getTag();
+            if (tag instanceof AlertDialog) ((AlertDialog) tag).dismiss();
+            addSelectedFromSearch(v);
+        });
+        LinearLayout marketRow=new LinearLayout(host); marketRow.setOrientation(LinearLayout.HORIZONTAL); marketRow.setGravity(Gravity.CENTER_VERTICAL); marketRow.setPadding(dp(18),dp(12),dp(18),dp(6));
+        TextView marketTitle=tv("Mercado",12,sub()); marketTitle.setTypeface(null,Typeface.BOLD); marketTitle.setGravity(Gravity.CENTER_VERTICAL|Gravity.START); marketRow.addView(marketTitle,new LinearLayout.LayoutParams(0,dp(38),1));
+        final Spinner searchMarketSpinner=new Spinner(host); List<String> ms=markets(); List<String> labels=new ArrayList<>(); for(String m:ms)labels.add(marketLabel(m));
+        ArrayAdapter<String> marketAdapter=new ArrayAdapter<String>(host,android.R.layout.simple_spinner_item,labels){
+            @Override public View getView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getView(p,c,parent);v.setTextColor(text());v.setTextSize(14);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);return v;}
+            @Override public View getDropDownView(int p,View c,android.view.ViewGroup parent){TextView v=(TextView)super.getDropDownView(p,c,parent);v.setTextColor(text());v.setTextSize(15);v.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);v.setPadding(dp(14),dp(10),dp(14),dp(10));v.setBackgroundColor(dark?Color.rgb(18,30,42):Color.WHITE);return v;}
+        };
+        searchMarketSpinner.setAdapter(marketAdapter); searchMarketSpinner.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.WHITE,dark?Color.rgb(59,84,106):Color.rgb(211,223,236),14)); searchMarketSpinner.setPadding(dp(10),0,dp(8),0);
+        int marketIndex=0; for(int i=0;i<ms.size();i++)if(ms.get(i).equalsIgnoreCase(selectedMarket)){marketIndex=i;break;} searchMarketSpinner.setSelection(marketIndex);
+        final android.os.Handler searchHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+        final Runnable refreshResults=()->{
+            String q=input.getText()==null?"":input.getText().toString().trim();
+            List<Vehicle> filtered=orderedSearchVehicles(q);
+            results.clear();
+            results.addAll(filtered);
+            header.setVisibility(q.isEmpty()?View.VISIBLE:View.GONE);
+            adapter.notifyDataSetChanged();
+        };
+        searchMarketSpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener(){public void onItemSelected(android.widget.AdapterView<?>p,View v,int pos,long id){if(pos>=0&&pos<ms.size()){selectedMarket=ms.get(pos);host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_MARKET,selectedMarket).apply();searchHandler.removeCallbacks(refreshResults);searchHandler.post(refreshResults);}}public void onNothingSelected(android.widget.AdapterView<?>p){}});
+        marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(180),dp(38)));
+        LinearLayout body=new LinearLayout(host); body.setOrientation(LinearLayout.VERTICAL); body.setPadding(dp(12),dp(12),dp(12),dp(8)); body.addView(input,new LinearLayout.LayoutParams(-1,dp(50))); body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56))); body.addView(list,new LinearLayout.LayoutParams(-1,0,1));
+        AlertDialog d=new AlertDialog.Builder(host).setView(body).create(); input.setTag(d);
+        input.addTextChangedListener(new TextWatcher(){public void beforeTextChanged(CharSequence s,int st,int c,int a){}public void onTextChanged(CharSequence s,int st,int b,int c){searchHandler.removeCallbacks(refreshResults);searchHandler.postDelayed(refreshResults,70);}public void afterTextChanged(Editable e){}});
+        d.setOnShowListener(x->{d.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);d.getWindow().setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20));input.requestFocus();input.post(()->{InputMethodManager imm=(InputMethodManager)host.getSystemService(Context.INPUT_METHOD_SERVICE);if(imm!=null)imm.showSoftInput(input,InputMethodManager.SHOW_IMPLICIT);searchHandler.removeCallbacks(refreshResults);searchHandler.post(refreshResults);});});
+        d.setOnDismissListener(x->searchHandler.removeCallbacks(refreshResults));
+        d.show(); Window searchWindow=d.getWindow(); if(searchWindow!=null){searchWindow.setBackgroundDrawable(bg(dark?Color.rgb(10,21,31):Color.WHITE,20)); searchWindow.setLayout(-1,-1); searchWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);} input.requestFocus();
+    }
+
+    private String normalizeSearch(String value){if(value==null)return "";return java.text.Normalizer.normalize(value,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}+","").toLowerCase(Locale.ROOT).trim();}
+    private int searchScore(SearchIndex idx,String q,String[] tokens){
+        if(q.isEmpty())return 0;
+        int score=0;
+        for(String token:tokens){
+            if(token.isEmpty())continue;
+            if(idx.make.equals(token))score+=120;
+            else if(idx.make.startsWith(token))score+=70;
+            else if(idx.make.contains(token))score+=45;
+            if(idx.model.equals(token))score+=110;
+            else if(idx.model.startsWith(token))score+=65;
+            else if(idx.model.contains(token))score+=40;
+            if(idx.version.contains(token))score+=20;
+            if(idx.all.contains(token))score+=10;
+        }
+        if(idx.makeModel.equals(q))score+=180;
+        else if(idx.makeModel.startsWith(q))score+=100;
+        return score;
+    }
+    private void openVehicleDetail(Vehicle v){
+        Intent i=new Intent(host,CarDetailActivity.class);
+        i.putExtra("vehicle_id",v.id); i.putExtra("logical_key",logicalKey(v)); i.putExtra("make",v.make); i.putExtra("model",v.model); i.putExtra("version",v.version);
+        i.putExtra("market",v.market); i.putExtra("year",v.year); i.putExtra("price",v.price); i.putExtra("batteryKwh",v.batteryKwh); i.putExtra("usableBatteryKwh",v.usableBatteryKwh);
+        i.putExtra("batteryType",v.batteryType); i.putExtra("wltpKm",v.wltpKm); i.putExtra("consumption",v.consumption); i.putExtra("powerKw",v.powerKw); i.putExtra("drivetrain",v.drivetrain);
+        i.putExtra("acKw",v.acKw); i.putExtra("dcKw",v.dcKw); i.putExtra("chargeMin",v.chargeMin); i.putExtra("acc",v.acc); i.putExtra("trunk",v.trunk); i.putExtra("weight",v.weight);
+        i.putExtra("lengthMm",v.lengthMm); i.putExtra("widthMm",v.widthMm); i.putExtra("heightMm",v.heightMm); i.putExtra("remoteSource",v.remoteSource);
+        host.startActivity(i);
+    }
+
+    private int trimRank(Vehicle v){String k=v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
+    private String searchLabel(Vehicle v){String first=v.make+" "+v.model;StringBuilder second=new StringBuilder();if(v.year>0)second.append(v.year);String ver=v.version.trim().replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kwh\\b","").replaceAll("(?i)(?<![0-9])\\d+(?:[.,]\\d+)?\\s*kw\\b","").replaceAll("\\s+"," ").trim();if(!ver.isEmpty()){if(second.length()>0)second.append(" · ");second.append(ver);}if(v.batteryKwh>0){if(second.length()>0)second.append(" · ");second.append(fmt(v.batteryKwh)).append(" kWh");}return first+"\n"+second;}
+    private int modelTokenMatchCount(Vehicle v,String normalizedQuery){
+        if(v==null||normalizedQuery==null||normalizedQuery.isEmpty())return 0;
+        String model=searchIndex(v).makeModel;
+        int count=0;
+        for(String token:normalizedQuery.split("\\s+")){
+            if(!token.isEmpty()&&model.contains(token))count++;
+        }
+        return count;
+    }
+
+    private List<Vehicle> orderedSearchVehicles(String q){
+        List<Vehicle> all=new ArrayList<>();
+        String nq=normalizeSearch(q);
+        String[] tokens=nq.isEmpty()?new String[0]:nq.split("\\s+");
+        IdentityHashMap<Vehicle,Integer> scores=new IdentityHashMap<>();
+
+        for(Vehicle v:marketVehicles()){
+            if(selectedIds.contains(v.id))continue;
+            SearchIndex idx=searchIndex(v);
+            boolean matches=true;
+            for(String token:tokens){
+                if(!token.isEmpty()&&!idx.all.contains(token)){matches=false;break;}
+            }
+            if(!matches)continue;
+            all.add(v);
+            scores.put(v,searchScore(idx,nq,tokens));
+        }
+
+        Collections.sort(all,(a,b)->{
+            // Si dos resultados pertenecen al mismo modelo exacto (misma marca
+            // y modelo normalizados), agruparlos por año descendente ANTES de
+            // puntuar versiones o coincidencias accesorias.
+            String modelA=searchIndex(a).makeModel;
+            String modelB=searchIndex(b).makeModel;
+            int c=0;
+            if(modelA.equals(modelB)){
+                c=Integer.compare(b.year,a.year);
+                if(c!=0)return c;
+            }
+            // Para modelos distintos, prioriza la coincidencia de términos
+            // con marca+modelo y después el año más reciente.
+            c=Integer.compare(modelTokenMatchCount(b,nq),modelTokenMatchCount(a,nq));
+            if(c!=0)return c;
+            c=Integer.compare(b.year,a.year);
+            if(c!=0)return c;
+            c=Integer.compare(scores.get(b),scores.get(a));
+            if(c!=0)return c;
+            c=a.make.compareToIgnoreCase(b.make);
+            if(c!=0)return c;
+            c=a.model.compareToIgnoreCase(b.model);
+            if(c!=0)return c;
+            c=Integer.compare(trimRank(a),trimRank(b));
+            if(c!=0)return c;
+            c=Double.compare(a.batteryKwh,b.batteryKwh);
+            if(c!=0)return c;
+            return a.version.compareToIgnoreCase(b.version);
+        });
+        return all;
+    }
+    private void renderSearchResults(EditText input,LinearLayout list){list.removeAllViews();String q=input.getText()==null?"":input.getText().toString().trim().toLowerCase(Locale.ROOT);List<Vehicle>all=orderedSearchVehicles(q);if(q.isEmpty()){TextView header=tv("Todos los vehículos",13,blue);header.setTypeface(null,Typeface.BOLD);header.setPadding(dp(18),dp(16),dp(18),dp(7));list.addView(header,new LinearLayout.LayoutParams(-1,dp(38)));}for(Vehicle v:all)addSearchItem(v,list,input);if(!q.isEmpty()&&all.isEmpty()){TextView none=tv("No se encontraron vehículos",14,sub());none.setGravity(Gravity.CENTER);none.setPadding(dp(12),dp(20),dp(12),dp(20));list.addView(none,new LinearLayout.LayoutParams(-1,dp(60)));}}
+    private void addSearchItem(Vehicle v,LinearLayout list,EditText input){TextView item=tv(searchLabel(v),14,text());item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);item.setPadding(dp(16),dp(6),dp(42),dp(6));item.setLineSpacing(0,1.05f);SpannableString styled=new SpannableString(item.getText());int nl=styled.toString().indexOf('\n');if(nl>0){styled.setSpan(new StyleSpan(Typeface.BOLD),0,nl,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);if(nl+1<styled.length())styled.setSpan(new RelativeSizeSpan(0.86f),nl+1,styled.length(),Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);}item.setText(styled);item.setBackground(strokeBg(dark?Color.rgb(18,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(225,233,242),14));item.setOnClickListener(x->{Object tag=input.getTag();if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();addSelectedFromSearch(v);});LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,dp(60));lp.setMargins(dp(14),dp(3),dp(14),dp(3));list.addView(item,lp);}
+    private void addSelectedFromSearch(Vehicle v){
+        if(v==null||selectedIds.contains(v.id)||selectedIds.size()>=3)return;
+        selectedIds.add(v.id);
+        saveSelection();
+        rebuild();
+    }
+
+    private void addRow(String label,String key,boolean numeric,List<Vehicle> chosen){
+        int rowIndex=tableLabels.getChildCount();
+        int bgColor=(rowIndex%2==0)?(dark?Color.rgb(12,24,35):Color.WHITE):rowAlt();
+
+        TextView l=tv(label,13,sub());
+        l.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        l.setIncludeFontPadding(false);
+        l.setPadding(dp(6),0,dp(6),0);
+        l.setBackgroundColor(bgColor);
+        int rowHeight = "dimensions".equals(key) ? dp(64) : dp(42);
+        tableLabels.addView(l,new LinearLayout.LayoutParams(-1,rowHeight));
+
+        LinearLayout r=new LinearLayout(host);
+        r.setOrientation(LinearLayout.HORIZONTAL);
+        r.setGravity(Gravity.CENTER_VERTICAL);
+        r.setBackgroundColor(bgColor);
+
+        double[] nums=new double[chosen.size()];
+        for(int i=0;i<chosen.size();i++) nums[i]=numeric(chosen.get(i),key);
+
+        double best=Double.NaN;
+        if(numeric&&chosen.size()>=2){
+            boolean higher=!key.equals("cons")&&!key.equals("charge")&&!key.equals("price")&&!key.equals("weight")&&!key.equals("acc");
+            for(double n:nums){
+                if(Double.isNaN(n))continue;
+                if(Double.isNaN(best)||(higher?n>best:n<best))best=n;
+            }
+        }
+        for(int i=0;i<chosen.size();i++){
+            Vehicle v=chosen.get(i);
+            TextView cell=tv(value(v,key),13,text());
+            cell.setGravity(Gravity.CENTER);
+            cell.setIncludeFontPadding(false);
+            if ("battery".equals(key)) {
+                cell.setMaxLines(2);
+                cell.setLineSpacing(0,1.0f);
+                cell.setPadding(dp(1),0,dp(1),0);
+            }
+            if ("cons".equals(key)) {
+                cell.setMaxLines(2);
+                cell.setLineSpacing(0,1.0f);
+                cell.setPadding(dp(1),0,dp(1),0);
+            }
+            if ("dimensions".equals(key)) {
+                cell.setMaxLines(2);
+                cell.setLineSpacing(0,1.0f);
+                cell.setPadding(dp(2),0,dp(2),0);
+            }
+            cell.setBackgroundColor(bgColor);
+            double n=nums[i];
+            if(chosen.size()>=2&&!Double.isNaN(best)&&!Double.isNaN(n)&&Math.abs(n-best)<0.0001)cell.setTextColor(blue);
+            r.addView(cell,new LinearLayout.LayoutParams(carColumnWidth(),rowHeight));
+        }
+        table.addView(r,new LinearLayout.LayoutParams(carColumnWidth()*Math.max(1,chosen.size()),rowHeight));
+    }
+    private String value(Vehicle v,String key){if("battery".equals(key)){boolean hasGross=v.batteryKwh>0;boolean hasUsable=v.usableBatteryKwh>0;if(!hasGross&&!hasUsable)return "—";if(hasGross&&hasUsable&&Math.abs(v.batteryKwh-v.usableBatteryKwh)>0.05)return fmt(v.batteryKwh)+" kWh\n"+fmt(v.usableBatteryKwh)+" kWh utilizable";return hasGross?fmt(v.batteryKwh)+" kWh":fmt(v.usableBatteryKwh)+" kWh";}if("type".equals(key))return empty(v.batteryType);if("range".equals(key))return v.wltpKm>0?formatInteger(v.wltpKm)+" km":"—";if("cons".equals(key))return v.consumption>0?fmt(v.consumption)+" kWh/100 km":"—";if("power".equals(key))return v.powerKw>0?Math.round(v.powerKw*1.35962)+" CV ("+formatInteger(v.powerKw)+" kW)":"—";if("drive".equals(key))return empty(v.drivetrain);if("acc".equals(key))return v.acc>0?fmt(v.acc)+" s":"—";if("ac".equals(key))return v.acKw>0?fmt(v.acKw)+" kW":"—";if("dc".equals(key))return v.dcKw>0?fmt(v.dcKw)+" kW":"—";if("charge".equals(key))return v.chargeMin>0?formatInteger(v.chargeMin)+" min":"—";if("trunk".equals(key))return v.trunk>0?formatInteger(v.trunk)+" L":"—";if("weight".equals(key))return v.weight>0?formatInteger(v.weight)+" kg":"—";if("length".equals(key))return v.lengthMm>0?fmt2(v.lengthMm/1000.0)+" m":"—";if("width".equals(key))return v.widthMm>0?fmt2(v.widthMm/1000.0)+" m":"—";if("height".equals(key))return v.heightMm>0?fmt2(v.heightMm/1000.0)+" m":"—";if("price".equals(key))return formatPrice(v.price);return "—";}
+    private double numeric(Vehicle v,String key){if("battery".equals(key))return v.batteryKwh;if("range".equals(key))return v.wltpKm;if("cons".equals(key))return v.consumption;if("power".equals(key))return v.powerKw;if("acc".equals(key))return v.acc;if("ac".equals(key))return v.acKw;if("dc".equals(key))return v.dcKw;if("charge".equals(key))return v.chargeMin;if("trunk".equals(key))return v.trunk;if("weight".equals(key))return v.weight;return Double.NaN;}
+    private void buildSummary(List<Vehicle> chosen){LinearLayout card=new LinearLayout(host);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(16),dp(14),dp(16),dp(14));card.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));TextView h=tv("Resumen de la comparativa",18,text());h.setTypeface(null,Typeface.BOLD);card.addView(h,new LinearLayout.LayoutParams(-1,dp(30)));TextView intro=tv("Resultado rápido de los vehículos seleccionados",13,sub());card.addView(intro,new LinearLayout.LayoutParams(-1,dp(28)));addSummaryWinner(card,"Autonomía","range",true,chosen);addSummaryWinner(card,"Consumo","cons",false,chosen);addSummaryWinner(card,"Potencia","power",true,chosen);addSummaryWinner(card,"Carga DC","dc",true,chosen);addSummaryWinner(card,"Precio","price",false,chosen);TextView selected=tv("Vehículos comparados",14,blue);selected.setTypeface(null,Typeface.BOLD);selected.setIncludeFontPadding(true);selected.setPadding(0,dp(4),0,dp(4));card.addView(selected,new LinearLayout.LayoutParams(-1,dp(36)));for(Vehicle v:chosen){TextView s=tv("•  "+v.make+" "+v.model+" · "+v.version+"  ·  "+marketLabel(v.market),13,text());s.setPadding(0,dp(3),0,dp(3));card.addView(s,new LinearLayout.LayoutParams(-1,-2));}summary.addView(card,new LinearLayout.LayoutParams(-1,-2));LinearLayout commentCard=new LinearLayout(host);commentCard.setOrientation(LinearLayout.VERTICAL);commentCard.setPadding(dp(16),dp(14),dp(16),dp(14));commentCard.setBackground(strokeBg(dark?Color.rgb(17,31,44):Color.WHITE,dark?Color.rgb(43,64,82):Color.rgb(218,228,239),18));TextView commentTitle=tv("Comentario",16,blue);commentTitle.setTypeface(null,Typeface.BOLD);commentTitle.setPadding(0,0,0,dp(6));commentCard.addView(commentTitle,new LinearLayout.LayoutParams(-1,dp(30)));TextView comment=tv(summaryComment(chosen),13,sub());comment.setLineSpacing(0,1.2f);commentCard.addView(comment,new LinearLayout.LayoutParams(-1,-2));LinearLayout.LayoutParams commentLp=new LinearLayout.LayoutParams(-1,-2);commentLp.setMargins(0,dp(10),0,0);summary.addView(commentCard,commentLp);}
+    private void addSummaryWinner(LinearLayout parent,String label,String key,boolean higherBetter,List<Vehicle> chosen){Vehicle bestV=null;double best=Double.NaN;for(Vehicle v:chosen){double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higherBetter?n>best:n<best)){best=n;bestV=v;}}if(bestV==null)return;String val=value(bestV,key);TextView row=tv(label+"  ·  "+bestV.make+" "+bestV.model+"  →  "+val,13,text());row.setPadding(0,dp(4),0,dp(4));parent.addView(row,new LinearLayout.LayoutParams(-1,dp(30)));}
+    private String summaryComment(List<Vehicle> chosen){if(chosen.size()<2)return"";Vehicle bestRange=bestVehicle("range",true,chosen),bestCons=bestVehicle("cons",false,chosen),bestPrice=bestVehicle("price",false,chosen);StringBuilder out=new StringBuilder();out.append("En conjunto, ");if(bestRange!=null)out.append(bestRange.make).append(" ").append(bestRange.model).append(" destaca por autonomía");if(bestCons!=null&&bestCons!=bestRange)out.append(", mientras que ").append(bestCons.make).append(" ").append(bestCons.model).append(" ofrece el menor consumo");if(bestPrice!=null&&bestPrice!=bestRange&&bestPrice!=bestCons)out.append(" y ").append(bestPrice.make).append(" ").append(bestPrice.model).append(" es la opción más económica");out.append(". La elección final dependerá de si priorizas autonomía, eficiencia, prestaciones, velocidad de carga o precio.");return out.toString();}
+    private Vehicle bestVehicle(String key,boolean higherBetter,List<Vehicle> chosen){Vehicle bestV=null;double best=Double.NaN;for(Vehicle v:chosen){double n=numeric(v,key);if(Double.isNaN(n))continue;if(Double.isNaN(best)||(higherBetter?n>best:n<best)){best=n;bestV=v;}}return bestV;}
+    private String empty(String s){if(s==null)return "—";String t=s.trim();return t.isEmpty()||"null".equalsIgnoreCase(t)?"—":t;}
+    private Locale appLocale(){
+        String language=LanguageManager.getEffectiveLanguage(host);
+        if(language==null||language.trim().isEmpty()) return Locale.getDefault();
+        return Locale.forLanguageTag(language.replace('_','-'));
+    }
+    private String fmt(double n){
+        NumberFormat f=NumberFormat.getNumberInstance(appLocale());
+        f.setMinimumFractionDigits(0); f.setMaximumFractionDigits(1);
+        return f.format(n);
+    }
+    private String fmt2(double n){
+        NumberFormat f=NumberFormat.getNumberInstance(appLocale());
+        f.setMinimumFractionDigits(0); f.setMaximumFractionDigits(2);
+        return f.format(n);
+    }
+    private String formatInteger(double n){
+        NumberFormat f=NumberFormat.getIntegerInstance(appLocale());
+        return f.format(Math.round(n));
+    }
+    private String formatPrice(double p){
+        if(p<=0)return"—";
+        String currency=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).getString(KEY_CURRENCY,"EUR");
+        return formatInteger(p)+" "+currency;
+    }
+
+    static class Vehicle {
+        String id,make,model,version,batteryType,drivetrain,market; int year;
+        boolean remoteSource;
+        double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
+        Vehicle(JSONObject o){
+            make=o.optString("make",o.optString("brand",""));
+            model=o.optString("model","");
+            version=o.optString("version",o.optString("trim",""));
+            batteryType=o.optString("batteryChemistry",o.optString("batteryType",o.optString("chemistry","")));
+            drivetrain=o.optString("drivetrain",o.optString("drive",o.optString("drivetrainType","")));
+            market=o.optString("market",o.optString("mercado","ES")).toUpperCase(Locale.ROOT);
+            year=o.optInt("year",o.optInt("modelYear",0));
+            price=o.optDouble("price",0);
+            batteryKwh=o.optDouble("batteryKwh",o.optDouble("battery_capacity_kwh",0));
+            usableBatteryKwh=o.optDouble("usableBatteryKwh",o.optDouble("netBatteryKwh",o.optDouble("batteryNetKwh",0)));
+            wltpKm=o.optDouble("wltpKm",o.optDouble("rangeKm",0));
+            consumption=o.optDouble("consumption",0);
+            if(consumption<=0)consumption=o.optDouble("consumptionKwh100",0);
+            powerKw=o.optDouble("powerKw",0);
+            if(powerKw<=0)powerKw=o.optDouble("power_kW",0);
+            acKw=o.optDouble("acKw",0);
+            if(acKw<=0)acKw=o.optDouble("acChargeKw",0);
+            dcKw=o.optDouble("dcKw",0);
+            if(dcKw<=0)dcKw=o.optDouble("dcChargeKw",0);
+            chargeMin=o.optDouble("charge10to80Min",o.optDouble("chargeMin",o.optDouble("chargeTime10to80Min",0)));
+            acc=o.optDouble("acceleration0to100Sec",o.optDouble("acc",o.optDouble("acceleration",0)));
+            trunk=o.optDouble("trunkLiters",o.optDouble("trunk",0));
+            weight=o.optDouble("weightKg",o.optDouble("weight",0));
+            lengthMm=o.optDouble("lengthMm",o.optDouble("length",0));
+            widthMm=o.optDouble("widthMm",o.optDouble("width",0));
+            heightMm=o.optDouble("heightMm",o.optDouble("height",0));
+            id=o.optString("id","").trim();
+            if(id.isEmpty()){String key=(make+"|"+model+"|"+market+"|"+year+"|"+String.format(Locale.US,"%.1f",batteryKwh)+"|"+version).trim().toLowerCase(Locale.ROOT);id="catalog-"+Integer.toHexString(key.hashCode());}
+        }
+    }
+}
