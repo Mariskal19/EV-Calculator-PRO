@@ -258,7 +258,7 @@ public class SimilarCarsScreen extends FrameLayout {
                     advisorStatus.setText("");
                     return;
                 }
-                advisorStatus.setText(LanguageManager.t(SimilarCarsActivity.host,"Preparando búsqueda…"));
+                advisorStatus.setText(LanguageManager.t(host,"Preparando búsqueda…"));
                 advisorSearchHandler.postDelayed(pendingAdvisorSearch,2000);
             }
             @Override public void afterTextChanged(Editable e){}
@@ -756,7 +756,7 @@ public class SimilarCarsScreen extends FrameLayout {
         List<String> drives=new ArrayList<>(Arrays.asList("Cualquier tracción","FWD","RWD","AWD")); setAdapter(driveSpinner,drives);
         List<String> bats=new ArrayList<>(Arrays.asList("Cualquier batería","≤ 50 kWh","50–70 kWh","70–90 kWh","> 90 kWh")); setAdapter(batterySpinner,bats);
     }
-    private void setAdapter(Spinner s,List<String> data){ArrayAdapter<String>a=new ArrayAdapter<String>(host,android.R.layout.simple_spinner_item,data){@Override public View getView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getView(p,v,g);t.setText(LanguageManager.t(SimilarCarsActivity.host,t.getText().toString()));t.setTextColor(text());t.setTextSize(12);t.setPadding(dp(8),0,dp(4),0);return t;}@Override public View getDropDownView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getDropDownView(p,v,g);t.setText(LanguageManager.t(SimilarCarsActivity.host,t.getText().toString()));t.setTextColor(Color.DKGRAY);t.setTextSize(13);return t;}};a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);s.setAdapter(a);}
+    private void setAdapter(Spinner s,List<String> data){ArrayAdapter<String>a=new ArrayAdapter<String>(host,android.R.layout.simple_spinner_item,data){@Override public View getView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getView(p,v,g);t.setText(LanguageManager.t(host,t.getText().toString()));t.setTextColor(text());t.setTextSize(12);t.setPadding(dp(8),0,dp(4),0);return t;}@Override public View getDropDownView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getDropDownView(p,v,g);t.setText(LanguageManager.t(host,t.getText().toString()));t.setTextColor(Color.DKGRAY);t.setTextSize(13);return t;}};a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);s.setAdapter(a);}
 
     private void showVehiclePicker(TextView picker){
         final EditText input=new EditText(host);
@@ -778,7 +778,7 @@ public class SimilarCarsScreen extends FrameLayout {
             @Override public Object getItem(int position){return found.get(position);}
             @Override public long getItemId(int position){return position;}
             @Override public View getView(int position,View convertView,android.view.ViewGroup parent){
-                TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(SimilarCarsActivity.host);
+                TextView item=convertView instanceof TextView?(TextView)convertView:new TextView(host);
                 item.setLayoutParams(new android.widget.AbsListView.LayoutParams(-1,dp(60)));
                 item.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
                 item.setPadding(dp(16),dp(6),dp(42),dp(6));
@@ -1733,7 +1733,7 @@ public class SimilarCarsScreen extends FrameLayout {
         host.startActivity(i);
     }
 
-    static class Scored{Vehicle v;double competitionScore;double technicalScore;Scored(Vehicle v,double competitionScore,double technicalScore){host.v=v;host.competitionScore=competitionScore;host.technicalScore=technicalScore;}}
+    static class Scored{Vehicle v;double competitionScore;double technicalScore;Scored(Vehicle v,double competitionScore,double technicalScore){this.v=v;this.competitionScore=competitionScore;this.technicalScore=technicalScore;}}
     static class Vehicle{
         String id,make,model,version,batteryType,drivetrain,market,bodyStyle,segment;int year;boolean remoteSource;
         double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
