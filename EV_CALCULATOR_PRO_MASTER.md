@@ -2771,3 +2771,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Se mantiene además la llamada explícita `overridePendingTransition(0, 0)` como respaldo.
 - El cambio solo afecta a Configuración y Apoyar; no altera enlaces externos, navegación de pestañas ni el resto de pantallas.
 - Compilar Debug y probar en dispositivo las entradas y salidas de ambas pantallas antes de considerar resuelto. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Navegación desde Configuración / Apoyar hacia pestañas principales
+
+- El usuario confirma que entrar desde Cargar a Configuración ya no anima, pero al pulsar otra pestaña principal desde Configuración vuelve a aparecer el desplazamiento derecha-izquierda.
+- Causa identificada en `BottomNavigationHelper`: sin `DestinationListener`, Coste, Buscar y Comparar todavía lanzaban Activities legacy. Solo Cargar regresaba al host persistente.
+- Corregido: los cuatro destinos principales desde cualquier pantalla secundaria abren `PersistentMainActivity` con `open_primary_tab`, `FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_SINGLE_TOP` y `overridePendingTransition(0, 0)`. El host procesa `onNewIntent()` y selecciona la pestaña sin lanzar una Activity legacy.
+- Aplica a Configuración y Apoyar. Compilar y probar antes de darlo por resuelto. No integrar en `main` ni publicar.

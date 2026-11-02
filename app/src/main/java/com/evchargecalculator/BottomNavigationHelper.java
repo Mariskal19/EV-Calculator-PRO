@@ -49,9 +49,7 @@ public final class BottomNavigationHelper {
         if (listener != null) {
           listener.onDestinationSelected(0);
         } else {
-          Intent i = new Intent(activity, PersistentMainActivity.class);
-          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          activity.startActivity(i);
+          openPrimaryTab(activity, 0);
         }
       }
     });
@@ -60,9 +58,7 @@ public final class BottomNavigationHelper {
         if (listener != null) {
           listener.onDestinationSelected(1);
         } else {
-          Intent i = new Intent(activity, ElectricVsCombustionActivity.class);
-          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          activity.startActivity(i);
+          openPrimaryTab(activity, 1);
         }
       }
     });
@@ -71,9 +67,7 @@ public final class BottomNavigationHelper {
         if (listener != null) {
           listener.onDestinationSelected(2);
         } else {
-          Intent i = new Intent(activity, SimilarCarsActivity.class);
-          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          activity.startActivity(i);
+          openPrimaryTab(activity, 2);
         }
       }
     });
@@ -82,9 +76,7 @@ public final class BottomNavigationHelper {
         if (listener != null) {
           listener.onDestinationSelected(3);
         } else {
-          Intent i = new Intent(activity, CompararCochesActivity.class);
-          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          activity.startActivity(i);
+          openPrimaryTab(activity, 3);
         }
       }
     });
@@ -104,6 +96,16 @@ public final class BottomNavigationHelper {
         }));
 
     return bar;
+  }
+
+
+  /** Return from secondary screens to the persistent primary-tab host. */
+  private static void openPrimaryTab(Activity activity, int destination) {
+    Intent intent = new Intent(activity, PersistentMainActivity.class);
+    intent.putExtra("open_primary_tab", destination);
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    activity.startActivity(intent);
+    activity.overridePendingTransition(0, 0);
   }
 
   private static void addItem(
