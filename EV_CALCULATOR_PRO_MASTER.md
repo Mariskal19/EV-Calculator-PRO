@@ -2562,12 +2562,10 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 
 
 ### Ajuste de navegación inferior — 2 de noviembre de 2026
-- Se establece el índice `3` para `ConfigurationActivity` y `SupportProjectActivity`, de modo que «Comparar» quede resaltado en la barra inferior.
-- Pendiente de compilación y prueba en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
-- Sin cambios en el catálogo ni en la lógica de las pantallas.
+- Nota histórica corregida: el objetivo era mantener resaltado «Más» al abrir Configuración o Apoyar el proyecto desde el menú «Más». La primera modificación que puso el índice en `3` era incorrecta y se revirtió.
 
 
 ### Corrección de selección de «Más» — 2 de noviembre de 2026
-- Corrección: `ConfigurationActivity` y `SupportProjectActivity` devuelven el índice `4`, para resaltar «Más» en la barra inferior en vez de «Comparar».
-- Pendiente de compilación y prueba en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
-- Sin cambios en catálogo ni funciones de las pantallas.
+- `ConfigurationActivity` y `SupportProjectActivity` devuelven el índice `4`, por lo que «Más» queda resaltado en vez de «Comparar» al abrir estas pantallas desde ese menú.
+- **Validado manualmente por el usuario** en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- Sin cambios en el catálogo ni en las funciones de las pantallas.
