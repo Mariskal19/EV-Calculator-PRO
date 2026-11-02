@@ -2792,7 +2792,7 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Rama: `feature/bottom-navigation-fixed`. `main` y Google Play permanecen intactos.
 
 
-## 2026-11-02 — Historial real de navegación para Atrás (pendiente de compilación y prueba)
+## 2026-11-02 — Historial real de navegación para Atrás (integrado en main y probado)
 
 - Se corrige el planteamiento anterior: Atrás no debe forzar el regreso a Cargar; debe volver a la pestaña primaria visitada inmediatamente antes.
 - `MainActivity` mantiene una pila LIFO de pestañas primarias. Cada cambio efectivo de pestaña añade la anterior; Atrás recupera y muestra la última pestaña visitada, sin volver a añadirla a la pila.
