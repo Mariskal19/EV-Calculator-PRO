@@ -2753,3 +2753,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Se desactiva la animación (`overridePendingTransition(0, 0)`) al lanzar la ficha desde `SimilarCarsScreen` y `CompararCochesScreen`, y al finalizar `CarDetailActivity`, incluyendo el botón Atrás del sistema.
 - Esto no convierte aún la ficha en una pantalla dentro del host; elimina únicamente la transición horizontal de entrada/salida y mantiene el comportamiento de retorno.
 - Pendiente: compilar Debug y probar en dispositivo antes de aceptar el cambio. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Transiciones de Configuración y Apoyar
+
+- Se elimina la animación horizontal estándar al abrir Configuración y Apoyar desde el menú Más.
+- Ambas Activities desactivan también la transición al cerrarse, tanto con Atrás del sistema como con sus acciones de salida.
+- Workflow Debug actualizado para compilar cambios de `AppMenuHelper`.
+- Pendiente de compilación y prueba en dispositivo. No integrar en `main` ni publicar.
