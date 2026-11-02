@@ -30,7 +30,14 @@ public class MainActivity extends BaseNavigationActivity {
     if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
     selectedPrimaryTab = destination;
     if (destination == 0) {
-      if (mainContent != null) setContentView(mainContent);
+      if (mainContent != null) {
+        setContentView(mainContent);
+        loadPreferences();
+        applyTheme();
+        applyCurrency();
+        calculate();
+        EdgeToEdgeHelper.apply(this, dark);
+      }
     } else if (destination == 1) {
       if (costScreen == null) costScreen = new ElectricVsCombustionScreen(this);
       setContentView(costScreen);
