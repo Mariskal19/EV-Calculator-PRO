@@ -13,6 +13,8 @@ import android.text.method.*;
 import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
+import android.window.OnBackInvokedCallback;
+import android.window.OnBackInvokedDispatcher;
 import java.util.*;
 
 public class MainActivity extends BaseNavigationActivity {
@@ -21,6 +23,7 @@ public class MainActivity extends BaseNavigationActivity {
   private ElectricVsCombustionScreen costScreen;
   private SimilarCarsScreen similarCarsScreen;
   private CompararCochesScreen compareScreen;
+  private OnBackInvokedCallback systemBackCallback;
 
   @Override protected int getBottomNavigationIndex() { return selectedPrimaryTab; }
   @Override protected boolean handlesBottomNavigationInternally() { return true; }
@@ -68,7 +71,7 @@ public class MainActivity extends BaseNavigationActivity {
   int blue=Color.rgb(16,144,230), blueLight=Color.rgb(41,179,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), borderLight=Color.rgb(217,228,241), darkBg=Color.rgb(7,19,28), statusOk=Color.rgb(29,142,121), statusWarn=Color.rgb(227,93,93);
   private static final String KEY_DARK_THEME="dark_theme", KEY_CURRENCY="app_currency";
 
-  @Override public void onCreate(Bundle b){super.onCreate(b); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR");}
+  @Override public void onCreate(Bundle b){super.onCreate(b); registerSystemBackCallback(); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR");}
   @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
   @Override
   protected void onNewIntent(Intent intent) {
@@ -83,13 +86,38 @@ public class MainActivity extends BaseNavigationActivity {
 
   @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else if(selectedPrimaryTab==3&&compareScreen!=null)compareScreen.onHostPause();else savePreferences();super.onPause();}
 
+  /**
+   * Android 13+ routes the system Back gesture through OnBackInvokedDispatcher.
+   * Register explicitly so tab navigation is handled before the host Activity exits.
+   */
+  private void registerSystemBackCallback() {
+    if (android.os.Build.VERSION.SDK_INT >= 33) {
+      systemBackCallback = () -> handleSystemBack();
+      getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+          OnBackInvokedDispatcher.PRIORITY_DEFAULT, systemBackCallback);
+    }
+  }
+
   @Override
-  public void onBackPressed() {
-    if (selectedPrimaryTab == 1 || selectedPrimaryTab == 2 || selectedPrimaryTab == 3) {
+  protected void onDestroy() {
+    if (android.os.Build.VERSION.SDK_INT >= 33 && systemBackCallback != null) {
+      getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(systemBackCallback);
+      systemBackCallback = null;
+    }
+    super.onDestroy();
+  }
+
+  private void handleSystemBack() {
+    if (selectedPrimaryTab != 0) {
       onBottomNavigationSelected(0);
       return;
     }
-    super.onBackPressed();
+    finish();
+  }
+
+  @Override
+  public void onBackPressed() {
+    handleSystemBack();
   }
   void savePreferences(){if(battery==null||range==null)return;prefs.edit().putString("battery",battery.getText().toString()).putString("power",power.getText().toString()).putString("price",price.getText().toString()).putString("departure",departure.getText().toString()).putString("xguard",xguard.getText().toString()).putInt("current",range.getCurrent()).putInt("target",range.getTarget()).putBoolean("xguard_enabled",xSwitch.isChecked()).apply();}
   void loadPreferences(){if(prefs==null)return;busy=true;String sb=prefs.getString("battery",null);battery.setText((sb==null||sb.equals("130"))?"80":sb);power.setText(prefs.getString("power",power.getText().toString()));price.setText(prefs.getString("price",price.getText().toString()));departure.setText(prefs.getString("departure",departure.getText().toString()));xguard.setText(prefs.getString("xguard",xguard.getText().toString()));range.setValues(prefs.getInt("current",range.getCurrent()),prefs.getInt("target",range.getTarget()));xSwitch.setChecked(prefs.getBoolean("xguard_enabled",xSwitch.isChecked()));xguard.setEnabled(xSwitch.isChecked());busy=false;}

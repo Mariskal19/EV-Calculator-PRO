@@ -2779,3 +2779,14 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Causa identificada en `BottomNavigationHelper`: sin `DestinationListener`, Coste, Buscar y Comparar todavía lanzaban Activities legacy. Solo Cargar regresaba al host persistente.
 - Corregido: los cuatro destinos principales desde cualquier pantalla secundaria abren `PersistentMainActivity` con `open_primary_tab`, `FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_SINGLE_TOP` y `overridePendingTransition(0, 0)`. El host procesa `onNewIntent()` y selecciona la pestaña sin lanzar una Activity legacy.
 - Aplica a Configuración y Apoyar. Compilar y probar antes de darlo por resuelto. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Restaurar navegación con el botón Atrás del sistema (pendiente de compilación y prueba)
+
+- Incidencia comunicada tras introducir el host persistente: al pulsar Atrás desde una pestaña distinta de Cargar, Android cerraba la app en vez de regresar a Cargar.
+- Causa técnica identificada: la navegación por pestañas ya se gestiona dentro de `PersistentMainActivity`, pero en Android 13+ (incluido Android 16) el gesto/botón Atrás se entrega mediante `OnBackInvokedDispatcher`. El override heredado `onBackPressed()` no garantiza interceptar ese flujo moderno.
+- Se registra un `OnBackInvokedCallback` explícito en `MainActivity` para Android 13+: si la pestaña activa es Coste, Buscar o Comparar, Atrás vuelve a Cargar sin cerrar la Activity; desde Cargar, Atrás mantiene la salida normal de la app. Se conserva `onBackPressed()` como compatibilidad para versiones anteriores.
+- El callback se desregistra en `onDestroy()` para evitar mantener referencias al destruir la Activity.
+- No se modifica el comportamiento de la ficha del coche ni el catálogo protegido.
+- Commit de implementación: pendiente. Compilación y prueba manual pendientes; no instalar hasta verificar build correcto.
+- Rama: `feature/bottom-navigation-fixed`. `main` y Google Play permanecen intactos.
