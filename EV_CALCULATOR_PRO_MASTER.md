@@ -1,3 +1,15 @@
+## 2026-11-02 — Ajuste de inset superior en «Comparar coches» (pendiente de compilación y prueba)
+
+- En `CompararCochesActivity.java` se activa `EdgeToEdgeHelper.apply(this, dark, true)` en los tres puntos donde se reaplica edge-to-edge: creación inicial, reconstrucción por cambios de idioma/tema/moneda y reconstrucción de la vista.
+- El encabezado con imagen y título queda protegido frente a la barra de estado y el recorte superior, siguiendo el patrón ya validado en Android 10 y Android 16.
+- El buscador de vehículos se abre en un `AlertDialog` independiente. Su ventana ya configura `SOFT_INPUT_ADJUST_RESIZE` y muestra el teclado desde el propio diálogo; no se añade padding IME a la pantalla principal ni se altera ese comportamiento.
+- Sin cambios en búsqueda, selección, tabla comparativa, datos, cálculos ni catálogo protegido.
+- Commit: `1f572a2b9910adafa81d704b3b235fe5f41aaae8`.
+- **Estado:** pendiente de compilación y prueba manual en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16): título del encabezado completo y buscador/teclado del diálogo sin franjas ni recortes.
+- Cambios realizados directamente en `main`. No se ha iniciado publicación en Google Play.
+
+---
+
 ## 2026-11-02 — Ajustes de insets en «Buscar coches» (pendiente de compilación y prueba)
 
 - En `SimilarCarsActivity.java` se aplica `EdgeToEdgeHelper.apply(this, dark, true)` para respetar el inset superior en el encabezado y evitar que el título de la imagen quede bajo la barra de estado.
