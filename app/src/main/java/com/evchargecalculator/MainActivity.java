@@ -16,7 +16,35 @@ import android.widget.*;
 import java.util.*;
 
 public class MainActivity extends BaseNavigationActivity {
-  @Override protected int getBottomNavigationIndex() { return 0; }
+  private int selectedPrimaryTab = 0;
+  private View mainContent;
+  private ElectricVsCombustionScreen costScreen;
+
+  @Override protected int getBottomNavigationIndex() { return selectedPrimaryTab; }
+  @Override protected boolean handlesBottomNavigationInternally() { return true; }
+
+  @Override
+  protected void onBottomNavigationSelected(int destination) {
+    if (destination == selectedPrimaryTab) return;
+    if (selectedPrimaryTab == 0) savePreferences();
+    if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
+    selectedPrimaryTab = destination;
+    if (destination == 0) {
+      if (mainContent != null) setContentView(mainContent);
+    } else if (destination == 1) {
+      if (costScreen == null) costScreen = new ElectricVsCombustionScreen(this);
+      setContentView(costScreen);
+      costScreen.onHostDisplayed();
+      costScreen.onHostResume();
+    } else {
+      // The other tabs are migrated in subsequent steps; retain their legacy Activities for now.
+      selectedPrimaryTab = 0;
+      Intent intent = destination == 2
+          ? new Intent(this, SimilarCarsActivity.class)
+          : new Intent(this, CompararCochesActivity.class);
+      startActivity(intent);
+    }
+  }
   ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText activeEdit;
   EditText battery, power, price, departure, xguard; SeekBar batS; BatteryRangeView range; Switch xSwitch;
   TextView timeR, energyR, costR, statusR, statusTimeR, statusIcon, themeButton, rangeSummary, chargeAmount, lossInfo, priceUnit, headerTitle;
@@ -25,15 +53,15 @@ public class MainActivity extends BaseNavigationActivity {
   private static final String KEY_DARK_THEME="dark_theme", KEY_CURRENCY="app_currency";
 
   @Override public void onCreate(Bundle b){super.onCreate(b); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR");}
-  @Override protected void onResume(){super.onResume(); if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
-  @Override protected void onPause(){super.onPause();savePreferences();}
+  @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
+  @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else savePreferences();super.onPause();}
   void savePreferences(){if(battery==null||range==null)return;prefs.edit().putString("battery",battery.getText().toString()).putString("power",power.getText().toString()).putString("price",price.getText().toString()).putString("departure",departure.getText().toString()).putString("xguard",xguard.getText().toString()).putInt("current",range.getCurrent()).putInt("target",range.getTarget()).putBoolean("xguard_enabled",xSwitch.isChecked()).apply();}
   void loadPreferences(){if(prefs==null)return;busy=true;String sb=prefs.getString("battery",null);battery.setText((sb==null||sb.equals("130"))?"80":sb);power.setText(prefs.getString("power",power.getText().toString()));price.setText(prefs.getString("price",price.getText().toString()));departure.setText(prefs.getString("departure",departure.getText().toString()));xguard.setText(prefs.getString("xguard",xguard.getText().toString()));range.setValues(prefs.getInt("current",range.getCurrent()),prefs.getInt("target",range.getTarget()));xSwitch.setChecked(prefs.getBoolean("xguard_enabled",xSwitch.isChecked()));xguard.setEnabled(xSwitch.isChecked());busy=false;}
   int text(){return dark?Color.rgb(245,248,255):white;} int sub(){return dark?Color.rgb(170,183,204):secondary;}
   String currencySymbol(){String c=prefs.getString(KEY_CURRENCY,"EUR");if("USD".equals(c))return "$";if("GBP".equals(c))return "£";if("CHF".equals(c))return "CHF";if("CAD".equals(c))return "CA$";if("AUD".equals(c))return "A$";return "€";}
   void applyCurrency(){if(priceUnit!=null)priceUnit.setText(currencySymbol()+"/kWh");}
 
-  void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));setContentView(frame);
+  void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));mainContent=frame;setContentView(frame);
     // BaseNavigationActivity already reserves scroll range for the fixed bottom bar.
     // With adjustResize, Android resizes this ScrollView when the keyboard opens;
     // adding the full IME inset as padding as well creates a visible background
