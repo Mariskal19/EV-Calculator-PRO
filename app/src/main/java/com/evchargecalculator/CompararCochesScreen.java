@@ -92,41 +92,12 @@ public class CompararCochesScreen extends FrameLayout {
         return created;
     }
 
-    @Override
-    protected void onCreate(Bundle b) {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        super.onCreate(b);
-        if (getActionBar() != null) getActionBar().hide();
-        LanguageManager.applyStored(host);
-        try {
-            SharedPreferences p = host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE);
-            lastLanguage = LanguageManager.getSelectedLanguage(host);
-            lastCurrency = p.getString(KEY_CURRENCY, "EUR");
-            dark = p.contains("dark_theme")
-                    ? p.getBoolean("dark_theme", false)
-                    : (host.getResources().getConfiguration().uiMode & 0x30) == 0x20;
-            selectedMarket = p.getString(KEY_MARKET, "ES");
-            build();
-            EdgeToEdgeHelper.apply(host, dark, true);
-            loadVehicles();
-            if (!hasMarket(selectedMarket)) selectedMarket = defaultMarket();
-            loadSelection();
-            rebuild();
-        } catch (Throwable t) {
-            TextView e = tv("Error al abrir Comparar coches\n\n" + t.getClass().getSimpleName(), 16, Color.WHITE);
-            e.setGravity(Gravity.CENTER);
-            e.setPadding(dp(24), dp(24), dp(24), dp(24));
-            e.setBackgroundColor(Color.rgb(8, 34, 58));
-            removeAllViews(); addView(e, new FrameLayout.LayoutParams(-1, -1));
-        }
-    }
-
     public CompararCochesScreen(Activity host) {
         super(host);
         this.host = host;
         LanguageManager.applyStored(host);
         try {
-            SharedPreferences p = host.getSharedPreferences(PREFS, Activity.Activity.MODE_PRIVATE);
+            SharedPreferences p = host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE);
             lastLanguage = LanguageManager.getSelectedLanguage(host);
             lastCurrency = p.getString(KEY_CURRENCY, "EUR");
             dark = p.contains("dark_theme")
