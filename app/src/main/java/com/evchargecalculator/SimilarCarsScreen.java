@@ -82,6 +82,18 @@ public class SimilarCarsScreen extends FrameLayout {
         restoreLastSearch();
     }
 
+    public void onHostPause() {
+        advisorSearchHandler.removeCallbacks(pendingAdvisorSearch);
+        if (advisorInput != null) {
+            InputMethodManager imm = (InputMethodManager) host.getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) imm.hideSoftInputFromWindow(advisorInput.getWindowToken(), 0);
+        }
+    }
+
+    public void onHostResume() {
+        // The view and its search state remain attached to this host between tabs.
+    }
+
     private static class SimilarHeaderBitmapView extends View {
         private final android.graphics.Bitmap bitmap;
         private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
