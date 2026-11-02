@@ -1,3 +1,12 @@
+## 2026-11-02 — «Apoyar el proyecto» validada en Android 10 y Android 16
+
+- El usuario confirma que la pantalla funciona correctamente en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- Se da por validado el ajuste de inset superior en `SupportProjectActivity.java`.
+- No se modificaron enlaces de pago, textos ni navegación.
+- Commit de código: `033fd6c7759e72f62b7a32e9f0c84ac57a14470e`.
+
+---
+
 ## 2026-11-02 — «Ficha del coche» validada en Android 10 y Android 16
 
 - El usuario confirma que la ficha del coche se muestra y funciona correctamente en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
