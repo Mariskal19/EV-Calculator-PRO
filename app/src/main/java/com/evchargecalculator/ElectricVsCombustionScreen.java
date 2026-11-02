@@ -380,7 +380,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     rh.setTypeface(null, 1);
     results.addView(rh);
     space(results, 14);
-    LinearLayout labelsRow = new LinearLayout(this);
+    LinearLayout labelsRow = new LinearLayout(host);
     labelsRow.setGravity(Gravity.CENTER);
     labelsRow.setWeightSum(2);
     TextView evLabel = tv("⚡  Eléctrico", 14, sub());
@@ -503,7 +503,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
             + money(Math.abs(diff)));
     savingPercent.setText(
         diff >= 0
-            ? one(pct) + " % " + LanguageManager.t(this, "de ahorro")
+            ? one(pct) + " % " + LanguageManager.t(host, "de ahorro")
             : LanguageManager.t(this, "El eléctrico cuesta")
                 + " "
                 + one(Math.abs(pct))
