@@ -2725,3 +2725,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Workflow Debug de esta integración: [run 41533228584](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41533228584), en curso al documentar esta nota. No pedir todavía instalar APK.
 - **Pendiente:** comprobar compilación; después validar en el dispositivo búsqueda de referencia, consultas del Asesor IA, apertura de ficha y estado al cambiar de pestaña. «Comparar» continúa en Activity independiente y será la siguiente migración.
 - Rama `feature/bottom-navigation-fixed`; no se modifica `main`, no se modifica el catálogo protegido de 682 vehículos y no se publica en Google Play.
+
+
+### 2026-11-02 — Extracción e integración de «Comparar» en el host único
+- Se ha creado `CompararCochesScreen` como View reutilizable basada en `FrameLayout`. Mantiene el selector de mercado, catálogo, selección ordenada, tabla comparativa, resumen, cachés y apertura de fichas.
+- `MainActivity` incorpora la cuarta pestaña al mismo contenedor persistente. Al cambiar a Comparar se instancia la pantalla una sola vez y se conserva para los siguientes cambios de pestaña.
+- «Buscar» ahora deriva las acciones «Añadir a comparativa» al host para seleccionar la pestaña Comparar, sin lanzar una Activity nueva.
+- Se adapta el retorno desde Ficha del coche: al pulsar «Añadir a comparativa», la ficha devuelve el control a `PersistentMainActivity` y solicita abrir la pestaña 3 mediante un extra gestionado por `MainActivity.onNewIntent()`. El flujo de apertura de ficha desde Comparar conserva el host debajo y vuelve a la pantalla al cerrar la ficha.
+- Commits: `0bd28a87fa060cb8852fce4a068af2b29fe2faa9` (extracción), `8dbe7a486a4b835c76557ea7904d5df8c0edb56f` (integración de Comparar y navegación desde Buscar), `37adc43d2ddcbede9ac46f2ca643b3f7eec8e0c4` (retorno desde Ficha), `e3803535a56eade69b8b0d4b7e788384955b0b7c` (delegación de lifecycle y archivos al host).
+- La extracción de Buscar, sin Comparar todavía, compiló correctamente en Debug: run `41533505254`, commit `fe70c21ebd02950c357f50016eedddbd32af378d`.
+- La compilación con Comparar integrado está en curso: [run 41534521101](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41534521101). Dos fallos de compilación de la primera pasada (métodos de Activity no delegados al host) se han corregido antes de esta ejecución.
+- **No instalar todavía:** falta confirmar que el APK Debug final compila y se verifica. Después habrá que probar en el móvil las cuatro pestañas, la búsqueda IA, la selección de vehículos, la tabla, apertura/retorno de Ficha, «Añadir a comparativa», Back, teclado y conservación de estado.
+- Toda la migración sigue aislada en `feature/bottom-navigation-fixed`; no se modifica `main`, el catálogo protegido de 682 vehículos ni Google Play. El workflow genera solo APK Debug.
