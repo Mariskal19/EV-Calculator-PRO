@@ -17,7 +17,23 @@ import android.widget.TextView;
 public final class BottomNavigationHelper {
   private BottomNavigationHelper() {}
 
+  /** Receives primary-tab selections when the bar is hosted by a single Activity. */
+  public interface DestinationListener {
+    void onDestinationSelected(int destination);
+  }
+
+  /** Backwards-compatible entry point for the current Activity-per-screen navigation. */
   public static View create(Activity activity, boolean dark, int selected) {
+    return create(activity, dark, selected, null);
+  }
+
+  /**
+   * Builds the shared bar. When a listener is supplied, tab taps are delegated
+   * to the host instead of launching another Activity. This is the seam used
+   * by the future single-Activity container; the legacy path remains unchanged.
+   */
+  public static View create(
+      Activity activity, boolean dark, int selected, DestinationListener listener) {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
@@ -30,30 +46,46 @@ public final class BottomNavigationHelper {
     bar.setElevation(0);
     addItem(activity, bar, R.drawable.ic_nav_charge, "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
-        Intent i = new Intent(activity, PersistentMainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(0);
+        } else {
+          Intent i = new Intent(activity, PersistentMainActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          activity.startActivity(i);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_cost, "Coste", 1, selected, dark, v -> {
       if (selected != 1) {
-        Intent i = new Intent(activity, ElectricVsCombustionActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(1);
+        } else {
+          Intent i = new Intent(activity, ElectricVsCombustionActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          activity.startActivity(i);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_car_modern, "Buscar", 2, selected, dark, v -> {
       if (selected != 2) {
-        Intent i = new Intent(activity, SimilarCarsActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(2);
+        } else {
+          Intent i = new Intent(activity, SimilarCarsActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          activity.startActivity(i);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_compare, "Comparar", 3, selected, dark, v -> {
       if (selected != 3) {
-        Intent i = new Intent(activity, CompararCochesActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(3);
+        } else {
+          Intent i = new Intent(activity, CompararCochesActivity.class);
+          i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          activity.startActivity(i);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_more, "Más", 4, selected, dark, v ->
