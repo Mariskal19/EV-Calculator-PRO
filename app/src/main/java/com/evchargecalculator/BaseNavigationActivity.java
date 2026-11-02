@@ -22,6 +22,12 @@ public abstract class BaseNavigationActivity extends Activity {
   /** 0 = Cargar, 1 = Coste, 2 = Buscar coches, 3 = Comparar, 4 = Más. */
   protected abstract int getBottomNavigationIndex();
 
+  /** Whether primary-tab taps should be handled inside this Activity. */
+  protected boolean handlesBottomNavigationInternally() { return false; }
+
+  /** Called when the single-Activity host receives a primary-tab selection. */
+  protected void onBottomNavigationSelected(int destination) { }
+
   @Override
   protected void onResume() {
     super.onResume();
@@ -66,7 +72,11 @@ public abstract class BaseNavigationActivity extends Activity {
     host.addView(view, contentParams);
 
     View bottomNavigation =
-        BottomNavigationHelper.create(this, dark, getBottomNavigationIndex());
+        BottomNavigationHelper.create(
+            this, dark, getBottomNavigationIndex(),
+            handlesBottomNavigationInternally()
+                ? destination -> onBottomNavigationSelected(destination)
+                : null);
     FrameLayout.LayoutParams navParams =
         new FrameLayout.LayoutParams(-1, dp(64), android.view.Gravity.BOTTOM);
     host.addView(bottomNavigation, navParams);
