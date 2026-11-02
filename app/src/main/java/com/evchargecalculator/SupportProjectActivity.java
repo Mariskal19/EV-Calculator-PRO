@@ -139,7 +139,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
 
     setContentView(frame);
-    EdgeToEdgeHelper.apply(this, dark());
+    EdgeToEdgeHelper.apply(this, dark(), true);
 
     TextView title = label(
         "☕  " + tr(
