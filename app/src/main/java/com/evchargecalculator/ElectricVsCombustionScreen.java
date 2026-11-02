@@ -392,7 +392,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     fuLabel.setSingleLine(true);
     labelsRow.addView(fuLabel, new LinearLayout.LayoutParams(0, dp(28), 1));
     results.addView(labelsRow);
-    LinearLayout valuesRow = new LinearLayout(this);
+    LinearLayout valuesRow = new LinearLayout(host);
     valuesRow.setGravity(Gravity.CENTER);
     valuesRow.setWeightSum(2);
     evCost = resultValue("0,00 " + currencySymbol());
@@ -409,7 +409,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     savingPercent.setGravity(Gravity.CENTER);
     results.addView(savingPercent);
     space(results, 14);
-    LinearLayout perLabels = new LinearLayout(this);
+    LinearLayout perLabels = new LinearLayout(host);
     perLabels.setGravity(Gravity.CENTER);
     perLabels.setWeightSum(2);
     TextView evPerLabel = tv("Eléctrico", 12, sub());
@@ -423,7 +423,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     fuelPerLabel.setIncludeFontPadding(false);
     perLabels.addView(fuelPerLabel, new LinearLayout.LayoutParams(0, dp(24), 1));
     results.addView(perLabels);
-    LinearLayout perValues = new LinearLayout(this);
+    LinearLayout perValues = new LinearLayout(host);
     perValues.setGravity(Gravity.CENTER);
     perValues.setWeightSum(2);
     evPer100 = resultValue("0,00 " + currencySymbol() + "/100 km");
@@ -504,11 +504,11 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     savingPercent.setText(
         diff >= 0
             ? one(pct) + " % " + LanguageManager.t(host, "de ahorro")
-            : LanguageManager.t(this, "El eléctrico cuesta")
+            : LanguageManager.t(host, "El eléctrico cuesta")
                 + " "
                 + one(Math.abs(pct))
                 + " % "
-                + LanguageManager.t(this, "más"));
+                + LanguageManager.t(host, "más"));
     evPer100.setText(money(evC * elec) + "/100 km");
     fuelPer100.setText(money(fuelC * fuelP) + "/100 km");
   }
