@@ -1,6 +1,7 @@
 package com.evchargecalculator;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -28,12 +29,15 @@ public final class BottomNavigationHelper {
     // color so the bottom of the screen reads as one continuous navigation bar.
     bar.setBackgroundColor(dark ? Color.rgb(16, 28, 42) : Color.rgb(242, 246, 252));
     bar.setElevation(0);
+    // Shared-element identity keeps the navigation surface visually anchored
+    // while Android replaces the section Activity.
+    bar.setTransitionName("ev_bottom_navigation");
 
     addItem(activity, bar, R.drawable.ic_nav_charge, "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
         Intent i = new Intent(activity, PersistentMainActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        startSection(activity, bar, i);
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_cost, "Coste", 1, selected, dark, v -> {
@@ -73,6 +77,12 @@ public final class BottomNavigationHelper {
         }));
 
     return bar;
+  }
+
+  private static void startSection(Activity activity, View navigationBar, Intent intent) {
+    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(
+        activity, navigationBar, "ev_bottom_navigation");
+    activity.startActivity(intent, options.toBundle());
   }
 
   private static void addItem(
