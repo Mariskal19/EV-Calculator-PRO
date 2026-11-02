@@ -70,9 +70,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
       KEY_DARK_THEME = "dark_theme",
       KEY_CURRENCY = "app_currency";
 
-  @Override
-  public void onCreate(Bundle b) {
-    super.onCreate(b);
+  private void initialize() {
     prefs = host.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     dark =
         prefs.contains(KEY_DARK_THEME)
@@ -276,7 +274,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     frame.addView(background, new FrameLayout.LayoutParams(-1, -1));
     scroll = new ScrollView(host); scroll.setVerticalScrollBarEnabled(false);
     scroll.setFillViewport(true);
-    LinearLayout root = new LinearLayout(this);
+    LinearLayout root = new LinearLayout(host);
     root.setOrientation(LinearLayout.VERTICAL);
     root.setPadding(0, 0, 0, dp(24));
     scroll.addView(root);
@@ -500,7 +498,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     saving.setText(
         (diff >= 0
                 ? LanguageManager.t(host, "Ahorro con el eléctrico:")
-                : LanguageManager.t(this, "Diferencia:"))
+                : LanguageManager.t(host, "Diferencia:"))
             + " "
             + money(Math.abs(diff)));
     savingPercent.setText(
