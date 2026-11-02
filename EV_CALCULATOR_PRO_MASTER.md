@@ -1,3 +1,12 @@
+## 2026-11-02 — «Ficha del coche» validada en Android 10 y Android 16
+
+- El usuario confirma que la ficha del coche se muestra y funciona correctamente en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- Se da por validado el ajuste de inset superior en `CarDetailActivity.java`.
+- Sin cambios en los datos del vehículo, la comparativa ni el catálogo.
+- Commit de código: `c7c767b5fc3e4116837177b21c52e5fb25ae6a61`.
+
+---
+
 ## 2026-11-02 — Ajuste de inset superior en «Ficha del coche» (pendiente de compilación y prueba)
 
 - En `CarDetailActivity.java` se cambia a `EdgeToEdgeHelper.apply(this, dark, true)` para aplicar el inset superior al `ScrollView` y evitar que el enlace «Volver a coches» y el título del vehículo queden bajo la barra de estado.
