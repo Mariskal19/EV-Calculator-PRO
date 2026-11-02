@@ -1,3 +1,15 @@
+## 2026-11-02 — Ajustes de insets en «Buscar coches» (pendiente de compilación y prueba)
+
+- En `SimilarCarsActivity.java` se aplica `EdgeToEdgeHelper.apply(this, dark, true)` para respetar el inset superior en el encabezado y evitar que el título de la imagen quede bajo la barra de estado.
+- Se añade un listener al `ScrollView` que, cuando aparece el teclado, solicita que el campo «Buscar con IA» quede visible. No se añade padding inferior IME, porque `adjustResize` ya reduce el área disponible y sumar ambos espacios podría crear una franja sobre el teclado.
+- En `AndroidManifest.xml` se configura `android:windowSoftInputMode="adjustResize"` para `SimilarCarsActivity`.
+- Sin cambios en el motor del Asesor IA, criterios, catálogo, resultados ni temporizador de búsqueda.
+- Commits de implementación: `06fe7421f74c4339467aa8bbd48260431b591d94` y `791c2a90e3dc10e352ebcbfb938f3d86400fb6c8`.
+- **Estado:** pendiente de compilación debug y prueba manual en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16): encabezado completo y teclado sin franja, con el campo de búsqueda visible al escribir.
+- Cambios realizados directamente en `main`. No se ha iniciado publicación en Google Play; catálogo protegido intacto.
+
+---
+
 ## 2026-11-02 — Correcciones de insets en «Eléctrico vs combustión» (validadas)
 
 - Se aplica a `ElectricVsCombustionActivity.java` el mismo enfoque validado previamente en Configuración y Cargar:
