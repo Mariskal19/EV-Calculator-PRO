@@ -1,3 +1,12 @@
+### Seguimiento tras primera prueba en dispositivo
+
+- El usuario instaló el primer APK y observó que la barra seguía moviéndose.
+- Revisión del helper detectó que la transición compartida se había aplicado inicialmente solo al acceso a Cargar; Coste, Buscar y Comparar seguían usando `startActivity()` directo.
+- Corregido en `BottomNavigationHelper.java`: los cuatro destinos principales pasan ahora por `startSection(activity, bar, intent)`, compartiendo la transición con el mismo nombre de elemento.
+- La compilación inicial del prototipo terminó correctamente (run `41518375260`). Nueva compilación tras aplicar la transición a las cuatro secciones: run `41518963990`, pendiente al documentar este seguimiento.
+- Este cambio corrige la inconsistencia del primer intento, pero sigue siendo una transición compartida entre Activities, no una barra física única. La comprobación en los dispositivos decidirá si la continuidad visual es suficiente. Si todavía se percibe movimiento, la solución real será migrar las secciones a un único host (Fragments/vistas), una refactorización de mayor alcance.
+- Sigue aislado en esta rama; `main` y el catálogo protegido no se modifican.
+
 ## 2026-11-02 — Prototipo de continuidad visual de la barra inferior (rama independiente)
 
 - Rama creada desde `main`: `feature/bottom-navigation-fixed`. No se integra ni modifica `main`.
