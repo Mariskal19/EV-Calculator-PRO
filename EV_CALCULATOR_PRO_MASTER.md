@@ -1,3 +1,11 @@
+## 2026-11-02 — «Comparar coches» validada en Android 10 y Android 16
+
+- El usuario confirma que la pantalla «Comparar coches» se ve correctamente en ambos dispositivos: Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- Se da por validado el ajuste del inset superior y el comportamiento del selector de vehículos en diálogo independiente.
+- Catálogo, selección, tabla comparativa y lógica de comparación permanecen sin cambios.
+
+---
+
 ## 2026-11-02 — Ajuste de inset superior en «Comparar coches» (pendiente de compilación y prueba)
 
 - En `CompararCochesActivity.java` se activa `EdgeToEdgeHelper.apply(this, dark, true)` en los tres puntos donde se reaplica edge-to-edge: creación inicial, reconstrucción por cambios de idioma/tema/moneda y reconstrucción de la vista.
