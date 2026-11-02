@@ -18,11 +18,11 @@ on:
       - 'app/src/main/java/com/evchargecalculator/CarDetailActivity.java'
       - 'app/src/main/java/com/evchargecalculator/ConfigurationActivity.java'
       - 'app/src/main/java/com/evchargecalculator/SupportProjectActivity.java'
-      - 'app/src/main/java/com/evchargecalculator/ConfigurationActivity.java'
-      - 'app/src/main/java/com/evchargecalculator/SupportProjectActivity.java'
       - 'app/src/main/AndroidManifest.xml'
       - 'app/build.gradle'
       - 'app/src/main/res/values/themes.xml'
+      - 'app/src/main/res/values/styles.xml'
+      - 'app/src/main/res/anim/no_transition.xml'
       - '.github/workflows/advisor-android-compile.yml'
   workflow_dispatch:
 

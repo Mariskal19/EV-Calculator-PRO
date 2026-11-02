@@ -2761,3 +2761,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Ambas Activities desactivan también la transición al cerrarse, tanto con Atrás del sistema como con sus acciones de salida.
 - Workflow Debug actualizado para compilar cambios de `AppMenuHelper`.
 - Pendiente de compilación y prueba en dispositivo. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Corrección definitiva de transición en Configuración y Apoyar (pendiente de prueba)
+
+- El usuario confirma que ambas pantallas siguen mostrando el desplazamiento horizontal pese a `overridePendingTransition(0, 0)` en el lanzamiento y en `finish()`.
+- La solución anterior se considera insuficiente y no se da por validada.
+- Se añade un tema específico `Theme.EVChargeCalculator.NoTransition` para ambas Activities, con `android:windowAnimationStyle` y animaciones de apertura/cierre de Activity y Task sustituidas por una animación alpha neutra de duración cero (`res/anim/no_transition.xml`).
+- Se mantiene además la llamada explícita `overridePendingTransition(0, 0)` como respaldo.
+- El cambio solo afecta a Configuración y Apoyar; no altera enlaces externos, navegación de pestañas ni el resto de pantallas.
+- Compilar Debug y probar en dispositivo las entradas y salidas de ambas pantallas antes de considerar resuelto. No integrar en `main` ni publicar.
