@@ -2790,3 +2790,16 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - No se modifica el comportamiento de la ficha del coche ni el catálogo protegido.
 - Commit de implementación: pendiente. Compilación y prueba manual pendientes; no instalar hasta verificar build correcto.
 - Rama: `feature/bottom-navigation-fixed`. `main` y Google Play permanecen intactos.
+
+
+## 2026-11-02 — Historial real de navegación para Atrás (pendiente de compilación y prueba)
+
+- Se corrige el planteamiento anterior: Atrás no debe forzar el regreso a Cargar; debe volver a la pestaña primaria visitada inmediatamente antes.
+- `MainActivity` mantiene una pila LIFO de pestañas primarias. Cada cambio efectivo de pestaña añade la anterior; Atrás recupera y muestra la última pestaña visitada, sin volver a añadirla a la pila.
+- Ejemplo: Cargar → Coste → Buscar → Atrás vuelve a Coste; otro Atrás vuelve a Cargar.
+- Las selecciones de pestaña realizadas desde Configuración o Apoyar llegan mediante `onNewIntent()` a `PersistentMainActivity` y usan la misma pila, de modo que se conserva la pantalla anterior al entrar en la secundaria.
+- Se guarda/restaura pestaña actual e historial en `onSaveInstanceState()` para conservar la navegación ante recreación de la Activity.
+- Desde una ficha de vehículo, el comportamiento sigue siendo el del stack de Activities Android: Atrás cierra la ficha y muestra la pantalla host de origen, que permanece montada.
+- Cuando no queda historial de pestañas, Atrás cierra la Activity normalmente.
+- Commit de implementación: `7288a8f` añadió previamente el callback Android 13+; este commit sustituye su lógica de “volver a Cargar” por historial real.
+- Catálogo protegido intacto. No se modifica `main` ni se publica en Google Play. Build y pruebas manuales pendientes.

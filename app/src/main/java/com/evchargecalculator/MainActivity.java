@@ -19,6 +19,9 @@ import java.util.*;
 
 public class MainActivity extends BaseNavigationActivity {
   private int selectedPrimaryTab = 0;
+  private static final String STATE_SELECTED_TAB = "navigation_selected_tab";
+  private static final String STATE_TAB_HISTORY = "navigation_tab_history";
+  private final ArrayDeque<Integer> navigationHistory = new ArrayDeque<>();
   private View mainContent;
   private ElectricVsCombustionScreen costScreen;
   private SimilarCarsScreen similarCarsScreen;
@@ -31,10 +34,17 @@ public class MainActivity extends BaseNavigationActivity {
   @Override
   protected void onBottomNavigationSelected(int destination) {
     if (destination == selectedPrimaryTab) return;
+    navigationHistory.addLast(selectedPrimaryTab);
+    showPrimaryTab(destination);
+  }
+
+  /** Displays a tab without changing the navigation history. */
+  private void showPrimaryTab(int destination) {
     if (selectedPrimaryTab == 0) savePreferences();
     if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
     if (selectedPrimaryTab == 2 && similarCarsScreen != null) similarCarsScreen.onHostPause();
     if (selectedPrimaryTab == 3 && compareScreen != null) compareScreen.onHostPause();
+
     selectedPrimaryTab = destination;
     if (destination == 0) {
       if (mainContent != null) {
@@ -62,6 +72,26 @@ public class MainActivity extends BaseNavigationActivity {
       EdgeToEdgeHelper.apply(this, dark, true);
     }
   }
+
+  private void navigateBackWithinTabs() {
+    if (!navigationHistory.isEmpty()) {
+      int previousTab = navigationHistory.removeLast();
+      showPrimaryTab(previousTab);
+      return;
+    }
+    finish();
+  }
+
+  @Override
+  protected void onSaveInstanceState(Bundle outState) {
+    super.onSaveInstanceState(outState);
+    outState.putInt(STATE_SELECTED_TAB, selectedPrimaryTab);
+    int[] history = new int[navigationHistory.size()];
+    int index = 0;
+    for (Integer tab : navigationHistory) history[index++] = tab;
+    outState.putIntArray(STATE_TAB_HISTORY, history);
+  }
+
   void selectPrimaryTab(int destination) { onBottomNavigationSelected(destination); }
 
   ScrollView scroll; LinearLayout root; PremiumBackgroundView background; EditText activeEdit;
@@ -71,7 +101,7 @@ public class MainActivity extends BaseNavigationActivity {
   int blue=Color.rgb(16,144,230), blueLight=Color.rgb(41,179,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), borderLight=Color.rgb(217,228,241), darkBg=Color.rgb(7,19,28), statusOk=Color.rgb(29,142,121), statusWarn=Color.rgb(227,93,93);
   private static final String KEY_DARK_THEME="dark_theme", KEY_CURRENCY="app_currency";
 
-  @Override public void onCreate(Bundle b){super.onCreate(b); registerSystemBackCallback(); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR");}
+  @Override public void onCreate(Bundle b){super.onCreate(b); registerSystemBackCallback(); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); int restoreTab=0; if(b!=null){restoreTab=b.getInt(STATE_SELECTED_TAB,0); int[] history=b.getIntArray(STATE_TAB_HISTORY); if(history!=null)for(int tab:history)if(tab>=0&&tab<=3)navigationHistory.addLast(tab);} dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR"); if(restoreTab>=1&&restoreTab<=3)showPrimaryTab(restoreTab);}
   @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
   @Override
   protected void onNewIntent(Intent intent) {
@@ -108,11 +138,7 @@ public class MainActivity extends BaseNavigationActivity {
   }
 
   private void handleSystemBack() {
-    if (selectedPrimaryTab != 0) {
-      onBottomNavigationSelected(0);
-      return;
-    }
-    finish();
+    navigateBackWithinTabs();
   }
 
   @Override
