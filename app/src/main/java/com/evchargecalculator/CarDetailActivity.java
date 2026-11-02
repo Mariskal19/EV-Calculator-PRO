@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.LinkedHashSet;
 
 public class CarDetailActivity extends BaseNavigationActivity {
-  @Override public void finish(){super.finish();overridePendingTransition(0,0);}
+  @Override public void finish(){super.finish();overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);}
  @Override protected int getBottomNavigationIndex(){return 2;}
  private boolean dark;
  private int blue=Color.rgb(46,107,255);
