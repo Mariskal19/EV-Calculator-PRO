@@ -1,3 +1,16 @@
+## 2026-11-02 — Correcciones de recortes e insets en Android 10 y Android 16
+
+- Incidencia: en las pantallas de la app se cortaba contenido por la parte superior, observado en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- **Configuración:** corregida la aplicación del inset superior directamente al `ScrollView` interno mediante `EdgeToEdgeHelper`. El usuario probó la pantalla en ambos móviles y confirmó que se ve correctamente.
+- **Cargar:** la primera corrección general del inset superior no resolvió el recorte en Android 10. Se ajustó después el listener de insets del `ScrollView` de `MainActivity` para sumar el inset de barras de sistema al padding superior sin depender del padding de la raíz. Se retiró la aplicación duplicada del inset superior desde `EdgeToEdgeHelper` en esta pantalla.
+- **Teclado en Cargar:** al editar campos como «Precio energía», aparecía una franja del fondo de la app encima del teclado. Causa probable: se sumaba el inset IME como padding inferior aunque `adjustResize` ya redimensionaba el área disponible. Se dejó de añadir ese padding IME y se conserva el padding inferior base; el inset del teclado se utiliza para activar el desplazamiento del campo enfocado.
+- **Validación manual final:** el usuario confirma que la pantalla Cargar y la edición de campos con teclado funcionan correctamente en ambos dispositivos: Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). Configuración también quedó validada en ambos.
+- Commits de la corrección en la rama `fix/android10-config-top-inset`: `63e28e4` (listener superior combinado en Cargar), `d4fe398` (evitar franja sobre teclado), además de los commits previos de la corrección de Configuración y primer ajuste de Cargar.
+- **Estado:** correcciones probadas manualmente y listas para integrar en `main`. Esta integración no implica autorización para publicar en Google Play; la publicación sigue siendo una acción separada.
+- Catálogo protegido: sin cambios.
+
+---
+
 ## 2026-11-01 — Validación manual de EV Calculator PRO 1.0.6 y preparación de notas de versión
 
 - El usuario ha instalado el APK firmado de 1.0.6 y ha completado satisfactoriamente las comprobaciones funcionales comunicadas:
