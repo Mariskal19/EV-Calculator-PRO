@@ -44,7 +44,7 @@ public final class BottomNavigationHelper {
       if (selected != 1) {
         Intent i = new Intent(activity, ElectricVsCombustionActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        startSection(activity, bar, i);
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_car_modern, "Buscar", 2, selected, dark, v -> {
