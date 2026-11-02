@@ -2601,3 +2601,24 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - `ConfigurationActivity` y `SupportProjectActivity` devuelven el índice `4`, por lo que «Más» queda resaltado en vez de «Comparar» al abrir estas pantallas desde ese menú.
 - **Validado manualmente por el usuario** en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
 - Sin cambios en el catálogo ni en las funciones de las pantallas.
+
+
+## 2026-11-02 — Auditoría para migrar la navegación inferior a una Activity única
+
+- Objetivo aprobado por el usuario: barra inferior física y persistente, con sustitución del contenido central al cambiar entre Cargar, Coste, Buscar y Comparar. No se acepta como solución una mera transición sin animación entre Activities.
+- Rama de trabajo exclusiva: `feature/bottom-navigation-fixed`. No integrar en `main`, no publicar en Google Play y no alterar el catálogo protegido.
+- La compilación de saneamiento tras revertir el experimento de transiciones terminó correctamente: [run 41519977229](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41519977229), commit `f5fb3a0b50912b17f98dd19f6b88d9a659466144`. Este APK no implementa la barra fija y no debe usarse como validación de la nueva arquitectura.
+- Auditoría de arquitectura (rama actual):
+  - `BaseNavigationActivity` hereda directamente de `android.app.Activity` y envuelve cada `setContentView()` con una barra construida de nuevo.
+  - `BottomNavigationHelper` inicia Activities distintas para Cargar, Coste, Buscar y Comparar. Por tanto, la barra no es una vista compartida por un host único.
+  - Cargar está implementado en `MainActivity` (con `PersistentMainActivity` como launcher); Coste en `ElectricVsCombustionActivity`; Buscar en `SimilarCarsActivity`; Comparar en `CompararCochesActivity`.
+  - Las cuatro pantallas construyen vistas programáticamente y tienen dependencias de ciclo de vida propias: guardado/restauración en preferencias, actualización de idioma/moneda/tema, teclado e insets, cálculos, carga del catálogo y navegación a detalle/menú. Buscar y Comparar son especialmente extensas y contienen flujos cruzados (por ejemplo, guardar selección para Comparar y abrir fichas de detalle).
+  - Dependencias actuales: solo `androidx.core:core:1.16.0`; `minSdk=23`. Añadir Fragment/Navigation sin convertir correctamente las pantallas no resuelve el problema y podría romper referencias a Activity, ventanas, diálogos, teclado o navegación.
+- Decisión técnica: no aplicar una conversión automática ni un parche cosmético. La migración debe separar cada pantalla en una unidad de contenido reutilizable (Fragment o controlador de vista), alojada por una única Activity; la barra debe vivir fuera del contenedor de contenido. Mantener las pantallas secundarias (detalle, configuración y apoyo) navegables y respetar «Más».
+- Plan obligatorio antes de generar un APK de prueba:
+  1. Inventariar los puntos de entrada/salida y estado de las cuatro pantallas, incluidas llamadas a `startActivity`, resultados, preferencias, diálogos, teclado y acciones desde fichas de coche.
+  2. Definir el host único y la estrategia de restauración/retención por pestaña, compatible con API 23+ y edge-to-edge.
+  3. Migrar primero una sección piloto y validar compilación/regresiones; después incorporar Coste, Buscar y Comparar preservando sus comportamientos.
+  4. Ajustar manifiesto, navegación secundaria y Back; verificar que la barra se instancia una sola vez y no se desplaza al cambiar de sección.
+  5. Ejecutar pruebas automáticas y compilar APK debug; solo entonces pedir al usuario que lo instale y probar en Android 10 y Android 16.
+- Estado a esta fecha: **auditoría inicial completada; migración de código aún no implementada; no existe todavía un APK que pruebe la barra inferior fija**.
