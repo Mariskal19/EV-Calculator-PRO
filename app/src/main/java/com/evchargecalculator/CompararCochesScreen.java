@@ -814,6 +814,7 @@ public class CompararCochesScreen extends FrameLayout {
         i.putExtra("acKw",v.acKw); i.putExtra("dcKw",v.dcKw); i.putExtra("chargeMin",v.chargeMin); i.putExtra("acc",v.acc); i.putExtra("trunk",v.trunk); i.putExtra("weight",v.weight);
         i.putExtra("lengthMm",v.lengthMm); i.putExtra("widthMm",v.widthMm); i.putExtra("heightMm",v.heightMm); i.putExtra("remoteSource",v.remoteSource);
         host.startActivity(i);
+        host.overridePendingTransition(0,0);
     }
 
     private int trimRank(Vehicle v){String k=v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}

@@ -2744,3 +2744,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Al integrar Comparar, las compilaciones detectaron tres referencias de ciclo de vida/almacenamiento que seguían apuntando a métodos de Activity desde la View. Se delegaron al host; una segunda pasada señaló una llamada adicional a `isFinishing()`, corregida en el commit `19f3da0bd6aec61f2480c77d6ddde2cb0e2e3b71`.
 - La compilación conjunta más reciente es [run 41534882014](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41534882014), lanzada sobre el commit `19f3da0bd6aec61f2480c77d6ddde2cb0e2e3b71`; estado pendiente al registrar esta nota.
 - No pedir instalación hasta que este workflow complete correctamente la compilación, verificación del APK y subida del artefacto. Si falla, corregir antes de solicitar pruebas.
+
+
+## 2026-11-02 — Eliminar transición horizontal al abrir/cerrar ficha desde Buscar y Comparar
+
+- El usuario confirma que la ficha vuelve a Buscar conservando estado, pero la pantalla todavía se desplaza horizontalmente.
+- Causa identificada: `CarDetailActivity` sigue siendo una Activity secundaria y conserva la animación de ventana estándar de Android.
+- Se desactiva la animación (`overridePendingTransition(0, 0)`) al lanzar la ficha desde `SimilarCarsScreen` y `CompararCochesScreen`, y al finalizar `CarDetailActivity`, incluyendo el botón Atrás del sistema.
+- Esto no convierte aún la ficha en una pantalla dentro del host; elimina únicamente la transición horizontal de entrada/salida y mantiene el comportamiento de retorno.
+- Pendiente: compilar Debug y probar en dispositivo antes de aceptar el cambio. No integrar en `main` ni publicar.
