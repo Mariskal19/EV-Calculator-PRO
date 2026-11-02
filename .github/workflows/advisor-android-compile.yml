@@ -2,9 +2,12 @@ name: Advisor Android compile check
 
 on:
   push:
-    branches: [ "feature/asesor-ia-fase-1" ]
+    branches: [ "feature/asesor-ia-fase-1", "feature/bottom-navigation-fixed" ]
     paths:
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/BaseNavigationActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/BottomNavigationHelper.java'
+      - 'app/src/main/res/values/themes.xml'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - 'app/src/main/java/com/evchargecalculator/LanguageManager.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
