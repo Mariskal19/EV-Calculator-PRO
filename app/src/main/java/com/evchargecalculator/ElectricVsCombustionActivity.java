@@ -69,7 +69,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
                 == Configuration.UI_MODE_NIGHT_YES;
     
     build();
-    EdgeToEdgeHelper.apply(this, dark);
+    EdgeToEdgeHelper.apply(this, dark, true);
     load();
     applyCurrency();
     calculate();
@@ -97,7 +97,7 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
         load();
         applyCurrency();
         calculate();
-        EdgeToEdgeHelper.apply(this, dark);
+        EdgeToEdgeHelper.apply(this, dark, true);
         return;
       }
       applyCurrency();
@@ -273,18 +273,23 @@ public class ElectricVsCombustionActivity extends BaseNavigationActivity {
     scroll.addView(root);
     frame.addView(scroll, new FrameLayout.LayoutParams(-1, -1));
     setContentView(frame);
-    // Keep the active input above the keyboard, including fields near the bottom of the form.
+    // Apply the status-bar inset directly to this ScrollView. On Android 10,
+    // padding the outer activity root does not reliably keep the hero title clear
+    // of the status bar. Do not add IME padding: adjustResize already resizes the
+    // available area, and adding the IME height again creates a background strip
+    // above the keyboard. Use IME visibility only to keep the focused field visible.
+    final int baseScrollTopPadding = scroll.getPaddingTop();
     final int baseScrollBottomPadding = scroll.getPaddingBottom();
     androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll, (view, insets) -> {
-      androidx.core.graphics.Insets imeInsets =
-          insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.ime());
-      int imeBottom =
-          insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime())
-              ? imeInsets.bottom : 0;
+      androidx.core.graphics.Insets bars = insets.getInsets(
+          androidx.core.view.WindowInsetsCompat.Type.systemBars()
+              | androidx.core.view.WindowInsetsCompat.Type.displayCutout());
+      boolean imeVisible =
+          insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime());
       scroll.setPadding(
-          scroll.getPaddingLeft(), scroll.getPaddingTop(), scroll.getPaddingRight(),
-          baseScrollBottomPadding + imeBottom);
-      if (imeBottom > 0) {
+          scroll.getPaddingLeft(), baseScrollTopPadding + bars.top, scroll.getPaddingRight(),
+          baseScrollBottomPadding);
+      if (imeVisible) {
         EditText focused = activeEdit;
         if (focused != null) focused.post(() -> keepFieldVisible(focused));
       }
