@@ -1,6 +1,6 @@
 ## 2026-11-02 — Ajuste del indicador de navegación «Más» (pendiente de compilación y prueba)
 
-- Se cambia `getBottomNavigationIndex()` de `3` a `4` en `ConfigurationActivity.java` y `SupportProjectActivity.java`.
+- Se mantiene `getBottomNavigationIndex()` en `3` en `ConfigurationActivity.java` y `SupportProjectActivity.java`, para resaltar «Comparar» en la barra inferior, según lo solicitado.
 - Al abrir estas pantallas desde el menú «Más», la barra inferior mantiene resaltada la sección «Más» en lugar de marcar incorrectamente «Comparar».
 - Las cuatro acciones del menú (Configuración, Compartir app, Calificar app y Apoyar el proyecto) mantienen su comportamiento.
 - Sin cambios en insets, contenido, preferencias ni catálogo.
@@ -2559,3 +2559,9 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Si el borde blanco es involuntario, corregirlo y validar el resultado a 512×512 antes de subirlo. **Conservar el diseño actual del icono; no crear uno nuevo ni rediseñarlo.**
 - Verificar el icono final en la ficha pública después de publicar. No dar por resuelto el problema solo por comprobar el PNG fuente: revisar también el resultado visible en Google Play.
 - Realizar esta revisión durante la preparación de la próxima actualización; no publicar una versión aparte únicamente por este ajuste.
+
+
+### Ajuste de navegación inferior — 2 de noviembre de 2026
+- Se establece el índice `3` para `ConfigurationActivity` y `SupportProjectActivity`, de modo que «Comparar» quede resaltado en la barra inferior.
+- Pendiente de compilación y prueba en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- Sin cambios en el catálogo ni en la lógica de las pantallas.
