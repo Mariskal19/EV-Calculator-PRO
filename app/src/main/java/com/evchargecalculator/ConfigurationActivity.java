@@ -14,6 +14,7 @@ import android.widget.*;
 
 /** Application preferences: language, currency and theme. */
 public class ConfigurationActivity extends BaseNavigationActivity {
+  @Override public void finish() { super.finish(); overridePendingTransition(0, 0); }
   @Override
   protected int getBottomNavigationIndex() {
     return 4;

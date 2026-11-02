@@ -17,7 +17,23 @@ import android.widget.TextView;
 public final class BottomNavigationHelper {
   private BottomNavigationHelper() {}
 
+  /** Receives primary-tab selections when the bar is hosted by a single Activity. */
+  public interface DestinationListener {
+    void onDestinationSelected(int destination);
+  }
+
+  /** Backwards-compatible entry point for the current Activity-per-screen navigation. */
   public static View create(Activity activity, boolean dark, int selected) {
+    return create(activity, dark, selected, null);
+  }
+
+  /**
+   * Builds the shared bar. When a listener is supplied, tab taps are delegated
+   * to the host instead of launching another Activity. This is the seam used
+   * by the future single-Activity container; the legacy path remains unchanged.
+   */
+  public static View create(
+      Activity activity, boolean dark, int selected, DestinationListener listener) {
     LinearLayout bar = new LinearLayout(activity);
     bar.setOrientation(LinearLayout.HORIZONTAL);
     bar.setGravity(Gravity.CENTER);
@@ -28,33 +44,40 @@ public final class BottomNavigationHelper {
     // color so the bottom of the screen reads as one continuous navigation bar.
     bar.setBackgroundColor(dark ? Color.rgb(16, 28, 42) : Color.rgb(242, 246, 252));
     bar.setElevation(0);
-
     addItem(activity, bar, R.drawable.ic_nav_charge, "Cargar", 0, selected, dark, v -> {
       if (selected != 0) {
-        Intent i = new Intent(activity, PersistentMainActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(0);
+        } else {
+          openPrimaryTab(activity, 0);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_cost, "Coste", 1, selected, dark, v -> {
       if (selected != 1) {
-        Intent i = new Intent(activity, ElectricVsCombustionActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(1);
+        } else {
+          openPrimaryTab(activity, 1);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_car_modern, "Buscar", 2, selected, dark, v -> {
       if (selected != 2) {
-        Intent i = new Intent(activity, SimilarCarsActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(2);
+        } else {
+          openPrimaryTab(activity, 2);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_compare, "Comparar", 3, selected, dark, v -> {
       if (selected != 3) {
-        Intent i = new Intent(activity, CompararCochesActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        activity.startActivity(i);
+        if (listener != null) {
+          listener.onDestinationSelected(3);
+        } else {
+          openPrimaryTab(activity, 3);
+        }
       }
     });
     addItem(activity, bar, R.drawable.ic_nav_more, "Más", 4, selected, dark, v ->
@@ -73,6 +96,16 @@ public final class BottomNavigationHelper {
         }));
 
     return bar;
+  }
+
+
+  /** Return from secondary screens to the persistent primary-tab host. */
+  private static void openPrimaryTab(Activity activity, int destination) {
+    Intent intent = new Intent(activity, PersistentMainActivity.class);
+    intent.putExtra("open_primary_tab", destination);
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+    activity.startActivity(intent);
+    activity.overridePendingTransition(0, 0);
   }
 
   private static void addItem(

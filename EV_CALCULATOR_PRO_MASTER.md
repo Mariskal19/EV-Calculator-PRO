@@ -1,3 +1,35 @@
+## 2026-11-02 — Segundo prototipo de barra inferior: prueba no superada
+
+- El usuario confirma que la barra sigue desplazándose al cambiar de sección y que ahora se aprecia más un movimiento horizontal de derecha a izquierda en toda la pantalla.
+- Conclusión: la transición compartida entre Activities no resuelve el requisito y puede acentuar la animación de ventana. Se descarta este enfoque; no debe integrarse en `main`.
+- En esta rama se retira el `transitionName`, la llamada a `ActivityOptions.makeSceneTransitionAnimation()` y la activación de `windowContentTransitions`; se restaura la navegación normal entre Activities para no introducir el desplazamiento adicional.
+- La solución que cumple el requisito es una sola Activity contenedora que mantenga una única barra inferior y cambie únicamente el contenido central. Antes de implementarla se debe auditar el ciclo de vida, estado, teclado, scroll y resultados de las cuatro secciones (`PersistentMainActivity`, `ElectricVsCombustionActivity`, `SimilarCarsActivity`, `CompararCochesActivity`) y diseñar una migración incremental con pruebas por pantalla.
+- La rama sigue aislada. No se modifica `main`, el catálogo protegido ni la publicación de Google Play.
+
+---
+
+### Seguimiento tras primera prueba en dispositivo
+
+- El usuario instaló el primer APK y observó que la barra seguía moviéndose.
+- Revisión del helper detectó que la transición compartida se había aplicado inicialmente solo al acceso a Cargar; Coste, Buscar y Comparar seguían usando `startActivity()` directo.
+- Corregido en `BottomNavigationHelper.java`: los cuatro destinos principales pasan ahora por `startSection(activity, bar, intent)`, compartiendo la transición con el mismo nombre de elemento.
+- La compilación inicial del prototipo terminó correctamente (run `41518375260`). Nueva compilación tras aplicar la transición a las cuatro secciones: run `41518963990`, pendiente al documentar este seguimiento.
+- Este cambio corrige la inconsistencia del primer intento, pero sigue siendo una transición compartida entre Activities, no una barra física única. La comprobación en los dispositivos decidirá si la continuidad visual es suficiente. Si todavía se percibe movimiento, la solución real será migrar las secciones a un único host (Fragments/vistas), una refactorización de mayor alcance.
+- Sigue aislado en esta rama; `main` y el catálogo protegido no se modifican.
+
+## 2026-11-02 — Prototipo de continuidad visual de la barra inferior (rama independiente)
+
+- Rama creada desde `main`: `feature/bottom-navigation-fixed`. No se integra ni modifica `main`.
+- Análisis: las secciones principales siguen siendo Activities independientes, cada una crea su propia barra mediante `BaseNavigationActivity.setContentView()`. Una barra literalmente única requeriría migrar las pantallas a un host común (Fragments o vistas gestionadas), lo que implica una refactorización mayor y riesgo sobre estado, teclado, scroll y resultados.
+- Prototipo inicial de bajo riesgo: asignar un `transitionName` común a la barra inferior y utilizar una transición de elemento compartido al navegar entre Cargar, Coste, Buscar y Comparar. La intención es que Android mantenga visualmente anclada la barra mientras cambia la Activity, sin cambiar la lógica de las pantallas.
+- Se habilitan transiciones de contenido en el tema de la aplicación.
+- **Importante:** este prototipo conserva Activities separadas; no equivale todavía a una única instancia física de la barra. La aceptación depende de compilar e instalar y comprobar visualmente la navegación en Android 10 y Android 16. Si no ofrece continuidad estable, no se debe integrar; valorar entonces migración real a host único.
+- Configuración, Apoyar el proyecto, Ficha del coche, diálogos y menú «Más» no se han modificado.
+- Catálogo protegido y lógica de cálculo/búsqueda/comparación sin cambios.
+- No se ha iniciado publicación en Google Play.
+
+---
+
 ## 2026-11-02 — Ajuste del indicador de navegación «Más» (pendiente de compilación y prueba)
 
 - Se establece `getBottomNavigationIndex()` en `4` en `ConfigurationActivity.java` y `SupportProjectActivity.java`, para resaltar «Más» al abrir estas pantallas desde ese menú.
@@ -2569,3 +2601,205 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - `ConfigurationActivity` y `SupportProjectActivity` devuelven el índice `4`, por lo que «Más» queda resaltado en vez de «Comparar» al abrir estas pantallas desde ese menú.
 - **Validado manualmente por el usuario** en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
 - Sin cambios en el catálogo ni en las funciones de las pantallas.
+
+
+## 2026-11-02 — Auditoría para migrar la navegación inferior a una Activity única
+
+- Objetivo aprobado por el usuario: barra inferior física y persistente, con sustitución del contenido central al cambiar entre Cargar, Coste, Buscar y Comparar. No se acepta como solución una mera transición sin animación entre Activities.
+- Rama de trabajo exclusiva: `feature/bottom-navigation-fixed`. No integrar en `main`, no publicar en Google Play y no alterar el catálogo protegido.
+- La compilación de saneamiento tras revertir el experimento de transiciones terminó correctamente: [run 41519977229](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41519977229), commit `f5fb3a0b50912b17f98dd19f6b88d9a659466144`. Este APK no implementa la barra fija y no debe usarse como validación de la nueva arquitectura.
+- Auditoría de arquitectura (rama actual):
+  - `BaseNavigationActivity` hereda directamente de `android.app.Activity` y envuelve cada `setContentView()` con una barra construida de nuevo.
+  - `BottomNavigationHelper` inicia Activities distintas para Cargar, Coste, Buscar y Comparar. Por tanto, la barra no es una vista compartida por un host único.
+  - Cargar está implementado en `MainActivity` (con `PersistentMainActivity` como launcher); Coste en `ElectricVsCombustionActivity`; Buscar en `SimilarCarsActivity`; Comparar en `CompararCochesActivity`.
+  - Las cuatro pantallas construyen vistas programáticamente y tienen dependencias de ciclo de vida propias: guardado/restauración en preferencias, actualización de idioma/moneda/tema, teclado e insets, cálculos, carga del catálogo y navegación a detalle/menú. Buscar y Comparar son especialmente extensas y contienen flujos cruzados (por ejemplo, guardar selección para Comparar y abrir fichas de detalle).
+  - Dependencias actuales: solo `androidx.core:core:1.16.0`; `minSdk=23`. Añadir Fragment/Navigation sin convertir correctamente las pantallas no resuelve el problema y podría romper referencias a Activity, ventanas, diálogos, teclado o navegación.
+- Decisión técnica: no aplicar una conversión automática ni un parche cosmético. La migración debe separar cada pantalla en una unidad de contenido reutilizable (Fragment o controlador de vista), alojada por una única Activity; la barra debe vivir fuera del contenedor de contenido. Mantener las pantallas secundarias (detalle, configuración y apoyo) navegables y respetar «Más».
+- Plan obligatorio antes de generar un APK de prueba:
+  1. Inventariar los puntos de entrada/salida y estado de las cuatro pantallas, incluidas llamadas a `startActivity`, resultados, preferencias, diálogos, teclado y acciones desde fichas de coche.
+  2. Definir el host único y la estrategia de restauración/retención por pestaña, compatible con API 23+ y edge-to-edge.
+  3. Migrar primero una sección piloto y validar compilación/regresiones; después incorporar Coste, Buscar y Comparar preservando sus comportamientos.
+  4. Ajustar manifiesto, navegación secundaria y Back; verificar que la barra se instancia una sola vez y no se desplaza al cambiar de sección.
+  5. Ejecutar pruebas automáticas y compilar APK debug; solo entonces pedir al usuario que lo instale y probar en Android 10 y Android 16.
+- Estado a esta fecha: **auditoría inicial completada; migración de código aún no implementada; no existe todavía un APK que pruebe la barra inferior fija**.
+
+
+## 2026-11-02 — Segunda pasada de auditoría: dependencias de las pantallas
+
+- Se revisaron los seis archivos principales y el manifiesto en la rama `feature/bottom-navigation-fixed`: `PersistentMainActivity`, `MainActivity`, `ElectricVsCombustionActivity`, `SimilarCarsActivity`, `CompararCochesActivity`, `CarDetailActivity`, `ConfigurationActivity`, `SupportProjectActivity`, `BaseNavigationActivity`, `BottomNavigationHelper` y `AndroidManifest.xml`.
+- Tamaños observados: Cargar 78 líneas; Coste 532; Buscar 1.739; Comparar 1.027; Ficha 48; Configuración 360; Apoyar 299. El tamaño no mide por sí solo complejidad, pero confirma que Buscar y Comparar requieren una conversión cuidadosa.
+- Hallazgos concretos:
+  - Cargar se reconstruye desde `MainActivity.build()` y depende de `onPause()` para guardar preferencias; `PersistentMainActivity` además aplica tema y refresca tipos de cambio.
+  - Coste guarda al pausar, recalcula y reconstruye al cambiar idioma, moneda o tema; usa referencias a vistas y teclado que deberán vincularse al ciclo de vida del destino.
+  - Buscar guarda la referencia/mercado, usa `Handler` para el asesor, actualiza el catálogo y abre Ficha o Comparar mediante Intents. Al pasar a Fragment hay que cancelar callbacks al destruir la vista y mantener el estado de búsqueda.
+  - Comparar carga el catálogo, mantiene índices/cachés y selección, reconstruye al volver de Ficha y reacciona a idioma/moneda/tema. Debe conservarse la selección ordenada y el flujo de añadir/quitar vehículos.
+  - Ficha depende de extras de Intent y al añadir a comparativa escribe preferencias y abre Comparar. Configuración y Apoyar son destinos secundarios del menú Más; no deben convertirse en pestañas principales.
+  - El manifiesto declara actualmente cada sección como Activity independiente; el host único requerirá revisar las declaraciones y el destino launcher sin eliminar los destinos secundarios.
+- Conclusión de implementación: no es seguro convertir estas clases mediante sustituciones globales de `this`, `onCreate` o `setContentView`. La migración debe extraer cada pantalla como contenido/controlador y pasarle un contexto de host explícito, separar el estado de la vista y coordinar el Back/resultado de Ficha. El piloto debe comprobar restauración tras rotación y al cambiar de pestaña, además de Android 10/API 29 y Android 16.
+- Estado: segunda pasada de auditoría completada; todavía no se ha modificado código de producción ni se ha generado un APK de migración. Catálogo protegido sin cambios.
+
+
+### 2026-11-02 — Inventario de acoplamiento para la primera migración
+
+- Se ha medido el acoplamiento de las cuatro pantallas leyendo el código completo de cada clase (no solo el número de líneas):
+  - `MainActivity` ocupa 78 líneas físicas, pero contiene métodos largos/minificados y construye toda la calculadora. Su UI y lógica usan directamente la Activity como `Context`, además de `getSystemService`, diálogos, preferencias, recursos, teclado, `Handler` y callbacks de vistas. La cifra de líneas no debe interpretarse como una migración trivial.
+  - `ElectricVsCombustionActivity` tiene 532 líneas, gestiona sus campos de edición, teclado/insets, guardado al pausar y reconstrucción al cambiar idioma/moneda/tema.
+  - `SimilarCarsActivity` tiene 1.739 líneas, 3 aperturas de Activity y 4 referencias a `Handler`; usa tareas diferidas del asesor, preferencias, catálogo y navegación a ficha/comparativa.
+  - `CompararCochesActivity` tiene 1.027 líneas, abre ficha mediante Activity, mantiene selección/cache/índices y reconstruye al volver de otras pantallas.
+- Riesgo principal confirmado: las clases crean sus vistas con `new View(this)`, crean diálogos con la Activity, consultan preferencias/recursos desde ella y dependen de métodos de ciclo de vida. Un Fragment no puede alojar sin más la vista raíz de una Activity; reutilizar el objeto Activity como si fuera una vista tampoco es una arquitectura Android válida.
+- Por tanto, la primera migración no debe consistir en añadir una dependencia de Fragment y cambiar la superclase. Hay que extraer un componente de pantalla con `Context`/host explícito, mover el estado persistente fuera de los callbacks de Activity y separar la creación/destrucción de la vista de la lógica de negocio. La conversión de Cargar será el piloto solo después de definir ese contrato, porque su implementación compacta contiene mucho código en líneas extensas.
+- No se ha añadido todavía la dependencia Fragment ni se han modificado Activities/manifest: hacerlo sin el contrato de extracción dejaría una arquitectura híbrida que no mantendría la barra en los flujos a otras secciones. No se genera APK de prueba hasta que la barra esté realmente fuera de las pantallas y la navegación principal cambie solo el contenido.
+
+
+
+### 2026-11-02 — Contrato técnico para la migración a host único
+
+- Se confirma en el código y manifiesto que el launcher actual es `PersistentMainActivity`, que hereda de `MainActivity`; las otras tres secciones principales siguen declaradas como Activities independientes. `BottomNavigationHelper` inicia Activities con Intents, por lo que la barra actual se vuelve a crear en cada pantalla.
+- Se descarta mantener las Activities principales como destinos de los botones inferiores: aunque se ocultase la animación, seguirían existiendo ventanas y barras distintas. El destino de la migración será una sola Activity host que conservará una única instancia de la barra y reemplazará solo el contenido del área central.
+- Contrato de cada sección extraída:
+  1. Crear/destruir su vista mediante un componente de pantalla, sin llamar a `Activity.setContentView()`.
+  2. Recibir un host explícito para navegación, apertura de ficha, mensajes/diálogos y acciones que necesiten una Activity.
+  3. Mantener estado de interfaz y selección al cambiar de pestaña; no depender de `onPause()` para guardar el estado transitorio.
+  4. Cancelar callbacks/tareas al retirar la vista y restaurarlos cuando vuelva a mostrarse.
+  5. Mantener preferencias, catálogo, cálculos y reglas de negocio existentes sin duplicarlos ni cambiar el JSON protegido.
+- Orden de migración: Cargar (piloto) → Coste → Buscar → Comparar. Después se conectan Ficha como destino secundario con retorno explícito al host y el menú Más mantiene Configuración/Apoyar como pantallas secundarias.
+- La barra será hija fija del host, fuera del contenedor intercambiable. El contenedor central tendrá altura restante y gestionará insets/teclado sin añadir padding duplicado. El botón Más no se convierte en una pestaña de contenido principal.
+- Criterios de aceptación antes de entregar APK: cambiar repetidamente entre las cuatro pestañas sin animación/desplazamiento de ventana ni recreación de la barra; conservar entrada/selección; probar Back y apertura/retorno de Ficha; probar tema, idioma y moneda; validar teclado y scroll; compilar y ejecutar en API 29 (Android 10) y API 36 (Android 16).
+- Restricciones: no migrar mediante sustituciones globales de `this`, no incrustar Activities en vistas/Fragments, no añadir dependencias sin necesidad demostrada, no modificar catálogo ni `main`. El estado sigue siendo auditoría/contrato definido; no se declara migración implementada ni APK disponible hasta superar compilación y pruebas.
+
+
+
+### 2026-11-02 — Primer cambio de código: desacoplar la selección de pestaña
+
+- Se amplía `BottomNavigationHelper` con una interfaz `DestinationListener` y una sobrecarga de `create(..., listener)`. Cuando el host proporciona el listener, los cuatro destinos principales notifican el índice seleccionado en vez de lanzar otra Activity.
+- Se conserva la sobrecarga anterior `create(Activity, dark, selected)` y su comportamiento actual, para no alterar las pantallas existentes mientras se realiza la migración por etapas.
+- Este cambio introduce el punto de conexión necesario para que la futura Activity única cambie el contenido central. **No activa todavía la navegación persistente**: ninguna Activity existente utiliza aún el listener y las pestañas siguen usando el flujo heredado.
+- No se modifica el manifiesto, las pantallas, el catálogo ni `main`. Pendiente: conectar un host real y migrar el contenido de las cuatro secciones antes de considerar cumplido el requisito.
+
+
+### 2026-11-02 — Prueba manual del APK de auditoría en Redmi Note 13 Pro
+
+- Se instaló el artefacto Debug del run `41526271955` (commit `49a6f46ba468d4c96257b8df9b204201dcff23eb`).
+- El usuario confirmó que la interfaz se ve igual que antes y que al pulsar Coste, Buscar y Comparar la transición sigue desplazándose de derecha a izquierda; la barra aparece en todas las pantallas como antes.
+- Resultado: instalación correcta y regresión visual aparente no detectada en esta comprobación básica, pero **no se ha validado navegación persistente**. La barra sigue perteneciendo al modelo Activity-por-pantalla; este APK no debe considerarse una implementación de la barra fija.
+- Próximo trabajo: extraer realmente el contenido de las cuatro secciones a componentes de pantalla reutilizables dentro de una única Activity host. No ocultar la animación ni mantener Activities independientes como sustituto de la migración. Mantener intactos catálogo y `main`; generar únicamente APK Debug cuando el cambio funcional esté completo.
+
+
+### 2026-11-02 — Primer paso real de extracción de pantallas
+
+- Se ha extraído la interfaz y lógica de **Coste (Eléctrico vs Combustión)** desde su Activity a `ElectricVsCombustionScreen`, una clase reutilizable basada en `FrameLayout` que recibe la Activity anfitriona y gestiona su contenido como una View.
+- `ElectricVsCombustionActivity` queda como envoltorio de compatibilidad que instancia la nueva pantalla y delega los callbacks de ciclo de vida y actualización de idioma. Se conserva la navegación actual mientras se prepara la integración en la Activity anfitriona única.
+- El workflow de compilación Debug se amplía para vigilar el nuevo archivo de pantalla.
+- Este es un primer paso de extracción, **todavía no activa la navegación persistente**: Coste sigue abriéndose mediante su Activity antigua hasta integrar el host. No instalar ni publicar como versión final de la navegación.
+- Siguiente: compilar y corregir cualquier incidencia; después integrar la View en el host común y continuar extrayendo Buscar y Comparar sin modificar el catálogo de 682 vehículos.
+
+
+### 2026-11-02 — Integración inicial de Coste en la Activity anfitriona
+
+- `BaseNavigationActivity` incorpora un modo opt-in de navegación interna: las pestañas delegan en el host en lugar de lanzar Activities cuando `handlesBottomNavigationInternally()` está activo.
+- `MainActivity` activa ese modo para las pestañas Cargar y Coste. La pantalla Cargar conserva su View raíz y Coste se instancia como `ElectricVsCombustionScreen`; el cambio entre ambas sustituye el contenido dentro de la misma Activity y conserva la barra inferior.
+- Se añadió la retirada segura de una View de su contenedor anterior al cambiar el contenido, la actualización del estado seleccionado de la barra y el retorno a Cargar al pulsar Atrás desde Coste.
+- Se delegan explícitamente los callbacks de pausa/reanudación y guardado de Coste, ya que el cambio de pestaña no cambia el lifecycle de la Activity anfitriona.
+- Buscar y Comparar continúan temporalmente usando sus Activities anteriores; su migración será la siguiente fase. Configuración, Apoyar y Ficha siguen siendo pantallas secundarias.
+- La compilación Debug de la extracción previa de Coste terminó correctamente (run `41528986877`, artefacto generado). Esta integración posterior aún debe compilarse y probarse; no considerar terminada la navegación persistente hasta verificarla en dispositivo.
+- Se mantiene la rama `feature/bottom-navigation-fixed`; no integrar en `main` ni publicar en Google Play sin autorización. Catálogo protegido sin cambios.
+
+
+### 2026-11-02 — Corrección del contenedor raíz de navegación
+
+- Tras la prueba en dispositivo, el usuario confirmó que al cambiar de Cargar a Coste seguía apreciando la transición lateral de la navegación antigua.
+- Auditoría: el host ya delegaba el toque a la selección interna para Cargar/Coste, pero `BaseNavigationActivity.setContentView(View)` creaba un FrameLayout raíz nuevo y reconstruía también la barra inferior cada vez que se cambiaba el contenido. Aunque no debía lanzar otra Activity, esta estructura no mantenía una raíz ni un slot de navegación estables.
+- Corrección aplicada en `BaseNavigationActivity`: la raíz de la Activity, el contenedor central y el contenedor inferior se crean una sola vez. Las llamadas posteriores a `setContentView(View)` sustituyen únicamente la pantalla central y actualizan el contenido del slot de navegación, sin volver a instalar la raíz de la Activity.
+- Commit: `548e38c164b7c3493f62d87ad14f61923c16ec23` en `feature/bottom-navigation-fixed`.
+- Compilación aislada Debug: run `41531516439`; pasos de compilación, verificación del APK y subida del artefacto completados correctamente. No se genera Release/AAB ni se publica nada.
+- Pendiente de validación manual en el Redmi Note 13 Pro: confirmar que Cargar ↔ Coste ya no produce desplazamiento lateral y que la barra permanece fija. No considerar la incidencia cerrada hasta esa prueba.
+- No se modifica `main`, el manifiesto, ni el catálogo protegido de 682 vehículos.
+
+
+### 2026-11-02 — Primera migración funcional de «Buscar» al host persistente (pendiente de validación)
+- Se ha extraído el contenido de «Buscar coches» a `SimilarCarsScreen`, una View reutilizable que recibe la Activity anfitriona. La pantalla conserva su buscador clásico, selector de referencia, Asesor IA, criterios, resultados, catálogo local/remoto y preferencias.
+- Se han delegado al host los recursos, preferencias, servicios del sistema y aperturas de pantallas secundarias. Se añaden callbacks de pausa/reanudación para cancelar la búsqueda automática y ocultar el teclado al abandonar la pestaña.
+- `MainActivity` incorpora la instancia de `SimilarCarsScreen` y la muestra dentro del mismo contenedor central que Cargar y Coste. La barra inferior y la ventana host permanecen en la misma Activity al seleccionar Buscar.
+- Se conserva temporalmente la Activity `SimilarCarsActivity` como ruta heredada/compatibilidad; el host principal ya utiliza la nueva View.
+- Commits de esta fase: `9cb3c56329cc9c4b707f798fad7f5bb70f307379` (extracción inicial), `e74670cbefb3aa0dd7eefc9f64c484248245b3c6` y `800627d180393a585ebd6b2726c8098581a7ed7a` (delegación y lifecycle), `d0db67834bf6474c37675721d431565fa0e8fcd5` (integración en MainActivity y workflow), `90fdea81939cbde5e97917a9937d703fc3daf001` (corrección de delegación al host).
+- Workflow Debug de esta integración: [run 41533228584](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41533228584), en curso al documentar esta nota. No pedir todavía instalar APK.
+- **Pendiente:** comprobar compilación; después validar en el dispositivo búsqueda de referencia, consultas del Asesor IA, apertura de ficha y estado al cambiar de pestaña. «Comparar» continúa en Activity independiente y será la siguiente migración.
+- Rama `feature/bottom-navigation-fixed`; no se modifica `main`, no se modifica el catálogo protegido de 682 vehículos y no se publica en Google Play.
+
+
+### 2026-11-02 — Extracción e integración de «Comparar» en el host único
+- Se ha creado `CompararCochesScreen` como View reutilizable basada en `FrameLayout`. Mantiene el selector de mercado, catálogo, selección ordenada, tabla comparativa, resumen, cachés y apertura de fichas.
+- `MainActivity` incorpora la cuarta pestaña al mismo contenedor persistente. Al cambiar a Comparar se instancia la pantalla una sola vez y se conserva para los siguientes cambios de pestaña.
+- «Buscar» ahora deriva las acciones «Añadir a comparativa» al host para seleccionar la pestaña Comparar, sin lanzar una Activity nueva.
+- Se adapta el retorno desde Ficha del coche: al pulsar «Añadir a comparativa», la ficha devuelve el control a `PersistentMainActivity` y solicita abrir la pestaña 3 mediante un extra gestionado por `MainActivity.onNewIntent()`. El flujo de apertura de ficha desde Comparar conserva el host debajo y vuelve a la pantalla al cerrar la ficha.
+- Commits: `0bd28a87fa060cb8852fce4a068af2b29fe2faa9` (extracción), `8dbe7a486a4b835c76557ea7904d5df8c0edb56f` (integración de Comparar y navegación desde Buscar), `37adc43d2ddcbede9ac46f2ca643b3f7eec8e0c4` (retorno desde Ficha), `e3803535a56eade69b8b0d4b7e788384955b0b7c` (delegación de lifecycle y archivos al host).
+- La extracción de Buscar, sin Comparar todavía, compiló correctamente en Debug: run `41533505254`, commit `fe70c21ebd02950c357f50016eedddbd32af378d`.
+- La compilación con Comparar integrado está en curso: [run 41534521101](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41534521101). Dos fallos de compilación de la primera pasada (métodos de Activity no delegados al host) se han corregido antes de esta ejecución.
+- **No instalar todavía:** falta confirmar que el APK Debug final compila y se verifica. Después habrá que probar en el móvil las cuatro pestañas, la búsqueda IA, la selección de vehículos, la tabla, apertura/retorno de Ficha, «Añadir a comparativa», Back, teclado y conservación de estado.
+- Toda la migración sigue aislada en `feature/bottom-navigation-fixed`; no se modifica `main`, el catálogo protegido de 682 vehículos ni Google Play. El workflow genera solo APK Debug.
+
+
+### Seguimiento de compilación de las cuatro pestañas — 2 de noviembre de 2026
+- La primera compilación de Buscar sin Comparar fue correcta (run `41533505254`, commit `fe70c21ebd02950c357f50016eedddbd32af378d`).
+- Al integrar Comparar, las compilaciones detectaron tres referencias de ciclo de vida/almacenamiento que seguían apuntando a métodos de Activity desde la View. Se delegaron al host; una segunda pasada señaló una llamada adicional a `isFinishing()`, corregida en el commit `19f3da0bd6aec61f2480c77d6ddde2cb0e2e3b71`.
+- La compilación conjunta más reciente es [run 41534882014](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41534882014), lanzada sobre el commit `19f3da0bd6aec61f2480c77d6ddde2cb0e2e3b71`; estado pendiente al registrar esta nota.
+- No pedir instalación hasta que este workflow complete correctamente la compilación, verificación del APK y subida del artefacto. Si falla, corregir antes de solicitar pruebas.
+
+
+## 2026-11-02 — Eliminar transición horizontal al abrir/cerrar ficha desde Buscar y Comparar
+
+- El usuario confirma que la ficha vuelve a Buscar conservando estado, pero la pantalla todavía se desplaza horizontalmente.
+- Causa identificada: `CarDetailActivity` sigue siendo una Activity secundaria y conserva la animación de ventana estándar de Android.
+- Se desactiva la animación (`overridePendingTransition(0, 0)`) al lanzar la ficha desde `SimilarCarsScreen` y `CompararCochesScreen`, y al finalizar `CarDetailActivity`, incluyendo el botón Atrás del sistema.
+- Esto no convierte aún la ficha en una pantalla dentro del host; elimina únicamente la transición horizontal de entrada/salida y mantiene el comportamiento de retorno.
+- Pendiente: compilar Debug y probar en dispositivo antes de aceptar el cambio. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Transiciones de Configuración y Apoyar
+
+- Se elimina la animación horizontal estándar al abrir Configuración y Apoyar desde el menú Más.
+- Ambas Activities desactivan también la transición al cerrarse, tanto con Atrás del sistema como con sus acciones de salida.
+- Workflow Debug actualizado para compilar cambios de `AppMenuHelper`.
+- Pendiente de compilación y prueba en dispositivo. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Corrección definitiva de transición en Configuración y Apoyar (pendiente de prueba)
+
+- El usuario confirma que ambas pantallas siguen mostrando el desplazamiento horizontal pese a `overridePendingTransition(0, 0)` en el lanzamiento y en `finish()`.
+- La solución anterior se considera insuficiente y no se da por validada.
+- Se añade un tema específico `Theme.EVChargeCalculator.NoTransition` para ambas Activities, con `android:windowAnimationStyle` y animaciones de apertura/cierre de Activity y Task sustituidas por una animación alpha neutra de duración cero (`res/anim/no_transition.xml`).
+- Se mantiene además la llamada explícita `overridePendingTransition(0, 0)` como respaldo.
+- El cambio solo afecta a Configuración y Apoyar; no altera enlaces externos, navegación de pestañas ni el resto de pantallas.
+- Compilar Debug y probar en dispositivo las entradas y salidas de ambas pantallas antes de considerar resuelto. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Navegación desde Configuración / Apoyar hacia pestañas principales
+
+- El usuario confirma que entrar desde Cargar a Configuración ya no anima, pero al pulsar otra pestaña principal desde Configuración vuelve a aparecer el desplazamiento derecha-izquierda.
+- Causa identificada en `BottomNavigationHelper`: sin `DestinationListener`, Coste, Buscar y Comparar todavía lanzaban Activities legacy. Solo Cargar regresaba al host persistente.
+- Corregido: los cuatro destinos principales desde cualquier pantalla secundaria abren `PersistentMainActivity` con `open_primary_tab`, `FLAG_ACTIVITY_CLEAR_TOP | FLAG_ACTIVITY_SINGLE_TOP` y `overridePendingTransition(0, 0)`. El host procesa `onNewIntent()` y selecciona la pestaña sin lanzar una Activity legacy.
+- Aplica a Configuración y Apoyar. Compilar y probar antes de darlo por resuelto. No integrar en `main` ni publicar.
+
+
+## 2026-11-02 — Restaurar navegación con el botón Atrás del sistema (pendiente de compilación y prueba)
+
+- Incidencia comunicada tras introducir el host persistente: al pulsar Atrás desde una pestaña distinta de Cargar, Android cerraba la app en vez de regresar a Cargar.
+- Causa técnica identificada: la navegación por pestañas ya se gestiona dentro de `PersistentMainActivity`, pero en Android 13+ (incluido Android 16) el gesto/botón Atrás se entrega mediante `OnBackInvokedDispatcher`. El override heredado `onBackPressed()` no garantiza interceptar ese flujo moderno.
+- Se registra un `OnBackInvokedCallback` explícito en `MainActivity` para Android 13+: si la pestaña activa es Coste, Buscar o Comparar, Atrás vuelve a Cargar sin cerrar la Activity; desde Cargar, Atrás mantiene la salida normal de la app. Se conserva `onBackPressed()` como compatibilidad para versiones anteriores.
+- El callback se desregistra en `onDestroy()` para evitar mantener referencias al destruir la Activity.
+- No se modifica el comportamiento de la ficha del coche ni el catálogo protegido.
+- Commit de implementación: pendiente. Compilación y prueba manual pendientes; no instalar hasta verificar build correcto.
+- Rama: `feature/bottom-navigation-fixed`. `main` y Google Play permanecen intactos.
+
+
+## 2026-11-02 — Historial real de navegación para Atrás (pendiente de compilación y prueba)
+
+- Se corrige el planteamiento anterior: Atrás no debe forzar el regreso a Cargar; debe volver a la pestaña primaria visitada inmediatamente antes.
+- `MainActivity` mantiene una pila LIFO de pestañas primarias. Cada cambio efectivo de pestaña añade la anterior; Atrás recupera y muestra la última pestaña visitada, sin volver a añadirla a la pila.
+- Ejemplo: Cargar → Coste → Buscar → Atrás vuelve a Coste; otro Atrás vuelve a Cargar.
+- Las selecciones de pestaña realizadas desde Configuración o Apoyar llegan mediante `onNewIntent()` a `PersistentMainActivity` y usan la misma pila, de modo que se conserva la pantalla anterior al entrar en la secundaria.
+- Se guarda/restaura pestaña actual e historial en `onSaveInstanceState()` para conservar la navegación ante recreación de la Activity.
+- Desde una ficha de vehículo, el comportamiento sigue siendo el del stack de Activities Android: Atrás cierra la ficha y muestra la pantalla host de origen, que permanece montada.
+- Cuando no queda historial de pestañas, Atrás cierra la Activity normalmente.
+- Commit de implementación: `7288a8f` añadió previamente el callback Android 13+; este commit sustituye su lógica de “volver a Cargar” por historial real.
+- Catálogo protegido intacto. No se modifica `main` ni se publica en Google Play. Build y pruebas manuales pendientes.

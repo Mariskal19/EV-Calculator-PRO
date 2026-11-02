@@ -1,16 +1,28 @@
-name: Advisor Android compile check
+name: Bottom navigation Android debug build
 
 on:
   push:
-    branches: [ "feature/asesor-ia-fase-1" ]
+    branches: [ "feature/bottom-navigation-fixed" ]
     paths:
-      - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
-      - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
-      - 'app/src/main/java/com/evchargecalculator/LanguageManager.java'
-      - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
-      - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
+      - 'app/src/main/java/com/evchargecalculator/MainActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/PersistentMainActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/BaseNavigationActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/BottomNavigationHelper.java'
+      - 'app/src/main/java/com/evchargecalculator/AppMenuHelper.java'
       - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionActivity.java'
-      - '.github/tests/AdvisorCatalogIntegrationSmokeTest.java'
+      - 'app/src/main/java/com/evchargecalculator/ElectricVsCombustionScreen.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsScreen.java'
+      - 'app/src/main/java/com/evchargecalculator/CompararCochesScreen.java'
+      - 'app/src/main/java/com/evchargecalculator/CompararCochesActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/CarDetailActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/ConfigurationActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SupportProjectActivity.java'
+      - 'app/src/main/AndroidManifest.xml'
+      - 'app/build.gradle'
+      - 'app/src/main/res/values/themes.xml'
+      - 'app/src/main/res/values/styles.xml'
+      - 'app/src/main/res/anim/no_transition.xml'
       - '.github/workflows/advisor-android-compile.yml'
   workflow_dispatch:
 
@@ -18,7 +30,7 @@ permissions:
   contents: read
 
 jobs:
-  android-compile:
+  android-debug:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -36,31 +48,35 @@ jobs:
           gradle-version: '9.6.0'
           cache-disabled: true
 
-      - name: Apply the same local search-source patch as the release build
-        run: python3 .github/scripts/patch_search_virtualization.py
-
-      # app/build.gradle validates release-signing environment during project configuration,
-      # even for assembleDebug. Use an ephemeral CI-only key; never build or publish a release here.
-      - name: Configure ephemeral signing values for Gradle configuration
+      # Gradle validates release-signing environment during configuration.
+      # Supply a disposable CI-only key; assembleDebug does not use release signing.
+      - name: Configure disposable signing values for Gradle configuration
         shell: bash
         run: |
           set -euo pipefail
-          keystore="$RUNNER_TEMP/advisor-ci-only.jks"
-          keytool -genkeypair -noprompt -keystore "$keystore" -storepass advisor-ci-only -keypass advisor-ci-only -alias advisor-ci-only -dname "CN=Advisor CI Only" -keyalg RSA -keysize 2048 -validity 2
+          keystore="$RUNNER_TEMP/navigation-ci-only.jks"
+          keytool -genkeypair -noprompt -keystore "$keystore" -storepass navigation-ci-only -keypass navigation-ci-only -alias navigation-ci-only -dname "CN=Navigation CI Only" -keyalg RSA -keysize 2048 -validity 2
           {
             echo "EV_CALCULATOR_KEYSTORE_PATH=$keystore"
-            echo "EV_CALCULATOR_KEYSTORE_PASSWORD=advisor-ci-only"
-            echo "EV_CALCULATOR_KEY_ALIAS=advisor-ci-only"
-            echo "EV_CALCULATOR_KEY_PASSWORD=advisor-ci-only"
+            echo "EV_CALCULATOR_KEYSTORE_PASSWORD=navigation-ci-only"
+            echo "EV_CALCULATOR_KEY_ALIAS=navigation-ci-only"
+            echo "EV_CALCULATOR_KEY_PASSWORD=navigation-ci-only"
           } >> "$GITHUB_ENV"
 
-      - name: Compile Android debug variant
+      - name: Build debug APK only
         run: gradle --no-daemon clean assembleDebug
+
+      - name: Verify debug APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s app/build/outputs/apk/debug/app-debug.apk
+          ls -lh app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload debug APK for device testing
         uses: actions/upload-artifact@v6
         with:
-          name: EV-Calculator-PRO-advisor-debug
+          name: EV-Calculator-PRO-bottom-navigation-debug
           path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 7

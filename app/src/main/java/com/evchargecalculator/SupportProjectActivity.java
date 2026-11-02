@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.*;
 
 public class SupportProjectActivity extends BaseNavigationActivity {
+  @Override public void finish() { super.finish(); overridePendingTransition(0, 0); }
   /*
    * Stripe Payment Link:
    * Paste the final Stripe Payment Link here when it is created.

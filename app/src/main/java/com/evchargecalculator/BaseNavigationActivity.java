@@ -7,11 +7,11 @@ import android.widget.FrameLayout;
 import android.widget.ScrollView;
 
 /**
- * Common host for app screens that use the permanent bottom navigation.
+ * Common host for screens that share a fixed bottom navigation structure.
  *
- * Any Activity that extends this class and returns its section index from
- * getBottomNavigationIndex() automatically receives the same navigation bar
- * whenever it calls setContentView().
+ * The root, content slot and navigation slot are created once per Activity.
+ * Subsequent setContentView(View) calls replace only the screen in the content
+ * slot; they never replace the Activity root or move the navigation container.
  */
 public abstract class BaseNavigationActivity extends Activity {
 
@@ -19,8 +19,18 @@ public abstract class BaseNavigationActivity extends Activity {
   private boolean appliedDarkTheme;
   private String appliedCurrency;
 
+  private FrameLayout hostRoot;
+  private FrameLayout contentContainer;
+  private FrameLayout navigationContainer;
+
   /** 0 = Cargar, 1 = Coste, 2 = Buscar coches, 3 = Comparar, 4 = Más. */
   protected abstract int getBottomNavigationIndex();
+
+  /** Whether primary-tab taps should be handled inside this Activity. */
+  protected boolean handlesBottomNavigationInternally() { return false; }
+
+  /** Called when the single-Activity host receives a primary-tab selection. */
+  protected void onBottomNavigationSelected(int destination) { }
 
   @Override
   protected void onResume() {
@@ -46,32 +56,56 @@ public abstract class BaseNavigationActivity extends Activity {
 
   @Override
   public void setContentView(View view) {
-    FrameLayout host = new FrameLayout(this);
+    if (view == null) {
+      throw new IllegalArgumentException("Content view must not be null");
+    }
+
+    ensureHostCreated();
+
+    // A screen View may be reused when returning to a previously selected tab.
+    // Detach it from its old parent before placing it in the stable content slot.
+    if (view.getParent() instanceof ViewGroup) {
+      ((ViewGroup) view.getParent()).removeView(view);
+    }
+    contentContainer.removeAllViews();
+    addBottomScrollSpace(view, dp(48));
+    contentContainer.addView(
+        view, new FrameLayout.LayoutParams(-1, -1));
+
+    // Keep the navigation slot fixed in the root. Refresh its selected state
+    // without replacing the Activity root or triggering a window transition.
+    navigationContainer.removeAllViews();
     boolean dark = isDarkTheme();
-    host.setBackgroundColor(dark
+    View bottomNavigation = BottomNavigationHelper.create(
+        this, dark, getBottomNavigationIndex(),
+        handlesBottomNavigationInternally()
+            ? destination -> onBottomNavigationSelected(destination)
+            : null);
+    navigationContainer.addView(
+        bottomNavigation, new FrameLayout.LayoutParams(-1, -1));
+  }
+
+  private void ensureHostCreated() {
+    if (hostRoot != null) return;
+
+    boolean dark = isDarkTheme();
+    hostRoot = new FrameLayout(this);
+    hostRoot.setBackgroundColor(dark
         ? android.graphics.Color.rgb(16, 28, 42)
         : android.graphics.Color.rgb(242, 246, 252));
 
-    /*
-     * Keep the navigation over the content, as it was originally designed,
-     * but give scrollable screens enough extra scroll range to bring their
-     * last real item above the fixed navigation bar. This avoids both:
-     *  - content being hidden underneath the bar;
-     *  - a visible 48dp empty band between the last card and the bar.
-     */
-    addBottomScrollSpace(view, dp(48));
+    contentContainer = new FrameLayout(this);
+    hostRoot.addView(
+        contentContainer, new FrameLayout.LayoutParams(-1, -1));
 
-    FrameLayout.LayoutParams contentParams =
-        new FrameLayout.LayoutParams(-1, -1);
-    host.addView(view, contentParams);
+    navigationContainer = new FrameLayout(this);
+    FrameLayout.LayoutParams navParams = new FrameLayout.LayoutParams(
+        -1, dp(64), android.view.Gravity.BOTTOM);
+    hostRoot.addView(navigationContainer, navParams);
 
-    View bottomNavigation =
-        BottomNavigationHelper.create(this, dark, getBottomNavigationIndex());
-    FrameLayout.LayoutParams navParams =
-        new FrameLayout.LayoutParams(-1, dp(64), android.view.Gravity.BOTTOM);
-    host.addView(bottomNavigation, navParams);
-
-    super.setContentView(host);
+    // Install the Activity content exactly once. Tab changes only touch the
+    // two stable slots above, so the host window itself is never relaunched.
+    super.setContentView(hostRoot);
   }
 
   /**

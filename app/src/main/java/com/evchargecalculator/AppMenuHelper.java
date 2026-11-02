@@ -29,6 +29,7 @@ public final class AppMenuHelper {
         item -> {
           if (item.getItemId() == 10) {
             activity.startActivity(new Intent(activity, ConfigurationActivity.class));
+            activity.overridePendingTransition(0, 0);
             return true;
           }
           if (item.getItemId() == 2) {
@@ -44,6 +45,7 @@ public final class AppMenuHelper {
           }
           if (item.getItemId() == 4) {
             activity.startActivity(new Intent(activity, SupportProjectActivity.class));
+            activity.overridePendingTransition(0, 0);
             return true;
           }
           if (item.getItemId() == 3) {

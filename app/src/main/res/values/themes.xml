@@ -8,4 +8,17 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
         <item name="android:forceDarkAllowed">false</item>
     </style>
+    <style name="Theme.EVChargeCalculator.NoTransition" parent="Theme.EVChargeCalculator">
+        <item name="android:windowAnimationStyle">@style/NoWindowAnimation</item>
+    </style>
+    <style name="NoWindowAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/no_transition</item>
+        <item name="android:activityOpenExitAnimation">@anim/no_transition</item>
+        <item name="android:activityCloseEnterAnimation">@anim/no_transition</item>
+        <item name="android:activityCloseExitAnimation">@anim/no_transition</item>
+        <item name="android:taskOpenEnterAnimation">@anim/no_transition</item>
+        <item name="android:taskOpenExitAnimation">@anim/no_transition</item>
+        <item name="android:taskCloseEnterAnimation">@anim/no_transition</item>
+        <item name="android:taskCloseExitAnimation">@anim/no_transition</item>
+    </style>
 </resources>
