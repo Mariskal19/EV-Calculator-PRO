@@ -2622,3 +2622,18 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
   4. Ajustar manifiesto, navegación secundaria y Back; verificar que la barra se instancia una sola vez y no se desplaza al cambiar de sección.
   5. Ejecutar pruebas automáticas y compilar APK debug; solo entonces pedir al usuario que lo instale y probar en Android 10 y Android 16.
 - Estado a esta fecha: **auditoría inicial completada; migración de código aún no implementada; no existe todavía un APK que pruebe la barra inferior fija**.
+
+
+## 2026-11-02 — Segunda pasada de auditoría: dependencias de las pantallas
+
+- Se revisaron los seis archivos principales y el manifiesto en la rama `feature/bottom-navigation-fixed`: `PersistentMainActivity`, `MainActivity`, `ElectricVsCombustionActivity`, `SimilarCarsActivity`, `CompararCochesActivity`, `CarDetailActivity`, `ConfigurationActivity`, `SupportProjectActivity`, `BaseNavigationActivity`, `BottomNavigationHelper` y `AndroidManifest.xml`.
+- Tamaños observados: Cargar 78 líneas; Coste 532; Buscar 1.739; Comparar 1.027; Ficha 48; Configuración 360; Apoyar 299. El tamaño no mide por sí solo complejidad, pero confirma que Buscar y Comparar requieren una conversión cuidadosa.
+- Hallazgos concretos:
+  - Cargar se reconstruye desde `MainActivity.build()` y depende de `onPause()` para guardar preferencias; `PersistentMainActivity` además aplica tema y refresca tipos de cambio.
+  - Coste guarda al pausar, recalcula y reconstruye al cambiar idioma, moneda o tema; usa referencias a vistas y teclado que deberán vincularse al ciclo de vida del destino.
+  - Buscar guarda la referencia/mercado, usa `Handler` para el asesor, actualiza el catálogo y abre Ficha o Comparar mediante Intents. Al pasar a Fragment hay que cancelar callbacks al destruir la vista y mantener el estado de búsqueda.
+  - Comparar carga el catálogo, mantiene índices/cachés y selección, reconstruye al volver de Ficha y reacciona a idioma/moneda/tema. Debe conservarse la selección ordenada y el flujo de añadir/quitar vehículos.
+  - Ficha depende de extras de Intent y al añadir a comparativa escribe preferencias y abre Comparar. Configuración y Apoyar son destinos secundarios del menú Más; no deben convertirse en pestañas principales.
+  - El manifiesto declara actualmente cada sección como Activity independiente; el host único requerirá revisar las declaraciones y el destino launcher sin eliminar los destinos secundarios.
+- Conclusión de implementación: no es seguro convertir estas clases mediante sustituciones globales de `this`, `onCreate` o `setContentView`. La migración debe extraer cada pantalla como contenido/controlador y pasarle un contexto de host explícito, separar el estado de la vista y coordinar el Back/resultado de Ficha. El piloto debe comprobar restauración tras rotación y al cambiar de pestaña, además de Android 10/API 29 y Android 16.
+- Estado: segunda pasada de auditoría completada; todavía no se ha modificado código de producción ni se ha generado un APK de migración. Catálogo protegido sin cambios.
