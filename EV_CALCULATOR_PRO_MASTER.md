@@ -1,3 +1,16 @@
+## 2026-11-02 — Prototipo de continuidad visual de la barra inferior (rama independiente)
+
+- Rama creada desde `main`: `feature/bottom-navigation-fixed`. No se integra ni modifica `main`.
+- Análisis: las secciones principales siguen siendo Activities independientes, cada una crea su propia barra mediante `BaseNavigationActivity.setContentView()`. Una barra literalmente única requeriría migrar las pantallas a un host común (Fragments o vistas gestionadas), lo que implica una refactorización mayor y riesgo sobre estado, teclado, scroll y resultados.
+- Prototipo inicial de bajo riesgo: asignar un `transitionName` común a la barra inferior y utilizar una transición de elemento compartido al navegar entre Cargar, Coste, Buscar y Comparar. La intención es que Android mantenga visualmente anclada la barra mientras cambia la Activity, sin cambiar la lógica de las pantallas.
+- Se habilitan transiciones de contenido en el tema de la aplicación.
+- **Importante:** este prototipo conserva Activities separadas; no equivale todavía a una única instancia física de la barra. La aceptación depende de compilar e instalar y comprobar visualmente la navegación en Android 10 y Android 16. Si no ofrece continuidad estable, no se debe integrar; valorar entonces migración real a host único.
+- Configuración, Apoyar el proyecto, Ficha del coche, diálogos y menú «Más» no se han modificado.
+- Catálogo protegido y lógica de cálculo/búsqueda/comparación sin cambios.
+- No se ha iniciado publicación en Google Play.
+
+---
+
 ## 2026-11-02 — Ajuste del indicador de navegación «Más» (pendiente de compilación y prueba)
 
 - Se establece `getBottomNavigationIndex()` en `4` en `ConfigurationActivity.java` y `SupportProjectActivity.java`, para resaltar «Más» al abrir estas pantallas desde ese menú.
