@@ -2737,3 +2737,10 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - La compilación con Comparar integrado está en curso: [run 41534521101](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41534521101). Dos fallos de compilación de la primera pasada (métodos de Activity no delegados al host) se han corregido antes de esta ejecución.
 - **No instalar todavía:** falta confirmar que el APK Debug final compila y se verifica. Después habrá que probar en el móvil las cuatro pestañas, la búsqueda IA, la selección de vehículos, la tabla, apertura/retorno de Ficha, «Añadir a comparativa», Back, teclado y conservación de estado.
 - Toda la migración sigue aislada en `feature/bottom-navigation-fixed`; no se modifica `main`, el catálogo protegido de 682 vehículos ni Google Play. El workflow genera solo APK Debug.
+
+
+### Seguimiento de compilación de las cuatro pestañas — 2 de noviembre de 2026
+- La primera compilación de Buscar sin Comparar fue correcta (run `41533505254`, commit `fe70c21ebd02950c357f50016eedddbd32af378d`).
+- Al integrar Comparar, las compilaciones detectaron tres referencias de ciclo de vida/almacenamiento que seguían apuntando a métodos de Activity desde la View. Se delegaron al host; una segunda pasada señaló una llamada adicional a `isFinishing()`, corregida en el commit `19f3da0bd6aec61f2480c77d6ddde2cb0e2e3b71`.
+- La compilación conjunta más reciente es [run 41534882014](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41534882014), lanzada sobre el commit `19f3da0bd6aec61f2480c77d6ddde2cb0e2e3b71`; estado pendiente al registrar esta nota.
+- No pedir instalación hasta que este workflow complete correctamente la compilación, verificación del APK y subida del artefacto. Si falla, corregir antes de solicitar pruebas.
