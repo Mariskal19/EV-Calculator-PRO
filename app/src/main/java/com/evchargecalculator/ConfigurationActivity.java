@@ -47,7 +47,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
     LanguageManager.applyStored(this);
     CurrencyRateManager.refreshIfNeeded(this);
     build();
-    EdgeToEdgeHelper.apply(this, dark);
+    EdgeToEdgeHelper.apply(this, dark, true);
   }
 
   private int dp(int n) {
