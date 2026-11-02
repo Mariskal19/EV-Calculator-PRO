@@ -2803,3 +2803,16 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Cuando no queda historial de pestañas, Atrás cierra la Activity normalmente.
 - Commit de implementación: `7288a8f` añadió previamente el callback Android 13+; este commit sustituye su lógica de “volver a Cargar” por historial real.
 - Catálogo protegido intacto. No se modifica `main` ni se publica en Google Play. Build y pruebas manuales pendientes.
+
+
+## 2026-11-02 — Transiciones suaves entre pantallas integradas en main
+
+- Integrada mediante PR #10 la rama `feature/transiciones-pantallas` en `main`. Commit de merge: `496d917b5201ee847416a58a157178069737c3b3`.
+- Compilación Release firmada completada correctamente en el workflow independiente [run 41545700891](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41545700891). Artefacto de prueba: `EV-Calculator-PRO-transiciones-test` (retención hasta el 16 de noviembre de 2026).
+- Transiciones integradas:
+  - Pestañas inferiores: fundido de 130 ms; la barra inferior permanece fija.
+  - Ficha de vehículo: desplazamiento horizontal de 220 ms al abrir y regresar.
+  - Configuración y Apoyar: fundido de 140 ms.
+  - Navegación desde pantallas secundarias: fundido al cambiar a una pestaña principal.
+- Archivos de animación añadidos: `fade_in.xml`, `fade_out.xml`, `slide_in_left.xml`, `slide_in_right.xml`, `slide_out_left.xml`, `slide_out_right.xml`.
+- No se modifican el catálogo protegido, los datos de vehículos ni la lógica de cálculos/búsqueda. La integración en `main` no implica publicar una nueva versión en Google Play.
