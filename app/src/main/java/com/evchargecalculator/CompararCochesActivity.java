@@ -123,7 +123,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
                     : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
             selectedMarket = p.getString(KEY_MARKET, "ES");
             build();
-            EdgeToEdgeHelper.apply(this, dark);
+            EdgeToEdgeHelper.apply(this, dark, true);
             loadVehicles();
             if (!hasMarket(selectedMarket)) selectedMarket = defaultMarket();
             loadSelection();
@@ -155,7 +155,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             loadSelection();
             if (themeChanged || languageChanged || currencyChanged) {
                 build();
-                EdgeToEdgeHelper.apply(this, dark);
+                EdgeToEdgeHelper.apply(this, dark, true);
             }
             rebuild();
         }
@@ -509,7 +509,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
-        EdgeToEdgeHelper.apply(this, dark);
+        EdgeToEdgeHelper.apply(this, dark, true);
     }
 
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
