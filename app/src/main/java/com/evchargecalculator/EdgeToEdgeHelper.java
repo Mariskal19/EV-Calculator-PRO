@@ -29,6 +29,14 @@ public final class EdgeToEdgeHelper {
   private EdgeToEdgeHelper() {}
 
   public static void apply(Activity activity, boolean dark) {
+    apply(activity, dark, false);
+  }
+
+  /**
+   * @param includeTopInset true for screens whose content must start below the status bar.
+   *                        Existing screens retain their current edge-to-edge layout by default.
+   */
+  public static void apply(Activity activity, boolean dark, boolean includeTopInset) {
     Window window = activity.getWindow();
 
     // Keep Android's automatic darkening disabled for this activity. The app
@@ -89,11 +97,11 @@ public final class EdgeToEdgeHelper {
           Insets bars =
               insets.getInsets(WindowInsetsCompat.Type.systemBars()
                   | WindowInsetsCompat.Type.displayCutout());
-          // Keep the top edge-to-edge so the header/background reaches the
-          // status bar. Protect the sides and bottom from system UI instead.
+          // Settings can opt into a top inset so its title is not drawn beneath
+          // the status bar on older Android versions such as Android 10.
           view.setPadding(
               left + bars.left,
-              0,
+              includeTopInset ? bars.top : 0,
               right + bars.right,
               bottom + bars.bottom);
           return insets;
