@@ -509,7 +509,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         setContentView(root);
-        EdgeToEdgeHelper.apply(this, dark, true);
+        EdgeToEdgeHelper.apply(this, dark);
     }
 
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
