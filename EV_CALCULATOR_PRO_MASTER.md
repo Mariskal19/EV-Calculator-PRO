@@ -2649,3 +2649,20 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Riesgo principal confirmado: las clases crean sus vistas con `new View(this)`, crean diálogos con la Activity, consultan preferencias/recursos desde ella y dependen de métodos de ciclo de vida. Un Fragment no puede alojar sin más la vista raíz de una Activity; reutilizar el objeto Activity como si fuera una vista tampoco es una arquitectura Android válida.
 - Por tanto, la primera migración no debe consistir en añadir una dependencia de Fragment y cambiar la superclase. Hay que extraer un componente de pantalla con `Context`/host explícito, mover el estado persistente fuera de los callbacks de Activity y separar la creación/destrucción de la vista de la lógica de negocio. La conversión de Cargar será el piloto solo después de definir ese contrato, porque su implementación compacta contiene mucho código en líneas extensas.
 - No se ha añadido todavía la dependencia Fragment ni se han modificado Activities/manifest: hacerlo sin el contrato de extracción dejaría una arquitectura híbrida que no mantendría la barra en los flujos a otras secciones. No se genera APK de prueba hasta que la barra esté realmente fuera de las pantallas y la navegación principal cambie solo el contenido.
+
+
+
+### 2026-11-02 — Contrato técnico para la migración a host único
+
+- Se confirma en el código y manifiesto que el launcher actual es `PersistentMainActivity`, que hereda de `MainActivity`; las otras tres secciones principales siguen declaradas como Activities independientes. `BottomNavigationHelper` inicia Activities con Intents, por lo que la barra actual se vuelve a crear en cada pantalla.
+- Se descarta mantener las Activities principales como destinos de los botones inferiores: aunque se ocultase la animación, seguirían existiendo ventanas y barras distintas. El destino de la migración será una sola Activity host que conservará una única instancia de la barra y reemplazará solo el contenido del área central.
+- Contrato de cada sección extraída:
+  1. Crear/destruir su vista mediante un componente de pantalla, sin llamar a `Activity.setContentView()`.
+  2. Recibir un host explícito para navegación, apertura de ficha, mensajes/diálogos y acciones que necesiten una Activity.
+  3. Mantener estado de interfaz y selección al cambiar de pestaña; no depender de `onPause()` para guardar el estado transitorio.
+  4. Cancelar callbacks/tareas al retirar la vista y restaurarlos cuando vuelva a mostrarse.
+  5. Mantener preferencias, catálogo, cálculos y reglas de negocio existentes sin duplicarlos ni cambiar el JSON protegido.
+- Orden de migración: Cargar (piloto) → Coste → Buscar → Comparar. Después se conectan Ficha como destino secundario con retorno explícito al host y el menú Más mantiene Configuración/Apoyar como pantallas secundarias.
+- La barra será hija fija del host, fuera del contenedor intercambiable. El contenedor central tendrá altura restante y gestionará insets/teclado sin añadir padding duplicado. El botón Más no se convierte en una pestaña de contenido principal.
+- Criterios de aceptación antes de entregar APK: cambiar repetidamente entre las cuatro pestañas sin animación/desplazamiento de ventana ni recreación de la barra; conservar entrada/selección; probar Back y apertura/retorno de Ficha; probar tema, idioma y moneda; validar teclado y scroll; compilar y ejecutar en API 29 (Android 10) y API 36 (Android 16).
+- Restricciones: no migrar mediante sustituciones globales de `this`, no incrustar Activities en vistas/Fragments, no añadir dependencias sin necesidad demostrada, no modificar catálogo ni `main`. El estado sigue siendo auditoría/contrato definido; no se declara migración implementada ni APK disponible hasta superar compilación y pruebas.
