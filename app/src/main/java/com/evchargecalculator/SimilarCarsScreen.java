@@ -210,6 +210,9 @@ public class SimilarCarsScreen extends FrameLayout {
         referenceClear=tv("×",28,blue);
         referenceClear.setTypeface(Typeface.create("sans-serif-light",Typeface.NORMAL));
         referenceClear.setGravity(Gravity.CENTER);
+        referenceClear.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        referenceClear.setIncludeFontPadding(false);
+        referenceClear.setPadding(0,0,0,0);
         referenceClear.setBackgroundColor(Color.TRANSPARENT);
         LinearLayout.LayoutParams clearButtonParams=new LinearLayout.LayoutParams(dp(44),dp(44));
         clearButtonParams.setMargins(0,0,dp(6),0);
