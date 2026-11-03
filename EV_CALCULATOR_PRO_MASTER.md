@@ -2873,3 +2873,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Commits en la rama: ded1372c6056947a4ed5728226f8f8e0d38de099 (restauración directa y aplicación de barras tras instalar contenido) y 6e2dff35d75391e03159181fcf4e9dca8534f63f (eliminar reconstrucción duplicada).
 - Pendiente: ejecutar el workflow Debug de esta rama y validar manualmente el cambio de tema desde Configurar, la entrada a Coste/Buscar/Comparar sin destello y el contraste correcto de Atrás/Inicio/Recientes en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
 - No se modifica main, la versión de la app, Google Play ni el catálogo protegido de 682 vehículos. No integrar hasta que el usuario confirme las pruebas en ambos dispositivos.
+
+
+## 2026-11-03 — Nueva corrección del destello al cambiar de tema (pendiente de prueba manual)
+
+- Tras probar el build 2442, el usuario confirma que el destello de la pantalla anterior continúa tanto al pasar de claro a oscuro como de oscuro a claro. La solución de restauración anterior no se considera válida.
+- En `BaseNavigationActivity.onResume()`, los cambios de idioma, tema o divisa ahora pasan por un hook de apariencia y se actualizan las referencias de estado antes de actuar; el comportamiento por defecto conserva `recreate()` para actividades que lo necesiten.
+- `MainActivity` sobrescribe ese hook para reconstruir inmediatamente la pestaña actualmente seleccionada, sin crossfade ni recreación del host, descartando la vista cacheada de esa pestaña para que se cree con el tema actualizado.
+- Se mantiene el historial de navegación y el catálogo protegido; no se cambia la versión de la app, no se toca `main` y no se publica en Google Play.
+- La compilación de prueba del nuevo cambio está pendiente. No considerar resuelta la incidencia hasta probar el APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16), en ambos sentidos del cambio de tema y entrando a Coste, Buscar y Comparar.
