@@ -207,12 +207,12 @@ public class SimilarCarsScreen extends FrameLayout {
         picker.setPadding(dp(14),0,dp(8),0);
         picker.setOnClickListener(v->showVehiclePicker(picker));
         pickerRow.addView(picker,new LinearLayout.LayoutParams(0,dp(52),1));
-        referenceClear=tv("✕",18,dark?Color.rgb(255,145,145):Color.rgb(205,55,55));
-        referenceClear.setTypeface(null,Typeface.BOLD);
+        referenceClear=tv("×",22,blue);
+        referenceClear.setTypeface(null,Typeface.NORMAL);
         referenceClear.setGravity(Gravity.CENTER);
-        referenceClear.setBackground(bg(dark?Color.rgb(65,31,38):Color.rgb(255,235,235),24));
-        LinearLayout.LayoutParams clearButtonParams=new LinearLayout.LayoutParams(dp(38),dp(38));
-        clearButtonParams.setMargins(0,0,dp(7),0);
+        referenceClear.setBackgroundColor(Color.TRANSPARENT);
+        LinearLayout.LayoutParams clearButtonParams=new LinearLayout.LayoutParams(dp(40),dp(40));
+        clearButtonParams.setMargins(0,0,dp(6),0);
         pickerRow.addView(referenceClear,clearButtonParams);
         referenceClear.setVisibility(View.GONE);
         referenceClear.setContentDescription(LanguageManager.t(host,"Quitar coche seleccionado"));
