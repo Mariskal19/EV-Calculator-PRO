@@ -40,6 +40,15 @@ public class MainActivity extends BaseNavigationActivity {
 
   /** Displays a tab without changing the navigation history. */
   private void showPrimaryTab(int destination) {
+    showPrimaryTab(destination, true);
+  }
+
+  /**
+   * Restores a tab without animating when the Activity is recreated (for example,
+   * after changing the theme). This prevents the default Calculate screen from
+   * flashing before the previously selected destination is restored.
+   */
+  private void showPrimaryTab(int destination, boolean animate) {
     if (selectedPrimaryTab == 0) savePreferences();
     if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
     if (selectedPrimaryTab == 2 && similarCarsScreen != null) similarCarsScreen.onHostPause();
@@ -48,7 +57,7 @@ public class MainActivity extends BaseNavigationActivity {
     selectedPrimaryTab = destination;
     if (destination == 0) {
       if (mainContent != null) {
-        setContentViewWithFade(mainContent, 130);
+        displayTabContent(mainContent, animate);
         loadPreferences();
         applyTheme();
         applyCurrency();
@@ -57,19 +66,27 @@ public class MainActivity extends BaseNavigationActivity {
       }
     } else if (destination == 1) {
       if (costScreen == null) costScreen = new ElectricVsCombustionScreen(this);
-      setContentViewWithFade(costScreen, 130);
+      displayTabContent(costScreen, animate);
       costScreen.onHostDisplayed();
       costScreen.onHostResume();
     } else if (destination == 2) {
       if (similarCarsScreen == null) similarCarsScreen = new SimilarCarsScreen(this);
-      setContentViewWithFade(similarCarsScreen, 130);
+      displayTabContent(similarCarsScreen, animate);
       similarCarsScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true, similarCarsScreen);
     } else if (destination == 3) {
       if (compareScreen == null) compareScreen = new CompararCochesScreen(this);
-      setContentViewWithFade(compareScreen, 130);
+      displayTabContent(compareScreen, animate);
       compareScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true, compareScreen);
+    }
+  }
+
+  private void displayTabContent(View view, boolean animate) {
+    if (animate) {
+      setContentViewWithFade(view, 130);
+    } else {
+      setContentView(view);
     }
   }
 
@@ -101,7 +118,7 @@ public class MainActivity extends BaseNavigationActivity {
   int blue=Color.rgb(16,144,230), blueLight=Color.rgb(41,179,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), borderLight=Color.rgb(217,228,241), darkBg=Color.rgb(7,19,28), statusOk=Color.rgb(29,142,121), statusWarn=Color.rgb(227,93,93);
   private static final String KEY_DARK_THEME="dark_theme", KEY_CURRENCY="app_currency";
 
-  @Override public void onCreate(Bundle b){super.onCreate(b); registerSystemBackCallback(); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); int restoreTab=0; if(b!=null){restoreTab=b.getInt(STATE_SELECTED_TAB,0); int[] history=b.getIntArray(STATE_TAB_HISTORY); if(history!=null)for(int tab:history)if(tab>=0&&tab<=3)navigationHistory.addLast(tab);} dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR"); if(restoreTab>=1&&restoreTab<=3)showPrimaryTab(restoreTab);}
+  @Override public void onCreate(Bundle b){super.onCreate(b); registerSystemBackCallback(); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); int restoreTab=0; if(b!=null){restoreTab=b.getInt(STATE_SELECTED_TAB,0); int[] history=b.getIntArray(STATE_TAB_HISTORY); if(history!=null)for(int tab:history)if(tab>=0&&tab<=3)navigationHistory.addLast(tab);} dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR"); if(restoreTab>=1&&restoreTab<=3)showPrimaryTab(restoreTab,false);}
   @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
   @Override
   protected void onNewIntent(Intent intent) {
