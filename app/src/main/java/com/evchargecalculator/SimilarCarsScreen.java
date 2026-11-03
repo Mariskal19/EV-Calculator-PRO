@@ -37,7 +37,7 @@ public class SimilarCarsScreen extends FrameLayout {
     private EditText search;
     private Spinner marketSpinner, yearSpinner, driveSpinner, batterySpinner;
     private LinearLayout results, referenceResults;
-    private TextView selectedTitle, resultsTitle, referencePicker;
+    private TextView selectedTitle, resultsTitle, referencePicker, referenceClear;
     private Vehicle reference;
     private final AdvisorCriteriaEngine advisorEngine=new AdvisorCriteriaEngine();
     private EditText advisorInput;
@@ -196,14 +196,28 @@ public class SimilarCarsScreen extends FrameLayout {
         search=new EditText(host);
         search.setVisibility(View.GONE);
 
+        LinearLayout pickerRow=new LinearLayout(host);
+        pickerRow.setOrientation(LinearLayout.HORIZONTAL);
+        pickerRow.setGravity(Gravity.CENTER_VERTICAL);
+        pickerRow.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),14));
         TextView picker=tv("🚗  Seleccionar coche del catálogo  ›",15,text());
         referencePicker=picker;
         picker.setTypeface(null,Typeface.BOLD);
         picker.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
-        picker.setPadding(dp(14),0,dp(14),0);
-        picker.setBackground(strokeBg(dark?Color.rgb(10,24,36):Color.rgb(248,251,255),dark?Color.rgb(43,64,82):Color.rgb(205,219,233),14));
+        picker.setPadding(dp(14),0,dp(8),0);
         picker.setOnClickListener(v->showVehiclePicker(picker));
-        introCard.addView(picker,new LinearLayout.LayoutParams(-1,dp(52)));
+        pickerRow.addView(picker,new LinearLayout.LayoutParams(0,dp(52),1));
+        referenceClear=tv("✕",18,dark?Color.rgb(255,145,145):Color.rgb(205,55,55));
+        referenceClear.setTypeface(null,Typeface.BOLD);
+        referenceClear.setGravity(Gravity.CENTER);
+        referenceClear.setBackground(bg(dark?Color.rgb(65,31,38):Color.rgb(255,235,235),24));
+        LinearLayout.LayoutParams clearButtonParams=new LinearLayout.LayoutParams(dp(38),dp(38));
+        clearButtonParams.setMargins(0,0,dp(7),0);
+        pickerRow.addView(referenceClear,clearButtonParams);
+        referenceClear.setVisibility(View.GONE);
+        referenceClear.setContentDescription(LanguageManager.t(host,"Quitar coche seleccionado"));
+        referenceClear.setOnClickListener(v->clearSelectedReference());
+        introCard.addView(pickerRow,new LinearLayout.LayoutParams(-1,dp(52)));
 
         content.addView(hero,marginLp(-1,dp(260),-dp(14),0,-dp(14),dp(8)));
 
@@ -525,6 +539,7 @@ public class SimilarCarsScreen extends FrameLayout {
                 .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
         if(referencePicker!=null){
             referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
+            if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
         }
         advisorEngine.reset();
         advisorStatus.setText(LanguageManager.t(host,"Alternativas similares tomando como referencia ")
@@ -761,6 +776,16 @@ public class SimilarCarsScreen extends FrameLayout {
     }
     private void setAdapter(Spinner s,List<String> data){ArrayAdapter<String>a=new ArrayAdapter<String>(host,android.R.layout.simple_spinner_item,data){@Override public View getView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getView(p,v,g);t.setText(LanguageManager.t(host,t.getText().toString()));t.setTextColor(text());t.setTextSize(12);t.setPadding(dp(8),0,dp(4),0);return t;}@Override public View getDropDownView(int p,android.view.View v,android.view.ViewGroup g){TextView t=(TextView)super.getDropDownView(p,v,g);t.setText(LanguageManager.t(host,t.getText().toString()));t.setTextColor(Color.DKGRAY);t.setTextSize(13);return t;}};a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);s.setAdapter(a);}
 
+    private void clearSelectedReference(){
+        reference=null;
+        host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().remove(KEY_LAST_REFERENCE).apply();
+        if(referencePicker!=null)referencePicker.setText("🚗  Seleccionar coche del catálogo  ›");
+        if(referenceClear!=null)referenceClear.setVisibility(View.GONE);
+        if(referenceResults!=null)referenceResults.setVisibility(View.GONE);
+        if(results!=null)results.removeAllViews();
+        if(resultsTitle!=null)resultsTitle.setVisibility(View.GONE);
+    }
+
     private void showVehiclePicker(TextView picker){
         final EditText input=new EditText(host);
         input.setSingleLine(true);
@@ -886,6 +911,7 @@ public class SimilarCarsScreen extends FrameLayout {
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
             picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+            if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
             host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
             showSimilar();
         });
@@ -901,26 +927,6 @@ public class SimilarCarsScreen extends FrameLayout {
         LinearLayout body=new LinearLayout(host);
         body.setOrientation(LinearLayout.VERTICAL);
         body.setPadding(dp(12),dp(12),dp(12),dp(8));
-
-        // Permitir volver a dejar el coche de referencia sin seleccionar.
-        TextView clearReference=tv("✕  Dejar sin coche seleccionado",14,blue);
-        clearReference.setTypeface(null,Typeface.BOLD);
-        clearReference.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
-        clearReference.setPadding(dp(14),0,dp(14),0);
-        clearReference.setVisibility(reference==null?View.GONE:View.VISIBLE);
-        clearReference.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),12));
-        LinearLayout.LayoutParams clearReferenceParams=new LinearLayout.LayoutParams(-1,dp(44));
-        clearReferenceParams.bottomMargin=dp(8);
-        body.addView(clearReference,clearReferenceParams);
-        clearReference.setOnClickListener(v->{
-            reference=null;
-            host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().remove(KEY_LAST_REFERENCE).apply();
-            if(referencePicker!=null)referencePicker.setText("🚗  Seleccionar coche del catálogo  ›");
-            if(results!=null)results.removeAllViews();
-            if(resultsTitle!=null)resultsTitle.setVisibility(View.GONE);
-            Object dialogTag=input.getTag();
-            if(dialogTag instanceof AlertDialog)((AlertDialog)dialogTag).dismiss();
-        });
 
         body.addView(input,new LinearLayout.LayoutParams(-1,dp(50)));
         body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56)));
@@ -1004,6 +1010,7 @@ public class SimilarCarsScreen extends FrameLayout {
             if(logicalKey(v).equals(savedKey)){
                 reference=v;
                 if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+                if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
                 showSimilar();
                 return;
             }
