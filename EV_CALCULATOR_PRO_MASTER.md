@@ -2908,4 +2908,6 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Se elimina el fondo rojo y el color rojo de la X.
 - Se descarta el diseño circular con fondo azul.
 - Diseño actual para probar: X azul de 28 sp con tipografía ligera, sin fondo, borde ni círculo; conserva un área táctil de 44 dp.
+- Ajuste solicitado tras probar el diseño: centrado horizontal explícito de la X dentro de su área táctil (alineación de texto centrada, sin padding interno ni font padding). Se conserva el estilo azul ligero, transparente y el área táctil de 44 dp.
+
 - No se modifica la lógica de selección, borrado, persistencia ni resultados.
