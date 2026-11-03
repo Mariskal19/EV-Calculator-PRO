@@ -30,20 +30,9 @@ public class PersistentMainActivity extends MainActivity {
   protected void onResume() {
     super.onResume();
     CurrencyRateManager.refreshIfNeeded(this);
-    SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-    if (prefs.contains(KEY_DARK_THEME)) {
-      boolean selectedDark = prefs.getBoolean(KEY_DARK_THEME, false);
-      if (selectedDark != dark) {
-        dark = selectedDark;
-        build();
-        loadPreferences();
-        applyTheme();
-        calculate();
-        // Reapply edge-to-edge after rebuilding the root following a theme change.
-        // Without this, the new root can lose its system-bar inset listener and
-        // the bottom navigation may shift when returning with the system Back button.
-        EdgeToEdgeHelper.apply(this, dark);
-      }
-    }
+    // BaseNavigationActivity owns configuration-change recreation. Do not
+    // rebuild the launcher content here: doing so immediately after
+    // super.onResume() can race with recreate() on Android 10 and briefly
+    // replace a restored secondary tab with the default Calculate screen.
   }
 }
