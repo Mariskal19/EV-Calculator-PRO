@@ -207,12 +207,10 @@ public class SimilarCarsScreen extends FrameLayout {
         picker.setPadding(dp(14),0,dp(8),0);
         picker.setOnClickListener(v->showVehiclePicker(picker));
         pickerRow.addView(picker,new LinearLayout.LayoutParams(0,dp(52),1));
-        referenceClear=tv("×",27,blue);
-        referenceClear.setTypeface(null,Typeface.NORMAL);
+        referenceClear=tv("×",28,blue);
+        referenceClear.setTypeface(Typeface.create("sans-serif-light",Typeface.NORMAL));
         referenceClear.setGravity(Gravity.CENTER);
-        referenceClear.setBackground(strokeBg(
-                dark?Color.rgb(16,48,72):Color.rgb(231,241,255),
-                dark?Color.rgb(65,139,255):Color.rgb(174,204,245),22));
+        referenceClear.setBackgroundColor(Color.TRANSPARENT);
         LinearLayout.LayoutParams clearButtonParams=new LinearLayout.LayoutParams(dp(44),dp(44));
         clearButtonParams.setMargins(0,0,dp(6),0);
         pickerRow.addView(referenceClear,clearButtonParams);
