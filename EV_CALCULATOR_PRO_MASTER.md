@@ -2915,3 +2915,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Ajuste solicitado tras probar el diseño: centrado horizontal explícito de la X dentro de su área táctil (alineación de texto centrada, sin padding interno ni font padding). Se conserva el estilo azul ligero, transparente y el área táctil de 44 dp.
 
 - No se modifica la lógica de selección, borrado, persistencia ni resultados.
+
+
+## 2026-11-03 — Limpieza de workflows y ramas integradas
+
+- Se eliminan los workflows obsoletos `.github/workflows/advisor-android-compile.yml` (limitado a una antigua rama de navegación) y `.github/workflows/transitions-test.yml` (pruebas de ramas históricas ya integradas).
+- Se conservan `build.yml` (compilación Release APK/AAB), `catalog-auto-update.yml` (sincronización diaria a las 15:00, hora de España), `catalog.yml` (validación del catálogo) y `advisor-engine-test.yml` (pruebas del motor del asesor).
+- Se limpia el disparador de `build.yml`: se mantienen `main` y `fix/compare-first-entry-top-inset`; se retiran las ramas ya integradas `fix/theme-navigation-clean` y `fix/search-clear-reference`.
+- No se modifica el código de la aplicación, la versión 1.0.6 (versionCode 62), el catálogo protegido ni la publicación de Google Play.
+- Las ramas Git ya fusionadas se han identificado para borrado manual en GitHub; la integración disponible no permite eliminarlas directamente.
