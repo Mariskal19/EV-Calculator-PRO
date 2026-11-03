@@ -2902,3 +2902,9 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Al pulsar la X, se limpia la referencia en memoria y preferencias, se restaura el texto original del selector y se ocultan los resultados de similitud. La selección borrada no se restaura al volver a abrir la pantalla.
 - La opción de borrado dentro del diálogo se ha retirado para evitar duplicar controles.
 - Rama de trabajo: `fix/search-clear-reference`. Pendiente de compilar esta nueva presentación y probarla en Redmi Note 7 y Redmi Note 13 Pro antes de integrar en `main`.
+
+### Ajuste visual de la X para quitar el coche de referencia (3 Nov 2026)
+- Se mantiene el control de borrado junto al selector y su comportamiento ya validado.
+- Se elimina el fondo rojo y el color rojo de la X.
+- Se usa una X tipográfica discreta en azul de la aplicación, con fondo transparente y un área táctil de 40 dp.
+- No se modifica la lógica de selección, borrado, persistencia ni resultados.
