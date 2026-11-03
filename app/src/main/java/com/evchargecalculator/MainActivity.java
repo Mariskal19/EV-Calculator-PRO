@@ -64,12 +64,12 @@ public class MainActivity extends BaseNavigationActivity {
       if (similarCarsScreen == null) similarCarsScreen = new SimilarCarsScreen(this);
       setContentViewWithFade(similarCarsScreen, 130);
       similarCarsScreen.onHostResume();
-      EdgeToEdgeHelper.apply(this, dark, true);
+      EdgeToEdgeHelper.apply(this, dark, true, similarCarsScreen);
     } else if (destination == 3) {
       if (compareScreen == null) compareScreen = new CompararCochesScreen(this);
       setContentViewWithFade(compareScreen, 130);
       compareScreen.onHostResume();
-      EdgeToEdgeHelper.apply(this, dark, true);
+      EdgeToEdgeHelper.apply(this, dark, true, compareScreen);
     }
   }
 
