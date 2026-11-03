@@ -2816,3 +2816,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
   - Navegación desde pantallas secundarias: fundido al cambiar a una pestaña principal.
 - Archivos de animación añadidos: `fade_in.xml`, `fade_out.xml`, `slide_in_left.xml`, `slide_in_right.xml`, `slide_out_left.xml`, `slide_out_right.xml`.
 - No se modifican el catálogo protegido, los datos de vehículos ni la lógica de cálculos/búsqueda. La integración en `main` no implica publicar una nueva versión en Google Play.
+
+
+## 2026-11-03 — Fundido cruzado real entre pantallas (integrado tras prueba del usuario)
+
+- El usuario prueba la transición anterior y solicita una versión más suave; confirma que el fundido cruzado nuevo le gusta y autoriza integrarlo en `main`.
+- Rama: `feature/transiciones-crossfade`.
+- `BaseNavigationActivity` ahora mantiene temporalmente la pantalla saliente y la entrante dentro del contenedor central y anima sus opacidades simultáneamente (crossfade real), con duración fija de 280 ms y `AccelerateDecelerateInterpolator`.
+- La barra inferior permanece en su contenedor fijo, fuera de la animación. No se cambia la navegación funcional, el historial Atrás ni el catálogo.
+- Se cancela limpiamente una transición interrumpida por una nueva selección de pestaña para evitar vistas superpuestas residuales.
+- Workflow Release firmado: [run 41601898149](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41601898149), compilación completada con éxito.
+- Artefacto: `EV-Calculator-PRO-transiciones-test`, 5.005.698 bytes, retención hasta el 17 de noviembre de 2026.
+- Integración autorizada por el usuario. No publicar en Google Play sin autorización expresa.
