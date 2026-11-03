@@ -2897,6 +2897,8 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 ## 2026-11-03 — Permitir quitar el coche de referencia en Buscar coches
 
 - Incidencia: después de elegir un coche en el selector del catálogo, no existía una acción para volver al estado sin selección.
-- Añadida en el selector una opción visible «Dejar sin coche seleccionado» cuando hay una referencia activa.
-- Al usarla, se limpia la referencia en memoria y en preferencias, se restaura el texto original del selector y se ocultan los resultados de similitud. Al volver a abrir la pantalla no se restaura el coche eliminado.
-- Rama de trabajo: `fix/search-clear-reference`. Pendiente de compilación y prueba manual en Redmi Note 7 y Redmi Note 13 Pro antes de integrar en `main`.
+- Primera propuesta: acción «Dejar sin coche seleccionado» dentro del diálogo. El usuario la probó y pidió un acceso más directo, ya que no le gustaba tener que entrar en el desplegable.
+- Ajuste actual: botón pequeño con una **X al lado del coche seleccionado**, en la misma fila del selector. Solo aparece cuando hay una referencia activa.
+- Al pulsar la X, se limpia la referencia en memoria y preferencias, se restaura el texto original del selector y se ocultan los resultados de similitud. La selección borrada no se restaura al volver a abrir la pantalla.
+- La opción de borrado dentro del diálogo se ha retirado para evitar duplicar controles.
+- Rama de trabajo: `fix/search-clear-reference`. Pendiente de compilar esta nueva presentación y probarla en Redmi Note 7 y Redmi Note 13 Pro antes de integrar en `main`.
