@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ main, fix/compare-first-entry-top-inset ]
     paths-ignore:
       - 'app/src/main/assets/catalog_remote_additions.json'
 
@@ -103,7 +103,17 @@ jobs:
           echo "Release APK: $apk"
           echo "Release AAB: $aab"
 
+      - name: Upload test APK for inset validation
+        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset'
+        uses: actions/upload-artifact@v6
+        with:
+          name: EV-Calculator-PRO-insets-test-${{ github.run_number }}
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Persist optimized search source
+        if: github.ref == 'refs/heads/main'
         shell: bash
         continue-on-error: true
         run: |
@@ -134,6 +144,7 @@ jobs:
           echo "WARNING: optimized search source could not be persisted this run; APK/AAB build will continue."
 
       - name: Prepare release files
+        if: github.ref == 'refs/heads/main'
         shell: bash
         env:
           VERSION: ${{ steps.version.outputs.version }}
@@ -147,6 +158,7 @@ jobs:
           cp "$aab" "release/EV-Calculator-PRO-${artifact_version}.aab"
 
       - name: Publish GitHub Release with APK and AAB
+        if: github.ref == 'refs/heads/main'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
