@@ -2848,3 +2848,16 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - **Corrección de incidencia:** las versiones 1.0.7 / versionCode 63 y los builds 2423 y 2424 se generaron por error al incrementar la versión sin autorización. No deben instalarse ni utilizarse para Play Console. Se conservan sus Releases como registros históricos; la integración disponible no permite eliminarlas desde esta tarea.
 - El cambio de versión no altera el catálogo protegido de 682 vehículos, los datos ni la lógica de cálculo/búsqueda/comparación. No subir ni publicar en Google Play sin autorización expresa del usuario.
 - Pendiente antes de enviar la 1.0.6 a Play: revisión de los textos «Novedades» en todos los idiomas/locales y del borde blanco del icono de la ficha.
+
+
+## 2026-11-03 — Corrección de insets superiores en Buscar y Comparar (integrada y validada)
+
+- Incidencia original: en Redmi Note 7 (Android 10), el encabezado de Buscar y Comparar podía quedar recortado al entrar por primera vez. La primera corrección provocó una presentación incorrecta en Redmi Note 13 Pro (Android 16), por lo que se descartó como solución válida.
+- Solución final integrada mediante PR #13, fusionada en `main` con commit `a8acad90ee6a6ff3dd7c01771af615b19aec9506`.
+- Causa abordada: durante el crossfade, la vista saliente y la entrante conviven temporalmente; el helper común podía localizar el contenedor desplazable de la pantalla anterior y aplicar allí el inset superior.
+- `MainActivity` pasa explícitamente al helper la pantalla entrante (`SimilarCarsScreen` o `CompararCochesScreen`). El helper aplica el inset al contenedor desplazable de esa pantalla, admite tanto `ScrollView` como `NestedScrollView` y solicita los insets al adjuntarse la raíz si la primera solicitud ocurre demasiado pronto.
+- Se eliminan las llamadas redundantes al helper desde los constructores/reconstrucciones de ambas pantallas. Se mantiene el tratamiento de insets mediante `WindowInsetsCompat`, sin lógica específica por versión de Android.
+- **Prueba manual confirmada por el usuario en ambos dispositivos:** Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). Buscar y Comparar funcionan correctamente en los dos.
+- Compilación de prueba de la rama: [run 41610010119](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41610010119), SUCCESS; artefacto `EV-Calculator-PRO-insets-test-2431`.
+- Compilación Release posterior a la integración en `main`: [run 41610840419](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41610840419), iniciada automáticamente tras el merge; comprobar su resultado antes de tomar ese build como referencia.
+- Esta integración sustituye las notas anteriores que dejaban pendiente la corrección de insets. No se modifica el catálogo protegido ni la versión de la app por este cambio. No publicar en Google Play sin autorización expresa.
