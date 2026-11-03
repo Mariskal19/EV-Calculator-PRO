@@ -2901,7 +2901,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Ajuste actual: botón pequeño con una **X al lado del coche seleccionado**, en la misma fila del selector. Solo aparece cuando hay una referencia activa.
 - Al pulsar la X, se limpia la referencia en memoria y preferencias, se restaura el texto original del selector y se ocultan los resultados de similitud. La selección borrada no se restaura al volver a abrir la pantalla.
 - La opción de borrado dentro del diálogo se ha retirado para evitar duplicar controles.
-- Rama de trabajo: `fix/search-clear-reference`. Pendiente de compilar esta nueva presentación y probarla en Redmi Note 7 y Redmi Note 13 Pro antes de integrar en `main`.
+- Integrado en `main` mediante PR #16 (squash), commit `cd09b704fce18b1acffbab01ef00639bcee99f87`.
+- La X definitiva quedó validada por el usuario: azul, ligera, sin fondo ni borde, centrada horizontalmente y con área táctil de 44 dp.
+- Compilación Release de `main` completada correctamente: build 2460, run [41682215670](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41682215670).
+- Release generado: `build-v1.0.6-2460`; APK y AAB publicados como artefactos de la release.
+- No se publicó en Google Play. Versión mantenida en 1.0.6 (versionCode 62); catálogo protegido sin cambios.
 
 ### Ajuste visual de la X para quitar el coche de referencia (3 Nov 2026)
 - Se mantiene el control de borrado junto al selector y su comportamiento ya validado.
