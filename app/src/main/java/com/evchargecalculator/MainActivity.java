@@ -32,6 +32,31 @@ public class MainActivity extends BaseNavigationActivity {
   @Override protected boolean handlesBottomNavigationInternally() { return true; }
 
   @Override
+  protected void onHostAppearanceChanged(
+      boolean languageChanged, boolean themeChanged, boolean currencyChanged) {
+    // ConfigurationActivity has already persisted the new appearance. Rebuild
+    // only the selected tab in this Activity instance, synchronously and without
+    // an outgoing-screen animation, instead of recreating the host Activity.
+    if (languageChanged) LanguageManager.applyStored(this);
+    if (themeChanged || languageChanged || currencyChanged) {
+      if (selectedPrimaryTab == 0) {
+        savePreferences();
+        mainContent = null;
+      } else if (selectedPrimaryTab == 1) {
+        if (costScreen != null) costScreen.onHostPause();
+        costScreen = null;
+      } else if (selectedPrimaryTab == 2) {
+        if (similarCarsScreen != null) similarCarsScreen.onHostPause();
+        similarCarsScreen = null;
+      } else if (selectedPrimaryTab == 3) {
+        if (compareScreen != null) compareScreen.onHostPause();
+        compareScreen = null;
+      }
+      showPrimaryTab(selectedPrimaryTab, false);
+    }
+  }
+
+  @Override
   protected void onBottomNavigationSelected(int destination) {
     if (destination == selectedPrimaryTab) return;
     navigationHistory.addLast(selectedPrimaryTab);
@@ -40,6 +65,11 @@ public class MainActivity extends BaseNavigationActivity {
 
   /** Displays a tab without changing the navigation history. */
   private void showPrimaryTab(int destination) {
+    showPrimaryTab(destination, true);
+  }
+
+  /** Rebuilds a tab immediately when appearance changes, without a crossfade. */
+  private void showPrimaryTab(int destination, boolean animate) {
     if (destination < 0 || destination > 3) return;
     if (selectedPrimaryTab == 0) savePreferences();
     if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
@@ -51,7 +81,7 @@ public class MainActivity extends BaseNavigationActivity {
       // Build Cargar lazily. When Android restores another tab after a theme
       // recreation, never create the default screen first (that caused a flash).
       if (mainContent == null) build();
-      setContentViewWithFade(mainContent, 130);
+      if (animate) setContentViewWithFade(mainContent, 130); else setContentView(mainContent);
       loadPreferences();
       applyTheme();
       applyCurrency();
@@ -59,18 +89,18 @@ public class MainActivity extends BaseNavigationActivity {
       EdgeToEdgeHelper.apply(this, dark);
     } else if (destination == 1) {
       if (costScreen == null) costScreen = new ElectricVsCombustionScreen(this);
-      setContentViewWithFade(costScreen, 130);
+      if (animate) setContentViewWithFade(costScreen, 130); else setContentView(costScreen);
       costScreen.onHostDisplayed();
       costScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark);
     } else if (destination == 2) {
       if (similarCarsScreen == null) similarCarsScreen = new SimilarCarsScreen(this);
-      setContentViewWithFade(similarCarsScreen, 130);
+      if (animate) setContentViewWithFade(similarCarsScreen, 130); else setContentView(similarCarsScreen);
       similarCarsScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true, similarCarsScreen);
     } else {
       if (compareScreen == null) compareScreen = new CompararCochesScreen(this);
-      setContentViewWithFade(compareScreen, 130);
+      if (animate) setContentViewWithFade(compareScreen, 130); else setContentView(compareScreen);
       compareScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true, compareScreen);
     }
