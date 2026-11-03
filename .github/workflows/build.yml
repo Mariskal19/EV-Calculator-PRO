@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main, fix/compare-first-entry-top-inset, fix/theme-navigation-clean ]
+    branches: [ main, fix/compare-first-entry-top-inset, fix/theme-navigation-clean, fix/search-clear-reference ]
     paths-ignore:
       - 'app/src/main/assets/catalog_remote_additions.json'
 
@@ -104,7 +104,7 @@ jobs:
           echo "Release AAB: $aab"
 
       - name: Upload test APK for inset validation
-        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset' || github.ref == 'refs/heads/fix/theme-navigation-clean'
+        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset' || github.ref == 'refs/heads/fix/theme-navigation-clean' || github.ref == 'refs/heads/fix/search-clear-reference'
         uses: actions/upload-artifact@v6
         with:
           name: EV-Calculator-PRO-navigation-test-${{ github.run_number }}
