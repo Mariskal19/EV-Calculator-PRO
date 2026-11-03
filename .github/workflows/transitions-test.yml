@@ -6,7 +6,6 @@ on:
     branches:
       - feature/transiciones-crossfade
       - chore/github-actions-node24
-      - fix/theme-navigation-clean
 
 permissions:
   contents: read
