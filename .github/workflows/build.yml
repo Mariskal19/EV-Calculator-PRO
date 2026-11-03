@@ -104,10 +104,10 @@ jobs:
           echo "Release AAB: $aab"
 
       - name: Upload test APK for inset validation
-        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset'
+        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset' || github.ref == 'refs/heads/fix/theme-navigation-clean'
         uses: actions/upload-artifact@v6
         with:
-          name: EV-Calculator-PRO-insets-test-${{ github.run_number }}
+          name: EV-Calculator-PRO-navigation-test-${{ github.run_number }}
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
           retention-days: 7
