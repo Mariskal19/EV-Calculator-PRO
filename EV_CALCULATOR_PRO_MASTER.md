@@ -2892,3 +2892,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - La compilación de la rama antes del merge terminó correctamente: build 2445, run [41654762176](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41654762176), con artefacto de prueba APK.
 - Pendiente: compilación Release de `main` posterior a la integración. No considerar el APK de la rama como APK final de `main`.
 - Se mantiene la versión de la app en 1.0.6 (versionCode 62). Sin cambios en el catálogo protegido y sin publicación en Google Play.
+
+
+## 2026-11-03 — Permitir quitar el coche de referencia en Buscar coches
+
+- Incidencia: después de elegir un coche en el selector del catálogo, no existía una acción para volver al estado sin selección.
+- Añadida en el selector una opción visible «Dejar sin coche seleccionado» cuando hay una referencia activa.
+- Al usarla, se limpia la referencia en memoria y en preferencias, se restaura el texto original del selector y se ocultan los resultados de similitud. Al volver a abrir la pantalla no se restaura el coche eliminado.
+- Rama de trabajo: `fix/search-clear-reference`. Pendiente de compilación y prueba manual en Redmi Note 7 y Redmi Note 13 Pro antes de integrar en `main`.
