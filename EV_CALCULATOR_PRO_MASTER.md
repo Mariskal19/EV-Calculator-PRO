@@ -2891,3 +2891,24 @@ Al volver de Configurar, `BaseNavigationActivity.onResume()` puede solicitar `re
 ### Validación pendiente
 
 Generar un nuevo APK de prueba y repetir el cambio a tema oscuro desde Configurar, comprobando especialmente Redmi Note 7 (Android 10) y también Redmi Note 13 Pro (Android 16). No fusionar PR #14 hasta que el usuario confirme el resultado en ambos dispositivos. No publicar en Google Play.
+
+
+## 2026-11-03 — Tercera corrección: no crear Calcular al restaurar otra pestaña
+
+El usuario confirmó que el destello de Calcular persistía en ambos dispositivos (Redmi Note 7 Android 10 y Redmi Note 13 Pro Android 16) después de las dos correcciones anteriores. Por tanto, la incidencia continúa abierta y no se debe considerar resuelta.
+
+### Cambio de enfoque
+
+La causa visual que se elimina ahora desde la raíz: `MainActivity.onCreate()` construía siempre la pantalla Calcular mediante `build()` y la instalaba antes de restaurar la pestaña secundaria. Aunque la sustitución posterior ya no tuviera animación, la pantalla inicial podía llegar a dibujarse durante un instante.
+
+### Corrección añadida a PR #14
+
+- Si el estado restaurado indica Coste, Buscar o Comparar, la actividad ya no construye ni instala primero Calcular.
+- Inicializa el tema y la navegación y muestra directamente la pestaña restaurada sin animación.
+- Solo construye Calcular cuando la pestaña que corresponde mostrar es realmente Calcular.
+- Se mantienen las dos correcciones anteriores y el ajuste de `PersistentMainActivity`.
+- Catálogo, cálculos, versión y publicación de Play Store sin cambios.
+
+### Validación pendiente
+
+Compilar un APK nuevo y repetir el cambio a tema oscuro desde Configurar, entrando después en Coste, Buscar y Comparar. Probar en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). No fusionar PR #14 hasta confirmación expresa del usuario en ambos dispositivos. No publicar en Google Play.
