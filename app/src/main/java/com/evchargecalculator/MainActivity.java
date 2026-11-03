@@ -32,6 +32,31 @@ public class MainActivity extends BaseNavigationActivity {
   @Override protected boolean handlesBottomNavigationInternally() { return true; }
 
   @Override
+  protected void onHostAppearanceChanged(
+      boolean languageChanged, boolean themeChanged, boolean currencyChanged) {
+    // ConfigurationActivity has already persisted the new appearance. Rebuild
+    // only the selected tab in this Activity instance, synchronously and without
+    // an outgoing-screen animation, instead of recreating the host Activity.
+    if (languageChanged) LanguageManager.applyStored(this);
+    if (themeChanged || languageChanged || currencyChanged) {
+      if (selectedPrimaryTab == 0) {
+        savePreferences();
+        mainContent = null;
+      } else if (selectedPrimaryTab == 1) {
+        if (costScreen != null) costScreen.onHostPause();
+        costScreen = null;
+      } else if (selectedPrimaryTab == 2) {
+        if (similarCarsScreen != null) similarCarsScreen.onHostPause();
+        similarCarsScreen = null;
+      } else if (selectedPrimaryTab == 3) {
+        if (compareScreen != null) compareScreen.onHostPause();
+        compareScreen = null;
+      }
+      showPrimaryTab(selectedPrimaryTab, false);
+    }
+  }
+
+  @Override
   protected void onBottomNavigationSelected(int destination) {
     if (destination == selectedPrimaryTab) return;
     navigationHistory.addLast(selectedPrimaryTab);
@@ -40,6 +65,12 @@ public class MainActivity extends BaseNavigationActivity {
 
   /** Displays a tab without changing the navigation history. */
   private void showPrimaryTab(int destination) {
+    showPrimaryTab(destination, true);
+  }
+
+  /** Rebuilds a tab immediately when appearance changes, without a crossfade. */
+  private void showPrimaryTab(int destination, boolean animate) {
+    if (destination < 0 || destination > 3) return;
     if (selectedPrimaryTab == 0) savePreferences();
     if (selectedPrimaryTab == 1 && costScreen != null) costScreen.onHostPause();
     if (selectedPrimaryTab == 2 && similarCarsScreen != null) similarCarsScreen.onHostPause();
@@ -47,27 +78,29 @@ public class MainActivity extends BaseNavigationActivity {
 
     selectedPrimaryTab = destination;
     if (destination == 0) {
-      if (mainContent != null) {
-        setContentViewWithFade(mainContent, 130);
-        loadPreferences();
-        applyTheme();
-        applyCurrency();
-        calculate();
-        EdgeToEdgeHelper.apply(this, dark);
-      }
+      // Build Cargar lazily. When Android restores another tab after a theme
+      // recreation, never create the default screen first (that caused a flash).
+      if (mainContent == null) build();
+      if (animate) setContentViewWithFade(mainContent, 130); else setContentView(mainContent);
+      loadPreferences();
+      applyTheme();
+      applyCurrency();
+      calculate();
+      EdgeToEdgeHelper.apply(this, dark);
     } else if (destination == 1) {
       if (costScreen == null) costScreen = new ElectricVsCombustionScreen(this);
-      setContentViewWithFade(costScreen, 130);
+      if (animate) setContentViewWithFade(costScreen, 130); else setContentView(costScreen);
       costScreen.onHostDisplayed();
       costScreen.onHostResume();
+      EdgeToEdgeHelper.apply(this, dark);
     } else if (destination == 2) {
       if (similarCarsScreen == null) similarCarsScreen = new SimilarCarsScreen(this);
-      setContentViewWithFade(similarCarsScreen, 130);
+      if (animate) setContentViewWithFade(similarCarsScreen, 130); else setContentView(similarCarsScreen);
       similarCarsScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true, similarCarsScreen);
-    } else if (destination == 3) {
+    } else {
       if (compareScreen == null) compareScreen = new CompararCochesScreen(this);
-      setContentViewWithFade(compareScreen, 130);
+      if (animate) setContentViewWithFade(compareScreen, 130); else setContentView(compareScreen);
       compareScreen.onHostResume();
       EdgeToEdgeHelper.apply(this, dark, true, compareScreen);
     }
@@ -101,7 +134,37 @@ public class MainActivity extends BaseNavigationActivity {
   int blue=Color.rgb(16,144,230), blueLight=Color.rgb(41,179,255), white=Color.rgb(22,42,63), secondary=Color.rgb(90,111,137), cardLight=Color.argb(245,255,255,255), cardDark=Color.argb(220,21,31,42), borderLight=Color.rgb(217,228,241), darkBg=Color.rgb(7,19,28), statusOk=Color.rgb(29,142,121), statusWarn=Color.rgb(227,93,93);
   private static final String KEY_DARK_THEME="dark_theme", KEY_CURRENCY="app_currency";
 
-  @Override public void onCreate(Bundle b){super.onCreate(b); registerSystemBackCallback(); prefs=getSharedPreferences("ev_charge_calculator",MODE_PRIVATE); int restoreTab=0; if(b!=null){restoreTab=b.getInt(STATE_SELECTED_TAB,0); int[] history=b.getIntArray(STATE_TAB_HISTORY); if(history!=null)for(int tab:history)if(tab>=0&&tab<=3)navigationHistory.addLast(tab);} dark=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; build(); EdgeToEdgeHelper.apply(this,dark); loadPreferences(); applyTheme(); calculate(); lastLanguage=LanguageManager.getSelectedLanguage(this); lastCurrency=prefs.getString(KEY_CURRENCY,"EUR"); if(restoreTab>=1&&restoreTab<=3)showPrimaryTab(restoreTab);}
+  @Override public void onCreate(Bundle b) {
+    super.onCreate(b);
+    registerSystemBackCallback();
+    prefs = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE);
+    int restoreTab = 0;
+    if (b != null) {
+      restoreTab = b.getInt(STATE_SELECTED_TAB, 0);
+      int[] history = b.getIntArray(STATE_TAB_HISTORY);
+      if (history != null) {
+        for (int tab : history) if (tab >= 0 && tab <= 3) navigationHistory.addLast(tab);
+      }
+    }
+    dark = prefs.contains(KEY_DARK_THEME)
+        ? prefs.getBoolean(KEY_DARK_THEME, false)
+        : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+    lastLanguage = LanguageManager.getSelectedLanguage(this);
+    lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+
+    // Restore the actual destination as the first content view. In particular,
+    // do not inflate Cargar before Coste/Buscar/Comparar after a theme change.
+    if (restoreTab >= 1 && restoreTab <= 3) {
+      showPrimaryTab(restoreTab);
+    } else {
+      selectedPrimaryTab = 0;
+      build();
+      loadPreferences();
+      applyTheme();
+      calculate();
+      EdgeToEdgeHelper.apply(this, dark);
+    }
+  }
   @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
   @Override
   protected void onNewIntent(Intent intent) {
@@ -110,6 +173,22 @@ public class MainActivity extends BaseNavigationActivity {
     if (intent != null && intent.hasExtra("open_primary_tab")) {
       int destination = intent.getIntExtra("open_primary_tab", 0);
       intent.removeExtra("open_primary_tab");
+      if (destination < 0 || destination > 3) return;
+
+      // ConfigurationActivity may have changed the persisted theme while this
+      // host Activity was paused underneath it. Do not briefly install a tab
+      // using the old theme and then recreate the Activity from onResume().
+      // Save the requested destination first; onCreate() will restore it
+      // directly with the newly persisted theme.
+      boolean persistedDark = prefs != null && prefs.contains(KEY_DARK_THEME)
+          ? prefs.getBoolean(KEY_DARK_THEME, false)
+          : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+      if (persistedDark != dark) {
+        selectedPrimaryTab = destination;
+        recreate();
+        return;
+      }
+
       selectPrimaryTab(destination);
     }
   }

@@ -2861,3 +2861,24 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Compilación de prueba de la rama: [run 41610010119](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41610010119), SUCCESS; artefacto `EV-Calculator-PRO-insets-test-2431`.
 - Compilación Release posterior a la integración en `main`: [run 41610840419](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41610840419), iniciada automáticamente tras el merge; comprobar su resultado antes de tomar ese build como referencia.
 - Esta integración sustituye las notas anteriores que dejaban pendiente la corrección de insets. No se modifica el catálogo protegido ni la versión de la app por este cambio. No publicar en Google Play sin autorización expresa.
+
+
+## 2026-11-03 — Restauración directa de pestaña y contraste de navegación Android (pendiente de build y pruebas)
+
+- Rama limpia creada desde el main estable: fix/theme-navigation-clean. No se reutiliza el parche descartado de la rama anterior.
+- Se corrige MainActivity.onCreate(): si Android restaura Coste, Buscar o Comparar tras recrear la Activity por un cambio de tema, se instala directamente esa pestaña. La pantalla Cargar se construye de forma diferida solo cuando se selecciona.
+- Se conserva la restauración del historial de pestañas y se mantiene una guarda en savePreferences() para que la restauración directa no intente leer controles de Cargar aún no creados.
+- Se aplica EdgeToEdgeHelper después de instalar cada pantalla principal, incluida Coste, para actualizar el color y el modo claro/oscuro de los iconos de la barra de navegación del sistema Android (Atrás, Inicio y Recientes) sobre el contenido ya instalado. Buscar y Comparar conservan su destino explícito para el inset superior.
+- Se elimina la reconstrucción redundante de Cargar en PersistentMainActivity.onResume(). El cambio de idioma/tema/divisa queda centralizado en la recreación que gestiona BaseNavigationActivity, evitando que dos mecanismos reconstruyan la interfaz en paralelo.
+- Commits en la rama: ded1372c6056947a4ed5728226f8f8e0d38de099 (restauración directa y aplicación de barras tras instalar contenido) y 6e2dff35d75391e03159181fcf4e9dca8534f63f (eliminar reconstrucción duplicada).
+- Pendiente: ejecutar el workflow Debug de esta rama y validar manualmente el cambio de tema desde Configurar, la entrada a Coste/Buscar/Comparar sin destello y el contraste correcto de Atrás/Inicio/Recientes en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16).
+- No se modifica main, la versión de la app, Google Play ni el catálogo protegido de 682 vehículos. No integrar hasta que el usuario confirme las pruebas en ambos dispositivos.
+
+
+## 2026-11-03 — Nueva corrección del destello al cambiar de tema (pendiente de prueba manual)
+
+- Tras probar el build 2442, el usuario confirma que el destello de la pantalla anterior continúa tanto al pasar de claro a oscuro como de oscuro a claro. La solución de restauración anterior no se considera válida.
+- En `BaseNavigationActivity.onResume()`, los cambios de idioma, tema o divisa ahora pasan por un hook de apariencia y se actualizan las referencias de estado antes de actuar; el comportamiento por defecto conserva `recreate()` para actividades que lo necesiten.
+- `MainActivity` sobrescribe ese hook para reconstruir inmediatamente la pestaña actualmente seleccionada, sin crossfade ni recreación del host, descartando la vista cacheada de esa pestaña para que se cree con el tema actualizado.
+- Se mantiene el historial de navegación y el catálogo protegido; no se cambia la versión de la app, no se toca `main` y no se publica en Google Play.
+- La compilación de prueba del nuevo cambio está pendiente. No considerar resuelta la incidencia hasta probar el APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16), en ambos sentidos del cambio de tema y entrando a Coste, Buscar y Comparar.
