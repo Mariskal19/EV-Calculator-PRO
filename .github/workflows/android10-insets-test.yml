@@ -1,0 +1,58 @@
+name: Temporary Android inset test build
+
+on:
+  push:
+    branches:
+      - fix/compare-first-entry-top-inset
+    paths:
+      - 'app/**'
+      - '.github/workflows/android10-insets-test.yml'
+      - '.github/scripts/patch_search_virtualization.py'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-26.04
+    env:
+      EV_CALCULATOR_KEYSTORE_BASE64: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 }}
+      EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
+      EV_CALCULATOR_KEY_ALIAS: ${{ secrets.EV_CALCULATOR_KEY_ALIAS }}
+      EV_CALCULATOR_KEY_PASSWORD: ${{ secrets.EV_CALCULATOR_KEY_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Set up Gradle 9.6.0
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+          cache-disabled: true
+      - name: Apply search virtualization patch
+        run: python3 .github/scripts/patch_search_virtualization.py
+      - name: Prepare release signing
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}"
+          test -n "${EV_CALCULATOR_KEYSTORE_PASSWORD:-}"
+          test -n "${EV_CALCULATOR_KEY_ALIAS:-}"
+          test -n "${EV_CALCULATOR_KEY_PASSWORD:-}"
+          echo "$EV_CALCULATOR_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/evcalculator-upload.jks"
+          test -s "$RUNNER_TEMP/evcalculator-upload.jks"
+      - name: Build signed release APK
+        env:
+          EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/evcalculator-upload.jks
+        run: gradle --no-daemon clean assembleRelease
+      - name: Upload test APK
+        uses: actions/upload-artifact@v6
+        with:
+          name: EV-Calculator-PRO-insets-test
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 7
