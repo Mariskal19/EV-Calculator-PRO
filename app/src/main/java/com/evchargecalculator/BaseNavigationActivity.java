@@ -56,11 +56,25 @@ public abstract class BaseNavigationActivity extends Activity {
       return;
     }
 
-    if (!language.equals(appliedLanguage)
-        || dark != appliedDarkTheme
-        || !currency.equals(appliedCurrency)) {
-      recreate();
+    boolean languageChanged = !language.equals(appliedLanguage);
+    boolean themeChanged = dark != appliedDarkTheme;
+    boolean currencyChanged = !currency.equals(appliedCurrency);
+    if (languageChanged || themeChanged || currencyChanged) {
+      appliedLanguage = language;
+      appliedDarkTheme = dark;
+      appliedCurrency = currency;
+      onHostAppearanceChanged(languageChanged, themeChanged, currencyChanged);
     }
+  }
+
+  /**
+   * Lets a host refresh its visible content without showing stale content during
+   * Activity recreation. Activities that rely on resource-qualified layouts may
+   * keep the default recreation behavior.
+   */
+  protected void onHostAppearanceChanged(
+      boolean languageChanged, boolean themeChanged, boolean currencyChanged) {
+    recreate();
   }
 
   @Override
