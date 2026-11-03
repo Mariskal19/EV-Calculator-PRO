@@ -140,6 +140,23 @@ public final class EdgeToEdgeHelper {
           }
           return insets;
         });
-    ViewCompat.requestApplyInsets(root);
+    // The first request can run before the Activity content is attached to the window.
+    // On Android 10 this may leave the initial screen without its status-bar inset
+    // until the Activity is resumed/re-entered. Request again as soon as the root
+    // is attached, while keeping immediate updates for already attached screens.
+    if (ViewCompat.isAttachedToWindow(root)) {
+      ViewCompat.requestApplyInsets(root);
+    } else {
+      root.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+        @Override
+        public void onViewAttachedToWindow(View view) {
+          view.removeOnAttachStateChangeListener(this);
+          ViewCompat.requestApplyInsets(view);
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(View view) { }
+      });
+    }
   }
 }
