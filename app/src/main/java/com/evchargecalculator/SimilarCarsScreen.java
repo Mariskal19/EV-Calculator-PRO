@@ -78,7 +78,6 @@ public class SimilarCarsScreen extends FrameLayout {
         dark = host.getSharedPreferences(PREFS, Activity.MODE_PRIVATE).getBoolean("dark_theme", false);
         loadVehicles();
         build();
-        EdgeToEdgeHelper.apply(host, dark, true);
         restoreLastSearch();
     }
 
