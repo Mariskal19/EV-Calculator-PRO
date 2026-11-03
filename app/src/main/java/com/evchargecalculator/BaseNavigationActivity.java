@@ -70,7 +70,7 @@ public abstract class BaseNavigationActivity extends Activity {
 
   /** Crossfades the outgoing and incoming central screens while the bottom bar stays fixed. */
   protected void setContentViewWithFade(View view, long durationMs) {
-    installContent(view, durationMs > 0 ? durationMs : DEFAULT_CROSSFADE_DURATION_MS);
+    installContent(view, DEFAULT_CROSSFADE_DURATION_MS);
   }
 
   private void installContent(View view, long fadeDurationMs) {
