@@ -901,6 +901,27 @@ public class SimilarCarsScreen extends FrameLayout {
         LinearLayout body=new LinearLayout(host);
         body.setOrientation(LinearLayout.VERTICAL);
         body.setPadding(dp(12),dp(12),dp(12),dp(8));
+
+        // Permitir volver a dejar el coche de referencia sin seleccionar.
+        TextView clearReference=tv("✕  Dejar sin coche seleccionado",14,blue);
+        clearReference.setTypeface(null,Typeface.BOLD);
+        clearReference.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+        clearReference.setPadding(dp(14),0,dp(14),0);
+        clearReference.setVisibility(reference==null?View.GONE:View.VISIBLE);
+        clearReference.setBackground(strokeBg(dark?Color.rgb(20,35,49):Color.rgb(247,250,254),dark?Color.rgb(59,84,106):Color.rgb(211,223,236),12));
+        LinearLayout.LayoutParams clearReferenceParams=new LinearLayout.LayoutParams(-1,dp(44));
+        clearReferenceParams.bottomMargin=dp(8);
+        body.addView(clearReference,clearReferenceParams);
+        clearReference.setOnClickListener(v->{
+            reference=null;
+            host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().remove(KEY_LAST_REFERENCE).apply();
+            if(referencePicker!=null)referencePicker.setText("🚗  Seleccionar coche del catálogo  ›");
+            if(results!=null)results.removeAllViews();
+            if(resultsTitle!=null)resultsTitle.setVisibility(View.GONE);
+            Object dialogTag=input.getTag();
+            if(dialogTag instanceof AlertDialog)((AlertDialog)dialogTag).dismiss();
+        });
+
         body.addView(input,new LinearLayout.LayoutParams(-1,dp(50)));
         body.addView(marketRow,new LinearLayout.LayoutParams(-1,dp(56)));
         marketRow.addView(searchMarketSpinner,new LinearLayout.LayoutParams(dp(180),dp(38)));
