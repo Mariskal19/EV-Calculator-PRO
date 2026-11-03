@@ -2906,5 +2906,6 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 ### Ajuste visual de la X para quitar el coche de referencia (3 Nov 2026)
 - Se mantiene el control de borrado junto al selector y su comportamiento ya validado.
 - Se elimina el fondo rojo y el color rojo de la X.
-- Se usa una X tipográfica discreta en azul de la aplicación, con fondo transparente y un área táctil de 40 dp.
+- Nuevo diseño: X azul de 27 sp, dentro de un botón circular de 44 dp, con fondo azul suave y borde fino azul.
+- El fondo y el borde se adaptan al tema claro/oscuro.
 - No se modifica la lógica de selección, borrado, persistencia ni resultados.
