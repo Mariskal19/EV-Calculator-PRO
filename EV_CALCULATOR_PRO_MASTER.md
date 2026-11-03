@@ -2838,3 +2838,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Workflow Release firmado: [run 41601898149](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41601898149), compilación completada con éxito.
 - Artefacto: `EV-Calculator-PRO-transiciones-test`, 5.005.698 bytes, retención hasta el 17 de noviembre de 2026.
 - Integración autorizada por el usuario. No publicar en Google Play sin autorización expresa.
+
+## 2026-11-03 — Preparación de EV Calculator PRO 1.0.7 para Google Play
+
+- Integración de transiciones y navegación: PR #11 (fundido cruzado real) y PR #12 (actualización de GitHub Actions a Node.js 24) están fusionadas en `main`. La compilación de prueba [run 41604411291](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41604411291) terminó con SUCCESS desde la rama `main`, commit `875ba50307bd55bf056516cea0a5e9bf5a39ea0c`; generó el APK Release firmado `EV-Calculator-PRO-transiciones-test`.
+- Prueba manual: el usuario confirma que el APK funciona correctamente en Redmi Note 13 Pro (Android 16). Se acepta el cambio para preparar la siguiente versión. Queda pendiente como comprobación complementaria la prueba en Redmi Note 7 (Android 10), que no bloquea esta preparación y se registrará cuando se realice.
+- Actualizada la versión Android en `app/build.gradle`: `versionName = '1.0.7'`, `versionCode = 63`. Se mantienen `applicationId = com.evcalculatorpro`, `minSdk = 23`, `targetSdk = 36` y `compileSdk = 36`. El incremento de versionCode permite presentar una actualización posterior a la versión 1.0.6 (62).
+- Commit de preparación de versión en `main`: `1f8674edb9751744d628cb2382bba77bf65a6608`.
+- El workflow `Build EV Calculator PRO` está configurado para compilar APK y AAB Release firmados desde `main` y generar un GitHub Release automático con ambos archivos. La compilación de transición anterior es solo un APK de prueba y no es el AAB para Play Console.
+- **Pendiente para considerar el paquete listo para Play:** confirmar que el workflow de publicación de build de `main` termina correctamente, descargar/verificar el AAB firmado de 1.0.7 y revisar los textos «Novedades» en todos los idiomas/locales y el borde blanco del icono de la ficha. No subir ni publicar en Google Play sin autorización expresa del usuario.
+- Catálogo protegido de 682 vehículos, datos y lógica de cálculo/búsqueda/comparación: sin cambios en esta preparación.
