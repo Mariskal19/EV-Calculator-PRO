@@ -3,7 +3,7 @@
 - Auditoría de los seis workflows de `.github/workflows/`: el único uso de `actions/upload-artifact` que seguía en v4 estaba en `transitions-test.yml`.
 - Actualizado a `actions/upload-artifact@v6`, que ejecuta con Node.js 24 de forma nativa y elimina el aviso de compatibilidad detectado en ese workflow.
 - Los demás workflows ya utilizaban `actions/checkout@v5`, `actions/setup-java@v5` y/o `gradle/actions/setup-gradle@v6`, o no incluían acciones de subida de artefactos. No se han cambiado versiones que ya estaban actualizadas.
-- Rama de trabajo: `chore/github-actions-node24`. Pendiente de ejecución de workflow para validar la compilación y subida del APK.
+- Integrado en `main` mediante PR #12. Validación de compilación Release completada correctamente en el build 2422 (run `41603598310`).
 - Sin cambios en código Android, dependencias de la app, catálogo protegido ni configuración de publicación. No se publica en Google Play.
 
 ---
@@ -2839,12 +2839,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Artefacto: `EV-Calculator-PRO-transiciones-test`, 5.005.698 bytes, retención hasta el 17 de noviembre de 2026.
 - Integración autorizada por el usuario. No publicar en Google Play sin autorización expresa.
 
-## 2026-11-03 — Preparación de EV Calculator PRO 1.0.7 para Google Play
+## 2026-11-03 — Preparación correcta de EV Calculator PRO 1.0.6
 
 - Integración de transiciones y navegación: PR #11 (fundido cruzado real) y PR #12 (actualización de GitHub Actions a Node.js 24) están fusionadas en `main`. La compilación de prueba [run 41604411291](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41604411291) terminó con SUCCESS desde la rama `main`, commit `875ba50307bd55bf056516cea0a5e9bf5a39ea0c`; generó el APK Release firmado `EV-Calculator-PRO-transiciones-test`.
-- Prueba manual: el usuario confirma que el APK funciona correctamente en Redmi Note 13 Pro (Android 16). Se acepta el cambio para preparar la siguiente versión. Queda pendiente como comprobación complementaria la prueba en Redmi Note 7 (Android 10), que no bloquea esta preparación y se registrará cuando se realice.
-- Actualizada la versión Android en `app/build.gradle`: `versionName = '1.0.7'`, `versionCode = 63`. Se mantienen `applicationId = com.evcalculatorpro`, `minSdk = 23`, `targetSdk = 36` y `compileSdk = 36`. El incremento de versionCode permite presentar una actualización posterior a la versión 1.0.6 (62).
-- Commit de preparación de versión en `main`: `1f8674edb9751744d628cb2382bba77bf65a6608`.
-- El workflow `Build EV Calculator PRO` está configurado para compilar APK y AAB Release firmados desde `main` y generar un GitHub Release automático con ambos archivos. La compilación de transición anterior es solo un APK de prueba y no es el AAB para Play Console.
-- **Pendiente para considerar el paquete listo para Play:** confirmar que el workflow de publicación de build de `main` termina correctamente, descargar/verificar el AAB firmado de 1.0.7 y revisar los textos «Novedades» en todos los idiomas/locales y el borde blanco del icono de la ficha. No subir ni publicar en Google Play sin autorización expresa del usuario.
-- Catálogo protegido de 682 vehículos, datos y lógica de cálculo/búsqueda/comparación: sin cambios en esta preparación.
+- Prueba manual: el usuario confirma que el APK funciona correctamente en Redmi Note 13 Pro (Android 16). La prueba complementaria en Redmi Note 7 (Android 10) queda pendiente.
+- Versión restaurada en `app/build.gradle`: `versionName = '1.0.6'`, `versionCode = 62`. Se mantienen `applicationId = com.evcalculatorpro`, `minSdk = 23`, `targetSdk = 36` y `compileSdk = 36`.
+- Build de referencia para la versión 1.0.6: build 2422, [run 41603598310](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41603598310), completado con SUCCESS desde `main`, commit `875ba50307bd55bf056516cea0a5e9bf5a39ea0c`. Release `build-v1.0.6-2422` contiene el APK firmado para pruebas y el AAB firmado destinado a Play Console.
+- **Corrección de incidencia:** las versiones 1.0.7 / versionCode 63 y los builds 2423 y 2424 se generaron por error al incrementar la versión sin autorización. No deben instalarse ni utilizarse para Play Console. Se conservan sus Releases como registros históricos; la integración disponible no permite eliminarlas desde esta tarea.
+- El cambio de versión no altera el catálogo protegido de 682 vehículos, los datos ni la lógica de cálculo/búsqueda/comparación. No subir ni publicar en Google Play sin autorización expresa del usuario.
+- Pendiente antes de enviar la 1.0.6 a Play: revisión de los textos «Novedades» en todos los idiomas/locales y del borde blanco del icono de la ficha.
