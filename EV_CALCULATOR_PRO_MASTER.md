@@ -2870,3 +2870,24 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Corrección preparada en la rama `fix/theme-restore-selected-tab`: `showPrimaryTab(destination, animate)` permite restaurar sin animación; las navegaciones normales siguen usando el crossfade existente. Durante la recreación, la pestaña guardada se instala directamente, sin mostrar Calcular como pantalla intermedia.
 - El cambio solo afecta al modo de restauración de la pestaña seleccionada. No altera la navegación normal, el historial Atrás, el tema guardado, el catálogo protegido ni la versión de la app.
 - Estado: pendiente de compilación y prueba manual del usuario en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). No fusionar en `main` hasta confirmar ambas pruebas. No publicar en Google Play sin autorización expresa.
+
+
+## 2026-11-03 — Segunda corrección del destello al cambiar el tema (Android 10)
+
+La primera corrección evitaba la animación de entrada al restaurar la pestaña seleccionada, pero el usuario confirmó que el Redmi Note 7 (Android 10) seguía mostrando brevemente Calcular. La incidencia no se considera resuelta.
+
+### Causa adicional localizada
+
+Al volver de Configurar, `BaseNavigationActivity.onResume()` puede solicitar `recreate()` al detectar el cambio de tema. Inmediatamente después, `PersistentMainActivity.onResume()` también reconstruía manualmente la pantalla con `build()`. Esta doble ruta de actualización podía competir durante la recreación y sustituir temporalmente la pestaña restaurada por Calcular, especialmente en Android 10.
+
+### Corrección añadida a PR #14
+
+- `PersistentMainActivity.onResume()` deja de reconstruir manualmente la interfaz por cambio de tema.
+- La recreación por configuración queda centralizada en `BaseNavigationActivity`.
+- La nueva instancia vuelve a leer el tema guardado y restaura la pestaña mediante la ruta sin animación añadida en la primera corrección.
+- Se mantiene la actualización de tasas de cambio en `onResume()`.
+- No se modifica el catálogo protegido, los cálculos, ni la versión de la app.
+
+### Validación pendiente
+
+Generar un nuevo APK de prueba y repetir el cambio a tema oscuro desde Configurar, comprobando especialmente Redmi Note 7 (Android 10) y también Redmi Note 13 Pro (Android 16). No fusionar PR #14 hasta que el usuario confirme el resultado en ambos dispositivos. No publicar en Google Play.
