@@ -30,20 +30,9 @@ public class PersistentMainActivity extends MainActivity {
   protected void onResume() {
     super.onResume();
     CurrencyRateManager.refreshIfNeeded(this);
-    SharedPreferences prefs = getSharedPreferences(PREFS, Context.MODE_PRIVATE);
-    if (prefs.contains(KEY_DARK_THEME)) {
-      boolean selectedDark = prefs.getBoolean(KEY_DARK_THEME, false);
-      if (selectedDark != dark) {
-        dark = selectedDark;
-        build();
-        loadPreferences();
-        applyTheme();
-        calculate();
-        // Reapply edge-to-edge after rebuilding the root following a theme change.
-        // Without this, the new root can lose its system-bar inset listener and
-        // the bottom navigation may shift when returning with the system Back button.
-        EdgeToEdgeHelper.apply(this, dark);
-      }
-    }
+    // Theme changes are handled centrally by BaseNavigationActivity: it
+    // recreates the host when the persisted configuration differs. MainActivity
+    // then restores the selected tab directly. Do not rebuild Cargar here,
+    // which would replace a restored secondary screen and flash the wrong tab.
   }
 }
