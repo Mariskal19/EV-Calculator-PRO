@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main, fix/compare-first-entry-top-inset, fix/theme-navigation-clean, fix/search-clear-reference ]
+    branches: [ main, fix/compare-first-entry-top-inset ]
     paths-ignore:
       - 'app/src/main/assets/catalog_remote_additions.json'
 
