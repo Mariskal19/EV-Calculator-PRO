@@ -1,8 +1,13 @@
 package com.evchargecalculator;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
 
@@ -15,6 +20,8 @@ import android.widget.ScrollView;
  */
 public abstract class BaseNavigationActivity extends Activity {
 
+  private static final long DEFAULT_CROSSFADE_DURATION_MS = 280L;
+
   private String appliedLanguage;
   private boolean appliedDarkTheme;
   private String appliedCurrency;
@@ -22,6 +29,8 @@ public abstract class BaseNavigationActivity extends Activity {
   private FrameLayout hostRoot;
   private FrameLayout contentContainer;
   private FrameLayout navigationContainer;
+  private View currentContentView;
+  private AnimatorSet contentTransition;
 
   /** 0 = Cargar, 1 = Coste, 2 = Buscar coches, 3 = Comparar, 4 = Más. */
   protected abstract int getBottomNavigationIndex();
@@ -59,9 +68,9 @@ public abstract class BaseNavigationActivity extends Activity {
     installContent(view, 0);
   }
 
-  /** Replaces only the central screen and fades it in without moving the fixed bar. */
+  /** Crossfades the outgoing and incoming central screens while the bottom bar stays fixed. */
   protected void setContentViewWithFade(View view, long durationMs) {
-    installContent(view, durationMs);
+    installContent(view, durationMs > 0 ? durationMs : DEFAULT_CROSSFADE_DURATION_MS);
   }
 
   private void installContent(View view, long fadeDurationMs) {
@@ -71,23 +80,80 @@ public abstract class BaseNavigationActivity extends Activity {
 
     ensureHostCreated();
 
-    // A screen View may be reused when returning to a previously selected tab.
-    // Detach it from its old parent before placing it in the stable content slot.
+    if (view == currentContentView && contentContainer.indexOfChild(view) >= 0) {
+      refreshBottomNavigation();
+      return;
+    }
+
+    // Stop an interrupted transition cleanly before starting another one.
+    if (contentTransition != null) {
+      contentTransition.cancel();
+      contentTransition = null;
+    }
+
+    View outgoing = currentContentView;
+    for (int i = contentContainer.getChildCount() - 1; i >= 0; i--) {
+      View child = contentContainer.getChildAt(i);
+      if (child != outgoing) {
+        contentContainer.removeViewAt(i);
+      }
+    }
+    if (outgoing != null && contentContainer.indexOfChild(outgoing) >= 0) {
+      outgoing.setAlpha(1f);
+    }
+
+    // A cached screen may still be attached to another parent.
     if (view.getParent() instanceof ViewGroup) {
       ((ViewGroup) view.getParent()).removeView(view);
     }
-    contentContainer.removeAllViews();
+
     addBottomScrollSpace(view, dp(48));
-    if (fadeDurationMs > 0) view.setAlpha(0f);
-    contentContainer.addView(
-        view, new FrameLayout.LayoutParams(-1, -1));
-    if (fadeDurationMs > 0) {
-      view.animate().cancel();
-      view.animate().alpha(1f).setDuration(fadeDurationMs).start();
+    if (fadeDurationMs > 0 && outgoing != null
+        && contentContainer.indexOfChild(outgoing) >= 0) {
+      view.setAlpha(0f);
+      contentContainer.addView(view, new FrameLayout.LayoutParams(-1, -1));
+
+      ObjectAnimator fadeOut = ObjectAnimator.ofFloat(outgoing, View.ALPHA, 1f, 0f);
+      ObjectAnimator fadeIn = ObjectAnimator.ofFloat(view, View.ALPHA, 0f, 1f);
+      contentTransition = new AnimatorSet();
+      contentTransition.playTogether(fadeOut, fadeIn);
+      contentTransition.setDuration(fadeDurationMs);
+      contentTransition.setInterpolator(new AccelerateDecelerateInterpolator());
+      contentTransition.addListener(new AnimatorListenerAdapter() {
+        private boolean cancelled;
+
+        @Override
+        public void onAnimationCancel(Animator animation) {
+          cancelled = true;
+        }
+
+        @Override
+        public void onAnimationEnd(Animator animation) {
+          if (!cancelled && contentTransition == animation) {
+            if (outgoing.getParent() == contentContainer) {
+              contentContainer.removeView(outgoing);
+            }
+            outgoing.setAlpha(1f);
+            view.setAlpha(1f);
+            currentContentView = view;
+            contentTransition = null;
+          }
+        }
+      });
+      currentContentView = view;
+      contentTransition.start();
+    } else {
+      contentContainer.removeAllViews();
+      view.setAlpha(1f);
+      contentContainer.addView(view, new FrameLayout.LayoutParams(-1, -1));
+      currentContentView = view;
     }
 
-    // Keep the navigation slot fixed in the root. Refresh its selected state
-    // without replacing the Activity root or triggering a window transition.
+    refreshBottomNavigation();
+  }
+
+  private void refreshBottomNavigation() {
+    // Keep the navigation slot fixed in the root; only refresh its selected state.
     navigationContainer.removeAllViews();
     boolean dark = isDarkTheme();
     View bottomNavigation = BottomNavigationHelper.create(
