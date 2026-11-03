@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature/transiciones-crossfade
+      - chore/github-actions-node24
 
 permissions:
   contents: read
