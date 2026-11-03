@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main, fix/compare-first-entry-top-inset ]
+    branches: [ main, fix/compare-first-entry-top-inset, fix/theme-restore-selected-tab ]
     paths-ignore:
       - 'app/src/main/assets/catalog_remote_additions.json'
 
@@ -108,6 +108,15 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: EV-Calculator-PRO-insets-test-${{ github.run_number }}
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload test APK for theme restoration validation
+        if: github.ref == 'refs/heads/fix/theme-restore-selected-tab'
+        uses: actions/upload-artifact@v6
+        with:
+          name: EV-Calculator-PRO-theme-restore-test-${{ github.run_number }}
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
           retention-days: 7
