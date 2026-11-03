@@ -2882,3 +2882,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - `MainActivity` sobrescribe ese hook para reconstruir inmediatamente la pestaña actualmente seleccionada, sin crossfade ni recreación del host, descartando la vista cacheada de esa pestaña para que se cree con el tema actualizado.
 - Se mantiene el historial de navegación y el catálogo protegido; no se cambia la versión de la app, no se toca `main` y no se publica en Google Play.
 - La compilación de prueba del nuevo cambio está pendiente. No considerar resuelta la incidencia hasta probar el APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16), en ambos sentidos del cambio de tema y entrando a Coste, Buscar y Comparar.
+
+
+## 2026-11-03 — Corrección definitiva del destello al cambiar de tema integrada en main
+
+- El usuario confirma que la corrección funciona en ambos dispositivos: Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), en los dos sentidos de cambio de tema.
+- Integrada la rama `fix/theme-navigation-clean` en `main` mediante PR #15 (squash). Commit de merge: `11febf2ea44c2e0dd329c1331ef001d626a5a7c1`.
+- Incluye los cambios de `BaseNavigationActivity.java`, `MainActivity.java`, `PersistentMainActivity.java`, el workflow de compilación y esta documentación maestra.
+- La compilación de la rama antes del merge terminó correctamente: build 2445, run [41654762176](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41654762176), con artefacto de prueba APK.
+- Pendiente: compilación Release de `main` posterior a la integración. No considerar el APK de la rama como APK final de `main`.
+- Se mantiene la versión de la app en 1.0.6 (versionCode 62). Sin cambios en el catálogo protegido y sin publicación en Google Play.
