@@ -143,6 +143,22 @@ public class MainActivity extends BaseNavigationActivity {
     if (intent != null && intent.hasExtra("open_primary_tab")) {
       int destination = intent.getIntExtra("open_primary_tab", 0);
       intent.removeExtra("open_primary_tab");
+      if (destination < 0 || destination > 3) return;
+
+      // ConfigurationActivity may have changed the persisted theme while this
+      // host Activity was paused underneath it. Do not briefly install a tab
+      // using the old theme and then recreate the Activity from onResume().
+      // Save the requested destination first; onCreate() will restore it
+      // directly with the newly persisted theme.
+      boolean persistedDark = prefs != null && prefs.contains(KEY_DARK_THEME)
+          ? prefs.getBoolean(KEY_DARK_THEME, false)
+          : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+      if (persistedDark != dark) {
+        selectedPrimaryTab = destination;
+        recreate();
+        return;
+      }
+
       selectPrimaryTab(destination);
     }
   }
