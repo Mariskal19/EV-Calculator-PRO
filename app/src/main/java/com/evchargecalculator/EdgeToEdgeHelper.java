@@ -52,6 +52,13 @@ public final class EdgeToEdgeHelper {
    *                        Existing screens retain their current edge-to-edge layout by default.
    */
   public static void apply(Activity activity, boolean dark, boolean includeTopInset) {
+    apply(activity, dark, includeTopInset, null);
+  }
+
+  /** Applies the top inset to the scroll container inside the screen being displayed.
+   * Passing the screen explicitly avoids selecting the outgoing screen during a crossfade.
+   */
+  public static void apply(Activity activity, boolean dark, boolean includeTopInset, View topInsetTarget) {
     Window window = activity.getWindow();
 
     // Keep Android's automatic darkening disabled for this activity. The app
@@ -106,6 +113,7 @@ public final class EdgeToEdgeHelper {
     final int top = basePadding[1];
     final int right = basePadding[2];
     final int bottom = basePadding[3];
+    final View requestedTopInsetTarget = topInsetTarget;
 
     ViewCompat.setOnApplyWindowInsetsListener(
         root,
@@ -125,7 +133,8 @@ public final class EdgeToEdgeHelper {
               bottom + bars.bottom);
 
           if (includeTopInset) {
-            View scroll = findScrollableView(view);
+            View searchRoot = requestedTopInsetTarget != null ? requestedTopInsetTarget : view;
+            View scroll = findScrollableView(searchRoot);
             if (scroll != null) {
               Integer baseTop = BASE_SCROLL_TOP_PADDING.get(scroll);
               if (baseTop == null) {
