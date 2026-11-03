@@ -2861,3 +2861,12 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Compilación de prueba de la rama: [run 41610010119](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41610010119), SUCCESS; artefacto `EV-Calculator-PRO-insets-test-2431`.
 - Compilación Release posterior a la integración en `main`: [run 41610840419](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41610840419), iniciada automáticamente tras el merge; comprobar su resultado antes de tomar ese build como referencia.
 - Esta integración sustituye las notas anteriores que dejaban pendiente la corrección de insets. No se modifica el catálogo protegido ni la versión de la app por este cambio. No publicar en Google Play sin autorización expresa.
+
+
+## 2026-11-03 — Evitar destello de Calcular al restaurar la pestaña tras cambiar el tema
+
+- Incidencia comunicada por el usuario: al cambiar de tema claro a oscuro desde Configurar y después seleccionar una sección distinta de Calcular, se mostraba fugazmente Calcular antes de abrir el destino. El usuario confirma que ocurre tanto en Redmi Note 7 (Android 10) como en Redmi Note 13 Pro (Android 16).
+- Causa localizada: al recrearse `MainActivity` por el cambio de tema, `onCreate()` instalaba primero Calcular y, a continuación, `showPrimaryTab()` restauraba la pestaña guardada mediante un crossfade. Ese fundido hacía visible la pantalla predeterminada durante la restauración.
+- Corrección preparada en la rama `fix/theme-restore-selected-tab`: `showPrimaryTab(destination, animate)` permite restaurar sin animación; las navegaciones normales siguen usando el crossfade existente. Durante la recreación, la pestaña guardada se instala directamente, sin mostrar Calcular como pantalla intermedia.
+- El cambio solo afecta al modo de restauración de la pestaña seleccionada. No altera la navegación normal, el historial Atrás, el tema guardado, el catálogo protegido ni la versión de la app.
+- Estado: pendiente de compilación y prueba manual del usuario en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). No fusionar en `main` hasta confirmar ambas pruebas. No publicar en Google Play sin autorización expresa.
