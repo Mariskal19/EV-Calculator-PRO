@@ -1,3 +1,13 @@
+## 2026-11-03 — Actualización de GitHub Actions a Node.js 24
+
+- Auditoría de los seis workflows de `.github/workflows/`: el único uso de `actions/upload-artifact` que seguía en v4 estaba en `transitions-test.yml`.
+- Actualizado a `actions/upload-artifact@v6`, que ejecuta con Node.js 24 de forma nativa y elimina el aviso de compatibilidad detectado en ese workflow.
+- Los demás workflows ya utilizaban `actions/checkout@v5`, `actions/setup-java@v5` y/o `gradle/actions/setup-gradle@v6`, o no incluían acciones de subida de artefactos. No se han cambiado versiones que ya estaban actualizadas.
+- Rama de trabajo: `chore/github-actions-node24`. Pendiente de ejecución de workflow para validar la compilación y subida del APK.
+- Sin cambios en código Android, dependencias de la app, catálogo protegido ni configuración de publicación. No se publica en Google Play.
+
+---
+
 ## 2026-11-02 — Segundo prototipo de barra inferior: prueba no superada
 
 - El usuario confirma que la barra sigue desplazándose al cambiar de sección y que ahora se aprecia más un movimiento horizontal de derecha a izquierda en toda la pantalla.

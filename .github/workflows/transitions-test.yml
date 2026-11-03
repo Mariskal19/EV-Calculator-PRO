@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - feature/transiciones-crossfade
+      - chore/github-actions-node24
 
 permissions:
   contents: read
@@ -49,7 +50,7 @@ jobs:
         run: gradle --no-daemon clean assembleRelease
 
       - name: Upload test APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: EV-Calculator-PRO-transiciones-test
           path: app/build/outputs/apk/release/*.apk
