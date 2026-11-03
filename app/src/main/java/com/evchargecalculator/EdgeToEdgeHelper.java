@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ScrollView;
+import androidx.core.widget.NestedScrollView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -30,12 +31,12 @@ public final class EdgeToEdgeHelper {
 
   private EdgeToEdgeHelper() {}
 
-  private static ScrollView findScrollView(View view) {
-    if (view instanceof ScrollView) return (ScrollView) view;
+  private static View findScrollableView(View view) {
+    if (view instanceof ScrollView || view instanceof NestedScrollView) return view;
     if (view instanceof ViewGroup) {
       ViewGroup group = (ViewGroup) view;
       for (int i = 0; i < group.getChildCount(); i++) {
-        ScrollView found = findScrollView(group.getChildAt(i));
+        View found = findScrollableView(group.getChildAt(i));
         if (found != null) return found;
       }
     }
@@ -124,7 +125,7 @@ public final class EdgeToEdgeHelper {
               bottom + bars.bottom);
 
           if (includeTopInset) {
-            ScrollView scroll = findScrollView(view);
+            View scroll = findScrollableView(view);
             if (scroll != null) {
               Integer baseTop = BASE_SCROLL_TOP_PADDING.get(scroll);
               if (baseTop == null) {
