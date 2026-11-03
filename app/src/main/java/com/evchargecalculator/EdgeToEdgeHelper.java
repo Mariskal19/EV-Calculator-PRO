@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ScrollView;
+import androidx.core.widget.NestedScrollView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -30,12 +31,12 @@ public final class EdgeToEdgeHelper {
 
   private EdgeToEdgeHelper() {}
 
-  private static ScrollView findScrollView(View view) {
-    if (view instanceof ScrollView) return (ScrollView) view;
+  private static View findScrollableView(View view) {
+    if (view instanceof ScrollView || view instanceof NestedScrollView) return view;
     if (view instanceof ViewGroup) {
       ViewGroup group = (ViewGroup) view;
       for (int i = 0; i < group.getChildCount(); i++) {
-        ScrollView found = findScrollView(group.getChildAt(i));
+        View found = findScrollableView(group.getChildAt(i));
         if (found != null) return found;
       }
     }
@@ -51,6 +52,13 @@ public final class EdgeToEdgeHelper {
    *                        Existing screens retain their current edge-to-edge layout by default.
    */
   public static void apply(Activity activity, boolean dark, boolean includeTopInset) {
+    apply(activity, dark, includeTopInset, null);
+  }
+
+  /** Applies the top inset to the scroll container inside the screen being displayed.
+   * Passing the screen explicitly avoids selecting the outgoing screen during a crossfade.
+   */
+  public static void apply(Activity activity, boolean dark, boolean includeTopInset, View topInsetTarget) {
     Window window = activity.getWindow();
 
     // Keep Android's automatic darkening disabled for this activity. The app
@@ -105,6 +113,7 @@ public final class EdgeToEdgeHelper {
     final int top = basePadding[1];
     final int right = basePadding[2];
     final int bottom = basePadding[3];
+    final View requestedTopInsetTarget = topInsetTarget;
 
     ViewCompat.setOnApplyWindowInsetsListener(
         root,
@@ -124,7 +133,8 @@ public final class EdgeToEdgeHelper {
               bottom + bars.bottom);
 
           if (includeTopInset) {
-            ScrollView scroll = findScrollView(view);
+            View searchRoot = requestedTopInsetTarget != null ? requestedTopInsetTarget : view;
+            View scroll = findScrollableView(searchRoot);
             if (scroll != null) {
               Integer baseTop = BASE_SCROLL_TOP_PADDING.get(scroll);
               if (baseTop == null) {
@@ -140,6 +150,23 @@ public final class EdgeToEdgeHelper {
           }
           return insets;
         });
-    ViewCompat.requestApplyInsets(root);
+    // The first request can run before the Activity content is attached to the window.
+    // On Android 10 this may leave the initial screen without its status-bar inset
+    // until the Activity is resumed/re-entered. Request again as soon as the root
+    // is attached, while keeping immediate updates for already attached screens.
+    if (ViewCompat.isAttachedToWindow(root)) {
+      ViewCompat.requestApplyInsets(root);
+    } else {
+      root.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+        @Override
+        public void onViewAttachedToWindow(View view) {
+          view.removeOnAttachStateChangeListener(this);
+          ViewCompat.requestApplyInsets(view);
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(View view) { }
+      });
+    }
   }
 }

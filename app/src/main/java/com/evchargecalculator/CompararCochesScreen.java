@@ -105,7 +105,6 @@ public class CompararCochesScreen extends FrameLayout {
                     : (host.getResources().getConfiguration().uiMode & 0x30) == 0x20;
             selectedMarket = p.getString(KEY_MARKET, "ES");
             build();
-            EdgeToEdgeHelper.apply(host, dark, true);
             loadVehicles();
             if (!hasMarket(selectedMarket)) selectedMarket = defaultMarket();
             loadSelection();
@@ -134,7 +133,6 @@ public class CompararCochesScreen extends FrameLayout {
             loadSelection();
             if (themeChanged || languageChanged || currencyChanged) {
                 build();
-                EdgeToEdgeHelper.apply(host, dark, true);
             }
             rebuild();
         }
@@ -493,7 +491,6 @@ public class CompararCochesScreen extends FrameLayout {
         scroll.addView(scrollContent,new ScrollView.LayoutParams(-1,-2));
         root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));
         removeAllViews(); addView(root, new FrameLayout.LayoutParams(-1, -1));
-        EdgeToEdgeHelper.apply(host, dark, true);
     }
 
     private List<Vehicle> marketVehicles(){List<Vehicle> o=new ArrayList<>();for(Vehicle v:vehicles)if(v.market.equalsIgnoreCase(selectedMarket))o.add(v);return o;}
