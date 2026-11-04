@@ -2959,3 +2959,22 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Se limpia el disparador de `build.yml`: se mantienen `main` y `fix/compare-first-entry-top-inset`; se retiran las ramas ya integradas `fix/theme-navigation-clean` y `fix/search-clear-reference`.
 - No se modifica el código de la aplicación, la versión 1.0.6 (versionCode 62), el catálogo protegido ni la publicación de Google Play.
 - Las ramas Git ya fusionadas se han identificado para borrado manual en GitHub; la integración disponible no permite eliminarlas directamente.
+
+## 2026-11-04 — Dependabot: actualizaciones y validación
+
+- Se activaron Dependabot Alerts y Dependabot security updates desde la configuración de seguridad del repositorio.
+- Se añadió `.github/dependabot.yml` mediante PR #18 para actualizaciones semanales de Gradle y GitHub Actions (lunes, 07:00, Europe/Madrid).
+- Se revisaron cinco PR de Dependabot:
+  - #19: Android Gradle Plugin 9.4.0 → 9.5.0. Fusionada.
+  - #20: actions/checkout v5 → v7. Fusionada.
+  - #21: androidx.core:core 1.16.0 → 1.19.1. Se mantiene abierta y sin fusionar: la validación mostró que 1.19.1 requiere API 37, mientras el proyecto sigue en compileSdk 36.
+  - #22: actions/setup-java v5 → v6. Fusionada.
+  - #23: actions/upload-artifact v6 → v7. Fusionada.
+- Las cuatro PR integradas mantienen la configuración de Java 17 y Gradle 9.6.0. No se modificaron versionName 1.0.6, versionCode 62, minSdk 23, compileSdk 36 ni targetSdk 36.
+- Validación aislada en la rama temporal `validation/dependabot-batch-2026-11-04`: catálogo protegido validado con 688 entradas; pruebas del motor del asesor, 114 tests; compilación de testDebugUnitTest, assembleDebug, assembleRelease y bundleRelease completada correctamente. Se excluyó lintDebug porque el proyecto ya presenta 38 errores y 143 advertencias de Lint preexistentes. No se realizaron pruebas físicas en los dos móviles.
+- La ejecución aislada satisfactoria fue [run 41926491455](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41926491455). El artefacto generado usa una clave temporal de validación y no es apto para distribución en Play Store.
+- En main, los builds 2472 y 2475 finalizaron correctamente y publicaron Releases con APK y AAB. Los builds 2473 y 2474 compilaron y firmaron correctamente, pero el paso de creación de Release devolvió HTTP 403: `Resource not accessible by integration`. Se han solicitado reintentos de los jobs fallidos para comprobar si fue transitorio; el resultado de esos reintentos queda pendiente de confirmación.
+- Releases verificadas:
+  - [build-v1.0.6-2472](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.6-2472)
+  - [build-v1.0.6-2475](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.6-2475)
+- No se ha publicado en Google Play. No se ha cambiado la versión de la aplicación.
