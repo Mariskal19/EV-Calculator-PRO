@@ -15,12 +15,6 @@ jobs:
     runs-on: ubuntu-26.04
     permissions:
       contents: write
-    env:
-      EV_CALCULATOR_KEYSTORE_BASE64: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 }}
-      EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
-      EV_CALCULATOR_KEY_ALIAS: ${{ secrets.EV_CALCULATOR_KEY_ALIAS }}
-      EV_CALCULATOR_KEY_PASSWORD: ${{ secrets.EV_CALCULATOR_KEY_PASSWORD }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -64,6 +58,11 @@ jobs:
 
       - name: Verify release signing configuration
         shell: bash
+        env:
+          EV_CALCULATOR_KEYSTORE_BASE64: ${{ secrets.EV_CALCULATOR_KEYSTORE_BASE64 }}
+          EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
+          EV_CALCULATOR_KEY_ALIAS: ${{ secrets.EV_CALCULATOR_KEY_ALIAS }}
+          EV_CALCULATOR_KEY_PASSWORD: ${{ secrets.EV_CALCULATOR_KEY_PASSWORD }}
         run: |
           set -euo pipefail
           test -n "${EV_CALCULATOR_KEYSTORE_BASE64:-}" || { echo "ERROR: EV_CALCULATOR_KEYSTORE_BASE64 is not configured."; exit 1; }
@@ -90,6 +89,9 @@ jobs:
       - name: Build Release APK and AAB
         env:
           EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/evcalculator-upload.jks
+          EV_CALCULATOR_KEYSTORE_PASSWORD: ${{ secrets.EV_CALCULATOR_KEYSTORE_PASSWORD }}
+          EV_CALCULATOR_KEY_ALIAS: ${{ secrets.EV_CALCULATOR_KEY_ALIAS }}
+          EV_CALCULATOR_KEY_PASSWORD: ${{ secrets.EV_CALCULATOR_KEY_PASSWORD }}
         run: gradle --no-daemon clean assembleRelease bundleRelease
 
       - name: Verify release outputs
