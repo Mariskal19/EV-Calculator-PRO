@@ -1,3 +1,16 @@
+## 2026-11-04 — Corregir similitud de SUV coupé en búsqueda clásica (integrado y validado)
+
+- Incidencia: al buscar coches similares tomando como referencia un Škoda Enyaq Coupé 2025, la búsqueda clásica no devolvía resultados porque la carrocería `coupe` no competía con SUV/crossover, aunque las dimensiones del vehículo corresponden a un SUV medio.
+- En `SimilarCarsActivity.java` se añade la identificación de SUV coupé mediante carrocería y umbrales físicos (longitud, anchura, altura y relación altura/longitud). Se amplía la compatibilidad de carrocería y la distancia de competencia para permitir su comparación con SUV y crossover.
+- Se mantienen los filtros físicos y económicos existentes, incluidos los márgenes escalonados de precio. No se relajan globalmente los criterios ni se modifica el catálogo.
+- Sin cambios en el modo Asesor IA ni en los datos del catálogo.
+- Rama de trabajo: `fix/suv-coupe-similarity`. Compilación de prueba correcta: build 2466, [run 41832044794](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/41832044794), artefacto `EV-Calculator-PRO-navigation-test-2466`.
+- Prueba manual del usuario superada en los tres casos: Škoda Enyaq Coupé, XPeng G6 y Tesla Model Y.
+- Integrado en `main) mediante PR #17 (squash). Commit resultante: `3a47aaf7acd1f64bd1db920eff4b2af6d465fd53`.
+- El cambio queda integrado y validado; no implica publicar una nueva versión en Google Play. Se mantiene la versión 1.0.6 (versionCode 62) y el catálogo protegido.
+
+---
+
 ## 2026-11-03 — Actualización de GitHub Actions a Node.js 24
 
 - Auditoría de los seis workflows de `.github/workflows/`: el único uso de `actions/upload-artifact` que seguía en v4 estaba en `transitions-test.yml`.
