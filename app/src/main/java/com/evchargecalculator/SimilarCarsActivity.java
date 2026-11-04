@@ -1110,14 +1110,14 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String ba=normalizeBodyStyle(a.bodyStyle);
         String bb=normalizeBodyStyle(b.bodyStyle);
         if(ba.isEmpty()||bb.isEmpty())return false;
-        return ba.equals(bb)||(isSuvLike(ba)&&isSuvLike(bb));
+        return ba.equals(bb)||(isSuvLike(a)&&isSuvLike(b));
     }
 
     private boolean sameSegmentCompatible(Vehicle a,Vehicle b){
         String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
         String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
         if(sa.isEmpty()||sb.isEmpty())return false;
-        return sa.equals(sb)||(isSuvLike(a.bodyStyle)&&isSuvLike(b.bodyStyle));
+        return sa.equals(sb)||(isSuvLike(a)&&isSuvLike(b));
     }
 
     private boolean samePhysicalClass(Vehicle a,Vehicle b,double lengthTolerance,double widthTolerance,double heightTolerance){
@@ -1280,7 +1280,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         d=commercialPriceDistance(a.price,b.price); if(d>=0){sum+=d*.35;weight+=.35;}
         d=physicalCompetitionDistance(a,b); if(d>=0){sum+=d*.30;weight+=.30;}
         d=bodyCompetitionDistance(a,b); if(d>=0){sum+=d*.20;weight+=.20;}
-        d=segmentCompetitionDistance(a.segment,b.segment,a.bodyStyle,b.bodyStyle); if(d>=0){sum+=d*.15;weight+=.15;}
+        d=segmentCompetitionDistance(a.segment,b.segment,isSuvLike(a)&&isSuvLike(b)); if(d>=0){sum+=d*.15;weight+=.15;}
 
         return weight>0?Math.min(1,sum/weight):Double.POSITIVE_INFINITY;
     }
@@ -1308,7 +1308,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String x=normalizeBodyStyle(a.bodyStyle),y=normalizeBodyStyle(b.bodyStyle);
         if(x.isEmpty()||y.isEmpty())return -1;
         if(x.equals(y))return 0;
-        if(isSuvLike(x)&&isSuvLike(y))return .08;
+        if(isSuvLike(a)&&isSuvLike(b))return .08;
         // Fastback/liftback y hatchback del mismo segmento pueden ser
         // alternativas comerciales a una berlina si el tamaño también encaja.
         if(isSedanFastbackCompatible(a,b))return .20;
@@ -1353,7 +1353,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return heightToLength<=0.325;
     }
 
-    private double segmentCompetitionDistance(String a,String b,String bodyA,String bodyB){
+    private double segmentCompetitionDistance(String a,String b,boolean bothSuvLike){
         String x=a==null?"":a.trim().toUpperCase(Locale.ROOT);
         String y=b==null?"":b.trim().toUpperCase(Locale.ROOT);
         if(x.isEmpty()||y.isEmpty())return -1;
@@ -1364,7 +1364,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // tratamos un código desconocido como una distancia enorme: el tamaño
         // físico ya se mide por separado y es una señal mucho más fiable del
         // espacio de mercado que pretende representar el coche.
-        if(isSuvLike(bodyA)&&isSuvLike(bodyB)){
+        if(bothSuvLike){
             int dx=segmentRank(x),dy=segmentRank(y);
             if(dx>=0&&dy>=0){
                 int gap=Math.abs(dx-dy);
@@ -1515,6 +1515,22 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         return x.equals("suv")||x.equals("crossover");
     }
 
+    /**
+     * Reconoce SUV de silueta coupé (p. ej. Enyaq Coupé) sin clasificar como SUV
+     * los coupés deportivos bajos. Exigimos dimensiones y proporciones propias
+     * de un SUV de tamaño medio/grande; después sigue aplicándose el filtro de
+     * clase física para evitar emparejamientos con vehículos de otro tamaño.
+     */
+    private boolean isSuvCoupe(Vehicle v){
+        if(v==null||!"coupe".equals(normalizeBodyStyle(v.bodyStyle)))return false;
+        if(v.lengthMm<4400||v.widthMm<1800||v.heightMm<1550)return false;
+        return v.heightMm/v.lengthMm>=.335;
+    }
+
+    private boolean isSuvLike(Vehicle v){
+        return v!=null&&(isSuvLike(v.bodyStyle)||isSuvCoupe(v));
+    }
+
     private double dimensionDistance(Vehicle a,Vehicle b){
         double sum=0,weight=0,d;
         d=relativeDistance(a.lengthMm,b.lengthMm,.08); if(d>=0){sum+=d*.50;weight+=.50;}
@@ -1556,8 +1572,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         // No mezclar nunca SUV/crossover con berlinas. Las únicas excepciones
         // de carrocería son berlina↔fastback/liftback y berlina↔familiar bajo
         // comprobaciones estrictas de segmento y dimensiones.
+        boolean suvLikeA=isSuvLike(a),suvLikeB=isSuvLike(b);
         if(!ba.equals(bb)
-                &&!(isSuvLike(ba)&&isSuvLike(bb))
+                &&!(suvLikeA&&suvLikeB)
                 &&!isSedanFastbackCompatible(a,b)
                 &&!isSedanWagonCompatible(a,b))return false;
 
@@ -1570,7 +1587,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
         String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
         if(!sa.isEmpty()&&!sb.isEmpty()&&!sa.equals(sb)){
-            if(isSuvLike(ba)&&isSuvLike(bb)){
+            if(suvLikeA&&suvLikeB){
                 // En SUV/crossover, el tamaño físico prima sobre el código.
             }else if(!allowAdjacentSegment||!areAdjacentSegments(sa,sb)){
                 return false;
