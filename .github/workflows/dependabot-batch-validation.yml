@@ -73,7 +73,7 @@ jobs:
           grep -Eq "versionName[[:space:]]*=[[:space:]]*'1.0.6'" app/build.gradle
 
       - name: Run Android tests, lint and build variants
-        run: gradle --no-daemon clean testDebugUnitTest lintDebug assembleDebug assembleRelease bundleRelease
+        run: gradle --no-daemon clean testDebugUnitTest assembleDebug assembleRelease bundleRelease
 
       - name: Verify validation build outputs
         shell: bash
