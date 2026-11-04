@@ -1,3 +1,25 @@
+## 2026-11-04 — Herramientas de trabajo y flujo de desarrollo
+
+- Herramientas acordadas para el mantenimiento y evolución de EV Calculator PRO:
+  - **Proyecto ChatGPT + Memoria:** centro de coordinación; conservar decisiones, contexto, prioridades y continuidad entre tareas.
+  - **Codex:** análisis del repositorio, programación, depuración y preparación de cambios en ramas independientes. No editar `main` directamente.
+  - **Superpowers (complemento de ChatGPT instalado):** apoyo metodológico para planificar tareas, aplicar desarrollo guiado por pruebas (TDD) cuando sea adecuado, depurar de forma sistemática y revisar cambios. Utilizarlo como apoyo al proceso, sin duplicar innecesariamente las funciones de Codex ni asumir que modifica el repositorio por sí mismo.
+  - **GitHub:** repositorio oficial, control de versiones, ramas, Pull Requests y revisiones. `main` y este documento son la referencia oficial.
+  - **GitHub Actions:** compilaciones y comprobaciones automatizadas; ampliar gradualmente la ejecución de pruebas en CI.
+- Flujo obligatorio acordado:
+  1. Comenzar cada tarea en el proyecto ChatGPT EV Calculator PRO: consultar el estado actual de `main` y este documento, definir alcance, criterios de aceptación y riesgos.
+  2. Preparar la tarea para Codex; el usuario la inicia/traslada a Codex cuando corresponda. No existe transferencia automática garantizada del contexto entre este chat y Codex.
+  3. Trabajar en una rama independiente. Usar Superpowers como metodología de planificación, pruebas y depuración cuando aporte valor.
+  4. Revisar diff, referencias, pruebas y resultados de compilación antes de proponer integración.
+  5. Entregar APK de prueba para validación manual del usuario en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), cuando los cambios afecten a la app.
+  6. Integrar en `main` únicamente con autorización expresa del usuario y actualizar este documento con los cambios y validaciones reales.
+  7. No cambiar versiones, versionCode, nombres de APK/Release ni publicar en Google Play sin autorización expresa.
+- Al retomar una tarea de desarrollo, recordar al usuario este flujo y qué herramienta debe abrir o utilizar en ese momento. No asumir que el usuario tiene que iniciar Codex por su cuenta antes de definir la tarea.
+- Herramientas complementarias a valorar más adelante, sin incorporarlas automáticamente: CodeQL/Dependabot para seguridad y dependencias; Android Lint y JUnit/pruebas de integración para calidad; Firebase Crashlytics para seguimiento de fallos en producción. Evaluar utilidad y configuración antes de introducirlas.
+- Esta anotación documenta el proceso de trabajo; no implica cambios en el código de la aplicación, catálogo, versión, workflows ni publicación en Google Play.
+
+---
+
 ## 2026-11-04 — Corregir similitud de SUV coupé en búsqueda clásica (integrado y validado)
 
 - Incidencia: al buscar coches similares tomando como referencia un Škoda Enyaq Coupé 2025, la búsqueda clásica no devolvía resultados porque la carrocería `coupe` no competía con SUV/crossover, aunque las dimensiones del vehículo corresponden a un SUV medio.
