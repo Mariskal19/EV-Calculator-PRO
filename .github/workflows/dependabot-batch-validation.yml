@@ -1,0 +1,93 @@
+name: Temporary Dependabot batch validation
+
+on:
+  push:
+    branches:
+      - validation/dependabot-batch-2026-11-04
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle 9.6.0
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+
+      - name: Validate protected catalog and metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s app/src/main/assets/catalog_es_2024_2026.json
+          python3 .github/tests/project_protected_catalog.py app/src/main/assets/catalog_es_2024_2026.json build/validation/catalog.tsv
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('app/src/main/assets/catalog_es_2024_2026.json').read_text(encoding='utf-8'))
+          vehicles=data.get('vehicles')
+          assert isinstance(vehicles,list) and vehicles, 'catalog missing or empty'
+          assert all(v.get('year') in (2024,2025,2026) for v in vehicles), 'invalid catalog year'
+          print(f'Catalog OK: {len(vehicles)} vehicles')
+          PY
+
+      - name: Run advisor engine smoke tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/advisor-test
+          python3 .github/tests/project_protected_catalog.py app/src/main/assets/catalog_es_2024_2026.json build/advisor-test/catalog.tsv
+          javac -d build/advisor-test app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java .github/tests/AdvisorCriteriaEngineSmokeTest.java .github/tests/AdvisorCatalogIntegrationSmokeTest.java
+          java -cp build/advisor-test com.evchargecalculator.AdvisorCriteriaEngineSmokeTest
+          java -cp build/advisor-test com.evchargecalculator.AdvisorCatalogIntegrationSmokeTest build/advisor-test/catalog.tsv
+
+      - name: Create temporary CI-only signing key
+        shell: bash
+        run: |
+          set -euo pipefail
+          keytool -genkeypair -noprompt -v -keystore "$RUNNER_TEMP/evcalc-validation.jks" -storepass validation-only -alias validation -keypass validation-only -keyalg RSA -keysize 2048 -validity 2 -dname "CN=EV Calculator CI Validation"
+          {
+            echo "EV_CALCULATOR_KEYSTORE_PATH=$RUNNER_TEMP/evcalc-validation.jks"
+            echo "EV_CALCULATOR_KEYSTORE_PASSWORD=validation-only"
+            echo "EV_CALCULATOR_KEY_ALIAS=validation"
+            echo "EV_CALCULATOR_KEY_PASSWORD=validation-only"
+          } >> "$GITHUB_ENV"
+
+      - name: Verify app version is unchanged
+        shell: bash
+        run: |
+          grep -Eq "versionCode[[:space:]]*=[[:space:]]*62" app/build.gradle
+          grep -Eq "versionName[[:space:]]*=[[:space:]]*'1.0.6'" app/build.gradle
+
+      - name: Run Android tests, lint and build variants
+        run: gradle --no-daemon clean testDebugUnitTest lintDebug assembleDebug assembleRelease bundleRelease
+
+      - name: Verify validation build outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$(find app/build/outputs/apk -type f -name '*.apk' | head -n 1)"
+          test -n "$(find app/build/outputs/bundle -type f -name '*.aab' | head -n 1)"
+          echo "Validation-only APK/AAB generated with a temporary test key; not for distribution."
+
+      - name: Exercise upload-artifact v7
+        uses: actions/upload-artifact@v7
+        with:
+          name: dependabot-batch-validation-only
+          path: |
+            app/build/outputs/apk/release/*.apk
+            app/build/outputs/bundle/release/*.aab
+          if-no-files-found: error
+          retention-days: 1

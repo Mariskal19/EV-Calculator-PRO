@@ -23,10 +23,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Set up Java 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: '17'
@@ -105,7 +105,7 @@ jobs:
 
       - name: Upload test APK for inset validation
         if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset' || github.ref == 'refs/heads/fix/theme-navigation-clean' || github.ref == 'refs/heads/fix/search-clear-reference' || github.ref == 'refs/heads/fix/suv-coupe-similarity'
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: EV-Calculator-PRO-navigation-test-${{ github.run_number }}
           path: app/build/outputs/apk/release/*.apk
