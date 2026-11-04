@@ -8,7 +8,7 @@ on:
       - 'app/src/main/assets/catalog_remote_additions.json'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
