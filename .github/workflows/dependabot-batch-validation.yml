@@ -32,6 +32,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s app/src/main/assets/catalog_es_2024_2026.json
+          mkdir -p build/validation
           python3 .github/tests/project_protected_catalog.py app/src/main/assets/catalog_es_2024_2026.json build/validation/catalog.tsv
           python3 - <<'PY'
           import json
