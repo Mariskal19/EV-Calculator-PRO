@@ -48,6 +48,25 @@ jobs:
           EV_CALCULATOR_KEY_PASSWORD: lint-only-placeholder
         run: gradle --no-daemon lintDebug
 
+      - name: Build Debug APK
+        env:
+          # Dummy values satisfy the app's configuration-time Release-signing guard.
+          # assembleDebug does not sign with or consume these placeholder credentials.
+          EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/lint-placeholder.keystore
+          EV_CALCULATOR_KEYSTORE_PASSWORD: lint-only-placeholder
+          EV_CALCULATOR_KEY_ALIAS: lint-only-placeholder
+          EV_CALCULATOR_KEY_PASSWORD: lint-only-placeholder
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload Debug APK
+        if: success()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ev-calculator-pro-debug-${{ github.run_number }}
+          path: app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Upload Android Lint reports
         if: always()
         uses: actions/upload-artifact@v7
