@@ -1,5 +1,6 @@
 package com.evchargecalculator;
 
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.content.res.ColorStateList;
@@ -221,6 +222,9 @@ public class MainActivity extends BaseNavigationActivity {
     navigateBackWithinTabs();
   }
 
+  // Keep the legacy fallback for Android 12 and earlier. API 33+ is handled
+  // by the OnBackInvokedCallback registered above, including gesture navigation.
+  @SuppressLint("GestureBackNavigation")
   @Override
   public void onBackPressed() {
     handleSystemBack();
