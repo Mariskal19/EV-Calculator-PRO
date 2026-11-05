@@ -6,6 +6,7 @@
 - En `res/values/themes.xml`, se añade `tools:targetApi="29"` al estilo que contiene `android:forceDarkAllowed`, ya que ese atributo se introdujo en API 29. No se cambia el valor del atributo ni el tema visual.
 - `GestureBackNavigation` se mantiene expresamente pendiente: `MainActivity` ya registra un `OnBackInvokedCallback` en API 33+ y conserva `onBackPressed()` como fallback. No se suprime el aviso ni se modifica la navegación hasta probar el gesto predictivo y el historial de pestañas en Redmi Note 13 Pro (Android 16) y el retroceso en Redmi Note 7 (Android 10).
 - **Estado:** cambios de código aplicados; pendientes revisión final del diff, nueva ejecución de Android Lint, compilación Debug/Release y pruebas manuales en ambos dispositivos. No se considera cerrada la fase ni resueltos los avisos hasta verificar esos resultados.
+- El workflow `.github/workflows/android-lint.yml` se amplió para ejecutar también `assembleDebug` y publicar el APK Debug como artefacto de prueba (retención 7 días). Se usan variables placeholder únicamente para satisfacer la validación de configuración de firma Release; `assembleDebug` no utiliza ni firma con esas credenciales. La ejecución automática tras este cambio está pendiente de consultar y verificar.
 - Sin cambios en `main`, ramas de respaldo, catálogo protegido, dependencias, `minSdk 24`, `compileSdk 36`, `targetSdk 36`, `versionName 1.0.6`, `versionCode 62`, APK/AAB o publicación en Google Play.
 
 ---
