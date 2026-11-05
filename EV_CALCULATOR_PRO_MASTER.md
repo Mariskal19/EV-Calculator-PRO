@@ -3204,3 +3204,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Esta eliminación no cambia lógica, pantallas, textos, traducciones, catálogo, dependencias, manifiesto, tema activo, iconos utilizados ni versionado. Se conserva `versionName 1.0.6` y `versionCode 62`.
 - **Validación pendiente:** ejecutar Android Lint y `assembleDebug` sobre este cambio; revisar el nuevo informe para confirmar cuántos avisos `UnusedResources` desaparecen y comprobar que no surgen errores de recursos. No se considera cerrada la limpieza hasta completar CI y pruebas manuales.
 - Rama `develop/post-1.0.6`; no se modifica `main` ni ninguna rama de respaldo. No se crea Release ni se publica APK/AAB.
+
+
+## 2026-11-05 — Resultado CI de limpieza UnusedResources
+
+- Workflow [Android Lint run 42107903390](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42107903390), commit `6453be77ea6b436bac874d7f6590fd19d4b73bc4`: **SUCCESS**. `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Informe XML revisado: 34 advertencias, 0 errores. `UnusedResources` baja de 59 a 4 (55 avisos eliminados). Los cuatro restantes corresponden a recursos de iconos conservados deliberadamente: `ic_launcher`, `ic_launcher_foreground_inset`, `ic_launcher_round` y `ic_nav_find_cars`; no se eliminan en esta fase para evitar riesgos de identidad visual/navegación.
+- Las otras advertencias son de iconos, asignaciones en dibujo, constructores de vistas y configuración de idiomas. No se han introducido errores de recursos.
+- APK Debug generado: artefacto `ev-calculator-pro-debug-33`, artifact ID `13452842579`, archivo `app-debug.apk` (7.877.804 bytes). Es una compilación de pruebas, no una release.
+- Pendiente: instalación y prueba manual de esta APK en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La validación anterior en Note 13 correspondía a la APK Debug 32, anterior a esta limpieza; por tanto, no sustituye la prueba de esta APK.
+- Rama `develop/post-1.0.6`; `main` sigue sin cambios. No se modifica versionName 1.0.6, versionCode 62, ni se crea/publica release.
