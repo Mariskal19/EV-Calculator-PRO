@@ -490,7 +490,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
         tableLabels.setElevation(dp(4));
-        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.START));
 
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
