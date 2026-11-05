@@ -4,10 +4,11 @@
 - En `ElectricVsCombustionScreen.java` se evita que el listener de insets sobrescriba el espacio inferior reservado para el scroll; se garantiza un mínimo de 64 dp para que el contenido pueda desplazarse por encima de la barra inferior fija.
 - Al adjuntarse dinámicamente el `ScrollView`, se solicitan de nuevo los insets y una medición/layout para calcular correctamente el rango de desplazamiento desde la primera presentación.
 - La rama `fix/electric-combustion-initial-scroll` se compiló correctamente en Release en el build 2483, [run 42026643912](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42026643912). Se generaron y verificaron APK y AAB; el artefacto de prueba `EV-Calculator-PRO-navigation-test-2483` se utilizó para validación manual.
-- **Prueba manual confirmada por el usuario en Redmi Note 13 Pro (Android 16):** al entrar por primera vez, el contenido se desplaza correctamente hasta el final. La prueba en Redmi Note 7 (Android 10) queda pendiente.
+- **Prueba manual de la versión Release de `main` confirmada por el usuario:** funcionamiento correcto; se cierra la validación de esta incidencia y se establece esta versión como referencia estable.
 - Integrado en `main` mediante PR #24 (squash), commit `2a5f37139af0b37a8e2a9d4c84840bcc43dc21d4`. La PR incluye también una ampliación de una línea en `.github/workflows/build.yml` para permitir que esta rama suba el APK de validación como artefacto; no cambia la versión ni el proceso de publicación.
-- La compilación Release automática de `main` tras el merge está en curso: [run 42027852059](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42027852059). Comprobar el resultado antes de tomar ese build como referencia.
+- Compilación Release de `main` posterior al merge completada correctamente: build 2484, [run 42027852059](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42027852059). Tras actualizar este documento se generaron también los builds 2485 y 2486, ambos correctos.
 - Se mantiene la versión 1.0.6 (versionCode 62), compileSdk 36, targetSdk 36 y minSdk 23. No se modifica el catálogo protegido ni se publica en Google Play.
+- **Versión estable adoptada:** Release `build-v1.0.6-2486` (build #2486), con APK y AAB firmados. APK: [descarga directa](https://github.com/Mariskal19/EV-Calculator-PRO/releases/download/build-v1.0.6-2486/EV-Calculator-PRO-v1.0.6.apk). Se conserva `versionName` 1.0.6 / `versionCode` 62, `compileSdk` 36, `targetSdk` 36 y `minSdk` 23. No se ha publicado en Google Play.
 
 ---
 
