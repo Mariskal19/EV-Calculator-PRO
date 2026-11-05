@@ -1,3 +1,16 @@
+## 2026-11-05 — Android Lint: primer lote de advertencias (validación pendiente)
+
+- Tras la auditoría limpia de errores del run [42056765017](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017), se inicia la corrección conservadora de las 143 advertencias. La rama sigue siendo exclusivamente `develop/post-1.0.6`; `main` no se modifica.
+- Primer lote: se corrigen las tres advertencias `ObsoleteSdkInt` que señalaban comprobaciones redundantes con el `minSdk 24` actual:
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: se elimina la guarda API 21 alrededor de `View.setElevation()`; API 21 es inferior al mínimo admitido (24).
+  - `LanguageManager.java`: se elimina la rama de compatibilidad anterior a API 24 y se usa directamente `Configuration.getLocales()`; Android 10 (API 29) y Android 16 (API 36) están dentro del rango admitido.
+- No se cambia el comportamiento visual esperado, el idioma seleccionado ni la lista de seis idiomas. No se modifica `minSdk`, versionado, dependencias, catálogo ni workflows.
+- Commits del lote: `407ae91345a34bb2af641bff4a9d08cc6472ca4e`, `7244ded5fa1080015660dc2cbb915975845fa258` y `b22d034df10e0352921e89e96ddb7878aed3644e`.
+- **Validación pendiente:** todavía no hay un nuevo resultado verificado de `lintDebug` ni `assembleDebug` para este lote. No se declara que las tres advertencias hayan desaparecido hasta revisar el siguiente informe.
+- Estado de rama consultado tras los cambios: `develop/post-1.0.6` está 25 commits por delante y 0 por detrás de `main`. No se ha fusionado nada en `main`; se conserva `versionName 1.0.6` y `versionCode 62`.
+
+---
+
 ## 2026-11-05 — Fase 1 de Android Lint: primeras correcciones aplicadas (validación pendiente)
 
 - Trabajo realizado exclusivamente en `develop/post-1.0.6`; `main` permanece sin modificaciones.
