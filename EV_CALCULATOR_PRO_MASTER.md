@@ -1,3 +1,12 @@
+## 2026-11-05 — Ajuste de ejecución de Android Lint en CI
+
+- La primera ejecución `42051860380` terminó con el job global en verde por el uso deliberado de `continue-on-error`, pero **Lint no llegó a ejecutarse**: la evaluación de `app/build.gradle` abortó porque el proyecto exige variables de firma Release durante la configuración, incluso al solicitar `lintDebug`. No se generaron informes ni artefactos.
+- Se ajusta únicamente el workflow `.github/workflows/android-lint.yml` para proporcionar valores ficticios y locales a las cuatro variables de firma durante el paso `lintDebug`. La tarea de análisis debug no firma APK/AAB y no utiliza esas credenciales; no se crean ni se exponen secretos reales.
+- Commit del ajuste: `72dfed73832c1d6c2d09c6ef67a17d5b706db0d1`. El push inicia una nueva ejecución automáticamente.
+- **Estado:** pendiente validar que la nueva ejecución completa realmente `lintDebug` y publica el informe. La ejecución inicial no cuenta como auditoría válida. No se ha cambiado `app/build.gradle`, fuentes Android, dependencias, versionado ni `main`.
+
+---
+
 ## 2026-11-05 — Preparación de auditoría independiente de Android Lint
 
 - En la rama `develop/post-1.0.6` se añade el workflow `.github/workflows/android-lint.yml` para ejecutar `gradle --no-daemon lintDebug` con Java 17 y Gradle 9.6.0.
