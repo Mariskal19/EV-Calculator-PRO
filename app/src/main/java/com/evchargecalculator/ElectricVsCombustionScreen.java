@@ -145,8 +145,8 @@ public class ElectricVsCombustionScreen extends FrameLayout {
 
   private void applyCurrency() {
     String s = currencySymbol();
-    if (electricityPriceUnit != null) electricityPriceUnit.setText(String.format(Locale.ROOT, "%s/kWh", s));
-    if (fuelPriceUnit != null) fuelPriceUnit.setText(String.format(Locale.ROOT, "%s/l", s));
+    if (electricityPriceUnit != null) electricityPriceUnit.setText(String.format(java.util.Locale.ROOT, "%s/kWh", s));
+    if (fuelPriceUnit != null) fuelPriceUnit.setText(String.format(java.util.Locale.ROOT, "%s/l", s));
   }
 
   private TextView tv(String s, int sp, int c) {
@@ -518,18 +518,18 @@ public class ElectricVsCombustionScreen extends FrameLayout {
         pct = fCost > 0 ? diff / fCost * 100.0 : 0;
     evCost.setText(money(eCost));
     fuelCost.setText(money(fCost));
-    saving.setText(String.format(Locale.ROOT,
+    saving.setText(String.format(java.util.Locale.ROOT,
         LanguageManager.t(host, diff >= 0
             ? "Ahorro con el eléctrico: %1$s"
             : "Diferencia: %1$s"),
         money(Math.abs(diff))));
-    savingPercent.setText(String.format(Locale.ROOT,
+    savingPercent.setText(String.format(java.util.Locale.ROOT,
         LanguageManager.t(host, diff >= 0
             ? "%1$s %% de ahorro"
             : "El eléctrico cuesta %1$s %% más"),
         one(diff >= 0 ? pct : Math.abs(pct))));
-    evPer100.setText(String.format(Locale.ROOT, "%s/100 km", money(evC * elec)));
-    fuelPer100.setText(String.format(Locale.ROOT, "%s/100 km", money(fuelC * fuelP)));
+    evPer100.setText(String.format(java.util.Locale.ROOT, "%s/100 km", money(evC * elec)));
+    fuelPer100.setText(String.format(java.util.Locale.ROOT, "%s/100 km", money(fuelC * fuelP)));
   }
 
   private void save() {
