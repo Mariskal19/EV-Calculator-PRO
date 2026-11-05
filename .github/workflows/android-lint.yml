@@ -1,0 +1,64 @@
+name: Android Lint audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - develop/post-1.0.6
+    paths:
+      - 'app/src/**'
+      - 'app/build.gradle'
+      - 'build.gradle'
+      - 'settings.gradle'
+      - 'gradle.properties'
+      - '.github/workflows/android-lint.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Run Android Lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle 9.6.0
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          gradle-version: '9.6.0'
+          cache-disabled: true
+
+      - name: Run lintDebug
+        id: lint
+        continue-on-error: true
+        run: gradle --no-daemon lintDebug
+
+      - name: Upload Android Lint reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-lint-report-${{ github.run_number }}
+          path: |
+            app/build/reports/lint-results-debug.html
+            app/build/reports/lint-results-debug.xml
+            app/build/reports/lint-results-debug.sarif
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Report audit status
+        if: always()
+        shell: bash
+        run: |
+          if [ "${{ steps.lint.outcome }}" = "success" ]; then
+            echo "Android Lint completed without a Gradle task failure." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Android Lint reported issues or failed. Download the report artifact and review findings before changing source code." >> "$GITHUB_STEP_SUMMARY"
+          fi
