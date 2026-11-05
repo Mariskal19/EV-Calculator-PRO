@@ -2,6 +2,7 @@ package com.evchargecalculator;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -151,7 +152,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
             "Supporta EV Calculator PRO",
             "Apoiar o EV Calculator PRO"),
         22, text());
-    title.setTypeface(null, 1);
+    title.setTypeface(null, Typeface.BOLD);
     title.setGravity(Gravity.CENTER);
     root.addView(title, new LinearLayout.LayoutParams(-1, dp(58)));
 
@@ -180,7 +181,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
             "L'app ti è utile?",
             "A aplicação é útil para si?"),
         19, text());
-    heading.setTypeface(null, 1);
+    heading.setTypeface(null, Typeface.BOLD);
     card.addView(heading);
 
     TextView body = label(
@@ -209,7 +210,7 @@ public class SupportProjectActivity extends BaseNavigationActivity {
             "Importo libero",
             "Valor livre"),
         15, text());
-    paymentTitle.setTypeface(null, 1);
+    paymentTitle.setTypeface(null, Typeface.BOLD);
     paymentTitle.setGravity(Gravity.CENTER);
     paymentBox.addView(paymentTitle);
 
