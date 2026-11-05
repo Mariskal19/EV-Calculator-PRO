@@ -3112,3 +3112,14 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Ejecución CI disparada: [run 42056765017](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017). En la última consulta, `lintDebug` seguía en ejecución; aún no se declara resuelto el error ni verificada la compilación de esta revisión.
 - La prueba manual en Redmi Note 13 Pro (Android 16) está confirmada como correcta. Sigue pendiente probar navegación Atrás en Redmi Note 7 (Android 10).
 - Sin cambios en `main`, ramas de respaldo, dependencias, versión `1.0.6`, versionCode `62` ni artefactos de publicación.
+
+
+### Resultado CI tras corregir GestureBackNavigation — run 42056765017
+
+- Ejecución completada correctamente: [Android Lint audit #11](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017), commit probado `1b6764259e6db641da5589052160579d2a4f9de3`.
+- `:app:lintDebug`: SUCCESS. Informe XML descargado y comprobado: **0 errores y 143 advertencias**. El aviso `GestureBackNavigation` ya no aparece como error; la supresión localizada ha funcionado.
+- Advertencias restantes: UnusedResources 59, SetTextI18n 39, IconLauncherShape 10, RtlHardcoded 8, DrawAllocation 7, IconDuplicates 5, VectorRaster 3, ObsoleteSdkInt 3, IconLocation 3, ViewConstructor 3, AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
+- `:app:assembleDebug`: SUCCESS. Artefacto `ev-calculator-pro-debug-11`, 7,670,243 bytes, disponible hasta el 12 nov 2026.
+- Informe Android Lint `android-lint-report-11` disponible hasta el 19 nov 2026.
+- La validación manual confirmada corresponde al Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10), especialmente botón/gesto Atrás, sigue pendiente; por tanto, el comportamiento de compatibilidad no se da por cerrado.
+- Sin fusión en `main`, sin cambios de versión/versionCode ni publicación.
