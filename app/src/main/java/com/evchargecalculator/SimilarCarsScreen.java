@@ -545,7 +545,7 @@ public class SimilarCarsScreen extends FrameLayout {
             if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
         }
         advisorEngine.reset();
-        advisorStatus.setText(String.format(Locale.ROOT,
+        advisorStatus.setText(String.format(java.util.Locale.ROOT,
                 LanguageManager.t(host, "Alternativas similares tomando como referencia %1$s %2$s %3$d · %4$s."),
                 chosen.make, chosen.model, chosen.year, cleanVersion(chosen.version)));
         showSimilar();
@@ -570,7 +570,7 @@ public class SimilarCarsScreen extends FrameLayout {
 
         String language=LanguageManager.getEffectiveLanguage(host);
         AdvisorCriteriaEngine.Language selectedLanguage;
-        try{selectedLanguage=AdvisorCriteriaEngine.Language.valueOf(language.toUpperCase(Locale.ROOT));}
+        try{selectedLanguage=AdvisorCriteriaEngine.Language.valueOf(language.toUpperCase(java.util.Locale.ROOT));}
         catch(Exception ignored){selectedLanguage=AdvisorCriteriaEngine.Language.EN;}
         // Direct requests for a named catalog model must show that model first.
         // Similarity wording is excluded by the intent classifier, so alternatives
@@ -841,7 +841,7 @@ public class SimilarCarsScreen extends FrameLayout {
         final Spinner searchMarketSpinner=new Spinner(host);
         List<String> ms=new ArrayList<>();
         LinkedHashSet<String> marketSet=new LinkedHashSet<>();
-        for(Vehicle v:vehicles)if(v.market!=null&&!v.market.trim().isEmpty())marketSet.add(v.market.toUpperCase(Locale.ROOT));
+        for(Vehicle v:vehicles)if(v.market!=null&&!v.market.trim().isEmpty())marketSet.add(v.market.toUpperCase(java.util.Locale.ROOT));
         ms.addAll(marketSet);
         Collections.sort(ms,(a,b)->marketName(a).compareToIgnoreCase(marketName(b)));
         List<String> labels=new ArrayList<>();
@@ -965,7 +965,7 @@ public class SimilarCarsScreen extends FrameLayout {
         input.requestFocus();
     }
 
-    private int trimRank(Vehicle v){String k=v.version==null?"":v.version.toLowerCase(Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
+    private int trimRank(Vehicle v){String k=v.version==null?"":v.version.toLowerCase(java.util.Locale.ROOT);if(k.contains("standard")||k.contains("base")||k.contains("comfort"))return 0;if(k.contains("long range")||k.contains("extended"))return 1;if(k.contains("premium")||k.contains("performance")||k.contains("max"))return 2;return 3;}
 
     private int pickerModelTokenMatchCount(Vehicle v,String normalizedQuery){
         if(v==null||normalizedQuery==null||normalizedQuery.isEmpty())return 0;
@@ -1073,7 +1073,7 @@ public class SimilarCarsScreen extends FrameLayout {
         // competencia (60%) y distancia técnica direccional (40%).
         Map<String,Scored> bestByMake=new LinkedHashMap<>();
         for(Scored s:competitors){
-            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
+            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(java.util.Locale.ROOT);
             if(make.isEmpty())continue;
 
             Scored current=bestByMake.get(make);
@@ -1149,7 +1149,7 @@ public class SimilarCarsScreen extends FrameLayout {
         Set<String> brands=new HashSet<>();
         for(Scored s:scored){
             if(s==null||s.v==null)continue;
-            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(Locale.ROOT);
+            String make=s.v.make==null?"":s.v.make.trim().toLowerCase(java.util.Locale.ROOT);
             if(!make.isEmpty())brands.add(make);
         }
         return brands.size();
@@ -1164,8 +1164,8 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private boolean sameSegmentCompatible(Vehicle a,Vehicle b){
-        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
-        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(java.util.Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(java.util.Locale.ROOT);
         if(sa.isEmpty()||sb.isEmpty())return false;
         return sa.equals(sb)||(isSuvLike(a.bodyStyle)&&isSuvLike(b.bodyStyle));
     }
@@ -1387,8 +1387,8 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private boolean sameSegmentAndPhysicalClass(Vehicle a,Vehicle b){
-        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
-        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(java.util.Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(java.util.Locale.ROOT);
         if(sa.isEmpty()||!sa.equals(sb))return false;
         return samePhysicalClass(a,b,8.0,5.0,8.0);
     }
@@ -1404,8 +1404,8 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private double segmentCompetitionDistance(String a,String b,String bodyA,String bodyB){
-        String x=a==null?"":a.trim().toUpperCase(Locale.ROOT);
-        String y=b==null?"":b.trim().toUpperCase(Locale.ROOT);
+        String x=a==null?"":a.trim().toUpperCase(java.util.Locale.ROOT);
+        String y=b==null?"":b.trim().toUpperCase(java.util.Locale.ROOT);
         if(x.isEmpty()||y.isEmpty())return -1;
         if(x.equals(y))return 0;
 
@@ -1428,7 +1428,7 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private int segmentRank(String s){
-        String x=s==null?"":s.trim().toUpperCase(Locale.ROOT);
+        String x=s==null?"":s.trim().toUpperCase(java.util.Locale.ROOT);
         if(x.equals("A"))return 0;
         if(x.equals("B"))return 1;
         if(x.equals("C"))return 2;
@@ -1542,7 +1542,7 @@ public class SimilarCarsScreen extends FrameLayout {
     }
 
     private String normalizeBodyStyle(String s){
-        String x=s==null?"":s.trim().toLowerCase(Locale.ROOT);
+        String x=s==null?"":s.trim().toLowerCase(java.util.Locale.ROOT);
         return x.equals("suv")||x.equals("crossover")?x:x;
     }
 
@@ -1552,8 +1552,8 @@ public class SimilarCarsScreen extends FrameLayout {
      * en una penalización fuerte (p.ej. G6 C frente a Model Y J).
      */
     private double segmentDistance(Vehicle a,Vehicle b){
-        String x=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
-        String y=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        String x=a.segment==null?"":a.segment.trim().toUpperCase(java.util.Locale.ROOT);
+        String y=b.segment==null?"":b.segment.trim().toUpperCase(java.util.Locale.ROOT);
         if(x.isEmpty()||y.isEmpty())return -1;
         if(x.equals(y))return 0;
         if(isSuvLike(a.bodyStyle)&&isSuvLike(b.bodyStyle))return .20;
@@ -1617,8 +1617,8 @@ public class SimilarCarsScreen extends FrameLayout {
 
         // Con carrocería y tamaño compatibles, permitimos el salto de código de
         // segmento que existe en algunos catálogos (p.ej. C/D/J para SUV).
-        String sa=a.segment==null?"":a.segment.trim().toUpperCase(Locale.ROOT);
-        String sb=b.segment==null?"":b.segment.trim().toUpperCase(Locale.ROOT);
+        String sa=a.segment==null?"":a.segment.trim().toUpperCase(java.util.Locale.ROOT);
+        String sb=b.segment==null?"":b.segment.trim().toUpperCase(java.util.Locale.ROOT);
         if(!sa.isEmpty()&&!sb.isEmpty()&&!sa.equals(sb)){
             if(isSuvLike(ba)&&isSuvLike(bb)){
                 // En SUV/crossover, el tamaño físico prima sobre el código.
@@ -1686,7 +1686,7 @@ public class SimilarCarsScreen extends FrameLayout {
         return m.find()?m.group(1):"0";
     }
     private String normalizedVersion(Vehicle v){
-        String ver=v.version==null?"":v.version.trim().toLowerCase(Locale.ROOT);
+        String ver=v.version==null?"":v.version.trim().toLowerCase(java.util.Locale.ROOT);
         ver=ver.replaceAll("^\\d+(?:\\.\\d+)?\\s*kwh\\s*","");
         ver=ver.replaceAll("\\s+"," ").trim();
         return ver;
@@ -1705,11 +1705,11 @@ public class SimilarCarsScreen extends FrameLayout {
         trim=norm(trim).replaceAll("[^a-z0-9]+"," ").trim().replaceAll("\\s+"," ");
         return norm(v.make)+"|"+norm(v.model)+"|"+norm(v.market)+"|"+norm(v.drivetrain)+"|"+trim;
     }
-    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(Locale.ROOT);}
-    private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(Locale.ROOT).trim();}
+    private String logicalKey(Vehicle v){return(v.make+"|"+v.model+"|"+v.market+"|"+v.year+"|"+effectiveBatteryKey(v)+"|"+normalizedVersion(v)).trim().toLowerCase(java.util.Locale.ROOT);}
+    private String norm(String s){return java.text.Normalizer.normalize(s==null?"":s,java.text.Normalizer.Form.NFD).replaceAll("\\p{M}","").toLowerCase(java.util.Locale.ROOT).trim();}
     private String marketName(String c) {
         if (c == null || c.trim().isEmpty()) return "";
-        String code = c.equalsIgnoreCase("UK") ? "GB" : c.toUpperCase(Locale.ROOT);
+        String code = c.equalsIgnoreCase("UK") ? "GB" : c.toUpperCase(java.util.Locale.ROOT);
         if (code.matches("[A-Z]{2}")) {
             Locale displayLocale = Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(host));
             String name = new Locale.Builder().setRegion(code).build().getDisplayCountry(displayLocale);
@@ -1779,9 +1779,9 @@ public class SimilarCarsScreen extends FrameLayout {
         double price,batteryKwh,usableBatteryKwh,wltpKm,consumption,powerKw,acKw,dcKw,chargeMin,acc,trunk,weight,lengthMm,widthMm,heightMm;
         Vehicle(JSONObject o,boolean remote){
             remoteSource=remote;make=o.optString("make",o.optString("brand",""));model=o.optString("model","");version=o.optString("version",o.optString("trim",""));
-            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(Locale.ROOT);
-            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(Locale.ROOT);
-            segment=o.optString("segment","").trim().toUpperCase(Locale.ROOT);
+            batteryType=o.optString("batteryChemistry",o.optString("batteryType",""));drivetrain=o.optString("drivetrain",o.optString("drive",""));market=o.optString("market","ES").toUpperCase(java.util.Locale.ROOT);
+            bodyStyle=o.optString("bodyStyle",o.optString("body_style","")).trim().toLowerCase(java.util.Locale.ROOT);
+            segment=o.optString("segment","").trim().toUpperCase(java.util.Locale.ROOT);
             year=o.optInt("year",o.optInt("modelYear",0));price=o.optDouble("price",0);batteryKwh=o.optDouble("batteryKwh",o.optDouble("battery_capacity_kwh",0));usableBatteryKwh=o.optDouble("usableBatteryKwh",0);
             wltpKm=o.optDouble("wltpKm",o.optDouble("rangeKm",0));consumption=o.optDouble("consumption",o.optDouble("consumptionKwh100",0));powerKw=o.optDouble("powerKw",o.optDouble("power_kW",0));
             acKw=o.optDouble("acKw",o.optDouble("acChargeKw",0));dcKw=o.optDouble("dcKw",o.optDouble("dcChargeKw",0));chargeMin=o.optDouble("charge10to80Min",o.optDouble("chargeMin",0));
@@ -1789,6 +1789,6 @@ public class SimilarCarsScreen extends FrameLayout {
             lengthMm=o.optDouble("lengthMm",o.optDouble("length",0));widthMm=o.optDouble("widthMm",o.optDouble("width",0));heightMm=o.optDouble("heightMm",o.optDouble("height",0));
             id=o.optString("id","");if(id.isEmpty())id="catalog-"+Integer.toHexString(logicalHash());
         }
-        private int logicalHash(){return(make+"|"+model+"|"+market+"|"+year+"|"+batteryKwh+"|"+version).toLowerCase(Locale.ROOT).hashCode();}
+        private int logicalHash(){return(make+"|"+model+"|"+market+"|"+year+"|"+batteryKwh+"|"+version).toLowerCase(java.util.Locale.ROOT).hashCode();}
     }
 }
