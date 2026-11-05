@@ -290,21 +290,40 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     // available area, and adding the IME height again creates a background strip
     // above the keyboard. Use IME visibility only to keep the focused field visible.
     final int baseScrollTopPadding = scroll.getPaddingTop();
-    final int baseScrollBottomPadding = scroll.getPaddingBottom();
     androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(scroll, (view, insets) -> {
       androidx.core.graphics.Insets bars = insets.getInsets(
           androidx.core.view.WindowInsetsCompat.Type.systemBars()
               | androidx.core.view.WindowInsetsCompat.Type.displayCutout());
       boolean imeVisible =
           insets.isVisible(androidx.core.view.WindowInsetsCompat.Type.ime());
+      // The fixed bottom navigation overlays the content slot. Keep its full
+      // height available as scroll range even when this inset listener runs
+      // after BaseNavigationActivity has already added bottom scroll space.
+      int bottomScrollSpace = Math.max(scroll.getPaddingBottom(), dp(64));
       scroll.setPadding(
           scroll.getPaddingLeft(), baseScrollTopPadding + bars.top, scroll.getPaddingRight(),
-          baseScrollBottomPadding);
+          bottomScrollSpace);
       if (imeVisible) {
         EditText focused = activeEdit;
         if (focused != null) focused.post(() -> keepFieldVisible(focused));
       }
       return insets;
+    });
+    // This screen is installed dynamically into the host's content slot. Ask
+    // for insets and a fresh measure after attachment so the first layout has
+    // the same scroll range as a layout recalculated after Activity resume.
+    scroll.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+      @Override
+      public void onViewAttachedToWindow(View view) {
+        view.removeOnAttachStateChangeListener(this);
+        view.post(() -> {
+          androidx.core.view.ViewCompat.requestApplyInsets(view);
+          view.requestLayout();
+        });
+      }
+
+      @Override
+      public void onViewDetachedFromWindow(View view) { }
     });
     FrameLayout hero = new FrameLayout(host);
     hero.setLayoutParams(new LinearLayout.LayoutParams(-1, dp(260)));
