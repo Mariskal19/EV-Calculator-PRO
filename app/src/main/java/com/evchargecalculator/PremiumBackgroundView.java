@@ -9,6 +9,10 @@ public class PremiumBackgroundView extends View {
   private final Path path = new Path();
   private boolean dark = true;
   private boolean showVehicle = true;
+  private LinearGradient backgroundGradient;
+  private final BlurMaskFilter glowBlur = new BlurMaskFilter(95, BlurMaskFilter.Blur.NORMAL);
+  private int gradientWidth = -1, gradientHeight = -1;
+  private boolean gradientDark;
 
   public PremiumBackgroundView(Context c) {
     super(c);
@@ -16,8 +20,29 @@ public class PremiumBackgroundView extends View {
   }
 
   public void setDark(boolean d) {
-    dark = d;
+    if (dark != d) {
+      dark = d;
+      updateBackgroundGradient(getWidth(), getHeight());
+    }
     invalidate();
+  }
+
+  @Override
+  protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    super.onSizeChanged(w, h, oldw, oldh);
+    updateBackgroundGradient(w, h);
+  }
+
+  private void updateBackgroundGradient(int w, int h) {
+    if (w <= 0 || h <= 0) return;
+    if (backgroundGradient == null || gradientWidth != w || gradientHeight != h || gradientDark != dark) {
+      int start = dark ? Color.rgb(7, 19, 28) : Color.rgb(244, 248, 255);
+      int end = dark ? Color.rgb(13, 29, 44) : Color.rgb(223, 233, 246);
+      backgroundGradient = new LinearGradient(0, 0, w, h, start, end, Shader.TileMode.CLAMP);
+      gradientWidth = w;
+      gradientHeight = h;
+      gradientDark = dark;
+    }
   }
 
   public void setShowVehicle(boolean show) {
@@ -29,13 +54,12 @@ public class PremiumBackgroundView extends View {
   protected void onDraw(Canvas c) {
     float w = getWidth(), h = getHeight();
     p.setStyle(Paint.Style.FILL);
-    int a = dark ? Color.rgb(7, 19, 28) : Color.rgb(244, 248, 255),
-        b = dark ? Color.rgb(13, 29, 44) : Color.rgb(223, 233, 246);
-    p.setShader(new LinearGradient(0, 0, w, h, a, b, Shader.TileMode.CLAMP));
+    updateBackgroundGradient(getWidth(), getHeight());
+    p.setShader(backgroundGradient);
     c.drawRect(0, 0, w, h, p);
     p.setShader(null);
     p.setColor(dark ? Color.argb(60, 78, 161, 255) : Color.argb(34, 46, 107, 255));
-    p.setMaskFilter(new BlurMaskFilter(95, BlurMaskFilter.Blur.NORMAL));
+    p.setMaskFilter(glowBlur);
     c.drawCircle(w * .75f, h * .12f, 170, p);
     p.setColor(dark ? Color.argb(42, 39, 196, 164) : Color.argb(28, 40, 198, 164));
     c.drawCircle(w * .18f, h * .36f, 140, p);
