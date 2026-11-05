@@ -39,6 +39,13 @@ jobs:
       - name: Run lintDebug
         id: lint
         continue-on-error: true
+        env:
+          # Dummy values satisfy the app's configuration-time Release-signing guard.
+          # lintDebug does not sign an APK and never uses these placeholder credentials.
+          EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/lint-placeholder.keystore
+          EV_CALCULATOR_KEYSTORE_PASSWORD: lint-only-placeholder
+          EV_CALCULATOR_KEY_ALIAS: lint-only-placeholder
+          EV_CALCULATOR_KEY_PASSWORD: lint-only-placeholder
         run: gradle --no-daemon lintDebug
 
       - name: Upload Android Lint reports
