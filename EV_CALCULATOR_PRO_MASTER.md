@@ -1,3 +1,16 @@
+## 2026-11-05 — Android Lint: segundo lote, compatibilidad RTL (validación pendiente)
+
+- Se revisó el informe del run [42057758951](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42057758951): `lintDebug` y `assembleDebug` correctos; 0 errores y 140 advertencias (antes 143). Las tres `ObsoleteSdkInt` del primer lote ya no aparecen.
+- Segundo lote: se corrigen las 8 advertencias `RtlHardcoded`, sustituyendo alineaciones físicas por relativas:
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: `Gravity.LEFT` → `Gravity.START` (2 usos).
+  - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: `Gravity.RIGHT` → `Gravity.END` (6 usos).
+- El cambio permite que las alineaciones respeten la dirección del idioma (LTR/RTL). No cambia el diseño en idiomas LTR como español, ni modifica recursos, textos, seis idiomas, dependencias o versionado.
+- Commits del segundo lote: `1a5670cffd8dd7e1227a9e659fc71d154c6ef61c`, `dccb84ecb517232f7690eacba99512487fd110c5`, `c97bb0bbf86a4e690b42a630d4ce82fb69a85d8d`, `1cf1c6d72403e2394db01c642193346406f7217e`.
+- **Validación pendiente:** ejecutar `lintDebug` y `assembleDebug` para confirmar que las 8 advertencias desaparecen y que la compilación sigue correcta.
+- Rama de trabajo: `develop/post-1.0.6`. No se ha fusionado en `main`; mantener `versionName 1.0.6` y `versionCode 62`.
+
+---
+
 ## 2026-11-05 — Android Lint: primer lote de advertencias (validación pendiente)
 
 - Tras la auditoría limpia de errores del run [42056765017](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017), se inicia la corrección conservadora de las 143 advertencias. La rama sigue siendo exclusivamente `develop/post-1.0.6`; `main` no se modifica.
