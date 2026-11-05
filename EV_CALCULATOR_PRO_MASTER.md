@@ -3234,3 +3234,18 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
   - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: creación de `RectF` en las cabeceras.
 - La corrección prevista es reutilizar shaders, filtros y rectángulos, actualizándolos solo cuando cambien tamaño, tema o valores. Debe conservar exactamente el aspecto y la interacción actuales; no se deben cambiar colores, medidas, animaciones ni composición visual.
 - Esta revisión es únicamente de auditoría: todavía no se ha modificado código para este lote ni se ha ejecutado una nueva compilación. Se mantiene como siguiente tarea de desarrollo, separada de la prueba pendiente en Redmi Note 7 (Android 10).
+
+
+## 2026-11-05 — Optimización DrawAllocation (pendiente de CI y prueba)
+
+Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para eliminar asignaciones repetidas durante el dibujo:
+
+- `BatteryRangeView.java`: el `LinearGradient` de la barra activa se conserva y solo se actualiza cuando cambian los extremos o el tamaño de la vista.
+- `PremiumBackgroundView.java`: se reutilizan el gradiente de fondo y el `BlurMaskFilter`; el gradiente se reconstruye únicamente al cambiar el tamaño o el tema.
+- `CompararCochesActivity.java` y `CompararCochesScreen.java`: reutilizan un `RectF` para dibujar la imagen de cabecera.
+- `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: reutilizan un `RectF` para dibujar la imagen de cabecera.
+- No se han cambiado medidas, colores, formas, textos, animaciones ni interacción prevista.
+- Commits de código: `adece626`, `7d14cc9`, `e502397`, `294fc3a`, `2b51029`, `a518976`.
+- Pendiente: ejecutar Android Lint y `assembleDebug`, comprobar que desaparecen los 7 avisos `DrawAllocation`, revisar el diff y generar APK de prueba. No se declara compilado ni probado todavía.
+- La APK Debug 33 continúa validada en Redmi Note 13 Pro (Android 16); la prueba en Redmi Note 7 (Android 10) sigue pendiente.
+- No se ha fusionado nada a `main`; versionName `1.0.6`, versionCode `62` y releases permanecen sin cambios.
