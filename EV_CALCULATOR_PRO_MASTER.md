@@ -1,3 +1,12 @@
+## 2026-11-05 — Prueba manual APK Debug 39 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 39, generada por el workflow [42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- Esta validación cubre únicamente el Redmi Note 13 Pro y esta compilación concreta. Sigue pendiente la prueba en Redmi Note 7 (Android 10), incluida la navegación Atrás.
+- No se considera cerrada la compatibilidad completa hasta validar también Android 10.
+- Sin cambios en `main`, versionName `1.0.6`, versionCode `62`, APK de publicación ni releases.
+
+---
+
 ## 2026-11-05 — Resultado CI de optimización DrawAllocation
 
 - Workflow [Android Lint run 42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392), commit probado `a51897675ec4099bf1e620299aef117d2cecf11f`: **SUCCESS**. Los pasos `:app:lintDebug`, `:app:assembleDebug`, subida del APK y del informe finalizaron correctamente.
