@@ -1,5 +1,5 @@
-<resources>
-    <style name="Theme.EVChargeCalculator" parent="android:style/Theme.Material.NoActionBar">
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.EVChargeCalculator" parent="android:style/Theme.Material.NoActionBar" tools:targetApi="29">
         <item name="android:fontFamily">sans</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">#F4F8FF</item>
