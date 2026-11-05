@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -261,7 +262,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
 
   private TextView resultValue(String s) {
     TextView t = tv(s, 20, text());
-    t.setTypeface(null, 1);
+    t.setTypeface(null, Typeface.BOLD);
     t.setGravity(Gravity.CENTER);
     t.setIncludeFontPadding(false);
     t.setSingleLine(true);
@@ -343,7 +344,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
               Color.argb(0, 0, 0, 0)
             }));
     headerTitle = tv("Electric Vs\nCombustion Calculator", 20, Color.WHITE);
-    headerTitle.setTypeface(null, 1);
+    headerTitle.setTypeface(null, Typeface.BOLD);
     headerTitle.setGravity(Gravity.CENTER);
     headerTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
     headerTitle.setIncludeFontPadding(false);
@@ -361,7 +362,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     tripLp.topMargin = -dp(20);
     trip.setLayoutParams(tripLp);
     TextView h = tv("Datos del viaje", 18, text());
-    h.setTypeface(null, 1);
+    h.setTypeface(null, Typeface.BOLD);
     trip.addView(h);
     space(trip, 12);
     distance = edit("100");
@@ -370,7 +371,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     space(root, 14);
     LinearLayout ev = card();
     TextView eh = tv("Vehículo eléctrico", 18, text());
-    eh.setTypeface(null, 1);
+    eh.setTypeface(null, Typeface.BOLD);
     ev.addView(eh);
     space(ev, 12);
     evConsumption = edit("17,0");
@@ -384,7 +385,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     space(root, 14);
     LinearLayout combustion = card();
     TextView ch = tv("Vehículo de combustión", 18, text());
-    ch.setTypeface(null, 1);
+    ch.setTypeface(null, Typeface.BOLD);
     combustion.addView(ch);
     space(combustion, 12);
     fuelConsumption = edit("6,0");
@@ -399,7 +400,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     space(root, 14);
     LinearLayout results = card();
     TextView rh = tv("Resultado del viaje", 18, text());
-    rh.setTypeface(null, 1);
+    rh.setTypeface(null, Typeface.BOLD);
     results.addView(rh);
     space(results, 14);
     LinearLayout labelsRow = new LinearLayout(host);
@@ -424,7 +425,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     results.addView(valuesRow);
     space(results, 12);
     saving = tv("Ahorro con el eléctrico: 0,00 " + currencySymbol(), 17, text());
-    saving.setTypeface(null, 1);
+    saving.setTypeface(null, Typeface.BOLD);
     saving.setGravity(Gravity.CENTER);
     results.addView(saving);
     savingPercent = tv("0,0 % de ahorro", 14, sub());
