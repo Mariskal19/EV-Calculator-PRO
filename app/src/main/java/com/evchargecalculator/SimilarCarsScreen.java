@@ -541,12 +541,13 @@ public class SimilarCarsScreen extends FrameLayout {
         host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit()
                 .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
         if(referencePicker!=null){
-            referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
+            referencePicker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(chosen).replace("\n"," · ")));
             if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
         }
         advisorEngine.reset();
-        advisorStatus.setText(LanguageManager.t(host,"Alternativas similares tomando como referencia ")
-                +chosen.make+" "+chosen.model+" "+chosen.year+" · "+cleanVersion(chosen.version)+".");
+        advisorStatus.setText(String.format(Locale.ROOT,
+                LanguageManager.t(host, "Alternativas similares tomando como referencia %1$s %2$s %3$d · %4$s."),
+                chosen.make, chosen.model, chosen.year, cleanVersion(chosen.version)));
         showSimilar();
         return true;
     }
@@ -782,7 +783,7 @@ public class SimilarCarsScreen extends FrameLayout {
     private void clearSelectedReference(){
         reference=null;
         host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().remove(KEY_LAST_REFERENCE).apply();
-        if(referencePicker!=null)referencePicker.setText("🚗  Seleccionar coche del catálogo  ›");
+        if(referencePicker!=null)referencePicker.setText(LanguageManager.t(host, "🚗  Seleccionar coche del catálogo  ›"));
         if(referenceClear!=null)referenceClear.setVisibility(View.GONE);
         if(referenceResults!=null)referenceResults.setVisibility(View.GONE);
         if(results!=null)results.removeAllViews();
@@ -913,7 +914,7 @@ public class SimilarCarsScreen extends FrameLayout {
             Object tag=input.getTag();
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
-            picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+            picker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(v).replace("\n"," · ")));
             if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
             host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
             showSimilar();
@@ -1012,7 +1013,7 @@ public class SimilarCarsScreen extends FrameLayout {
         for(Vehicle v:vehicles){
             if(logicalKey(v).equals(savedKey)){
                 reference=v;
-                if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+                if(referencePicker!=null)referencePicker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(v).replace("\n"," · ")));
                 if(referenceClear!=null)referenceClear.setVisibility(View.VISIBLE);
                 showSimilar();
                 return;
