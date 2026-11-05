@@ -28,6 +28,8 @@ import android.widget.Space;
 import android.widget.TextView;
 import java.util.Locale;
 
+// Vista creada programáticamente por su Activity anfitriona; no se infla desde XML.
+@android.annotation.SuppressLint("ViewConstructor")
 public class ElectricVsCombustionScreen extends FrameLayout {
   private final Activity host;
 
