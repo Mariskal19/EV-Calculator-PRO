@@ -3214,3 +3214,11 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - APK Debug generado: artefacto `ev-calculator-pro-debug-33`, artifact ID `13452842579`, archivo `app-debug.apk` (7.877.804 bytes). Es una compilación de pruebas, no una release.
 - Pendiente: instalación y prueba manual de esta APK en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La validación anterior en Note 13 correspondía a la APK Debug 32, anterior a esta limpieza; por tanto, no sustituye la prueba de esta APK.
 - Rama `develop/post-1.0.6`; `main` sigue sin cambios. No se modifica versionName 1.0.6, versionCode 62, ni se crea/publica release.
+
+
+## 2026-11-05 — Prueba manual APK Debug 33 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 33, generada por el workflow [42107903390](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42107903390), funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La validación de esta APK queda confirmada para Android 16. La prueba en Redmi Note 7 (Android 10) continúa pendiente.
+- No se considera cerrada la compatibilidad completa hasta probar el segundo dispositivo, incluida la navegación Atrás.
+- Sin cambios en `main`, versionName `1.0.6`, versionCode `62`, APK de publicación ni releases.
