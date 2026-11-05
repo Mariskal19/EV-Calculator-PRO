@@ -1,3 +1,18 @@
+## 2026-11-05 — Android Lint: segundo lote RTL validado
+
+- Ejecución CI verificada: [run 42058627467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42058627467), rama `develop/post-1.0.6`, commit probado `1cf1c6d72403e2394db01c642193346406f7217e`.
+- `:app:lintDebug` terminó correctamente. Informe XML de Lint 9.5.0 descargado y analizado: **132 incidencias, todas advertencias; 0 errores**.
+- Las ocho advertencias `RtlHardcoded` corregidas en este lote ya no aparecen. Tampoco reaparecen las tres `ObsoleteSdkInt` del lote anterior.
+- `:app:assembleDebug` terminó correctamente. Artefacto `ev-calculator-pro-debug-18` (7.670.164 bytes), disponible hasta el 12-11-2026. Informe `android-lint-report-18`, disponible hasta el 19-11-2026.
+- Recuento actual de advertencias: `UnusedResources` 59, `SetTextI18n` 39, `IconLauncherShape` 10, `DrawAllocation` 7, `IconDuplicates` 5, `VectorRaster` 3, `IconLocation` 3, `ViewConstructor` 3, `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1. Total: 132.
+- El lote RTL mantiene alineaciones relativas (`START`/`END`) en los cuatro archivos de comparación/búsqueda; no modifica el aspecto LTR esperado ni los textos/traducciones.
+- Comparación GitHub actual: `develop/post-1.0.6` está **32 commits por delante y 0 por detrás** de `main`. No se ha fusionado nada en `main`; las ramas de respaldo siguen intactas.
+- Se conserva `versionName 1.0.6` y `versionCode 62`; no se ha creado Release ni publicado ningún APK/AAB en Google Play.
+- **Pruebas manuales pendientes:** el APK Debug anterior fue probado correctamente por el usuario en Redmi Note 13 Pro (Android 16). Sigue pendiente probar esta revisión y, especialmente, navegación Atrás en Redmi Note 7 (Android 10). CI verde no sustituye las pruebas físicas.
+- Siguiente lote propuesto: analizar con cuidado las 39 advertencias `SetTextI18n`, preservando los seis idiomas y evitando cambios de textos visibles sin revisar recursos y contexto.
+
+---
+
 ## 2026-11-05 — Android Lint: segundo lote, compatibilidad RTL (validación pendiente)
 
 - Se revisó el informe del run [42057758951](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42057758951): `lintDebug` y `assembleDebug` correctos; 0 errores y 140 advertencias (antes 143). Las tres `ObsoleteSdkInt` del primer lote ya no aparecen.
