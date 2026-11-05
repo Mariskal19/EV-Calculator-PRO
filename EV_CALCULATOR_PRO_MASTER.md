@@ -1,3 +1,14 @@
+## 2026-11-05 — Resultado CI de optimización DrawAllocation
+
+- Workflow [Android Lint run 42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392), commit probado `a51897675ec4099bf1e620299aef117d2cecf11f`: **SUCCESS**. Los pasos `:app:lintDebug`, `:app:assembleDebug`, subida del APK y del informe finalizaron correctamente.
+- Informe XML descargado y analizado: **27 advertencias y 0 errores**. Las 7 incidencias `DrawAllocation` han desaparecido (7 → 0). No se introducen errores ni nuevas advertencias de dibujo.
+- Recuento restante: `IconLauncherShape` 10, `IconDuplicates` 5, `UnusedResources` 4 (iconos conservados deliberadamente), `ViewConstructor` 3, `IconLocation` 2, `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1. Total: 27.
+- APK Debug generado: artefacto `ev-calculator-pro-debug-39`, artifact ID `13455080900`, archivo `app-debug.apk` (7.878.408 bytes). Informe `android-lint-report-39`, artifact ID `13454870548`. La APK es exclusivamente de pruebas; no es una Release ni se ha publicado.
+- La APK Debug 39 queda pendiente de instalación y prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La prueba de Debug 33 en Note 13 no sustituye la de esta compilación.
+- La rama `develop/post-1.0.6` estaba 60 commits por delante y 0 por detrás de `main` antes de esta actualización documental. No se ha fusionado nada en `main`; se mantiene `versionName 1.0.6` y `versionCode 62`, sin crear Release ni cambiar APK/AAB de publicación.
+
+---
+
 ## 2026-11-05 — Android Lint: lote SetTextI18n aplicado (validación CI pendiente)
 
 - Se ha analizado el informe XML de Android Lint del run [42058627467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42058627467): las 39 incidencias `SetTextI18n` se concentran en seis clases Java y varias son duplicados entre las implementaciones Activity/Screen.
