@@ -96,6 +96,7 @@ public class SimilarCarsScreen extends FrameLayout {
     private static class SimilarHeaderBitmapView extends View {
         private final android.graphics.Bitmap bitmap;
         private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+        private final android.graphics.RectF destination = new android.graphics.RectF();
 
         SimilarHeaderBitmapView(android.content.Context context) {
             super(context);
@@ -133,7 +134,8 @@ public class SimilarCarsScreen extends FrameLayout {
             float scale = Math.max(viewW / bitmap.getWidth(), viewH / bitmap.getHeight());
             float drawW = bitmap.getWidth() * scale, drawH = bitmap.getHeight() * scale;
             float left = (viewW - drawW) * 0.5f, top = (viewH - drawH) * 0.5f;
-            canvas.drawBitmap(bitmap, null, new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
+            destination.set(left, top, left + drawW, top + drawH);
+            canvas.drawBitmap(bitmap, null, destination, paint);
         }
         private int darkFallback() { return Color.rgb(8, 34, 58); }
     }
