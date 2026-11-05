@@ -471,7 +471,7 @@ public class CompararCochesScreen extends FrameLayout {
         tableLabels.setOrientation(LinearLayout.VERTICAL);
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
+        tableLabels.setElevation(dp(4));
         compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
 
         table=new LinearLayout(host);
