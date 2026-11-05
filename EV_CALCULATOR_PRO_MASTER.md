@@ -1,3 +1,15 @@
+## 2026-11-05 — Fase 1 de Android Lint: primeras correcciones aplicadas (validación pendiente)
+
+- Trabajo realizado exclusivamente en `develop/post-1.0.6`; `main` permanece sin modificaciones.
+- Sustituidos los 25 argumentos numéricos de `TextView.setTypeface(null, 0/1)` por `Typeface.NORMAL` y `Typeface.BOLD`, respectivamente, en `BottomNavigationHelper.java`, `ConfigurationActivity.java`, `ElectricVsCombustionScreen.java`, `MainActivity.java` y `SupportProjectActivity.java`. Se conserva el estilo normal/negrita existente.
+- En `AppMenuApplication.java`, `protectScrollViews(View)` queda anotado con `@androidx.annotation.RequiresApi(35)`. El método solo se invoca desde `protectSystemBars(Activity)`, que ya retorna para versiones inferiores a API 35; la lógica de insets y la condición de ejecución no cambian.
+- En `res/values/themes.xml`, se añade `tools:targetApi="29"` al estilo que contiene `android:forceDarkAllowed`, ya que ese atributo se introdujo en API 29. No se cambia el valor del atributo ni el tema visual.
+- `GestureBackNavigation` se mantiene expresamente pendiente: `MainActivity` ya registra un `OnBackInvokedCallback` en API 33+ y conserva `onBackPressed()` como fallback. No se suprime el aviso ni se modifica la navegación hasta probar el gesto predictivo y el historial de pestañas en Redmi Note 13 Pro (Android 16) y el retroceso en Redmi Note 7 (Android 10).
+- **Estado:** cambios de código aplicados; pendientes revisión final del diff, nueva ejecución de Android Lint, compilación Debug/Release y pruebas manuales en ambos dispositivos. No se considera cerrada la fase ni resueltos los avisos hasta verificar esos resultados.
+- Sin cambios en `main`, ramas de respaldo, catálogo protegido, dependencias, `minSdk 24`, `compileSdk 36`, `targetSdk 36`, `versionName 1.0.6`, `versionCode 62`, APK/AAB o publicación en Google Play.
+
+---
+
 ## 2026-11-05 — Primera auditoría Android Lint completada (hallazgos pendientes)
 
 - La segunda ejecución válida de Android Lint es [run 42052252879](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42052252879), en la rama `develop/post-1.0.6`, commit analizado `72dfed73832c1d6c2d09c6ef67a17d5b706db0d1`.
