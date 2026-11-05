@@ -207,6 +207,12 @@ public final class LanguageManager {
     add("Aceptar", "OK", "OK", "OK", "OK", "OK");
     add("No llegas a tiempo", "You won't make it in time", "Vous n'arriverez pas à temps", "Du schaffst es nicht rechtzeitig", "Non arriverai in tempo", "Não chegará a tempo");
     add("Faltan", "Remaining", "Restantes", "Verbleibend", "Mancano", "Faltam");
+
+    add("Ahorro con el eléctrico: %1$s", "Savings with the EV: %1$s", "Économie avec le véhicule électrique : %1$s", "Ersparnis mit dem Elektrofahrzeug: %1$s", "Risparmio con l'elettrico: %1$s", "Poupança com o elétrico: %1$s");
+    add("Diferencia: %1$s", "Difference: %1$s", "Différence : %1$s", "Differenz: %1$s", "Differenza: %1$s", "Diferença: %1$s");
+    add("%1$s %% de ahorro", "%1$s %% savings", "%1$s %% d'économies", "%1$s %% Ersparnis", "%1$s %% di risparmio", "%1$s %% de poupança");
+    add("El eléctrico cuesta %1$s %% más", "The EV costs %1$s %% more", "Le véhicule électrique coûte %1$s %% de plus", "Das Elektrofahrzeug kostet %1$s %% mehr", "L'elettrico costa il %1$s %% in più", "O elétrico custa mais %1$s %%");
+    add("Alternativas similares tomando como referencia %1$s %2$s %3$d · %4$s.", "Similar alternatives based on %1$s %2$s %3$d · %4$s.", "Alternatives similaires basées sur %1$s %2$s %3$d · %4$s.", "Ähnliche Alternativen auf Basis von %1$s %2$s %3$d · %4$s.", "Alternative simili basate su %1$s %2$s %3$d · %4$s.", "Alternativas semelhantes com base em %1$s %2$s %3$d · %4$s.");
     add("Hora de salida no válida", "Invalid departure time", "Heure de départ non valide", "Ungültige Abfahrtszeit", "Ora di partenza non valida", "Hora de saída inválida");
     add("Comparar coches", "Compare cars", "Comparer les voitures", "Autos vergleichen", "Confronta auto", "Comparar carros");
     add("Atrás", "Back", "Retour", "Zurück", "Indietro", "Voltar");
