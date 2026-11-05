@@ -3102,3 +3102,13 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - El usuario confirma que ha instalado el APK Debug generado por la ejecución 42054971314 en el Redmi Note 13 Pro (Android 16) y que la prueba realizada ha sido correcta.
 - Esta confirmación cubre únicamente el Redmi Note 13 Pro. La prueba en Redmi Note 7 (Android 10) continúa pendiente.
 - No se considera cerrada la validación completa de compatibilidad ni el error Lint `GestureBackNavigation`; queda pendiente probar Android 10 y verificar específicamente el comportamiento de navegación Atrás/gestos.
+
+
+### Corrección localizada de GestureBackNavigation — validación CI pendiente
+
+- En `MainActivity.java` se documenta el motivo del fallback heredado: `onBackPressed()` se conserva para Android 12 y anteriores; en API 33+ la actividad registra y desregistra un `OnBackInvokedCallback` que gestiona la navegación entre pestañas y el cierre de la actividad.
+- Se añade `@SuppressLint("GestureBackNavigation")` únicamente al método heredado, con comentario explicativo. No se elimina el callback moderno, no se cambia la prioridad ni la lógica de navegación, y no se añade una dependencia AndroidX nueva. La clase base extiende `android.app.Activity`, no `ComponentActivity`; por ello no se puede usar directamente `OnBackPressedDispatcher` sin cambiar la arquitectura/dependencias.
+- Cambio aplicado en commit `1b6764259e6db641da5589052160579d2a4f9de3`, exclusivamente en `develop/post-1.0.6`.
+- Ejecución CI disparada: [run 42056765017](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017). En la última consulta, `lintDebug` seguía en ejecución; aún no se declara resuelto el error ni verificada la compilación de esta revisión.
+- La prueba manual en Redmi Note 13 Pro (Android 16) está confirmada como correcta. Sigue pendiente probar navegación Atrás en Redmi Note 7 (Android 10).
+- Sin cambios en `main`, ramas de respaldo, dependencias, versión `1.0.6`, versionCode `62` ni artefactos de publicación.
