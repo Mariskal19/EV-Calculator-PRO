@@ -235,6 +235,9 @@ public class MainActivity extends BaseNavigationActivity {
   String currencySymbol(){String c=prefs.getString(KEY_CURRENCY,"EUR");if("USD".equals(c))return "$";if("GBP".equals(c))return "£";if("CHF".equals(c))return "CHF";if("CAD".equals(c))return "CA$";if("AUD".equals(c))return "A$";return "€";}
   void applyCurrency(){if(priceUnit!=null)priceUnit.setText(currencySymbol()+"/kWh");}
 
+  // Los textos de esta construcción pasan por tv(), que aplica el diccionario
+  // de LanguageManager para los seis idiomas. Lint no puede seguir ese helper.
+  @SuppressLint("SetTextI18n")
   void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));mainContent=frame;setContentView(frame);
     // BaseNavigationActivity already reserves scroll range for the fixed bottom bar.
     // With adjustResize, Android resizes this ScrollView when the keyboard opens;
