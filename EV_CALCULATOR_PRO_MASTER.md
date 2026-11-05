@@ -3192,3 +3192,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Advertencias restantes: UnusedResources 59, IconLauncherShape 10, DrawAllocation 7, IconDuplicates 5, VectorRaster 3, IconLocation 3, ViewConstructor 3, AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
 - APK Debug generado: artefacto `ev-calculator-pro-debug-32` (7.668.102 bytes), asociado al commit anterior. Pendiente instalación y prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
 - Rama `develop/post-1.0.6`; sin fusión en `main`. No se modifican versionName 1.0.6, versionCode 62, APK de publicación ni releases.
+
+
+## 2026-11-05 — Android Lint: limpieza conservadora de UnusedResources (validación CI pendiente)
+
+- El usuario confirma que el APK Debug del run [42106468082](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42106468082), artefacto `ev-calculator-pro-debug-32`, se instala y funciona correctamente en Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10) sigue pendiente.
+- Se revisó el informe XML de Lint del run 42106468082: 59 avisos `UnusedResources` dentro de un total de 93 advertencias y 0 errores.
+- La revisión estática cubrió las 25 clases Java de producción, el manifiesto y los recursos XML de configuración. No se encontraron referencias directas a los recursos seleccionados para limpieza, ni llamadas a `getIdentifier()` en las clases revisadas. El árbol de recursos no contiene layouts XML que los consuman.
+- Limpieza conservadora aplicada en esta rama: se eliminan 37 archivos que corresponden a 55 entradas de recursos marcadas como no utilizadas: cabecera antigua, 20 drawables `car_*`, 19 definiciones de color obsoletas, `edit_bg`, seis ilustraciones `ev_illustration_*`, iconos de cabecera/carga/resultado y fondos/estilos antiguos.
+- Se conservan expresamente cuatro recursos con nombre de icono (`ic_launcher`, `ic_launcher_foreground_inset`, `ic_launcher_round` e `ic_nav_find_cars`) para no arriesgar cambios de identidad visual o navegación mientras se valida su uso.
+- Esta eliminación no cambia lógica, pantallas, textos, traducciones, catálogo, dependencias, manifiesto, tema activo, iconos utilizados ni versionado. Se conserva `versionName 1.0.6` y `versionCode 62`.
+- **Validación pendiente:** ejecutar Android Lint y `assembleDebug` sobre este cambio; revisar el nuevo informe para confirmar cuántos avisos `UnusedResources` desaparecen y comprobar que no surgen errores de recursos. No se considera cerrada la limpieza hasta completar CI y pruebas manuales.
+- Rama `develop/post-1.0.6`; no se modifica `main` ni ninguna rama de respaldo. No se crea Release ni se publica APK/AAB.
