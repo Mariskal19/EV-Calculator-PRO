@@ -3180,3 +3180,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Informe Android Lint `android-lint-report-11` disponible hasta el 19 nov 2026.
 - La validación manual confirmada corresponde al Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10), especialmente botón/gesto Atrás, sigue pendiente; por tanto, el comportamiento de compatibilidad no se da por cerrado.
 - Sin fusión en `main`, sin cambios de versión/versionCode ni publicación.
+
+
+### Auditoría Android Lint — lote SetTextI18n (noviembre 2026)
+
+- En `develop/post-1.0.6` se corrigieron las concatenaciones de texto localizables en Comparar coches, Comparación eléctrico/combustión y Coches similares. Se añadieron plantillas traducidas para los seis idiomas soportados (ES, EN, FR, DE, IT, PT), conservando cálculos y textos funcionales.
+- En `MainActivity.java`, los avisos restantes correspondían a formato dinámico de moneda, cifras y unidades. Se documentaron supresiones `@SuppressLint("SetTextI18n")` limitadas a `applyCurrency()` y `calculate()`; no se suprimió la regla a nivel de clase.
+- Commit de este ajuste: `f0749b97c0a72ebb1f086df7e50c6d10d5f26c97`.
+- CI: [Android Lint audit #32](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42106468082), resultado SUCCESS. `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Informe XML descargado y analizado: **93 incidencias, 0 errores y 93 advertencias**. `SetTextI18n` queda en **0** (antes 39). No se ha suprimido globalmente la regla.
+- Advertencias restantes: UnusedResources 59, IconLauncherShape 10, DrawAllocation 7, IconDuplicates 5, VectorRaster 3, IconLocation 3, ViewConstructor 3, AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
+- APK Debug generado: artefacto `ev-calculator-pro-debug-32` (7.668.102 bytes), asociado al commit anterior. Pendiente instalación y prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- Rama `develop/post-1.0.6`; sin fusión en `main`. No se modifican versionName 1.0.6, versionCode 62, APK de publicación ni releases.
