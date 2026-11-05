@@ -3095,3 +3095,10 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Advertencias restantes: 143. Se mantienen para fases posteriores, sin borrados masivos de recursos ni cambios visuales.
 - **Pruebas manuales pendientes:** instalar el APK Debug y validar navegación, gesto Atrás y pantallas principales en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La compilación CI no sustituye estas pruebas.
 - No se ha fusionado nada en `main`, no se han creado Releases y no se ha modificado `versionName`, `versionCode` ni configuración de publicación.
+
+
+### Prueba manual del APK Debug — Redmi Note 13 Pro
+
+- El usuario confirma que ha instalado el APK Debug generado por la ejecución 42054971314 en el Redmi Note 13 Pro (Android 16) y que la prueba realizada ha sido correcta.
+- Esta confirmación cubre únicamente el Redmi Note 13 Pro. La prueba en Redmi Note 7 (Android 10) continúa pendiente.
+- No se considera cerrada la validación completa de compatibilidad ni el error Lint `GestureBackNavigation`; queda pendiente probar Android 10 y verificar específicamente el comportamiento de navegación Atrás/gestos.
