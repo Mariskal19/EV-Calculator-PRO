@@ -69,6 +69,7 @@ public class AppMenuApplication extends Application {
     protectScrollViews(content);
   }
 
+  @androidx.annotation.RequiresApi(35)
   private void protectScrollViews(View view) {
     if (view instanceof ScrollView) {
       ScrollView scroll = (ScrollView) view;
