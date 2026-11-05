@@ -37,6 +37,8 @@ import java.security.MessageDigest;
 import java.util.*;
 import java.text.NumberFormat;
 
+// Vista creada programáticamente por su Activity anfitriona; no se infla desde XML.
+@android.annotation.SuppressLint("ViewConstructor")
 public class CompararCochesScreen extends FrameLayout {
     private final Activity host;
     private static final String PREFS = "ev_charge_calculator";
