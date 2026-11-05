@@ -437,7 +437,7 @@ public class SimilarCarsScreen extends FrameLayout {
             actions.addView(detailAction, new LinearLayout.LayoutParams(0, -2, 1));
             TextView compareAction = tv("Añadir a comparativa", 12, blue);
             compareAction.setTypeface(null, Typeface.BOLD);
-            compareAction.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            compareAction.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
             compareAction.setOnClickListener(v -> addAdvisorToComparison(vehicle));
             actions.addView(compareAction, new LinearLayout.LayoutParams(-2, -2));
             resultCard.addView(actions, new LinearLayout.LayoutParams(-1, -2));
@@ -713,7 +713,7 @@ public class SimilarCarsScreen extends FrameLayout {
             actions.addView(detailAction,new LinearLayout.LayoutParams(0,-2,1));
             TextView compareAction=tv("Añadir a comparativa",12,blue);
             compareAction.setTypeface(null,Typeface.BOLD);
-            compareAction.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+            compareAction.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
             compareAction.setPadding(dp(4),dp(5),0,dp(5));
             compareAction.setOnClickListener(v->addAdvisorToComparison(vehicle));
             actions.addView(compareAction,new LinearLayout.LayoutParams(-2,-2));
@@ -1276,7 +1276,7 @@ public class SimilarCarsScreen extends FrameLayout {
 
         TextView action=tv("Ver detalles  ›",13,blue);
         action.setTypeface(null,Typeface.BOLD);
-        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);
         action.setOnClickListener(x->openDetail(v));
         card.addView(action,new LinearLayout.LayoutParams(-1,dp(24)));
 
