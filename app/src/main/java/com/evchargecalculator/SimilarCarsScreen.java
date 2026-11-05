@@ -26,6 +26,8 @@ import java.io.InputStreamReader;
 import java.text.NumberFormat;
 import java.util.*;
 
+// Vista creada programáticamente por su Activity anfitriona; no se infla desde XML.
+@android.annotation.SuppressLint("ViewConstructor")
 public class SimilarCarsScreen extends FrameLayout {
     private final Activity host;
 
