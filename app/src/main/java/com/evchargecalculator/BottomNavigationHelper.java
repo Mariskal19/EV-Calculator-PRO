@@ -3,6 +3,7 @@ package com.evchargecalculator;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.GradientDrawable;
@@ -156,7 +157,7 @@ public final class BottomNavigationHelper {
     TextView labelView = new TextView(activity);
     labelView.setText(LanguageManager.t(activity, label));
     labelView.setTextSize(12);
-    labelView.setTypeface(null, 0);
+    labelView.setTypeface(null, Typeface.NORMAL);
     labelView.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
     labelView.setIncludeFontPadding(true);
     labelView.setTextColor(index == selected ? active : inactive);
