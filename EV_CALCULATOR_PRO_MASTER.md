@@ -1,3 +1,19 @@
+## 2026-11-05 — Android Lint: lote SetTextI18n aplicado (validación CI pendiente)
+
+- Se ha analizado el informe XML de Android Lint del run [42058627467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42058627467): las 39 incidencias `SetTextI18n` se concentran en seis clases Java y varias son duplicados entre las implementaciones Activity/Screen.
+- Cambios aplicados exclusivamente en `develop/post-1.0.6`:
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: los dos mensajes del estado vacío pasan por `LanguageManager.t()`, aprovechando las traducciones existentes en los seis idiomas.
+  - `ElectricVsCombustionScreen.java`: las unidades de moneda/consumo se formatean sin concatenación directa; los textos de ahorro/diferencia y porcentajes usan plantillas con argumentos en `LanguageManager`.
+  - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: se usan plantillas traducidas para el estado de alternativas; los indicadores gráficos de selección se combinan como `CharSequence` y el texto de selección del catálogo se traduce.
+  - `LanguageManager.java`: se añaden plantillas completas en español, inglés, francés, alemán, italiano y portugués para los mensajes dinámicos.
+  - `MainActivity.java`: se documenta y limita `@SuppressLint("SetTextI18n")` al método `build()`, porque los textos se canalizan por `tv()`, que aplica el diccionario de seis idiomas; Lint no puede seguir ese helper personalizado.
+- No se cambian los textos funcionales de la interfaz, los cálculos, el catálogo, los recursos de imagen ni la arquitectura. No se añaden dependencias ni se modifica el versionado.
+- La ejecución CI de validación debe analizar el último commit de la rama y confirmar `:app:lintDebug` y `:app:assembleDebug`; hasta revisar el informe XML final no se da por resuelto el lote.
+- Estado Git previo a esta anotación: `develop/post-1.0.6` estaba 46 commits por delante y 0 por detrás de `main`. No se ha fusionado nada en `main`; se conserva `versionName 1.0.6` y `versionCode 62`.
+- Las pruebas manuales del APK de este lote siguen pendientes en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La prueba anterior confirmada en Note 13 no sustituye esta nueva revisión.
+
+---
+
 ## 2026-11-05 — Android Lint: segundo lote RTL validado
 
 - Ejecución CI verificada: [run 42058627467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42058627467), rama `develop/post-1.0.6`, commit probado `1cf1c6d72403e2394db01c642193346406f7217e`.
