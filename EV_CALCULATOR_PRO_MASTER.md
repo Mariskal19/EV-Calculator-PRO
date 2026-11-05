@@ -7,7 +7,7 @@
 - No se cambia el comportamiento visual esperado, el idioma seleccionado ni la lista de seis idiomas. No se modifica `minSdk`, versionado, dependencias, catálogo ni workflows.
 - Commits del lote: `407ae91345a34bb2af641bff4a9d08cc6472ca4e`, `7244ded5fa1080015660dc2cbb915975845fa258` y `b22d034df10e0352921e89e96ddb7878aed3644e`.
 - **Validación pendiente:** todavía no hay un nuevo resultado verificado de `lintDebug` ni `assembleDebug` para este lote. No se declara que las tres advertencias hayan desaparecido hasta revisar el siguiente informe.
-- Estado de rama consultado tras los cambios: `develop/post-1.0.6` está 25 commits por delante y 0 por detrás de `main`. No se ha fusionado nada en `main`; se conserva `versionName 1.0.6` y `versionCode 62`.
+- Tras los tres commits de código, la rama estaba 25 commits por delante y 0 por detrás de `main`; al añadir esta actualización documental queda en 26 commits por delante y 0 por detrás. No se ha fusionado nada en `main`; se conserva `versionName 1.0.6` y `versionCode 62`.
 
 ---
 
