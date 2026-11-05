@@ -1,3 +1,14 @@
+## 2026-11-05 — Preparación de auditoría independiente de Android Lint
+
+- En la rama `develop/post-1.0.6` se añade el workflow `.github/workflows/android-lint.yml` para ejecutar `gradle --no-daemon lintDebug` con Java 17 y Gradle 9.6.0.
+- El workflow se puede iniciar manualmente desde GitHub Actions y también se ejecuta al modificar código/configuración Android relevante en esta rama. No se incorpora al workflow de Release ni altera el proceso de publicación.
+- La tarea Lint se configura como no bloqueante durante esta primera auditoría: aunque Gradle detecte incidencias, se intenta conservar el informe HTML/XML/SARIF como artefacto durante 14 días. Esto permite revisar el inventario completo antes de decidir qué corregir y cómo establecer una línea base.
+- Referencia histórica: la ejecución aislada `41926491455` del 4-11-2026 dejó constancia de 38 errores y 143 advertencias de Lint; aquella ejecución excluyó `lintDebug`. Esos recuentos todavía no se han reproducido en esta rama y no se consideran resultado de la nueva auditoría.
+- **Estado:** workflow añadido en el commit `7b81cb901e634bbf58f5c47d637c92577e7a9800`. Ejecución y análisis del informe pendientes. No se han modificado fuentes Android, dependencias, configuración Gradle, catálogo, versión 1.0.6/versionCode 62, APK/AAB ni `main`.
+- Siguiente paso: ejecutar el workflow en `develop/post-1.0.6`, descargar/revisar el informe y clasificar incidencias por severidad, archivo y posibilidad de corrección segura.
+
+---
+
 ## 2026-11-05 — Inicio de desarrollo posterior a 1.0.6 y conciliación de configuración
 
 - Creada la rama de trabajo `develop/post-1.0.6` directamente desde `main` (commit base `7488f2af0634ed93c97a593a057908906ec1aefe`). Esta rama queda destinada a las siguientes mejoras, herramientas y auditorías; no se modifica `main`, ramas de respaldo ni `stable`.
