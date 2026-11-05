@@ -1,3 +1,14 @@
+## 2026-11-05 — Inicio de desarrollo posterior a 1.0.6 y conciliación de configuración
+
+- Creada la rama de trabajo `develop/post-1.0.6` directamente desde `main` (commit base `7488f2af0634ed93c97a593a057908906ec1aefe`). Esta rama queda destinada a las siguientes mejoras, herramientas y auditorías; no se modifica `main`, ramas de respaldo ni `stable`.
+- La versión 1.0.6 (versionCode 62) ya ha sido enviada por el usuario a revisión de Google Play. Se mantiene congelado su versionado y no se prepara todavía una nueva versión de publicación.
+- **Conciliación de configuración verificada en `main`:** `app/build.gradle` declara actualmente `minSdk = 24`, `compileSdk = 36`, `targetSdk = 36`, `versionName = '1.0.6'` y `versionCode = 62`. La mención anterior a `minSdk 23` en la anotación de la corrección de «Eléctrico vs Combustión» y en la descripción de la Release `build-v1.0.6-2486` refleja el estado histórico de aquel build, anterior al cambio de compatibilidad; no representa la configuración actual de `main`.
+- La Release `build-v1.0.6-2486` queda identificada como artefacto histórico construido con la configuración anterior (`minSdk 23`). No debe tomarse como evidencia del `minSdk` del AAB enviado ahora a Google Play.
+- Esta actualización corrige la lectura del estado actual sin reescribir los datos históricos de las compilaciones. No cambia código Android, Gradle, dependencias, catálogo, workflows, versionado ni artefactos.
+- Próximo paso acordado: continuar en esta rama con el resto del plan de herramientas y auditorías, empezando por CodeQL y Android Lint una vez cerrados estos dos puntos iniciales.
+
+---
+
 ## 2026-11-05 — Seguimiento de nuevas políticas de Google Play (anotado)
 
 - Revisión de la comunicación de Google Play del 29 de octubre de 2026 y auditoría preliminar del manifiesto y de los principales componentes de red de la aplicación.
