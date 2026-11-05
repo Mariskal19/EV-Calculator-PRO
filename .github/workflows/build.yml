@@ -3,7 +3,7 @@ name: Build EV Calculator PRO
 on:
   workflow_dispatch:
   push:
-    branches: [ main, fix/compare-first-entry-top-inset, fix/suv-coupe-similarity, fix/electric-combustion-initial-scroll ]
+    branches: [ main, fix/compare-first-entry-top-inset, fix/suv-coupe-similarity ]
     paths-ignore:
       - 'app/src/main/assets/catalog_remote_additions.json'
 
@@ -106,7 +106,7 @@ jobs:
           echo "Release AAB: $aab"
 
       - name: Upload test APK for inset validation
-        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset' || github.ref == 'refs/heads/fix/theme-navigation-clean' || github.ref == 'refs/heads/fix/search-clear-reference' || github.ref == 'refs/heads/fix/suv-coupe-similarity' || github.ref == 'refs/heads/fix/electric-combustion-initial-scroll'
+        if: github.ref == 'refs/heads/fix/compare-first-entry-top-inset' || github.ref == 'refs/heads/fix/theme-navigation-clean' || github.ref == 'refs/heads/fix/search-clear-reference' || github.ref == 'refs/heads/fix/suv-coupe-similarity'
         uses: actions/upload-artifact@v7
         with:
           name: EV-Calculator-PRO-navigation-test-${{ github.run_number }}
