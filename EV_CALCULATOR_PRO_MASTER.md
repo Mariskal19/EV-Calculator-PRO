@@ -1,3 +1,17 @@
+## 2026-11-05 — Primera auditoría Android Lint completada (hallazgos pendientes)
+
+- La segunda ejecución válida de Android Lint es [run 42052252879](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42052252879), en la rama `develop/post-1.0.6`, commit analizado `72dfed73832c1d6c2d09c6ef67a17d5b706db0d1`.
+- Se verificó en los logs que `gradle --no-daemon lintDebug` llegó a ejecutar análisis de código, recursos, manifest y pruebas; generó los informes HTML, XML y SARIF. Artefacto `android-lint-report-2`, ID `13427328198`, disponible hasta el 19-11-2026: [descargar informes](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42052252879/artifacts/13427328198).
+- Resultado real de Lint: **32 errores y 143 advertencias**. La tarea `:app:lintDebug` falló por esos hallazgos. El job global de Actions aparece como SUCCESS únicamente porque el workflow conserva los informes con `continue-on-error`; no equivale a una auditoría limpia ni a una compilación Lint satisfactoria.
+- Distribución de errores: `WrongConstant` (25), `NewApi` (6) y `GestureBackNavigation` (1). Distribución de advertencias: `UnusedResources` (59), `SetTextI18n` (39), `IconLauncherShape` (10), `RtlHardcoded` (8), `DrawAllocation` (7), `IconDuplicates` (5), `VectorRaster` (3), `ObsoleteSdkInt` (3), `IconLocation` (3), `ViewConstructor` (3), `AppBundleLocaleChanges` (1), `IconXmlAndPng` (1) y `MonochromeLauncherIcon` (1).
+- Hallazgo prioritario de compatibilidad: `GestureBackNavigation` en `MainActivity.java:224`; el uso de `onBackPressed()` no recibe los gestos predictivos de Atrás en Android 16+ y Lint recomienda migrar a `OnBackPressedDispatcher`. Debe analizarse con cuidado para conservar el historial de pestañas y el comportamiento Atrás ya validado.
+- Los seis hallazgos `NewApi` aparecen en `AppMenuApplication.java` (líneas 84, 86 y 102) y `themes.xml:9`; deben revisarse contra las guardas por versión y el minSdk 24 actual antes de cambiar código. Los 25 `WrongConstant` están repartidos entre `BottomNavigationHelper.java`, `ConfigurationActivity.java`, `ElectricVsCombustionScreen.java`, `MainActivity.java` y `SupportProjectActivity.java`; requieren inspección individual de argumentos/constantes.
+- Advertencias predominantes: recursos no utilizados (59) y concatenación/localización de textos (39). No eliminar recursos ni cambiar textos en bloque sin verificar referencias dinámicas, traducciones y comportamiento.
+- **Estado:** auditoría inicial válida completada; análisis detallado y plan de corrección pendientes. No se ha modificado código Android ni configuración de la app para corregir hallazgos. No se ha tocado `main`, ramas de respaldo, versión 1.0.6/versionCode 62, APK/AAB ni publicación de Google Play.
+- Siguiente paso recomendado: revisar primero los 32 errores individualmente, empezando por `GestureBackNavigation`, `NewApi` y `WrongConstant`; después priorizar advertencias de compatibilidad/localización y dejar limpieza de recursos para una pasada separada.
+
+---
+
 ## 2026-11-05 — Ajuste de ejecución de Android Lint en CI
 
 - La primera ejecución `42051860380` terminó con el job global en verde por el uso deliberado de `continue-on-error`, pero **Lint no llegó a ejecutarse**: la evaluación de `app/build.gradle` abortó porque el proyecto exige variables de firma Release durante la configuración, incluso al solicitar `lintDebug`. No se generaron informes ni artefactos.
