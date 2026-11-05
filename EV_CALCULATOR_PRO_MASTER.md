@@ -1,3 +1,22 @@
+## 2026-11-05 — Seguimiento de nuevas políticas de Google Play (anotado)
+
+- Revisión de la comunicación de Google Play del 29 de octubre de 2026 y auditoría preliminar del manifiesto y de los principales componentes de red de la aplicación.
+- En la versión actual (1.0.6, versionCode 62, targetSdk 36), el manifiesto declara únicamente `INTERNET`; no declara permisos de ubicación, contactos, red local, SMS, registro de llamadas ni acceso general a archivos. La revisión de código realizada fue selectiva, no una auditoría exhaustiva de todos los archivos.
+- No se requiere modificar ahora el código ni añadir permisos por los cambios de política revisados. Se mantiene targetSdk 36 y no se adelanta la migración a API 37.
+- **Pendientes de seguimiento:**
+  1. Antes de adoptar targetSdk 37 / Android 17, revisar si alguna función nueva utiliza la red local y, solo si procede, declarar y solicitar `ACCESS_LOCAL_NETWORK`; repetir la auditoría de permisos y probar compatibilidad en ambos dispositivos.
+  2. Si en el futuro se incorpora ubicación precisa de uso puntual u ocasional, aplicar el botón de ubicación de Android y revisar la declaración de `ACCESS_FINE_LOCATION` conforme a la política vigente. No añadir permisos de ubicación mientras la app no los necesite.
+  3. Si se incorpora acceso a contactos, revisar la política de permisos restringidos de contactos y solicitar únicamente el alcance mínimo necesario.
+  4. Revisar en Play Console el estado de comerciante/desarrollador y completar cualquier declaración que corresponda a la cuenta.
+  5. Revisar los requisitos de optimización de memoria y código antes del plazo de febrero de 2027.
+  6. Comprobar si la autorización específica para Japón resulta aplicable únicamente si se comercializa allí y según la actividad real de la cuenta.
+  7. Revisar la aplicabilidad de Play Age Signals si cambian las funciones, el público objetivo o las obligaciones regulatorias de la aplicación.
+- La política de AppFunctions y los requisitos de descuentos de suscripciones no generan cambios para la aplicación mientras no se incorporen esas funciones/modelos.
+- Esta anotación es seguimiento preventivo: no modifica código, permisos, versión, versionCode, workflows, catálogo ni publicación en Google Play. La versión estable sigue siendo `build-v1.0.6-2486`; la publicación en Play continúa pendiente.
+- Fuentes oficiales consultadas: [anuncio de Google Play del 29-10-2026](https://support.google.com/googleplay/android-developer/answer/), [permisos restringidos](https://support.google.com/googleplay/android-developer/answer/), [acceso mínimo a ubicación](https://support.google.com/googleplay/android-developer/answer/), y [cambios de red local en Android 17](https://developer.android.com/about/versions/17/behavior-changes-all#local-network).
+
+---
+
 ## 2026-11-05 — Corrección del desplazamiento inicial en «Eléctrico vs Combustión» (integrada)
 
 - Incidencia: al entrar por primera vez en «Eléctrico vs Combustión», parte del contenido inferior quedaba inaccesible mediante desplazamiento. Al minimizar y volver a la app, el scroll se recalculaba y permitía ver el resto.
