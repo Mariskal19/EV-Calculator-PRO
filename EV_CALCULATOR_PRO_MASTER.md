@@ -3083,3 +3083,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Limitación del CI existente: `.github/workflows/build.yml` permite `workflow_dispatch`, pero su disparador `push` no incluye esta rama. No se ha alterado el workflow, conforme al alcance solicitado. La ejecución debe iniciarse manualmente seleccionando esta rama en GitHub Actions; además, ese workflow compila Release APK/AAB, pero no ejecuta `testDebugUnitTest` ni `assembleDebug`.
 - El workflow `.github/workflows/advisor-engine-test.yml` ejecuta pruebas smoke específicas del motor del asesor, no la suite Gradle completa, y tampoco sustituye `testDebugUnitTest`.
 - No se ha realizado merge en `main`, no se ha creado ninguna GitHub Release, no se han subido artefactos a Play Console ni se ha publicado nada en Google Play.
+
+
+## 2026-11-05 — Validación de la fase 1 de Android Lint
+
+- Ejecución de GitHub Actions: [42054971314](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42054971314), ejecutada sobre `develop/post-1.0.6`, commit `dbf485824f8806c3a00c574d143ec8b099e0fd7e`.
+- `:app:assembleDebug` finalizó con `BUILD SUCCESSFUL`. Se generó y subió el artefacto `ev-calculator-pro-debug-10` (7.670.171 bytes; caduca el 12 de noviembre de 2026). Es una compilación Debug de pruebas, no una Release ni un artefacto para Play Store.
+- Android Lint detecta ahora 1 error y 143 advertencias, frente a los 32 errores y 143 advertencias de la auditoría inicial. Los 25 `WrongConstant` y los 6 `NewApi` han desaparecido tras la fase 1.
+- Único error restante: `GestureBackNavigation` en `MainActivity.java:225`, por el uso de `onBackPressed()`. Se mantiene pendiente de decisión hasta probar la navegación Atrás/gestos en Android 16 y el comportamiento de compatibilidad en Android 10. No se ha aplicado una supresión ni una migración a AndroidX.
+- El workflow aparece completado correctamente porque el informe se conserva y el job continúa para compilar el APK; esto **no significa que Android Lint esté limpio**: la tarea `lintDebug` terminó con fallo por ese error.
+- Advertencias restantes: 143. Se mantienen para fases posteriores, sin borrados masivos de recursos ni cambios visuales.
+- **Pruebas manuales pendientes:** instalar el APK Debug y validar navegación, gesto Atrás y pantallas principales en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La compilación CI no sustituye estas pruebas.
+- No se ha fusionado nada en `main`, no se han creado Releases y no se ha modificado `versionName`, `versionCode` ni configuración de publicación.
