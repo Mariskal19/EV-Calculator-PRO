@@ -3222,3 +3222,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - La validación de esta APK queda confirmada para Android 16. La prueba en Redmi Note 7 (Android 10) continúa pendiente.
 - No se considera cerrada la compatibilidad completa hasta probar el segundo dispositivo, incluida la navegación Atrás.
 - Sin cambios en `main`, versionName `1.0.6`, versionCode `62`, APK de publicación ni releases.
+
+
+## 2026-11-05 — Revisión del siguiente lote de Android Lint
+
+- Se ha descargado y revisado el informe completo del run [42107903390](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42107903390). Se mantienen 34 advertencias y 0 errores.
+- Se identifica como siguiente lote técnico candidato `DrawAllocation` (7 avisos), todos relacionados con objetos creados durante `onDraw()`:
+  - `BatteryRangeView.java`: creación de `LinearGradient` en cada dibujo.
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: creación de `RectF` en las cabeceras.
+  - `PremiumBackgroundView.java`: creación de `LinearGradient` y `BlurMaskFilter` durante el dibujo.
+  - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: creación de `RectF` en las cabeceras.
+- La corrección prevista es reutilizar shaders, filtros y rectángulos, actualizándolos solo cuando cambien tamaño, tema o valores. Debe conservar exactamente el aspecto y la interacción actuales; no se deben cambiar colores, medidas, animaciones ni composición visual.
+- Esta revisión es únicamente de auditoría: todavía no se ha modificado código para este lote ni se ha ejecutado una nueva compilación. Se mantiene como siguiente tarea de desarrollo, separada de la prueba pendiente en Redmi Note 7 (Android 10).
