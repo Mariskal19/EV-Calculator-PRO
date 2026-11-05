@@ -633,7 +633,7 @@ public class CompararCochesScreen extends FrameLayout {
         // No lo mezclamos con la columna/tabla de características.
         boolean emptyState=selectedVehiclesCache.isEmpty();
         if(characteristicsSection!=null){
-            characteristicsSection.setText("Características");
+            characteristicsSection.setText(LanguageManager.t(host, "Características"));
             characteristicsSection.setTextSize(19);
             characteristicsSection.setTextColor(text());
             characteristicsSection.setTypeface(null,Typeface.BOLD);
@@ -641,7 +641,7 @@ public class CompararCochesScreen extends FrameLayout {
             characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
         }
         if(emptyMessage!=null){
-            emptyMessage.setText("Selecciona un coche para mostrar sus características.");
+            emptyMessage.setText(LanguageManager.t(host, "Selecciona un coche para mostrar sus características."));
             emptyMessage.setTextSize(14);
             emptyMessage.setTextColor(sub());
             emptyMessage.setGravity(Gravity.CENTER);
