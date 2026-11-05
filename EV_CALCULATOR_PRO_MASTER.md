@@ -3013,3 +3013,15 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - No se ha publicado en Google Play. No se ha cambiado la versión de la aplicación.
 
 - Seguridad del workflow `build.yml`: los permisos predeterminados del workflow son `contents: read`; solo el job de compilación eleva a `contents: write`, necesario para persistir la optimización de búsqueda y publicar Releases. Se retiraron los cuatro secretos de firma del entorno global del job: el keystore codificado solo está disponible en el paso de verificación; contraseña, alias y contraseña de clave solo están disponibles en verificación y compilación Release. El alcance de secretos quedó validado por el build 2477 y el endurecimiento de permisos por el build 2479; ambos compilaron y publicaron correctamente APK y AAB.
+
+
+## 2026-11-05 — Compatibilidad Android y protección automática de Google Play (rama de revisión)
+
+- Rama creada desde `main`: `fix/min-sdk-24-play-protection`, partiendo del commit `6e4b52ca62a410ec26bfe50e55fa7a5a680fd23d`.
+- Cambio de código solicitado: en `app/build.gradle`, `defaultConfig.minSdk` pasa exclusivamente de `23` a `24`.
+- Se conservan `compileSdk = 36`, `targetSdk = 36`, `versionName = '1.0.6'` y `versionCode = 62`. No se modifican dependencias, manifiesto ni workflows.
+- Comprobación estática inicial: `gradle.properties`, `settings.gradle`, `build.gradle`, `app/build.gradle` y `app/src/main/AndroidManifest.xml` son los únicos archivos de configuración Gradle/Manifiesto identificados en el árbol del repositorio. No se ha encontrado otra declaración de `minSdk` en esos archivos; la única configuración encontrada está en `app/build.gradle`. Esta comprobación no sustituye la evaluación final del modelo Gradle durante la compilación.
+- **Validación de compilación pendiente:** en esta sesión no se han ejecutado `testDebugUnitTest`, `assembleDebug`, `assembleRelease` ni `bundleRelease`; por tanto, no se declara que las pruebas o compilaciones hayan pasado y aún no se ha inspeccionado un AAB para confirmar su `minSdkVersion`.
+- Limitación del CI existente: `.github/workflows/build.yml` permite `workflow_dispatch`, pero su disparador `push` no incluye esta rama. No se ha alterado el workflow, conforme al alcance solicitado. La ejecución debe iniciarse manualmente seleccionando esta rama en GitHub Actions; además, ese workflow compila Release APK/AAB, pero no ejecuta `testDebugUnitTest` ni `assembleDebug`.
+- El workflow `.github/workflows/advisor-engine-test.yml` ejecuta pruebas smoke específicas del motor del asesor, no la suite Gradle completa, y tampoco sustituye `testDebugUnitTest`.
+- No se ha realizado merge en `main`, no se ha creado ninguna GitHub Release, no se han subido artefactos a Play Console ni se ha publicado nada en Google Play.
