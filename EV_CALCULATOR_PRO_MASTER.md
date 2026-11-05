@@ -1,3 +1,14 @@
+## 2026-11-05 — Revisión IconDuplicates y tratamiento de ViewConstructor
+
+- Se descargó y revisó el informe XML del run [42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392).
+- Las cinco incidencias `IconDuplicates` corresponden a `ic_launcher.png` e `ic_launcher_round.png` con contenido idéntico en cinco densidades. El manifiesto declara `@mipmap/ic_launcher` tanto para `android:icon` como para `android:roundIcon`; no se altera la identidad visual ni se eliminan recursos de icono aprobados. Se mantienen como avisos conocidos.
+- Los tres avisos `ViewConstructor` afectan a `CompararCochesScreen`, `ElectricVsCombustionScreen` y `SimilarCarsScreen`. Son vistas creadas programáticamente con una `Activity` anfitriona y no están diseñadas para inflarse desde XML. Se documenta esta decisión con una supresión `ViewConstructor` localizada en cada clase; no se añaden constructores genéricos que no puedan satisfacer el contrato de Activity anfitriona.
+- Commits de código: `99b645becc0ae4ce6d5c9946dd27e5056cf958dc`, `9f28bfd605dccc4f0402622ab8db4bdfb56ee80d`, `ac067400dd418b775259ea6601a99277e4806709`.
+- **Validación pendiente:** el push ha iniciado el workflow Android Lint. Debe confirmarse en el informe XML que desaparecen los tres avisos `ViewConstructor`, y comprobar `:app:lintDebug` y `:app:assembleDebug`. No se declara resuelto hasta verificar CI.
+- Sin cambios en iconos, diseño, lógica funcional, `main`, versionName `1.0.6` o versionCode `62`. La prueba en Redmi Note 7 (Android 10) sigue pendiente.
+
+---
+
 ## 2026-11-05 — Prueba manual APK Debug 39 en Redmi Note 13 Pro
 
 - El usuario confirma que la APK Debug 39, generada por el workflow [42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
