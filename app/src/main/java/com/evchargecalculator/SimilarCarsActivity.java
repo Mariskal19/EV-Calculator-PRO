@@ -510,11 +510,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         getSharedPreferences(PREFS,MODE_PRIVATE).edit()
                 .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
         if(referencePicker!=null){
-            referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
+            referencePicker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(chosen).replace("\n"," · ")));
         }
         advisorEngine.reset();
-        advisorStatus.setText(LanguageManager.t(this,"Alternativas similares tomando como referencia ")
-                +chosen.make+" "+chosen.model+" "+chosen.year+" · "+cleanVersion(chosen.version)+".");
+        advisorStatus.setText(String.format(Locale.ROOT,
+                LanguageManager.t(this, "Alternativas similares tomando como referencia %1$s %2$s %3$d · %4$s."),
+                chosen.make, chosen.model, chosen.year, cleanVersion(chosen.version)));
         showSimilar();
         return true;
     }
@@ -867,7 +868,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             Object tag=input.getTag();
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
-            picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+            picker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(v).replace("\n"," · ")));
             getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
             showSimilar();
         });
@@ -964,7 +965,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         for(Vehicle v:vehicles){
             if(logicalKey(v).equals(savedKey)){
                 reference=v;
-                if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+                if(referencePicker!=null)referencePicker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(v).replace("\n"," · ")));
                 showSimilar();
                 return;
             }
