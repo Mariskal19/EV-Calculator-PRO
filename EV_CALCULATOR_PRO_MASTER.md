@@ -1,3 +1,15 @@
+## 2026-11-06 — Prueba manual APK Debug 53 y ajuste de roundIcon (CI pendiente)
+
+- El usuario confirma que la APK Debug 53, del workflow [42228155497](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42228155497), se ha instalado y funciona correctamente en Redmi Note 13 Pro (Android 16).
+- Tras revisar el informe XML del run 53, se ha confirmado que las cinco incidencias `IconLauncherShape` procedían de declarar `@mipmap/ic_launcher` simultáneamente en `android:icon` y `android:roundIcon`. Ambos atributos apuntaban al mismo recurso; no existía una variante redonda diferenciada.
+- En el commit `90e544c47a0187dd6ee4d8e9d476bfbf8ddbbff5` se elimina únicamente el atributo redundante `android:roundIcon` del manifiesto. Al quedar omitido, Android utiliza `android:icon` como recurso de respaldo; no se modifica ningún PNG, XML adaptativo ni elemento visual.
+- Validación pendiente del workflow [42230422918](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42230422918): comprobar que `lintDebug` y `assembleDebug` terminan correctamente y que desaparecen los cinco avisos `IconLauncherShape`.
+- El aviso `MonochromeLauncherIcon` permanece pendiente de decisión de diseño: no se crea una capa monocroma sin diseño aprobado. `AppBundleLocaleChanges` sigue pendiente de verificar el AAB real; `enableSplit = false` ya está configurado en Gradle.
+- La prueba manual APK Debug 53 queda confirmada en Redmi Note 13 Pro. Redmi Note 7 (Android 10) se probará al terminar todos los cambios.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, nombres de APK/AAB ni releases.
+
+---
+
 ## 2026-11-06 — Prueba manual APK Debug 43 en Redmi Note 13 Pro
 
 - El usuario confirma que la APK Debug 43, generada por el workflow [42179277897](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42179277897), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
