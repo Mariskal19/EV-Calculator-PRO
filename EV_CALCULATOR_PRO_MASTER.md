@@ -3356,3 +3356,11 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - No se modificó el diseño del icono. Los avisos restantes requieren análisis independiente; en particular, no se elimina `ic_nav_find_cars.xml` sin verificar posibles referencias indirectas y no se cambia el icono redondo/monocromo sin revisar impacto visual y compatibilidad.
 - APK Debug 50: artefacto `ev-calculator-pro-debug-50`, ID `13505857311`, generado correctamente; pendiente de prueba manual por el usuario en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
 - Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+
+## 2026-11-06 — Prueba manual APK Debug 50 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 50, generada por el workflow [42225832000](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42225832000), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La prueba manual queda confirmada para Android 16 y esta compilación concreta. Sigue pendiente probar la APK en Redmi Note 7 (Android 10), por lo que no se declara cerrada la compatibilidad entre ambos dispositivos.
+- Se mantiene pendiente investigar por separado los 6 avisos de iconos restantes (5 IconLauncherShape y 1 IconXmlAndPng), además de los recursos no utilizados, AppBundleLocaleChanges y MonochromeLauncherIcon; no se alteran sin análisis.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
