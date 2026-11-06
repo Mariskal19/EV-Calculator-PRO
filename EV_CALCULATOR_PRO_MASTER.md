@@ -3322,3 +3322,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Pendiente: ejecutar Android Lint y `assembleDebug`, comprobar que desaparecen los 7 avisos `DrawAllocation`, revisar el diff y generar APK de prueba. No se declara compilado ni probado todavía.
 - La APK Debug 33 continúa validada en Redmi Note 13 Pro (Android 16); la prueba en Redmi Note 7 (Android 10) sigue pendiente.
 - No se ha fusionado nada a `main`; versionName `1.0.6`, versionCode `62` y releases permanecen sin cambios.
+
+## Auditoría Android Lint — configuración de idiomas (6 nov 2026)
+
+- Commit de configuración: `ff37cc1c11c0dd9fb45425c8317479b5af311596` en `develop/post-1.0.6`.
+- Se añadió en `app/build.gradle`:
+  `android.bundle.language.enableSplit = false`, dentro del bloque `bundle { language { ... } }`, conforme a la documentación oficial de Android para aplicaciones con selector de idioma interno.
+- Workflow [42180279029](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42180279029): SUCCESS. `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Artefactos: APK Debug `ev-calculator-pro-debug-44` (7.644.869 bytes, artifact ID `13485410684`); informe `android-lint-report-44` (artifact ID `13485236856`).
+- Informe XML revisado: 22 advertencias, 0 errores. Categorías: IconLauncherShape 10, IconDuplicates 5, UnusedResources 4 (iconos conservados deliberadamente), AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
+- **AppBundleLocaleChanges sigue presente** en `LanguageManager.java:57` pese a la configuración. No se considera resuelto; se debe investigar si es una limitación/falso positivo del detector de Lint en AGP 9.5.0. No suprimir el aviso ni alterar el selector/traducciones sin justificarlo.
+- La compilación de este workflow es Debug APK; no valida por sí sola el contenido final de un Android App Bundle de publicación.
+- Sin cambios de versión: `versionName 1.0.6`, `versionCode 62`. No se ha fusionado a `main`.
