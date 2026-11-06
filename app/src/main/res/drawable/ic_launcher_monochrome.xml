@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="162dp"
+    android:height="162dp"
+    android:viewportWidth="162"
+    android:viewportHeight="162">
+
+    <!-- Monochrome mask based on the existing EV Calculator PRO launcher mark. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="5.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M128,81 A47,47 0,1 0 81,128" />
+
+    <!-- Front view of the electric car. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="5.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M49,81 L57,65 C59,61 62,59 67,59 H95 C100,59 103,61 105,65 L113,81 C117,84 119,88 119,93 V104 C119,109 116,112 112,112 H106 V104 H56 V112 H50 C46,112 43,109 43,104 V93 C43,88 45,84 49,81 Z" />
+
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M58,79 L64,66 C65,64 67,63 70,63 H92 C95,63 97,64 98,66 L104,79 Z" />
+
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M54,91 a4,4 0 1 0 0.1,0 Z M108,91 a4,4 0 1 0 0.1,0 Z" />
+
+    <!-- Charging connector, kept as a single-color silhouette. -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M111,112 L119,104 L132,117 L124,125 Z" />
+
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="4.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M115,107 L111,103 M123,115 L127,111 M120,124 L113,131" />
+</vector>
