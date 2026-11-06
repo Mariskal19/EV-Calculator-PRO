@@ -1,3 +1,15 @@
+## 2026-11-06 — Validación CI de ViewConstructor
+
+- Workflow [42117135152](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42117135152) finalizado con **SUCCESS**.
+- `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Informe XML del artefacto `android-lint-report-42` (ID `13456767217`) analizado: **24 incidencias, 0 errores**.
+- Los tres avisos `ViewConstructor` desaparecen tras las supresiones localizadas y justificadas.
+- Recuento respecto al informe anterior: 27 → 24 avisos. Permanecen: `IconLauncherShape` 10, `IconDuplicates` 5, `UnusedResources` 4 (iconos conservados deliberadamente), `IconLocation` 2, `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1.
+- APK Debug 42 generada correctamente: artefacto `ev-calculator-pro-debug-42` (ID `13457206930`), tamaño 7.878.408 bytes. Pendiente de prueba manual en Redmi Note 13 Pro y Redmi Note 7; aún no se declara validada funcionalmente.
+- Sin cambios en iconos, interfaz, `main`, versionName `1.0.6` o versionCode `62`. Sin release ni publicación.
+
+---
+
 ## 2026-11-05 — Revisión IconDuplicates y tratamiento de ViewConstructor
 
 - Se descargó y revisó el informe XML del run [42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392).
