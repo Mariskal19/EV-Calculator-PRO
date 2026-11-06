@@ -1,3 +1,13 @@
+## 2026-11-06 — Validación de la variante monocroma (CI #57)
+
+- Workflow Android Lint #57: **SUCCESS**, commit `e374430739337c0f620cd85c07f15d529093d53f`.
+- El informe XML confirma que el aviso `MonochromeLauncherIcon` ha desaparecido tras añadir la capa `<monochrome>` al icono adaptativo.
+- Resultado: **6 warnings, 0 errors**. Permanecen los cinco `IconLauncherShape` (PNG normales, deuda visual aceptada) y `AppBundleLocaleChanges` (pendiente de verificar el AAB).
+- APK Debug #57 generada como artefacto `ev-calculator-pro-debug-57`; pendiente de instalación y prueba manual en Redmi Note 13 Pro. Redmi Note 7 se probará al finalizar todos los cambios.
+- Sin cambios de versión, versionCode, nombres de APK/AAB, releases ni rama `main`.
+
+---
+
 ## 2026-11-06 — Variante monocroma del icono launcher (validación CI pendiente)
 
 - Se añade `app/src/main/res/drawable/ic_launcher_monochrome.xml`, una variante vectorial monocroma independiente que conserva los elementos reconocibles del icono actual: coche frontal, arco circular de carga y conector.
