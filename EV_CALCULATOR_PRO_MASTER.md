@@ -1,3 +1,12 @@
+## 2026-11-06 — Prueba manual APK Debug 57 (Redmi Note 13 Pro)
+
+- El usuario confirma que la APK Debug 57, generada por el workflow [Android Lint #57](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42233735692), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- Queda validada la variante monocroma del icono en compilación y prueba manual. Los cinco avisos `IconLauncherShape` se mantienen como deuda visual aceptada, sin alterar el icono aprobado.
+- `AppBundleLocaleChanges` continúa pendiente de inspección del AAB real y de `BundleConfig.pb`; no se considera resuelto por la mera presencia de `enableSplit = false` en Gradle.
+- Redmi Note 7 (Android 10) se probará al finalizar todos los cambios. Sin modificaciones de `main`, versión `1.0.6`, `versionCode 62`, APK/AAB o releases.
+
+---
+
 ## 2026-11-06 — Validación de la variante monocroma (CI #57)
 
 - Workflow Android Lint #57: **SUCCESS**, commit `e374430739337c0f620cd85c07f15d529093d53f`.
