@@ -3334,3 +3334,13 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - **AppBundleLocaleChanges sigue presente** en `LanguageManager.java:57` pese a la configuración. No se considera resuelto; se debe investigar si es una limitación/falso positivo del detector de Lint en AGP 9.5.0. No suprimir el aviso ni alterar el selector/traducciones sin justificarlo.
 - La compilación de este workflow es Debug APK; no valida por sí sola el contenido final de un Android App Bundle de publicación.
 - Sin cambios de versión: `versionName 1.0.6`, `versionCode 62`. No se ha fusionado a `main`.
+
+
+## 2026-11-06 — Limpieza conservadora de recursos duplicados del icono launcher
+
+- Auditoría del manifiesto: `android:icon` y `android:roundIcon` apuntan ambos a `@mipmap/ic_launcher`. La variante adaptativa principal está en `mipmap-anydpi-v26/ic_launcher.xml`; Android aplica la máscara de launcher según el dispositivo.
+- Se comprobó que `ic_launcher_round.xml` era byte a byte idéntico al recurso adaptativo principal (mismo blob SHA), y que los cinco PNG `ic_launcher_round.png` eran idénticos a sus respectivos `ic_launcher.png` en hdpi, mdpi, xhdpi, xxhdpi y xxxhdpi (mismos blob SHA por densidad).
+- Se eliminaron únicamente esos seis recursos redundantes de `ic_launcher_round`. No se cambió el manifiesto, el icono visible, el foreground/background adaptativo, los PNG principales ni los recursos de navegación. `android:roundIcon` continúa resolviendo a `@mipmap/ic_launcher`, exactamente como antes.
+- La limpieza busca eliminar las cinco incidencias `IconDuplicates` y el recurso `ic_launcher_round` señalado como no utilizado. **Validación CI pendiente**: revisar el próximo informe de Android Lint y comprobar `:app:lintDebug` y `:app:assembleDebug`; no se da por resuelto hasta verificarlo.
+- Se mantienen sin cambios los otros avisos de iconos (`IconLauncherShape`, `IconXmlAndPng`, `MonochromeLauncherIcon`) hasta justificar una corrección que no altere el diseño aprobado. No se han añadido supresiones.
+- Rama `develop/post-1.0.6`; sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, APK/AAB de publicación ni releases.
