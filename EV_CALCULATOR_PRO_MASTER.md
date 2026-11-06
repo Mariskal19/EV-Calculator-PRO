@@ -3344,3 +3344,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La limpieza busca eliminar las cinco incidencias `IconDuplicates` y el recurso `ic_launcher_round` señalado como no utilizado. **Validación CI pendiente**: revisar el próximo informe de Android Lint y comprobar `:app:lintDebug` y `:app:assembleDebug`; no se da por resuelto hasta verificarlo.
 - Se mantienen sin cambios los otros avisos de iconos (`IconLauncherShape`, `IconXmlAndPng`, `MonochromeLauncherIcon`) hasta justificar una corrección que no altere el diseño aprobado. No se han añadido supresiones.
 - Rama `develop/post-1.0.6`; sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, APK/AAB de publicación ni releases.
+
+
+## 2026-11-06 — Resultado CI de limpieza de iconos (APK Debug 50)
+
+- Workflow [42225832000](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42225832000), rama `develop/post-1.0.6`, commit probado `b287dac480a0da293b65881c63e0325a681324be`: **SUCCESS**.
+- `:app:lintDebug` y `:app:assembleDebug` completados correctamente; APK Debug e informe Lint subidos.
+- Informe XML del artefacto `android-lint-report-50` (ID `13506226430`) descargado y analizado: **11 avisos, 0 errores**, frente a 22 avisos en el informe 43.
+- Los cinco avisos `IconDuplicates` desaparecen (5 → 0) al eliminar recursos `ic_launcher_round` que eran duplicados exactos. Se conservan sin cambios el icono adaptativo principal y los PNG `ic_launcher` usados por la aplicación.
+- Avisos restantes: `IconLauncherShape` 5, `UnusedResources` 3 (`drawable/ic_launcher.xml`, `drawable/ic_launcher_foreground_inset.xml`, `drawable/ic_nav_find_cars.xml`), `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1.
+- No se modificó el diseño del icono. Los avisos restantes requieren análisis independiente; en particular, no se elimina `ic_nav_find_cars.xml` sin verificar posibles referencias indirectas y no se cambia el icono redondo/monocromo sin revisar impacto visual y compatibilidad.
+- APK Debug 50: artefacto `ev-calculator-pro-debug-50`, ID `13505857311`, generado correctamente; pendiente de prueba manual por el usuario en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
