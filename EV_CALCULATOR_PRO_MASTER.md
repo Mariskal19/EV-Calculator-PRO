@@ -1,3 +1,12 @@
+## 2026-11-06 — Prueba manual APK Debug 43 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 43, generada por el workflow [42179277897](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42179277897), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La validación manual queda confirmada para Android 16 y esta compilación concreta, incluido el cambio de ubicación de las dos imágenes de cabecera en `drawable-nodpi`.
+- Sigue pendiente probar la APK en Redmi Note 7 (Android 10), incluida navegación Atrás mediante botón/gesto y pantallas principales. No se declara cerrada la compatibilidad completa hasta completar esa prueba.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+---
+
 ## 2026-11-06 — Resultado CI de IconLocation (APK Debug 43)
 
 - Workflow [42179277897](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42179277897), rama `develop/post-1.0.6`, commit probado `1e11fdcaad46c52ac954d7180ecc3ddc2d693ba8`: **SUCCESS**.
