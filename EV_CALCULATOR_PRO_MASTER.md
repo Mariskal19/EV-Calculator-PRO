@@ -1,3 +1,14 @@
+## Aclaración — Android Lint #54: IconLauncherShape
+
+- La ejecución [#54](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42230422918) terminó con `SUCCESS`, pero el informe mantiene los cinco avisos `IconLauncherShape`.
+- La ubicación exacta del informe identifica los cinco archivos `mipmap-{hdpi,mdpi,xhdpi,xxhdpi,xxxhdpi}/ic_launcher.png`; por tanto, el aviso no depende de `android:roundIcon`. Lint considera que la ilustración del icono de launcher ocupa toda la superficie cuadrada y recomienda una silueta diferenciada.
+- No se debe modificar el arte, introducir márgenes transparentes ni reducir la ilustración para eliminar un aviso estilístico sin aprobación expresa, porque cambiaría el aspecto/tamaño visual del icono aprobado.
+- Se ha restaurado `android:roundIcon="@mipmap/ic_launcher"` para dejar el manifiesto como estaba antes de la prueba, mediante el commit `f60977673eec06160e6d82ea4be9332f5323d8e1`. La retirada temporal no aportaba ninguna mejora y no eliminaba los avisos.
+- Decisión: conservar los cinco avisos `IconLauncherShape` como deuda visual documentada, sin alterar el icono. El aviso `MonochromeLauncherIcon` sigue pendiente de diseño aprobado.
+- La ejecución #54 confirma `SUCCESS` y deja 7 warnings / 0 errors: cinco `IconLauncherShape`, uno `MonochromeLauncherIcon` y uno `AppBundleLocaleChanges`.
+
+---
+
 ## 2026-11-06 — Prueba manual APK Debug 53 y ajuste de roundIcon (CI pendiente)
 
 - El usuario confirma que la APK Debug 53, del workflow [42228155497](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42228155497), se ha instalado y funciona correctamente en Redmi Note 13 Pro (Android 16).
