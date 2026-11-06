@@ -1,3 +1,15 @@
+## 2026-11-06 — Resultado CI de IconLocation (APK Debug 43)
+
+- Workflow [42179277897](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42179277897), rama `develop/post-1.0.6`, commit probado `1e11fdcaad46c52ac954d7180ecc3ddc2d693ba8`: **SUCCESS**.
+- `:app:lintDebug` y `:app:assembleDebug` completados correctamente; subida de APK e informe completada.
+- Informe XML del artefacto `android-lint-report-43` (ID `13485076129`) descargado y analizado: **22 incidencias, 0 errores**. Los dos avisos `IconLocation` desaparecen (2 → 0). No aparecen nuevas categorías.
+- Advertencias restantes: `IconLauncherShape` 10, `IconDuplicates` 5, `UnusedResources` 4 (iconos conservados deliberadamente), `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1.
+- APK Debug 43: artefacto `ev-calculator-pro-debug-43`, ID `13484832403`, archivo `app-debug.apk`, tamaño 7.878.690 bytes. Exclusivamente para pruebas; no es una Release ni se ha publicado.
+- El cambio que mueve `cabecera_charge_calculator.jpeg` y `cabecera_electric_vs_combustion.png` de `drawable` a `drawable-nodpi` conserva nombres y bytes de imagen; CI confirma compilación y recursos correctos. Pendiente prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10); esta última sigue siendo necesaria para compatibilidad completa.
+- No se ha fusionado nada en `main`, no se han tocado ramas de respaldo ni se ha creado Release/publicado APK/AAB. Se conservan versionName `1.0.6` y versionCode `62`.
+
+---
+
 ## 2026-11-06 — Prueba manual APK Debug 42 en Redmi Note 13 Pro
 
 - El usuario confirma que la APK Debug 42, generada por el workflow [42117135152](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42117135152), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
