@@ -3364,3 +3364,16 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La prueba manual queda confirmada para Android 16 y esta compilación concreta. Sigue pendiente probar la APK en Redmi Note 7 (Android 10), por lo que no se declara cerrada la compatibilidad entre ambos dispositivos.
 - Se mantiene pendiente investigar por separado los 6 avisos de iconos restantes (5 IconLauncherShape y 1 IconXmlAndPng), además de los recursos no utilizados, AppBundleLocaleChanges y MonochromeLauncherIcon; no se alteran sin análisis.
 - Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+
+## Android Lint — ejecución 53 (6 noviembre 2026)
+
+- Rama: `develop/post-1.0.6`; commit de código: `4bef0c77ba4839591fa7a09c7644374d5c3ced0a`.
+- GitHub Actions Android Lint #53: SUCCESS. `lintDebug` y `assembleDebug` completados; APK Debug 53 e informe Lint publicados.
+- Informe XML: 7 warnings, 0 errors (frente a 11 warnings, 0 errors en la ejecución 50).
+- `UnusedResources`: 3 → 0. Eliminados únicamente los recursos no utilizados `drawable/ic_launcher.xml`, `drawable/ic_launcher_foreground_inset.xml` y `drawable/ic_nav_find_cars.xml`, tras comprobar que el launcher y la navegación activos utilizan otros recursos. No se alteraron iconos activos ni manifiesto.
+- `IconXmlAndPng`: 1 → 0.
+- Avisos restantes: `IconLauncherShape` (5, launcher usado como round icon sin forma circular), `MonochromeLauncherIcon` (1, falta etiqueta monocroma en icono adaptativo) y `AppBundleLocaleChanges` (1, pendiente verificar configuración efectiva del AAB).
+- No se ha cambiado la apariencia del launcher, versionName/versionCode, releases ni la rama `main`.
+- Artefactos: APK `ev-calculator-pro-debug-53` (ID `13507490182`); informe `android-lint-report-53` (ID `13506294633`).
+- Validación manual pendiente de APK 53 en Redmi Note 13 Pro; prueba del Redmi Note 7 se mantiene para el final de todos los cambios.
