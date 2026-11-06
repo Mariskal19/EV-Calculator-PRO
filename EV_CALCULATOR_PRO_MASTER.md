@@ -1,3 +1,12 @@
+## 2026-11-06 — Investigación de `AppBundleLocaleChanges`
+
+- Se confirma que `app/build.gradle` contiene la configuración Groovy oficial documentada por Android: `android { bundle { language { enableSplit = false } } }`.
+- La documentación oficial indica que esta propiedad desactiva los APK de configuración separados por idioma y es una de las dos soluciones admitidas para aplicaciones que cambian el idioma dinámicamente: [Configure the base module — Android Developers](https://developer.android.com/guide/app-bundle/configure-base#handling_language_changes).
+- La auditoría CI #57 usa Android Gradle Plugin 9.5.0 / Lint 9.5.0 y aun así emite el aviso en `LanguageManager.java:57`. Por tanto, el aviso no demuestra por sí solo que el AAB esté mal configurado; podría ser una limitación/falso positivo del análisis estático.
+- **No se suprime el aviso ni se cambia código/configuración por ahora.** La comprobación definitiva queda pendiente de generar un AAB Debug y examinar `BundleConfig.pb` para verificar que no se generan splits de idioma. Hasta entonces, el punto sigue abierto.
+
+---
+
 ## 2026-11-06 — Prueba manual APK Debug 57 (Redmi Note 13 Pro)
 
 - El usuario confirma que la APK Debug 57, generada por el workflow [Android Lint #57](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42233735692), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
