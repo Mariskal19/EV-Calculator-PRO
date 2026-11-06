@@ -1,3 +1,12 @@
+## 2026-11-06 — Prueba manual APK Debug 42 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 42, generada por el workflow [42117135152](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42117135152), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La validación queda confirmada únicamente para Android 16 y esta compilación concreta.
+- Sigue pendiente instalar/probar esta revisión en Redmi Note 7 (Android 10), incluyendo navegación Atrás mediante botón/gesto y pantallas principales. No se declara cerrada la compatibilidad entre ambos dispositivos hasta completar esa prueba.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+---
+
 ## 2026-11-06 — Validación CI de ViewConstructor
 
 - Workflow [42117135152](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42117135152) finalizado con **SUCCESS**.
