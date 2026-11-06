@@ -1,3 +1,13 @@
+## 2026-11-06 — Variante monocroma del icono launcher (validación CI pendiente)
+
+- Se añade `app/src/main/res/drawable/ic_launcher_monochrome.xml`, una variante vectorial monocroma independiente que conserva los elementos reconocibles del icono actual: coche frontal, arco circular de carga y conector.
+- Se incorpora la capa `<monochrome>` en `mipmap-anydpi-v26/ic_launcher.xml`, apuntando al nuevo vector. El fondo adaptativo y la capa foreground normal permanecen intactos.
+- No se modifican los PNG del icono normal, `android:icon`, `android:roundIcon`, los colores/diseño del launcher normal, ni la interfaz de la aplicación.
+- Rama: `develop/post-1.0.6`. No se modifica `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, nombres de APK/AAB ni releases.
+- **Validación pendiente:** comprobar que el workflow Android Lint compila correctamente y que desaparece `MonochromeLauncherIcon`; revisar también el informe XML y la APK resultante antes de darlo por resuelto. La prueba manual en Redmi Note 13 Pro queda pendiente para esta nueva compilación; Redmi Note 7 se probará al terminar todos los cambios.
+
+---
+
 ## Aclaración — Android Lint #54: IconLauncherShape
 
 - La ejecución [#54](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42230422918) terminó con `SUCCESS`, pero el informe mantiene los cinco avisos `IconLauncherShape`.
