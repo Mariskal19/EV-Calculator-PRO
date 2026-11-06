@@ -14,6 +14,12 @@ android {
         versionName = '1.0.6'
     }
 
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
     signingConfigs {
         release {
             def keystorePath = System.getenv('EV_CALCULATOR_KEYSTORE_PATH')
