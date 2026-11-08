@@ -1,3 +1,18 @@
+## 2026-11-08 — Corrección del subsistema de divisas (punto 1)
+
+- Se ha inspeccionado `CurrencyRateManager.java`, los consumidores de sus métodos, las pruebas y las dependencias existentes en `develop/post-1.0.6`.
+- Se corrige el parser ECB para localizar `OBS_VALUE` por nombre y leer CSV con campos entrecomillados, comas internas, comillas escapadas, CRLF y BOM. Se rechazan observaciones vacías, no numéricas, cero, negativas y no finitas; un último registro vacío no reutiliza una cotización anterior.
+- Se separa la lógica pura en `CurrencyRateRepository.java`; solo se sustituye la caché cuando las cinco cotizaciones USD, GBP, CHF, CAD y AUD son válidas. Cualquier fallo mantiene las cotizaciones y la fecha de la caché anterior.
+- Se elimina el bloqueo de 24 horas después de un fallo. `lastUpdate()` refleja únicamente una caché completa y validada; `rate()` y las conversiones fallan explícitamente si falta una cotización. Se añade conversión entre divisas mediante EUR como base.
+- Consumidores localizados: `AppMenuApplication.java`, `ConfigurationActivity.java` y `PersistentMainActivity.java` llaman a `refreshIfNeeded()`. No se encontraron consumidores de `rate()`, `convertFromEur()` ni `lastUpdate()` en el código de producción; la API de conversión no está actualmente integrada en la interfaz.
+- Se añaden 42 comprobaciones Java independientes y el workflow Android Lint las ejecuta antes de `lintDebug` y `assembleDebug`.
+- GitHub Actions #60: SUCCESS. 42/42 comprobaciones correctas; `lintDebug` y `assembleDebug` correctos. Informe Lint: 6 advertencias conocidas (5 `IconLauncherShape`, 1 `AppBundleLocaleChanges`), 0 errores. APK Debug `ev-calculator-pro-debug-60`, 7.604.001 bytes, artifact ID `13621154436`: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42490692509/artifacts/13621154436.
+- Se mantiene `versionName 1.0.6`, `versionCode 62`, `main` intacta y sin releases ni publicación.
+- Informe detallado: `AUDITORIA_Y_CORRECCION_DIVISAS.md`.
+- **Estado:** corrección y CI completadas; pendiente prueba manual de APK 60 en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No integrar ni publicar hasta recibir autorización.
+
+---
+
 ## 2026-11-06 — Investigación de `AppBundleLocaleChanges`
 
 - Se confirma que `app/build.gradle` contiene la configuración Groovy oficial documentada por Android: `android { bundle { language { enableSplit = false } } }`.
