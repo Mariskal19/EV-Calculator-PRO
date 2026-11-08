@@ -42,7 +42,7 @@ public final class CurrencyRateManager {
             new Thread(() -> {
                 try {
                     SharedPreferences preferences = preferences(app);
-                    CurrencyRateRepository.refreshIfNeeded(
+                    CurrencyRateRepository.refresh(
                             new PreferencesCache(preferences),
                             CurrencyRateManager::fetchCsv,
                             today());

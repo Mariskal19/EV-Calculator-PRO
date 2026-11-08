@@ -97,7 +97,7 @@ final class CurrencyRateRepository {
         return converted;
     }
 
-    /** Parses the latest non-empty OBS_VALUE field from an ECB CSV response. */
+    /** Parses the final OBS_VALUE field from an ECB CSV response. */
     static double parseCsvRate(String csv) {
         List<List<String>> records = parseCsv(csv);
         if (records.isEmpty()) throw new IllegalArgumentException("CSV is empty");
@@ -125,10 +125,9 @@ final class CurrencyRateRepository {
             if (row.size() <= observationColumn) {
                 throw new IllegalArgumentException("CSV data row is missing OBS_VALUE");
             }
-            String value = row.get(observationColumn).trim();
-            if (!value.isEmpty()) latest = value;
+            latest = row.get(observationColumn).trim();
         }
-        if (latest == null) throw new IllegalArgumentException("CSV contains no observation value");
+        if (latest == null || latest.isEmpty()) throw new IllegalArgumentException("CSV contains no latest observation value");
 
         final double parsed;
         try {

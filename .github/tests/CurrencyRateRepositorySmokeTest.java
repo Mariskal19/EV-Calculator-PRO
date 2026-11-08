@@ -74,6 +74,7 @@ public final class CurrencyRateRepositorySmokeTest {
                 "a later call retries and recovers on the same day");
         check("2026-11-06".equals(cache.date), "successful retry updates last successful date");
         check(close(cache.rates.get("USD"), 1.16), "successful retry replaces old quote set");
+        check(CurrencyRateRepository.isComplete(cache.rates), "successful retry stores all five currencies");
         check(!CurrencyRateRepository.refreshIfNeeded(cache, currency -> {
             throw new IOException("must not be called for today's successful cache");
         }, "2026-11-06"), "same-day successful cache avoids redundant download");
