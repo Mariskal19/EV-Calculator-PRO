@@ -37,13 +37,15 @@ public final class CurrencyRateRepositorySmokeTest {
                 "finds OBS_VALUE by name when columns are reordered and fields are quoted");
         String latest = "OBS_VALUE,TIME_PERIOD\n1.10,2026-11-05\n1.20,2026-11-06\n";
         check(close(CurrencyRateRepository.parseCsvRate(latest), 1.20),
-                "uses the latest non-empty observation");
+                "uses the final observation in the CSV");
         expectFailure(() -> CurrencyRateRepository.parseCsvRate("TIME_PERIOD,VALUE\n2026-11-06,1.2\n"),
                 "missing OBS_VALUE header is rejected");
         expectFailure(() -> CurrencyRateRepository.parseCsvRate("OBS_VALUE\n\"unterminated"),
                 "unterminated quoted field is rejected");
         expectFailure(() -> CurrencyRateRepository.parseCsvRate("OBS_VALUE\n\n"),
                 "empty observations are rejected");
+        expectFailure(() -> CurrencyRateRepository.parseCsvRate("OBS_VALUE,TIME_PERIOD\n1.2,2026-11-05\n,2026-11-06\n"),
+                "a blank latest observation cannot silently reuse an older quote");
     }
 
     private static void testInvalidObservations() {
