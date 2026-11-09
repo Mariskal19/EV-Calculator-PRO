@@ -17,6 +17,11 @@ public final class CurrencyRateRepositorySmokeTest {
         testLastUpdateSemantics();
         testConversions();
         testMissingQuotesFailExplicitly();
+        testCatalogPriceUsesSelectedCurrency();
+        testCatalogPriceInEurKeepsSourceAmount();
+        testCatalogPriceFallsBackToEurWithoutValidRate();
+        testCatalogPriceDoesNotAccumulateConversion();
+        testCatalogPriceRejectsInvalidAmounts();
         System.out.println("Currency-rate tests passed: " + checks + " checks.");
     }
 
@@ -132,6 +137,51 @@ public final class CurrencyRateRepositorySmokeTest {
                 "unsupported currency fails explicitly");
         expectFailure(() -> CurrencyRateRepository.convertFromEur(incomplete, Double.NaN, "USD"),
                 "non-finite amount is rejected");
+    }
+
+    private static void testCatalogPriceUsesSelectedCurrency() {
+        Map<String, Double> rates = new LinkedHashMap<>();
+        rates.put("USD", 1.20);
+        check("120 $".equals(CatalogPriceFormatter.format(100.0, "USD", rates)),
+                "catalog price is converted from EUR and formatted in selected USD");
+    }
+
+    private static void testCatalogPriceInEurKeepsSourceAmount() {
+        Map<String, Double> rates = new LinkedHashMap<>();
+        rates.put("USD", 1.20);
+        check("100 €".equals(CatalogPriceFormatter.format(100.0, "EUR", rates)),
+                "EUR selection preserves the catalog source price");
+    }
+
+    private static void testCatalogPriceFallsBackToEurWithoutValidRate() {
+        check("100 €".equals(CatalogPriceFormatter.format(100.0, "USD", new LinkedHashMap<>())),
+                "missing cached rate falls back to the original EUR amount");
+        Map<String, Double> invalid = new LinkedHashMap<>();
+        invalid.put("USD", Double.NaN);
+        check("100 €".equals(CatalogPriceFormatter.format(100.0, "USD", invalid)),
+                "invalid cached rate falls back to the original EUR amount");
+    }
+
+    private static void testCatalogPriceDoesNotAccumulateConversion() {
+        Map<String, Double> rates = new LinkedHashMap<>();
+        rates.put("USD", 1.20);
+        String firstDisplay = CatalogPriceFormatter.format(100.0, "USD", rates);
+        String backInEur = CatalogPriceFormatter.format(100.0, "EUR", rates);
+        String displayedAgain = CatalogPriceFormatter.format(100.0, "USD", rates);
+        check("120 $".equals(firstDisplay) && "100 €".equals(backInEur)
+                        && firstDisplay.equals(displayedAgain),
+                "currency changes always format the unchanged EUR source amount");
+    }
+
+    private static void testCatalogPriceRejectsInvalidAmounts() {
+        Map<String, Double> rates = new LinkedHashMap<>();
+        rates.put("USD", 1.20);
+        check("—".equals(CatalogPriceFormatter.format(0.0, "USD", rates)),
+                "zero catalog price is not presented as a valid price");
+        check("—".equals(CatalogPriceFormatter.format(-1.0, "EUR", rates)),
+                "negative catalog price is not presented as a valid price");
+        check("—".equals(CatalogPriceFormatter.format(Double.NaN, "EUR", rates)),
+                "non-finite catalog price is not presented as a valid price");
     }
 
     private static FakeCache completeCache(double value) {
