@@ -1,3 +1,18 @@
+## 2026-11-09 — Integración de conversión de precios del catálogo (punto 1)
+
+- Se implementa `CatalogPriceFormatter.java` y `CurrencyRateManager.formatCatalogPrice()`. Cada presentación convierte desde el importe EUR original usando la tasa ECB seleccionada en la caché; no se mutan los datos ni se encadenan conversiones al cambiar de moneda o reconstruir la pantalla.
+- Sin tasa válida para la moneda seleccionada, se conserva el precio EUR original y se muestra con `€`. El formatter usa las tasas guardadas, por lo que funciona sin conexión; con importe no positivo o no finito muestra `—`.
+- Integración en todas las presentaciones de precio de catálogo localizadas: `CompararCochesScreen.java`, `CompararCochesActivity.java`, `SimilarCarsScreen.java`, `SimilarCarsActivity.java` y `CarDetailActivity.java`. En catálogo/comparación, los valores y ordenaciones internas siguen en EUR.
+- Cambio de moneda: los hosts de comparación/similares reconstruyen o refrescan su contenido; `CarDetailActivity` hereda `BaseNavigationActivity`, que recrea la actividad al cambiar moneda. Se revisó el camino de coste de carga y coste eléctrico/combustión: sus fórmulas y valores introducidos por el usuario permanecen intactos; solo conservan el formato y símbolo seleccionados.
+- Pruebas automatizadas de presentación añadidas: conversión en USD, GBP, CHF, CAD y AUD; EUR original; tasa ausente/parcial/inválida; cambio repetido desde EUR fuente; importes inválidos. **55 comprobaciones correctas** en GitHub Actions.
+- Prueba RED previa en el commit `767e6dfb05aaf9daaef3c1b0e00f2541c3c63ef1`: la compilación del smoke test falló al no existir todavía `CatalogPriceFormatter`, como se esperaba.
+- Validación final: [Android Lint audit #62](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42694701961), commit probado `480ec89ba3cae74c48faebe99ff4101a11e341ef`, rama `develop/post-1.0.6). Pruebas Java, `:app:lintDebug` y `:app:assembleDebug`: **SUCCESS**.
+- APK Debug descargable: [`ev-calculator-pro-debug-62`](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42694701961/artifacts/13708522656), artifact ID `13708522656`, 7.604.857 bytes. No es AAB ni Release. Artefacto disponible hasta el 16 nov 2026.
+- Se mantienen `versionName 1.0.6`, `versionCode 62`, el patrón de nombre de APK y las decisiones visuales. No se modifica `main` ni `stable`, ni se crea Release.
+- **Pendiente:** prueba manual del APK Debug 62 en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No integrar ni publicar hasta recibir autorización.
+
+---
+
 ## 2026-11-08 — Corrección del subsistema de divisas (punto 1)
 
 - Se ha inspeccionado `CurrencyRateManager.java`, los consumidores de sus métodos, las pruebas y las dependencias existentes en `develop/post-1.0.6`.
