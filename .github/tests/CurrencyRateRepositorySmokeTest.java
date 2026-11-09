@@ -217,14 +217,17 @@ public final class CurrencyRateRepositorySmokeTest {
                 "54725.8 EUR conserva un decimal");
         check("77.167,35 €".equals(CatalogPriceFormatter.format(77167.35, "EUR", rates)),
                 "77167.35 EUR conserva dos decimales");
+        // Décimo precio decimal del catálogo: Mercedes GLB 250 Plus Electrico 2026 (línea 11097)
+        check("57.777,5 €".equals(CatalogPriceFormatter.format(57777.5, "EUR", rates)),
+                "57777.5 EUR conserva un decimal (décimo vehículo: Mercedes GLB)");
     }
 
     private static void testCatalogPriceIntegerNoDecimals() {
         Map<String, Double> rates = catalogRates();
         check("100 €".equals(CatalogPriceFormatter.format(100.0, "EUR", rates)),
                 "precio entero EUR sin decimales");
-        check("25000 €".equals(CatalogPriceFormatter.format(25000.0, "EUR", rates)),
-                "precio entero grande EUR sin decimales");
+        check("25.000 €".equals(CatalogPriceFormatter.format(25000.0, "EUR", rates)),
+                "precio entero grande EUR con separador de miles español");
         check("120 $".equals(CatalogPriceFormatter.format(100.0, "USD", rates)),
                 "precio entero convertido USD sin decimales");
         check("87 £".equals(CatalogPriceFormatter.format(100.0, "GBP", rates)),

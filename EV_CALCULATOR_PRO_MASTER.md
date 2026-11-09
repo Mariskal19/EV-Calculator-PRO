@@ -1,3 +1,12 @@
+## 2026-11-09 — Corrección de precisión decimal en precios del catálogo (revisión)
+
+- Se corrige la expectativa de prueba en `CurrencyRateRepositorySmokeTest.testCatalogPriceIntegerNoDecimals()`: `25000.0 EUR` se formatea como `"25.000 €"` (con separador de miles español), no como `"25000 €"`.
+- Se añade décima prueba explícita para el décimo precio decimal del catálogo: Mercedes GLB 250 Plus Electrico 2026 (línea 11097, precio `57777.5`).
+- Se mantienen intactos `CatalogPriceFormatter.java` y `CurrencyNumberFormatter.java` (ya corregidos en el commit anterior).
+- `versionName 1.0.6`, `versionCode 62` permanecen sin cambios. No se modifica `main` ni `stable`.
+
+---
+
 ## 2026-11-09 — Corrección de precisión decimal en precios del catálogo
 
 - Se corrige `CurrencyNumberFormatter.java` para usar dígitos decimales opcionales (`#`) en lugar de obligatorios (`0`), permitiendo hasta 2 decimales sin añadir ceros innecesarios.
