@@ -1,3 +1,17 @@
+## 2026-11-09 — Corrección de precisión decimal en precios del catálogo
+
+- Se corrige `CurrencyNumberFormatter.java` para usar dígitos decimales opcionales (`#`) en lugar de obligatorios (`0`), permitiendo hasta 2 decimales sin añadir ceros innecesarios.
+- Se corrige `CatalogPriceFormatter.java` para formatear precios con hasta 2 decimales (antes usaba 0 decimales, redondeando incorrectamente 10 precios del catálogo).
+- Los precios enteros se muestran sin decimales (ej. `100 €`, `120 $`).
+- Los precios con decimales se muestran con la precisión necesaria (ej. `66.511,48 €`, `119.609,6 €`, `165.747,16 €`).
+- No se añaden ceros innecesarios (ej. `100,1 €` en lugar de `100,10 €`; `50 €` en lugar de `50,00 €`).
+- Las conversiones a otras monedas conservan los decimales (ej. `79,813.78 $`).
+- Se añaden pruebas automatizadas para los 10 precios decimales del catálogo, precios enteros, conversiones con decimales, fallback a EUR y ausencia de ceros innecesarios.
+- Los cálculos de carga y costes permanecen sin cambios; no hay conversiones dobles ni mutaciones del precio original.
+- `versionName 1.0.6`, `versionCode 62` permanecen sin cambios. No se modifica `main` ni `stable`.
+
+---
+
 ## 2026-11-09 — Integración de conversión de precios del catálogo (punto 1)
 
 - Se implementa `CatalogPriceFormatter.java` y `CurrencyRateManager.formatCatalogPrice()`. Cada presentación convierte desde el importe EUR original usando la tasa ECB seleccionada en la caché; no se mutan los datos ni se encadenan conversiones al cambiar de moneda o reconstruir la pantalla.

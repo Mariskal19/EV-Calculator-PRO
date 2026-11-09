@@ -13,14 +13,14 @@ public final class CatalogPriceFormatter {
         if (code.isEmpty() || "EUR".equals(code)) return formatEur(priceEur);
         try {
             double converted = CurrencyRateRepository.convertFromEur(cachedRates, priceEur, code);
-            return CurrencyNumberFormatter.format(converted, 0, code) + " " + symbol(code);
+            return CurrencyNumberFormatter.format(converted, 2, code) + " " + symbol(code);
         } catch (IllegalArgumentException | IllegalStateException | ArithmeticException ex) {
             return formatEur(priceEur);
         }
     }
 
     private static String formatEur(double priceEur) {
-        return CurrencyNumberFormatter.format(priceEur, 0, "EUR") + " €";
+        return CurrencyNumberFormatter.format(priceEur, 2, "EUR") + " €";
     }
 
     private static String symbol(String currency) {

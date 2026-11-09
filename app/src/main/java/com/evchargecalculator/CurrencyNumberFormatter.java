@@ -22,7 +22,7 @@ public final class CurrencyNumberFormatter {
     StringBuilder pattern = new StringBuilder("#,##0");
     if (decimals > 0) {
       pattern.append('.');
-      for (int i = 0; i < decimals; i++) pattern.append('0');
+      for (int i = 0; i < decimals; i++) pattern.append('#');
     }
     DecimalFormat format = new DecimalFormat(pattern.toString(), symbols);
     format.setGroupingUsed(true);
