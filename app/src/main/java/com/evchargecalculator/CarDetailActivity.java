@@ -22,7 +22,7 @@ public class CarDetailActivity extends BaseNavigationActivity {
  private NumberFormat nf(int max){NumberFormat f=NumberFormat.getNumberInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this)));f.setMaximumFractionDigits(max);return f;}
  private String num(double n){return nf(1).format(n);} private String num2(double n){return nf(2).format(n);}
  private String integer(double n){return NumberFormat.getIntegerInstance(Locale.forLanguageTag(LanguageManager.getEffectiveLanguage(this))).format(Math.round(n));}
- private String price(double n){if(n<=0)return"—";return integer(n)+" "+getSharedPreferences("ev_charge_calculator",0).getString("app_currency","EUR");}
+ private String price(double n){return CurrencyRateManager.formatCatalogPrice(this,n);}
  @Override protected void onCreate(Bundle b){super.onCreate(b);LanguageManager.applyStored(this);dark=isDarkTheme();build();EdgeToEdgeHelper.apply(this,dark,true);}
  private void build(){
   Intent i=getIntent(); LinearLayout root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setBackgroundColor(dark?Color.rgb(7,19,28):Color.rgb(241,246,251));

@@ -140,15 +140,21 @@ public final class CurrencyRateRepositorySmokeTest {
     }
 
     private static void testCatalogPriceUsesSelectedCurrency() {
-        Map<String, Double> rates = new LinkedHashMap<>();
-        rates.put("USD", 1.20);
+        Map<String, Double> rates = catalogRates();
         check("120 $".equals(CatalogPriceFormatter.format(100.0, "USD", rates)),
                 "catalog price is converted from EUR and formatted in selected USD");
+        check("87 £".equals(CatalogPriceFormatter.format(100.0, "GBP", rates)),
+                "catalog price uses the selected GBP rate and symbol");
+        check("93 CHF".equals(CatalogPriceFormatter.format(100.0, "CHF", rates)),
+                "catalog price uses the selected CHF rate and symbol");
+        check("161 CA$".equals(CatalogPriceFormatter.format(100.0, "CAD", rates)),
+                "catalog price uses the selected CAD rate and symbol");
+        check("178 A$".equals(CatalogPriceFormatter.format(100.0, "AUD", rates)),
+                "catalog price uses the selected AUD rate and symbol");
     }
 
     private static void testCatalogPriceInEurKeepsSourceAmount() {
-        Map<String, Double> rates = new LinkedHashMap<>();
-        rates.put("USD", 1.20);
+        Map<String, Double> rates = catalogRates();
         check("100 €".equals(CatalogPriceFormatter.format(100.0, "EUR", rates)),
                 "EUR selection preserves the catalog source price");
     }
@@ -156,15 +162,18 @@ public final class CurrencyRateRepositorySmokeTest {
     private static void testCatalogPriceFallsBackToEurWithoutValidRate() {
         check("100 €".equals(CatalogPriceFormatter.format(100.0, "USD", new LinkedHashMap<>())),
                 "missing cached rate falls back to the original EUR amount");
-        Map<String, Double> invalid = new LinkedHashMap<>();
+        Map<String, Double> partial = new LinkedHashMap<>();
+        partial.put("GBP", 0.87);
+        check("100 €".equals(CatalogPriceFormatter.format(100.0, "USD", partial)),
+                "missing selected-currency rate falls back to the original EUR amount");
+        Map<String, Double> invalid = catalogRates();
         invalid.put("USD", Double.NaN);
         check("100 €".equals(CatalogPriceFormatter.format(100.0, "USD", invalid)),
                 "invalid cached rate falls back to the original EUR amount");
     }
 
     private static void testCatalogPriceDoesNotAccumulateConversion() {
-        Map<String, Double> rates = new LinkedHashMap<>();
-        rates.put("USD", 1.20);
+        Map<String, Double> rates = catalogRates();
         String firstDisplay = CatalogPriceFormatter.format(100.0, "USD", rates);
         String backInEur = CatalogPriceFormatter.format(100.0, "EUR", rates);
         String displayedAgain = CatalogPriceFormatter.format(100.0, "USD", rates);
@@ -174,14 +183,23 @@ public final class CurrencyRateRepositorySmokeTest {
     }
 
     private static void testCatalogPriceRejectsInvalidAmounts() {
-        Map<String, Double> rates = new LinkedHashMap<>();
-        rates.put("USD", 1.20);
+        Map<String, Double> rates = catalogRates();
         check("—".equals(CatalogPriceFormatter.format(0.0, "USD", rates)),
                 "zero catalog price is not presented as a valid price");
         check("—".equals(CatalogPriceFormatter.format(-1.0, "EUR", rates)),
                 "negative catalog price is not presented as a valid price");
         check("—".equals(CatalogPriceFormatter.format(Double.NaN, "EUR", rates)),
                 "non-finite catalog price is not presented as a valid price");
+    }
+
+    private static Map<String, Double> catalogRates() {
+        Map<String, Double> rates = new LinkedHashMap<>();
+        rates.put("USD", 1.20);
+        rates.put("GBP", 0.87);
+        rates.put("CHF", 0.93);
+        rates.put("CAD", 1.61);
+        rates.put("AUD", 1.78);
+        return rates;
     }
 
     private static FakeCache completeCache(double value) {

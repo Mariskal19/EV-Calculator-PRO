@@ -21,6 +21,7 @@ public final class CurrencyRateManager {
     private static final String PREFS = "ev_charge_calculator";
     private static final String KEY_RATES = "currency_rates_eur";
     private static final String KEY_DATE = "currency_rates_date";
+    private static final String KEY_CURRENCY = "app_currency";
     private static final String API =
             "https://data-api.ecb.europa.eu/service/data/EXR/D.%s.EUR.SP00.A?format=csvdata";
     private static final AtomicBoolean REFRESH_IN_PROGRESS = new AtomicBoolean(false);
@@ -68,6 +69,13 @@ public final class CurrencyRateManager {
     /** Converts between supported currencies through the EUR reference rate. */
     public static double convert(Context context, double amount, String from, String to) {
         return CurrencyRateRepository.convert(readCachedRates(context), amount, from, to);
+    }
+
+    /** Formats an immutable EUR catalog price in the selected currency when a cached rate exists. */
+    public static String formatCatalogPrice(Context context, double priceEur) {
+        SharedPreferences preferences = preferences(context);
+        String currency = preferences.getString(KEY_CURRENCY, "EUR");
+        return CatalogPriceFormatter.format(priceEur, currency, readCachedRates(context));
     }
 
     /** Date of the last complete validated cache replacement; empty if no valid full cache exists. */

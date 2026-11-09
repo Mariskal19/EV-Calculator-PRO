@@ -984,10 +984,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         NumberFormat f=NumberFormat.getIntegerInstance(appLocale());
         return f.format(Math.round(n));
     }
-    private String formatPrice(double p){
-        if(p<=0)return"—";
-        String currency=getSharedPreferences(PREFS,MODE_PRIVATE).getString(KEY_CURRENCY,"EUR");
-        return formatInteger(p)+" "+currency;
+    private String formatPrice(double p) {
+        return CurrencyRateManager.formatCatalogPrice(this, p);
     }
 
     static class Vehicle {

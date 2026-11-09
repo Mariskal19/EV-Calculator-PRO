@@ -395,7 +395,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             StringBuilder specs = new StringBuilder();
             if (!cleanVersion(vehicle.version).trim().isEmpty()) specs.append(cleanVersion(vehicle.version));
             if (vehicle.year > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(vehicle.year); }
-            if (vehicle.price > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.price)).append(" €"); }
+            if (vehicle.price > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(CurrencyRateManager.formatCatalogPrice(this, vehicle.price)); }
             if (vehicle.wltpKm > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.wltpKm)).append(" km WLTP"); }
             TextView details = tv(specs.toString(), 12, sub());
             details.setPadding(0, dp(3), 0, dp(6));
@@ -666,7 +666,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             name.setTypeface(null,Typeface.BOLD);
             resultCard.addView(name,new LinearLayout.LayoutParams(-1,-2));
             StringBuilder specs=new StringBuilder();
-            if(vehicle.price>0)specs.append(fmt(vehicle.price)).append(" €");
+            if(vehicle.price>0)specs.append(CurrencyRateManager.formatCatalogPrice(this, vehicle.price));
             if(vehicle.wltpKm>0){if(specs.length()>0)specs.append("  ·  ");specs.append(fmt(vehicle.wltpKm)).append(" km WLTP");}
             if(vehicle.trunk>0){if(specs.length()>0)specs.append("  ·  ");specs.append(fmt(vehicle.trunk)).append(" L");}
             if(specs.length()==0)specs.append(cleanVersion(vehicle.version));
