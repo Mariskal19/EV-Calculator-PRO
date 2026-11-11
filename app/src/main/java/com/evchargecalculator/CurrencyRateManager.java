@@ -1,6 +1,7 @@
 package com.evchargecalculator;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,6 +23,8 @@ public final class CurrencyRateManager {
     private static final String KEY_RATES = "currency_rates_eur";
     private static final String KEY_DATE = "currency_rates_date";
     private static final String KEY_CURRENCY = "app_currency";
+    public static final String ACTION_RATES_UPDATED =
+            "com.evcalculatorpro.action.CURRENCY_RATES_UPDATED";
     private static final String API =
             "https://data-api.ecb.europa.eu/service/data/EXR/D.%s.EUR.SP00.A?format=csvdata";
     private static final AtomicBoolean REFRESH_IN_PROGRESS = new AtomicBoolean(false);
@@ -43,10 +46,17 @@ public final class CurrencyRateManager {
             new Thread(() -> {
                 try {
                     SharedPreferences preferences = preferences(app);
-                    CurrencyRateRepository.refresh(
+                    boolean updated = CurrencyRateRepository.refresh(
                             new PreferencesCache(preferences),
                             CurrencyRateManager::fetchCsv,
                             today());
+                    if (updated) {
+                        // The active catalog screen may have rendered its EUR fallback
+                        // while this background download was still running.
+                        Intent intent = new Intent(ACTION_RATES_UPDATED);
+                        intent.setPackage(app.getPackageName());
+                        app.sendBroadcast(intent);
+                    }
                 } finally {
                     REFRESH_IN_PROGRESS.set(false);
                 }
