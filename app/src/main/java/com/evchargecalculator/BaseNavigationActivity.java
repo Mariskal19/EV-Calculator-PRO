@@ -84,6 +84,9 @@ public abstract class BaseNavigationActivity extends Activity {
       appliedCurrency = currency;
       onHostAppearanceChanged(languageChanged, themeChanged, currencyChanged);
     }
+    // Keep every catalog host eligible to retry a missing/failed rate cache,
+    // including Android versions where the user returns directly to a detail screen.
+    CurrencyRateManager.refreshIfNeeded(this);
   }
 
   /**
