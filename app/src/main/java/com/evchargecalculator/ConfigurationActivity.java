@@ -303,6 +303,9 @@ public class ConfigurationActivity extends BaseNavigationActivity {
             checked,
             (d, w) -> {
               prefs.edit().putString(KEY_CURRENCY, codes[w]).apply();
+              // A first launch may still be waiting for rates, or an earlier
+              // request may have failed. Retry whenever the user selects a currency.
+              CurrencyRateManager.refreshIfNeeded(this);
               d.dismiss();
               currencyValue.setText(currencyName(codes[w]));
             })
