@@ -1,3 +1,13 @@
+## 2026-11-11 — Retirada del menú de diagnóstico de divisas
+
+- Se elimina de Configuración la entrada «Diagnóstico de divisas» y el diálogo manual asociado («Actualizar ahora»).
+- Se mantienen intactos la descarga automática ECB, los reintentos, la caché de tasas y la conversión de precios/costes. La selección de moneda sigue solicitando la actualización cuando corresponde.
+- Cambio aplicado exclusivamente en `develop/post-1.0.6`, commit `9da46cff1ea24f1374d4b960ddf3876d33a7caaa`.
+- No se modifican `main`, ramas de respaldo, versión `1.0.6`, `versionCode 62`, nombres de APK/AAB ni releases.
+- **Pendiente de validación:** ejecutar pruebas Java, `lintDebug` y `assembleDebug`; revisar el diff y probar la pantalla Configuración en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se da por terminado hasta verificar CI y la APK resultante.
+
+---
+
 ## 2026-11-11 — Mitigación TLS específica para la descarga ECB (validación pendiente)
 
 - La inspección TLS aportada por el usuario muestra que `data-api.ecb.europa.eu` entrega el certificado final y `Sectigo Public Server Authentication CA OV E36`, pero no incluye el certificado cross-signed E46 que enlaza con USERTrust ECC. El diagnóstico Android 10 registra `Trust anchor for certification path not found`; la omisión es una causa plausible, todavía pendiente de confirmar en el dispositivo.
