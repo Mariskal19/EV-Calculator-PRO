@@ -1,3 +1,11 @@
+## 2026-11-11 — Diagnóstico visible de tasas de cambio (pendiente de prueba en dispositivos)
+
+- Se añade en Configuración una entrada «Diagnóstico de divisas» que muestra la moneda seleccionada, fecha de la última descarga completa, las cinco tasas ECB realmente guardadas (USD, GBP, CHF, CAD y AUD), el último error de red/parseo y una conversión de prueba de 100 EUR.
+- El diálogo permite solicitar una descarga manual en segundo plano. El usuario puede volver a abrir el diagnóstico tras unos segundos para comprobar si se guardaron tasas nuevas o si persiste un error.
+- El diagnóstico consulta la caché persistida que utiliza el formateador del catálogo; por tanto, permite distinguir una descarga correcta de un mero cambio del símbolo de moneda. No expone datos personales ni altera los cálculos.
+- No se modifica el diseño de las pantallas principales, el catálogo, los precios originales, las tasas base ni las fórmulas de Coste. Se conservan `versionName 1.0.6` y `versionCode 62`; no se modifica `main`, `stable` ni releases.
+- Pendiente: revisar diff, ejecutar pruebas Java, `lintDebug` y `assembleDebug`; instalar y consultar el diagnóstico en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). Solo el resultado de la descarga en dispositivo permitirá confirmar conectividad real.
+
 ## 2026-11-11 — Refuerzo y diagnóstico de descarga de divisas en Android 10 (validación pendiente)
 
 - La prueba manual de APK Debug 70 confirma que Redmi Note 7 conserva USD en Configuración, pero los precios del catálogo siguen en EUR; Redmi Note 13 Pro sí refleja la moneda seleccionada. El selector y la persistencia no son el origen del síntoma.
