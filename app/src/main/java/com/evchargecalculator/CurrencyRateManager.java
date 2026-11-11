@@ -3,6 +3,7 @@ package com.evchargecalculator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,6 +24,8 @@ public final class CurrencyRateManager {
     private static final String KEY_RATES = "currency_rates_eur";
     private static final String KEY_DATE = "currency_rates_date";
     private static final String KEY_CURRENCY = "app_currency";
+    private static final String KEY_LAST_ERROR = "currency_rates_last_error";
+    private static final String TAG = "CurrencyRateManager";
     public static final String ACTION_RATES_UPDATED =
             "com.evcalculatorpro.action.CURRENCY_RATES_UPDATED";
     private static final String API =
@@ -55,8 +58,16 @@ public final class CurrencyRateManager {
                     boolean updated = CurrencyRateRepository.refresh(
                             new PreferencesCache(preferences),
                             CurrencyRateManager::fetchCsv,
-                            today());
+                            today(),
+                            failure -> {
+                                String detail = failure.getClass().getSimpleName()
+                                        + ": " + String.valueOf(failure.getMessage());
+                                preferences.edit().putString(KEY_LAST_ERROR, detail).apply();
+                                Log.w(TAG, "ECB exchange-rate refresh failed", failure);
+                            });
                     if (updated) {
+                        preferences.edit().remove(KEY_LAST_ERROR).apply();
+                        Log.i(TAG, "ECB exchange rates refreshed successfully");
                         // The active catalog screen may have rendered its EUR fallback
                         // while this background download was still running.
                         Intent intent = new Intent(ACTION_RATES_UPDATED);
@@ -102,6 +113,11 @@ public final class CurrencyRateManager {
         return CurrencyRateRepository.lastUpdate(new PreferencesCache(preferences(context)));
     }
 
+    /** Last failed refresh reason, retained for diagnostics until a complete refresh succeeds. */
+    public static String lastRefreshError(Context context) {
+        return preferences(context).getString(KEY_LAST_ERROR, "");
+    }
+
     private static SharedPreferences preferences(Context context) {
         return context.getApplicationContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     }
@@ -121,14 +137,39 @@ public final class CurrencyRateManager {
         return result;
     }
 
+    /** Retries one transient ECB/network failure once before failing the atomic refresh. */
     private static String fetchCsv(String currency) throws IOException {
+        IOException lastFailure = null;
+        for (int attempt = 1; attempt <= 2; attempt++) {
+            try {
+                return fetchCsvOnce(currency);
+            } catch (IOException failure) {
+                lastFailure = failure;
+                if (attempt == 1) {
+                    try {
+                        Thread.sleep(750L);
+                    } catch (InterruptedException interrupted) {
+                        Thread.currentThread().interrupt();
+                        throw new IOException("ECB retry interrupted for " + currency, interrupted);
+                    }
+                }
+            }
+        }
+        throw lastFailure != null ? lastFailure
+                : new IOException("ECB request failed for " + currency);
+    }
+
+    private static String fetchCsvOnce(String currency) throws IOException {
         HttpURLConnection connection = null;
         try {
             URL url = new URL(String.format(Locale.US, API, currency));
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(8000);
-            connection.setReadTimeout(8000);
+            connection.setConnectTimeout(10000);
+            connection.setReadTimeout(10000);
             connection.setRequestMethod("GET");
+            connection.setInstanceFollowRedirects(true);
+            connection.setRequestProperty("Accept", "text/csv, text/plain;q=0.9, */*;q=0.8");
+            connection.setRequestProperty("User-Agent", "EV-Calculator-PRO/1.0.6 Android");
             int status = connection.getResponseCode();
             if (status != HttpURLConnection.HTTP_OK) {
                 throw new IOException("ECB returned HTTP " + status + " for " + currency);
