@@ -14,6 +14,7 @@ public final class CurrencyRateRepositorySmokeTest {
         testInvalidObservations();
         testFailedDownloadPreservesCacheAndCanRecover();
         testEmptyCacheRefreshesAndRetriesAfterFailure();
+        testRefreshFailureIsReported();
         testIncompleteRefreshNeverReplacesCache();
         testLastUpdateSemantics();
         testConversions();
@@ -117,6 +118,21 @@ public final class CurrencyRateRepositorySmokeTest {
         check(!CurrencyRateRepository.refreshIfNeeded(cache, currency -> {
             throw new IOException("same-day cache must be reused");
         }, today), "complete same-day cache avoids a redundant download");
+    }
+
+    private static void testRefreshFailureIsReported() {
+        FakeCache cache = new FakeCache();
+        Exception[] reported = {null};
+        check(!CurrencyRateRepository.refresh(cache, currency -> {
+            throw new IOException("simulated Android 10 network/TLS failure");
+        }, "2026-11-11", failure -> reported[0] = failure),
+                "failed refresh remains unsuccessful when diagnostics are enabled");
+        check(reported[0] instanceof IOException,
+                "refresh exposes the original network exception to diagnostics");
+        check("simulated Android 10 network/TLS failure".equals(reported[0].getMessage()),
+                "refresh diagnostics preserve the actionable failure message");
+        check("".equals(CurrencyRateRepository.lastUpdate(cache)),
+                "diagnostic reporting does not mark a failed cache as successful");
     }
 
     private static void testIncompleteRefreshNeverReplacesCache() {
