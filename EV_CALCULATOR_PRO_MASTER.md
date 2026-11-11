@@ -1,3 +1,13 @@
+## 2026-11-11 — Mitigación TLS específica para la descarga ECB (validación pendiente)
+
+- La inspección TLS aportada por el usuario muestra que `data-api.ecb.europa.eu` entrega el certificado final y `Sectigo Public Server Authentication CA OV E36`, pero no incluye el certificado cross-signed E46 que enlaza con USERTrust ECC. El diagnóstico Android 10 registra `Trust anchor for certification path not found`; la omisión es una causa plausible, todavía pendiente de confirmar en el dispositivo.
+- Se incorpora `Sectigo Public Server Authentication Root E46` cross-signed por `USERTrust ECC Certification Authority` como ancla de confianza adicional. Huella SHA-256 del DER: `ea6b89ed6907a209ff9188676fb164e7aced894b8996dfbe5ce5bbcc22de4ddd`. El certificado es una CA intermedia cross-signed, no el certificado leaf del BCE ni una raíz autofirmada.
+- Se añade `res/xml/network_security_config.xml` y se referencia desde el manifiesto. La confianza adicional se limita al host exacto `data-api.ecb.europa.eu`; conserva las CA del sistema, mantiene el tráfico en HTTPS y activa Certificate Transparency en Android 16/API 36 o superior. No se instala un TrustManager propio, no se desactiva la validación TLS y no se fija el certificado leaf.
+- No se modifica el endpoint ECB, el parser CSV, las tasas, la caché, las fórmulas ni la interfaz. Se mantienen `versionName 1.0.6` y `versionCode 62`; el cambio está únicamente en `develop/post-1.0.6`.
+- **Pendiente de validación:** revisar el diff y verificar en CI las pruebas Java, `lintDebug` y `assembleDebug`; después instalar la APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). En ambos debe comprobarse que se descargan las cinco tasas y que Comparar/ficha reflejan USD/GBP tras la descarga. No se considera solucionado hasta verificarlo en los dispositivos.
+
+---
+
 ## 2026-11-11 — Diagnóstico visible de tasas de cambio (pendiente de prueba en dispositivos)
 
 - Se añade en Configuración una entrada «Diagnóstico de divisas» que muestra la moneda seleccionada, fecha de la última descarga completa, las cinco tasas ECB realmente guardadas (USD, GBP, CHF, CAD y AUD), el último error de red/parseo y una conversión de prueba de 100 EUR.
