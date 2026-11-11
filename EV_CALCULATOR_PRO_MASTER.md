@@ -1,3 +1,16 @@
+## 2026-11-11 — Refuerzo y diagnóstico de descarga de divisas en Android 10 (validación pendiente)
+
+- La prueba manual de APK Debug 70 confirma que Redmi Note 7 conserva USD en Configuración, pero los precios del catálogo siguen en EUR; Redmi Note 13 Pro sí refleja la moneda seleccionada. El selector y la persistencia no son el origen del síntoma.
+- La revisión del código confirma que CompararCochesScreen reconstruye sus precios al cambiar la moneda y que BaseNavigationActivity recibe el evento interno al guardar una caché completa. No hay evidencia suficiente para atribuir el fallo a una incompatibilidad TLS concreta de Android 10.
+- CurrencyRateRepository ya no descarta silenciosamente el motivo de un refresco fallido: permite informar la excepción original. CurrencyRateManager registra el fallo en Logcat y conserva el último motivo en preferencias de diagnóstico; lo limpia tras una descarga completa correcta.
+- Se refuerza la petición ECB con cabeceras Accept y User-Agent, seguimiento explícito de redirecciones, timeout de 10 s y un reintento por error de E/S antes de abandonar la actualización atómica.
+- BaseNavigationActivity solicita refresco al reanudar cualquier pantalla basada en ese host, además de los puntos de entrada que ya lo solicitaban. Si la caché sigue vacía o incompleta, el intento puede repetirse; una caché completa del día evita tráfico adicional.
+- Se añaden pruebas Java para comprobar que el error original se propaga al mecanismo de diagnóstico sin marcar como válida una caché fallida. No se cambia el fallback EUR, la conversión de importes de carga/coste, los precios originales ni la interfaz.
+- Rama develop/post-1.0.6. Se mantienen versionName 1.0.6 y versionCode 62; no se modifica main, stable, ramas de respaldo ni releases.
+- Pendiente de validación: ejecutar pruebas Java, lintDebug y assembleDebug; revisar el diff y probar la nueva APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). El problema no se considera resuelto hasta confirmar en ambos que Comparar y ficha muestran USD/GBP correctamente tras la descarga real.
+
+---
+
 ## 2026-11-11 — Corrección del refresco de divisas y actualización de pantallas (validación pendiente)
 
 - Se identifica el problema de primera instalación: la descarga ECB se ejecuta en segundo plano, pero las pantallas podían renderizar el fallback EUR antes de que terminase. No existía una notificación que obligase a reconstruir la pantalla visible al guardar una caché completa.
