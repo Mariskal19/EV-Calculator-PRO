@@ -13,6 +13,7 @@ public final class CurrencyRateRepositorySmokeTest {
         testReorderedAndQuotedCsv();
         testInvalidObservations();
         testFailedDownloadPreservesCacheAndCanRecover();
+        testEmptyCacheRefreshesAndRetriesAfterFailure();
         testIncompleteRefreshNeverReplacesCache();
         testLastUpdateSemantics();
         testConversions();
@@ -89,6 +90,33 @@ public final class CurrencyRateRepositorySmokeTest {
         check(!CurrencyRateRepository.refreshIfNeeded(cache, currency -> {
             throw new IOException("must not be called for today's successful cache");
         }, "2026-11-06"), "same-day successful cache avoids redundant download");
+    }
+
+    private static void testEmptyCacheRefreshesAndRetriesAfterFailure() {
+        FakeCache cache = new FakeCache();
+        String today = "2026-11-11";
+        check(!CurrencyRateRepository.refreshIfNeeded(cache, currency -> {
+            throw new IOException("simulated first-install network failure");
+        }, today), "empty cache reports a failed first attempt");
+        check("".equals(CurrencyRateRepository.lastUpdate(cache)),
+                "failed first-install refresh does not mark the day successful");
+
+        int[] downloads = {0};
+        CurrencyRateRepository.CsvSource recovered = currency -> {
+            downloads[0]++;
+            return csv(rateFor(currency));
+        };
+        check(CurrencyRateRepository.refreshIfNeeded(cache, recovered, today),
+                "empty cache retries successfully later on the same day");
+        check(downloads[0] == CurrencyRateRepository.CURRENCIES.size(),
+                "successful retry downloads every supported currency");
+        check(CurrencyRateRepository.isComplete(cache.rates),
+                "first successful refresh stores the complete five-currency cache");
+        check(today.equals(CurrencyRateRepository.lastUpdate(cache)),
+                "successful first-install refresh records its date");
+        check(!CurrencyRateRepository.refreshIfNeeded(cache, currency -> {
+            throw new IOException("same-day cache must be reused");
+        }, today), "complete same-day cache avoids a redundant download");
     }
 
     private static void testIncompleteRefreshNeverReplacesCache() {
