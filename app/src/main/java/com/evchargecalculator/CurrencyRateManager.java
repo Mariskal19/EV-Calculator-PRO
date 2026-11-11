@@ -118,6 +118,34 @@ public final class CurrencyRateManager {
         return preferences(context).getString(KEY_LAST_ERROR, "");
     }
 
+    /** Human-readable snapshot used by the in-app currency diagnostics. */
+    public static String diagnostics(Context context) {
+        String selected = preferences(context).getString(KEY_CURRENCY, "EUR");
+        Map<String, Double> rates = readCachedRates(context);
+        StringBuilder report = new StringBuilder();
+        String update = lastUpdate(context);
+        report.append("Moneda seleccionada: ").append(selected).append('\n');
+        report.append("Última descarga completa: ")
+                .append(update.isEmpty() ? "ninguna" : update).append('\n');
+        report.append("Tasas guardadas (unidades por 1 EUR):\n");
+        report.append("EUR: 1.000000\n");
+        for (String currency : CurrencyRateRepository.CURRENCIES) {
+            Double value = rates.get(currency);
+            report.append(currency).append(": ")
+                    .append(value == null ? "NO DISPONIBLE" : String.format(Locale.US, "%.6f", value))
+                    .append('\n');
+        }
+        String error = lastRefreshError(context);
+        report.append("Último error: ").append(error.isEmpty() ? "ninguno registrado" : error);
+        if (!"EUR".equals(selected)) {
+            Double rate = rates.get(selected);
+            report.append("\nConversión de prueba (100 EUR): ")
+                    .append(rate == null ? "no posible: falta la tasa" :
+                            String.format(Locale.US, "%.2f %s", 100.0d * rate, selected));
+        }
+        return report.toString();
+    }
+
     private static SharedPreferences preferences(Context context) {
         return context.getApplicationContext().getSharedPreferences(PREFS, Context.MODE_PRIVATE);
     }
