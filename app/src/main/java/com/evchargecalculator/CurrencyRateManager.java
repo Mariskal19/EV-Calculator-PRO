@@ -28,6 +28,7 @@ public final class CurrencyRateManager {
     private static final String API =
             "https://data-api.ecb.europa.eu/service/data/EXR/D.%s.EUR.SP00.A?format=csvdata";
     private static final AtomicBoolean REFRESH_IN_PROGRESS = new AtomicBoolean(false);
+    private static final AtomicBoolean REFRESH_REQUESTED_WHILE_BUSY = new AtomicBoolean(false);
 
     private CurrencyRateManager() {}
 
@@ -41,7 +42,12 @@ public final class CurrencyRateManager {
     /** Starts one background refresh. A failed attempt is not persisted as a daily success. */
     public static void refreshAsync(Context context) {
         final Context app = context.getApplicationContext();
-        if (!REFRESH_IN_PROGRESS.compareAndSet(false, true)) return;
+        if (!REFRESH_IN_PROGRESS.compareAndSet(false, true)) {
+            // Do not lose a refresh request made while the first attempt is running.
+            // If that attempt fails, one queued retry is started after it completes.
+            REFRESH_REQUESTED_WHILE_BUSY.set(true);
+            return;
+        }
         try {
             new Thread(() -> {
                 try {
@@ -59,6 +65,9 @@ public final class CurrencyRateManager {
                     }
                 } finally {
                     REFRESH_IN_PROGRESS.set(false);
+                    if (REFRESH_REQUESTED_WHILE_BUSY.getAndSet(false)) {
+                        refreshIfNeeded(app);
+                    }
                 }
             }, "currency-rate-refresh").start();
         } catch (RuntimeException ex) {
