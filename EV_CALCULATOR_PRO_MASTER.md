@@ -1,3 +1,16 @@
+## 2026-11-11 — Corrección del refresco de divisas y actualización de pantallas (validación pendiente)
+
+- Se identifica el problema de primera instalación: la descarga ECB se ejecuta en segundo plano, pero las pantallas podían renderizar el fallback EUR antes de que terminase. No existía una notificación que obligase a reconstruir la pantalla visible al guardar una caché completa.
+- `CurrencyRateManager` emite ahora un broadcast interno, limitado al paquete, únicamente después de guardar correctamente las cinco tasas.
+- `BaseNavigationActivity` escucha el evento durante su ciclo de vida y refresca la pantalla activa cuando llega una caché nueva. `MainActivity` aprovecha su reconstrucción selectiva de pestaña; el comportamiento de las pantallas de coste no cambia.
+- Al seleccionar una divisa en Configuración se solicita también `refreshIfNeeded()`, permitiendo reintentar una descarga anterior fallida sin bloquearse por un supuesto éxito diario.
+- Se amplía `.github/tests/CurrencyRateRepositorySmokeTest.java` para cubrir caché vacía, fallo inicial, reintento en el mismo día, descarga completa y reutilización de caché válida.
+- No se cambia el formateo/fallback de precios, las tasas base EUR, los cálculos de carga/coste ni los datos originales del catálogo.
+- Rama `develop/post-1.0.6`. Se conservan `versionName 1.0.6` y `versionCode 62`. No se modifica `main` ni `stable`.
+- **Pendiente de validación:** ejecutar CI (pruebas Java, `lintDebug` y `assembleDebug`), revisar el diff completo y probar la APK resultante en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). No se considera resuelto hasta verificar la descarga real y la actualización automática de Comparar/ficha de vehículo.
+
+---
+
 ## 2026-11-09 — Corrección de precisión decimal en precios del catálogo (revisión)
 
 - Se corrige la expectativa de prueba en `CurrencyRateRepositorySmokeTest.testCatalogPriceIntegerNoDecimals()`: `25000.0 EUR` se formatea como `"25.000 €"` (con separador de miles español), no como `"25000 €"`.
