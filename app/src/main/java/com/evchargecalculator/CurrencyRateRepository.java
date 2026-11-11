@@ -36,11 +36,21 @@ final class CurrencyRateRepository {
         return refresh(cache, source, today);
     }
 
+    interface FailureListener {
+        void onFailure(Exception failure);
+    }
+
     /**
      * Downloads and validates the complete five-currency set before changing the cache.
      * Any HTTP, parsing or validation failure leaves old rates and update date untouched.
      */
     static boolean refresh(Cache cache, CsvSource source, String updateDate) {
+        return refresh(cache, source, updateDate, null);
+    }
+
+    /** Same atomic refresh, while exposing the failure to diagnostics without throwing it away. */
+    static boolean refresh(Cache cache, CsvSource source, String updateDate,
+                           FailureListener failureListener) {
         Map<String, Double> candidate = new LinkedHashMap<>();
         try {
             for (String currency : CURRENCIES) {
@@ -51,7 +61,8 @@ final class CurrencyRateRepository {
             requireCompleteRates(candidate);
             cache.saveRates(Collections.unmodifiableMap(candidate), updateDate);
             return true;
-        } catch (Exception ignored) {
+        } catch (Exception failure) {
+            if (failureListener != null) failureListener.onFailure(failure);
             return false;
         }
     }
