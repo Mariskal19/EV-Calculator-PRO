@@ -191,6 +191,12 @@ public class ConfigurationActivity extends BaseNavigationActivity {
             tr("Tema", "Theme", "Thème", "Design", "Tema", "Tema"),
             themeName(),
             v -> chooseTheme());
+    addRow(
+        card,
+        "📡",
+        tr("Diagnóstico de divisas", "Currency diagnostics", "Diagnostic des devises", "Währungsdiagnose", "Diagnostica valute", "Diagnóstico de moedas"),
+        tr("Ver tasas y estado de descarga", "View rates and download status", "Voir les taux et l'état du téléchargement", "Kurse und Downloadstatus anzeigen", "Vedi tassi e stato download", "Ver taxas e estado da transferência"),
+        v -> showCurrencyDiagnostics());
     root.addView(card);
     Space bottom = new Space(this);
     root.addView(bottom, new LinearLayout.LayoutParams(1, 0, 1));
@@ -254,6 +260,30 @@ public class ConfigurationActivity extends BaseNavigationActivity {
     lp.setMargins(0, 0, 0, dp(10));
     parent.addView(r, lp);
     return v;
+  }
+
+  private void showCurrencyDiagnostics() {
+    new AlertDialog.Builder(this)
+        .setTitle(tr("Diagnóstico de divisas", "Currency diagnostics", "Diagnostic des devises", "Währungsdiagnose", "Diagnostica valute", "Diagnóstico de moedas"))
+        .setMessage(CurrencyRateManager.diagnostics(this))
+        .setPositiveButton(
+            tr("Actualizar ahora", "Refresh now", "Actualiser", "Jetzt aktualisieren", "Aggiorna ora", "Atualizar agora"),
+            (dialog, which) -> {
+              CurrencyRateManager.refreshAsync(this);
+              new AlertDialog.Builder(this)
+                  .setTitle(tr("Descarga solicitada", "Download requested", "Téléchargement demandé", "Download angefordert", "Download richiesto", "Transferência solicitada"))
+                  .setMessage(tr(
+                      "Se ha solicitado la descarga en segundo plano. Espera unos segundos y vuelve a abrir el diagnóstico para ver el resultado.",
+                      "A background download has been requested. Wait a few seconds, then reopen diagnostics to see the result.",
+                      "Le téléchargement en arrière-plan a été demandé. Attendez quelques secondes puis rouvrez le diagnostic.",
+                      "Der Download im Hintergrund wurde angefordert. Warte einige Sekunden und öffne die Diagnose erneut.",
+                      "È stato richiesto il download in background. Attendi qualche secondo e riapri la diagnostica.",
+                      "Foi solicitada a transferência em segundo plano. Aguarde alguns segundos e volte a abrir o diagnóstico."))
+                  .setPositiveButton("OK", null)
+                  .show();
+            })
+        .setNegativeButton(tr("Cerrar", "Close", "Fermer", "Schließen", "Chiudi", "Fechar"), null)
+        .show();
   }
 
   private void chooseLanguage() {
