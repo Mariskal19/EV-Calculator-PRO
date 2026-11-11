@@ -4,6 +4,7 @@
 - `CurrencyRateManager` emite ahora un broadcast interno, limitado al paquete, únicamente después de guardar correctamente las cinco tasas.
 - `BaseNavigationActivity` escucha el evento durante su ciclo de vida y refresca la pantalla activa cuando llega una caché nueva. `MainActivity` aprovecha su reconstrucción selectiva de pestaña; el comportamiento de las pantallas de coste no cambia.
 - Al seleccionar una divisa en Configuración se solicita también `refreshIfNeeded()`, permitiendo reintentar una descarga anterior fallida sin bloquearse por un supuesto éxito diario.
+- Las solicitudes de refresco recibidas mientras ya hay una descarga activa quedan encoladas: si el intento en curso falla, se lanza una repetición; si tiene éxito, la caché válida evita descargas redundantes.
 - Se amplía `.github/tests/CurrencyRateRepositorySmokeTest.java` para cubrir caché vacía, fallo inicial, reintento en el mismo día, descarga completa y reutilización de caché válida.
 - No se cambia el formateo/fallback de precios, las tasas base EUR, los cálculos de carga/coste ni los datos originales del catálogo.
 - Rama `develop/post-1.0.6`. Se conservan `versionName 1.0.6` y `versionCode 62`. No se modifica `main` ni `stable`.
