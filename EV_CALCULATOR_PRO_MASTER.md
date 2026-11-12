@@ -3571,3 +3571,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Cambio de código aplicado en `develop/post-1.0.6`, commit `d1a966acdc3432b3facf2c27a655033f433770da`.
 - **Pendiente:** ejecutar CI, revisar `lintDebug`, pruebas y `assembleDebug`; instalar el APK resultante y comprobar el retorno con Atrás en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se considera solucionado hasta verificar ambas pruebas manuales.
 - Sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, nombres de APK ni releases.
+
+
+## 2026-11-12 — Corrección del flujo Añadir desde ficha a Comparar (CI pendiente)
+
+- Incidencia comunicada: desde Buscar coches similares, al abrir los detalles de un resultado y pulsar «Añadir a comparativa», la app navegaba a Comparar pero no mostraba ningún vehículo.
+- Causa identificada en el código: `CarDetailActivity.addToComparison()` persistía IDs y claves lógicas, pero no marcaba `compare_selection_initialized`. Además, si `MainActivity` ya conservaba una instancia de `CompararCochesScreen`, la navegación de retorno a la pestaña 3 podía no recargar la selección recién guardada.
+- Corrección en `CarDetailActivity`: marca `compare_selection_initialized=true` en la misma escritura de preferencias y envía el extra `reload_compare_selection=true` junto con `open_primary_tab=3`.
+- Corrección en `CompararCochesScreen`: añade `reloadSelectionFromPreferences()`, que vuelve a cargar las selecciones persistidas y reconstruye la tabla.
+- Corrección en `MainActivity.onNewIntent()`: cuando vuelve desde la ficha con el indicador de recarga y Comparar ya está visible, recarga la selección en la instancia existente; si Comparar no era la pestaña activa, mantiene la navegación habitual.
+- Cambios limitados a esos tres archivos Java en `develop/post-1.0.6`. No se cambia catálogo, buscador, criterios de similitud, diseño, conversión de divisas ni persistencia general. Sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, nombres de APK/AAB ni releases.
+- Commits de código: `81d5aa5a0dc136f29a1cff2e325ec0561a127a34`, `e4c3dcd9e869a2156c25440ba5356650f699aeaf`, `4dbd5f4be3694a5fb5cf1629ab99387a2a3ccec8`.
+- **Pendiente:** revisar el diff completo y validar CI (`lintDebug`, pruebas y `assembleDebug`). La corrección no se considera verificada hasta instalar la APK y reproducir el flujo Buscar similares → Detalles → Añadir → Comparar en Redmi Note 13 Pro y Redmi Note 7.
