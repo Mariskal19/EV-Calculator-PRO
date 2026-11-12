@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -136,7 +137,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
                     "Definições"),
             22,
             headerColor());
-    title.setTypeface(null, 1);
+    title.setTypeface(null, Typeface.BOLD);
     title.setGravity(Gravity.CENTER);
     title.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
     title.setShadowLayer(dp(4), 0, dp(2), dark ? Color.argb(90, 0, 0, 0) : Color.argb(55, 0, 0, 0));
@@ -166,7 +167,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
                 "Preferências da aplicação"),
             18,
             text());
-    section.setTypeface(null, 1);
+    section.setTypeface(null, Typeface.BOLD);
     card.addView(section);
     space(card, 12);
     languageValue =
@@ -205,7 +206,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
             13,
             dark ? Color.rgb(105, 175, 255) : Color.rgb(46, 107, 255));
     privacyLink.setGravity(Gravity.CENTER);
-    privacyLink.setTypeface(null, 1);
+    privacyLink.setTypeface(null, Typeface.BOLD);
     privacyLink.setPadding(0, dp(4), 0, dp(4));
     privacyLink.setClickable(true);
     privacyLink.setFocusable(true);
@@ -239,7 +240,7 @@ public class ConfigurationActivity extends BaseNavigationActivity {
     texts.setOrientation(LinearLayout.VERTICAL);
     texts.setGravity(Gravity.CENTER_VERTICAL);
     TextView l = tv(label, 15, text());
-    l.setTypeface(null, 1);
+    l.setTypeface(null, Typeface.BOLD);
     texts.addView(l);
     TextView v = tv(value, 13, sub());
     v.setTag("value");
@@ -302,6 +303,12 @@ public class ConfigurationActivity extends BaseNavigationActivity {
             checked,
             (d, w) -> {
               prefs.edit().putString(KEY_CURRENCY, codes[w]).apply();
+              Intent currencyChanged = new Intent(CurrencyRateManager.ACTION_CURRENCY_SELECTION_CHANGED);
+              currencyChanged.setPackage(getPackageName());
+              sendBroadcast(currencyChanged);
+              // A first launch may still be waiting for rates, or an earlier
+              // request may have failed. Retry whenever the user selects a currency.
+              CurrencyRateManager.refreshIfNeeded(this);
               d.dismiss();
               currencyValue.setText(currencyName(codes[w]));
             })

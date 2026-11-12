@@ -1,9 +1,11 @@
 package com.evchargecalculator;
 
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -27,6 +29,15 @@ public class MainActivity extends BaseNavigationActivity {
   private SimilarCarsScreen similarCarsScreen;
   private CompararCochesScreen compareScreen;
   private OnBackInvokedCallback systemBackCallback;
+  private boolean currencySelectionReceiverRegistered;
+  private boolean activityResumed;
+  private boolean currencySelectionPending;
+  private final BroadcastReceiver currencySelectionReceiver = new BroadcastReceiver() {
+    @Override public void onReceive(Context context, Intent intent) {
+      currencySelectionPending = true;
+      if (activityResumed) applyPendingCurrencySelection();
+    }
+  };
 
   @Override protected int getBottomNavigationIndex() { return selectedPrimaryTab; }
   @Override protected boolean handlesBottomNavigationInternally() { return true; }
@@ -38,6 +49,13 @@ public class MainActivity extends BaseNavigationActivity {
     // only the selected tab in this Activity instance, synchronously and without
     // an outgoing-screen animation, instead of recreating the host Activity.
     if (languageChanged) LanguageManager.applyStored(this);
+    // Keep a host-level currency snapshot as a fallback for returning from
+    // ConfigurationActivity with Android's system Back button. This prevents
+    // the comparison tab from depending solely on the base lifecycle detector.
+    if (currencyChanged && prefs != null) {
+      lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+      currencySelectionPending = false;
+    }
     if (themeChanged || languageChanged || currencyChanged) {
       if (selectedPrimaryTab == 0) {
         savePreferences();
@@ -136,6 +154,12 @@ public class MainActivity extends BaseNavigationActivity {
 
   @Override public void onCreate(Bundle b) {
     super.onCreate(b);
+    androidx.core.content.ContextCompat.registerReceiver(
+        this,
+        currencySelectionReceiver,
+        new IntentFilter(CurrencyRateManager.ACTION_CURRENCY_SELECTION_CHANGED),
+        androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED);
+    currencySelectionReceiverRegistered = true;
     registerSystemBackCallback();
     prefs = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE);
     int restoreTab = 0;
@@ -165,7 +189,61 @@ public class MainActivity extends BaseNavigationActivity {
       EdgeToEdgeHelper.apply(this, dark);
     }
   }
-  @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
+  @Override
+  protected void onResume() {
+    super.onResume();
+    activityResumed = true;
+    boolean currencySelectionApplied = applyPendingCurrencySelection();
+    if (selectedPrimaryTab == 1) {
+      if (costScreen != null) costScreen.onHostResume();
+      return;
+    }
+    if (selectedPrimaryTab == 2) {
+      if (similarCarsScreen != null) similarCarsScreen.onHostResume();
+      return;
+    }
+    if (selectedPrimaryTab == 3) {
+      if (currencySelectionApplied) return;
+      String resumedCurrency = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE)
+          .getString(KEY_CURRENCY, "EUR");
+      if (!resumedCurrency.equals(lastCurrency)) {
+        // Fallback in case the host's appearance callback was not delivered.
+        // Recreate only the comparison view; its selected vehicle IDs are persisted.
+        lastCurrency = resumedCurrency;
+        if (compareScreen != null) compareScreen.onHostPause();
+        compareScreen = null;
+        showPrimaryTab(3, false);
+      } else if (compareScreen != null) {
+        compareScreen.onHostResume();
+      }
+      return;
+    }
+    if (battery != null && !busy) {
+      LanguageManager.applyStored(this);
+      String cl = LanguageManager.getSelectedLanguage(this);
+      String cc = prefs.getString(KEY_CURRENCY, "EUR");
+      boolean lc = lastLanguage == null || !cl.equals(lastLanguage);
+      boolean cur = lastCurrency == null || !cc.equals(lastCurrency);
+      boolean sd = prefs.contains(KEY_DARK_THEME)
+          ? prefs.getBoolean(KEY_DARK_THEME, false)
+          : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+      boolean tc = sd != dark;
+      lastLanguage = cl;
+      lastCurrency = cc;
+      if (lc || cur || tc) {
+        dark = sd;
+        build();
+        loadPreferences();
+        applyTheme();
+        applyCurrency();
+        calculate();
+        EdgeToEdgeHelper.apply(this, dark);
+        return;
+      }
+      applyCurrency();
+      calculate();
+    }
+  }
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
@@ -189,11 +267,18 @@ public class MainActivity extends BaseNavigationActivity {
         return;
       }
 
-      selectPrimaryTab(destination);
+      boolean reloadCompareSelection = intent.getBooleanExtra("reload_compare_selection", false);
+      intent.removeExtra("reload_compare_selection");
+      if (destination == 3 && reloadCompareSelection && selectedPrimaryTab == 3 && compareScreen != null) {
+        compareScreen.reloadSelectionFromPreferences();
+        EdgeToEdgeHelper.apply(this, dark, true, compareScreen);
+      } else {
+        selectPrimaryTab(destination);
+      }
     }
   }
 
-  @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else if(selectedPrimaryTab==3&&compareScreen!=null)compareScreen.onHostPause();else savePreferences();super.onPause();}
+  @Override protected void onPause(){activityResumed=false;if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else if(selectedPrimaryTab==3&&compareScreen!=null)compareScreen.onHostPause();else savePreferences();super.onPause();}
 
   /**
    * Android 13+ routes the system Back gesture through OnBackInvokedDispatcher.
@@ -209,6 +294,10 @@ public class MainActivity extends BaseNavigationActivity {
 
   @Override
   protected void onDestroy() {
+    if (currencySelectionReceiverRegistered) {
+      unregisterReceiver(currencySelectionReceiver);
+      currencySelectionReceiverRegistered = false;
+    }
     if (android.os.Build.VERSION.SDK_INT >= 33 && systemBackCallback != null) {
       getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(systemBackCallback);
       systemBackCallback = null;
@@ -216,10 +305,30 @@ public class MainActivity extends BaseNavigationActivity {
     super.onDestroy();
   }
 
+  /**
+   * Applies a currency selection signalled by ConfigurationActivity. The
+   * lifecycle comparison remains as a fallback if the broadcast is missed.
+   */
+  private boolean applyPendingCurrencySelection() {
+    if (!currencySelectionPending || prefs == null) return false;
+    String selectedCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+    currencySelectionPending = false;
+    if (selectedCurrency.equals(lastCurrency)) return false;
+    lastCurrency = selectedCurrency;
+    if (selectedPrimaryTab != 3) return false;
+    if (compareScreen != null) compareScreen.onHostPause();
+    compareScreen = null;
+    showPrimaryTab(3, false);
+    return true;
+  }
+
   private void handleSystemBack() {
     navigateBackWithinTabs();
   }
 
+  // Keep the legacy fallback for Android 12 and earlier. API 33+ is handled
+  // by the OnBackInvokedCallback registered above, including gesture navigation.
+  @SuppressLint("GestureBackNavigation")
   @Override
   public void onBackPressed() {
     handleSystemBack();
@@ -228,8 +337,13 @@ public class MainActivity extends BaseNavigationActivity {
   void loadPreferences(){if(prefs==null)return;busy=true;String sb=prefs.getString("battery",null);battery.setText((sb==null||sb.equals("130"))?"80":sb);power.setText(prefs.getString("power",power.getText().toString()));price.setText(prefs.getString("price",price.getText().toString()));departure.setText(prefs.getString("departure",departure.getText().toString()));xguard.setText(prefs.getString("xguard",xguard.getText().toString()));range.setValues(prefs.getInt("current",range.getCurrent()),prefs.getInt("target",range.getTarget()));xSwitch.setChecked(prefs.getBoolean("xguard_enabled",xSwitch.isChecked()));xguard.setEnabled(xSwitch.isChecked());busy=false;}
   int text(){return dark?Color.rgb(245,248,255):white;} int sub(){return dark?Color.rgb(170,183,204):secondary;}
   String currencySymbol(){String c=prefs.getString(KEY_CURRENCY,"EUR");if("USD".equals(c))return "$";if("GBP".equals(c))return "£";if("CHF".equals(c))return "CHF";if("CAD".equals(c))return "CA$";if("AUD".equals(c))return "A$";return "€";}
+  // La unidad incluye el símbolo de la moneda seleccionada y la unidad fija /kWh.
+  @SuppressLint("SetTextI18n")
   void applyCurrency(){if(priceUnit!=null)priceUnit.setText(currencySymbol()+"/kWh");}
 
+  // Los textos de esta construcción pasan por tv(), que aplica el diccionario
+  // de LanguageManager para los seis idiomas. Lint no puede seguir ese helper.
+  @SuppressLint("SetTextI18n")
   void build(){FrameLayout frame=new FrameLayout(this);background=new PremiumBackgroundView(this);frame.addView(background,new FrameLayout.LayoutParams(-1,-1));scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);root=new LinearLayout(this);root.setOrientation(LinearLayout.VERTICAL);root.setPadding(0,0,0,dp(24));scroll.addView(root);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));mainContent=frame;setContentView(frame);
     // BaseNavigationActivity already reserves scroll range for the fixed bottom bar.
     // With adjustResize, Android resizes this ScrollView when the keyboard opens;
@@ -249,14 +363,16 @@ public class MainActivity extends BaseNavigationActivity {
       return insets;
     });
     FrameLayout hero=new FrameLayout(this);hero.setLayoutParams(new LinearLayout.LayoutParams(-1,dp(260)));ImageView sceneHeader=new ImageView(this);sceneHeader.setImageResource(com.evchargecalculator.R.drawable.cabecera_charge_calculator);sceneHeader.setScaleType(ImageView.ScaleType.CENTER_CROP);sceneHeader.setAdjustViewBounds(false);sceneHeader.setTranslationY(-dp(10));hero.addView(sceneHeader,new FrameLayout.LayoutParams(-1,-1));
-    View topFade=new View(this);topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));headerTitle=tv("EV Charge Calculator",22,Color.WHITE);headerTitle.setTypeface(null,1);headerTitle.setGravity(Gravity.CENTER);headerTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);headerTitle.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56));tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;tp.leftMargin=dp(40);tp.rightMargin=dp(40);tp.topMargin=dp(4);hero.addView(headerTitle,tp);root.addView(hero);
-    LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null,1);c1.addView(h1);spaceIn(c1,12);battery=edit("80");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));LinearLayout.LayoutParams c1Lp=(LinearLayout.LayoutParams)c1.getLayoutParams();c1Lp.topMargin=-dp(26);c1.setLayoutParams(c1Lp);rangeSummary=tv("Cargar la batería desde 30% al 80%",15,text());rangeSummary.setGravity(Gravity.CENTER);rangeSummary.setTypeface(null,1);c1.addView(rangeSummary);range=new BatteryRangeView(this);c1.addView(range,new LinearLayout.LayoutParams(-1,dp(62)));chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(14);
-    LinearLayout c2=card();TextView h2=tv("Carga",18,text());h2.setTypeface(null,1);c2.addView(h2);spaceIn(c2,12);power=edit("3,45");row(c2,"Potencia",power,"kW");spaceIn(c2,8);price=edit("0,15");row(c2,"Precio energía",price,currencySymbol()+"/kWh");spaceIn(c2,8);LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);xr.addView(tv("Centinela / XGuard (consumo / 24 h)",14,sub()),new LinearLayout.LayoutParams(0,54,1));xSwitch=new Switch(this);xSwitch.setThumbTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{blue,dark?Color.rgb(120,130,140):Color.rgb(150,160,170)}));xSwitch.setTrackTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{blue,dark?Color.rgb(40,75,105):blue,dark?Color.rgb(55,65,75):Color.rgb(215,220,225)}));xSwitch.setChecked(true);xr.addView(xSwitch);xguard=edit("5,0");xguard.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);xguard.setKeyListener(DigitsKeyListener.getInstance("0123456789,."));xguard.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);xr.addView(xguard,new LinearLayout.LayoutParams(dp(88),54));TextView xp=tv("%",13,sub());xp.setGravity(Gravity.CENTER);xr.addView(xp,new LinearLayout.LayoutParams(dp(58),54));c2.addView(xr);root.addView(c2);space(14);
-    LinearLayout c3=card();FrameLayout timeContainer=new FrameLayout(this);LinearLayout timeHeader=new LinearLayout(this);timeHeader.setGravity(Gravity.CENTER_VERTICAL);TextView h3=tv("Tiempo de Carga",18,text());h3.setTypeface(null,1);h3.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);h3.setIncludeFontPadding(false);timeHeader.addView(h3,new LinearLayout.LayoutParams(-1,dp(24)));timeContainer.addView(timeHeader,new FrameLayout.LayoutParams(-1,dp(24)));lossInfo=tv("ⓘ",18,sub());lossInfo.setGravity(Gravity.CENTER);lossInfo.setIncludeFontPadding(false);lossInfo.setContentDescription(LanguageManager.t(this,"Información sobre pérdidas de carga"));lossInfo.setOnClickListener(v->new AlertDialog.Builder(this).setTitle(LanguageManager.t(this,"Pérdidas de carga")).setMessage(LanguageManager.t(this,"El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.")).setPositiveButton(LanguageManager.t(this,"Aceptar"),null).show());FrameLayout.LayoutParams infoLp=new FrameLayout.LayoutParams(dp(30),dp(30),Gravity.TOP|Gravity.END);infoLp.setMargins(0,dp(2),-dp(4),0);timeContainer.addView(lossInfo,infoLp);timeR=tv("00 h 00 min",28,text());timeR.setTypeface(null,1);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(28),Gravity.TOP));((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(34);c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(68)));spaceIn(c3,0);LinearLayout costRow=new LinearLayout(this);costRow.setGravity(Gravity.CENTER_VERTICAL);LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(20));costRowLp.topMargin=dp(8);costRowLp.bottomMargin=dp(2);TextView costLabel=tv("Coste de carga",13,sub());costLabel.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costLabel.setIncludeFontPadding(false);costRow.addView(costLabel,new LinearLayout.LayoutParams(0,dp(20),1));costR=tv("0,00 "+currencySymbol()+" (0,0 kWh)",15,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costR.setSingleLine(true);costR.setIncludeFontPadding(false);LinearLayout.LayoutParams costValueLp=new LinearLayout.LayoutParams(0,dp(20),1);costValueLp.setMargins(-dp(18),0,dp(8),0);costRow.addView(costR,costValueLp);c3.addView(costRow,costRowLp);energyR=tv("",1,sub());energyR.setVisibility(View.GONE);c3.addView(energyR);root.addView(c3);space(14);
-    LinearLayout c4=card();LinearLayout departureHeader=new LinearLayout(this);departureHeader.setGravity(Gravity.CENTER_VERTICAL);TextView h4=tv("Hora de Salida",18,text());h4.setTypeface(null,1);h4.setIncludeFontPadding(false);h4.setGravity(Gravity.CENTER_VERTICAL);departureHeader.addView(h4,new LinearLayout.LayoutParams(0,dp(52),1));departure=edit("07:00");departure.setTypeface(null,1);departure.setTextSize(17);departure.setInputType(android.text.InputType.TYPE_CLASS_DATETIME|android.text.InputType.TYPE_DATETIME_VARIATION_TIME);departure.setKeyListener(null);departure.setCursorVisible(false);departure.setShowSoftInputOnFocus(false);departure.setSelectAllOnFocus(false);departure.setFocusable(false);departure.setClickable(true);departure.setOnClickListener(v->{hideKeyboard(v);pickTime(departure);});departure.setGravity(Gravity.CENTER);departureHeader.addView(departure,new LinearLayout.LayoutParams(dp(104),dp(52)));c4.addView(departureHeader);statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER_VERTICAL);statusBox.setPadding(dp(10),dp(14),dp(10),dp(14));statusBox.setBackground(bg(dark?Color.rgb(31,93,168):Color.rgb(46,107,255),20,0));statusIcon=tv("🕓",28,Color.WHITE);statusIcon.setGravity(Gravity.CENTER);statusIcon.setIncludeFontPadding(false);statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(42),dp(48)));statusR=tv("Hora Inicio Recomendada",15,Color.WHITE);statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusR.setTypeface(null,1);statusR.setIncludeFontPadding(false);statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(48),1));statusTimeR=tv("18:00",30,Color.WHITE);statusTimeR.setGravity(Gravity.CENTER);statusTimeR.setTypeface(null,1);statusTimeR.setIncludeFontPadding(false);statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(90),dp(48)));spaceIn(c4,10);c4.addView(statusBox,new LinearLayout.LayoutParams(-1,dp(66)));root.addView(c4);setup();}
+    View topFade=new View(this);topFade.setBackground(new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,new int[]{Color.argb(200,0,0,0),Color.argb(80,0,0,0),Color.argb(20,0,0,0),Color.argb(0,0,0,0)}));hero.addView(topFade,new FrameLayout.LayoutParams(-1,dp(170),Gravity.TOP));headerTitle=tv("EV Charge Calculator",22,Color.WHITE);headerTitle.setTypeface(null, Typeface.BOLD);headerTitle.setGravity(Gravity.CENTER);headerTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);headerTitle.setShadowLayer(dp(4),0,dp(2),Color.argb(90,0,0,0));FrameLayout.LayoutParams tp=new FrameLayout.LayoutParams(-1,dp(56));tp.gravity=Gravity.TOP|Gravity.CENTER_HORIZONTAL;tp.leftMargin=dp(40);tp.rightMargin=dp(40);tp.topMargin=dp(4);hero.addView(headerTitle,tp);root.addView(hero);
+    LinearLayout c1=card();TextView h1=tv("Batería",18,text());h1.setTypeface(null, Typeface.BOLD);c1.addView(h1);spaceIn(c1,12);battery=edit("80");row(c1,"Capacidad",battery,"kWh");batS=seek(300,160);c1.addView(batS,new LinearLayout.LayoutParams(-1,dp(42)));LinearLayout.LayoutParams c1Lp=(LinearLayout.LayoutParams)c1.getLayoutParams();c1Lp.topMargin=-dp(26);c1.setLayoutParams(c1Lp);rangeSummary=tv("Cargar la batería desde 30% al 80%",15,text());rangeSummary.setGravity(Gravity.CENTER);rangeSummary.setTypeface(null, Typeface.BOLD);c1.addView(rangeSummary);range=new BatteryRangeView(this);c1.addView(range,new LinearLayout.LayoutParams(-1,dp(62)));chargeAmount=tv("Se cargará 50% - 40,0 kWh",14,sub());chargeAmount.setGravity(Gravity.CENTER);c1.addView(chargeAmount);root.addView(c1);space(14);
+    LinearLayout c2=card();TextView h2=tv("Carga",18,text());h2.setTypeface(null, Typeface.BOLD);c2.addView(h2);spaceIn(c2,12);power=edit("3,45");row(c2,"Potencia",power,"kW");spaceIn(c2,8);price=edit("0,15");row(c2,"Precio energía",price,currencySymbol()+"/kWh");spaceIn(c2,8);LinearLayout xr=new LinearLayout(this);xr.setGravity(Gravity.CENTER_VERTICAL);xr.addView(tv("Centinela / XGuard (consumo / 24 h)",14,sub()),new LinearLayout.LayoutParams(0,54,1));xSwitch=new Switch(this);xSwitch.setThumbTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{blue,dark?Color.rgb(120,130,140):Color.rgb(150,160,170)}));xSwitch.setTrackTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{blue,dark?Color.rgb(40,75,105):blue,dark?Color.rgb(55,65,75):Color.rgb(215,220,225)}));xSwitch.setChecked(true);xr.addView(xSwitch);xguard=edit("5,0");xguard.setInputType(android.text.InputType.TYPE_CLASS_NUMBER|android.text.InputType.TYPE_NUMBER_FLAG_DECIMAL);xguard.setKeyListener(DigitsKeyListener.getInstance("0123456789,."));xguard.setImeOptions(android.view.inputmethod.EditorInfo.IME_ACTION_DONE);xr.addView(xguard,new LinearLayout.LayoutParams(dp(88),54));TextView xp=tv("%",13,sub());xp.setGravity(Gravity.CENTER);xr.addView(xp,new LinearLayout.LayoutParams(dp(58),54));c2.addView(xr);root.addView(c2);space(14);
+    LinearLayout c3=card();FrameLayout timeContainer=new FrameLayout(this);LinearLayout timeHeader=new LinearLayout(this);timeHeader.setGravity(Gravity.CENTER_VERTICAL);TextView h3=tv("Tiempo de Carga",18,text());h3.setTypeface(null, Typeface.BOLD);h3.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);h3.setIncludeFontPadding(false);timeHeader.addView(h3,new LinearLayout.LayoutParams(-1,dp(24)));timeContainer.addView(timeHeader,new FrameLayout.LayoutParams(-1,dp(24)));lossInfo=tv("ⓘ",18,sub());lossInfo.setGravity(Gravity.CENTER);lossInfo.setIncludeFontPadding(false);lossInfo.setContentDescription(LanguageManager.t(this,"Información sobre pérdidas de carga"));lossInfo.setOnClickListener(v->new AlertDialog.Builder(this).setTitle(LanguageManager.t(this,"Pérdidas de carga")).setMessage(LanguageManager.t(this,"El cálculo incluye aproximadamente un 10% de pérdidas durante la carga, debidas principalmente a la conversión de energía, calor y otros consumos propios del proceso.")).setPositiveButton(LanguageManager.t(this,"Aceptar"),null).show());FrameLayout.LayoutParams infoLp=new FrameLayout.LayoutParams(dp(30),dp(30),Gravity.TOP|Gravity.END);infoLp.setMargins(0,dp(2),-dp(4),0);timeContainer.addView(lossInfo,infoLp);timeR=tv("00 h 00 min",28,text());timeR.setTypeface(null, Typeface.BOLD);timeR.setGravity(Gravity.CENTER);timeR.setSingleLine(true);timeR.setIncludeFontPadding(false);timeContainer.addView(timeR,new FrameLayout.LayoutParams(-1,dp(28),Gravity.TOP));((FrameLayout.LayoutParams)timeR.getLayoutParams()).topMargin=dp(34);c3.addView(timeContainer,new LinearLayout.LayoutParams(-1,dp(68)));spaceIn(c3,0);LinearLayout costRow=new LinearLayout(this);costRow.setGravity(Gravity.CENTER_VERTICAL);LinearLayout.LayoutParams costRowLp=new LinearLayout.LayoutParams(-1,dp(20));costRowLp.topMargin=dp(8);costRowLp.bottomMargin=dp(2);TextView costLabel=tv("Coste de carga",13,sub());costLabel.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costLabel.setIncludeFontPadding(false);costRow.addView(costLabel,new LinearLayout.LayoutParams(0,dp(20),1));costR=tv("0,00 "+currencySymbol()+" (0,0 kWh)",15,sub());costR.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);costR.setSingleLine(true);costR.setIncludeFontPadding(false);LinearLayout.LayoutParams costValueLp=new LinearLayout.LayoutParams(0,dp(20),1);costValueLp.setMargins(-dp(18),0,dp(8),0);costRow.addView(costR,costValueLp);c3.addView(costRow,costRowLp);energyR=tv("",1,sub());energyR.setVisibility(View.GONE);c3.addView(energyR);root.addView(c3);space(14);
+    LinearLayout c4=card();LinearLayout departureHeader=new LinearLayout(this);departureHeader.setGravity(Gravity.CENTER_VERTICAL);TextView h4=tv("Hora de Salida",18,text());h4.setTypeface(null, Typeface.BOLD);h4.setIncludeFontPadding(false);h4.setGravity(Gravity.CENTER_VERTICAL);departureHeader.addView(h4,new LinearLayout.LayoutParams(0,dp(52),1));departure=edit("07:00");departure.setTypeface(null, Typeface.BOLD);departure.setTextSize(17);departure.setInputType(android.text.InputType.TYPE_CLASS_DATETIME|android.text.InputType.TYPE_DATETIME_VARIATION_TIME);departure.setKeyListener(null);departure.setCursorVisible(false);departure.setShowSoftInputOnFocus(false);departure.setSelectAllOnFocus(false);departure.setFocusable(false);departure.setClickable(true);departure.setOnClickListener(v->{hideKeyboard(v);pickTime(departure);});departure.setGravity(Gravity.CENTER);departureHeader.addView(departure,new LinearLayout.LayoutParams(dp(104),dp(52)));c4.addView(departureHeader);statusBox=new LinearLayout(this);statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER_VERTICAL);statusBox.setPadding(dp(10),dp(14),dp(10),dp(14));statusBox.setBackground(bg(dark?Color.rgb(31,93,168):Color.rgb(46,107,255),20,0));statusIcon=tv("🕓",28,Color.WHITE);statusIcon.setGravity(Gravity.CENTER);statusIcon.setIncludeFontPadding(false);statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(42),dp(48)));statusR=tv("Hora Inicio Recomendada",15,Color.WHITE);statusR.setGravity(Gravity.CENTER_VERTICAL|Gravity.CENTER_HORIZONTAL);statusR.setTypeface(null, Typeface.BOLD);statusR.setIncludeFontPadding(false);statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(48),1));statusTimeR=tv("18:00",30,Color.WHITE);statusTimeR.setGravity(Gravity.CENTER);statusTimeR.setTypeface(null, Typeface.BOLD);statusTimeR.setIncludeFontPadding(false);statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(90),dp(48)));spaceIn(c4,10);c4.addView(statusBox,new LinearLayout.LayoutParams(-1,dp(66)));root.addView(c4);setup();}
   void space(int n){Space s=new Space(this);root.addView(s,new LinearLayout.LayoutParams(1,dp(n)));} void spaceIn(LinearLayout p,int n){Space s=new Space(this);p.addView(s,new LinearLayout.LayoutParams(1,dp(n)));}
   void applyTheme(){background.setDark(dark);if(range!=null)range.setDark(dark);} void rebuildTheme(){build();loadPreferences();applyTheme();if(headerTitle!=null)headerTitle.setText(LanguageManager.t(this,"EV Charge Calculator"));LanguageManager.translateViews(this);if(headerTitle!=null)headerTitle.setText(LanguageManager.t(this,"EV Charge Calculator"));calculate();}
   void hideKeyboard(View v){((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(v.getWindowToken(),0);} void pickTime(EditText e){String[] a=e.getText().toString().split(":");int h=7,m=0;try{h=Integer.parseInt(a[0]);m=Integer.parseInt(a[1]);}catch(Exception ignored){}new TimePickerDialog(this,(v,hh,mm)->{setText(e,String.format(Locale.US,"%02d:%02d",hh,mm));calculate();},h,m,true).show();}
+  // Los textos funcionales se traducen mediante LanguageManager; el resto son valores numéricos y unidades dinámicas.
+  @SuppressLint("SetTextI18n")
   void calculate(){if(battery==null)return;double cap=num(battery),st=range.getCurrent(),tar=range.getTarget(),kw=num(power),eur=num(price),x=num(xguard);double diff=tar-st;rangeSummary.setText(LanguageManager.t(this,"Cargar la batería desde")+" "+((int)st)+"% "+LanguageManager.t(this,"al")+" "+((int)tar)+"%");chargeAmount.setText(LanguageManager.t(this,"Se cargará")+" "+((int)diff)+"% - "+fmt(cap*diff/100.0,1)+" kWh");if(cap<=0||kw<=0||tar<=st){timeR.setText("00 h 00 min");energyR.setText("0,0 kWh");costR.setText("0,00 "+currencySymbol()+" (0,0 kWh)");statusR.setText("");statusTimeR.setText("");return;}int dm=minutes(departure.getText().toString());if(dm<0){statusR.setText("⚠  "+LanguageManager.t(this,"Hora de salida no válida"));statusTimeR.setText("");statusR.setTextColor(Color.WHITE);return;}double base=cap*diff/100.0,gridEnergyForBattery=base/0.90,baseMin=gridEnergyForBattery/kw*60.0,factor=xSwitch.isChecked()?cap*x/(100.0*24.0*kw):0,mins=baseMin/(1.0-factor);if(factor>=1.0){timeR.setText(LanguageManager.t(this,"No disponible"));statusR.setText(LanguageManager.t(this,"No es posible alcanzar el objetivo"));statusTimeR.setText("");return;}double extra=xSwitch.isChecked()?cap*x/100.0*(mins/1440.0):0,energy=gridEnergyForBattery+extra;costR.setText(fmt(energy*eur,2)+" "+currencySymbol()+" ("+fmt(energy,1)+" kWh)");timeR.setText(String.format(Locale.US,"%02d h %02d min",(int)(mins/60),(int)Math.round(mins%60)));energyR.setText(fmt(energy,1)+" kWh");Calendar now=Calendar.getInstance();int nowMin=now.get(Calendar.HOUR_OF_DAY)*60+now.get(Calendar.MINUTE),available=dm-nowMin;if(available<=0)available+=1440;int start=(int)Math.round(dm-mins);start=((start%1440)+1440)%1440;int needed=(int)Math.ceil(mins);boolean onTime=needed<=available;String tm=String.format(Locale.US,"%02d:%02d",start/60,start%60);if(onTime){statusBoxLayout(true,false);statusIcon.setText("🕓");statusIcon.setTextSize(30);statusR.setText(LanguageManager.t(this,"Hora de inicio")+"\n"+LanguageManager.t(this,"Recomendada"));statusR.setSingleLine(false);statusR.setMaxLines(2);statusTimeR.setText(tm);statusTimeR.setTextSize(30);statusR.setGravity(Gravity.CENTER);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);statusTimeR.setVisibility(View.VISIBLE);}else{int deficit=needed-available;boolean moreThan24=deficit>1440||mins>1440;statusBoxLayout(false,moreThan24);statusIcon.setText("⚠️");statusIcon.setTextSize(28);int fh=deficit/60,fm=deficit%60;statusR.setText(LanguageManager.t(this,"No llegas a tiempo"));statusTimeR.setText(LanguageManager.t(this,"Faltan")+" "+fh+" h "+fm+" min");statusR.setTextSize(15);statusTimeR.setTextSize(19);statusR.setGravity(Gravity.CENTER);statusTimeR.setGravity(Gravity.CENTER);statusIcon.setVisibility(View.VISIBLE);}}
   void statusBoxLayout(boolean ok,boolean moreThan24){if(statusBox==null)return;statusBox.setOrientation(LinearLayout.HORIZONTAL);statusBox.setGravity(Gravity.CENTER_VERTICAL);statusBox.setPadding(dp(10),dp(10),dp(10),dp(10));GradientDrawable g=new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT,ok?new int[]{Color.rgb(18,82,214),Color.rgb(54,184,255)}:new int[]{Color.rgb(190,38,52),Color.rgb(255,92,92)});g.setCornerRadius(dp(22));statusBox.setBackground(g);statusBox.removeAllViews();detach(statusIcon);detach(statusR);detach(statusTimeR);statusIcon.setVisibility(View.VISIBLE);statusIcon.setGravity(Gravity.CENTER);if(ok){statusR.setSingleLine(false);statusR.setMaxLines(2);statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(56)));statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(56),1));statusBox.addView(statusTimeR,new LinearLayout.LayoutParams(dp(100),dp(56)));statusBox.getLayoutParams().height=dp(78);}else if(moreThan24){statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(56)));statusR.setSingleLine(true);statusR.setGravity(Gravity.CENTER);statusBox.addView(statusR,new LinearLayout.LayoutParams(0,dp(56),1));statusTimeR.setVisibility(View.GONE);statusBox.getLayoutParams().height=dp(78);}else{statusBox.addView(statusIcon,new LinearLayout.LayoutParams(dp(48),dp(64)));LinearLayout textCol=new LinearLayout(this);textCol.setOrientation(LinearLayout.VERTICAL);textCol.setGravity(Gravity.CENTER);statusR.setSingleLine(true);statusR.setGravity(Gravity.CENTER);textCol.addView(statusR,new LinearLayout.LayoutParams(-1,dp(28)));statusTimeR.setGravity(Gravity.CENTER);textCol.addView(statusTimeR,new LinearLayout.LayoutParams(-1,dp(34)));statusBox.addView(textCol,new LinearLayout.LayoutParams(0,dp(56),1));statusBox.getLayoutParams().height=dp(78);}}
   TextView tv(String s,int sp,int c){TextView t=new TextView(this);t.setText(LanguageManager.t(this,s));t.setTextSize(sp);t.setTextColor(c);return t;}

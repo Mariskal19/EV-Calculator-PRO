@@ -82,6 +82,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private static class SimilarHeaderBitmapView extends View {
         private final android.graphics.Bitmap bitmap;
         private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+        private final android.graphics.RectF destination = new android.graphics.RectF();
 
         SimilarHeaderBitmapView(android.content.Context context) {
             super(context);
@@ -119,7 +120,8 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             float scale = Math.max(viewW / bitmap.getWidth(), viewH / bitmap.getHeight());
             float drawW = bitmap.getWidth() * scale, drawH = bitmap.getHeight() * scale;
             float left = (viewW - drawW) * 0.5f, top = (viewH - drawH) * 0.5f;
-            canvas.drawBitmap(bitmap, null, new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
+            destination.set(left, top, left + drawW, top + drawH);
+            canvas.drawBitmap(bitmap, null, destination, paint);
         }
         private int darkFallback() { return Color.rgb(8, 34, 58); }
     }
@@ -393,7 +395,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             StringBuilder specs = new StringBuilder();
             if (!cleanVersion(vehicle.version).trim().isEmpty()) specs.append(cleanVersion(vehicle.version));
             if (vehicle.year > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(vehicle.year); }
-            if (vehicle.price > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.price)).append(" €"); }
+            if (vehicle.price > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(CurrencyRateManager.formatCatalogPrice(this, vehicle.price)); }
             if (vehicle.wltpKm > 0) { if (specs.length() > 0) specs.append(" · "); specs.append(fmt(vehicle.wltpKm)).append(" km WLTP"); }
             TextView details = tv(specs.toString(), 12, sub());
             details.setPadding(0, dp(3), 0, dp(6));
@@ -406,7 +408,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             actions.addView(detailAction, new LinearLayout.LayoutParams(0, -2, 1));
             TextView compareAction = tv("Añadir a comparativa", 12, blue);
             compareAction.setTypeface(null, Typeface.BOLD);
-            compareAction.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            compareAction.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
             compareAction.setOnClickListener(v -> addAdvisorToComparison(vehicle));
             actions.addView(compareAction, new LinearLayout.LayoutParams(-2, -2));
             resultCard.addView(actions, new LinearLayout.LayoutParams(-1, -2));
@@ -510,11 +512,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         getSharedPreferences(PREFS,MODE_PRIVATE).edit()
                 .putString(KEY_LAST_REFERENCE,logicalKey(chosen)).apply();
         if(referencePicker!=null){
-            referencePicker.setText("✓  "+pickerLabel(chosen).replace("\n"," · "));
+            referencePicker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(chosen).replace("\n"," · ")));
         }
         advisorEngine.reset();
-        advisorStatus.setText(LanguageManager.t(this,"Alternativas similares tomando como referencia ")
-                +chosen.make+" "+chosen.model+" "+chosen.year+" · "+cleanVersion(chosen.version)+".");
+        advisorStatus.setText(String.format(Locale.ROOT,
+                LanguageManager.t(this, "Alternativas similares tomando como referencia %1$s %2$s %3$d · %4$s."),
+                chosen.make, chosen.model, chosen.year, cleanVersion(chosen.version)));
         showSimilar();
         return true;
     }
@@ -663,7 +666,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             name.setTypeface(null,Typeface.BOLD);
             resultCard.addView(name,new LinearLayout.LayoutParams(-1,-2));
             StringBuilder specs=new StringBuilder();
-            if(vehicle.price>0)specs.append(fmt(vehicle.price)).append(" €");
+            if(vehicle.price>0)specs.append(CurrencyRateManager.formatCatalogPrice(this, vehicle.price));
             if(vehicle.wltpKm>0){if(specs.length()>0)specs.append("  ·  ");specs.append(fmt(vehicle.wltpKm)).append(" km WLTP");}
             if(vehicle.trunk>0){if(specs.length()>0)specs.append("  ·  ");specs.append(fmt(vehicle.trunk)).append(" L");}
             if(specs.length()==0)specs.append(cleanVersion(vehicle.version));
@@ -681,7 +684,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             actions.addView(detailAction,new LinearLayout.LayoutParams(0,-2,1));
             TextView compareAction=tv("Añadir a comparativa",12,blue);
             compareAction.setTypeface(null,Typeface.BOLD);
-            compareAction.setGravity(Gravity.RIGHT|Gravity.CENTER_VERTICAL);
+            compareAction.setGravity(Gravity.END|Gravity.CENTER_VERTICAL);
             compareAction.setPadding(dp(4),dp(5),0,dp(5));
             compareAction.setOnClickListener(v->addAdvisorToComparison(vehicle));
             actions.addView(compareAction,new LinearLayout.LayoutParams(-2,-2));
@@ -867,7 +870,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
             Object tag=input.getTag();
             if(tag instanceof AlertDialog)((AlertDialog)tag).dismiss();
             reference=v;
-            picker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+            picker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(v).replace("\n"," · ")));
             getSharedPreferences(PREFS,MODE_PRIVATE).edit().putString(KEY_LAST_REFERENCE,logicalKey(v)).apply();
             showSimilar();
         });
@@ -964,7 +967,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         for(Vehicle v:vehicles){
             if(logicalKey(v).equals(savedKey)){
                 reference=v;
-                if(referencePicker!=null)referencePicker.setText("✓  "+pickerLabel(v).replace("\n"," · "));
+                if(referencePicker!=null)referencePicker.setText(android.text.TextUtils.concat("✓  ", pickerLabel(v).replace("\n"," · ")));
                 showSimilar();
                 return;
             }
@@ -1227,7 +1230,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
 
         TextView action=tv("Ver detalles  ›",13,blue);
         action.setTypeface(null,Typeface.BOLD);
-        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.RIGHT);
+        action.setGravity(Gravity.CENTER_VERTICAL|Gravity.END);
         action.setOnClickListener(x->openDetail(v));
         card.addView(action,new LinearLayout.LayoutParams(-1,dp(24)));
 

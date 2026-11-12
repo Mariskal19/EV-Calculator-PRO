@@ -20,6 +20,8 @@ public class BatteryRangeView extends View {
   private final int trackDark = Color.rgb(42, 58, 75);
   private int activeThumb = -1;
   private float thumbScale = 1f;
+  private LinearGradient activeGradient;
+  private float gradientLeft = Float.NaN, gradientRight = Float.NaN, gradientY = Float.NaN;
 
   public BatteryRangeView(Context c) {
     super(c);
@@ -32,9 +34,29 @@ public class BatteryRangeView extends View {
     invalidate();
   }
 
+  @Override
+  protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    super.onSizeChanged(w, h, oldw, oldh);
+    updateActiveGradient();
+  }
+
+  private void updateActiveGradient() {
+    if (getWidth() <= 0 || getHeight() <= 0) return;
+    float y = getHeight() / 2f;
+    float left = xFor(current);
+    float right = xFor(target);
+    if (activeGradient == null || left != gradientLeft || right != gradientRight || y != gradientY) {
+      activeGradient = new LinearGradient(left, y, right, y, blueDark, blueLight, Shader.TileMode.CLAMP);
+      gradientLeft = left;
+      gradientRight = right;
+      gradientY = y;
+    }
+  }
+
   public void setValues(int c, int t) {
     current = Math.max(0, Math.min(99, c));
     target = Math.max(current + 1, Math.min(100, t));
+    updateActiveGradient();
     invalidate();
   }
 
@@ -82,7 +104,8 @@ public class BatteryRangeView extends View {
     float activeRight = xFor(target);
 
     // Active section: blue, with the same light-to-dark direction used by the app.
-    p.setShader(new LinearGradient(activeLeft, y, activeRight, y, blueDark, blueLight, Shader.TileMode.CLAMP));
+    updateActiveGradient();
+    p.setShader(activeGradient);
     c.drawLine(activeLeft, y, activeRight, y, p);
     p.setShader(null);
 
@@ -141,6 +164,7 @@ public class BatteryRangeView extends View {
     int v = valueFor(x);
     if (activeThumb == 0) current = Math.max(0, Math.min(v, target - 1));
     else if (activeThumb == 1) target = Math.min(100, Math.max(v, current + 1));
+    updateActiveGradient();
     invalidate();
     if (listener != null) listener.onChanged(current, target);
   }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -25,7 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
+import java.util.Locale;
 
+// Vista creada programáticamente por su Activity anfitriona; no se infla desde XML.
+@android.annotation.SuppressLint("ViewConstructor")
 public class ElectricVsCombustionScreen extends FrameLayout {
   private final Activity host;
 
@@ -144,8 +148,8 @@ public class ElectricVsCombustionScreen extends FrameLayout {
 
   private void applyCurrency() {
     String s = currencySymbol();
-    if (electricityPriceUnit != null) electricityPriceUnit.setText(s + "/kWh");
-    if (fuelPriceUnit != null) fuelPriceUnit.setText(s + "/l");
+    if (electricityPriceUnit != null) electricityPriceUnit.setText(String.format(Locale.ROOT, "%s/kWh", s));
+    if (fuelPriceUnit != null) fuelPriceUnit.setText(String.format(Locale.ROOT, "%s/l", s));
   }
 
   private TextView tv(String s, int sp, int c) {
@@ -261,7 +265,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
 
   private TextView resultValue(String s) {
     TextView t = tv(s, 20, text());
-    t.setTypeface(null, 1);
+    t.setTypeface(null, Typeface.BOLD);
     t.setGravity(Gravity.CENTER);
     t.setIncludeFontPadding(false);
     t.setSingleLine(true);
@@ -343,7 +347,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
               Color.argb(0, 0, 0, 0)
             }));
     headerTitle = tv("Electric Vs\nCombustion Calculator", 20, Color.WHITE);
-    headerTitle.setTypeface(null, 1);
+    headerTitle.setTypeface(null, Typeface.BOLD);
     headerTitle.setGravity(Gravity.CENTER);
     headerTitle.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
     headerTitle.setIncludeFontPadding(false);
@@ -361,7 +365,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     tripLp.topMargin = -dp(20);
     trip.setLayoutParams(tripLp);
     TextView h = tv("Datos del viaje", 18, text());
-    h.setTypeface(null, 1);
+    h.setTypeface(null, Typeface.BOLD);
     trip.addView(h);
     space(trip, 12);
     distance = edit("100");
@@ -370,7 +374,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     space(root, 14);
     LinearLayout ev = card();
     TextView eh = tv("Vehículo eléctrico", 18, text());
-    eh.setTypeface(null, 1);
+    eh.setTypeface(null, Typeface.BOLD);
     ev.addView(eh);
     space(ev, 12);
     evConsumption = edit("17,0");
@@ -384,7 +388,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     space(root, 14);
     LinearLayout combustion = card();
     TextView ch = tv("Vehículo de combustión", 18, text());
-    ch.setTypeface(null, 1);
+    ch.setTypeface(null, Typeface.BOLD);
     combustion.addView(ch);
     space(combustion, 12);
     fuelConsumption = edit("6,0");
@@ -399,7 +403,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     space(root, 14);
     LinearLayout results = card();
     TextView rh = tv("Resultado del viaje", 18, text());
-    rh.setTypeface(null, 1);
+    rh.setTypeface(null, Typeface.BOLD);
     results.addView(rh);
     space(results, 14);
     LinearLayout labelsRow = new LinearLayout(host);
@@ -424,7 +428,7 @@ public class ElectricVsCombustionScreen extends FrameLayout {
     results.addView(valuesRow);
     space(results, 12);
     saving = tv("Ahorro con el eléctrico: 0,00 " + currencySymbol(), 17, text());
-    saving.setTypeface(null, 1);
+    saving.setTypeface(null, Typeface.BOLD);
     saving.setGravity(Gravity.CENTER);
     results.addView(saving);
     savingPercent = tv("0,0 % de ahorro", 14, sub());
@@ -517,22 +521,18 @@ public class ElectricVsCombustionScreen extends FrameLayout {
         pct = fCost > 0 ? diff / fCost * 100.0 : 0;
     evCost.setText(money(eCost));
     fuelCost.setText(money(fCost));
-    saving.setText(
-        (diff >= 0
-                ? LanguageManager.t(host, "Ahorro con el eléctrico:")
-                : LanguageManager.t(host, "Diferencia:"))
-            + " "
-            + money(Math.abs(diff)));
-    savingPercent.setText(
-        diff >= 0
-            ? one(pct) + " % " + LanguageManager.t(host, "de ahorro")
-            : LanguageManager.t(host, "El eléctrico cuesta")
-                + " "
-                + one(Math.abs(pct))
-                + " % "
-                + LanguageManager.t(host, "más"));
-    evPer100.setText(money(evC * elec) + "/100 km");
-    fuelPer100.setText(money(fuelC * fuelP) + "/100 km");
+    saving.setText(String.format(Locale.ROOT,
+        LanguageManager.t(host, diff >= 0
+            ? "Ahorro con el eléctrico: %1$s"
+            : "Diferencia: %1$s"),
+        money(Math.abs(diff))));
+    savingPercent.setText(String.format(Locale.ROOT,
+        LanguageManager.t(host, diff >= 0
+            ? "%1$s %% de ahorro"
+            : "El eléctrico cuesta %1$s %% más"),
+        one(diff >= 0 ? pct : Math.abs(pct))));
+    evPer100.setText(String.format(Locale.ROOT, "%s/100 km", money(evC * elec)));
+    fuelPer100.setText(String.format(Locale.ROOT, "%s/100 km", money(fuelC * fuelP)));
   }
 
   private void save() {

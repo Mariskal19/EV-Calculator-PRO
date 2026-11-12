@@ -1,3 +1,375 @@
+## 2026-11-12 — Notificación explícita del cambio de moneda a Comparar (validación en Redmi Note 13 Pro confirmada)
+
+- La APK Debug #83 (run `43305124371`, commit `d1a966acdc3432b3facf2c27a655033f433770da`) se compiló correctamente, pero el usuario confirmó que el fallo persistía al volver desde Configuración con Atrás. El primer ajuste basado únicamente en el ciclo de vida no resolvió la incidencia.
+- Se añade `CurrencyRateManager.ACTION_CURRENCY_SELECTION_CHANGED`. Después de persistir la moneda, `ConfigurationActivity` envía un broadcast explícito limitado al paquete de la aplicación.
+- `MainActivity` escucha ese evento durante su ciclo de vida. Si está pausada, deja la actualización pendiente y la aplica al reanudarse; si ya está activa, la procesa inmediatamente. Cuando Comparar es la pestaña seleccionada, se reconstruye únicamente esa pantalla y conserva los vehículos seleccionados mediante las preferencias existentes.
+- La detección de cambios del ciclo de vida se mantiene como respaldo. El receptor se registra/desregistra junto con la Activity. No se modifica el conversor, las tasas ECB, la caché, el catálogo, el formateo ni la interfaz.
+- Cambio aplicado exclusivamente en `develop/post-1.0.6`, commit `3c9c6e2ccea443cdfa8b9a18179367ce279f6fe6`.
+- **CI #86 verificada:** ejecución [43308701147](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43308701147), resultado SUCCESS. Pruebas de regresión de divisas, `lintDebug`, `assembleDebug` y subida del APK completados correctamente. Artefacto Debug `ev-calculator-pro-debug-86`, ID `13984119017`; no es AAB ni Release.
+- **Prueba manual confirmada:** el usuario instaló la APK Debug #86 en Redmi Note 13 Pro (Android 16) y confirma que cambiar la moneda en Configuración y volver con el botón Atrás actualiza correctamente los precios de Comparar.
+- **Pendiente:** repetir la prueba exacta en Redmi Note 7 (Android 10). La incidencia queda validada en Android 16, pero no se cierra la compatibilidad de ambos dispositivos hasta esa prueba.
+- Se mantienen `versionName 1.0.6` y `versionCode 62`; no se modifican `main`, ramas de respaldo, nombres de APK/AAB ni releases.
+
+---
+
+## 2026-11-11 — Retirada del menú de diagnóstico de divisas
+
+- Se elimina de Configuración la entrada «Diagnóstico de divisas» y el diálogo manual asociado («Actualizar ahora»).
+- Se mantienen intactos la descarga automática ECB, los reintentos, la caché de tasas y la conversión de precios/costes. La selección de moneda sigue solicitando la actualización cuando corresponde.
+- Cambio aplicado exclusivamente en `develop/post-1.0.6`, commit `9da46cff1ea24f1374d4b960ddf3876d33a7caaa`.
+- No se modifican `main`, ramas de respaldo, versión `1.0.6`, `versionCode 62`, nombres de APK/AAB ni releases.
+- **Pendiente de validación:** ejecutar pruebas Java, `lintDebug` y `assembleDebug`; revisar el diff y probar la pantalla Configuración en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se da por terminado hasta verificar CI y la APK resultante.
+
+---
+
+## 2026-11-11 — Mitigación TLS específica para la descarga ECB (validación pendiente)
+
+- La inspección TLS aportada por el usuario muestra que `data-api.ecb.europa.eu` entrega el certificado final y `Sectigo Public Server Authentication CA OV E36`, pero no incluye el certificado cross-signed E46 que enlaza con USERTrust ECC. El diagnóstico Android 10 registra `Trust anchor for certification path not found`; la omisión es una causa plausible, todavía pendiente de confirmar en el dispositivo.
+- Se incorpora `Sectigo Public Server Authentication Root E46` cross-signed por `USERTrust ECC Certification Authority` como ancla de confianza adicional. Huella SHA-256 del DER: `ea6b89ed6907a209ff9188676fb164e7aced894b8996dfbe5ce5bbcc22de4ddd`. El certificado es una CA intermedia cross-signed, no el certificado leaf del BCE ni una raíz autofirmada.
+- Se añade `res/xml/network_security_config.xml` y se referencia desde el manifiesto. La confianza adicional se limita al host exacto `data-api.ecb.europa.eu`; conserva las CA del sistema y mantiene el tráfico en HTTPS. Limitación documentada por Android: las conexiones validadas mediante anclas personalizadas no aplican Certificate Transparency; esta excepción queda limitada al host ECB, mientras que el resto de conexiones conserva la política predeterminada del sistema. No se instala un TrustManager propio, no se desactiva la validación TLS y no se fija el certificado leaf.
+- No se modifica el endpoint ECB, el parser CSV, las tasas, la caché, las fórmulas ni la interfaz. Se mantienen `versionName 1.0.6` y `versionCode 62`; el cambio está únicamente en `develop/post-1.0.6`.
+- **CI verificada:** Android Lint audit #81, ejecución [43108604816](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43108604816), commit de aplicación `1b41adf59cb9efdefcf18aaab251b0891cd9916c`: pruebas Java de divisas, `lintDebug` y `assembleDebug` completados con SUCCESS. APK Debug `ev-calculator-pro-debug-81`, artifact ID `13895581395`, 7.609.976 bytes; disponible hasta el 18 nov 2026: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43108604816/artifacts/13895581395. No es AAB ni Release.
+- **Pendiente de validación real:** instalar esta APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). En ambos debe comprobarse que se descargan las cinco tasas y que Comparar/ficha reflejan USD/GBP tras la descarga. El cambio no se considera solucionado hasta verificar la conexión real y el refresco de pantallas en los dispositivos.
+
+---
+
+## 2026-11-11 — Diagnóstico visible de tasas de cambio (pendiente de prueba en dispositivos)
+
+- Se añade en Configuración una entrada «Diagnóstico de divisas» que muestra la moneda seleccionada, fecha de la última descarga completa, las cinco tasas ECB realmente guardadas (USD, GBP, CHF, CAD y AUD), el último error de red/parseo y una conversión de prueba de 100 EUR.
+- El diálogo permite solicitar una descarga manual en segundo plano. El usuario puede volver a abrir el diagnóstico tras unos segundos para comprobar si se guardaron tasas nuevas o si persiste un error.
+- El diagnóstico consulta la caché persistida que utiliza el formateador del catálogo; por tanto, permite distinguir una descarga correcta de un mero cambio del símbolo de moneda. No expone datos personales ni altera los cálculos.
+- No se modifica el diseño de las pantallas principales, el catálogo, los precios originales, las tasas base ni las fórmulas de Coste. Se conservan `versionName 1.0.6` y `versionCode 62`; no se modifica `main`, `stable` ni releases.
+- Pendiente: revisar diff, ejecutar pruebas Java, `lintDebug` y `assembleDebug`; instalar y consultar el diagnóstico en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). Solo el resultado de la descarga en dispositivo permitirá confirmar conectividad real.
+
+## 2026-11-11 — Refuerzo y diagnóstico de descarga de divisas en Android 10 (validación pendiente)
+
+- La prueba manual de APK Debug 70 confirma que Redmi Note 7 conserva USD en Configuración, pero los precios del catálogo siguen en EUR; Redmi Note 13 Pro sí refleja la moneda seleccionada. El selector y la persistencia no son el origen del síntoma.
+- La revisión del código confirma que CompararCochesScreen reconstruye sus precios al cambiar la moneda y que BaseNavigationActivity recibe el evento interno al guardar una caché completa. No hay evidencia suficiente para atribuir el fallo a una incompatibilidad TLS concreta de Android 10.
+- CurrencyRateRepository ya no descarta silenciosamente el motivo de un refresco fallido: permite informar la excepción original. CurrencyRateManager registra el fallo en Logcat y conserva el último motivo en preferencias de diagnóstico; lo limpia tras una descarga completa correcta.
+- Se refuerza la petición ECB con cabeceras Accept y User-Agent, seguimiento explícito de redirecciones, timeout de 10 s y un reintento por error de E/S antes de abandonar la actualización atómica.
+- BaseNavigationActivity solicita refresco al reanudar cualquier pantalla basada en ese host, además de los puntos de entrada que ya lo solicitaban. Si la caché sigue vacía o incompleta, el intento puede repetirse; una caché completa del día evita tráfico adicional.
+- Se añaden pruebas Java para comprobar que el error original se propaga al mecanismo de diagnóstico sin marcar como válida una caché fallida. No se cambia el fallback EUR, la conversión de importes de carga/coste, los precios originales ni la interfaz.
+- Rama develop/post-1.0.6. Se mantienen versionName 1.0.6 y versionCode 62; no se modifica main, stable, ramas de respaldo ni releases.
+- Pendiente de validación: ejecutar pruebas Java, lintDebug y assembleDebug; revisar el diff y probar la nueva APK en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). El problema no se considera resuelto hasta confirmar en ambos que Comparar y ficha muestran USD/GBP correctamente tras la descarga real.
+
+---
+
+## 2026-11-11 — Corrección del refresco de divisas y actualización de pantallas (validación pendiente)
+
+- Se identifica el problema de primera instalación: la descarga ECB se ejecuta en segundo plano, pero las pantallas podían renderizar el fallback EUR antes de que terminase. No existía una notificación que obligase a reconstruir la pantalla visible al guardar una caché completa.
+- `CurrencyRateManager` emite ahora un broadcast interno, limitado al paquete, únicamente después de guardar correctamente las cinco tasas.
+- `BaseNavigationActivity` escucha el evento durante su ciclo de vida y refresca la pantalla activa cuando llega una caché nueva. `MainActivity` aprovecha su reconstrucción selectiva de pestaña; el comportamiento de las pantallas de coste no cambia.
+- Al seleccionar una divisa en Configuración se solicita también `refreshIfNeeded()`, permitiendo reintentar una descarga anterior fallida sin bloquearse por un supuesto éxito diario.
+- Las solicitudes de refresco recibidas mientras ya hay una descarga activa quedan encoladas: si el intento en curso falla, se lanza una repetición; si tiene éxito, la caché válida evita descargas redundantes.
+- Se amplía `.github/tests/CurrencyRateRepositorySmokeTest.java` para cubrir caché vacía, fallo inicial, reintento en el mismo día, descarga completa y reutilización de caché válida.
+- No se cambia el formateo/fallback de precios, las tasas base EUR, los cálculos de carga/coste ni los datos originales del catálogo.
+- Rama `develop/post-1.0.6`. Se conservan `versionName 1.0.6` y `versionCode 62`. No se modifica `main` ni `stable`.
+- **Pendiente de validación:** ejecutar CI (pruebas Java, `lintDebug` y `assembleDebug`), revisar el diff completo y probar la APK resultante en Redmi Note 7 (Android 10) y Redmi Note 13 Pro (Android 16). No se considera resuelto hasta verificar la descarga real y la actualización automática de Comparar/ficha de vehículo.
+
+---
+
+## 2026-11-09 — Corrección de precisión decimal en precios del catálogo (revisión)
+
+- Se corrige la expectativa de prueba en `CurrencyRateRepositorySmokeTest.testCatalogPriceIntegerNoDecimals()`: `25000.0 EUR` se formatea como `"25.000 €"` (con separador de miles español), no como `"25000 €"`.
+- Se añade décima prueba explícita para el décimo precio decimal del catálogo: Mercedes GLB 250 Plus Electrico 2026 (línea 11097, precio `57777.5`).
+- Se mantienen intactos `CatalogPriceFormatter.java` y `CurrencyNumberFormatter.java` (ya corregidos en el commit anterior).
+- `versionName 1.0.6`, `versionCode 62` permanecen sin cambios. No se modifica `main` ni `stable`.
+
+---
+
+## 2026-11-09 — Corrección de precisión decimal en precios del catálogo
+
+- Se corrige `CurrencyNumberFormatter.java` para usar dígitos decimales opcionales (`#`) en lugar de obligatorios (`0`), permitiendo hasta 2 decimales sin añadir ceros innecesarios.
+- Se corrige `CatalogPriceFormatter.java` para formatear precios con hasta 2 decimales (antes usaba 0 decimales, redondeando incorrectamente 10 precios del catálogo).
+- Los precios enteros se muestran sin decimales (ej. `100 €`, `120 $`).
+- Los precios con decimales se muestran con la precisión necesaria (ej. `66.511,48 €`, `119.609,6 €`, `165.747,16 €`).
+- No se añaden ceros innecesarios (ej. `100,1 €` en lugar de `100,10 €`; `50 €` en lugar de `50,00 €`).
+- Las conversiones a otras monedas conservan los decimales (ej. `79,813.78 $`).
+- Se añaden pruebas automatizadas para los 10 precios decimales del catálogo, precios enteros, conversiones con decimales, fallback a EUR y ausencia de ceros innecesarios.
+- Los cálculos de carga y costes permanecen sin cambios; no hay conversiones dobles ni mutaciones del precio original.
+- `versionName 1.0.6`, `versionCode 62` permanecen sin cambios. No se modifica `main` ni `stable`.
+
+---
+
+## 2026-11-09 — Integración de conversión de precios del catálogo (punto 1)
+
+- Se implementa `CatalogPriceFormatter.java` y `CurrencyRateManager.formatCatalogPrice()`. Cada presentación convierte desde el importe EUR original usando la tasa ECB seleccionada en la caché; no se mutan los datos ni se encadenan conversiones al cambiar de moneda o reconstruir la pantalla.
+- Sin tasa válida para la moneda seleccionada, se conserva el precio EUR original y se muestra con `€`. El formatter usa las tasas guardadas, por lo que funciona sin conexión; con importe no positivo o no finito muestra `—`.
+- Integración en todas las presentaciones de precio de catálogo localizadas: `CompararCochesScreen.java`, `CompararCochesActivity.java`, `SimilarCarsScreen.java`, `SimilarCarsActivity.java` y `CarDetailActivity.java`. En catálogo/comparación, los valores y ordenaciones internas siguen en EUR.
+- Cambio de moneda: los hosts de comparación/similares reconstruyen o refrescan su contenido; `CarDetailActivity` hereda `BaseNavigationActivity`, que recrea la actividad al cambiar moneda. Se revisó el camino de coste de carga y coste eléctrico/combustión: sus fórmulas y valores introducidos por el usuario permanecen intactos; solo conservan el formato y símbolo seleccionados.
+- Pruebas automatizadas de presentación añadidas: conversión en USD, GBP, CHF, CAD y AUD; EUR original; tasa ausente/parcial/inválida; cambio repetido desde EUR fuente; importes inválidos. **55 comprobaciones correctas** en GitHub Actions.
+- Prueba RED previa en el commit `767e6dfb05aaf9daaef3c1b0e00f2541c3c63ef1`: la compilación del smoke test falló al no existir todavía `CatalogPriceFormatter`, como se esperaba.
+- Validación final: [Android Lint audit #62](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42694701961), commit probado `480ec89ba3cae74c48faebe99ff4101a11e341ef`, rama `develop/post-1.0.6). Pruebas Java, `:app:lintDebug` y `:app:assembleDebug`: **SUCCESS**.
+- APK Debug descargable: [`ev-calculator-pro-debug-62`](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42694701961/artifacts/13708522656), artifact ID `13708522656`, 7.604.857 bytes. No es AAB ni Release. Artefacto disponible hasta el 16 nov 2026.
+- Se mantienen `versionName 1.0.6`, `versionCode 62`, el patrón de nombre de APK y las decisiones visuales. No se modifica `main` ni `stable`, ni se crea Release.
+- **Pendiente:** prueba manual del APK Debug 62 en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No integrar ni publicar hasta recibir autorización.
+
+---
+
+## 2026-11-08 — Corrección del subsistema de divisas (punto 1)
+
+- Se ha inspeccionado `CurrencyRateManager.java`, los consumidores de sus métodos, las pruebas y las dependencias existentes en `develop/post-1.0.6`.
+- Se corrige el parser ECB para localizar `OBS_VALUE` por nombre y leer CSV con campos entrecomillados, comas internas, comillas escapadas, CRLF y BOM. Se rechazan observaciones vacías, no numéricas, cero, negativas y no finitas; un último registro vacío no reutiliza una cotización anterior.
+- Se separa la lógica pura en `CurrencyRateRepository.java`; solo se sustituye la caché cuando las cinco cotizaciones USD, GBP, CHF, CAD y AUD son válidas. Cualquier fallo mantiene las cotizaciones y la fecha de la caché anterior.
+- Se elimina el bloqueo de 24 horas después de un fallo. `lastUpdate()` refleja únicamente una caché completa y validada; `rate()` y las conversiones fallan explícitamente si falta una cotización. Se añade conversión entre divisas mediante EUR como base.
+- Consumidores localizados: `AppMenuApplication.java`, `ConfigurationActivity.java` y `PersistentMainActivity.java` llaman a `refreshIfNeeded()`. No se encontraron consumidores de `rate()`, `convertFromEur()` ni `lastUpdate()` en el código de producción; la API de conversión no está actualmente integrada en la interfaz.
+- Se añaden 42 comprobaciones Java independientes y el workflow Android Lint las ejecuta antes de `lintDebug` y `assembleDebug`.
+- GitHub Actions #60: SUCCESS. 42/42 comprobaciones correctas; `lintDebug` y `assembleDebug` correctos. Informe Lint: 6 advertencias conocidas (5 `IconLauncherShape`, 1 `AppBundleLocaleChanges`), 0 errores. APK Debug `ev-calculator-pro-debug-60`, 7.604.001 bytes, artifact ID `13621154436`: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42490692509/artifacts/13621154436.
+- Se mantiene `versionName 1.0.6`, `versionCode 62`, `main` intacta y sin releases ni publicación.
+- Informe detallado: `AUDITORIA_Y_CORRECCION_DIVISAS.md`.
+- **Estado:** corrección y CI completadas; pendiente prueba manual de APK 60 en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No integrar ni publicar hasta recibir autorización.
+
+---
+
+## 2026-11-06 — Investigación de `AppBundleLocaleChanges`
+
+- Se confirma que `app/build.gradle` contiene la configuración Groovy oficial documentada por Android: `android { bundle { language { enableSplit = false } } }`.
+- La documentación oficial indica que esta propiedad desactiva los APK de configuración separados por idioma y es una de las dos soluciones admitidas para aplicaciones que cambian el idioma dinámicamente: [Configure the base module — Android Developers](https://developer.android.com/guide/app-bundle/configure-base#handling_language_changes).
+- La auditoría CI #57 usa Android Gradle Plugin 9.5.0 / Lint 9.5.0 y aun así emite el aviso en `LanguageManager.java:57`. Por tanto, el aviso no demuestra por sí solo que el AAB esté mal configurado; podría ser una limitación/falso positivo del análisis estático.
+- **No se suprime el aviso ni se cambia código/configuración por ahora.** La comprobación definitiva queda pendiente de generar un AAB Debug y examinar `BundleConfig.pb` para verificar que no se generan splits de idioma. Hasta entonces, el punto sigue abierto.
+
+---
+
+## 2026-11-06 — Prueba manual APK Debug 57 (Redmi Note 13 Pro)
+
+- El usuario confirma que la APK Debug 57, generada por el workflow [Android Lint #57](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42233735692), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- Queda validada la variante monocroma del icono en compilación y prueba manual. Los cinco avisos `IconLauncherShape` se mantienen como deuda visual aceptada, sin alterar el icono aprobado.
+- `AppBundleLocaleChanges` continúa pendiente de inspección del AAB real y de `BundleConfig.pb`; no se considera resuelto por la mera presencia de `enableSplit = false` en Gradle.
+- Redmi Note 7 (Android 10) se probará al finalizar todos los cambios. Sin modificaciones de `main`, versión `1.0.6`, `versionCode 62`, APK/AAB o releases.
+
+---
+
+## 2026-11-06 — Validación de la variante monocroma (CI #57)
+
+- Workflow Android Lint #57: **SUCCESS**, commit `e374430739337c0f620cd85c07f15d529093d53f`.
+- El informe XML confirma que el aviso `MonochromeLauncherIcon` ha desaparecido tras añadir la capa `<monochrome>` al icono adaptativo.
+- Resultado: **6 warnings, 0 errors**. Permanecen los cinco `IconLauncherShape` (PNG normales, deuda visual aceptada) y `AppBundleLocaleChanges` (pendiente de verificar el AAB).
+- APK Debug #57 generada como artefacto `ev-calculator-pro-debug-57`; pendiente de instalación y prueba manual en Redmi Note 13 Pro. Redmi Note 7 se probará al finalizar todos los cambios.
+- Sin cambios de versión, versionCode, nombres de APK/AAB, releases ni rama `main`.
+
+---
+
+## 2026-11-06 — Variante monocroma del icono launcher (validación CI pendiente)
+
+- Se añade `app/src/main/res/drawable/ic_launcher_monochrome.xml`, una variante vectorial monocroma independiente que conserva los elementos reconocibles del icono actual: coche frontal, arco circular de carga y conector.
+- Se incorpora la capa `<monochrome>` en `mipmap-anydpi-v26/ic_launcher.xml`, apuntando al nuevo vector. El fondo adaptativo y la capa foreground normal permanecen intactos.
+- No se modifican los PNG del icono normal, `android:icon`, `android:roundIcon`, los colores/diseño del launcher normal, ni la interfaz de la aplicación.
+- Rama: `develop/post-1.0.6`. No se modifica `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, nombres de APK/AAB ni releases.
+- **Validación pendiente:** comprobar que el workflow Android Lint compila correctamente y que desaparece `MonochromeLauncherIcon`; revisar también el informe XML y la APK resultante antes de darlo por resuelto. La prueba manual en Redmi Note 13 Pro queda pendiente para esta nueva compilación; Redmi Note 7 se probará al terminar todos los cambios.
+
+---
+
+## Aclaración — Android Lint #54: IconLauncherShape
+
+- La ejecución [#54](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42230422918) terminó con `SUCCESS`, pero el informe mantiene los cinco avisos `IconLauncherShape`.
+- La ubicación exacta del informe identifica los cinco archivos `mipmap-{hdpi,mdpi,xhdpi,xxhdpi,xxxhdpi}/ic_launcher.png`; por tanto, el aviso no depende de `android:roundIcon`. Lint considera que la ilustración del icono de launcher ocupa toda la superficie cuadrada y recomienda una silueta diferenciada.
+- No se debe modificar el arte, introducir márgenes transparentes ni reducir la ilustración para eliminar un aviso estilístico sin aprobación expresa, porque cambiaría el aspecto/tamaño visual del icono aprobado.
+- Se ha restaurado `android:roundIcon="@mipmap/ic_launcher"` para dejar el manifiesto como estaba antes de la prueba, mediante el commit `f60977673eec06160e6d82ea4be9332f5323d8e1`. La retirada temporal no aportaba ninguna mejora y no eliminaba los avisos.
+- Decisión: conservar los cinco avisos `IconLauncherShape` como deuda visual documentada, sin alterar el icono. El aviso `MonochromeLauncherIcon` sigue pendiente de diseño aprobado.
+- La ejecución #54 confirma `SUCCESS` y deja 7 warnings / 0 errors: cinco `IconLauncherShape`, uno `MonochromeLauncherIcon` y uno `AppBundleLocaleChanges`.
+
+---
+
+## 2026-11-06 — Prueba manual APK Debug 53 y ajuste de roundIcon (CI pendiente)
+
+- El usuario confirma que la APK Debug 53, del workflow [42228155497](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42228155497), se ha instalado y funciona correctamente en Redmi Note 13 Pro (Android 16).
+- Tras revisar el informe XML del run 53, se ha confirmado que las cinco incidencias `IconLauncherShape` procedían de declarar `@mipmap/ic_launcher` simultáneamente en `android:icon` y `android:roundIcon`. Ambos atributos apuntaban al mismo recurso; no existía una variante redonda diferenciada.
+- En el commit `90e544c47a0187dd6ee4d8e9d476bfbf8ddbbff5` se elimina únicamente el atributo redundante `android:roundIcon` del manifiesto. Al quedar omitido, Android utiliza `android:icon` como recurso de respaldo; no se modifica ningún PNG, XML adaptativo ni elemento visual.
+- Validación pendiente del workflow [42230422918](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42230422918): comprobar que `lintDebug` y `assembleDebug` terminan correctamente y que desaparecen los cinco avisos `IconLauncherShape`.
+- El aviso `MonochromeLauncherIcon` permanece pendiente de decisión de diseño: no se crea una capa monocroma sin diseño aprobado. `AppBundleLocaleChanges` sigue pendiente de verificar el AAB real; `enableSplit = false` ya está configurado en Gradle.
+- La prueba manual APK Debug 53 queda confirmada en Redmi Note 13 Pro. Redmi Note 7 (Android 10) se probará al terminar todos los cambios.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, nombres de APK/AAB ni releases.
+
+---
+
+## 2026-11-06 — Prueba manual APK Debug 43 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 43, generada por el workflow [42179277897](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42179277897), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La validación manual queda confirmada para Android 16 y esta compilación concreta, incluido el cambio de ubicación de las dos imágenes de cabecera en `drawable-nodpi`.
+- Sigue pendiente probar la APK en Redmi Note 7 (Android 10), incluida navegación Atrás mediante botón/gesto y pantallas principales. No se declara cerrada la compatibilidad completa hasta completar esa prueba.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+---
+
+## 2026-11-06 — Resultado CI de IconLocation (APK Debug 43)
+
+- Workflow [42179277897](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42179277897), rama `develop/post-1.0.6`, commit probado `1e11fdcaad46c52ac954d7180ecc3ddc2d693ba8`: **SUCCESS**.
+- `:app:lintDebug` y `:app:assembleDebug` completados correctamente; subida de APK e informe completada.
+- Informe XML del artefacto `android-lint-report-43` (ID `13485076129`) descargado y analizado: **22 incidencias, 0 errores**. Los dos avisos `IconLocation` desaparecen (2 → 0). No aparecen nuevas categorías.
+- Advertencias restantes: `IconLauncherShape` 10, `IconDuplicates` 5, `UnusedResources` 4 (iconos conservados deliberadamente), `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1.
+- APK Debug 43: artefacto `ev-calculator-pro-debug-43`, ID `13484832403`, archivo `app-debug.apk`, tamaño 7.878.690 bytes. Exclusivamente para pruebas; no es una Release ni se ha publicado.
+- El cambio que mueve `cabecera_charge_calculator.jpeg` y `cabecera_electric_vs_combustion.png` de `drawable` a `drawable-nodpi` conserva nombres y bytes de imagen; CI confirma compilación y recursos correctos. Pendiente prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10); esta última sigue siendo necesaria para compatibilidad completa.
+- No se ha fusionado nada en `main`, no se han tocado ramas de respaldo ni se ha creado Release/publicado APK/AAB. Se conservan versionName `1.0.6` y versionCode `62`.
+
+---
+
+## 2026-11-06 — Prueba manual APK Debug 42 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 42, generada por el workflow [42117135152](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42117135152), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La validación queda confirmada únicamente para Android 16 y esta compilación concreta.
+- Sigue pendiente instalar/probar esta revisión en Redmi Note 7 (Android 10), incluyendo navegación Atrás mediante botón/gesto y pantallas principales. No se declara cerrada la compatibilidad entre ambos dispositivos hasta completar esa prueba.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+---
+
+## 2026-11-06 — Validación CI de ViewConstructor
+
+- Workflow [42117135152](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42117135152) finalizado con **SUCCESS**.
+- `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Informe XML del artefacto `android-lint-report-42` (ID `13456767217`) analizado: **24 incidencias, 0 errores**.
+- Los tres avisos `ViewConstructor` desaparecen tras las supresiones localizadas y justificadas.
+- Recuento respecto al informe anterior: 27 → 24 avisos. Permanecen: `IconLauncherShape` 10, `IconDuplicates` 5, `UnusedResources` 4 (iconos conservados deliberadamente), `IconLocation` 2, `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1.
+- APK Debug 42 generada correctamente: artefacto `ev-calculator-pro-debug-42` (ID `13457206930`), tamaño 7.878.408 bytes. Pendiente de prueba manual en Redmi Note 13 Pro y Redmi Note 7; aún no se declara validada funcionalmente.
+- Sin cambios en iconos, interfaz, `main`, versionName `1.0.6` o versionCode `62`. Sin release ni publicación.
+
+---
+
+## 2026-11-05 — Revisión IconDuplicates y tratamiento de ViewConstructor
+
+- Se descargó y revisó el informe XML del run [42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392).
+- Las cinco incidencias `IconDuplicates` corresponden a `ic_launcher.png` e `ic_launcher_round.png` con contenido idéntico en cinco densidades. El manifiesto declara `@mipmap/ic_launcher` tanto para `android:icon` como para `android:roundIcon`; no se altera la identidad visual ni se eliminan recursos de icono aprobados. Se mantienen como avisos conocidos.
+- Los tres avisos `ViewConstructor` afectan a `CompararCochesScreen`, `ElectricVsCombustionScreen` y `SimilarCarsScreen`. Son vistas creadas programáticamente con una `Activity` anfitriona y no están diseñadas para inflarse desde XML. Se documenta esta decisión con una supresión `ViewConstructor` localizada en cada clase; no se añaden constructores genéricos que no puedan satisfacer el contrato de Activity anfitriona.
+- Commits de código: `99b645becc0ae4ce6d5c9946dd27e5056cf958dc`, `9f28bfd605dccc4f0402622ab8db4bdfb56ee80d`, `ac067400dd418b775259ea6601a99277e4806709`.
+- **Validación pendiente:** el push ha iniciado el workflow Android Lint. Debe confirmarse en el informe XML que desaparecen los tres avisos `ViewConstructor`, y comprobar `:app:lintDebug` y `:app:assembleDebug`. No se declara resuelto hasta verificar CI.
+- Sin cambios en iconos, diseño, lógica funcional, `main`, versionName `1.0.6` o versionCode `62`. La prueba en Redmi Note 7 (Android 10) sigue pendiente.
+
+---
+
+## 2026-11-05 — Prueba manual APK Debug 39 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 39, generada por el workflow [42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- Esta validación cubre únicamente el Redmi Note 13 Pro y esta compilación concreta. Sigue pendiente la prueba en Redmi Note 7 (Android 10), incluida la navegación Atrás.
+- No se considera cerrada la compatibilidad completa hasta validar también Android 10.
+- Sin cambios en `main`, versionName `1.0.6`, versionCode `62`, APK de publicación ni releases.
+
+---
+
+## 2026-11-05 — Resultado CI de optimización DrawAllocation
+
+- Workflow [Android Lint run 42110418392](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42110418392), commit probado `a51897675ec4099bf1e620299aef117d2cecf11f`: **SUCCESS**. Los pasos `:app:lintDebug`, `:app:assembleDebug`, subida del APK y del informe finalizaron correctamente.
+- Informe XML descargado y analizado: **27 advertencias y 0 errores**. Las 7 incidencias `DrawAllocation` han desaparecido (7 → 0). No se introducen errores ni nuevas advertencias de dibujo.
+- Recuento restante: `IconLauncherShape` 10, `IconDuplicates` 5, `UnusedResources` 4 (iconos conservados deliberadamente), `ViewConstructor` 3, `IconLocation` 2, `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1. Total: 27.
+- APK Debug generado: artefacto `ev-calculator-pro-debug-39`, artifact ID `13455080900`, archivo `app-debug.apk` (7.878.408 bytes). Informe `android-lint-report-39`, artifact ID `13454870548`. La APK es exclusivamente de pruebas; no es una Release ni se ha publicado.
+- La APK Debug 39 queda pendiente de instalación y prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La prueba de Debug 33 en Note 13 no sustituye la de esta compilación.
+- La rama `develop/post-1.0.6` estaba 60 commits por delante y 0 por detrás de `main` antes de esta actualización documental. No se ha fusionado nada en `main`; se mantiene `versionName 1.0.6` y `versionCode 62`, sin crear Release ni cambiar APK/AAB de publicación.
+
+---
+
+## 2026-11-05 — Android Lint: lote SetTextI18n aplicado (validación CI pendiente)
+
+- Se ha analizado el informe XML de Android Lint del run [42058627467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42058627467): las 39 incidencias `SetTextI18n` se concentran en seis clases Java y varias son duplicados entre las implementaciones Activity/Screen.
+- Cambios aplicados exclusivamente en `develop/post-1.0.6`:
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: los dos mensajes del estado vacío pasan por `LanguageManager.t()`, aprovechando las traducciones existentes en los seis idiomas.
+  - `ElectricVsCombustionScreen.java`: las unidades de moneda/consumo se formatean sin concatenación directa; los textos de ahorro/diferencia y porcentajes usan plantillas con argumentos en `LanguageManager`.
+  - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: se usan plantillas traducidas para el estado de alternativas; los indicadores gráficos de selección se combinan como `CharSequence` y el texto de selección del catálogo se traduce.
+  - `LanguageManager.java`: se añaden plantillas completas en español, inglés, francés, alemán, italiano y portugués para los mensajes dinámicos.
+  - `MainActivity.java`: se documenta y limita `@SuppressLint("SetTextI18n")` al método `build()`, porque los textos se canalizan por `tv()`, que aplica el diccionario de seis idiomas; Lint no puede seguir ese helper personalizado.
+- No se cambian los textos funcionales de la interfaz, los cálculos, el catálogo, los recursos de imagen ni la arquitectura. No se añaden dependencias ni se modifica el versionado.
+- La ejecución CI de validación debe analizar el último commit de la rama y confirmar `:app:lintDebug` y `:app:assembleDebug`; hasta revisar el informe XML final no se da por resuelto el lote.
+- Estado Git previo a esta anotación: `develop/post-1.0.6` estaba 46 commits por delante y 0 por detrás de `main`. No se ha fusionado nada en `main`; se conserva `versionName 1.0.6` y `versionCode 62`.
+- Las pruebas manuales del APK de este lote siguen pendientes en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La prueba anterior confirmada en Note 13 no sustituye esta nueva revisión.
+
+---
+
+## 2026-11-05 — Android Lint: segundo lote RTL validado
+
+- Ejecución CI verificada: [run 42058627467](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42058627467), rama `develop/post-1.0.6`, commit probado `1cf1c6d72403e2394db01c642193346406f7217e`.
+- `:app:lintDebug` terminó correctamente. Informe XML de Lint 9.5.0 descargado y analizado: **132 incidencias, todas advertencias; 0 errores**.
+- Las ocho advertencias `RtlHardcoded` corregidas en este lote ya no aparecen. Tampoco reaparecen las tres `ObsoleteSdkInt` del lote anterior.
+- `:app:assembleDebug` terminó correctamente. Artefacto `ev-calculator-pro-debug-18` (7.670.164 bytes), disponible hasta el 12-11-2026. Informe `android-lint-report-18`, disponible hasta el 19-11-2026.
+- Recuento actual de advertencias: `UnusedResources` 59, `SetTextI18n` 39, `IconLauncherShape` 10, `DrawAllocation` 7, `IconDuplicates` 5, `VectorRaster` 3, `IconLocation` 3, `ViewConstructor` 3, `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1. Total: 132.
+- El lote RTL mantiene alineaciones relativas (`START`/`END`) en los cuatro archivos de comparación/búsqueda; no modifica el aspecto LTR esperado ni los textos/traducciones.
+- Comparación GitHub actual: `develop/post-1.0.6` está **32 commits por delante y 0 por detrás** de `main`. No se ha fusionado nada en `main`; las ramas de respaldo siguen intactas.
+- Se conserva `versionName 1.0.6` y `versionCode 62`; no se ha creado Release ni publicado ningún APK/AAB en Google Play.
+- **Pruebas manuales pendientes:** el APK Debug anterior fue probado correctamente por el usuario en Redmi Note 13 Pro (Android 16). Sigue pendiente probar esta revisión y, especialmente, navegación Atrás en Redmi Note 7 (Android 10). CI verde no sustituye las pruebas físicas.
+- Siguiente lote propuesto: analizar con cuidado las 39 advertencias `SetTextI18n`, preservando los seis idiomas y evitando cambios de textos visibles sin revisar recursos y contexto.
+
+---
+
+## 2026-11-05 — Android Lint: segundo lote, compatibilidad RTL (validación pendiente)
+
+- Se revisó el informe del run [42057758951](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42057758951): `lintDebug` y `assembleDebug` correctos; 0 errores y 140 advertencias (antes 143). Las tres `ObsoleteSdkInt` del primer lote ya no aparecen.
+- Segundo lote: se corrigen las 8 advertencias `RtlHardcoded`, sustituyendo alineaciones físicas por relativas:
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: `Gravity.LEFT` → `Gravity.START` (2 usos).
+  - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: `Gravity.RIGHT` → `Gravity.END` (6 usos).
+- El cambio permite que las alineaciones respeten la dirección del idioma (LTR/RTL). No cambia el diseño en idiomas LTR como español, ni modifica recursos, textos, seis idiomas, dependencias o versionado.
+- Commits del segundo lote: `1a5670cffd8dd7e1227a9e659fc71d154c6ef61c`, `dccb84ecb517232f7690eacba99512487fd110c5`, `c97bb0bbf86a4e690b42a630d4ce82fb69a85d8d`, `1cf1c6d72403e2394db01c642193346406f7217e`.
+- **Validación pendiente:** ejecutar `lintDebug` y `assembleDebug` para confirmar que las 8 advertencias desaparecen y que la compilación sigue correcta.
+- Rama de trabajo: `develop/post-1.0.6`. No se ha fusionado en `main`; mantener `versionName 1.0.6` y `versionCode 62`.
+
+---
+
+## 2026-11-05 — Android Lint: primer lote de advertencias (validación pendiente)
+
+- Tras la auditoría limpia de errores del run [42056765017](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017), se inicia la corrección conservadora de las 143 advertencias. La rama sigue siendo exclusivamente `develop/post-1.0.6`; `main` no se modifica.
+- Primer lote: se corrigen las tres advertencias `ObsoleteSdkInt` que señalaban comprobaciones redundantes con el `minSdk 24` actual:
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: se elimina la guarda API 21 alrededor de `View.setElevation()`; API 21 es inferior al mínimo admitido (24).
+  - `LanguageManager.java`: se elimina la rama de compatibilidad anterior a API 24 y se usa directamente `Configuration.getLocales()`; Android 10 (API 29) y Android 16 (API 36) están dentro del rango admitido.
+- No se cambia el comportamiento visual esperado, el idioma seleccionado ni la lista de seis idiomas. No se modifica `minSdk`, versionado, dependencias, catálogo ni workflows.
+- Commits del lote: `407ae91345a34bb2af641bff4a9d08cc6472ca4e`, `7244ded5fa1080015660dc2cbb915975845fa258` y `b22d034df10e0352921e89e96ddb7878aed3644e`.
+- **Validación pendiente:** todavía no hay un nuevo resultado verificado de `lintDebug` ni `assembleDebug` para este lote. No se declara que las tres advertencias hayan desaparecido hasta revisar el siguiente informe.
+- Tras los tres commits de código, la rama estaba 25 commits por delante y 0 por detrás de `main`; al añadir esta actualización documental queda en 26 commits por delante y 0 por detrás. No se ha fusionado nada en `main`; se conserva `versionName 1.0.6` y `versionCode 62`.
+
+---
+
+## 2026-11-05 — Fase 1 de Android Lint: primeras correcciones aplicadas (validación pendiente)
+
+- Trabajo realizado exclusivamente en `develop/post-1.0.6`; `main` permanece sin modificaciones.
+- Sustituidos los 25 argumentos numéricos de `TextView.setTypeface(null, 0/1)` por `Typeface.NORMAL` y `Typeface.BOLD`, respectivamente, en `BottomNavigationHelper.java`, `ConfigurationActivity.java`, `ElectricVsCombustionScreen.java`, `MainActivity.java` y `SupportProjectActivity.java`. Se conserva el estilo normal/negrita existente.
+- En `AppMenuApplication.java`, `protectScrollViews(View)` queda anotado con `@androidx.annotation.RequiresApi(35)`. El método solo se invoca desde `protectSystemBars(Activity)`, que ya retorna para versiones inferiores a API 35; la lógica de insets y la condición de ejecución no cambian.
+- En `res/values/themes.xml`, se añade `tools:targetApi="29"` al estilo que contiene `android:forceDarkAllowed`, ya que ese atributo se introdujo en API 29. No se cambia el valor del atributo ni el tema visual.
+- `GestureBackNavigation` se mantiene expresamente pendiente: `MainActivity` ya registra un `OnBackInvokedCallback` en API 33+ y conserva `onBackPressed()` como fallback. No se suprime el aviso ni se modifica la navegación hasta probar el gesto predictivo y el historial de pestañas en Redmi Note 13 Pro (Android 16) y el retroceso en Redmi Note 7 (Android 10).
+- **Estado:** cambios de código aplicados; pendientes revisión final del diff, nueva ejecución de Android Lint, compilación Debug/Release y pruebas manuales en ambos dispositivos. No se considera cerrada la fase ni resueltos los avisos hasta verificar esos resultados.
+- El workflow `.github/workflows/android-lint.yml` se amplió para ejecutar también `assembleDebug` y publicar el APK Debug como artefacto de prueba (retención 7 días). Se usan variables placeholder únicamente para satisfacer la validación de configuración de firma Release; `assembleDebug` no utiliza ni firma con esas credenciales. La ejecución automática tras este cambio está pendiente de consultar y verificar.
+- Sin cambios en `main`, ramas de respaldo, catálogo protegido, dependencias, `minSdk 24`, `compileSdk 36`, `targetSdk 36`, `versionName 1.0.6`, `versionCode 62`, APK/AAB o publicación en Google Play.
+
+---
+
+## 2026-11-05 — Primera auditoría Android Lint completada (hallazgos pendientes)
+
+- La segunda ejecución válida de Android Lint es [run 42052252879](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42052252879), en la rama `develop/post-1.0.6`, commit analizado `72dfed73832c1d6c2d09c6ef67a17d5b706db0d1`.
+- Se verificó en los logs que `gradle --no-daemon lintDebug` llegó a ejecutar análisis de código, recursos, manifest y pruebas; generó los informes HTML, XML y SARIF. Artefacto `android-lint-report-2`, ID `13427328198`, disponible hasta el 19-11-2026: [descargar informes](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42052252879/artifacts/13427328198).
+- Resultado real de Lint: **32 errores y 143 advertencias**. La tarea `:app:lintDebug` falló por esos hallazgos. El job global de Actions aparece como SUCCESS únicamente porque el workflow conserva los informes con `continue-on-error`; no equivale a una auditoría limpia ni a una compilación Lint satisfactoria.
+- Distribución de errores: `WrongConstant` (25), `NewApi` (6) y `GestureBackNavigation` (1). Distribución de advertencias: `UnusedResources` (59), `SetTextI18n` (39), `IconLauncherShape` (10), `RtlHardcoded` (8), `DrawAllocation` (7), `IconDuplicates` (5), `VectorRaster` (3), `ObsoleteSdkInt` (3), `IconLocation` (3), `ViewConstructor` (3), `AppBundleLocaleChanges` (1), `IconXmlAndPng` (1) y `MonochromeLauncherIcon` (1).
+- Hallazgo prioritario de compatibilidad: `GestureBackNavigation` en `MainActivity.java:224`; el uso de `onBackPressed()` no recibe los gestos predictivos de Atrás en Android 16+ y Lint recomienda migrar a `OnBackPressedDispatcher`. Debe analizarse con cuidado para conservar el historial de pestañas y el comportamiento Atrás ya validado.
+- Los seis hallazgos `NewApi` aparecen en `AppMenuApplication.java` (líneas 84, 86 y 102) y `themes.xml:9`; deben revisarse contra las guardas por versión y el minSdk 24 actual antes de cambiar código. Los 25 `WrongConstant` están repartidos entre `BottomNavigationHelper.java`, `ConfigurationActivity.java`, `ElectricVsCombustionScreen.java`, `MainActivity.java` y `SupportProjectActivity.java`; requieren inspección individual de argumentos/constantes.
+- Advertencias predominantes: recursos no utilizados (59) y concatenación/localización de textos (39). No eliminar recursos ni cambiar textos en bloque sin verificar referencias dinámicas, traducciones y comportamiento.
+- **Estado:** auditoría inicial válida completada; análisis detallado y plan de corrección pendientes. No se ha modificado código Android ni configuración de la app para corregir hallazgos. No se ha tocado `main`, ramas de respaldo, versión 1.0.6/versionCode 62, APK/AAB ni publicación de Google Play.
+- Siguiente paso recomendado: revisar primero los 32 errores individualmente, empezando por `GestureBackNavigation`, `NewApi` y `WrongConstant`; después priorizar advertencias de compatibilidad/localización y dejar limpieza de recursos para una pasada separada.
+
+---
+
+## 2026-11-05 — Ajuste de ejecución de Android Lint en CI
+
+- La primera ejecución `42051860380` terminó con el job global en verde por el uso deliberado de `continue-on-error`, pero **Lint no llegó a ejecutarse**: la evaluación de `app/build.gradle` abortó porque el proyecto exige variables de firma Release durante la configuración, incluso al solicitar `lintDebug`. No se generaron informes ni artefactos.
+- Se ajusta únicamente el workflow `.github/workflows/android-lint.yml` para proporcionar valores ficticios y locales a las cuatro variables de firma durante el paso `lintDebug`. La tarea de análisis debug no firma APK/AAB y no utiliza esas credenciales; no se crean ni se exponen secretos reales.
+- Commit del ajuste: `72dfed73832c1d6c2d09c6ef67a17d5b706db0d1`. El push inicia una nueva ejecución automáticamente.
+- **Estado:** cerrado tras la segunda ejecución válida `42052252879`: `lintDebug` sí se ejecutó y publicó informes, con 32 errores y 143 advertencias. El detalle queda registrado en la sección «Primera auditoría Android Lint completada». No se ha cambiado `app/build.gradle`, fuentes Android, dependencias, versionado ni `main`.
+
+---
+
+## 2026-11-05 — Preparación de auditoría independiente de Android Lint
+
+- En la rama `develop/post-1.0.6` se añade el workflow `.github/workflows/android-lint.yml` para ejecutar `gradle --no-daemon lintDebug` con Java 17 y Gradle 9.6.0.
+- El workflow se puede iniciar manualmente desde GitHub Actions y también se ejecuta al modificar código/configuración Android relevante en esta rama. No se incorpora al workflow de Release ni altera el proceso de publicación.
+- La tarea Lint se configura como no bloqueante durante esta primera auditoría: aunque Gradle detecte incidencias, se intenta conservar el informe HTML/XML/SARIF como artefacto durante 14 días. Esto permite revisar el inventario completo antes de decidir qué corregir y cómo establecer una línea base.
+- Referencia histórica: la ejecución aislada `41926491455` del 4-11-2026 dejó constancia de 38 errores y 143 advertencias de Lint; aquella ejecución excluyó `lintDebug`. Esos recuentos todavía no se han reproducido en esta rama y no se consideran resultado de la nueva auditoría.
+- **Estado:** workflow añadido en el commit `7b81cb901e634bbf58f5c47d637c92577e7a9800`. Ejecución y análisis del informe pendientes. No se han modificado fuentes Android, dependencias, configuración Gradle, catálogo, versión 1.0.6/versionCode 62, APK/AAB ni `main`.
+- Siguiente paso: ejecutar el workflow en `develop/post-1.0.6`, descargar/revisar el informe y clasificar incidencias por severidad, archivo y posibilidad de corrección segura.
+
+---
+
+## 2026-11-05 — Inicio de desarrollo posterior a 1.0.6 y conciliación de configuración
+
+- Creada la rama de trabajo `develop/post-1.0.6` directamente desde `main` (commit base `7488f2af0634ed93c97a593a057908906ec1aefe`). Esta rama queda destinada a las siguientes mejoras, herramientas y auditorías; no se modifica `main`, ramas de respaldo ni `stable`.
+- La versión 1.0.6 (versionCode 62) ya ha sido enviada por el usuario a revisión de Google Play. Se mantiene congelado su versionado y no se prepara todavía una nueva versión de publicación.
+- **Conciliación de configuración verificada en `main`:** `app/build.gradle` declara actualmente `minSdk = 24`, `compileSdk = 36`, `targetSdk = 36`, `versionName = '1.0.6'` y `versionCode = 62`. La mención anterior a `minSdk 23` en la anotación de la corrección de «Eléctrico vs Combustión» y en la descripción de la Release `build-v1.0.6-2486` refleja el estado histórico de aquel build, anterior al cambio de compatibilidad; no representa la configuración actual de `main`.
+- La Release `build-v1.0.6-2486` queda identificada como artefacto histórico construido con la configuración anterior (`minSdk 23`). No debe tomarse como evidencia del `minSdk` del AAB enviado ahora a Google Play.
+- Esta actualización corrige la lectura del estado actual sin reescribir los datos históricos de las compilaciones. No cambia código Android, Gradle, dependencias, catálogo, workflows, versionado ni artefactos.
+- Próximo paso acordado: continuar en esta rama con el resto del plan de herramientas y auditorías, empezando por CodeQL y Android Lint una vez cerrados estos dos puntos iniciales.
+
+---
+
 ## 2026-11-05 — Seguimiento de nuevas políticas de Google Play (anotado)
 
 - Revisión de la comunicación de Google Play del 29 de octubre de 2026 y auditoría preliminar del manifiesto y de los principales componentes de red de la aplicación.
@@ -3025,3 +3397,215 @@ Pruebas realizadas por el usuario en el APK de la rama `feature/asesor-ia-fase-1
 - Limitación del CI existente: `.github/workflows/build.yml` permite `workflow_dispatch`, pero su disparador `push` no incluye esta rama. No se ha alterado el workflow, conforme al alcance solicitado. La ejecución debe iniciarse manualmente seleccionando esta rama en GitHub Actions; además, ese workflow compila Release APK/AAB, pero no ejecuta `testDebugUnitTest` ni `assembleDebug`.
 - El workflow `.github/workflows/advisor-engine-test.yml` ejecuta pruebas smoke específicas del motor del asesor, no la suite Gradle completa, y tampoco sustituye `testDebugUnitTest`.
 - No se ha realizado merge en `main`, no se ha creado ninguna GitHub Release, no se han subido artefactos a Play Console ni se ha publicado nada en Google Play.
+
+
+## 2026-11-05 — Validación de la fase 1 de Android Lint
+
+- Ejecución de GitHub Actions: [42054971314](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42054971314), ejecutada sobre `develop/post-1.0.6`, commit `dbf485824f8806c3a00c574d143ec8b099e0fd7e`.
+- `:app:assembleDebug` finalizó con `BUILD SUCCESSFUL`. Se generó y subió el artefacto `ev-calculator-pro-debug-10` (7.670.171 bytes; caduca el 12 de noviembre de 2026). Es una compilación Debug de pruebas, no una Release ni un artefacto para Play Store.
+- Android Lint detecta ahora 1 error y 143 advertencias, frente a los 32 errores y 143 advertencias de la auditoría inicial. Los 25 `WrongConstant` y los 6 `NewApi` han desaparecido tras la fase 1.
+- Único error restante: `GestureBackNavigation` en `MainActivity.java:225`, por el uso de `onBackPressed()`. Se mantiene pendiente de decisión hasta probar la navegación Atrás/gestos en Android 16 y el comportamiento de compatibilidad en Android 10. No se ha aplicado una supresión ni una migración a AndroidX.
+- El workflow aparece completado correctamente porque el informe se conserva y el job continúa para compilar el APK; esto **no significa que Android Lint esté limpio**: la tarea `lintDebug` terminó con fallo por ese error.
+- Advertencias restantes: 143. Se mantienen para fases posteriores, sin borrados masivos de recursos ni cambios visuales.
+- **Pruebas manuales pendientes:** instalar el APK Debug y validar navegación, gesto Atrás y pantallas principales en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La compilación CI no sustituye estas pruebas.
+- No se ha fusionado nada en `main`, no se han creado Releases y no se ha modificado `versionName`, `versionCode` ni configuración de publicación.
+
+
+### Prueba manual del APK Debug — Redmi Note 13 Pro
+
+- El usuario confirma que ha instalado el APK Debug generado por la ejecución 42054971314 en el Redmi Note 13 Pro (Android 16) y que la prueba realizada ha sido correcta.
+- Esta confirmación cubre únicamente el Redmi Note 13 Pro. La prueba en Redmi Note 7 (Android 10) continúa pendiente.
+- No se considera cerrada la validación completa de compatibilidad ni el error Lint `GestureBackNavigation`; queda pendiente probar Android 10 y verificar específicamente el comportamiento de navegación Atrás/gestos.
+
+
+### Corrección localizada de GestureBackNavigation — validación CI pendiente
+
+- En `MainActivity.java` se documenta el motivo del fallback heredado: `onBackPressed()` se conserva para Android 12 y anteriores; en API 33+ la actividad registra y desregistra un `OnBackInvokedCallback` que gestiona la navegación entre pestañas y el cierre de la actividad.
+- Se añade `@SuppressLint("GestureBackNavigation")` únicamente al método heredado, con comentario explicativo. No se elimina el callback moderno, no se cambia la prioridad ni la lógica de navegación, y no se añade una dependencia AndroidX nueva. La clase base extiende `android.app.Activity`, no `ComponentActivity`; por ello no se puede usar directamente `OnBackPressedDispatcher` sin cambiar la arquitectura/dependencias.
+- Cambio aplicado en commit `1b6764259e6db641da5589052160579d2a4f9de3`, exclusivamente en `develop/post-1.0.6`.
+- Ejecución CI disparada: [run 42056765017](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017). En la última consulta, `lintDebug` seguía en ejecución; aún no se declara resuelto el error ni verificada la compilación de esta revisión.
+- La prueba manual en Redmi Note 13 Pro (Android 16) está confirmada como correcta. Sigue pendiente probar navegación Atrás en Redmi Note 7 (Android 10).
+- Sin cambios en `main`, ramas de respaldo, dependencias, versión `1.0.6`, versionCode `62` ni artefactos de publicación.
+
+
+### Resultado CI tras corregir GestureBackNavigation — run 42056765017
+
+- Ejecución completada correctamente: [Android Lint audit #11](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42056765017), commit probado `1b6764259e6db641da5589052160579d2a4f9de3`.
+- `:app:lintDebug`: SUCCESS. Informe XML descargado y comprobado: **0 errores y 143 advertencias**. El aviso `GestureBackNavigation` ya no aparece como error; la supresión localizada ha funcionado.
+- Advertencias restantes: UnusedResources 59, SetTextI18n 39, IconLauncherShape 10, RtlHardcoded 8, DrawAllocation 7, IconDuplicates 5, VectorRaster 3, ObsoleteSdkInt 3, IconLocation 3, ViewConstructor 3, AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
+- `:app:assembleDebug`: SUCCESS. Artefacto `ev-calculator-pro-debug-11`, 7,670,243 bytes, disponible hasta el 12 nov 2026.
+- Informe Android Lint `android-lint-report-11` disponible hasta el 19 nov 2026.
+- La validación manual confirmada corresponde al Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10), especialmente botón/gesto Atrás, sigue pendiente; por tanto, el comportamiento de compatibilidad no se da por cerrado.
+- Sin fusión en `main`, sin cambios de versión/versionCode ni publicación.
+
+
+### Auditoría Android Lint — lote SetTextI18n (noviembre 2026)
+
+- En `develop/post-1.0.6` se corrigieron las concatenaciones de texto localizables en Comparar coches, Comparación eléctrico/combustión y Coches similares. Se añadieron plantillas traducidas para los seis idiomas soportados (ES, EN, FR, DE, IT, PT), conservando cálculos y textos funcionales.
+- En `MainActivity.java`, los avisos restantes correspondían a formato dinámico de moneda, cifras y unidades. Se documentaron supresiones `@SuppressLint("SetTextI18n")` limitadas a `applyCurrency()` y `calculate()`; no se suprimió la regla a nivel de clase.
+- Commit de este ajuste: `f0749b97c0a72ebb1f086df7e50c6d10d5f26c97`.
+- CI: [Android Lint audit #32](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42106468082), resultado SUCCESS. `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Informe XML descargado y analizado: **93 incidencias, 0 errores y 93 advertencias**. `SetTextI18n` queda en **0** (antes 39). No se ha suprimido globalmente la regla.
+- Advertencias restantes: UnusedResources 59, IconLauncherShape 10, DrawAllocation 7, IconDuplicates 5, VectorRaster 3, IconLocation 3, ViewConstructor 3, AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
+- APK Debug generado: artefacto `ev-calculator-pro-debug-32` (7.668.102 bytes), asociado al commit anterior. Pendiente instalación y prueba manual en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- Rama `develop/post-1.0.6`; sin fusión en `main`. No se modifican versionName 1.0.6, versionCode 62, APK de publicación ni releases.
+
+
+## 2026-11-05 — Android Lint: limpieza conservadora de UnusedResources (validación CI pendiente)
+
+- El usuario confirma que el APK Debug del run [42106468082](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42106468082), artefacto `ev-calculator-pro-debug-32`, se instala y funciona correctamente en Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10) sigue pendiente.
+- Se revisó el informe XML de Lint del run 42106468082: 59 avisos `UnusedResources` dentro de un total de 93 advertencias y 0 errores.
+- La revisión estática cubrió las 25 clases Java de producción, el manifiesto y los recursos XML de configuración. No se encontraron referencias directas a los recursos seleccionados para limpieza, ni llamadas a `getIdentifier()` en las clases revisadas. El árbol de recursos no contiene layouts XML que los consuman.
+- Limpieza conservadora aplicada en esta rama: se eliminan 37 archivos que corresponden a 55 entradas de recursos marcadas como no utilizadas: cabecera antigua, 20 drawables `car_*`, 19 definiciones de color obsoletas, `edit_bg`, seis ilustraciones `ev_illustration_*`, iconos de cabecera/carga/resultado y fondos/estilos antiguos.
+- Se conservan expresamente cuatro recursos con nombre de icono (`ic_launcher`, `ic_launcher_foreground_inset`, `ic_launcher_round` e `ic_nav_find_cars`) para no arriesgar cambios de identidad visual o navegación mientras se valida su uso.
+- Esta eliminación no cambia lógica, pantallas, textos, traducciones, catálogo, dependencias, manifiesto, tema activo, iconos utilizados ni versionado. Se conserva `versionName 1.0.6` y `versionCode 62`.
+- **Validación pendiente:** ejecutar Android Lint y `assembleDebug` sobre este cambio; revisar el nuevo informe para confirmar cuántos avisos `UnusedResources` desaparecen y comprobar que no surgen errores de recursos. No se considera cerrada la limpieza hasta completar CI y pruebas manuales.
+- Rama `develop/post-1.0.6`; no se modifica `main` ni ninguna rama de respaldo. No se crea Release ni se publica APK/AAB.
+
+
+## 2026-11-05 — Resultado CI de limpieza UnusedResources
+
+- Workflow [Android Lint run 42107903390](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42107903390), commit `6453be77ea6b436bac874d7f6590fd19d4b73bc4`: **SUCCESS**. `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Informe XML revisado: 34 advertencias, 0 errores. `UnusedResources` baja de 59 a 4 (55 avisos eliminados). Los cuatro restantes corresponden a recursos de iconos conservados deliberadamente: `ic_launcher`, `ic_launcher_foreground_inset`, `ic_launcher_round` y `ic_nav_find_cars`; no se eliminan en esta fase para evitar riesgos de identidad visual/navegación.
+- Las otras advertencias son de iconos, asignaciones en dibujo, constructores de vistas y configuración de idiomas. No se han introducido errores de recursos.
+- APK Debug generado: artefacto `ev-calculator-pro-debug-33`, artifact ID `13452842579`, archivo `app-debug.apk` (7.877.804 bytes). Es una compilación de pruebas, no una release.
+- Pendiente: instalación y prueba manual de esta APK en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La validación anterior en Note 13 correspondía a la APK Debug 32, anterior a esta limpieza; por tanto, no sustituye la prueba de esta APK.
+- Rama `develop/post-1.0.6`; `main` sigue sin cambios. No se modifica versionName 1.0.6, versionCode 62, ni se crea/publica release.
+
+
+## 2026-11-05 — Prueba manual APK Debug 33 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 33, generada por el workflow [42107903390](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42107903390), funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La validación de esta APK queda confirmada para Android 16. La prueba en Redmi Note 7 (Android 10) continúa pendiente.
+- No se considera cerrada la compatibilidad completa hasta probar el segundo dispositivo, incluida la navegación Atrás.
+- Sin cambios en `main`, versionName `1.0.6`, versionCode `62`, APK de publicación ni releases.
+
+
+## 2026-11-05 — Revisión del siguiente lote de Android Lint
+
+- Se ha descargado y revisado el informe completo del run [42107903390](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42107903390). Se mantienen 34 advertencias y 0 errores.
+- Se identifica como siguiente lote técnico candidato `DrawAllocation` (7 avisos), todos relacionados con objetos creados durante `onDraw()`:
+  - `BatteryRangeView.java`: creación de `LinearGradient` en cada dibujo.
+  - `CompararCochesActivity.java` y `CompararCochesScreen.java`: creación de `RectF` en las cabeceras.
+  - `PremiumBackgroundView.java`: creación de `LinearGradient` y `BlurMaskFilter` durante el dibujo.
+  - `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: creación de `RectF` en las cabeceras.
+- La corrección prevista es reutilizar shaders, filtros y rectángulos, actualizándolos solo cuando cambien tamaño, tema o valores. Debe conservar exactamente el aspecto y la interacción actuales; no se deben cambiar colores, medidas, animaciones ni composición visual.
+- Esta revisión es únicamente de auditoría: todavía no se ha modificado código para este lote ni se ha ejecutado una nueva compilación. Se mantiene como siguiente tarea de desarrollo, separada de la prueba pendiente en Redmi Note 7 (Android 10).
+
+
+## 2026-11-05 — Optimización DrawAllocation (pendiente de CI y prueba)
+
+Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para eliminar asignaciones repetidas durante el dibujo:
+
+- `BatteryRangeView.java`: el `LinearGradient` de la barra activa se conserva y solo se actualiza cuando cambian los extremos o el tamaño de la vista.
+- `PremiumBackgroundView.java`: se reutilizan el gradiente de fondo y el `BlurMaskFilter`; el gradiente se reconstruye únicamente al cambiar el tamaño o el tema.
+- `CompararCochesActivity.java` y `CompararCochesScreen.java`: reutilizan un `RectF` para dibujar la imagen de cabecera.
+- `SimilarCarsActivity.java` y `SimilarCarsScreen.java`: reutilizan un `RectF` para dibujar la imagen de cabecera.
+- No se han cambiado medidas, colores, formas, textos, animaciones ni interacción prevista.
+- Commits de código: `adece626`, `7d14cc9`, `e502397`, `294fc3a`, `2b51029`, `a518976`.
+- Pendiente: ejecutar Android Lint y `assembleDebug`, comprobar que desaparecen los 7 avisos `DrawAllocation`, revisar el diff y generar APK de prueba. No se declara compilado ni probado todavía.
+- La APK Debug 33 continúa validada en Redmi Note 13 Pro (Android 16); la prueba en Redmi Note 7 (Android 10) sigue pendiente.
+- No se ha fusionado nada a `main`; versionName `1.0.6`, versionCode `62` y releases permanecen sin cambios.
+
+## Auditoría Android Lint — configuración de idiomas (6 nov 2026)
+
+- Commit de configuración: `ff37cc1c11c0dd9fb45425c8317479b5af311596` en `develop/post-1.0.6`.
+- Se añadió en `app/build.gradle`:
+  `android.bundle.language.enableSplit = false`, dentro del bloque `bundle { language { ... } }`, conforme a la documentación oficial de Android para aplicaciones con selector de idioma interno.
+- Workflow [42180279029](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42180279029): SUCCESS. `:app:lintDebug` y `:app:assembleDebug` completados correctamente.
+- Artefactos: APK Debug `ev-calculator-pro-debug-44` (7.644.869 bytes, artifact ID `13485410684`); informe `android-lint-report-44` (artifact ID `13485236856`).
+- Informe XML revisado: 22 advertencias, 0 errores. Categorías: IconLauncherShape 10, IconDuplicates 5, UnusedResources 4 (iconos conservados deliberadamente), AppBundleLocaleChanges 1, IconXmlAndPng 1 y MonochromeLauncherIcon 1.
+- **AppBundleLocaleChanges sigue presente** en `LanguageManager.java:57` pese a la configuración. No se considera resuelto; se debe investigar si es una limitación/falso positivo del detector de Lint en AGP 9.5.0. No suprimir el aviso ni alterar el selector/traducciones sin justificarlo.
+- La compilación de este workflow es Debug APK; no valida por sí sola el contenido final de un Android App Bundle de publicación.
+- Sin cambios de versión: `versionName 1.0.6`, `versionCode 62`. No se ha fusionado a `main`.
+
+
+## 2026-11-06 — Limpieza conservadora de recursos duplicados del icono launcher
+
+- Auditoría del manifiesto: `android:icon` y `android:roundIcon` apuntan ambos a `@mipmap/ic_launcher`. La variante adaptativa principal está en `mipmap-anydpi-v26/ic_launcher.xml`; Android aplica la máscara de launcher según el dispositivo.
+- Se comprobó que `ic_launcher_round.xml` era byte a byte idéntico al recurso adaptativo principal (mismo blob SHA), y que los cinco PNG `ic_launcher_round.png` eran idénticos a sus respectivos `ic_launcher.png` en hdpi, mdpi, xhdpi, xxhdpi y xxxhdpi (mismos blob SHA por densidad).
+- Se eliminaron únicamente esos seis recursos redundantes de `ic_launcher_round`. No se cambió el manifiesto, el icono visible, el foreground/background adaptativo, los PNG principales ni los recursos de navegación. `android:roundIcon` continúa resolviendo a `@mipmap/ic_launcher`, exactamente como antes.
+- La limpieza busca eliminar las cinco incidencias `IconDuplicates` y el recurso `ic_launcher_round` señalado como no utilizado. **Validación CI pendiente**: revisar el próximo informe de Android Lint y comprobar `:app:lintDebug` y `:app:assembleDebug`; no se da por resuelto hasta verificarlo.
+- Se mantienen sin cambios los otros avisos de iconos (`IconLauncherShape`, `IconXmlAndPng`, `MonochromeLauncherIcon`) hasta justificar una corrección que no altere el diseño aprobado. No se han añadido supresiones.
+- Rama `develop/post-1.0.6`; sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, APK/AAB de publicación ni releases.
+
+
+## 2026-11-06 — Resultado CI de limpieza de iconos (APK Debug 50)
+
+- Workflow [42225832000](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42225832000), rama `develop/post-1.0.6`, commit probado `b287dac480a0da293b65881c63e0325a681324be`: **SUCCESS**.
+- `:app:lintDebug` y `:app:assembleDebug` completados correctamente; APK Debug e informe Lint subidos.
+- Informe XML del artefacto `android-lint-report-50` (ID `13506226430`) descargado y analizado: **11 avisos, 0 errores**, frente a 22 avisos en el informe 43.
+- Los cinco avisos `IconDuplicates` desaparecen (5 → 0) al eliminar recursos `ic_launcher_round` que eran duplicados exactos. Se conservan sin cambios el icono adaptativo principal y los PNG `ic_launcher` usados por la aplicación.
+- Avisos restantes: `IconLauncherShape` 5, `UnusedResources` 3 (`drawable/ic_launcher.xml`, `drawable/ic_launcher_foreground_inset.xml`, `drawable/ic_nav_find_cars.xml`), `AppBundleLocaleChanges` 1, `IconXmlAndPng` 1 y `MonochromeLauncherIcon` 1.
+- No se modificó el diseño del icono. Los avisos restantes requieren análisis independiente; en particular, no se elimina `ic_nav_find_cars.xml` sin verificar posibles referencias indirectas y no se cambia el icono redondo/monocromo sin revisar impacto visual y compatibilidad.
+- APK Debug 50: artefacto `ev-calculator-pro-debug-50`, ID `13505857311`, generado correctamente; pendiente de prueba manual por el usuario en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+
+## 2026-11-06 — Prueba manual APK Debug 50 en Redmi Note 13 Pro
+
+- El usuario confirma que la APK Debug 50, generada por el workflow [42225832000](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/42225832000), se ha instalado y funciona correctamente en el Redmi Note 13 Pro (Android 16).
+- La prueba manual queda confirmada para Android 16 y esta compilación concreta. Sigue pendiente probar la APK en Redmi Note 7 (Android 10), por lo que no se declara cerrada la compatibilidad entre ambos dispositivos.
+- Se mantiene pendiente investigar por separado los 6 avisos de iconos restantes (5 IconLauncherShape y 1 IconXmlAndPng), además de los recursos no utilizados, AppBundleLocaleChanges y MonochromeLauncherIcon; no se alteran sin análisis.
+- Sin cambios en `main`, ramas de respaldo, versionName `1.0.6`, versionCode `62`, APK/AAB de publicación ni releases.
+
+
+## Android Lint — ejecución 53 (6 noviembre 2026)
+
+- Rama: `develop/post-1.0.6`; commit de código: `4bef0c77ba4839591fa7a09c7644374d5c3ced0a`.
+- GitHub Actions Android Lint #53: SUCCESS. `lintDebug` y `assembleDebug` completados; APK Debug 53 e informe Lint publicados.
+- Informe XML: 7 warnings, 0 errors (frente a 11 warnings, 0 errors en la ejecución 50).
+- `UnusedResources`: 3 → 0. Eliminados únicamente los recursos no utilizados `drawable/ic_launcher.xml`, `drawable/ic_launcher_foreground_inset.xml` y `drawable/ic_nav_find_cars.xml`, tras comprobar que el launcher y la navegación activos utilizan otros recursos. No se alteraron iconos activos ni manifiesto.
+- `IconXmlAndPng`: 1 → 0.
+- Avisos restantes: `IconLauncherShape` (5, launcher usado como round icon sin forma circular), `MonochromeLauncherIcon` (1, falta etiqueta monocroma en icono adaptativo) y `AppBundleLocaleChanges` (1, pendiente verificar configuración efectiva del AAB).
+- No se ha cambiado la apariencia del launcher, versionName/versionCode, releases ni la rama `main`.
+- Artefactos: APK `ev-calculator-pro-debug-53` (ID `13507490182`); informe `android-lint-report-53` (ID `13506294633`).
+- Validación manual pendiente de APK 53 en Redmi Note 13 Pro; prueba del Redmi Note 7 se mantiene para el final de todos los cambios.
+
+
+## 2026-11-12 — Refresco de moneda en Comparar al volver con Atrás (validación pendiente)
+
+- Incidencia reproducida por el usuario en Redmi Note 13 Pro: después de cambiar la moneda en Configuración y volver con el botón Atrás del sistema, Comparar seguía mostrando precios en euros.
+- Se añade en `MainActivity` una comprobación explícita de la moneda persistida al reanudar la pestaña Comparar. Si difiere de la última moneda aplicada, se reconstruye únicamente esa pantalla; la selección de vehículos se conserva mediante las preferencias existentes.
+- El callback general de apariencia sincroniza ahora también la referencia de moneda de `MainActivity`, evitando una segunda reconstrucción cuando el cambio ya fue procesado por el ciclo de vida base.
+- Cambio de código aplicado en `develop/post-1.0.6`, commit `d1a966acdc3432b3facf2c27a655033f433770da`.
+- **Pendiente:** ejecutar CI, revisar `lintDebug`, pruebas y `assembleDebug`; instalar el APK resultante y comprobar el retorno con Atrás en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se considera solucionado hasta verificar ambas pruebas manuales.
+- Sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, nombres de APK ni releases.
+
+
+## 2026-11-12 — Corrección del flujo Añadir desde ficha a Comparar (CI pendiente)
+
+- Incidencia comunicada: desde Buscar coches similares, al abrir los detalles de un resultado y pulsar «Añadir a comparativa», la app navegaba a Comparar pero no mostraba ningún vehículo.
+- Causa identificada en el código: `CarDetailActivity.addToComparison()` persistía IDs y claves lógicas, pero no marcaba `compare_selection_initialized`. Además, si `MainActivity` ya conservaba una instancia de `CompararCochesScreen`, la navegación de retorno a la pestaña 3 podía no recargar la selección recién guardada.
+- Corrección en `CarDetailActivity`: marca `compare_selection_initialized=true` en la misma escritura de preferencias y envía el extra `reload_compare_selection=true` junto con `open_primary_tab=3`.
+- Corrección en `CompararCochesScreen`: añade `reloadSelectionFromPreferences()`, que vuelve a cargar las selecciones persistidas y reconstruye la tabla.
+- Corrección en `MainActivity.onNewIntent()`: cuando vuelve desde la ficha con el indicador de recarga y Comparar ya está visible, recarga la selección en la instancia existente; si Comparar no era la pestaña activa, mantiene la navegación habitual.
+- Cambios limitados a esos tres archivos Java en `develop/post-1.0.6`. No se cambia catálogo, buscador, criterios de similitud, diseño, conversión de divisas ni persistencia general. Sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, nombres de APK/AAB ni releases.
+- Commits de código: `81d5aa5a0dc136f29a1cff2e325ec0561a127a34`, `e4c3dcd9e869a2156c25440ba5356650f699aeaf`, `4dbd5f4be3694a5fb5cf1629ab99387a2a3ccec8`.
+
+- **CI #89 verificada:** ejecución [43310547007](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43310547007), resultado SUCCESS sobre el commit `4dbd5f4be3694a5fb5cf1629ab99387a2a3ccec8`. Pruebas de regresión, `lintDebug`, `assembleDebug` y subida de artefactos completados correctamente. APK Debug `ev-calculator-pro-debug-89`, artifact ID `13984863948`; informe Lint `android-lint-report-89`, artifact ID `13986475852`.
+- **Prueba manual comunicada por el usuario:** APK Debug 89 instalada; confirma que el flujo Buscar similares → Detalles → Añadir → Comparar ya funciona. Pendiente precisar cuál de los dos dispositivos de prueba utilizó y repetir en el otro dispositivo.
+- **Pendiente:** precisar el dispositivo de la prueba manual y validar el mismo flujo en el otro terminal: Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se cierra la validación de ambos dispositivos hasta completar las dos pruebas.
+
+
+## 2026-11-12 — Preparación de integración y versión 1.0.7
+
+- Autorización del usuario: preparar la integración de los cambios de `develop/post-1.0.6` en `main` y preparar la versión 1.0.7.
+- Comparación inicial de GitHub: `develop/post-1.0.6` estaba 141 commits por delante y 1 por detrás de `main`. El único commit exclusivo de `main` (`a93c5b441b947ab858aa9957f263588bf71451c6`) incorpora `.github/workflows/android-lint.yml`; el archivo de ambas ramas tiene el mismo blob SHA, por lo que no existe diferencia de contenido en ese workflow.
+- Se prepara en esta rama `versionName = '1.0.7'` y `versionCode = 63`, manteniendo `minSdk = 24`, `targetSdk = 36`, `compileSdk = 36` y la configuración de idiomas del AAB (`enableSplit = false`). No se cambia el nombre de APK/AAB ni se publica nada en Google Play.
+- Commit de preparación de versión: `5723e27fc3d4723cd08f2df4b57e579a4c747c52`.
+- La corrección de refresco de moneda al volver con Atrás (`d1a966acdc3432b3facf2c27a655033f433770da`) continúa pendiente de una ejecución CI posterior a ese cambio. El flujo Añadir desde ficha de similares a Comparar dispone de CI #89 SUCCESS y confirmación manual del usuario, pero aún falta identificar el móvil utilizado y probar el otro terminal.
+- Pendiente antes de integrar: verificar CI sobre el commit de preparación, revisar el diff/merge completo, resolver cualquier incidencia y validar los flujos en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10) cuando corresponda. No declarar compatibilidad completa sin ambas pruebas.
+- No se ha modificado `main`, ninguna rama de respaldo/stable, ni se ha creado una GitHub Release o publicado en Google Play.
+
+
+## 2026-11-12 — CI #90 de preparación 1.0.7
+
+- Workflow [Android Lint audit #90](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43311752054): **SUCCESS**, sobre el commit de código `5723e27fc3d4723cd08f2df4b57e579a4c747c52`.
+- Pruebas de regresión de divisas: **86 comprobaciones correctas**.
+- `:app:lintDebug`: BUILD SUCCESSFUL.
+- `:app:assembleDebug`: BUILD SUCCESSFUL.
+- Artefactos subidos: APK Debug `ev-calculator-pro-debug-90`, ID `13986886078` (7.609.644 bytes); informe `android-lint-report-90`, ID `13986906090`.
+- Esta CI valida también la corrección de refresco de moneda al volver con Atrás incluida en el código de la rama. La prueba manual de esa corrección sigue pendiente.
+- PR #27 hacia `main`: revisión de los 78 archivos modificados; el workflow Android Lint que existe en ambas ramas tiene el mismo blob SHA y no presenta diferencia de contenido. PR todavía en borrador mientras se completa la revisión final.
+- Pendiente tras la integración: comprobar CI de Release en `main` (APK/AAB firmados y GitHub Release automática) y completar las pruebas manuales correspondientes en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se publica en Google Play.

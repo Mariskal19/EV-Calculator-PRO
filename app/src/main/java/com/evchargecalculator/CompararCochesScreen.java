@@ -37,6 +37,8 @@ import java.security.MessageDigest;
 import java.util.*;
 import java.text.NumberFormat;
 
+// Vista creada programáticamente por su Activity anfitriona; no se infla desde XML.
+@android.annotation.SuppressLint("ViewConstructor")
 public class CompararCochesScreen extends FrameLayout {
     private final Activity host;
     private static final String PREFS = "ev_charge_calculator";
@@ -139,6 +141,12 @@ public class CompararCochesScreen extends FrameLayout {
     
     }
 
+    /** Reloads the persisted comparison selection after another screen changes it. */
+    public void reloadSelectionFromPreferences() {
+        loadSelection();
+        rebuild();
+    }
+
     public void onHostPause() {
         // A search dialog owns its own lifecycle; cancel any pending refresh when leaving the tab.
     }
@@ -146,6 +154,7 @@ public class CompararCochesScreen extends FrameLayout {
     private static class HeaderBitmapView extends View {
         private final android.graphics.Bitmap bitmap;
         private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+        private final android.graphics.RectF destination = new android.graphics.RectF();
 
         HeaderBitmapView(android.content.Context context) {
             super(context);
@@ -195,8 +204,8 @@ public class CompararCochesScreen extends FrameLayout {
             float drawH = bitmap.getHeight() * scale;
             float left = (viewW - drawW) * 0.5f;
             float top = (viewH - drawH) * 0.5f;
-            canvas.drawBitmap(bitmap, null,
-                    new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
+            destination.set(left, top, left + drawW, top + drawH);
+            canvas.drawBitmap(bitmap, null, destination, paint);
         }
     }
 
@@ -471,8 +480,8 @@ public class CompararCochesScreen extends FrameLayout {
         tableLabels.setOrientation(LinearLayout.VERTICAL);
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
-        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
+        tableLabels.setElevation(dp(4));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.START));
 
         table=new LinearLayout(host);
         table.setOrientation(LinearLayout.VERTICAL);
@@ -633,7 +642,7 @@ public class CompararCochesScreen extends FrameLayout {
         // No lo mezclamos con la columna/tabla de características.
         boolean emptyState=selectedVehiclesCache.isEmpty();
         if(characteristicsSection!=null){
-            characteristicsSection.setText("Características");
+            characteristicsSection.setText(LanguageManager.t(host, "Características"));
             characteristicsSection.setTextSize(19);
             characteristicsSection.setTextColor(text());
             characteristicsSection.setTypeface(null,Typeface.BOLD);
@@ -641,7 +650,7 @@ public class CompararCochesScreen extends FrameLayout {
             characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
         }
         if(emptyMessage!=null){
-            emptyMessage.setText("Selecciona un coche para mostrar sus características.");
+            emptyMessage.setText(LanguageManager.t(host, "Selecciona un coche para mostrar sus características."));
             emptyMessage.setTextSize(14);
             emptyMessage.setTextColor(sub());
             emptyMessage.setGravity(Gravity.CENTER);
@@ -965,10 +974,8 @@ public class CompararCochesScreen extends FrameLayout {
         NumberFormat f=NumberFormat.getIntegerInstance(appLocale());
         return f.format(Math.round(n));
     }
-    private String formatPrice(double p){
-        if(p<=0)return"—";
-        String currency=host.getSharedPreferences(PREFS,Activity.MODE_PRIVATE).getString(KEY_CURRENCY,"EUR");
-        return formatInteger(p)+" "+currency;
+    private String formatPrice(double p) {
+        return CurrencyRateManager.formatCatalogPrice(host, p);
     }
 
     static class Vehicle {

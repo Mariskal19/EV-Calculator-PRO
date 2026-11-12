@@ -164,6 +164,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
     private static class HeaderBitmapView extends View {
         private final android.graphics.Bitmap bitmap;
         private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG | android.graphics.Paint.FILTER_BITMAP_FLAG);
+        private final android.graphics.RectF destination = new android.graphics.RectF();
 
         HeaderBitmapView(android.content.Context context) {
             super(context);
@@ -213,8 +214,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             float drawH = bitmap.getHeight() * scale;
             float left = (viewW - drawW) * 0.5f;
             float top = (viewH - drawH) * 0.5f;
-            canvas.drawBitmap(bitmap, null,
-                    new android.graphics.RectF(left, top, left + drawW, top + drawH), paint);
+            destination.set(left, top, left + drawW, top + drawH);
+            canvas.drawBitmap(bitmap, null, destination, paint);
         }
     }
 
@@ -489,8 +490,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setOrientation(LinearLayout.VERTICAL);
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
-        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
+        tableLabels.setElevation(dp(4));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.START));
 
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);
@@ -652,7 +653,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         // No lo mezclamos con la columna/tabla de características.
         boolean emptyState=selectedVehiclesCache.isEmpty();
         if(characteristicsSection!=null){
-            characteristicsSection.setText("Características");
+            characteristicsSection.setText(LanguageManager.t(this, "Características"));
             characteristicsSection.setTextSize(19);
             characteristicsSection.setTextColor(text());
             characteristicsSection.setTypeface(null,Typeface.BOLD);
@@ -660,7 +661,7 @@ public class CompararCochesActivity extends BaseNavigationActivity {
             characteristicsSection.setPadding(dp(2),dp(12),0,dp(2));
         }
         if(emptyMessage!=null){
-            emptyMessage.setText("Selecciona un coche para mostrar sus características.");
+            emptyMessage.setText(LanguageManager.t(this, "Selecciona un coche para mostrar sus características."));
             emptyMessage.setTextSize(14);
             emptyMessage.setTextColor(sub());
             emptyMessage.setGravity(Gravity.CENTER);
@@ -983,10 +984,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         NumberFormat f=NumberFormat.getIntegerInstance(appLocale());
         return f.format(Math.round(n));
     }
-    private String formatPrice(double p){
-        if(p<=0)return"—";
-        String currency=getSharedPreferences(PREFS,MODE_PRIVATE).getString(KEY_CURRENCY,"EUR");
-        return formatInteger(p)+" "+currency;
+    private String formatPrice(double p) {
+        return CurrencyRateManager.formatCatalogPrice(this, p);
     }
 
     static class Vehicle {

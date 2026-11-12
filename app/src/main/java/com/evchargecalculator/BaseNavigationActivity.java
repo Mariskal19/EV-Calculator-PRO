@@ -5,11 +5,17 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
+import androidx.core.content.ContextCompat;
 
 /**
  * Common host for screens that share a fixed bottom navigation structure.
@@ -31,6 +37,19 @@ public abstract class BaseNavigationActivity extends Activity {
   private FrameLayout navigationContainer;
   private View currentContentView;
   private AnimatorSet contentTransition;
+  private boolean currencyRatesReceiverRegistered;
+
+  private final BroadcastReceiver currencyRatesReceiver =
+      new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+          // Defer until the Activity has completed its current creation/layout pass.
+          getWindow().getDecorView().post(
+              () -> {
+                if (!isFinishing() && !isDestroyed()) onCurrencyRatesUpdated();
+              });
+        }
+      };
 
   /** 0 = Cargar, 1 = Coste, 2 = Buscar coches, 3 = Comparar, 4 = Más. */
   protected abstract int getBottomNavigationIndex();
@@ -65,6 +84,9 @@ public abstract class BaseNavigationActivity extends Activity {
       appliedCurrency = currency;
       onHostAppearanceChanged(languageChanged, themeChanged, currencyChanged);
     }
+    // Keep every catalog host eligible to retry a missing/failed rate cache,
+    // including Android versions where the user returns directly to a detail screen.
+    CurrencyRateManager.refreshIfNeeded(this);
   }
 
   /**
@@ -75,6 +97,31 @@ public abstract class BaseNavigationActivity extends Activity {
   protected void onHostAppearanceChanged(
       boolean languageChanged, boolean themeChanged, boolean currencyChanged) {
     recreate();
+  }
+
+  /** Rebuilds the visible screen after a new complete exchange-rate cache is saved. */
+  protected void onCurrencyRatesUpdated() {
+    onHostAppearanceChanged(false, false, true);
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ContextCompat.registerReceiver(
+        this,
+        currencyRatesReceiver,
+        new IntentFilter(CurrencyRateManager.ACTION_RATES_UPDATED),
+        ContextCompat.RECEIVER_NOT_EXPORTED);
+    currencyRatesReceiverRegistered = true;
+  }
+
+  @Override
+  protected void onDestroy() {
+    if (currencyRatesReceiverRegistered) {
+      unregisterReceiver(currencyRatesReceiver);
+      currencyRatesReceiverRegistered = false;
+    }
+    super.onDestroy();
   }
 
   @Override
