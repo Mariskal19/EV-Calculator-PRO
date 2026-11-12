@@ -3597,3 +3597,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La corrección de refresco de moneda al volver con Atrás (`d1a966acdc3432b3facf2c27a655033f433770da`) continúa pendiente de una ejecución CI posterior a ese cambio. El flujo Añadir desde ficha de similares a Comparar dispone de CI #89 SUCCESS y confirmación manual del usuario, pero aún falta identificar el móvil utilizado y probar el otro terminal.
 - Pendiente antes de integrar: verificar CI sobre el commit de preparación, revisar el diff/merge completo, resolver cualquier incidencia y validar los flujos en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10) cuando corresponda. No declarar compatibilidad completa sin ambas pruebas.
 - No se ha modificado `main`, ninguna rama de respaldo/stable, ni se ha creado una GitHub Release o publicado en Google Play.
+
+
+## 2026-11-12 — CI #90 de preparación 1.0.7
+
+- Workflow [Android Lint audit #90](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43311752054): **SUCCESS**, sobre el commit de código `5723e27fc3d4723cd08f2df4b57e579a4c747c52`.
+- Pruebas de regresión de divisas: **86 comprobaciones correctas**.
+- `:app:lintDebug`: BUILD SUCCESSFUL.
+- `:app:assembleDebug`: BUILD SUCCESSFUL.
+- Artefactos subidos: APK Debug `ev-calculator-pro-debug-90`, ID `13986886078` (7.609.644 bytes); informe `android-lint-report-90`, ID `13986906090`.
+- Esta CI valida también la corrección de refresco de moneda al volver con Atrás incluida en el código de la rama. La prueba manual de esa corrección sigue pendiente.
+- PR #27 hacia `main`: revisión de los 78 archivos modificados; el workflow Android Lint que existe en ambas ramas tiene el mismo blob SHA y no presenta diferencia de contenido. PR todavía en borrador mientras se completa la revisión final.
+- Pendiente tras la integración: comprobar CI de Release en `main` (APK/AAB firmados y GitHub Release automática) y completar las pruebas manuales correspondientes en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se publica en Google Play.
