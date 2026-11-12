@@ -267,7 +267,14 @@ public class MainActivity extends BaseNavigationActivity {
         return;
       }
 
-      selectPrimaryTab(destination);
+      boolean reloadCompareSelection = intent.getBooleanExtra("reload_compare_selection", false);
+      intent.removeExtra("reload_compare_selection");
+      if (destination == 3 && reloadCompareSelection && selectedPrimaryTab == 3 && compareScreen != null) {
+        compareScreen.reloadSelectionFromPreferences();
+        EdgeToEdgeHelper.apply(this, dark, true, compareScreen);
+      } else {
+        selectPrimaryTab(destination);
+      }
     }
   }
 
