@@ -3609,3 +3609,14 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Esta CI valida también la corrección de refresco de moneda al volver con Atrás incluida en el código de la rama. La prueba manual de esa corrección sigue pendiente.
 - PR #27 hacia `main`: revisión de los 78 archivos modificados; el workflow Android Lint que existe en ambas ramas tiene el mismo blob SHA y no presenta diferencia de contenido. PR todavía en borrador mientras se completa la revisión final.
 - Pendiente tras la integración: comprobar CI de Release en `main` (APK/AAB firmados y GitHub Release automática) y completar las pruebas manuales correspondientes en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se publica en Google Play.
+
+
+## 2026-11-12 — Integración completada en main: EV Calculator PRO 1.0.7
+
+- PR [#27](https://github.com/Mariskal19/EV-Calculator-PRO/pull/27) fusionada en `main` mediante merge commit `daca29b9b1b786dc23010b1741d4817f3ecbc1ca`.
+- Se integraron 144 commits de la rama de desarrollo; 78 archivos cambiados (incluidos recursos retirados tras auditoría). La única aportación exclusiva previa de `main` era el workflow Android Lint, idéntico en ambas ramas.
+- Versión confirmada en `main`: `versionName = '1.0.7'`, `versionCode = 63`; `minSdk = 24`, `targetSdk = 36`, `compileSdk = 36`, `bundle.language.enableSplit = false`.
+- CI #90 SUCCESS: 86 comprobaciones de divisas; `:app:lintDebug` y `:app:assembleDebug` correctos. APK Debug 90 e informe Lint archivados en los artefactos del workflow.
+- Workflow de publicación de `main` iniciado automáticamente: [Build EV Calculator PRO #2493](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43312139963), sobre el merge commit. Estado observado al actualizar este documento: `queued`. Pendiente verificar `assembleRelease`, `bundleRelease`, firma, artefactos y GitHub Release.
+- Validación manual pendiente: probar el retorno desde Configuración con Atrás usando la corrección final en ambos dispositivos; confirmar también el flujo Añadir desde ficha de similares a Comparar en el terminal que aún no se haya probado. No declarar compatibilidad completa hasta verificar Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- No se ha publicado en Google Play. No se han modificado ramas de respaldo ni stable.
