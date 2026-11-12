@@ -29,6 +29,15 @@ public class MainActivity extends BaseNavigationActivity {
   private SimilarCarsScreen similarCarsScreen;
   private CompararCochesScreen compareScreen;
   private OnBackInvokedCallback systemBackCallback;
+  private boolean currencySelectionReceiverRegistered;
+  private boolean activityResumed;
+  private boolean currencySelectionPending;
+  private final BroadcastReceiver currencySelectionReceiver = new BroadcastReceiver() {
+    @Override public void onReceive(Context context, Intent intent) {
+      currencySelectionPending = true;
+      if (activityResumed) applyPendingCurrencySelection();
+    }
+  };
 
   @Override protected int getBottomNavigationIndex() { return selectedPrimaryTab; }
   @Override protected boolean handlesBottomNavigationInternally() { return true; }
@@ -45,6 +54,7 @@ public class MainActivity extends BaseNavigationActivity {
     // the comparison tab from depending solely on the base lifecycle detector.
     if (currencyChanged && prefs != null) {
       lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+      currencySelectionPending = false;
     }
     if (themeChanged || languageChanged || currencyChanged) {
       if (selectedPrimaryTab == 0) {
@@ -144,6 +154,12 @@ public class MainActivity extends BaseNavigationActivity {
 
   @Override public void onCreate(Bundle b) {
     super.onCreate(b);
+    androidx.core.content.ContextCompat.registerReceiver(
+        this,
+        currencySelectionReceiver,
+        new IntentFilter(CurrencyRateManager.ACTION_CURRENCY_SELECTION_CHANGED),
+        androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED);
+    currencySelectionReceiverRegistered = true;
     registerSystemBackCallback();
     prefs = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE);
     int restoreTab = 0;
@@ -176,6 +192,8 @@ public class MainActivity extends BaseNavigationActivity {
   @Override
   protected void onResume() {
     super.onResume();
+    activityResumed = true;
+    boolean currencySelectionApplied = applyPendingCurrencySelection();
     if (selectedPrimaryTab == 1) {
       if (costScreen != null) costScreen.onHostResume();
       return;
@@ -185,6 +203,7 @@ public class MainActivity extends BaseNavigationActivity {
       return;
     }
     if (selectedPrimaryTab == 3) {
+      if (currencySelectionApplied) return;
       String resumedCurrency = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE)
           .getString(KEY_CURRENCY, "EUR");
       if (!resumedCurrency.equals(lastCurrency)) {
@@ -252,7 +271,7 @@ public class MainActivity extends BaseNavigationActivity {
     }
   }
 
-  @Override protected void onPause(){if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else if(selectedPrimaryTab==3&&compareScreen!=null)compareScreen.onHostPause();else savePreferences();super.onPause();}
+  @Override protected void onPause(){activityResumed=false;if(selectedPrimaryTab==1&&costScreen!=null)costScreen.onHostPause();else if(selectedPrimaryTab==2&&similarCarsScreen!=null)similarCarsScreen.onHostPause();else if(selectedPrimaryTab==3&&compareScreen!=null)compareScreen.onHostPause();else savePreferences();super.onPause();}
 
   /**
    * Android 13+ routes the system Back gesture through OnBackInvokedDispatcher.
@@ -268,11 +287,32 @@ public class MainActivity extends BaseNavigationActivity {
 
   @Override
   protected void onDestroy() {
+    if (currencySelectionReceiverRegistered) {
+      unregisterReceiver(currencySelectionReceiver);
+      currencySelectionReceiverRegistered = false;
+    }
     if (android.os.Build.VERSION.SDK_INT >= 33 && systemBackCallback != null) {
       getOnBackInvokedDispatcher().unregisterOnBackInvokedCallback(systemBackCallback);
       systemBackCallback = null;
     }
     super.onDestroy();
+  }
+
+  /**
+   * Applies a currency selection signalled by ConfigurationActivity. The
+   * lifecycle comparison remains as a fallback if the broadcast is missed.
+   */
+  private boolean applyPendingCurrencySelection() {
+    if (!currencySelectionPending || prefs == null) return false;
+    String selectedCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+    currencySelectionPending = false;
+    if (selectedCurrency.equals(lastCurrency)) return false;
+    lastCurrency = selectedCurrency;
+    if (selectedPrimaryTab != 3) return false;
+    if (compareScreen != null) compareScreen.onHostPause();
+    compareScreen = null;
+    showPrimaryTab(3, false);
+    return true;
   }
 
   private void handleSystemBack() {
