@@ -1,3 +1,15 @@
+## 2026-11-12 — Notificación explícita del cambio de moneda a Comparar (validación pendiente)
+
+- La APK Debug #83 (run `43305124371`, commit `d1a966acdc3432b3facf2c27a655033f433770da`) se compiló correctamente, pero el usuario confirmó que el fallo persistía al volver desde Configuración con Atrás. Por tanto, el primer ajuste basado únicamente en el ciclo de vida no resolvió la incidencia.
+- Se añade `CurrencyRateManager.ACTION_CURRENCY_SELECTION_CHANGED`. Después de persistir la moneda, `ConfigurationActivity` envía un broadcast explícito limitado al paquete de la aplicación.
+- `MainActivity` escucha ese evento durante su ciclo de vida. Si está pausada, deja la actualización pendiente y la aplica al reanudarse; si ya está activa, la procesa inmediatamente. Cuando Comparar es la pestaña seleccionada, se reconstruye únicamente esa pantalla y conserva los vehículos seleccionados mediante las preferencias existentes.
+- La detección de cambios del ciclo de vida se mantiene como respaldo. El receptor se registra/desregistra junto con la Activity. No se modifica el conversor, las tasas ECB, la caché, el catálogo, el formateo ni la interfaz.
+- Cambio aplicado exclusivamente en `develop/post-1.0.6`, commits `8fdab9b`, `2d5df44` y `3c9c6e2` (secuenciales).
+- Se mantienen `versionName 1.0.6` y `versionCode 62`; no se modifican `main`, ramas de respaldo, nombres de APK/AAB ni releases.
+- **Pendiente de validación:** CI debe completar las pruebas de divisas, `lintDebug` y `assembleDebug`. Después, instalar la APK resultante y repetir el caso exacto en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La incidencia seguirá abierta hasta confirmar el resultado en ambos dispositivos.
+
+---
+
 ## 2026-11-11 — Retirada del menú de diagnóstico de divisas
 
 - Se elimina de Configuración la entrada «Diagnóstico de divisas» y el diálogo manual asociado («Actualizar ahora»).
