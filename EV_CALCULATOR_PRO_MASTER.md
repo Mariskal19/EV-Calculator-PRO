@@ -3586,3 +3586,14 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - **CI #89 verificada:** ejecución [43310547007](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43310547007), resultado SUCCESS sobre el commit `4dbd5f4be3694a5fb5cf1629ab99387a2a3ccec8`. Pruebas de regresión, `lintDebug`, `assembleDebug` y subida de artefactos completados correctamente. APK Debug `ev-calculator-pro-debug-89`, artifact ID `13984863948`; informe Lint `android-lint-report-89`, artifact ID `13986475852`.
 - **Prueba manual comunicada por el usuario:** APK Debug 89 instalada; confirma que el flujo Buscar similares → Detalles → Añadir → Comparar ya funciona. Pendiente precisar cuál de los dos dispositivos de prueba utilizó y repetir en el otro dispositivo.
 - **Pendiente:** precisar el dispositivo de la prueba manual y validar el mismo flujo en el otro terminal: Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se cierra la validación de ambos dispositivos hasta completar las dos pruebas.
+
+
+## 2026-11-12 — Preparación de integración y versión 1.0.7
+
+- Autorización del usuario: preparar la integración de los cambios de `develop/post-1.0.6` en `main` y preparar la versión 1.0.7.
+- Comparación inicial de GitHub: `develop/post-1.0.6` estaba 141 commits por delante y 1 por detrás de `main`. El único commit exclusivo de `main` (`a93c5b441b947ab858aa9957f263588bf71451c6`) incorpora `.github/workflows/android-lint.yml`; el archivo de ambas ramas tiene el mismo blob SHA, por lo que no existe diferencia de contenido en ese workflow.
+- Se prepara en esta rama `versionName = '1.0.7'` y `versionCode = 63`, manteniendo `minSdk = 24`, `targetSdk = 36`, `compileSdk = 36` y la configuración de idiomas del AAB (`enableSplit = false`). No se cambia el nombre de APK/AAB ni se publica nada en Google Play.
+- Commit de preparación de versión: `5723e27fc3d4723cd08f2df4b57e579a4c747c52`.
+- La corrección de refresco de moneda al volver con Atrás (`d1a966acdc3432b3facf2c27a655033f433770da`) continúa pendiente de una ejecución CI posterior a ese cambio. El flujo Añadir desde ficha de similares a Comparar dispone de CI #89 SUCCESS y confirmación manual del usuario, pero aún falta identificar el móvil utilizado y probar el otro terminal.
+- Pendiente antes de integrar: verificar CI sobre el commit de preparación, revisar el diff/merge completo, resolver cualquier incidencia y validar los flujos en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10) cuando corresponda. No declarar compatibilidad completa sin ambas pruebas.
+- No se ha modificado `main`, ninguna rama de respaldo/stable, ni se ha creado una GitHub Release o publicado en Google Play.
