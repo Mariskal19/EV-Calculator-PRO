@@ -28,6 +28,8 @@ public final class CurrencyRateManager {
     private static final String TAG = "CurrencyRateManager";
     public static final String ACTION_RATES_UPDATED =
             "com.evcalculatorpro.action.CURRENCY_RATES_UPDATED";
+    public static final String ACTION_CURRENCY_SELECTION_CHANGED =
+            "com.evcalculatorpro.action.CURRENCY_SELECTION_CHANGED";
     private static final String API =
             "https://data-api.ecb.europa.eu/service/data/EXR/D.%s.EUR.SP00.A?format=csvdata";
     private static final AtomicBoolean REFRESH_IN_PROGRESS = new AtomicBoolean(false);
