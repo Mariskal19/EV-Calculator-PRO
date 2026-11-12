@@ -141,6 +141,12 @@ public class CompararCochesScreen extends FrameLayout {
     
     }
 
+    /** Reloads the persisted comparison selection after another screen changes it. */
+    public void reloadSelectionFromPreferences() {
+        loadSelection();
+        rebuild();
+    }
+
     public void onHostPause() {
         // A search dialog owns its own lifecycle; cancel any pending refresh when leaving the tab.
     }
