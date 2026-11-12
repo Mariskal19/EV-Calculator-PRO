@@ -40,6 +40,12 @@ public class MainActivity extends BaseNavigationActivity {
     // only the selected tab in this Activity instance, synchronously and without
     // an outgoing-screen animation, instead of recreating the host Activity.
     if (languageChanged) LanguageManager.applyStored(this);
+    // Keep a host-level currency snapshot as a fallback for returning from
+    // ConfigurationActivity with Android's system Back button. This prevents
+    // the comparison tab from depending solely on the base lifecycle detector.
+    if (currencyChanged && prefs != null) {
+      lastCurrency = prefs.getString(KEY_CURRENCY, "EUR");
+    }
     if (themeChanged || languageChanged || currencyChanged) {
       if (selectedPrimaryTab == 0) {
         savePreferences();
@@ -167,7 +173,58 @@ public class MainActivity extends BaseNavigationActivity {
       EdgeToEdgeHelper.apply(this, dark);
     }
   }
-  @Override protected void onResume(){super.onResume(); if(selectedPrimaryTab==1){if(costScreen!=null)costScreen.onHostResume();return;} if(selectedPrimaryTab==2){if(similarCarsScreen!=null)similarCarsScreen.onHostResume();return;} if(selectedPrimaryTab==3){if(compareScreen!=null)compareScreen.onHostResume();return;} if(battery!=null&&!busy){LanguageManager.applyStored(this); String cl=LanguageManager.getSelectedLanguage(this),cc=prefs.getString(KEY_CURRENCY,"EUR"); boolean lc=lastLanguage==null||!cl.equals(lastLanguage),cur=lastCurrency==null||!cc.equals(lastCurrency); boolean sd=prefs.contains(KEY_DARK_THEME)?prefs.getBoolean(KEY_DARK_THEME,false):(getResources().getConfiguration().uiMode&0x30)==0x20; boolean tc=sd!=dark; lastLanguage=cl;lastCurrency=cc;if(lc||cur||tc){dark=sd;build();loadPreferences();applyTheme();applyCurrency();calculate();EdgeToEdgeHelper.apply(this,dark);return;}applyCurrency();calculate();}}
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if (selectedPrimaryTab == 1) {
+      if (costScreen != null) costScreen.onHostResume();
+      return;
+    }
+    if (selectedPrimaryTab == 2) {
+      if (similarCarsScreen != null) similarCarsScreen.onHostResume();
+      return;
+    }
+    if (selectedPrimaryTab == 3) {
+      String resumedCurrency = getSharedPreferences("ev_charge_calculator", MODE_PRIVATE)
+          .getString(KEY_CURRENCY, "EUR");
+      if (!resumedCurrency.equals(lastCurrency)) {
+        // Fallback in case the host's appearance callback was not delivered.
+        // Recreate only the comparison view; its selected vehicle IDs are persisted.
+        lastCurrency = resumedCurrency;
+        if (compareScreen != null) compareScreen.onHostPause();
+        compareScreen = null;
+        showPrimaryTab(3, false);
+      } else if (compareScreen != null) {
+        compareScreen.onHostResume();
+      }
+      return;
+    }
+    if (battery != null && !busy) {
+      LanguageManager.applyStored(this);
+      String cl = LanguageManager.getSelectedLanguage(this);
+      String cc = prefs.getString(KEY_CURRENCY, "EUR");
+      boolean lc = lastLanguage == null || !cl.equals(lastLanguage);
+      boolean cur = lastCurrency == null || !cc.equals(lastCurrency);
+      boolean sd = prefs.contains(KEY_DARK_THEME)
+          ? prefs.getBoolean(KEY_DARK_THEME, false)
+          : (getResources().getConfiguration().uiMode & 0x30) == 0x20;
+      boolean tc = sd != dark;
+      lastLanguage = cl;
+      lastCurrency = cc;
+      if (lc || cur || tc) {
+        dark = sd;
+        build();
+        loadPreferences();
+        applyTheme();
+        applyCurrency();
+        calculate();
+        EdgeToEdgeHelper.apply(this, dark);
+        return;
+      }
+      applyCurrency();
+      calculate();
+    }
+  }
   @Override
   protected void onNewIntent(Intent intent) {
     super.onNewIntent(intent);
