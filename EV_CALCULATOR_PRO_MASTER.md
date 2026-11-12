@@ -3620,3 +3620,17 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Workflow de publicación de `main` iniciado automáticamente: [Build EV Calculator PRO #2493](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43312139963), sobre el merge commit. Estado observado al actualizar este documento: `queued`. Pendiente verificar `assembleRelease`, `bundleRelease`, firma, artefactos y GitHub Release.
 - Validación manual pendiente: probar el retorno desde Configuración con Atrás usando la corrección final en ambos dispositivos; confirmar también el flujo Añadir desde ficha de similares a Comparar en el terminal que aún no se haya probado. No declarar compatibilidad completa hasta verificar Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
 - No se ha publicado en Google Play. No se han modificado ramas de respaldo ni stable.
+
+
+## 2026-11-12 — Release de GitHub 1.0.7 completada
+
+- Workflow [Build EV Calculator PRO #2493](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43312139963): **SUCCESS** sobre el merge commit `daca29b9b1b786dc23010b1741d4817f3ecbc1ca`.
+- Verificaciones previas: catálogo español válido con **688 vehículos**; configuración del keystore de publicación presente; versión leída por el workflow: `1.0.7`.
+- Compilación de publicación: `clean assembleRelease bundleRelease` — **BUILD SUCCESSFUL**. Verificación de los dos outputs correcta. La configuración de firma de Release fue validada y el workflow publicó APK y AAB.
+- GitHub Release creada: [EV Calculator PRO v1.0.7 build 2493](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.7-2493).
+  - APK: [EV-Calculator-PRO-v1.0.7.apk](https://github.com/Mariskal19/EV-Calculator-PRO/releases/download/build-v1.0.7-2493/EV-Calculator-PRO-v1.0.7.apk) — 5.133.408 bytes.
+  - AAB: [EV-Calculator-PRO-v1.0.7.aab](https://github.com/Mariskal19/EV-Calculator-PRO/releases/download/build-v1.0.7-2493/EV-Calculator-PRO-v1.0.7.aab) — 5.116.917 bytes.
+- Durante el workflow se reaplicó el parche de virtualización de búsqueda/maquetación de Comparar y se persistió en `main` mediante el commit `75eeb78fba9932faa0f1ebbf6ef563c51fe1a1f7` (`Virtualize compare car search results`). El commit mantiene la estructura de superposición de cabecera y tarjeta utilizada por la compilación de publicación.
+- El documento maestro queda actualizado en `main`. El commit de documentación usa `[skip ci]` para no generar una segunda publicación automática de la misma versión.
+- **Pendiente de validación manual:** instalar la APK 1.0.7 y probar en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), especialmente el cambio de moneda al volver con Atrás y el flujo Añadir desde ficha de similares a Comparar. La CI y compilación correctas no sustituyen las pruebas físicas.
+- **No publicado en Google Play**; la Release de GitHub solo contiene los artefactos de distribución.
