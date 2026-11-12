@@ -1,12 +1,14 @@
-## 2026-11-12 — Notificación explícita del cambio de moneda a Comparar (validación pendiente)
+## 2026-11-12 — Notificación explícita del cambio de moneda a Comparar (validación en Redmi Note 13 Pro confirmada)
 
-- La APK Debug #83 (run `43305124371`, commit `d1a966acdc3432b3facf2c27a655033f433770da`) se compiló correctamente, pero el usuario confirmó que el fallo persistía al volver desde Configuración con Atrás. Por tanto, el primer ajuste basado únicamente en el ciclo de vida no resolvió la incidencia.
+- La APK Debug #83 (run `43305124371`, commit `d1a966acdc3432b3facf2c27a655033f433770da`) se compiló correctamente, pero el usuario confirmó que el fallo persistía al volver desde Configuración con Atrás. El primer ajuste basado únicamente en el ciclo de vida no resolvió la incidencia.
 - Se añade `CurrencyRateManager.ACTION_CURRENCY_SELECTION_CHANGED`. Después de persistir la moneda, `ConfigurationActivity` envía un broadcast explícito limitado al paquete de la aplicación.
 - `MainActivity` escucha ese evento durante su ciclo de vida. Si está pausada, deja la actualización pendiente y la aplica al reanudarse; si ya está activa, la procesa inmediatamente. Cuando Comparar es la pestaña seleccionada, se reconstruye únicamente esa pantalla y conserva los vehículos seleccionados mediante las preferencias existentes.
 - La detección de cambios del ciclo de vida se mantiene como respaldo. El receptor se registra/desregistra junto con la Activity. No se modifica el conversor, las tasas ECB, la caché, el catálogo, el formateo ni la interfaz.
-- Cambio aplicado exclusivamente en `develop/post-1.0.6`, commits `8fdab9b`, `2d5df44` y `3c9c6e2` (secuenciales).
+- Cambio aplicado exclusivamente en `develop/post-1.0.6`, commit `3c9c6e2ccea443cdfa8b9a18179367ce279f6fe6`.
+- **CI #86 verificada:** ejecución [43308701147](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43308701147), resultado SUCCESS. Pruebas de regresión de divisas, `lintDebug`, `assembleDebug` y subida del APK completados correctamente. Artefacto Debug `ev-calculator-pro-debug-86`, ID `13984119017`; no es AAB ni Release.
+- **Prueba manual confirmada:** el usuario instaló la APK Debug #86 en Redmi Note 13 Pro (Android 16) y confirma que cambiar la moneda en Configuración y volver con el botón Atrás actualiza correctamente los precios de Comparar.
+- **Pendiente:** repetir la prueba exacta en Redmi Note 7 (Android 10). La incidencia queda validada en Android 16, pero no se cierra la compatibilidad de ambos dispositivos hasta esa prueba.
 - Se mantienen `versionName 1.0.6` y `versionCode 62`; no se modifican `main`, ramas de respaldo, nombres de APK/AAB ni releases.
-- **Pendiente de validación:** CI debe completar las pruebas de divisas, `lintDebug` y `assembleDebug`. Después, instalar la APK resultante y repetir el caso exacto en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La incidencia seguirá abierta hasta confirmar el resultado en ambos dispositivos.
 
 ---
 
