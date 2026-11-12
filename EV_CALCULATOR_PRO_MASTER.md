@@ -1,3 +1,14 @@
+## 2026-11-12 — Validación manual de EV Calculator PRO 1.0.7 en Redmi Note 13 Pro
+
+- El usuario confirma que ha instalado la APK Release 1.0.7 en el Redmi Note 13 Pro (Android 16) y ha probado satisfactoriamente los dos flujos corregidos:
+  - Cambiar la moneda en Configuración y regresar mediante el botón Atrás del sistema: Comparar actualiza correctamente los precios a la moneda seleccionada.
+  - Desde Buscar coches similares, abrir la ficha de un vehículo, pulsar «Añadir a comparativa» y comprobar la pestaña Comparar: el vehículo aparece correctamente.
+- Quedan validados manualmente ambos flujos en Android 16 con la APK Release 1.0.7. La compilación Release #2493 y CI #90 también finalizaron correctamente.
+- **Pendiente:** repetir ambas pruebas en Redmi Note 7 (Android 10). No declarar cerrada la validación de compatibilidad entre los dos dispositivos hasta completar esa prueba.
+- No se realizan cambios de código, versión, APK/AAB, release ni ramas. No se publica en Google Play.
+
+---
+
 ## 2026-11-12 — Notificación explícita del cambio de moneda a Comparar (validación en Redmi Note 13 Pro confirmada)
 
 - La APK Debug #83 (run `43305124371`, commit `d1a966acdc3432b3facf2c27a655033f433770da`) se compiló correctamente, pero el usuario confirmó que el fallo persistía al volver desde Configuración con Atrás. El primer ajuste basado únicamente en el ciclo de vida no resolvió la incidencia.
