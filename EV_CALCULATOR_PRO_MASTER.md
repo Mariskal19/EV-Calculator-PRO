@@ -3547,3 +3547,13 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - No se ha cambiado la apariencia del launcher, versionName/versionCode, releases ni la rama `main`.
 - Artefactos: APK `ev-calculator-pro-debug-53` (ID `13507490182`); informe `android-lint-report-53` (ID `13506294633`).
 - Validación manual pendiente de APK 53 en Redmi Note 13 Pro; prueba del Redmi Note 7 se mantiene para el final de todos los cambios.
+
+
+## 2026-11-12 — Refresco de moneda en Comparar al volver con Atrás (validación pendiente)
+
+- Incidencia reproducida por el usuario en Redmi Note 13 Pro: después de cambiar la moneda en Configuración y volver con el botón Atrás del sistema, Comparar seguía mostrando precios en euros.
+- Se añade en `MainActivity` una comprobación explícita de la moneda persistida al reanudar la pestaña Comparar. Si difiere de la última moneda aplicada, se reconstruye únicamente esa pantalla; la selección de vehículos se conserva mediante las preferencias existentes.
+- El callback general de apariencia sincroniza ahora también la referencia de moneda de `MainActivity`, evitando una segunda reconstrucción cuando el cambio ya fue procesado por el ciclo de vida base.
+- Cambio de código aplicado en `develop/post-1.0.6`, commit `d1a966acdc3432b3facf2c27a655033f433770da`.
+- **Pendiente:** ejecutar CI, revisar `lintDebug`, pruebas y `assembleDebug`; instalar el APK resultante y comprobar el retorno con Atrás en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). No se considera solucionado hasta verificar ambas pruebas manuales.
+- Sin cambios en `main`, ramas de respaldo, `versionName 1.0.6`, `versionCode 62`, nombres de APK ni releases.
