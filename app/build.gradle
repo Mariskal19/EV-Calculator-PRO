@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = 'com.evchargecalculator'
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = 'com.evcalculatorpro'
@@ -54,5 +54,5 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core:1.16.0'
+    implementation 'androidx.core:core:1.19.1'
 }
