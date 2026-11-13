@@ -3687,3 +3687,13 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - El documento maestro queda actualizado en `main`. El commit de documentación usa `[skip ci]` para no generar una segunda publicación automática de la misma versión.
 - **Pendiente de validación manual:** instalar la APK 1.0.7 y probar en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), especialmente el cambio de moneda al volver con Atrás y el flujo Añadir desde ficha de similares a Comparar. La CI y compilación correctas no sustituyen las pruebas físicas.
 - **No publicado en Google Play**; la Release de GitHub solo contiene los artefactos de distribución.
+
+## 2026-11-13 — Actualización AGP 9.5.1 integrada en main
+
+- Con autorización expresa del usuario, se fusionó la PR [#26](https://github.com/Mariskal19/EV-Calculator-PRO/pull/26) de Dependabot mediante **squash merge**.
+- Commit de integración: `effe72fe002683443d4cc899e3d9907006daef65`. GitHub confirma la PR como `closed` y `merged`; la rama `main` apunta a ese mismo commit.
+- Único cambio de la PR: actualización del plugin Android Gradle Plugin de **9.5.0 a 9.5.1** en `build.gradle`. No se modificó código de la aplicación, SDK, versión de EV Calculator PRO, `versionCode`, APK/AAB ni releases.
+- Validación previa sobre una rama temporal basada en el `main` vigente: workflow Android Lint audit #98 **SUCCESS** con AGP 9.5.1; 86 comprobaciones de regresión de divisas correctas, `lintDebug` y `assembleDebug` correctos. Informe Lint: **0 errores y 8 avisos**, las mismas categorías que con AGP 9.5.0 en CI #95.
+- La rama temporal `test/agp-9.5.1-main-audit` no se integra en `main`; tampoco se modificó la rama de Dependabot directamente.
+- Pendiente: comprobar la CI automática posterior al merge y continuar las pruebas manuales en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), según corresponda. Esta actualización de herramienta de compilación no sustituye esas pruebas.
+- No se ha publicado una nueva versión ni se ha modificado Google Play.
