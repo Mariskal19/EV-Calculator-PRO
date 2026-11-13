@@ -1,3 +1,19 @@
+## 2026-11-13 — Auditoría y adaptación Android 15+ edge-to-edge (pendiente de CI y prueba visual)
+
+- Se revisa el estado de `main` tras EV Calculator PRO 1.0.7: `targetSdk = 36`, `compileSdk = 36`, AndroidX Core `1.16.0`.
+- Las siete actividades declaradas en el manifiesto aplican `EdgeToEdgeHelper`; las pantallas de navegación principal y los contenedores desplazables también gestionan insets del sistema y/o del teclado. No se detecta una Activity principal sin tratamiento de bordes.
+- El helper central usaba `WindowCompat.setDecorFitsSystemWindows(window, false)`. Se sustituye por `WindowCompat.enableEdgeToEdge(window)`, API disponible en la dependencia AndroidX Core ya instalada, para habilitar el mismo comportamiento en Android anteriores y seguir la API oficial recomendada.
+- Se conserva el diseño existente: colores de iconos según tema, desactivación de force-dark, color opaco de navegación en Android 14 e inferiores y política explícita de contraste de la barra de navegación (se aplica después de habilitar edge-to-edge para que prevalezca la elección de la app). No se modifican las reglas de padding/insets ni las pantallas.
+- Se mantiene `setNavigationBarContrastEnforced(false)` en Android 10+ después de `enableEdgeToEdge`; el color de navegación personalizado continúa limitado a Android 14 e inferiores. Android 15+ conserva el dibujo de barras gestionado por el sistema.
+- Rama de trabajo: `fix/android15-edge-to-edge`, creada desde `main` en el commit `2453fcf8c711288fbd9d1270a9a138215c0b9ae0`. Commits de cambio: `7d708cbfbaaf3a602c30b7d29fcacccf768f339b` y `71b571b5f1d858ee9e0271757163e9954e194064`.
+- Se añade la rama de trabajo al disparador del workflow Android Lint para poder ejecutar la misma auditoría y compilación Debug sobre este cambio. Commit de CI: `fd3abe81bd61cb2f7dbf2fbeaf3fd0aa9163717b`.
+- **Pendiente:** confirmar ejecución CI con pruebas existentes, `:app:lintDebug` y `:app:assembleDebug`; revisar el informe Lint y el diff final.
+- **Pendiente de prueba visual manual:** Redmi Note 13 Pro (Android 16), en navegación por gestos y navegación de tres botones; comprobar pantalla Cargar, Coste, Buscar similares, Comparar, ficha, Configuración y Apoyar, además del teclado en campos desplazables. Después, repetir al menos el recorrido principal y Configuración en Redmi Note 7 (Android 10). La compilación no sustituye esta validación.
+- No se cambia `versionName 1.0.7`, `versionCode 63`, minSdk, targetSdk, nombres de APK/AAB ni releases. No se modifica `main`, `stable` ni ramas de respaldo. No se publica en Google Play.
+- La advertencia de Google Play es genérica y puede seguir apareciendo aunque el código esté adaptado; no se afirma que Google Play vaya a retirarla hasta verificarlo en Play Console.
+
+---
+
 ## 2026-11-12 — Validación manual de EV Calculator PRO 1.0.7 en Redmi Note 13 Pro
 
 - El usuario confirma que ha instalado la APK Release 1.0.7 en el Redmi Note 13 Pro (Android 16) y ha probado satisfactoriamente los dos flujos corregidos:
