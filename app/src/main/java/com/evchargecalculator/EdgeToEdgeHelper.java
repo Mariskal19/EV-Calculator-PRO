@@ -19,9 +19,9 @@ import androidx.core.view.WindowInsetsControllerCompat;
  * Centralized Android 15+ edge-to-edge handling.
  *
  * The app targets SDK 36, so Android 15+ enforces edge-to-edge. This helper
- * also enables the same behavior on older supported Android versions and
- * applies system-bar insets to the activity content so existing screens
- * are not obscured by system bars.
+ * also enables the same behavior on older supported Android versions through
+ * AndroidX WindowCompat.enableEdgeToEdge(), and applies system-bar insets to
+ * the activity content so existing screens are not obscured by system bars.
  */
 public final class EdgeToEdgeHelper {
   // Stores the padding defined by each activity before system-bar insets are applied.
@@ -69,16 +69,19 @@ public final class EdgeToEdgeHelper {
       window.setNavigationBarContrastEnforced(false);
     }
 
-    // Keep the legacy navigation-bar color only on Android 14 and older.
-    // Android 15+ uses edge-to-edge and this API is deprecated/ineffective
-    // for gesture navigation.
+    // Use AndroidX's supported edge-to-edge entry point. Android 15+
+    // enforces this behavior for targetSdk 35+, while this call provides
+    // equivalent transparent system bars on older supported Android versions.
+    WindowCompat.enableEdgeToEdge(window);
+
+    // Preserve the app's existing opaque navigation-bar color on Android 14
+    // and older. On Android 15+ the platform owns system-bar drawing and this
+    // color API is deprecated/ineffective for gesture navigation.
     if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM) {
       window.setNavigationBarColor(
           dark ? android.graphics.Color.rgb(16, 28, 42)
                : android.graphics.Color.rgb(242, 246, 252));
     }
-
-    WindowCompat.setDecorFitsSystemWindows(window, false);
 
     WindowInsetsControllerCompat controller =
         WindowCompat.getInsetsController(window, window.getDecorView());
