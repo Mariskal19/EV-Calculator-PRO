@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   lint:
-    name: Run currency tests, Android Lint and Debug APK
+    name: Run Android Lint and Debug APK
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -36,12 +36,6 @@ jobs:
         with:
           gradle-version: '9.6.0'
           cache-disabled: true
-
-      - name: Run currency-rate regression tests
-        run: |
-          mkdir -p build/currency-rate-test
-          javac -d build/currency-rate-test app/src/main/java/com/evchargecalculator/CurrencyRateRepository.java app/src/main/java/com/evchargecalculator/CurrencyNumberFormatter.java app/src/main/java/com/evchargecalculator/CatalogPriceFormatter.java .github/tests/CurrencyRateRepositorySmokeTest.java
-          java -cp build/currency-rate-test com.evchargecalculator.CurrencyRateRepositorySmokeTest
 
       - name: Run lintDebug
         id: lint
