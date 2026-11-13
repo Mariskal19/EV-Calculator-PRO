@@ -20,7 +20,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
  *
  * The app targets SDK 36, so Android 15+ enforces edge-to-edge. This helper
  * also enables the same behavior on older supported Android versions through
- * AndroidX WindowCompat.enableEdgeToEdge(), and applies system-bar insets to
+ * AndroidX WindowCompat.setDecorFitsSystemWindows(), and applies system-bar insets to
  * the activity content so existing screens are not obscured by system bars.
  */
 public final class EdgeToEdgeHelper {
