@@ -1,3 +1,17 @@
+## 2026-11-13 — Validación visual edge-to-edge en Redmi Note 13 Pro y limpieza previa a integración
+
+- El usuario confirma que ha instalado la APK Debug #92 en el Redmi Note 13 Pro (Android 16) y que todas las comprobaciones visuales realizadas son correctas: status bar, barra inferior, cabeceras, pantallas principales, scroll y teclado.
+- Se confirman expresamente los dos modos de navegación en Android 16: gestos y tres botones; ambos funcionan correctamente.
+- Durante una prueba anterior se observó una pantalla que permanecía en tema claro después de cambiar a oscuro y navegar desde la barra inferior; el usuario no consiguió reproducirlo al repetir la prueba. Se mantiene como observación intermitente no reproducida, sin evidencia suficiente para cambiar código.
+- **Pendiente:** repetir las comprobaciones visuales principales en Redmi Note 7 (Android 10). La validación en Android 16 no certifica por sí sola Android 10.
+- Como limpieza documental del código, se corrigen en `EdgeToEdgeHelper.java` dos comentarios que todavía mencionaban `WindowCompat.enableEdgeToEdge()`, API que no existe en AndroidX Core 1.16.0. El código ejecutable sigue usando `WindowCompat.setDecorFitsSystemWindows(window, false)`; no se modifica la lógica de insets ni el diseño.
+- Commit de limpieza: `39f7c6e54c80a8d97c9beaecc559110030fe3480`. **CI #93 en ejecución** sobre este commit: [run 43486095902](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43486095902). CI #92 ya había verificado satisfactoriamente pruebas de divisas, `lintDebug` y `assembleDebug` sobre el cambio funcional.
+- Android Lint #92: 8 avisos y 0 errores (`AppBundleLocaleChanges` 1, `ObsoleteSdkInt` 1, `IconLauncherShape` 5 y `RtlHardcoded` 1). No se alteran en este lote porque no bloquean la compilación ni forman parte del cambio edge-to-edge.
+- Se mantienen `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` y `compileSdk 36`. No se generan APK/AAB Release, no se crean releases y no se publica en Google Play.
+- Integración en `main` pendiente de revisión final del PR y del resultado de CI #93. La compatibilidad manual con Android 10 seguirá abierta incluso después de integrar.
+
+---
+
 ## 2026-11-13 — Corrección de compilación edge-to-edge (CI superada; prueba visual pendiente)
 
 - La ejecución Android Lint audit #91 ([run 43470086924](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43470086924)) confirmó que las pruebas de divisas y `:app:lintDebug` pasaban, pero `:app:assembleDebug` fallaba al compilar `EdgeToEdgeHelper.java`: `WindowCompat.enableEdgeToEdge(Window)` no existe en AndroidX Core `1.16.0`.
