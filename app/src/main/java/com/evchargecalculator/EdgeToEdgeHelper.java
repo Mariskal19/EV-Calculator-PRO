@@ -66,13 +66,18 @@ public final class EdgeToEdgeHelper {
     // header) must retain their original brightness and colors.
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
       window.getDecorView().setForceDarkAllowed(false);
-      window.setNavigationBarContrastEnforced(false);
     }
 
     // Use AndroidX's supported edge-to-edge entry point. Android 15+
     // enforces this behavior for targetSdk 35+, while this call provides
     // equivalent transparent system bars on older supported Android versions.
     WindowCompat.enableEdgeToEdge(window);
+
+    // Keep the app's existing transparent navigation-bar policy for Android
+    // 10+; apply this after enableEdgeToEdge so the app's explicit choice wins.
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+      window.setNavigationBarContrastEnforced(false);
+    }
 
     // Preserve the app's existing opaque navigation-bar color on Android 14
     // and older. On Android 15+ the platform owns system-bar drawing and this
