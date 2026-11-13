@@ -68,10 +68,11 @@ public final class EdgeToEdgeHelper {
       window.getDecorView().setForceDarkAllowed(false);
     }
 
-    // Use AndroidX's supported edge-to-edge entry point. Android 15+
-    // enforces this behavior for targetSdk 35+, while this call provides
-    // equivalent transparent system bars on older supported Android versions.
-    WindowCompat.enableEdgeToEdge(window);
+    // Disable decor fitting so app content is laid out edge-to-edge.
+    // This API is available in the project's AndroidX Core 1.16.0 and
+    // works on supported Android versions; Android 15+ also enforces
+    // edge-to-edge for apps targeting SDK 35 or higher.
+    WindowCompat.setDecorFitsSystemWindows(window, false);
 
     // Keep the app's existing transparent navigation-bar policy for Android
     // 10+; apply this after enableEdgeToEdge so the app's explicit choice wins.
