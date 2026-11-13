@@ -75,7 +75,7 @@ public final class EdgeToEdgeHelper {
     WindowCompat.setDecorFitsSystemWindows(window, false);
 
     // Keep the app's existing transparent navigation-bar policy for Android
-    // 10+; apply this after enableEdgeToEdge so the app's explicit choice wins.
+    // 10+; apply this after disabling decor fitting so the app's explicit choice wins.
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
       window.setNavigationBarContrastEnforced(false);
     }
