@@ -1,3 +1,45 @@
+## 2026-11-13 — Validación visual edge-to-edge en Redmi Note 13 Pro y limpieza previa a integración
+
+- El usuario confirma que ha instalado la APK Debug #92 en el Redmi Note 13 Pro (Android 16) y que todas las comprobaciones visuales realizadas son correctas: status bar, barra inferior, cabeceras, pantallas principales, scroll y teclado.
+- Se confirman expresamente los dos modos de navegación en Android 16: gestos y tres botones; ambos funcionan correctamente.
+- Durante una prueba anterior se observó una pantalla que permanecía en tema claro después de cambiar a oscuro y navegar desde la barra inferior; el usuario no consiguió reproducirlo al repetir la prueba. Se mantiene como observación intermitente no reproducida, sin evidencia suficiente para cambiar código.
+- **Pendiente:** repetir las comprobaciones visuales principales en Redmi Note 7 (Android 10). La validación en Android 16 no certifica por sí sola Android 10.
+- Como limpieza documental del código, se corrigen en `EdgeToEdgeHelper.java` dos comentarios que todavía mencionaban `WindowCompat.enableEdgeToEdge()`, API que no existe en AndroidX Core 1.16.0. El código ejecutable sigue usando `WindowCompat.setDecorFitsSystemWindows(window, false)`; no se modifica la lógica de insets ni el diseño.
+- Commits de limpieza documental del helper: `39f7c6e54c80a8d97c9beaecc559110030fe3480` y `8d95f55455f7e2a93a8b8a33273ce44b135c8b21`. **CI #94 SUCCESS** sobre el commit final de código `8d95f55455f7e2a93a8b8a33273ce44b135c8b21`: [run 43486223239](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43486223239). Pruebas de regresión de divisas, `lintDebug`, `assembleDebug` y subida de artefactos completados correctamente. APK Debug `ev-calculator-pro-debug-94`, artifact ID `14066104400` (7.609.707 bytes); informe Lint `android-lint-report-94`, artifact ID `14066009542`.
+- Android Lint #92: 8 avisos y 0 errores (`AppBundleLocaleChanges` 1, `ObsoleteSdkInt` 1, `IconLauncherShape` 5 y `RtlHardcoded` 1). No se alteran en este lote porque no bloquean la compilación ni forman parte del cambio edge-to-edge.
+- Se mantienen `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` y `compileSdk 36`. No se generan APK/AAB Release, no se crean releases y no se publica en Google Play.
+- CI #93 también finalizó SUCCESS sobre el commit anterior de limpieza. El PR #28 está abierto hacia `main`, con 3 archivos modificados y sin divergencia respecto a la base. Antes de fusionar, se debe evitar que el push a `main` dispare el workflow de publicación automática de GitHub Release para no crear otra release 1.0.7 con el mismo versionCode. La compatibilidad manual con Android 10 seguirá abierta incluso después de integrar.
+
+---
+
+## 2026-11-13 — Corrección de compilación edge-to-edge (CI superada; prueba visual pendiente)
+
+- La ejecución Android Lint audit #91 ([run 43470086924](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43470086924)) confirmó que las pruebas de divisas y `:app:lintDebug` pasaban, pero `:app:assembleDebug` fallaba al compilar `EdgeToEdgeHelper.java`: `WindowCompat.enableEdgeToEdge(Window)` no existe en AndroidX Core `1.16.0`.
+- Se corrige en `fix/android15-edge-to-edge` usando `WindowCompat.setDecorFitsSystemWindows(window, false)`, API disponible en Core 1.16.0. Se conserva la dependencia, el resto del tratamiento de barras/insets y el diseño; no se eleva AndroidX Core.
+- Commit de corrección: `f5060ebfb24c55002d71ae31ddadb78e6ac85ade`. Diff revisado: un único archivo Java y sustitución de la llamada incompatible más su comentario. No hay cambios de versión ni de configuración de publicación.
+- **CI superada en Android Lint audit #92** ([run 43482824571](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43482824571)): pruebas de regresión de divisas SUCCESS, `:app:lintDebug` SUCCESS y `Build Debug APK` SUCCESS. Se generaron los artefactos `ev-calculator-pro-debug-92` (APK Debug, 7.61 MB) y `android-lint-report-92` (informe Lint). La corrección de compilación queda verificada por CI.
+- **Resultado detallado de Android Lint:** 8 avisos (0 errores): `AppBundleLocaleChanges` (1), `ObsoleteSdkInt` (1), `IconLauncherShape` (5) y `RtlHardcoded` (1). Son avisos existentes en gestión de idioma, comprobación SDK, iconos y gravedad RTL; no han impedido la compilación. No se han modificado como parte de esta corrección edge-to-edge.
+- **Pendiente de prueba visual:** instalar la APK resultante en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10); revisar status bar, navegación gestual y de tres botones, cabeceras, scroll, teclado y pantallas principales. No se declara resuelto el comportamiento edge-to-edge sin estas pruebas.
+- Se mantiene `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` y `compileSdk 36`. No se modifica `main`, `stable` ni ramas de respaldo; no se crean APK/AAB Release ni releases y no se publica en Google Play.
+
+---
+
+## 2026-11-13 — Auditoría y adaptación Android 15+ edge-to-edge (pendiente de CI y prueba visual)
+
+- Se revisa el estado de `main` tras EV Calculator PRO 1.0.7: `targetSdk = 36`, `compileSdk = 36`, AndroidX Core `1.16.0`.
+- Las siete actividades declaradas en el manifiesto aplican `EdgeToEdgeHelper`; las pantallas de navegación principal y los contenedores desplazables también gestionan insets del sistema y/o del teclado. No se detecta una Activity principal sin tratamiento de bordes.
+- La primera propuesta de adaptación fue usar `WindowCompat.enableEdgeToEdge(window)`, pero la compilación #91 confirmó que ese método no existe en AndroidX Core 1.16.0. La implementación final mantiene `WindowCompat.setDecorFitsSystemWindows(window, false)`, API disponible en la dependencia existente.
+- Se conserva el diseño existente: colores de iconos según tema, desactivación de force-dark, color opaco de navegación en Android 14 e inferiores y política explícita de contraste de la barra de navegación (se aplica después de habilitar edge-to-edge para que prevalezca la elección de la app). No se modifican las reglas de padding/insets ni las pantallas.
+- Se mantiene `setNavigationBarContrastEnforced(false)` en Android 10+ después de `setDecorFitsSystemWindows(window, false)`; el color de navegación personalizado continúa limitado a Android 14 e inferiores. Android 15+ conserva el dibujo de barras gestionado por el sistema.
+- Rama de trabajo: `fix/android15-edge-to-edge`, creada desde `main` en el commit `2453fcf8c711288fbd9d1270a9a138215c0b9ae0`. Commits de cambio: `7d708cbfbaaf3a602c30b7d29fcacccf768f339b` y `71b571b5f1d858ee9e0271757163e9954e194064`.
+- Se añade la rama de trabajo al disparador del workflow Android Lint para poder ejecutar la misma auditoría y compilación Debug sobre este cambio. Commit de CI: `fd3abe81bd61cb2f7dbf2fbeaf3fd0aa9163717b`.
+- **Pendiente:** confirmar ejecución CI con pruebas existentes, `:app:lintDebug` y `:app:assembleDebug`; revisar el informe Lint y el diff final.
+- **Pendiente de prueba visual manual:** Redmi Note 13 Pro (Android 16), en navegación por gestos y navegación de tres botones; comprobar pantalla Cargar, Coste, Buscar similares, Comparar, ficha, Configuración y Apoyar, además del teclado en campos desplazables. Después, repetir al menos el recorrido principal y Configuración en Redmi Note 7 (Android 10). La compilación no sustituye esta validación.
+- No se cambia `versionName 1.0.7`, `versionCode 63`, minSdk, targetSdk, nombres de APK/AAB ni releases. No se modifica `main`, `stable` ni ramas de respaldo. No se publica en Google Play.
+- La advertencia de Google Play es genérica y puede seguir apareciendo aunque el código esté adaptado; no se afirma que Google Play vaya a retirarla hasta verificarlo en Play Console.
+
+---
+
 ## 2026-11-12 — Validación manual de EV Calculator PRO 1.0.7 en Redmi Note 13 Pro
 
 - El usuario confirma que ha instalado la APK Release 1.0.7 en el Redmi Note 13 Pro (Android 16) y ha probado satisfactoriamente los dos flujos corregidos:

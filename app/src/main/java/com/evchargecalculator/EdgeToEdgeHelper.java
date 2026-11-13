@@ -19,9 +19,9 @@ import androidx.core.view.WindowInsetsControllerCompat;
  * Centralized Android 15+ edge-to-edge handling.
  *
  * The app targets SDK 36, so Android 15+ enforces edge-to-edge. This helper
- * also enables the same behavior on older supported Android versions and
- * applies system-bar insets to the activity content so existing screens
- * are not obscured by system bars.
+ * also enables the same behavior on older supported Android versions through
+ * AndroidX WindowCompat.setDecorFitsSystemWindows(), and applies system-bar insets to
+ * the activity content so existing screens are not obscured by system bars.
  */
 public final class EdgeToEdgeHelper {
   // Stores the padding defined by each activity before system-bar insets are applied.
@@ -66,19 +66,28 @@ public final class EdgeToEdgeHelper {
     // header) must retain their original brightness and colors.
     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
       window.getDecorView().setForceDarkAllowed(false);
+    }
+
+    // Disable decor fitting so app content is laid out edge-to-edge.
+    // This API is available in the project's AndroidX Core 1.16.0 and
+    // works on supported Android versions; Android 15+ also enforces
+    // edge-to-edge for apps targeting SDK 35 or higher.
+    WindowCompat.setDecorFitsSystemWindows(window, false);
+
+    // Keep the app's existing transparent navigation-bar policy for Android
+    // 10+; apply this after disabling decor fitting so the app's explicit choice wins.
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
       window.setNavigationBarContrastEnforced(false);
     }
 
-    // Keep the legacy navigation-bar color only on Android 14 and older.
-    // Android 15+ uses edge-to-edge and this API is deprecated/ineffective
-    // for gesture navigation.
+    // Preserve the app's existing opaque navigation-bar color on Android 14
+    // and older. On Android 15+ the platform owns system-bar drawing and this
+    // color API is deprecated/ineffective for gesture navigation.
     if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.VANILLA_ICE_CREAM) {
       window.setNavigationBarColor(
           dark ? android.graphics.Color.rgb(16, 28, 42)
                : android.graphics.Color.rgb(242, 246, 252));
     }
-
-    WindowCompat.setDecorFitsSystemWindows(window, false);
 
     WindowInsetsControllerCompat controller =
         WindowCompat.getInsetsController(window, window.getDecorView());
