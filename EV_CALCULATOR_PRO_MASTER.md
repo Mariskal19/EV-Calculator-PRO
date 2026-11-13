@@ -1,3 +1,14 @@
+## 2026-11-13 — Corrección de compilación edge-to-edge (CI pendiente)
+
+- La ejecución Android Lint audit #91 ([run 43470086924](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/43470086924)) confirmó que las pruebas de divisas y `:app:lintDebug` pasaban, pero `:app:assembleDebug` fallaba al compilar `EdgeToEdgeHelper.java`: `WindowCompat.enableEdgeToEdge(Window)` no existe en AndroidX Core `1.16.0`.
+- Se corrige en `fix/android15-edge-to-edge` usando `WindowCompat.setDecorFitsSystemWindows(window, false)`, API disponible en Core 1.16.0. Se conserva la dependencia, el resto del tratamiento de barras/insets y el diseño; no se eleva AndroidX Core.
+- Commit de corrección: `f5060ebfb24c55002d71ae31ddadb78e6ac85ade`. Diff revisado: un único archivo Java y sustitución de la llamada incompatible más su comentario. No hay cambios de versión ni de configuración de publicación.
+- **Pendiente de CI sobre este commit:** repetir pruebas de divisas, `:app:lintDebug` y `:app:assembleDebug`, y revisar el informe Lint y el APK Debug generado. La corrección de compilación no se considera verificada hasta que esos pasos finalicen correctamente.
+- **Pendiente de prueba visual:** instalar la APK resultante en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10); revisar status bar, navegación gestual y de tres botones, cabeceras, scroll, teclado y pantallas principales. No se declara resuelto el comportamiento edge-to-edge sin estas pruebas.
+- Se mantiene `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` y `compileSdk 36`. No se modifica `main`, `stable` ni ramas de respaldo; no se crean APK/AAB Release ni releases y no se publica en Google Play.
+
+---
+
 ## 2026-11-13 — Auditoría y adaptación Android 15+ edge-to-edge (pendiente de CI y prueba visual)
 
 - Se revisa el estado de `main` tras EV Calculator PRO 1.0.7: `targetSdk = 36`, `compileSdk = 36`, AndroidX Core `1.16.0`.
