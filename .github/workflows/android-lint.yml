@@ -1,10 +1,10 @@
-name: Android Lint audit
+name: Android Lint audit (AGP 9.5.1 validation)
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - develop/post-1.0.6
+      - test/agp-9.5.1-main-audit
     paths:
       - 'app/src/**'
       - 'app/build.gradle'
