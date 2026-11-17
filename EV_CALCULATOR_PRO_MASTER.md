@@ -3760,3 +3760,17 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - **Pendiente:** prueba manual en Redmi Note 7 (Android 10). No se afirma compatibilidad en ese dispositivo hasta recibir el resultado.
 - No se han cambiado `versionName`, `versionCode`, catálogo, nombres de APK/AAB ni ramas `stable`/respaldo. No se ha autorizado una nueva publicación.
 - **Atención a CI de main:** el merge ha disparado automáticamente el workflow `Build EV Calculator PRO`, run [#2495](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/44118838689), actualmente observado en curso. El workflow de `main` construye APK/AAB Release y publica una GitHub Release automática. Su resultado y cualquier publicación deben comprobarse por separado; el merge por sí solo no acredita que haya terminado ni que se haya publicado.
+
+
+## 2026-11-17 — Release 1.0.7 generada desde main
+
+- Tras la fusión autorizada de la PR #29, el workflow automático `Build EV Calculator PRO` (run #2495: https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/44118838689) terminó con conclusión **SUCCESS**.
+- Se completaron correctamente `Build Release APK and AAB`, `Verify release outputs`, `Persist optimized search source`, `Prepare release files` y `Publish GitHub Release with APK and AAB`. El paso de validación de inset se omitió por las condiciones del workflow; no afecta a la conclusión satisfactoria del job.
+- GitHub Release publicada: [EV Calculator PRO v1.0.7 build 2495](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.7-2495), tag `build-v1.0.7-2495`, asociada al merge commit `db8fe77a9862d2f1af851346a06c00561b512b1a`.
+- Archivos adjuntos confirmados:
+  - `EV-Calculator-PRO-v1.0.7.apk` — 5.133.228 bytes; SHA-256 `0c2db1ccd6cb8863da7bbcdb5d79f19240d3966477152d51f06ebe6c9d2ada7c`.
+  - `EV-Calculator-PRO-v1.0.7.aab` — 5.116.453 bytes; SHA-256 `806bb60a033dd4153385fa6d297e406ace9586a8cd7ce51bca663030854bf4d6`.
+- Configuración de compilación leída de `app/build.gradle`: `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36`. Estos valores ya estaban configurados en `main`; el workflow no los modificó.
+- Esta es una publicación de **GitHub Releases**, no una publicación en Google Play. No se ha iniciado ningún despliegue en Play Store.
+- La prueba manual de búsqueda con IA sigue validada en Xiaomi 13T Pro. **Pendiente** probar en Redmi Note 7 (Android 10); no se afirma compatibilidad hasta esa comprobación.
+- Se corrige la nota previa que indicaba que no se había autorizado una release: el usuario autorizó expresamente la fusión en `main` y la generación de la release el 2026-11-17, y ambas acciones ya están completadas.
