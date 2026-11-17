@@ -5,6 +5,7 @@ on:
     branches: [ "fix/ai-direct-catalog-search" ]
     paths:
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsScreen.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - '.github/tests/AdvisorSimilarityIntentSmokeTest.java'
       - '.github/workflows/ai-search-debug-build.yml'
@@ -12,6 +13,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsScreen.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - '.github/tests/AdvisorSimilarityIntentSmokeTest.java'
       - '.github/workflows/ai-search-debug-build.yml'
