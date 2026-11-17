@@ -18,6 +18,8 @@ public final class AdvisorSimilarityIntentSmokeTest {
                 "a natural-language make/model/trim query is recognized");
         check(!AdvisorSimilarityIntent.isDirectModelLookup("Performance", names),
                 "a trim word without make/model identity is not a direct lookup");
+        check(!AdvisorSimilarityIntent.isDirectModelLookup("Model", names),
+                "the generic word model alone is not a useful direct lookup");
         check(!AdvisorSimilarityIntent.isDirectModelLookup("un coche parecido al Tesla Model 3", names),
                 "similarity intent keeps precedence over direct catalog lookup");
 

@@ -97,7 +97,7 @@ public final class AdvisorSimilarityIntent {
             case "buscame": case "busca": case "busco": case "encuentrame":
             case "muestrame": case "muestra": case "mostrar": case "quiero":
             case "ver": case "ensename": case "show": case "find": case "look":
-            case "up": case "display": case "me": case "el": case "la": case "los":
+            case "up": case "display": case "me": case "model": case "el": case "la": case "los":
             case "las": case "un": case "una": case "unos": case "unas":
             case "de": case "del": case "por": case "favor": case "coche":
             case "coches": case "auto": case "autos": case "vehiculo": case "vehiculos":
