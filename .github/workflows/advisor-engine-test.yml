@@ -8,6 +8,7 @@ on:
       - 'app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsScreen.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
       - '.github/tests/AdvisorCriteriaEngineSmokeTest.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
