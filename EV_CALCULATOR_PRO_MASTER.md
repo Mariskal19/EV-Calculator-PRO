@@ -3709,3 +3709,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Compilación: workflow AI advisor direct-search debug build #4, ejecución https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/44103544060, SUCCESS tras reintento por respuestas HTTP 429 temporales de Maven Central. Android Lint, :app:assembleDebug y subida del artefacto completados correctamente. Artefacto EV-Calculator-PRO-ai-search-debug-4 (7.609.418 bytes; disponible hasta el 2026-12-01).
 - El APK Debug se ha generado desde la rama; queda pendiente la validación manual de las consultas «Tesla» y «Model 3 Performance» en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
 - No fusionado en main. No se han modificado versión, versionCode, nombres de APK/AAB, releases, catálogo ni ramas de respaldo/stable. No publicar ni integrar hasta revisar el PR y recibir autorización expresa.
+
+
+## 2026-11-17 — Segunda revisión de búsqueda directa «Tesla» (pendiente de APK)
+
+- El usuario confirma que la APK Debug #7 sigue mostrando el aviso de ambigüedad y no presenta vehículos al buscar «Tesla». La primera corrección no queda validada y no debe integrarse.
+- Se verificó en GitHub que el artefacto `EV-Calculator-PRO-ai-search-debug-7` (run #44104422236, artifact ID `14337058747`) fue generado correctamente desde la ejecución del PR #29; el log de Actions muestra el checkout del merge ref `19b90ff6571899b77b68eaa976aea9e709684aff`, que incorpora el head `e04c48104d4509836cbd18d617eccd9ee0f2c091`. El catálogo de esa rama contiene entradas Tesla.
+- La inspección estática del código mostró una inconsistencia: el método de búsqueda directa debería reconocer «Tesla» antes de llegar al mensaje de ambigüedad. La suite anterior probaba el clasificador aislado, no la decisión de ruta basada en resultados reales.
+- Segunda corrección en curso, en la misma rama: la búsqueda directa conserva prioridad para peticiones explícitas de similitud, pero decide la búsqueda directa por coincidencias reales marca/modelo/versión en el catálogo, sin depender del clasificador `isDirectModelLookup()`. Si no hay coincidencias, deja continuar al intérprete natural.
+- Se amplían las comprobaciones de prioridad entre ruta directa y ruta de similitud y se añade el archivo de test al filtro de ejecución del workflow Debug.
+- Commit de código: `8d21c074888272299b9bdb549263dacea2fa5e95`; tests: `f896886352778d767ff8abd280562288b6a57297`; workflow: `d130061f5ff0fe15b979e6646fc14e81058fe76a`.
+- **Pendiente:** CI nueva, revisión del diff y nueva APK Debug. Después, validación manual en Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10) sigue pendiente.
+- PR #29 permanece sin fusionar. No se modifica `main`, `stable`, ramas de respaldo, versiones, versionCode, nombres de APK/AAB, releases, catálogo ni publicación de Google Play.
