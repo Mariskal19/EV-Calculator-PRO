@@ -2,16 +2,18 @@ name: Advisor engine smoke tests
 
 on:
   push:
-    branches: [ "feature/asesor-ia-fase-1" ]
+    branches: [ "feature/asesor-ia-fase-1", "fix/ai-direct-catalog-search" ]
     paths:
       - 'app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsScreen.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java'
       - '.github/tests/AdvisorCriteriaEngineSmokeTest.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
       - '.github/tests/AdvisorCatalogIntegrationSmokeTest.java'
+      - '.github/tests/AdvisorSimilarityIntentSmokeTest.java'
       - '.github/tests/project_protected_catalog.py'
       - 'app/src/main/assets/catalog_es_2024_2026.json'
       - '.github/workflows/advisor-engine-test.yml'
@@ -35,8 +37,9 @@ jobs:
         run: |
           mkdir -p build/advisor-test
           python3 .github/tests/project_protected_catalog.py app/src/main/assets/catalog_es_2024_2026.json build/advisor-test/catalog.tsv
-          javac -d build/advisor-test app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java .github/tests/AdvisorCriteriaEngineSmokeTest.java .github/tests/AdvisorCatalogIntegrationSmokeTest.java
+          javac -d build/advisor-test app/src/main/java/com/evchargecalculator/AdvisorQueryClassifier.java app/src/main/java/com/evchargecalculator/AdvisorCriteriaEngine.java app/src/main/java/com/evchargecalculator/AdvisorCatalogMatcher.java app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java .github/tests/AdvisorCriteriaEngineSmokeTest.java .github/tests/AdvisorCatalogIntegrationSmokeTest.java .github/tests/AdvisorSimilarityIntentSmokeTest.java
       - name: Run smoke tests
         run: |
           java -cp build/advisor-test com.evchargecalculator.AdvisorCriteriaEngineSmokeTest
           java -cp build/advisor-test com.evchargecalculator.AdvisorCatalogIntegrationSmokeTest build/advisor-test/catalog.tsv
+          java -cp build/advisor-test com.evchargecalculator.AdvisorSimilarityIntentSmokeTest

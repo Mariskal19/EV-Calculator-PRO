@@ -3697,3 +3697,54 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La rama temporal `test/agp-9.5.1-main-audit` no se integra en `main`; tampoco se modificó la rama de Dependabot directamente.
 - Pendiente: comprobar la CI automática posterior al merge y continuar las pruebas manuales en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), según corresponda. Esta actualización de herramienta de compilación no sustituye esas pruebas.
 - No se ha publicado una nueva versión ni se ha modificado Google Play.
+
+
+## 2026-11-17 — Corrección de búsqueda directa en «Buscar con IA» (rama pendiente de integración)
+
+- Incidencia localizada: el reconocimiento de búsquedas directas solo utilizaba marca/modelo, mientras que los acabados del catálogo están en Vehicle.version. Tampoco aceptaba una marca aislada como consulta directa.
+- Trabajo realizado en la rama fix/ai-direct-catalog-search, creada desde main en 8127e13aec150e8b5edc185eb5f168bf199fafed.
+- AdvisorSimilarityIntent: admite búsquedas por marca, modelo y palabras de acabado; compara tokens completos y mantiene prioridad para las consultas de coches similares. Una palabra de acabado aislada o la palabra genérica «Model» no inicia una búsqueda directa.
+- SimilarCarsActivity: filtra las variantes usando marca, modelo y versión, de modo que «Tesla» encuentra vehículos Tesla y «Model 3 Performance» no devuelve acabados distintos ni Model Y Performance.
+- Pruebas añadidas: 12 comprobaciones de regresión para marca, modelo, acabado, consultas naturales, límites de token y prioridad de intención similar. Workflow de asesor: SUCCESS en ejecución #169; pruebas del motor (114), integración con catálogo español (688 vehículos) y búsqueda directa (12 comprobaciones) correctas.
+- Compilación: workflow AI advisor direct-search debug build #4, ejecución https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/44103544060, SUCCESS tras reintento por respuestas HTTP 429 temporales de Maven Central. Android Lint, :app:assembleDebug y subida del artefacto completados correctamente. Artefacto EV-Calculator-PRO-ai-search-debug-4 (7.609.418 bytes; disponible hasta el 2026-12-01).
+- El APK Debug se ha generado desde la rama; queda pendiente la validación manual de las consultas «Tesla» y «Model 3 Performance» en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- No fusionado en main. No se han modificado versión, versionCode, nombres de APK/AAB, releases, catálogo ni ramas de respaldo/stable. No publicar ni integrar hasta revisar el PR y recibir autorización expresa.
+
+
+## 2026-11-17 — Segunda revisión de búsqueda directa «Tesla» (pendiente de APK)
+
+- El usuario confirma que la APK Debug #7 sigue mostrando el aviso de ambigüedad y no presenta vehículos al buscar «Tesla». La primera corrección no queda validada y no debe integrarse.
+- Se verificó en GitHub que el artefacto `EV-Calculator-PRO-ai-search-debug-7` (run #44104422236, artifact ID `14337058747`) fue generado correctamente desde la ejecución del PR #29; el log de Actions muestra el checkout del merge ref `19b90ff6571899b77b68eaa976aea9e709684aff`, que incorpora el head `e04c48104d4509836cbd18d617eccd9ee0f2c091`. El catálogo de esa rama contiene entradas Tesla.
+- La inspección estática del código mostró una inconsistencia: el método de búsqueda directa debería reconocer «Tesla» antes de llegar al mensaje de ambigüedad. La suite anterior probaba el clasificador aislado, no la decisión de ruta basada en resultados reales.
+- Segunda corrección en curso, en la misma rama: la búsqueda directa conserva prioridad para peticiones explícitas de similitud, pero decide la búsqueda directa por coincidencias reales marca/modelo/versión en el catálogo, sin depender del clasificador `isDirectModelLookup()`. Si no hay coincidencias, deja continuar al intérprete natural.
+- Se amplían las comprobaciones de prioridad entre ruta directa y ruta de similitud y se añade el archivo de test al filtro de ejecución del workflow Debug.
+- Commit de código: `8d21c074888272299b9bdb549263dacea2fa5e95`; tests: `f896886352778d767ff8abd280562288b6a57297`; workflow: `d130061f5ff0fe15b979e6646fc14e81058fe76a`.
+- **Pendiente:** CI nueva, revisión del diff y nueva APK Debug. Después, validación manual en Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10) sigue pendiente.
+- PR #29 permanece sin fusionar. No se modifica `main`, `stable`, ramas de respaldo, versiones, versionCode, nombres de APK/AAB, releases, catálogo ni publicación de Google Play.
+
+
+## 2026-11-17 — Corrección de la pantalla activa «Buscar con IA» (validación pendiente)
+
+- Tras la prueba fallida de Debug 13, se revisó la navegación principal de `MainActivity`: la pestaña Coches instancia `SimilarCarsScreen`; no utiliza `SimilarCarsActivity`. Las correcciones previas estaban aplicadas a la Activity, por lo que no corregían la implementación realmente mostrada al usuario.
+- La implementación activa conservaba el reconocimiento antiguo mediante `isDirectModelLookup()` y la selección por nombre completo marca+modelo; no resolvía correctamente una búsqueda aislada por marca ni filtraba de forma fiable los acabados almacenados en `Vehicle.version`.
+- Se actualiza `SimilarCarsScreen.tryRunDirectModelLookupQuery()` para usar coincidencias reales de tokens de consulta contra marca, modelo y versión mediante `matchesDirectCatalogEntry()`. Se mantiene la prioridad de las peticiones explícitas de coches similares y el límite de 10 resultados.
+- Commit de la pantalla activa: `eea2284c3572e73dfe322f67708e1d6b1234f88c`.
+- Se amplían los filtros de rutas de los workflows de Debug y de pruebas del asesor para que los cambios en `SimilarCarsScreen.java` también disparen sus comprobaciones.
+- **Pendiente:** confirmar que ambos workflows se ejecutan sobre el nuevo commit, revisar Lint/compilación y descargar una nueva APK Debug. Después, probar «Tesla», «Model 3 Performance» y «Tesla Model 3 Performance» en Redmi Note 13 Pro (Android 16). No se considera solucionado hasta esa validación manual; Redmi Note 7 (Android 10) continúa pendiente.
+- PR #29 sigue abierto, en borrador y sin fusionar. Sin cambios en `main`, `stable`, ramas de respaldo, versión/versionCode, APK/AAB de publicación, releases, catálogo ni Google Play.
+
+
+## 2026-11-17 — Validación manual completa de búsqueda con IA en Xiaomi 13T Pro
+
+- Se corrige el dispositivo de la primera prueba: la APK Debug #14 se instaló y probó en un **Xiaomi 13T Pro**, no en un Redmi Note 13 Pro.
+- El usuario confirma que las cuatro consultas probadas funcionan correctamente en la pantalla activa `SimilarCarsScreen`:
+  - «Tesla»: búsqueda directa por marca y presentación de vehículos.
+  - «Model 3 Performance»: búsqueda directa por modelo y acabado.
+  - «Tesla Model 3 Performance»: búsqueda combinada por marca, modelo y acabado.
+  - «Un coche parecido al Tesla Model 3»: ruta de intención de similitud.
+- La validación manual de estas consultas queda satisfactoria en Xiaomi 13T Pro. No extrapolar el resultado a Redmi Note 13 Pro ni a Redmi Note 7.
+- Build Debug #14: workflow run #44116650193, ejecución SUCCESS. Android Lint, `:app:assembleDebug` y subida del artefacto completados correctamente.
+- Artefacto: `EV-Calculator-PRO-ai-search-debug-14`, artifact ID `14343576583`, SHA-256 `502ac2a64c34a7c03f8a05507a6bd96d1671b1e43e497995e6afe602630ba04e`; expira el 2026-12-01.
+- Commit de código incluido: `eea2284c3572e73dfe322f67708e1d6b1234f88c`; actualización documental previa `05a6b42c93591bd26125e26f915cff0052321b14`.
+- **Pendiente:** probar en Redmi Note 7 (Android 10) y verificar que el workflow de pruebas del asesor cubre el commit final de la pantalla activa. La validación en Xiaomi 13T Pro no certifica compatibilidad en los otros dispositivos.
+- PR #29 sigue abierto, en borrador y sin fusionar (`main` como base; rama `fix/ai-direct-catalog-search`). GitHub informa `mergeable=true`, pero no se ha fusionado. `main` permanece intacta; no se cambian versión, versionCode, APK/AAB de publicación, releases, catálogo, ramas stable/de respaldo ni Google Play.

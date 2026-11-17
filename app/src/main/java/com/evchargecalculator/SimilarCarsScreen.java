@@ -366,47 +366,21 @@ public class SimilarCarsScreen extends FrameLayout {
     private boolean tryRunDirectModelLookupQuery(String query) {
         List<String> catalogNames = new ArrayList<>();
         for (Vehicle vehicle : vehicles) catalogNames.add(vehicle.make + " " + vehicle.model);
-        if (!AdvisorSimilarityIntent.isDirectModelLookup(query, catalogNames)) return false;
 
-        String normalized = norm(query).trim();
-        String compactQuery = normalized.replaceAll("[^a-z0-9]", "");
-        Vehicle chosen = null;
-        int bestNameLength = -1;
-        for (Vehicle vehicle : vehicles) {
-            String makeModel = norm(vehicle.make + " " + vehicle.model);
-            String compactName = makeModel.replaceAll("[^a-z0-9]", "");
-            if (compactName.length() >= 4 && compactQuery.contains(compactName)
-                    && compactName.length() > bestNameLength) {
-                chosen = vehicle;
-                bestNameLength = compactName.length();
-            }
-        }
-        if (chosen == null) {
-            String paddedQuery = " " + normalized + " ";
-            Set<String> matchedModels = new HashSet<>();
-            for (Vehicle vehicle : vehicles) {
-                String model = norm(vehicle.model).trim();
-                if (model.length() < 2 || !paddedQuery.contains(" " + model + " ")) continue;
-                matchedModels.add(norm(vehicle.make + " " + vehicle.model));
-                if (chosen == null || model.length() > norm(chosen.model).length()) chosen = vehicle;
-            }
-            if (matchedModels.size() != 1) {
-                advisorStatus.setText(LanguageManager.t(host,
-                        "El nombre puede corresponder a varios modelos. Escribe también la marca para concretar la búsqueda."));
-                return true;
-            }
-        }
-        if (chosen == null) {
-            advisorStatus.setText(LanguageManager.t(host,
-                    "No encuentro ese modelo en el catálogo. Comprueba la marca y el nombre del coche."));
-            return true;
-        }
+        // Keep explicit similarity requests on the reference/alternatives route.
+        // A make-only request such as "Tesla" is a direct catalog lookup.
+        if (AdvisorSimilarityIntent.shouldRoute(query, catalogNames)) return false;
 
-        String target = norm(chosen.make + " " + chosen.model);
         List<Vehicle> variants = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
-            if (norm(vehicle.make + " " + vehicle.model).equals(target)) variants.add(vehicle);
+            if (AdvisorSimilarityIntent.matchesDirectCatalogEntry(
+                    query, vehicle.make, vehicle.model, vehicle.version)) {
+                variants.add(vehicle);
+            }
         }
+        // No direct catalog match: allow the natural-language advisor to interpret it.
+        if (variants.isEmpty()) return false;
+
         variants.sort((left, right) -> {
             int yearOrder = Integer.compare(right.year, left.year);
             if (yearOrder != 0) return yearOrder;
@@ -416,7 +390,7 @@ public class SimilarCarsScreen extends FrameLayout {
         });
 
         advisorResults.removeAllViews();
-        advisorStatus.setText(LanguageManager.t(host, "Modelo encontrado en el catálogo"));
+        advisorStatus.setText(LanguageManager.t(host, "Vehículos encontrados en el catálogo"));
         int shown = 0;
         for (Vehicle vehicle : variants) {
             if (shown++ >= 10) break;
