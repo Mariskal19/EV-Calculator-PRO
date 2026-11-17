@@ -3721,3 +3721,14 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Commit de código: `8d21c074888272299b9bdb549263dacea2fa5e95`; tests: `f896886352778d767ff8abd280562288b6a57297`; workflow: `d130061f5ff0fe15b979e6646fc14e81058fe76a`.
 - **Pendiente:** CI nueva, revisión del diff y nueva APK Debug. Después, validación manual en Redmi Note 13 Pro (Android 16). La prueba en Redmi Note 7 (Android 10) sigue pendiente.
 - PR #29 permanece sin fusionar. No se modifica `main`, `stable`, ramas de respaldo, versiones, versionCode, nombres de APK/AAB, releases, catálogo ni publicación de Google Play.
+
+
+## 2026-11-17 — Corrección de la pantalla activa «Buscar con IA» (validación pendiente)
+
+- Tras la prueba fallida de Debug 13, se revisó la navegación principal de `MainActivity`: la pestaña Coches instancia `SimilarCarsScreen`; no utiliza `SimilarCarsActivity`. Las correcciones previas estaban aplicadas a la Activity, por lo que no corregían la implementación realmente mostrada al usuario.
+- La implementación activa conservaba el reconocimiento antiguo mediante `isDirectModelLookup()` y la selección por nombre completo marca+modelo; no resolvía correctamente una búsqueda aislada por marca ni filtraba de forma fiable los acabados almacenados en `Vehicle.version`.
+- Se actualiza `SimilarCarsScreen.tryRunDirectModelLookupQuery()` para usar coincidencias reales de tokens de consulta contra marca, modelo y versión mediante `matchesDirectCatalogEntry()`. Se mantiene la prioridad de las peticiones explícitas de coches similares y el límite de 10 resultados.
+- Commit de la pantalla activa: `eea2284c3572e73dfe322f67708e1d6b1234f88c`.
+- Se amplían los filtros de rutas de los workflows de Debug y de pruebas del asesor para que los cambios en `SimilarCarsScreen.java` también disparen sus comprobaciones.
+- **Pendiente:** confirmar que ambos workflows se ejecutan sobre el nuevo commit, revisar Lint/compilación y descargar una nueva APK Debug. Después, probar «Tesla», «Model 3 Performance» y «Tesla Model 3 Performance» en Redmi Note 13 Pro (Android 16). No se considera solucionado hasta esa validación manual; Redmi Note 7 (Android 10) continúa pendiente.
+- PR #29 sigue abierto, en borrador y sin fusionar. Sin cambios en `main`, `stable`, ramas de respaldo, versión/versionCode, APK/AAB de publicación, releases, catálogo ni Google Play.
