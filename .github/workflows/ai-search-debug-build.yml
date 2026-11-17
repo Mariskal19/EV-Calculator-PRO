@@ -32,6 +32,15 @@ jobs:
           gradle-version: '9.6.0'
           cache-disabled: true
 
+      - name: Run Android Lint
+        env:
+          # Dummy values satisfy the app's configuration-time Release-signing guard.
+          EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/lint-placeholder.keystore
+          EV_CALCULATOR_KEYSTORE_PASSWORD: lint-only-placeholder
+          EV_CALCULATOR_KEY_ALIAS: lint-only-placeholder
+          EV_CALCULATOR_KEY_PASSWORD: lint-only-placeholder
+        run: gradle --no-daemon lintDebug
+
       - name: Build Debug APK
         env:
           # Dummy values satisfy the app's configuration-time Release-signing guard.
