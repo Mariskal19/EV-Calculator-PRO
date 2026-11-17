@@ -1,10 +1,11 @@
 package com.evchargecalculator;
 
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/** Pure-Java intent gate for natural-language requests to find alternatives to a named car. */
+/** Pure-Java intent gate for catalog lookups and similarity requests. */
 public final class AdvisorSimilarityIntent {
     private AdvisorSimilarityIntent() {}
 
@@ -35,11 +36,10 @@ public final class AdvisorSimilarityIntent {
         return false;
     }
 
-
     /**
-     * Detects a request to display a named catalog model itself, not alternatives.
-     * This is catalog-driven and therefore applies to every make/model, not a
-     * hard-coded brand. Similarity language always takes precedence.
+     * Detects a direct catalog lookup from a make/model identity. A query may also
+     * contain trim words (stored separately in the catalog's version field), but
+     * a trim word alone is not enough to turn a generic request into a direct lookup.
      */
     public static boolean isDirectModelLookup(String query, List<String> catalogVehicleNames) {
         String normalized = normalize(query);
@@ -52,53 +52,59 @@ public final class AdvisorSimilarityIntent {
                 "look like", "something like");
         if (similarityIntent) return false;
 
-        boolean directIntent = containsAny(normalized,
-                "buscame", "busca ", "busco ", "encuentrame", "muestrame",
-                "muestra ", "mostrar ", "quiero ver", "ensename", "ver el ",
-                "ver la ", "show me", "find me", "look up", "display ");
+        List<String> queryTokens = meaningfulTokens(normalized);
+        if (queryTokens.isEmpty()) return false;
 
-        // A bare model name is also a direct lookup, but only when it resolves
-        // uniquely in the catalog. This avoids requiring verbs such as "show me".
-        if (!directIntent) {
-            String bareQuery = normalized.trim();
-            String matchedBareModel = null;
-            for (String catalogName : catalogVehicleNames) {
-                if (catalogName == null) continue;
-                String normalizedName = normalize(catalogName).trim();
-                if (bareQuery.equals(normalizedName)) return true;
-
-                String[] parts = catalogName.trim().split("\\s+", 2);
-                if (parts.length < 2) continue;
-                String model = normalize(parts[1]).trim();
-                if (!bareQuery.equals(model)) continue;
-                String key = compact(normalize(catalogName));
-                if (matchedBareModel == null) matchedBareModel = key;
-                else if (!matchedBareModel.equals(key)) return false;
-            }
-            return matchedBareModel != null;
-        }
-
-        String compactQuery = compact(normalized);
-        for (String catalogName : catalogVehicleNames) {
-            String compactName = compact(normalize(catalogName));
-            if (compactName.length() >= 4 && compactQuery.contains(compactName)) return true;
-        }
-
-        // Permit model-only requests (e.g. "Muéstrame el G6") only when the
-        // model name resolves to one make/model in the catalog.
-        String paddedQuery = " " + normalized + " ";
-        String matchedModelKey = null;
+        // The request must identify at least one make/model token. This permits a
+        // make-only search (e.g. "Tesla") without treating "Performance" as a model.
         for (String catalogName : catalogVehicleNames) {
             if (catalogName == null) continue;
             String[] parts = catalogName.trim().split("\\s+", 2);
-            if (parts.length < 2) continue;
-            String model = normalize(parts[1]).trim();
-            if (model.length() < 2 || !paddedQuery.contains(" " + model + " ")) continue;
-            String key = compact(normalize(catalogName));
-            if (matchedModelKey == null) matchedModelKey = key;
-            else if (!matchedModelKey.equals(key)) return false;
+            String identity = parts.length == 2 ? parts[0] + " " + parts[1] : catalogName;
+            List<String> identityTokens = meaningfulTokens(identity);
+            for (String token : queryTokens) {
+                if (identityTokens.contains(token)) return true;
+            }
         }
-        return matchedModelKey != null;
+        return false;
+    }
+
+    /**
+     * Tests all meaningful query words against a single catalog vehicle, including
+     * its version/trim field. Matching whole tokens supports "Model 3 Performance"
+     * without allowing "Model 3" to match an unrelated "Model 30".
+     */
+    public static boolean matchesDirectCatalogEntry(String query, String make, String model, String version) {
+        List<String> queryTokens = meaningfulTokens(query);
+        if (queryTokens.isEmpty()) return false;
+        List<String> vehicleTokens = meaningfulTokens(
+                safe(make) + " " + safe(model) + " " + safe(version));
+        return vehicleTokens.containsAll(queryTokens);
+    }
+
+    private static List<String> meaningfulTokens(String text) {
+        String[] parts = normalize(text).split("\\s+");
+        List<String> tokens = new ArrayList<>();
+        for (String token : parts) {
+            if (token.isEmpty() || isFiller(token)) continue;
+            tokens.add(token);
+        }
+        return tokens;
+    }
+
+    private static boolean isFiller(String token) {
+        switch (token) {
+            case "buscame": case "busca": case "busco": case "encuentrame":
+            case "muestrame": case "muestra": case "mostrar": case "quiero":
+            case "ver": case "ensename": case "show": case "find": case "look":
+            case "up": case "display": case "me": case "el": case "la": case "los":
+            case "las": case "un": case "una": case "unos": case "unas":
+            case "de": case "del": case "por": case "favor": case "coche":
+            case "coches": case "auto": case "autos": case "vehiculo": case "vehiculos":
+                return true;
+            default:
+                return false;
+        }
     }
 
     private static boolean containsAny(String text, String... patterns) {
@@ -110,10 +116,13 @@ public final class AdvisorSimilarityIntent {
         return text.replaceAll("[^a-z0-9]", "");
     }
 
+    private static String safe(String value) { return value == null ? "" : value.trim(); }
+
     private static String normalize(String text) {
         if (text == null) return "";
         String lower = text.toLowerCase(Locale.ROOT).trim();
         return Normalizer.normalize(lower, Normalizer.Form.NFD)
-                .replaceAll("\\p{M}+", "");
+                .replaceAll("\\p{M}+", "")
+                .replaceAll("[^\\p{L}\\p{N}]+", " ").trim();
     }
 }

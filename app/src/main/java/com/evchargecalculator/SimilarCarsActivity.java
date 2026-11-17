@@ -335,45 +335,19 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         for (Vehicle vehicle : vehicles) catalogNames.add(vehicle.make + " " + vehicle.model);
         if (!AdvisorSimilarityIntent.isDirectModelLookup(query, catalogNames)) return false;
 
-        String normalized = norm(query).trim();
-        String compactQuery = normalized.replaceAll("[^a-z0-9]", "");
-        Vehicle chosen = null;
-        int bestNameLength = -1;
+        List<Vehicle> variants = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
-            String makeModel = norm(vehicle.make + " " + vehicle.model);
-            String compactName = makeModel.replaceAll("[^a-z0-9]", "");
-            if (compactName.length() >= 4 && compactQuery.contains(compactName)
-                    && compactName.length() > bestNameLength) {
-                chosen = vehicle;
-                bestNameLength = compactName.length();
+            if (AdvisorSimilarityIntent.matchesDirectCatalogEntry(
+                    query, vehicle.make, vehicle.model, vehicle.version)) {
+                variants.add(vehicle);
             }
         }
-        if (chosen == null) {
-            String paddedQuery = " " + normalized + " ";
-            Set<String> matchedModels = new HashSet<>();
-            for (Vehicle vehicle : vehicles) {
-                String model = norm(vehicle.model).trim();
-                if (model.length() < 2 || !paddedQuery.contains(" " + model + " ")) continue;
-                matchedModels.add(norm(vehicle.make + " " + vehicle.model));
-                if (chosen == null || model.length() > norm(chosen.model).length()) chosen = vehicle;
-            }
-            if (matchedModels.size() != 1) {
-                advisorStatus.setText(LanguageManager.t(this,
-                        "El nombre puede corresponder a varios modelos. Escribe también la marca para concretar la búsqueda."));
-                return true;
-            }
-        }
-        if (chosen == null) {
+        if (variants.isEmpty()) {
             advisorStatus.setText(LanguageManager.t(this,
-                    "No encuentro ese modelo en el catálogo. Comprueba la marca y el nombre del coche."));
+                    "No encuentro coincidencias en el catálogo. Prueba con la marca, el modelo o una versión más concreta."));
             return true;
         }
 
-        String target = norm(chosen.make + " " + chosen.model);
-        List<Vehicle> variants = new ArrayList<>();
-        for (Vehicle vehicle : vehicles) {
-            if (norm(vehicle.make + " " + vehicle.model).equals(target)) variants.add(vehicle);
-        }
         variants.sort((left, right) -> {
             int yearOrder = Integer.compare(right.year, left.year);
             if (yearOrder != 0) return yearOrder;
@@ -383,7 +357,7 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
         });
 
         advisorResults.removeAllViews();
-        advisorStatus.setText(LanguageManager.t(this, "Modelo encontrado en el catálogo"));
+        advisorStatus.setText(LanguageManager.t(this, "Vehículos encontrados en el catálogo"));
         int shown = 0;
         for (Vehicle vehicle : variants) {
             if (shown++ >= 10) break;
