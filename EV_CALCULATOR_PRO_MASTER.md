@@ -3732,3 +3732,13 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Se amplían los filtros de rutas de los workflows de Debug y de pruebas del asesor para que los cambios en `SimilarCarsScreen.java` también disparen sus comprobaciones.
 - **Pendiente:** confirmar que ambos workflows se ejecutan sobre el nuevo commit, revisar Lint/compilación y descargar una nueva APK Debug. Después, probar «Tesla», «Model 3 Performance» y «Tesla Model 3 Performance» en Redmi Note 13 Pro (Android 16). No se considera solucionado hasta esa validación manual; Redmi Note 7 (Android 10) continúa pendiente.
 - PR #29 sigue abierto, en borrador y sin fusionar. Sin cambios en `main`, `stable`, ramas de respaldo, versión/versionCode, APK/AAB de publicación, releases, catálogo ni Google Play.
+
+
+## 2026-11-17 — Validación inicial de búsqueda por marca en «Buscar con IA»
+
+- El usuario instala la APK Debug #14 en Redmi Note 13 Pro (Android 16) y confirma que la consulta «Tesla» ya muestra vehículos. Esta es la primera validación manual satisfactoria de la búsqueda directa por marca en la pantalla activa `SimilarCarsScreen`.
+- Build Debug #14: workflow run #44116650193, ejecución SUCCESS. Android Lint, `:app:assembleDebug` y subida del artefacto completados correctamente.
+- Artefacto: `EV-Calculator-PRO-ai-search-debug-14`, artifact ID `14343576583`, SHA-256 `502ac2a64c34a7c03f8a05507a6bd96d1671b1e43e497995e6afe602630ba04e`; expira el 2026-12-01.
+- Commit de código incluido: `eea2284c3572e73dfe322f67708e1d6b1234f88c`.
+- **Pendiente para cerrar la incidencia:** probar «Model 3 Performance», «Tesla Model 3 Performance» y una petición explícita de coches similares; comprobar el workflow de pruebas del asesor sobre esta revisión; probar en Redmi Note 7 (Android 10). No se considera validada la compatibilidad completa hasta completar estas comprobaciones.
+- PR #29 sigue abierto, en borrador y sin fusionar. `main` permanece intacta; no se cambian versión, versionCode, APK/AAB de publicación, releases, catálogo, ramas stable/de respaldo ni Google Play.
