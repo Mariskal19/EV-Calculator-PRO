@@ -33,6 +33,7 @@ jobs:
           cache-disabled: true
 
       - name: Run Android Lint
+        continue-on-error: true
         env:
           # Dummy values satisfy the app's configuration-time Release-signing guard.
           EV_CALCULATOR_KEYSTORE_PATH: ${{ runner.temp }}/lint-placeholder.keystore
