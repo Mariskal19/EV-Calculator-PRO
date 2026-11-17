@@ -3697,3 +3697,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La rama temporal `test/agp-9.5.1-main-audit` no se integra en `main`; tampoco se modificó la rama de Dependabot directamente.
 - Pendiente: comprobar la CI automática posterior al merge y continuar las pruebas manuales en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10), según corresponda. Esta actualización de herramienta de compilación no sustituye esas pruebas.
 - No se ha publicado una nueva versión ni se ha modificado Google Play.
+
+
+## 2026-11-17 — Corrección de búsqueda directa en «Buscar con IA» (rama pendiente de integración)
+
+- Incidencia localizada: el reconocimiento de búsquedas directas solo utilizaba marca/modelo, mientras que los acabados del catálogo están en Vehicle.version. Tampoco aceptaba una marca aislada como consulta directa.
+- Trabajo realizado en la rama fix/ai-direct-catalog-search, creada desde main en 8127e13aec150e8b5edc185eb5f168bf199fafed.
+- AdvisorSimilarityIntent: admite búsquedas por marca, modelo y palabras de acabado; compara tokens completos y mantiene prioridad para las consultas de coches similares. Una palabra de acabado aislada o la palabra genérica «Model» no inicia una búsqueda directa.
+- SimilarCarsActivity: filtra las variantes usando marca, modelo y versión, de modo que «Tesla» encuentra vehículos Tesla y «Model 3 Performance» no devuelve acabados distintos ni Model Y Performance.
+- Pruebas añadidas: 12 comprobaciones de regresión para marca, modelo, acabado, consultas naturales, límites de token y prioridad de intención similar. Workflow de asesor: SUCCESS en ejecución #169; pruebas del motor (114), integración con catálogo español (688 vehículos) y búsqueda directa (12 comprobaciones) correctas.
+- Compilación: workflow AI advisor direct-search debug build #4, ejecución https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/44103544060, SUCCESS tras reintento por respuestas HTTP 429 temporales de Maven Central. Android Lint, :app:assembleDebug y subida del artefacto completados correctamente. Artefacto EV-Calculator-PRO-ai-search-debug-4 (7.609.418 bytes; disponible hasta el 2026-12-01).
+- El APK Debug se ha generado desde la rama; queda pendiente la validación manual de las consultas «Tesla» y «Model 3 Performance» en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10).
+- No fusionado en main. No se han modificado versión, versionCode, nombres de APK/AAB, releases, catálogo ni ramas de respaldo/stable. No publicar ni integrar hasta revisar el PR y recibir autorización expresa.

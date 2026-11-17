@@ -3,6 +3,10 @@ name: AI advisor direct-search debug build
 on:
   push:
     branches: [ "fix/ai-direct-catalog-search" ]
+    paths:
+      - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
+      - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
+      - '.github/workflows/ai-search-debug-build.yml'
   pull_request:
     branches: [ "main" ]
     paths:
