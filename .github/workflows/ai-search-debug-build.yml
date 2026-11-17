@@ -6,12 +6,14 @@ on:
     paths:
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
+      - '.github/tests/AdvisorSimilarityIntentSmokeTest.java'
       - '.github/workflows/ai-search-debug-build.yml'
   pull_request:
     branches: [ "main" ]
     paths:
       - 'app/src/main/java/com/evchargecalculator/SimilarCarsActivity.java'
       - 'app/src/main/java/com/evchargecalculator/AdvisorSimilarityIntent.java'
+      - '.github/tests/AdvisorSimilarityIntentSmokeTest.java'
       - '.github/workflows/ai-search-debug-build.yml'
 
 permissions:
