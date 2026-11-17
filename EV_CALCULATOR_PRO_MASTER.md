@@ -3748,3 +3748,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Commit de código incluido: `eea2284c3572e73dfe322f67708e1d6b1234f88c`; actualización documental previa `05a6b42c93591bd26125e26f915cff0052321b14`.
 - **Pendiente:** probar en Redmi Note 7 (Android 10) y verificar que el workflow de pruebas del asesor cubre el commit final de la pantalla activa. La validación en Xiaomi 13T Pro no certifica compatibilidad en los otros dispositivos.
 - PR #29 sigue abierto, en borrador y sin fusionar (`main` como base; rama `fix/ai-direct-catalog-search`). GitHub informa `mergeable=true`, pero no se ha fusionado. `main` permanece intacta; no se cambian versión, versionCode, APK/AAB de publicación, releases, catálogo, ramas stable/de respaldo ni Google Play.
+
+
+## 2026-11-17 — Integración de búsqueda con IA en main
+
+- PR [#29](https://github.com/Mariskal19/EV-Calculator-PRO/pull/29) fusionada en `main` el 2026-11-17 mediante merge commit `db8fe77a9862d2f1af851346a06c00561b512b1a`.
+- GitHub confirma PR cerrada y fusionada; `main` apunta al mismo merge commit.
+- Se integran los cambios de búsqueda directa por marca, modelo y acabado en la pantalla activa `SimilarCarsScreen`, conservando la prioridad de las consultas explícitas de similitud; también se integran las pruebas de regresión y los workflows añadidos/actualizados.
+- Validación manual del usuario en Xiaomi 13T Pro: «Tesla», «Model 3 Performance», «Tesla Model 3 Performance» y «Un coche parecido al Tesla Model 3» funcionan correctamente.
+- Build Debug #14 (run `44116650193`) SUCCESS: Android Lint, `:app:assembleDebug` y subida de APK completados. Artefacto `EV-Calculator-PRO-ai-search-debug-14`, ID `14343576583`.
+- **Pendiente:** prueba manual en Redmi Note 7 (Android 10). No se afirma compatibilidad en ese dispositivo hasta recibir el resultado.
+- No se han cambiado `versionName`, `versionCode`, catálogo, nombres de APK/AAB ni ramas `stable`/respaldo. No se ha autorizado una nueva publicación.
+- **Atención a CI de main:** el merge ha disparado automáticamente el workflow `Build EV Calculator PRO`, run [#2495](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/44118838689), actualmente observado en curso. El workflow de `main` construye APK/AAB Release y publica una GitHub Release automática. Su resultado y cualquier publicación deben comprobarse por separado; el merge por sí solo no acredita que haya terminado ni que se haya publicado.
