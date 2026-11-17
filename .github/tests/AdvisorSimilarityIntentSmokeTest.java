@@ -10,6 +10,10 @@ public final class AdvisorSimilarityIntentSmokeTest {
     public static void main(String[] args) {
         List<String> names = Arrays.asList("Tesla Model 3", "Tesla Model Y", "XPeng G6", "BMW i4");
 
+        check(!AdvisorSimilarityIntent.shouldRoute("Tesla", names),
+                "a make-only query does not enter the similar-car route");
+        check(AdvisorSimilarityIntent.shouldRoute("un coche parecido al Tesla Model 3", names),
+                "an explicit similarity request keeps priority over direct catalog matches");
         check(AdvisorSimilarityIntent.isDirectModelLookup("Tesla", names),
                 "a make-only query is a direct catalog lookup");
         check(AdvisorSimilarityIntent.isDirectModelLookup("Model 3 Performance", names),
