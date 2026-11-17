@@ -333,7 +333,12 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
     private boolean tryRunDirectModelLookupQuery(String query) {
         List<String> catalogNames = new ArrayList<>();
         for (Vehicle vehicle : vehicles) catalogNames.add(vehicle.make + " " + vehicle.model);
-        if (!AdvisorSimilarityIntent.isDirectModelLookup(query, catalogNames)) return false;
+
+        // Keep explicit similarity requests on the reference/alternatives route.
+        // For direct lookup, use actual catalog matches as the deciding signal:
+        // a make-only query such as "Tesla" must not depend on a separate intent
+        // classifier agreeing that the query is a model lookup.
+        if (AdvisorSimilarityIntent.shouldRoute(query, catalogNames)) return false;
 
         List<Vehicle> variants = new ArrayList<>();
         for (Vehicle vehicle : vehicles) {
@@ -342,11 +347,9 @@ public class SimilarCarsActivity extends BaseNavigationActivity {
                 variants.add(vehicle);
             }
         }
-        if (variants.isEmpty()) {
-            advisorStatus.setText(LanguageManager.t(this,
-                    "No encuentro coincidencias en el catálogo. Prueba con la marca, el modelo o una versión más concreta."));
-            return true;
-        }
+        // If there is no exact catalog match, let the natural-language advisor
+        // interpret the request instead of claiming that a model name is ambiguous.
+        if (variants.isEmpty()) return false;
 
         variants.sort((left, right) -> {
             int yearOrder = Integer.compare(right.year, left.year);
