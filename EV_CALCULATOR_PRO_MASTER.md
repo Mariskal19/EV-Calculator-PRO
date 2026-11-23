@@ -1,3 +1,14 @@
+## 2026-11-23 — CI de validación para Pull Requests dirigidas a main (pendiente de ejecución)
+
+- Se añade `.github/workflows/pull-request-validation.yml`, independiente del workflow de publicación, para ejecutar validaciones al abrir, actualizar, reabrir o marcar como lista una Pull Request contra `main`.
+- La validación ejecuta las pruebas Java de regresión de divisas, `:app:lintDebug` y `:app:assembleDebug`; sube la APK Debug y los informes Lint como artefactos de la ejecución.
+- El workflow utiliza `permissions: contents: read`. No solicita secretos de firma, no ejecuta `assembleRelease` ni `bundleRelease`, no crea GitHub Releases y no modifica versiones, versionCode ni nombres de APK/AAB de publicación.
+- Android Lint conserva la política previa del proyecto: su tarea es informativa/no bloqueante y sus informes se conservan para revisión. Las pruebas de regresión y la compilación Debug sí bloquean la validación si fallan.
+- La PR #31 sigue en borrador y dirigida a `main`; este cambio se añade a la misma rama `chore/protect-main-workflows`. **Pendiente:** comprobar que GitHub Actions detecta el nuevo workflow y verificar el resultado real de los tres pasos en la ejecución de la PR. No fusionar ni activar todavía el ruleset `Protect main`.
+- No se cambian `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` ni `compileSdk 36`. No se modifica `main`, `stable` ni ramas de respaldo; no se publica en Google Play.
+
+---
+
 ## 2026-11-13 — Validación visual edge-to-edge en Redmi Note 13 Pro y limpieza previa a integración
 
 - El usuario confirma que ha instalado la APK Debug #92 en el Redmi Note 13 Pro (Android 16) y que todas las comprobaciones visuales realizadas son correctas: status bar, barra inferior, cabeceras, pantallas principales, scroll y teclado.
