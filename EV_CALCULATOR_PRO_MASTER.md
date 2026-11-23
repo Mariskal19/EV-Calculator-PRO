@@ -3774,3 +3774,14 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Esta es una publicación de **GitHub Releases**, no una publicación en Google Play. No se ha iniciado ningún despliegue en Play Store.
 - La prueba manual de búsqueda con IA sigue validada en Xiaomi 13T Pro. **Pendiente** probar en Redmi Note 7 (Android 10); no se afirma compatibilidad hasta esa comprobación.
 - Se corrige la nota previa que indicaba que no se había autorizado una release: el usuario autorizó expresamente la fusión en `main` y la generación de la release el 2026-11-17, y ambas acciones ya están completadas.
+
+
+## 2026-11-23 — Preparación de protección de main y automatizaciones sin escritura directa
+
+- Se crea la rama de trabajo `chore/protect-main-workflows` desde el `main` vigente (`12c84ce06c3a6e62f4f3f2b6f9f9ec93ea6eecfd`). No se modifica `main`.
+- Cambio propuesto en `.github/workflows/catalog-auto-update.yml`: conservar la sincronización diaria y las validaciones actuales, pero enviar los cambios de `catalog_remote_additions.json` mediante una rama `automation/catalog-sync-<run_id>` y una Pull Request dirigida a `main`. El catálogo base protegido no se modifica. Si no hay diferencias, no se crea rama ni PR.
+- Cambio propuesto en `.github/workflows/build.yml`: eliminar la aplicación del parche durante la compilación y el paso que hacía `git push origin HEAD:main`. La inspección del código actual confirma que la implementación del método `CompararCochesActivity.build()` que genera el script ya está incorporada en el fuente de `main`; la compilación debe utilizar directamente ese fuente versionado.
+- La publicación automática de APK/AAB en GitHub Releases desde `main` se conserva sin alterar nombres, versión, `versionCode`, etiquetas ni configuración de firma.
+- La PR automática del catálogo requiere que GitHub permita a GitHub Actions crear Pull Requests en Settings → Actions → General → Workflow permissions. No se necesita añadir un bypass de GitHub Actions al ruleset.
+- Pendiente en esta rama: revisar el diff completo, validar sintaxis YAML y ejecutar las pruebas/compilación aplicables. La creación de PR mediante `GITHUB_TOKEN` no garantiza que se disparen otros workflows automáticamente; por ello no se configuran checks obligatorios en la protección de `main` en esta fase.
+- No se ha creado ni activado todavía el ruleset `Protect main`. No se han cambiado versiones, APK/AAB, releases, catálogo, ramas `stable` o de respaldo, ni se ha publicado en Google Play.
