@@ -1,10 +1,20 @@
-## 2026-11-23 — CI de validación para Pull Requests dirigidas a main (pendiente de ejecución)
+## 2026-11-23 — Ajustes de CI y prevención de publicación duplicada en PR #31
+
+- En `.github/workflows/build.yml` se excluyen de la compilación/publicación automática los cambios compuestos exclusivamente por archivos de `.github/workflows/**` o `EV_CALCULATOR_PRO_MASTER.md`. La exclusión no impide la ejecución cuando el mismo push incluye cambios de aplicación u otros archivos no ignorados.
+- En `.github/workflows/pull-request-validation.yml` se añade el disparador manual `workflow_dispatch`, manteniendo el disparador habitual `pull_request` contra `main` y el nombre exacto del job requerido.
+- En `.github/workflows/catalog-auto-update.yml`, después de crear la PR automática con `GITHUB_TOKEN`, se despacha explícitamente `pull-request-validation.yml` usando como ref la rama recién creada. Así se solicita la misma validación sobre el commit de la PR pese a que el evento generado por `GITHUB_TOKEN` no inicia workflows dependientes.
+- Estos cambios se preparan en `chore/protect-main-workflows`, dentro de la PR #31. Deben pasar validación YAML, CI sobre el nuevo head y revisión del check asociado a la PR. La primera PR automática real de catálogo deberá confirmar además que el dispatch genera el check requerido sobre su SHA.
+- La PR #31 continúa en borrador y sin fusionar. No se modifica `main` ni `stable`; no se alteran versión/versionCode, nombres de APK/AAB, tags ni releases y no se publica en Google Play.
+
+---
+
+## 2026-11-23 — CI de validación para Pull Requests dirigidas a main (ejecución #1 superada; ajustes posteriores en curso)
 
 - Se añade `.github/workflows/pull-request-validation.yml`, independiente del workflow de publicación, para ejecutar validaciones al abrir, actualizar, reabrir o marcar como lista una Pull Request contra `main`.
 - La validación ejecuta las pruebas Java de regresión de divisas, `:app:lintDebug` y `:app:assembleDebug`; sube la APK Debug y los informes Lint como artefactos de la ejecución.
 - El workflow utiliza `permissions: contents: read`. No solicita secretos de firma, no ejecuta `assembleRelease` ni `bundleRelease`, no crea GitHub Releases y no modifica versiones, versionCode ni nombres de APK/AAB de publicación.
 - Android Lint conserva la política previa del proyecto: su tarea es informativa/no bloqueante y sus informes se conservan para revisión. Las pruebas de regresión y la compilación Debug sí bloquean la validación si fallan.
-- La PR #31 sigue en borrador y dirigida a `main`; este cambio se añade a la misma rama `chore/protect-main-workflows`. **Pendiente:** comprobar que GitHub Actions detecta el nuevo workflow y verificar el resultado real de los tres pasos en la ejecución de la PR. No fusionar ni activar todavía el ruleset `Protect main`.
+- La PR #31 sigue abierta, en borrador y dirigida a `main`; su primera validación real (run `45205923979`, head `4a89d96ba824c2e9bd3b0889e845bee85313d281`) terminó en SUCCESS: pruebas de divisas, `lintDebug`, `assembleDebug` y subida de APK Debug e informes Lint. El ruleset `Protect main` ya está activo y exige el check `Currency tests, Android Lint and Debug build`.
 - No se cambian `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` ni `compileSdk 36`. No se modifica `main`, `stable` ni ramas de respaldo; no se publica en Google Play.
 
 ---
@@ -3794,5 +3804,5 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - Cambio propuesto en `.github/workflows/build.yml`: eliminar la aplicación del parche durante la compilación y el paso que hacía `git push origin HEAD:main`. La inspección del código actual confirma que la implementación del método `CompararCochesActivity.build()` que genera el script ya está incorporada en el fuente de `main`; la compilación debe utilizar directamente ese fuente versionado.
 - La publicación automática de APK/AAB en GitHub Releases desde `main` se conserva sin alterar nombres, versión, `versionCode`, etiquetas ni configuración de firma.
 - La PR automática del catálogo requiere que GitHub permita a GitHub Actions crear Pull Requests en Settings → Actions → General → Workflow permissions. No se necesita añadir un bypass de GitHub Actions al ruleset.
-- Pendiente en esta rama: revisar el diff completo, validar sintaxis YAML y ejecutar las pruebas/compilación aplicables. La creación de PR mediante `GITHUB_TOKEN` no garantiza que se disparen otros workflows automáticamente; por ello no se configuran checks obligatorios en la protección de `main` en esta fase.
-- No se ha creado ni activado todavía el ruleset `Protect main`. No se han cambiado versiones, APK/AAB, releases, catálogo, ramas `stable` o de respaldo, ni se ha publicado en Google Play.
+- La revisión detectó que las PR creadas con `GITHUB_TOKEN` no disparan automáticamente el evento `pull_request`. Se corrige en esta rama habilitando `workflow_dispatch` en `pull-request-validation.yml` y haciendo que el sincronizador del catálogo despache esa validación sobre la rama exacta de la PR. La ejecución del check sobre una PR automática debe confirmarse en una prueba real cuando se produzca una actualización del catálogo.
+- El ruleset `Protect main` está activo, sin bypass, y exige el check `Currency tests, Android Lint and Debug build`. Se evita una publicación accidental en el merge de esta PR añadiendo `paths-ignore` para cambios exclusivamente en `.github/workflows/**` y `EV_CALCULATOR_PRO_MASTER.md`; los cambios mixtos que incluyan código/fuentes de la app siguen activando la compilación. No se cambian versiones, APK/AAB, releases, catálogo, ramas `stable` o de respaldo, ni se publica en Google Play.
