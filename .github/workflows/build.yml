@@ -31,9 +31,6 @@ jobs:
           gradle-version: '9.6.0'
           cache-disabled: true
 
-      - name: Apply search virtualization patch
-        run: python3 .github/scripts/patch_search_virtualization.py
-
       - name: Verify final Spanish catalog
         shell: bash
         run: |
@@ -113,37 +110,6 @@ jobs:
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
           retention-days: 7
-
-      - name: Persist optimized search source
-        if: github.ref == 'refs/heads/main'
-        shell: bash
-        continue-on-error: true
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- app/src/main/java/com/evchargecalculator/CompararCochesActivity.java; then
-            echo "Search source already matches optimized version."
-            exit 0
-          fi
-
-          git add app/src/main/java/com/evchargecalculator/CompararCochesActivity.java
-          git commit -m "Virtualize compare car search results"
-
-          for attempt in 1 2 3; do
-            git fetch origin main
-            if git rebase origin/main; then
-              if git push origin HEAD:main; then
-                echo "Optimized search source persisted successfully."
-                exit 0
-              fi
-            else
-              git rebase --abort || true
-            fi
-            echo "Persistence attempt $attempt could not update main; retrying..."
-            sleep 2
-          done
-          echo "WARNING: optimized search source could not be persisted this run; APK/AAB build will continue."
 
       - name: Prepare release files
         if: github.ref == 'refs/heads/main'
