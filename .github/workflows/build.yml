@@ -6,6 +6,10 @@ on:
     branches: [ main, fix/compare-first-entry-top-inset, fix/suv-coupe-similarity, fix/min-sdk-24-play-protection ]
     paths-ignore:
       - 'app/src/main/assets/catalog_remote_additions.json'
+      # Maintenance-only changes must not publish a duplicate APK/AAB Release.
+      # Mixed commits containing application/source changes still trigger the build.
+      - '.github/workflows/**'
+      - 'EV_CALCULATOR_PRO_MASTER.md'
 
 permissions:
   contents: read
