@@ -56,3 +56,9 @@ jobs:
             --head "$branch" \
             --title "Catalog: sync validated remote configurations" \
             --body "Automated catalog update. The protected base catalog is not modified; this PR contains only validated changes to catalog_remote_additions.json. Please review before merging."
+
+          # PRs created with GITHUB_TOKEN do not emit a pull_request event that
+          # starts another workflow. Dispatch the same validation workflow on
+          # the PR head so its required check is attached to the exact commit.
+          gh workflow run pull-request-validation.yml --ref "$branch"
+          echo "Dispatched required PR validation for $branch."
