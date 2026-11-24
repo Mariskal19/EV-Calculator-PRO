@@ -1,3 +1,15 @@
+## 2026-11-24 — Actualización Android Gradle Plugin 9.5.2 integrada en main
+
+- Con autorización expresa del usuario, se fusionó la PR [#30](https://github.com/Mariskal19/EV-Calculator-PRO/pull/30) de Dependabot mediante merge.
+- GitHub confirma la PR cerrada y fusionada; commit de merge: `38b21299135d44d30b035e6c54f99ed9ec5f353e`. La rama `main` apunta a ese mismo commit.
+- Único cambio: actualización de Android Gradle Plugin de **9.5.1 a 9.5.2** en `build.gradle`. No se modificó código de la aplicación, SDK, versión/versionCode, configuración de APK/AAB, tags ni releases.
+- La PR se actualizó mediante `@dependabot rebase` y quedó basada en el `main` vigente antes de fusionar.
+- CI de Pull Request #7 ([run 45459969239](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/45459969239)) terminó en **SUCCESS** sobre el head `1738ae6b36be8cc885f42cf8c2d12cdf44aeb6d2`: tests de regresión de divisas, Android Lint y compilación Debug APK completados correctamente; Java 17 y Gradle 9.6.0 configurados correctamente.
+- La CI confirma compilación y análisis estático; no sustituye una prueba manual de la APK con AGP 9.5.2 en Redmi Note 13 Pro (Android 16) y Redmi Note 7 (Android 10). La actualización de herramienta no se declara validada físicamente hasta realizar esas pruebas.
+- No se modifica ninguna rama stable/de respaldo. No se genera una nueva versión ni se publica en Google Play.
+
+---
+
 ## 2026-11-24 — Validación manual de EV Calculator PRO 1.0.7 en ambos dispositivos
 
 - El usuario confirma que ha instalado la APK Release 1.0.7, build 2495, también en el Redmi Note 7 (Android 10) y que todas las comprobaciones realizadas funcionan correctamente.
