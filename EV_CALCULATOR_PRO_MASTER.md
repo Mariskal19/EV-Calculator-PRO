@@ -1,3 +1,15 @@
+## 2026-11-24 — Validación manual de EV Calculator PRO 1.0.7 en ambos dispositivos
+
+- El usuario confirma que ha instalado la APK Release 1.0.7, build 2495, también en el Redmi Note 7 (Android 10) y que todas las comprobaciones realizadas funcionan correctamente.
+- Queda completada la validación manual de compatibilidad en los dos dispositivos de prueba del proyecto:
+  - Redmi Note 13 Pro — Android 16: validación satisfactoria confirmada previamente.
+  - Redmi Note 7 — Android 10: validación satisfactoria confirmada el 2026-11-24.
+- La APK corresponde a la GitHub Release [build-v1.0.7-2495](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.7-2495). Se mantienen los datos de publicación ya verificados: versionName 1.0.7, versionCode 63, minSdk 24, targetSdk 36 y compileSdk 36.
+- La validación manual en ambos dispositivos queda completada. No implica publicación en Google Play: la versión 1.0.7 continúa sin publicarse allí.
+- No se modifica código de la aplicación, configuración de compilación, APK/AAB, tags, releases, catálogo ni ramas stable/de respaldo.
+
+---
+
 ## 2026-11-23 — Ajustes de CI y prevención de publicación duplicada en PR #31
 
 - En `.github/workflows/build.yml` se excluyen de la compilación/publicación automática los cambios compuestos exclusivamente por archivos de `.github/workflows/**` o `EV_CALCULATOR_PRO_MASTER.md`. La exclusión no impide la ejecución cuando el mismo push incluye cambios de aplicación u otros archivos no ignorados.
