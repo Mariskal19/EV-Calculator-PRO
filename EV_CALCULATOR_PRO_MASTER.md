@@ -1,3 +1,13 @@
+## 2026-11-25 — Validación física de AGP 9.5.2 completada en ambos dispositivos
+
+- El usuario confirma que la APK Debug generada por CI #7 con Android Gradle Plugin 9.5.2 se ha instalado y probado correctamente en el Redmi Note 7 (Android 10).
+- Comprobaciones confirmadas en Redmi Note 7: instalación y arranque; navegación por Cargar, Coste, Coches y Más; cálculos de Cargar y Coste; búsqueda de vehículo, apertura de ficha y añadido a Comparar; cambio de moneda EUR → USD y actualización correcta de precios.
+- Resultado físico satisfactorio en Redmi Note 7. Sumado a la prueba satisfactoria ya documentada en Redmi Note 13 Pro (Android 16), queda completada la validación manual de AGP 9.5.2 en los dos dispositivos de referencia.
+- La prueba de Redmi Note 7 se realizó sobre la APK Debug del workflow CI #7; no es una nueva Release de distribución.
+- No se modifica código de la aplicación, SDK, versión/versionCode, nombres de APK/AAB, tags, releases, catálogo ni ramas stable/de respaldo. No se publica en Google Play.
+
+---
+
 ## 2026-11-24 — Actualización Android Gradle Plugin 9.5.2 integrada en main
 
 - Con autorización expresa del usuario, se fusionó la PR [#30](https://github.com/Mariskal19/EV-Calculator-PRO/pull/30) de Dependabot mediante merge.
