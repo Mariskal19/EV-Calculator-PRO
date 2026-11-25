@@ -1,3 +1,27 @@
+## 2026-11-25 — Validación física de AGP 9.5.2 completada en ambos dispositivos
+
+- El usuario confirma que la APK Debug generada por CI #7 con Android Gradle Plugin 9.5.2 se ha instalado y probado correctamente en el Redmi Note 7 (Android 10).
+- Comprobaciones confirmadas en Redmi Note 7: instalación y arranque; navegación por Cargar, Coste, Coches y Más; cálculos de Cargar y Coste; búsqueda de vehículo, apertura de ficha y añadido a Comparar; cambio de moneda EUR → USD y actualización correcta de precios.
+- Resultado físico satisfactorio en Redmi Note 7. Sumado a la prueba satisfactoria ya documentada en Redmi Note 13 Pro (Android 16), queda completada la validación manual de AGP 9.5.2 en los dos dispositivos de referencia.
+- La prueba de Redmi Note 7 se realizó sobre la APK Debug del workflow CI #7; no es una nueva Release de distribución.
+- No se modifica código de la aplicación, SDK, versión/versionCode, nombres de APK/AAB, tags, releases, catálogo ni ramas stable/de respaldo. No se publica en Google Play.
+
+---
+
+## 2026-11-24 — Actualización Android Gradle Plugin 9.5.2 integrada en main
+
+- Con autorización expresa del usuario, se fusionó la PR [#30](https://github.com/Mariskal19/EV-Calculator-PRO/pull/30) de Dependabot mediante merge.
+- GitHub confirma la PR cerrada y fusionada; commit de merge: `38b21299135d44d30b035e6c54f99ed9ec5f353e`. La rama `main` apunta a ese mismo commit.
+- Único cambio: actualización de Android Gradle Plugin de **9.5.1 a 9.5.2** en `build.gradle`. No se modificó código de la aplicación, SDK, versión/versionCode, configuración de APK/AAB, tags ni releases.
+- La PR se actualizó mediante `@dependabot rebase` y quedó basada en el `main` vigente antes de fusionar.
+- CI de Pull Request #7 ([run 45459969239](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/45459969239)) terminó en **SUCCESS** sobre el head `1738ae6b36be8cc885f42cf8c2d12cdf44aeb6d2`: tests de regresión de divisas, Android Lint y compilación Debug APK completados correctamente; Java 17 y Gradle 9.6.0 configurados correctamente.
+- La CI #8 ([run 45481385966](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/45481385966)) terminó en **SUCCESS** sobre el commit documental `24247e7d93d05608c209850e122e9a300f9342fa`: pruebas de regresión de divisas, Android Lint y compilación/subida de APK Debug completadas correctamente.
+- **Prueba manual de la APK Debug compilada con AGP 9.5.2:** el usuario confirma que la instaló en el Redmi Note 13 Pro (Android 16) y superó las comprobaciones de arranque/navegación, cálculos de Cargar y Coste, búsqueda/ficha/comparación de vehículos, cambio de divisa y retorno mediante Atrás. Resultado satisfactorio confirmado el 2026-11-24.
+- **Pendiente:** repetir la prueba de esta misma APK Debug en el Redmi Note 7 (Android 10). La validación en Android 16 no certifica por sí sola Android 10; no se declara completada la validación física de AGP 9.5.2 hasta recibir ese resultado.
+- No se modifica ninguna rama stable/de respaldo. No se genera una nueva versión ni se publica en Google Play.
+
+---
+
 ## 2026-11-24 — Validación manual de EV Calculator PRO 1.0.7 en ambos dispositivos
 
 - El usuario confirma que ha instalado la APK Release 1.0.7, build 2495, también en el Redmi Note 7 (Android 10) y que todas las comprobaciones realizadas funcionan correctamente.
