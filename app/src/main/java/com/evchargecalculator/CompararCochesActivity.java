@@ -8,7 +8,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Build;
 import android.text.Editable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -490,8 +489,8 @@ public class CompararCochesActivity extends BaseNavigationActivity {
         tableLabels.setOrientation(LinearLayout.VERTICAL);
         tableLabels.setPadding(0,dp(2),0,0);
         tableLabels.setBackgroundColor(dark ? Color.rgb(7,19,28) : Color.rgb(241,246,251));
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) tableLabels.setElevation(dp(4));
-        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.LEFT));
+        tableLabels.setElevation(dp(4));
+        compareTable.addView(tableLabels,new FrameLayout.LayoutParams(dp(112),-2,Gravity.TOP|Gravity.START));
 
         table=new LinearLayout(this);
         table.setOrientation(LinearLayout.VERTICAL);

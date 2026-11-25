@@ -3842,3 +3842,17 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La PR automática del catálogo requiere que GitHub permita a GitHub Actions crear Pull Requests en Settings → Actions → General → Workflow permissions. No se necesita añadir un bypass de GitHub Actions al ruleset.
 - La revisión detectó que las PR creadas con `GITHUB_TOKEN` no disparan automáticamente el evento `pull_request`. Se corrige en esta rama habilitando `workflow_dispatch` en `pull-request-validation.yml` y haciendo que el sincronizador del catálogo despache esa validación sobre la rama exacta de la PR. La ejecución del check sobre una PR automática debe confirmarse en una prueba real cuando se produzca una actualización del catálogo.
 - El ruleset `Protect main` está activo, sin bypass, y exige el check `Currency tests, Android Lint and Debug build`. Se evita una publicación accidental en el merge de esta PR añadiendo `paths-ignore` para cambios exclusivamente en `.github/workflows/**` y `EV_CALCULATOR_PRO_MASTER.md`; los cambios mixtos que incluyan código/fuentes de la app siguen activando la compilación. No se cambian versiones, APK/AAB, releases, catálogo, ramas `stable` o de respaldo, ni se publica en Google Play.
+
+
+## 2026-11-25 — Correcciones propuestas de Android Lint
+
+- Se crea la rama independiente `fix/android-lint-warnings` desde `main`, sin modificar `main`, ramas `stable` o de respaldo, ni generar APK/AAB de publicación.
+- Informe de referencia: Android Lint AGP 9.5.2, workflow CI #10 (25-11-2026), artefacto `android-lint-pr-report-10`. Resultado inicial: 8 warnings y 0 errores:
+  - 1 `AppBundleLocaleChanges` en `LanguageManager.java:57`.
+  - 1 `ObsoleteSdkInt` en `CompararCochesActivity.java:493`.
+  - 5 `IconLauncherShape` en los PNG de icono de mipmap (mdpi a xxxhdpi).
+  - 1 `RtlHardcoded` en `CompararCochesActivity.java:494`.
+- Cambios preparados en esta rama: supresión localizada y documentada de `AppBundleLocaleChanges` en el método de cambio de idioma, dado que `app/build.gradle` ya desactiva la división por idioma mediante `bundle.language.enableSplit = false`; retirada de la comprobación Lollipop redundante (el proyecto tiene `minSdk 24`); sustitución de `Gravity.LEFT` por `Gravity.START`; retirada de `android:roundIcon` que apuntaba a los iconos cuadrados, conservando `android:icon` y el recurso adaptive icon existente.
+- La supresión de locale se limita al método que aplica el idioma; no se elimina el cambio de idioma en tiempo de ejecución ni se modifica la configuración de idiomas del App Bundle.
+- **Pendiente de validar:** CI de la PR (tests de divisas, Android Lint y compilación Debug), confirmar el número final de avisos y revisar el diff antes de cualquier merge. No se considera resuelto hasta que CI lo confirme.
+- No se cambian `versionName`, `versionCode`, SDK, nombres de APK/AAB, tags, releases, catálogo ni Google Play.
