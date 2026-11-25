@@ -1,3 +1,20 @@
+## 2026-11-25 — PR #34 integrada y Release GitHub 1.0.7 build 2497 verificada
+
+- Con autorización expresa del usuario, se fusionó la PR [#34](https://github.com/Mariskal19/EV-Calculator-PRO/pull/34), destinada a corregir avisos de Android Lint sin modificar el diseño visual ni el comportamiento funcional de la aplicación.
+- Commit de merge en `main`: `5d798fdc03fc8a55db09fff9beb5a53472dd7e26`. La PR quedó cerrada y fusionada.
+- CI de la PR #34, ejecución [#11](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/45661863393): **SUCCESS**. Pruebas de regresión de divisas, Android Lint, compilación Debug y generación/subida de informes completadas correctamente.
+- Informe Android Lint posterior a los cambios: **5 warnings y 0 errores**. Se eliminaron los avisos `AppBundleLocaleChanges`, `ObsoleteSdkInt` y `RtlHardcoded`. Permanecen los 5 avisos `IconLauncherShape` de los PNG de icono de lanzamiento por densidad (mdpi, hdpi, xhdpi, xxhdpi y xxxhdpi). No se rediseñaron los iconos para preservar las decisiones visuales aprobadas; queda pendiente decidir si se corrigen en un trabajo específico.
+- Cambios integrados: supresión localizada y documentada de `AppBundleLocaleChanges` en `LanguageManager.java` (se conserva el cambio de idioma y la configuración `bundle.language.enableSplit = false`); retirada de la comprobación Lollipop redundante en `CompararCochesActivity.java` porque `minSdk = 24`; sustitución de `Gravity.LEFT` por `Gravity.START`; retirada de `android:roundIcon` que apuntaba a PNG cuadrados, manteniendo `android:icon` y el recurso adaptive icon existente.
+- Tras el merge se ejecutó automáticamente el workflow [Build EV Calculator PRO #2497](https://github.com/Mariskal19/EV-Calculator-PRO/actions/runs/45662478951), sobre el commit de merge. GitHub confirma **SUCCESS** en todos los pasos aplicables: verificación del catálogo español, configuración de firma, lectura de versión, compilación Release APK/AAB, verificación de outputs y publicación de GitHub Release.
+- GitHub Release creada: [EV Calculator PRO v1.0.7 build 2497](https://github.com/Mariskal19/EV-Calculator-PRO/releases/tag/build-v1.0.7-2497), tag `build-v1.0.7-2497`, publicada el 2026-11-25 y asociada al commit `5d798fdc03fc8a55db09fff9beb5a53472dd7e26`.
+  - APK: [EV-Calculator-PRO-v1.0.7.apk](https://github.com/Mariskal19/EV-Calculator-PRO/releases/download/build-v1.0.7-2497/EV-Calculator-PRO-v1.0.7.apk) — 5.133.228 bytes; SHA-256 `7b37ca148628037da8345c1ced5524c0af2c1946b3d63d0931d77e34a9217e67`.
+  - AAB: [EV-Calculator-PRO-v1.0.7.aab](https://github.com/Mariskal19/EV-Calculator-PRO/releases/download/build-v1.0.7-2497/EV-Calculator-PRO-v1.0.7.aab) — 5.116.468 bytes; SHA-256 `f570f21b7d544a3643da7179ae3b660c69fe6a6d946f5a2adb93bcabbde7d480`.
+- Se mantienen `versionName 1.0.7`, `versionCode 63`, `minSdk 24`, `targetSdk 36` y `compileSdk 36`. Esta Release corresponde exclusivamente a GitHub; **no se ha publicado en Google Play**. No se ha autorizado ni iniciado un despliegue en Play Store.
+- No se han modificado ramas `stable` ni de respaldo.
+- **Pendientes vigentes:** los 5 avisos `IconLauncherShape`, sin cambios visuales hasta nueva decisión; PR Dependabot [#21](https://github.com/Mariskal19/EV-Calculator-PRO/pull/21) (AndroidX Core 1.19.1 y compileSdk 37) continúa aplazada, sin integrar mientras se mantenga la decisión de permanecer en API 36.
+
+---
+
 ## 2026-11-25 — Validación física de AGP 9.5.2 completada en ambos dispositivos
 
 - El usuario confirma que la APK Debug generada por CI #7 con Android Gradle Plugin 9.5.2 se ha instalado y probado correctamente en el Redmi Note 7 (Android 10).
