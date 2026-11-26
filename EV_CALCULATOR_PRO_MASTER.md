@@ -3873,3 +3873,15 @@ Se ha aplicado en `develop/post-1.0.6` una optimización conservadora para elimi
 - La supresión de locale se limita al método que aplica el idioma; no se elimina el cambio de idioma en tiempo de ejecución ni se modifica la configuración de idiomas del App Bundle.
 - **Pendiente de validar:** CI de la PR (tests de divisas, Android Lint y compilación Debug), confirmar el número final de avisos y revisar el diff antes de cualquier merge. No se considera resuelto hasta que CI lo confirme.
 - No se cambian `versionName`, `versionCode`, SDK, nombres de APK/AAB, tags, releases, catálogo ni Google Play.
+
+
+## 2026-11-26 — Política de privacidad actualizada y fusionada
+
+- Se ha actualizado la política de privacidad en el repositorio independiente [EV-Calculator-PRO-Privacy](https://github.com/Mariskal19/EV-Calculator-PRO-Privacy), mediante la PR [#1](https://github.com/Mariskal19/EV-Calculator-PRO-Privacy/pull/1), fusionada en `main`.
+- Commit de integración en el repositorio de privacidad: `48aa8e6838c809861da997ab38829197743b21a6`.
+- La política ahora describe las conexiones para descargar el catálogo remoto de vehículos desde GitHub y los tipos de cambio públicos desde la API del Banco Central Europeo (BCE).
+- Se aclara que las solicitudes de descarga no incluyen los datos de carga introducidos por el usuario, las preferencias de cálculo ni los resultados. También se informa de que los proveedores pueden recibir metadatos técnicos de conexión, como la dirección IP, y tratarlos conforme a sus propias políticas.
+- Se mantiene que los cálculos y preferencias se procesan/almacenan localmente y que la aplicación no incorpora actualmente publicidad, analítica ni seguimiento publicitario.
+- URL pública de la política, sin cambios: https://mariskal19.github.io/EV-Calculator-PRO-Privacy/
+- Este cambio es exclusivamente documental y se realiza en el repositorio de privacidad. No modifica el código Android, permisos, dependencias, versión `1.0.7`, `versionCode 63`, APK/AAB, tags ni releases.
+- **Pendiente:** verificar que GitHub Pages ya sirve la nueva versión y actualizar/revisar la declaración de Seguridad de los datos en Google Play Console antes de enviar el cuestionario. La declaración de Google Play no se ha enviado en este cambio.
